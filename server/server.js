@@ -1,0 +1,23 @@
+/**
+ * Created by Shreedhar Acharya
+ *
+ */
+
+require("dotenv").config();
+const express = require("express");
+
+const db = require("./app/db");
+var cors = require("cors");
+bodyParser = require("body-parser");
+
+const app = express();
+
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log(`Server is up and listening on port ${port}`);
+});
