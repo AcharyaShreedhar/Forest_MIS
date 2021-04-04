@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
+const staffRoutes = require("./app/routes/staffRoutes");
+app.use("/api/v1", staffRoutes);
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server is up and listening on port ${port}`);
