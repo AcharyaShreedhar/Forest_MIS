@@ -17,7 +17,6 @@ const persistConfig = {
 /* ------------- Assemble The Reducers ------------- */
 const reducers = combineReducers({
   app: require("./app").reducer,
-  admin: require("./admin").reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

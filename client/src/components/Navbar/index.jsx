@@ -3,11 +3,8 @@ import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
-  faSignInAlt,
-  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
-import { isEmpty, equals } from "ramda";
 import AppActions from "../../actions/app";
 import "./Navbar.scss";
 
@@ -22,8 +19,6 @@ class NavbarComponent extends Component {
     this.props.logoutRequest();
   }
   render() {
-    // const { token } = this.props;
-    // const path = this.props.history.location.pathname;
 
     return (
       <Navbar
@@ -112,9 +107,8 @@ class NavbarComponent extends Component {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//   logoutRequest: () => dispatch(AppActions.logoutRequest()),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  logoutRequest: () => dispatch(AppActions.logoutRequest()),
+});
 
-// export default connect(null, mapDispatchToProps)(NavbarComponent);
-export default NavbarComponent;
+export default connect(null, mapDispatchToProps)(NavbarComponent);
