@@ -22,7 +22,7 @@ NotFound.propTypes = {
 }
 
 NotFound.defaultProps = {
-  description: 'पशु सेवा तालिम केन्द्र पोखरा, नेपाल',
+  description:"",
 }
 
 export default NotFound
