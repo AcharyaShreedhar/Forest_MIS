@@ -21,11 +21,13 @@ const staffRoutes = require("./app/routes/staffRoutes");
 const provinceRoutes = require("./app/routes/provinceRoutes");
 const districtRoutes = require("./app/routes/districtRoutes");
 const municipalityRoutes = require("./app/routes/municipalityRoutes");
+const postRoutes = require("./app/routes/postRoutes");
 
 app.use("/api/v1", staffRoutes);
 app.use("/api/v1", provinceRoutes);
 app.use("/app/v1", districtRoutes);
 app.use("/app/v1", municipalityRoutes);
+app.use("/api/v1", postRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
