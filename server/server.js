@@ -18,7 +18,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const staffRoutes = require("./app/routes/staffRoutes");
+const provinceRoutes=require("./app/routes/provinceRoutes");
+
 app.use("/api/v1", staffRoutes);
+app.use("/api/v1",provinceRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
