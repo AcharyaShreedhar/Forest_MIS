@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { HeaderComponent, NavbarComponent } from "../../components";
 import { Content } from "./dashboard";
 import AppActions from "../../actions/app";
+import { SideNavbar } from "../../components";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -24,9 +25,9 @@ class Dashboard extends Component {
     const { history, location } = this.props;
 
     return (
-      <div className="dashboard">
-        <HeaderComponent />
-        <NavbarComponent location={location} history={history} />
+      <div className="d-flex">
+        {/* <NavbarComponent location={location} history={history} /> */}
+        <SideNavbar />
         <Content location={location} history={history} />
       </div>
     );
