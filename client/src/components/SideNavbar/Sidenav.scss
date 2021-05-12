@@ -4,16 +4,15 @@
 .leftmarginMax {
   margin-right: 240px;
   padding: 10px;
+  .displayNone {
+    width: 30px;
+    height: 30px;
+    float: right;
+    .sidenav---icon-bar---u1f02 {
+      width: 15px;
+    }
+  }
 }
 .leftmarginMin {
   margin-right: 84px;
-}
-.displayNone {
-  width: 0px;
-  height: 0px;
-
-  .sidenav---icon-bar---u1f02 {
-    width: 0px;
-    height: 0px;
-  }
 }
