@@ -31,40 +31,46 @@ export class SideNavbar extends Component {
     console.log("expanded", expanded);
     return (
       <div className={expanded ? "leftmarginMax" : "leftmarginMin"}>
-        <SideNav
-          onToggle={(selected) => {
-            this.handleToggle(selected);
+        <ClickOutside
+          onClickOutside={() => {
+            this.setState({ expanded: false });
           }}
         >
-          
-          <SideNav.Toggle
-            onSelect={(selected) => {
+          <SideNav
+            onToggle={(selected) => {
               this.handleToggle(selected);
             }}
-          />
-         
-          <SideNav.Nav defaultSelected="home">
-          <HeaderComponent enabled={expanded} />
-            <NavItem eventKey="home">
-              <NavIcon>
-                <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>Home</NavText>
-            </NavItem>
-            <NavItem eventKey="charts">
-              <NavIcon>
-                <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>Charts</NavText>
-              <NavItem eventKey="charts/linechart">
-                <NavText>Line Chart</NavText>
+          >
+            <SideNav.Toggle
+              onSelect={(selected) => {
+                this.handleToggle(selected);
+              }}
+              className={expanded ? "displayNone" : ""}
+            />
+
+            <SideNav.Nav defaultSelected="home">
+              <HeaderComponent enabled={expanded} />
+              <NavItem eventKey="home">
+                <NavIcon>
+                  <FontAwesomeIcon icon={faHome} className="mr-2" />
+                </NavIcon>
+                <NavText>Home</NavText>
               </NavItem>
-              <NavItem eventKey="charts/barchart">
-                <NavText>Bar Chart</NavText>
+              <NavItem eventKey="charts">
+                <NavIcon>
+                  <FontAwesomeIcon icon={faHome} className="mr-2" />
+                </NavIcon>
+                <NavText>Charts</NavText>
+                <NavItem eventKey="charts/linechart">
+                  <NavText>Line Chart</NavText>
+                </NavItem>
+                <NavItem eventKey="charts/barchart">
+                  <NavText>Bar Chart</NavText>
+                </NavItem>
               </NavItem>
-            </NavItem>
-          </SideNav.Nav>
-        </SideNav>
+            </SideNav.Nav>
+          </SideNav>
+        </ClickOutside>
       </div>
     );
   }
