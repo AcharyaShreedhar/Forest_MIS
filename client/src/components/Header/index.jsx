@@ -13,9 +13,9 @@ class HeaderComponent extends Component {
               <Image src="/images/nepal-govt.png" className="img-fluid" />
             </div>
             <div className="text-center">
-              <p>प्रदेश सरकार</p>
-              <p>उद्योग, पर्यटन, वन तथा वातावरण मन्त्रालय</p>
-              <p>गण्डकी प्रदेश, पोखरा</p>
+              <p className="mb-0">प्रदेश सरकार</p>
+              <p className="mb-0">उद्योग, पर्यटन, वन तथा वातावरण मन्त्रालय</p>
+              <p className="mb-0">गण्डकी प्रदेश, पोखरा</p>
             </div>
             <div>
               <Image src="/nepalflag.gif" className="img-fluid flag" />
