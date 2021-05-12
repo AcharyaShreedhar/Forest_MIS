@@ -31,46 +31,41 @@ export class SideNavbar extends Component {
     console.log("expanded", expanded);
     return (
       <div className={expanded ? "leftmarginMax" : "leftmarginMin"}>
-        <ClickOutside
-          onClickOutside={() => {
-            this.setState({ expanded: false });
+        <SideNav
+          expanded={expanded}
+          onToggle={(selected) => {
+            this.handleToggle(selected);
           }}
         >
-          <SideNav
-            onToggle={(selected) => {
+          <SideNav.Toggle
+            onSelect={(selected) => {
               this.handleToggle(selected);
             }}
-          >
-            <SideNav.Toggle
-              onSelect={(selected) => {
-                this.handleToggle(selected);
-              }}
-              className={expanded ? "displayNone" : ""}
-            />
+            className={expanded ? "displayNone" : ""}
+          />
 
-            <SideNav.Nav defaultSelected="home">
-              <HeaderComponent enabled={expanded} />
-              <NavItem eventKey="home">
-                <NavIcon>
-                  <FontAwesomeIcon icon={faHome} className="mr-2" />
-                </NavIcon>
-                <NavText>Home</NavText>
+          <SideNav.Nav defaultSelected="home">
+            <HeaderComponent enabled={expanded} />
+            <NavItem eventKey="home">
+              <NavIcon>
+                <FontAwesomeIcon icon={faHome} className="mr-2" />
+              </NavIcon>
+              <NavText>Home</NavText>
+            </NavItem>
+            <NavItem eventKey="charts">
+              <NavIcon>
+                <FontAwesomeIcon icon={faHome} className="mr-2" />
+              </NavIcon>
+              <NavText>Charts</NavText>
+              <NavItem eventKey="charts/linechart">
+                <NavText>Line Chart</NavText>
               </NavItem>
-              <NavItem eventKey="charts">
-                <NavIcon>
-                  <FontAwesomeIcon icon={faHome} className="mr-2" />
-                </NavIcon>
-                <NavText>Charts</NavText>
-                <NavItem eventKey="charts/linechart">
-                  <NavText>Line Chart</NavText>
-                </NavItem>
-                <NavItem eventKey="charts/barchart">
-                  <NavText>Bar Chart</NavText>
-                </NavItem>
+              <NavItem eventKey="charts/barchart">
+                <NavText>Bar Chart</NavText>
               </NavItem>
-            </SideNav.Nav>
-          </SideNav>
-        </ClickOutside>
+            </NavItem>
+          </SideNav.Nav>
+        </SideNav>
       </div>
     );
   }
