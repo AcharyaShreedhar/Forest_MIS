@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const nijiBanBibarancontroller = require("../controller/provinceController");
-router.get("/province", nijiBanBibarancontroller.getAllnijiBanBibaran);
-router.get("/province/provinceId", nijiBanBibarancontroller.getnijiBanBibaran);
-router.post("/province", nijiBanBibarancontroller.addnijiBanBibaran);
-router.put("/province", nijiBanBibarancontroller.updatenijiBanBibaran);
-router.delete("/province", nijiBanBibarancontroller.deletenijiBanBibaran);
+const NijibanBibaranController = require("../controller/NijibanBibaranController");
+router.get("/province", NijibanBibaranController.getAllNijibanBibaran);
+router.get("/province/provinceId", NijibanBibaranController.getNijibanBibaran);
+router.post("/province", NijibanBibaranController.addNijibanBibaran);
+router.put("/province", NijibanBibaranController.updateNijibanBibaran);
+router.delete("/province", NijibanBibaranController.deleteNijibanBibaran);
 module.exports = router;
