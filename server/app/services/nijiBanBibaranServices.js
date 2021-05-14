@@ -1,6 +1,6 @@
 // Service for Listing all nijiBanBibaran
 module.exports = {
-  getAll: (callBack) => {
+  getAllNijibanBibaranQuery: (callBack) => {
     const getAllNijibanBibaran = `select * from niji_ban_bibaran`;
     pool.query(getAllNijibanBibaranQuery, [], (error, results, fields) => {
       if (error) {
@@ -14,7 +14,7 @@ module.exports = {
 
 //Service for Listing a Province
 module.exports = {
-  getProvince: (callBack) => {
+  getNijibanBibaranQuery: (callBack) => {
     const getNijibanBibaranQuery = `select * from niji_ban_bibaran where niji_ban_bibaran_id=$1`;
     pool.query(
       getNijibanBibaranQuery,
@@ -31,7 +31,7 @@ module.exports = {
 
 //Service for adding a Province
 module.exports = {
-  addProvince: (callBack) => {
+  addNijibanBibaranQuery: (callBack) => {
     const addNijibanBibaranQuery = `INSERT INTO niji_ban_bibaran (swikrit_miti,niji_ban_dhani_ko_naam,perm_addr,curr_addr,area,main_species) values ($1,$2,$3,$4,$5,$6) returning *`;
     pool.query(
       addNijibanBibaranQuery,
@@ -48,7 +48,7 @@ module.exports = {
 
 //Service for updating a Province
 module.exports = {
-  updateProvince: (callBack) => {
+  updateNijibanBibaranQuery: (callBack) => {
     const updateNijibanBibaran = `UPDATE niji_ban_bibaran SET swikrit_miti=$1, niji_ban_dhani_ko_naam=$2, perm_addr=$3, curr_addr=$4, area=$5, main_species=$6 WHERE niji_ban_bibaran_id=$7 returning *`;
     pool.query(
       updateNijibanBibaranQuery,
