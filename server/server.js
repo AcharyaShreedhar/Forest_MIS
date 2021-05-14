@@ -23,7 +23,7 @@ const districtRoutes = require("./app/routes/districtRoutes");
 const municipalityRoutes = require("./app/routes/municipalityRoutes");
 const postRoutes = require("./app/routes/postRoutes");
 const levelRoutes = require("./app/routes/levelRoutes");
-const NijibanBibaranRoutes = require("./app/routes/NijibanBibaranRoutes");
+const nijibanBibaranRoutes = require("./app/routes/nijibanBibaranRoutes");
 
 app.use("/api/v1", staffRoutes);
 app.use("/api/v1", provinceRoutes);
@@ -31,7 +31,7 @@ app.use("/app/v1", districtRoutes);
 app.use("/app/v1", municipalityRoutes);
 app.use("/api/v1", postRoutes);
 app.use("/api/v1", levelRoutes);
-app.use("/api/v1",NijibanBibaranRoutes);
+app.use("/api/v1",nijibanBibaranRoutes);
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server is up and listening on port ${port}`);
