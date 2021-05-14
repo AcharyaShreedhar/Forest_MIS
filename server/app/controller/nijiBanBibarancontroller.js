@@ -1,15 +1,15 @@
 const db = require("../db");
 const {
-  getAllNijibanBibaran,
-  getNijibanBibaran,
-  addNijibanBibaran,
-  updateNijibanBibaran,
-  deleteNijibanBibaran,
-} = require("../services/provinceServices");
+  getAllnijibanBibaran,
+  getnijibanBibaran,
+  addnijibanBibaran,
+  updatenijibanBibaran,
+  deletenijibanBibaran,
+} = require("../services/nijibanBibaranServices");
 
 module.exports = {
-  getAllNijibanBibaran: (req, res) => {
-    getAllNijibanBibaran((err, results) => {
+  getAllnijibanBibaran: (req, res) => {
+    getAllnijibanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -21,8 +21,8 @@ module.exports = {
 };
 
 module.exports = {
-  getNijibanBibaran: (req, res) => {
-    getNijibanBibaran((err, results) => {
+  getnijibanBibaran: (req, res) => {
+    getnijibanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -34,8 +34,8 @@ module.exports = {
 };
 
 module.exports = {
-  addNijibanBibaran: (req, res) => {
-    addNijibanBibaran((err, results) => {
+  addnijibanBibaran: (req, res) => {
+    addnijibanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -47,8 +47,8 @@ module.exports = {
 };
 
 module.exports = {
-  updateNijibanBibaran: (req, res) => {
-    updateNijibanBibaran((err, results) => {
+  updatenijibanBibaran: (req, res) => {
+    updatenijibanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -59,8 +59,8 @@ module.exports = {
   },
 };
 module.exports = {
-  deleteNijibanBibaran: (req, res) => {
-    deleteNijibanBibaran((err, results) => {
+  deletenijibanBibaran: (req, res) => {
+    deletenijibanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
