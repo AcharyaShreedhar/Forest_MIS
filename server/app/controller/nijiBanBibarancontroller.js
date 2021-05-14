@@ -1,15 +1,15 @@
 const db = require("../db");
 const {
-  getAllProvince,
-  getProvince,
-  addProvince,
-  updateProvince,
-  deleteProvince,
+  getAllnijiBanBibaran,
+  getnijiBanBibaran,
+  addnijiBanBibaran,
+  updatenijiBanBibaran,
+  deletenijiBanBibaran,
 } = require("../services/provinceServices");
 
 module.exports = {
-  getAllProvince: (req, res) => {
-    getAllProvince((err, results) => {
+  getAllnijiBanBibaran: (req, res) => {
+    getAllnijiBanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -21,8 +21,8 @@ module.exports = {
 };
 
 module.exports = {
-  getProvince: (req, res) => {
-    getProvince((err, results) => {
+  getnijiBanBibaran: (req, res) => {
+    getnijiBanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -34,8 +34,8 @@ module.exports = {
 };
 
 module.exports = {
-  addProvince: (req, res) => {
-    addProvince((err, results) => {
+  addnijiBanBibaran: (req, res) => {
+    addnijiBanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -47,8 +47,8 @@ module.exports = {
 };
 
 module.exports = {
-  updateProvince: (req, res) => {
-    updateProvince((err, results) => {
+  updatenijiBanBibaran: (req, res) => {
+    updatenijiBanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
@@ -59,8 +59,8 @@ module.exports = {
   },
 };
 module.exports = {
-  deleteProvince: (req, res) => {
-    deleteProvince((err, results) => {
+  deletenijiBanBibaran: (req, res) => {
+    deletenijiBanBibaran((err, results) => {
       if (err) {
         console.log(err);
         return;
