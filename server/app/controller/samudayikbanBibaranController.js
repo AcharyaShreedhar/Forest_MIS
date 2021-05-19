@@ -5,7 +5,7 @@ const {
   addSamudayikbanBibaran,
   updateSamudayikbanBibaran,
   deleteSamudayikbanBibaran,
-} = require("../services/SamudayikbanBibaranServices");
+} = require("../services/samudayikbanBibaranServices");
 
 module.exports = {
   getAllSamudayikbanBibaran: (req, res) => {
