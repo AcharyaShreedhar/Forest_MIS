@@ -48,11 +48,11 @@ module.exports = {
   
   //Service for updating a dharmikbanBibaran
   module.exports = {
-    updateDharmikbanBibaraQuery: (callBack) => {
-      const updateDharmikbanBibaran = `UPDATE dharmikban_bibaran SET dharmikban_name=$1, community_name=$2, area=$3, main_species=$4, forest_type=$5, handover_date=$6, renewal_first_date=$7, renewal_first_period=$8, renewal_second_period=$9, renewal_third_period=$10, renewal_fourth_period=$11, renewal_fifth_period=$12, renewal_sixth_period=$13, forest_maujdat=$14, renewal_date=$15, created_by=$16, updated_by=$17 returning *`;
+    updateDharmikbanBibaranQuery: (callBack) => {
+      const updateDharmikbanBibaran = `UPDATE dharmikban_bibaran SET dharmikban_name=$1, community_name=$2, area=$3, main_species=$4, forest_type=$5, handover_date=$6, renewal_first_date=$7, renewal_first_period=$8, renewal_second_period=$9, renewal_third_period=$10, renewal_fourth_period=$11, renewal_fifth_period=$12, renewal_sixth_period=$13, forest_maujdat=$14, renewal_date=$15, created_by=$16, updated_by=$17 WHERE dharmikban_id=$18 returning *`;
       pool.query(
         updateDharmikbanBibaranQuery,
-        [req.body.dharmikban_name, req.body.community_name, req.body.area, req.body.main_species, req.body.forest_type, req.body.handover_date, req.body.renewal_first_date, req.body.renewal_first_period, req.body.renewal_second_period, req.body.renewal_third_period, req.body.renewal_fourth_period, req.body.renewal_fifth_period, req.body.renewal_sixth_period, req.body.forest_maujdat, req.body.renewal_date,req.body.created_by, req.body.updated_by, DharmikbanBibaranId],
+        [req.body.dharmikban_name, req.body.community_name, req.body.area, req.body.main_species, req.body.forest_type, req.body.handover_date, req.body.renewal_first_date, req.body.renewal_first_period, req.body.renewal_second_period, req.body.renewal_third_period, req.body.renewal_fourth_period, req.body.renewal_fifth_period, req.body.renewal_sixth_period, req.body.forest_maujdat, req.body.renewal_date,req.body.created_by, req.body.updated_by, req.params.dharmikbanBibaranId],
         (error, results, fields) => {
           if (error) {
             callBack(error);
