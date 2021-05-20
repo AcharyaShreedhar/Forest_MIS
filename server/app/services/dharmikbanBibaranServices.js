@@ -35,7 +35,7 @@ module.exports = {
       const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibaran (dharmikban_name, community_name, area, main_species, forest_type, handover_date, renewal_first_date, renewal_first_period, renewal_second_period, renewal_third_period, renewal_fourth_period, renewal_fifth_period, renewal_sixth_period, forest_maujdat, renewal_date, created_by, updated_by ) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) returning *`;
       pool.query(
         addDharmikbanBibaranQuery,
-        [req.body.dharmikban_name, req.body.community_name, req.body.area, req.body.main_species, req.body.forest_type, req.body.handover_date, req.body.renewal_first_date, req.body.renewal_first_period, req.body.renewal_second_period, req.body.renewal_third_period, req.body.renewal_fourth_period, req.body.renewal_fifth_period, req.body.renewal_sixth_period, req.body.forest_maujdat, req.body.renewal_date], req.body.created_by, req.body.updated_by,
+        [req.body.dharmikban_name, req.body.community_name, req.body.area, req.body.main_species, req.body.forest_type, req.body.handover_date, req.body.renewal_first_date, req.body.renewal_first_period, req.body.renewal_second_period, req.body.renewal_third_period, req.body.renewal_fourth_period, req.body.renewal_fifth_period, req.body.renewal_sixth_period, req.body.forest_maujdat, req.body.renewal_date, req.body.created_by, req.body.updated_by],
         (error, results, fields) => {
           if (error) {
             callBack(error);
