@@ -5,7 +5,7 @@ const {
   addUpavoktasamuhaBibaran,
   updateUpavoktasamuhaBibaran,
   deleteUpavoktasamuhaBibaran,
-} = require("../services/UpavoktasamuhaBibaranServices");
+} = require("../services/upavoktasamuhaBibaranServices");
 
 module.exports = {
   getAllUpavoktasamuhaBibaran: (req, res) => {
