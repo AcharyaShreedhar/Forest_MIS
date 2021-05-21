@@ -1,51 +1,51 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('ban_paidawars', {
-      id: {
+    await queryInterface.createTable("ban_paidawars", {
+      paidawar_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       ban_id: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       arthik_barsa: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       mahina: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       kaath: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       daura: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       lavgrahi_sankhya: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       mulyaabhibridi_kar: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       created_by: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       updated_by: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('ban_paidawars');
-  }
+    await queryInterface.dropTable("ban_paidawars");
+  },
 };
