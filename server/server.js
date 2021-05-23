@@ -38,6 +38,7 @@ const vehiclesRoutes = require("./app/routes/vehiclesRoutes");
 const banyajantuXetiBibaranRoutes = require("./app/routes/banyajantuXetiBibaranRoutes");
 const banxetraAnyaPrayojanRoutes = require("./app/routes/banxetraAnyaPrayojanRoutes");
 const banyajantuUddarRoutes = require("./app/routes/banyajantuUddarRoutes");
+const assetsRoutes = require("./app/routes/assetsRoutes");
 
 app.use("/api/v1", staffRoutes);
 app.use("/api/v1", provinceRoutes);
@@ -60,6 +61,7 @@ app.use("/api/v1",vehiclesRoutes);
 app.use("/api/v1",banyajantuXetiBibaranRoutes);
 app.use("/api/v1",banxetraAnyaPrayojanRoutes);
 app.use("/api/v1",banyajantuUddarRoutes);
+app.use("/api/v1", assetsRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
