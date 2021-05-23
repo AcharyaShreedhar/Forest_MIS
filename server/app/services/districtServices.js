@@ -51,7 +51,7 @@ module.exports = {
 //Service for updating a District
 module.exports = {
   updateDistrict: (callBack) => {
-    const updateDistrictQuery = `UPDATE district SET dist_name_eng=$1, dist_name_nep=$2, prov_id=$3 WHERE dist_id=$3 returning *`;
+    const updateDistrictQuery = `UPDATE district SET dist_name_eng=$1, dist_name_nep=$2, prov_id=$3 WHERE dist_id=$4 returning *`;
     pool.query(
       updateDistrictQuery,
       [
