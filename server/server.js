@@ -40,6 +40,7 @@ const banxetraAnyaPrayojanRoutes = require("./app/routes/banxetraAnyaPrayojanRou
 const banyajantuUddarRoutes = require("./app/routes/banyajantuUddarRoutes");
 const assetsRoutes = require("./app/routes/assetsRoutes");
 const baramaditChijbastuRoutes = require("./app/routes/baramaditChijbastuRoutes");
+const departmentRoutes = require("./app/routes/departmentRoutes");
 
 app.use("/api/v1", staffRoutes);
 app.use("/api/v1", provinceRoutes);
@@ -64,6 +65,7 @@ app.use("/api/v1",banxetraAnyaPrayojanRoutes);
 app.use("/api/v1",banyajantuUddarRoutes);
 app.use("/api/v1", assetsRoutes);
 app.use("/api/v1",baramaditChijbastuRoutes);
+app.use("/api/v1",departmentRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
