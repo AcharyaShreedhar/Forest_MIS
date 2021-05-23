@@ -34,6 +34,7 @@ const bandadeloBibaranRoutes = require("./app/routes/bandadeloBibaranRoutes");
 const biruwaUtpadanRoutes = require("./app/routes/biruwanUtpadanRoutes");
 const banpaidawarRoutes = require("./app/routes/banpaidawarRoutes");
 const activitiesInfoRoutes = require("./app/routes/activitiesInfoRoutes");
+const vehiclesRoutes = require("./app/routes/vehiclesRoutes");
 
 app.use("/api/v1", staffRoutes);
 app.use("/api/v1", provinceRoutes);
@@ -52,6 +53,7 @@ app.use("/api/v1",bandadeloBibaranRoutes);
 app.use("/api/v1",biruwaUtpadanRoutes);
 app.use("/api/v1",banpaidawarRoutes);
 app.use("/api/v1",activitiesInfoRoutes);
+app.use("/api/v1",vehiclesRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
