@@ -51,7 +51,7 @@ module.exports = {
 //Service for updating Department
 module.exports = {
   updateDepartment: (callBack) => {
-    const updateDepartmentQuery = `UPDATE department SET dept_name_nep=$1, dept_name_eng=$2, created_by=$3, updated_by=$4 WHERE department_id=$1 returning *`;
+    const updateDepartmentQuery = `UPDATE department SET dept_name_nep=$1, dept_name_eng=$2, created_by=$3, updated_by=$4 WHERE department_id=$5 returning *`;
     pool.query(
       updateDepartmentQuery,
       [req.body.dept_name_nep, req.body.dept_name_eng, req.body.created_by, req.body.updated_by, req.params.departmentId],
