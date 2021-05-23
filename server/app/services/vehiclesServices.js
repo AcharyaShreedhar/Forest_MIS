@@ -14,7 +14,7 @@ module.exports = {
   },
 };
 
-//Service for Listing a Vehicle
+//Service for Listing Vehicles
 module.exports = {
   getVehicles: (callBack) => {
     const getVehiclesQuery = `select * from vehicles where vehicle_id=$1`;
@@ -31,7 +31,7 @@ module.exports = {
   },
 };
 
-//Service for adding a Vehicles
+//Service for adding  Vehicles
 module.exports = {
   addVehicles: (callBack) => {
     const addVehiclesQuery = `INSERT INTO vehicles (vehicle_type, vehicle_no, engine_no, chasis_no, acquired_source, acquired_date, acquired_price, manufacturer_country, manufacturer_comp, model_name, manufacutred_date, remarks) values ($1,$2,$3, $4, $5, $6, $7, $8, $9, $10, $11, $12) returning *`;
