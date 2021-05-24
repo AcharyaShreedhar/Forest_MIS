@@ -3,7 +3,7 @@ const pool = require("../db");
 //Service for Listing all NabikaranKaryayojana
 module.exports = {
   getAllNabikaranKaryayojana: (callBack) => {
-    const getAllNabikaranKaryayojanaQuery = `select * from banxetra_anyaprayojan`;
+    const getAllNabikaranKaryayojanaQuery = `select * from nabikaran_karyayojana`;
     pool.query(getAllNabikaranKaryayojanaQuery, [], (error, results, fields) => {
       if (error) {
         callBack(error);
@@ -17,7 +17,7 @@ module.exports = {
 //Service for Listing a NabikaranKaryayojana
 module.exports = {
   getNabikaranKaryayojana: (callBack) => {
-    const getNabikaranKaryayojana = `select * from nabikaran_karyayojana where banxetra_anyaprayojan_id=$1`;
+    const getNabikaranKaryayojana = `select * from nabikaran_karyayojana where nabikaran_karyayojana_id=$1`;
     pool.query(
       getNabikaranKaryayojanaQuery,
       [req.params.nabikaranKaryayojanaId],
