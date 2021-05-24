@@ -65,7 +65,7 @@ module.exports = {
   },
 };
 
-//Service for deleting MuddaAnusandhanDayari
+//Service for deleting muddaAnusandhanDayari
 module.exports = {
   deleteMuddaAnusandhanDayari: (callBack) => {
     const deleteMuddaAnusandhanDayariQuery = `DELETE  FROM mudda_anusandhan_dayari where muddaAnusandhanDayari_id=$1`;
