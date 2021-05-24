@@ -9,35 +9,27 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       swikrit_miti: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       nijiban_dhaniko_naam: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       perm_addr: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       curr_addr: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       area: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       main_species: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
     });

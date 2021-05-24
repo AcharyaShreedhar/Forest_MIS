@@ -9,23 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       dist_name_nep: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       dist_name_eng: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
       prov_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       createdAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
       updatedAt: {
-        allowNull: false,
         type: Sequelize.DATE,
       },
     });
