@@ -25,10 +25,15 @@ async function getProvince(req, res) {
 //Service for adding a Province
 
 async function addProvince(req, res) {
-  const addProvinceQuery = `INSERT INTO provinces (prov_name_eng,prov_name_nep) values (?,?)`;
+  const addProvinceQuery = `INSERT INTO provinces (prov_name_eng,prov_name_nep,created_by,updated_by) values (?,?,?,?)`;
   await pool.query(
     addProvinceQuery,
-    [req.body.prov_name_eng, req.body.prov_name_nep],
+    [
+      req.body.prov_name_eng,
+      req.body.prov_name_nep,
+      req.body.created_by,
+      req.body.updated_by,
+    ],
     (error, results, fields) => {
       if (error) {
         throw error;
@@ -41,11 +46,16 @@ async function addProvince(req, res) {
 //Controller for updating a Province
 
 async function updateProvince(req, res) {
-  console.log("dfadfadkj");
-  const updateProvinceQuery = `UPDATE provinces SET prov_name_eng=?, prov_name_nep=? WHERE prov_id=?`;
+  const updateProvinceQuery = `UPDATE provinces SET prov_name_eng=?, prov_name_nep=?, created_by=?,updated_by=? WHERE prov_id=?`;
   await pool.query(
     updateProvinceQuery,
-    [req.body.prov_name_eng, req.body.prov_name_nep, req.params.provinceId],
+    [
+      req.body.prov_name_eng,
+      req.body.prov_name_nep,
+      req.body.created_by,
+      req.body.updated_by,
+      req.params.provinceId,
+    ],
     (error, results, fields) => {
       if (error) {
         throw error;
