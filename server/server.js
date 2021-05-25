@@ -22,7 +22,7 @@ const provinceRoutes = require("./app/routes/provinceRoutes");
 
 //Commenting this block of code until unit test is done
 
-// const districtRoutes = require("./app/routes/districtRoutes");
+const districtRoutes = require("./app/routes/districtRoutes");
 // const municipalityRoutes = require("./app/routes/municipalityRoutes");
 // const postRoutes = require("./app/routes/postRoutes");
 const levelRoutes = require("./app/routes/levelRoutes");
@@ -52,7 +52,7 @@ app.use("/api/v1", provinceRoutes);
 
 //Commenting this block of code until unit test is done
 
-// app.use("/app/v1", districtRoutes);
+app.use("/api/v1", districtRoutes);
 // app.use("/app/v1", municipalityRoutes);
 // app.use("/api/v1", postRoutes);
 app.use("/api/v1", levelRoutes);
