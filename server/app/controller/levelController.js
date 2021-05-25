@@ -40,7 +40,7 @@ async function addLevel(req, res) {
 
 //Controller for updating a Level
 async function updateLevel(req, res) {
-  const updateLevelQuery = `UPDATE levels SET prov_name_eng=?, prov_name_nep=?,created_by=?,updated_by=? WHERE level_id=$3 returning *`;
+  const updateLevelQuery = `UPDATE levels SET level_name_eng=?, level_name_nep=?,created_by=?,updated_by=? WHERE level_id=$3`;
   pool.query(
     updateLevelQuery,
     [
