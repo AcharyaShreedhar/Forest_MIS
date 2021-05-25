@@ -48,6 +48,7 @@ const levelRoutes = require("./app/routes/levelRoutes");
 // const muddaAnusandhanDayariRoutes = require("./app/routes/muddaAnusandhanDayariRoutes");
 // const employeeHistoryRoutes = require("./app/routes/employeeHistoryRoutes");
 const entryRoutes = require("./app/routes/entryRoutes");
+const exitRoutes = require("./app/routes/exitRoutes");
 
 app.use("/api/v1", provinceRoutes);
 
@@ -79,6 +80,7 @@ app.use("/api/v1", levelRoutes);
 // app.use("/api/v1",muddaAnusandhanDayariRoutes);
 // app.use("/api/v1", employeeHistoryRoutes);
 app.use("/api/v1", entryRoutes);
+app.use("/api/v1", exitRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
