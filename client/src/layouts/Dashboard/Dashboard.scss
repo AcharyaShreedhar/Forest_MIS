@@ -1,7 +1,7 @@
 @import "./theme.scss";
 
 .dashboard {
-  background-color: $light;
+  background-color: $aakar;
 
   /* Custom, iPhone Retina */
   @media only screen and (min-width: 320px) {
@@ -32,7 +32,7 @@
     display: flex;
     flex: 1;
     flex-wrap: wrap;
-    background-color: $light;
+    background-color: $aakar;
     min-height: calc(100vh - 110px);
 
     .main {
