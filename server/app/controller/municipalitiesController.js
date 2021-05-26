@@ -20,11 +20,10 @@ async function getMunicipalities(req, res) {
 
 //Controller for adding a Municipality
 async function addMunicipalities(req, res) {
-  const addMunicipalitiesQuery = `INSERT INTO municipalities (mun_name_nep,	mun_name_eng,	dist_id, created_by,updated_by) values (?,?,?,?,?)`;
+  const addMunicipalitiesQuery = `INSERT INTO municipalities (mun_name_nep,mun_name_eng,dist_id,created_by,updated_by) values (?,?,?,?,?)`;
   pool.query(
     addMunicipalitiesQuery,
     [
-
         req.body.mun_name_nep,
         req.body.mun_name_eng,
         req.body.dist_id,
