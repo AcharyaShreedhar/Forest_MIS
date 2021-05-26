@@ -24,7 +24,7 @@ const provinceRoutes = require("./app/routes/provinceRoutes");
 
 const districtRoutes = require("./app/routes/districtRoutes");
 const municipalitiesRoutes = require("./app/routes/municipalitiesRoutes");
-// const postRoutes = require("./app/routes/postRoutes");
+const postRoutes = require("./app/routes/postRoutes");
 const levelRoutes = require("./app/routes/levelRoutes");
 // const nijibanBibaranRoutes = require("./app/routes/nijibanBibaranRoutes");
 // const dharmikbanBibaranRoutes = require("./app/routes/dharmikbanBibaranRoutes");
@@ -57,7 +57,7 @@ app.use("/api/v1", provinceRoutes);
 
 app.use("/api/v1", districtRoutes);
 app.use("/api/v1", municipalitiesRoutes);
-// app.use("/api/v1", postRoutes);
+app.use("/api/v1", postRoutes);
 app.use("/api/v1", levelRoutes);
 // app.use("/api/v1",nijibanBibaranRoutes);
 // app.use("/api/v1",dharmikbanBibaranRoutes);
