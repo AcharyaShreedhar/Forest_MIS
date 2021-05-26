@@ -49,6 +49,7 @@ const levelRoutes = require("./app/routes/levelRoutes");
 const employeeHistoryRoutes = require("./app/routes/employeeHistoryRoutes");
 const entryRoutes = require("./app/routes/entryRoutes");
 const exitRoutes = require("./app/routes/exitRoutes");
+const employeesRoutes = require("./app/routes/employeesRoutes");
 
 app.use("/api/v1", provinceRoutes);
 
@@ -81,6 +82,8 @@ app.use("/api/v1", levelRoutes);
 app.use("/api/v1", employeeHistoryRoutes);
 app.use("/api/v1", entryRoutes);
 app.use("/api/v1", exitRoutes);
+app.use("/api/v1", employeesRoutes);
+
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
