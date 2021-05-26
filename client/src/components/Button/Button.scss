@@ -1,0 +1,145 @@
+@import '../../layouts/Dashboard/theme.scss';
+
+.core-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  line-height: 1;
+  min-width: 80px;
+  padding: 0 15px;
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 46px;
+    height: 46px;
+    &:after {
+      content: ' ';
+      display: block;
+      width: 46px;
+      height: 46px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      border-color: #fff transparent #fff transparent;
+      animation: lds-dual-ring 1.2s linear infinite;
+    }
+
+    &.ring-18 {
+      width: 18px;
+      height: 18px;
+      &:after {
+        width: 18px;
+        height: 18px;
+        border-width: 2px;
+      }
+    }
+    &.ring-24 {
+      width: 24px;
+      height: 24px;
+      &:after {
+        width: 24px;
+        height: 24px;
+        border-width: 2px;
+      }
+    }
+  }
+
+  &.high {
+    background-color: $aakar;
+    border: none;
+    color: white;
+
+    &:hover,
+    &:focus {
+      background-color: $dark-aakar;
+    }
+    &:active:focus {
+      background-color: #123c72;
+      border-color: transparent;
+      color: white;
+      outline: none;
+    }
+  }
+  &.medium {
+    background-color: transparent;
+    border: 1px solid $aakar;
+    color: $aakar;
+
+    &:hover,
+    &:focus {
+      background-color: $light-aakar;
+    }
+    &:active:focus {
+      background-color: $light-aakar;
+      border-color: $aakar;
+      color: $aakar;
+      outline: none;
+    }
+  }
+  &.low {
+    background-color: transparent;
+    border: none;
+    color: $aakar;
+
+    &:hover,
+    &:focus {
+      background-color: $light-aakar;
+    }
+    &:active:focus {
+      background-color: $light-aakar;
+      border: none;
+      color: $aakar;
+      outline: none;
+    }
+  }
+  &.link {
+    background-color: transparent;
+    border: none;
+    color: $aakar;
+
+    &:hover {
+      color: $dark-aakar;
+    }
+    &:active:focus {
+      background-color: transparent;
+      border: none;
+      color: $aakar;
+      outline: none;
+    }
+  }
+
+  &.size-small {
+    border-radius: 17px;
+    font-size: 18px;
+    height: 40px;
+  }
+  &.size-medium {
+    border-radius: 29px;
+    font-size: 22px;
+    text-transform: uppercase;
+    height: 58px;
+  }
+
+  &.btn[disabled] {
+    background-color: $slight-grey;
+    border: none;
+    color: $dark-grey;
+  }
+
+  &:focus,
+  &:active,
+  &:hover {
+    box-shadow: none;
+    outline: none;
+  }
+
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
