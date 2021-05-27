@@ -51,6 +51,7 @@ const entryRoutes = require("./app/routes/entryRoutes");
 const exitRoutes = require("./app/routes/exitRoutes");
 const employeesRoutes = require("./app/routes/employeesRoutes");
 const plotRoutes = require("./app/routes/plotRoutes");
+const inventoryRoutes = require("./app/routes/inventoryRoutes");
 
 app.use("/api/v1", provinceRoutes);
 
@@ -85,6 +86,7 @@ app.use("/api/v1", entryRoutes);
 app.use("/api/v1", exitRoutes);
 app.use("/api/v1", employeesRoutes);
 app.use("/api/v1", plotRoutes);
+app.use("/api/v1", inventoryRoutes);
 
 
 const port = process.env.PORT || 3001;
