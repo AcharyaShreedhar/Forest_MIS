@@ -3,8 +3,8 @@ const router = express.Router();
 
 const departmentController = require("../controller/departmentController");
 router.get("/department", departmentController.getAllDepartment);
-router.get("/department/departmentId", departmentController.getDepartment);
+router.get("/department/:deptId", departmentController.getDepartment);
 router.post("/department", departmentController.addDepartment);
-router.put("/department", departmentController.updateDepartment);
-router.delete("/department", departmentController.deleteDepartment);
+router.put("/department/:deptId", departmentController.updateDepartment);
+router.delete("/department/:deptId", departmentController.deleteDepartment);
 module.exports = router;
