@@ -23,6 +23,9 @@ module.exports = {
       minimum_price: {
         type: Sequelize.STRING,
       },
+      sakaar_price: {
+        type: Sequelize.STRING,
+      },
       remarks: {
         type: Sequelize.STRING,
       },

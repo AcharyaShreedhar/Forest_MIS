@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     unit: DataTypes.STRING,
     quantity: DataTypes.STRING,
     minimum_price: DataTypes.STRING,
+    sakaar_price: DataTypes.STRING,
     remarks: DataTypes.STRING
   }, {
     sequelize,
