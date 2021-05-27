@@ -3,8 +3,8 @@ const router = express.Router();
 
 const nijibanBibaranController = require("../controller/nijibanBibaranController");
 router.get("/nijibanBibaran", nijibanBibaranController.getAllNijibanBibaran);
-router.get("/nijibanBibaran/nijibanBibaranId", nijibanBibaranController.getNijibanBibaran);
+router.get("/nijibanBibaran/:nijibanBibaranId", nijibanBibaranController.getAllNijibanBibaran);
 router.post("/nijibanBibaran", nijibanBibaranController.addNijibanBibaran);
-router.put("/nijibanBibaran", nijibanBibaranController.updateNijibanBibaran);
-router.delete("/nijibanBibaran", nijibanBibaranController.deleteNijibanBibaran);
+router.put("/nijibanBibaran/:nijibanBibaranId", nijibanBibaranController.updateNijibanBibaran);
+router.delete("/nijibanBibaran/:nijibanBibaranId", nijibanBibaranController.deleteNijibanBibaran);
 module.exports = router;
