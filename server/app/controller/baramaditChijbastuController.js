@@ -1,72 +1,91 @@
-const db = require("../db");
-const {
-  getAllBaramaditChijbastu,
-  getBaramaditChijbastu,
-  addBaramaditChijbastu,
-  updateBaramaditChijbastu,
-  deleteBaramaditChijbastu,
-} = require("../services/baramaditChijbastuServices");
-
-module.exports = {
-  getAllBaramaditChijbastu: (req, res) => {
-    getAllBaramaditChijbastu((err, results) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      console.log("results", results);
-      return res.json(results);
+const pool = require("../db")
+//Controller for Listing all BaramaditChijbastu
+async function getAllBaramaditChijbastu(req, res) {
+    const getAllBaramaditChijbastuQuery = `select * from baramadit_chijbastus`;
+    pool.query(getAllBaramaditChijbastuQuery, [], (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
     });
-  },
-};
-
-module.exports = {
-  getBaramaditChijbastu: (req, res) => {
-    getBaramaditChijbastu((err, results) => {
-      if (err) {
-        console.log(err);
-        return;
-      }
-      console.log("results", results);
-      return res.json(results);
+  }
+  
+  //Controller for Listing a BaramaditChijbastu
+  async function getBaramaditChijbastu(req, res) {
+    const getBaramaditChijbastuQuery = `select * from baramadit_chijbastus where baramadit_chijbastu_id=?`;
+    pool.query(getBaramaditChijbastuQuery, [req.params.baramaditChijbastuId], (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
     });
-  },
-};
-
-module.exports = {
-  addBaramaditChijbastu: (req, res) => {
-    addBaramaditChijbastu((err, results) => {
-      if (err) {
-        console.log(err);
-        return;
+  }
+  
+  //Controller for adding a BaramaditChijbastu
+  async function addBaramaditChijbastu(req, res) {
+    const addBaramaditChijbastuQuery = `INSERT INTO baramadit_chijbastus (kath, daura, aankhetopahar, dhunga, bojbahak, mudda_anusandhan_dayari_id, created_by, updated_by) values (?,?,?,?,?,?,?,?)`;
+    pool.query(
+      addBaramaditChijbastuQuery,
+      [
+        req.body.kath,
+        req.body.daura,
+        req.body.aankhetopahar,
+        req.body.dhunga,
+        req.body.bojbahak,
+	      req.body.mudda_anusandhan_dayari_id,
+	      req.body.created_by,
+      	req.body. updated_by,  
+      ],
+      (error, results, fields) => {
+        if (error) {
+          throw error;
+        }
+        res.send(JSON.stringify({ status: 200, error: null, data: results }));
       }
-      console.log("results", results);
-      return res.json(results);
-    });
-  },
-};
-
-module.exports = {
-  updateBaramaditChijbastu: (req, res) => {
-    updateBaramaditChijbastu((err, results) => {
-      if (err) {
-        console.log(err);
-        return;
+    );
+  }
+  
+  //Controller for updating a BaramaditChijbastu
+  async function updateBaramaditChijbastu(req, res) {
+    const updateBaramaditChijbastuQuery = `UPDATE baramadit_chijbastus SET kath=?, daura=?, aankhetopahar=?, dhunga=?, bojbahak=?, mudda_anusandhan_dayari_id=?, created_by=?, updated_by=? WHERE baramadit_chijbastu_id=?`;
+    pool.query(
+      updateBaramaditChijbastuQuery,
+      [
+        req.body.kath,
+        req.body.daura,
+        req.body.aankhetopahar,
+        req.body.dhunga,
+        req.body.bojbahak,
+	      req.body.mudda_anusandhan_dayari_id,
+      	req.body.created_by,
+      	req.body. updated_by,  
+      	req.params.baramaditChijbastuId,
+      ],
+      (error, results, fields) => {
+        if (error) {
+          throw error;
+        }
+        res.send(JSON.stringify({ status: 200, error: null, data: results }));
       }
-      console.log("results", results);
-      return res.json(results);
-    });
-  },
-};
-module.exports = {
-  deleteBaramaditChijbastu: (req, res) => {
-    deleteBaramaditChijbastu((err, results) => {
-      if (err) {
-        console.log(err);
-        return;
+    );
+  }
+  
+  //Controller for deleting a BaramaditChijbastu
+  async function deleteBaramaditChijbastu(req, res) {
+    const deleteBaramaditChijbastuQuery = `DELETE  FROM baramadit_chijbastus where baramadit_chijbastu_id=?`;
+    pool.query(
+      deleteBaramaditChijbastuQuery,
+      [req.params.baramaditChijbastuId],
+      (error, results, fields) => {
+        if (error) {
+          throw error;
+        }
+        res.send(JSON.stringify({ status: 200, error: null, data: results }));
       }
-      console.log("results", results);
-      return res.json(results);
-    });
-  },
-};
+    );
+  }
+  
+  module.exports = {
+    getAllBaramaditChijbastu,
+    getBaramaditChijbastu,
+    addBaramaditChijbastu,
+    updateBaramaditChijbastu,
+    deleteBaramaditChijbastu,
+  };
+  
