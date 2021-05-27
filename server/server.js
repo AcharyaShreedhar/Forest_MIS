@@ -50,6 +50,7 @@ const employeeHistoryRoutes = require("./app/routes/employeeHistoryRoutes");
 const entryRoutes = require("./app/routes/entryRoutes");
 const exitRoutes = require("./app/routes/exitRoutes");
 const employeesRoutes = require("./app/routes/employeesRoutes");
+const plotRoutes = require("./app/routes/plotRoutes");
 
 app.use("/api/v1", provinceRoutes);
 
@@ -83,6 +84,7 @@ app.use("/api/v1", employeeHistoryRoutes);
 app.use("/api/v1", entryRoutes);
 app.use("/api/v1", exitRoutes);
 app.use("/api/v1", employeesRoutes);
+app.use("/api/v1", plotRoutes);
 
 
 const port = process.env.PORT || 3001;
