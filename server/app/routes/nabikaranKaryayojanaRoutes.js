@@ -3,8 +3,8 @@ const router = express.Router();
 
 const nabikaranKaryayojanaController = require("../controller/nabikaranKaryayojanaController");
 router.get("/nabikaranKaryayojana", nabikaranKaryayojanaController.getAllNabikaranKaryayojana);
-router.get("/nabikaranKaryayojana/nabikaranKaryayojanaId", nabikaranKaryayojanaController.getNabikaranKaryayojana);
+router.get("/nabikaranKaryayojana/:nabikaranKaryayojanaId", nabikaranKaryayojanaController.getNabikaranKaryayojana);
 router.post("/nabikaranKaryayojana", nabikaranKaryayojanaController.addNabikaranKaryayojana);
-router.put("/nabikaranKaryayojana", nabikaranKaryayojanaController.updateNabikaranKaryayojana);
-router.delete("/nabikaranKaryayojana", nabikaranKaryayojanaController.deleteNabikaranKaryayojana);
+router.put("/nabikaranKaryayojana/:nabikaranKaryayojanaId", nabikaranKaryayojanaController.updateNabikaranKaryayojana);
+router.delete("/nabikaranKaryayojana/:nabikaranKaryayojanaId", nabikaranKaryayojanaController.deleteNabikaranKaryayojana);
 module.exports = router;

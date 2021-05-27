@@ -44,7 +44,7 @@ const banyajantuXetiBibaranRoutes = require("./app/routes/banyajantuXetiBibaranR
 const assetsRoutes = require("./app/routes/assetsRoutes");
 // const baramaditChijbastuRoutes = require("./app/routes/baramaditChijbastuRoutes");
 const departmentRoutes = require("./app/routes/departmentRoutes");
-// const nabikaranKaryayojanaRoutes = require("./app/routes/nabikaranKaryayojanaRoutes");
+const nabikaranKaryayojanaRoutes = require("./app/routes/nabikaranKaryayojanaRoutes");
 // const muddaAnusandhanDayariRoutes = require("./app/routes/muddaAnusandhanDayariRoutes");
 const employeeHistoryRoutes = require("./app/routes/employeeHistoryRoutes");
 const entryRoutes = require("./app/routes/entryRoutes");
@@ -79,7 +79,7 @@ app.use("/api/v1",banyajantuXetiBibaranRoutes);
 app.use("/api/v1", assetsRoutes);
 // app.use("/api/v1",baramaditChijbastuRoutes);
 app.use("/api/v1",departmentRoutes);
-// app.use("/api/v1",nabikaranKaryayojanaRoutes);
+app.use("/api/v1",nabikaranKaryayojanaRoutes);
 // app.use("/api/v1",muddaAnusandhanDayariRoutes);
 app.use("/api/v1", employeeHistoryRoutes);
 app.use("/api/v1", entryRoutes);
