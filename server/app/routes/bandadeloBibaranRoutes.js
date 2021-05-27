@@ -3,8 +3,8 @@ const router = express.Router();
 
 const bandadeloBibaranController = require("../controller/bandadeloBibaranController");
 router.get("/bandadeloBibaran", bandadeloBibaranController.getAllBandadeloBibaran);
-router.get("/bandadeloBibaran/bandadeloBibaranId", bandadeloBibaranController.getBandadeloBibaran);
+router.get("/bandadeloBibaran/:bandadeloBibaranId", bandadeloBibaranController.getBandadeloBibaran);
 router.post("/bandadeloBibaran", bandadeloBibaranController.addBandadeloBibaran);
-router.put("/bandadeloBibaran", bandadeloBibaranController.updateBandadeloBibaran);
-router.delete("/bandadeloBibaran", bandadeloBibaranController.deleteBandadeloBibaran);
+router.put("/bandadeloBibaran/:bandadeloBibaranId", bandadeloBibaranController.updateBandadeloBibaran);
+router.delete("/bandadeloBibaran/:bandadeloBibaranId", bandadeloBibaranController.deleteBandadeloBibaran);
 module.exports = router;
