@@ -22,13 +22,14 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { history, location } = this.props;
+    const { history, location,authenticated } = this.props;
+    console.log('auth',authenticated)
 
     return (
-      <div className="d-flex">
+      <div className="d-flex dashboard">
         {/* <NavbarComponent location={location} history={history} /> */}
         <SideNavbar />
-        <Content location={location} history={history} />
+        <Content location={location} history={history} authenticated={authenticated} />
       </div>
     );
   }
@@ -36,11 +37,13 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   location: PropTypes.any,
+  authenticated: PropTypes.bool.isRequired,
 };
 
 Dashboard.defaultProps = {
   token: "",
   location: {},
+  authenticated: false,
 };
 
 const mapDispatchToProps = (dispatch) => ({
