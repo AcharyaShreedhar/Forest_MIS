@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const banyajantuXetiBibaranController = require("../controller/banyajantuXetiBibaranController");
-router.get("/banyajantuXetiBibaran", banyajantuXetiBibaranController.getAllBanyajantuXetiBibaran);
-router.get("/banyajantuXetiBibaran/banyajantuXetiBibaranId", banyajantuXetiBibaranController.getBanyajantuXetiBibaran);
-router.post("/banyajantuXetiBibaran", banyajantuXetiBibaranController.addBanyajantuXetiBibaran);
-router.put("/banyajantuXetiBibaran", banyajantuXetiBibaranController.updateBanyajantuXetiBibaran);
-router.delete("/banyajantuXetiBibaran", banyajantuXetiBibaranController.deleteBanyajantuXetiBibaran);
+router.get("/banyajantuXetiBibarans", banyajantuXetiBibaranController.getAllBanyajantuXetiBibarans);
+router.get("/banyajantuXetiBibarans/:banyajantuxetiBibaranId", banyajantuXetiBibaranController.getBabyajantuXetiBibarans);
+router.post("/banyajantuXetiBibarans", banyajantuXetiBibaranController.addBanyajantuXetiBibarans);
+router.put("/banyajantuXetiBibarans/:banyajantuxetiBibaranId", banyajantuXetiBibaranController.updateBanyajantuXetiBibarans);
+router.delete("/banyajantuXetiBibarans/:banyajantuxetiBibaranId", banyajantuXetiBibaranController.deleteBanyajantuXetiBibarans);
 module.exports = router;
