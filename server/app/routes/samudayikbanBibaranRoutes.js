@@ -3,8 +3,8 @@ const router = express.Router();
 
 const samudayikbanBibaranController = require("../controller/samudayikbanBibaranController");
 router.get("/samudayikbanBibaran", samudayikbanBibaranController.getAllSamudayikbanBibaran);
-router.get("/samudayikbanBibaran/samudayikbanBibaranId", samudayikbanBibaranController.getSamudayikbanBibaran);
-router.post("/samudayikbanBibaran", samudayikbanBibaranController.addSamudayikbanBibaran);
-router.put("/samudayikbanBibaran", samudayikbanBibaranController.updateSamudayikbanBibaran);
-router.delete("/samudayikbanBibaran", samudayikbanBibaranController.deleteSamudayikbanBibaran);
+router.get("/samudayikbanBibaran/:samudayikbanBibaranId", samudayikbanBibaranController.getSamudayikbanBibaran);
+router.post("/samudayikbanBibaran",samudayikbanBibaranController.addSamudayikbanBibaran);
+router.put("/samudayikbanBibaran/:samudayikbanBibaranId", samudayikbanBibaranController.updateSamudayikbanBibaran);
+router.delete("/samudayikbanBibaran/:samudayikbanBibaranId", samudayikbanBibaranController.deleteSamudayikbanBibaran);
 module.exports = router;
