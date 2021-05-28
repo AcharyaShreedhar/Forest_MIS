@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
-const banxetraAnyaPrayojanController = require("../controller/banxetraAnyaPrayojanController");
-router.get("/banxetraAnyaPrayojan", banxetraAnyaPrayojanController.getAllBanxetraAnyaPrayojan);
-router.get("/banxetraAnyaPrayojan/banxetraAnyaPrayojanId", banxetraAnyaPrayojanController.getBanxetraAnyaPrayojan);
-router.post("/banxetraAnyaPrayojan", banxetraAnyaPrayojanController.addBanxetraAnyaPrayojan);
-router.put("/banxetraAnyaPrayojan", banxetraAnyaPrayojanController.updateBanxetraAnyaPrayojan);
-router.delete("/banxetraAnyaPrayojan", banxetraAnyaPrayojanController.deleteBanxetraAnyaPrayojan);
+const banxetraAnyaprayojanController = require("../controller/banxetraAnyaprayojanController");
+router.get("/banxetraAnyaprayojan", banxetraAnyaprayojanController.getAllBanxetraAnyaprayojan);
+router.get("/banxetraAnyaprayojan/:banxetraAnyaprayojanId", banxetraAnyaprayojanController.getBanxetraAnyaprayojan);
+router.post("/banxetraAnyaprayojan",banxetraAnyaprayojanController.addBanxetraAnyaprayojan);
+router.put("/banxetraAnyaprayojan/:banxetraAnyaprayojanId", banxetraAnyaprayojanController.updateBanxetraAnyaprayojan);
+router.delete("/banxetraAnyaprayojan/:banxetraAnyaprayojanId", banxetraAnyaprayojanController.deleteBanxetraAnyaprayojan);
 module.exports = router;
