@@ -34,7 +34,7 @@ const kabuliyatibanBibaranRoutes = require("./app/routes/kabuliyatibanBibaranRou
 // const upavoktasamuhaBibaranRoutes = require("./app/routes/upavoktasamuhaBibaranRoutes");
 const banxetraAtikramanRoutes = require("./app/routes/banxetraAtikramanRoutes");
 const bandadeloBibaranRoutes = require("./app/routes/bandadeloBibaranRoutes");
-// const biruwaUtpadanRoutes = require("./app/routes/biruwanUtpadanRoutes");
+const biruwaUtpadanRoutes = require("./app/routes/biruwanUtpadanRoutes");
 const banpaidawarRoutes = require("./app/routes/banpaidawarRoutes");
 const activitiesInfoRoutes = require("./app/routes/activitiesInfoRoutes");
 const vehiclesRoutes = require("./app/routes/vehiclesRoutes");
@@ -71,7 +71,7 @@ app.use("/api/v1",kabuliyatibanBibaranRoutes);
 // app.use("/api/v1",upavoktasamuhaBibaranRoutes);
 app.use("/api/v1",banxetraAtikramanRoutes);
 app.use("/api/v1",bandadeloBibaranRoutes);
-// app.use("/api/v1",biruwaUtpadanRoutes);
+app.use("/api/v1",biruwaUtpadanRoutes);
 app.use("/api/v1",banpaidawarRoutes);
 app.use("/api/v1",activitiesInfoRoutes);
 app.use("/api/v1",vehiclesRoutes);
