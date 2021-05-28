@@ -17,7 +17,7 @@ module.exports = {
       samaya: {
         type: Sequelize.STRING,
       },
-      samaxit_xetra: {
+      samraxit_xetra: {
         type: Sequelize.STRING,
       },
       banyajantuko_naam: {
