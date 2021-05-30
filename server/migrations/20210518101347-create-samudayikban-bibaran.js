@@ -26,42 +26,6 @@ module.exports = {
       handover_date: {
         type: Sequelize.STRING,
       },
-      renewal_first_date: {
-        type: Sequelize.STRING,
-      },
-      renewal_first_period: {
-        type: Sequelize.STRING,
-      },
-      renewal_second_date: {
-        type: Sequelize.STRING,
-      },
-      renewal_second_period: {
-        type: Sequelize.STRING,
-      },
-      renewal_third_date: {
-        type: Sequelize.STRING,
-      },
-      renewal_third_period: {
-        type: Sequelize.STRING,
-      },
-      renewal_fourth_date: {
-        type: Sequelize.STRING,
-      },
-      renewal_fourth_period: {
-        type: Sequelize.STRING,
-      },
-      renewal_fifth_date: {
-        type: Sequelize.STRING,
-      },
-      renewal_fifth_period: {
-        type: Sequelize.STRING,
-      },
-      renewal_sixth_date: {
-        type: Sequelize.STRING,
-      },
-      renewal_sixth_period: {
-        type: Sequelize.STRING,
-      },
       forest_maujdat: {
         type: Sequelize.STRING,
       },
