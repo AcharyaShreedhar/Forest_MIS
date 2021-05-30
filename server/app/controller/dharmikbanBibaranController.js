@@ -23,7 +23,7 @@ async function getDharmikbanBibaran(req, res) {
 
 //Controller for adding a DharmikbanBibaran
 async function addDharmikbanBibaran(req, res) {
-  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dharmikban_name, community_name, area, main_species, forest_type, handover_date, renewal_first_date, renewal_first_period, renewal_second_date, renewal_second_period, renewal_third_date, renewal_third_period, renewal_fourth_date, renewal_fourth_period, renewal_fifth_date, renewal_fifth_period, renewal_sixth_date, renewal_sixth_period, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dharmikban_name, community_name, area, main_species, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addDharmikbanBibaranQuery,
     [
@@ -33,18 +33,6 @@ async function addDharmikbanBibaran(req, res) {
       req.body.main_species,
       req.body.forest_type,
       req.body.handover_date,
-      req.body.renewal_first_date,
-      req.body.renewal_first_period,
-      req.body.renewal_second_date,
-      req.body.renewal_second_period,
-      req.body.renewal_third_date,
-      req.body.renewal_third_period,
-      req.body.renewal_fourth_date,
-      req.body.renewal_fourth_period,
-      req.body.renewal_fifth_date,
-      req.body.renewal_fifth_period,
-      req.body.renewal_sixth_date,
-      req.body.renewal_sixth_period,
       req.body.forest_maujdat,
       req.body.renewaldate,
       req.body.created_by,
@@ -61,7 +49,7 @@ async function addDharmikbanBibaran(req, res) {
 
 //Controller for updating a DharmikbanBibaran
 async function updateDharmikbanBibaran(req, res) {
-  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dharmikban_name=?, community_name=?, area=?, main_species=?, forest_type=?, handover_date=?, renewal_first_date=?, renewal_first_period=?, renewal_second_date=?, renewal_second_period=?, renewal_third_date=?, renewal_third_period=?, renewal_fourth_date=?, renewal_fourth_period=?, renewal_fifth_date=?, renewal_fifth_period=?, renewal_sixth_date=?, renewal_sixth_period=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE dharmikban_id=?`;
+  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dharmikban_name=?, community_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE dharmikban_id=?`;
   pool.query(
     updateDharmikbanBibaranQuery,
     [
@@ -71,18 +59,6 @@ async function updateDharmikbanBibaran(req, res) {
       req.body.main_species,
       req.body.forest_type,
       req.body.handover_date,
-      req.body.renewal_first_date,
-      req.body.renewal_first_period,
-      req.body.renewal_second_date,
-      req.body.renewal_second_period,
-      req.body.renewal_third_date,
-      req.body.renewal_third_period,
-      req.body.renewal_fourth_date,
-      req.body.renewal_fourth_period,
-      req.body.renewal_fifth_date,
-      req.body.renewal_fifth_period,
-      req.body.renewal_sixth_date,
-      req.body.renewal_sixth_period,
       req.body.forest_maujdat,
       req.body.renewaldate,
       req.body.created_by,

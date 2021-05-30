@@ -19,7 +19,7 @@ async function getAllSamudayikbanBibaran(req, res) {
   
   //Controller for adding a SamudayikbanBibaran
   async function addSamudayikbanBibaran(req, res) {
-    const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (samudayikban_name, area, main_species, forest_type, handover_date, renewal_first_date, renewal_first_period, renewal_second_date, renewal_second_period, renewal_third_date, renewal_third_period, renewal_fourth_date, renewal_fourth_period, renewal_fifth_date, renewal_fifth_period, renewal_sixth_date, renewal_sixth_period, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+    const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (samudayikban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
     pool.query(
       addSamudayikbanBibaranQuery,
       [
@@ -28,18 +28,6 @@ async function getAllSamudayikbanBibaran(req, res) {
         req.body.main_species,
         req.body.forest_type,
         req.body.handover_date,
-        req.body.renewal_first_date,
-        req.body.renewal_first_period,
-        req.body.renewal_second_date,
-        req.body.renewal_second_period,
-        req.body.renewal_third_date,
-        req.body.renewal_third_period,
-        req.body.renewal_fourth_date,
-        req.body.renewal_fourth_period,
-        req.body.renewal_fifth_date,
-        req.body.renewal_fifth_period,
-        req.body.renewal_sixth_date,
-        req.body.renewal_sixth_period,
         req.body.forest_maujdat,
         req.body.nikasi_timber,
         req.body.nikasi_wood,
@@ -57,7 +45,7 @@ async function getAllSamudayikbanBibaran(req, res) {
   
   //Controller for updating a SamudayikbanBibaran
   async function updateSamudayikbanBibaran(req, res) {
-    const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, renewal_first_date=?, renewal_first_period=?, renewal_second_date=?, renewal_second_period=?, renewal_third_date=?, renewal_third_period=?, renewal_fourth_date=?, renewal_fourth_period=?, renewal_fifth_date=?, renewal_fifth_period=?, renewal_sixth_date=?, renewal_sixth_period=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE samudayikban_id=?`;
+    const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE samudayikban_id=?`;
     pool.query(
       updateSamudayikbanBibaranQuery,
       [
@@ -66,18 +54,6 @@ async function getAllSamudayikbanBibaran(req, res) {
         req.body.main_species,
         req.body.forest_type,
         req.body.handover_date,
-        req.body.renewal_first_date,
-        req.body.renewal_first_period,
-        req.body.renewal_second_date,
-        req.body.renewal_second_period,
-        req.body.renewal_third_date,
-        req.body.renewal_third_period,
-        req.body.renewal_fourth_date,
-        req.body.renewal_fourth_period,
-        req.body.renewal_fifth_date,
-        req.body.renewal_fifth_period,
-        req.body.renewal_sixth_date,
-        req.body.renewal_sixth_period,
         req.body.forest_maujdat,
         req.body.nikasi_timber,
         req.body.nikasi_wood,
@@ -118,5 +94,5 @@ async function getAllSamudayikbanBibaran(req, res) {
   };
 
   //** */
-  
+
   
