@@ -8,7 +8,7 @@ import BanbibaranActions from "../../actions/banbibaran";
 
 export class Forests extends Component {
   componentDidMount() {
-    this.props.fetchSamudayikbanbibaran();
+    this.props.fetchallSamudayikbanbibaran();
   }
 
   render() {
@@ -34,8 +34,8 @@ export class Forests extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchSamudayikbanbibaran: () =>
-    dispatch(BanbibaranActions.fetchsamudayikbanbibaranRequest()),
+  fetchallSamudayikbanbibaran: () =>
+    dispatch(BanbibaranActions.fetchallsamudayikbanbibaranRequest()),
 });
 
 export default connect(null, mapDispatchToProps)(Forests);

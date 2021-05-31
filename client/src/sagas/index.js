@@ -7,7 +7,7 @@ import { BanbibaranTypes } from "../actions/banbibaran";
 import { loginRequest, logoutRequest } from "./app";
 
 //------------------------banbibaran
-import { fetchsamudayikbanbibaranRequest } from "./banbibaran";
+import { fetchallsamudayikbanbibaranRequest } from "./banbibaran";
 
 const api = API.create();
 
@@ -19,8 +19,8 @@ export default function* root() {
 
     //----------------------------banbibaran
     takeLatest(
-      BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST,
-      fetchsamudayikbanbibaranRequest,
+      BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST,
+      fetchallsamudayikbanbibaranRequest,
       api
     ),
   ]);

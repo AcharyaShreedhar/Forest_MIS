@@ -8,17 +8,17 @@ const initialState = Immutable({
   token: "",
 });
 
-const fetchsamudayikbanbibaranRequest = (state, action) =>
+const fetchallsamudayikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
-const fetchsamudayikbanbibaranSuccess = (state, action) => {
-    console.log('reducer',action.response)
+const fetchallsamudayikbanbibaranSuccess = (state, action) => {
+  console.log("reducer", action.response);
   return state.merge({
     ...state,
     status: "done",
-    samudayikbanbibaranData: action.response,
+    allsamudayikbanbibaranData: action.response,
   });
 };
-const fetchsamudayikbanbibaranFailure = (state, action) => {
+const fetchallsamudayikbanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
@@ -34,9 +34,9 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
-  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST]: fetchsamudayikbanbibaranRequest,
-  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_SUCCESS]: fetchsamudayikbanbibaranSuccess,
-  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_FAILURE]: fetchsamudayikbanbibaranFailure,
+  [BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST]: fetchallsamudayikbanbibaranRequest,
+  [BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_SUCCESS]: fetchallsamudayikbanbibaranSuccess,
+  [BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_FAILURE]: fetchallsamudayikbanbibaranFailure,
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
