@@ -8,20 +8,18 @@
  * select: When setting reducers, not handling with database, just handling only reducers.
  */
 
-import { createActions } from 'reduxsauce'
+import { createActions } from "reduxsauce";
 
 const { Types, Creators } = createActions({
+    
+  fetchallsamudayikbanbibaranRequest: ["payload"],
+  fetchallsamudayikbanbibaranSuccess: ["response"],
+  fetchallsamudayikbanbibaranFailure: null,
 
-    fetchsamudayikbanbibaranRequest:['payload'],
-    fetchsamudayikbanbibaranSuccess:['response'],
-    fetchsamudayikbanbibaranFailure:null,
-
-
-
-  locationsRequest: ['payload'],
+  locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
-})
+});
 
-export const BanbibaranTypes = Types
-export default Creators
+export const BanbibaranTypes = Types;
+export default Creators;
