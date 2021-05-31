@@ -6,7 +6,7 @@ class HeaderComponent extends Component {
   render() {
     const { enabled, side } = this.props;
     return (
-      <Row className={enabled ? "" : "m-0"}>
+      <Row className={enabled ? "pb-1" : "m-0"}>
         {enabled ? (
           <div
             className={side ? "header_content_sidenav" : "header_content_top"}
