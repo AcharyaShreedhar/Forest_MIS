@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { isNil } from "ramda";
 
 import { Table } from "react-bootstrap";
+import './Samudayikban.scss'
 
 const headings = [
   "दर्ता नं",
@@ -27,7 +28,7 @@ class Samudayikban extends Component {
     return (
       <div>
         <div className="titlebar">सामुदायिक वन </div>
-        <div>
+        <div className="card">
           <Table responsive striped bordered hover>
             <thead>
               <tr>
