@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
+import { isNil } from "ramda";
 
 import { Table } from "react-bootstrap";
 
@@ -21,7 +22,8 @@ const headings = [
 
 class Samudayikban extends Component {
   render() {
-    const samudayikbanList = this.props.samudayikbanbibaranData.data;
+    const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
+
     return (
       <div className="content">
         <div className="titlebar">सामुदायिक वन </div>
@@ -36,22 +38,26 @@ class Samudayikban extends Component {
               </tr>
             </thead>
             <tbody>
-              {samudayikbanList.map((sban, index) => (
-                <tr>
-                  <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {sban.samudayikban_id}</td>
-                  <td key={index}> {sban.samudayikban_name}</td>
-                  <td key={index}> {sban.area}</td>
-                  <td key={index}> {sban.main_species}</td>
-                  <td key={index}> {sban.forest_type}</td>
-                  <td key={index}> {sban.handover_date}</td>
-                  <td key={index}> {sban.forest_maujdat}</td>
-                  <td key={index}> {sban.nikasi_timber}</td>
-                  <td key={index}> {sban.nikasi_wood}</td>
-                  <td key={index}> {sban.created_by}</td>
-                  <td key={index}> {sban.updated_by}</td>
-                </tr>
-              ))}
+              {isNil(samudayikbanList) ? (
+                <p>No data Available !!!</p>
+              ) : (
+                samudayikbanList.map((sban, index) => (
+                  <tr>
+                    <td>{englishToNepaliNumber(index + 1)}</td>
+                    <td key={index}> {sban.samudayikban_id}</td>
+                    <td key={index}> {sban.samudayikban_name}</td>
+                    <td key={index}> {sban.area}</td>
+                    <td key={index}> {sban.main_species}</td>
+                    <td key={index}> {sban.forest_type}</td>
+                    <td key={index}> {sban.handover_date}</td>
+                    <td key={index}> {sban.forest_maujdat}</td>
+                    <td key={index}> {sban.nikasi_timber}</td>
+                    <td key={index}> {sban.nikasi_wood}</td>
+                    <td key={index}> {sban.created_by}</td>
+                    <td key={index}> {sban.updated_by}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </Table>
         </div>
@@ -61,15 +67,15 @@ class Samudayikban extends Component {
 }
 
 Samudayikban.propTypes = {
-  samudayikbanbibaranData: PropTypes.any,
+  samudayikbanbibaranDataList: PropTypes.any,
 };
 
 Samudayikban.defaultProps = {
-  samudayikbanbibaranData: {},
+  samudayikbanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
-  samudayikbanbibaranData: state.banbibaran.samudayikbanbibaranData,
+  samudayikbanbibaranDataList: state.banbibaran.allsamudayikbanbibaranData,
 });
 
 export default connect(mapStateToProps, null)(Samudayikban);
