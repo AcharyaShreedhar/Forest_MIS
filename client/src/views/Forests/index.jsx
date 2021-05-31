@@ -1,9 +1,16 @@
 import React, { Component } from "react";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { NotFound } from "../../components";
 import forestRoutes from "../../routes/forests";
+import BanbibaranActions from "../../actions/banbibaran";
 
 export class Forests extends Component {
+  componentDidMount() {
+    this.props.fetchSamudayikbanbibaran();
+  }
+
   render() {
     return (
       <Switch>
@@ -26,4 +33,9 @@ export class Forests extends Component {
   }
 }
 
-export default Forests;
+const mapDispatchToProps = (dispatch) => ({
+  fetchSamudayikbanbibaran: () =>
+    dispatch(BanbibaranActions.fetchsamudayikbanbibaranRequest()),
+});
+
+export default connect(null, mapDispatchToProps)(Forests);
