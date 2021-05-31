@@ -23,5 +23,5 @@ const { Types, Creators } = createActions({
   clearRequest: null,
 })
 
-export const banbibaranTypes = Types
+export const BanbibaranTypes = Types
 export default Creators
