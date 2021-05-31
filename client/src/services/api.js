@@ -59,8 +59,13 @@ const create = (baseURL = Config.API_URL) => {
   // Login API
   const loginByUsername = (payload) => api.post("auth/login", payload);
 
+  //Samudayik Banbibaran
+  const getSamudayikbanBibaranList = (payload) =>
+    api.get("/samudayikbanBibaran");
+
   return {
     loginByUsername,
+    getSamudayikbanBibaranList,
   };
 };
 
