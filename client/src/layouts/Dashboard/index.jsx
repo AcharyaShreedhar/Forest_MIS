@@ -22,13 +22,13 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { history, location,authenticated } = this.props;
-    console.log('auth',authenticated)
+    const { history, location, authenticated } = this.props;
+    console.log("auth", authenticated);
 
     return (
       <div className="d-flex dashboard">
         {/* <NavbarComponent location={location} history={history} /> */}
-        <SideNavbar />
+        <SideNavbar history={history}/>
         <Content location={location} history={history} authenticated={authenticated} />
       </div>
     );

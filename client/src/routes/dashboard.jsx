@@ -1,5 +1,5 @@
 import Home from "../views/Home";
-import About from "../views/About"
+import Forests from "../views/Forests";
 
 const dashboardRoutes = [
   {
@@ -8,9 +8,9 @@ const dashboardRoutes = [
     component: Home,
   },
   {
-    path:"/about",
-    name:"About",
-    component:About,
+    path: "/forests",
+    name: "Forests",
+    component: Forests,
   },
   {
     redirect: true,
