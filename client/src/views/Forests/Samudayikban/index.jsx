@@ -21,7 +21,8 @@ const headings = [
 
 class Samudayikban extends Component {
   render() {
-    const samudayikbanList = this.props.samudayikbanbibaranData.data;
+    const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
+
     return (
       <div className="content">
         <div className="titlebar">सामुदायिक वन </div>
@@ -61,15 +62,15 @@ class Samudayikban extends Component {
 }
 
 Samudayikban.propTypes = {
-  samudayikbanbibaranData: PropTypes.any,
+  samudayikbanbibaranDataList: PropTypes.any,
 };
 
 Samudayikban.defaultProps = {
-  samudayikbanbibaranData: {},
+  samudayikbanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
-  samudayikbanbibaranData: state.banbibaran.samudayikbanbibaranData,
+  samudayikbanbibaranDataList: state.banbibaran.allsamudayikbanbibaranData,
 });
 
 export default connect(mapStateToProps, null)(Samudayikban);
