@@ -7,7 +7,7 @@ import { BanbibaranTypes } from "../actions/banbibaran";
 import { loginRequest, logoutRequest } from "./app";
 
 //------------------------banbibaran
-import { fetchsamudayikbanbibaranRequest } from "./banbibaran";
+import { fetchallsamudayikbanbibaranRequest } from "./banbibaran";
 
 const api = API.create();
 
