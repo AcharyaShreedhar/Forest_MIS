@@ -5,7 +5,7 @@ import Nijiban from "../views/Forests/Nijiban";
 
 const forestRoutes = [
   {
-    path: "/forests/samudauikban",
+    path: "/forests/samudayikban",
     title: "Samudayikban",
     name: "samudayikban",
     component: Samudayikban,
