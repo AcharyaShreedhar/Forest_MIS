@@ -41,7 +41,7 @@ export class SideNavbar extends Component {
     const { history } = this.props;
     console.log("expanded", expanded);
     return (
-      <div className={expanded ? "leftmarginMax" : "leftmarginMin"}>
+      // <div className={expanded ? "leftmarginMax" : "leftmarginMin"}>
         <SideNav
           expanded={expanded}
           onToggle={(selected) => {
@@ -55,7 +55,7 @@ export class SideNavbar extends Component {
             className={expanded ? "displayNone" : ""}
           />
           <SideNav.Nav defaultSelected="forests">
-            <HeaderComponent enabled={expanded} />
+            <HeaderComponent enabled={expanded} side={true} />
             <NavItem eventKey="home">
               <Link to="/" className="displaybox">
                 <FontAwesomeIcon icon={faHome} className="mr-2" />
@@ -197,7 +197,7 @@ export class SideNavbar extends Component {
             </NavItem>
           </SideNav.Nav>
         </SideNav>
-      </div>
+      // </div>
     );
   }
 }

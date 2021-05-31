@@ -28,8 +28,8 @@ class Dashboard extends Component {
     return (
       <div className="d-flex dashboard">
         {/* <NavbarComponent location={location} history={history} /> */}
-        <SideNavbar history={history}/>
-        <Content location={location} history={history} authenticated={authenticated} />
+        {/* <SideNavbar history={history}/> */}
+        <Content location={location} history={history} loggedIn={authenticated} />
       </div>
     );
   }
@@ -43,7 +43,7 @@ Dashboard.propTypes = {
 Dashboard.defaultProps = {
   token: "",
   location: {},
-  authenticated: false,
+  authenticated: true,
 };
 
 const mapDispatchToProps = (dispatch) => ({

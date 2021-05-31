@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { NotFound,NavbarComponent, SideNavbar } from "../../components";
+import { NotFound, NavbarComponent, SideNavbar } from "../../components";
 import dashboardRoutes from "../../routes/dashboard";
 import "./Dashboard.scss";
 
 export const Content = (props) => {
-  console.log("props", props);
   return (
-    <div id="ds-content" className="content">
+    <div
+      id="ds-content"
+      className={`content${props.loggedIn ? " logged" : ""}`}
+    >
+      <SideNavbar history={props.history} />
       <div className="main">
         <Switch>
           {dashboardRoutes.map((route, key) => {
