@@ -4,11 +4,12 @@ import { history } from "../reducers";
 import BanbibaranActions from "../actions/banbibaran";
 
 export function* fetchsamudayikbanbibaranRequest(api, action) {
-  const { payload } = action;
-  const response = yield api.postCareerProgram(payload);
-
+    console.log('.......................sagas')
+  
+  const response = yield api.getSamudayikbanBibaranList();
+console.log('saga',response)
   if (response.ok) {
-    yield put(BanbibaranActions.fetchsamudayikbanbibaranSuccess());
+    yield put(BanbibaranActions.fetchsamudayikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchsamudayikbanbibaranFailure());
   }
