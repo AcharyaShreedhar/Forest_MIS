@@ -31,14 +31,10 @@
   .content {
     display: flex;
     flex: 1;
-    flex-wrap: wrap;
-    // background-color: $aakar;
     min-height: calc(100vh - 110px);
 
     .main {
       flex: 1;
-      padding: 20px 20px 40px 20px;
-      max-width: calc(100% - #{$sidebar-width});
     }
 
     &.logged {
@@ -49,7 +45,7 @@
       }
       .main {
         padding: 20px 20px 40px 20px;
-        max-width: calc(100% - #{$sidebar-width});
+        // max-width: calc(100% - #{$sidebar-width});
       }
     }
   }
