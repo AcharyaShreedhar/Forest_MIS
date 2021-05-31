@@ -25,7 +25,7 @@ class Samudayikban extends Component {
     const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
 
     return (
-      <div className="content">
+      <div>
         <div className="titlebar">सामुदायिक वन </div>
         <div>
           <Table responsive striped bordered hover>
