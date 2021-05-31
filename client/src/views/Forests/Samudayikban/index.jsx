@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
+import { isNil } from "ramda";
 
 import { Table } from "react-bootstrap";
 
@@ -37,22 +38,26 @@ class Samudayikban extends Component {
               </tr>
             </thead>
             <tbody>
-              {samudayikbanList.map((sban, index) => (
-                <tr>
-                  <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {sban.samudayikban_id}</td>
-                  <td key={index}> {sban.samudayikban_name}</td>
-                  <td key={index}> {sban.area}</td>
-                  <td key={index}> {sban.main_species}</td>
-                  <td key={index}> {sban.forest_type}</td>
-                  <td key={index}> {sban.handover_date}</td>
-                  <td key={index}> {sban.forest_maujdat}</td>
-                  <td key={index}> {sban.nikasi_timber}</td>
-                  <td key={index}> {sban.nikasi_wood}</td>
-                  <td key={index}> {sban.created_by}</td>
-                  <td key={index}> {sban.updated_by}</td>
-                </tr>
-              ))}
+              {isNil(samudayikbanList) ? (
+                <p>No data Available !!!</p>
+              ) : (
+                samudayikbanList.map((sban, index) => (
+                  <tr>
+                    <td>{englishToNepaliNumber(index + 1)}</td>
+                    <td key={index}> {sban.samudayikban_id}</td>
+                    <td key={index}> {sban.samudayikban_name}</td>
+                    <td key={index}> {sban.area}</td>
+                    <td key={index}> {sban.main_species}</td>
+                    <td key={index}> {sban.forest_type}</td>
+                    <td key={index}> {sban.handover_date}</td>
+                    <td key={index}> {sban.forest_maujdat}</td>
+                    <td key={index}> {sban.nikasi_timber}</td>
+                    <td key={index}> {sban.nikasi_wood}</td>
+                    <td key={index}> {sban.created_by}</td>
+                    <td key={index}> {sban.updated_by}</td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </Table>
         </div>
