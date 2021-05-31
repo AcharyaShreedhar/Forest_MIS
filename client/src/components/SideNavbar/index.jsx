@@ -1,12 +1,13 @@
 import SideNav, {
   Toggle,
-  Nav,
   NavItem,
   NavIcon,
   NavText,
 } from "@trendmicro/react-sidenav";
 // Be sure to include styles at some point, probably during your bootstraping
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
+import { Link } from "react-router-dom";
+import { NavDropdown } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -19,7 +20,7 @@ import {
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
-import { HeaderComponent } from "../../components";
+import { HeaderComponent, Displaybox } from "../../components";
 import "./Sidenav.scss";
 
 export class SideNavbar extends Component {
@@ -37,6 +38,7 @@ export class SideNavbar extends Component {
 
   render() {
     const { expanded } = this.state;
+    const { history } = this.props;
     console.log("expanded", expanded);
     return (
       <div className={expanded ? "leftmarginMax" : "leftmarginMin"}>
@@ -52,119 +54,145 @@ export class SideNavbar extends Component {
             }}
             className={expanded ? "displayNone" : ""}
           />
-
-          <SideNav.Nav defaultSelected="home">
+          <SideNav.Nav defaultSelected="forests">
             <HeaderComponent enabled={expanded} />
             <NavItem eventKey="home">
-              <NavIcon>
+              <Link to="/" className="displaybox">
                 <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>गृह पृष्ठ</NavText>
+                {expanded && <Displaybox value="गृह पृष्ठ" />}
+              </Link>
             </NavItem>
             <NavItem eventKey="employees">
-              <NavIcon>
+              <Link to="/employees" className="displaybox">
                 <FontAwesomeIcon icon={faUsers} className="mr-2" />
-              </NavIcon>
-              <NavText>कर्मचारी</NavText>
+                {expanded && <Displaybox value="कर्मचारी" />}
+              </Link>
             </NavItem>
-            <NavItem eventKey="forest">
+
+            <NavItem eventKey="/forests">
               <NavIcon>
                 <FontAwesomeIcon icon={faTree} className="mr-2" />
               </NavIcon>
-              <NavText>बन बिबरण</NavText>
-              <NavItem eventKey="community">
-                <NavText>सामुदायिक बन</NavText>
+              <NavText> बन बिबरण</NavText>
+
+              <NavItem onClick={() => history.push("/forests/samudayikban")}>
+                <NavText>सामुदायिक बन्यजन्तु</NavText>
               </NavItem>
-              <NavItem eventKey="religious">
-                <NavText>धार्मिक बन</NavText>
+
+              <NavItem onClick={() => history.push("/forests/dharmikban")}>
+                <NavText>धार्मिक बनक्षेत्रको</NavText>
               </NavItem>
-              <NavItem eventKey="kabuliyeti">
-                <NavText>काबुलियती बन</NavText>
+
+              <NavItem onClick={() => history.push("/forests/kabuliyatiban")}>
+                <NavText>कबुलियती बन</NavText>
               </NavItem>
-              <NavItem eventKey="personal">
+
+              <NavItem onClick={() => history.push("/forests/nijiban")}>
                 <NavText>निजी बन</NavText>
               </NavItem>
             </NavItem>
 
             <NavItem eventKey="mudda">
-              <NavIcon>
+              <Link to="/mudda" className="displaybox">
                 <FontAwesomeIcon icon={faGavel} className="mr-2" />
-              </NavIcon>
-              <NavText>मुद्दा अनुसन्धान तथा दायरी बिबरण</NavText>
+                {expanded && (
+                  <Displaybox value=" मुद्दा अनुसन्धान तथा दायरी बिबरण" />
+                )}
+              </Link>
             </NavItem>
+
             <NavItem eventKey="atikraman">
-              <NavIcon>
+              <Link to="/atikraman" className="displaybox">
                 <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>बन क्षेत्र अतिक्रमण बिबरण</NavText>
+                {expanded && <Displaybox value=" बन क्षेत्र अतिक्रमण बिबरण" />}
+              </Link>
             </NavItem>
 
             <NavItem eventKey="forestfire">
-              <NavIcon>
+              <Link to="/forestfire" className="displaybox">
                 <FontAwesomeIcon icon={faFire} className="mr-2" />
-              </NavIcon>
-              <NavText>बन डडेलो बिबरण</NavText>
+                {expanded && <Displaybox value="बन डडेलो बिबरण" />}
+              </Link>
             </NavItem>
+
             <NavItem eventKey="humananimalconflict">
               <NavIcon>
                 <FontAwesomeIcon icon={faTree} className="mr-2" />
               </NavIcon>
               <NavText>मानब बन्यजन्तु द्वन्द ब्यबस्थापन बिबरण</NavText>
-              <NavItem eventKey="conflict">
-                <NavText>बन्यजन्तु उद्दार तथा ब्यबस्थापन बिबरण</NavText>
+
+              <NavItem
+                eventKey="conflict"
+                onClick={() => history.push("/conflict")}
+              >
+                <NavText>बन्यजन्तु उद्दार तथा ब्यबस्थापन बिबरण </NavText>
               </NavItem>
-              <NavItem eventKey="lossaid">
+
+              <NavItem onClick={() => history.push("/lossaid")}>
                 <NavText>बन्यजन्तु क्षति राहत बिबरण</NavText>
               </NavItem>
             </NavItem>
+
             <NavItem eventKey="lilam">
-              <NavIcon>
+              <Link to="/lilam" className="displaybox">
                 <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>बन पैदावर लीलाम बिबरण</NavText>
+
+                {expanded && <Displaybox value="बन पैदावर लीलाम बिबरण" />}
+              </Link>
             </NavItem>
 
             <NavItem eventKey="anyaprayojan">
-              <NavIcon>
+              <Link to="/anyaprayojan" className="displaybox">
                 <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि बिबरण</NavText>
+                {expanded && (
+                  <Displaybox value="बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि बिबरण" />
+                )}
+              </Link>
             </NavItem>
+
             <NavItem eventKey="osarpasar">
-              <NavIcon>
+              <Link to="/osarpasar" className="displaybox">
                 <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>बन पैदावर ओसारपसारको बिबरण</NavText>
+                {expanded && <Displaybox value=" बन पैदावर ओसारपसारको बिबरण" />}
+              </Link>
             </NavItem>
 
             <NavItem eventKey="nurseryplantation">
               <NavIcon>
                 <FontAwesomeIcon icon={faSeedling} className="mr-2" />
               </NavIcon>
-              <NavText>बिरुवा उत्पादन तथा बृक्षरोपन बिबरण</NavText>
-              <NavItem eventKey="nursery">
+              <NavText>बिरुवा उत्पादन तथा बृक्षरोपन बिबरण </NavText>
+
+              <NavItem onClick={() => history.push("/nursery")}>
                 <NavText>बिरुवा उत्पादन</NavText>
               </NavItem>
-              <NavItem eventKey="plantation">
-                <NavText>बृक्षरोपन</NavText>
+
+              <NavItem onClick={() => history.push("/plantation")}>
+                <NavText> बृक्षरोपन</NavText>
               </NavItem>
             </NavItem>
+
             <NavItem eventKey="seedgardernplots">
-              <NavIcon>
+              <Link to="/seedgardernplots" className="displaybox">
                 <FontAwesomeIcon icon={faHome} className="mr-2" />
-              </NavIcon>
-              <NavText>बन बीउ बगैच/समबर्धन प्लटहरु बिबरण</NavText>
+                {expanded && (
+                  <Displaybox value="बन बीउ बगैच/समबर्धन प्लटहरु बिबरण" />
+                )}
+              </Link>
             </NavItem>
-            <NavItem eventKey="organizationassets">
+
+            <NavItem eventKey="/organizationassets">
               <NavIcon>
                 <FontAwesomeIcon icon={faBuilding} className="mr-2" />
               </NavIcon>
               <NavText>कार्यालय सम्पती बिबरण</NavText>
-              <NavItem eventKey="assets">
-                <NavText>घर जग्गा </NavText>
+
+              <NavItem onClick={() => history.push("/assets")}>
+                <NavText>घर जग्गा</NavText>
               </NavItem>
-              <NavItem eventKey="vehicles">
-                <NavText>सवारी साधनहरु </NavText>
+
+              <NavItem onClick={() => history.push("/vehicles")}>
+                <NavText> सवारी साधनहरु</NavText>
               </NavItem>
             </NavItem>
           </SideNav.Nav>
