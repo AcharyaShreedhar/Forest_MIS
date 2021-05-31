@@ -1,7 +1,7 @@
 import { createReducer } from "reduxsauce";
 import Immutable from "seamless-immutable";
 import { dropLast, prepend } from "ramda";
-import { BanbibaranTypes } from "../actions/app";
+import { BanbibaranTypes } from "../actions/banbibaran";
 
 const initialState = Immutable({
   status: "",
@@ -11,6 +11,7 @@ const initialState = Immutable({
 const fetchsamudayikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchsamudayikbanbibaranSuccess = (state, action) => {
+    console.log('reducer',action.response)
   return state.merge({
     ...state,
     status: "done",
