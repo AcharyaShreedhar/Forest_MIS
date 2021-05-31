@@ -4,6 +4,7 @@ import NotFound from "./NotFound";
 import SideNavbar from "./SideNavbar";
 import Input from "./Input";
 import Button from "./Button";
+import Displaybox from "./Displaybox";
 
 export {
   HeaderComponent,
@@ -12,4 +13,5 @@ export {
   SideNavbar,
   Input,
   Button,
+  Displaybox,
 };
