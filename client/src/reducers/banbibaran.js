@@ -1,7 +1,7 @@
 import { createReducer } from "reduxsauce";
 import Immutable from "seamless-immutable";
 import { dropLast, prepend } from "ramda";
-import { banbibaranTypes } from "../actions/app";
+import { BanbibaranTypes } from "../actions/app";
 
 const initialState = Immutable({
   status: "",
@@ -11,8 +11,6 @@ const initialState = Immutable({
 const fetchsamudayikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchsamudayikbanbibaranSuccess = (state, action) => {
-  const { token, user } = action.response;
-
   return state.merge({
     ...state,
     status: "done",
@@ -35,10 +33,10 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
-  [AppTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST]: fetchsamudayikbanbibaranRequest,
-  [AppTypes.FETCHSAMUDAYIKBANBIBARAN_SUCCESS]: fetchsamudayikbanbibaranSuccess,
-  [AppTypes.FETCHSAMUDAYIKBANBIBARAN_FAILURE]: fetchsamudayikbanbibaranFailure,
+  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST]: fetchsamudayikbanbibaranRequest,
+  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_SUCCESS]: fetchsamudayikbanbibaranSuccess,
+  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_FAILURE]: fetchsamudayikbanbibaranFailure,
 
-  [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
-  [AppTypes.CLEAR_REQUEST]: clearRequest,
+  [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
+  [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
 });
