@@ -19,8 +19,8 @@ export default function* root() {
 
     //----------------------------banbibaran
     takeLatest(
-      BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST,
-      fetchsamudayikbanbibaranRequest,
+      BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST,
+      fetchallsamudayikbanbibaranRequest,
       api
     ),
   ]);
