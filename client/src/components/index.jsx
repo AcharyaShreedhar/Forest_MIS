@@ -6,7 +6,8 @@ import Input from "./Input";
 import Button from "./Button";
 import Displaybox from "./Displaybox";
 import Dropdown from "./Dropdown";
-import Animations from "./Button";
+import Animations from "./Animations";
+import Icon from "./Icon";
 
 export {
   HeaderComponent,
@@ -18,4 +19,5 @@ export {
   Displaybox,
   Dropdown,
   Animations,
+  Icon,
 };
