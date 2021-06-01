@@ -8,6 +8,7 @@ import Displaybox from "./Displaybox";
 import Dropdown from "./Dropdown";
 import Animations from "./Animations";
 import Icon from "./Icon";
+import CheckIcon from "./CheckIcon";
 
 export {
   HeaderComponent,
@@ -20,4 +21,5 @@ export {
   Dropdown,
   Animations,
   Icon,
+  CheckIcon,
 };
