@@ -5,6 +5,7 @@ import SideNavbar from "./SideNavbar";
 import Input from "./Input";
 import Button from "./Button";
 import Displaybox from "./Displaybox";
+import Dropdown from "./Dropdown";
 
 export {
   HeaderComponent,
@@ -14,4 +15,5 @@ export {
   Input,
   Button,
   Displaybox,
+  Dropdown,
 };
