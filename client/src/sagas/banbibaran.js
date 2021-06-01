@@ -13,3 +13,18 @@ export function* fetchallsamudayikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchallsamudayikbanbibaranFailure());
   }
 }
+
+
+export function* fetchsamudayikbanbibaranRequest(api, action) {
+  const  samudayikbanBibaranId  = action.payload
+
+  const response = yield api.getSamudayikbanBibaran(samudayikbanBibaranId);
+  
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchsamudayikbanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchsamudayikbanbibaranFailure());
+  }
+}
