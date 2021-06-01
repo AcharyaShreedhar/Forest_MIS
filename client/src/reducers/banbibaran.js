@@ -41,7 +41,6 @@ const fetchsamudayikbanbibaranFailure = (state, action) => {
 const fetchalldharmikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchalldharmikbanbibaranSuccess = (state, action) => {
-  console.log("reducer", action.response);
   return state.merge({
     ...state,
     status: "done",
