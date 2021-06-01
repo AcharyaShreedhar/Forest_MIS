@@ -6,9 +6,10 @@ import Input from "./Input";
 import Button from "./Button";
 import Displaybox from "./Displaybox";
 import Dropdown from "./Dropdown";
-import * as Animations from '.Animations'
+import * as Animations from "./Animations";
 import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
+import CheckBox from "./CheckBox";
 
 export {
   HeaderComponent,
@@ -22,4 +23,5 @@ export {
   Animations,
   Icon,
   CheckIcon,
+  CheckBox,
 };
