@@ -10,6 +10,7 @@ import * as Animations from "./Animations";
 import Avatar from "./Avatar";
 import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
+import CheckBox from "./CheckBox";
 
 export {
   HeaderComponent,
@@ -24,4 +25,5 @@ export {
   Avatar,
   Icon,
   CheckIcon,
+  CheckBox,
 };
