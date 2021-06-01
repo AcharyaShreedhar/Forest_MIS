@@ -1,30 +1,30 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import classNames from 'classnames'
-import { Icon } from '../../../components'
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Icon } from "../../components";
 
-const CheckIcon = props => (
+const CheckIcon = (props) => (
   <Icon
     size={props.size}
     name={classNames(
       props.className,
-      props.checked ? 'fal fa-check-circle' : 'fal fa-circle',
-      'mr-2'
+      props.checked ? "fal fa-check-circle" : "fal fa-circle",
+      "mr-2"
     )}
     active={props.checked}
   />
-)
+);
 
 CheckIcon.propTypes = {
   className: PropTypes.string,
   size: PropTypes.number,
   checked: PropTypes.bool,
-}
+};
 
 CheckIcon.defaultProps = {
-  className: '',
+  className: "",
   size: 20,
   checked: false,
-}
+};
 
-export default CheckIcon
+export default CheckIcon;

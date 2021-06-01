@@ -19,8 +19,8 @@ import {
   isNil,
   split,
 } from "ramda";
-import { Animations, Avatar, CheckBox, Icon } from "../../../components";
-import { SPECIALOPTIONS } from "../../../services/config";
+import { Animations, Avatar, CheckBox, Icon } from "../../components";
+import { SPECIALOPTIONS } from "../../services/config";
 import "./Dropdown.scss";
 
 class Dropdown extends React.PureComponent {
