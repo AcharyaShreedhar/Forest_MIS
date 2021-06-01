@@ -7,6 +7,7 @@ import Button from "./Button";
 import Displaybox from "./Displaybox";
 import Dropdown from "./Dropdown";
 import * as Animations from "./Animations";
+import Avatar from "./Avatar";
 import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
 import CheckBox from "./CheckBox";
@@ -21,6 +22,7 @@ export {
   Displaybox,
   Dropdown,
   Animations,
+  Avatar,
   Icon,
   CheckIcon,
   CheckBox,
