@@ -51,6 +51,9 @@
   }
 }
 
+.table thead th {
+  vertical-align: top;
+}
 .page {
   // margin-top: $header-height;
   min-height: calc(100vh - #{$header-height});
