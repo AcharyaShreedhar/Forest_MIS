@@ -9,6 +9,7 @@ import { loginRequest, logoutRequest } from "./app";
 //------------------------banbibaran
 import { fetchallsamudayikbanbibaranRequest } from "./banbibaran";
 import { fetchsamudayikbanbibaranRequest } from "./banbibaran";
+import { fetchalldharmikbanbibaranRequest } from "./banbibaran"
 
 const api = API.create();
 
@@ -30,5 +31,12 @@ export default function* root() {
       fetchsamudayikbanbibaranRequest,
       api
     ),
+
+    takeLatest(
+      BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST,
+      fetchalldharmikbanbibaranRequest,
+      api
+    ),
+
   ]);
 }

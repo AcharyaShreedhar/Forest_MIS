@@ -28,3 +28,15 @@ export function* fetchsamudayikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchsamudayikbanbibaranFailure());
   }
 }
+
+
+export function* fetchalldharmikbanbibaranRequest(api, action) {
+  const response = yield api.getDharmikbanBibaranList();
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchalldharmikbanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchalldharmikbanbibaranFailure());
+  }
+}
