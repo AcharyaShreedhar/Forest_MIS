@@ -40,3 +40,17 @@ export function* fetchalldharmikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchalldharmikbanbibaranFailure());
   }
 }
+
+export function* fetchdharmikbanbibaranRequest(api, action) {
+  const  dharmikbanBibaranId  = action.payload
+
+  const response = yield api.getDharmikbanBibaran(dharmikbanBibaranId);
+  console.log("response", response);
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchdharmikbanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchdharmikbanbibaranFailure());
+  }
+}
