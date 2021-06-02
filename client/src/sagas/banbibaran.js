@@ -54,3 +54,14 @@ export function* fetchdharmikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchdharmikbanbibaranFailure());
   }
 }
+export function* fetchallnijibanbibaranRequest(api, action) {
+  const response = yield api.getNijibanBibaranList();
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchallnijibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchallnijibanbibaranFailure());
+  }
+}
+
