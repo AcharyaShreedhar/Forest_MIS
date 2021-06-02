@@ -11,6 +11,7 @@ import Avatar from "./Avatar";
 import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
 import CheckBox from "./CheckBox";
+import Editdropdown from "./EditDropdown";
 
 export {
   HeaderComponent,
@@ -26,4 +27,5 @@ export {
   Icon,
   CheckIcon,
   CheckBox,
+  Editdropdown,
 };
