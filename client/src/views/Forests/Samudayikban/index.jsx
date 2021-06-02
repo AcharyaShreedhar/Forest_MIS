@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { isNil } from "ramda";
 
 import { Table } from "react-bootstrap";
-import { EditDropdown, Icon } from "../../../components";
+import { Button, EditDropdown } from "../../../components";
 import "./Samudayikban.scss";
 
 const headings = [
@@ -38,8 +38,16 @@ class Samudayikban extends Component {
 
     return (
       <div>
-        <div className="titlebar">सामुदायिक वन </div>
         <div className="card">
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              // className="text-capitalize"
+              name={`+ सामुदायिक वन`}
+            />
+          </div>
+          <div className="titlebar">सामुदायिक वन </div>
           <Table responsive striped bordered hover>
             <thead>
               <tr>
