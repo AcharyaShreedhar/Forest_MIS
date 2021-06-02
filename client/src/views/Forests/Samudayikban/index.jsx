@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { isNil } from "ramda";
 
 import { Table } from "react-bootstrap";
-import './Samudayikban.scss'
+import { EditDropdown, Icon } from "../../../components";
+import "./Samudayikban.scss";
 
 const headings = [
   "दर्ता नं",
@@ -22,6 +23,16 @@ const headings = [
 ];
 
 class Samudayikban extends Component {
+  handleSelectMenu(event, item) {
+    switch (event) {
+      case "edit": {
+        alert("this is edit menu");
+      }
+      case "delete": {
+        alert("this is delete menu");
+      }
+    }
+  }
   render() {
     const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
 
@@ -36,6 +47,7 @@ class Samudayikban extends Component {
                 {headings.map((heading, index) => (
                   <th key={index}>{heading}</th>
                 ))}
+                <th />
               </tr>
             </thead>
             <tbody>
@@ -56,6 +68,14 @@ class Samudayikban extends Component {
                     <td key={index}> {sban.nikasi_wood}</td>
                     <td key={index}> {sban.created_by}</td>
                     <td key={index}> {sban.updated_by}</td>
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={["Edit", "Delete"]}
+                          onChange={this.handleSelectMenu}
+                        />
+                      </div>
+                    </td>
                   </tr>
                 ))
               )}
