@@ -54,6 +54,8 @@ export function* fetchdharmikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchdharmikbanbibaranFailure());
   }
 }
+
+
 export function* fetchallnijibanbibaranRequest(api, action) {
   const response = yield api.getNijibanBibaranList();
   if (response.ok) {
@@ -65,3 +67,15 @@ export function* fetchallnijibanbibaranRequest(api, action) {
   }
 }
 
+
+
+export function* fetchallkabuliyatibanbibaranRequest(api, action) {
+  const response = yield api.getKabuliyatibanBibaranList();
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchallkabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchallkabuliyatibanbibaranFailure());
+  }
+}
