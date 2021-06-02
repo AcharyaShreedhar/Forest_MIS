@@ -62,11 +62,15 @@ const create = (baseURL = Config.API_URL) => {
   const getDharmikbanBibaranList = () =>
     api.get("dharmikbanBibaran");
 
+  const getDharmikbanBibaran = dharmikbanBibaranId => 
+    api.get(`dharmikbanBibaran/${dharmikbanBibaranId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
     getSamudayikbanBibaran,
     getDharmikbanBibaranList,
+    getDharmikbanBibaran,
   };
 };
 

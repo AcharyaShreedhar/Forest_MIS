@@ -51,6 +51,23 @@ const fetchalldharmikbanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchdharmikbanbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+
+  const fetchdharmikbanbibaranSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    dharmikbanbibaranData: action.response,
+  });
+};
+const fetchdharmikbanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
+
 
 
 
@@ -78,6 +95,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST]: fetchalldharmikbanbibaranRequest,
   [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_SUCCESS]: fetchalldharmikbanbibaranSuccess,
   [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_FAILURE]: fetchalldharmikbanbibaranFailure,
+
+  [BanbibaranTypes.FETCHDHARMIKBANBIBARAN_REQUEST]: fetchdharmikbanbibaranRequest,
+  [BanbibaranTypes.FETCHDHARMIKBANBIBARAN_SUCCESS]: fetchdharmikbanbibaranSuccess,
+  [BanbibaranTypes.FETCHDHARMIKBANBIBARAN_FAILURE]: fetchdharmikbanbibaranFailure,
 
 
 
