@@ -19,6 +19,8 @@ import {
   isNil,
   split,
 } from "ramda";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 import { Animations, Avatar, CheckBox, Icon } from "../../components";
 import { SPECIALOPTIONS } from "../../services/config";
 import "./Dropdown.scss";
@@ -330,21 +332,13 @@ class Dropdown extends React.PureComponent {
                   />
                 )}
                 {equals(caret, "dots-with-title") && (
-                  <Icon
-                    name="far fa-ellipsis-h"
-                    color={iconColor}
-                    size={iconSize}
-                  />
+                  <FontAwesomeIcon icon={faEllipsisH} className="mr-2" />
                 )}
               </div>
             )}
             {isEmpty(this.state.title) &&
               equals(caret, "dots-without-title") && (
-                <Icon
-                  name="far fa-ellipsis-h"
-                  color={iconColor}
-                  size={iconSize}
-                />
+                <FontAwesomeIcon icon={faEllipsisH} className="mr-2" />
               )}
             {!selectable && !isEmpty(placeholder) && (
               <div className="core-dropdown-title">{placeholder}</div>

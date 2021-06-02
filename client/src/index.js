@@ -4,6 +4,8 @@ import { Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'font-awesome/css/font-awesome.min.css';
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { store, persistor, history } from "./reducers";
 import indexRoutes from "./routes";
 import "./index.scss";
