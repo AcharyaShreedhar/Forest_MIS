@@ -86,6 +86,7 @@ export default function* root() {
     takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_REQUEST,
       fetchallbanyajantuuddarRequest,
+      api
     ),
 
   ]);
