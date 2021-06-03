@@ -65,6 +65,20 @@ const fetchdharmikbanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchallnijibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+
+  const fetchallnijibanbibaranSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    allnijibanbibaranData: action.response,
+  });
+};
+const fetchallnijibanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 const fetchallkabuliyatibanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -80,20 +94,17 @@ const fetchallkabuliyatibanbibaranFailure = (state, action) => {
 };
 
 
-
-
-
-const fetchallnijibanbibaranRequest = (state, action) =>
+const fetchnijibanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
-const fetchallnijibanbibaranSuccess = (state, action) => {
+const fetchnijibanbibaranSuccess = (state, action) => {
   console.log("reducer", action.response);
   return state.merge({
     ...state,
     status: "done",
-    allnijibanbibaranData: action.response,
+    nijibanbibaranData: action.response,
   });
 };
-const fetchallnijibanbibaranFailure = (state, action) => {
+const fetchnijibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
@@ -146,6 +157,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_REQUEST]: fetchallnijibanbibaranRequest,
   [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_SUCCESS]: fetchallnijibanbibaranSuccess,
   [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_FAILURE]: fetchallnijibanbibaranFailure,
+
+  [BanbibaranTypes.FETCHNIJIBANBIBARAN_REQUEST]: fetchnijibanbibaranRequest,
+  [BanbibaranTypes.FETCHNIJIBANBIBARAN_SUCCESS]: fetchnijibanbibaranSuccess,
+  [BanbibaranTypes.FETCHNIJIBANBIBARAN_FAILURE]: fetchnijibanbibaranFailure,
   
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST]: fetchallkabuliyatibanbibaranRequest,
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_SUCCESS]: fetchallkabuliyatibanbibaranSuccess,
@@ -160,3 +175,4 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
 });
+

@@ -67,6 +67,18 @@ export function* fetchallnijibanbibaranRequest(api, action) {
   }
 }
 
+export function* fetchnijibanbibaranRequest(api, action) {
+  const  nijibanBibaranId  = action.payload
+
+  const response = yield api.getNijibanBibaran(nijibanBibaranId);
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchnijibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchnijibanbibaranFailure());
+  }
+}
 
 
 export function* fetchallkabuliyatibanbibaranRequest(api, action) {

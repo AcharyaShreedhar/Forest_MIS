@@ -12,6 +12,7 @@ import { fetchsamudayikbanbibaranRequest } from "./banbibaran";
 import { fetchalldharmikbanbibaranRequest } from "./banbibaran";
 import { fetchdharmikbanbibaranRequest } from "./banbibaran";
 import { fetchallnijibanbibaranRequest } from "./banbibaran";
+import { fetchnijibanbibaranRequest } from "./banbibaran";
 import { fetchallkabuliyatibanbibaranRequest } from "./banbibaran";
 import { fetchkabuliyatibanbibaranRequest} from "./banbibaran";
 
@@ -51,6 +52,12 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.FETCHALLNIJIBANBIBARAN_REQUEST,
       fetchallnijibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.FETCHNIJIBANBIBARAN_REQUEST,
+      fetchnijibanbibaranRequest,
       api
     ),
 
