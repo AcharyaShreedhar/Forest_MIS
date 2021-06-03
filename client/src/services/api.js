@@ -71,6 +71,9 @@ const create = (baseURL = Config.API_URL) => {
   const getKabuliyatibanBibaranList = () =>
     api.get("kabuliyatibanBibaran");
 
+  const getKabuliyatibanBibaran = kabuliyatibanBibaranId => 
+    api.get(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -79,6 +82,7 @@ const create = (baseURL = Config.API_URL) => {
     getDharmikbanBibaran,
     getNijibanBibaranList,    
     getKabuliyatibanBibaranList,
+    getKabuliyatibanBibaran,
   };
 };
 
