@@ -18,6 +18,7 @@ const persistConfig = {
 const reducers = combineReducers({
   app: require("./app").reducer,
   banbibaran: require("./banbibaran").reducer,
+  dwandabebasthapan: require("./dwandabebasthapan").reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

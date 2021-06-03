@@ -52,7 +52,7 @@ const create = (baseURL = Config.API_URL) => {
   // Login API
   const loginByUsername = (payload) => api.post("auth/login", payload);
 
-  //Samudayik Banbibaran
+  //Banbibarans
   const getSamudayikbanBibaranList = () =>
     api.get("samudayikbanBibaran");
 
@@ -78,6 +78,13 @@ const create = (baseURL = Config.API_URL) => {
     api.get(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
     
 
+
+    //Dwandabebasthapan
+
+  const getBanyajantuUddarList = () =>
+    api.get("banyajantuUddars");
+    
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -88,6 +95,9 @@ const create = (baseURL = Config.API_URL) => {
     getNijibanBibaran,    
     getKabuliyatibanBibaranList,
     getKabuliyatibanBibaran,
+
+    //dwandabebasthapan
+    getBanyajantuUddarList,
   };
 };
 
