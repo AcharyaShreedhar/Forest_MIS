@@ -12,7 +12,7 @@ const initialState = Immutable({
 const fetchallbanyajantuuddarRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallbanyajantuuddarSuccess = (state, action) => {
-  console.log("reducer.......", action.response);
+
   return state.merge({
     ...state,
     status: "done",
