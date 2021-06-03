@@ -71,7 +71,6 @@ export function* fetchnijibanbibaranRequest(api, action) {
   const  nijibanBibaranId  = action.payload
 
   const response = yield api.getNijibanBibaran(nijibanBibaranId);
-  console.log("data is fine up to here.......................",response)
   if (response.ok) {
     yield put(
       BanbibaranActions.fetchnijibanbibaranSuccess(response.data)
