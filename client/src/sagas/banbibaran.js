@@ -45,7 +45,7 @@ export function* fetchdharmikbanbibaranRequest(api, action) {
   const  dharmikbanBibaranId  = action.payload
 
   const response = yield api.getDharmikbanBibaran(dharmikbanBibaranId);
-  console.log("response", response);
+  
   if (response.ok) {
     yield put(
       BanbibaranActions.fetchdharmikbanbibaranSuccess(response.data)
@@ -77,5 +77,18 @@ export function* fetchallkabuliyatibanbibaranRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.fetchallkabuliyatibanbibaranFailure());
+  }
+}
+
+export function* fetchkabuliyatibanbibaranRequest(api, action) {
+  const  kabuliyatibanBibaranId  = action.payload
+  
+  const response = yield api.getKabuliyatibanBibaran(kabuliyatibanBibaranId);
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchkabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchkabuliyatibanbibaranFailure());
   }
 }

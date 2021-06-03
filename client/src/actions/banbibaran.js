@@ -27,6 +27,7 @@ const { Types, Creators } = createActions({
   fetchdharmikbanbibaranRequest: ["payload"],
   fetchdharmikbanbibaranSuccess: ["response"],
   fetchdharmikbanbibaranFailure: null,
+
   fetchallnijibanbibaranRequest: ["payload"],
   fetchallnijibanbibaranSuccess: ["response"],
   fetchallnijibanbibaranFailure: null,
@@ -34,6 +35,10 @@ const { Types, Creators } = createActions({
   fetchallkabuliyatibanbibaranRequest: ["payload"],
   fetchallkabuliyatibanbibaranSuccess: ["response"],
   fetchallkabuliyatibanbibaranFailure: null,
+
+  fetchkabuliyatibanbibaranRequest: ["payload"],
+  fetchkabuliyatibanbibaranSuccess: ["response"],
+  fetchkabuliyatibanbibaranFailure: null,
 
   locationsRequest: ["payload"],
   // Clear all caches
