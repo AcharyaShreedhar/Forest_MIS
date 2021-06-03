@@ -81,12 +81,9 @@ export function* fetchallkabuliyatibanbibaranRequest(api, action) {
 }
 
 export function* fetchkabuliyatibanbibaranRequest(api, action) {
-  console.log('yeha....',action)
   const  kabuliyatibanBibaranId  = action.payload
-  console.log('kab',kabuliyatibanBibaranId)
   
   const response = yield api.getKabuliyatibanBibaran(kabuliyatibanBibaranId);
-     console.log("response..saga................", response);
   if (response.ok) {
     yield put(
       BanbibaranActions.fetchkabuliyatibanbibaranSuccess(response.data)
