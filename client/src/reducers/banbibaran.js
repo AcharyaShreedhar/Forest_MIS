@@ -175,3 +175,4 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
 });
+
