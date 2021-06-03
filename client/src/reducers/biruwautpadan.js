@@ -11,7 +11,6 @@ const initialState = Immutable({
 const fetchallbiruwautpadanRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallbiruwautpadanSuccess = (state, action) => {
-  console.log("reducer", action.response);
   return state.merge({
     ...state,
     status: "done",
