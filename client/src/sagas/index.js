@@ -2,8 +2,8 @@ import { takeEvery, takeLatest, all } from "redux-saga/effects";
 import API from "../services/api";
 import { AppTypes } from "../actions/app";
 import { BanbibaranTypes } from "../actions/banbibaran";
+import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
-
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
@@ -16,8 +16,8 @@ import { fetchallnijibanbibaranRequest } from "./banbibaran";
 import { fetchnijibanbibaranRequest } from "./banbibaran";
 import { fetchallkabuliyatibanbibaranRequest } from "./banbibaran";
 import { fetchkabuliyatibanbibaranRequest} from "./banbibaran";
-
-//------------------------dwandabebasthapan
+//------------------------biruwautpadan
+import { fetchallbiruwautpadanRequest} from "./biruwautpadan";
 import{ fetchallbanyajantuuddarRequest } from "./dwandabebasthapan";
 
 const api = API.create();
@@ -76,8 +76,13 @@ export default function* root() {
       fetchkabuliyatibanbibaranRequest,
       api
     ),
+  // Biruwautpadan
+    takeLatest(
+      BiruwautpadanTypes.FETCHALLBIRUWAUTPADAN_REQUEST,
+      fetchallbiruwautpadanRequest, 
+      api
+    ),
 
-  //-----------------Dwandabebasthapan 
     takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_REQUEST,
       fetchallbanyajantuuddarRequest,
