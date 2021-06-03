@@ -1,11 +1,11 @@
-import Samudayikban from "../views/Forests/Samudayikban";
+import Samudayikban from "../views/Forests/SamudayikbanList";
 import Dharmikban from "../views/Forests/Dharmikban";
 import Kabuliyatiban from "../views/Forests/Kabuliyatiban";
 import Nijiban from "../views/Forests/Nijiban";
 
 const forestRoutes = [
   {
-    path: "/forests/samudayikban",
+    path: "/forests/samudayikbanlist",
     title: "Samudayikban",
     name: "samudayikban",
     component: Samudayikban,
