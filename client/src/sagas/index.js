@@ -111,7 +111,7 @@ export default function* root() {
       BiruwautpadanTypes.FETCHBIRUWAUTPADAN_REQUEST,
       fetchbiruwautpadanRequest,
       api
-),
+    ),
 
 
   ]);
