@@ -104,6 +104,9 @@
 
   const getAssetsList = () =>
   api.get("assets");
+
+  const getAssets = assetId =>
+     api.get(`assets/${assetId}`);
      
  
    return {
@@ -129,6 +132,7 @@
 
     //sampatibibaran
     getAssetsList,
+    getAssets,
 
      
    };

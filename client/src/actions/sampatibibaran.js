@@ -15,6 +15,10 @@
    fetchallassetsRequest: ["payload"],
    fetchallassetsSuccess: ["response"],
    fetchallassetsFailure: null,
+
+   fetchassetsRequest: ["payload"],
+   fetchassetsSuccess: ["response"],
+   fetchassetsFailure: null,
  
     locationsRequest: ["payload"],
    // Clear all caches

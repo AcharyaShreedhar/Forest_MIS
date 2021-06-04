@@ -14,3 +14,17 @@ export function* fetchallassetsRequest(api, action) {
     yield put(SampatibibaranActions.fetchallassetsFailure());
   }
 }
+
+export function* fetchassetsRequest(api, action) {
+    const  assetId  = action.payload
+ 
+    const response = yield api.getAssets(assetId);
+    
+    if (response.ok) {
+      yield put(
+        SampatibibaranActions.fetchassetsSuccess(response.data)
+      );
+    } else {
+      yield put(SampatibibaranActions.fetchassetsFailure());
+    }
+  }
