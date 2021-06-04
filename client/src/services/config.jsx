@@ -63,6 +63,17 @@ const kabuliyatibanHeadings = [
   "सिर्जना गर्ने",
   "परिमार्जन गर्ने",
 ];
+const nijibanHeadings = [
+  "दर्ता नं",
+  "स्विकृत मिति",
+  "नीजि वन धनिको नाम",
+  "साविक ठेगाना",
+  "हालको ठेगाना",
+  "क्षत्रफल(हे.)",
+  "वनका मुख्य तथा सहायक प्रजातिहरु",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
 
 export {
   AssetsURL,
@@ -70,4 +81,5 @@ export {
   samudayikbanHeadings,
   dharmikbanHeadings,
   kabuliyatibanHeadings,
+  nijibanHeadings,
 };

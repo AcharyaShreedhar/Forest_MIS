@@ -6,11 +6,13 @@ import {
   SamudayikbanBibaran,
   DharmikbanBibaran,
   KabuliyatibanBibaran,
+  NijibanBibaran,
 } from "../../../components";
 import {
   samudayikbanHeadings,
   dharmikbanHeadings,
   kabuliyatibanHeadings,
+  nijibanHeadings,
 } from "../../../services/config";
 import "./Banbibaran.scss";
 
@@ -40,6 +42,7 @@ class Banbibaran extends Component {
     const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
     const dharmikbanList = this.props.dharmikbanbibaranDataList.data;
     const kabuliyatibanList = this.props.kabuliyatibanbibaranDataList.data;
+    const nijibanList = this.props.nijibanbibaranDataList.data;
     const { loc } = this.state;
 
     return (
@@ -71,6 +74,15 @@ class Banbibaran extends Component {
             onSelect={this.handleSelectMenu}
           />
         )}
+        {equals(loc, "nijibanlist") && (
+          <NijibanBibaran.List
+            buttonName="+ निजि वन"
+            title="निजि वन सम्बन्धी विवरण"
+            data={nijibanList}
+            headings={nijibanHeadings}
+            onSelect={this.handleSelectMenu}
+          />
+        )}
       </div>
     );
   }
@@ -80,18 +92,21 @@ Banbibaran.propTypes = {
   samudayikbanbibaranDataList: PropTypes.any,
   dharmikbanbibaranDataList: PropTypes.any,
   kabuliyatibanbibaranDataList: PropTypes.any,
+  nijibanbibaranDataList: PropTypes.any,
 };
 
 Banbibaran.defaultProps = {
   samudayikbanbibaranDataList: {},
   dharmikbanbibaranDataList: {},
   kabuliyatibanbibaranDataList: {},
+  nijibanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   samudayikbanbibaranDataList: state.banbibaran.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.banbibaran.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.banbibaran.allkabuliyatibanbibaranData,
+  nijibanbibaranDataList: state.banbibaran.allnijibanbibaranData,
 });
 
 export default connect(mapStateToProps, null)(Banbibaran);
