@@ -24,6 +24,10 @@
    fetchallbanyajantuxetiSuccess: ["response"],
    fetchallbanyajantuxetiFailure: null,
 
+   fetchbanyajantuxetiRequest: ["payload"],
+   fetchbanyajantuxetiSuccess: ["response"],
+   fetchbanyajantuxetiFailure: null,
+
    
 
  

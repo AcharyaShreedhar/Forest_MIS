@@ -42,3 +42,17 @@ export function* fetchbanyajantuuddarRequest(api, action) {
       yield put(DwandabebasthapanActions.fetchallbanyajantuxetiFailure());
     }
   }
+
+
+  export function* fetchbanyajantuxetiRequest(api, action) {
+    const  banyajantuXetiId  = action.payload
+ 
+    const response = yield api.getBanyajantuXeti(banyajantuXetiId);
+    if (response.ok) {
+      yield put(
+        DwandabebasthapanActions.fetchbanyajantuxetiSuccess(response.data)
+      );
+    } else {
+      yield put(DwandabebasthapanActions.fetchbanyajantuxetiFailure());
+    }
+  }

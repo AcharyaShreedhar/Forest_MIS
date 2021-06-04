@@ -97,6 +97,9 @@
    const getBanyajantuXetiList = () =>
      api.get("banyajantuXetiBibarans");
 
+  const getBanyajantuXeti = banyajantuXetiId =>
+    api.get(`banyajantuXetiBibarans/${banyajantuXetiId}`); 
+
     //sampatibibaran
 
   const getAssetsList = () =>
@@ -118,6 +121,7 @@
      getBanyajantuUddarList,
      getBanyajantuUddar,
      getBanyajantuXetiList,
+     getBanyajantuXeti,
  
      //biruwautpadans
      getBiruwautpadanList,

@@ -25,6 +25,7 @@ import { fetchbiruwautpadanRequest} from "./biruwautpadan";
 import{ fetchallbanyajantuuddarRequest } from "./dwandabebasthapan";
 import{ fetchbanyajantuuddarRequest } from "./dwandabebasthapan";
 import{ fetchallbanyajantuxetiRequest } from "./dwandabebasthapan";
+import{ fetchbanyajantuxetiRequest } from "./dwandabebasthapan"; 
 
 //-------------------sampatibibaran
 import { fetchallassetsRequest } from "./sampatibibaran";
@@ -126,6 +127,12 @@ export default function* root() {
       api
     ),
      
+
+    takeLatest(
+      DwandabebasthapanTypes.FETCHBANYAJANTUXETI_REQUEST,
+      fetchbanyajantuxetiRequest,
+      api
+    ), 
 
   ]);
 }
