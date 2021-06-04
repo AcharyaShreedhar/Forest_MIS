@@ -4,6 +4,7 @@ import { AppTypes } from "../actions/app";
 import { BanbibaranTypes } from "../actions/banbibaran";
 import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
+import { SampatibibaranTypes } from "../actions/sampatibibaran";
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
@@ -24,6 +25,9 @@ import { fetchbiruwautpadanRequest} from "./biruwautpadan";
 import{ fetchallbanyajantuuddarRequest } from "./dwandabebasthapan";
 import{ fetchbanyajantuuddarRequest } from "./dwandabebasthapan";
 import{ fetchallbanyajantuxetiRequest } from "./dwandabebasthapan";
+
+//-------------------sampatibibaran
+import { fetchallassetsRequest } from "./sampatibibaran";
 
 const api = API.create();
 
@@ -113,6 +117,15 @@ export default function* root() {
       api
     ),
 
+
+    //sampatibibaran
+
+    takeLatest(
+      SampatibibaranTypes.FETCHALLASSETS_REQUEST,
+      fetchallassetsRequest,
+      api
+    ),
+     
 
   ]);
 }
