@@ -15,7 +15,10 @@
    fetchallbiruwautpadanRequest: ["payload"],
    fetchallbiruwautpadanSuccess: ["response"],
    fetchallbiruwautpadanFailure: null,
- 
+
+   fetchbiruwautpadanRequest: ["payload"],
+   fetchbiruwautpadanSuccess: ["response"],
+   fetchbiruwautpadanFailure: null,
  
    locationsRequest: ["payload"],
    // Clear all caches
@@ -24,4 +27,3 @@
  
  export const BiruwautpadanTypes = Types;
  export default Creators;
- 

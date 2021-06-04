@@ -14,4 +14,16 @@ export function* fetchallbiruwautpadanRequest(api, action) {
   }
 }
 
+export function* fetchbiruwautpadanRequest(api, action) {
+  const  biruwautpadanId  = action.payload
 
+  const response = yield api.getBiruwautpadan(biruwautpadanId);
+  
+  if (response.ok) {
+    yield put(
+      BiruwautpadanActions.fetchbiruwautpadanSuccess(response.data)
+    );
+  } else {
+    yield put(BiruwautpadanActions.fetchbiruwautpadanFailure());
+  }
+}

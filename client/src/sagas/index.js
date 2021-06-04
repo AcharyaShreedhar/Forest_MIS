@@ -18,6 +18,7 @@ import { fetchallkabuliyatibanbibaranRequest } from "./banbibaran";
 import { fetchkabuliyatibanbibaranRequest} from "./banbibaran";
 //------------------------biruwautpadan
 import { fetchallbiruwautpadanRequest} from "./biruwautpadan";
+import { fetchbiruwautpadanRequest} from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
 import{ fetchallbanyajantuuddarRequest } from "./dwandabebasthapan";
@@ -106,6 +107,12 @@ export default function* root() {
       fetchallbanyajantuxetiRequest,
       api
     ),
+    takeLatest(
+      BiruwautpadanTypes.FETCHBIRUWAUTPADAN_REQUEST,
+      fetchbiruwautpadanRequest,
+      api
+    ),
+
 
   ]);
 }
