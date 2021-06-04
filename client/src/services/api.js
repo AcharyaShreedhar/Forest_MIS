@@ -85,6 +85,9 @@ const create = (baseURL = Config.API_URL) => {
 
   const getBanyajantuUddarList = () =>
     api.get("banyajantuUddars");
+
+  const getBanyajantuUddar = banyajantuUddarId =>
+    api.get(`banyajantuUddars/${banyajantuUddarId}`);
     
 
   return {
@@ -100,7 +103,11 @@ const create = (baseURL = Config.API_URL) => {
 
     //dwandabebasthapan
     getBanyajantuUddarList,
+    getBanyajantuUddar,
+
+    //biruwautpadans
     getBiruwautpadanList,
+  
   };
 };
 

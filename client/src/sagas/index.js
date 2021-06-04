@@ -19,6 +19,7 @@ import { fetchkabuliyatibanbibaranRequest} from "./banbibaran";
 //------------------------biruwautpadan
 import { fetchallbiruwautpadanRequest} from "./biruwautpadan";
 import{ fetchallbanyajantuuddarRequest } from "./dwandabebasthapan";
+import{ fetchbanyajantuuddarRequest } from "./dwandabebasthapan";
 
 const api = API.create();
 
@@ -86,6 +87,12 @@ export default function* root() {
     takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_REQUEST,
       fetchallbanyajantuuddarRequest,
+      api
+    ),
+
+  takeLatest(
+      DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_REQUEST,
+      fetchbanyajantuuddarRequest,
       api
     ),
 

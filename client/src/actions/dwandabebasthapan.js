@@ -16,6 +16,12 @@
    fetchallbanyajantuuddarSuccess: ["response"],
    fetchallbanyajantuuddarFailure: null,
 
+   fetchbanyajantuuddarRequest: ["payload"],
+   fetchbanyajantuuddarSuccess: ["response"],
+   fetchbanyajantuuddarFailure: null,
+
+   
+
  
    locationsRequest: ["payload"],
    // Clear all caches
