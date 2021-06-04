@@ -27,7 +27,7 @@ import{ fetchbanyajantuuddarRequest } from "./dwandabebasthapan";
 import{ fetchallbanyajantuxetiRequest } from "./dwandabebasthapan";
 
 //-------------------sampatibibaran
-import { fetchallassetsRequest } from "./sampatibibaran";
+import { fetchallassetsRequest, fetchassetsRequest } from "./sampatibibaran";
 
 const api = API.create();
 
@@ -123,6 +123,12 @@ export default function* root() {
     takeLatest(
       SampatibibaranTypes.FETCHALLASSETS_REQUEST,
       fetchallassetsRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.FETCHASSETS_REQUEST,
+      fetchassetsRequest,
       api
     ),
      
