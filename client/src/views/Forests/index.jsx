@@ -10,7 +10,7 @@ import BanbibaranActions from "../../actions/banbibaran";
 export class Forests extends Component {
   componentDidMount() {
     this.props.fetchallSamudayikbanbibaran();
-    this.props.fetchBanyajantuxeti(2);
+
   }
 
   render() {
