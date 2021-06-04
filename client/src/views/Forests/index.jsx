@@ -36,6 +36,9 @@ export class Forests extends Component {
 const mapDispatchToProps = (dispatch) => ({
   fetchallSamudayikbanbibaran: () =>
     dispatch(BanbibaranActions.fetchallsamudayikbanbibaranRequest()),
+
+  fetchallDharmikbanbibaran: () =>
+    dispatch(BanbibaranActions.fetchalldharmikbanbibaranRequest()),
 });
 
 export default connect(null, mapDispatchToProps)(Forests);

@@ -8,7 +8,7 @@ const forestRoutes = [
     component: Banbibaran,
   },
   {
-    path: "/forests/dharmikban",
+    path: "/forests/dharmikbanlist",
     title: "Dharmikban",
     name: "dharmikban",
     component: Banbibaran,

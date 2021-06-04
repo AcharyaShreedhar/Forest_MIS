@@ -1,25 +1,15 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals, dropLast, filter, find, propEq } from "ramda";
-import { SamudayikbanBibaran } from "../../../components";
+import { equals } from "ramda";
+import { SamudayikbanBibaran, DharmikbanBibaran } from "../../../components";
+import {
+  samudayikbanHeadings,
+  dharmikbanHeadings,
+} from "../../../services/config";
 import "./Banbibaran.scss";
 
-const headings = [
-  "दर्ता नं",
-  "सामुदायिक वन उपभोक्ता समितिको नाम",
-  "क्षत्रफल(हे.)",
-  "मुख्य प्रजाति",
-  "वनको किसिम(प्राकृतिक्/वृक्षरोपण)",
-  "हस्तान्तरण मिति",
-  "वनको मौज्दात",
-  "वार्षिक निकासी परिमाण (घ. मी)काठ",
-  "वार्षिक निकासी परिमाण (घ. मी)दाउरा",
-  "सिर्जना गर्ने",
-  "परिमार्जन गर्ने",
-];
-
-class Samudayikban extends Component {
+class Banbibaran extends Component {
   constructor(props) {
     super(props);
     this.state = { loc: "samudayiklist" };
@@ -43,16 +33,26 @@ class Samudayikban extends Component {
   }
   render() {
     const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
+    const dharmikbanList = this.props.dharmikbanbibaranDataList.data;
     const { loc } = this.state;
 
     return (
       <div>
         {equals(loc, "samudayikbanlist") && (
           <SamudayikbanBibaran.List
-            buttonName="+ सामुदायिक वन "
-            title="सामुदायिक वन"
+            buttonName="+ सामुदायिक वन"
+            title="सामुदायिक वन सम्बन्धी विवरण"
             data={samudayikbanList}
-            headings={headings}
+            headings={samudayikbanHeadings}
+            onSelect={this.handleSelectMenu}
+          />
+        )}
+        {equals(loc, "dharmikbanlist") && (
+          <DharmikbanBibaran.List
+            buttonName="+ धार्मिक बन "
+            title="धर्मिक वन सम्बन्धी विवरण"
+            data={dharmikbanList}
+            headings={dharmikbanHeadings}
             onSelect={this.handleSelectMenu}
           />
         )}
@@ -61,16 +61,19 @@ class Samudayikban extends Component {
   }
 }
 
-Samudayikban.propTypes = {
+Banbibaran.propTypes = {
   samudayikbanbibaranDataList: PropTypes.any,
+  dharmikbanbibaranDataList: PropTypes.any,
 };
 
-Samudayikban.defaultProps = {
+Banbibaran.defaultProps = {
   samudayikbanbibaranDataList: {},
+  dharmikbanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   samudayikbanbibaranDataList: state.banbibaran.allsamudayikbanbibaranData,
+  dharmikbanbibaranDataList: state.banbibaran.alldharmikbanbibaranData,
 });
 
-export default connect(mapStateToProps, null)(Samudayikban);
+export default connect(mapStateToProps, null)(Banbibaran);
