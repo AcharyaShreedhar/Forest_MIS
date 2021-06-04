@@ -89,8 +89,8 @@ export class SideNavbar extends Component {
             </NavItem>
 
             <NavItem
-              eventKey="forests/kabuliyatiban"
-              onClick={() => history.push("/forests/kabuliyatiban")}
+              eventKey="forests/kabuliyatibanlist"
+              onClick={() => history.push("/forests/kabuliyatibanlist")}
             >
               <NavText>कबुलियती बन</NavText>
             </NavItem>

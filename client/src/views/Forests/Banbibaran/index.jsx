@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals } from "ramda";
-import { SamudayikbanBibaran, DharmikbanBibaran } from "../../../components";
+import {
+  SamudayikbanBibaran,
+  DharmikbanBibaran,
+  KabuliyatibanBibaran,
+} from "../../../components";
 import {
   samudayikbanHeadings,
   dharmikbanHeadings,
+  kabuliyatibanHeadings,
 } from "../../../services/config";
 import "./Banbibaran.scss";
 
@@ -34,6 +39,7 @@ class Banbibaran extends Component {
   render() {
     const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
     const dharmikbanList = this.props.dharmikbanbibaranDataList.data;
+    const kabuliyatibanList = this.props.kabuliyatibanbibaranDataList.data;
     const { loc } = this.state;
 
     return (
@@ -56,6 +62,15 @@ class Banbibaran extends Component {
             onSelect={this.handleSelectMenu}
           />
         )}
+        {equals(loc, "kabuliyatibanlist") && (
+          <KabuliyatibanBibaran.List
+            buttonName="+ कवुलियती वन "
+            title="कवुलियती वन सम्बन्धी विवरण"
+            data={kabuliyatibanList}
+            headings={kabuliyatibanHeadings}
+            onSelect={this.handleSelectMenu}
+          />
+        )}
       </div>
     );
   }
@@ -64,16 +79,19 @@ class Banbibaran extends Component {
 Banbibaran.propTypes = {
   samudayikbanbibaranDataList: PropTypes.any,
   dharmikbanbibaranDataList: PropTypes.any,
+  kabuliyatibanbibaranDataList: PropTypes.any,
 };
 
 Banbibaran.defaultProps = {
   samudayikbanbibaranDataList: {},
   dharmikbanbibaranDataList: {},
+  kabuliyatibanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   samudayikbanbibaranDataList: state.banbibaran.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.banbibaran.alldharmikbanbibaranData,
+  kabuliyatibanbibaranDataList: state.banbibaran.allkabuliyatibanbibaranData,
 });
 
 export default connect(mapStateToProps, null)(Banbibaran);
