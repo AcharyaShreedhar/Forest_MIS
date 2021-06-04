@@ -20,7 +20,7 @@ const forestRoutes = [
     component: Banbibaran,
   },
   {
-    path: "/forests/nijiban",
+    path: "/forests/nijibanlist",
     title: "Nijiban",
     name: "nijiban",
     component: Banbibaran,
