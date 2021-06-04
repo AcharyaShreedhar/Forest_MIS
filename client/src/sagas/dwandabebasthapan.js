@@ -14,3 +14,18 @@ export function* fetchallbanyajantuuddarRequest(api, action) {
     yield put(DwandabebasthapanActions.fetchallbanyajantuuddarFailure());
   }
 }
+
+
+export function* fetchbanyajantuuddarRequest(api, action) {
+    const  banyajantuUddarId  = action.payload
+ 
+    const response = yield api.getBanyajantuUddar(banyajantuUddarId);
+    console.log("response....sagaa....", response);
+    if (response.ok) {
+      yield put(
+        DwandabebasthapanActions.fetchbanyajantuuddarSuccess(response.data)
+      );
+    } else {
+      yield put(DwandabebasthapanActions.fetchbanyajantuuddarFailure());
+    }
+  }
