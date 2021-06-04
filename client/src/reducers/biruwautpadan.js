@@ -21,7 +21,19 @@ const fetchallbiruwautpadanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchbiruwautpadanRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
 
+  const fetchbiruwautpadanSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    biruwautpadanData: action.response,
+  });
+};
+const fetchbiruwautpadanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 
 
@@ -41,6 +53,10 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.FETCHALLBIRUWAUTPADAN_SUCCESS]: fetchallbiruwautpadanSuccess,
   [BiruwautpadanTypes.FETCHALLBIRUWAUTPADAN_FAILURE]: fetchallbiruwautpadanFailure,
 
+  [BiruwautpadanTypes.FETCHBIRUWAUTPADAN_REQUEST]: fetchbiruwautpadanRequest,
+  [BiruwautpadanTypes.FETCHBIRUWAUTPADAN_SUCCESS]: fetchbiruwautpadanSuccess,
+  [BiruwautpadanTypes.FETCHBIRUWAUTPADAN_FAILURE]: fetchbiruwautpadanFailure,
+  
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BiruwautpadanTypes.CLEAR_REQUEST]: clearRequest,
 });
