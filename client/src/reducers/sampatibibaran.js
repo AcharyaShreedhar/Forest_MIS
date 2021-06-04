@@ -24,6 +24,21 @@ const fetchallassetsFailure = (state, action) => {
 };
 
 
+const fetchassetsRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchassetsSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    assetsData: action.response,
+  });
+};
+const fetchassetsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
 
 
 const locationsRequest = (state, action) => {
@@ -42,6 +57,10 @@ export const reducer = createReducer(initialState, {
   [SampatibibaranTypes.FETCHALLASSETS_REQUEST]: fetchallassetsRequest,
   [SampatibibaranTypes.FETCHALLASSETS_SUCCESS]: fetchallassetsSuccess,
   [SampatibibaranTypes.FETCHALLASSETS_FAILURE]: fetchallassetsFailure,
+
+  [SampatibibaranTypes.FETCHASSETS_REQUEST]: fetchassetsRequest,
+  [SampatibibaranTypes.FETCHASSETS_SUCCESS]: fetchassetsSuccess,
+  [SampatibibaranTypes.FETCHASSETS_FAILURE]: fetchassetsFailure,
 
 
  
