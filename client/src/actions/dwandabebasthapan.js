@@ -20,6 +20,10 @@
    fetchbanyajantuuddarSuccess: ["response"],
    fetchbanyajantuuddarFailure: null,
 
+   fetchallbanyajantuxetiRequest: ["payload"],
+   fetchallbanyajantuxetiSuccess: ["response"],
+   fetchallbanyajantuxetiFailure: null,
+
    
 
  

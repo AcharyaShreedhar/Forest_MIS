@@ -29,3 +29,16 @@ export function* fetchbanyajantuuddarRequest(api, action) {
       yield put(DwandabebasthapanActions.fetchbanyajantuuddarFailure());
     }
   }
+
+
+  export function* fetchallbanyajantuxetiRequest(api, action) {
+ 
+    const response = yield api.getBanyajantuXetiList();
+    if (response.ok) {
+      yield put(
+          DwandabebasthapanActions.fetchallbanyajantuxetiSuccess(response.data)
+      );
+    } else {
+      yield put(DwandabebasthapanActions.fetchallbanyajantuxetiFailure());
+    }
+  }
