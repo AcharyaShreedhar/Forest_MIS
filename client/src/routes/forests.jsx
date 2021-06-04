@@ -14,7 +14,7 @@ const forestRoutes = [
     component: Banbibaran,
   },
   {
-    path: "/forests/kabuliyatiban",
+    path: "/forests/kabuliyatibanlist",
     title: "Kabuliyatiban",
     name: "kabuliyatiban",
     component: Banbibaran,

@@ -14,6 +14,7 @@ import CheckBox from "./CheckBox";
 import EditDropdown from "./EditDropdown";
 import * as SamudayikbanBibaran from "./SamudayikbanBibaran";
 import * as DharmikbanBibaran from "./DharmikbanBibaran";
+import * as KabuliyatibanBibaran from "./KabuliyatibanBibaran"
 
 export {
   HeaderComponent,
@@ -32,4 +33,6 @@ export {
   EditDropdown,
   SamudayikbanBibaran,
   DharmikbanBibaran,
+  KabuliyatibanBibaran
+
 };
