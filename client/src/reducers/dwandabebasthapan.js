@@ -24,6 +24,19 @@ const fetchallbanyajantuuddarFailure = (state, action) => {
 };
 
 
+const fetchbanyajantuuddarRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchbanyajantuuddarSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    banyajantuuddarData: action.response,
+  });
+};
+const fetchbanyajantuuddarFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 
 
@@ -44,6 +57,10 @@ export const reducer = createReducer(initialState, {
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_REQUEST]: fetchallbanyajantuuddarRequest,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_SUCCESS]: fetchallbanyajantuuddarSuccess,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_FAILURE]: fetchallbanyajantuuddarFailure,
+
+  [DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_REQUEST]: fetchbanyajantuuddarRequest,
+  [DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_SUCCESS]: fetchbanyajantuuddarSuccess,
+  [DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_FAILURE]: fetchbanyajantuuddarFailure,
 
  
   [DwandabebasthapanTypes.LOCATIONS_REQUEST]: locationsRequest,
