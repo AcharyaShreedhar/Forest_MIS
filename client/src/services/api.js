@@ -76,6 +76,8 @@
  
    const getKabuliyatibanBibaran = kabuliyatibanBibaranId => 
      api.get(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
+
+     //................biruwautpadans
     
    const getBiruwautpadanList = () =>
      api.get("biruwaUtpadans");
@@ -94,6 +96,11 @@
  
    const getBanyajantuXetiList = () =>
      api.get("banyajantuXetiBibarans");
+
+    //sampatibibaran
+
+  const getAssetsList = () =>
+  api.get("assets");
      
  
    return {
@@ -115,6 +122,11 @@
      //biruwautpadans
      getBiruwautpadanList,
      getBiruwautpadan,
+
+    //sampatibibaran
+    getAssetsList,
+
+     
    };
  };
  
