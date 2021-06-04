@@ -54,6 +54,20 @@ const fetchallbanyajantuxetiFailure = (state, action) => {
 };
 
 
+const fetchbanyajantuxetiRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchbanyajantuxetiSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    banyajantuxetiData: action.response,
+  });
+};
+const fetchbanyajantuxetiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 
 const locationsRequest = (state, action) => {
@@ -81,7 +95,10 @@ export const reducer = createReducer(initialState, {
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_SUCCESS]: fetchallbanyajantuxetiSuccess,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_FAILURE]: fetchallbanyajantuxetiFailure,
 
- 
+  [DwandabebasthapanTypes.FETCHBANYAJANTUXETI_REQUEST]: fetchbanyajantuxetiRequest,
+  [DwandabebasthapanTypes.FETCHBANYAJANTUXETI_SUCCESS]: fetchbanyajantuxetiSuccess,
+  [DwandabebasthapanTypes.FETCHBANYAJANTUXETI_FAILURE]: fetchbanyajantuxetiFailure,
+  
   [DwandabebasthapanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [DwandabebasthapanTypes.CLEAR_REQUEST]: clearRequest,
 });
