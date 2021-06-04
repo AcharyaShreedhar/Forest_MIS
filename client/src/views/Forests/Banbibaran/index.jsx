@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
+import { equals, dropLast, filter, find, propEq } from "ramda";
 import { SamudayikbanBibaran } from "../../../components";
-import "./SamudayikbanList.scss";
+import "./Banbibaran.scss";
 
 const headings = [
   "दर्ता नं",
@@ -21,7 +22,13 @@ const headings = [
 class Samudayikban extends Component {
   constructor(props) {
     super(props);
+    this.state = { loc: "samudayiklist" };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const loc = nextProps.location.pathname.split("/")[2];
+    return { loc };
   }
 
   handleSelectMenu(event, item) {
@@ -36,16 +43,19 @@ class Samudayikban extends Component {
   }
   render() {
     const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
+    const { loc } = this.state;
 
     return (
       <div>
-        <SamudayikbanBibaran.List
-          buttonName="+ सामुदायिक वन "
-          title="सामुदायिक वन"
-          data={samudayikbanList}
-          headings={headings}
-          onSelect={this.handleSelectMenu}
-        />
+        {equals(loc, "samudayikbanlist") && (
+          <SamudayikbanBibaran.List
+            buttonName="+ सामुदायिक वन "
+            title="सामुदायिक वन"
+            data={samudayikbanList}
+            headings={headings}
+            onSelect={this.handleSelectMenu}
+          />
+        )}
       </div>
     );
   }

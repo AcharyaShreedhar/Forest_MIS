@@ -1,39 +1,36 @@
-import Samudayikban from "../views/Forests/SamudayikbanList";
-import Dharmikban from "../views/Forests/Dharmikban";
-import Kabuliyatiban from "../views/Forests/Kabuliyatiban";
-import Nijiban from "../views/Forests/Nijiban";
+import Banbibaran from "../views/Forests/Banbibaran";
 
 const forestRoutes = [
   {
     path: "/forests/samudayikbanlist",
     title: "Samudayikban",
     name: "samudayikban",
-    component: Samudayikban,
+    component: Banbibaran,
   },
   {
     path: "/forests/dharmikban",
     title: "Dharmikban",
     name: "dharmikban",
-    component: Dharmikban,
+    component: Banbibaran,
   },
   {
     path: "/forests/kabuliyatiban",
     title: "Kabuliyatiban",
     name: "kabuliyatiban",
-    component: Kabuliyatiban,
+    component: Banbibaran,
   },
   {
     path: "/forests/nijiban",
     title: "Nijiban",
     name: "nijiban",
-    component: Nijiban,
+    component: Banbibaran,
   },
   {
     redirect: true,
     path: "/forests",
-    to: "/forests/samudayikban",
+    to: "/forests/samudayikbanlist",
     name: "samudayikban",
-    component: Samudayikban,
+    component: Banbibaran,
   },
 ];
 
