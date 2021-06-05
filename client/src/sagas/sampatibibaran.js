@@ -28,3 +28,17 @@ export function* fetchassetsRequest(api, action) {
       yield put(SampatibibaranActions.fetchassetsFailure());
     }
   }
+
+
+  export function* fetchallvehiclesRequest(api, action) {
+ 
+    const response = yield api.getVehiclesList();
+    
+        if (response.ok) {
+      yield put(
+          SampatibibaranActions.fetchallvehiclesSuccess(response.data)
+      );
+    } else {
+      yield put(SampatibibaranActions.fetchallvehiclesFailure());
+    }
+  }
