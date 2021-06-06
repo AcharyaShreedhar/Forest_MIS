@@ -23,6 +23,10 @@
    fetchallvehiclesRequest: ["payload"],
    fetchallvehiclesSuccess: ["response"],
    fetchallvehiclesFailure: null,
+
+   fetchvehiclesRequest: ["payload"],
+   fetchvehiclesSuccess: ["response"],
+   fetchvehiclesFailure: null,
  
     locationsRequest: ["payload"],
    // Clear all caches
