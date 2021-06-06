@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   nijiban_bibaran.init({
+    darta_no: DataTypes.STRING,
     swikrit_miti: DataTypes.STRING,
     nijiban_dhaniko_naam: DataTypes.STRING,
     perm_addr: DataTypes.STRING,
