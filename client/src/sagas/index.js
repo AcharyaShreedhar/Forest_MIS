@@ -6,6 +6,7 @@ import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
 import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
+import { BandadelobibaranTypes} from "../actions/bandadelobibaran";
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
@@ -34,6 +35,8 @@ import { fetchallassetsRequest, fetchassetsRequest, fetchallvehiclesRequest, fet
 // ----------muddaanusandandayari
 
 import { fetchallmuddaanusandhandayariRequest,fetchmuddaanusandhandayariRequest } from "./muddaanusandhandayari";
+//--------------------bandadelobibaran
+import {fetchallbandadelobibaranRequest} from "./bandadelobibaran";
 
 const api = API.create();
 
@@ -174,5 +177,19 @@ export default function* root() {
 
    
 
+
+     //bandadelobibaran
+
+
+     takeLatest(
+      BandadelobibaranTypes.FETCHALLBANDADELOBIBARAN_REQUEST,
+      fetchallbandadelobibaranRequest,
+      api
+    ),
+
   ]);
 }
+
+
+
+
