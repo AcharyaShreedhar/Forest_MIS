@@ -4,6 +4,7 @@ import NotFound from "./NotFound";
 import SideNavbar from "./SideNavbar";
 import Input from "./Input";
 import Button from "./Button";
+import DatePicker from "./DatePicker";
 import Displaybox from "./Displaybox";
 import Dropdown from "./Dropdown";
 import * as Animations from "./Animations";
@@ -24,6 +25,7 @@ export {
   SideNavbar,
   Input,
   Button,
+  DatePicker,
   Displaybox,
   Dropdown,
   Animations,
