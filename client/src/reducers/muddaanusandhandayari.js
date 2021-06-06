@@ -24,6 +24,22 @@ const fetchallmuddaanusandhandayariFailure = (state, action) => {
 };
 
 
+const fetchmuddaanusandhandayariRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchmuddaanusandhandayariSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    muddaanusandhandayariData: action.response,
+  });
+};
+const fetchmuddaanusandhandayariFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -40,6 +56,10 @@ export const reducer = createReducer(initialState, {
   [MuddaanusandhandayariTypes.FETCHALLMUDDAANUSANDHANDAYARI_REQUEST]: fetchallmuddaanusandhandayariRequest,
   [MuddaanusandhandayariTypes.FETCHALLMUDDAANUSANDHANDAYARI_SUCCESS]: fetchallmuddaanusandhandayariSuccess,
   [MuddaanusandhandayariTypes.FETCHALLMUDDAANUSANDHANDAYARI_FAILURE]: fetchallmuddaanusandhandayariFailure,
+
+  [MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST]: fetchmuddaanusandhandayariRequest,
+  [MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_SUCCESS]: fetchmuddaanusandhandayariSuccess,
+  [MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_FAILURE]: fetchmuddaanusandhandayariFailure,
 
  
  
