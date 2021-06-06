@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   kabuliyatiban_bibaran.init({
+    darta_no: DataTypes.STRING,
     entry_date: DataTypes.STRING,
     ghardhuri_dalit: DataTypes.STRING,
     perm_addr: DataTypes.STRING,
