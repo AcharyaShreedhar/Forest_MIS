@@ -33,7 +33,7 @@ import { fetchallassetsRequest, fetchassetsRequest, fetchallvehiclesRequest, fet
 
 // ----------muddaanusandandayari
 
-import { fetchallmuddaanusandhandayariRequest } from "./muddaanusandhandayari";
+import { fetchallmuddaanusandhandayariRequest,fetchmuddaanusandhandayariRequest } from "./muddaanusandhandayari";
 
 const api = API.create();
 
@@ -163,6 +163,12 @@ export default function* root() {
     takeLatest(
       MuddaanusandhandayariTypes.FETCHALLMUDDAANUSANDHANDAYARI_REQUEST,
       fetchallmuddaanusandhandayariRequest,
+      api
+    ),
+
+    takeLatest(
+      MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST,
+      fetchmuddaanusandhandayariRequest,
       api
     ),
 
