@@ -20,7 +20,7 @@ import {
   split,
 } from "ramda";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisH, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { Animations, Avatar, CheckBox, Icon } from "../../components";
 import { SPECIALOPTIONS } from "../../services/config";
 import "./Dropdown.scss";
@@ -293,7 +293,7 @@ class Dropdown extends React.PureComponent {
           <div className={toggle} onClick={this.handleToggle}>
             {!isEmpty(title) && selectable && (
               <div
-                className={`core-dropdown-title dsl-m12 ${
+                className={`core-dropdown-title dsl-b18 ${
                   equals(direction, "vertical") ? "mb-2" : "mr-2"
                 }`}
               >
@@ -304,7 +304,7 @@ class Dropdown extends React.PureComponent {
               <div className="core-dropdown-label">
                 {equals("horizontal", titleDirection) ? (
                   <span
-                    className={classNames("dsl-b14 mr-4 text-400", {
+                    className={classNames("dsl-b16 mr-4", {
                       "ml-2": equals("vertical", direction),
                       "no-wrap": !multi,
                     })}
@@ -314,7 +314,7 @@ class Dropdown extends React.PureComponent {
                 ) : (
                   split(", ", this.state.title).map((item, idx) => (
                     <p
-                      className={classNames("dsl-b14 mb-0 mr-4", {
+                      className={classNames("dsl-b16 mb-0 mr-4", {
                         "ml-2": equals("vertical", direction),
                         "no-wrap": !multi,
                       })}
@@ -325,11 +325,7 @@ class Dropdown extends React.PureComponent {
                   ))
                 )}
                 {equals(caret, "down") && (
-                  <Icon
-                    name="fas fa-sort-down caret"
-                    color={iconColor}
-                    size={iconSize}
-                  />
+                  <FontAwesomeIcon icon={faCaretDown} className="mr-2" />
                 )}
                 {equals(caret, "dots-with-title") && (
                   <FontAwesomeIcon icon={faEllipsisH} className="mr-2" />
