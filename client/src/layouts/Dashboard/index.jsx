@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
+import { ToastContainer } from 'react-toastify'
 import { HeaderComponent, NavbarComponent } from "../../components";
 import { Content } from "./dashboard";
 import AppActions from "../../actions/app";
@@ -29,6 +29,7 @@ class Dashboard extends Component {
       <div className="d-flex dashboard">
         {/* <NavbarComponent location={location} history={history} /> */}
         {/* <SideNavbar history={history}/> */}
+        <ToastContainer autoClose={3000} />
         <Content location={location} history={history} loggedIn={authenticated} />
       </div>
     );
