@@ -58,6 +58,17 @@ const updatesamudayikbanbibaranSuccess = (state, action) =>
 const updatesamudayikbanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+//Delete Samudayikbanbibaran
+const deletesamudayikbanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletesamudayikbanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletesamudayikbanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const fetchalldharmikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchalldharmikbanbibaranSuccess = (state, action) => {
@@ -167,6 +178,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_REQUEST]: updatesamudayikbanbibaranRequest,
   [BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_SUCCESS]: updatesamudayikbanbibaranSuccess,
   [BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_FAILURE]: updatesamudayikbanbibaranFailure,
+
+  [BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_REQUEST]: deletesamudayikbanbibaranRequest,
+  [BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_SUCCESS]: deletesamudayikbanbibaranSuccess,
+  [BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_FAILURE]: deletesamudayikbanbibaranFailure,
 
   [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST]: fetchalldharmikbanbibaranRequest,
   [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_SUCCESS]: fetchalldharmikbanbibaranSuccess,
