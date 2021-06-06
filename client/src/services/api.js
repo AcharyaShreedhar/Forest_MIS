@@ -116,8 +116,11 @@
 
      // muddaanusandhandayari
      
-     const getMuddaanusandhandayariList = () =>
+    const getMuddaanusandhandayariList = () =>
      api.get("muddaAnusandhanDayaris");
+
+    const getMuddaanusandhandayari = muddaAnusandhanDayariId =>
+     api.get(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`);
 
 
      
@@ -151,8 +154,8 @@
 
     //muddaanusandhandayari
     getMuddaanusandhandayariList,
-
-     
+    getMuddaanusandhandayari,
+         
    };
  };
  
