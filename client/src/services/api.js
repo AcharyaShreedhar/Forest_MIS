@@ -113,6 +113,13 @@
 
   const getVehicles = vehicleId =>
      api.get(`vehicles/${vehicleId}`);
+
+     // muddaanusandhandayari
+     
+     const getMuddaanusandhandayariList = () =>
+     api.get("muddaAnusandhanDayaris");
+
+
      
  
    return {
@@ -141,6 +148,9 @@
     getAssets,
     getVehiclesList,
     getVehicles,
+
+    //muddaanusandhandayari
+    getMuddaanusandhandayariList,
 
      
    };
