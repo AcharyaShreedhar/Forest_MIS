@@ -38,6 +38,19 @@ const fetchassetsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchallvehiclesRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallvehiclesSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    allvehiclesData: action.response,
+  });
+};
+const fetchallvehiclesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 
 
@@ -61,6 +74,10 @@ export const reducer = createReducer(initialState, {
   [SampatibibaranTypes.FETCHASSETS_REQUEST]: fetchassetsRequest,
   [SampatibibaranTypes.FETCHASSETS_SUCCESS]: fetchassetsSuccess,
   [SampatibibaranTypes.FETCHASSETS_FAILURE]: fetchassetsFailure,
+
+  [SampatibibaranTypes.FETCHALLVEHICLES_REQUEST]: fetchallvehiclesRequest,
+  [SampatibibaranTypes.FETCHALLVEHICLES_SUCCESS]: fetchallvehiclesSuccess,
+  [SampatibibaranTypes.FETCHALLVEHICLES_FAILURE]: fetchallvehiclesFailure,
 
 
  
