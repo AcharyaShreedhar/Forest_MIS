@@ -14,3 +14,17 @@ export function* fetchallbanxetraatikramanRequest(api, action) {
     yield put(BanxetraatikramanActions.fetchallbanxetraatikramanFailure());
   }
 }
+
+export function* fetchbanxetraatikramanRequest(api, action) {
+    const  banxetraAtikramanId  = action.payload
+    
+    const response = yield api.getBanxetraatikraman(banxetraAtikramanId);
+    if (response.ok) {
+      yield put(
+        BanxetraatikramanActions.fetchbanxetraatikramanSuccess(response.data)
+      );
+    } else {
+      yield put(BanxetraatikramanActions.fetchbanxetraatikramanFailure());
+    }
+  }
+  

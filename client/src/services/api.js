@@ -127,6 +127,11 @@
   const getBanxetraatikramanList = () =>
      api.get("banxetraAtikramans");
 
+  const getBanxetraatikraman = banxetraAtikramanId =>
+     api.get(`banxetraAtikramans/${banxetraAtikramanId}`);
+
+
+
 
       //................bandadelobibarans
     
@@ -168,7 +173,8 @@
     getMuddaanusandhandayari,
 
     //banxetraatikraman
-    getBanxetraatikramanList,  
+    getBanxetraatikramanList,
+    getBanxetraatikraman,  
   
          
     //bandadelobibaran
