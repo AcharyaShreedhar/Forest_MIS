@@ -22,6 +22,7 @@ const reducers = combineReducers({
   biruwautpadan: require("./biruwautpadan").reducer,
   sampatibibaran: require("./sampatibibaran").reducer,
   muddaanusandhandayari: require("./muddaanusandhandayari").reducer,
+  bandadelobibaran: require("./bandadelobibaran").reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
