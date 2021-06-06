@@ -8,6 +8,12 @@ const forestRoutes = [
     component: Banbibaran,
   },
   {
+    path: "/forests/samudayikban/new",
+    title: "Samudayikban",
+    name: "samudayikban",
+    component: Banbibaran,
+  },
+  {
     path: "/forests/dharmikbanlist",
     title: "Dharmikban",
     name: "dharmikban",
