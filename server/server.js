@@ -54,6 +54,7 @@ const plotRoutes = require("./app/routes/plotRoutes");
 const inventoryRoutes = require("./app/routes/inventoryRoutes");
 const officeStaffPostRoutes = require("./app/routes/officeStaffPostRoutes");
 const usersRoutes = require("./app/routes/usersRoutes");
+const karmachariDarbandiRoutes = require("./app/routes/karmachariDarbandiRoutes");
 
 app.use("/api/v1", provinceRoutes);
 
@@ -91,6 +92,8 @@ app.use("/api/v1", plotRoutes);
 app.use("/api/v1", inventoryRoutes);
 app.use("/api/v1", officeStaffPostRoutes);
 app.use("/api/v1", usersRoutes);
+app.use("/api/v1", karmachariDarbandiRoutes);
+
 
 
 const port = process.env.PORT || 3001;
