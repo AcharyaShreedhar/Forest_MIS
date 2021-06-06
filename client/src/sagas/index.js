@@ -41,7 +41,7 @@ import {fetchallbandadelobibaranRequest} from "./bandadelobibaran";
 
 // ----------banxetraatikraman
 
-import { fetchallbanxetraatikramanRequest } from "./banxetraatikraman";
+import { fetchallbanxetraatikramanRequest, fetchbanxetraatikramanRequest } from "./banxetraatikraman";
 
 const api = API.create();
 
@@ -187,6 +187,13 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_REQUEST,
+      fetchbanxetraatikramanRequest,
+      api
+    ),
+
+
    
 
 
@@ -198,6 +205,7 @@ export default function* root() {
       fetchallbandadelobibaranRequest,
       api
     ),
+    
 
   ]);
 }
