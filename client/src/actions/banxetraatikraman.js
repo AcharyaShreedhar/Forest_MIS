@@ -16,6 +16,10 @@
    fetchallbanxetraatikramanSuccess: ["response"],
    fetchallbanxetraatikramanFailure: null,
 
+   fetchbanxetraatikramanRequest: ["payload"],
+   fetchbanxetraatikramanSuccess: ["response"],
+   fetchbanxetraatikramanFailure: null,
+
        locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
