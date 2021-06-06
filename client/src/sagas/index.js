@@ -6,42 +6,63 @@ import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
 import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
-import { BandadelobibaranTypes} from "../actions/bandadelobibaran";
+import { BandadelobibaranTypes } from "../actions/bandadelobibaran";
 import { BanxetraatikramanTypes } from "../actions/banxetraatikraman";
+
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
 //------------------------banbibaran
-import { fetchallsamudayikbanbibaranRequest } from "./banbibaran";
-import { fetchsamudayikbanbibaranRequest } from "./banbibaran";
-import { fetchalldharmikbanbibaranRequest } from "./banbibaran";
-import { fetchdharmikbanbibaranRequest } from "./banbibaran";
-import { fetchallnijibanbibaranRequest } from "./banbibaran";
-import { fetchnijibanbibaranRequest } from "./banbibaran";
-import { fetchallkabuliyatibanbibaranRequest } from "./banbibaran";
-import { fetchkabuliyatibanbibaranRequest} from "./banbibaran";
+import {
+  fetchallsamudayikbanbibaranRequest,
+  fetchsamudayikbanbibaranRequest,
+  addsamudayikbanbibaranRequest,
+  fetchalldharmikbanbibaranRequest,
+  fetchdharmikbanbibaranRequest,
+  fetchallnijibanbibaranRequest,
+  fetchnijibanbibaranRequest,
+  fetchallkabuliyatibanbibaranRequest,
+  fetchkabuliyatibanbibaranRequest,
+} from "./banbibaran";
+
 //------------------------biruwautpadan
-import { fetchallbiruwautpadanRequest} from "./biruwautpadan";
-import { fetchbiruwautpadanRequest} from "./biruwautpadan";
+import {
+  fetchallbiruwautpadanRequest,
+  fetchbiruwautpadanRequest,
+} from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
-import{ fetchallbanyajantuuddarRequest } from "./dwandabebasthapan";
-import{ fetchbanyajantuuddarRequest } from "./dwandabebasthapan";
-import{ fetchallbanyajantuxetiRequest } from "./dwandabebasthapan";
-import{ fetchbanyajantuxetiRequest } from "./dwandabebasthapan"; 
+import {
+  fetchallbanyajantuuddarRequest,
+  fetchbanyajantuuddarRequest,
+  fetchallbanyajantuxetiRequest,
+  fetchbanyajantuxetiRequest,
+} from "./dwandabebasthapan";
 
 //-------------------sampatibibaran
-import { fetchallassetsRequest, fetchassetsRequest, fetchallvehiclesRequest, fetchvehiclesRequest } from "./sampatibibaran";
+import {
+  fetchallassetsRequest,
+  fetchassetsRequest,
+  fetchallvehiclesRequest,
+  fetchvehiclesRequest,
+} from "./sampatibibaran";
 
 // ----------muddaanusandandayari
 
-import { fetchallmuddaanusandhandayariRequest,fetchmuddaanusandhandayariRequest } from "./muddaanusandhandayari";
+import {
+  fetchallmuddaanusandhandayariRequest,
+  fetchmuddaanusandhandayariRequest,
+} from "./muddaanusandhandayari";
+
 //--------------------bandadelobibaran
-import {fetchallbandadelobibaranRequest} from "./bandadelobibaran";
+import { fetchallbandadelobibaranRequest } from "./bandadelobibaran";
 
 // ----------banxetraatikraman
 
-import { fetchallbanxetraatikramanRequest, fetchbanxetraatikramanRequest } from "./banxetraatikraman";
+import {
+  fetchallbanxetraatikramanRequest,
+  fetchbanxetraatikramanRequest,
+} from "./banxetraatikraman";
 
 const api = API.create();
 
@@ -61,6 +82,11 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST,
       fetchsamudayikbanbibaranRequest,
+      api
+    ),
+    takeLatest(
+      BanbibaranTypes.ADDSAMUDAYIKBANBIBARAN_REQUEST,
+      addsamudayikbanbibaranRequest,
       api
     ),
 
@@ -99,10 +125,10 @@ export default function* root() {
       fetchkabuliyatibanbibaranRequest,
       api
     ),
-  // Biruwautpadan
+    // Biruwautpadan
     takeLatest(
       BiruwautpadanTypes.FETCHALLBIRUWAUTPADAN_REQUEST,
-      fetchallbiruwautpadanRequest, 
+      fetchallbiruwautpadanRequest,
       api
     ),
 
@@ -111,7 +137,7 @@ export default function* root() {
       fetchbiruwautpadanRequest,
       api
     ),
-    
+
     //---------Dwandabebasthapan
 
     takeLatest(
@@ -120,25 +146,23 @@ export default function* root() {
       api
     ),
 
-  takeLatest(
+    takeLatest(
       DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_REQUEST,
       fetchbanyajantuuddarRequest,
       api
     ),
 
-  takeLatest(
+    takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_REQUEST,
       fetchallbanyajantuxetiRequest,
       api
     ),
-   
 
     takeLatest(
       DwandabebasthapanTypes.FETCHBANYAJANTUXETI_REQUEST,
       fetchbanyajantuxetiRequest,
       api
-    ), 
-
+    ),
 
     //sampatibibaran
 
@@ -165,7 +189,7 @@ export default function* root() {
       fetchvehiclesRequest,
       api
     ),
-     
+
     //------muddaanusandhandayari
 
     takeLatest(
@@ -193,23 +217,12 @@ export default function* root() {
       api
     ),
 
+    //bandadelobibaran
 
-   
-
-
-     //bandadelobibaran
-
-
-     takeLatest(
+    takeLatest(
       BandadelobibaranTypes.FETCHALLBANDADELOBIBARAN_REQUEST,
       fetchallbandadelobibaranRequest,
       api
     ),
-    
-
   ]);
 }
-
-
-
-

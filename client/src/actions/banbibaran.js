@@ -11,7 +11,6 @@
 import { createActions } from "reduxsauce";
 
 const { Types, Creators } = createActions({
-    
   fetchallsamudayikbanbibaranRequest: ["payload"],
   fetchallsamudayikbanbibaranSuccess: ["response"],
   fetchallsamudayikbanbibaranFailure: null,
@@ -19,6 +18,10 @@ const { Types, Creators } = createActions({
   fetchsamudayikbanbibaranRequest: ["payload"],
   fetchsamudayikbanbibaranSuccess: ["response"],
   fetchsamudayikbanbibaranFailure: null,
+
+  addsamudayikbanbibaranRequest: ["payload"],
+  addsamudayikbanbibaranSuccess: ["response"],
+  addsamudayikbanbibaranFailure: null,
 
   fetchalldharmikbanbibaranRequest: ["payload"],
   fetchalldharmikbanbibaranSuccess: ["response"],
@@ -28,7 +31,6 @@ const { Types, Creators } = createActions({
   fetchdharmikbanbibaranSuccess: ["response"],
   fetchdharmikbanbibaranFailure: null,
 
-  
   fetchallnijibanbibaranRequest: ["payload"],
   fetchallnijibanbibaranSuccess: ["response"],
   fetchallnijibanbibaranFailure: null,
