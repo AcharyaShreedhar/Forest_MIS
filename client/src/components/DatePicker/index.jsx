@@ -11,7 +11,7 @@ import OutsideClickHandler from "react-outside-click-handler";
 import { equals, isNil } from "ramda";
 import originalMoment from "moment";
 import { extendMoment } from "moment-range";
-import { Input, Icon } from "../../../components";
+import { Input, Icon } from "../../components";
 import "./DatePicker.scss";
 
 const moment = extendMoment(originalMoment);

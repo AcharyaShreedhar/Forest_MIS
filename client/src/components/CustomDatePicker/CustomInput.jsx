@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'ramda'
-import Icon from '../_core/Icon'
+import {Icon} from '../../components'
 
 class CustomInput extends Component {
   render() {
