@@ -15,3 +15,17 @@ export function* fetchallmuddaanusandhandayariRequest(api, action) {
   }
 }
 
+export function* fetchmuddaanusandhandayariRequest(api, action) {
+    const  muddaAnusandhanDayariId  = action.payload
+ 
+    const response = yield api.getMuddaanusandhandayari(muddaAnusandhanDayariId);
+    
+    if (response.ok) {
+      yield put(
+        MuddaanusandhandayariActions.fetchmuddaanusandhandayariSuccess(response.data)
+      );
+    } else {
+      yield put(MuddaanusandhandayariActions.fetchmuddaanusandhandayariFailure());
+    }
+  }
+
