@@ -43,6 +43,26 @@ export function* addsamudayikbanbibaranRequest(api, action) {
   }
 }
 
+// Update samudayikbanbibaran
+export function* updatesamudayikbanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranSamudayikbanUpdate(
+    payload.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    yield fetchallsamudayikbanbibaranRequest(api);
+    yield put(BanbibaranActions.updatesamudayikbanbibaranSucess(response.data));
+  } else {
+    yield put(BanbibaranActions.updatesamudayikbanbibaranFailure());
+    toast.error("Oops, Your action cannot be completed!. Please try again", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
 export function* fetchalldharmikbanbibaranRequest(api, action) {
   const response = yield api.getDharmikbanBibaranList();
   if (response.ok) {
