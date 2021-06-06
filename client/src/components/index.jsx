@@ -12,6 +12,7 @@ import Avatar from "./Avatar";
 import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
 import CheckBox from "./CheckBox";
+import CustomDatePicker from './CustomDatePicker'
 import EditDropdown from "./EditDropdown";
 import * as SamudayikbanBibaran from "./SamudayikbanBibaran";
 import * as DharmikbanBibaran from "./DharmikbanBibaran";
@@ -33,6 +34,7 @@ export {
   Icon,
   CheckIcon,
   CheckBox,
+  CustomDatePicker,
   EditDropdown,
   SamudayikbanBibaran,
   DharmikbanBibaran,
