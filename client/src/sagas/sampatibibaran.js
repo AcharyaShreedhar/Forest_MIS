@@ -42,3 +42,18 @@ export function* fetchassetsRequest(api, action) {
       yield put(SampatibibaranActions.fetchallvehiclesFailure());
     }
   }
+
+
+  export function* fetchvehiclesRequest(api, action) {
+    const  vehicleId  = action.payload
+ 
+    const response = yield api.getVehicles(vehicleId);
+    
+    if (response.ok) {
+      yield put(
+        SampatibibaranActions.fetchvehiclesSuccess(response.data)
+      );
+    } else {
+      yield put(SampatibibaranActions.fetchvehiclesFailure());
+    }
+  }
