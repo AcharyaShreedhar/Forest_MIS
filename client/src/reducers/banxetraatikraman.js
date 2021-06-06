@@ -24,6 +24,20 @@ const fetchallbanxetraatikramanFailure = (state, action) => {
 };
 
 
+const fetchbanxetraatikramanRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchbanxetraatikramanSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    banxetraatikramanData: action.response,
+  });
+};
+const fetchbanxetraatikramanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 
 const locationsRequest = (state, action) => {
@@ -42,6 +56,10 @@ export const reducer = createReducer(initialState, {
   [BanxetraatikramanTypes.FETCHALLBANXETRAATIKRAMAN_REQUEST]: fetchallbanxetraatikramanRequest,
   [BanxetraatikramanTypes.FETCHALLBANXETRAATIKRAMAN_SUCCESS]: fetchallbanxetraatikramanSuccess,
   [BanxetraatikramanTypes.FETCHALLBANXETRAATIKRAMAN_FAILURE]: fetchallbanxetraatikramanFailure,
+
+  [BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_REQUEST]: fetchbanxetraatikramanRequest,
+  [BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_SUCCESS]: fetchbanxetraatikramanSuccess,
+  [BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_FAILURE]: fetchbanxetraatikramanFailure,
 
    
  
