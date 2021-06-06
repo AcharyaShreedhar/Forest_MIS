@@ -122,6 +122,11 @@
     const getMuddaanusandhandayari = muddaAnusandhanDayariId =>
      api.get(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`);
 
+  // ------banxetraatikraman
+
+  const getBanxetraatikramanList = () =>
+     api.get("banxetraAtikramans");
+
 
       //................bandadelobibarans
     
@@ -161,6 +166,10 @@
     //muddaanusandhandayari
     getMuddaanusandhandayariList,
     getMuddaanusandhandayari,
+
+    //banxetraatikraman
+    getBanxetraatikramanList,  
+  
          
     //bandadelobibaran
     getBandadelobibaranList,

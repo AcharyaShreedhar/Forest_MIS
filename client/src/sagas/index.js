@@ -7,6 +7,7 @@ import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
 import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
 import { BandadelobibaranTypes} from "../actions/bandadelobibaran";
+import { BanxetraatikramanTypes } from "../actions/banxetraatikraman";
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
@@ -37,6 +38,10 @@ import { fetchallassetsRequest, fetchassetsRequest, fetchallvehiclesRequest, fet
 import { fetchallmuddaanusandhandayariRequest,fetchmuddaanusandhandayariRequest } from "./muddaanusandhandayari";
 //--------------------bandadelobibaran
 import {fetchallbandadelobibaranRequest} from "./bandadelobibaran";
+
+// ----------banxetraatikraman
+
+import { fetchallbanxetraatikramanRequest } from "./banxetraatikraman";
 
 const api = API.create();
 
@@ -172,6 +177,13 @@ export default function* root() {
     takeLatest(
       MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST,
       fetchmuddaanusandhandayariRequest,
+      api
+    ),
+
+    //-----banxetraatikraman
+    takeLatest(
+      BanxetraatikramanTypes.FETCHALLBANXETRAATIKRAMAN_REQUEST,
+      fetchallbanxetraatikramanRequest,
       api
     ),
 
