@@ -6,7 +6,7 @@ import { Table } from "react-bootstrap";
 import { Button, EditDropdown } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onSelect } = props;
+  const { buttonName, headings, data, title, onAdd, onSelect } = props;
   return (
     <Fragment>
       <div className="card">
@@ -16,7 +16,7 @@ function List(props) {
             size="small"
             // className="text-capitalize"
             name={buttonName}
-            onClick={e => onSelect(e)}
+            onClick={onAdd}
           />
         </div>
         <div className="titlebar">{title} </div>
@@ -52,7 +52,7 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={e => onSelect(e)}
+                        onChange={(e) => onSelect(e)}
                       />
                     </div>
                   </td>

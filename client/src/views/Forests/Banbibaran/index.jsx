@@ -21,6 +21,7 @@ class Banbibaran extends Component {
     super(props);
     this.state = { loc: "samudayiklist" };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -32,10 +33,38 @@ class Banbibaran extends Component {
     switch (event) {
       case "edit": {
         alert("this is edit menu");
+        break;
       }
       case "delete": {
         alert("this is delete menu");
+        break;
       }
+      default:
+        break;
+    }
+  }
+
+  handleAdd(item) {
+    switch (item) {
+      case "samudayikban": {
+        this.props.history.push("/forests/samudayikban/new");
+        break;
+      }
+      case "kabuliyatiban": {
+        alert("this is kabuliyatiban");
+        break;
+      }
+      case "dharmikban": {
+        alert("this is dharmikban");
+        break;
+      }
+      case "nijiban": {
+        alert("this is nijiban");
+        break;
+      }
+
+      default:
+        break;
     }
   }
   render() {
@@ -53,6 +82,17 @@ class Banbibaran extends Component {
             title="सामुदायिक वन सम्बन्धी विवरण"
             data={samudayikbanList}
             headings={samudayikbanHeadings}
+            onAdd={() => this.handleAdd("samudayikban")}
+            onSelect={this.handleSelectMenu}
+          />
+        )}
+        {equals(loc, "samudayikban") && (
+          <SamudayikbanBibaran.Add
+            buttonName="+ सामुदायिक वन"
+            title="सामुदायिक वन सम्बन्धी विवरण"
+            data={samudayikbanList}
+            headings={samudayikbanHeadings}
+            onAdd={() => this.handleAdd("samudayikban")}
             onSelect={this.handleSelectMenu}
           />
         )}
@@ -62,6 +102,7 @@ class Banbibaran extends Component {
             title="धर्मिक वन सम्बन्धी विवरण"
             data={dharmikbanList}
             headings={dharmikbanHeadings}
+            onAdd={() => this.handleAdd("dharmikban")}
             onSelect={this.handleSelectMenu}
           />
         )}
@@ -71,6 +112,7 @@ class Banbibaran extends Component {
             title="कवुलियती वन सम्बन्धी विवरण"
             data={kabuliyatibanList}
             headings={kabuliyatibanHeadings}
+            onAdd={() => this.handleAdd("kabuliyatiban")}
             onSelect={this.handleSelectMenu}
           />
         )}
@@ -80,6 +122,7 @@ class Banbibaran extends Component {
             title="निजि वन सम्बन्धी विवरण"
             data={nijibanList}
             headings={nijibanHeadings}
+            onAdd={() => this.handleAdd("nijiban")}
             onSelect={this.handleSelectMenu}
           />
         )}
