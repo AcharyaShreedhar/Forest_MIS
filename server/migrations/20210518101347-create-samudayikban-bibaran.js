@@ -8,6 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      darta_no: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       samudayikban_name: {
         type: Sequelize.STRING,
       },
