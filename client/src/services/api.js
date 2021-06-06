@@ -107,6 +107,9 @@
 
   const getVehiclesList = () =>
     api.get("vehicles");
+
+  const getVehicles = vehicleId =>
+     api.get(`vehicles/${vehicleId}`);
      
  
    return {
@@ -133,6 +136,7 @@
     getAssetsList,
     getAssets,
     getVehiclesList,
+    getVehicles,
 
      
    };
