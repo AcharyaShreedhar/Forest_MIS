@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   dharmikban_bibaran.init(
     {
       dharmikban_name: DataTypes.STRING,
+      darta_no: DataTypes.STRING,
       community_name: DataTypes.STRING,
       area: DataTypes.STRING,
       main_species: DataTypes.STRING,
