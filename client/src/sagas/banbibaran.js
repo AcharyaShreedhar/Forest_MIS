@@ -63,6 +63,23 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
   }
 }
 
+// Delete samudayikbanbibaran
+export function* deletesamudayikbanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranSamudayikbanDelete(payload.id);
+
+  if (response.ok) {
+    yield fetchallsamudayikbanbibaranRequest(api);
+    yield put(BanbibaranActions.deletesamudayikbanbibaranSucess(response.data));
+  } else {
+    yield put(BanbibaranActions.deletesamudayikbanbibaranFailure());
+    toast.error("Oops, Your action cannot be completed!. Please try again", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
 export function* fetchalldharmikbanbibaranRequest(api, action) {
   const response = yield api.getDharmikbanBibaranList();
   if (response.ok) {
