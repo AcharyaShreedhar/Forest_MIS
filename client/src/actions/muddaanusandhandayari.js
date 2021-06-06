@@ -16,6 +16,10 @@
    fetchallmuddaanusandhandayariSuccess: ["response"],
    fetchallmuddaanusandhandayariFailure: null,
 
+   fetchmuddaanusandhandayariRequest: ["payload"],
+   fetchmuddaanusandhandayariSuccess: ["response"],
+   fetchmuddaanusandhandayariFailure: null,
+
 
     locationsRequest: ["payload"],
    // Clear all caches
