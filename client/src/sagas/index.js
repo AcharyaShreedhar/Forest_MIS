@@ -8,6 +8,7 @@ import { SampatibibaranTypes } from "../actions/sampatibibaran";
 import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
 import { BandadelobibaranTypes } from "../actions/bandadelobibaran";
 import { BanxetraatikramanTypes } from "../actions/banxetraatikraman";
+import { BanpaidawarTypes } from "../actions/banpaidawar";
 
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
@@ -65,6 +66,12 @@ import {
   fetchallbanxetraatikramanRequest,
   fetchbanxetraatikramanRequest,
 } from "./banxetraatikraman";
+
+//-------banpaidawar
+import{
+  fetchallbanpaidawarRequest,
+} from "./banpaidawar";
+
 
 const api = API.create();
 
@@ -236,5 +243,13 @@ export default function* root() {
       fetchallbandadelobibaranRequest,
       api
     ),
+
+    //----------banpaidawar
+    takeLatest(
+      BanpaidawarTypes.FETCHALLBANPAIDAWAR_REQUEST,
+      fetchallbanpaidawarRequest,
+      api
+    ),
+
   ]);
 }
