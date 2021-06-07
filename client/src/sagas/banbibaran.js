@@ -36,7 +36,7 @@ export function* addsamudayikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("Samudaikban bibaran is successfully added", {
+    toast.success("सफलतापुर्वक सामुदायिक वन प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallsamudayikbanbibaranRequest(api);
@@ -60,6 +60,9 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
+    toast.success("सफलतापुर्वक सामुदायिक वन पुनः प्रविष्ट भयो !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallsamudayikbanbibaranRequest(api);
     yield call(history.push, "/forests/samudayikbanlist");
     yield put(
@@ -80,7 +83,7 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
   const response = yield api.postBanbibaranSamudayikbanDelete(payload);
 
   if (response.ok) {
-    toast.success("Samudaikban bibaran is successfully deleted", {
+    toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallsamudayikbanbibaranRequest(api);
@@ -127,6 +130,9 @@ export function* adddharmikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
+    toast.success("सफलतापुर्वक धार्मिक वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchalldharmikbanbibaranRequest(api);
     yield call(history.push, "/forests/dharmikbanlist");
     yield put(BanbibaranActions.adddharmikbanbibaranSuccess(response.data));
@@ -149,6 +155,9 @@ export function* updatedharmikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
+    toast.success("सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchdharmikbanbibaranRequest(api);
     yield call(history.push, "/forests/dharmikbanlist");
     yield put(
