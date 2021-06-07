@@ -77,9 +77,12 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
 export function* deletesamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranSamudayikbanDelete(payload.id);
+  const response = yield api.postBanbibaranSamudayikbanDelete(payload);
 
   if (response.ok) {
+    toast.success("Samudaikban bibaran is successfully added", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallsamudayikbanbibaranRequest(api);
     yield put(
       BanbibaranActions.deletesamudayikbanbibaranSuccess(response.data)
