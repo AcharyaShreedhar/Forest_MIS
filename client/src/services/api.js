@@ -139,6 +139,8 @@ const create = (baseURL = Config.API_URL) => {
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
   const getBanpaidawar = (banpaidawarId) => api.get(`banpaidawar/${banpaidawarId}`);
+  const getBanpaidawarlilamList = () => api.get("banpaidawarLilam");
+  const getBanpaidawarlilam = (banpaidawarLilamId) => api.get(`banpaidawar/${banpaidawarLilamId}`);
 
   return {
     loginByUsername,
@@ -178,8 +180,8 @@ const create = (baseURL = Config.API_URL) => {
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,
-
-     
+    getBanpaidawarlilamList,
+    getBanpaidawarlilam,
   };
   
 };
