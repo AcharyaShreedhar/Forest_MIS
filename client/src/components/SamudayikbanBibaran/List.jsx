@@ -37,7 +37,7 @@ function List(props) {
               data.map((sban, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {sban.samudayikban_id}</td>
+                  <td key={index}> {sban.darta_no}</td>
                   <td key={index}> {sban.samudayikban_name}</td>
                   <td key={index}> {sban.area}</td>
                   <td key={index}> {sban.main_species}</td>
