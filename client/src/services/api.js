@@ -132,6 +132,9 @@ const create = (baseURL = Config.API_URL) => {
 
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
 
+  //--------------banpaidawar
+  const getBanpaidawarList = () => api.get("banpaidawar");
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -172,6 +175,9 @@ const create = (baseURL = Config.API_URL) => {
 
     //bandadelobibaran
     getBandadelobibaranList,
+
+    //------banpaidawar
+    getBanpaidawarList,
   };
 };
 
