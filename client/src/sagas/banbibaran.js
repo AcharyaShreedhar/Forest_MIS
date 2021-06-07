@@ -36,6 +36,9 @@ export function* addsamudayikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
+    toast.success("Samudaikban bibaran is successfully added", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallsamudayikbanbibaranRequest(api);
     yield call(history.push, "/forests/samudayikbanlist");
     yield put(BanbibaranActions.addsamudayikbanbibaranSuccess(response.data));
