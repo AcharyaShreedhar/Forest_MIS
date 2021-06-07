@@ -6,6 +6,7 @@ import { HeaderComponent, NavbarComponent } from "../../components";
 import { Content } from "./dashboard";
 import AppActions from "../../actions/app";
 import { SideNavbar } from "../../components";
+import 'react-toastify/dist/ReactToastify.css';
 
 class Dashboard extends Component {
   constructor(props) {
