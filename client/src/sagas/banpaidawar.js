@@ -14,3 +14,16 @@ export function* fetchallbanpaidawarRequest(api, action) {
     yield put(BanpaidawarActions.fetchallbanpaidawarFailure());
   }
 }
+
+export function* fetchbanpaidawarRequest(api, action) {
+    const  banpaidawarId  = action.payload
+    
+    const response = yield api.getBanpaidawar(banpaidawarId);
+    if (response.ok) {
+      yield put(
+        BanpaidawarActions.fetchbanpaidawarSuccess(response.data)
+      );
+    } else {
+      yield put(BanpaidawarActions.fetchbanpaidawarFailure());
+    }
+  }
