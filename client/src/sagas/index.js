@@ -70,6 +70,7 @@ import {
 //-------banpaidawar
 import{
   fetchallbanpaidawarRequest,
+  fetchbanpaidawarRequest,
 } from "./banpaidawar";
 
 
@@ -248,6 +249,12 @@ export default function* root() {
     takeLatest(
       BanpaidawarTypes.FETCHALLBANPAIDAWAR_REQUEST,
       fetchallbanpaidawarRequest,
+      api
+    ),
+
+    takeLatest(
+      BanpaidawarTypes.FETCHBANPAIDAWAR_REQUEST,
+      fetchbanpaidawarRequest,
       api
     ),
 
