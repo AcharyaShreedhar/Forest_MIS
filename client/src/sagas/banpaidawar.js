@@ -27,3 +27,15 @@ export function* fetchbanpaidawarRequest(api, action) {
       yield put(BanpaidawarActions.fetchbanpaidawarFailure());
     }
   }
+
+  export function* fetchallbanpaidawarlilamRequest(api, action) {
+ 
+    const response = yield api.getBanpaidawarlilamList();
+      if (response.ok) {
+      yield put(
+          BanpaidawarActions.fetchallbanpaidawarlilamSuccess(response.data)
+      );
+    } else {
+      yield put(BanpaidawarActions.fetchallbanpaidawarlilamFailure());
+    }
+  }
