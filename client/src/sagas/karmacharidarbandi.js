@@ -14,3 +14,18 @@ export function* fetchallkarmacharidarbandiRequest(api, action) {
   }
 }
 
+export function* fetchkarmacharidarbandiRequest(api, action) {
+  const  karmacharidarbandiId  = action.payload
+
+  const response = yield api.getKarmacharidarbandi(karmacharidarbandiId);
+  
+  if (response.ok) {
+    yield put(
+      KarmacharidarbandiActions.fetchkarmacharidarbandiSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharidarbandiActions.fetchkarmacharidarbandiFailure());
+  }
+}
+
+

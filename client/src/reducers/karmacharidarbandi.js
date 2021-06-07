@@ -1,7 +1,7 @@
 import { createReducer } from "reduxsauce";
 import Immutable from "seamless-immutable";
 import { dropLast, prepend } from "ramda";
-import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
+import {KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 
 const initialState = Immutable({
   status: "",
@@ -18,6 +18,19 @@ const fetchallkarmacharidarbandiSuccess = (state, action) => {
   });
 };
 const fetchallkarmacharidarbandiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchkarmacharidarbandiRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchkarmacharidarbandiSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    karmacharidarbandiData: action.response,
+  });
+};
+const fetchkarmacharidarbandiFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
@@ -39,6 +52,11 @@ export const reducer = createReducer(initialState, {
     [KarmacharidarbandiTypes.FETCHALLKARMACHARIDARBANDI_REQUEST]: fetchallkarmacharidarbandiRequest,
     [KarmacharidarbandiTypes.FETCHALLKARMACHARIDARBANDI_SUCCESS]: fetchallkarmacharidarbandiSuccess,
     [KarmacharidarbandiTypes.FETCHALLKARMACHARIDARBANDI_FAILURE]: fetchallkarmacharidarbandiFailure,
+
+    [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_REQUEST]: fetchkarmacharidarbandiRequest,
+    [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_SUCCESS]: fetchkarmacharidarbandiSuccess,
+    [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_FAILURE]: fetchkarmacharidarbandiFailure,
+
     
     [KarmacharidarbandiTypes.LOCATIONS_REQUEST]: locationsRequest,
     [KarmacharidarbandiTypes.CLEAR_REQUEST]: clearRequest,

@@ -14,6 +14,13 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
+//karmacharidarbandi---------------------
+import{ 
+  fetchallkarmacharidarbandiRequest,
+  fetchkarmacharidarbandiRequest,
+  } from "./karmacharidarbandi"; 
+
+
 //------------------------banbibaran
 import {
   fetchallsamudayikbanbibaranRequest,
@@ -44,9 +51,6 @@ import {
   fetchallbanyajantuxetiRequest,
   fetchbanyajantuxetiRequest,
 } from "./dwandabebasthapan";
-
-//karmacharidarbandi---------------------
-import{ fetchallkarmacharidarbandiRequest } from "./karmacharidarbandi"; 
 
 
 //-------------------sampatibibaran
@@ -201,9 +205,17 @@ export default function* root() {
       fetchallbanyajantuxetiRequest,
       api
     ),
+
+    // Karmachari darbandi
     takeLatest(
       KarmacharidarbandiTypes.FETCHALLKARMACHARIDARBANDI_REQUEST,
       fetchallkarmacharidarbandiRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_REQUEST,
+      fetchkarmacharidarbandiRequest,
       api
     ),
 

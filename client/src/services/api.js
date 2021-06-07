@@ -151,7 +151,7 @@ const create = (baseURL = Config.API_URL) => {
 
   // Karmachari darbandi
   const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
-
+  const getKarmacharidarbandi = (karmacharidarbandiId) => api.get(`karmachariDarbandi/${karmacharidarbandiId}`);
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -199,6 +199,7 @@ const create = (baseURL = Config.API_URL) => {
 
     // karmacharidarbandi
     getKarmacharidarbandiList,
+    getKarmacharidarbandi,
   };
 };
 
