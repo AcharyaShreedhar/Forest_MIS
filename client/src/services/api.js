@@ -61,11 +61,9 @@ const create = (baseURL = Config.API_URL) => {
   //Add
   const postBanbibaranSamudayikbanAddNew = (payload) =>
     api.post(`samudayikbanBibaran`, payload);
-
   //update
   const postBanbibaranSamudayikbanUpdate = (payload, samudayikbanbibaranId) =>
     api.post(`samudayikbanBibaran/${samudayikbanbibaranId}`, payload);
-
   //Delete
   const postBanbibaranSamudayikbanDelete = (samudayikbanbibaranId) =>
     api.post(`samudayikbanBibaran/${samudayikbanbibaranId}`);
@@ -132,15 +130,17 @@ const create = (baseURL = Config.API_URL) => {
 
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
 
-  const getBandadelobibaran = bandadeloBibaranId =>
-     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
-
+  const getBandadelobibaran = (bandadeloBibaranId) =>
+    api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
 
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
   const getBanpaidawar = (banpaidawarId) => api.get(`banpaidawar/${banpaidawarId}`);
   const getBanpaidawarlilamList = () => api.get("banpaidawarLilam");
   const getBanpaidawarlilam = (banpaidawarLilamId) => api.get(`banpaidawar/${banpaidawarLilamId}`);
+
+  // Karmachari darbandi
+  const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
 
   return {
     loginByUsername,
@@ -155,11 +155,13 @@ const create = (baseURL = Config.API_URL) => {
     getNijibanBibaran,
     getKabuliyatibanBibaranList,
     getKabuliyatibanBibaran,
+
     //dwandabebasthapan
     getBanyajantuUddarList,
     getBanyajantuUddar,
     getBanyajantuXetiList,
     getBanyajantuXeti,
+
     //biruwautpadans
     getBiruwautpadanList,
     getBiruwautpadan,
@@ -182,8 +184,10 @@ const create = (baseURL = Config.API_URL) => {
     getBanpaidawar,
     getBanpaidawarlilamList,
     getBanpaidawarlilam,
+
+    // karmacharidarbandi
+    getKarmacharidarbandiList,
   };
-  
 };
 
 export default {
