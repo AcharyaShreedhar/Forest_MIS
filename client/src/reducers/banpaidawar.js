@@ -1,0 +1,48 @@
+import { createReducer } from "reduxsauce";
+import Immutable from "seamless-immutable";
+import { dropLast, prepend } from "ramda";
+import { BanpaidawarTypes } from "../actions/banpaidawar";
+
+
+const initialState = Immutable({
+  status: "",
+  token: "",
+});
+
+const fetchallbanpaidawarRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallbanpaidawarSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanpaidawarData: action.response,
+  });
+};
+const fetchallbanpaidawarFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
+const locationsRequest = (state, action) => {
+  let locations = state.locations;
+
+  locations = prepend(action.payload.route, locations);
+  locations = dropLast(1, locations);
+  return state.merge({ ...state, locations });
+};
+
+const clearRequest = (state, action) =>
+  state.merge({ ...state, ...initialState });
+
+export const reducer = createReducer(initialState, {
+
+  [BanpaidawarTypes.FETCHALLBANPAIDAWAR_REQUEST]: fetchallbanpaidawarRequest,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWAR_SUCCESS]: fetchallbanpaidawarSuccess,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWAR_FAILURE]: fetchallbanpaidawarFailure,
+
+ 
+  [BanpaidawarTypes.LOCATIONS_REQUEST]: locationsRequest,
+  [BanpaidawarTypes.CLEAR_REQUEST]: clearRequest,
+});
