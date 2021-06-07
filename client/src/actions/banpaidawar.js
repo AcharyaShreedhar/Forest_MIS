@@ -16,6 +16,10 @@
    fetchallbanpaidawarSuccess: ["response"],
    fetchallbanpaidawarFailure: null,
 
+   fetchbanpaidawarRequest: ["payload"],
+   fetchbanpaidawarSuccess: ["response"],
+   fetchbanpaidawarFailure: null,
+
 
        locationsRequest: ["payload"],
    // Clear all caches
