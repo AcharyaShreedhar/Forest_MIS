@@ -57,7 +57,6 @@ import {
   fetchmuddaanusandhandayariRequest,
 } from "./muddaanusandhandayari";
 
-
 // ----------banxetraatikraman
 
 import {
@@ -66,21 +65,19 @@ import {
 } from "./banxetraatikraman";
 
 //-------banpaidawar
-import{
+import {
   fetchallbanpaidawarRequest,
   fetchbanpaidawarRequest,
   fetchallbanpaidawarlilamRequest,
   fetchbanpaidawarlilamRequest,
 } from "./banpaidawar";
 
-
 //--------------------bandadelobibaran
 
 import {
-  fetchallbandadelobibaranRequest, 
+  fetchallbandadelobibaranRequest,
   fetchbandadelobibaranRequest,
 } from "./bandadelobibaran";
-
 
 const api = API.create();
 
@@ -257,7 +254,7 @@ export default function* root() {
       BandadelobibaranTypes.FETCHBANDADELOBIBARAN_REQUEST,
       fetchbandadelobibaranRequest,
       api
-    )
+    ),
 
     //----------banpaidawar
     takeLatest(
@@ -283,11 +280,5 @@ export default function* root() {
       fetchbanpaidawarlilamRequest,
       api
     ),
-
   ]);
 }
-
-
-
-    
-
