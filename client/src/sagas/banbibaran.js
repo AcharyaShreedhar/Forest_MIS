@@ -138,6 +138,30 @@ export function* adddharmikbanbibaranRequest(api, action) {
   }
 }
 
+
+// Update Dharmikbanbibaran
+export function* updatedharmikbanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranDharmikbanUpdate(
+    payload.dharmikban.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    yield fetchdharmikbanbibaranRequest(api);
+    yield call(history.push, "/forests/dharmikbanlist");
+    yield put(
+      BanbibaranActions.updatedharmikbanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.updatedharmikbanbibaranFailure());
+    toast.error("Oops, Your action cannot be completed!. Please try again", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
 export function* fetchallnijibanbibaranRequest(api, action) {
   const response = yield api.getNijibanBibaranList();
   if (response.ok) {
