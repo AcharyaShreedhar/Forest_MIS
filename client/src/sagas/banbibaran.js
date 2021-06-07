@@ -31,11 +31,14 @@ export function* fetchsamudayikbanbibaranRequest(api, action) {
 export function* addsamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranSamudayikbanAddNew(payload.data);
+  const response = yield api.postBanbibaranSamudayikbanAddNew(
+    payload.samudayikban.data
+  );
 
   if (response.ok) {
     yield fetchallsamudayikbanbibaranRequest(api);
-    yield put(BanbibaranActions.addsamudayikbanbibaranSucess(response.data));
+    yield call(history.push, "/forests/samudayikbanlist");
+    yield put(BanbibaranActions.addsamudayikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addsamudayikbanbibaranFailure());
     toast.error("Oops, Your action cannot be completed!. Please try again", {
@@ -49,13 +52,16 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
 
   const response = yield api.postBanbibaranSamudayikbanUpdate(
-    payload.data,
+    payload.samudayikban.data,
     payload.id
   );
 
   if (response.ok) {
     yield fetchallsamudayikbanbibaranRequest(api);
-    yield put(BanbibaranActions.updatesamudayikbanbibaranSucess(response.data));
+    yield call(history.push, "/forests/samudayikbanlist");
+    yield put(
+      BanbibaranActions.updatesamudayikbanbibaranSuccess(response.data)
+    );
   } else {
     yield put(BanbibaranActions.updatesamudayikbanbibaranFailure());
     toast.error("Oops, Your action cannot be completed!. Please try again", {
@@ -72,7 +78,9 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
 
   if (response.ok) {
     yield fetchallsamudayikbanbibaranRequest(api);
-    yield put(BanbibaranActions.deletesamudayikbanbibaranSucess(response.data));
+    yield put(
+      BanbibaranActions.deletesamudayikbanbibaranSuccess(response.data)
+    );
   } else {
     yield put(BanbibaranActions.deletesamudayikbanbibaranFailure());
     toast.error("Oops, Your action cannot be completed!. Please try again", {

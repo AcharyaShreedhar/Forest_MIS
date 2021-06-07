@@ -8,6 +8,7 @@ import {
   KabuliyatibanBibaran,
   NijibanBibaran,
 } from "../../../components";
+import BanbibaranActions from "../../../actions/banbibaran";
 import {
   samudayikbanHeadings,
   dharmikbanHeadings,
@@ -94,6 +95,7 @@ class Banbibaran extends Component {
             headings={samudayikbanHeadings}
             onAdd={() => this.handleAdd("samudayikban")}
             onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addSamudayikbanbibaran(e)}
           />
         )}
         {equals(loc, "dharmikbanlist") && (
@@ -152,4 +154,9 @@ const mapStateToProps = (state) => ({
   nijibanbibaranDataList: state.banbibaran.allnijibanbibaranData,
 });
 
-export default connect(mapStateToProps, null)(Banbibaran);
+const mapDispatchToProps = (dispatch) => ({
+  addSamudayikbanbibaran: (payload) =>
+    dispatch(BanbibaranActions.addsamudayikbanbibaranRequest(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);

@@ -4,6 +4,7 @@ import { Button, Input, DatePicker, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./SamudayikbanBibaran.scss";
+import { equals } from "ramda";
 
 const ForestTypes = [
   { id: 1, value: "प्राकृतिक्" },
@@ -28,7 +29,6 @@ class Add extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleForestType = this.handleForestType.bind(this);
     this.handleDate = this.handleDate.bind(this);
   }
 
@@ -47,11 +47,11 @@ class Add extends Component {
     const payload = {
       samudayikban: {
         data: {
-          name: name,
-          regno: regno,
+          samudayikban_name: name,
+          darta_no: regno,
           area: area,
           main_species: main_species,
-          forest_type: forest_type,
+          forest_type: equals(forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण",
           handover_date: handover_date,
           forest_maujdat: forest_maujdat,
           nikasi_timber: nikasi_timber,
@@ -59,12 +59,12 @@ class Add extends Component {
         },
       },
     };
-
-    console.log("payload", payload);
+    this.props.onSubmit(payload);
   }
 
-  handleForestType(e) {}
-  handleDate(e) {}
+  handleDate(e) {
+    this.setState({ handover_date: e });
+  }
 
   render() {
     const {} = this.props;
@@ -126,7 +126,7 @@ class Add extends Component {
               defaultIds={[forest_type]}
               data={ForestTypes}
               getValue={(ForestTypes) => ForestTypes["value"]}
-              onChange={(e) => this.handleForestType(e)}
+              // onChange={(e) => this.handleForestType(e)}
               value={forest_type}
             />
 
@@ -165,7 +165,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this, 0)}
+                onClick={this.handleSubmit.bind(this)}
               />
             </div>
           </div>
