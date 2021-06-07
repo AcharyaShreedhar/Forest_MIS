@@ -39,3 +39,16 @@ export function* fetchbanpaidawarRequest(api, action) {
       yield put(BanpaidawarActions.fetchallbanpaidawarlilamFailure());
     }
   }
+
+  export function* fetchbanpaidawarlilamRequest(api, action) {
+    const  banpaidawarLilamId  = action.payload
+    
+    const response = yield api.getBanpaidawarlilam(banpaidawarLilamId);
+    if (response.ok) {
+      yield put(
+        BanpaidawarActions.fetchbanpaidawarlilamSuccess(response.data)
+      );
+    } else {
+      yield put(BanpaidawarActions.fetchbanpaidawarlilamFailure());
+    }
+  }
