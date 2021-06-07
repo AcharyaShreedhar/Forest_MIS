@@ -37,7 +37,7 @@ class Banbibaran extends Component {
         break;
       }
       case "delete": {
-        alert("this is delete menu");
+        this.props.deleteSamudayikbanbibaran(item.samudayikban_id);
         break;
       }
       default:
@@ -157,6 +157,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addSamudayikbanbibaran: (payload) =>
     dispatch(BanbibaranActions.addsamudayikbanbibaranRequest(payload)),
+  deleteSamudayikbanbibaran: (SamudayikbanbibaranId) =>
+    dispatch(
+      BanbibaranActions.deletesamudayikbanbibaranRequest(SamudayikbanbibaranId)
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);

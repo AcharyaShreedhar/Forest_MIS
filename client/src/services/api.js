@@ -66,7 +66,7 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`samudayikbanBibaran/${samudayikbanbibaranId}`, payload);
   //Delete
   const postBanbibaranSamudayikbanDelete = (samudayikbanbibaranId) =>
-    api.post(`samudayikbanBibaran/${samudayikbanbibaranId}`);
+    api.delete(`samudayikbanBibaran/${samudayikbanbibaranId}`);
 
   const getDharmikbanBibaranList = () => api.get("dharmikbanBibaran");
 
@@ -135,9 +135,11 @@ const create = (baseURL = Config.API_URL) => {
 
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
-  const getBanpaidawar = (banpaidawarId) => api.get(`banpaidawar/${banpaidawarId}`);
+  const getBanpaidawar = (banpaidawarId) =>
+    api.get(`banpaidawar/${banpaidawarId}`);
   const getBanpaidawarlilamList = () => api.get("banpaidawarLilam");
-  const getBanpaidawarlilam = (banpaidawarLilamId) => api.get(`banpaidawar/${banpaidawarLilamId}`);
+  const getBanpaidawarlilam = (banpaidawarLilamId) =>
+    api.get(`banpaidawar/${banpaidawarLilamId}`);
 
   // Karmachari darbandi
   const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
