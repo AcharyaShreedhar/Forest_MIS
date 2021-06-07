@@ -38,6 +38,21 @@ const fetchbanpaidawarFailure = (state, action) => {
 };
 
 
+const fetchallbanpaidawarlilamRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallbanpaidawarlilamSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanpaidawarlilamData: action.response,
+  });
+};
+const fetchallbanpaidawarlilamFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -59,6 +74,10 @@ export const reducer = createReducer(initialState, {
   [BanpaidawarTypes.FETCHBANPAIDAWAR_REQUEST]: fetchbanpaidawarRequest,
   [BanpaidawarTypes.FETCHBANPAIDAWAR_SUCCESS]: fetchbanpaidawarSuccess,
   [BanpaidawarTypes.FETCHBANPAIDAWAR_FAILURE]: fetchbanpaidawarFailure,
+
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARLILAM_REQUEST]: fetchallbanpaidawarlilamRequest,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARLILAM_SUCCESS]: fetchallbanpaidawarlilamSuccess,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARLILAM_FAILURE]: fetchallbanpaidawarlilamFailure,
 
  
   [BanpaidawarTypes.LOCATIONS_REQUEST]: locationsRequest,
