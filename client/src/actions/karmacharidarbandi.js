@@ -16,6 +16,11 @@
    fetchallkarmacharidarbandiSuccess: ["response"],
    fetchallkarmacharidarbandiFailure: null,
 
+   fetchkarmacharidarbandiRequest: ["payload"],
+   fetchkarmacharidarbandiSuccess: ["response"],
+   fetchkarmacharidarbandiFailure: null,
+
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
