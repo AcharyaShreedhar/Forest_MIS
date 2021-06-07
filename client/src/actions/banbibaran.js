@@ -43,6 +43,10 @@ const { Types, Creators } = createActions({
   adddharmikbanbibaranSuccess: ["response"],
   adddharmikbanbibaranFailure: null,
 
+  updatedharmikbanbibaranRequest: ["payload", "dharmikbanBibaranId"],
+  updatedharmikbanbibaranSuccess: ["response"],
+  updatedharmikbanbibaranFailure: null,
+
   fetchallnijibanbibaranRequest: ["payload"],
   fetchallnijibanbibaranSuccess: ["response"],
   fetchallnijibanbibaranFailure: null,
