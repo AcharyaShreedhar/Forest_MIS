@@ -10,6 +10,7 @@ import { BandadelobibaranTypes } from "../actions/bandadelobibaran";
 import { BanxetraatikramanTypes } from "../actions/banxetraatikraman";
 import { BanpaidawarTypes } from "../actions/banpaidawar";
 
+import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
@@ -41,6 +42,10 @@ import {
   fetchallbanyajantuxetiRequest,
   fetchbanyajantuxetiRequest,
 } from "./dwandabebasthapan";
+
+//karmacharidarbandi---------------------
+import{ fetchallkarmacharidarbandiRequest } from "./karmacharidarbandi"; 
+
 
 //-------------------sampatibibaran
 import {
@@ -180,6 +185,11 @@ export default function* root() {
     takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_REQUEST,
       fetchallbanyajantuxetiRequest,
+      api
+    ),
+    takeLatest(
+      KarmacharidarbandiTypes.FETCHALLKARMACHARIDARBANDI_REQUEST,
+      fetchallkarmacharidarbandiRequest,
       api
     ),
 
