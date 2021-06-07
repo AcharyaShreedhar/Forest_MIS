@@ -24,6 +24,10 @@
    fetchallbanpaidawarlilamSuccess: ["response"],
    fetchallbanpaidawarlilamFailure: null,
 
+   fetchbanpaidawarlilamRequest: ["payload"],
+   fetchbanpaidawarlilamSuccess: ["response"],
+   fetchbanpaidawarlilamFailure: null,
+
 
        locationsRequest: ["payload"],
    // Clear all caches
