@@ -21,6 +21,24 @@ const fetchallbandadelobibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+
+
+const fetchbandadelobibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+
+  const fetchbandadelobibaranSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    bandadelobibaranData: action.response,
+  });
+};
+const fetchbandadelobibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
 const locationsRequest = (state, action) => {
     let locations = state.locations;
   
@@ -37,6 +55,9 @@ const locationsRequest = (state, action) => {
         [BandadelobibaranTypes.FETCHALLBANDADELOBIBARAN_SUCCESS]: fetchallbandadelobibaranSuccess,
         [BandadelobibaranTypes.FETCHALLBANDADELOBIBARAN_FAILURE]: fetchallbandadelobibaranFailure, 
 
+        [BandadelobibaranTypes.FETCHBANDADELOBIBARAN_REQUEST]: fetchbandadelobibaranRequest,
+        [BandadelobibaranTypes.FETCHBANDADELOBIBARAN_SUCCESS]: fetchbandadelobibaranSuccess,
+        [BandadelobibaranTypes.FETCHBANDADELOBIBARAN_FAILURE]: fetchbandadelobibaranFailure, 
 
 
         [BandadelobibaranTypes.LOCATIONS_REQUEST]: locationsRequest,

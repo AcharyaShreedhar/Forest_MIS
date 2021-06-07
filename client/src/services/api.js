@@ -132,6 +132,10 @@ const create = (baseURL = Config.API_URL) => {
 
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
 
+  const getBandadelobibaran = bandadeloBibaranId =>
+     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
+
+
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
   const getBanpaidawar = (banpaidawarId) => api.get(`banpaidawar/${banpaidawarId}`);
@@ -149,38 +153,35 @@ const create = (baseURL = Config.API_URL) => {
     getNijibanBibaran,
     getKabuliyatibanBibaranList,
     getKabuliyatibanBibaran,
-
     //dwandabebasthapan
     getBanyajantuUddarList,
     getBanyajantuUddar,
     getBanyajantuXetiList,
     getBanyajantuXeti,
-
     //biruwautpadans
     getBiruwautpadanList,
     getBiruwautpadan,
-
     //sampatibibaran
     getAssetsList,
     getAssets,
     getVehiclesList,
     getVehicles,
-
     //muddaanusandhandayari
     getMuddaanusandhandayariList,
     getMuddaanusandhandayari,
-
     //banxetraatikraman
     getBanxetraatikramanList,
     getBanxetraatikraman,
-
     //bandadelobibaran
     getBandadelobibaranList,
-
+    getBandadelobibaran,
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,
+
+     
   };
+  
 };
 
 export default {
