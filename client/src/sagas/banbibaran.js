@@ -36,7 +36,7 @@ export function* addsamudayikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("Samudaikban bibaran is successfully added", {
+    toast.success("सफलतापुर्वक सामुदायिक वन प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallsamudayikbanbibaranRequest(api);
@@ -60,6 +60,9 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
+    toast.success("सफलतापुर्वक सामुदायिक वन पुनः प्रविष्ट भयो !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallsamudayikbanbibaranRequest(api);
     yield call(history.push, "/forests/samudayikbanlist");
     yield put(
@@ -80,7 +83,7 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
   const response = yield api.postBanbibaranSamudayikbanDelete(payload);
 
   if (response.ok) {
-    toast.success("Samudaikban bibaran is successfully deleted", {
+    toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallsamudayikbanbibaranRequest(api);
@@ -115,6 +118,56 @@ export function* fetchdharmikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchdharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchdharmikbanbibaranFailure());
+  }
+}
+
+// Add dharmikbanbibaran
+export function* adddharmikbanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranDharmikbanAddNew(
+    payload.dharmikban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक धार्मिक वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalldharmikbanbibaranRequest(api);
+    yield call(history.push, "/forests/dharmikbanlist");
+    yield put(BanbibaranActions.adddharmikbanbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.adddharmikbanbibaranFailure());
+    toast.error("Oops, Your action cannot be completed!. Please try again", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update Dharmikbanbibaran
+export function* updatedharmikbanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranDharmikbanUpdate(
+    payload.dharmikban.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchdharmikbanbibaranRequest(api);
+    yield call(history.push, "/forests/dharmikbanlist");
+    yield put(
+      BanbibaranActions.updatedharmikbanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.updatedharmikbanbibaranFailure());
+    toast.error("Oops, Your action cannot be completed!. Please try again", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   }
 }
 
