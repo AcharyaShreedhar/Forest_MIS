@@ -18,6 +18,10 @@
     fetchallbandadelobibaranFailure: null,
 
 
+    fetchbandadelobibaranRequest: ["payload"],
+    fetchbandadelobibaranSuccess: ["response"],
+    fetchbandadelobibaranFailure: null,
+
 
     locationsRequest: ["payload"],
     // Clear all caches
