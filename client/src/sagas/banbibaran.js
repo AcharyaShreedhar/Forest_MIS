@@ -127,7 +127,7 @@ export function* adddharmikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    yield fetchalldharikbanbibaranRequest(api);
+    yield fetchalldharmikbanbibaranRequest(api);
     yield call(history.push, "/forests/dharmikbanlist");
     yield put(BanbibaranActions.adddharmikbanbibaranSuccess(response.data));
   } else {
