@@ -158,7 +158,7 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchdharmikbanbibaranRequest(api);
+    yield fetchalldharmikbanbibaranRequest(api);
     yield call(history.push, "/forests/dharmikbanlist");
     yield put(
       BanbibaranActions.updatedharmikbanbibaranSuccess(response.data)
@@ -253,7 +253,7 @@ export function* updatenijibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक निजी वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchnijibanbibaranRequest(api);
+    yield fetchallnijibanbibaranRequest(api);
     yield call(history.push, "/forests/nijibanlist");
     yield put(
       BanbibaranActions.updatenijibanbibaranSuccess(response.data)
@@ -332,6 +332,33 @@ export function* addkabuliyatibanbibaranRequest(api, action) {
     yield put(BanbibaranActions.addkabuliyatibanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addkabuliyatibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update Kabuliyatibanbibaran
+export function* updatekabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranKbauliyatibanUpdate(
+    payload.kabuliyatiban.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield call(history.push, "/forests/kabuliyatibanlist");
+    yield put(
+      BanbibaranActions.updatekabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.updatekabuliyatibanbibaranFailure());
     toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
