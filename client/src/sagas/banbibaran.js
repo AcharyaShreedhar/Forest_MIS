@@ -179,7 +179,7 @@ export function* deletedharmikbanbibaranRequest(api, action) {
   const response = yield api.postBanbibaranDharmikbanDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक धार्मिक वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldharmikbanbibaranRequest(api);
@@ -265,6 +265,30 @@ export function* updatenijibanbibaranRequest(api, action) {
     });
   }
 }
+
+
+// Delete Nijibanbibaran
+export function* deletenijibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranNijibanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक निजी वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallnijibanbibaranRequest(api);
+    yield put(
+      BanbibaranActions.deletenijibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.deletenijibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
 
 export function* fetchallkabuliyatibanbibaranRequest(api, action) {
   const response = yield api.getKabuliyatibanBibaranList();
