@@ -15,6 +15,12 @@ const { Types, Creators } = createActions({
   fetchallplotbibaranSuccess: ["response"],
   fetchallplotbibaranFailure: null,
 
+ 
+  fetchplotbibaranRequest: ["payload"],
+  fetchplotbibaranSuccess: ["response"],
+  fetchplotbibaranFailure: null,
+  
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

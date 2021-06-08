@@ -97,7 +97,8 @@ import {
 //-----------plotbibaran
 
 import { 
-  fetchallplotbibaranRequest
+  fetchallplotbibaranRequest,
+  fetchplotbibaranRequest,
  } from "./plotbibaran";
 
 const api = API.create();
@@ -342,12 +343,21 @@ export default function* root() {
     takeLatest(
       BanpaidawarTypes.FETCHBANPAIDAWARLILAM_REQUEST,
       fetchbanpaidawarlilamRequest,
+      api
+    ),  
+  
     //------plotbibaran
-
     takeLatest(
       PlotbibaranTypes.FETCHALLPLOTBIBARAN_REQUEST,
       fetchallplotbibaranRequest,
       api
     ),
+    
+    takeLatest(
+      PlotbibaranTypes.FETCHPLOTBIBARAN_REQUEST,
+      fetchplotbibaranRequest,
+      api
+    ),
+    
   ]);
 }

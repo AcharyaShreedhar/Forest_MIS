@@ -12,3 +12,19 @@ export function* fetchallplotbibaranRequest(api, action) {
     yield put(PlotbibaranActions.fetchallplotbibaranFailure());
   }
 }
+
+
+export function* fetchplotbibaranRequest(api, action) {
+  const  plotId  = action.payload
+
+  const response = yield api.getPlotbibaran(plotId);
+  
+  if (response.ok) {
+    yield put(
+      PlotbibaranActions.fetchplotbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(PlotbibaranActions.fetchplotbibaranFailure());
+  }
+}
+
