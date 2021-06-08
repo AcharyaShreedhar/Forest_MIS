@@ -92,7 +92,7 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.deletesamudayikbanbibaranFailure());
-    toast.error("Oops, Your action cannot be completed!. Please try again", {
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
   }
@@ -170,6 +170,30 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     });
   }
 }
+
+
+// Delete dharmikbanbibaran
+export function* deletedharmikbanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranDharmikbanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalldharmikbanbibaranRequest(api);
+    yield put(
+      BanbibaranActions.deletedharmikbanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.deletedharmikbanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
 
 export function* fetchallnijibanbibaranRequest(api, action) {
   const response = yield api.getNijibanBibaranList();
