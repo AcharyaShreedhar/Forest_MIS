@@ -69,6 +69,8 @@ const deletesamudayikbanbibaranSuccess = (state, action) =>
 const deletesamudayikbanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+
+
 const fetchalldharmikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchalldharmikbanbibaranSuccess = (state, action) => {
@@ -146,18 +148,7 @@ const fetchallnijibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-const fetchallkabuliyatibanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
-const fetchallkabuliyatibanbibaranSuccess = (state, action) => {
-  return state.merge({
-    ...state,
-    status: "done",
-    allkabuliyatibanbibaranData: action.response,
-  });
-};
-const fetchallkabuliyatibanbibaranFailure = (state, action) => {
-  state.merge({ ...state, status: "error" });
-};
+
 
 const fetchnijibanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -197,6 +188,32 @@ const updatenijibanbibaranFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+//Delete Nijibanbibaran
+const deletenijibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletenijibanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletenijibanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+  const fetchallkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallkabuliyatibanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allkabuliyatibanbibaranData: action.response,
+  });
+};
+const fetchallkabuliyatibanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
 
 const fetchkabuliyatibanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -211,6 +228,44 @@ const fetchkabuliyatibanbibaranSuccess = (state, action) => {
 const fetchkabuliyatibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+
+//Add kabuliyatibanbibaran
+const addkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addkabuliyatibanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addkabuliyatibanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update Kabuliyatiban
+const updatekabuliyatibanbibaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatekabuliyatibanbibaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatekabuliyatibanbibaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete Kabuliyatiban
+const deletekabuliyatibanbibaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletekabuliyatibanbibaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletekabuliyatibanbibaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -280,6 +335,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.UPDATENIJIBANBIBARAN_SUCCESS]: updatenijibanbibaranSuccess,
   [BanbibaranTypes.UPDATENIJIBANBIBARAN_FAILURE]: updatenijibanbibaranFailure,
 
+  [BanbibaranTypes.DELETENIJIBANBIBARAN_REQUEST]: deletenijibanbibaranRequest,
+  [BanbibaranTypes.DELETENIJIBANBIBARAN_SUCCESS]: deletenijibanbibaranSuccess,
+  [BanbibaranTypes.DELETENIJIBANBIBARAN_FAILURE]: deletenijibanbibaranFailure,
+
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST]: fetchallkabuliyatibanbibaranRequest,
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_SUCCESS]: fetchallkabuliyatibanbibaranSuccess,
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_FAILURE]: fetchallkabuliyatibanbibaranFailure,
@@ -287,6 +346,19 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_REQUEST]: fetchkabuliyatibanbibaranRequest,
   [BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_SUCCESS]: fetchkabuliyatibanbibaranSuccess,
   [BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_FAILURE]: fetchkabuliyatibanbibaranFailure,
+
+  [BanbibaranTypes.ADDKABULIYATIBANBIBARAN_REQUEST]: addkabuliyatibanbibaranRequest,
+  [BanbibaranTypes.ADDKABULIYATIBANBIBARAN_SUCCESS]: addkabuliyatibanbibaranSuccess,
+  [BanbibaranTypes.ADDKABULIYATIBANBIBARAN_FAILURE]: addkabuliyatibanbibaranFailure,
+
+  [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST]: updatekabuliyatibanbibaranRequest,
+  [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_SUCCESS]: updatekabuliyatibanbibaranSuccess,
+  [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_FAILURE]: updatekabuliyatibanbibaranFailure,
+
+  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_REQUEST]: deletekabuliyatibanbibaranRequest,
+  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_SUCCESS]: deletekabuliyatibanbibaranSuccess,
+  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_FAILURE]: deletekabuliyatibanbibaranFailure,
+
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,

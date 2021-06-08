@@ -98,10 +98,26 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranNijibanUpdate = (payload, nijibanBibaranId) =>
     api.post(`nijibanBibaran/${nijibanBibaranId}`, payload);
 
+   //delete
+  const postBanbibaranNijibanDelete = (payload, nijibanBibaranId) =>
+   api.post(`nijibanBibaran/${nijibanBibaranId}`, payload);
+
   const getKabuliyatibanBibaranList = () => api.get("kabuliyatibanBibaran");
 
   const getKabuliyatibanBibaran = (kabuliyatibanBibaranId) =>
     api.get(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
+
+  //Add
+  const postBanbibaranKabuliyatibanAddNew = (payload) =>
+  api.post(`kabuliyatibanBibaran`, payload);
+
+  //update
+  const postBanbibaranKabuliyatibanUpdate = (payload, kabuliyatibanBibaranId) =>
+   api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
+
+   //delete
+  const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) =>
+  api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
 
   //................biruwautpadans
 
@@ -188,9 +204,12 @@ const create = (baseURL = Config.API_URL) => {
     getNijibanBibaran,
     postBanbibaranNijibanAddNew,
     postBanbibaranNijibanUpdate,
+    postBanbibaranNijibanDelete,
     getKabuliyatibanBibaranList,
     getKabuliyatibanBibaran,
-
+    postBanbibaranKabuliyatibanAddNew,
+    postBanbibaranKabuliyatibanUpdate,
+    postBanbibaranKabuliyatibanDelete,
     //dwandabebasthapan
     getBanyajantuUddarList,
     getBanyajantuUddar,

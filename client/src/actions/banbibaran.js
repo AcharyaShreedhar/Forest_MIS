@@ -67,6 +67,10 @@ const { Types, Creators } = createActions({
   updatenijibanbibaranSuccess: ["response"],
   updatenijibanbibaranFailure: null,
 
+  deletenijibanbibaranRequest: ["payload", "nijibanBibaranId"],
+  deletenijibanbibaranSuccess: ["response"],
+  deletenijibanbibaranFailure: null,
+
 
   fetchallkabuliyatibanbibaranRequest: ["payload"],
   fetchallkabuliyatibanbibaranSuccess: ["response"],
@@ -75,6 +79,18 @@ const { Types, Creators } = createActions({
   fetchkabuliyatibanbibaranRequest: ["payload"],
   fetchkabuliyatibanbibaranSuccess: ["response"],
   fetchkabuliyatibanbibaranFailure: null,
+
+  addkabuliyatibanbibaranRequest: ["payload"],
+  addkabuliyatibanbibaranSuccess: ["response"],
+  addkabuliyatibanbibaranFailure: null,
+
+  updatekabuliyatibanbibaranRequest: ["payload", "kabuliyatibanBibaranId"],
+  updatekabuliyatibanbibaranSuccess: ["response"],
+  updatekabuliyatibanbibaranFailure: null,
+
+  deletekabuliyatibanbibaranRequest: ["payload", "kabuliyatibanBibaranId"],
+  deletekabuliyatibanbibaranSuccess: ["response"],
+  deletekabuliyatibanbibaranFailure: null,
 
   locationsRequest: ["payload"],
   // Clear all caches

@@ -169,7 +169,7 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchdharmikbanbibaranRequest(api);
+    yield fetchalldharmikbanbibaranRequest(api);
     yield call(history.push, "/forests/dharmikbanlist");
     yield put(BanbibaranActions.updatedharmikbanbibaranSuccess(response.data));
   } else {
@@ -190,7 +190,7 @@ export function* deletedharmikbanbibaranRequest(api, action) {
   const response = yield api.postBanbibaranDharmikbanDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक धार्मिक वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldharmikbanbibaranRequest(api);
@@ -263,7 +263,7 @@ export function* updatenijibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक निजी वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchnijibanbibaranRequest(api);
+    yield fetchallnijibanbibaranRequest(api);
     yield call(history.push, "/forests/nijibanlist");
     yield put(BanbibaranActions.updatenijibanbibaranSuccess(response.data));
   } else {
@@ -276,6 +276,30 @@ export function* updatenijibanbibaranRequest(api, action) {
     );
   }
 }
+
+
+// Delete Nijibanbibaran
+export function* deletenijibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranNijibanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक निजी वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallnijibanbibaranRequest(api);
+    yield put(
+      BanbibaranActions.deletenijibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.deletenijibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
 
 export function* fetchallkabuliyatibanbibaranRequest(api, action) {
   const response = yield api.getKabuliyatibanBibaranList();
@@ -298,5 +322,80 @@ export function* fetchkabuliyatibanbibaranRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.fetchkabuliyatibanbibaranFailure());
+  }
+}
+
+
+// Add Kabuliyatibanbibaran
+export function* addkabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranKabuliyatibanAddNew(
+    payload.kabuliyatiban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कबुलियती वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield call(history.push, "/forests/kabuliyatibanlist");
+    yield put(BanbibaranActions.addkabuliyatibanbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.addkabuliyatibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update Kabuliyatibanbibaran
+export function* updatekabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranKbauliyatibanUpdate(
+    payload.kabuliyatiban.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield call(history.push, "/forests/kabuliyatibanlist");
+    yield put(
+      BanbibaranActions.updatekabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.updatekabuliyatibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+
+// Delete Kabuliyatibanbibaran
+export function* deletekabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranKapuliyatibanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कबुलियती वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield put(
+      BanbibaranActions.deletekabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.deletekabuliyatibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   }
 }
