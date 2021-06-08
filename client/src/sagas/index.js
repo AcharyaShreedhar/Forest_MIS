@@ -28,6 +28,7 @@ import {
   deletedharmikbanbibaranRequest,
   fetchallnijibanbibaranRequest,
   fetchnijibanbibaranRequest,
+  addnijibanbibaranRequest,
   fetchallkabuliyatibanbibaranRequest,
   fetchkabuliyatibanbibaranRequest,
 } from "./banbibaran";
@@ -162,6 +163,12 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.FETCHNIJIBANBIBARAN_REQUEST,
       fetchnijibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.ADDNIJIBANBIBARAN_REQUEST,
+      addnijibanbibaranRequest,
       api
     ),
 
