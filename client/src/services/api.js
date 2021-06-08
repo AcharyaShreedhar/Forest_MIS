@@ -168,6 +168,7 @@ const create = (baseURL = Config.API_URL) => {
   //------plotbibaran
 
   const getPlotbibaranList = () => api.get("plot");
+  const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
   return {
     loginByUsername,
@@ -223,6 +224,7 @@ const create = (baseURL = Config.API_URL) => {
     
     //-----plotbibaran
     getPlotbibaranList,
+    getPlotbibaran,
   };
 };
 
