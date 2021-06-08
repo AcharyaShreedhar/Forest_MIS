@@ -84,6 +84,10 @@ const { Types, Creators } = createActions({
   addkabuliyatibanbibaranSuccess: ["response"],
   addkabuliyatibanbibaranFailure: null,
 
+  updatekabuliyatibanbibaranRequest: ["payload", "kabuliyatibanBibaranId"],
+  updatekabuliyatibanbibaranSuccess: ["response"],
+  updatekabuliyatibanbibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
