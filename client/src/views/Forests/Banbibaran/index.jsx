@@ -27,13 +27,17 @@ class Banbibaran extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
+
     return { loc };
   }
 
   handleSelectMenu(event, item) {
     switch (event) {
       case "edit": {
-        alert("this is edit menu");
+        this.props.history.push({
+          pathname: `/forests/samudayikbanedit/${item.samudayikban_id}`,
+          item,
+        });
         break;
       }
       case "delete": {
@@ -48,7 +52,7 @@ class Banbibaran extends Component {
   handleAdd(item) {
     switch (item) {
       case "samudayikban": {
-        this.props.history.push("/forests/samudayikban/new");
+        this.props.history.push("/forests/samudayikbanadd/new");
         break;
       }
       case "kabuliyatiban": {
@@ -87,15 +91,25 @@ class Banbibaran extends Component {
             onSelect={this.handleSelectMenu}
           />
         )}
-        {equals(loc, "samudayikban") && (
+        {equals(loc, "samudayikbanadd") && (
           <SamudayikbanBibaran.Add
             buttonName="+ सामुदायिक वन"
             title="सामुदायिक वन सम्बन्धी विवरण"
             data={samudayikbanList}
             headings={samudayikbanHeadings}
-            onAdd={() => this.handleAdd("samudayikban")}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addSamudayikbanbibaran(e)}
+          />
+        )}
+        {equals(loc, "samudayikbanedit") && (
+          <SamudayikbanBibaran.Edit
+            buttonName="+ सामुदायिक वन"
+            title="सामुदायिक वन सम्बन्धी विवरण"
+            data={samudayikbanList}
+            headings={samudayikbanHeadings}
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateSamudayikbanbibaran(e, id)}
           />
         )}
         {equals(loc, "dharmikbanlist") && (
@@ -157,9 +171,17 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addSamudayikbanbibaran: (payload) =>
     dispatch(BanbibaranActions.addsamudayikbanbibaranRequest(payload)),
-  deleteSamudayikbanbibaran: (SamudayikbanbibaranId) =>
+  updateSamudayikbanbibaran: (payload, samudayikbanbibaranId) =>
     dispatch(
-      BanbibaranActions.deletesamudayikbanbibaranRequest(SamudayikbanbibaranId)
+      BanbibaranActions.updatesamudayikbanbibaranRequest(
+        payload,
+        samudayikbanbibaranId
+      )
+    ),
+
+  deleteSamudayikbanbibaran: (samudayikbanbibaranId) =>
+    dispatch(
+      BanbibaranActions.deletesamudayikbanbibaranRequest(samudayikbanbibaranId)
     ),
 });
 
