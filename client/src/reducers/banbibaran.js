@@ -254,6 +254,18 @@ const updatekabuliyatibanbibaranFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+//Delete Kabuliyatiban
+const deletekabuliyatibanbibaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletekabuliyatibanbibaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletekabuliyatibanbibaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -342,6 +354,11 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST]: updatekabuliyatibanbibaranRequest,
   [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_SUCCESS]: updatekabuliyatibanbibaranSuccess,
   [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_FAILURE]: updatekabuliyatibanbibaranFailure,
+
+  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_REQUEST]: deletekabuliyatibanbibaranRequest,
+  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_SUCCESS]: deletekabuliyatibanbibaranSuccess,
+  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_FAILURE]: deletekabuliyatibanbibaranFailure,
+
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
