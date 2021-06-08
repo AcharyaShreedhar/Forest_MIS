@@ -30,6 +30,7 @@ class Add extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleForestType = this.handleForestType.bind(this);
   }
 
   handleSubmit() {
@@ -61,7 +62,9 @@ class Add extends Component {
     };
     this.props.onSubmit(payload);
   }
-
+  handleForestType(e) {
+    this.setState({ forest_type: e });
+  }
   handleDate(e) {
     this.setState({ handover_date: e });
   }
@@ -126,7 +129,7 @@ class Add extends Component {
               defaultIds={[forest_type]}
               data={ForestTypes}
               getValue={(ForestTypes) => ForestTypes["value"]}
-              // onChange={(e) => this.handleForestType(e)}
+              onChange={(e) => this.handleForestType(e)}
               value={forest_type}
             />
 

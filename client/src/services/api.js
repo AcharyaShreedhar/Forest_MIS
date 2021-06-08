@@ -63,7 +63,7 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`samudayikbanBibaran`, payload);
   //update
   const postBanbibaranSamudayikbanUpdate = (payload, samudayikbanbibaranId) =>
-    api.post(`samudayikbanBibaran/${samudayikbanbibaranId}`, payload);
+    api.put(`samudayikbanBibaran/${samudayikbanbibaranId}`, payload);
   //Delete
   const postBanbibaranSamudayikbanDelete = (samudayikbanbibaranId) =>
     api.delete(`samudayikbanBibaran/${samudayikbanbibaranId}`);
@@ -75,7 +75,7 @@ const create = (baseURL = Config.API_URL) => {
 
   //Add
   const postBanbibaranDharmikbanAddNew = (payload) =>
-  api.post(`dharmikbanBibaran`, payload);
+    api.post(`dharmikbanBibaran`, payload);
 
   //update
   const postBanbibaranDharmikbanUpdate = (payload, dharmikbanBibaranId) =>
@@ -83,7 +83,7 @@ const create = (baseURL = Config.API_URL) => {
 
   //Delete
   const postBanbibaranDharmikbanDelete = (dharmikbanBibaranId) =>
-  api.delete(`dharmikbanBibaran/${dharmikbanBibaranId}`);
+    api.delete(`dharmikbanBibaran/${dharmikbanBibaranId}`);
 
   const getNijibanBibaranList = () => api.get("nijibanBibaran");
 
@@ -92,11 +92,11 @@ const create = (baseURL = Config.API_URL) => {
 
   //Add
   const postBanbibaranNijibanAddNew = (payload) =>
-  api.post(`nijibanBibaran`, payload);
+    api.post(`nijibanBibaran`, payload);
 
   //update
   const postBanbibaranNijibanUpdate = (payload, nijibanBibaranId) =>
-   api.post(`nijibanBibaran/${nijibanBibaranId}`, payload);
+    api.post(`nijibanBibaran/${nijibanBibaranId}`, payload);
 
   const getKabuliyatibanBibaranList = () => api.get("kabuliyatibanBibaran");
 
@@ -170,6 +170,8 @@ const create = (baseURL = Config.API_URL) => {
   const getPlotbibaranList = () => api.get("plot");
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
+  const getKarmacharidarbandi = (karmacharidarbandiId) =>
+    api.get(`karmachariDarbandi/${karmacharidarbandiId}`);
   return {
     loginByUsername,
     getSamudayikbanBibaranList,

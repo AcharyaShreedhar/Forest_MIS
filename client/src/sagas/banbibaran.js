@@ -44,19 +44,22 @@ export function* addsamudayikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.addsamudayikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addsamudayikbanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
 // Update samudayikbanbibaran
 export function* updatesamudayikbanbibaranRequest(api, action) {
-  const { payload } = action;
+  const { payload, samudayikbanbibaranId } = action;
 
   const response = yield api.postBanbibaranSamudayikbanUpdate(
     payload.samudayikban.data,
-    payload.id
+    samudayikbanbibaranId
   );
 
   if (response.ok) {
@@ -70,9 +73,12 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.updatesamudayikbanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
@@ -92,9 +98,12 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.deletesamudayikbanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
@@ -138,12 +147,14 @@ export function* adddharmikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.adddharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.adddharmikbanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
 
 // Update Dharmikbanbibaran
 export function* updatedharmikbanbibaranRequest(api, action) {
@@ -160,17 +171,17 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     });
     yield fetchdharmikbanbibaranRequest(api);
     yield call(history.push, "/forests/dharmikbanlist");
-    yield put(
-      BanbibaranActions.updatedharmikbanbibaranSuccess(response.data)
-    );
+    yield put(BanbibaranActions.updatedharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.updatedharmikbanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
 
 // Delete dharmikbanbibaran
 export function* deletedharmikbanbibaranRequest(api, action) {
@@ -183,17 +194,17 @@ export function* deletedharmikbanbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldharmikbanbibaranRequest(api);
-    yield put(
-      BanbibaranActions.deletedharmikbanbibaranSuccess(response.data)
-    );
+    yield put(BanbibaranActions.deletedharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.deletedharmikbanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
 
 export function* fetchallnijibanbibaranRequest(api, action) {
   const response = yield api.getNijibanBibaranList();
@@ -215,14 +226,11 @@ export function* fetchnijibanbibaranRequest(api, action) {
   }
 }
 
-
 // Add nijibanbibaran
 export function* addnijibanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranNijibanAddNew(
-    payload.nijiban.data
-  );
+  const response = yield api.postBanbibaranNijibanAddNew(payload.nijiban.data);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक निजी वन प्रविष्ट भयो !!!!!", {
@@ -233,12 +241,14 @@ export function* addnijibanbibaranRequest(api, action) {
     yield put(BanbibaranActions.addnijibanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addnijibanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
 
 // Update Nijibanbibaran
 export function* updatenijibanbibaranRequest(api, action) {
@@ -255,14 +265,15 @@ export function* updatenijibanbibaranRequest(api, action) {
     });
     yield fetchnijibanbibaranRequest(api);
     yield call(history.push, "/forests/nijibanlist");
-    yield put(
-      BanbibaranActions.updatenijibanbibaranSuccess(response.data)
-    );
+    yield put(BanbibaranActions.updatenijibanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.updatenijibanbibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
