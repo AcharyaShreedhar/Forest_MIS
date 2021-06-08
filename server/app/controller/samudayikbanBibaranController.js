@@ -1,7 +1,7 @@
 const pool = require("../db");
 //Controller for Listing all SamudayikbanBibaran
 async function getAllSamudayikbanBibaran(req, res) {
-  const getAllSamudayikbanBibaranQuery = `select * from samudayikban_bibarans`;
+  const getAllSamudayikbanBibaranQuery = "SELECT samudayikban_bibarans.*,nabikaran_karyayojanas.valid_miti,nabikaran_karyayojanas.nabikaran_miti,nabikaran_karyayojanas.nabikaran_abadhi FROM `samudayikban_bibarans` left JOIN nabikaran_karyayojanas on samudayikban_bibarans.darta_no=nabikaran_karyayojanas.darta_id";
   pool.query(getAllSamudayikbanBibaranQuery, [], (error, results, fields) => {
     if (error) throw error;
     res.send(JSON.stringify({ status: 200, error: null, data: results }));
@@ -10,7 +10,7 @@ async function getAllSamudayikbanBibaran(req, res) {
 
 //Controller for Listing a SamudayikbanBibaran
 async function getSamudayikbanBibaran(req, res) {
-  const getSamudayikbanBibaranQuery = `select * from samudayikban_bibarans where samudayikban_id=?`;
+  const getSamudayikbanBibaranQuery = "SELECT samudayikban_bibarans.*,nabikaran_karyayojanas.valid_miti,nabikaran_karyayojanas.nabikaran_miti,nabikaran_karyayojanas.nabikaran_abadhi FROM `samudayikban_bibarans` left JOIN nabikaran_karyayojanas on samudayikban_bibarans.darta_no=nabikaran_karyayojanas.darta_id where samudayikban_bibarans.samudayikban_id=1=?";
   pool.query(
     getSamudayikbanBibaranQuery,
     [req.params.samudayikbanBibaranId],
