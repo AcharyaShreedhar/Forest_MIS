@@ -110,6 +110,7 @@ import {
 
  import{
    fetchallinventoriesRequest,
+   fetchinventoriesRequest,
  } from "./inventories";
  
 const api = API.create();
@@ -399,6 +400,12 @@ export default function* root() {
     takeLatest(
       InventoriesTypes.FETCHALLINVENTORIES_REQUEST,
       fetchallinventoriesRequest,
+      api
+    ), 
+
+    takeLatest(
+      InventoriesTypes.FETCHINVENTORIES_REQUEST,
+      fetchinventoriesRequest,
       api
     ), 
     

@@ -98,15 +98,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) =>
     api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
 
-  //Add
-  const postBanbibaranKabuliyatibanAddNew = (payload) =>
-    api.post(`kabuliyatibanBibaran`, payload);
-  //update
-  const postBanbibaranKabuliyatibanUpdate = (payload, kabuliyatibanBibaranId) =>
-    api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
-  //delete
-  const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) =>
-    api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
+ 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
   const getBiruwautpadan = (biruwautpadanId) =>
@@ -151,7 +143,9 @@ const create = (baseURL = Config.API_URL) => {
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
   //inventories
-  const getInventoryList = () => api.get("inventory");
+  const getInventoriesList = () => api.get("inventory");
+  const getInventories = (inventId) =>
+   api.get(`inventory/${inventId}`);
 
   return {
     loginByUsername,
@@ -209,7 +203,8 @@ const create = (baseURL = Config.API_URL) => {
     getPlotbibaranList,
     getPlotbibaran,
     //inventories
-    getInventoryList,
+    getInventoriesList,
+    getInventories,
   };
 };
 export default {

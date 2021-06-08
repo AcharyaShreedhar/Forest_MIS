@@ -12,3 +12,19 @@ export function* fetchallinventoriesRequest(api, action) {
     yield put(InventoriesActions.fetchallinventoriesFailure());
   }
 }
+
+
+export function* fetchinventoriesRequest(api, action) {
+  const  inventId  = action.payload
+
+  const response = yield api.getInventories(inventId);
+  
+  if (response.ok) {
+    yield put(
+      InventoriesActions.fetchinventoriesSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.fetchinventoriesFailure());
+  }
+}
+
