@@ -43,9 +43,12 @@ function List(props) {
                   <td key={index}> {sban.main_species}</td>
                   <td key={index}> {sban.forest_type}</td>
                   <td key={index}> {sban.handover_date}</td>
+                  <td key={index}> {sban.renewed_date}</td>
+                  <td key={index}> {sban.nabikaran_abadhi}</td>
                   <td key={index}> {sban.forest_maujdat}</td>
                   <td key={index}> {sban.nikasi_timber}</td>
                   <td key={index}> {sban.nikasi_wood}</td>
+                  <td key={index}> {sban.renewal_date}</td>
                   <td key={index}> {sban.created_by}</td>
                   <td key={index}> {sban.updated_by}</td>
                   <td>
