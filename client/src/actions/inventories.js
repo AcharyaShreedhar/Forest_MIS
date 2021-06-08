@@ -8,19 +8,21 @@
  * select: When setting reducers, not handling with database, just handling only reducers.
  */
 
- import { createActions } from "reduxsauce";
+import { createActions } from "reduxsauce";
 
- const { Types, Creators } = createActions({
-   fetchallinventoriesRequest: ["payload"],
-   fetchallinventoriesSuccess: ["response"],
-   fetchallinventoriesFailure: null,
-   
+const { Types, Creators } = createActions({
+  fetchallinventoriesRequest: ["payload"],
+  fetchallinventoriesSuccess: ["response"],
+  fetchallinventoriesFailure: null,
 
-   locationsRequest: ["payload"],
-   // Clear all caches
-   clearRequest: null,
- });
- 
- export const InventoriesTypes = Types;
- export default Creators;
- 
+  fetchinventoriesRequest: ["payload"],
+  fetchinventoriesSuccess: ["response"],
+  fetchinventoriesFailure: null,
+
+  locationsRequest: ["payload"],
+  // Clear all caches
+  clearRequest: null,
+});
+
+export const InventoriesTypes = Types;
+export default Creators;
