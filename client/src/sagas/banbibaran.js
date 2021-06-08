@@ -364,3 +364,27 @@ export function* updatekabuliyatibanbibaranRequest(api, action) {
     });
   }
 }
+
+
+
+// Delete Kabuliyatibanbibaran
+export function* deletekabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranKapuliyatibanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कबुलियती वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield put(
+      BanbibaranActions.deletekabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.deletekabuliyatibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
