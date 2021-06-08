@@ -313,3 +313,27 @@ export function* fetchkabuliyatibanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchkabuliyatibanbibaranFailure());
   }
 }
+
+
+// Add Kabuliyatibanbibaran
+export function* addkabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranKabuliyatibanAddNew(
+    payload.kabuliyatiban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कबुलियती वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield call(history.push, "/forests/kabuliyatibanlist");
+    yield put(BanbibaranActions.addkabuliyatibanbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.addkabuliyatibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
