@@ -69,6 +69,8 @@ const deletesamudayikbanbibaranSuccess = (state, action) =>
 const deletesamudayikbanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+
+
 const fetchalldharmikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchalldharmikbanbibaranSuccess = (state, action) => {
@@ -146,18 +148,7 @@ const fetchallnijibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-const fetchallkabuliyatibanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
-const fetchallkabuliyatibanbibaranSuccess = (state, action) => {
-  return state.merge({
-    ...state,
-    status: "done",
-    allkabuliyatibanbibaranData: action.response,
-  });
-};
-const fetchallkabuliyatibanbibaranFailure = (state, action) => {
-  state.merge({ ...state, status: "error" });
-};
+
 
 const fetchnijibanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -195,6 +186,32 @@ state.merge({
 });
 const updatenijibanbibaranFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
+
+
+//Delete Nijibanbibaran
+const deletenijibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletenijibanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletenijibanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+  const fetchallkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallkabuliyatibanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allkabuliyatibanbibaranData: action.response,
+  });
+};
+const fetchallkabuliyatibanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 
 
@@ -279,6 +296,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.UPDATENIJIBANBIBARAN_REQUEST]: updatenijibanbibaranRequest,
   [BanbibaranTypes.UPDATENIJIBANBIBARAN_SUCCESS]: updatenijibanbibaranSuccess,
   [BanbibaranTypes.UPDATENIJIBANBIBARAN_FAILURE]: updatenijibanbibaranFailure,
+
+  [BanbibaranTypes.DELETENIJIBANBIBARAN_REQUEST]: deletenijibanbibaranRequest,
+  [BanbibaranTypes.DELETENIJIBANBIBARAN_SUCCESS]: deletenijibanbibaranSuccess,
+  [BanbibaranTypes.DELETENIJIBANBIBARAN_FAILURE]: deletenijibanbibaranFailure,
 
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST]: fetchallkabuliyatibanbibaranRequest,
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_SUCCESS]: fetchallkabuliyatibanbibaranSuccess,
