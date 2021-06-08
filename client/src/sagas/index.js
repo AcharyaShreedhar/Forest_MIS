@@ -29,6 +29,7 @@ import {
   fetchallnijibanbibaranRequest,
   fetchnijibanbibaranRequest,
   addnijibanbibaranRequest,
+  updatenijibanbibaranRequest,
   fetchallkabuliyatibanbibaranRequest,
   fetchkabuliyatibanbibaranRequest,
 } from "./banbibaran";
@@ -169,6 +170,12 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.ADDNIJIBANBIBARAN_REQUEST,
       addnijibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.UPDATENIJIBANBIBARAN_REQUEST,
+      updatenijibanbibaranRequest,
       api
     ),
 
