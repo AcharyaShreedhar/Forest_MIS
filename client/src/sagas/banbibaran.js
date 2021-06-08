@@ -44,7 +44,7 @@ export function* addsamudayikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.addsamudayikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addsamudayikbanbibaranFailure());
-    toast.error("Oops, Your action cannot be completed!. Please try again", {
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
   }
@@ -70,7 +70,7 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.updatesamudayikbanbibaranFailure());
-    toast.error("Oops, Your action cannot be completed!. Please try again", {
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
   }
@@ -138,7 +138,7 @@ export function* adddharmikbanbibaranRequest(api, action) {
     yield put(BanbibaranActions.adddharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.adddharmikbanbibaranFailure());
-    toast.error("Oops, Your action cannot be completed!. Please try again", {
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
   }
@@ -165,7 +165,7 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.updatedharmikbanbibaranFailure());
-    toast.error("Oops, Your action cannot be completed!. Please try again", {
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
   }
@@ -212,6 +212,30 @@ export function* fetchnijibanbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchnijibanbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchnijibanbibaranFailure());
+  }
+}
+
+
+// Add nijibanbibaran
+export function* addnijibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranNijibanAddNew(
+    payload.nijiban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक निजी वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallnijibanbibaranRequest(api);
+    yield call(history.push, "/forests/nijibanlist");
+    yield put(BanbibaranActions.addnijibanbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.addnijibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   }
 }
 

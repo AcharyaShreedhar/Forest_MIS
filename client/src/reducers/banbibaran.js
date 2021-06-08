@@ -173,6 +173,19 @@ const fetchnijibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add nijibanbibaran
+const addnijibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addnijibanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addnijibanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+
 const fetchkabuliyatibanbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 
@@ -246,6 +259,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHNIJIBANBIBARAN_REQUEST]: fetchnijibanbibaranRequest,
   [BanbibaranTypes.FETCHNIJIBANBIBARAN_SUCCESS]: fetchnijibanbibaranSuccess,
   [BanbibaranTypes.FETCHNIJIBANBIBARAN_FAILURE]: fetchnijibanbibaranFailure,
+
+  [BanbibaranTypes.ADDNIJIBANBIBARAN_REQUEST]: addnijibanbibaranRequest,
+  [BanbibaranTypes.ADDNIJIBANBIBARAN_SUCCESS]: addnijibanbibaranSuccess,
+  [BanbibaranTypes.ADDNIJIBANBIBARAN_FAILURE]: addnijibanbibaranFailure,
 
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST]: fetchallkabuliyatibanbibaranRequest,
   [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_SUCCESS]: fetchallkabuliyatibanbibaranSuccess,
