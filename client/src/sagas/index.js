@@ -12,6 +12,7 @@ import { BanpaidawarTypes } from "../actions/banpaidawar";
 import { PlotbibaranTypes } from "../actions/plotbibaran";
 
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
+import { InventoriesTypes }  from "../actions/inventories";
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
@@ -105,6 +106,12 @@ import {
   fetchplotbibaranRequest,
  } from "./plotbibaran";
 
+ //---------inventories
+
+ import{
+   fetchallinventoriesRequest,
+ } from "./inventories";
+ 
 const api = API.create();
 
 export default function* root() {
@@ -387,6 +394,13 @@ export default function* root() {
       fetchplotbibaranRequest,
       api
     ),
+
+    //inventories
+    takeLatest(
+      InventoriesTypes.FETCHALLINVENTORIES_REQUEST,
+      fetchallinventoriesRequest,
+      api
+    ), 
     
   ]);
 }
