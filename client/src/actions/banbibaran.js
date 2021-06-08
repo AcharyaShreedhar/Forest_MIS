@@ -47,6 +47,10 @@ const { Types, Creators } = createActions({
   updatedharmikbanbibaranSuccess: ["response"],
   updatedharmikbanbibaranFailure: null,
 
+  deletedharmikbanbibaranRequest: ["payload", "dharmikbanBibaranId"],
+  deletedharmikbanbibaranSuccess: ["response"],
+  deletedharmikbanbibaranFailure: null,
+
   fetchallnijibanbibaranRequest: ["payload"],
   fetchallnijibanbibaranSuccess: ["response"],
   fetchallnijibanbibaranFailure: null,
