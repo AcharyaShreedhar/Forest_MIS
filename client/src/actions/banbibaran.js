@@ -63,6 +63,11 @@ const { Types, Creators } = createActions({
   addnijibanbibaranSuccess: ["response"],
   addnijibanbibaranFailure: null,
 
+  updatenijibanbibaranRequest: ["payload", "nijibanBibaranId"],
+  updatenijibanbibaranSuccess: ["response"],
+  updatenijibanbibaranFailure: null,
+
+
   fetchallkabuliyatibanbibaranRequest: ["payload"],
   fetchallkabuliyatibanbibaranSuccess: ["response"],
   fetchallkabuliyatibanbibaranFailure: null,
