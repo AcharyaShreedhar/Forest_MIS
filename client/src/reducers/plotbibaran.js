@@ -21,6 +21,20 @@ const fetchallplotbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchplotbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchplotbibaranSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    plotbibaranData: action.response,
+  });
+};
+const fetchplotbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -36,6 +50,11 @@ export const reducer = createReducer(initialState, {
   [PlotbibaranTypes.FETCHALLPLOTBIBARAN_REQUEST]: fetchallplotbibaranRequest,
   [PlotbibaranTypes.FETCHALLPLOTBIBARAN_SUCCESS]: fetchallplotbibaranSuccess,
   [PlotbibaranTypes.FETCHALLPLOTBIBARAN_FAILURE]: fetchallplotbibaranFailure,
+
+  [PlotbibaranTypes.FETCHPLOTBIBARAN_REQUEST]: fetchplotbibaranRequest,
+  [PlotbibaranTypes.FETCHPLOTBIBARAN_SUCCESS]: fetchplotbibaranSuccess,
+  [PlotbibaranTypes.FETCHPLOTBIBARAN_FAILURE]: fetchplotbibaranFailure,
+
 
   [PlotbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [PlotbibaranTypes.CLEAR_REQUEST]: clearRequest,
