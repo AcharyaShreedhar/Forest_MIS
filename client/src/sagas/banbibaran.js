@@ -239,6 +239,33 @@ export function* addnijibanbibaranRequest(api, action) {
   }
 }
 
+
+// Update Nijibanbibaran
+export function* updatenijibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranNijibanUpdate(
+    payload.nijiban.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक निजी वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchnijibanbibaranRequest(api);
+    yield call(history.push, "/forests/nijibanlist");
+    yield put(
+      BanbibaranActions.updatenijibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.updatenijibanbibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
 export function* fetchallkabuliyatibanbibaranRequest(api, action) {
   const response = yield api.getKabuliyatibanBibaranList();
   if (response.ok) {

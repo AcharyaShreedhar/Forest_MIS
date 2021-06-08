@@ -94,6 +94,10 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranNijibanAddNew = (payload) =>
   api.post(`nijibanBibaran`, payload);
 
+  //update
+  const postBanbibaranNijibanUpdate = (payload, nijibanBibaranId) =>
+   api.post(`nijibanBibaran/${nijibanBibaranId}`, payload);
+
   const getKabuliyatibanBibaranList = () => api.get("kabuliyatibanBibaran");
 
   const getKabuliyatibanBibaran = (kabuliyatibanBibaranId) =>
@@ -175,6 +179,7 @@ const create = (baseURL = Config.API_URL) => {
     getNijibanBibaranList,
     getNijibanBibaran,
     postBanbibaranNijibanAddNew,
+    postBanbibaranNijibanUpdate,
     getKabuliyatibanBibaranList,
     getKabuliyatibanBibaran,
 
