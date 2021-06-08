@@ -8,10 +8,10 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      valid_miti: {
+      renewal_date: {
         type: Sequelize.STRING,
       },
-      nabikaran_miti: {
+      renewed_date: {
         type: Sequelize.STRING,
       },
       nabikaran_abadhi: {
@@ -36,7 +36,6 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
-      
     });
   },
   down: async (queryInterface, Sequelize) => {
