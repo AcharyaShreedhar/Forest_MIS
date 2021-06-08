@@ -43,6 +43,7 @@ import {
   fetchkabuliyatibanbibaranRequest,
   addkabuliyatibanbibaranRequest,
   updatekabuliyatibanbibaranRequest,
+  deletekabuliyatibanbibaranRequest,
 } from "./banbibaran";
 
 //------------------------biruwautpadan
@@ -221,6 +222,12 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST,
       updatekabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
+      deletekabuliyatibanbibaranRequest,
       api
     ),
 
