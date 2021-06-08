@@ -119,6 +119,17 @@ state.merge({
 const updatedharmikbanbibaranFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+//Delete Dharmikbanbibaran
+const deletedharmikbanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletedharmikbanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletedharmikbanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
   
 
 const fetchallnijibanbibaranRequest = (state, action) =>
@@ -223,6 +234,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_REQUEST]: updatedharmikbanbibaranRequest,
   [BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_SUCCESS]: updatedharmikbanbibaranSuccess,
   [BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_FAILURE]: updatedharmikbanbibaranFailure,
+
+  [BanbibaranTypes.DELETEDHARMIKBANBIBARAN_REQUEST]: deletedharmikbanbibaranRequest,
+  [BanbibaranTypes.DELETEDHARMIKBANBIBARAN_SUCCESS]: deletedharmikbanbibaranSuccess,
+  [BanbibaranTypes.DELETEDHARMIKBANBIBARAN_FAILURE]: deletedharmikbanbibaranFailure,
 
   [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_REQUEST]: fetchallnijibanbibaranRequest,
   [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_SUCCESS]: fetchallnijibanbibaranSuccess,
