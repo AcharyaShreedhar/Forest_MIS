@@ -23,6 +23,10 @@
    fetchallemployeeshistorySuccess: ["response"],
    fetchallemployeeshistoryFailure: null,
 
+   fetchemployeeshistoryRequest: ["payload"],
+   fetchemployeeshistorySuccess: ["response"],
+   fetchemployeeshistoryFailure: null,
+ 
 
    locationsRequest: ["payload"],
    // Clear all caches
