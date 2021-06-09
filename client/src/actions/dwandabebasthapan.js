@@ -20,6 +20,18 @@
    fetchbanyajantuuddarSuccess: ["response"],
    fetchbanyajantuuddarFailure: null,
 
+   addbanyajantuuddarRequest: ["payload"],
+   addbanyajantuuddarSuccess: ["response"],
+   addbanyajantuuddarFailure: null,
+
+   updatebanyajantuuddarRequest: ["payload"],
+   updatebanyajantuuddarSuccess: ["response"],
+   updatebanyajantuuddarFailure: null,
+
+   deletebanyajantuuddarRequest: ["payload"],
+   deletebanyajantuuddarSuccess: ["response"],
+   deletebanyajantuuddarFailure: null,
+
    fetchallbanyajantuxetiRequest: ["payload"],
    fetchallbanyajantuxetiSuccess: ["response"],
    fetchallbanyajantuxetiFailure: null,
