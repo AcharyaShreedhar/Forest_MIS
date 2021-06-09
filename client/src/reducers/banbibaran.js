@@ -294,6 +294,42 @@ const fetchnabikarankaryayojanaFailure = (state, action) => {
 
 
 
+//Add NabikaranKaryayojana
+const addnabikarankaryayojanaRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addnabikarankaryayojanaSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addnabikarankaryayojanaFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update Nabikarankaryayojana
+const updatenabikarankaryayojanaRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatenabikarankaryayojanaSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatenabikarankaryayojanaFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete Nabikarankaryayojana
+const deletenabikarankaryayojanaRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletenabikarankaryayojanaSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletenabikarankaryayojanaFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -394,6 +430,18 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_REQUEST]: fetchnabikarankaryayojanaRequest,
   [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_SUCCESS]: fetchnabikarankaryayojanaSuccess,
   [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_FAILURE]: fetchnabikarankaryayojanaFailure,
+
+  [BanbibaranTypes.ADDNABIKARANKARYAYOJANA_REQUEST]: addnabikarankaryayojanaRequest,
+  [BanbibaranTypes.ADDNABIKARANKARYAYOJANA_SUCCESS]: addnabikarankaryayojanaSuccess,
+  [BanbibaranTypes.ADDNABIKARANKARYAYOJANA_FAILURE]: addnabikarankaryayojanaFailure,
+
+  [BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_REQUEST]: updatenabikarankaryayojanaRequest,
+  [BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_SUCCESS]: updatenabikarankaryayojanaSuccess,
+  [BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_FAILURE]: updatenabikarankaryayojanaFailure,
+
+  [BanbibaranTypes.DELETENABIKARANKARYAYOJANA_REQUEST]: deletenabikarankaryayojanaRequest,
+  [BanbibaranTypes.DELETENABIKARANKARYAYOJANA_SUCCESS]: deletenabikarankaryayojanaSuccess,
+  [BanbibaranTypes.DELETENABIKARANKARYAYOJANA_FAILURE]: deletenabikarankaryayojanaFailure,
 
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
