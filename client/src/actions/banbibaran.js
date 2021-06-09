@@ -96,6 +96,22 @@ const { Types, Creators } = createActions({
   fetchallnabikarankaryayojanaSuccess: ["response"],
   fetchallnabikarankaryayojanaFailure: null,
 
+  fetchnabikarankaryayojanaRequest: ["payload"],
+  fetchnabikarankaryayojanaSuccess: ["response"],
+  fetchnabikarankaryayojanaFailure: null,
+
+  addnabikarankaryayojanaRequest: ["payload"],
+  addnabikarankaryayojanaSuccess: ["response"],
+  addnabikarankaryayojanaFailure: null,
+
+  updatenabikarankaryayojanaRequest: ["payload", "nabikaranKaryayojanaId"],
+  updatenabikarankaryayojanaSuccess: ["response"],
+  updatenabikarankaryayojanaFailure: null,
+
+  deletenabikarankaryayojanaRequest: ["payload", "nabikaranKaryayojanaId"],
+  deletenabikarankaryayojanaSuccess: ["response"],
+  deletenabikarankaryayojanaFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
