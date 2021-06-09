@@ -96,6 +96,9 @@ import {
 import {
   fetchallbandadelobibaranRequest,
   fetchbandadelobibaranRequest,
+  addbandadelobibaranRequest,
+  updatebandadelobibaranRequest,
+  deletebandadelobibaranRequest,
 } from "./bandadelobibaran";
 
 //-----------plotbibaran
@@ -347,6 +350,24 @@ export default function* root() {
     takeLatest(
       BandadelobibaranTypes.FETCHBANDADELOBIBARAN_REQUEST,
       fetchbandadelobibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BandadelobibaranTypes.ADDBANDADELOBIBARAN_REQUEST,
+      addbandadelobibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BandadelobibaranTypes.UPDATEBANDADELOBIBARAN_REQUEST,
+      updatebandadelobibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BandadelobibaranTypes.DELETEBANDADELOBIBARAN_REQUEST,
+      deletebandadelobibaranRequest,
       api
     ),
 
