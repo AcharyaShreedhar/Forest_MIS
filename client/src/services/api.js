@@ -162,6 +162,7 @@ const create = (baseURL = Config.API_URL) => {
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
+  const getEmployeeshistoryList = () => api.get("employeeHistory"); 
 
   return {
     loginByUsername,
@@ -227,6 +228,7 @@ const create = (baseURL = Config.API_URL) => {
     //karmacharibiabran
     getEmployeesList,
     getEmployees,
+    getEmployeeshistoryList,
   };
 };
 export default {
