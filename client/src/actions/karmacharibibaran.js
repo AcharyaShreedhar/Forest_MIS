@@ -14,6 +14,10 @@
    fetchallemployeesRequest: ["payload"],
    fetchallemployeesSuccess: ["response"],
    fetchallemployeesFailure: null,
+
+   fetchemployeesRequest: ["payload"],
+   fetchemployeesSuccess: ["response"],
+   fetchemployeesFailure: null,
  
 
    locationsRequest: ["payload"],
