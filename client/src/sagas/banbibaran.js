@@ -399,3 +399,18 @@ export function* deletekabuliyatibanbibaranRequest(api, action) {
     });
   }
 }
+
+
+
+export function* fetchallnabikarankaryayojanaRequest(api, action) {
+  const response = yield api.getNabikaranKaryayojanaList();
+  
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchallnabikarankaryayojanaSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchallnabikarankaryayojanaFailure());
+  }
+}
+

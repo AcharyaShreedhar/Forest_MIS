@@ -46,6 +46,7 @@ import {
   addkabuliyatibanbibaranRequest,
   updatekabuliyatibanbibaranRequest,
   deletekabuliyatibanbibaranRequest,
+  fetchallnabikarankaryayojanaRequest,
 } from "./banbibaran";
 
 //------------------------biruwautpadan
@@ -251,6 +252,12 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
       deletekabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST,
+      fetchallnabikarankaryayojanaRequest,
       api
     ),
 

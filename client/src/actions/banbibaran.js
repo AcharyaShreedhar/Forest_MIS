@@ -92,6 +92,10 @@ const { Types, Creators } = createActions({
   deletekabuliyatibanbibaranSuccess: ["response"],
   deletekabuliyatibanbibaranFailure: null,
 
+  fetchallnabikarankaryayojanaRequest: ["payload"],
+  fetchallnabikarankaryayojanaSuccess: ["response"],
+  fetchallnabikarankaryayojanaFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
