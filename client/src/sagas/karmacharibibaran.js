@@ -26,6 +26,19 @@ export function* fetchemployeesRequest(api, action) {
       yield put(KarmacharibibaranActions.fetchemployeesFailure());
     }
   }
+
+
+  
+export function* fetchallemployeeshistoryRequest(api, action) {
+    const response = yield api.getEmployeeshistoryList();
+  
+    if (response.ok) {
+      yield put(KarmacharibibaranActions.fetchallemployeeshistorySuccess(response.data));
+    } else {
+      yield put(KarmacharibibaranActions.fetchallemployeeshistoryFailure());
+    }
+  }
+  
   
   
   

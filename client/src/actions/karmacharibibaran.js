@@ -19,6 +19,10 @@
    fetchemployeesSuccess: ["response"],
    fetchemployeesFailure: null,
  
+   fetchallemployeeshistoryRequest: ["payload"],
+   fetchallemployeeshistorySuccess: ["response"],
+   fetchallemployeeshistoryFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
