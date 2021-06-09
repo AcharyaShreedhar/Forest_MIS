@@ -414,3 +414,17 @@ export function* fetchallnabikarankaryayojanaRequest(api, action) {
   }
 }
 
+
+export function* fetchnabikarankaryayojanaRequest(api, action) {
+  const nabikaranKaryayojanaId = action.payload;
+
+  const response = yield api.getNabikaranKaryayojana(nabikaranKaryayojanaId);
+  console.log("response..saga", response);
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchnabikarankaryayojanaSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchnabikarankaryayojanaFailure());
+  }
+}
