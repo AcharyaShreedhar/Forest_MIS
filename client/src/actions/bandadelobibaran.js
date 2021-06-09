@@ -17,10 +17,21 @@
     fetchallbandadelobibaranSuccess: ["response"],
     fetchallbandadelobibaranFailure: null,
 
-
     fetchbandadelobibaranRequest: ["payload"],
     fetchbandadelobibaranSuccess: ["response"],
     fetchbandadelobibaranFailure: null,
+
+    addbandadelobibaranRequest: ["payload"],
+    addbandadelobibaranSuccess: ["response"],
+    addbandadelobibaranFailure: null,
+
+    updatebandadelobibaranRequest: ["payload", "bandadeloBibaranId"],
+    updatebandadelobibaranSuccess: ["response"],
+    updatebandadelobibaranFailure: null,
+
+    deletebandadelobibaranRequest: ["payload", "bandadeloBibaranId"],
+    deletebandadelobibaranSuccess: ["response"],
+    deletebandadelobibaranFailure: null,
 
 
     locationsRequest: ["payload"],

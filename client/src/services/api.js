@@ -127,6 +127,23 @@ const create = (baseURL = Config.API_URL) => {
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
   const getBandadelobibaran = (bandadeloBibaranId) =>
     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
+<<<<<<< Updated upstream
+=======
+
+    //Add
+  const postBandadelobibaranBandadeloAddNew = (payload) =>
+  api.post(`bandadeloBibaran`, payload);
+
+//update
+const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
+  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+
+ //delete
+const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
+ api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+
+
+>>>>>>> Stashed changes
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
   const getBanpaidawar = (banpaidawarId) =>
@@ -142,11 +159,14 @@ const create = (baseURL = Config.API_URL) => {
   const getPlotbibaranList = () => api.get("plot");
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
+<<<<<<< Updated upstream
   //inventories
   const getInventoriesList = () => api.get("inventory");
   const getInventories = (inventId) =>
    api.get(`inventory/${inventId}`);
 
+=======
+>>>>>>> Stashed changes
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -191,6 +211,9 @@ const create = (baseURL = Config.API_URL) => {
     //bandadelobibaran
     getBandadelobibaranList,
     getBandadelobibaran,
+    postBandadelobibaranBandadeloAddNew,
+    postBandadelobibaranBandadeloUpdate,
+    postBandadelobibaranBandadeloDelete,
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,
