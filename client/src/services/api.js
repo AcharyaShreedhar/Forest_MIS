@@ -98,7 +98,6 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) =>
     api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
 
- 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
   const getBiruwautpadan = (biruwautpadanId) =>
@@ -123,10 +122,24 @@ const create = (baseURL = Config.API_URL) => {
   const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
   const getBanxetraatikraman = (banxetraAtikramanId) =>
     api.get(`banxetraAtikramans/${banxetraAtikramanId}`);
+
   //................bandadelobibarans
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
   const getBandadelobibaran = (bandadeloBibaranId) =>
     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
+
+  //Add
+  const postBandadelobibaranBandadeloAddNew = (payload) =>
+    api.post(`bandadeloBibaran`, payload);
+
+  //update
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
+    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+
+  //delete
+  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
+    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
   const getBanpaidawar = (banpaidawarId) =>
@@ -144,8 +157,7 @@ const create = (baseURL = Config.API_URL) => {
 
   //inventories
   const getInventoriesList = () => api.get("inventory");
-  const getInventories = (inventId) =>
-   api.get(`inventory/${inventId}`);
+  const getInventories = (inventId) => api.get(`inventory/${inventId}`);
 
   return {
     loginByUsername,
@@ -191,6 +203,9 @@ const create = (baseURL = Config.API_URL) => {
     //bandadelobibaran
     getBandadelobibaranList,
     getBandadelobibaran,
+    postBandadelobibaranBandadeloAddNew,
+    postBandadelobibaranBandadeloUpdate,
+    postBandadelobibaranBandadeloDelete,
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,

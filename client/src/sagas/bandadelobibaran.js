@@ -1,4 +1,5 @@
 import { call, put } from "redux-saga/effects";
+import { toast } from "react-toastify";
 
 import { history } from "../reducers";
 import BandadelobibaranActions from "../actions/bandadelobibaran";
@@ -30,3 +31,78 @@ export function* fetchallbandadelobibaranRequest(api, action) {
     }
   }
   
+
+  
+// Add Bandadelobibaran
+export function* addbandadelobibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBandadelobibaranBandadeloAddNew(
+    payload.bandadelo.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनडडेलो विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbandadelobibaranRequest(api);
+    yield call(history.push, "/forests/bandadelolist");
+    yield put(BandadelobibaranActions.addbandadelobibaranSuccess(response.data));
+  } else {
+    yield put(BandadelobibaranActions.addbandadelobibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update Bandadelobibaran
+export function* updatebandadelobibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBandadelobibaranBandadeloUpdate(
+    payload.bandadelo.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनडडेलो विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbandadelobibaranRequest(api);
+    yield call(history.push, "/forests/bandadelolist");
+    yield put(
+      BandadelobibaranActions.updatebandadelobibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BandadelobibaranActions.updatebandadelobibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+
+// Delete Bandadelobibaran
+export function* deletebandadelobibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBandadelobibaranBandadeloDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनडडेलो विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbandadelobibaranRequest(api);
+    yield put(
+      BandadelobibaranActions.deletebandadelobibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BandadelobibaranActions.deletebandadelobibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
