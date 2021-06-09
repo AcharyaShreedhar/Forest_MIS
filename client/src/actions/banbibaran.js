@@ -96,6 +96,10 @@ const { Types, Creators } = createActions({
   fetchallnabikarankaryayojanaSuccess: ["response"],
   fetchallnabikarankaryayojanaFailure: null,
 
+  fetchnabikarankaryayojanaRequest: ["payload"],
+  fetchnabikarankaryayojanaSuccess: ["response"],
+  fetchnabikarankaryayojanaFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
