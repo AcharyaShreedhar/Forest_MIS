@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Input, DatePicker, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import "./SamudayikbanBibaran.scss";
+import "./DharmikbanBibaran.scss";
 import { equals } from "ramda";
 
 const ForestTypes = [
@@ -17,19 +17,22 @@ class Add extends Component {
     this.state = {
       regno: "",
       name: "",
+      community_name: "",
       area: "",
       main_species: "",
       forest_type: 1,
       handover_date: "",
+      renewed_date: "",
+      nabikaran_abadhi: "",
       forest_maujdat: "",
-      nikasi_timber: "",
-      nikasi_wood: "",
+      renewal_date: "",
       created_by: "",
       updated_by: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleRenew = this.handleRenew.bind(this);
     this.handleForestType = this.handleForestType.bind(this);
   }
 
@@ -37,26 +40,30 @@ class Add extends Component {
     const {
       name,
       regno,
+      community_name,
       area,
       main_species,
       forest_type,
       handover_date,
+      renewed_date,
+      nabikaran_abadhi,
       forest_maujdat,
-      nikasi_timber,
-      nikasi_wood,
+      renewal_date,
     } = this.state;
     const payload = {
       samudayikban: {
         data: {
           samudayikban_name: name,
           darta_no: regno,
+          community_name: community_name,
           area: area,
           main_species: main_species,
           forest_type: equals(forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण",
           handover_date: handover_date,
+          renewed_date: renewed_date,
+          nabikaran_abadhi: nabikaran_abadhi,
           forest_maujdat: forest_maujdat,
-          nikasi_timber: nikasi_timber,
-          nikasi_wood: nikasi_wood,
+          renewal_date: renewal_date,
         },
       },
     };
@@ -68,19 +75,24 @@ class Add extends Component {
   handleDate(e) {
     this.setState({ handover_date: e });
   }
+  handleRenew(e) {
+    this.setState({ renewed_date: e });
+  }
 
   render() {
-    const {title} = this.props;
+    const { title } = this.props;
     const {
       name,
       regno,
+      community_name,
       area,
       main_species,
       forest_type,
       handover_date,
+      renewed_date,
+      nabikaran_abadhi,
       forest_maujdat,
-      nikasi_timber,
-      nikasi_wood,
+      renewal_date,
     } = this.state;
 
     return (
@@ -100,16 +112,25 @@ class Add extends Component {
 
             <Input
               className="mb-4"
-              title="सामुदायिक वन उपभोक्ता समितिको नाम"
+              title="धर्मिक वनको नाम"
               direction="vertical"
               value={name}
               onChange={(e) => this.setState({ name: e })}
             />
             <Input
               className="mb-4"
-              title="क्षत्रफल(हे.)"
-              value={area}
+              title="व्यवस्थापन गर्ने धार्मिक निकाय / समुदायको नाम"
+              value={community_name}
               direction="vertical"
+              onChange={(e) => this.setState({ community_name: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="क्षत्रफल(हे.)"
+              direction="vertical"
+              as="textarea"
+              value={area}
               onChange={(e) => this.setState({ area: e })}
             />
 
@@ -141,6 +162,21 @@ class Add extends Component {
               onChange={(e) => this.handleDate(e)}
               options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
+            <span className="dsl-b18">नविकरण गरेको मिती</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="mb-4"
+              value={renewed_date}
+              onChange={(e) => this.handleRenew(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
+            />
+            <Input
+              className="mb-4"
+              title="नविकरण अबधि"
+              value={nabikaran_abadhi}
+              direction="vertical"
+              onChange={(e) => this.setState({ nabikaran_abadhi: e })}
+            />
             <Input
               className="mb-4"
               title="वनको मौज्दात"
@@ -150,17 +186,10 @@ class Add extends Component {
             />
             <Input
               className="mb-4"
-              title="वार्षिक निकासी परिमाण (घ. मी)काठ"
-              value={nikasi_timber}
+              title="नविकरण गर्नुपर्ने आर्थिक वर्ष"
+              value={renewal_date}
               direction="vertical"
-              onChange={(e) => this.setState({ nikasi_timber: e })}
-            />
-            <Input
-              className="mb-4"
-              title="वार्षिक निकासी परिमाण (घ. मी)दाउरा"
-              value={nikasi_wood}
-              direction="vertical"
-              onChange={(e) => this.setState({ nikasi_wood: e })}
+              onChange={(e) => this.setState({ renewal_date: e })}
             />
           </div>
           <div className="mt-2 border-5">

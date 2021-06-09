@@ -60,7 +60,7 @@ class Banbibaran extends Component {
         break;
       }
       case "dharmikban": {
-        alert("this is dharmikban");
+        this.props.history.push("/forests/dharmikbanadd/new");
         break;
       }
       case "nijiban": {
@@ -93,20 +93,14 @@ class Banbibaran extends Component {
         )}
         {equals(loc, "samudayikbanadd") && (
           <SamudayikbanBibaran.Add
-            buttonName="+ सामुदायिक वन"
-            title="सामुदायिक वन सम्बन्धी विवरण"
-            data={samudayikbanList}
-            headings={samudayikbanHeadings}
+            title="+ सामुदायिक वन"
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addSamudayikbanbibaran(e)}
           />
         )}
         {equals(loc, "samudayikbanedit") && (
           <SamudayikbanBibaran.Edit
-            buttonName="+ सामुदायिक वन"
-            title="सामुदायिक वन सम्बन्धी विवरण"
-            data={samudayikbanList}
-            headings={samudayikbanHeadings}
+            title="सामुदायिक वन पुनः प्रविष्ट"
             history={this.props.history}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateSamudayikbanbibaran(e, id)}
@@ -120,6 +114,13 @@ class Banbibaran extends Component {
             headings={dharmikbanHeadings}
             onAdd={() => this.handleAdd("dharmikban")}
             onSelect={this.handleSelectMenu}
+          />
+        )}
+        {equals(loc, "dharmikbanadd") && (
+          <DharmikbanBibaran.Add
+            title="+ धार्मिक बन"
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addDharmikbanbibaran(e)}
           />
         )}
         {equals(loc, "kabuliyatibanlist") && (
@@ -183,6 +184,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BanbibaranActions.deletesamudayikbanbibaranRequest(samudayikbanbibaranId)
     ),
+  addDharmikbanbibaran: (payload) =>
+    dispatch(BanbibaranActions.adddharmikbanbibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);

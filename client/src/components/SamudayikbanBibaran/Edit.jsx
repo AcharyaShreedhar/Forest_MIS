@@ -75,7 +75,7 @@ class Edit extends Component {
   }
 
   render() {
-    const {} = this.props;
+    const { title } = this.props;
     const {
       name,
       regno,
@@ -93,7 +93,7 @@ class Edit extends Component {
         <div className=" card p-5 border-5">
           <div className="detail-content">
             <div className="title">
-              <span className="dsl-b22">सामुदायिक वन पुनः प्रविष्ट</span>
+              <span className="dsl-b22">{title}</span>
             </div>
             <Input
               className="mb-4"
