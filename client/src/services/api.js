@@ -169,6 +169,19 @@ const create = (baseURL = Config.API_URL) => {
   const getBandadelobibaran = (bandadeloBibaranId) =>
     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
 
+    //Add
+  const postBandadelobibaranBandadeloAddNew = (payload) =>
+  api.post(`bandadeloBibaran`, payload);
+
+//update
+const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
+  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+
+ //delete
+const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
+ api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+
+
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
   const getBanpaidawar = (banpaidawarId) =>
@@ -186,8 +199,6 @@ const create = (baseURL = Config.API_URL) => {
   const getPlotbibaranList = () => api.get("plot");
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
-  const getKarmacharidarbandi = (karmacharidarbandiId) =>
-    api.get(`karmachariDarbandi/${karmacharidarbandiId}`);
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -233,6 +244,9 @@ const create = (baseURL = Config.API_URL) => {
     //bandadelobibaran
     getBandadelobibaranList,
     getBandadelobibaran,
+    postBandadelobibaranBandadeloAddNew,
+    postBandadelobibaranBandadeloUpdate,
+    postBandadelobibaranBandadeloDelete,
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,
