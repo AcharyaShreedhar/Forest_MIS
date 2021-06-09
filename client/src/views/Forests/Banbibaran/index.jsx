@@ -31,13 +31,27 @@ class Banbibaran extends Component {
     return { loc };
   }
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
     switch (event) {
       case "edit": {
-        this.props.history.push({
-          pathname: `/forests/samudayikbanedit/${item.samudayikban_id}`,
-          item,
-        });
+        switch (path) {
+          case "samudayik": {
+            this.props.history.push({
+              pathname: `/forests/samudayikbanedit/${item.samudayikban_id}`,
+              item,
+            });
+            break;
+          }
+          case "dharmik": {
+            this.props.history.push({
+              pathname: `/forests/dharmikbanedit/${item.dharmikban_id}`,
+              item,
+            });
+            break;
+          }
+          default:
+            break;
+        }
         break;
       }
       case "delete": {
@@ -123,6 +137,14 @@ class Banbibaran extends Component {
             onSubmit={(e) => this.props.addDharmikbanbibaran(e)}
           />
         )}
+        {equals(loc, "dharmikbanedit") && (
+          <DharmikbanBibaran.Edit
+            title="धार्मिक बन पुनः प्रविष्ट"
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateDharmikbanbibaran(e, id)}
+          />
+        )}
         {equals(loc, "kabuliyatibanlist") && (
           <KabuliyatibanBibaran.List
             buttonName="+ कवुलियती वन "
@@ -186,6 +208,13 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   addDharmikbanbibaran: (payload) =>
     dispatch(BanbibaranActions.adddharmikbanbibaranRequest(payload)),
+  updateDharmikbanbibaran: (payload, dharmikbanbibaranId) =>
+    dispatch(
+      BanbibaranActions.updatedharmikbanbibaranRequest(
+        payload,
+        dharmikbanbibaranId
+      )
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);

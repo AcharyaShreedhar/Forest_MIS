@@ -32,6 +32,12 @@ const forestRoutes = [
     component: Banbibaran,
   },
   {
+    path: "/forests/dharmikbanedit/:id",
+    title: "Dharmikban",
+    name: "dharmikban",
+    component: Banbibaran,
+  },
+  {
     path: "/forests/kabuliyatibanlist",
     title: "Kabuliyatiban",
     name: "kabuliyatiban",
