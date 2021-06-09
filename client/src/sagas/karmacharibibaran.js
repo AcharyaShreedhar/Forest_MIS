@@ -12,3 +12,20 @@ export function* fetchallemployeesRequest(api, action) {
     yield put(KarmacharibibaranActions.fetchallemployeesFailure());
   }
 }
+
+export function* fetchemployeesRequest(api, action) {
+    const  employeesId  = action.payload
+  
+    const response = yield api.getEmployees(employeesId);
+    
+    if (response.ok) {
+      yield put(
+        KarmacharibibaranActions.fetchemployeesSuccess(response.data)
+      );
+    } else {
+      yield put(KarmacharibibaranActions.fetchemployeesFailure());
+    }
+  }
+  
+  
+  
