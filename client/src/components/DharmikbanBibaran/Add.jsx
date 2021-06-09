@@ -51,9 +51,9 @@ class Add extends Component {
       renewal_date,
     } = this.state;
     const payload = {
-      samudayikban: {
+      dharmikban: {
         data: {
-          samudayikban_name: name,
+          dharmikban_name: name,
           darta_no: regno,
           community_name: community_name,
           area: area,
