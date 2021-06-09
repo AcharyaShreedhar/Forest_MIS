@@ -83,14 +83,28 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranKabuliyatibanAddNew = (payload) => api.post(`kabuliyatibanBibaran`, payload);
 
   //update
-  const postBanbibaranKabuliyatibanUpdate = (payload, kabuliyatibanBibaranId) =>api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
+  const postBanbibaranKabuliyatibanUpdate = (payload, kabuliyatibanBibaranId) =>
+  api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
 
   //delete
-  const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) => api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
+  const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) =>
+  api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
 
     const getNabikaranKaryayojanaList = () => api.get("nabikaranKaryayojana");
 
     const getNabikaranKaryayojana = (nabikaranKaryayojanaId) => api.get(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`);
+
+  //Add
+  const postBanbibaranNabikarankaryayojanaAddNew = (payload) => api.post(`nabikaranKaryayojana`, payload);
+
+  //update
+  const postBanbibaranNabikarankaryayojanaUpdate = (payload, nabikaranKaryayojanaId) =>
+  api.post(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`, payload);
+
+  //delete
+  const postBanbibaranNabikarankaryayojanaDelete = (payload, nabikaranKaryayojanaId) =>
+  api.post(`kabuliyatibanBibaran/${nabikaranKaryayojanaId}`, payload);
+
 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
@@ -199,6 +213,9 @@ const create = (baseURL = Config.API_URL) => {
     postBanbibaranKabuliyatibanDelete,
     getNabikaranKaryayojanaList,
     getNabikaranKaryayojana,
+    postBanbibaranNabikarankaryayojanaAddNew,
+    postBanbibaranNabikarankaryayojanaUpdate,
+    postBanbibaranNabikarankaryayojanaDelete,
     //dwandabebasthapan
     getBanyajantuUddarList,
     getBanyajantuUddar,
