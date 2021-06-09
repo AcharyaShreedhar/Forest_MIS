@@ -13,6 +13,7 @@ import { PlotbibaranTypes } from "../actions/plotbibaran";
 
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes }  from "../actions/inventories";
+import { KarmacharibibaranTypes} from "../actions/karmacharibibaran";
 //------------------app
 import { loginRequest, logoutRequest } from "./app";
 
@@ -115,6 +116,13 @@ import {
    fetchallinventoriesRequest,
    fetchinventoriesRequest,
  } from "./inventories";
+
+ //--------karmacharibibaran
+
+ import{
+   fetchallemployeesRequest,
+ } from "./karmacharibibaran";
+
  
 const api = API.create();
 
@@ -429,6 +437,13 @@ export default function* root() {
       fetchinventoriesRequest,
       api
     ), 
+
+     //karmacharibibaran
+     takeLatest(
+      KarmacharibibaranTypes.FETCHALLEMPLOYEES_REQUEST,
+      fetchallemployeesRequest,
+      api
+    ),
     
   ]);
 }
