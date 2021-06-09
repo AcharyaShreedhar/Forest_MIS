@@ -57,6 +57,9 @@ import {
 import {
   fetchallbanyajantuuddarRequest,
   fetchbanyajantuuddarRequest,
+  addbanyajantuuddarRequest,
+  updatebanyajantuuddarRequest,
+  deletebanyajantuuddarRequest,
   fetchallbanyajantuxetiRequest,
   fetchbanyajantuxetiRequest,
 } from "./dwandabebasthapan";
@@ -270,8 +273,32 @@ export default function* root() {
     ),
 
     takeLatest(
+      DwandabebasthapanTypes.ADDBANYAJANTUUDDAR_REQUEST,
+      addbanyajantuuddarRequest,
+      api
+    ),
+
+    takeLatest(
+      DwandabebasthapanTypes.UPDATEBANYAJANTUUDDAR_REQUEST,
+      updatebanyajantuuddarRequest,
+      api
+    ),
+
+    takeLatest(
+      DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_REQUEST,
+      deletebanyajantuuddarRequest,
+      api
+    ),
+
+    takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_REQUEST,
       fetchallbanyajantuxetiRequest,
+      api
+    ),
+
+    takeLatest(
+      DwandabebasthapanTypes.FETCHBANYAJANTUXETI_REQUEST,
+      fetchbanyajantuxetiRequest,
       api
     ),
 
@@ -288,12 +315,7 @@ export default function* root() {
       api
     ),
 
-    takeLatest(
-      DwandabebasthapanTypes.FETCHBANYAJANTUXETI_REQUEST,
-      fetchbanyajantuxetiRequest,
-      api
-    ),
-
+    
     //sampatibibaran
 
     takeLatest(
