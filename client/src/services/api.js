@@ -106,6 +106,22 @@ const create = (baseURL = Config.API_URL) => {
   const getBanyajantuUddarList = () => api.get("banyajantuUddars");
   const getBanyajantuUddar = (banyajantuUddarId) =>
     api.get(`banyajantuUddars/${banyajantuUddarId}`);
+  //Add banyajantuuddar
+  const postDwandabebasthapanBanyajantuuddarAddNew = (payload) =>
+    api.post(`banyajantuUddars`, payload);
+
+  //update banyajantuuddar
+  const postDwandabebasthapanBanyajantuuddarUpdate = (
+    payload,
+    banyajantuUddarId
+  ) => api.post(`bandadeloBibaran/${banyajantuUddarId}`, payload);
+
+  //delete banyajantuuddar
+  const postDwandabebasthapanBanyajantuuddarDelete = (
+    payload,
+    banyajantuUddarId
+  ) => api.post(`bandadeloBibaran/${banyajantuUddarId}`, payload);
+
   const getBanyajantuXetiList = () => api.get("banyajantuXetiBibarans");
   const getBanyajantuXeti = (banyajantuXetiId) =>
     api.get(`banyajantuXetiBibarans/${banyajantuXetiId}`);
@@ -166,11 +182,11 @@ const create = (baseURL = Config.API_URL) => {
     postBanbibaranSamudayikbanAddNew,
     postBanbibaranSamudayikbanUpdate,
     postBanbibaranSamudayikbanDelete,
-    postBanbibaranDharmikbanDelete,
     getDharmikbanBibaranList,
     getDharmikbanBibaran,
     postBanbibaranDharmikbanAddNew,
     postBanbibaranDharmikbanUpdate,
+    postBanbibaranDharmikbanDelete,
     getNijibanBibaranList,
     getNijibanBibaran,
     postBanbibaranNijibanAddNew,
@@ -184,6 +200,9 @@ const create = (baseURL = Config.API_URL) => {
     //dwandabebasthapan
     getBanyajantuUddarList,
     getBanyajantuUddar,
+    postDwandabebasthapanBanyajantuuddarAddNew,
+    postDwandabebasthapanBanyajantuuddarUpdate,
+    postDwandabebasthapanBanyajantuuddarDelete,
     getBanyajantuXetiList,
     getBanyajantuXeti,
     //biruwautpadans
