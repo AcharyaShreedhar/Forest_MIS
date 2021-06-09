@@ -419,12 +419,86 @@ export function* fetchnabikarankaryayojanaRequest(api, action) {
   const nabikaranKaryayojanaId = action.payload;
 
   const response = yield api.getNabikaranKaryayojana(nabikaranKaryayojanaId);
-  console.log("response..saga", response);
   if (response.ok) {
     yield put(
       BanbibaranActions.fetchnabikarankaryayojanaSuccess(response.data)
     );
   } else {
     yield put(BanbibaranActions.fetchnabikarankaryayojanaFailure());
+  }
+}
+
+
+// Add Nabikarankaryayojana
+export function* addnabikarankaryayojanaRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranNabikarankaryayojanaAddNew(
+    payload.nabikarankaryayojana.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक नविकरण कार्ययोजना प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallnabikarankaryayojanaRequest(api);
+    yield call(history.push, "/forests/nabikarankaryayojanalist");
+    yield put(BanbibaranActions.addnabikarankaryayojanaSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.addnabikarankaryayojanaFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update nabikarankaryayojana
+export function* updatenabikarankaryayojanaRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranNabikarankaryayojanaUpdate(
+    payload.nabikarankaryayojana.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक नविकरण कार्ययोजना पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallnabikarankaryayojanaRequest(api);
+    yield call(history.push, "/forests/nabikarankaryayojanalist");
+    yield put(
+      BanbibaranActions.updatenabikarankaryayojanaSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.updatenabikarankaryayojanaFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+
+// Delete nabikarankaryayojana
+export function* deletenabikarankaryayojanaRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranNabikarankaryayojanaDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक नविकरण कार्ययोजना हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallnabikarankaryayojanaRequest(api);
+    yield put(
+      BanbibaranActions.deletenabikarankaryayojanaSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.deletenabikarankaryayojanaFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
   }
 }
