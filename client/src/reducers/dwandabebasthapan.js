@@ -39,6 +39,40 @@ const fetchbanyajantuuddarFailure = (state, action) => {
 };
 
 
+//Add banyajantuuddar
+const addbanyajantuuddarRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanyajantuuddarSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanyajantuuddarFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update banyajantuuddar
+const updatebanyajantuuddarRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebanyajantuuddarSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebanyajantuuddarFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete banyajantuuddar
+const deletebanyajantuuddarRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebanyajantuuddarSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebanyajantuuddarFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const fetchallbanyajantuxetiRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallbanyajantuxetiSuccess = (state, action) => {
@@ -90,6 +124,18 @@ export const reducer = createReducer(initialState, {
   [DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_REQUEST]: fetchbanyajantuuddarRequest,
   [DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_SUCCESS]: fetchbanyajantuuddarSuccess,
   [DwandabebasthapanTypes.FETCHBANYAJANTUUDDAR_FAILURE]: fetchbanyajantuuddarFailure,
+
+  [DwandabebasthapanTypes.ADDBANYAJANTUUDDAR_REQUEST]: addbanyajantuuddarRequest,
+  [DwandabebasthapanTypes.ADDBANYAJANTUUDDAR_SUCCESS]: addbanyajantuuddarSuccess,
+  [DwandabebasthapanTypes.ADDBANYAJANTUUDDAR_FAILURE]: addbanyajantuuddarFailure,
+
+  [DwandabebasthapanTypes.UPDATEBANYAJANTUUDDAR_REQUEST]: updatebanyajantuuddarRequest,
+  [DwandabebasthapanTypes.UPDATEBANYAJANTUUDDAR_SUCCESS]: updatebanyajantuuddarSuccess,
+  [DwandabebasthapanTypes.UPDATEBANYAJANTUUDDAR_FAILURE]: updatebanyajantuuddarFailure,
+
+  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_REQUEST]: fetchbanyajantuuddarRequest,
+  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_SUCCESS]: fetchbanyajantuuddarSuccess,
+  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_FAILURE]: fetchbanyajantuuddarFailure,
 
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_REQUEST]: fetchallbanyajantuxetiRequest,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_SUCCESS]: fetchallbanyajantuxetiSuccess,
