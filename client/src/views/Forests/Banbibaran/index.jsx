@@ -78,7 +78,7 @@ class Banbibaran extends Component {
         break;
       }
       case "nijiban": {
-        alert("this is nijiban");
+        this.props.history.push("/forests/nijibanadd/new");
         break;
       }
 
@@ -165,6 +165,13 @@ class Banbibaran extends Component {
             onSelect={this.handleSelectMenu}
           />
         )}
+        {equals(loc, "nijibanadd") && (
+          <NijibanBibaran.Add
+            title="+ निजि वन"
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addNijibanbibaran(e)}
+          />
+        )}
       </div>
     );
   }
@@ -215,6 +222,8 @@ const mapDispatchToProps = (dispatch) => ({
         dharmikbanbibaranId
       )
     ),
+  addNijibanbibaran: (payload) =>
+    dispatch(BanbibaranActions.addnijibanbibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);

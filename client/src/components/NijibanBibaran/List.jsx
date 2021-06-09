@@ -37,7 +37,7 @@ function List(props) {
               data.map((dban, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {dban.nijiban_bibaran_id}</td>
+                  <td key={index}> {dban.darta_no}</td>
                   <td key={index}> {dban.swikrit_miti}</td>
                   <td key={index}> {dban.nijiban_dhaniko_naam}</td>
                   <td key={index}> {dban.perm_addr}</td>

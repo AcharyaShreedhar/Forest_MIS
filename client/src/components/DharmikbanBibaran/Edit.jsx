@@ -56,9 +56,9 @@ class Edit extends Component {
       renewal_date,
     } = this.state;
     const payload = {
-      samudayikban: {
+      dharmikban: {
         data: {
-          samudayikban_name: name,
+          dharmikban_name: name,
           darta_no: regno,
           community_name: community_name,
           area: area,
@@ -135,7 +135,6 @@ class Edit extends Component {
               className="mb-4"
               title="क्षत्रफल(हे.)"
               direction="vertical"
-              as="textarea"
               value={area}
               onChange={(e) => this.setState({ area: e })}
             />
