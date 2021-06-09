@@ -201,7 +201,7 @@ class Edit extends Component {
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="Update"
                 onClick={this.handleSubmit.bind(this)}
               />
             </div>

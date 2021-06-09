@@ -56,6 +56,12 @@ const forestRoutes = [
     component: Banbibaran,
   },
   {
+    path: "/forests/nijibanedit/:id",
+    title: "Nijiban",
+    name: "nijiban",
+    component: Banbibaran,
+  },
+  {
     redirect: true,
     path: "/forests",
     to: "/forests/samudayikbanlist",
