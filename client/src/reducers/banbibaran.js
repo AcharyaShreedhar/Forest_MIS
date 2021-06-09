@@ -279,6 +279,19 @@ const fetchallnabikarankaryayojanaFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchnabikarankaryayojanaRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchnabikarankaryayojanaSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    nabikarankaryayojanaData: action.response,
+  });
+};
+const fetchnabikarankaryayojanaFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 
 
@@ -377,6 +390,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST]: fetchallnabikarankaryayojanaRequest,
   [BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_SUCCESS]: fetchallnabikarankaryayojanaSuccess,
   [BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_FAILURE]: fetchallnabikarankaryayojanaFailure,
+
+  [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_REQUEST]: fetchnabikarankaryayojanaRequest,
+  [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_SUCCESS]: fetchnabikarankaryayojanaSuccess,
+  [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_FAILURE]: fetchnabikarankaryayojanaFailure,
 
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
