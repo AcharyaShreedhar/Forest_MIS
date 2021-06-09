@@ -98,7 +98,6 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) =>
     api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
 
- 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
   const getBiruwautpadan = (biruwautpadanId) =>
@@ -123,27 +122,24 @@ const create = (baseURL = Config.API_URL) => {
   const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
   const getBanxetraatikraman = (banxetraAtikramanId) =>
     api.get(`banxetraAtikramans/${banxetraAtikramanId}`);
+
   //................bandadelobibarans
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
   const getBandadelobibaran = (bandadeloBibaranId) =>
     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
-<<<<<<< Updated upstream
-=======
 
-    //Add
+  //Add
   const postBandadelobibaranBandadeloAddNew = (payload) =>
-  api.post(`bandadeloBibaran`, payload);
+    api.post(`bandadeloBibaran`, payload);
 
-//update
-const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
-  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  //update
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
+    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
- //delete
-const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
- api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  //delete
+  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
+    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
-
->>>>>>> Stashed changes
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
   const getBanpaidawar = (banpaidawarId) =>
@@ -159,14 +155,10 @@ const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
   const getPlotbibaranList = () => api.get("plot");
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
-<<<<<<< Updated upstream
   //inventories
   const getInventoriesList = () => api.get("inventory");
-  const getInventories = (inventId) =>
-   api.get(`inventory/${inventId}`);
+  const getInventories = (inventId) => api.get(`inventory/${inventId}`);
 
-=======
->>>>>>> Stashed changes
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
