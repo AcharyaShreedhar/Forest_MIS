@@ -55,7 +55,7 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, sban)}
+                        onChange={(e) => onSelect(e, sban, "samudayik")}
                       />
                     </div>
                   </td>
