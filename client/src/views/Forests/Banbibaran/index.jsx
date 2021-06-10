@@ -49,6 +49,13 @@ class Banbibaran extends Component {
             });
             break;
           }
+          case "kabuliyati": {
+            this.props.history.push({
+              pathname: `/forests/kabuliyatibanedit/${item.kabuliyatiban_bibaran_id}`,
+              item,
+            });
+            break;
+          }
           case "niji": {
             this.props.history.push({
               pathname: `/forests/nijibanedit/${item.nijiban_id}`,
@@ -170,6 +177,14 @@ class Banbibaran extends Component {
             onSubmit={(e) => this.props.addKabuliyatibanbibaran(e)}
           />
         )}
+        {equals(loc, "kabuliyatibanedit") && (
+          <KabuliyatibanBibaran.Edit
+            title="कवुलियती वन पुनः प्रविष्ट"
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateKabuliyatibanbibaran(e, id)}
+          />
+        )}
         {equals(loc, "nijibanlist") && (
           <NijibanBibaran.List
             buttonName="+ निजि वन"
@@ -249,7 +264,13 @@ const mapDispatchToProps = (dispatch) => ({
 
   addKabuliyatibanbibaran: (payload) =>
     dispatch(BanbibaranActions.addkabuliyatibanbibaranRequest(payload)),
-
+  updateKabuliyatibanbibaran: (payload, kabuliyatibanbibaranId) =>
+    dispatch(
+      BanbibaranActions.updatekabuliyatibanbibaranRequest(
+        payload,
+        kabuliyatibanbibaranId
+      )
+    ),
   addNijibanbibaran: (payload) =>
     dispatch(BanbibaranActions.addnijibanbibaranRequest(payload)),
   updateNijibibaran: (payload, nijibanbibaranId) =>
