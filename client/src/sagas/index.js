@@ -100,6 +100,9 @@ import {
 import {
   fetchallbanpaidawarRequest,
   fetchbanpaidawarRequest,
+  addbanpaidawarRequest,
+  updatebanpaidawarRequest,
+  deletebanpaidawarRequest,
   fetchallbanpaidawarlilamRequest,
   fetchbanpaidawarlilamRequest,
 } from "./banpaidawar";
@@ -481,6 +484,24 @@ export default function* root() {
     takeLatest(
       BanpaidawarTypes.FETCHBANPAIDAWAR_REQUEST,
       fetchbanpaidawarRequest,
+      api
+    ),
+
+    takeLatest(
+      BanpaidawarTypes.ADDBANPAIDAWAR_REQUEST,
+      addbanpaidawarRequest,
+      api
+    ),
+
+    takeLatest(
+      BanpaidawarTypes.UPDATEBANPAIDAWAR_REQUEST,
+      updatebanpaidawarRequest,
+      api
+    ),
+
+    takeLatest(
+      BanpaidawarTypes.DELETEBANPAIDAWAR_REQUEST,
+      deletebanpaidawarRequest,
       api
     ),
 
