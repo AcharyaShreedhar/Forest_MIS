@@ -90,6 +90,9 @@ import {
 import {
   fetchallmuddaanusandhandayariRequest,
   fetchmuddaanusandhandayariRequest,
+  addmuddaanusandhandayariRequest,
+  updatemuddaanusandhandayariRequest,
+  deletemuddaanusandhandayariRequest,
 } from "./muddaanusandhandayari";
 
 // ----------banxetraatikraman
@@ -460,6 +463,24 @@ export default function* root() {
     takeLatest(
       MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST,
       fetchmuddaanusandhandayariRequest,
+      api
+    ),
+
+    takeLatest(
+      MuddaanusandhandayariTypes.ADDMUDDAANUSANDHANDAYARI_REQUEST,
+      addmuddaanusandhandayariRequest,
+      api
+    ),
+
+    takeLatest(
+      MuddaanusandhandayariTypes.UPDATEMUDDAANUSANDHANDAYARI_REQUEST,
+      updatemuddaanusandhandayariRequest,
+      api
+    ),
+
+    takeLatest(
+      MuddaanusandhandayariTypes.DELETEMUDDAANUSANDHANDAYARI_REQUEST,
+      deletemuddaanusandhandayariRequest,
       api
     ),
 
