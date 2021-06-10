@@ -78,7 +78,7 @@ class Banbibaran extends Component {
         break;
       }
       case "kabuliyatiban": {
-        alert("this is kabuliyatiban");
+        this.props.history.push("/forests/kabuliyatibanadd/new");
         break;
       }
       case "dharmikban": {
@@ -163,6 +163,13 @@ class Banbibaran extends Component {
             onSelect={this.handleSelectMenu}
           />
         )}
+        {equals(loc, "kabuliyatibanadd") && (
+          <KabuliyatibanBibaran.Add
+            title="+ कवुलियती वन"
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addKabuliyatibanbibaran(e)}
+          />
+        )}
         {equals(loc, "nijibanlist") && (
           <NijibanBibaran.List
             buttonName="+ निजि वन"
@@ -229,6 +236,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BanbibaranActions.deletesamudayikbanbibaranRequest(samudayikbanbibaranId)
     ),
+
   addDharmikbanbibaran: (payload) =>
     dispatch(BanbibaranActions.adddharmikbanbibaranRequest(payload)),
   updateDharmikbanbibaran: (payload, dharmikbanbibaranId) =>
@@ -238,6 +246,10 @@ const mapDispatchToProps = (dispatch) => ({
         dharmikbanbibaranId
       )
     ),
+
+  addKabuliyatibanbibaran: (payload) =>
+    dispatch(BanbibaranActions.addkabuliyatibanbibaranRequest(payload)),
+
   addNijibanbibaran: (payload) =>
     dispatch(BanbibaranActions.addnijibanbibaranRequest(payload)),
   updateNijibibaran: (payload, nijibanbibaranId) =>
