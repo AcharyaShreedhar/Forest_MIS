@@ -19,6 +19,18 @@
    fetchbiruwautpadanRequest: ["payload"],
    fetchbiruwautpadanSuccess: ["response"],
    fetchbiruwautpadanFailure: null,
+
+   addbiruwautpadanRequest: ["payload"],
+   addbiruwautpadanSuccess: ["response"],
+   addbiruwautpadanFailure: null,
+
+   updatebiruwautpadanRequest: ["payload"],
+   updatebiruwautpadanSuccess: ["response"],
+   updatebiruwautpadanFailure: null,
+
+   deletebiruwautpadanRequest: ["payload"],
+   deletebiruwautpadanSuccess: ["response"],
+   deletebiruwautpadanFailure: null,
  
    locationsRequest: ["payload"],
    // Clear all caches
