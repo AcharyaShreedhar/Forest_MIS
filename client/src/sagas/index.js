@@ -124,6 +124,7 @@ import {
    fetchemployeesRequest,
    fetchallemployeeshistoryRequest,
    fetchemployeeshistoryRequest,
+   fetchalllevelRequest,
  } from "./karmacharibibaran";
 
  
@@ -463,6 +464,12 @@ export default function* root() {
     takeLatest(
       KarmacharibibaranTypes.FETCHEMPLOYEESHISTORY_REQUEST,
       fetchemployeeshistoryRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.FETCHALLLEVEL_REQUEST,
+      fetchalllevelRequest,
       api
     ),
     
