@@ -103,13 +103,25 @@ const create = (baseURL = Config.API_URL) => {
 
   //delete
   const postBanbibaranNabikarankaryayojanaDelete = (payload, nabikaranKaryayojanaId) =>
-  api.post(`kabuliyatibanBibaran/${nabikaranKaryayojanaId}`, payload);
+  api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
 
 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
 
   const getBiruwautpadan = (biruwautpadanId) => api.get(`biruwaUtpadans/${biruwautpadanId}`);
+
+   //Add
+   const postBiruwautpadanBiruwautpadanAddNew = (payload) => api.post(`biruwautpadans`, payload);
+
+   //update
+   const postBiruwautpadanBiruwautpadanUpdate = (payload, biruwautpadanId) =>
+   api.post(`biruwautpadans/${biruwautpadanId}`, payload);
+ 
+   //delete
+   const postBiruwautpadanBiruwautpadanDelete = (payload, biruwautpadanId) =>
+   api.post(`biruwautpadans/${biruwautpadanId}`, payload);
+
   //Dwandabebasthapan
   const getBanyajantuUddarList = () => api.get("banyajantuUddars");
 
@@ -154,6 +166,7 @@ const create = (baseURL = Config.API_URL) => {
   const getMuddaanusandhandayari = (muddaAnusandhanDayariId) =>
 
     api.get(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`);
+
   // ------banxetraatikraman
   const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
 
@@ -269,6 +282,9 @@ const create = (baseURL = Config.API_URL) => {
     //biruwautpadans
     getBiruwautpadanList,
     getBiruwautpadan,
+    postBiruwautpadanBiruwautpadanAddNew,
+    postBiruwautpadanBiruwautpadanUpdate,
+    postBiruwautpadanBiruwautpadanDelete,
     //sampatibibaran
     getAssetsList,
     getAssets,
@@ -294,6 +310,9 @@ const create = (baseURL = Config.API_URL) => {
     postBanpaidawarBanpaidawarDelete,
     getBanpaidawarlilamList,
     getBanpaidawarlilam,
+    postBanpaidawarBanpaidawarlilamAddNew,
+    postBanpaidawarBanpaidawarlilamUpdate,
+    postBanpaidawarBanpaidawarlilamDelete,
     // karmacharidarbandi
     getKarmacharidarbandiList,
     getKarmacharidarbandi,
