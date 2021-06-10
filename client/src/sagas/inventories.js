@@ -61,3 +61,18 @@ export function* fetchallexitRequest(api, action) {
     yield put(InventoriesActions.fetchallexitFailure());
   }
 }
+
+
+export function* fetchexitRequest(api, action) {
+  const  exitId  = action.payload
+
+  const response = yield api.getExit(exitId);
+  
+  if (response.ok) {
+    yield put(
+      InventoriesActions.fetchexitSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.fetchexitFailure());
+  }
+}
