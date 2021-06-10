@@ -152,12 +152,23 @@ const create = (baseURL = Config.API_URL) => {
   const getMuddaanusandhandayariList = () => api.get("muddaAnusandhanDayaris");
 
   const getMuddaanusandhandayari = (muddaAnusandhanDayariId) =>
-
     api.get(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`);
+
   // ------banxetraatikraman
   const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
 
   const getBanxetraatikraman = (banxetraAtikramanId) => api.get(`banxetraAtikramans/${banxetraAtikramanId}`);
+
+  //Add
+  const postBanxetraatikramanBanxetraatikramanAddNew = (payload) => api.post(`banxetraAtikramans`, payload);
+
+  //update
+  const postBanxetraatikramanBanxetraatikramanUpdate = (payload, banxetraAtikramanId) => 
+  api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
+
+  //delete
+  const postBanxetraatikramanBanxetraatikramanDelete = (payload, banxetraAtikramanId) =>
+  api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
 
   //................bandadelobibarans
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
@@ -168,10 +179,12 @@ const create = (baseURL = Config.API_URL) => {
   const postBandadelobibaranBandadeloAddNew = (payload) => api.post(`bandadeloBibaran`, payload);
 
   //update
-  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) => api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) => 
+  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
   //delete
-  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
+  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
@@ -253,6 +266,9 @@ const create = (baseURL = Config.API_URL) => {
     //banxetraatikraman
     getBanxetraatikramanList,
     getBanxetraatikraman,
+    postBanxetraatikramanBanxetraatikramanAddNew,
+    postBanxetraatikramanBanxetraatikramanUpdate,
+    postBanxetraatikramanBanxetraatikramanDelete,
     //bandadelobibaran
     getBandadelobibaranList,
     getBandadelobibaran,
