@@ -20,6 +20,18 @@
    fetchbanpaidawarSuccess: ["response"],
    fetchbanpaidawarFailure: null,
 
+   addbanpaidawarRequest: ["payload"],
+   addbanpaidawarSuccess: ["response"],
+   addbanpaidawarFailure: null,
+
+   updatebanpaidawarRequest: ["payload"],
+   updatebanpaidawarSuccess: ["response"],
+   updatebanpaidawarFailure: null,
+
+   deletebanpaidawarRequest: ["payload"],
+   deletebanpaidawarSuccess: ["response"],
+   deletebanpaidawarFailure: null,
+
    fetchallbanpaidawarlilamRequest: ["payload"],
    fetchallbanpaidawarlilamSuccess: ["response"],
    fetchallbanpaidawarlilamFailure: null,
