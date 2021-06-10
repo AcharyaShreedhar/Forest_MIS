@@ -20,6 +20,18 @@
    fetchbanpaidawarSuccess: ["response"],
    fetchbanpaidawarFailure: null,
 
+   addbanpaidawarRequest: ["payload"],
+   addbanpaidawarSuccess: ["response"],
+   addbanpaidawarFailure: null,
+
+   updatebanpaidawarRequest: ["payload"],
+   updatebanpaidawarSuccess: ["response"],
+   updatebanpaidawarFailure: null,
+
+   deletebanpaidawarRequest: ["payload"],
+   deletebanpaidawarSuccess: ["response"],
+   deletebanpaidawarFailure: null,
+
    fetchallbanpaidawarlilamRequest: ["payload"],
    fetchallbanpaidawarlilamSuccess: ["response"],
    fetchallbanpaidawarlilamFailure: null,
@@ -27,6 +39,18 @@
    fetchbanpaidawarlilamRequest: ["payload"],
    fetchbanpaidawarlilamSuccess: ["response"],
    fetchbanpaidawarlilamFailure: null,
+
+   addbanpaidawarlilamRequest: ["payload"],
+   addbanpaidawarlilamSuccess: ["response"],
+   addbanpaidawarlilamFailure: null,
+
+   updatebanpaidawarlilamRequest: ["payload"],
+   updatebanpaidawarlilamSuccess: ["response"],
+   updatebanpaidawarlilamFailure: null,
+
+   deletebanpaidawarlilamRequest: ["payload"],
+   deletebanpaidawarlilamSuccess: ["response"],
+   deletebanpaidawarlilamFailure: null,
 
 
        locationsRequest: ["payload"],
