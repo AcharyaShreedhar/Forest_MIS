@@ -79,3 +79,14 @@ export function* fetchlevelRequest(api, action) {
   }
 }
   
+
+   
+export function* fetchallpostRequest(api, action) {
+  const response = yield api.getPostList();
+
+  if (response.ok) {
+    yield put(KarmacharibibaranActions.fetchallpostSuccess(response.data));
+  } else {
+    yield put(KarmacharibibaranActions.fetchallpostFailure());
+  }
+}
