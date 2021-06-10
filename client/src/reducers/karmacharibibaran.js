@@ -62,6 +62,19 @@ const fetchemployeeshistoryFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchalllevelRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchalllevelSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    alllevelData: action.response,
+  });
+};
+const fetchalllevelFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 const locationsRequest = (state, action) => {
     let locations = state.locations;
@@ -90,6 +103,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.FETCHEMPLOYEESHISTORY_REQUEST]: fetchemployeeshistoryRequest,
     [KarmacharibibaranTypes.FETCHEMPLOYEESHISTORY_SUCCESS]: fetchemployeeshistorySuccess,
     [KarmacharibibaranTypes.FETCHEMPLOYEESHISTORY_FAILURE]: fetchemployeeshistoryFailure,
+
+    [KarmacharibibaranTypes.FETCHALLLEVEL_REQUEST]: fetchalllevelRequest,
+    [KarmacharibibaranTypes.FETCHALLLEVEL_SUCCESS]: fetchalllevelSuccess,
+    [KarmacharibibaranTypes.FETCHALLLEVEL_FAILURE]: fetchalllevelFailure,
     
     [KarmacharibibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
     [KarmacharibibaranTypes.CLEAR_REQUEST]: clearRequest,
