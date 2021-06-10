@@ -28,3 +28,12 @@ export function* fetchinventoriesRequest(api, action) {
   }
 }
 
+export function* fetchallentryRequest(api, action) {
+  const response = yield api.getEntryList();
+
+  if (response.ok) {
+    yield put(InventoriesActions.fetchallentrySuccess(response.data));
+  } else {
+    yield put(InventoriesActions.fetchallentryFailure());
+  }
+}
