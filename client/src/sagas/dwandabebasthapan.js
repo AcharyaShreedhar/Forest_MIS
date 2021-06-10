@@ -136,3 +136,84 @@ export function* deletebanyajantuuddarRequest(api, action) {
       yield put(DwandabebasthapanActions.fetchbanyajantuxetiFailure());
     }
   }
+
+
+   // Add banyajantuxeti
+export function* addbanyajantuxetiRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postDwandabebasthapanBanyajantuxetiAddNew(
+    payload.banyajantuxeti.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन्यजन्तु क्षति प्रविष्ट भयो !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanyajantuxetiRequest(api);
+    yield call(history.push, "/forests/banyajantuxetilist");
+    yield put(DwandabebasthapanActions.addbanyajantuxetiSuccess(response.data));
+  } else {
+    yield put(DwandabebasthapanActions.addbanyajantuxetiFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update banyajantuxeti
+export function* updatebanyajantuxetiRequest(api, action) {
+  const { payload, banyajantuXetiId } = action;
+
+  const response = yield api.postDwandabebasthapanBanyajantuxetiUpdate(
+    payload.banyajantuxeti.data,
+    banyajantuXetiId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन्यजन्तु क्षति पुनः प्रविष्ट भयो !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanyajantuxetiRequest(api);
+    yield call(history.push, "/forests/banyajantuxetilist");
+    yield put(
+      DwandabebasthapanActions.updatebanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.updatebanyajantuxetiFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete banyajantuxeti
+export function* deletebanyajantuxetiRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postDwandabebasthapanBanyajantuxetiDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन्यजन्तु क्षति हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanyajantuxetiRequest(api);
+    yield put(
+      DwandabebasthapanActions.deletebanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.deletebanyajantuxetiFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

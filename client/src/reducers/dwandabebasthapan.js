@@ -102,6 +102,39 @@ const fetchbanyajantuxetiFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add banyajantuxeti
+const addbanyajantuxetiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanyajantuxetiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanyajantuxetiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update banyajantuxeti
+const updatebanyajantuxetiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebanyajantuxetiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebanyajantuxetiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete banyajantuxeti
+const deletebanyajantuxetiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebanyajantuxetiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebanyajantuxetiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 
 
 const locationsRequest = (state, action) => {
@@ -133,9 +166,9 @@ export const reducer = createReducer(initialState, {
   [DwandabebasthapanTypes.UPDATEBANYAJANTUUDDAR_SUCCESS]: updatebanyajantuuddarSuccess,
   [DwandabebasthapanTypes.UPDATEBANYAJANTUUDDAR_FAILURE]: updatebanyajantuuddarFailure,
 
-  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_REQUEST]: fetchbanyajantuuddarRequest,
-  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_SUCCESS]: fetchbanyajantuuddarSuccess,
-  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_FAILURE]: fetchbanyajantuuddarFailure,
+  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_REQUEST]: deletebanyajantuuddarRequest,
+  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_SUCCESS]: deletebanyajantuuddarSuccess,
+  [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_FAILURE]: deletebanyajantuuddarFailure,
 
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_REQUEST]: fetchallbanyajantuxetiRequest,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_SUCCESS]: fetchallbanyajantuxetiSuccess,
@@ -144,6 +177,18 @@ export const reducer = createReducer(initialState, {
   [DwandabebasthapanTypes.FETCHBANYAJANTUXETI_REQUEST]: fetchbanyajantuxetiRequest,
   [DwandabebasthapanTypes.FETCHBANYAJANTUXETI_SUCCESS]: fetchbanyajantuxetiSuccess,
   [DwandabebasthapanTypes.FETCHBANYAJANTUXETI_FAILURE]: fetchbanyajantuxetiFailure,
+
+  [DwandabebasthapanTypes.ADDBANYAJANTUXETI_REQUEST]: addbanyajantuxetiRequest,
+  [DwandabebasthapanTypes.ADDBANYAJANTUXETI_SUCCESS]: addbanyajantuxetiSuccess,
+  [DwandabebasthapanTypes.ADDBANYAJANTUXETI_FAILURE]: addbanyajantuxetiFailure,
+
+  [DwandabebasthapanTypes.UPDATEBANYAJANTUXETI_REQUEST]: updatebanyajantuxetiRequest,
+  [DwandabebasthapanTypes.UPDATEBANYAJANTUXETI_SUCCESS]: updatebanyajantuxetiSuccess,
+  [DwandabebasthapanTypes.UPDATEBANYAJANTUXETI_FAILURE]: updatebanyajantuxetiFailure,
+
+  [DwandabebasthapanTypes.DELETEBANYAJANTUXETI_REQUEST]: deletebanyajantuxetiRequest,
+  [DwandabebasthapanTypes.DELETEBANYAJANTUXETI_SUCCESS]: deletebanyajantuxetiSuccess,
+  [DwandabebasthapanTypes.DELETEBANYAJANTUXETI_FAILURE]: deletebanyajantuxetiFailure,
   
   [DwandabebasthapanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [DwandabebasthapanTypes.CLEAR_REQUEST]: clearRequest,

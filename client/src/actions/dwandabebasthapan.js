@@ -40,6 +40,18 @@
    fetchbanyajantuxetiSuccess: ["response"],
    fetchbanyajantuxetiFailure: null,
 
+   addbanyajantuxetiRequest: ["payload"],
+   addbanyajantuxetiSuccess: ["response"],
+   addbanyajantuxetiFailure: null,
+
+   updatebanyajantuxetiRequest: ["payload"],
+   updatebanyajantuxetiSuccess: ["response"],
+   updatebanyajantuxetiFailure: null,
+
+   deletebanyajantuxetiRequest: ["payload"],
+   deletebanyajantuxetiSuccess: ["response"],
+   deletebanyajantuxetiFailure: null,
+
    
 
  
