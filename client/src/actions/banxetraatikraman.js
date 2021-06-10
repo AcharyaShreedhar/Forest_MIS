@@ -20,6 +20,18 @@
    fetchbanxetraatikramanSuccess: ["response"],
    fetchbanxetraatikramanFailure: null,
 
+   addbanxetraatikramanRequest: ["payload"],
+   addbanxetraatikramanSuccess: ["response"],
+   addbanxetraatikramanFailure: null,
+
+   updatebanxetraatikramanRequest: ["payload"],
+   updatebanxetraatikramanSuccess: ["response"],
+   updatebanxetraatikramanFailure: null,
+
+   deletebanxetraatikramanRequest: ["payload"],
+   deletebanxetraatikramanSuccess: ["response"],
+   deletebanxetraatikramanFailure: null,
+
        locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
