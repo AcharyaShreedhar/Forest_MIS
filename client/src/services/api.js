@@ -168,19 +168,32 @@ const create = (baseURL = Config.API_URL) => {
   const postBandadelobibaranBandadeloAddNew = (payload) => api.post(`bandadeloBibaran`, payload);
 
   //update
-  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) => api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) => 
+  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
   //delete
-  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
+  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
 
   const getBanpaidawar = (banpaidawarId) =>  api.get(`banpaidawar/${banpaidawarId}`);
 
+  //Add
+  const postBanpaidawarBanpaidawarAddNew = (payload) => api.post(`banpaidawar`, payload);
+
+  //update
+  const postBanpaidawarBanpaidawarUpdate = (payload, banpaidawarId) => 
+  api.post(`banpaidawar/${banpaidawarId}`, payload);
+ 
+  //delete
+  const postBanpaidawarBanpaidawarDelete = (payload, banpaidawarId) =>
+  api.post(`banpaidawar/${banpaidawarId}`, payload);
+   
   const getBanpaidawarlilamList = () => api.get("banpaidawarLilam");
 
-  const getBanpaidawarlilam = (banpaidawarLilamId) => api.get(`banpaidawar/${banpaidawarLilamId}`);
+  const getBanpaidawarlilam = (banpaidawarLilamId) => api.get(`banpaidawarLilam/${banpaidawarLilamId}`);
   // Karmachari darbandi
   const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
 
@@ -262,6 +275,9 @@ const create = (baseURL = Config.API_URL) => {
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,
+    postBanpaidawarBanpaidawarAddNew,
+    postBanpaidawarBanpaidawarUpdate,
+    postBanpaidawarBanpaidawarDelete,
     getBanpaidawarlilamList,
     getBanpaidawarlilam,
     // karmacharidarbandi
