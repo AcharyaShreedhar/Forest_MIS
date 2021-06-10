@@ -166,6 +166,7 @@ const create = (baseURL = Config.API_URL) => {
   const getEmployeeshistory =(histId) => api.get(`employeeHistory/${histId}`);
   const getLevelList = () => api.get("level");
   const getLevel =(levelId) => api.get(`level/${levelId}`);
+  const getPostList = () => api.get("posts");
 
   return {
     loginByUsername,
@@ -235,6 +236,7 @@ const create = (baseURL = Config.API_URL) => {
     getEmployeeshistory,
     getLevelList,
     getLevel,
+    getPostList,
   };
 };
 export default {
