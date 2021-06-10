@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import "./SamudayikbanBibaran.scss";
-import { equals } from "ramda";
+import "./KabuliyatibanBibaran.scss";
 
 class Add extends Component {
   constructor(props) {
