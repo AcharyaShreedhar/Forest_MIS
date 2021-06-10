@@ -242,6 +242,8 @@ const create = (baseURL = Config.API_URL) => {
   const getInventoriesList = () => api.get("inventory");
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
   const getEntryList = () => api.get("entry");
+  const getEntry = (entryId) => api.get(`entry/${entryId}`);
+  const getExitList = () => api.get("exit");
 
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
@@ -341,6 +343,8 @@ const create = (baseURL = Config.API_URL) => {
     getInventoriesList,
     getInventories,
     getEntryList,
+    getEntry,
+    getExitList,
     //karmacharibiabran
     getEmployeesList,
     getEmployees,

@@ -23,6 +23,14 @@ const { Types, Creators } = createActions({
   fetchallentrySuccess: ["response"],
   fetchallentryFailure: null,
 
+  fetchentryRequest: ["payload"],
+  fetchentrySuccess: ["response"],
+  fetchentryFailure: null,
+
+  fetchallexitRequest: ["payload"],
+  fetchallexitSuccess: ["response"],
+  fetchallexitFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

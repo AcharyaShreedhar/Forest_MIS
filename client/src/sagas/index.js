@@ -139,6 +139,8 @@ import {
    fetchallinventoriesRequest,
    fetchinventoriesRequest,
    fetchallentryRequest,
+   fetchentryRequest,
+   fetchallexitRequest,
  } from "./inventories";
 
  //--------karmacharibibaran
@@ -614,6 +616,18 @@ export default function* root() {
     takeLatest(
       InventoriesTypes.FETCHALLENTRY_REQUEST,
       fetchallentryRequest,
+      api
+    ), 
+
+    takeLatest(
+      InventoriesTypes.FETCHENTRY_REQUEST,
+      fetchentryRequest,
+      api
+    ), 
+
+    takeLatest(
+      InventoriesTypes.FETCHALLEXIT_REQUEST,
+      fetchallexitRequest,
       api
     ), 
 
