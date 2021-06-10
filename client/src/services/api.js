@@ -166,6 +166,17 @@ const create = (baseURL = Config.API_URL) => {
   const getMuddaanusandhandayari = (muddaAnusandhanDayariId) =>
     api.get(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`);
 
+  //Add muddaanusandhandayari
+  const postMuddaanusandhandayariMuddaanusandhandayariAddNew = (payload) => api.post(`muddaAnusandhanDayaris`, payload);
+
+  //update muddaanusandhandayari
+  const postMuddaanusandhandayariMuddaanusandhandayariUpdate = ( payload,muddaAnusandhanDayariId ) => 
+  api.post(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`, payload);
+
+  //delete muddaanusandhandayari
+  const postMuddaanusandhandayariMuddaanusandhandayariDelete = ( payload, muddaAnusandhanDayariId ) =>
+   api.post(`muddaAnusandhanDayari/${muddaAnusandhanDayariId}`, payload);
+
   // ------banxetraatikraman
   const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
 
@@ -308,6 +319,9 @@ const create = (baseURL = Config.API_URL) => {
     //muddaanusandhandayari
     getMuddaanusandhandayariList,
     getMuddaanusandhandayari,
+    postMuddaanusandhandayariMuddaanusandhandayariAddNew,
+    postMuddaanusandhandayariMuddaanusandhandayariUpdate,
+    postMuddaanusandhandayariMuddaanusandhandayariDelete,
     //banxetraatikraman
     getBanxetraatikramanList,
     getBanxetraatikraman,
