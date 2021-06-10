@@ -91,6 +91,19 @@ const fetchlevelFailure = (state, action) => {
 };
 
 
+const fetchallpostRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallpostSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allpostData: action.response,
+  });
+};
+const fetchallpostFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
     let locations = state.locations;
   
@@ -126,6 +139,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.FETCHLEVEL_REQUEST]: fetchlevelRequest,
     [KarmacharibibaranTypes.FETCHLEVEL_SUCCESS]: fetchlevelSuccess,
     [KarmacharibibaranTypes.FETCHLEVEL_FAILURE]: fetchlevelFailure,
+
+    [KarmacharibibaranTypes.FETCHALLPOST_REQUEST]: fetchallpostRequest,
+    [KarmacharibibaranTypes.FETCHALLPOST_SUCCESS]: fetchallpostSuccess,
+    [KarmacharibibaranTypes.FETCHALLPOST_FAILURE]: fetchallpostFailure,
     
     [KarmacharibibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
     [KarmacharibibaranTypes.CLEAR_REQUEST]: clearRequest,
