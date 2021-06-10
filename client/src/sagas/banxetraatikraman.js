@@ -1,5 +1,5 @@
 import { call, put } from "redux-saga/effects";
-
+import { toast } from "react-toastify";
 import { history } from "../reducers";
 import BanxetraatikramanActions from "../actions/banxetraatikraman";
 
@@ -28,3 +28,77 @@ export function* fetchbanxetraatikramanRequest(api, action) {
     }
   }
   
+
+  // Add banxetraatikraman
+export function* addbanxetraatikramanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanxetraatikramanBanxetraatikramanAddNew(
+    payload.banxetraatikraman.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraatikramanRequest(api);
+    yield call(history.push, "/forests/banxetraatikramanlist");
+    yield put(BanxetraatikramanActions.addbanxetraatikramanSuccess(response.data));
+  } else {
+    yield put(BanxetraatikramanActions.addbanxetraatikramanFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update banxetraatikraman
+export function* updatebanxetraatikramanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanxetraatikramanBanxetraatikramanUpdate(
+    payload.banxetraatikraman.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraatikramanRequest(api);
+    yield call(history.push, "/forests/banxetraatikramanlist");
+    yield put(
+      BanxetraatikramanActions.updatebanxetraatikramanSuccess(response.data)
+    );
+  } else {
+    yield put(BanxetraatikramanActions.updatebanxetraatikramanFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+
+// Delete banxetraatikraman
+export function* deletebanxetraatikramanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanxetraatikramanBanxetraatikramanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraatikramanRequest(api);
+    yield put(
+      BanxetraatikramanActions.deletebanxetraatikramanSuccess(response.data)
+    );
+  } else {
+    yield put(BanxetraatikramanActions.deletebanxetraatikramanFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}

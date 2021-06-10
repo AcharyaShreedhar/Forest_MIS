@@ -94,6 +94,9 @@ import {
 import {
   fetchallbanxetraatikramanRequest,
   fetchbanxetraatikramanRequest,
+  addbanxetraatikramanRequest,
+  updatebanxetraatikramanRequest,
+  deletebanxetraatikramanRequest,
 } from "./banxetraatikraman";
 
 //-------banpaidawar
@@ -444,6 +447,24 @@ export default function* root() {
     takeLatest(
       BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_REQUEST,
       fetchbanxetraatikramanRequest,
+      api
+    ),
+
+    takeLatest(
+      BanxetraatikramanTypes.ADDBANXETRAATIKRAMAN_REQUEST,
+      addbanxetraatikramanRequest,
+      api
+    ),
+
+    takeLatest(
+      BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_REQUEST,
+      updatebanxetraatikramanRequest,
+      api
+    ),
+
+    takeLatest(
+      BanxetraatikramanTypes.DELETEBANXETRAATIKRAMAN_REQUEST,
+      deletebanxetraatikramanRequest,
       api
     ),
 
