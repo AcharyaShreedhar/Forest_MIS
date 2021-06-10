@@ -36,6 +36,42 @@ const fetchbiruwautpadanFailure = (state, action) => {
 };
 
 
+//Add biruwautpadan
+const addbiruwautpadanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbiruwautpadanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbiruwautpadanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update biruwautpadan
+const updatebiruwautpadanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatebiruwautpadanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatebiruwautpadanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete biruwautpadan
+const deletebiruwautpadanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebiruwautpadanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebiruwautpadanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -56,7 +92,20 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.FETCHBIRUWAUTPADAN_REQUEST]: fetchbiruwautpadanRequest,
   [BiruwautpadanTypes.FETCHBIRUWAUTPADAN_SUCCESS]: fetchbiruwautpadanSuccess,
   [BiruwautpadanTypes.FETCHBIRUWAUTPADAN_FAILURE]: fetchbiruwautpadanFailure,
-  
+
+  [BiruwautpadanTypes.ADDBIRUWAUTPADAN_REQUEST]: addbiruwautpadanRequest,
+  [BiruwautpadanTypes.ADDBIRUWAUTPADAN_SUCCESS]: addbiruwautpadanSuccess,
+  [BiruwautpadanTypes.ADDBIRUWAUTPADAN_FAILURE]: addbiruwautpadanFailure,
+
+  [BiruwautpadanTypes.UPDATEBIRUWAUTPADAN_REQUEST]: updatebiruwautpadanRequest,
+  [BiruwautpadanTypes.UPDATEBIRUWAUTPADAN_SUCCESS]: updatebiruwautpadanSuccess,
+  [BiruwautpadanTypes.UPDATEBIRUWAUTPADAN_FAILURE]: updatebiruwautpadanFailure,
+
+  [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_REQUEST]: deletebiruwautpadanRequest,
+  [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_SUCCESS]: deletebiruwautpadanSuccess,
+  [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_FAILURE]: deletebiruwautpadanFailure,
+
+   
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BiruwautpadanTypes.CLEAR_REQUEST]: clearRequest,
 });
