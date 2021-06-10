@@ -39,6 +39,42 @@ const fetchmuddaanusandhandayariFailure = (state, action) => {
 };
 
 
+//Add muddaanusandhandayari
+const addmuddaanusandhandayariRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addmuddaanusandhandayariSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addmuddaanusandhandayariFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update muddaanusandhandayari
+const updatemuddaanusandhandayariRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatemuddaanusandhandayariSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatemuddaanusandhandayariFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete muddaanusandhandayari
+const deletemuddaanusandhandayariRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletemuddaanusandhandayariSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletemuddaanusandhandayariFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -60,6 +96,18 @@ export const reducer = createReducer(initialState, {
   [MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST]: fetchmuddaanusandhandayariRequest,
   [MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_SUCCESS]: fetchmuddaanusandhandayariSuccess,
   [MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_FAILURE]: fetchmuddaanusandhandayariFailure,
+
+  [MuddaanusandhandayariTypes.ADDMUDDAANUSANDHANDAYARI_REQUEST]: addmuddaanusandhandayariRequest,
+  [MuddaanusandhandayariTypes.ADDMUDDAANUSANDHANDAYARI_SUCCESS]: addmuddaanusandhandayariSuccess,
+  [MuddaanusandhandayariTypes.ADDMUDDAANUSANDHANDAYARI_FAILURE]: addmuddaanusandhandayariFailure,
+
+  [MuddaanusandhandayariTypes.UPDATEMUDDAANUSANDHANDAYARI_REQUEST]: updatemuddaanusandhandayariRequest,
+  [MuddaanusandhandayariTypes.UPDATEMUDDAANUSANDHANDAYARI_SUCCESS]: updatemuddaanusandhandayariSuccess,
+  [MuddaanusandhandayariTypes.UPDATEMUDDAANUSANDHANDAYARI_FAILURE]: updatemuddaanusandhandayariFailure,
+
+  [MuddaanusandhandayariTypes.DELETEMUDDAANUSANDHANDAYARI_REQUEST]: deletemuddaanusandhandayariRequest,
+  [MuddaanusandhandayariTypes.DELETEMUDDAANUSANDHANDAYARI_SUCCESS]: deletemuddaanusandhandayariSuccess,
+  [MuddaanusandhandayariTypes.DELETEMUDDAANUSANDHANDAYARI_FAILURE]: deletemuddaanusandhandayariFailure,
 
  
  
