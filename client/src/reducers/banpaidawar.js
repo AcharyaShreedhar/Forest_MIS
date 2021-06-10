@@ -37,6 +37,43 @@ const fetchbanpaidawarFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add Banpaidawar
+const addbanpaidawarRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanpaidawarSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanpaidawarFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update banpaidawar
+const updatebanpaidawarRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatebanpaidawarSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatebanpaidawarFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete banpaidawar
+const deletebanpaidawarRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebanpaidawarSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebanpaidawarFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+
 
 const fetchallbanpaidawarlilamRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -90,6 +127,18 @@ export const reducer = createReducer(initialState, {
   [BanpaidawarTypes.FETCHBANPAIDAWAR_REQUEST]: fetchbanpaidawarRequest,
   [BanpaidawarTypes.FETCHBANPAIDAWAR_SUCCESS]: fetchbanpaidawarSuccess,
   [BanpaidawarTypes.FETCHBANPAIDAWAR_FAILURE]: fetchbanpaidawarFailure,
+
+  [BanpaidawarTypes.ADDBANPAIDAWAR_REQUEST]: addbanpaidawarRequest,
+  [BanpaidawarTypes.ADDBANPAIDAWAR_SUCCESS]: addbanpaidawarSuccess,
+  [BanpaidawarTypes.ADDBANPAIDAWAR_FAILURE]: addbanpaidawarFailure,
+
+  [BanpaidawarTypes.UPDATEBANPAIDAWAR_REQUEST]: updatebanpaidawarRequest,
+  [BanpaidawarTypes.UPDATEBANPAIDAWAR_SUCCESS]: updatebanpaidawarSuccess,
+  [BanpaidawarTypes.UPDATEBANPAIDAWAR_FAILURE]: updatebanpaidawarFailure,
+
+  [BanpaidawarTypes.DELETEBANPAIDAWAR_REQUEST]: deletebanpaidawarRequest,
+  [BanpaidawarTypes.DELETEBANPAIDAWAR_SUCCESS]: deletebanpaidawarSuccess,
+  [BanpaidawarTypes.DELETEBANPAIDAWAR_FAILURE]: deletebanpaidawarFailure,
 
   [BanpaidawarTypes.FETCHALLBANPAIDAWARLILAM_REQUEST]: fetchallbanpaidawarlilamRequest,
   [BanpaidawarTypes.FETCHALLBANPAIDAWARLILAM_SUCCESS]: fetchallbanpaidawarlilamSuccess,
