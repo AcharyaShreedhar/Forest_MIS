@@ -70,8 +70,18 @@ class Banbibaran extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteSamudayikbanbibaran(item.samudayikban_id);
-        break;
+        switch (path) {
+          case "samudayik": {
+            this.props.deleteSamudayikbanbibaran(item.samudayikban_id);
+            break;
+          }
+          case "dharmik": {
+            this.props.deleteDharmikbanbibaran(item.dharmikban_id);
+            break;
+          }
+          default:
+            break;
+        }
       }
       default:
         break;
@@ -237,6 +247,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  //--------------------------Samudayikban
   addSamudayikbanbibaran: (payload) =>
     dispatch(BanbibaranActions.addsamudayikbanbibaranRequest(payload)),
   updateSamudayikbanbibaran: (payload, samudayikbanbibaranId) =>
@@ -251,7 +262,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BanbibaranActions.deletesamudayikbanbibaranRequest(samudayikbanbibaranId)
     ),
-
+  //--------------------------Dharmikban
   addDharmikbanbibaran: (payload) =>
     dispatch(BanbibaranActions.adddharmikbanbibaranRequest(payload)),
   updateDharmikbanbibaran: (payload, dharmikbanbibaranId) =>
@@ -261,7 +272,12 @@ const mapDispatchToProps = (dispatch) => ({
         dharmikbanbibaranId
       )
     ),
+  deleteDharmikbanbibaran: (dharmikbanbibaranId) =>
+    dispatch(
+      BanbibaranActions.deletedharmikbanbibaranRequest(dharmikbanbibaranId)
+    ),
 
+  //--------------------------Kabuliyatiban
   addKabuliyatibanbibaran: (payload) =>
     dispatch(BanbibaranActions.addkabuliyatibanbibaranRequest(payload)),
   updateKabuliyatibanbibaran: (payload, kabuliyatibanbibaranId) =>
@@ -271,6 +287,8 @@ const mapDispatchToProps = (dispatch) => ({
         kabuliyatibanbibaranId
       )
     ),
+
+  //--------------------------Nijiban
   addNijibanbibaran: (payload) =>
     dispatch(BanbibaranActions.addnijibanbibaranRequest(payload)),
   updateNijibibaran: (payload, nijibanbibaranId) =>
