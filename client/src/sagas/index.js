@@ -57,6 +57,9 @@ import {
 import {
   fetchallbiruwautpadanRequest,
   fetchbiruwautpadanRequest,
+  addbiruwautpadanRequest,
+  updatebiruwautpadanRequest,
+  deletebiruwautpadanRequest,
 } from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
@@ -315,6 +318,24 @@ export default function* root() {
     takeLatest(
       BiruwautpadanTypes.FETCHBIRUWAUTPADAN_REQUEST,
       fetchbiruwautpadanRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.ADDBIRUWAUTPADAN_REQUEST,
+      addbiruwautpadanRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.UPDATEBIRUWAUTPADAN_REQUEST,
+      updatebiruwautpadanRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.DELETEBIRUWAUTPADAN_REQUEST,
+      deletebiruwautpadanRequest,
       api
     ),
 
