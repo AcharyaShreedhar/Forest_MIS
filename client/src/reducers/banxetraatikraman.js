@@ -39,6 +39,45 @@ const fetchbanxetraatikramanFailure = (state, action) => {
 };
 
 
+//Add banxetraatikraman
+const addbanxetraatikramanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanxetraatikramanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanxetraatikramanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update banxetraatikraman
+const updatebanxetraatikramanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatebanxetraatikramanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatebanxetraatikramanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete banxetraatikraman
+const deletebanxetraatikramanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebanxetraatikramanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebanxetraatikramanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -60,6 +99,18 @@ export const reducer = createReducer(initialState, {
   [BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_REQUEST]: fetchbanxetraatikramanRequest,
   [BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_SUCCESS]: fetchbanxetraatikramanSuccess,
   [BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_FAILURE]: fetchbanxetraatikramanFailure,
+
+  [BanxetraatikramanTypes.ADDBANXETRAATIKRAMAN_REQUEST]: addbanxetraatikramanRequest,
+  [BanxetraatikramanTypes.ADDBANXETRAATIKRAMAN_SUCCESS]: addbanxetraatikramanSuccess,
+  [BanxetraatikramanTypes.ADDBANXETRAATIKRAMAN_FAILURE]: addbanxetraatikramanFailure,
+
+  [BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_REQUEST]: updatebanxetraatikramanRequest,
+  [BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_SUCCESS]: updatebanxetraatikramanSuccess,
+  [BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_FAILURE]: updatebanxetraatikramanFailure,
+
+  [BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_REQUEST]: deletebanxetraatikramanRequest,
+  [BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_SUCCESS]: deletebanxetraatikramanSuccess,
+  [BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_FAILURE]: deletebanxetraatikramanFailure,
 
    
  
