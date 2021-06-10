@@ -228,8 +228,8 @@ const create = (baseURL = Config.API_URL) => {
 
   //inventories
   const getInventoriesList = () => api.get("inventory");
-  
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
+  const getEntryList = () => api.get("entry");
 
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
@@ -241,6 +241,8 @@ const create = (baseURL = Config.API_URL) => {
   const getPostList = () => api.get("posts");
   const getPost =(postId) => api.get(`posts/${postId}`);
   
+
+
 
   return {
     loginByUsername,
@@ -320,6 +322,7 @@ const create = (baseURL = Config.API_URL) => {
     //inventories
     getInventoriesList,
     getInventories,
+    getEntryList,
     //karmacharibiabran
     getEmployeesList,
     getEmployees,
