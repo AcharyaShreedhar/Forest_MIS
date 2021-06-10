@@ -35,6 +35,10 @@
    fetchlevelSuccess: ["response"],
    fetchlevelFailure: null,
 
+   fetchallpostRequest: ["payload"],
+   fetchallpostSuccess: ["response"],
+   fetchallpostFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
