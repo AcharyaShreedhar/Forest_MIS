@@ -37,7 +37,6 @@ class Add extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
-    this.handleForestType = this.handleForestType.bind(this);
   }
 
   handleSubmit() {

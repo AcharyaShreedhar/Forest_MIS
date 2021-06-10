@@ -164,7 +164,7 @@ class Banbibaran extends Component {
           />
         )}
         {equals(loc, "kabuliyatibanadd") && (
-          <DharmikbanBibaran.Add
+          <KabuliyatibanBibaran.Add
             title="+ कवुलियती वन"
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addKabuliyatibanbibaran(e)}
