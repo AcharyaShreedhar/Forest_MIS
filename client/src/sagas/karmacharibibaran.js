@@ -90,3 +90,18 @@ export function* fetchallpostRequest(api, action) {
     yield put(KarmacharibibaranActions.fetchallpostFailure());
   }
 }
+
+
+export function* fetchpostRequest(api, action) {
+  const  postId  = action.payload
+
+  const response = yield api.getPost(postId);
+  
+  if (response.ok) {
+    yield put(
+      KarmacharibibaranActions.fetchpostSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.fetchpostFailure());
+  }
+}
