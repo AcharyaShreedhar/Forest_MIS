@@ -128,3 +128,78 @@ export function* deletebanpaidawarRequest(api, action) {
       yield put(BanpaidawarActions.fetchbanpaidawarlilamFailure());
     }
   }
+
+
+    // Add banpaidawarlilam
+export function* addbanpaidawarlilamRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanpaidawarBanpaidawarlilamAddNew(
+    payload.banpaidawarlilam.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन पैदावार लिलाम प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanpaidawarlilamRequest(api);
+    yield call(history.push, "/forests/banpaidawarlilamlist");
+    yield put(BanpaidawarActions.addbanpaidawarlilamSuccess(response.data));
+  } else {
+    yield put(BanpaidawarActions.addbanpaidawarlilamFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update banpaidawarlilam
+export function* updatebanpaidawarlilamRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanpaidawarBanpaidawarlilamUpdate(
+    payload.banpaidawarlilam.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन पैदावार लिलाम पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanpaidawarlilamRequest(api);
+    yield call(history.push, "/forests/banpaidawarlilamlist");
+    yield put(
+      BanpaidawarActions.updatebanpaidawarlilamSuccess(response.data)
+    );
+  } else {
+    yield put(BanpaidawarActions.updatebanpaidawarlilamFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+
+// Delete banpaidawarlilam
+export function* deletebanpaidawarlilamRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanpaidawarBanpaidawarlilamDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन पैदावार लिलाम हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanpaidawarlilamRequest(api);
+    yield put(
+      BanpaidawarActions.deletebanpaidawarlilamSuccess(response.data)
+    );
+  } else {
+    yield put(BanpaidawarActions.deletebanpaidawarlilamFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
