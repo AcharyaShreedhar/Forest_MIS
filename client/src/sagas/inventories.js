@@ -51,3 +51,13 @@ export function* fetchentryRequest(api, action) {
     yield put(InventoriesActions.fetchentryFailure());
   }
 }
+
+export function* fetchallexitRequest(api, action) {
+  const response = yield api.getExitList();
+
+  if (response.ok) {
+    yield put(InventoriesActions.fetchallexitSuccess(response.data));
+  } else {
+    yield put(InventoriesActions.fetchallexitFailure());
+  }
+}
