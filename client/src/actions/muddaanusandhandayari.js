@@ -20,7 +20,19 @@
    fetchmuddaanusandhandayariSuccess: ["response"],
    fetchmuddaanusandhandayariFailure: null,
 
+   addmuddaanusandhandayariRequest: ["payload"],
+   addmuddaanusandhandayariSuccess: ["response"],
+   addmuddaanusandhandayariFailure: null,
 
+   updatemuddaanusandhandayariRequest: ["payload"],
+   updatemuddaanusandhandayariSuccess: ["response"],
+   updatemuddaanusandhandayariFailure: null,
+
+   deletemuddaanusandhandayariRequest: ["payload"],
+   deletemuddaanusandhandayariSuccess: ["response"],
+   deletemuddaanusandhandayariFailure: null,
+
+   
     locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
