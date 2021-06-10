@@ -230,6 +230,7 @@ const create = (baseURL = Config.API_URL) => {
   const getInventoriesList = () => api.get("inventory");
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
   const getEntryList = () => api.get("entry");
+  const getEntry = (entryId) => api.get(`entry/${entryId}`);
 
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
@@ -323,6 +324,7 @@ const create = (baseURL = Config.API_URL) => {
     getInventoriesList,
     getInventories,
     getEntryList,
+    getEntry,
     //karmacharibiabran
     getEmployeesList,
     getEmployees,
