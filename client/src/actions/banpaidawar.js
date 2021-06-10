@@ -40,6 +40,18 @@
    fetchbanpaidawarlilamSuccess: ["response"],
    fetchbanpaidawarlilamFailure: null,
 
+   addbanpaidawarlilamRequest: ["payload"],
+   addbanpaidawarlilamSuccess: ["response"],
+   addbanpaidawarlilamFailure: null,
+
+   updatebanpaidawarlilamRequest: ["payload"],
+   updatebanpaidawarlilamSuccess: ["response"],
+   updatebanpaidawarlilamFailure: null,
+
+   deletebanpaidawarlilamRequest: ["payload"],
+   deletebanpaidawarlilamSuccess: ["response"],
+   deletebanpaidawarlilamFailure: null,
+
 
        locationsRequest: ["payload"],
    // Clear all caches
