@@ -105,6 +105,9 @@ import {
   deletebanpaidawarRequest,
   fetchallbanpaidawarlilamRequest,
   fetchbanpaidawarlilamRequest,
+  addbanpaidawarlilamRequest,
+  updatebanpaidawarlilamRequest,
+  deletebanpaidawarlilamRequest,
 } from "./banpaidawar";
 
 //--------------------bandadelobibaran
@@ -514,6 +517,24 @@ export default function* root() {
     takeLatest(
       BanpaidawarTypes.FETCHBANPAIDAWARLILAM_REQUEST,
       fetchbanpaidawarlilamRequest,
+      api
+    ),  
+
+    takeLatest(
+      BanpaidawarTypes.ADDBANPAIDAWARLILAM_REQUEST,
+      addbanpaidawarlilamRequest,
+      api
+    ),  
+
+    takeLatest(
+      BanpaidawarTypes.UPDATEBANPAIDAWARLILAM_REQUEST,
+      updatebanpaidawarlilamRequest,
+      api
+    ),  
+
+    takeLatest(
+      BanpaidawarTypes.DELETEBANPAIDAWARLILAM_REQUEST,
+      deletebanpaidawarlilamRequest,
       api
     ),  
   
