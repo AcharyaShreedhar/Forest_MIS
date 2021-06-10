@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Button, Input, DatePicker, Dropdown } from "..";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import "./NijiBibaran.scss";
+import "./NijibanBibaran.scss";
 import { equals } from "ramda";
 
 class Edit extends Component {
