@@ -53,5 +53,29 @@ export function* fetchallemployeeshistoryRequest(api, action) {
     }
   }
 
+   
+export function* fetchalllevelRequest(api, action) {
+  const response = yield api.getLevelList();
+
+  if (response.ok) {
+    yield put(KarmacharibibaranActions.fetchalllevelSuccess(response.data));
+  } else {
+    yield put(KarmacharibibaranActions.fetchalllevelFailure());
+  }
+}
+
+
+export function* fetchlevelRequest(api, action) {
+  const  levelId  = action.payload
+
+  const response = yield api.getLevel(levelId);
   
+  if (response.ok) {
+    yield put(
+      KarmacharibibaranActions.fetchlevelSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.fetchlevelFailure());
+  }
+}
   
