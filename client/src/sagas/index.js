@@ -68,6 +68,9 @@ import {
   deletebanyajantuuddarRequest,
   fetchallbanyajantuxetiRequest,
   fetchbanyajantuxetiRequest,
+  addbanyajantuxetiRequest,
+  updatebanyajantuxetiRequest,
+  deletebanyajantuxetiRequest,
 } from "./dwandabebasthapan";
 
 
@@ -348,6 +351,24 @@ export default function* root() {
     takeLatest(
       DwandabebasthapanTypes.FETCHBANYAJANTUXETI_REQUEST,
       fetchbanyajantuxetiRequest,
+      api
+    ),
+
+    takeLatest(
+      DwandabebasthapanTypes.ADDBANYAJANTUXETI_REQUEST,
+      addbanyajantuxetiRequest,
+      api
+    ),
+
+    takeLatest(
+      DwandabebasthapanTypes.UPDATEBANYAJANTUXETI_REQUEST,
+      updatebanyajantuxetiRequest,
+      api
+    ),
+
+    takeLatest(
+      DwandabebasthapanTypes.DELETEBANYAJANTUXETI_REQUEST,
+      deletebanyajantuxetiRequest,
       api
     ),
 
