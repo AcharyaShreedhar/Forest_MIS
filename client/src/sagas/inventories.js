@@ -37,3 +37,17 @@ export function* fetchallentryRequest(api, action) {
     yield put(InventoriesActions.fetchallentryFailure());
   }
 }
+
+export function* fetchentryRequest(api, action) {
+  const  entryId  = action.payload
+
+  const response = yield api.getEntry(entryId);
+  
+  if (response.ok) {
+    yield put(
+      InventoriesActions.fetchentrySuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.fetchentryFailure());
+  }
+}
