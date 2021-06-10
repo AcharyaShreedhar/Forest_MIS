@@ -104,6 +104,41 @@ const fetchbanpaidawarlilamFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add Banpaidawarlilam
+const addbanpaidawarlilamRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanpaidawarlilamSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanpaidawarlilamFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update banpaidawarlilam
+const updatebanpaidawarlilamRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatebanpaidawarlilamSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatebanpaidawarlilamFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete banpaidawarlilam
+const deletebanpaidawarlilamRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebanpaidawarlilamSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebanpaidawarlilamFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
 
 
 
@@ -147,6 +182,18 @@ export const reducer = createReducer(initialState, {
   [BanpaidawarTypes.FETCHBANPAIDAWARLILAM_REQUEST]: fetchbanpaidawarlilamRequest,
   [BanpaidawarTypes.FETCHBANPAIDAWARLILAM_SUCCESS]: fetchbanpaidawarlilamSuccess,
   [BanpaidawarTypes.FETCHBANPAIDAWARLILAM_FAILURE]: fetchbanpaidawarlilamFailure,
+
+  [BanpaidawarTypes.ADDBANPAIDAWARLILAM_REQUEST]: addbanpaidawarlilamRequest,
+  [BanpaidawarTypes.ADDBANPAIDAWARLILAM_SUCCESS]: addbanpaidawarlilamSuccess,
+  [BanpaidawarTypes.ADDBANPAIDAWARLILAM_FAILURE]: addbanpaidawarlilamFailure,
+
+  [BanpaidawarTypes.UPDATEBANPAIDAWARLILAM_REQUEST]: updatebanpaidawarlilamRequest,
+  [BanpaidawarTypes.UPDATEBANPAIDAWARLILAM_SUCCESS]: updatebanpaidawarlilamSuccess,
+  [BanpaidawarTypes.UPDATEBANPAIDAWARLILAM_FAILURE]: updatebanpaidawarlilamFailure,
+
+  [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_REQUEST]: deletebanpaidawarlilamRequest,
+  [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_SUCCESS]: deletebanpaidawarlilamSuccess,
+  [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_FAILURE]: deletebanpaidawarlilamFailure,
 
  
   [BanpaidawarTypes.LOCATIONS_REQUEST]: locationsRequest,
