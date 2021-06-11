@@ -24,6 +24,11 @@ import{
   } from "./karmacharidarbandi"; 
 
 
+//Municipalities---------------------
+import{ 
+  fetchallmunicipalitiesRequest,
+  } from "./app"; 
+
 //------------------------banbibaran
 import {
   fetchallsamudayikbanbibaranRequest,
@@ -160,6 +165,7 @@ import {
    fetchpostRequest,
    addemployeesRequest,
  } from "./karmacharibibaran";
+
 
  
 const api = API.create();
@@ -707,6 +713,12 @@ export default function* root() {
     takeLatest(
       KarmacharibibaranTypes.FETCHPOST_REQUEST,
       fetchpostRequest,
+      api
+    ),
+// Municipalities
+    takeLatest(
+      AppTypes.FETCHALLMUNICIPALITIES_REQUEST,
+      fetchallmunicipalitiesRequest,
       api
     ),
 
