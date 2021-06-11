@@ -159,14 +159,10 @@ const create = (baseURL = Config.API_URL) => {
 
   //Add
   const postSampatibibaranAssetsAddNew = (payload) => api.post(`assets`, payload);
-
   //update
-  const postSampatibibaranAssetsUpdate = (payload, assetId) =>
-  api.post(`assets/${assetId}`, payload);
-
-  //delete
-  const postSampatibibaranAssetsDelete = (payload, assetId) =>
-  api.post(`assets/${assetId}`, payload);
+  const postSampatibibaranAssetsUpdate = (payload, assetId) => api.put(`assets/${assetId}`, payload);
+  //Delete
+  const postSampatibibaranAssetsDelete = (assetId) => api.delete(`assets/${assetId}`);
 
   const getVehiclesList = () => api.get("vehicles");
 
@@ -174,14 +170,10 @@ const create = (baseURL = Config.API_URL) => {
 
   //Add
   const postSampatibibaranVehiclesAddNew = (payload) => api.post(`vehicles`, payload);
-
   //update
-  const postSampatibibaranVehiclesUpdate = (payload, vehicleId) =>
-  api.post(`vehicles/${vehicleId}`, payload);
-
-  //delete
-  const postSampatibibaranVehiclesDelete = (payload, vehicleId) =>
-  api.post(`vehicles/${vehicleId}`, payload);
+  const postSampatibibaranVehiclesUpdate = (payload, vehicleId) => api.put(`vehicles/${vehicleId}`, payload);
+  //Delete
+  const postSampatibibaranAssetsDelete = (vehicleId) => api.delete(`vehicles/${vehicleId}`);
 
   // muddaanusandhandayari
   const getMuddaanusandhandayariList = () => api.get("muddaAnusandhanDayaris");
