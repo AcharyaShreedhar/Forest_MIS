@@ -47,9 +47,9 @@
    addemployeesSuccess: ["response"],
    addemployeesFailure: null,
 
-   updateemployeesRequest: ["payload", "employeesId"],
-    updateemployeesSuccess: ["response"],
-    updateemployeesFailure: null,
+   updateemployeesRequest: ["payload", "employeeId"],
+   updateemployeesSuccess: ["response"],
+   updateemployeesFailure: null,
 
    locationsRequest: ["payload"],
    // Clear all caches
