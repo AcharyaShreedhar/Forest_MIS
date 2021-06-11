@@ -324,6 +324,9 @@ const create = (baseURL = Config.API_URL) => {
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) => api.get(`municipalities/${municipalitiesId}`);
 
+  //-------Provinces
+  const getProvincesList = () => api.get("province");
+
   //inventories
   const getInventoriesList = () => api.get("inventory");
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
@@ -473,6 +476,8 @@ const create = (baseURL = Config.API_URL) => {
     getMunicipalitiesList,
     getMunicipalities,
 
+    //-----Provinces
+    getProvincesList,
   };
 };
 export default {
