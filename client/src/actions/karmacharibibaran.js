@@ -38,6 +38,11 @@
    fetchemployeeshistoryRequest: ["payload"],
    fetchemployeeshistorySuccess: ["response"],
    fetchemployeeshistoryFailure: null,
+
+   addemployeeshistoryRequest: ["payload"],
+   addemployeeshistorySuccess: ["response"],
+   addemployeeshistoryFailure: null,
+
  
    fetchalllevelRequest: ["payload"],
    fetchalllevelSuccess: ["response"],

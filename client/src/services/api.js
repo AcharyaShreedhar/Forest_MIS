@@ -339,9 +339,17 @@ const create = (baseURL = Config.API_URL) => {
   const getEmployeeshistoryList = () => api.get("employeeHistory");
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
 
+<<<<<<< Updated upstream
 
    
  
+=======
+  const getEmployeeshistoryList = () => api.get("employeeHistory"); 
+  const getEmployeeshistory =(histId) => api.get(`employeeHistory/${histId}`);
+  //Add
+  const postKarmacharibibaranEmployeeshistoryAddNew = (payload) => api.post(`employeeHistory`, payload);
+
+>>>>>>> Stashed changes
   const getLevelList = () => api.get("level");
   const getLevel = (levelId) => api.get(`level/${levelId}`);
   const getPostList = () => api.get("posts");
@@ -455,6 +463,7 @@ const create = (baseURL = Config.API_URL) => {
     postKarmacharibibaranEmployeesDelete,
     getEmployeeshistoryList,
     getEmployeeshistory,
+    postKarmacharibibaranEmployeeshistoryAddNew,
     getLevelList,
     getLevel,
     getPostList,
