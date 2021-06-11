@@ -15,7 +15,7 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes }  from "../actions/inventories";
 import { KarmacharibibaranTypes} from "../actions/karmacharibibaran";
 //------------------app
-import { fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, loginRequest, logoutRequest} from "./app";
+import { fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, loginRequest, logoutRequest} from "./app";
 
 //karmacharidarbandi---------------------
 import{ 
@@ -799,12 +799,12 @@ export default function* root() {
       fetchmunicipalitiesRequest,
       api
     ),
-//---------------Districts
-    // takeLatest(
-    //   AppTypes.FETCHALLPROVINCES_REQUEST,
-    //   fetchallprovincesRequest,
-    //   api
-    // ),
+//---------------Provinces
+    takeLatest(
+      AppTypes.FETCHALLPROVINCES_REQUEST,
+      fetchallprovincesRequest,
+      api
+    ),
 
   ]);
 }

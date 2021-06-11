@@ -29,6 +29,16 @@ const { Types, Creators } = createActions({
   fetchmunicipalitiesSuccess: ["response"],
   fetchmunicipalitiesFailure: null,
 
+  // PROVINCES
+
+  fetchallprovincesRequest: ["payload"],
+  fetchallprovincesSuccess: ["response"],
+  fetchallprovincesFailure: null,
+
+  
+
+
+
   locationsRequest: ['payload'],
   // Clear all caches
   clearRequest: null,

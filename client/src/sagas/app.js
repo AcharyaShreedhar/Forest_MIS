@@ -40,6 +40,18 @@ export function* fetchmunicipalitiesRequest(api, action) {
   }
 }
 
+// Provinces
+export function* fetchallprovincesRequest(api, action) {
+  const response = yield api.getProvincesList();
+  if (response.ok) {
+    yield put(
+      AppActions.fetchallprovincesSuccess(response.data)
+    );
+  } else {
+    yield put(AppActions.fetchallprovincesFailure());
+  }
+}
+
 
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
