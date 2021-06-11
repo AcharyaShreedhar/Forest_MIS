@@ -336,7 +336,6 @@ const create = (baseURL = Config.API_URL) => {
  const postKarmacharibibaranEmployeesUpdate = (payload, employeesId) => 
  api.post(`employees/${employeesId}`, payload);
 
-
   const getEmployeeshistoryList = () => api.get("employeeHistory");
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
 
