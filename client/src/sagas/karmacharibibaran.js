@@ -30,7 +30,84 @@ export function* fetchemployeesRequest(api, action) {
   }
 
 
+   
+// Add Employees
+export function* addemployeesRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranEmployeesAddNew(
+    payload.employees.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield addemployeesRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(KarmacharibibaranActions.addemployeesSuccess(response.data));
+  } else {
+    yield put(KarmacharibibaranActions.addemployeesFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update Employees
+export function* updateemployeesRequest(api, action) {
+  const { payload, employeeId } = action;
+
+  const response = yield api.postKarmacharibibaranEmployeesUpdate(
+    payload.employees.data,
+    employeeId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallemployeesRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(
+      KarmacharibibaranActions.updateemployeesSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.updateemployeesFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Delete employees
+export function* deleteemployeesRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranEmployeesDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण  वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallemployeesRequest(api);
+    yield put(
+      KarmacharibibaranActions.deleteemployeesSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.deleteemployeesFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
   
+
 export function* fetchallemployeeshistoryRequest(api, action) {
     const response = yield api.getEmployeeshistoryList();
   
@@ -109,53 +186,3 @@ export function* fetchpostRequest(api, action) {
 }
 
 
- 
-// Add Employees
-export function* addemployeesRequest(api, action) {
-  const { payload } = action;
-
-  const response = yield api.postKarmacharibibaranEmployeesAddNew(
-    payload.employees.data
-  );
-
-  if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield addemployeesRequest(api);
-    yield call(history.push, "/forests/employeeslist");
-    yield put(KarmacharibibaranActions.addemployeesSuccess(response.data));
-  } else {
-    yield put(KarmacharibibaranActions.addemployeesFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-  }
-}
-
-
-// Update Employees
-export function* updateemployeesRequest(api, action) {
-  const { payload, employeeId } = action;
-
-  const response = yield api.postKarmacharibibaranEmployeesUpdate(
-    payload.employees.data,
-    employeeId
-  );
-
-  if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallemployeesRequest(api);
-    yield call(history.push, "/forests/employeeslist");
-    yield put(
-      KarmacharibibaranActions.updateemployeesSuccess(response.data)
-    );
-  } else {
-    yield put(KarmacharibibaranActions.updateemployeesFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-  }
-}
