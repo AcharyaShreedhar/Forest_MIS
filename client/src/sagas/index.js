@@ -158,13 +158,17 @@ import {
  import{
    fetchallemployeesRequest,
    fetchemployeesRequest,
+   addemployeesRequest,
+   updateemployeesRequest,
+   deleteemployeesRequest,
    fetchallemployeeshistoryRequest,
    fetchemployeeshistoryRequest,
+   addemployeeshistoryRequest,
    fetchalllevelRequest,
    fetchlevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
-   addemployeesRequest,
+  
  } from "./karmacharibibaran";
 
 
@@ -720,6 +724,26 @@ export default function* root() {
     ),
 
     takeLatest(
+      KarmacharibibaranTypes.ADDEMPLOYEES_REQUEST,
+      addemployeesRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.UPDATEEMPLOYEES_REQUEST,
+      updateemployeesRequest,
+      api
+    ),
+
+    
+    takeLatest(
+      KarmacharibibaranTypes.DELETEEMPLOYEES_REQUEST,
+      deleteemployeesRequest,
+      api
+    ),
+
+
+    takeLatest(
       KarmacharibibaranTypes.FETCHALLEMPLOYEESHISTORY_REQUEST,
       fetchallemployeeshistoryRequest,
       api
@@ -728,6 +752,13 @@ export default function* root() {
     takeLatest(
       KarmacharibibaranTypes.FETCHEMPLOYEESHISTORY_REQUEST,
       fetchemployeeshistoryRequest,
+      api
+    ),
+
+   
+    takeLatest(
+      KarmacharibibaranTypes.ADDEMPLOYEESHISTORY_REQUEST,
+      addemployeeshistoryRequest,
       api
     ),
 
@@ -761,11 +792,7 @@ export default function* root() {
       api
     ),
 
-    takeLatest(
-      KarmacharibibaranTypes.ADDEMPLOYEES_REQUEST,
-      addemployeesRequest,
-      api
-    ),
+   
 
     takeLatest(
       AppTypes.FETCHMUNICIPALITIES_REQUEST,

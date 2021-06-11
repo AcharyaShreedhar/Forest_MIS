@@ -5,8 +5,14 @@
  * samples: postAdminStaffSave
  */
 import apisauce from "apisauce";
-import { equals, isNil, isEmpty } from "ramda";
-import { store } from "../reducers";
+import {
+  equals,
+  isNil,
+  isEmpty
+} from "ramda";
+import {
+  store
+} from "../reducers";
 import AppActions from "../actions/app";
 const Config = {
   API_URL: "http://localhost:3001/api/v1/",
@@ -205,7 +211,7 @@ const create = (baseURL = Config.API_URL) => {
   //update
   const postSampatibibaranVehiclesUpdate = (payload, vehicleId) => api.put(`vehicles/${vehicleId}`, payload);
   //Delete
-  const postSampatibibaranAssetsDelete = (vehicleId) => api.delete(`vehicles/${vehicleId}`);
+  const postSampatibibaranVehiclesDelete = (vehicleId) => api.delete(`vehicles/${vehicleId}`);
 
   // muddaanusandhandayari
   const getMuddaanusandhandayariList = () => api.get("muddaAnusandhanDayaris");
@@ -329,17 +335,28 @@ const create = (baseURL = Config.API_URL) => {
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
+  //Add
+  const postKarmacharibibaranEmployeesAddNew = (payload) => api.post(`employees`, payload);
+
+  //update
+  const postKarmacharibibaranEmployeesUpdate = (payload, employeesId) =>
+    api.put(`employees/${employeesId}`, payload);
+
   const getEmployeeshistoryList = () => api.get("employeeHistory");
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
+
+
+  //Add
+  const postKarmacharibibaranEmployeeshistoryAddNew = (payload) => api.post(`employeeHistory`, payload);
+
+
   const getLevelList = () => api.get("level");
   const getLevel = (levelId) => api.get(`level/${levelId}`);
   const getPostList = () => api.get("posts");
 
-  const getPost =(postId) => api.get(`posts/${postId}`);
+  const getPost = (postId) => api.get(`posts/${postId}`);
 
-   //Add
-   const postKarmacharibibaranEmployeesAddNew = (payload) => api.post(`employees`, payload);
-  
+
 
   return {
     loginByUsername,
@@ -441,16 +458,21 @@ const create = (baseURL = Config.API_URL) => {
     //karmacharibiabran
     getEmployeesList,
     getEmployees,
+    postKarmacharibibaranEmployeesAddNew,
+    postKarmacharibibaranEmployeesUpdate,
+    postKarmacharibibaranEmployeesDelete,
     getEmployeeshistoryList,
     getEmployeeshistory,
+    postKarmacharibibaranEmployeeshistoryAddNew,
     getLevelList,
     getLevel,
     getPostList,
     getPost,
-    postKarmacharibibaranEmployeesAddNew,
+
     //--municipalities
     getMunicipalitiesList,
     getMunicipalities,
+
   };
 };
 export default {

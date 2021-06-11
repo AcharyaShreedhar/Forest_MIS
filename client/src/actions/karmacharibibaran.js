@@ -18,6 +18,18 @@
    fetchemployeesRequest: ["payload"],
    fetchemployeesSuccess: ["response"],
    fetchemployeesFailure: null,
+
+   addemployeesRequest: ["payload"],
+   addemployeesSuccess: ["response"],
+   addemployeesFailure: null,
+
+   updateemployeesRequest: ["payload", "employeeId"],
+   updateemployeesSuccess: ["response"],
+   updateemployeesFailure: null,
+
+   deleteemployeesRequest: ["payload", "employeeId"],
+   deleteemployeesSuccess: ["response"],
+   deleteemployeesFailure: null,
  
    fetchallemployeeshistoryRequest: ["payload"],
    fetchallemployeeshistorySuccess: ["response"],
@@ -26,6 +38,11 @@
    fetchemployeeshistoryRequest: ["payload"],
    fetchemployeeshistorySuccess: ["response"],
    fetchemployeeshistoryFailure: null,
+
+   addemployeeshistoryRequest: ["payload"],
+   addemployeeshistorySuccess: ["response"],
+   addemployeeshistoryFailure: null,
+
  
    fetchalllevelRequest: ["payload"],
    fetchalllevelSuccess: ["response"],
@@ -43,10 +60,7 @@
    fetchpostSuccess: ["response"],
    fetchpostFailure: null,
 
-   addemployeesRequest: ["payload"],
-   addemployeesSuccess: ["response"],
-   addemployeesFailure: null,
-
+  
 
    locationsRequest: ["payload"],
    // Clear all caches
