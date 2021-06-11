@@ -56,11 +56,11 @@ export function* addassetsRequest(api, action) {
 
 // Update assets
 export function* updateassetsRequest(api, action) {
-  const { payload } = action;
+  const { payload, assetId } = action;
 
   const response = yield api.postSampatibibaranAssetsUpdate(
     payload.assets.data,
-    payload.id
+    assetId
   );
 
   if (response.ok) {
@@ -139,7 +139,7 @@ export function* addvehiclesRequest(api, action) {
   const { payload } = action;
 
   const response = yield api.postSampatibibaranVehiclesAddNew(
-    payload.assets.data
+    payload.vehicles.data
   );
 
   if (response.ok) {
@@ -160,11 +160,11 @@ export function* addvehiclesRequest(api, action) {
 
 // Update vehicles
 export function* updatevehiclesRequest(api, action) {
-  const { payload } = action;
+  const { payload, vehicleId } = action;
 
   const response = yield api.postSampatibibaranVehiclesUpdate(
     payload.assets.data,
-    payload.id
+    vehicleId
   );
 
   if (response.ok) {
