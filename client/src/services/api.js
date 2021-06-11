@@ -339,6 +339,7 @@ const create = (baseURL = Config.API_URL) => {
   const getEmployeeshistoryList = () => api.get("employeeHistory");
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
 
+
    
  
   const getLevelList = () => api.get("level");
@@ -451,6 +452,7 @@ const create = (baseURL = Config.API_URL) => {
     getEmployees,
     postKarmacharibibaranEmployeesAddNew,
     postKarmacharibibaranEmployeesUpdate,
+    postKarmacharibibaranEmployeesDelete,
     getEmployeeshistoryList,
     getEmployeeshistory,
     getLevelList,
