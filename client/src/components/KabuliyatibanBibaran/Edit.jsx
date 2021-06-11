@@ -32,7 +32,7 @@ class Edit extends Component {
         props.history.location.item.karyasamiti_representation_dalit,
       karyasamiti_representation_janjati:
         props.history.location.item.karyasamiti_representation_janjati,
-      karyasamiti_representation_anya: karyasamiti_representation_anya,
+      karyasamiti_representation_anya: props.history.location.item.karyasamiti_representation_anya,
       adhyakshya_female: props.history.location.item.adhyakshya_female,
       adhyakshya_male: props.history.location.item.adhyakshya_male,
       sachib_female: props.history.location.item.sachib_female,

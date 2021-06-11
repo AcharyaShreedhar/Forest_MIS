@@ -79,6 +79,10 @@ class Banbibaran extends Component {
             this.props.deleteDharmikbanbibaran(item.dharmikban_id);
             break;
           }
+          case "kabuliyati": {
+            this.props.deleteKabuliyatibanbibaran(item.kabuliyatiban_id);
+            break;
+          }
           default:
             break;
         }
@@ -284,6 +288,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BanbibaranActions.updatekabuliyatibanbibaranRequest(
         payload,
+        kabuliyatibanbibaranId
+      )
+    ),
+  deleteKabuliyatibanbibaran: (kabuliyatibanbibaranId) =>
+    dispatch(
+      BanbibaranActions.deletekabuliyatibanbibaranRequest(
         kabuliyatibanbibaranId
       )
     ),
