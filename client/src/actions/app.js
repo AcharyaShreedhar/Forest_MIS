@@ -29,6 +29,38 @@ const { Types, Creators } = createActions({
   fetchmunicipalitiesSuccess: ["response"],
   fetchmunicipalitiesFailure: null,
 
+  // PROVINCES
+
+  fetchallprovincesRequest: ["payload"],
+  fetchallprovincesSuccess: ["response"],
+  fetchallprovincesFailure: null,
+
+  // fetchprovincesRequest: ["payload"],
+  // fetchprovincesSuccess: ["response"],
+  // fetchprovincesFailure: null,
+
+  // DISTRICTS
+
+  // fetchalldistrictsRequest: ["payload"],
+  // fetchalldistrictsSuccess: ["response"],
+  // fetchalldistrictsFailure: null,
+
+  // fetchdistrictsRequest: ["payload"],
+  // fetchdistrictsSuccess: ["response"],
+  // fetchdistrictsFailure: null,
+
+  // USERS
+
+  // fetchallusersRequest: ["payload"],
+  // fetchallusersSuccess: ["response"],
+  // fetchallusersFailure: null,
+
+  // fetchusersRequest: ["payload"],
+  // fetchusersSuccess: ["response"],
+  // fetchusersFailure: null,
+
+
+
   locationsRequest: ['payload'],
   // Clear all caches
   clearRequest: null,
