@@ -43,6 +43,10 @@
    fetchpostSuccess: ["response"],
    fetchpostFailure: null,
 
+   addemployeesRequest: ["payload"],
+   addemployeesSuccess: ["response"],
+   addemployeesFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
