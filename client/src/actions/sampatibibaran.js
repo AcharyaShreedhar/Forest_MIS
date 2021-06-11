@@ -24,11 +24,11 @@
    addassetsSuccess: ["response"],
    addassetsFailure: null,
 
-   updateassetsRequest: ["payload"],
+   updateassetsRequest: ["payload", "assetId"],
    updateassetsSuccess: ["response"],
    updateassetsFailure: null,
 
-   deleteassetsRequest: ["payload"],
+   deleteassetsRequest: ["payload", "assetId"],
    deleteassetsSuccess: ["response"],
    deleteassetsFailure: null,
 
@@ -44,11 +44,11 @@
    addvehiclesSuccess: ["response"],
    addvehiclesFailure: null,
 
-   updatevehiclesRequest: ["payload"],
+   updatevehiclesRequest: ["payload", "vehicleId"],
    updatevehiclesSuccess: ["response"],
    updatevehiclesFailure: null,
 
-   deletevehiclesRequest: ["payload"],
+   deletevehiclesRequest: ["payload", "vehicleId"],
    deletevehiclesSuccess: ["response"],
    deletevehiclesFailure: null,
  
