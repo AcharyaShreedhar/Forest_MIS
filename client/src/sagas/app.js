@@ -15,6 +15,19 @@ export function* loginRequest(api, action) {
   }
 }
 
+// Municipalities
+
+export function* fetchallmunicipalitiesRequest(api, action) {
+  const response = yield api.getMunicipalitiesList();
+  if (response.ok) {
+    yield put(
+      AppActions.fetchallmunicipalitiesSuccess(response.data)
+    );
+  } else {
+    yield put(AppActions.fetchallmunicipalitiesFailure());
+  }
+}
+
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());
