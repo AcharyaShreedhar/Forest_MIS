@@ -118,6 +118,19 @@ const fetchpostFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+
+//Add employees
+const addemployeesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addemployeesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addemployeesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const locationsRequest = (state, action) => {
     let locations = state.locations;
   
@@ -161,6 +174,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.FETCHPOST_REQUEST]: fetchpostRequest,
     [KarmacharibibaranTypes.FETCHPOST_SUCCESS]: fetchpostSuccess,
     [KarmacharibibaranTypes.FETCHPOST_FAILURE]: fetchpostFailure,
+
+    [KarmacharibibaranTypes.ADDEMPLOYEES_REQUEST]: addemployeesRequest,
+    [KarmacharibibaranTypes.ADDEMPLOYEES_SUCCESS]: addemployeesSuccess,
+    [KarmacharibibaranTypes.ADDEMPLOYEES_FAILURE]: addemployeesFailure,
     
     [KarmacharibibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
     [KarmacharibibaranTypes.CLEAR_REQUEST]: clearRequest,
