@@ -171,22 +171,27 @@ export class SideNavbar extends Component {
             </Link>
           </NavItem>
 
-          <NavItem eventKey="nurseryplantation">
+          <NavItem eventKey="activities">
             <NavIcon>
               <FontAwesomeIcon icon={faSeedling} className="mr-2" />
             </NavIcon>
-            <NavText>बिरुवा उत्पादन तथा बृक्षरोपन बिबरण </NavText>
-
+            <NavText>कार्यक्रमहरु </NavText>
             <NavItem
-              eventKey="nursery"
-              onClick={() => history.push("/nursery")}
+              eventKey="activities/yearlyactivitieslist"
+              onClick={() => history.push("/activities/yearlyactivitieslist")}
+            >
+              <NavText>वार्षिक कार्यक्रम </NavText>
+            </NavItem>
+            <NavItem
+              eventKey="activities/nurserylist"
+              onClick={() => history.push("/activities/nurserylist")}
             >
               <NavText>बिरुवा उत्पादन</NavText>
             </NavItem>
 
             <NavItem
-              eventKey="plantation"
-              onClick={() => history.push("/plantation")}
+              eventKey="activities/plantationlist"
+              onClick={() => history.push("/activities/plantationlist")}
             >
               <NavText> बृक्षरोपन</NavText>
             </NavItem>
