@@ -31,16 +31,36 @@ const logoutSuccess = (state, action) =>
 const logoutFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+
+  // Municipalities
+  const fetchallmunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallmunicipalitiesSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allmunicipalitiesData: action.response,
+  });
+};
+const fetchallmunicipalitiesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
   locations = prepend(action.payload.route, locations);
   locations = dropLast(1, locations);
   return state.merge({ ...state, locations });
+
 };
+
 
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
+
+
 
 export const reducer = createReducer(initialState, {
   [AppTypes.LOGIN_REQUEST]: loginRequest,
@@ -50,6 +70,12 @@ export const reducer = createReducer(initialState, {
   [AppTypes.LOGOUT_REQUEST]: logoutRequest,
   [AppTypes.LOGOUT_SUCCESS]: logoutSuccess,
   [AppTypes.LOGOUT_FAILURE]: logoutFailure,
+
+  //Municipalities
+
+  [AppTypes.FETCHALLMUNICIPALITIES_REQUEST]: fetchallmunicipalitiesRequest,
+  [AppTypes.FETCHALLMUNICIPALITIES_SUCCESS]: fetchallmunicipalitiesSuccess,
+  [AppTypes.FETCHALLMUNICIPALITIES_FAILURE]: fetchallmunicipalitiesFailure,
 
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
