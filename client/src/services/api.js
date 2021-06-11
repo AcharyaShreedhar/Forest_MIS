@@ -251,6 +251,7 @@ const create = (baseURL = Config.API_URL) => {
 
   //-----Municipalities
   const getMunicipalitiesList = () => api.get("municipalities");
+  const getMunicipalities = (municipalitiesId) => api.get(`municipalities/${municipalitiesId}`);
 
   //inventories
   const getInventoriesList = () => api.get("inventory");
@@ -379,6 +380,7 @@ const create = (baseURL = Config.API_URL) => {
     postKarmacharibibaranEmployeesAddNew,
     //--municipalities
     getMunicipalitiesList,
+    getMunicipalities,
   };
 };
 export default {
