@@ -5,8 +5,14 @@
  * samples: postAdminStaffSave
  */
 import apisauce from "apisauce";
-import { equals, isNil, isEmpty } from "ramda";
-import { store } from "../reducers";
+import {
+  equals,
+  isNil,
+  isEmpty
+} from "ramda";
+import {
+  store
+} from "../reducers";
 import AppActions from "../actions/app";
 const Config = {
   API_URL: "http://localhost:3001/api/v1/",
@@ -331,32 +337,26 @@ const create = (baseURL = Config.API_URL) => {
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
   //Add
   const postKarmacharibibaranEmployeesAddNew = (payload) => api.post(`employees`, payload);
-  
+
   //update
- const postKarmacharibibaranEmployeesUpdate = (payload, employeesId) => 
- api.post(`employees/${employeesId}`, payload);
+  const postKarmacharibibaranEmployeesUpdate = (payload, employeesId) =>
+    api.put(`employees/${employeesId}`, payload);
 
   const getEmployeeshistoryList = () => api.get("employeeHistory");
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
 
-<<<<<<< Updated upstream
 
-   
- 
-=======
-  const getEmployeeshistoryList = () => api.get("employeeHistory"); 
-  const getEmployeeshistory =(histId) => api.get(`employeeHistory/${histId}`);
   //Add
   const postKarmacharibibaranEmployeeshistoryAddNew = (payload) => api.post(`employeeHistory`, payload);
 
->>>>>>> Stashed changes
+
   const getLevelList = () => api.get("level");
   const getLevel = (levelId) => api.get(`level/${levelId}`);
   const getPostList = () => api.get("posts");
 
-  const getPost =(postId) => api.get(`posts/${postId}`);
+  const getPost = (postId) => api.get(`posts/${postId}`);
 
-  
+
 
   return {
     loginByUsername,
