@@ -35,6 +35,43 @@ const fetchplotbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add plotbibaran
+const addplotbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addplotbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addplotbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update plotbibaran
+const updateplotbibaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateplotbibaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateplotbibaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete plotbibaran
+const deleteplotbibaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteplotbibaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteplotbibaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -54,6 +91,18 @@ export const reducer = createReducer(initialState, {
   [PlotbibaranTypes.FETCHPLOTBIBARAN_REQUEST]: fetchplotbibaranRequest,
   [PlotbibaranTypes.FETCHPLOTBIBARAN_SUCCESS]: fetchplotbibaranSuccess,
   [PlotbibaranTypes.FETCHPLOTBIBARAN_FAILURE]: fetchplotbibaranFailure,
+
+  [PlotbibaranTypes.ADDPLOTBIBARAN_REQUEST]: addplotbibaranRequest,
+  [PlotbibaranTypes.ADDPLOTBIBARAN_SUCCESS]: addplotbibaranSuccess,
+  [PlotbibaranTypes.ADDPLOTBIBARAN_FAILURE]: addplotbibaranFailure,
+
+  [PlotbibaranTypes.UPDATEPLOTBIBARAN_REQUEST]: updateplotbibaranRequest,
+  [PlotbibaranTypes.UPDATEPLOTBIBARAN_SUCCESS]: updateplotbibaranSuccess,
+  [PlotbibaranTypes.UPDATEPLOTBIBARAN_FAILURE]: updateplotbibaranFailure,
+
+  [PlotbibaranTypes.DELETEPLOTBIBARAN_REQUEST]: deleteplotbibaranRequest,
+  [PlotbibaranTypes.DELETEPLOTBIBARAN_SUCCESS]: deleteplotbibaranSuccess,
+  [PlotbibaranTypes.DELETEPLOTBIBARAN_FAILURE]: deleteplotbibaranFailure,
 
 
   [PlotbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
