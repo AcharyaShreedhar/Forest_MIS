@@ -15,7 +15,7 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes }  from "../actions/inventories";
 import { KarmacharibibaranTypes} from "../actions/karmacharibibaran";
 //------------------app
-import { loginRequest, logoutRequest } from "./app";
+import { fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, loginRequest, logoutRequest} from "./app";
 
 //karmacharidarbandi---------------------
 import{ 
@@ -166,6 +166,7 @@ import {
    fetchpostRequest,
    addemployeesRequest,
  } from "./karmacharibibaran";
+
 
  
 const api = API.create();
@@ -753,6 +754,12 @@ export default function* root() {
       fetchpostRequest,
       api
     ),
+// Municipalities
+    takeLatest(
+      AppTypes.FETCHALLMUNICIPALITIES_REQUEST,
+      fetchallmunicipalitiesRequest,
+      api
+    ),
 
     takeLatest(
       KarmacharibibaranTypes.ADDEMPLOYEES_REQUEST,
@@ -760,6 +767,17 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      AppTypes.FETCHMUNICIPALITIES_REQUEST,
+      fetchmunicipalitiesRequest,
+      api
+    ),
+//---------------Districts
+    // takeLatest(
+    //   AppTypes.FETCHALLPROVINCES_REQUEST,
+    //   fetchallprovincesRequest,
+    //   api
+    // ),
 
   ]);
 }

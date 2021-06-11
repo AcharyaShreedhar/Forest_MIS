@@ -19,6 +19,16 @@ const { Types, Creators } = createActions({
   logoutSuccess: null,
   logoutFailure: null,
 
+// Municipalities 
+
+  fetchallmunicipalitiesRequest: ["payload"],
+  fetchallmunicipalitiesSuccess: ["response"],
+  fetchallmunicipalitiesFailure: null,
+
+  fetchmunicipalitiesRequest: ["payload"],
+  fetchmunicipalitiesSuccess: ["response"],
+  fetchmunicipalitiesFailure: null,
+
   locationsRequest: ['payload'],
   // Clear all caches
   clearRequest: null,
