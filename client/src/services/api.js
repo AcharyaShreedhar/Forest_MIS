@@ -316,13 +316,24 @@ const create = (baseURL = Config.API_URL) => {
 
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
+  //Add
+  const postPlotbibaranPlotbibaranAddNew = (payload) => api.post(`plot`, payload);
+
+  //update
+  const postPlotbibaranPlotbibaranUpdate = (payload, plotId) => 
+  api.post(`plot/${plotId}`, payload);
+ 
+  //delete
+  const postPlotbibaranPlotbibaranDelete = (payload, plotId) =>
+  api.post(`plot/${plotId}`, payload);
+
   //-----Municipalities
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) =>
     api.get(`municipalities/${municipalitiesId}`);
 
   //-------Provinces
-  const getProvincesList = () => api.get("province");
+  const getProvincesList = () => api.get("province");    
 
   //inventories
   const getInventoriesList = () => api.get("inventory");
@@ -450,6 +461,9 @@ const create = (baseURL = Config.API_URL) => {
     //-----plotbibaran
     getPlotbibaranList,
     getPlotbibaran,
+    postPlotbibaranPlotbibaranAddNew,
+    postPlotbibaranPlotbibaranUpdate,
+    postPlotbibaranPlotbibaranDelete,
     //inventories
     getInventoriesList,
     getInventories,
