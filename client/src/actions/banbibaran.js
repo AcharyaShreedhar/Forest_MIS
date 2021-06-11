@@ -43,11 +43,11 @@ const { Types, Creators } = createActions({
   adddharmikbanbibaranSuccess: ["response"],
   adddharmikbanbibaranFailure: null,
 
-  updatedharmikbanbibaranRequest: ["payload", "dharmikbanBibaranId"],
+  updatedharmikbanbibaranRequest: ["payload", "dharmikbanbibaranId"],
   updatedharmikbanbibaranSuccess: ["response"],
   updatedharmikbanbibaranFailure: null,
 
-  deletedharmikbanbibaranRequest: ["payload", "dharmikbanBibaranId"],
+  deletedharmikbanbibaranRequest: ["payload", "dharmikbanbibaranId"],
   deletedharmikbanbibaranSuccess: ["response"],
   deletedharmikbanbibaranFailure: null,
 
@@ -63,11 +63,11 @@ const { Types, Creators } = createActions({
   addnijibanbibaranSuccess: ["response"],
   addnijibanbibaranFailure: null,
 
-  updatenijibanbibaranRequest: ["payload", "nijibanBibaranId"],
+  updatenijibanbibaranRequest: ["payload", "nijibanbibaranId"],
   updatenijibanbibaranSuccess: ["response"],
   updatenijibanbibaranFailure: null,
 
-  deletenijibanbibaranRequest: ["payload", "nijibanBibaranId"],
+  deletenijibanbibaranRequest: ["payload", "nijibanbibaranId"],
   deletenijibanbibaranSuccess: ["response"],
   deletenijibanbibaranFailure: null,
 
@@ -84,11 +84,11 @@ const { Types, Creators } = createActions({
   addkabuliyatibanbibaranSuccess: ["response"],
   addkabuliyatibanbibaranFailure: null,
 
-  updatekabuliyatibanbibaranRequest: ["payload", "kabuliyatibanBibaranId"],
+  updatekabuliyatibanbibaranRequest: ["payload", "kabuliyatibanbibaranId"],
   updatekabuliyatibanbibaranSuccess: ["response"],
   updatekabuliyatibanbibaranFailure: null,
 
-  deletekabuliyatibanbibaranRequest: ["payload", "kabuliyatibanBibaranId"],
+  deletekabuliyatibanbibaranRequest: ["payload", "kabuliyatibanbibaranId"],
   deletekabuliyatibanbibaranSuccess: ["response"],
   deletekabuliyatibanbibaranFailure: null,
 
@@ -104,11 +104,11 @@ const { Types, Creators } = createActions({
   addnabikarankaryayojanaSuccess: ["response"],
   addnabikarankaryayojanaFailure: null,
 
-  updatenabikarankaryayojanaRequest: ["payload", "nabikaranKaryayojanaId"],
+  updatenabikarankaryayojanaRequest: ["payload", "nabikarankaryayojanaId"],
   updatenabikarankaryayojanaSuccess: ["response"],
   updatenabikarankaryayojanaFailure: null,
 
-  deletenabikarankaryayojanaRequest: ["payload", "nabikaranKaryayojanaId"],
+  deletenabikarankaryayojanaRequest: ["payload", "nabikarankaryayojanaId"],
   deletenabikarankaryayojanaSuccess: ["response"],
   deletenabikarankaryayojanaFailure: null,
 

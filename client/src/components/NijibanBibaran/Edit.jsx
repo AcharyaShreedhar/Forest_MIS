@@ -10,9 +10,9 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.dharmikban_id,
+      id: props.history.location.item.nijiban_bibaran_id,
       regno: props.history.location.item.darta_no,
-      name: props.history.location.item.dharmikban_name,
+      name: props.history.location.item.nijiban_dhaniko_naam,
       swikrit_miti: props.history.location.item.swikrit_miti,
       perm_addr: props.history.location.item.perm_addr,
       curr_addr: props.history.location.item.curr_addr,
@@ -40,35 +40,34 @@ class Edit extends Component {
     const payload = {
       nijiban: {
         data: {
-            nijiban_dhaniko_naam: name,
-            darta_no: regno,
-            swikrit_miti: swikrit_miti,
-            perm_addr: perm_addr,
-            curr_addr: curr_addr,
-            area: area,
-            main_species: main_species,
+          nijiban_dhaniko_naam: name,
+          darta_no: regno,
+          swikrit_miti: swikrit_miti,
+          perm_addr: perm_addr,
+          curr_addr: curr_addr,
+          area: area,
+          main_species: main_species,
         },
       },
     };
 
     this.props.onUpdate(payload, id);
   }
-  
+
   handleDate(e) {
     this.setState({ swikrit_miti: e });
   }
-  
 
   render() {
     const { title } = this.props;
     const {
-        name,
-        regno,
-        swikrit_miti,
-        perm_addr,
-        curr_addr,
-        area,
-        main_species,
+      name,
+      regno,
+      swikrit_miti,
+      perm_addr,
+      curr_addr,
+      area,
+      main_species,
     } = this.state;
 
     return (

@@ -14,16 +14,16 @@ class Add extends Component {
       entry_date: "",
       perm_addr: "",
       curr_addr: "",
-      gharduri_dalit: "",
-      gharduri_janjati: "",
-      gharduri_anya: "",
+      ghardhuri_dalit: "",
+      ghardhuri_janjati: "",
+      ghardhuri_anya: "",
       ghardhuri_total: "",
       population_female: "",
       population_male: "",
       population_total: "",
-      sampannata_starikan_sampanna: "",
-      sampannata_starikan_madhyam: "",
-      sampannata_starikan_bipanna: "",
+      sampannata_starikaran_sampanna: "",
+      sampannata_starikaran_madhyam: "",
+      sampannata_starikaran_bipanna: "",
       karyasamiti_representation_dalit: "",
       karyasamiti_representation_janjati: "",
       karyasamiti_representation_anya: "",
@@ -46,16 +46,16 @@ class Add extends Component {
       entry_date,
       perm_addr,
       curr_addr,
-      gharduri_dalit,
-      gharduri_janjati,
-      gharduri_anya,
+      ghardhuri_dalit,
+      ghardhuri_janjati,
+      ghardhuri_anya,
       ghardhuri_total,
       population_female,
       population_male,
       population_total,
-      sampannata_starikan_sampanna,
-      sampannata_starikan_madhyam,
-      sampannata_starikan_bipanna,
+      sampannata_starikaran_sampanna,
+      sampannata_starikaran_madhyam,
+      sampannata_starikaran_bipanna,
       karyasamiti_representation_dalit,
       karyasamiti_representation_janjati,
       karyasamiti_representation_anya,
@@ -65,23 +65,23 @@ class Add extends Component {
       sachib_male,
     } = this.state;
     const payload = {
-      samudayikban: {
+      kabuliyatiban: {
         data: {
           darta_no: regno,
           samudayik_upavokta_samiti_name: name,
           entry_date: entry_date,
           perm_addr: perm_addr,
           curr_addr: curr_addr,
-          gharduri_dalit: gharduri_dalit,
-          gharduri_janjati: gharduri_janjati,
-          gharduri_anya: gharduri_anya,
+          ghardhuri_dalit: ghardhuri_dalit,
+          ghardhuri_janjati: ghardhuri_janjati,
+          ghardhuri_anya: ghardhuri_anya,
           ghardhuri_total: ghardhuri_total,
           population_female: population_female,
           population_male: population_male,
           population_total: population_total,
-          sampannata_starikan_sampanna: sampannata_starikan_sampanna,
-          sampannata_starikan_madhyam: sampannata_starikan_madhyam,
-          sampannata_starikan_bipanna: sampannata_starikan_bipanna,
+          sampannata_starikaran_sampanna: sampannata_starikaran_sampanna,
+          sampannata_starikaran_madhyam: sampannata_starikaran_madhyam,
+          sampannata_starikaran_bipanna: sampannata_starikaran_bipanna,
           karyasamiti_representation_dalit: karyasamiti_representation_dalit,
           karyasamiti_representation_janjati: karyasamiti_representation_janjati,
           karyasamiti_representation_anya: karyasamiti_representation_anya,
@@ -107,16 +107,16 @@ class Add extends Component {
       entry_date,
       perm_addr,
       curr_addr,
-      gharduri_dalit,
-      gharduri_janjati,
-      gharduri_anya,
+      ghardhuri_dalit,
+      ghardhuri_janjati,
+      ghardhuri_anya,
       ghardhuri_total,
       population_female,
       population_male,
       population_total,
-      sampannata_starikan_sampanna,
-      sampannata_starikan_madhyam,
-      sampannata_starikan_bipanna,
+      sampannata_starikaran_sampanna,
+      sampannata_starikaran_madhyam,
+      sampannata_starikaran_bipanna,
       karyasamiti_representation_dalit,
       karyasamiti_representation_janjati,
       karyasamiti_representation_anya,
@@ -173,23 +173,23 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="दलित घरधुरी"
-              value={gharduri_dalit}
+              value={ghardhuri_dalit}
               direction="vertical"
-              onChange={(e) => this.setState({ gharduri_dalit: e })}
+              onChange={(e) => this.setState({ ghardhuri_dalit: e })}
             />
             <Input
               className="mb-4"
               title="जनजाति घरधुरी"
-              value={gharduri_janjati}
+              value={ghardhuri_janjati}
               direction="vertical"
-              onChange={(e) => this.setState({ gharduri_janjati: e })}
+              onChange={(e) => this.setState({ ghardhuri_janjati: e })}
             />
             <Input
               className="mb-4"
               title="अन्य घरधुरी"
-              value={gharduri_anya}
+              value={ghardhuri_anya}
               direction="vertical"
-              onChange={(e) => this.setState({ gharduri_anya: e })}
+              onChange={(e) => this.setState({ ghardhuri_anya: e })}
             />
             <Input
               className="mb-4"
@@ -222,28 +222,28 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="सम्पन्न"
-              value={sampannata_starikan_sampanna}
+              value={sampannata_starikaran_sampanna}
               direction="vertical"
               onChange={(e) =>
-                this.setState({ sampannata_starikan_sampanna: e })
+                this.setState({ sampannata_starikaran_sampanna: e })
               }
             />
             <Input
               className="mb-4"
               title="मध्यम"
-              value={sampannata_starikan_madhyam}
+              value={sampannata_starikaran_madhyam}
               direction="vertical"
               onChange={(e) =>
-                this.setState({ sampannata_starikan_madhyam: e })
+                this.setState({ sampannata_starikaran_madhyam: e })
               }
             />
             <Input
               className="mb-4"
               title="विपन्न"
-              value={sampannata_starikan_bipanna}
+              value={sampannata_starikaran_bipanna}
               direction="vertical"
               onChange={(e) =>
-                this.setState({ sampannata_starikan_bipanna: e })
+                this.setState({ sampannata_starikaran_bipanna: e })
               }
             />
             <Input

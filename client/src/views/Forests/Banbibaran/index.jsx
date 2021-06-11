@@ -58,7 +58,7 @@ class Banbibaran extends Component {
           }
           case "niji": {
             this.props.history.push({
-              pathname: `/forests/nijibanedit/${item.nijiban_id}`,
+              pathname: `/forests/nijibanedit/${item.nijiban_bibaran_id}`,
               item,
             });
             break;
@@ -80,7 +80,13 @@ class Banbibaran extends Component {
             break;
           }
           case "kabuliyati": {
-            this.props.deleteKabuliyatibanbibaran(item.kabuliyatiban_id);
+            this.props.deleteKabuliyatibanbibaran(
+              item.kabuliyatiban_bibaran_id
+            );
+            break;
+          }
+          case "niji": {
+            this.props.deleteNijibanbibaran(item.nijiban_bibaran_id);
             break;
           }
           default:
@@ -301,10 +307,12 @@ const mapDispatchToProps = (dispatch) => ({
   //--------------------------Nijiban
   addNijibanbibaran: (payload) =>
     dispatch(BanbibaranActions.addnijibanbibaranRequest(payload)),
-  updateNijibibaran: (payload, nijibanbibaranId) =>
+  updateNijibanbibaran: (payload, nijibanbibaranId) =>
     dispatch(
       BanbibaranActions.updatenijibanbibaranRequest(payload, nijibanbibaranId)
     ),
+  deleteNijibanbibaran: (nijibanbibaranId) =>
+    dispatch(BanbibaranActions.deletenijibanbibaranRequest(nijibanbibaranId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);
