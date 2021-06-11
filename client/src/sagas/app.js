@@ -28,6 +28,19 @@ export function* fetchallmunicipalitiesRequest(api, action) {
   }
 }
 
+export function* fetchmunicipalitiesRequest(api, action) {
+  const municipalitiesId = action.payload;
+
+  const response = yield api.getMunicipalities(municipalitiesId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchmunicipalitiesSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchmunicipalitiesFailure());
+  }
+}
+
+
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());
