@@ -158,14 +158,16 @@ import {
  import{
    fetchallemployeesRequest,
    fetchemployeesRequest,
+   addemployeesRequest,
+   updateemployeesRequest,
+   deleteemployeesRequest,
    fetchallemployeeshistoryRequest,
    fetchemployeeshistoryRequest,
    fetchalllevelRequest,
    fetchlevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
-   addemployeesRequest,
-   updateemployeesRequest,
+  
  } from "./karmacharibibaran";
 
 
@@ -731,6 +733,14 @@ export default function* root() {
       updateemployeesRequest,
       api
     ),
+
+    
+    takeLatest(
+      KarmacharibibaranTypes.DELETEEMPLOYEES_REQUEST,
+      deleteemployeesRequest,
+      api
+    ),
+
 
     takeLatest(
       KarmacharibibaranTypes.FETCHALLEMPLOYEESHISTORY_REQUEST,
