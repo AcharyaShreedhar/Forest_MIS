@@ -266,6 +266,9 @@ const create = (baseURL = Config.API_URL) => {
   const getLevel =(levelId) => api.get(`level/${levelId}`);
   const getPostList = () => api.get("posts");
   const getPost =(postId) => api.get(`posts/${postId}`);
+
+   //Add
+   const postKarmacharibibaranEmployeesAddNew = (payload) => api.post(`employees`, payload);
   
 
 
@@ -370,6 +373,7 @@ const create = (baseURL = Config.API_URL) => {
     getLevel,
     getPostList,
     getPost,
+    postKarmacharibibaranEmployeesAddNew,
   };
 };
 export default {

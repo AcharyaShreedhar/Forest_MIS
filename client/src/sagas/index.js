@@ -158,6 +158,7 @@ import {
    fetchlevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
+   addemployeesRequest,
  } from "./karmacharibibaran";
 
  
@@ -708,6 +709,13 @@ export default function* root() {
       fetchpostRequest,
       api
     ),
+
+    takeLatest(
+      KarmacharibibaranTypes.ADDEMPLOYEES_REQUEST,
+      addemployeesRequest,
+      api
+    ),
+
 
   ]);
 }
