@@ -6,7 +6,7 @@ import { Table } from "react-bootstrap";
 import { Button, EditDropdown } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onSelect } = props;
+  const { buttonName, headings, data, title, onAdd, onSelect } = props;
   return (
     <Fragment>
       <div className="card">
@@ -16,7 +16,7 @@ function List(props) {
             size="small"
             // className="text-capitalize"
             name={buttonName}
-            onClick={(e) => onSelect(e)}
+            onClick={onAdd}
           />
         </div>
         <div className="titlebar">{title} </div>
@@ -34,23 +34,23 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((dban, index) => (
+              data.map((nban, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {dban.darta_no}</td>
-                  <td key={index}> {dban.swikrit_miti}</td>
-                  <td key={index}> {dban.nijiban_dhaniko_naam}</td>
-                  <td key={index}> {dban.perm_addr}</td>
-                  <td key={index}> {dban.curr_addr}</td>
-                  <td key={index}> {dban.area}</td>
-                  <td key={index}> {dban.main_species}</td>
-                  <td key={index}> {dban.created_by}</td>
-                  <td key={index}> {dban.updated_by}</td>
+                  <td key={index}> {nban.darta_no}</td>
+                  <td key={index}> {nban.swikrit_miti}</td>
+                  <td key={index}> {nban.nijiban_dhaniko_naam}</td>
+                  <td key={index}> {nban.perm_addr}</td>
+                  <td key={index}> {nban.curr_addr}</td>
+                  <td key={index}> {nban.area}</td>
+                  <td key={index}> {nban.main_species}</td>
+                  <td key={index}> {nban.created_by}</td>
+                  <td key={index}> {nban.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e)}
+                        onChange={(e) => onSelect(e, nban, "niji")}
                       />
                     </div>
                   </td>

@@ -46,111 +46,143 @@ const create = (baseURL = Config.API_URL) => {
   //Banbibarans
   const getSamudayikbanBibaranList = () => api.get("samudayikbanBibaran");
 
-  const getSamudayikbanBibaran = (samudayikbanBibaranId) => api.get(`samudayikbanBibaran/${samudayikbanBibaranId}`);
+  const getSamudayikbanBibaran = (samudayikbanBibaranId) =>
+    api.get(`samudayikbanBibaran/${samudayikbanBibaranId}`);
   //Add
-  const postBanbibaranSamudayikbanAddNew = (payload) => api.post(`samudayikbanBibaran`, payload);
+  const postBanbibaranSamudayikbanAddNew = (payload) =>
+    api.post(`samudayikbanBibaran`, payload);
   //update
-  const postBanbibaranSamudayikbanUpdate = (payload, samudayikbanbibaranId) => api.put(`samudayikbanBibaran/${samudayikbanbibaranId}`, payload);
+  const postBanbibaranSamudayikbanUpdate = (payload, samudayikbanbibaranId) =>
+    api.put(`samudayikbanBibaran/${samudayikbanbibaranId}`, payload);
   //Delete
-  const postBanbibaranSamudayikbanDelete = (samudayikbanbibaranId) => api.delete(`samudayikbanBibaran/${samudayikbanbibaranId}`);
-  
+  const postBanbibaranSamudayikbanDelete = (samudayikbanbibaranId) =>
+    api.delete(`samudayikbanBibaran/${samudayikbanbibaranId}`);
+
   const getDharmikbanBibaranList = () => api.get("dharmikbanBibaran");
 
-  const getDharmikbanBibaran = (dharmikbanBibaranId) => api.get(`dharmikbanBibaran/${dharmikbanBibaranId}`);
+  const getDharmikbanBibaran = (dharmikbanBibaranId) =>
+    api.get(`dharmikbanBibaran/${dharmikbanBibaranId}`);
   //Add
-  const postBanbibaranDharmikbanAddNew = (payload) => api.post(`dharmikbanBibaran`, payload);
+  const postBanbibaranDharmikbanAddNew = (payload) =>
+    api.post(`dharmikbanBibaran`, payload);
   //update
-  const postBanbibaranDharmikbanUpdate = (payload, dharmikbanBibaranId) => api.post(`dharmikbanBibaran/${dharmikbanBibaranId}`, payload);
+  const postBanbibaranDharmikbanUpdate = (payload, dharmikbanBibaranId) =>
+    api.put(`dharmikbanBibaran/${dharmikbanBibaranId}`, payload);
   //Delete
-  const postBanbibaranDharmikbanDelete = (dharmikbanBibaranId) => api.delete(`dharmikbanBibaran/${dharmikbanBibaranId}`);
+  const postBanbibaranDharmikbanDelete = (dharmikbanBibaranId) =>
+    api.delete(`dharmikbanBibaran/${dharmikbanBibaranId}`);
 
   const getNijibanBibaranList = () => api.get("nijibanBibaran");
 
-  const getNijibanBibaran = (nijibanBibaranId) => api.get(`nijibanBibaran/${nijibanBibaranId}`);
+  const getNijibanBibaran = (nijibanBibaranId) =>
+    api.get(`nijibanBibaran/${nijibanBibaranId}`);
   //Add
-  const postBanbibaranNijibanAddNew = (payload) => api.post(`nijibanBibaran`, payload);
+  const postBanbibaranNijibanAddNew = (payload) =>
+    api.post(`nijibanBibaran`, payload);
   //update
-  const postBanbibaranNijibanUpdate = (payload, nijibanBibaranId) => api.post(`nijibanBibaran/${nijibanBibaranId}`, payload);
+  const postBanbibaranNijibanUpdate = (payload, nijibanBibaranId) =>
+    api.put(`nijibanBibaran/${nijibanBibaranId}`, payload);
 
   //delete
-  const postBanbibaranNijibanDelete = (payload, nijibanBibaranId) => api.post(`nijibanBibaran/${nijibanBibaranId}`, payload);
+  const postBanbibaranNijibanDelete = (nijibanBibaranId) =>
+    api.delete(`nijibanBibaran/${nijibanBibaranId}`);
 
   const getKabuliyatibanBibaranList = () => api.get("kabuliyatibanBibaran");
 
-  const getKabuliyatibanBibaran = (kabuliyatibanBibaranId) => api.get(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
+  const getKabuliyatibanBibaran = (kabuliyatibanBibaranId) =>
+    api.get(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
 
   //Add
-  const postBanbibaranKabuliyatibanAddNew = (payload) => api.post(`kabuliyatibanBibaran`, payload);
-
+  const postBanbibaranKabuliyatibanAddNew = (payload) =>
+    api.post(`kabuliyatibanBibaran`, payload);
   //update
   const postBanbibaranKabuliyatibanUpdate = (payload, kabuliyatibanBibaranId) =>
-  api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
+    api.put(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
 
   //delete
-  const postBanbibaranKabuliyatibanDelete = (payload, kabuliyatibanBibaranId) =>
-  api.post(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
+  const postBanbibaranKabuliyatibanDelete = (kabuliyatibanBibaranId) =>
+    api.delete(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
 
-    const getNabikaranKaryayojanaList = () => api.get("nabikaranKaryayojana");
+  const getNabikaranKaryayojanaList = () => api.get("nabikaranKaryayojana");
 
-    const getNabikaranKaryayojana = (nabikaranKaryayojanaId) => api.get(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`);
+  const getNabikaranKaryayojana = (nabikaranKaryayojanaId) =>
+    api.get(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`);
 
   //Add
-  const postBanbibaranNabikarankaryayojanaAddNew = (payload) => api.post(`nabikaranKaryayojana`, payload);
+  const postBanbibaranNabikarankaryayojanaAddNew = (payload) =>
+    api.post(`nabikaranKaryayojana`, payload);
 
   //update
-  const postBanbibaranNabikarankaryayojanaUpdate = (payload, nabikaranKaryayojanaId) =>
-  api.post(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`, payload);
+  const postBanbibaranNabikarankaryayojanaUpdate = (
+    payload,
+    nabikaranKaryayojanaId
+  ) => api.post(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`, payload);
 
   //delete
-  const postBanbibaranNabikarankaryayojanaDelete = (payload, nabikaranKaryayojanaId) =>
-  api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
-
+  const postBanbibaranNabikarankaryayojanaDelete = (
+    payload,
+    nabikaranKaryayojanaId
+  ) => api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
 
-  const getBiruwautpadan = (biruwautpadanId) => api.get(`biruwaUtpadans/${biruwautpadanId}`);
+  const getBiruwautpadan = (biruwautpadanId) =>
+    api.get(`biruwaUtpadans/${biruwautpadanId}`);
 
-   //Add
-   const postBiruwautpadanBiruwautpadanAddNew = (payload) => api.post(`biruwautpadans`, payload);
+  //Add
+  const postBiruwautpadanBiruwautpadanAddNew = (payload) =>
+    api.post(`biruwautpadans`, payload);
 
-   //update
-   const postBiruwautpadanBiruwautpadanUpdate = (payload, biruwautpadanId) =>
-   api.post(`biruwautpadans/${biruwautpadanId}`, payload);
- 
-   //delete
-   const postBiruwautpadanBiruwautpadanDelete = (payload, biruwautpadanId) =>
-   api.post(`biruwautpadans/${biruwautpadanId}`, payload);
+  //update
+  const postBiruwautpadanBiruwautpadanUpdate = (payload, biruwautpadanId) =>
+    api.post(`biruwautpadans/${biruwautpadanId}`, payload);
+
+  //delete
+  const postBiruwautpadanBiruwautpadanDelete = (payload, biruwautpadanId) =>
+    api.post(`biruwautpadans/${biruwautpadanId}`, payload);
 
   //Dwandabebasthapan
   const getBanyajantuUddarList = () => api.get("banyajantuUddars");
 
-  const getBanyajantuUddar = (banyajantuUddarId) => api.get(`banyajantuUddars/${banyajantuUddarId}`);
+  const getBanyajantuUddar = (banyajantuUddarId) =>
+    api.get(`banyajantuUddars/${banyajantuUddarId}`);
   //Add banyajantuuddar
-  const postDwandabebasthapanBanyajantuuddarAddNew = (payload) => api.post(`banyajantuUddars`, payload);
+  const postDwandabebasthapanBanyajantuuddarAddNew = (payload) =>
+    api.post(`banyajantuUddars`, payload);
 
   //update banyajantuuddar
-  const postDwandabebasthapanBanyajantuuddarUpdate = ( payload,banyajantuUddarId ) => 
-  api.post(`banyajantuUddars/${banyajantuUddarId}`, payload);
+  const postDwandabebasthapanBanyajantuuddarUpdate = (
+    payload,
+    banyajantuUddarId
+  ) => api.post(`banyajantuUddars/${banyajantuUddarId}`, payload);
 
   //delete banyajantuuddar
-  const postDwandabebasthapanBanyajantuuddarDelete = ( payload, banyajantuUddarId ) =>
-   api.post(`banyajantuUddars/${banyajantuUddarId}`, payload);
+  const postDwandabebasthapanBanyajantuuddarDelete = (
+    payload,
+    banyajantuUddarId
+  ) => api.post(`banyajantuUddars/${banyajantuUddarId}`, payload);
 
   const getBanyajantuXetiList = () => api.get("banyajantuXetiBibarans");
 
-  const getBanyajantuXeti = (banyajantuXetiId) => api.get(`banyajantuXetiBibarans/${banyajantuXetiId}`);
+  const getBanyajantuXeti = (banyajantuXetiId) =>
+    api.get(`banyajantuXetiBibarans/${banyajantuXetiId}`);
 
   //Add banyajantuxeti
-  const postDwandabebasthapanBanyajantuxetiAddNew = (payload) => api.post(`banyajantuXetiBibarans`, payload);
+  const postDwandabebasthapanBanyajantuxetiAddNew = (payload) =>
+    api.post(`banyajantuXetiBibarans`, payload);
 
   //update banyajantuxeti
-  const postDwandabebasthapanBanyajantuxetiUpdate = ( payload,banyajantuXetiId ) => 
-  api.post(`banyajantuXetiBibarans/${banyajantuXetiId}`, payload);
+  const postDwandabebasthapanBanyajantuxetiUpdate = (
+    payload,
+    banyajantuXetiId
+  ) => api.post(`banyajantuXetiBibarans/${banyajantuXetiId}`, payload);
 
   //delete banyajantuxeti
-  const postDwandabebasthapanBanyajantuxetiDelete = ( payload, banyajantuXetiId ) =>
-   api.post(`banyajantuXetiBibarans/${banyajantuXetiId}`, payload);
+  const postDwandabebasthapanBanyajantuxetiDelete = (
+    payload,
+    banyajantuXetiId
+  ) => api.post(`banyajantuXetiBibarans/${banyajantuXetiId}`, payload);
 
   //sampatibibaran
   const getAssetsList = () => api.get("assets");
@@ -167,83 +199,101 @@ const create = (baseURL = Config.API_URL) => {
     api.get(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`);
 
   //Add muddaanusandhandayari
-  const postMuddaanusandhandayariMuddaanusandhandayariAddNew = (payload) => api.post(`muddaAnusandhanDayaris`, payload);
+  const postMuddaanusandhandayariMuddaanusandhandayariAddNew = (payload) =>
+    api.post(`muddaAnusandhanDayaris`, payload);
 
   //update muddaanusandhandayari
-  const postMuddaanusandhandayariMuddaanusandhandayariUpdate = ( payload,muddaAnusandhanDayariId ) => 
-  api.post(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`, payload);
+  const postMuddaanusandhandayariMuddaanusandhandayariUpdate = (
+    payload,
+    muddaAnusandhanDayariId
+  ) => api.post(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`, payload);
 
   //delete muddaanusandhandayari
-  const postMuddaanusandhandayariMuddaanusandhandayariDelete = ( payload, muddaAnusandhanDayariId ) =>
-   api.post(`muddaAnusandhanDayari/${muddaAnusandhanDayariId}`, payload);
+  const postMuddaanusandhandayariMuddaanusandhandayariDelete = (
+    payload,
+    muddaAnusandhanDayariId
+  ) => api.post(`muddaAnusandhanDayari/${muddaAnusandhanDayariId}`, payload);
 
   // ------banxetraatikraman
   const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
 
-  const getBanxetraatikraman = (banxetraAtikramanId) => api.get(`banxetraAtikramans/${banxetraAtikramanId}`);
+  const getBanxetraatikraman = (banxetraAtikramanId) =>
+    api.get(`banxetraAtikramans/${banxetraAtikramanId}`);
 
   //Add
-  const postBanxetraatikramanBanxetraatikramanAddNew = (payload) => api.post(`banxetraAtikramans`, payload);
+  const postBanxetraatikramanBanxetraatikramanAddNew = (payload) =>
+    api.post(`banxetraAtikramans`, payload);
 
   //update
-  const postBanxetraatikramanBanxetraatikramanUpdate = (payload, banxetraAtikramanId) => 
-  api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
+  const postBanxetraatikramanBanxetraatikramanUpdate = (
+    payload,
+    banxetraAtikramanId
+  ) => api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
 
   //delete
-  const postBanxetraatikramanBanxetraatikramanDelete = (payload, banxetraAtikramanId) =>
-  api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
+  const postBanxetraatikramanBanxetraatikramanDelete = (
+    payload,
+    banxetraAtikramanId
+  ) => api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
 
   //................bandadelobibarans
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
 
-  const getBandadelobibaran = (bandadeloBibaranId) => api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
+  const getBandadelobibaran = (bandadeloBibaranId) =>
+    api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
 
   //Add
-  const postBandadelobibaranBandadeloAddNew = (payload) => api.post(`bandadeloBibaran`, payload);
+  const postBandadelobibaranBandadeloAddNew = (payload) =>
+    api.post(`bandadeloBibaran`, payload);
 
   //update
-  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) => 
-  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
+    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
   //delete
   const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
-  api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
 
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
 
-  const getBanpaidawar = (banpaidawarId) =>  api.get(`banpaidawar/${banpaidawarId}`);
+  const getBanpaidawar = (banpaidawarId) =>
+    api.get(`banpaidawar/${banpaidawarId}`);
 
   //Add
-  const postBanpaidawarBanpaidawarAddNew = (payload) => api.post(`banpaidawar`, payload);
+  const postBanpaidawarBanpaidawarAddNew = (payload) =>
+    api.post(`banpaidawar`, payload);
 
   //update
-  const postBanpaidawarBanpaidawarUpdate = (payload, banpaidawarId) => 
-  api.post(`banpaidawar/${banpaidawarId}`, payload);
- 
+  const postBanpaidawarBanpaidawarUpdate = (payload, banpaidawarId) =>
+    api.post(`banpaidawar/${banpaidawarId}`, payload);
+
   //delete
   const postBanpaidawarBanpaidawarDelete = (payload, banpaidawarId) =>
-  api.post(`banpaidawar/${banpaidawarId}`, payload);
-   
+    api.post(`banpaidawar/${banpaidawarId}`, payload);
+
   const getBanpaidawarlilamList = () => api.get("banpaidawarLilam");
 
-  const getBanpaidawarlilam = (banpaidawarLilamId) => api.get(`banpaidawarLilam/${banpaidawarLilamId}`);
+  const getBanpaidawarlilam = (banpaidawarLilamId) =>
+    api.get(`banpaidawarLilam/${banpaidawarLilamId}`);
 
   //Add
-  const postBanpaidawarBanpaidawarlilamAddNew = (payload) => api.post(`banpaidawarLilam`, payload);
+  const postBanpaidawarBanpaidawarlilamAddNew = (payload) =>
+    api.post(`banpaidawarLilam`, payload);
 
   //update
-  const postBanpaidawarBanpaidawarlilamUpdate = (payload, banpaidawarLilamId) => 
-  api.post(`banpaidawarLilam/${banpaidawarLilamId}`, payload);
- 
+  const postBanpaidawarBanpaidawarlilamUpdate = (payload, banpaidawarLilamId) =>
+    api.post(`banpaidawarLilam/${banpaidawarLilamId}`, payload);
+
   //delete
   const postBanpaidawarBanpaidawarlilamDelete = (payload, banpaidawarLilamId) =>
-  api.post(`banpaidawarLilam/${banpaidawarLilamId}`, payload);
+    api.post(`banpaidawarLilam/${banpaidawarLilamId}`, payload);
 
   // Karmachari darbandi
   const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
 
-  const getKarmacharidarbandi = (karmacharidarbandiId) => api.get(`karmachariDarbandi/${karmacharidarbandiId}`);
+  const getKarmacharidarbandi = (karmacharidarbandiId) =>
+    api.get(`karmachariDarbandi/${karmacharidarbandiId}`);
   //------plotbibaran
   const getPlotbibaranList = () => api.get("plot");
 
@@ -260,15 +310,12 @@ const create = (baseURL = Config.API_URL) => {
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
-  const getEmployeeshistoryList = () => api.get("employeeHistory"); 
-  const getEmployeeshistory =(histId) => api.get(`employeeHistory/${histId}`);
+  const getEmployeeshistoryList = () => api.get("employeeHistory");
+  const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
   const getLevelList = () => api.get("level");
-  const getLevel =(levelId) => api.get(`level/${levelId}`);
+  const getLevel = (levelId) => api.get(`level/${levelId}`);
   const getPostList = () => api.get("posts");
-  const getPost =(postId) => api.get(`posts/${postId}`);
-  
-
-
+  const getPost = (postId) => api.get(`posts/${postId}`);
 
   return {
     loginByUsername,
