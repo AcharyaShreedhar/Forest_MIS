@@ -114,8 +114,8 @@ export function* fetchpostRequest(api, action) {
 export function* addemployeesRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postEmployeesAddNew(
-    payload.employee.data
+  const response = yield api.postKarmacharibibaranEmployeesAddNew(
+    payload.employees.data
   );
 
   if (response.ok) {
@@ -127,6 +127,33 @@ export function* addemployeesRequest(api, action) {
     yield put(KarmacharibibaranActions.addemployeesSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.addemployeesFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Update Employees
+export function* updateemployeesRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranEmployeesUpdate(
+    payload.employees.data,
+    payload.id
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallemployeesRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(
+      KarmacharibibaranActions.updateemployeesSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.updateemployeesFailure());
     toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
