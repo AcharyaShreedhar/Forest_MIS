@@ -136,11 +136,11 @@ export function* addemployeesRequest(api, action) {
 
 // Update Employees
 export function* updateemployeesRequest(api, action) {
-  const { payload } = action;
+  const { payload, employeeId } = action;
 
   const response = yield api.postKarmacharibibaranEmployeesUpdate(
     payload.employees.data,
-    payload.id
+    employeeId
   );
 
   if (response.ok) {
