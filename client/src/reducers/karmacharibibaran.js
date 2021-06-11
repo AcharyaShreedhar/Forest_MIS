@@ -35,6 +35,42 @@ const fetchemployeesFailure = (state, action) => {
 };
 
 
+
+//Add employees
+const addemployeesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addemployeesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addemployeesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update employees
+const updateemployeesRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateemployeesSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateemployeesFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete employees
+const deleteemployeesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteemployeesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteemployeesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const fetchallemployeeshistoryRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallemployeeshistorySuccess = (state, action) => {
@@ -119,29 +155,6 @@ const fetchpostFailure = (state, action) => {
 };
 
 
-//Add employees
-const addemployeesRequest = (state, action) =>
-  state.merge({ ...state, status: "pending" });
-const addemployeesSuccess = (state, action) =>
-  state.merge({
-    ...state,
-    status: "done",
-  });
-const addemployeesFailure = (state, action) =>
-  state.merge({ ...state, status: "error" });
-
-//Update employees
-const updateemployeesRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
-const updateemployeesSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
-const updateemployeesFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
-
-
 const locationsRequest = (state, action) => {
     let locations = state.locations;
   
@@ -169,6 +182,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.UPDATEEMPLOYEES_REQUEST]: updateemployeesRequest,
     [KarmacharibibaranTypes.UPDATEEMPLOYEES_SUCCESS]: updateemployeesSuccess,
     [KarmacharibibaranTypes.UPDATEEMPLOYEES_FAILURE]: updateemployeesFailure,
+
+    [KarmacharibibaranTypes.DELETEEMPLOYEES_REQUEST]: deleteemployeesRequest,
+    [KarmacharibibaranTypes.DELETEEMPLOYEES_SUCCESS]: deleteemployeesSuccess,
+    [KarmacharibibaranTypes.DELETEEMPLOYEES_FAILURE]: deleteemployeesFailure,
 
     [KarmacharibibaranTypes.FETCHALLEMPLOYEESHISTORY_REQUEST]: fetchallemployeeshistoryRequest,
     [KarmacharibibaranTypes.FETCHALLEMPLOYEESHISTORY_SUCCESS]: fetchallemployeeshistorySuccess,
