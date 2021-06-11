@@ -46,6 +46,20 @@ const fetchallmunicipalitiesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchmunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+
+const fetchmunicipalitiesSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    municipalitiesData: action.response,
+  });
+};
+const fetchmunicipalitiesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -76,6 +90,10 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHALLMUNICIPALITIES_REQUEST]: fetchallmunicipalitiesRequest,
   [AppTypes.FETCHALLMUNICIPALITIES_SUCCESS]: fetchallmunicipalitiesSuccess,
   [AppTypes.FETCHALLMUNICIPALITIES_FAILURE]: fetchallmunicipalitiesFailure,
+
+  [AppTypes.FETCHMUNICIPALITIES_REQUEST]: fetchmunicipalitiesRequest,
+  [AppTypes.FETCHMUNICIPALITIES_SUCCESS]: fetchmunicipalitiesSuccess,
+  [AppTypes.FETCHMUNICIPALITIES_FAILURE]: fetchmunicipalitiesFailure,
 
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
