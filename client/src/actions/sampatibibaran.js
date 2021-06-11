@@ -20,6 +20,18 @@
    fetchassetsSuccess: ["response"],
    fetchassetsFailure: null,
 
+   addassetsRequest: ["payload"],
+   addassetsSuccess: ["response"],
+   addassetsFailure: null,
+
+   updateassetsRequest: ["payload", "assetId"],
+   updateassetsSuccess: ["response"],
+   updateassetsFailure: null,
+
+   deleteassetsRequest: ["payload", "assetId"],
+   deleteassetsSuccess: ["response"],
+   deleteassetsFailure: null,
+
    fetchallvehiclesRequest: ["payload"],
    fetchallvehiclesSuccess: ["response"],
    fetchallvehiclesFailure: null,
@@ -27,6 +39,18 @@
    fetchvehiclesRequest: ["payload"],
    fetchvehiclesSuccess: ["response"],
    fetchvehiclesFailure: null,
+
+   addvehiclesRequest: ["payload"],
+   addvehiclesSuccess: ["response"],
+   addvehiclesFailure: null,
+
+   updatevehiclesRequest: ["payload", "vehicleId"],
+   updatevehiclesSuccess: ["response"],
+   updatevehiclesFailure: null,
+
+   deletevehiclesRequest: ["payload", "vehicleId"],
+   deletevehiclesSuccess: ["response"],
+   deletevehiclesFailure: null,
  
     locationsRequest: ["payload"],
    // Clear all caches

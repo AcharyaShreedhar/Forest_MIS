@@ -81,8 +81,14 @@ import {
 import {
   fetchallassetsRequest,
   fetchassetsRequest,
+  addassetsRequest,
+  updateassetsRequest,
+  deleteassetsRequest,
   fetchallvehiclesRequest,
   fetchvehiclesRequest,
+  addvehiclesRequest,
+  updatevehiclesRequest,
+  deletevehiclesRequest,
 } from "./sampatibibaran";
 
 // ----------muddaanusandandayari
@@ -443,6 +449,24 @@ export default function* root() {
     ),
 
     takeLatest(
+      SampatibibaranTypes.ADDASSETS_REQUEST,
+      addassetsRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.UPDATEASSETS_REQUEST,
+      updateassetsRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.DELETEASSETS_REQUEST,
+      deleteassetsRequest,
+      api
+    ),
+
+    takeLatest(
       SampatibibaranTypes.FETCHALLVEHICLES_REQUEST,
       fetchallvehiclesRequest,
       api
@@ -453,6 +477,26 @@ export default function* root() {
       fetchvehiclesRequest,
       api
     ),
+
+    takeLatest(
+      SampatibibaranTypes.ADDVEHICLES_REQUEST,
+      addvehiclesRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.UPDATEVEHICLES_REQUEST,
+      updatevehiclesRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.DELETEVEHICLES_REQUEST,
+      deletevehiclesRequest,
+      api
+    ),
+
+  
 
     //------muddaanusandhandayari
 

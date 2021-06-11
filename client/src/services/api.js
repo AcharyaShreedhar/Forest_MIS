@@ -189,9 +189,24 @@ const create = (baseURL = Config.API_URL) => {
 
   const getAssets = (assetId) => api.get(`assets/${assetId}`);
 
+  //Add
+  const postSampatibibaranAssetsAddNew = (payload) => api.post(`assets`, payload);
+  //update
+  const postSampatibibaranAssetsUpdate = (payload, assetId) => api.put(`assets/${assetId}`, payload);
+  //Delete
+  const postSampatibibaranAssetsDelete = (assetId) => api.delete(`assets/${assetId}`);
+
   const getVehiclesList = () => api.get("vehicles");
 
   const getVehicles = (vehicleId) => api.get(`vehicles/${vehicleId}`);
+
+  //Add
+  const postSampatibibaranVehiclesAddNew = (payload) => api.post(`vehicles`, payload);
+  //update
+  const postSampatibibaranVehiclesUpdate = (payload, vehicleId) => api.put(`vehicles/${vehicleId}`, payload);
+  //Delete
+  const postSampatibibaranAssetsDelete = (vehicleId) => api.delete(`vehicles/${vehicleId}`);
+
   // muddaanusandhandayari
   const getMuddaanusandhandayariList = () => api.get("muddaAnusandhanDayaris");
 
@@ -369,8 +384,14 @@ const create = (baseURL = Config.API_URL) => {
     //sampatibibaran
     getAssetsList,
     getAssets,
+    postSampatibibaranAssetsAddNew,
+    postSampatibibaranAssetsUpdate,
+    postSampatibibaranAssetsDelete,
     getVehiclesList,
     getVehicles,
+    postSampatibibaranVehiclesAddNew,
+    postSampatibibaranVehiclesUpdate,
+    postSampatibibaranVehiclesDelete,
     //muddaanusandhandayari
     getMuddaanusandhandayariList,
     getMuddaanusandhandayari,

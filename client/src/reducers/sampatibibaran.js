@@ -38,6 +38,45 @@ const fetchassetsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+
+//Add assets
+const addassetsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addassetsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addassetsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update assets
+const updateassetsRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateassetsSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateassetsFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete assets
+const deleteassetsRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteassetsSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteassetsFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+
+
 const fetchallvehiclesRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallvehiclesSuccess = (state, action) => {
@@ -66,6 +105,41 @@ const fetchvehiclesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add vehicles
+const addvehiclesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addvehiclesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addvehiclesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update vehicles
+const updatevehiclesRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatevehiclesSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatevehiclesFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete vehicles
+const deletevehiclesRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletevehiclesSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletevehiclesFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
 
 
 const locationsRequest = (state, action) => {
@@ -89,6 +163,18 @@ export const reducer = createReducer(initialState, {
   [SampatibibaranTypes.FETCHASSETS_SUCCESS]: fetchassetsSuccess,
   [SampatibibaranTypes.FETCHASSETS_FAILURE]: fetchassetsFailure,
 
+  [SampatibibaranTypes.ADDASSETS_REQUEST]: addassetsRequest,
+  [SampatibibaranTypes.ADDASSETS_SUCCESS]: addassetsSuccess,
+  [SampatibibaranTypes.ADDASSETS_FAILURE]: addassetsFailure,
+
+  [SampatibibaranTypes.UPDATEASSETS_REQUEST]: updateassetsRequest,
+  [SampatibibaranTypes.UPDATEASSETS_SUCCESS]: updateassetsSuccess,
+  [SampatibibaranTypes.UPDATEASSETS_FAILURE]: updateassetsFailure,
+
+  [SampatibibaranTypes.DELETEASSETS_REQUEST]: deleteassetsRequest,
+  [SampatibibaranTypes.DELETEASSETS_SUCCESS]: deleteassetsSuccess,
+  [SampatibibaranTypes.DELETEASSETS_FAILURE]: deleteassetsFailure,
+
   [SampatibibaranTypes.FETCHALLVEHICLES_REQUEST]: fetchallvehiclesRequest,
   [SampatibibaranTypes.FETCHALLVEHICLES_SUCCESS]: fetchallvehiclesSuccess,
   [SampatibibaranTypes.FETCHALLVEHICLES_FAILURE]: fetchallvehiclesFailure,
@@ -96,6 +182,18 @@ export const reducer = createReducer(initialState, {
   [SampatibibaranTypes.FETCHVEHICLES_REQUEST]: fetchvehiclesRequest,
   [SampatibibaranTypes.FETCHVEHICLES_SUCCESS]: fetchvehiclesSuccess,
   [SampatibibaranTypes.FETCHVEHICLES_FAILURE]: fetchvehiclesFailure,
+
+  [SampatibibaranTypes.ADDVEHICLES_REQUEST]: addvehiclesRequest,
+  [SampatibibaranTypes.ADDVEHICLES_SUCCESS]: addvehiclesSuccess,
+  [SampatibibaranTypes.ADDVEHICLES_FAILURE]: addvehiclesFailure,
+
+  [SampatibibaranTypes.UPDATEVEHICLES_REQUEST]: updatevehiclesRequest,
+  [SampatibibaranTypes.UPDATEVEHICLES_SUCCESS]: updatevehiclesSuccess,
+  [SampatibibaranTypes.UPDATEVEHICLES_FAILURE]: updatevehiclesFailure,
+
+  [SampatibibaranTypes.DELETEVEHICLES_REQUEST]: deletevehiclesRequest,
+  [SampatibibaranTypes.DELETEVEHICLES_SUCCESS]: deletevehiclesSuccess,
+  [SampatibibaranTypes.DELETEVEHICLES_FAILURE]: deletevehiclesFailure,
 
 
  
