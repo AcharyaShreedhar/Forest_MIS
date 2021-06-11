@@ -249,6 +249,9 @@ const create = (baseURL = Config.API_URL) => {
 
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
+  //-----Municipalities
+  const getMunicipalitiesList = () => api.get("municipalities");
+
   //inventories
   const getInventoriesList = () => api.get("inventory");
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
@@ -374,6 +377,8 @@ const create = (baseURL = Config.API_URL) => {
     getPostList,
     getPost,
     postKarmacharibibaranEmployeesAddNew,
+    //--municipalities
+    getMunicipalitiesList,
   };
 };
 export default {
