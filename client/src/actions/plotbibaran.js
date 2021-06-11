@@ -14,11 +14,24 @@ const { Types, Creators } = createActions({
   fetchallplotbibaranRequest: ["payload"],
   fetchallplotbibaranSuccess: ["response"],
   fetchallplotbibaranFailure: null,
-
  
   fetchplotbibaranRequest: ["payload"],
   fetchplotbibaranSuccess: ["response"],
   fetchplotbibaranFailure: null,
+
+  addplotbibaranRequest: ["payload"],
+  addplotbibaranSuccess: ["response"],
+  addplotbibaranFailure: null,
+
+  updateplotbibaranRequest: ["payload"],
+  updateplotbibaranSuccess: ["response"],
+  updateplotbibaranFailure: null,
+
+  deleteplotbibaranRequest: ["payload"],
+  deleteplotbibaranSuccess: ["response"],
+  deleteplotbibaranFailure: null,
+
+
   
 
   locationsRequest: ["payload"],
