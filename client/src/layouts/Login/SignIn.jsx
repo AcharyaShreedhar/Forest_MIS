@@ -44,7 +44,7 @@ class SignIn extends Component {
         />
         <Input
           className="mt-4"
-          type="user_pass"
+          type="password"
           title="पासवर्ड "
           direction="vertical"
           value={user_pass}

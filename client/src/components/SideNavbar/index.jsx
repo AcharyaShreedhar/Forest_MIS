@@ -18,6 +18,7 @@ import {
   faFire,
   faSeedling,
   faBuilding,
+  faSignOutAlt
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import { HeaderComponent, Displaybox } from "../../components";
@@ -38,7 +39,7 @@ export class SideNavbar extends Component {
 
   render() {
     const { expanded } = this.state;
-    const { history } = this.props;
+    const { history,onlogout } = this.props;
     console.log("expanded", expanded);
     return (
       <SideNav
@@ -222,6 +223,12 @@ export class SideNavbar extends Component {
             >
               <NavText> सवारी साधनहरु</NavText>
             </NavItem>
+          </NavItem>
+          <NavItem eventKey="signout" onClick={onlogout}>
+            <Link to="/logout" className="displaybox">
+              <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
+              {expanded && <Displaybox value="लग आउट " />}
+            </Link>
           </NavItem>
         </SideNav.Nav>
       </SideNav>

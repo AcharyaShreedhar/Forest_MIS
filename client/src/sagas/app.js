@@ -55,5 +55,5 @@ export function* fetchallprovincesRequest(api, action) {
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());
-  yield call(history.push, "/home");
+  yield call(history.push, "/login");
 }
