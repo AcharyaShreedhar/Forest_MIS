@@ -5,18 +5,19 @@ import { AppTypes } from "../actions/app";
 
 const initialState = Immutable({
   status: "",
+  user: {},
   token: "",
 });
 
 const loginRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const loginSuccess = (state, action) => {
-  const { token, user } = action.response;
+  const { user_token, user } = action.response;
 
   return state.merge({
     ...state,
     status: "done",
-    token,
+    token: user_token,
     user,
   });
 };
@@ -31,9 +32,8 @@ const logoutSuccess = (state, action) =>
 const logoutFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
-  // Municipalities
-  const fetchallmunicipalitiesRequest = (state, action) =>
+// Municipalities
+const fetchallmunicipalitiesRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallmunicipalitiesSuccess = (state, action) => {
   return state.merge({
@@ -75,21 +75,16 @@ const fetchallprovincesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
   locations = prepend(action.payload.route, locations);
   locations = dropLast(1, locations);
   return state.merge({ ...state, locations });
-
 };
-
 
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
-
-
 
 export const reducer = createReducer(initialState, {
   [AppTypes.LOGIN_REQUEST]: loginRequest,
