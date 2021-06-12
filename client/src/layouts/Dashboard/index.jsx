@@ -24,7 +24,7 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { history, location, authenticated, token } = this.props;
+    const { history, location, authenticated, token,onLogout } = this.props;
 
     return (
       <div className="d-flex dashboard">
@@ -35,6 +35,7 @@ class Dashboard extends Component {
           location={location}
           history={history}
           loggedIn={!isEmpty(token)}
+          onLogout={onLogout}
         />
       </div>
     );
@@ -58,6 +59,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   saveLocation: (e) => dispatch(AppActions.locationsRequest(e)),
+  onLogout: (e) => dispatch(AppActions.logoutRequest(e)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

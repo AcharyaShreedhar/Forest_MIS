@@ -10,7 +10,7 @@ export const Content = (props) => {
       id="ds-content"
       className={`content${props.loggedIn ? " logged" : ""}`}
     >
-      {props.loggedIn && <SideNavbar history={props.history} />}
+      {props.loggedIn && <SideNavbar history={props.history} onlogout={props.onLogout}/>}
       <div className="main">
         <Switch>
           {dashboardRoutes.map((route, key) => {
