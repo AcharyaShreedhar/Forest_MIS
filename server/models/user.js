@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     user_type: DataTypes.STRING,
     user_name: DataTypes.STRING,
     user_pass: DataTypes.STRING,
+    user_token:DataTypes.STRING,
     created_by: DataTypes.STRING,
     updated_by: DataTypes.STRING
   }, {

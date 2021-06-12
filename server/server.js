@@ -6,6 +6,9 @@
 
 require("dotenv").config();
 const express = require("express");
+// const jwt = require('jsonwebtoken');
+// var token = require('crypto').randomBytes(50).toString('hex');
+// // 'e6fb380f0a95ffc1d84d09ceb7a5bb2b1283394e356478268c4ac94db6a15a444254369ee1f57eb348d6a8b95e0b763a9800'
 
 const db = require("./app/db");
 var cors = require("cors");
@@ -64,26 +67,26 @@ app.use("/api/v1", districtRoutes);
 app.use("/api/v1", municipalitiesRoutes);
 app.use("/api/v1", postRoutes);
 app.use("/api/v1", levelRoutes);
-app.use("/api/v1",nijibanBibaranRoutes);
-app.use("/api/v1",dharmikbanBibaranRoutes);
-app.use("/api/v1",samudayikbanBibaranRoutes);
-app.use("/api/v1",banpaidawarLilamRoutes);
-app.use("/api/v1",kabuliyatibanBibaranRoutes);
-app.use("/api/v1",consumerGroupDetailsRoutes);
-app.use("/api/v1",banxetraAtikramanRoutes);
-app.use("/api/v1",bandadeloBibaranRoutes);
-app.use("/api/v1",biruwaUtpadanRoutes);
-app.use("/api/v1",banpaidawarRoutes);
-app.use("/api/v1",activitiesInfoRoutes);
-app.use("/api/v1",vehiclesRoutes);
-app.use("/api/v1",banyajantuXetiBibaranRoutes);
-app.use("/api/v1",banxetraAnyaPrayojanRoutes);
-app.use("/api/v1",banyajantuUddarRoutes);
+app.use("/api/v1", nijibanBibaranRoutes);
+app.use("/api/v1", dharmikbanBibaranRoutes);
+app.use("/api/v1", samudayikbanBibaranRoutes);
+app.use("/api/v1", banpaidawarLilamRoutes);
+app.use("/api/v1", kabuliyatibanBibaranRoutes);
+app.use("/api/v1", consumerGroupDetailsRoutes);
+app.use("/api/v1", banxetraAtikramanRoutes);
+app.use("/api/v1", bandadeloBibaranRoutes);
+app.use("/api/v1", biruwaUtpadanRoutes);
+app.use("/api/v1", banpaidawarRoutes);
+app.use("/api/v1", activitiesInfoRoutes);
+app.use("/api/v1", vehiclesRoutes);
+app.use("/api/v1", banyajantuXetiBibaranRoutes);
+app.use("/api/v1", banxetraAnyaPrayojanRoutes);
+app.use("/api/v1", banyajantuUddarRoutes);
 app.use("/api/v1", assetsRoutes);
-app.use("/api/v1",baramaditChijbastuRoutes);
-app.use("/api/v1",departmentRoutes);
-app.use("/api/v1",nabikaranKaryayojanaRoutes);
-app.use("/api/v1",muddaAnusandhanDayariRoutes);
+app.use("/api/v1", baramaditChijbastuRoutes);
+app.use("/api/v1", departmentRoutes);
+app.use("/api/v1", nabikaranKaryayojanaRoutes);
+app.use("/api/v1", muddaAnusandhanDayariRoutes);
 app.use("/api/v1", employeeHistoryRoutes);
 app.use("/api/v1", entryRoutes);
 app.use("/api/v1", exitRoutes);
@@ -93,8 +96,6 @@ app.use("/api/v1", inventoryRoutes);
 app.use("/api/v1", officeStaffPostRoutes);
 app.use("/api/v1", usersRoutes);
 app.use("/api/v1", karmachariDarbandiRoutes);
-
-
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

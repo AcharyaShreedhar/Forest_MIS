@@ -17,6 +17,9 @@ module.exports = {
       user_pass: {
         type: Sequelize.STRING,
       },
+      user_token:{
+        type:Sequelize.STRING
+      },
       created_by: {
         type: Sequelize.STRING,
       },
