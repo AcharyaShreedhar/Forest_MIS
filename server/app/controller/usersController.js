@@ -93,15 +93,21 @@ async function verifyUsers(req, res) {
       if (error) throw error;
       else {
         var hash = results[0].user_pass;
+        const user = {
+          user_id: results[0].user_id,
+          user_name: results[0].user_name,
+          user_token: results[0].user_token,
+        };
+
         //compare hash and password
-        bcrypt.compare(req.body.user_pass, hash, function (err, result) {
+        bcrypt.compare(req.body.user_pass, hash, function (error, result) {
           // execute code to test for access and login
           if (result) {
             res.send(
               JSON.stringify({
                 status: 200,
                 error: null,
-                data: results,
+                user: user,
                 message: "You are successfully logged In",
               })
             );
@@ -110,7 +116,7 @@ async function verifyUsers(req, res) {
               JSON.stringify({
                 status: 200,
                 error: null,
-                data: results,
+                data: user,
                 message:
                   "Your username or password doesnot match please try again later",
               })

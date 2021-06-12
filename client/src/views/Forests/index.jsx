@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import forestRoutes from "../../routes/forests";
 import BanbibaranActions from "../../actions/banbibaran";
-
 
 export class Forests extends Component {
   componentDidMount() {
@@ -16,11 +16,26 @@ export class Forests extends Component {
   }
 
   render() {
+    const { authenticated } = this.props;
+
     return (
       <Switch>
         {forestRoutes.map((prop, key) => {
-          if (prop.redirect) {
+          if (prop.redirect && authenticated) {
             return <Redirect exact from={prop.path} to={prop.to} key={key} />;
+          }
+          if (prop.redirect && !authenticated) {
+            return (
+              <Route
+                exact
+                path={prop.path}
+                component={prop.component}
+                key={key}
+              />
+            );
+          }
+          if (!prop.redirect && prop.auth && !authenticated) {
+            return <Redirect exact from={prop.path} to="/" key={key} />;
           }
           return (
             <Route
@@ -37,6 +52,21 @@ export class Forests extends Component {
   }
 }
 
+Forests.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
+  history: PropTypes.any,
+};
+
+Forests.defaultProps = {
+  authenticated: false,
+  history: () => {},
+};
+
+const mapStateToProps = (state) => ({
+  role: state.app.app_role_id,
+  authenticated: !isEmpty(state.app.token),
+});
+
 const mapDispatchToProps = (dispatch) => ({
   fetchallSamudayikbanbibaran: () =>
     dispatch(BanbibaranActions.fetchallsamudayikbanbibaranRequest()),
@@ -48,4 +78,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BanbibaranActions.fetchallnijibanbibaranRequest()),
 });
 
-export default connect(null, mapDispatchToProps)(Forests);
+export default connect(mapStateToProps, mapDispatchToProps)(Forests);

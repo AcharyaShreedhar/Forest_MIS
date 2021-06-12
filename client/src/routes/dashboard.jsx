@@ -1,8 +1,14 @@
 import Activities from "../views/Activities";
-import Home from "../views/Home";
 import Forests from "../views/Forests";
+import Home from "../views/Home";
+import Login from "../layouts/Login";
 
 const dashboardRoutes = [
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
   {
     path: "/home",
     name: "Home",
@@ -21,7 +27,7 @@ const dashboardRoutes = [
   {
     redirect: true,
     path: "/",
-    to: "/home",
+    to: "/login",
     name: "Dashboard",
   },
 ];

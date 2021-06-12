@@ -5,14 +5,8 @@
  * samples: postAdminStaffSave
  */
 import apisauce from "apisauce";
-import {
-  equals,
-  isNil,
-  isEmpty
-} from "ramda";
-import {
-  store
-} from "../reducers";
+import { equals, isNil, isEmpty } from "ramda";
+import { store } from "../reducers";
 import AppActions from "../actions/app";
 const Config = {
   API_URL: "http://localhost:3001/api/v1/",
@@ -48,7 +42,7 @@ const create = (baseURL = Config.API_URL) => {
   });
   api.addMonitor(naviMonitor);
   // Login API
-  const loginByUsername = (payload) => api.post("auth/login", payload);
+  const loginByUsername = (payload) => api.post("users/login", payload);
   //Banbibarans
   const getSamudayikbanBibaranList = () => api.get("samudayikbanBibaran");
 
@@ -196,22 +190,28 @@ const create = (baseURL = Config.API_URL) => {
   const getAssets = (assetId) => api.get(`assets/${assetId}`);
 
   //Add
-  const postSampatibibaranAssetsAddNew = (payload) => api.post(`assets`, payload);
+  const postSampatibibaranAssetsAddNew = (payload) =>
+    api.post(`assets`, payload);
   //update
-  const postSampatibibaranAssetsUpdate = (payload, assetId) => api.put(`assets/${assetId}`, payload);
+  const postSampatibibaranAssetsUpdate = (payload, assetId) =>
+    api.put(`assets/${assetId}`, payload);
   //Delete
-  const postSampatibibaranAssetsDelete = (assetId) => api.delete(`assets/${assetId}`);
+  const postSampatibibaranAssetsDelete = (assetId) =>
+    api.delete(`assets/${assetId}`);
 
   const getVehiclesList = () => api.get("vehicles");
 
   const getVehicles = (vehicleId) => api.get(`vehicles/${vehicleId}`);
 
   //Add
-  const postSampatibibaranVehiclesAddNew = (payload) => api.post(`vehicles`, payload);
+  const postSampatibibaranVehiclesAddNew = (payload) =>
+    api.post(`vehicles`, payload);
   //update
-  const postSampatibibaranVehiclesUpdate = (payload, vehicleId) => api.put(`vehicles/${vehicleId}`, payload);
+  const postSampatibibaranVehiclesUpdate = (payload, vehicleId) =>
+    api.put(`vehicles/${vehicleId}`, payload);
   //Delete
-  const postSampatibibaranVehiclesDelete = (vehicleId) => api.delete(`vehicles/${vehicleId}`);
+  const postSampatibibaranVehiclesDelete = (vehicleId) =>
+    api.delete(`vehicles/${vehicleId}`);
 
   // muddaanusandhandayari
   const getMuddaanusandhandayariList = () => api.get("muddaAnusandhanDayaris");
@@ -322,7 +322,8 @@ const create = (baseURL = Config.API_URL) => {
 
   //-----Municipalities
   const getMunicipalitiesList = () => api.get("municipalities");
-  const getMunicipalities = (municipalitiesId) => api.get(`municipalities/${municipalitiesId}`);
+  const getMunicipalities = (municipalitiesId) =>
+    api.get(`municipalities/${municipalitiesId}`);
 
   //-------Provinces
   const getProvincesList = () => api.get("province");
@@ -339,31 +340,29 @@ const create = (baseURL = Config.API_URL) => {
   const getEmployeesList = () => api.get("employees");
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
   //Add
-  const postKarmacharibibaranEmployeesAddNew = (payload) => api.post(`employees`, payload);
+  const postKarmacharibibaranEmployeesAddNew = (payload) =>
+    api.post(`employees`, payload);
 
   //update
   const postKarmacharibibaranEmployeesUpdate = (payload, employeesId) =>
     api.put(`employees/${employeesId}`, payload);
 
-    //Delete
+  //Delete
   const postKarmacharibibaranEmployeesDelete = (employeesId) =>
-  api.delete(`employees/${employeesId}`);
+    api.delete(`employees/${employeesId}`);
 
   const getEmployeeshistoryList = () => api.get("employeeHistory");
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
 
-
   //Add
-  const postKarmacharibibaranEmployeeshistoryAddNew = (payload) => api.post(`employeeHistory`, payload);
-
+  const postKarmacharibibaranEmployeeshistoryAddNew = (payload) =>
+    api.post(`employeeHistory`, payload);
 
   const getLevelList = () => api.get("level");
   const getLevel = (levelId) => api.get(`level/${levelId}`);
   const getPostList = () => api.get("posts");
 
   const getPost = (postId) => api.get(`posts/${postId}`);
-
-
 
   return {
     loginByUsername,

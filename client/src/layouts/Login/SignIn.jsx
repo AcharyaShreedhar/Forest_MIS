@@ -13,8 +13,8 @@ class SignIn extends Component {
   }
 
   handleLogin() {
-    const { username, password } = this.state;
-    this.props.onLogin({ username, password });
+    const { user_name, user_pass } = this.state;
+    this.props.onLogin({ user_name, user_pass });
   }
 
   handleRegister() {
@@ -22,16 +22,16 @@ class SignIn extends Component {
   }
 
   handleUsername(e) {
-    this.setState({ username: e.trim() });
+    this.setState({ user_name: e });
   }
 
   handlePassword(e) {
-    this.setState({ password: e });
+    this.setState({ user_pass: e });
   }
 
   render() {
     const { isBusy } = this.props;
-    const { username, password } = this.state;
+    const { user_name, user_pass } = this.state;
 
     return (
       <div>
@@ -39,15 +39,15 @@ class SignIn extends Component {
           className="mt-4"
           title="प्रयोगकर्ताको नाम"
           direction="vertical"
-          value={username}
+          value={user_name}
           onChange={this.handleUsername}
         />
         <Input
           className="mt-4"
-          type="password"
+          type="user_pass"
           title="पासवर्ड "
           direction="vertical"
-          value={password}
+          value={user_pass}
           onChange={this.handlePassword}
           onEnter={this.handleLogin}
         />
@@ -72,14 +72,14 @@ class SignIn extends Component {
 }
 
 SignIn.propTypes = {
-  username: PropTypes.string,
-  password: PropTypes.string,
+  user_name: PropTypes.string,
+  user_pass: PropTypes.string,
   onLogin: PropTypes.func,
 };
 
 SignIn.defaultProps = {
-  username: "",
-  password: "",
+  user_name: "",
+  user_pass: "",
   OnLogin: () => {},
 };
 
