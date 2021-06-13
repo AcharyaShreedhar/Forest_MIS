@@ -24,11 +24,11 @@
    addbanxetraatikramanSuccess: ["response"],
    addbanxetraatikramanFailure: null,
 
-   updatebanxetraatikramanRequest: ["payload"],
+   updatebanxetraatikramanRequest: ["payload","banxetraatikramanId"],
    updatebanxetraatikramanSuccess: ["response"],
    updatebanxetraatikramanFailure: null,
 
-   deletebanxetraatikramanRequest: ["payload"],
+   deletebanxetraatikramanRequest: ["payload","banxetraatikramanId"],
    deletebanxetraatikramanSuccess: ["response"],
    deletebanxetraatikramanFailure: null,
 
