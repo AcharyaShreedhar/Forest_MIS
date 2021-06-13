@@ -219,16 +219,12 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`muddaAnusandhanDayaris`, payload);
 
   //update muddaanusandhandayari
-  const postMuddaanusandhandayariMuddaanusandhandayariUpdate = (
-    payload,
-    muddaAnusandhanDayariId
-  ) => api.post(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`, payload);
+  const postMuddaanusandhandayariMuddaanusandhandayariUpdate = (payload,muddaanusandhandayariId ) =>
+   api.put(`muddaAnusandhanDayaris/${muddaanusandhandayariId}`, payload);
 
   //delete muddaanusandhandayari
-  const postMuddaanusandhandayariMuddaanusandhandayariDelete = (
-    payload,
-    muddaAnusandhanDayariId
-  ) => api.post(`muddaAnusandhanDayari/${muddaAnusandhanDayariId}`, payload);
+  const postMuddaanusandhandayariMuddaanusandhandayariDelete = (muddaAnusandhandayariId) =>
+   api.delete(`muddaAnusandhanDayari/${muddaAnusandhandayariId}`);
 
   // ------banxetraatikraman
   const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
