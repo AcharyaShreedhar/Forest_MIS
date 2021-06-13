@@ -140,6 +140,9 @@ import {
 import { 
   fetchallplotbibaranRequest,
   fetchplotbibaranRequest,
+  addplotbibaranRequest,
+  updateplotbibaranRequest,
+  deleteplotbibaranRequest,
  } from "./plotbibaran";
 
  //---------inventories
@@ -669,6 +672,24 @@ export default function* root() {
     takeLatest(
       PlotbibaranTypes.FETCHPLOTBIBARAN_REQUEST,
       fetchplotbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      PlotbibaranTypes.ADDPLOTBIBARAN_REQUEST,
+      addplotbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      PlotbibaranTypes.UPDATEPLOTBIBARAN_REQUEST,
+      updateplotbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      PlotbibaranTypes.DELETEPLOTBIBARAN_REQUEST,
+      deleteplotbibaranRequest,
       api
     ),
 
