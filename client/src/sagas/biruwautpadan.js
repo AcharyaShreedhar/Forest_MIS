@@ -5,7 +5,7 @@ import BiruwautpadanActions from "../actions/biruwautpadan";
 
 export function* fetchallbiruwautpadanRequest(api, action) {
   const response = yield api.getBiruwautpadanList();
-  if (response.ok) {
+   if (response.ok) {
     yield put(
       BiruwautpadanActions.fetchallbiruwautpadanSuccess(response.data)
     );
