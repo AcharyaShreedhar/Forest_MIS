@@ -24,11 +24,11 @@
    addmuddaanusandhandayariSuccess: ["response"],
    addmuddaanusandhandayariFailure: null,
 
-   updatemuddaanusandhandayariRequest: ["payload"],
+   updatemuddaanusandhandayariRequest: ["payload","muddaanusandhandayariId"],
    updatemuddaanusandhandayariSuccess: ["response"],
    updatemuddaanusandhandayariFailure: null,
 
-   deletemuddaanusandhandayariRequest: ["payload"],
+   deletemuddaanusandhandayariRequest: ["payload","muddaanusandhandayariId"],
    deletemuddaanusandhandayariSuccess: ["response"],
    deletemuddaanusandhandayariFailure: null,
 

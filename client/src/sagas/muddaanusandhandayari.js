@@ -57,11 +57,11 @@ export function* addmuddaanusandhandayariRequest(api, action) {
 
 // Update muddaanusandhandayari
 export function* updatemuddaanusandhandayariRequest(api, action) {
-  const { payload } = action;
+  const { payload,muddaanusandhandayariId } = action;
 
   const response = yield api.postMuddaanusandhandayariMuddaanusandhandayariUpdate(
     payload.muddaanusandhandayari.data,
-    payload.id
+    muddaanusandhandayariId
   );
 
   if (response.ok) {
