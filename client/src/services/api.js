@@ -9,7 +9,7 @@ import { equals, isNil, isEmpty } from "ramda";
 import { store } from "../reducers";
 import AppActions from "../actions/app";
 const Config = {
-  API_URL: "http://localhost:3001/api/v1/",
+  API_URL: "http://192.168.1.3:3001/api/v1/",
 };
 // const authenticated = (api) => {
 //   api.setHeader("Authorization", "Bearer " + window.token);
@@ -340,12 +340,13 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`employees`, payload);
 
   //update
-  const postKarmacharibibaranEmployeesUpdate = (payload, employeesId) =>
-    api.put(`employees/${employeesId}`, payload);
+  const postKarmacharibibaranEmployeesUpdate = (payload, employeeId) =>
+    api.put(`employees/${employeeId}`, payload);
 
-  //Delete
-  const postKarmacharibibaranEmployeesDelete = (employeesId) =>
-    api.delete(`employees/${employeesId}`);
+    //Delete
+  const postKarmacharibibaranEmployeesDelete = (employeeId) =>
+  api.delete(`employees/${employeeId}`);
+
 
   const getEmployeeshistoryList = () => api.get("employeeHistory");
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
@@ -353,6 +354,11 @@ const create = (baseURL = Config.API_URL) => {
   //Add
   const postKarmacharibibaranEmployeeshistoryAddNew = (payload) =>
     api.post(`employeeHistory`, payload);
+  
+  //update
+  const postKarmacharibibaranEmployeeshistoryUpdate = (payload, employeehistoryId) =>
+    api.put(`employees/${employeehistoryId}`, payload);
+
 
   const getLevelList = () => api.get("level");
   const getLevel = (levelId) => api.get(`level/${levelId}`);
@@ -469,6 +475,7 @@ const create = (baseURL = Config.API_URL) => {
     getEmployeeshistoryList,
     getEmployeeshistory,
     postKarmacharibibaranEmployeeshistoryAddNew,
+    postKarmacharibibaranEmployeeshistoryUpdate,
     getLevelList,
     getLevel,
     getPostList,
