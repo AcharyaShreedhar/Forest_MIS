@@ -359,6 +359,11 @@ const create = (baseURL = Config.API_URL) => {
   const postKarmacharibibaranEmployeeshistoryUpdate = (payload, employeehistoryId) =>
     api.put(`employees/${employeehistoryId}`, payload);
 
+  
+  //Delete
+  const postKarmacharibibaranEmployeeshistoryDelete = (employeehistoryId) =>
+  api.delete(`employees/${employeehistoryId}`);
+
 
   const getLevelList = () => api.get("level");
   const getLevel = (levelId) => api.get(`level/${levelId}`);
@@ -476,6 +481,8 @@ const create = (baseURL = Config.API_URL) => {
     getEmployeeshistory,
     postKarmacharibibaranEmployeeshistoryAddNew,
     postKarmacharibibaranEmployeeshistoryUpdate,
+    postKarmacharibibaranEmployeeshistoryDelete,
+
     getLevelList,
     getLevel,
     getPostList,

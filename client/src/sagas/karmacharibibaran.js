@@ -181,6 +181,33 @@ export function* updateemployeeshistoryRequest(api, action) {
     });
   }
 }
+
+
+// Delete employees
+export function* deleteemployeeshistoryRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranEmployeeshistoryDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण  वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallemployeeshistoryRequest(api);
+    yield put(
+      KarmacharibibaranActions.deleteemployeeshistorySuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.deleteemployeeshistoryFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
    
 export function* fetchalllevelRequest(api, action) {
   const response = yield api.getLevelList();
