@@ -51,6 +51,17 @@ export function* fetchallprovincesRequest(api, action) {
     yield put(AppActions.fetchallprovincesFailure());
   }
 }
+export function* fetchprovincesRequest(api, action) {
+  const provincesId = action.payload;
+
+  const response = yield api.getProvinces(provincesId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchprovincesSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchprovincesFailure());
+  }
+}
 
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
