@@ -167,6 +167,7 @@ import {
    fetchallemployeeshistoryRequest,
    fetchemployeeshistoryRequest,
    addemployeeshistoryRequest,
+   updateemployeeshistoryRequest,
    fetchalllevelRequest,
    fetchlevelRequest,
    fetchallpostRequest,
@@ -780,6 +781,12 @@ export default function* root() {
     takeLatest(
       KarmacharibibaranTypes.ADDEMPLOYEESHISTORY_REQUEST,
       addemployeeshistoryRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.UPDATEEMPLOYEESHISTORY_REQUEST,
+      updateemployeeshistoryRequest,
       api
     ),
 
