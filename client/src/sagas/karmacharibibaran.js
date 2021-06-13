@@ -40,7 +40,7 @@ export function* addemployeesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield addemployeesRequest(api);
@@ -65,7 +65,7 @@ export function* updateemployeesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallemployeesRequest(api);
@@ -89,7 +89,7 @@ export function* deleteemployeesRequest(api, action) {
   const response = yield api.postKarmacharibibaranEmployeesDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण  वन हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallemployeesRequest(api);
@@ -243,7 +243,7 @@ export function* addlevelRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक तह प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield addlevelRequest(api);
@@ -257,6 +257,35 @@ export function* addlevelRequest(api, action) {
   }
 }
    
+
+// Update Level
+export function* updatelevelRequest(api, action) {
+  const { payload, levelId } = action;
+
+  const response = yield api.postKarmacharibibaranLevelUpdate(
+    payload.employees.data,
+    levelId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक तह पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalllevelRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(
+      KarmacharibibaranActions.updatelevelSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.updatelevelFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+
 export function* fetchallpostRequest(api, action) {
   const response = yield api.getPostList();
 
