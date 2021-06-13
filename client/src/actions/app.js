@@ -35,7 +35,9 @@ const { Types, Creators } = createActions({
   fetchallprovincesSuccess: ["response"],
   fetchallprovincesFailure: null,
 
-  
+  fetchprovincesRequest: ["payload"],
+  fetchprovincesSuccess: ["response"],
+  fetchprovincesFailure: null,
 
 
 
