@@ -24,11 +24,11 @@
    addbanpaidawarSuccess: ["response"],
    addbanpaidawarFailure: null,
 
-   updatebanpaidawarRequest: ["payload"],
+   updatebanpaidawarRequest: ["payload","banpaidawarId"],
    updatebanpaidawarSuccess: ["response"],
    updatebanpaidawarFailure: null,
 
-   deletebanpaidawarRequest: ["payload"],
+   deletebanpaidawarRequest: ["payload","banpaidawarId"],
    deletebanpaidawarSuccess: ["response"],
    deletebanpaidawarFailure: null,
 
@@ -44,11 +44,11 @@
    addbanpaidawarlilamSuccess: ["response"],
    addbanpaidawarlilamFailure: null,
 
-   updatebanpaidawarlilamRequest: ["payload"],
+   updatebanpaidawarlilamRequest: ["payload","banpaidawarlilamId"],
    updatebanpaidawarlilamSuccess: ["response"],
    updatebanpaidawarlilamFailure: null,
 
-   deletebanpaidawarlilamRequest: ["payload"],
+   deletebanpaidawarlilamRequest: ["payload","banpaidawarlilamId"],
    deletebanpaidawarlilamSuccess: ["response"],
    deletebanpaidawarlilamFailure: null,
 
