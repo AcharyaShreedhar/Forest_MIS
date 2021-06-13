@@ -55,11 +55,11 @@ export function* fetchbiruwautpadanRequest(api, action) {
   
   // Update biruwautpadan
   export function* updatebiruwautpadanRequest(api, action) {
-    const { payload } = action;
+    const { payload,biruwautpadanId } = action;
   
     const response = yield api.postBiruwautpadanBiruwautpadanUpdate(
       payload.biruwautpadan.data,
-      payload.id
+      biruwautpadanId
     );
   
     if (response.ok) {

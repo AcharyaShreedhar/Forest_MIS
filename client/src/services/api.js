@@ -95,6 +95,7 @@ const create = (baseURL = Config.API_URL) => {
   //Add
   const postBanbibaranKabuliyatibanAddNew = (payload) =>
     api.post(`kabuliyatibanBibaran`, payload);
+
   //update
   const postBanbibaranKabuliyatibanUpdate = (payload, kabuliyatibanBibaranId) =>
     api.put(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`, payload);
@@ -136,11 +137,11 @@ const create = (baseURL = Config.API_URL) => {
 
   //update
   const postBiruwautpadanBiruwautpadanUpdate = (payload, biruwautpadanId) =>
-    api.post(`biruwautpadans/${biruwautpadanId}`, payload);
+  api.put(`biruwautpadans/${biruwautpadanId}`, payload);
 
   //delete
-  const postBiruwautpadanBiruwautpadanDelete = (payload, biruwautpadanId) =>
-    api.post(`biruwautpadans/${biruwautpadanId}`, payload);
+   const postBiruwautpadanBiruwautpadanDelete = (biruwautpadanId) =>
+    api.delete(`biruwautpadans/${biruwautpadanId}`);
 
   //Dwandabebasthapan
   const getBanyajantuUddarList = () => api.get("banyajantuUddars");

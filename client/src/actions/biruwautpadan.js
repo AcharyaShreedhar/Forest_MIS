@@ -24,11 +24,11 @@
    addbiruwautpadanSuccess: ["response"],
    addbiruwautpadanFailure: null,
 
-   updatebiruwautpadanRequest: ["payload"],
+   updatebiruwautpadanRequest: ["payload","biruwautpadanId"],
    updatebiruwautpadanSuccess: ["response"],
    updatebiruwautpadanFailure: null,
 
-   deletebiruwautpadanRequest: ["payload"],
+   deletebiruwautpadanRequest: ["payload","biruwautpadanId"],
    deletebiruwautpadanSuccess: ["response"],
    deletebiruwautpadanFailure: null,
  
