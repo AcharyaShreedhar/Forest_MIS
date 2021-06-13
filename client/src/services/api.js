@@ -268,12 +268,12 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`bandadeloBibaran`, payload);
 
   //update
-  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
-    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadelobibaranId) =>
+    api.put(`bandadeloBibaran/${bandadelobibaranId}`, payload);
 
   //delete
-  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
-    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloDelete = (bandadelobibaranId) =>
+    api.delete(`bandadeloBibaran/${bandadelobibaranId}`);
 
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
