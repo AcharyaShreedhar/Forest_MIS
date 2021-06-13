@@ -246,16 +246,12 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`banxetraAtikramans`, payload);
 
   //update
-  const postBanxetraatikramanBanxetraatikramanUpdate = (
-    payload,
-    banxetraAtikramanId
-  ) => api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
+  const postBanxetraatikramanBanxetraatikramanUpdate = (payload, banxetraatikramanId) =>
+    api.put(`banxetraAtikramans/${ banxetraatikramanId}`, payload);
 
   //delete
-  const postBanxetraatikramanBanxetraatikramanDelete = (
-    payload,
-    banxetraAtikramanId
-  ) => api.post(`banxetraAtikramans/${banxetraAtikramanId}`, payload);
+  const postBanxetraatikramanBanxetraatikramanDelete = (banxteraatikramanId) =>
+    api.delete(`banxetraAtikramans/${banxteraatikramanId}`);
 
   //................bandadelobibarans
   const getBandadelobibaranList = () => api.get("bandadeloBibaran");
@@ -268,12 +264,12 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`bandadeloBibaran`, payload);
 
   //update
-  const postBandadelobibaranBandadeloUpdate = (payload, bandadeloBibaranId) =>
-    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadelobibaranId) =>
+    api.put(`bandadeloBibaran/${bandadelobibaranId}`, payload);
 
   //delete
-  const postBandadelobibaranBandadeloDelete = (payload, bandadeloBibaranId) =>
-    api.post(`bandadeloBibaran/${bandadeloBibaranId}`, payload);
+  const postBandadelobibaranBandadeloDelete = (bandadelobibaranId) =>
+    api.delete(`bandadeloBibaran/${bandadelobibaranId}`);
 
   //--------------banpaidawar
   const getBanpaidawarList = () => api.get("banpaidawar");
@@ -287,12 +283,12 @@ const create = (baseURL = Config.API_URL) => {
 
   //update
   const postBanpaidawarBanpaidawarUpdate = (payload, banpaidawarId) =>
-    api.post(`banpaidawar/${banpaidawarId}`, payload);
+    api.put(`banpaidawar/${banpaidawarId}`, payload);
 
   //delete
-  const postBanpaidawarBanpaidawarDelete = (payload, banpaidawarId) =>
-    api.post(`banpaidawar/${banpaidawarId}`, payload);
-
+  const postBanpaidawarBanpaidawarDelete = (banpaidawarId) =>
+    api.delete(`banpaidawar/${banpaidawarId}`);
+  
   const getBanpaidawarlilamList = () => api.get("banpaidawarLilam");
 
   const getBanpaidawarlilam = (banpaidawarLilamId) =>
@@ -303,12 +299,12 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`banpaidawarLilam`, payload);
 
   //update
-  const postBanpaidawarBanpaidawarlilamUpdate = (payload, banpaidawarLilamId) =>
-    api.post(`banpaidawarLilam/${banpaidawarLilamId}`, payload);
+  const postBanpaidawarBanpaidawarlilamUpdate = (payload, banpaidawarlilamId) =>
+    api.put(`banpaidawarLilam/${banpaidawarlilamId}`, payload);
 
   //delete
-  const postBanpaidawarBanpaidawarlilamDelete = (payload, banpaidawarLilamId) =>
-    api.post(`banpaidawarLilam/${banpaidawarLilamId}`, payload);
+  const postBanpaidawarBanpaidawarlilamDelete = (banpaidawarlilamId) =>
+    api.delete(`banpaidawarLilam/${banpaidawarlilamId}`);
 
   // Karmachari darbandi
   const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
