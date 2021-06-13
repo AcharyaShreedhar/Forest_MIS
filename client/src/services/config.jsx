@@ -80,6 +80,18 @@ const nijibanHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const biruwautpadanHeadings = [
+  "आर्थिक वर्ष",
+  "नर्सरी संख्या",
+  "वर्ग",
+  "लक्ष",
+  "प्रगति",
+  "वृक्षरोपण",
+  "कैफियत",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -87,4 +99,5 @@ export {
   dharmikbanHeadings,
   kabuliyatibanHeadings,
   nijibanHeadings,
+  biruwautpadanHeadings,
 };
