@@ -9,7 +9,7 @@ import { equals, isNil, isEmpty } from "ramda";
 import { store } from "../reducers";
 import AppActions from "../actions/app";
 const Config = {
-  API_URL: "http://localhost:3001/api/v1/",
+  API_URL: "http://192.168.1.3:3001/api/v1/",
 };
 // const authenticated = (api) => {
 //   api.setHeader("Authorization", "Bearer " + window.token);
@@ -467,7 +467,7 @@ const create = (baseURL = Config.API_URL) => {
     getEmployees,
     postKarmacharibibaranEmployeesAddNew,
     postKarmacharibibaranEmployeesUpdate,
-    //postKarmacharibibaranEmployeesDelete,
+    postKarmacharibibaranEmployeesDelete,
     getEmployeeshistoryList,
     getEmployeeshistory,
     postKarmacharibibaranEmployeeshistoryAddNew,
@@ -483,6 +483,9 @@ const create = (baseURL = Config.API_URL) => {
     //-----Provinces
     getProvincesList,
     getProvinces,
+
+    //-----Provinces
+    getDistrictsList,
   };
 };
 export default {
