@@ -25,11 +25,11 @@
     addbandadelobibaranSuccess: ["response"],
     addbandadelobibaranFailure: null,
 
-    updatebandadelobibaranRequest: ["payload", "bandadeloBibaranId"],
+    updatebandadelobibaranRequest: ["payload", "bandadelobibaranId"],
     updatebandadelobibaranSuccess: ["response"],
     updatebandadelobibaranFailure: null,
 
-    deletebandadelobibaranRequest: ["payload", "bandadeloBibaranId"],
+    deletebandadelobibaranRequest: ["payload", "bandadelobibaranId"],
     deletebandadelobibaranSuccess: ["response"],
     deletebandadelobibaranFailure: null,
 
