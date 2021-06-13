@@ -43,6 +43,10 @@
    addemployeeshistorySuccess: ["response"],
    addemployeeshistoryFailure: null,
 
+   updateemployeeshistoryRequest: ["payload", "employeehistoryId"],
+   updateemployeeshistorySuccess: ["response"],
+   updateemployeeshistoryFailure: null,
+
  
    fetchalllevelRequest: ["payload"],
    fetchalllevelSuccess: ["response"],
