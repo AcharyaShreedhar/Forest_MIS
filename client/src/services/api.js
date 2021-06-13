@@ -484,8 +484,6 @@ const create = (baseURL = Config.API_URL) => {
     getProvincesList,
     getProvinces,
 
-    //-----Provinces
-    getDistrictsList,
   };
 };
 export default {
