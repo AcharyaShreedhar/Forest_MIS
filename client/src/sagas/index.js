@@ -171,6 +171,7 @@ import {
    deleteemployeeshistoryRequest,
    fetchalllevelRequest,
    fetchlevelRequest,
+   addlevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
   
@@ -809,6 +810,13 @@ export default function* root() {
       fetchlevelRequest,
       api
     ),
+ 
+    takeLatest(
+      KarmacharibibaranTypes.ADDLEVEL_REQUEST,
+      addlevelRequest,
+      api
+    ),
+
 
     takeLatest(
       KarmacharibibaranTypes.FETCHALLPOST_REQUEST,
