@@ -162,6 +162,17 @@ const fetchlevelFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add level
+const addlevelRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addlevelSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addlevelFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+  
 
 const fetchallpostRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -252,6 +263,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.FETCHLEVEL_REQUEST]: fetchlevelRequest,
     [KarmacharibibaranTypes.FETCHLEVEL_SUCCESS]: fetchlevelSuccess,
     [KarmacharibibaranTypes.FETCHLEVEL_FAILURE]: fetchlevelFailure,
+
+    [KarmacharibibaranTypes.ADDLEVEL_REQUEST]: addlevelRequest,
+    [KarmacharibibaranTypes.ADDLEVEL_SUCCESS]: addlevelSuccess,
+    [KarmacharibibaranTypes.ADDLEVEL_FAILURE]: addlevelFailure,
 
     [KarmacharibibaranTypes.FETCHALLPOST_REQUEST]: fetchallpostRequest,
     [KarmacharibibaranTypes.FETCHALLPOST_SUCCESS]: fetchallpostSuccess,
