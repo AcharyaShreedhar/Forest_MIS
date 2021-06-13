@@ -153,16 +153,12 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`banyajantuUddars`, payload);
 
   //update banyajantuuddar
-  const postDwandabebasthapanBanyajantuuddarUpdate = (
-    payload,
-    banyajantuUddarId
-  ) => api.post(`banyajantuUddars/${banyajantuUddarId}`, payload);
+  const postDwandabebasthapanBanyajantuuddarUpdate = (payload,banyajantuuddarId) =>
+   api.put(`banyajantuUddars/${banyajantuuddarId}`, payload);
 
   //delete banyajantuuddar
-  const postDwandabebasthapanBanyajantuuddarDelete = (
-    payload,
-    banyajantuUddarId
-  ) => api.post(`banyajantuUddars/${banyajantuUddarId}`, payload);
+  const postDwandabebasthapanBanyajantuuddarDelete = (banyajantuuddarId) =>
+   api.delete(`banyajantuUddars/${banyajantuuddarId}` );
 
   const getBanyajantuXetiList = () => api.get("banyajantuXetiBibarans");
 
@@ -176,14 +172,12 @@ const create = (baseURL = Config.API_URL) => {
   //update banyajantuxeti
   const postDwandabebasthapanBanyajantuxetiUpdate = (
     payload,
-    banyajantuXetiId
-  ) => api.post(`banyajantuXetiBibarans/${banyajantuXetiId}`, payload);
+    banyajantuxetiId
+  ) => api.put(`banyajantuXetiBibarans/${banyajantuxetiId}`, payload);
 
   //delete banyajantuxeti
-  const postDwandabebasthapanBanyajantuxetiDelete = (
-    payload,
-    banyajantuXetiId
-  ) => api.post(`banyajantuXetiBibarans/${banyajantuXetiId}`, payload);
+  const postDwandabebasthapanBanyajantuxetiDelete = (banyajantuxetiId) =>
+   api.delete(`banyajantuXetiBibarans/${banyajantuxetiId}`);
 
   //sampatibibaran
   const getAssetsList = () => api.get("assets");
