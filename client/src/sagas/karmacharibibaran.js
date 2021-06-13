@@ -133,7 +133,7 @@ export function* fetchallemployeeshistoryRequest(api, action) {
   }
 
     
-// Add Employees
+// Add Employeeshistory
 export function* addemployeeshistoryRequest(api, action) {
   const { payload } = action;
 
@@ -234,7 +234,28 @@ export function* fetchlevelRequest(api, action) {
   }
 }
   
+// Add Level
+export function* addlevelRequest(api, action) {
+  const { payload } = action;
 
+  const response = yield api.postKarmacharibibaranLevelAddNew(
+    payload.level.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield addlevelRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(KarmacharibibaranActions.addlevelSuccess(response.data));
+  } else {
+    yield put(KarmacharibibaranActions.addlevelFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
    
 export function* fetchallpostRequest(api, action) {
   const response = yield api.getPostList();
