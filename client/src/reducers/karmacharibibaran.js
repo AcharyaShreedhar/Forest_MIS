@@ -111,6 +111,18 @@ const addemployeeshistoryFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 
+//Update employeeshistory
+const updateemployeeshistoryRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateemployeeshistorySuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateemployeeshistoryFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 const fetchalllevelRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchalllevelSuccess = (state, action) => {
@@ -210,6 +222,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.ADDEMPLOYEESHISTORY_REQUEST]: addemployeeshistoryRequest,
     [KarmacharibibaranTypes.ADDEMPLOYEESHISTORY_SUCCESS]: addemployeeshistorySuccess,
     [KarmacharibibaranTypes.ADDEMPLOYEESHISTORY_FAILURE]: addemployeeshistoryFailure,
+
+    [KarmacharibibaranTypes.UPDATEEMPLOYEESHISTORY_REQUEST]: updateemployeeshistoryRequest,
+    [KarmacharibibaranTypes.UPDATEEMPLOYEESHISTORY_SUCCESS]: updateemployeeshistorySuccess,
+    [KarmacharibibaranTypes.UPDATEEMPLOYEESHISTORY_FAILURE]: updateemployeeshistoryFailure,
 
     [KarmacharibibaranTypes.FETCHALLLEVEL_REQUEST]: fetchalllevelRequest,
     [KarmacharibibaranTypes.FETCHALLLEVEL_SUCCESS]: fetchalllevelSuccess,
