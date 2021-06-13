@@ -1,21 +1,33 @@
+import Activities from "../views/Activities";
+import Forests from "../views/Forests";
 import Home from "../views/Home";
-import About from "../views/About"
+import Login from "../layouts/Login";
 
 const dashboardRoutes = [
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
   {
     path: "/home",
     name: "Home",
     component: Home,
   },
   {
-    path:"/about",
-    name:"About",
-    component:About,
+    path: "/forests",
+    name: "Forests",
+    component: Forests,
+  },
+  {
+    path: "/activities",
+    name: "Activities",
+    component: Activities,
   },
   {
     redirect: true,
     path: "/",
-    to: "/home",
+    to: "/login",
     name: "Dashboard",
   },
 ];

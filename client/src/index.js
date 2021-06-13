@@ -4,6 +4,8 @@ import { Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'font-awesome/css/font-awesome.min.css';
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { store, persistor, history } from "./reducers";
 import indexRoutes from "./routes";
 import "./index.scss";
@@ -14,7 +16,7 @@ ReactDOM.render(
       <Router history={history}>
         <Switch>
           {indexRoutes.map((prop, key) => {
-            if (prop.name === "Home") {
+            if (prop.name === "Login") {
               return (
                 <Route to={prop.path} component={prop.component} key={key} />
               );

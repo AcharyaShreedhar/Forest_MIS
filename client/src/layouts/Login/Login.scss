@@ -1,0 +1,42 @@
+@import "../Dashboard/theme.scss";
+.dashboard {
+  min-height: 100vh;
+  background: radial-gradient(#517979, #148686, #1ea5a5, #1ca0a0, #1adede, #22a7a7, #308484, #0aafaf);background: radial-gradient(#517979, #148686, #1ea5a5, #1ca0a0, #1adede, #22a7a7, #308484, #0aafaf);
+}
+.login {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  height: 100%;
+  .login-header {
+    display: flex;
+    align-items: center;
+    background-color: #6b0707;
+    height: 40px;
+  }
+  .sign-in {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: 5px solid darkcyan;
+    border-radius: 20px;
+    padding: 80px 80px;
+    max-width: 1200px;
+    min-width: 600px;
+    margin: 80px;
+    background-color: darkcyan;
+    // background: radial-gradient(#E0FFFF,#09dcea,#00ffff,#00ffff,#00ffff,#00ffff,#09dcea,#E0FFFF);
+
+    .header {
+        font-size: 25px;
+        font-weight: 600;
+    }
+  }
+  .register {
+    background-color: white;
+    padding: 20px;
+  }
+}

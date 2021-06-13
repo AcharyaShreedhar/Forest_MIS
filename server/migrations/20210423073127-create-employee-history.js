@@ -8,44 +8,50 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+
       hist_date: {
-        allowNull: false,
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
+      },
+      
+      emp_id:{
+        type: Sequelize.INTEGER
       },
 
       emp_office_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       emp_dept_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       emp_level_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       emp_post_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
 
       emp_rank_id: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       emp_status: {
-        allowNull: false,
         type: Sequelize.STRING,
       },
 
+      created_by: {
+        type: Sequelize.STRING,
+      },
+      updated_by: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
     });
   },

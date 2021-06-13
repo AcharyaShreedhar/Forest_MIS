@@ -9,25 +9,30 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       entry_qty: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       entry_rate: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
       entry_amt: {
-        allowNull: false,
         type: Sequelize.INTEGER,
       },
 
+      created_by: {
+        type: Sequelize.STRING,
+      },
+      updated_by: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
       },
     });
   },

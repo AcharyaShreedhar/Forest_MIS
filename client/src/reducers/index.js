@@ -17,6 +17,18 @@ const persistConfig = {
 /* ------------- Assemble The Reducers ------------- */
 const reducers = combineReducers({
   app: require("./app").reducer,
+  banbibaran: require("./banbibaran").reducer,
+  dwandabebasthapan: require("./dwandabebasthapan").reducer,
+  biruwautpadan: require("./biruwautpadan").reducer,
+  sampatibibaran: require("./sampatibibaran").reducer,
+  muddaanusandhandayari: require("./muddaanusandhandayari").reducer,
+  bandadelobibaran: require("./bandadelobibaran").reducer,
+  banxetraatikraman: require("./banxetraatikraman").reducer,
+  banpaidawar: require("./banpaidawar").reducer,
+  karmacharidarbandi: require("./karmacharidarbandi").reducer,
+  plotbibaran: require("./plotbibaran").reducer,
+  inventories: require("./inventories").reducer,
+  karmacharibibaran: require("./karmacharibibaran").reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
