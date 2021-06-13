@@ -55,11 +55,11 @@ export function* addbanxetraatikramanRequest(api, action) {
 
 // Update banxetraatikraman
 export function* updatebanxetraatikramanRequest(api, action) {
-  const { payload } = action;
+  const { payload,banxetraatikramanId } = action;
 
   const response = yield api.postBanxetraatikramanBanxetraatikramanUpdate(
     payload.banxetraatikraman.data,
-    payload.id
+    banxetraatikramanId
   );
 
   if (response.ok) {
