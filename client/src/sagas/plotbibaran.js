@@ -54,11 +54,11 @@ export function* addplotbibaranRequest(api, action) {
 
 // Update plotbibaran
 export function* updateplotbibaranRequest(api, action) {
-  const { payload } = action;
+  const { payload, plotId } = action;
 
   const response = yield api.postPlotbibaranPlotbibaranUpdate(
     payload.plotbibaran.data,
-    payload.id
+    plotId
   );
 
   if (response.ok) {
