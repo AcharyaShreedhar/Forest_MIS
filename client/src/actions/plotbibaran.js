@@ -23,11 +23,11 @@ const { Types, Creators } = createActions({
   addplotbibaranSuccess: ["response"],
   addplotbibaranFailure: null,
 
-  updateplotbibaranRequest: ["payload"],
+  updateplotbibaranRequest: ["payload", "plotId"],
   updateplotbibaranSuccess: ["response"],
   updateplotbibaranFailure: null,
 
-  deleteplotbibaranRequest: ["payload"],
+  deleteplotbibaranRequest: ["payload", "plotId"],
   deleteplotbibaranSuccess: ["response"],
   deleteplotbibaranFailure: null,
 
