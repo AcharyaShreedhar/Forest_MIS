@@ -17,6 +17,15 @@ const activitiesRoutes = [
 
     component: Nursery,
   },
+
+  {
+    path: "/activities/biruwautpadanadd/new",
+    title: "Nursery",
+    name: "Nursery",
+    auth: true,
+    component: Nursery,
+  },
+
   {
     path: "/activities/plantationlist",
     title: "Plantation",
@@ -24,6 +33,15 @@ const activitiesRoutes = [
 
     component: Plantation,
   },
+  {
+    redirect: true,
+
+    path: "/activities",
+    to: "/activities/nurserylist",
+    name: "nursery",
+    component: Nursery,
+  },
+
   {
     redirect: true,
 
