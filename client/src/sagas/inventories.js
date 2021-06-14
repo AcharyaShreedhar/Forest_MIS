@@ -1,4 +1,5 @@
 import { call, put } from "redux-saga/effects";
+import { toast } from "react-toastify";
 
 import { history } from "../reducers";
 import InventoriesActions from "../actions/inventories";
@@ -27,6 +28,60 @@ export function* fetchinventoriesRequest(api, action) {
     yield put(InventoriesActions.fetchinventoriesFailure());
   }
 }
+
+// Add inventories
+export function* addinventoriesRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesInventoriesAddNew(payload.inventories.data);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक  सुचीमा थप गरियो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallinventoriesRequest(api);
+    yield call(history.push, "/forests/inventorieslist");
+    yield put(InventoriesActions.addinventoriesSuccess(response.data));
+  } else {
+    yield put(InventoriesActions.addinventoriesFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update inventories
+export function* updateinventoriesRequest(api, action) {
+  const { payload, inventoryId } = action;
+
+  const response = yield api.postInventoriesInventoriesUpdate(
+    payload.inventories.data,
+    inventoryId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सुचीमा  पुनः थप गरियो !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallinventoriesRequest(api);
+    yield call(history.push, "/forests/inventorieslist");
+    yield put(
+      InventoriesActions.updateinventoriesSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.updateinventoriesFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
 
 export function* fetchallentryRequest(api, action) {
   const response = yield api.getEntryList();

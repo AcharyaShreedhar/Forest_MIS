@@ -325,9 +325,18 @@ const create = (baseURL = Config.API_URL) => {
   
   const getProvinces = (provincesId) => api.get(`province/${provincesId}`);
 
-  //inventories
+  //-----inventories
   const getInventoriesList = () => api.get("inventory");
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
+  
+   //Add
+   const postInventoriesInventoriesAddNew = (payload) => 
+   api.post(`inventory`, payload);
+
+    //update
+    const postInventoriesInventoriesUpdate = (payload, inventoryId) =>
+     api.put(`invnetory/${inventoryId}`, payload);
+
   const getEntryList = () => api.get("entry");
   const getEntry = (entryId) => api.get(`entry/${entryId}`);
   const getExitList = () => api.get("exit");
@@ -494,6 +503,8 @@ const create = (baseURL = Config.API_URL) => {
     //inventories
     getInventoriesList,
     getInventories,
+    postInventoriesInventoriesAddNew,
+    postInventoriesInventoriesUpdate,
     getEntryList,
     getEntry,
     getExitList,
