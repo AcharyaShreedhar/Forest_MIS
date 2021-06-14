@@ -281,7 +281,7 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.ADDLEVEL_FAILURE]: addlevelFailure,
 
     [KarmacharibibaranTypes.UPDATELEVEL_REQUEST]: updatelevelRequest,
-    [KarmacharibibaranTypes.UPDATEEVEL_SUCCESS]: updatelevelSuccess,
+    [KarmacharibibaranTypes.UPDATELEVEL_SUCCESS]: updatelevelSuccess,
     [KarmacharibibaranTypes.UPDATELEVEL_FAILURE]: updatelevelFailure,
 
     [KarmacharibibaranTypes.FETCHALLPOST_REQUEST]: fetchallpostRequest,
