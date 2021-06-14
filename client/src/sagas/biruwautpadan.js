@@ -32,8 +32,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
   // Add biruwautpadan
   export function* addbiruwautpadanRequest(api, action) {
     const { payload } = action;
-    console.log("Dataaaa-----saga---", payload);
-  
+      
     const response = yield api.postBiruwautpadanBiruwautpadanAddNew(
       payload.biruwautpadan.data
     );
