@@ -63,6 +63,16 @@ export function* fetchprovincesRequest(api, action) {
   }
 }
 
+// Districts
+export function* fetchalldistrictsRequest(api, action) {
+  const response = yield api.getDistrictsList();
+  if (response.ok) {
+    yield put(AppActions.fetchalldistrictsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchalldistrictsFailure());
+  }
+}
+
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());
