@@ -22,6 +22,7 @@ class Nursery extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    alert("message");
     switch (event) {
       case "edit": {
         switch (path) {
