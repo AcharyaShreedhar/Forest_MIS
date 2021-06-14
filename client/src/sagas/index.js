@@ -176,6 +176,7 @@ import {
    deletelevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
+   addpostRequest,
   
  } from "./karmacharibibaran";
 
@@ -843,6 +844,14 @@ export default function* root() {
       fetchpostRequest,
       api
     ),
+
+    takeLatest(
+      KarmacharibibaranTypes.ADDPOST_REQUEST,
+      addpostRequest,
+      api
+    ),
+
+
 // Municipalities
     takeLatest(
       AppTypes.FETCHALLMUNICIPALITIES_REQUEST,
