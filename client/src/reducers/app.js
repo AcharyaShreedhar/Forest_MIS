@@ -34,7 +34,7 @@ const logoutFailure = (state, action) =>
 
 // Municipalities
 const fetchallmunicipalitiesRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallmunicipalitiesSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -47,7 +47,7 @@ const fetchallmunicipalitiesFailure = (state, action) => {
 };
 
 const fetchmunicipalitiesRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchmunicipalitiesSuccess = (state, action) => {
   return state.merge({
@@ -63,7 +63,7 @@ const fetchmunicipalitiesFailure = (state, action) => {
 // Provinces
 
 const fetchallprovincesRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallprovincesSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -76,7 +76,7 @@ const fetchallprovincesFailure = (state, action) => {
 };
 
 const fetchprovincesRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchprovincesSuccess = (state, action) => {
   return state.merge({
@@ -89,6 +89,20 @@ const fetchprovincesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+// Districts
+
+const fetchalldistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchalldistrictsSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    alldistrictsData: action.response,
+  });
+};
+const fetchalldistrictsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -129,6 +143,12 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHPROVINCES_REQUEST]: fetchprovincesRequest,
   [AppTypes.FETCHPROVINCES_SUCCESS]: fetchprovincesSuccess,
   [AppTypes.FETCHPROVINCES_FAILURE]: fetchprovincesFailure,
+
+  // Districts
+
+  [AppTypes.FETCHALLDISTRICTS_REQUEST]: fetchalldistrictsRequest,
+  [AppTypes.FETCHALLDISTRICTS_SUCCESS]: fetchalldistrictsSuccess,
+  [AppTypes.FETCHALLDISTRICTS_FAILURE]: fetchalldistrictsFailure,
 
   
 
