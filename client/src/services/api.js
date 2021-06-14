@@ -388,6 +388,10 @@ const create = (baseURL = Config.API_URL) => {
   const postKarmacharibibaranPostAddNew = (payload) =>
     api.post(`posts`, payload);
 
+    //update
+  const postKarmacharibibaranPostUpdate = (payload, postId) =>
+  api.put(`posts/${postId}`, payload);
+
 
   return {
     loginByUsername,
@@ -508,6 +512,7 @@ const create = (baseURL = Config.API_URL) => {
     getPostList,
     getPost,
     postKarmacharibibaranPostAddNew,
+    postKarmacharibibaranPostUpdate,
 
     //--municipalities
     getMunicipalitiesList,
