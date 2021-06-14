@@ -392,6 +392,10 @@ const create = (baseURL = Config.API_URL) => {
   const postKarmacharibibaranPostUpdate = (payload, postId) =>
   api.put(`posts/${postId}`, payload);
 
+  //Delete
+  const postKarmacharibibaranPostDelete = (postId) =>
+  api.delete(`posts/${postId}`);
+
 
   return {
     loginByUsername,
@@ -513,6 +517,7 @@ const create = (baseURL = Config.API_URL) => {
     getPost,
     postKarmacharibibaranPostAddNew,
     postKarmacharibibaranPostUpdate,
+    postKarmacharibibaranPostDelete,
 
     //--municipalities
     getMunicipalitiesList,
