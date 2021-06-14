@@ -85,7 +85,9 @@
    addpostSuccess: ["response"],
    addpostFailure: null,
 
-
+   updatepostRequest: ["payload", "postId"],
+   updatepostSuccess: ["response"],
+   updatepostFailure: null,
   
 
    locationsRequest: ["payload"],
