@@ -38,7 +38,7 @@ function List(props) {
                 <tr>
                   <td key={index}>{englishToNepaliNumber(index + 1)}</td>
                   <td key={index}> {kban.darta_no}</td>
-                  <td key={index}> {kban.entry_date}</td>
+                  <td key={index}> {englishToNepaliNumber(kban.entry_date)}</td>
                   <td key={index}>{kban.samudayik_upavokta_samiti_name}</td>
                   <td key={index}> {kban.perm_addr}</td>
                   <td key={index}> {kban.curr_addr}</td>
