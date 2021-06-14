@@ -80,6 +80,12 @@
    fetchpostSuccess: ["response"],
    fetchpostFailure: null,
 
+   
+   addpostRequest: ["payload"],
+   addpostSuccess: ["response"],
+   addpostFailure: null,
+
+
   
 
    locationsRequest: ["payload"],
