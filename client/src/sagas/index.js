@@ -173,8 +173,12 @@ import {
    fetchlevelRequest,
    addlevelRequest,
    updatelevelRequest,
+   deletelevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
+   addpostRequest,
+   updatepostRequest,
+   deletepostRequest,
   
  } from "./karmacharibibaran";
 
@@ -824,6 +828,12 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      KarmacharibibaranTypes.DELETELEVEL_REQUEST,
+      deletelevelRequest,
+      api
+    ),
+
 
     takeLatest(
       KarmacharibibaranTypes.FETCHALLPOST_REQUEST,
@@ -836,6 +846,26 @@ export default function* root() {
       fetchpostRequest,
       api
     ),
+
+    takeLatest(
+      KarmacharibibaranTypes.ADDPOST_REQUEST,
+      addpostRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.UPDATEPOST_REQUEST,
+      updatepostRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.DELETEPOST_REQUEST,
+      deletepostRequest,
+      api
+    ),
+
+
 // Municipalities
     takeLatest(
       AppTypes.FETCHALLMUNICIPALITIES_REQUEST,
