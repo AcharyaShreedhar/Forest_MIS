@@ -125,8 +125,18 @@ const mapDispatchToProps = (dispatch) => ({
     addBiruwautpadan: (payload) =>
         dispatch(BiruwautpadanActions.addbiruwautpadanRequest(payload)),
 
-        addBiruwautpadan: (payload) =>
-        dispatch(BiruwautpadanActions.addbiruwautpadanRequest(payload)),
+    updateBiruwautpadan: (payload, biruwautpadanId) =>
+        dispatch(
+          BiruwautpadanActions.updatebiruwautpadanRequest(
+            payload,
+            biruwautpadanId
+          )
+        ),
+    
+      deleteBiruwautpadan: (biruwautpadanId) =>
+        dispatch(
+          BiruwautpadanActions.deletebiruwautpadanRequest(biruwautpadanId)
+        ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (Nursery);
