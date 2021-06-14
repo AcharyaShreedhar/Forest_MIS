@@ -384,6 +384,11 @@ const create = (baseURL = Config.API_URL) => {
   const getPostList = () => api.get("posts");
   const getPost = (postId) => api.get(`posts/${postId}`);
 
+  //Add
+  const postKarmacharibibaranPostAddNew = (payload) =>
+    api.post(`posts`, payload);
+
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -502,6 +507,7 @@ const create = (baseURL = Config.API_URL) => {
     postKarmacharibibaranLevelDelete,
     getPostList,
     getPost,
+    postKarmacharibibaranPostAddNew,
 
     //--municipalities
     getMunicipalitiesList,
