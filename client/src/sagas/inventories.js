@@ -82,6 +82,31 @@ export function* updateinventoriesRequest(api, action) {
   }
 }
 
+//Delete inventories
+export function* deleteinventoriesRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesInventoriesDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सुची हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallinventoriesRequest(api);
+    yield put(
+      InventoriesActions.deleteinventoriesSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.deleteinventoriesFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
 
 export function* fetchallentryRequest(api, action) {
   const response = yield api.getEntryList();
