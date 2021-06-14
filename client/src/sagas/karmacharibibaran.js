@@ -385,3 +385,28 @@ export function* updatepostRequest(api, action) {
     });
   }
 }
+
+// Delete Post
+export function* deletepostRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranPostDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक पद वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallpostRequest(api);
+    yield put(
+      KarmacharibibaranActions.deletepostSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.deletepostFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
