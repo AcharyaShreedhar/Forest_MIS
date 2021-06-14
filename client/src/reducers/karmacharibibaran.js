@@ -172,7 +172,19 @@ const addlevelSuccess = (state, action) =>
   });
 const addlevelFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
-  
+
+
+  //Update employeeshistory
+const updatelevelRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatelevelSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatelevelFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
 
 const fetchallpostRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -267,6 +279,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.ADDLEVEL_REQUEST]: addlevelRequest,
     [KarmacharibibaranTypes.ADDLEVEL_SUCCESS]: addlevelSuccess,
     [KarmacharibibaranTypes.ADDLEVEL_FAILURE]: addlevelFailure,
+
+    [KarmacharibibaranTypes.UPDATELEVEL_REQUEST]: updatelevelRequest,
+    [KarmacharibibaranTypes.UPDATEEVEL_SUCCESS]: updatelevelSuccess,
+    [KarmacharibibaranTypes.UPDATELEVEL_FAILURE]: updatelevelFailure,
 
     [KarmacharibibaranTypes.FETCHALLPOST_REQUEST]: fetchallpostRequest,
     [KarmacharibibaranTypes.FETCHALLPOST_SUCCESS]: fetchallpostSuccess,

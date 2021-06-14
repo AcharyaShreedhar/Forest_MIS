@@ -63,6 +63,11 @@
    addlevelSuccess: ["response"],
    addlevelFailure: null,
 
+   updatelevelRequest: ["payload", "levelId"],
+   updatelevelSuccess: ["response"],
+   updatelevelFailure: null,
+
+
    fetchallpostRequest: ["payload"],
    fetchallpostSuccess: ["response"],
    fetchallpostFailure: null,

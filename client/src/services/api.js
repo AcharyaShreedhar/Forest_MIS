@@ -374,6 +374,10 @@ const create = (baseURL = Config.API_URL) => {
   const postKarmacharibibaranLevelAddNew = (payload) =>
     api.post(`level`, payload);
 
+    //update
+  const postKarmacharibibaranLevelUpdate = (payload, levelId) =>
+  api.put(`employees/${levelId}`, payload);
+
   const getPostList = () => api.get("posts");
   const getPost = (postId) => api.get(`posts/${postId}`);
 
@@ -491,6 +495,7 @@ const create = (baseURL = Config.API_URL) => {
     getLevelList,
     getLevel,
     postKarmacharibibaranLevelAddNew,
+    postKarmacharibibaranLevelUpdate,
     getPostList,
     getPost,
 
