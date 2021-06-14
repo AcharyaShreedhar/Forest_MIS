@@ -47,7 +47,7 @@
    updateemployeeshistorySuccess: ["response"],
    updateemployeeshistoryFailure: null,
 
-   deleteemployeeshistoryRequest: ["payload", "employeeId"],
+   deleteemployeeshistoryRequest: ["payload", "employeehistoryId"],
    deleteemployeeshistorySuccess: ["response"],
    deleteemployeeshistoryFailure: null,
  
@@ -66,6 +66,10 @@
    updatelevelRequest: ["payload", "levelId"],
    updatelevelSuccess: ["response"],
    updatelevelFailure: null,
+
+   deletelevelRequest: ["payload", "levelId"],
+   deletelevelSuccess: ["response"],
+   deletelevelFailure: null,
 
 
    fetchallpostRequest: ["payload"],
