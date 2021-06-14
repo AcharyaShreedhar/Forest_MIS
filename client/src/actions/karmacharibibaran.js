@@ -88,6 +88,11 @@
    updatepostRequest: ["payload", "postId"],
    updatepostSuccess: ["response"],
    updatepostFailure: null,
+
+   
+   deletepostRequest: ["payload", "postId"],
+   deletepostSuccess: ["response"],
+   deletepostFailure: null,
   
 
    locationsRequest: ["payload"],
