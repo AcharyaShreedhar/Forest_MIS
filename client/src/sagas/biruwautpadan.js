@@ -67,7 +67,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallbiruwautpadanRequest(api);
-      yield call(history.push, "/forests/biruwautpadanlist");
+      yield call(history.push, "/activities/nurserylist");
       yield put(
         BiruwautpadanActions.updatebiruwautpadanSuccess(response.data)
       );
