@@ -357,12 +357,12 @@ const create = (baseURL = Config.API_URL) => {
   
   //update
   const postKarmacharibibaranEmployeeshistoryUpdate = (payload, employeehistoryId) =>
-    api.put(`employees/${employeehistoryId}`, payload);
+    api.put(`employeeHistory/${employeehistoryId}`, payload);
 
   
   //Delete
   const postKarmacharibibaranEmployeeshistoryDelete = (employeehistoryId) =>
-  api.delete(`employees/${employeehistoryId}`);
+  api.delete(`employeeHistory/${employeehistoryId}`);
 
 
   const getLevelList = () => api.get("level");
@@ -372,9 +372,14 @@ const create = (baseURL = Config.API_URL) => {
   const postKarmacharibibaranLevelAddNew = (payload) =>
     api.post(`level`, payload);
 
-    //update
+  //update
   const postKarmacharibibaranLevelUpdate = (payload, levelId) =>
-  api.put(`employees/${levelId}`, payload);
+  api.put(`level/${levelId}`, payload);
+
+  //Delete
+  const postKarmacharibibaranLevelDelete = (levelId) =>
+  api.delete(`level/${levelId}`);
+
 
   const getPostList = () => api.get("posts");
   const getPost = (postId) => api.get(`posts/${postId}`);
@@ -494,6 +499,7 @@ const create = (baseURL = Config.API_URL) => {
     getLevel,
     postKarmacharibibaranLevelAddNew,
     postKarmacharibibaranLevelUpdate,
+    postKarmacharibibaranLevelDelete,
     getPostList,
     getPost,
 
