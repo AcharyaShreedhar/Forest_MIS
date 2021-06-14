@@ -248,6 +248,18 @@ const updatepostFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+//Delete Post
+const deletepostRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletepostSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletepostFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const locationsRequest = (state, action) => {
     let locations = state.locations;
   
@@ -337,6 +349,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.UPDATEPOST_REQUEST]: updatepostRequest,
     [KarmacharibibaranTypes.UPDATEPOST_SUCCESS]: updatepostSuccess,
     [KarmacharibibaranTypes.UPDATEPOST_FAILURE]: updatepostFailure,
+
+    [KarmacharibibaranTypes.DELETEPOST_REQUEST]: deletepostRequest,
+    [KarmacharibibaranTypes.DELETEPOST_SUCCESS]: deletepostSuccess,
+    [KarmacharibibaranTypes.DELETEPOST_FAILURE]: deletepostFailure,
 
    
     [KarmacharibibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
