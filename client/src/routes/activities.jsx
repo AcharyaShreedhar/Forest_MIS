@@ -26,6 +26,14 @@ const activitiesRoutes = [
     component: Nursery,
   },
 
+
+{
+    path: "/activities/biruwautpadanedit/:id",
+    title: "Nursery",
+    name: "Nursery",
+    auth: true,
+    component: Nursery,
+  },
   {
     path: "/activities/plantationlist",
     title: "Plantation",
