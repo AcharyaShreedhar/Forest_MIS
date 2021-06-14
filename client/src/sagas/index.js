@@ -151,6 +151,7 @@ import {
    fetchallinventoriesRequest,
    fetchinventoriesRequest,
    addinventoriesRequest,
+   updateinventoriesRequest,
    fetchallentryRequest,
    fetchentryRequest,
    fetchallexitRequest,
@@ -714,6 +715,12 @@ export default function* root() {
     takeLatest(
       InventoriesTypes.ADDINVENTORIES_REQUEST,
       addinventoriesRequest,
+      api
+    ),
+
+    takeLatest(
+      InventoriesTypes.UPDATEINVENTORIES_REQUEST,
+      updateinventoriesRequest,
       api
     ),
     
