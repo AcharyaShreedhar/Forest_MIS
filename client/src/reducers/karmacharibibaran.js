@@ -174,7 +174,7 @@ const addlevelFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 
-  //Update employeeshistory
+  //Update Level
 const updatelevelRequest = (state, action) =>
 state.merge({ ...state, status: "pending" });
 const updatelevelSuccess = (state, action) =>
@@ -184,6 +184,18 @@ state.merge({
 });
 const updatelevelFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
+
+
+//Delete Level
+const deletelevelRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletelevelSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletelevelFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 
 const fetchallpostRequest = (state, action) =>
@@ -281,8 +293,12 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.ADDLEVEL_FAILURE]: addlevelFailure,
 
     [KarmacharibibaranTypes.UPDATELEVEL_REQUEST]: updatelevelRequest,
-    [KarmacharibibaranTypes.UPDATEEVEL_SUCCESS]: updatelevelSuccess,
+    [KarmacharibibaranTypes.UPDATELEVEL_SUCCESS]: updatelevelSuccess,
     [KarmacharibibaranTypes.UPDATELEVEL_FAILURE]: updatelevelFailure,
+
+    [KarmacharibibaranTypes.DELETELEVEL_REQUEST]: deletelevelRequest,
+    [KarmacharibibaranTypes.DELETELEVEL_SUCCESS]:  deletelevelSuccess,
+    [KarmacharibibaranTypes.DELETELEVEL_FAILURE]: deletelevelFailure,
 
     [KarmacharibibaranTypes.FETCHALLPOST_REQUEST]: fetchallpostRequest,
     [KarmacharibibaranTypes.FETCHALLPOST_SUCCESS]: fetchallpostSuccess,
