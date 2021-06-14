@@ -43,11 +43,11 @@ function List(props) {
                   <td key={index}> {dban.area}</td>
                   <td key={index}> {dban.main_species}</td>
                   <td key={index}> {dban.forest_type}</td>
-                  <td key={index}> {dban.handover_date}</td>
+                  <td key={index}> {englishToNepaliNumber(dban.handover_date)}</td>
                   <td key={index}> {dban.renewed_date}</td>
                   <td key={index}> {dban.nabikaran_abadhi}</td>
                   <td key={index}> {dban.forest_maujdat}</td>
-                  <td key={index}> {dban.renewaldate}</td>
+                  <td key={index}> {englishToNepaliNumber(dban.renewaldate)}</td>
                   <td key={index}> {dban.created_by}</td>
                   <td key={index}> {dban.updated_by}</td>
                   <td>
