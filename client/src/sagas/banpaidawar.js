@@ -55,11 +55,11 @@ export function* addbanpaidawarRequest(api, action) {
 
 // Update banpaidawar
 export function* updatebanpaidawarRequest(api, action) {
-  const { payload } = action;
+  const { payload,banpaidawarId } = action;
 
   const response = yield api.postBanpaidawarBanpaidawarUpdate(
     payload.banpaidawar.data,
-    payload.id
+    banpaidawarId
   );
 
   if (response.ok) {
@@ -156,11 +156,11 @@ export function* addbanpaidawarlilamRequest(api, action) {
 
 // Update banpaidawarlilam
 export function* updatebanpaidawarlilamRequest(api, action) {
-  const { payload } = action;
+  const { payload,banpaidawarlilamId } = action;
 
   const response = yield api.postBanpaidawarBanpaidawarlilamUpdate(
     payload.banpaidawarlilam.data,
-    payload.id
+    banpaidawarlilamId
   );
 
   if (response.ok) {

@@ -58,11 +58,11 @@ export function* addbanyajantuuddarRequest(api, action) {
 
 // Update banyajantuuddar
 export function* updatebanyajantuuddarRequest(api, action) {
-  const { payload, banyajantuUddarId } = action;
+  const { payload, banyajantuuddarId } = action;
 
   const response = yield api.postDwandabebasthapanBanyajantuuddarUpdate(
     payload.banyajantuuddar.data,
-    banyajantuUddarId
+    banyajantuuddarId
   );
 
   if (response.ok) {
@@ -166,11 +166,11 @@ export function* addbanyajantuxetiRequest(api, action) {
 
 // Update banyajantuxeti
 export function* updatebanyajantuxetiRequest(api, action) {
-  const { payload, banyajantuXetiId } = action;
+  const { payload, banyajantuxetiId } = action;
 
   const response = yield api.postDwandabebasthapanBanyajantuxetiUpdate(
     payload.banyajantuxeti.data,
-    banyajantuXetiId
+    banyajantuxetiId
   );
 
   if (response.ok) {

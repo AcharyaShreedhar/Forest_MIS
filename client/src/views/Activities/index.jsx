@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { NotFound } from "../../components";
 import activitiesRoutes from "../../routes/activities";
+import BiruwautpadanActions from "../../actions/biruwautpadan";
 
 export class Forests extends Component {
   componentDidMount() {
-    //fetch function goes here
+    this.props.fetchallBiruwautpadan();
   }
 
   render() {
@@ -34,7 +35,8 @@ export class Forests extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  //functions
+  fetchallBiruwautpadan: () =>
+    dispatch(BiruwautpadanActions.fetchallbiruwautpadanRequest()),
 });
 
 export default connect(null, mapDispatchToProps)(Forests);

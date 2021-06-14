@@ -43,6 +43,13 @@
    addemployeeshistorySuccess: ["response"],
    addemployeeshistoryFailure: null,
 
+   updateemployeeshistoryRequest: ["payload", "employeehistoryId"],
+   updateemployeeshistorySuccess: ["response"],
+   updateemployeeshistoryFailure: null,
+
+   deleteemployeeshistoryRequest: ["payload", "employeeId"],
+   deleteemployeeshistorySuccess: ["response"],
+   deleteemployeeshistoryFailure: null,
  
    fetchalllevelRequest: ["payload"],
    fetchalllevelSuccess: ["response"],
@@ -51,6 +58,15 @@
    fetchlevelRequest: ["payload"],
    fetchlevelSuccess: ["response"],
    fetchlevelFailure: null,
+
+   addlevelRequest: ["payload"],
+   addlevelSuccess: ["response"],
+   addlevelFailure: null,
+
+   updatelevelRequest: ["payload", "levelId"],
+   updatelevelSuccess: ["response"],
+   updatelevelFailure: null,
+
 
    fetchallpostRequest: ["payload"],
    fetchallpostSuccess: ["response"],

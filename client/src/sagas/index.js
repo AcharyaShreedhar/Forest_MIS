@@ -15,7 +15,7 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes }  from "../actions/inventories";
 import { KarmacharibibaranTypes} from "../actions/karmacharibibaran";
 //------------------app
-import { fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, loginRequest, logoutRequest} from "./app";
+import { fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, fetchprovincesRequest, loginRequest, logoutRequest} from "./app";
 
 //karmacharidarbandi---------------------
 import{ 
@@ -140,6 +140,9 @@ import {
 import { 
   fetchallplotbibaranRequest,
   fetchplotbibaranRequest,
+  addplotbibaranRequest,
+  updateplotbibaranRequest,
+  deleteplotbibaranRequest,
  } from "./plotbibaran";
 
  //---------inventories
@@ -164,8 +167,12 @@ import {
    fetchallemployeeshistoryRequest,
    fetchemployeeshistoryRequest,
    addemployeeshistoryRequest,
+   updateemployeeshistoryRequest,
+   deleteemployeeshistoryRequest,
    fetchalllevelRequest,
    fetchlevelRequest,
+   addlevelRequest,
+   updatelevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
   
@@ -672,6 +679,24 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      PlotbibaranTypes.ADDPLOTBIBARAN_REQUEST,
+      addplotbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      PlotbibaranTypes.UPDATEPLOTBIBARAN_REQUEST,
+      updateplotbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      PlotbibaranTypes.DELETEPLOTBIBARAN_REQUEST,
+      deleteplotbibaranRequest,
+      api
+    ),
+
     //inventories
     takeLatest(
       InventoriesTypes.FETCHALLINVENTORIES_REQUEST,
@@ -763,6 +788,19 @@ export default function* root() {
     ),
 
     takeLatest(
+      KarmacharibibaranTypes.UPDATEEMPLOYEESHISTORY_REQUEST,
+      updateemployeeshistoryRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.DELETEEMPLOYEESHISTORY_REQUEST,
+      deleteemployeeshistoryRequest,
+      api
+    ),
+
+
+    takeLatest(
       KarmacharibibaranTypes.FETCHALLLEVEL_REQUEST,
       fetchalllevelRequest,
       api
@@ -773,6 +811,19 @@ export default function* root() {
       fetchlevelRequest,
       api
     ),
+ 
+    takeLatest(
+      KarmacharibibaranTypes.ADDLEVEL_REQUEST,
+      addlevelRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.UPDATELEVEL_REQUEST,
+      updatelevelRequest,
+      api
+    ),
+
 
     takeLatest(
       KarmacharibibaranTypes.FETCHALLPOST_REQUEST,
@@ -803,6 +854,12 @@ export default function* root() {
     takeLatest(
       AppTypes.FETCHALLPROVINCES_REQUEST,
       fetchallprovincesRequest,
+      api
+    ),
+
+    takeLatest(
+      AppTypes.FETCHPROVINCES_REQUEST,
+      fetchprovincesRequest,
       api
     ),
 

@@ -40,7 +40,7 @@ export function* addemployeesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield addemployeesRequest(api);
@@ -65,7 +65,7 @@ export function* updateemployeesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallemployeesRequest(api);
@@ -89,7 +89,7 @@ export function* deleteemployeesRequest(api, action) {
   const response = yield api.postKarmacharibibaranEmployeesDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण  वन हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallemployeesRequest(api);
@@ -133,7 +133,7 @@ export function* fetchallemployeeshistoryRequest(api, action) {
   }
 
     
-// Add Employees
+// Add Employeeshistory
 export function* addemployeeshistoryRequest(api, action) {
   const { payload } = action;
 
@@ -155,6 +155,59 @@ export function* addemployeeshistoryRequest(api, action) {
     });
   }
 }
+
+// Update Employeeshistory
+export function* updateemployeeshistoryRequest(api, action) {
+  const { payload, employeehistoryId } = action;
+
+  const response = yield api.postKarmacharibibaranEmployeeshistoryUpdate(
+    payload.employees.data,
+    employeehistoryId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallemployeeshistoryRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(
+      KarmacharibibaranActions.updateemployeeshistoryhistorySuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.updateemployeeshistoryFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+// Delete employees
+export function* deleteemployeeshistoryRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranEmployeeshistoryDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण  वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallemployeeshistoryRequest(api);
+    yield put(
+      KarmacharibibaranActions.deleteemployeeshistorySuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.deleteemployeeshistoryFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
    
 export function* fetchalllevelRequest(api, action) {
   const response = yield api.getLevelList();
@@ -181,8 +234,58 @@ export function* fetchlevelRequest(api, action) {
   }
 }
   
+// Add Level
+export function* addlevelRequest(api, action) {
+  const { payload } = action;
 
+  const response = yield api.postKarmacharibibaranLevelAddNew(
+    payload.level.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक तह प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield addlevelRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(KarmacharibibaranActions.addlevelSuccess(response.data));
+  } else {
+    yield put(KarmacharibibaranActions.addlevelFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
    
+
+// Update Level
+export function* updatelevelRequest(api, action) {
+  const { payload, levelId } = action;
+
+  const response = yield api.postKarmacharibibaranLevelUpdate(
+    payload.employees.data,
+    levelId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक तह पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalllevelRequest(api);
+    yield call(history.push, "/forests/employeeslist");
+    yield put(
+      KarmacharibibaranActions.updatelevelSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.updatelevelFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+
+
 export function* fetchallpostRequest(api, action) {
   const response = yield api.getPostList();
 

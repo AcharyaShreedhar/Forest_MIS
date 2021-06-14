@@ -5,7 +5,7 @@ import BiruwautpadanActions from "../actions/biruwautpadan";
 
 export function* fetchallbiruwautpadanRequest(api, action) {
   const response = yield api.getBiruwautpadanList();
-  if (response.ok) {
+   if (response.ok) {
     yield put(
       BiruwautpadanActions.fetchallbiruwautpadanSuccess(response.data)
     );
@@ -32,17 +32,17 @@ export function* fetchbiruwautpadanRequest(api, action) {
   // Add biruwautpadan
   export function* addbiruwautpadanRequest(api, action) {
     const { payload } = action;
-  
+      
     const response = yield api.postBiruwautpadanBiruwautpadanAddNew(
-      payload.banpaidawar.data
+      payload.biruwautpadan.data
     );
   
-    if (response.ok) {
+    if (response.ok) {      
       toast.success("सफलतापुर्वक विरुवा उत्पादन प्रविष्ट भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallbiruwautpadanRequest(api);
-      yield call(history.push, "/forests/biruwautpadanlist");
+      yield call(history.push, "/activities/nurserylist");
       yield put(BiruwautpadanActions.addbiruwautpadanSuccess(response.data));
     } else {
       yield put(BiruwautpadanActions.addbiruwautpadanFailure());
@@ -55,11 +55,11 @@ export function* fetchbiruwautpadanRequest(api, action) {
   
   // Update biruwautpadan
   export function* updatebiruwautpadanRequest(api, action) {
-    const { payload } = action;
-  
+    const { payload,biruwautpadanId } = action;
+    
     const response = yield api.postBiruwautpadanBiruwautpadanUpdate(
       payload.biruwautpadan.data,
-      payload.id
+      biruwautpadanId
     );
   
     if (response.ok) {

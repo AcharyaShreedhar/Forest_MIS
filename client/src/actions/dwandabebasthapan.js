@@ -24,11 +24,11 @@
    addbanyajantuuddarSuccess: ["response"],
    addbanyajantuuddarFailure: null,
 
-   updatebanyajantuuddarRequest: ["payload"],
+   updatebanyajantuuddarRequest: ["payload","banyajantuuddarId"],
    updatebanyajantuuddarSuccess: ["response"],
    updatebanyajantuuddarFailure: null,
 
-   deletebanyajantuuddarRequest: ["payload"],
+   deletebanyajantuuddarRequest: ["payload","banyajantuuddarId"],
    deletebanyajantuuddarSuccess: ["response"],
    deletebanyajantuuddarFailure: null,
 
@@ -44,11 +44,11 @@
    addbanyajantuxetiSuccess: ["response"],
    addbanyajantuxetiFailure: null,
 
-   updatebanyajantuxetiRequest: ["payload"],
+   updatebanyajantuxetiRequest: ["payload","banyajantuxetiId"],
    updatebanyajantuxetiSuccess: ["response"],
    updatebanyajantuxetiFailure: null,
 
-   deletebanyajantuxetiRequest: ["payload"],
+   deletebanyajantuxetiRequest: ["payload","banyajantuxetiId"],
    deletebanyajantuxetiSuccess: ["response"],
    deletebanyajantuxetiFailure: null,
 

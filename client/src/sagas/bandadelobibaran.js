@@ -59,11 +59,11 @@ export function* addbandadelobibaranRequest(api, action) {
 
 // Update Bandadelobibaran
 export function* updatebandadelobibaranRequest(api, action) {
-  const { payload } = action;
+  const { payload,bandadelobibaranId } = action;
 
   const response = yield api.postBandadelobibaranBandadeloUpdate(
     payload.bandadelo.data,
-    payload.id
+    bandadelobibaranId
   );
 
   if (response.ok) {
