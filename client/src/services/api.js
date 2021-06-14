@@ -333,6 +333,10 @@ const create = (baseURL = Config.API_URL) => {
    const postInventoriesInventoriesAddNew = (payload) => 
    api.post(`inventory`, payload);
 
+    //update
+    const postInventoriesInventoriesUpdate = (payload, inventoryId) =>
+     api.put(`invnetory/${inventoryId}`, payload);
+
   const getEntryList = () => api.get("entry");
   const getEntry = (entryId) => api.get(`entry/${entryId}`);
   const getExitList = () => api.get("exit");
@@ -482,6 +486,7 @@ const create = (baseURL = Config.API_URL) => {
     getInventoriesList,
     getInventories,
     postInventoriesInventoriesAddNew,
+    postInventoriesInventoriesUpdate,
     getEntryList,
     getEntry,
     getExitList,
