@@ -178,6 +178,7 @@ import {
    fetchpostRequest,
    addpostRequest,
    updatepostRequest,
+   deletepostRequest,
   
  } from "./karmacharibibaran";
 
@@ -855,6 +856,12 @@ export default function* root() {
     takeLatest(
       KarmacharibibaranTypes.UPDATEPOST_REQUEST,
       updatepostRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.DELETEPOST_REQUEST,
+      deletepostRequest,
       api
     ),
 
