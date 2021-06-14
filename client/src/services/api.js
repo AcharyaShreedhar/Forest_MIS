@@ -9,7 +9,7 @@ import { equals, isNil, isEmpty } from "ramda";
 import { store } from "../reducers";
 import AppActions from "../actions/app";
 const Config = {
-  API_URL: "http://localhost:3001/api/v1/",
+  API_URL: "http://192.168.1.2:3001/api/v1/",
 };
 // const authenticated = (api) => {
 //   api.setHeader("Authorization", "Bearer " + window.token);
@@ -325,7 +325,10 @@ const create = (baseURL = Config.API_URL) => {
   
   const getProvinces = (provincesId) => api.get(`province/${provincesId}`);
 
-  //-----inventories
+  //-------Districts
+  const getDistrictsList = () => api.get("district");
+
+  //inventories
   const getInventoriesList = () => api.get("inventory");
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
   
@@ -538,6 +541,9 @@ const create = (baseURL = Config.API_URL) => {
     //-----Provinces
     getProvincesList,
     getProvinces,
+
+    //----Districts
+    getDistrictsList,
 
   };
 };
