@@ -311,7 +311,6 @@ export function* deletelevelRequest(api, action) {
 }
 
 
-
 export function* fetchallpostRequest(api, action) {
   const response = yield api.getPostList();
 
@@ -355,6 +354,32 @@ export function* addpostRequest(api, action) {
     yield put(KarmacharibibaranActions.addpostSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.addpostFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+// Update Post
+export function* updatepostRequest(api, action) {
+  const { payload, postId } = action;
+
+  const response = yield api.postKarmacharibibaranPostUpdate(
+    payload.post.data,
+    postId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक  पद पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallpostRequest(api);
+    yield call(history.push, "/forests/postlist");
+    yield put(
+      KarmacharibibaranActions.updatepostSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.updatepostFailure());
     toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
