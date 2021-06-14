@@ -183,7 +183,7 @@ export function* updateemployeeshistoryRequest(api, action) {
 }
 
 
-// Delete employees
+// Delete employeeshistory
 export function* deleteemployeeshistoryRequest(api, action) {
   const { payload } = action;
 
@@ -281,6 +281,32 @@ export function* updatelevelRequest(api, action) {
     toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
+  }
+}
+
+
+// Delete level
+export function* deletelevelRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranLevelDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक तह  वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalllevelRequest(api);
+    yield put(
+      KarmacharibibaranActions.deletelevelSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.deletelevelFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
