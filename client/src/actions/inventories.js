@@ -23,6 +23,11 @@ const { Types, Creators } = createActions({
   addinventoriesSuccess: ["response"],
   addinventoriesFailure: null,
 
+  updateinventoriesRequest: ["payload", "inventoryId"],
+  updateinventoriesSuccess: ["response"],
+  updateinventoriesFailure: null,
+
+
   fetchallentryRequest: ["payload"],
   fetchallentrySuccess: ["response"],
   fetchallentryFailure: null,
