@@ -173,6 +173,7 @@ import {
    fetchlevelRequest,
    addlevelRequest,
    updatelevelRequest,
+   deletelevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
   
@@ -821,6 +822,12 @@ export default function* root() {
     takeLatest(
       KarmacharibibaranTypes.UPDATELEVEL_REQUEST,
       updatelevelRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.DELETELEVEL_REQUEST,
+      deletelevelRequest,
       api
     ),
 
