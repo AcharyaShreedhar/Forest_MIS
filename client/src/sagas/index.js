@@ -155,6 +155,7 @@ import {
    deleteinventoriesRequest,
    fetchallentryRequest,
    fetchentryRequest,
+   addentryRequest,
    fetchallexitRequest,
    fetchexitRequest,
  } from "./inventories";
@@ -744,6 +745,13 @@ export default function* root() {
     takeLatest(
       InventoriesTypes.FETCHENTRY_REQUEST,
       fetchentryRequest,
+      api
+    ), 
+
+    
+    takeLatest(
+      InventoriesTypes.ADDENTRY_REQUEST,
+      addentryRequest,
       api
     ), 
 
