@@ -130,3 +130,26 @@ export function* fetchbiruwautpadanRequest(api, action) {
     }
   }
 
+
+  // Add activitiesinfo
+  export function* addactivitiesinfoRequest(api, action) {
+    const { payload } = action;
+      
+    const response = yield api.postBiruwautpadanActivitiesinfoAddNew(
+      payload.activitiesinfo.data
+    );
+  
+    if (response.ok) {      
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण प्रविष्ट भयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallactivitiesinfoRequest(api);
+      yield call(history.push, "/forests/activitiesinfo");
+      yield put(BiruwautpadanActions.addactivitiesinfoSuccess(response.data));
+    } else {
+      yield put(BiruwautpadanActions.addactivitiesinfoFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }

@@ -40,6 +40,10 @@
    fetchactivitiesinfoSuccess: ["response"],
    fetchactivitiesinfoFailure: null,
  
+   addactivitiesinfoRequest: ["payload"],
+   addactivitiesinfoSuccess: ["response"],
+   addactivitiesinfoFailure: null,
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
