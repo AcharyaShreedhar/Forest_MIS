@@ -62,6 +62,7 @@ import {
   deletebiruwautpadanRequest,
   fetchallactivitiesinfoRequest,
   fetchactivitiesinfoRequest,
+  addactivitiesinfoRequest,
 } from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
@@ -389,6 +390,12 @@ export default function* root() {
     takeLatest(
       BiruwautpadanTypes.FETCHACTIVITIESINFO_REQUEST,
       fetchactivitiesinfoRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.ADDACTIVITIESINFO_REQUEST,
+      addactivitiesinfoRequest,
       api
     ),
 
