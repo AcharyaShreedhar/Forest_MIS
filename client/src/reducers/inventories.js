@@ -118,6 +118,16 @@ state.merge({
 const updateentryFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+//Delete entry
+const deleteentryRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteentrySuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteentryFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
 
 
 const fetchallexitRequest = (state, action) =>
@@ -193,6 +203,10 @@ export const reducer = createReducer(initialState, {
   [InventoriesTypes.UPDATEENTRY_REQUEST]: updateentryRequest,
   [InventoriesTypes.UPDATEENTRY_SUCCESS]: updateentrySuccess,
   [InventoriesTypes.UPDATEENTRY_FAILURE]: updateentryFailure,
+
+  [InventoriesTypes.DELETEENTRY_REQUEST]: deleteentryRequest,
+  [InventoriesTypes.DELETEENTRY_SUCCESS]: deleteentrySuccess,
+  [InventoriesTypes.DELETEENTRY_FAILURE]: deleteentryFailure,
 
   [InventoriesTypes.FETCHALLEXIT_REQUEST]: fetchallexitRequest,
   [InventoriesTypes.FETCHALLEXIT_SUCCESS]: fetchallexitSuccess,
