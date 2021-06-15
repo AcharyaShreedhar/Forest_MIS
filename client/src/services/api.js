@@ -153,6 +153,12 @@ const create = (baseURL = Config.API_URL) => {
 
    const getActivitiesInfo = (activitiesInfoId) =>
     api.get(`activitiesInfo/${activitiesInfoId}`);
+  
+    //Add
+  const postBiruwautpadanActivitiesinfoAddNew = (payload) =>
+  api.post(`activitiesInfo`, payload);
+
+
 
   //Dwandabebasthapan
   const getBanyajantuUddarList = () => api.get("banyajantuUddars");
@@ -478,6 +484,7 @@ const create = (baseURL = Config.API_URL) => {
     postBiruwautpadanBiruwautpadanDelete,
     getActivitiesinfoList,
     getActivitiesInfo,
+    postBiruwautpadanActivitiesinfoAddNew,
     //sampatibibaran
     getAssetsList,
     getAssets,
