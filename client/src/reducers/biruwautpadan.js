@@ -121,6 +121,18 @@ state.merge({
 const updateactivitiesinfoFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+// Delete activitiesinfo
+const deleteactivitiesinfoRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteactivitiesinfoSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteactivitiesinfoFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -169,6 +181,10 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.UPDATEACTIVITIESINFO_REQUEST]: updateactivitiesinfoRequest,
   [BiruwautpadanTypes.UPDATEACTIVITIESINFO_SUCCESS]: updateactivitiesinfoSuccess,
   [BiruwautpadanTypes.UPDATEACTIVITIESINFO_FAILURE]: updateactivitiesinfoFailure,
+
+  [BiruwautpadanTypes.DELETEACTIVITIESINFO_REQUEST]: deleteactivitiesinfoRequest,
+  [BiruwautpadanTypes.DELETEACTIVITIESINFO_SUCCESS]: deleteactivitiesinfoSuccess,
+  [BiruwautpadanTypes.DELETEACTIVITIESINFO_FAILURE]: deleteactivitiesinfoFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,
