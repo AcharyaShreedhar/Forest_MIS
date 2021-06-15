@@ -31,6 +31,10 @@
    deletebiruwautpadanRequest: ["payload","biruwautpadanId"],
    deletebiruwautpadanSuccess: ["response"],
    deletebiruwautpadanFailure: null,
+
+   fetchallactivitiesinfoRequest: ["payload"],
+   fetchallactivitiesinfoSuccess: ["response"],
+   fetchallactivitiesinfoFailure: null,
  
    locationsRequest: ["payload"],
    // Clear all caches
