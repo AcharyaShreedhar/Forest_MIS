@@ -104,6 +104,18 @@ const fetchalldistrictsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchdistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchdistrictsSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    districtsData: action.response,
+  });
+};
+const fetchdistrictsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -114,6 +126,7 @@ const locationsRequest = (state, action) => {
 
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
+
 
 export const reducer = createReducer(initialState, {
   [AppTypes.LOGIN_REQUEST]: loginRequest,
@@ -150,6 +163,9 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHALLDISTRICTS_SUCCESS]: fetchalldistrictsSuccess,
   [AppTypes.FETCHALLDISTRICTS_FAILURE]: fetchalldistrictsFailure,
 
+  [AppTypes.FETCHDISTRICTS_REQUEST]: fetchdistrictsRequest,
+  [AppTypes.FETCHDISTRICTS_SUCCESS]: fetchdistrictsSuccess,
+  [AppTypes.FETCHDISTRICTS_FAILURE]: fetchdistrictsFailure,
   
 
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
