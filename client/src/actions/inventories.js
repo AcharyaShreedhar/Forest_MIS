@@ -40,6 +40,10 @@ const { Types, Creators } = createActions({
   fetchentrySuccess: ["response"],
   fetchentryFailure: null,
 
+  addentryRequest: ["payload"],
+  addentrySuccess: ["response"],
+  addentryFailure: null,
+   
   fetchallexitRequest: ["payload"],
   fetchallexitSuccess: ["response"],
   fetchallexitFailure: null,
