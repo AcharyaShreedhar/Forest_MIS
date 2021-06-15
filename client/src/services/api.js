@@ -331,6 +331,8 @@ const create = (baseURL = Config.API_URL) => {
 
   //-------Users
   const getUsersList = () => api.get("users");
+  const getUsers = (usersId) => api.get(`users/${usersId}`);
+
 
   //inventories
   const getInventoriesList = () => api.get("inventory");
@@ -552,6 +554,7 @@ const create = (baseURL = Config.API_URL) => {
 
     //-----Users
     getUsersList,
+    getUsers,
 
   };
 };
