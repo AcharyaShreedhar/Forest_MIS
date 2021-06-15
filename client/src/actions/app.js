@@ -50,6 +50,11 @@ const { Types, Creators } = createActions({
   fetchdistrictsSuccess: ["response"],
   fetchdistrictsFailure: null,
 
+  //Users
+  fetchallusersRequest: ["payload"],
+  fetchallusersSuccess: ["response"],
+  fetchallusersFailure: null,
+
   locationsRequest: ['payload'],
   // Clear all caches
   clearRequest: null,
