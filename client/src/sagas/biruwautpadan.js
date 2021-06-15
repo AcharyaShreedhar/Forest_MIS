@@ -180,3 +180,25 @@ export function* fetchbiruwautpadanRequest(api, action) {
     }
   }
   
+
+  // Delete activitiesinfo
+  export function* deleteactivitiesinfoRequest(api, action) {
+    const { payload } = action;
+  
+    const response = yield api.postBiruwautpadanActivitiesinfoDelete(payload);
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण हटाईयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallactivitiesinfoRequest(api);
+      yield put(
+        BiruwautpadanActions.deleteactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.deleteactivitiesinfoFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
