@@ -44,6 +44,11 @@ const { Types, Creators } = createActions({
   addentrySuccess: ["response"],
   addentryFailure: null,
    
+  updateentryRequest: ["payload", "entryId"],
+  updateentrySuccess: ["response"],
+  updateentryFailure: null,
+
+
   fetchallexitRequest: ["payload"],
   fetchallexitSuccess: ["response"],
   fetchallexitFailure: null,
