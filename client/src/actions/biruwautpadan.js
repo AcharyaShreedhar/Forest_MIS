@@ -35,6 +35,10 @@
    fetchallactivitiesinfoRequest: ["payload"],
    fetchallactivitiesinfoSuccess: ["response"],
    fetchallactivitiesinfoFailure: null,
+
+   fetchactivitiesinfoRequest: ["payload"],
+   fetchactivitiesinfoSuccess: ["response"],
+   fetchactivitiesinfoFailure: null,
  
    locationsRequest: ["payload"],
    // Clear all caches
