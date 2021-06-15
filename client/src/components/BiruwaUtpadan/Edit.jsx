@@ -1,0 +1,146 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Button, Input } from "../../components";
+import { equals } from "ramda";
+
+
+class Edit extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: props.history.location.item.biruwa_utpadan_id,
+      arthik_barsa: props.history.location.item.arthik_barsa,
+      narsari_sankhya: props.history.location.item.narsari_sankhya,
+      barga: props.history.location.item.barga,
+      laxya: props.history.location.item.laxya,
+      pragati: props.history.location.item.pragati,
+      brixyaropan: props.history.location.item.brixyaropan,
+      remarks: props.history.location.item.remarks,
+      created_by: "",
+      updated_by: "",
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    
+  }
+
+  handleSubmit() {
+    const {
+      id,
+      arthik_barsa,
+      narsari_sankhya,
+      barga,
+      laxya,
+      pragati,
+      brixyaropan,
+      remarks,
+      
+    } = this.state;
+    const payload = {
+      biruwautpadan: {
+        data: {
+          arthik_barsa: arthik_barsa,
+          narsari_sankhya: narsari_sankhya,
+          barga: barga,
+          laxya: laxya,
+          pragati: pragati,
+          brixyaropan: brixyaropan,
+          remarks: remarks,
+         
+        },
+      },
+    };
+
+    this.props.onUpdate(payload, id);
+  }
+  
+  render() {
+    const { title } = this.props;
+    const {
+      arthik_barsa,
+      narsari_sankhya,
+      barga,
+      laxya,
+      pragati,
+      brixyaropan,
+      remarks,
+      
+    } = this.state;
+
+    return (
+      <React.Fragment>
+        <div className=" card p-5 border-5">
+          <div className="detail-content">
+            <div className="title">
+              <span className="dsl-b22">{title}</span>
+            </div>
+            <Input
+              className="mb-4"
+              title="आर्थिक वर्ष"
+              value={arthik_barsa}
+              direction="vertical"
+              onChange={(e) => this.setState({ arthik_barsa: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="नर्सरी संख्या"
+              direction="vertical"
+              value={narsari_sankhya}
+              onChange={(e) => this.setState({ narsari_sankhya: e })}
+            />
+            <Input
+              className="mb-4"
+              title="वर्ग"
+              value={barga}
+              direction="vertical"
+              onChange={(e) => this.setState({ barga: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="लक्ष"
+              direction="vertical"
+              value={laxya}
+              onChange={(e) => this.setState({ laxya: e })}
+            />
+            
+            <Input
+              className="mb-4"
+              title="प्रगति"
+              value={pragati}
+              direction="vertical"
+              onChange={(e) => this.setState({ pragati: e })}
+            />
+            <Input
+              className="mb-4"
+              title="वृक्षरोपण"
+              value={brixyaropan}
+              direction="vertical"
+              onChange={(e) => this.setState({ brixyaropan: e })}
+            />
+            <Input
+              className="mb-4"
+              title="कैफियत"
+              value={remarks}
+              direction="vertical"
+              onChange={(e) => this.setState({ remarks: e })}
+            />
+          </div>
+          <div className="mt-2 border-5">
+            <div className="d-flex justify-content-end align-items-center">
+              <Button
+                className="mr-3"
+                name="Update"
+                onClick={this.handleSubmit.bind(this)}
+              />
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+
+export default Edit;
