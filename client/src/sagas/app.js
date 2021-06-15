@@ -72,6 +72,18 @@ export function* fetchalldistrictsRequest(api, action) {
     yield put(AppActions.fetchalldistrictsFailure());
   }
 }
+export function* fetchdistrictsRequest(api, action) {
+  const districtsId = action.payload;
+
+  const response = yield api.getDistricts(districtsId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchdistrictsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchdistrictsFailure());
+  }
+}
+
 
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
