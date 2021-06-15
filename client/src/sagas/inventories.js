@@ -132,6 +132,32 @@ export function* fetchentryRequest(api, action) {
   }
 }
 
+// Add entry
+export function* addentryRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesEntryAddNew(payload.entry.data);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक प्रवेश  गरियो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallentryRequest(api);
+    yield call(history.push, "/forests/entrylist");
+    yield put(InventoriesActions.addentrySuccess(response.data));
+  } else {
+    yield put(InventoriesActions.addentryFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
+
 export function* fetchallexitRequest(api, action) {
   const response = yield api.getExitList();
 
