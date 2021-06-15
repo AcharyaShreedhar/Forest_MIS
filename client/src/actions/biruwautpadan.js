@@ -48,6 +48,10 @@
    updateactivitiesinfoSuccess: ["response"],
    updateactivitiesinfoFailure: null,
 
+   deleteactivitiesinfoRequest: ["payload","activitiesinfoId"],
+   deleteactivitiesinfoSuccess: ["response"],
+   deleteactivitiesinfoFailure: null,
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
