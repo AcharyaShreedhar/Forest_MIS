@@ -350,6 +350,12 @@ const create = (baseURL = Config.API_URL) => {
 
   const getEntryList = () => api.get("entry");
   const getEntry = (entryId) => api.get(`entry/${entryId}`);
+
+  //Add
+  const postInventoriesEntryAddNew = (payload) =>
+    api.post(`entry`, payload);
+
+
   const getExitList = () => api.get("exit");
   const getExit = (exitId) => api.get(`exit/${exitId}`);
 
@@ -519,6 +525,7 @@ const create = (baseURL = Config.API_URL) => {
     postInventoriesInventoriesDelete,
     getEntryList,
     getEntry,
+    postInventoriesEntryAddNew,
     getExitList,
     getExit,
     //karmacharibiabran
