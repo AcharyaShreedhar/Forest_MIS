@@ -15,7 +15,7 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes }  from "../actions/inventories";
 import { KarmacharibibaranTypes} from "../actions/karmacharibibaran";
 //------------------app
-import { fetchalldistrictsRequest, fetchdistrictsRequest, fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, fetchprovincesRequest, fetchallusersRequest, loginRequest, logoutRequest} from "./app";
+import { fetchalldistrictsRequest, fetchdistrictsRequest, fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, fetchprovincesRequest, fetchallusersRequest, fetchusersRequest, loginRequest, logoutRequest} from "./app";
 
 //karmacharidarbandi---------------------
 import{ 
@@ -924,6 +924,12 @@ export default function* root() {
     takeLatest(
       AppTypes.FETCHALLUSERS_REQUEST,
       fetchallusersRequest,
+      api
+    ),
+
+    takeLatest(
+      AppTypes.FETCHUSERS_REQUEST,
+      fetchusersRequest,
       api
     ),
 
