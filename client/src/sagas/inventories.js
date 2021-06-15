@@ -185,6 +185,31 @@ export function* updateentryRequest(api, action) {
   }
 }
 
+//Delete entry
+export function* deleteentryRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesEntryDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक प्रवेश  हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallentryRequest(api);
+    yield put(
+      InventoriesActions.deleteentrySuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.deleteentryFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
 
 export function* fetchallexitRequest(api, action) {
   const response = yield api.getExitList();
