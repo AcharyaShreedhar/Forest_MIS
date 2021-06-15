@@ -73,7 +73,7 @@ state.merge({ ...state, status: "error" });
 
 
 const fetchallactivitiesinfoRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallactivitiesinfoSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -86,7 +86,7 @@ const fetchallactivitiesinfoFailure = (state, action) => {
 };
 
 const fetchactivitiesinfoRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
   const fetchactivitiesinfoSuccess = (state, action) => {
     return state.merge({
