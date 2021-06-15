@@ -161,7 +161,10 @@ const create = (baseURL = Config.API_URL) => {
   //update
   const postBiruwautpadanActivitiesinfoUpdate = (payload, activitiesinfoId) =>
     api.put(`activitiesInfo/${activitiesinfoId}`, payload);
-
+ 
+  //delete
+   const postBiruwautpadanActivitiesinfoDelete = (activitiesinfoId) =>
+   api.delete(`activitiesInfo/${activitiesinfoId}`);
 
 
   //Dwandabebasthapan
@@ -490,6 +493,7 @@ const create = (baseURL = Config.API_URL) => {
     getActivitiesInfo,
     postBiruwautpadanActivitiesinfoAddNew,
     postBiruwautpadanActivitiesinfoUpdate,
+    postBiruwautpadanActivitiesinfoDelete,
 
     //sampatibibaran
     getAssetsList,
