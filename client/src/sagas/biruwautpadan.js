@@ -116,4 +116,17 @@ export function* fetchbiruwautpadanRequest(api, action) {
   }  
   
 
+  export function* fetchactivitiesinfoRequest(api, action) {
+    const  activitiesInfoId  = action.payload
+  
+    const response = yield api.getActivitiesInfo(activitiesInfoId);
+    
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchactivitiesinfoFailure());
+    }
+  }
 
