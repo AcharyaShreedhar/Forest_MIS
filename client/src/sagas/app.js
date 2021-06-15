@@ -84,6 +84,16 @@ export function* fetchdistrictsRequest(api, action) {
   }
 }
 
+// Users
+export function* fetchallusersRequest(api, action) {
+  const response = yield api.getUsersList();
+  if (response.ok) {
+    yield put(AppActions.fetchallusersSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchallusersFailure());
+  }
+}
+
 
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
