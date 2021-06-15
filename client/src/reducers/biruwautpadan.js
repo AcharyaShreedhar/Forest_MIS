@@ -72,6 +72,19 @@ const deletebiruwautpadanFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+const fetchallactivitiesinfoRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallactivitiesinfoSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allactivitiesinfoData: action.response,
+  });
+};
+const fetchallactivitiesinfoFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -104,6 +117,11 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_REQUEST]: deletebiruwautpadanRequest,
   [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_SUCCESS]: deletebiruwautpadanSuccess,
   [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_FAILURE]: deletebiruwautpadanFailure,
+
+  [BiruwautpadanTypes.FETCHALLACTIVITIESINFO_REQUEST]: fetchallactivitiesinfoRequest,
+  [BiruwautpadanTypes.FETCHALLACTIVITIESINFO_SUCCESS]: fetchallactivitiesinfoSuccess,
+  [BiruwautpadanTypes.FETCHALLACTIVITIESINFO_FAILURE]: fetchallactivitiesinfoFailure,
+
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,
