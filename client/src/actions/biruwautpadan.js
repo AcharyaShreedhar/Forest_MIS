@@ -44,6 +44,10 @@
    addactivitiesinfoSuccess: ["response"],
    addactivitiesinfoFailure: null,
 
+   updateactivitiesinfoRequest: ["payload","activitiesinfoId"],
+   updateactivitiesinfoSuccess: ["response"],
+   updateactivitiesinfoFailure: null,
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
