@@ -94,7 +94,17 @@ export function* fetchallusersRequest(api, action) {
   }
 }
 
+export function* fetchusersRequest(api, action) {
+  const usersId = action.payload;
 
+  const response = yield api.getUsers(usersId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchusersSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchusersFailure());
+  }
+}
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());
