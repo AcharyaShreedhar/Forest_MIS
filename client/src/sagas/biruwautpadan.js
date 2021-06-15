@@ -104,7 +104,29 @@ export function* fetchbiruwautpadanRequest(api, action) {
   }
   
   
-   
+  export function* fetchallactivitiesinfoRequest(api, action) {
+    const response = yield api.getActivitiesinfoList();
+     if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchallactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchallactivitiesinfoFailure());
+    }
+  }  
   
 
+  export function* fetchactivitiesinfoRequest(api, action) {
+    const  activitiesInfoId  = action.payload
+  
+    const response = yield api.getActivitiesInfo(activitiesInfoId);
+    
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchactivitiesinfoFailure());
+    }
+  }
 
