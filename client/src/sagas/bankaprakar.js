@@ -519,3 +519,15 @@ export function* fetchallconsumergroupdetailsRequest(api, action) {
     yield put(BanbibaranActions.fetchallconsumergroupdetailsFailure());
   }
 }
+
+export function* fetchconsumergroupdetailsRequest(api, action) {
+  const consumergroupDetailsId = action.payload;
+
+  const response = yield api.getConsumergroupDetails(consumergroupDetailsId);
+
+  if (response.ok) {
+    yield put(BanbibaranActions.fetchconsumergroupdetailsSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.fetchconsumergroupdetailsFailure());
+  }
+}
