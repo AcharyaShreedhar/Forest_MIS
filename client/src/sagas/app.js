@@ -93,6 +93,17 @@ export function* fetchalldepartmentsRequest(api, action) {
     yield put(AppActions.fetchalldepartmentsFailure());
   }
 }
+export function* fetchdepartmentsRequest(api, action) {
+  const departmentsId = action.payload;
+
+  const response = yield api.getDepartments(departmentsId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchdepartmentsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchdepartmentsFailure());
+  }
+}
 
 // Users
 export function* fetchallusersRequest(api, action) {
