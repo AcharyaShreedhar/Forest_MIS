@@ -167,6 +167,17 @@ const addexitSuccess = (state, action) =>
 const addexitFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+  //Update exit
+const updateexitRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateexitSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateexitFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -231,6 +242,10 @@ export const reducer = createReducer(initialState, {
   [InventoriesTypes.ADDEXIT_REQUEST]: addexitRequest,
   [InventoriesTypes.ADDEXIT_SUCCESS]: addexitSuccess,
   [InventoriesTypes.ADDEXIT_FAILURE]: addexitFailure,
+
+  [InventoriesTypes.UPDATEEXIT_REQUEST]: updateexitRequest,
+  [InventoriesTypes.UPDATEEXIT_SUCCESS]: updateexitSuccess,
+  [InventoriesTypes.UPDATEEXIT_FAILURE]: updateexitFailure,
 
   [InventoriesTypes.LOCATIONS_REQUEST]: locationsRequest,
   [InventoriesTypes.CLEAR_REQUEST]: clearRequest,
