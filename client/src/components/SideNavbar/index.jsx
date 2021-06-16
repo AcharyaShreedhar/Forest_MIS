@@ -126,22 +126,26 @@ export class SideNavbar extends Component {
             </Link>
           </NavItem>
 
-          <NavItem eventKey="humananimalconflict">
+          <NavItem eventKey="dwandabebasthapan">
             <NavIcon>
               <FontAwesomeIcon size="lg" icon={faTree} className="mr-2" />
             </NavIcon>
-            <NavText>मानब बन्यजन्तु द्वन्द ब्यबस्थापन बिबरण</NavText>
+            <NavText>मानब बन्यजन्तु द्वन्द ब्यबस्थापन</NavText>
 
             <NavItem
-              eventKey="conflict"
-              onClick={() => history.push("/conflict")}
+              eventKey="dwandabebasthapan/banyajantuuddarlist"
+              onClick={() =>
+                history.push("/dwandabebasthapan/banyajantuuddarlist")
+              }
             >
               <NavText>बन्यजन्तु उद्दार तथा ब्यबस्थापन बिबरण </NavText>
             </NavItem>
 
             <NavItem
-              eventKey="lossaid"
-              onClick={() => history.push("/lossaid")}
+              eventKey="dwandabebasthapan/banyajantuxetirahatlist"
+              onClick={() =>
+                history.push("/dwandabebasthapan/banyajantuxetirahatlist")
+              }
             >
               <NavText>बन्यजन्तु क्षति राहत बिबरण</NavText>
             </NavItem>

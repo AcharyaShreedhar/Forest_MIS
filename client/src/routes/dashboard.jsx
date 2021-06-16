@@ -3,6 +3,7 @@ import Banpaidawar from "../views/Banpaidawar";
 import Forests from "../views/Forests";
 import Home from "../views/Home";
 import Login from "../layouts/Login";
+import Dwandabebasthapan from "../views/Dwandabebasthapan";
 
 const dashboardRoutes = [
   {
@@ -29,6 +30,11 @@ const dashboardRoutes = [
     path: "/banpaidawar",
     name: "Banpaidawar",
     component: Banpaidawar,
+  },
+  {
+    path: "/dwandabebasthapan",
+    name: "Dwandabebasthapan",
+    component: Dwandabebasthapan,
   },
   {
     redirect: true,
