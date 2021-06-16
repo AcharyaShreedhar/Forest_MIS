@@ -261,3 +261,32 @@ export function* addexitRequest(api, action) {
     );
   }
 }
+
+// Update exit
+export function* updateexitRequest(api, action) {
+  const { payload, exitId } = action;
+
+  const response = yield api.postInventoriesExitUpdate(
+    payload.exit.data,
+    exitId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बहिर्गमन भयो  !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallexitRequest(api);
+    yield call(history.push, "/forests/exitlist");
+    yield put(
+      InventoriesActions.updatexitSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.updateexitFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
