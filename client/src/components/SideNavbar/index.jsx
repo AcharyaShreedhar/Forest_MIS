@@ -57,20 +57,20 @@ export class SideNavbar extends Component {
           <HeaderComponent enabled={expanded} side={true} />
           <NavItem eventKey="home">
             <Link to="/" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faHome} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faHome} className="mr-2" />
               {expanded && <Displaybox value="गृह पृष्ठ" />}
             </Link>
           </NavItem>
           <NavItem eventKey="employees">
             <Link to="/employees" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faUsers} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faUsers} className="mr-2" />
               {expanded && <Displaybox value="कर्मचारी" />}
             </Link>
           </NavItem>
 
           <NavItem eventKey="/forests">
             <NavIcon>
-              <FontAwesomeIcon size="lg" icon={faTree} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
             </NavIcon>
             <NavText> बनका प्रकारहरु </NavText>
 
@@ -105,7 +105,7 @@ export class SideNavbar extends Component {
 
           <NavItem eventKey="mudda">
             <Link to="/mudda" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faGavel} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faGavel} className="mr-2" />
               {expanded && (
                 <Displaybox value=" मुद्दा अनुसन्धान तथा दायरी बिबरण" />
               )}
@@ -114,21 +114,21 @@ export class SideNavbar extends Component {
 
           <NavItem eventKey="atikraman">
             <Link to="/atikraman" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faHome} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faHome} className="mr-2" />
               {expanded && <Displaybox value=" बन क्षेत्र अतिक्रमण बिबरण" />}
             </Link>
           </NavItem>
 
           <NavItem eventKey="forestfire">
             <Link to="/forestfire" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faFire} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faFire} className="mr-2" />
               {expanded && <Displaybox value="बन डडेलो बिबरण" />}
             </Link>
           </NavItem>
 
           <NavItem eventKey="humananimalconflict">
             <NavIcon>
-              <FontAwesomeIcon size="lg" icon={faTree} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
             </NavIcon>
             <NavText>मानब बन्यजन्तु द्वन्द ब्यबस्थापन बिबरण</NavText>
 
@@ -149,7 +149,7 @@ export class SideNavbar extends Component {
 
           <NavItem eventKey="anyaprayojan">
             <Link to="/anyaprayojan" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faHome} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faHome} className="mr-2" />
               {expanded && (
                 <Displaybox value="बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि बिबरण" />
               )}
@@ -158,7 +158,7 @@ export class SideNavbar extends Component {
 
           <NavItem eventKey="banpaidawar">
             <NavIcon>
-              <FontAwesomeIcon size="lg" icon={faTree} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
             </NavIcon>
             <NavText>बन पैदावर</NavText>
 
@@ -178,7 +178,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="activities">
             <NavIcon>
-              <FontAwesomeIcon icon={faSeedling} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faSeedling} className="mr-2" />
             </NavIcon>
             <NavText>कार्यक्रमहरु </NavText>
             <NavItem
@@ -204,7 +204,7 @@ export class SideNavbar extends Component {
 
           <NavItem eventKey="seedgardernplots">
             <Link to="/seedgardernplots" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faSeedling} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faSeedling} className="mr-2" />
               {expanded && (
                 <Displaybox value="बन बीउ बगैच/समबर्धन प्लटहरु बिबरण" />
               )}
@@ -213,7 +213,7 @@ export class SideNavbar extends Component {
 
           <NavItem eventKey="/organizationassets">
             <NavIcon>
-              <FontAwesomeIcon size="lg" icon={faBuilding} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faBuilding} className="mr-2" />
             </NavIcon>
             <NavText>कार्यालय सम्पती बिबरण</NavText>
 
@@ -230,7 +230,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="signout" onClick={onlogout}>
             <Link to="/logout" className="displaybox">
-              <FontAwesomeIcon size="lg" icon={faSignOutAlt} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faSignOutAlt} className="mr-2" />
               {expanded && <Displaybox value="लग आउट " />}
             </Link>
           </NavItem>
