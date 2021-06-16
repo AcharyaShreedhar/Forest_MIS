@@ -21,6 +21,7 @@ import { fetchalldistrictsRequest, fetchdistrictsRequest, fetchallmunicipalities
 import{ 
   fetchallkarmacharidarbandiRequest,
   fetchkarmacharidarbandiRequest,
+  addkarmacharidarbandiRequest,
   } from "./karmacharidarbandi"; 
 
 
@@ -487,6 +488,13 @@ export default function* root() {
     takeLatest(
       KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_REQUEST,
       fetchkarmacharidarbandiRequest,
+      api
+    ),
+
+    
+    takeLatest(
+      KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_REQUEST,
+      addkarmacharidarbandiRequest,
       api
     ),
 
