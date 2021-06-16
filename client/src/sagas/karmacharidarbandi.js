@@ -52,3 +52,29 @@ export function* addkarmacharidarbandiRequest(api, action) {
     });
   }
 }
+
+// Update karmacharidarbandi
+export function* updatekarmacharidarbandiRequest(api, action) {
+  const { payload, karmacharidarbandiId } = action;
+
+  const response = yield api.postKarmacharidarbandiUpdate(
+    payload.karmacharidarbandi.data,
+    karmacharidarbandiId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी दरबन्दी पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkarmacharidarbandiRequest(api);
+    yield call(history.push, "/forests/karmacharidarbandilist");
+    yield put(
+      KarmacharidarbandiActions.updatekarmacharidarbandiSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharidarbandiActions.updatekarmacharidarbandiFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
