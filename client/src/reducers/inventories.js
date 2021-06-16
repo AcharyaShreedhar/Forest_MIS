@@ -156,6 +156,18 @@ const fetchexitFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add exit
+const addexitRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addexitSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addexitFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -215,6 +227,10 @@ export const reducer = createReducer(initialState, {
   [InventoriesTypes.FETCHEXIT_REQUEST]: fetchexitRequest,
   [InventoriesTypes.FETCHEXIT_SUCCESS]: fetchexitSuccess,
   [InventoriesTypes.FETCHEXIT_FAILURE]: fetchexitFailure,
+
+  [InventoriesTypes.ADDEXIT_REQUEST]: addexitRequest,
+  [InventoriesTypes.ADDEXIT_SUCCESS]: addexitSuccess,
+  [InventoriesTypes.ADDEXIT_FAILURE]: addexitFailure,
 
   [InventoriesTypes.LOCATIONS_REQUEST]: locationsRequest,
   [InventoriesTypes.CLEAR_REQUEST]: clearRequest,
