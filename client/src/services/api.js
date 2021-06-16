@@ -461,6 +461,7 @@ const create = (baseURL = Config.API_URL) => {
 
   //-------Consumer Group Details
   const getConsumergroupDetailsList = () => api.get("ConsumerGroupDetails");
+  const getConsumergroupDetails = (consumergroupDetailsId) => api.get(`ConsumerGroupDetails/${consumergroupDetailsId}`);
 
   return {
     loginByUsername,
@@ -614,6 +615,7 @@ const create = (baseURL = Config.API_URL) => {
 
     //ConsumerGroupDetails
     getConsumergroupDetailsList,
+    getConsumergroupDetails,
   };
 };
 export default {
