@@ -24,6 +24,10 @@
    addkarmacharidarbandiSuccess: ["response"],
    addkarmacharidarbandiFailure: null,
 
+   updatekarmacharidarbandiRequest: ["payload","karmacharidarbandiId"],
+   updatekarmacharidarbandiSuccess: ["response"],
+   updatekarmacharidarbandiFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
