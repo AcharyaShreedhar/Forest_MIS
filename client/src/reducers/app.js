@@ -104,6 +104,46 @@ const fetchalldistrictsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchdistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchdistrictsSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    districtsData: action.response,
+  });
+};
+const fetchdistrictsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//-----------USERS
+const fetchallusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallusersSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allusersData: action.response,
+  });
+};
+const fetchallusersFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchusersSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    usersData: action.response,
+  });
+};
+const fetchusersFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -114,6 +154,7 @@ const locationsRequest = (state, action) => {
 
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
+
 
 export const reducer = createReducer(initialState, {
   [AppTypes.LOGIN_REQUEST]: loginRequest,
@@ -150,8 +191,19 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHALLDISTRICTS_SUCCESS]: fetchalldistrictsSuccess,
   [AppTypes.FETCHALLDISTRICTS_FAILURE]: fetchalldistrictsFailure,
 
-  
+  [AppTypes.FETCHDISTRICTS_REQUEST]: fetchdistrictsRequest,
+  [AppTypes.FETCHDISTRICTS_SUCCESS]: fetchdistrictsSuccess,
+  [AppTypes.FETCHDISTRICTS_FAILURE]: fetchdistrictsFailure,
 
+  //-----USERS
+  [AppTypes.FETCHALLUSERS_REQUEST]: fetchallusersRequest,
+  [AppTypes.FETCHALLUSERS_SUCCESS]: fetchallusersSuccess,
+  [AppTypes.FETCHALLUSERS_FAILURE]: fetchallusersFailure,
+
+  [AppTypes.FETCHUSERS_REQUEST]: fetchusersRequest,
+  [AppTypes.FETCHUSERS_SUCCESS]: fetchusersSuccess,
+  [AppTypes.FETCHUSERS_FAILURE]: fetchusersFailure,
+  
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
 });
