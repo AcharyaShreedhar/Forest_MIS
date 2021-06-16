@@ -28,6 +28,10 @@
    updatekarmacharidarbandiSuccess: ["response"],
    updatekarmacharidarbandiFailure: null,
 
+   deletekarmacharidarbandiRequest: ["payload","karmacharidarbandiId"],
+   deletekarmacharidarbandiSuccess: ["response"],
+   deletekarmacharidarbandiFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
