@@ -353,6 +353,9 @@ const create = (baseURL = Config.API_URL) => {
   const getDistrictsList = () => api.get("district");
   const getDistricts = (districtsId) => api.get(`district/${districtsId}`);
 
+  //-------Districts
+  const getDepartmentsList = () => api.get("department");
+
   //-------Users
   const getUsersList = () => api.get("users");
   const getUsers = (usersId) => api.get(`users/${usersId}`);
@@ -633,6 +636,10 @@ const create = (baseURL = Config.API_URL) => {
     //ConsumerGroupDetails
     getConsumergroupDetailsList,
     getConsumergroupDetails,
+
+    //-----Departments
+    getDepartmentsList,
+
   };
 };
 export default {
