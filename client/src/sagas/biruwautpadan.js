@@ -106,6 +106,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
   
   export function* fetchallactivitiesinfoRequest(api, action) {
     const response = yield api.getActivitiesinfoList();
+    console.log("Response..sagaa", response);
      if (response.ok) {
       yield put(
         BiruwautpadanActions.fetchallactivitiesinfoSuccess(response.data)
@@ -119,7 +120,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
   export function* fetchactivitiesinfoRequest(api, action) {
     const  activitiesInfoId  = action.payload
   
-    const response = yield api.getActivitiesInfo(activitiesInfoId);
+    const response = yield api.getActivitiesinfo(activitiesInfoId);
     
     if (response.ok) {
       yield put(
@@ -134,17 +135,20 @@ export function* fetchbiruwautpadanRequest(api, action) {
   // Add activitiesinfo
   export function* addactivitiesinfoRequest(api, action) {
     const { payload } = action;
+    console.log("Dataaa...sagaa" );
       
     const response = yield api.postBiruwautpadanActivitiesinfoAddNew(
-      payload.activitiesinfo.data
+      payload.yearlyactivities.data
     );
+    console.log("yeha aayo ki aayena..saga", response);
   
-    if (response.ok) {      
+    if (response.ok) {  
+          
       toast.success("सफलतापुर्वक कार्यक्रम विवरण प्रविष्ट भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallactivitiesinfoRequest(api);
-      yield call(history.push, "/forests/activitiesinfo");
+      yield call(history.push, "/activities/yearlyactivitieslist");
       yield put(BiruwautpadanActions.addactivitiesinfoSuccess(response.data));
     } else {
       yield put(BiruwautpadanActions.addactivitiesinfoFailure());

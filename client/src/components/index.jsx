@@ -19,6 +19,7 @@ import * as DharmikbanBibaran from "./DharmikbanBibaran";
 import * as KabuliyatibanBibaran from "./KabuliyatibanBibaran";
 import * as NijibanBibaran from "./NijibanBibaran";
 import * as BiruwaUtpadan from "./BiruwaUtpadan";
+import * as YearlyActivities from "./YearlyActivities";
 
 export {
   HeaderComponent,
@@ -42,4 +43,5 @@ export {
   KabuliyatibanBibaran,
   NijibanBibaran,
   BiruwaUtpadan,
+  YearlyActivities,
 };
