@@ -56,6 +56,18 @@ state.merge({
 const updatekarmacharidarbandiFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+//Delete karmacharidarbandi
+const deletekarmacharidarbandiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletekarmacharidarbandiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletekarmacharidarbandiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -83,6 +95,10 @@ export const reducer = createReducer(initialState, {
     [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_REQUEST]: updatekarmacharidarbandiRequest,
     [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_SUCCESS]: updatekarmacharidarbandiSuccess,
     [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_FAILURE]: updatekarmacharidarbandiFailure,
+
+    [KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_REQUEST]: deletekarmacharidarbandiRequest,
+    [KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_SUCCESS]: deletekarmacharidarbandiSuccess,
+    [KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_FAILURE]: deletekarmacharidarbandiFailure,
 
     
     [KarmacharidarbandiTypes.LOCATIONS_REQUEST]: locationsRequest,
