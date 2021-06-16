@@ -135,13 +135,11 @@ export function* fetchbiruwautpadanRequest(api, action) {
   // Add activitiesinfo
   export function* addactivitiesinfoRequest(api, action) {
     const { payload } = action;
-    console.log("Dataaa...sagaa" );
-      
+        
     const response = yield api.postBiruwautpadanActivitiesinfoAddNew(
       payload.yearlyactivities.data
     );
-    console.log("yeha aayo ki aayena..saga", response);
-  
+      
     if (response.ok) {  
           
       toast.success("सफलतापुर्वक कार्यक्रम विवरण प्रविष्ट भयो !!!!!", {
@@ -163,7 +161,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
     const { payload,activitiesinfoId } = action;
     
     const response = yield api.postBiruwautpadanActivitiesinfoUpdate(
-      payload.activitiesinfo.data,
+      payload.yearlyactivities.data,
       activitiesinfoId
     );
   
@@ -172,7 +170,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallactivitiesinfoRequest(api);
-      yield call(history.push, "/forests/activitiesinfo");
+      yield call(history.push, "/activities/yearlyactivitieslist");
       yield put(
         BiruwautpadanActions.updateactivitiesinfoSuccess(response.data)
       );
