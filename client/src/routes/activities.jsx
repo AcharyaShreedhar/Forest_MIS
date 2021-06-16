@@ -60,6 +60,14 @@ const activitiesRoutes = [
     auth: true,
     component: YearlyActivities,
   },
+
+  {
+    path: "/activities/yearlyactivitiesedit/:id",
+    title: "Yearlyactivities",
+    name: "Yearlyactivities",
+    auth: true,
+    component: YearlyActivities,
+  },
 ];
 
 export default activitiesRoutes;
