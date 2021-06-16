@@ -507,3 +507,15 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
     );
   }
 }
+
+// Consumer Group Details
+export function* fetchallconsumergroupdetailsRequest(api, action) {
+  const response = yield api.getConsumergroupDetailsList();
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchallconsumergroupdetailsSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchallconsumergroupdetailsFailure());
+  }
+}
