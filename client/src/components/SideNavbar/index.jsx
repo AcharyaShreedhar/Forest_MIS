@@ -163,15 +163,15 @@ export class SideNavbar extends Component {
             <NavText>बन पैदावर</NavText>
 
             <NavItem
-              eventKey="banpaidawar/lilam"
-              onClick={() => history.push("/banpaidawar/lilam")}
+              eventKey="banpaidawar/lilamlist"
+              onClick={() => history.push("/banpaidawar/lilamlist")}
             >
               <NavText>लीलाम बिबरण </NavText>
             </NavItem>
 
             <NavItem
-              eventKey="banpaidawar/osarpasar"
-              onClick={() => history.push("/banpaidawar/osarpasar")}
+              eventKey="banpaidawar/osarpasarlist"
+              onClick={() => history.push("/banpaidawar/osarpasarlist")}
             >
               <NavText>ओसारपसार बिबरण</NavText>
             </NavItem>
