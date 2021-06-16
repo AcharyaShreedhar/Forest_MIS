@@ -290,3 +290,28 @@ export function* updateexitRequest(api, action) {
     );
   }
 }
+
+//Delete exit
+export function* deleteexitRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesExitDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बहिर्गमन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallexitRequest(api);
+    yield put(
+      InventoriesActions.deleteexitSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.deleteexitFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
