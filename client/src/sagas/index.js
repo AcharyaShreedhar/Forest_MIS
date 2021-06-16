@@ -22,6 +22,7 @@ import{
   fetchallkarmacharidarbandiRequest,
   fetchkarmacharidarbandiRequest,
   addkarmacharidarbandiRequest,
+  updatekarmacharidarbandiRequest,
   } from "./karmacharidarbandi"; 
 
 
@@ -495,6 +496,12 @@ export default function* root() {
     takeLatest(
       KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_REQUEST,
       addkarmacharidarbandiRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_REQUEST,
+      updatekarmacharidarbandiRequest,
       api
     ),
 
