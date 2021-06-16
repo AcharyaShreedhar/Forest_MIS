@@ -1,7 +1,7 @@
 import { createReducer } from "reduxsauce";
 import Immutable from "seamless-immutable";
 import { dropLast, prepend } from "ramda";
-import { BanbibaranTypes } from "../actions/banbibaran";
+import { BankaprakarTypes } from "../actions/bankaprakar";
 
 const initialState = Immutable({
   status: "",
@@ -343,107 +343,107 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
-  [BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST]: fetchallsamudayikbanbibaranRequest,
-  [BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_SUCCESS]: fetchallsamudayikbanbibaranSuccess,
-  [BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_FAILURE]: fetchallsamudayikbanbibaranFailure,
+  [BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST]: fetchallsamudayikbanbibaranRequest,
+  [BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_SUCCESS]: fetchallsamudayikbanbibaranSuccess,
+  [BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_FAILURE]: fetchallsamudayikbanbibaranFailure,
 
-  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST]: fetchsamudayikbanbibaranRequest,
-  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_SUCCESS]: fetchsamudayikbanbibaranSuccess,
-  [BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_FAILURE]: fetchsamudayikbanbibaranFailure,
+  [BankaprakarTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST]: fetchsamudayikbanbibaranRequest,
+  [BankaprakarTypes.FETCHSAMUDAYIKBANBIBARAN_SUCCESS]: fetchsamudayikbanbibaranSuccess,
+  [BankaprakarTypes.FETCHSAMUDAYIKBANBIBARAN_FAILURE]: fetchsamudayikbanbibaranFailure,
 
-  [BanbibaranTypes.ADDSAMUDAYIKBANBIBARAN_REQUEST]: addsamudayikbanbibaranRequest,
-  [BanbibaranTypes.ADDSAMUDAYIKBANBIBARAN_SUCCESS]: addsamudayikbanbibaranSuccess,
-  [BanbibaranTypes.ADDSAMUDAYIKBANBIBARAN_FAILURE]: addsamudayikbanbibaranFailure,
+  [BankaprakarTypes.ADDSAMUDAYIKBANBIBARAN_REQUEST]: addsamudayikbanbibaranRequest,
+  [BankaprakarTypes.ADDSAMUDAYIKBANBIBARAN_SUCCESS]: addsamudayikbanbibaranSuccess,
+  [BankaprakarTypes.ADDSAMUDAYIKBANBIBARAN_FAILURE]: addsamudayikbanbibaranFailure,
 
-  [BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_REQUEST]: updatesamudayikbanbibaranRequest,
-  [BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_SUCCESS]: updatesamudayikbanbibaranSuccess,
-  [BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_FAILURE]: updatesamudayikbanbibaranFailure,
+  [BankaprakarTypes.UPDATESAMUDAYIKBANBIBARAN_REQUEST]: updatesamudayikbanbibaranRequest,
+  [BankaprakarTypes.UPDATESAMUDAYIKBANBIBARAN_SUCCESS]: updatesamudayikbanbibaranSuccess,
+  [BankaprakarTypes.UPDATESAMUDAYIKBANBIBARAN_FAILURE]: updatesamudayikbanbibaranFailure,
 
-  [BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_REQUEST]: deletesamudayikbanbibaranRequest,
-  [BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_SUCCESS]: deletesamudayikbanbibaranSuccess,
-  [BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_FAILURE]: deletesamudayikbanbibaranFailure,
+  [BankaprakarTypes.DELETESAMUDAYIKBANBIBARAN_REQUEST]: deletesamudayikbanbibaranRequest,
+  [BankaprakarTypes.DELETESAMUDAYIKBANBIBARAN_SUCCESS]: deletesamudayikbanbibaranSuccess,
+  [BankaprakarTypes.DELETESAMUDAYIKBANBIBARAN_FAILURE]: deletesamudayikbanbibaranFailure,
 
-  [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST]: fetchalldharmikbanbibaranRequest,
-  [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_SUCCESS]: fetchalldharmikbanbibaranSuccess,
-  [BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_FAILURE]: fetchalldharmikbanbibaranFailure,
+  [BankaprakarTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST]: fetchalldharmikbanbibaranRequest,
+  [BankaprakarTypes.FETCHALLDHARMIKBANBIBARAN_SUCCESS]: fetchalldharmikbanbibaranSuccess,
+  [BankaprakarTypes.FETCHALLDHARMIKBANBIBARAN_FAILURE]: fetchalldharmikbanbibaranFailure,
 
-  [BanbibaranTypes.FETCHDHARMIKBANBIBARAN_REQUEST]: fetchdharmikbanbibaranRequest,
-  [BanbibaranTypes.FETCHDHARMIKBANBIBARAN_SUCCESS]: fetchdharmikbanbibaranSuccess,
-  [BanbibaranTypes.FETCHDHARMIKBANBIBARAN_FAILURE]: fetchdharmikbanbibaranFailure,
+  [BankaprakarTypes.FETCHDHARMIKBANBIBARAN_REQUEST]: fetchdharmikbanbibaranRequest,
+  [BankaprakarTypes.FETCHDHARMIKBANBIBARAN_SUCCESS]: fetchdharmikbanbibaranSuccess,
+  [BankaprakarTypes.FETCHDHARMIKBANBIBARAN_FAILURE]: fetchdharmikbanbibaranFailure,
 
-  [BanbibaranTypes.ADDDHARMIKBANBIBARAN_REQUEST]: adddharmikbanbibaranRequest,
-  [BanbibaranTypes.ADDDHARMIKBANBIBARAN_SUCCESS]: adddharmikbanbibaranSuccess,
-  [BanbibaranTypes.ADDDHARMIKBANBIBARAN_FAILURE]: adddharmikbanbibaranFailure,
+  [BankaprakarTypes.ADDDHARMIKBANBIBARAN_REQUEST]: adddharmikbanbibaranRequest,
+  [BankaprakarTypes.ADDDHARMIKBANBIBARAN_SUCCESS]: adddharmikbanbibaranSuccess,
+  [BankaprakarTypes.ADDDHARMIKBANBIBARAN_FAILURE]: adddharmikbanbibaranFailure,
 
-  [BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_REQUEST]: updatedharmikbanbibaranRequest,
-  [BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_SUCCESS]: updatedharmikbanbibaranSuccess,
-  [BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_FAILURE]: updatedharmikbanbibaranFailure,
+  [BankaprakarTypes.UPDATEDHARMIKBANBIBARAN_REQUEST]: updatedharmikbanbibaranRequest,
+  [BankaprakarTypes.UPDATEDHARMIKBANBIBARAN_SUCCESS]: updatedharmikbanbibaranSuccess,
+  [BankaprakarTypes.UPDATEDHARMIKBANBIBARAN_FAILURE]: updatedharmikbanbibaranFailure,
 
-  [BanbibaranTypes.DELETEDHARMIKBANBIBARAN_REQUEST]: deletedharmikbanbibaranRequest,
-  [BanbibaranTypes.DELETEDHARMIKBANBIBARAN_SUCCESS]: deletedharmikbanbibaranSuccess,
-  [BanbibaranTypes.DELETEDHARMIKBANBIBARAN_FAILURE]: deletedharmikbanbibaranFailure,
+  [BankaprakarTypes.DELETEDHARMIKBANBIBARAN_REQUEST]: deletedharmikbanbibaranRequest,
+  [BankaprakarTypes.DELETEDHARMIKBANBIBARAN_SUCCESS]: deletedharmikbanbibaranSuccess,
+  [BankaprakarTypes.DELETEDHARMIKBANBIBARAN_FAILURE]: deletedharmikbanbibaranFailure,
 
-  [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_REQUEST]: fetchallnijibanbibaranRequest,
-  [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_SUCCESS]: fetchallnijibanbibaranSuccess,
-  [BanbibaranTypes.FETCHALLNIJIBANBIBARAN_FAILURE]: fetchallnijibanbibaranFailure,
+  [BankaprakarTypes.FETCHALLNIJIBANBIBARAN_REQUEST]: fetchallnijibanbibaranRequest,
+  [BankaprakarTypes.FETCHALLNIJIBANBIBARAN_SUCCESS]: fetchallnijibanbibaranSuccess,
+  [BankaprakarTypes.FETCHALLNIJIBANBIBARAN_FAILURE]: fetchallnijibanbibaranFailure,
 
-  [BanbibaranTypes.FETCHNIJIBANBIBARAN_REQUEST]: fetchnijibanbibaranRequest,
-  [BanbibaranTypes.FETCHNIJIBANBIBARAN_SUCCESS]: fetchnijibanbibaranSuccess,
-  [BanbibaranTypes.FETCHNIJIBANBIBARAN_FAILURE]: fetchnijibanbibaranFailure,
+  [BankaprakarTypes.FETCHNIJIBANBIBARAN_REQUEST]: fetchnijibanbibaranRequest,
+  [BankaprakarTypes.FETCHNIJIBANBIBARAN_SUCCESS]: fetchnijibanbibaranSuccess,
+  [BankaprakarTypes.FETCHNIJIBANBIBARAN_FAILURE]: fetchnijibanbibaranFailure,
 
-  [BanbibaranTypes.ADDNIJIBANBIBARAN_REQUEST]: addnijibanbibaranRequest,
-  [BanbibaranTypes.ADDNIJIBANBIBARAN_SUCCESS]: addnijibanbibaranSuccess,
-  [BanbibaranTypes.ADDNIJIBANBIBARAN_FAILURE]: addnijibanbibaranFailure,
+  [BankaprakarTypes.ADDNIJIBANBIBARAN_REQUEST]: addnijibanbibaranRequest,
+  [BankaprakarTypes.ADDNIJIBANBIBARAN_SUCCESS]: addnijibanbibaranSuccess,
+  [BankaprakarTypes.ADDNIJIBANBIBARAN_FAILURE]: addnijibanbibaranFailure,
 
-  [BanbibaranTypes.UPDATENIJIBANBIBARAN_REQUEST]: updatenijibanbibaranRequest,
-  [BanbibaranTypes.UPDATENIJIBANBIBARAN_SUCCESS]: updatenijibanbibaranSuccess,
-  [BanbibaranTypes.UPDATENIJIBANBIBARAN_FAILURE]: updatenijibanbibaranFailure,
+  [BankaprakarTypes.UPDATENIJIBANBIBARAN_REQUEST]: updatenijibanbibaranRequest,
+  [BankaprakarTypes.UPDATENIJIBANBIBARAN_SUCCESS]: updatenijibanbibaranSuccess,
+  [BankaprakarTypes.UPDATENIJIBANBIBARAN_FAILURE]: updatenijibanbibaranFailure,
 
-  [BanbibaranTypes.DELETENIJIBANBIBARAN_REQUEST]: deletenijibanbibaranRequest,
-  [BanbibaranTypes.DELETENIJIBANBIBARAN_SUCCESS]: deletenijibanbibaranSuccess,
-  [BanbibaranTypes.DELETENIJIBANBIBARAN_FAILURE]: deletenijibanbibaranFailure,
+  [BankaprakarTypes.DELETENIJIBANBIBARAN_REQUEST]: deletenijibanbibaranRequest,
+  [BankaprakarTypes.DELETENIJIBANBIBARAN_SUCCESS]: deletenijibanbibaranSuccess,
+  [BankaprakarTypes.DELETENIJIBANBIBARAN_FAILURE]: deletenijibanbibaranFailure,
 
-  [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST]: fetchallkabuliyatibanbibaranRequest,
-  [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_SUCCESS]: fetchallkabuliyatibanbibaranSuccess,
-  [BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_FAILURE]: fetchallkabuliyatibanbibaranFailure,
+  [BankaprakarTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST]: fetchallkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.FETCHALLKABULIYATIBANBIBARAN_SUCCESS]: fetchallkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.FETCHALLKABULIYATIBANBIBARAN_FAILURE]: fetchallkabuliyatibanbibaranFailure,
 
-  [BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_REQUEST]: fetchkabuliyatibanbibaranRequest,
-  [BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_SUCCESS]: fetchkabuliyatibanbibaranSuccess,
-  [BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_FAILURE]: fetchkabuliyatibanbibaranFailure,
+  [BankaprakarTypes.FETCHKABULIYATIBANBIBARAN_REQUEST]: fetchkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.FETCHKABULIYATIBANBIBARAN_SUCCESS]: fetchkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.FETCHKABULIYATIBANBIBARAN_FAILURE]: fetchkabuliyatibanbibaranFailure,
 
-  [BanbibaranTypes.ADDKABULIYATIBANBIBARAN_REQUEST]: addkabuliyatibanbibaranRequest,
-  [BanbibaranTypes.ADDKABULIYATIBANBIBARAN_SUCCESS]: addkabuliyatibanbibaranSuccess,
-  [BanbibaranTypes.ADDKABULIYATIBANBIBARAN_FAILURE]: addkabuliyatibanbibaranFailure,
+  [BankaprakarTypes.ADDKABULIYATIBANBIBARAN_REQUEST]: addkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.ADDKABULIYATIBANBIBARAN_SUCCESS]: addkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.ADDKABULIYATIBANBIBARAN_FAILURE]: addkabuliyatibanbibaranFailure,
 
-  [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST]: updatekabuliyatibanbibaranRequest,
-  [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_SUCCESS]: updatekabuliyatibanbibaranSuccess,
-  [BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_FAILURE]: updatekabuliyatibanbibaranFailure,
+  [BankaprakarTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST]: updatekabuliyatibanbibaranRequest,
+  [BankaprakarTypes.UPDATEKABULIYATIBANBIBARAN_SUCCESS]: updatekabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.UPDATEKABULIYATIBANBIBARAN_FAILURE]: updatekabuliyatibanbibaranFailure,
 
-  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_REQUEST]: deletekabuliyatibanbibaranRequest,
-  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_SUCCESS]: deletekabuliyatibanbibaranSuccess,
-  [BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_FAILURE]: deletekabuliyatibanbibaranFailure,
+  [BankaprakarTypes.DELETEKABULIYATIBANBIBARAN_REQUEST]: deletekabuliyatibanbibaranRequest,
+  [BankaprakarTypes.DELETEKABULIYATIBANBIBARAN_SUCCESS]: deletekabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.DELETEKABULIYATIBANBIBARAN_FAILURE]: deletekabuliyatibanbibaranFailure,
 
-  [BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST]: fetchallnabikarankaryayojanaRequest,
-  [BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_SUCCESS]: fetchallnabikarankaryayojanaSuccess,
-  [BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_FAILURE]: fetchallnabikarankaryayojanaFailure,
+  [BankaprakarTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST]: fetchallnabikarankaryayojanaRequest,
+  [BankaprakarTypes.FETCHALLNABIKARANKARYAYOJANA_SUCCESS]: fetchallnabikarankaryayojanaSuccess,
+  [BankaprakarTypes.FETCHALLNABIKARANKARYAYOJANA_FAILURE]: fetchallnabikarankaryayojanaFailure,
 
-  [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_REQUEST]: fetchnabikarankaryayojanaRequest,
-  [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_SUCCESS]: fetchnabikarankaryayojanaSuccess,
-  [BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_FAILURE]: fetchnabikarankaryayojanaFailure,
+  [BankaprakarTypes.FETCHNABIKARANKARYAYOJANA_REQUEST]: fetchnabikarankaryayojanaRequest,
+  [BankaprakarTypes.FETCHNABIKARANKARYAYOJANA_SUCCESS]: fetchnabikarankaryayojanaSuccess,
+  [BankaprakarTypes.FETCHNABIKARANKARYAYOJANA_FAILURE]: fetchnabikarankaryayojanaFailure,
 
-  [BanbibaranTypes.ADDNABIKARANKARYAYOJANA_REQUEST]: addnabikarankaryayojanaRequest,
-  [BanbibaranTypes.ADDNABIKARANKARYAYOJANA_SUCCESS]: addnabikarankaryayojanaSuccess,
-  [BanbibaranTypes.ADDNABIKARANKARYAYOJANA_FAILURE]: addnabikarankaryayojanaFailure,
+  [BankaprakarTypes.ADDNABIKARANKARYAYOJANA_REQUEST]: addnabikarankaryayojanaRequest,
+  [BankaprakarTypes.ADDNABIKARANKARYAYOJANA_SUCCESS]: addnabikarankaryayojanaSuccess,
+  [BankaprakarTypes.ADDNABIKARANKARYAYOJANA_FAILURE]: addnabikarankaryayojanaFailure,
 
-  [BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_REQUEST]: updatenabikarankaryayojanaRequest,
-  [BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_SUCCESS]: updatenabikarankaryayojanaSuccess,
-  [BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_FAILURE]: updatenabikarankaryayojanaFailure,
+  [BankaprakarTypes.UPDATENABIKARANKARYAYOJANA_REQUEST]: updatenabikarankaryayojanaRequest,
+  [BankaprakarTypes.UPDATENABIKARANKARYAYOJANA_SUCCESS]: updatenabikarankaryayojanaSuccess,
+  [BankaprakarTypes.UPDATENABIKARANKARYAYOJANA_FAILURE]: updatenabikarankaryayojanaFailure,
 
-  [BanbibaranTypes.DELETENABIKARANKARYAYOJANA_REQUEST]: deletenabikarankaryayojanaRequest,
-  [BanbibaranTypes.DELETENABIKARANKARYAYOJANA_SUCCESS]: deletenabikarankaryayojanaSuccess,
-  [BanbibaranTypes.DELETENABIKARANKARYAYOJANA_FAILURE]: deletenabikarankaryayojanaFailure,
+  [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_REQUEST]: deletenabikarankaryayojanaRequest,
+  [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_SUCCESS]: deletenabikarankaryayojanaSuccess,
+  [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_FAILURE]: deletenabikarankaryayojanaFailure,
 
 
-  [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
-  [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
+  [BankaprakarTypes.LOCATIONS_REQUEST]: locationsRequest,
+  [BankaprakarTypes.CLEAR_REQUEST]: clearRequest,
 });

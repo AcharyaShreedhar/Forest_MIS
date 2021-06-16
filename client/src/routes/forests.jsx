@@ -1,4 +1,4 @@
-import Banbibaran from "../views/Forests/Banbibaran";
+import Bankaprakar from "../views/Forests/Bankaprakar";
 
 const forestRoutes = [
   {
@@ -6,84 +6,84 @@ const forestRoutes = [
     title: "Samudayikban",
     name: "samudayikban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/samudayikbanadd/new",
     title: "Samudayikban",
     name: "samudayikban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/samudayikbanedit/:id",
     title: "Samudayikban",
     name: "samudayikban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/dharmikbanlist",
     title: "Dharmikban",
     name: "dharmikban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/dharmikbanadd/new",
     title: "Dharmikban",
     name: "dharmikban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/dharmikbanedit/:id",
     title: "Dharmikban",
     name: "dharmikban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/kabuliyatibanlist",
     title: "Kabuliyatiban",
     name: "kabuliyatiban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/kabuliyatibanadd/new",
     title: "Kabuliyatiban",
     name: "kabuliyatiban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/kabuliyatibanedit/:id",
     title: "Kabuliyatiban",
     name: "kabuliyatiban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/nijibanlist",
     title: "Nijiban",
     name: "nijiban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/nijibanadd/new",
     title: "Nijiban",
     name: "nijiban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     path: "/forests/nijibanedit/:id",
     title: "Nijiban",
     name: "nijiban",
     auth: true,
-    component: Banbibaran,
+    component: Bankaprakar,
   },
   {
     redirect: true,
@@ -91,7 +91,7 @@ const forestRoutes = [
     to: "/forests/samudayikbanlist",
     name: "samudayikban",
 
-    component: Banbibaran,
+    component: Bankaprakar,
   },
 ];
 

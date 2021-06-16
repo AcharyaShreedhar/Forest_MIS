@@ -1,7 +1,7 @@
 import { takeEvery, takeLatest, all } from "redux-saga/effects";
 import API from "../services/api";
 import { AppTypes } from "../actions/app";
-import { BanbibaranTypes } from "../actions/banbibaran";
+import { BankaprakarTypes } from "../actions/bankaprakar";
 import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
@@ -51,7 +51,7 @@ import {
   addnabikarankaryayojanaRequest,
   updatenabikarankaryayojanaRequest,
   deletenabikarankaryayojanaRequest,
-} from "./banbibaran";
+} from "./bankaprakar";
 
 //------------------------biruwautpadan
 import {
@@ -205,150 +205,150 @@ export default function* root() {
 
     //----------------------------banbibaran
     takeLatest(
-      BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST,
       fetchallsamudayikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST,
       fetchsamudayikbanbibaranRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.ADDSAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDSAMUDAYIKBANBIBARAN_REQUEST,
       addsamudayikbanbibaranRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATESAMUDAYIKBANBIBARAN_REQUEST,
       updatesamudayikbanbibaranRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETESAMUDAYIKBANBIBARAN_REQUEST,
       deletesamudayikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST,
       fetchalldharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHDHARMIKBANBIBARAN_REQUEST,
       fetchdharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDDHARMIKBANBIBARAN_REQUEST,
       adddharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATEDHARMIKBANBIBARAN_REQUEST,
       updatedharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.DELETEDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETEDHARMIKBANBIBARAN_REQUEST,
       deletedharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLNIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLNIJIBANBIBARAN_REQUEST,
       fetchallnijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHNIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHNIJIBANBIBARAN_REQUEST,
       fetchnijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDNIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDNIJIBANBIBARAN_REQUEST,
       addnijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.UPDATENIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATENIJIBANBIBARAN_REQUEST,
       updatenijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.DELETENIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETENIJIBANBIBARAN_REQUEST,
       deletenijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST,
       fetchallkabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHKABULIYATIBANBIBARAN_REQUEST,
       fetchkabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDKABULIYATIBANBIBARAN_REQUEST,
       addkabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST,
       updatekabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
       deletekabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST,
       fetchallnabikarankaryayojanaRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.FETCHNABIKARANKARYAYOJANA_REQUEST,
       fetchnabikarankaryayojanaRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDNABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.ADDNABIKARANKARYAYOJANA_REQUEST,
       addnabikarankaryayojanaRequest,
       api
     ),
 
 
     takeLatest(
-      BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.UPDATENABIKARANKARYAYOJANA_REQUEST,
       updatenabikarankaryayojanaRequest,
       api
     ),
 
 
     takeLatest(
-      BanbibaranTypes.DELETENABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.DELETENABIKARANKARYAYOJANA_REQUEST,
       deletenabikarankaryayojanaRequest,
       api
     ),
