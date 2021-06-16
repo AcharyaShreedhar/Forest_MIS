@@ -48,10 +48,8 @@ export class index extends Component {
     };
   }
   render() {
-    console.log("home--------------");
-
     return (
-      <div className="bg-white">
+      <div className="bg-white rounded">
         <Row>
           <Col className="p-5">
             <Chart
