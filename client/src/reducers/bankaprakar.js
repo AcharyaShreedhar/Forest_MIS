@@ -329,6 +329,21 @@ state.merge({
 const deletenabikarankaryayojanaFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+//---Consumergroupsdetails
+const fetchallconsumergroupdetailsRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallconsumergroupdetailsSuccess = (state, action) => {
+  console.log("reducer", action.response);
+  return state.merge({
+    ...state,
+    status: "done",
+    allconsumergroupdetailsData: action.response,
+  });
+};
+const fetchallconsumergroupdetailsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 
 const locationsRequest = (state, action) => {
@@ -442,6 +457,11 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_REQUEST]: deletenabikarankaryayojanaRequest,
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_SUCCESS]: deletenabikarankaryayojanaSuccess,
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_FAILURE]: deletenabikarankaryayojanaFailure,
+
+  //------Consumergroup Details
+  [BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
+  [BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_SUCCESS]: fetchallconsumergroupdetailsSuccess,
+  [BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_FAILURE]: fetchallconsumergroupdetailsFailure,
 
 
   [BankaprakarTypes.LOCATIONS_REQUEST]: locationsRequest,
