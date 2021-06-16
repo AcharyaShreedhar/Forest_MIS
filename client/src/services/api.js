@@ -353,8 +353,9 @@ const create = (baseURL = Config.API_URL) => {
   const getDistrictsList = () => api.get("district");
   const getDistricts = (districtsId) => api.get(`district/${districtsId}`);
 
-  //-------Districts
+  //-------Departments
   const getDepartmentsList = () => api.get("department");
+  const getDepartments = (departmentsId) => api.get(`department/${departmentsId}`);
 
   //-------Users
   const getUsersList = () => api.get("users");
@@ -639,6 +640,7 @@ const create = (baseURL = Config.API_URL) => {
 
     //-----Departments
     getDepartmentsList,
+    getDepartments,
 
   };
 };
