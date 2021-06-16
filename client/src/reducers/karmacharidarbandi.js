@@ -34,7 +34,7 @@ const fetchkarmacharidarbandiFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-//Add 
+//Add karmacharidarbandi
 const addkarmacharidarbandiRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const addkarmacharidarbandiSuccess = (state, action) =>
@@ -45,6 +45,16 @@ const addkarmacharidarbandiSuccess = (state, action) =>
 const addkarmacharidarbandiFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+  //Update karmacharidarbandi
+const updatekarmacharidarbandiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatekarmacharidarbandiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatekarmacharidarbandiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -69,6 +79,10 @@ export const reducer = createReducer(initialState, {
     [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_REQUEST]: addkarmacharidarbandiRequest,
     [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_SUCCESS]: addkarmacharidarbandiSuccess,
     [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_FAILURE]: addkarmacharidarbandiFailure,
+
+    [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_REQUEST]: updatekarmacharidarbandiRequest,
+    [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_SUCCESS]: updatekarmacharidarbandiSuccess,
+    [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_FAILURE]: updatekarmacharidarbandiFailure,
 
     
     [KarmacharidarbandiTypes.LOCATIONS_REQUEST]: locationsRequest,
