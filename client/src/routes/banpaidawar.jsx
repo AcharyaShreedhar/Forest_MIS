@@ -20,7 +20,7 @@ const banpaidawarRoutes = [
   {
     redirect: true,
     path: "/banpaidawar",
-    to: "/banpaidawar/lilamlist",
+    to: "/banpaidawar/banpaidawarlilamlist",
     name: "Lilam",
     component: Lilam,
   },
