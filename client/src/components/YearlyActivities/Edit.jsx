@@ -106,10 +106,10 @@ class Edit extends Component {
     this.props.onUpdate(payload, id);
   }
   handleAnnualBibaran(e) {
-    this.setState({ annual_bibaran: e });
+    this.setState({ annual_bibaran: e[0] });
   }
   handleLekhaParikshyan(e) {
-    this.setState({ lekha_parikshyan: e });
+    this.setState({ lekha_parikshyan: e[0] });
   }
 
   render() {
