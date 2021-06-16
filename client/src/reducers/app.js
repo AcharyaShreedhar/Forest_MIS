@@ -132,6 +132,19 @@ const fetchalldepartmentsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchdepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchdepartmentsSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    departmentsData: action.response,
+  });
+};
+const fetchdepartmentsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 //-----------USERS
 const fetchallusersRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -223,6 +236,10 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHALLDEPARTMENTS_REQUEST]: fetchalldepartmentsRequest,
   [AppTypes.FETCHALLDEPARTMENTS_SUCCESS]: fetchalldepartmentsSuccess,
   [AppTypes.FETCHALLDEPARTMENTS_FAILURE]: fetchalldepartmentsFailure,
+
+  [AppTypes.FETCHDEPARTMENTS_REQUEST]: fetchdepartmentsRequest,
+  [AppTypes.FETCHDEPARTMENTS_SUCCESS]: fetchdepartmentsSuccess,
+  [AppTypes.FETCHDEPARTMENTS_FAILURE]: fetchdepartmentsFailure,
   
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
