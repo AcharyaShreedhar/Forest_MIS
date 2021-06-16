@@ -64,6 +64,10 @@ const { Types, Creators } = createActions({
   addexitSuccess: ["response"],
   addexitFailure: null,
 
+  updateexitRequest: ["payload", "exitId"],
+  updateexitSuccess: ["response"],
+  updateexitFailure: null,
+
 
   locationsRequest: ["payload"],
   // Clear all caches
