@@ -34,7 +34,16 @@ const fetchkarmacharidarbandiFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
+//Add 
+const addkarmacharidarbandiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addkarmacharidarbandiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addkarmacharidarbandiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 
 const locationsRequest = (state, action) => {
@@ -56,6 +65,10 @@ export const reducer = createReducer(initialState, {
     [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_REQUEST]: fetchkarmacharidarbandiRequest,
     [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_SUCCESS]: fetchkarmacharidarbandiSuccess,
     [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_FAILURE]: fetchkarmacharidarbandiFailure,
+
+    [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_REQUEST]: addkarmacharidarbandiRequest,
+    [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_SUCCESS]: addkarmacharidarbandiSuccess,
+    [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_FAILURE]: addkarmacharidarbandiFailure,
 
     
     [KarmacharidarbandiTypes.LOCATIONS_REQUEST]: locationsRequest,
