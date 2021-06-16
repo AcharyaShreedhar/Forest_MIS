@@ -117,6 +117,18 @@ const yearlyactivitiesHeadings = [
 
 ];
 
+const banpaidawarlilamHeadings = [
+  "लिलाम मिति",
+  "वन पैदावारको किसिम",
+  "इकाई",
+  "परिमाण",
+  "न्युनतम मूल्य (रु)",
+  "सकार रकम (रु)",
+  "कैफियत",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -126,4 +138,5 @@ export {
   nijibanHeadings,
   biruwautpadanHeadings,
   yearlyactivitiesHeadings,
+  banpaidawarlilamHeadings,
 };
