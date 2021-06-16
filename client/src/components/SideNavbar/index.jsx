@@ -67,34 +67,29 @@ export class SideNavbar extends Component {
               {expanded && <Displaybox value="कर्मचारी" />}
             </Link>
           </NavItem>
-
           <NavItem eventKey="/forests">
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
             </NavIcon>
             <NavText> बनका प्रकारहरु </NavText>
-
             <NavItem
               eventKey="forests/samudayikbanlist"
               onClick={() => history.push("/forests/samudayikbanlist")}
             >
               <NavText>सामुदायिक वन</NavText>
             </NavItem>
-
             <NavItem
               eventKey="forests/dharmikbanlist"
               onClick={() => history.push("/forests/dharmikbanlist")}
             >
               <NavText>धार्मिक बन</NavText>
             </NavItem>
-
             <NavItem
               eventKey="forests/kabuliyatibanlist"
               onClick={() => history.push("/forests/kabuliyatibanlist")}
             >
               <NavText>कबुलियती बन</NavText>
             </NavItem>
-
             <NavItem
               eventKey="forests/nijibanlist"
               onClick={() => history.push("/forests/nijibanlist")}
@@ -102,30 +97,36 @@ export class SideNavbar extends Component {
               <NavText>निजी बन</NavText>
             </NavItem>
           </NavItem>
-
-          <NavItem eventKey="mudda">
-            <Link to="/mudda" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faGavel} className="mr-2" />
-              {expanded && (
-                <Displaybox value=" मुद्दा अनुसन्धान तथा दायरी बिबरण" />
-              )}
-            </Link>
+          <NavItem eventKey="/banbibaran">
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
+            </NavIcon>
+            <NavText> बन बिबरण </NavText>
+            <NavItem
+              eventKey="banbibaran/forestfirelist"
+              onClick={() => history.push("/banbibaran/forestfirelist")}
+            >
+              <NavText>बन डडेलो</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="banbibaran/atikramanlist"
+              onClick={() => history.push("/banbibaran/atikramanlist")}
+            >
+              <NavText>बन क्षेत्र अतिक्रमण</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="banbibaran/muddaanusandhanlist"
+              onClick={() => history.push("/banbibaran/muddaanusandhanlist")}
+            >
+              <NavText> मुद्दा अनुसन्धान तथा दायरी</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="banbibaran/anyaprayojanlist"
+              onClick={() => history.push("/banbibaran/anyaprayojanlist")}
+            >
+              <NavText> बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि</NavText>
+            </NavItem>
           </NavItem>
-
-          <NavItem eventKey="atikraman">
-            <Link to="/atikraman" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faHome} className="mr-2" />
-              {expanded && <Displaybox value=" बन क्षेत्र अतिक्रमण बिबरण" />}
-            </Link>
-          </NavItem>
-
-          <NavItem eventKey="forestfire">
-            <Link to="/forestfire" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faFire} className="mr-2" />
-              {expanded && <Displaybox value="बन डडेलो बिबरण" />}
-            </Link>
-          </NavItem>
-
           <NavItem eventKey="dwandabebasthapan">
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
@@ -140,7 +141,6 @@ export class SideNavbar extends Component {
             >
               <NavText>बन्यजन्तु उद्दार तथा ब्यबस्थापन बिबरण </NavText>
             </NavItem>
-
             <NavItem
               eventKey="dwandabebasthapan/banyajantuxetirahatlist"
               onClick={() =>
@@ -150,29 +150,17 @@ export class SideNavbar extends Component {
               <NavText>बन्यजन्तु क्षति राहत बिबरण</NavText>
             </NavItem>
           </NavItem>
-
-          <NavItem eventKey="anyaprayojan">
-            <Link to="/anyaprayojan" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faHome} className="mr-2" />
-              {expanded && (
-                <Displaybox value="बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि बिबरण" />
-              )}
-            </Link>
-          </NavItem>
-
           <NavItem eventKey="banpaidawar">
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
             </NavIcon>
             <NavText>बन पैदावर</NavText>
-
             <NavItem
               eventKey="banpaidawar/lilamlist"
               onClick={() => history.push("/banpaidawar/lilamlist")}
             >
               <NavText>लीलाम बिबरण </NavText>
             </NavItem>
-
             <NavItem
               eventKey="banpaidawar/osarpasarlist"
               onClick={() => history.push("/banpaidawar/osarpasarlist")}
@@ -197,7 +185,6 @@ export class SideNavbar extends Component {
             >
               <NavText>बिरुवा उत्पादन</NavText>
             </NavItem>
-
             <NavItem
               eventKey="activities/plantationlist"
               onClick={() => history.push("/activities/plantationlist")}
@@ -205,7 +192,6 @@ export class SideNavbar extends Component {
               <NavText> बृक्षरोपन</NavText>
             </NavItem>
           </NavItem>
-
           <NavItem eventKey="seedgardernplots">
             <Link to="/seedgardernplots" className="displaybox">
               <FontAwesomeIcon size="2x" icon={faSeedling} className="mr-2" />
@@ -214,7 +200,6 @@ export class SideNavbar extends Component {
               )}
             </Link>
           </NavItem>
-
           <NavItem eventKey="/organizationassets">
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faBuilding} className="mr-2" />
@@ -224,7 +209,6 @@ export class SideNavbar extends Component {
             <NavItem eventKey="assets" onClick={() => history.push("/assets")}>
               <NavText>घर जग्गा</NavText>
             </NavItem>
-
             <NavItem
               eventKey="vehicles"
               onClick={() => history.push("/vehicles")}
