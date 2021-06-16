@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import forestRoutes from "../../routes/forests";
-import BanbibaranActions from "../../actions/banbibaran";
+import BankaprakarActions from "../../actions/bankaprakar";
 
 export class Forests extends Component {
   componentDidMount() {
@@ -69,13 +69,13 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallSamudayikbanbibaran: () =>
-    dispatch(BanbibaranActions.fetchallsamudayikbanbibaranRequest()),
+    dispatch(BankaprakarActions.fetchallsamudayikbanbibaranRequest()),
   fetchallDharmikbanbibaran: () =>
-    dispatch(BanbibaranActions.fetchalldharmikbanbibaranRequest()),
+    dispatch(BankaprakarActions.fetchalldharmikbanbibaranRequest()),
   fetchallKabuliyatibanbibaran: () =>
-    dispatch(BanbibaranActions.fetchallkabuliyatibanbibaranRequest()),
+    dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest()),
   fetchallNijibanbibaran: () =>
-    dispatch(BanbibaranActions.fetchallnijibanbibaranRequest()),
+    dispatch(BankaprakarActions.fetchallnijibanbibaranRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Forests);

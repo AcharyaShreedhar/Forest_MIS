@@ -72,7 +72,7 @@ export class SideNavbar extends Component {
             <NavIcon>
               <FontAwesomeIcon size="lg" icon={faTree} className="mr-2" />
             </NavIcon>
-            <NavText> बन बिबरण</NavText>
+            <NavText> बनका प्रकारहरु </NavText>
 
             <NavItem
               eventKey="forests/samudayikbanlist"
