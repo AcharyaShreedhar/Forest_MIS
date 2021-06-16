@@ -153,3 +153,52 @@ export function* fetchbiruwautpadanRequest(api, action) {
       });
     }
   }
+
+   // Update activitiesinfo
+   export function* updateactivitiesinfoRequest(api, action) {
+    const { payload,activitiesinfoId } = action;
+    
+    const response = yield api.postBiruwautpadanActivitiesinfoUpdate(
+      payload.activitiesinfo.data,
+      activitiesinfoId
+    );
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण पुनः प्रविष्ट भयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallactivitiesinfoRequest(api);
+      yield call(history.push, "/forests/activitiesinfo");
+      yield put(
+        BiruwautpadanActions.updateactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.updateactivitiesinfoFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
+  
+
+  // Delete activitiesinfo
+  export function* deleteactivitiesinfoRequest(api, action) {
+    const { payload } = action;
+  
+    const response = yield api.postBiruwautpadanActivitiesinfoDelete(payload);
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण हटाईयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallactivitiesinfoRequest(api);
+      yield put(
+        BiruwautpadanActions.deleteactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.deleteactivitiesinfoFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
