@@ -97,10 +97,12 @@ class Add extends Component {
     this.props.onSubmit(payload);
   }
   handleAnnualBibaran(e) {
-    this.setState({ annual_bibaran: e });
+      console.log("message", e);
+    this.setState({ annual_bibaran: e[0] });
   }
   handleLekhaParikshyan(e) {
-    this.setState({ lekha_parikshyan: e });
+    console.log("message...lekha", e);
+    this.setState({ lekha_parikshyan: e[0] });
   }
 
   render() {
