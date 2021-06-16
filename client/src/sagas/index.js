@@ -166,6 +166,7 @@ import {
    fetchallexitRequest,
    fetchexitRequest,
    addexitRequest,
+   updateexitRequest,
  } from "./inventories";
 
  //--------karmacharibibaran
@@ -820,6 +821,12 @@ export default function* root() {
     takeLatest(
       InventoriesTypes.ADDEXIT_REQUEST,
       addexitRequest,
+      api
+    ), 
+
+    takeLatest(
+      InventoriesTypes.UPDATEEXIT_REQUEST,
+      updateexitRequest,
       api
     ), 
 
