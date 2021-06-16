@@ -235,3 +235,29 @@ export function* fetchexitRequest(api, action) {
     yield put(InventoriesActions.fetchexitFailure());
   }
 }
+
+// Add exit
+export function* addexitRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesExitAddNew(
+    payload.exit.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक  बहिर्गमन भयो !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallexitRequest(api);
+    yield call(history.push, "/forests/exitlist");
+    yield put(InventoriesActions.addexitSuccess(response.data));
+  } else {
+    yield put(InventoriesActions.addexitFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
