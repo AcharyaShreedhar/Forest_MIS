@@ -398,6 +398,11 @@ const create = (baseURL = Config.API_URL) => {
   const postInventoriesExitAddNew = (payload) =>
     api.post(`exit`, payload);
 
+  //update
+  const postInventoriesExitUpdate = (payload, exitId) =>
+  api.put(`exit/${exitId}`, payload);
+
+
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
@@ -576,6 +581,7 @@ const create = (baseURL = Config.API_URL) => {
     getExitList,
     getExit,
     postInventoriesExitAddNew,
+    postInventoriesExitUpdate,
     //karmacharibiabran
     getEmployeesList,
     getEmployees,
