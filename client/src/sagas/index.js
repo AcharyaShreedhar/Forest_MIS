@@ -27,6 +27,7 @@ import{
 //------------------------banbibaran
 import {
   fetchallconsumergroupdetailsRequest,
+  fetchconsumergroupdetailsRequest,
   fetchallsamudayikbanbibaranRequest,
   fetchsamudayikbanbibaranRequest,
   addsamudayikbanbibaranRequest,
@@ -356,6 +357,11 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST,
       fetchallconsumergroupdetailsRequest,
+      api
+    ),
+    takeLatest(
+      BanbibaranTypes.FETCHCONSUMERGROUPDETAILS_REQUEST,
+      fetchconsumergroupdetailsRequest,
       api
     ),
 
