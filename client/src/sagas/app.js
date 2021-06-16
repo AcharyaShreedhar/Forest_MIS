@@ -84,6 +84,16 @@ export function* fetchdistrictsRequest(api, action) {
   }
 }
 
+// Departments
+export function* fetchalldepartmentsRequest(api, action) {
+  const response = yield api.getDepartmentsList();
+  if (response.ok) {
+    yield put(AppActions.fetchalldepartmentsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchalldepartmentsFailure());
+  }
+}
+
 // Users
 export function* fetchallusersRequest(api, action) {
   const response = yield api.getUsersList();
