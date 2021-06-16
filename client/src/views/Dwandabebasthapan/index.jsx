@@ -16,7 +16,6 @@ export class Dwandabebasthapan extends Component {
     return (
       <Switch>
         {dwandabebasthapanRoutes.map((prop, key) => {
-          console.log("activities routes", activitiesRoutes);
           if (prop.redirect && authenticated) {
             return <Redirect exact from={prop.path} to={prop.to} key={key} />;
           }
@@ -59,8 +58,7 @@ Dwandabebasthapan.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  //   role: state.app.app_role_id,
-  //   authenticated: !isEmpty(state.app.token),
+  authenticated: !isEmpty(state.app.token),
 });
 
 const mapDispatchToProps = (dispatch) => ({
