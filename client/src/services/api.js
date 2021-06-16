@@ -335,6 +335,10 @@ const create = (baseURL = Config.API_URL) => {
    const postKarmacharidarbandiUpdate = (payload, karmacharidarbandiId) =>
    api.put(`karmachariDarbandi/${karmacharidarbandiId}`, payload);
 
+   //delete
+  const postKarmacharidarbandiDelete = (karmacharidarbandiId) =>
+  api.delete(`karmachariDarbandi/${karmacharidarbandiId}`);
+
 
   //------plotbibaran
   const getPlotbibaranList = () => api.get("plot");
@@ -564,6 +568,7 @@ const create = (baseURL = Config.API_URL) => {
     getKarmacharidarbandi,
     postKarmacharidarbandiAddNew,
     postKarmacharidarbandiUpdate,
+    postKarmacharidarbandiDelete,
     //-----plotbibaran
     getPlotbibaranList,
     getPlotbibaran,
