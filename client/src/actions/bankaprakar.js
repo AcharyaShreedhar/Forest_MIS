@@ -112,6 +112,11 @@ const { Types, Creators } = createActions({
   deletenabikarankaryayojanaSuccess: ["response"],
   deletenabikarankaryayojanaFailure: null,
 
+  //-----ConsumergroupDetails
+  fetchallconsumergroupdetailsRequest: ["payload"],
+  fetchallconsumergroupdetailsSuccess: ["response"],
+  fetchallconsumergroupdetailsFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
