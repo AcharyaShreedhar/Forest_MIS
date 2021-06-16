@@ -250,10 +250,10 @@ Bankaprakar.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  samudayikbanbibaranDataList: state.banbibaran.allsamudayikbanbibaranData,
-  dharmikbanbibaranDataList: state.banbibaran.alldharmikbanbibaranData,
-  kabuliyatibanbibaranDataList: state.banbibaran.allkabuliyatibanbibaranData,
-  nijibanbibaranDataList: state.banbibaran.allnijibanbibaranData,
+  samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
+  dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
+  kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
+  nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
