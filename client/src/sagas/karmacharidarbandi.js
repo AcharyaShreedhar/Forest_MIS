@@ -78,3 +78,28 @@ export function* updatekarmacharidarbandiRequest(api, action) {
     });
   }
 }
+
+
+// Delete karmacharidarbandi
+export function* deletekarmacharidarbandiRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharidarbandiDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक कर्मचारी दरबन्दी हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkarmacharidarbandiRequest(api);
+    yield put(
+      KarmacharidarbandiActions.deletekarmacharidarbandiSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharidarbandiActions.deletekarmacharidarbandiFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
