@@ -23,6 +23,7 @@ import{
   fetchkarmacharidarbandiRequest,
   addkarmacharidarbandiRequest,
   updatekarmacharidarbandiRequest,
+  deletekarmacharidarbandiRequest,
   } from "./karmacharidarbandi"; 
 
 
@@ -502,6 +503,12 @@ export default function* root() {
     takeLatest(
       KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_REQUEST,
       updatekarmacharidarbandiRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_REQUEST,
+      deletekarmacharidarbandiRequest,
       api
     ),
 
