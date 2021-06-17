@@ -40,7 +40,7 @@ class Lilam extends Component {
       case "delete": {
         switch (path) {
           case "banpaidawarlilam": {
-            this.props.deleteBiruwautpadan(item.lilam_id);
+            this.props.deleteBanpaidawarlilam(item.lilam_id);
             break;
           }
           default:
