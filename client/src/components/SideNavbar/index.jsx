@@ -104,32 +104,32 @@ export class SideNavbar extends Component {
             </NavIcon>
             <NavText> बन बिबरण </NavText>
             <NavItem
-              eventKey="banbibaran/forestfirelist"
-              onClick={() => history.push("/banbibaran/forestfirelist")}
+              eventKey="banbibaran/bandadelolist"
+              onClick={() => history.push("/banbibaran/bandadelolist")}
             >
               <NavText>बन डडेलो</NavText>
             </NavItem>
             <NavItem
-              eventKey="banbibaran/atikramanlist"
-              onClick={() => history.push("/banbibaran/atikramanlist")}
+              eventKey="banbibaran/banxetraatikramanlist"
+              onClick={() => history.push("/banbibaran/banxetraatikramanlist")}
             >
               <NavText>बन क्षेत्र अतिक्रमण</NavText>
             </NavItem>
             <NavItem
-              eventKey="banbibaran/muddaanusandhanlist"
-              onClick={() => history.push("/banbibaran/muddaanusandhanlist")}
+              eventKey="banbibaran/muddaanusandhandayarilist"
+              onClick={() => history.push("/banbibaran/muddaanusandhandayarilist")}
             >
               <NavText> मुद्दा अनुसन्धान तथा दायरी</NavText>
             </NavItem>
             <NavItem
-              eventKey="banbibaran/anyaprayojanlist"
-              onClick={() => history.push("/banbibaran/anyaprayojanlist")}
+              eventKey="banbibaran/banxetraanyaprayojanlist"
+              onClick={() => history.push("/banbibaran/banxetraanyaprayojanlist")}
             >
               <NavText> बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि</NavText>
             </NavItem>
             <NavItem
               eventKey="banbibaran/seedgardernplotslist"
-              onClick={() => history.push("/banbibaran/seedgardernplotslist")}
+              onClick={() => history.push("/banbibaran/seedgardenplotslist")}
             >
               <NavText> बन बीउ बगैच/समबर्धन प्लटहरु</NavText>
             </NavItem>
