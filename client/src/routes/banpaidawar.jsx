@@ -41,6 +41,14 @@ const banpaidawarRoutes = [
     auth: true,
     component: Osarpasar,
   },
+
+  {
+    path: "/banpaidawar/osarpasaredit/:id",
+    title: "Osarpasar",
+    name: "Osarpasar",
+    auth: true,
+    component: Osarpasar,
+  },
  
 ];
 
