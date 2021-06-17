@@ -473,13 +473,13 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_FAILURE]: deletenabikarankaryayojanaFailure,
 
   //------Consumergroup Details
-  [BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
-  [BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_SUCCESS]: fetchallconsumergroupdetailsSuccess,
-  [BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_FAILURE]: fetchallconsumergroupdetailsFailure,
+  [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
+  [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_SUCCESS]: fetchallconsumergroupdetailsSuccess,
+  [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_FAILURE]: fetchallconsumergroupdetailsFailure,
 
-  [BanbibaranTypes.FETCHCONSUMERGROUPDETAILS_REQUEST]: fetchconsumergroupdetailsRequest,
-  [BanbibaranTypes.FETCHCONSUMERGROUPDETAILS_SUCCESS]: fetchconsumergroupdetailsSuccess,
-  [BanbibaranTypes.FETCHCONSUMERGROUPDETAILS_FAILURE]: fetchconsumergroupdetailsFailure,
+  [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_REQUEST]: fetchconsumergroupdetailsRequest,
+  [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_SUCCESS]: fetchconsumergroupdetailsSuccess,
+  [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_FAILURE]: fetchconsumergroupdetailsFailure,
 
 
   [BankaprakarTypes.LOCATIONS_REQUEST]: locationsRequest,
