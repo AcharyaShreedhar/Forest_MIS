@@ -26,6 +26,8 @@ import{
 
 //------------------------banbibaran
 import {
+  fetchallconsumergroupdetailsRequest,
+  fetchconsumergroupdetailsRequest,
   fetchallsamudayikbanbibaranRequest,
   fetchsamudayikbanbibaranRequest,
   addsamudayikbanbibaranRequest,
@@ -350,6 +352,16 @@ export default function* root() {
     takeLatest(
       BankaprakarTypes.DELETENABIKARANKARYAYOJANA_REQUEST,
       deletenabikarankaryayojanaRequest,
+      api
+    ),
+    takeLatest(
+      BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST,
+      fetchallconsumergroupdetailsRequest,
+      api
+    ),
+    takeLatest(
+      BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_REQUEST,
+      fetchconsumergroupdetailsRequest,
       api
     ),
 
@@ -886,6 +898,7 @@ export default function* root() {
       fetchalllevelRequest,
       api
     ),
+    
     
     takeLatest(
       KarmacharibibaranTypes.FETCHLEVEL_REQUEST,

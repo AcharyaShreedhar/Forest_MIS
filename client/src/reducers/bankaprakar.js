@@ -329,6 +329,35 @@ state.merge({
 const deletenabikarankaryayojanaFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+//---Consumergroupsdetails
+const fetchallconsumergroupdetailsRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallconsumergroupdetailsSuccess = (state, action) => {
+  console.log("reducer", action.response);
+  return state.merge({
+    ...state,
+    status: "done",
+    allconsumergroupdetailsData: action.response,
+  });
+};
+const fetchallconsumergroupdetailsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchconsumergroupdetailsRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+
+const fetchconsumergroupdetailsSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    consumergroupdetailsData: action.response,
+  });
+};
+const fetchconsumergroupdetailsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 
 const locationsRequest = (state, action) => {
@@ -442,6 +471,15 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_REQUEST]: deletenabikarankaryayojanaRequest,
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_SUCCESS]: deletenabikarankaryayojanaSuccess,
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_FAILURE]: deletenabikarankaryayojanaFailure,
+
+  //------Consumergroup Details
+  [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
+  [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_SUCCESS]: fetchallconsumergroupdetailsSuccess,
+  [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_FAILURE]: fetchallconsumergroupdetailsFailure,
+
+  [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_REQUEST]: fetchconsumergroupdetailsRequest,
+  [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_SUCCESS]: fetchconsumergroupdetailsSuccess,
+  [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_FAILURE]: fetchconsumergroupdetailsFailure,
 
 
   [BankaprakarTypes.LOCATIONS_REQUEST]: locationsRequest,

@@ -459,6 +459,10 @@ const create = (baseURL = Config.API_URL) => {
   api.delete(`posts/${postId}`);
 
 
+  //-------Consumer Group Details
+  const getConsumergroupDetailsList = () => api.get("ConsumerGroupDetails");
+  const getConsumergroupDetails = (consumergroupDetailsId) => api.get(`ConsumerGroupDetails/${consumergroupDetailsId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -609,6 +613,9 @@ const create = (baseURL = Config.API_URL) => {
     getUsersList,
     getUsers,
 
+    //ConsumerGroupDetails
+    getConsumergroupDetailsList,
+    getConsumergroupDetails,
   };
 };
 export default {

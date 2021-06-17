@@ -31,7 +31,7 @@ export function* fetchsamudayikbanbibaranRequest(api, action) {
 export function* addsamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranSamudayikbanAddNew(
+  const response = yield api.postBankaprakarSamudayikbanAddNew(
     payload.samudayikban.data
   );
 
@@ -57,7 +57,7 @@ export function* addsamudayikbanbibaranRequest(api, action) {
 export function* updatesamudayikbanbibaranRequest(api, action) {
   const { payload, samudayikbanbibaranId } = action;
 
-  const response = yield api.postBanbibaranSamudayikbanUpdate(
+  const response = yield api.postBankaprakarSamudayikbanUpdate(
     payload.samudayikban.data,
     samudayikbanbibaranId
   );
@@ -86,7 +86,7 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
 export function* deletesamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranSamudayikbanDelete(payload);
+  const response = yield api.postBankaprakarSamudayikbanDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!!", {
@@ -134,7 +134,7 @@ export function* fetchdharmikbanbibaranRequest(api, action) {
 export function* adddharmikbanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranDharmikbanAddNew(
+  const response = yield api.postBankaprakarDharmikbanAddNew(
     payload.dharmikban.data
   );
 
@@ -160,7 +160,7 @@ export function* adddharmikbanbibaranRequest(api, action) {
 export function* updatedharmikbanbibaranRequest(api, action) {
   const { payload, dharmikbanbibaranId } = action;
 
-  const response = yield api.postBanbibaranDharmikbanUpdate(
+  const response = yield api.postBankaprakarDharmikbanUpdate(
     payload.dharmikban.data,
     dharmikbanbibaranId
   );
@@ -186,7 +186,7 @@ export function* updatedharmikbanbibaranRequest(api, action) {
 export function* deletedharmikbanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranDharmikbanDelete(payload);
+  const response = yield api.postBankaprakarDharmikbanDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक धार्मिक वन हटाईयो !!!!!", {
@@ -229,7 +229,7 @@ export function* fetchnijibanbibaranRequest(api, action) {
 export function* addnijibanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranNijibanAddNew(payload.nijiban.data);
+  const response = yield api.postBankaprakarNijibanAddNew(payload.nijiban.data);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक निजी वन प्रविष्ट भयो !!!!!", {
@@ -253,7 +253,7 @@ export function* addnijibanbibaranRequest(api, action) {
 export function* updatenijibanbibaranRequest(api, action) {
   const { payload, nijibanbibaranId } = action;
 
-  const response = yield api.postBanbibaranNijibanUpdate(
+  const response = yield api.postBankaprakarNijibanUpdate(
     payload.nijiban.data,
     nijibanbibaranId
   );
@@ -280,7 +280,7 @@ export function* updatenijibanbibaranRequest(api, action) {
 export function* deletenijibanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranNijibanDelete(payload);
+  const response = yield api.postBankaprakarNijibanDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक निजी वन हटाईयो !!!!!", {
@@ -327,7 +327,7 @@ export function* fetchkabuliyatibanbibaranRequest(api, action) {
 export function* addkabuliyatibanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranKabuliyatibanAddNew(
+  const response = yield api.postBankaprakarKabuliyatibanAddNew(
     payload.kabuliyatiban.data
   );
 
@@ -353,7 +353,7 @@ export function* addkabuliyatibanbibaranRequest(api, action) {
 export function* updatekabuliyatibanbibaranRequest(api, action) {
   const { payload, kabuliyatibanbibaranId } = action;
 
-  const response = yield api.postBanbibaranKabuliyatibanUpdate(
+  const response = yield api.postBankaprakarKabuliyatibanUpdate(
     payload.kabuliyatiban.data,
     kabuliyatibanbibaranId
   );
@@ -382,7 +382,7 @@ export function* updatekabuliyatibanbibaranRequest(api, action) {
 export function* deletekabuliyatibanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranKabuliyatibanDelete(payload);
+  const response = yield api.postBankaprakarKabuliyatibanDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक कबुलियती वन हटाईयो !!!!!", {
@@ -432,7 +432,7 @@ export function* fetchnabikarankaryayojanaRequest(api, action) {
 export function* addnabikarankaryayojanaRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranNabikarankaryayojanaAddNew(
+  const response = yield api.postBankaprakarNabikarankaryayojanaAddNew(
     payload.nabikarankaryayojana.data
   );
 
@@ -458,7 +458,7 @@ export function* addnabikarankaryayojanaRequest(api, action) {
 export function* updatenabikarankaryayojanaRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranNabikarankaryayojanaUpdate(
+  const response = yield api.postBankaprakarNabikarankaryayojanaUpdate(
     payload.nabikarankaryayojana.data,
     payload.id
   );
@@ -487,7 +487,7 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
 export function* deletenabikarankaryayojanaRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanbibaranNabikarankaryayojanaDelete(payload);
+  const response = yield api.postBankaprakarNabikarankaryayojanaDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक नविकरण कार्ययोजना हटाईयो !!!!!", {
@@ -505,5 +505,29 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       }
     );
+  }
+}
+
+// Consumer Group Details
+export function* fetchallconsumergroupdetailsRequest(api, action) {
+  const response = yield api.getConsumergroupDetailsList();
+  if (response.ok) {
+    yield put(
+      BankaprakarActions.fetchallconsumergroupdetailsSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.fetchallconsumergroupdetailsFailure());
+  }
+}
+
+export function* fetchconsumergroupdetailsRequest(api, action) {
+  const consumergroupDetailsId = action.payload;
+
+  const response = yield api.getConsumergroupDetails(consumergroupDetailsId);
+
+  if (response.ok) {
+    yield put(BankaprakarActions.fetchconsumergroupdetailsSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.fetchconsumergroupdetailsFailure());
   }
 }
