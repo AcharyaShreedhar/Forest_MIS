@@ -19,6 +19,14 @@ const banpaidawarRoutes = [
   },
 
   {
+    path: "/banpaidawar/lilamedit/:id",
+    title: "Lilam",
+    name: "Lilam",
+    auth: true,
+    component: Lilam,
+  },
+
+  {
     path: "/banpaidawar/osarpasarlist",
     title: "Osarpasar",
     name: "osarpasar",
