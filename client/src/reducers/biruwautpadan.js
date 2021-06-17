@@ -72,6 +72,67 @@ const deletebiruwautpadanFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+const fetchallactivitiesinfoRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallactivitiesinfoSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allactivitiesinfoData: action.response,
+  });
+};
+const fetchallactivitiesinfoFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchactivitiesinfoRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+
+  const fetchactivitiesinfoSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    activitiesinfoData: action.response,
+  });
+};
+const fetchactivitiesinfoFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add activitiesinfo
+const addactivitiesinfoRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addactivitiesinfoSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addactivitiesinfoFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+  //Update activitiesinfo
+const updateactivitiesinfoRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateactivitiesinfoSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateactivitiesinfoFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+// Delete activitiesinfo
+const deleteactivitiesinfoRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteactivitiesinfoSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteactivitiesinfoFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -104,6 +165,26 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_REQUEST]: deletebiruwautpadanRequest,
   [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_SUCCESS]: deletebiruwautpadanSuccess,
   [BiruwautpadanTypes.DELETEBIRUWAUTPADAN_FAILURE]: deletebiruwautpadanFailure,
+
+  [BiruwautpadanTypes.FETCHALLACTIVITIESINFO_REQUEST]: fetchallactivitiesinfoRequest,
+  [BiruwautpadanTypes.FETCHALLACTIVITIESINFO_SUCCESS]: fetchallactivitiesinfoSuccess,
+  [BiruwautpadanTypes.FETCHALLACTIVITIESINFO_FAILURE]: fetchallactivitiesinfoFailure,
+
+  [BiruwautpadanTypes.FETCHACTIVITIESINFO_REQUEST]: fetchactivitiesinfoRequest,
+  [BiruwautpadanTypes.FETCHACTIVITIESINFO_SUCCESS]: fetchactivitiesinfoSuccess,
+  [BiruwautpadanTypes.FETCHACTIVITIESINFO_FAILURE]: fetchactivitiesinfoFailure,
+
+  [BiruwautpadanTypes.ADDACTIVITIESINFO_REQUEST]: addactivitiesinfoRequest,
+  [BiruwautpadanTypes.ADDACTIVITIESINFO_SUCCESS]: addactivitiesinfoSuccess,
+  [BiruwautpadanTypes.ADDACTIVITIESINFO_FAILURE]: addactivitiesinfoFailure,
+
+  [BiruwautpadanTypes.UPDATEACTIVITIESINFO_REQUEST]: updateactivitiesinfoRequest,
+  [BiruwautpadanTypes.UPDATEACTIVITIESINFO_SUCCESS]: updateactivitiesinfoSuccess,
+  [BiruwautpadanTypes.UPDATEACTIVITIESINFO_FAILURE]: updateactivitiesinfoFailure,
+
+  [BiruwautpadanTypes.DELETEACTIVITIESINFO_REQUEST]: deleteactivitiesinfoRequest,
+  [BiruwautpadanTypes.DELETEACTIVITIESINFO_SUCCESS]: deleteactivitiesinfoSuccess,
+  [BiruwautpadanTypes.DELETEACTIVITIESINFO_FAILURE]: deleteactivitiesinfoFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,

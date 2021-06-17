@@ -2,27 +2,26 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { isEmpty } from "ramda";  
 import { NotFound } from "../../components";
-import activitiesRoutes from "../../routes/activities";
-import BiruwautpadanActions from "../../actions/biruwautpadan";
+import { isEmpty } from "ramda";
+import banpaidawarRoutes from "../../routes/banpaidawar";
+import BanpaidawarActions from "../../actions/banpaidawar";
 
- export class Activities extends Component {
+export class Banpaidawar extends Component {
   componentDidMount() {
-    this.props.fetchallBiruwautpadan();
-    this.props.fetchallYearlyactivities();
+    this.props.fetchallBanpaidawarlilam();
   }
 
   render() {
+
     const { authenticated } = this.props;
     return (
       <Switch>
-        {activitiesRoutes.map((prop, key) => {
-            console.log('activities routes',activitiesRoutes)
+        {banpaidawarRoutes.map((prop, key) => {
           if (prop.redirect && authenticated) {
             return <Redirect exact from={prop.path} to={prop.to} key={key} />;
           }
-          if (prop.redirect && !authenticated){
+          if (prop.redirect && authenticated){
           return (
             <Route
               exact
@@ -32,7 +31,7 @@ import BiruwautpadanActions from "../../actions/biruwautpadan";
             />
           );
         }
-        if (!prop.redirect && prop.auth && !authenticated){
+        if(!prop.redirect && prop.auth && !authenticated){
           return <Redirect exact from = { prop.path} to="/" key={key} />;
         }
         return (
@@ -43,19 +42,20 @@ import BiruwautpadanActions from "../../actions/biruwautpadan";
               key={key}
           />
         );
-        })}
+        }
+        )}
         <Route path="*" exact component={NotFound} />
       </Switch>
     );
   }
 }
 
-Activities.propTypes = {
+Banpaidawar.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   history: PropTypes.any,
 };
 
-Activities.defaultProps = {
+Banpaidawar.defaultProps = {
   authenticated: false,
   history: () => {},
 };
@@ -65,13 +65,9 @@ const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
 });
 
-
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBiruwautpadan: () =>
-    dispatch(BiruwautpadanActions.fetchallbiruwautpadanRequest()),
-  
-  fetchallYearlyactivities: () =>
-  dispatch(BiruwautpadanActions.fetchallactivitiesinfoRequest()),
+  fetchallBanpaidawarlilam: () =>
+  dispatch(BanpaidawarActions.fetchallbanpaidawarlilamRequest()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Activities);
+export default connect(mapStateToProps, mapDispatchToProps)(Banpaidawar);

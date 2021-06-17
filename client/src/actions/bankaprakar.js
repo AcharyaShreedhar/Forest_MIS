@@ -117,5 +117,5 @@ const { Types, Creators } = createActions({
   clearRequest: null,
 });
 
-export const BanbibaranTypes = Types;
+export const BankaprakarTypes = Types;
 export default Creators;

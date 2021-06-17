@@ -174,7 +174,7 @@ const addlevelFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 
-  //Update employeeshistory
+  //Update Level
 const updatelevelRequest = (state, action) =>
 state.merge({ ...state, status: "pending" });
 const updatelevelSuccess = (state, action) =>
@@ -184,6 +184,18 @@ state.merge({
 });
 const updatelevelFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
+
+
+//Delete Level
+const deletelevelRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletelevelSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletelevelFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 
 const fetchallpostRequest = (state, action) =>
@@ -212,6 +224,40 @@ const fetchpostSuccess = (state, action) => {
 const fetchpostFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+//Add Post
+const addpostRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addpostSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addpostFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+  //Update post
+const updatepostRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatepostSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatepostFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete Post
+const deletepostRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletepostSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletepostFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 
 const locationsRequest = (state, action) => {
@@ -284,6 +330,10 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.UPDATELEVEL_SUCCESS]: updatelevelSuccess,
     [KarmacharibibaranTypes.UPDATELEVEL_FAILURE]: updatelevelFailure,
 
+    [KarmacharibibaranTypes.DELETELEVEL_REQUEST]: deletelevelRequest,
+    [KarmacharibibaranTypes.DELETELEVEL_SUCCESS]:  deletelevelSuccess,
+    [KarmacharibibaranTypes.DELETELEVEL_FAILURE]: deletelevelFailure,
+
     [KarmacharibibaranTypes.FETCHALLPOST_REQUEST]: fetchallpostRequest,
     [KarmacharibibaranTypes.FETCHALLPOST_SUCCESS]: fetchallpostSuccess,
     [KarmacharibibaranTypes.FETCHALLPOST_FAILURE]: fetchallpostFailure,
@@ -292,8 +342,19 @@ const locationsRequest = (state, action) => {
     [KarmacharibibaranTypes.FETCHPOST_SUCCESS]: fetchpostSuccess,
     [KarmacharibibaranTypes.FETCHPOST_FAILURE]: fetchpostFailure,
 
+    [KarmacharibibaranTypes.ADDPOST_REQUEST]: addpostRequest,
+    [KarmacharibibaranTypes.ADDPOST_SUCCESS]: addpostSuccess,
+    [KarmacharibibaranTypes.ADDPOST_FAILURE]: addpostFailure,
+
+    [KarmacharibibaranTypes.UPDATEPOST_REQUEST]: updatepostRequest,
+    [KarmacharibibaranTypes.UPDATEPOST_SUCCESS]: updatepostSuccess,
+    [KarmacharibibaranTypes.UPDATEPOST_FAILURE]: updatepostFailure,
+
+    [KarmacharibibaranTypes.DELETEPOST_REQUEST]: deletepostRequest,
+    [KarmacharibibaranTypes.DELETEPOST_SUCCESS]: deletepostSuccess,
+    [KarmacharibibaranTypes.DELETEPOST_FAILURE]: deletepostFailure,
+
    
-    
     [KarmacharibibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
     [KarmacharibibaranTypes.CLEAR_REQUEST]: clearRequest,
   });

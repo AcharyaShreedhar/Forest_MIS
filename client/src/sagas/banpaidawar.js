@@ -143,7 +143,7 @@ export function* addbanpaidawarlilamRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarlilamRequest(api);
-    yield call(history.push, "/forests/banpaidawarlilamlist");
+    yield call(history.push, "/banpaidawar/lilamlist");
     yield put(BanpaidawarActions.addbanpaidawarlilamSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.addbanpaidawarlilamFailure());
@@ -168,7 +168,7 @@ export function* updatebanpaidawarlilamRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarlilamRequest(api);
-    yield call(history.push, "/forests/banpaidawarlilamlist");
+    yield call(history.push, "/banpaidawar/lilamlist");
     yield put(
       BanpaidawarActions.updatebanpaidawarlilamSuccess(response.data)
     );

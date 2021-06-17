@@ -1,7 +1,7 @@
 import { takeEvery, takeLatest, all } from "redux-saga/effects";
 import API from "../services/api";
 import { AppTypes } from "../actions/app";
-import { BanbibaranTypes } from "../actions/banbibaran";
+import { BankaprakarTypes } from "../actions/bankaprakar";
 import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
@@ -15,7 +15,7 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes }  from "../actions/inventories";
 import { KarmacharibibaranTypes} from "../actions/karmacharibibaran";
 //------------------app
-import { fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, fetchprovincesRequest, loginRequest, logoutRequest} from "./app";
+import { fetchalldistrictsRequest, fetchdistrictsRequest, fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, fetchprovincesRequest, fetchallusersRequest, fetchusersRequest, loginRequest, logoutRequest} from "./app";
 
 //karmacharidarbandi---------------------
 import{ 
@@ -51,7 +51,7 @@ import {
   addnabikarankaryayojanaRequest,
   updatenabikarankaryayojanaRequest,
   deletenabikarankaryayojanaRequest,
-} from "./banbibaran";
+} from "./bankaprakar";
 
 //------------------------biruwautpadan
 import {
@@ -60,6 +60,11 @@ import {
   addbiruwautpadanRequest,
   updatebiruwautpadanRequest,
   deletebiruwautpadanRequest,
+  fetchallactivitiesinfoRequest,
+  fetchactivitiesinfoRequest,
+  addactivitiesinfoRequest,
+  updateactivitiesinfoRequest,
+  deleteactivitiesinfoRequest,
 } from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
@@ -150,8 +155,14 @@ import {
  import{
    fetchallinventoriesRequest,
    fetchinventoriesRequest,
+   addinventoriesRequest,
+   updateinventoriesRequest,
+   deleteinventoriesRequest,
    fetchallentryRequest,
    fetchentryRequest,
+   addentryRequest,
+   updateentryRequest,
+   deleteentryRequest,
    fetchallexitRequest,
    fetchexitRequest,
  } from "./inventories";
@@ -173,8 +184,12 @@ import {
    fetchlevelRequest,
    addlevelRequest,
    updatelevelRequest,
+   deletelevelRequest,
    fetchallpostRequest,
    fetchpostRequest,
+   addpostRequest,
+   updatepostRequest,
+   deletepostRequest,
   
  } from "./karmacharibibaran";
 
@@ -190,150 +205,150 @@ export default function* root() {
 
     //----------------------------banbibaran
     takeLatest(
-      BanbibaranTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST,
       fetchallsamudayikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHSAMUDAYIKBANBIBARAN_REQUEST,
       fetchsamudayikbanbibaranRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.ADDSAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDSAMUDAYIKBANBIBARAN_REQUEST,
       addsamudayikbanbibaranRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.UPDATESAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATESAMUDAYIKBANBIBARAN_REQUEST,
       updatesamudayikbanbibaranRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.DELETESAMUDAYIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETESAMUDAYIKBANBIBARAN_REQUEST,
       deletesamudayikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLDHARMIKBANBIBARAN_REQUEST,
       fetchalldharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHDHARMIKBANBIBARAN_REQUEST,
       fetchdharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDDHARMIKBANBIBARAN_REQUEST,
       adddharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.UPDATEDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATEDHARMIKBANBIBARAN_REQUEST,
       updatedharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.DELETEDHARMIKBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETEDHARMIKBANBIBARAN_REQUEST,
       deletedharmikbanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLNIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLNIJIBANBIBARAN_REQUEST,
       fetchallnijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHNIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHNIJIBANBIBARAN_REQUEST,
       fetchnijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDNIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDNIJIBANBIBARAN_REQUEST,
       addnijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.UPDATENIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATENIJIBANBIBARAN_REQUEST,
       updatenijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.DELETENIJIBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETENIJIBANBIBARAN_REQUEST,
       deletenijibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHALLKABULIYATIBANBIBARAN_REQUEST,
       fetchallkabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.FETCHKABULIYATIBANBIBARAN_REQUEST,
       fetchkabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.ADDKABULIYATIBANBIBARAN_REQUEST,
       addkabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.UPDATEKABULIYATIBANBIBARAN_REQUEST,
       updatekabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
+      BankaprakarTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
       deletekabuliyatibanbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST,
       fetchallnabikarankaryayojanaRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.FETCHNABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.FETCHNABIKARANKARYAYOJANA_REQUEST,
       fetchnabikarankaryayojanaRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.ADDNABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.ADDNABIKARANKARYAYOJANA_REQUEST,
       addnabikarankaryayojanaRequest,
       api
     ),
 
 
     takeLatest(
-      BanbibaranTypes.UPDATENABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.UPDATENABIKARANKARYAYOJANA_REQUEST,
       updatenabikarankaryayojanaRequest,
       api
     ),
 
 
     takeLatest(
-      BanbibaranTypes.DELETENABIKARANKARYAYOJANA_REQUEST,
+      BankaprakarTypes.DELETENABIKARANKARYAYOJANA_REQUEST,
       deletenabikarankaryayojanaRequest,
       api
     ),
@@ -367,6 +382,36 @@ export default function* root() {
     takeLatest(
       BiruwautpadanTypes.DELETEBIRUWAUTPADAN_REQUEST,
       deletebiruwautpadanRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.FETCHALLACTIVITIESINFO_REQUEST,
+      fetchallactivitiesinfoRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.FETCHACTIVITIESINFO_REQUEST,
+      fetchactivitiesinfoRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.ADDACTIVITIESINFO_REQUEST,
+      addactivitiesinfoRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.UPDATEACTIVITIESINFO_REQUEST,
+      updateactivitiesinfoRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.DELETEACTIVITIESINFO_REQUEST,
+      deleteactivitiesinfoRequest,
       api
     ),
 
@@ -709,7 +754,25 @@ export default function* root() {
       fetchinventoriesRequest,
       api
     ),
+
+    takeLatest(
+      InventoriesTypes.ADDINVENTORIES_REQUEST,
+      addinventoriesRequest,
+      api
+    ),
+
+    takeLatest(
+      InventoriesTypes.UPDATEINVENTORIES_REQUEST,
+      updateinventoriesRequest,
+      api
+    ),
     
+    takeLatest(
+      InventoriesTypes.DELETEINVENTORIES_REQUEST,
+      deleteinventoriesRequest,
+      api
+    ),
+
     takeLatest(
       InventoriesTypes.FETCHALLENTRY_REQUEST,
       fetchallentryRequest,
@@ -719,6 +782,24 @@ export default function* root() {
     takeLatest(
       InventoriesTypes.FETCHENTRY_REQUEST,
       fetchentryRequest,
+      api
+    ), 
+   
+    takeLatest(
+      InventoriesTypes.ADDENTRY_REQUEST,
+      addentryRequest,
+      api
+    ), 
+
+    takeLatest(
+      InventoriesTypes.UPDATEENTRY_REQUEST,
+      updateentryRequest,
+      api
+    ), 
+
+    takeLatest(
+      InventoriesTypes.DELETEENTRY_REQUEST,
+      deleteentryRequest,
       api
     ), 
 
@@ -824,6 +905,12 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      KarmacharibibaranTypes.DELETELEVEL_REQUEST,
+      deletelevelRequest,
+      api
+    ),
+
 
     takeLatest(
       KarmacharibibaranTypes.FETCHALLPOST_REQUEST,
@@ -836,6 +923,26 @@ export default function* root() {
       fetchpostRequest,
       api
     ),
+
+    takeLatest(
+      KarmacharibibaranTypes.ADDPOST_REQUEST,
+      addpostRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.UPDATEPOST_REQUEST,
+      updatepostRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharibibaranTypes.DELETEPOST_REQUEST,
+      deletepostRequest,
+      api
+    ),
+
+
 // Municipalities
     takeLatest(
       AppTypes.FETCHALLMUNICIPALITIES_REQUEST,
@@ -860,6 +967,32 @@ export default function* root() {
     takeLatest(
       AppTypes.FETCHPROVINCES_REQUEST,
       fetchprovincesRequest,
+      api
+    ),
+
+    //--------Districts
+    takeLatest(
+      AppTypes.FETCHALLDISTRICTS_REQUEST,
+      fetchalldistrictsRequest,
+      api
+    ),
+
+    takeLatest(
+      AppTypes.FETCHDISTRICTS_REQUEST,
+      fetchdistrictsRequest,
+      api
+    ),
+
+    //--------Users
+    takeLatest(
+      AppTypes.FETCHALLUSERS_REQUEST,
+      fetchallusersRequest,
+      api
+    ),
+
+    takeLatest(
+      AppTypes.FETCHUSERS_REQUEST,
+      fetchusersRequest,
       api
     ),
 

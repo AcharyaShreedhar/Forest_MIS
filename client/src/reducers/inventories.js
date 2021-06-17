@@ -34,6 +34,41 @@ const fetchinventoriesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add inventories
+const addinventoriesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addinventoriesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addinventoriesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+  //Update inventories
+const updateinventoriesRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateinventoriesSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateinventoriesFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+//Delete inventories
+const deleteinventoriesRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteinventoriesSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteinventoriesFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+
 const fetchallentryRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallentrySuccess = (state, action) => {
@@ -60,6 +95,40 @@ const fetchentrySuccess = (state, action) => {
 const fetchentryFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+//Add entry
+const addentryRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addentrySuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addentryFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update entry
+const updateentryRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateentrySuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateentryFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+//Delete entry
+const deleteentryRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteentrySuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteentryFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
 
 const fetchallexitRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -107,6 +176,18 @@ export const reducer = createReducer(initialState, {
   [InventoriesTypes.FETCHINVENTORIES_SUCCESS]: fetchinventoriesSuccess,
   [InventoriesTypes.FETCHINVENTORIES_FAILURE]: fetchinventoriesFailure,
 
+  [InventoriesTypes.ADDINVENTORIES_REQUEST]: addinventoriesRequest,
+  [InventoriesTypes.ADDINVENTORIES_SUCCESS]: addinventoriesSuccess,
+  [InventoriesTypes.ADDINVENTORIES_FAILURE]: addinventoriesFailure,
+
+  [InventoriesTypes.UPDATEINVENTORIES_REQUEST]: updateinventoriesRequest,
+  [InventoriesTypes.UPDATEINVENTORIES_SUCCESS]: updateinventoriesSuccess,
+  [InventoriesTypes.UPDATEINVENTORIES_FAILURE]: updateinventoriesFailure,
+
+  [InventoriesTypes.DELETEINVENTORIES_REQUEST]: deleteinventoriesRequest,
+  [InventoriesTypes.DELETEINVENTORIES_SUCCESS]: deleteinventoriesSuccess,
+  [InventoriesTypes.DELETEINVENTORIES_FAILURE]: deleteinventoriesFailure,
+
   [InventoriesTypes.FETCHALLENTRY_REQUEST]: fetchallentryRequest,
   [InventoriesTypes.FETCHALLENTRY_SUCCESS]: fetchallentrySuccess,
   [InventoriesTypes.FETCHALLENTRY_FAILURE]: fetchallentryFailure,
@@ -114,6 +195,18 @@ export const reducer = createReducer(initialState, {
   [InventoriesTypes.FETCHENTRY_REQUEST]: fetchentryRequest,
   [InventoriesTypes.FETCHENTRY_SUCCESS]: fetchentrySuccess,
   [InventoriesTypes.FETCHENTRY_FAILURE]: fetchentryFailure,
+
+  [InventoriesTypes.ADDENTRY_REQUEST]: addentryRequest,
+  [InventoriesTypes.ADDENTRY_SUCCESS]: addentrySuccess,
+  [InventoriesTypes.ADDENTRY_FAILURE]: addentryFailure,
+
+  [InventoriesTypes.UPDATEENTRY_REQUEST]: updateentryRequest,
+  [InventoriesTypes.UPDATEENTRY_SUCCESS]: updateentrySuccess,
+  [InventoriesTypes.UPDATEENTRY_FAILURE]: updateentryFailure,
+
+  [InventoriesTypes.DELETEENTRY_REQUEST]: deleteentryRequest,
+  [InventoriesTypes.DELETEENTRY_SUCCESS]: deleteentrySuccess,
+  [InventoriesTypes.DELETEENTRY_FAILURE]: deleteentryFailure,
 
   [InventoriesTypes.FETCHALLEXIT_REQUEST]: fetchallexitRequest,
   [InventoriesTypes.FETCHALLEXIT_SUCCESS]: fetchallexitSuccess,

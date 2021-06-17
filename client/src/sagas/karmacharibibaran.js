@@ -146,7 +146,7 @@ export function* addemployeeshistoryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield addemployeeshistoryRequest(api);
-    yield call(history.push, "/forests/employeeslist");
+    yield call(history.push, "/forests/employeeshistorylist");
     yield put(KarmacharibibaranActions.addemployeeshistorySuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.addemployeeshistoryFailure());
@@ -170,7 +170,7 @@ export function* updateemployeeshistoryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallemployeeshistoryRequest(api);
-    yield call(history.push, "/forests/employeeslist");
+    yield call(history.push, "/forests/employeeshistorylist");
     yield put(
       KarmacharibibaranActions.updateemployeeshistoryhistorySuccess(response.data)
     );
@@ -183,7 +183,7 @@ export function* updateemployeeshistoryRequest(api, action) {
 }
 
 
-// Delete employees
+// Delete employeeshistory
 export function* deleteemployeeshistoryRequest(api, action) {
   const { payload } = action;
 
@@ -247,7 +247,7 @@ export function* addlevelRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield addlevelRequest(api);
-    yield call(history.push, "/forests/employeeslist");
+    yield call(history.push, "/forests/levellist");
     yield put(KarmacharibibaranActions.addlevelSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.addlevelFailure());
@@ -272,7 +272,7 @@ export function* updatelevelRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalllevelRequest(api);
-    yield call(history.push, "/forests/employeeslist");
+    yield call(history.push, "/forests/levellist");
     yield put(
       KarmacharibibaranActions.updatelevelSuccess(response.data)
     );
@@ -284,6 +284,31 @@ export function* updatelevelRequest(api, action) {
   }
 }
 
+
+// Delete level
+export function* deletelevelRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranLevelDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक तह  वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalllevelRequest(api);
+    yield put(
+      KarmacharibibaranActions.deletelevelSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.deletelevelFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
 
 
 export function* fetchallpostRequest(api, action) {
@@ -312,3 +337,76 @@ export function* fetchpostRequest(api, action) {
 }
 
 
+// Add Post
+export function* addpostRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranPostAddNew(
+    payload.post.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक पद प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield addpostRequest(api);
+    yield call(history.push, "/forests/postlist");
+    yield put(KarmacharibibaranActions.addpostSuccess(response.data));
+  } else {
+    yield put(KarmacharibibaranActions.addpostFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+// Update Post
+export function* updatepostRequest(api, action) {
+  const { payload, postId } = action;
+
+  const response = yield api.postKarmacharibibaranPostUpdate(
+    payload.post.data,
+    postId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक  पद पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallpostRequest(api);
+    yield call(history.push, "/forests/postlist");
+    yield put(
+      KarmacharibibaranActions.updatepostSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.updatepostFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+// Delete Post
+export function* deletepostRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKarmacharibibaranPostDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक पद वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallpostRequest(api);
+    yield put(
+      KarmacharibibaranActions.deletepostSuccess(response.data)
+    );
+  } else {
+    yield put(KarmacharibibaranActions.deletepostFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

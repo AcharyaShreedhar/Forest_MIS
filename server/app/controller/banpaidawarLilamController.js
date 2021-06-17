@@ -45,11 +45,11 @@ async function getAllBanpaidawarLilam(req, res) {
   
   //Controller for updating a BanpaidawarLilam
   async function updateBanpaidawarLilam(req, res) {
-    const updateBanpaidawarLilamQuery = `UPDATE banpaidawar_lilams SET lilam_id=?, lilam_date=?, banpaidawar_type=?, unit=?, quantity=?, minimum_price=?, sakaar_price=?, remarks=?, created_by=?, updated_by=? WHERE lilam_id=?`;
+    const updateBanpaidawarLilamQuery = `UPDATE banpaidawar_lilams SET lilam_date=?, banpaidawar_type=?, unit=?, quantity=?, minimum_price=?, sakaar_price=?, remarks=?, created_by=?, updated_by=? WHERE lilam_id=?`;
     pool.query(
       updateBanpaidawarLilamQuery,
       [
-        req.body.lilam_id,                
+                       
         req.body.lilam_date,
 	      req.body.banpaidawar_type,
         req.body.unit, 

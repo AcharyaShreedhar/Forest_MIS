@@ -39,7 +39,25 @@ const { Types, Creators } = createActions({
   fetchprovincesSuccess: ["response"],
   fetchprovincesFailure: null,
 
+  // Districts
 
+  fetchalldistrictsRequest: ["payload"],
+  fetchalldistrictsSuccess: ["response"],
+  fetchalldistrictsFailure: null,
+
+  
+  fetchdistrictsRequest: ["payload"],
+  fetchdistrictsSuccess: ["response"],
+  fetchdistrictsFailure: null,
+
+  //Users
+  fetchallusersRequest: ["payload"],
+  fetchallusersSuccess: ["response"],
+  fetchallusersFailure: null,
+
+  fetchusersRequest: ["payload"],
+  fetchusersSuccess: ["response"],
+  fetchusersFailure: null,
 
   locationsRequest: ['payload'],
   // Clear all caches

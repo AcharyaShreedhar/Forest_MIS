@@ -4,23 +4,18 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
-import forestRoutes from "../../routes/forests";
-import BankaprakarActions from "../../actions/bankaprakar";
+import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
-export class Forests extends Component {
+export class Dwandabebasthapan extends Component {
   componentDidMount() {
-    this.props.fetchallSamudayikbanbibaran();
-    this.props.fetchallDharmikbanbibaran();
-    this.props.fetchallKabuliyatibanbibaran();
-    this.props.fetchallNijibanbibaran();
+    //function goes here
   }
 
   render() {
     const { authenticated } = this.props;
-
     return (
       <Switch>
-        {forestRoutes.map((prop, key) => {
+        {dwandabebasthapanRoutes.map((prop, key) => {
           if (prop.redirect && authenticated) {
             return <Redirect exact from={prop.path} to={prop.to} key={key} />;
           }
@@ -52,30 +47,22 @@ export class Forests extends Component {
   }
 }
 
-Forests.propTypes = {
+Dwandabebasthapan.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   history: PropTypes.any,
 };
 
-Forests.defaultProps = {
+Dwandabebasthapan.defaultProps = {
   authenticated: false,
   history: () => {},
 };
 
 const mapStateToProps = (state) => ({
-  role: state.app.app_role_id,
   authenticated: !isEmpty(state.app.token),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallSamudayikbanbibaran: () =>
-    dispatch(BankaprakarActions.fetchallsamudayikbanbibaranRequest()),
-  fetchallDharmikbanbibaran: () =>
-    dispatch(BankaprakarActions.fetchalldharmikbanbibaranRequest()),
-  fetchallKabuliyatibanbibaran: () =>
-    dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest()),
-  fetchallNijibanbibaran: () =>
-    dispatch(BankaprakarActions.fetchallnijibanbibaranRequest()),
+  //function
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Forests);
+export default connect(mapStateToProps, mapDispatchToProps)(Dwandabebasthapan);

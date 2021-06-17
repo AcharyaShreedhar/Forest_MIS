@@ -47,7 +47,7 @@
    updateemployeeshistorySuccess: ["response"],
    updateemployeeshistoryFailure: null,
 
-   deleteemployeeshistoryRequest: ["payload", "employeeId"],
+   deleteemployeeshistoryRequest: ["payload", "employeehistoryId"],
    deleteemployeeshistorySuccess: ["response"],
    deleteemployeeshistoryFailure: null,
  
@@ -67,6 +67,10 @@
    updatelevelSuccess: ["response"],
    updatelevelFailure: null,
 
+   deletelevelRequest: ["payload", "levelId"],
+   deletelevelSuccess: ["response"],
+   deletelevelFailure: null,
+
 
    fetchallpostRequest: ["payload"],
    fetchallpostSuccess: ["response"],
@@ -76,6 +80,19 @@
    fetchpostSuccess: ["response"],
    fetchpostFailure: null,
 
+   
+   addpostRequest: ["payload"],
+   addpostSuccess: ["response"],
+   addpostFailure: null,
+
+   updatepostRequest: ["payload", "postId"],
+   updatepostSuccess: ["response"],
+   updatepostFailure: null,
+
+   
+   deletepostRequest: ["payload", "postId"],
+   deletepostSuccess: ["response"],
+   deletepostFailure: null,
   
 
    locationsRequest: ["payload"],

@@ -19,6 +19,19 @@ const { Types, Creators } = createActions({
   fetchinventoriesSuccess: ["response"],
   fetchinventoriesFailure: null,
 
+  addinventoriesRequest: ["payload"],
+  addinventoriesSuccess: ["response"],
+  addinventoriesFailure: null,
+
+  updateinventoriesRequest: ["payload", "inventoryId"],
+  updateinventoriesSuccess: ["response"],
+  updateinventoriesFailure: null,
+
+  deleteinventoriesRequest: ["payload", "inventoryId"],
+  deleteinventoriesSuccess: ["response"],
+  deleteinventoriesFailure: null,
+
+
   fetchallentryRequest: ["payload"],
   fetchallentrySuccess: ["response"],
   fetchallentryFailure: null,
@@ -26,6 +39,18 @@ const { Types, Creators } = createActions({
   fetchentryRequest: ["payload"],
   fetchentrySuccess: ["response"],
   fetchentryFailure: null,
+
+  addentryRequest: ["payload"],
+  addentrySuccess: ["response"],
+  addentryFailure: null,
+   
+  updateentryRequest: ["payload", "entryId"],
+  updateentrySuccess: ["response"],
+  updateentryFailure: null,
+
+  deleteentryRequest: ["payload", "entryId"],
+  deleteentrySuccess: ["response"],
+  deleteentryFailure: null,
 
   fetchallexitRequest: ["payload"],
   fetchallexitSuccess: ["response"],

@@ -63,6 +63,48 @@ export function* fetchprovincesRequest(api, action) {
   }
 }
 
+// Districts
+export function* fetchalldistrictsRequest(api, action) {
+  const response = yield api.getDistrictsList();
+  if (response.ok) {
+    yield put(AppActions.fetchalldistrictsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchalldistrictsFailure());
+  }
+}
+export function* fetchdistrictsRequest(api, action) {
+  const districtsId = action.payload;
+
+  const response = yield api.getDistricts(districtsId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchdistrictsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchdistrictsFailure());
+  }
+}
+
+// Users
+export function* fetchallusersRequest(api, action) {
+  const response = yield api.getUsersList();
+  if (response.ok) {
+    yield put(AppActions.fetchallusersSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchallusersFailure());
+  }
+}
+
+export function* fetchusersRequest(api, action) {
+  const usersId = action.payload;
+
+  const response = yield api.getUsers(usersId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchusersSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchusersFailure());
+  }
+}
 export function* logoutRequest(api, action) {
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());

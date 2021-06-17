@@ -67,7 +67,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallbiruwautpadanRequest(api);
-      yield call(history.push, "/forests/biruwautpadanlist");
+      yield call(history.push, "/activities/nurserylist");
       yield put(
         BiruwautpadanActions.updatebiruwautpadanSuccess(response.data)
       );
@@ -104,7 +104,103 @@ export function* fetchbiruwautpadanRequest(api, action) {
   }
   
   
-   
+  export function* fetchallactivitiesinfoRequest(api, action) {
+    const response = yield api.getActivitiesinfoList();
+    console.log("Response..sagaa", response);
+     if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchallactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchallactivitiesinfoFailure());
+    }
+  }  
   
 
+  export function* fetchactivitiesinfoRequest(api, action) {
+    const  activitiesInfoId  = action.payload
+  
+    const response = yield api.getActivitiesinfo(activitiesInfoId);
+    
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchactivitiesinfoFailure());
+    }
+  }
 
+
+  // Add activitiesinfo
+  export function* addactivitiesinfoRequest(api, action) {
+    const { payload } = action;
+        
+    const response = yield api.postBiruwautpadanActivitiesinfoAddNew(
+      payload.yearlyactivities.data
+    );
+      
+    if (response.ok) {  
+          
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण प्रविष्ट भयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallactivitiesinfoRequest(api);
+      yield call(history.push, "/activities/yearlyactivitieslist");
+      yield put(BiruwautpadanActions.addactivitiesinfoSuccess(response.data));
+    } else {
+      yield put(BiruwautpadanActions.addactivitiesinfoFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
+
+   // Update activitiesinfo
+   export function* updateactivitiesinfoRequest(api, action) {
+    const { payload,activitiesinfoId } = action;
+    
+    const response = yield api.postBiruwautpadanActivitiesinfoUpdate(
+      payload.yearlyactivities.data,
+      activitiesinfoId
+    );
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण पुनः प्रविष्ट भयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallactivitiesinfoRequest(api);
+      yield call(history.push, "/activities/yearlyactivitieslist");
+      yield put(
+        BiruwautpadanActions.updateactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.updateactivitiesinfoFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
+  
+
+  // Delete activitiesinfo
+  export function* deleteactivitiesinfoRequest(api, action) {
+    const { payload } = action;
+  
+    const response = yield api.postBiruwautpadanActivitiesinfoDelete(payload);
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण हटाईयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallactivitiesinfoRequest(api);
+      yield put(
+        BiruwautpadanActions.deleteactivitiesinfoSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.deleteactivitiesinfoFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }

@@ -8,16 +8,16 @@ import {
   KabuliyatibanBibaran,
   NijibanBibaran,
 } from "../../../components";
-import BanbibaranActions from "../../../actions/banbibaran";
+import BankaprakarActions from "../../../actions/bankaprakar";
 import {
   samudayikbanHeadings,
   dharmikbanHeadings,
   kabuliyatibanHeadings,
   nijibanHeadings,
 } from "../../../services/config";
-import "./Banbibaran.scss";
+import "./Bankaprakar.scss";
 
-class Banbibaran extends Component {
+class Bankaprakar extends Component {
   constructor(props) {
     super(props);
     this.state = { loc: "samudayiklist" };
@@ -235,14 +235,14 @@ class Banbibaran extends Component {
   }
 }
 
-Banbibaran.propTypes = {
+Bankaprakar.propTypes = {
   samudayikbanbibaranDataList: PropTypes.any,
   dharmikbanbibaranDataList: PropTypes.any,
   kabuliyatibanbibaranDataList: PropTypes.any,
   nijibanbibaranDataList: PropTypes.any,
 };
 
-Banbibaran.defaultProps = {
+Bankaprakar.defaultProps = {
   samudayikbanbibaranDataList: {},
   dharmikbanbibaranDataList: {},
   kabuliyatibanbibaranDataList: {},
@@ -250,19 +250,19 @@ Banbibaran.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
-  samudayikbanbibaranDataList: state.banbibaran.allsamudayikbanbibaranData,
-  dharmikbanbibaranDataList: state.banbibaran.alldharmikbanbibaranData,
-  kabuliyatibanbibaranDataList: state.banbibaran.allkabuliyatibanbibaranData,
-  nijibanbibaranDataList: state.banbibaran.allnijibanbibaranData,
+  samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
+  dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
+  kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
+  nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   //--------------------------Samudayikban
   addSamudayikbanbibaran: (payload) =>
-    dispatch(BanbibaranActions.addsamudayikbanbibaranRequest(payload)),
+    dispatch(BankaprakarActions.addsamudayikbanbibaranRequest(payload)),
   updateSamudayikbanbibaran: (payload, samudayikbanbibaranId) =>
     dispatch(
-      BanbibaranActions.updatesamudayikbanbibaranRequest(
+      BankaprakarActions.updatesamudayikbanbibaranRequest(
         payload,
         samudayikbanbibaranId
       )
@@ -270,49 +270,49 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteSamudayikbanbibaran: (samudayikbanbibaranId) =>
     dispatch(
-      BanbibaranActions.deletesamudayikbanbibaranRequest(samudayikbanbibaranId)
+      BankaprakarActions.deletesamudayikbanbibaranRequest(samudayikbanbibaranId)
     ),
   //--------------------------Dharmikban
   addDharmikbanbibaran: (payload) =>
-    dispatch(BanbibaranActions.adddharmikbanbibaranRequest(payload)),
+    dispatch(BankaprakarActions.adddharmikbanbibaranRequest(payload)),
   updateDharmikbanbibaran: (payload, dharmikbanbibaranId) =>
     dispatch(
-      BanbibaranActions.updatedharmikbanbibaranRequest(
+      BankaprakarActions.updatedharmikbanbibaranRequest(
         payload,
         dharmikbanbibaranId
       )
     ),
   deleteDharmikbanbibaran: (dharmikbanbibaranId) =>
     dispatch(
-      BanbibaranActions.deletedharmikbanbibaranRequest(dharmikbanbibaranId)
+      BankaprakarActions.deletedharmikbanbibaranRequest(dharmikbanbibaranId)
     ),
 
   //--------------------------Kabuliyatiban
   addKabuliyatibanbibaran: (payload) =>
-    dispatch(BanbibaranActions.addkabuliyatibanbibaranRequest(payload)),
+    dispatch(BankaprakarActions.addkabuliyatibanbibaranRequest(payload)),
   updateKabuliyatibanbibaran: (payload, kabuliyatibanbibaranId) =>
     dispatch(
-      BanbibaranActions.updatekabuliyatibanbibaranRequest(
+      BankaprakarActions.updatekabuliyatibanbibaranRequest(
         payload,
         kabuliyatibanbibaranId
       )
     ),
   deleteKabuliyatibanbibaran: (kabuliyatibanbibaranId) =>
     dispatch(
-      BanbibaranActions.deletekabuliyatibanbibaranRequest(
+      BankaprakarActions.deletekabuliyatibanbibaranRequest(
         kabuliyatibanbibaranId
       )
     ),
 
   //--------------------------Nijiban
   addNijibanbibaran: (payload) =>
-    dispatch(BanbibaranActions.addnijibanbibaranRequest(payload)),
+    dispatch(BankaprakarActions.addnijibanbibaranRequest(payload)),
   updateNijibanbibaran: (payload, nijibanbibaranId) =>
     dispatch(
-      BanbibaranActions.updatenijibanbibaranRequest(payload, nijibanbibaranId)
+      BankaprakarActions.updatenijibanbibaranRequest(payload, nijibanbibaranId)
     ),
   deleteNijibanbibaran: (nijibanbibaranId) =>
-    dispatch(BanbibaranActions.deletenijibanbibaranRequest(nijibanbibaranId)),
+    dispatch(BankaprakarActions.deletenijibanbibaranRequest(nijibanbibaranId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);
+export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);

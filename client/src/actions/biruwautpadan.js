@@ -31,7 +31,27 @@
    deletebiruwautpadanRequest: ["payload","biruwautpadanId"],
    deletebiruwautpadanSuccess: ["response"],
    deletebiruwautpadanFailure: null,
+
+   fetchallactivitiesinfoRequest: ["payload"],
+   fetchallactivitiesinfoSuccess: ["response"],
+   fetchallactivitiesinfoFailure: null,
+
+   fetchactivitiesinfoRequest: ["payload"],
+   fetchactivitiesinfoSuccess: ["response"],
+   fetchactivitiesinfoFailure: null,
  
+   addactivitiesinfoRequest: ["payload"],
+   addactivitiesinfoSuccess: ["response"],
+   addactivitiesinfoFailure: null,
+
+   updateactivitiesinfoRequest: ["payload","activitiesinfoId"],
+   updateactivitiesinfoSuccess: ["response"],
+   updateactivitiesinfoFailure: null,
+
+   deleteactivitiesinfoRequest: ["payload","activitiesinfoId"],
+   deleteactivitiesinfoSuccess: ["response"],
+   deleteactivitiesinfoFailure: null,
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
