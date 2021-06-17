@@ -355,12 +355,12 @@ export default function* root() {
       api
     ),
     takeLatest(
-      BanbibaranTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST,
+      BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST,
       fetchallconsumergroupdetailsRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.FETCHCONSUMERGROUPDETAILS_REQUEST,
+      BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_REQUEST,
       fetchconsumergroupdetailsRequest,
       api
     ),
