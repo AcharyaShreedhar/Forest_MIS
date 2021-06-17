@@ -5,6 +5,7 @@ import Dwandabebasthapan from "../views/Dwandabebasthapan";
 import Forests from "../views/Forests";
 import Home from "../views/Home";
 import Login from "../layouts/Login";
+import Sampatibibaran from "../views/Sampatibibaran";
 
 const dashboardRoutes = [
   {
@@ -41,6 +42,11 @@ const dashboardRoutes = [
     path: "/banbibaran",
     name: "Banbibaran",
     component: Banbibaran,
+  },
+  {
+    path: "/sampatibibaran",
+    name: "Sampatibibaran",
+    component: Sampatibibaran,
   },
   {
     redirect: true,

@@ -200,18 +200,18 @@ export class SideNavbar extends Component {
               <NavText> बृक्षरोपन</NavText>
             </NavItem>
           </NavItem>
-          <NavItem eventKey="/organizationassets">
+          <NavItem eventKey="/sampatibibaran">
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faBuilding} className="mr-2" />
             </NavIcon>
             <NavText>कार्यालय सम्पती बिबरण</NavText>
 
-            <NavItem eventKey="assets" onClick={() => history.push("/assets")}>
+            <NavItem eventKey="sampatibibaran/gharjaggalist" onClick={() => history.push("/sampatibibaran/gharjaggalist")}>
               <NavText>घर जग्गा</NavText>
             </NavItem>
             <NavItem
-              eventKey="vehicles"
-              onClick={() => history.push("/vehicles")}
+              eventKey="sampatibibaran/sawarisadhanlist"
+              onClick={() => history.push("/sampatibibaran/sawarisadhanlist")}
             >
               <NavText> सवारी साधनहरु</NavText>
             </NavItem>
