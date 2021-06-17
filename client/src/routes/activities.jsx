@@ -7,12 +7,14 @@ const activitiesRoutes = [
     path: "/activities/yearlyactivitieslist",
     title: "Yearlyactivities",
     name: "yearlyactivities",
+    auth: true,
     component: YearlyActivities,
   },
   {
     path: "/activities/nurserylist",
     title: "Nursery",
     name: "nursery",
+    auth: true,
     component: Nursery,
   },
 
@@ -35,10 +37,9 @@ const activitiesRoutes = [
     path: "/activities/plantationlist",
     title: "Plantation",
     name: "plantation",
+    auth: true,
     component: Plantation,
   },
-  
-  
   {
     path: "/activities/yearlyactivitiesadd/new",
     title: "Yearlyactivities",
@@ -62,7 +63,6 @@ const activitiesRoutes = [
     name: "nursery",
     component: Nursery,
   },
-
 ];
 
 export default activitiesRoutes;

@@ -1,9 +1,10 @@
 import Activities from "../views/Activities";
+import Banbibaran from "../views/Banbibaran";
 import Banpaidawar from "../views/Banpaidawar";
+import Dwandabebasthapan from "../views/Dwandabebasthapan";
 import Forests from "../views/Forests";
 import Home from "../views/Home";
 import Login from "../layouts/Login";
-import Dwandabebasthapan from "../views/Dwandabebasthapan";
 
 const dashboardRoutes = [
   {
@@ -35,6 +36,11 @@ const dashboardRoutes = [
     path: "/dwandabebasthapan",
     name: "Dwandabebasthapan",
     component: Dwandabebasthapan,
+  },
+  {
+    path: "/banbibaran",
+    name: "Banbibaran",
+    component: Banbibaran,
   },
   {
     redirect: true,

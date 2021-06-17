@@ -4,20 +4,18 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
-import activitiesRoutes from "../../routes/activities";
-import BiruwautpadanActions from "../../actions/biruwautpadan";
+import banbibaranRoutes from "../../routes/banbibaran";
 
-export class Activities extends Component {
+export class Banbibaran extends Component {
   componentDidMount() {
-    this.props.fetchallBiruwautpadan();
-    this.props.fetchallYearlyactivities();
+    //function goes here
   }
 
   render() {
     const { authenticated } = this.props;
     return (
       <Switch>
-        {activitiesRoutes.map((prop, key) => {
+        {banbibaranRoutes.map((prop, key) => {
           if (prop.redirect && authenticated) {
             return <Redirect exact from={prop.path} to={prop.to} key={key} />;
           }
@@ -49,27 +47,22 @@ export class Activities extends Component {
   }
 }
 
-Activities.propTypes = {
+Banbibaran.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   history: PropTypes.any,
 };
 
-Activities.defaultProps = {
+Banbibaran.defaultProps = {
   authenticated: false,
   history: () => {},
 };
 
 const mapStateToProps = (state) => ({
-  role: state.app.app_role_id,
   authenticated: !isEmpty(state.app.token),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBiruwautpadan: () =>
-    dispatch(BiruwautpadanActions.fetchallbiruwautpadanRequest()),
-
-  fetchallYearlyactivities: () =>
-    dispatch(BiruwautpadanActions.fetchallactivitiesinfoRequest()),
+  //function
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Activities);
+export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);
