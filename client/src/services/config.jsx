@@ -129,6 +129,17 @@ const banpaidawarlilamHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const banpaidawarosarpasarHeadings = [
+  "आर्थिक वर्ष",
+  "महिना",
+  "वन पैदावार काठ (क्यू. फि.)",
+  "वन पैदावार दाउरा (चट्टा)",
+  "लाभग्राही संख्या",
+  "प्राप्त मूल्य अभिवृध्दि कर (रु)",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -139,4 +150,5 @@ export {
   biruwautpadanHeadings,
   yearlyactivitiesHeadings,
   banpaidawarlilamHeadings,
+  banpaidawarosarpasarHeadings,
 };
