@@ -67,7 +67,7 @@ export function* updatebanpaidawarRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarRequest(api);
-    yield call(history.push, "/forests/banpaidawarlist");
+    yield call(history.push, "/banpaidawar/osarpasarlist");
     yield put(
       BanpaidawarActions.updatebanpaidawarSuccess(response.data)
     );
