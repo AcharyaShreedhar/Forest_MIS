@@ -10,6 +10,7 @@ import BanpaidawarActions from "../../actions/banpaidawar";
 export class Banpaidawar extends Component {
   componentDidMount() {
     this.props.fetchallBanpaidawarlilam();
+    this.props.fetchallBanpaidawarosarpasar();
   }
 
   render() {
@@ -68,6 +69,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanpaidawarlilam: () =>
   dispatch(BanpaidawarActions.fetchallbanpaidawarlilamRequest()),
+
+  fetchallBanpaidawarosarpasar: () =>
+  dispatch(BanpaidawarActions.fetchallbanpaidawarRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banpaidawar);

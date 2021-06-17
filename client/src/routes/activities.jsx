@@ -37,22 +37,8 @@ const activitiesRoutes = [
     name: "plantation",
     component: Plantation,
   },
-  {
-    redirect: true,
-    path: "/activities",
-    to: "/activities/nurserylist",
-    name: "nursery",
-    component: Nursery,
-  },
-
-  {
-    redirect: true,
-    path: "/activities",
-    to: "/activities/yearlyactivitieslist",
-    name: "Yearlyactivities",
-    component: YearlyActivities,
-  },
-
+  
+  
   {
     path: "/activities/yearlyactivitiesadd/new",
     title: "Yearlyactivities",
@@ -68,6 +54,15 @@ const activitiesRoutes = [
     auth: true,
     component: YearlyActivities,
   },
+
+  {
+    redirect: true,
+    path: "/activities",
+    to: "/activities/nurserylist",
+    name: "nursery",
+    component: Nursery,
+  },
+
 ];
 
 export default activitiesRoutes;

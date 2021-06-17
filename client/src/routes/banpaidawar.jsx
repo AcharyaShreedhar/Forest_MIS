@@ -33,13 +33,7 @@ const banpaidawarRoutes = [
     auth: true,
     component: Osarpasar,
   },
-  {
-    redirect: true,
-    path: "/banpaidawar",
-    to: "/banpaidawar/banpaidawarlilamlist",
-    name: "Lilam",
-    component: Lilam,
-  },
+ 
 ];
 
 export default banpaidawarRoutes;

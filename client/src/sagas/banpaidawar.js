@@ -6,7 +6,7 @@ import BanpaidawarActions from "../actions/banpaidawar";
 export function* fetchallbanpaidawarRequest(api, action) {
  
   const response = yield api.getBanpaidawarList();
-    if (response.ok) {
+  if (response.ok) {
     yield put(
         BanpaidawarActions.fetchallbanpaidawarSuccess(response.data)
     );
@@ -42,7 +42,7 @@ export function* addbanpaidawarRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarRequest(api);
-    yield call(history.push, "/forests/banpaidawarlist");
+    yield call(history.push, "/banpaidawar/osarpasarlist");
     yield put(BanpaidawarActions.addbanpaidawarSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.addbanpaidawarFailure());
