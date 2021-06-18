@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals } from "ramda";
+import { equals, length } from "ramda";
 import {
   SamudayikbanBibaran,
   DharmikbanBibaran,
@@ -23,6 +23,7 @@ class Bankaprakar extends Component {
     this.state = { loc: "samudayiklist" };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -30,6 +31,8 @@ class Bankaprakar extends Component {
 
     return { loc };
   }
+
+  handlePageChange() {}
 
   handleSelectMenu(event, item, path) {
     switch (event) {
@@ -134,10 +137,12 @@ class Bankaprakar extends Component {
           <SamudayikbanBibaran.List
             buttonName="+ सामुदायिक वन"
             title="सामुदायिक वन सम्बन्धी विवरण"
+            pageCount={Math.ceil(length(samudayikbanList) / 5)}
             data={samudayikbanList}
             headings={samudayikbanHeadings}
             onAdd={() => this.handleAdd("samudayikban")}
             onSelect={this.handleSelectMenu}
+            onPageClick={this.handlePageChange}
           />
         )}
         {equals(loc, "samudayikbanadd") && (
