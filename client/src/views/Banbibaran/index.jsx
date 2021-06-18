@@ -5,10 +5,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import banbibaranRoutes from "../../routes/banbibaran";
+import BandadelobibaranActions from "../../actions/bandadelobibaran";
 
 export class Banbibaran extends Component {
   componentDidMount() {
-    //function goes here
+    this.props.fetchallBandadelo();
+
   }
 
   render() {
@@ -62,7 +64,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  //function
+  fetchallBandadelo: () =>
+  dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);
