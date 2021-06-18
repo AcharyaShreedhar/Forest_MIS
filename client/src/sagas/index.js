@@ -1065,7 +1065,7 @@ export default function* root() {
     ),
 
     takeLatest(
-      AppTypes.FETCHALLBARAMADITCHIJBASTU_REQUEST,
+      BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_REQUEST,
       fetchallbaramaditchijbastuRequest,
       api
     ),
