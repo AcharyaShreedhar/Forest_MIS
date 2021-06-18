@@ -64,6 +64,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBankaprakarSamudayikbanDelete = (samudayikbanbibaranId) =>
     api.delete(`samudayikbanBibaran/${samudayikbanbibaranId}`);
 
+
   const getDharmikbanBibaranList = () => api.get("dharmikbanBibaran");
 
   const getDharmikbanBibaran = (dharmikbanBibaranId) =>
@@ -130,6 +131,9 @@ const create = (baseURL = Config.API_URL) => {
     payload,
     nabikaranKaryayojanaId
   ) => api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
+
+  //Banbibaran
+  const getBaramaditchijbastuList = () => api.get("banbibaran");
 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
@@ -658,6 +662,9 @@ const create = (baseURL = Config.API_URL) => {
     //-----Departments
     getDepartmentsList,
     getDepartments,
+
+    //--------Banbibaran
+    getBaramaditchijbastuList,
 
   };
 };
