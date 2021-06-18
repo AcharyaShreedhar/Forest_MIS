@@ -109,7 +109,7 @@ Lilam.propsTypes = {
 };
 
 Lilam.defaultProps = {
-  banpaidawarlilamDataLit: {},
+  banpaidawarlilamDataList: {},
 };
 
 const mapStateToProps = (state) => ({
