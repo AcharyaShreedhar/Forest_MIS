@@ -37,7 +37,7 @@ export function* fetchallbandadelobibaranRequest(api, action) {
 export function* addbandadelobibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBandadelobibaranBandadeloAddNew(
+  const response = yield api.postBanbibaranBandadelobibaranAddNew(
     payload.bandadelo.data
   );
 
