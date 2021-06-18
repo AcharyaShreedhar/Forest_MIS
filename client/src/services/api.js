@@ -133,7 +133,7 @@ const create = (baseURL = Config.API_URL) => {
   ) => api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
 
   //Banbibaran
-  const getBaramaditchijbastuList = () => api.get("banbibaran");
+  const getBaramaditchijbastuList = () => api.get("baramaditChijbastu");
 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
