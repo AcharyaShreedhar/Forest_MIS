@@ -40,7 +40,8 @@ function List(props) {
                   <td key={index}> {bandadelo.bandadelo_address}</td>
                   <td key={index}> {bandadelo.ban_type}</td>
                   <td key={index}> {bandadelo.ban_prajati}</td>
-                  <td key={index}> {bandadelo.xeti_area}</td>   
+                  <td key={index}> {bandadelo.xeti_area}</td>
+                  <td key={index}> {bandadelo.niyantran_prayas}</td>   
                   <td key={index}> {bandadelo.niyantran_karta}</td>
                   <td key={index}> {bandadelo.sahabhagi_mahila}</td>
                   <td key={index}> {bandadelo.sahabhagi_purus}</td>
