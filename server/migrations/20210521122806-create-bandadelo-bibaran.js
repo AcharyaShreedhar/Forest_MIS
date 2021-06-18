@@ -20,6 +20,9 @@ module.exports = {
       xeti_area: {
         type: Sequelize.STRING,
       },
+      niyantran_prayas: {
+        type: Sequelize.STRING,
+      },
       niyantran_karta: {
         type: Sequelize.STRING,
       },
