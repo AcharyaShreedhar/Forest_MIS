@@ -394,6 +394,20 @@ const create = (baseURL = Config.API_URL) => {
   const getExitList = () => api.get("exit");
   const getExit = (exitId) => api.get(`exit/${exitId}`);
 
+  //Add
+  const postInventoriesExitAddNew = (payload) =>
+    api.post(`exit`, payload);
+
+  //update
+  const postInventoriesExitUpdate = (payload, exitId) =>
+  api.put(`exit/${exitId}`, payload);
+
+  //Delete
+  const postInventoriesExitDelete = (exitId) =>
+  api.delete(`exit/${exitId}`);
+
+
+
   //karmacharibibaran
   const getEmployeesList = () => api.get("employees");
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
@@ -575,6 +589,9 @@ const create = (baseURL = Config.API_URL) => {
     postInventoriesEntryDelete,
     getExitList,
     getExit,
+    postInventoriesExitAddNew,
+    postInventoriesExitUpdate,
+    postInventoriesExitDelete,
     //karmacharibiabran
     getEmployeesList,
     getEmployees,
