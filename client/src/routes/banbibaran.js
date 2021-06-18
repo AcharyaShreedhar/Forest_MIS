@@ -3,6 +3,7 @@ import Banxetraatikraman from "../views/Banbibaran/Banxetraatikraman";
 import Muddaanusandhandayari from "../views/Banbibaran/Muddaanusandhandayari";
 import Banxetraanyaprayojan from "../views/Banbibaran/Banxetraanyaprayojan";
 import Seedgardenplots from "../views/Banbibaran/Seedgardenplots";
+import { BandadeloBibaran } from "../components";
 
 const banbibaranRoutes = [
   {
