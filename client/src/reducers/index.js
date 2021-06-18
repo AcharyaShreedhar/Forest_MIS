@@ -29,6 +29,7 @@ const reducers = combineReducers({
   plotbibaran: require("./plotbibaran").reducer,
   inventories: require("./inventories").reducer,
   karmacharibibaran: require("./karmacharibibaran").reducer,
+  banbibaran: require("./banbibaran").reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
