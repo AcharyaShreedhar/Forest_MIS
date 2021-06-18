@@ -140,6 +140,20 @@ const banpaidawarosarpasarHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const bandadeloHeadings = [
+  "वन डढेलो लागेको ठेगाना",
+  "राष्ट्रिय/सामुदायिक वन/धार्मिक वन",
+  "वनको मुख्य प्रजाति",
+  "क्षति क्षेत्रफल (हे.)",
+  "समूहबाट नियन्त्रणका लागि भएका प्रयासहरु",
+  "समूह तथा डिभिजन वन कार्यलय/प्रहरी/अन्य क्षेत्रबाट भएका प्रयासहरु",
+  "नियन्त्रणमा सहभागि महिला संख्या",
+  "नियन्त्रणमा सहभागि पुरुष संख्या",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -151,4 +165,5 @@ export {
   yearlyactivitiesHeadings,
   banpaidawarlilamHeadings,
   banpaidawarosarpasarHeadings,
+  bandadeloHeadings,
 };
