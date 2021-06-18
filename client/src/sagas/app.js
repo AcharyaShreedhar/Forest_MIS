@@ -84,6 +84,27 @@ export function* fetchdistrictsRequest(api, action) {
   }
 }
 
+// Departments
+export function* fetchalldepartmentsRequest(api, action) {
+  const response = yield api.getDepartmentsList();
+  if (response.ok) {
+    yield put(AppActions.fetchalldepartmentsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchalldepartmentsFailure());
+  }
+}
+export function* fetchdepartmentsRequest(api, action) {
+  const departmentsId = action.payload;
+
+  const response = yield api.getDepartments(departmentsId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchdepartmentsSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchdepartmentsFailure());
+  }
+}
+
 // Users
 export function* fetchallusersRequest(api, action) {
   const response = yield api.getUsersList();
