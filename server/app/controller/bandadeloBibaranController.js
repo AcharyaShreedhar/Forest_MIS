@@ -19,7 +19,7 @@ async function getAllBandadeloBibaran(req, res) {
   
   //Controller for adding a BandadeloBibaran
   async function addBandadeloBibaran(req, res) {
-    const addBandadeloBibaranQuery = `INSERT INTO bandadelo_bibarans (bandadelo_address, ban_type, ban_prajati, xeti_area, niyantran_karta, sahabhagi_mahila, sahabhagi_purus, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+    const addBandadeloBibaranQuery = `INSERT INTO bandadelo_bibarans (bandadelo_address, ban_type, ban_prajati, xeti_area, niyantran_prayas, niyantran_karta, sahabhagi_mahila, sahabhagi_purus, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
     pool.query(
       addBandadeloBibaranQuery,
       [
@@ -27,6 +27,7 @@ async function getAllBandadeloBibaran(req, res) {
         req.body.ban_type, 
         req.body.ban_prajati, 
         req.body.xeti_area, 
+        req.body.niyantran_prayas,
         req.body.niyantran_karta,
 	      req.body.sahabhagi_mahila,
       	req.body.sahabhagi_purus,
@@ -44,14 +45,15 @@ async function getAllBandadeloBibaran(req, res) {
   
   //Controller for updating a BandadeloBibaran
   async function updateBandadeloBibaran(req, res) {
-    const updateBandadeloBibaranQuery = `UPDATE bandadelo_bibarans SET bandadelo_address=?, ban_type=?, ban_prajati=?, xeti_area=?, niyantran_karta=?, sahabhagi_mahila=?, sahabhagi_purus=?, created_by=?, updated_by=? WHERE bandadelo_bibaran_id=?`;
+    const updateBandadeloBibaranQuery = `UPDATE bandadelo_bibarans SET bandadelo_address=?, ban_type=?, ban_prajati=?, xeti_area=?, niyantran_prayas=?, niyantran_karta=?, sahabhagi_mahila=?, sahabhagi_purus=?, created_by=?, updated_by=? WHERE bandadelo_bibaran_id=?`;
     pool.query(
       updateBandadeloBibaranQuery,
       [
         req.body.bandadelo_address,
         req.body.ban_type, 
         req.body.ban_prajati, 
-        req.body.xeti_area, 
+        req.body.xeti_area,
+        req.body.niyantran_prayas, 
         req.body.niyantran_karta,
 	      req.body.sahabhagi_mahila,
       	req.body.sahabhagi_purus,
