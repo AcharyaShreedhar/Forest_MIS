@@ -34,7 +34,38 @@ const fetchkarmacharidarbandiFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add karmacharidarbandi
+const addkarmacharidarbandiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addkarmacharidarbandiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addkarmacharidarbandiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
+  //Update karmacharidarbandi
+const updatekarmacharidarbandiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatekarmacharidarbandiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatekarmacharidarbandiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+//Delete karmacharidarbandi
+const deletekarmacharidarbandiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletekarmacharidarbandiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletekarmacharidarbandiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 
 const locationsRequest = (state, action) => {
@@ -56,6 +87,18 @@ export const reducer = createReducer(initialState, {
     [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_REQUEST]: fetchkarmacharidarbandiRequest,
     [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_SUCCESS]: fetchkarmacharidarbandiSuccess,
     [KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_FAILURE]: fetchkarmacharidarbandiFailure,
+
+    [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_REQUEST]: addkarmacharidarbandiRequest,
+    [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_SUCCESS]: addkarmacharidarbandiSuccess,
+    [KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_FAILURE]: addkarmacharidarbandiFailure,
+
+    [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_REQUEST]: updatekarmacharidarbandiRequest,
+    [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_SUCCESS]: updatekarmacharidarbandiSuccess,
+    [KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_FAILURE]: updatekarmacharidarbandiFailure,
+
+    [KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_REQUEST]: deletekarmacharidarbandiRequest,
+    [KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_SUCCESS]: deletekarmacharidarbandiSuccess,
+    [KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_FAILURE]: deletekarmacharidarbandiFailure,
 
     
     [KarmacharidarbandiTypes.LOCATIONS_REQUEST]: locationsRequest,

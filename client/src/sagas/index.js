@@ -21,6 +21,9 @@ import { fetchalldistrictsRequest, fetchdistrictsRequest, fetchallmunicipalities
 import{ 
   fetchallkarmacharidarbandiRequest,
   fetchkarmacharidarbandiRequest,
+  addkarmacharidarbandiRequest,
+  updatekarmacharidarbandiRequest,
+  deletekarmacharidarbandiRequest,
   } from "./karmacharidarbandi"; 
 
 
@@ -502,6 +505,25 @@ export default function* root() {
     takeLatest(
       KarmacharidarbandiTypes.FETCHKARMACHARIDARBANDI_REQUEST,
       fetchkarmacharidarbandiRequest,
+      api
+    ),
+
+    
+    takeLatest(
+      KarmacharidarbandiTypes.ADDKARMACHARIDARBANDI_REQUEST,
+      addkarmacharidarbandiRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharidarbandiTypes.UPDATEKARMACHARIDARBANDI_REQUEST,
+      updatekarmacharidarbandiRequest,
+      api
+    ),
+
+    takeLatest(
+      KarmacharidarbandiTypes.DELETEKARMACHARIDARBANDI_REQUEST,
+      deletekarmacharidarbandiRequest,
       api
     ),
 
