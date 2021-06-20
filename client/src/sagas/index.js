@@ -29,6 +29,7 @@ import{
 
   import{ 
     fetchallbaramaditchijbastuRequest,
+    fetchbaramaditchijbastuRequest,
     } from "./banbibaran"; 
 
 
@@ -1064,11 +1065,19 @@ export default function* root() {
       api
     ),
 
+    //----------Banbibaran
     takeLatest(
       BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_REQUEST,
       fetchallbaramaditchijbastuRequest,
       api
     ),
+
+    takeLatest(
+      BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST,
+      fetchbaramaditchijbastuRequest,
+      api
+    ),
+
 
   ]);
 }
