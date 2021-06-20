@@ -5,7 +5,8 @@ import { history } from "../reducers";
 import BankaprakarActions from "../actions/bankaprakar";
 
 export function* fetchallsamudayikbanbibaranRequest(api, action) {
-  const response = yield api.getSamudayikbanBibaranList();
+  const { payload } = action;
+  const response = yield api.getSamudayikbanBibaranList(payload);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallsamudayikbanbibaranSuccess(response.data)
@@ -21,7 +22,9 @@ export function* fetchsamudayikbanbibaranRequest(api, action) {
   const response = yield api.getSamudayikbanBibaran(samudayikbanBibaranId);
 
   if (response.ok) {
-    yield put(BankaprakarActions.fetchsamudayikbanbibaranSuccess(response.data));
+    yield put(
+      BankaprakarActions.fetchsamudayikbanbibaranSuccess(response.data)
+    );
   } else {
     yield put(BankaprakarActions.fetchsamudayikbanbibaranFailure());
   }
@@ -526,7 +529,9 @@ export function* fetchconsumergroupdetailsRequest(api, action) {
   const response = yield api.getConsumergroupDetails(consumergroupDetailsId);
 
   if (response.ok) {
-    yield put(BankaprakarActions.fetchconsumergroupdetailsSuccess(response.data));
+    yield put(
+      BankaprakarActions.fetchconsumergroupdetailsSuccess(response.data)
+    );
   } else {
     yield put(BankaprakarActions.fetchconsumergroupdetailsFailure());
   }
