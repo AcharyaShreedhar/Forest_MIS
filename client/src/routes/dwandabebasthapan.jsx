@@ -25,9 +25,9 @@ const dwandabebasthapanRoutes = [
     component: BanyajantuUddar,
   },
   {
-    path: "/dwandabebasthapan/uddaradd/new",
-    title: "Uddar",
-    name: "uddar",
+    path: "/dwandabebasthapan/banyajantuuddaradd/new",
+    title: "BanyajantuUddar",
+    name: "banyajantuuddar",
     auth: true,
     component: BanyajantuUddar,
   },
