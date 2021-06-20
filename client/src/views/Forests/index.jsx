@@ -12,22 +12,22 @@ export class Forests extends Component {
     this.props.fetchallSamudayikbanbibaran({
       name: "samydayikban_name",
       page: 0,
-      perPage: 5,
+      perPage: 10,
     });
     this.props.fetchallDharmikbanbibaran({
       name: "dharmikban_name",
       page: 0,
-      perPage: 5,
+      perPage: 10,
     });
     this.props.fetchallKabuliyatibanbibaran({
       name: "kabuliyatiban_name",
       page: 0,
-      perPage: 5,
+      perPage: 10,
     });
     this.props.fetchallNijibanbibaran({
       name: "nijiban_name",
       page: 0,
-      perPage: 5,
+      perPage: 10,
     });
   }
 

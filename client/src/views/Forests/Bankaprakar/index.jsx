@@ -20,7 +20,7 @@ import "./Bankaprakar.scss";
 class Bankaprakar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "samudayiklist", perPage: 5, page: 1 };
+    this.state = { loc: "samudayiklist", perPage: 10, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -70,7 +70,7 @@ class Bankaprakar extends Component {
       }
       case "kabuliyatiban": {
         this.props.fetchallKabuliyatibanbibaran({
-          name: "kabuliyatiban_name",
+          name: "entry_date",
           page: data.selected * perPage,
           perPage,
         });
@@ -78,7 +78,7 @@ class Bankaprakar extends Component {
       }
       case "nijiban": {
         this.props.fetchallNijibanbibaran({
-          name: "nijiban_name",
+          name: "swikrit_miti",
           page: data.selected * perPage,
           perPage,
         });
@@ -189,14 +189,7 @@ class Bankaprakar extends Component {
       kabuliyatibanList,
       nijibanList,
     } = this.state;
-    console.log(
-      "dharmikbanlist",
-      dharmikbanList,
-      "kabu",
-      kabuliyatibanList,
-      "niji",
-      nijibanList
-    );
+    console.log("dharmikbanlist", dharmikbanList.list);
 
     return (
       <div>
@@ -207,7 +200,7 @@ class Bankaprakar extends Component {
             pageCount={
               !isNil(samudayikbanList)
                 ? Math.ceil(samudayikbanList.total / perPage)
-                : 5
+                : 10
             }
             data={!isNil(samudayikbanList) ? samudayikbanList.list : []}
             headings={samudayikbanHeadings}
@@ -238,9 +231,9 @@ class Bankaprakar extends Component {
             pageCount={
               !isNil(dharmikbanList)
                 ? Math.ceil(dharmikbanList.total / perPage)
-                : 5
+                : 10
             }
-            data={!isNil(dharmikbanList) ? dharmikbanList.List : []}
+            data={!isNil(dharmikbanList) ? dharmikbanList.list : []}
             headings={dharmikbanHeadings}
             onAdd={() => this.handleAdd("dharmikban")}
             onSelect={this.handleSelectMenu}
@@ -269,7 +262,7 @@ class Bankaprakar extends Component {
             pageCount={
               !isNil(kabuliyatibanList)
                 ? Math.ceil(kabuliyatibanList.total / perPage)
-                : 5
+                : 10
             }
             data={!isNil(kabuliyatibanList) ? kabuliyatibanList.list : []}
             headings={kabuliyatibanHeadings}
@@ -298,7 +291,7 @@ class Bankaprakar extends Component {
             buttonName="+ निजि वन"
             title="निजि वन सम्बन्धी विवरण"
             pageCount={
-              !isNil(nijibanList) ? Math.ceil(nijibanList.total / perPage) : 5
+              !isNil(nijibanList) ? Math.ceil(nijibanList.total / perPage) : 10
             }
             data={!isNil(nijibanList) ? nijibanList.list : []}
             headings={nijibanHeadings}

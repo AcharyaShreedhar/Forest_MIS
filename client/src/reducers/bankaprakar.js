@@ -9,9 +9,8 @@ const initialState = Immutable({
 });
 
 const fetchallsamudayikbanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallsamudayikbanbibaranSuccess = (state, action) => {
-  console.log("reducer", action.response);
   return state.merge({
     ...state,
     status: "done",
@@ -23,7 +22,7 @@ const fetchallsamudayikbanbibaranFailure = (state, action) => {
 };
 
 const fetchsamudayikbanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchsamudayikbanbibaranSuccess = (state, action) => {
   return state.merge({
@@ -69,10 +68,8 @@ const deletesamudayikbanbibaranSuccess = (state, action) =>
 const deletesamudayikbanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
-
 const fetchalldharmikbanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchalldharmikbanbibaranSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -85,7 +82,7 @@ const fetchalldharmikbanbibaranFailure = (state, action) => {
 };
 
 const fetchdharmikbanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchdharmikbanbibaranSuccess = (state, action) => {
   return state.merge({
@@ -109,17 +106,16 @@ const adddharmikbanbibaranSuccess = (state, action) =>
 const adddharmikbanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
-  //Update Dharmikbanbibaran
+//Update Dharmikbanbibaran
 const updatedharmikbanbibaranRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const updatedharmikbanbibaranSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
+  state.merge({
+    ...state,
+    status: "done",
+  });
 const updatedharmikbanbibaranFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
+  state.merge({ ...state, status: "error" });
 
 //Delete Dharmikbanbibaran
 const deletedharmikbanbibaranRequest = (state, action) =>
@@ -132,10 +128,8 @@ const deletedharmikbanbibaranSuccess = (state, action) =>
 const deletedharmikbanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-  
-
 const fetchallnijibanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchallnijibanbibaranSuccess = (state, action) => {
   return state.merge({
@@ -148,12 +142,9 @@ const fetchallnijibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
-
 const fetchnijibanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchnijibanbibaranSuccess = (state, action) => {
-  console.log("reducer", action.response);
   return state.merge({
     ...state,
     status: "done",
@@ -175,18 +166,16 @@ const addnijibanbibaranSuccess = (state, action) =>
 const addnijibanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
-  //Update Nijiban
+//Update Nijiban
 const updatenijibanbibaranRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const updatenijibanbibaranSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
+  state.merge({
+    ...state,
+    status: "done",
+  });
 const updatenijibanbibaranFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
-
+  state.merge({ ...state, status: "error" });
 
 //Delete Nijibanbibaran
 const deletenijibanbibaranRequest = (state, action) =>
@@ -199,9 +188,8 @@ const deletenijibanbibaranSuccess = (state, action) =>
 const deletenijibanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
-  const fetchallkabuliyatibanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+const fetchallkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
 const fetchallkabuliyatibanbibaranSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -213,10 +201,8 @@ const fetchallkabuliyatibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
-
 const fetchkabuliyatibanbibaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchkabuliyatibanbibaranSuccess = (state, action) => {
   return state.merge({
@@ -229,7 +215,6 @@ const fetchkabuliyatibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
 //Add kabuliyatibanbibaran
 const addkabuliyatibanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -241,33 +226,30 @@ const addkabuliyatibanbibaranSuccess = (state, action) =>
 const addkabuliyatibanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
 //Update Kabuliyatiban
 const updatekabuliyatibanbibaranRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const updatekabuliyatibanbibaranSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
+  state.merge({
+    ...state,
+    status: "done",
+  });
 const updatekabuliyatibanbibaranFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
-
+  state.merge({ ...state, status: "error" });
 
 //Delete Kabuliyatiban
 const deletekabuliyatibanbibaranRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const deletekabuliyatibanbibaranSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
+  state.merge({
+    ...state,
+    status: "done",
+  });
 const deletekabuliyatibanbibaranFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
-
+  state.merge({ ...state, status: "error" });
 
 const fetchallnabikarankaryayojanaRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallnabikarankaryayojanaSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -280,7 +262,7 @@ const fetchallnabikarankaryayojanaFailure = (state, action) => {
 };
 
 const fetchnabikarankaryayojanaRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchnabikarankaryayojanaSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -291,8 +273,6 @@ const fetchnabikarankaryayojanaSuccess = (state, action) => {
 const fetchnabikarankaryayojanaFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
-
-
 
 //Add NabikaranKaryayojana
 const addnabikarankaryayojanaRequest = (state, action) =>
@@ -305,35 +285,32 @@ const addnabikarankaryayojanaSuccess = (state, action) =>
 const addnabikarankaryayojanaFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
 //Update Nabikarankaryayojana
 const updatenabikarankaryayojanaRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const updatenabikarankaryayojanaSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
+  state.merge({
+    ...state,
+    status: "done",
+  });
 const updatenabikarankaryayojanaFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
-
+  state.merge({ ...state, status: "error" });
 
 //Delete Nabikarankaryayojana
 const deletenabikarankaryayojanaRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const deletenabikarankaryayojanaSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
+  state.merge({
+    ...state,
+    status: "done",
+  });
 const deletenabikarankaryayojanaFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
+  state.merge({ ...state, status: "error" });
 
 //---Consumergroupsdetails
 const fetchallconsumergroupdetailsRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallconsumergroupdetailsSuccess = (state, action) => {
-  console.log("reducer", action.response);
   return state.merge({
     ...state,
     status: "done",
@@ -345,7 +322,7 @@ const fetchallconsumergroupdetailsFailure = (state, action) => {
 };
 
 const fetchconsumergroupdetailsRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchconsumergroupdetailsSuccess = (state, action) => {
   return state.merge({
@@ -357,8 +334,6 @@ const fetchconsumergroupdetailsSuccess = (state, action) => {
 const fetchconsumergroupdetailsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
-
-
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -480,7 +455,6 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_REQUEST]: fetchconsumergroupdetailsRequest,
   [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_SUCCESS]: fetchconsumergroupdetailsSuccess,
   [BankaprakarTypes.FETCHCONSUMERGROUPDETAILS_FAILURE]: fetchconsumergroupdetailsFailure,
-
 
   [BankaprakarTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BankaprakarTypes.CLEAR_REQUEST]: clearRequest,
