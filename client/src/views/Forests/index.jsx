@@ -9,7 +9,11 @@ import BankaprakarActions from "../../actions/bankaprakar";
 
 export class Forests extends Component {
   componentDidMount() {
-    this.props.fetchallSamudayikbanbibaran();
+    this.props.fetchallSamudayikbanbibaran({
+      name: "samydayikban_name",
+      page: 0,
+      perPage: 20,
+    });
     this.props.fetchallDharmikbanbibaran();
     this.props.fetchallKabuliyatibanbibaran();
     this.props.fetchallNijibanbibaran();
@@ -68,8 +72,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallSamudayikbanbibaran: () =>
-    dispatch(BankaprakarActions.fetchallsamudayikbanbibaranRequest()),
+  fetchallSamudayikbanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallsamudayikbanbibaranRequest(payload)),
   fetchallDharmikbanbibaran: () =>
     dispatch(BankaprakarActions.fetchalldharmikbanbibaranRequest()),
   fetchallKabuliyatibanbibaran: () =>

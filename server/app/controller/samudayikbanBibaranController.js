@@ -1,16 +1,29 @@
 const pool = require("../db");
 //Controller for Listing all SamudayikbanBibaran
 async function getAllSamudayikbanBibaran(req, res) {
+  const getTotalQuery = "SELECT count(*) as total from samudayikban_bibarans";
   const getAllSamudayikbanBibaranQuery =
     "SELECT samudayikban_bibarans.*,nabikaran_karyayojanas.renewal_date,nabikaran_karyayojanas.renewed_date,nabikaran_karyayojanas.nabikaran_abadhi FROM `samudayikban_bibarans` left JOIN nabikaran_karyayojanas on samudayikban_bibarans.darta_no=nabikaran_karyayojanas.darta_id ORDER BY ? ASC LIMIT ?,?";
-  pool.query(
-    getAllSamudayikbanBibaranQuery,
-    [req.body.name, req.body.page, req.body.perPage],
-    (error, results, fields) => {
-      if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
-    }
-  );
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+    if (error) throw error;
+    pool.query(
+      getAllSamudayikbanBibaranQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
+  });
 }
 
 //Controller for Listing a SamudayikbanBibaran

@@ -20,7 +20,7 @@ import "./Bankaprakar.scss";
 class Bankaprakar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "samudayiklist" };
+    this.state = { loc: "samudayiklist", perPage: 20, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -32,7 +32,16 @@ class Bankaprakar extends Component {
     return { loc };
   }
 
-  handlePageChange() {}
+  handlePageChange(data) {
+    const { perPage } = this.state;
+    this.setState({ page: data.selected });
+
+    this.props.fetchallSamudayikbanbibaran({
+      name: "samydayikban_name",
+      page: data.selected * perPage,
+      perPage,
+    });
+  }
 
   handleSelectMenu(event, item, path) {
     switch (event) {
@@ -126,10 +135,11 @@ class Bankaprakar extends Component {
   }
   render() {
     const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
+
     const dharmikbanList = this.props.dharmikbanbibaranDataList.data;
     const kabuliyatibanList = this.props.kabuliyatibanbibaranDataList.data;
     const nijibanList = this.props.nijibanbibaranDataList.data;
-    const { loc } = this.state;
+    const { loc, perPage, page } = this.state;
 
     return (
       <div>
@@ -137,8 +147,8 @@ class Bankaprakar extends Component {
           <SamudayikbanBibaran.List
             buttonName="+ सामुदायिक वन"
             title="सामुदायिक वन सम्बन्धी विवरण"
-            pageCount={Math.ceil(length(samudayikbanList) / 5)}
-            data={samudayikbanList}
+            pageCount={Math.ceil(samudayikbanList.total / perPage)}
+            data={samudayikbanList.list}
             headings={samudayikbanHeadings}
             onAdd={() => this.handleAdd("samudayikban")}
             onSelect={this.handleSelectMenu}
@@ -263,6 +273,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   //--------------------------Samudayikban
+  fetchallSamudayikbanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallsamudayikbanbibaranRequest(payload)),
   addSamudayikbanbibaran: (payload) =>
     dispatch(BankaprakarActions.addsamudayikbanbibaranRequest(payload)),
   updateSamudayikbanbibaran: (payload, samudayikbanbibaranId) =>

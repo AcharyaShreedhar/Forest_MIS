@@ -50,7 +50,7 @@ const create = (baseURL = Config.API_URL) => {
   // Login API
   const loginByUsername = (payload) => api.post("users/login", payload);
   //Bankaprakars
-  const getSamudayikbanBibaranList = () => api.get("samudayikbanBibaran");
+  const getSamudayikbanBibaranList = (payload) => api.post("samudayikbanBibaranList",payload);
 
   const getSamudayikbanBibaran = (samudayikbanBibaranId) =>
     api.get(`samudayikbanBibaran/${samudayikbanBibaranId}`);
