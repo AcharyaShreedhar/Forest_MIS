@@ -15,3 +15,15 @@ export function* fetchallbaramaditchijbastuRequest(api, action) {
   }
 }
 
+export function* fetchbaramaditchijbastuRequest(api, action) {
+    const baramaditchijbastuId= action.payload
+  
+    const response = yield api.getBaramaditchijbastu(baramaditchijbastuId);
+    if (response.ok) {
+      yield put(
+        BanbibaranActions.fetchbaramaditchijbastuSuccess(response.data)
+      );
+    } else {
+      yield put(BanbibaranActions.fetchbaramaditchijbastuFailure());
+    }
+  }
