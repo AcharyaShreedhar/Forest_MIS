@@ -31,6 +31,7 @@ import{
     fetchallbaramaditchijbastuRequest,
     fetchbaramaditchijbastuRequest,
     fetchallbanxetraanyaprayojanRequest,
+    fetchbanxetraanyaprayojanRequest,
     } from "./banbibaran"; 
 
 
@@ -1083,6 +1084,12 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST,
       fetchallbanxetraanyaprayojanRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_REQUEST,
+      fetchbanxetraanyaprayojanRequest,
       api
     ),
   ]);
