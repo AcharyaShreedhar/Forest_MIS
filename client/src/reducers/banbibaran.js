@@ -49,6 +49,20 @@ const fetchallbanxetraanyaprayojanSuccess = (state, action) => {
 const fetchallbanxetraanyaprayojanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+const fetchbanxetraanyaprayojanRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+
+const fetchbanxetraanyaprayojanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    banxetraanyaprayojanData: action.response,
+  });
+};
+const fetchbanxetraanyaprayojanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
   
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -73,6 +87,10 @@ const clearRequest = (state, action) =>
         [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST]: fetchallbanxetraanyaprayojanRequest,
         [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_SUCCESS]: fetchallbanxetraanyaprayojanSuccess,
         [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_FAILURE]: fetchallbanxetraanyaprayojanFailure,
+
+        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_REQUEST]: fetchbanxetraanyaprayojanRequest,
+        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_SUCCESS]: fetchbanxetraanyaprayojanSuccess,
+        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_FAILURE]: fetchbanxetraanyaprayojanFailure,
 
         [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
         [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
