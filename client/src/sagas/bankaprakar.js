@@ -111,7 +111,8 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
 }
 
 export function* fetchalldharmikbanbibaranRequest(api, action) {
-  const response = yield api.getDharmikbanBibaranList();
+  const { payload } = action;
+  const response = yield api.getDharmikbanBibaranList(payload);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchalldharmikbanbibaranSuccess(response.data)
@@ -209,7 +210,8 @@ export function* deletedharmikbanbibaranRequest(api, action) {
 }
 
 export function* fetchallnijibanbibaranRequest(api, action) {
-  const response = yield api.getNijibanBibaranList();
+  const { payload } = action;
+  const response = yield api.getNijibanBibaranList(payload);
   if (response.ok) {
     yield put(BankaprakarActions.fetchallnijibanbibaranSuccess(response.data));
   } else {
@@ -303,7 +305,8 @@ export function* deletenijibanbibaranRequest(api, action) {
 }
 
 export function* fetchallkabuliyatibanbibaranRequest(api, action) {
-  const response = yield api.getKabuliyatibanBibaranList();
+  const { payload } = action;
+  const response = yield api.getKabuliyatibanBibaranList(payload);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallkabuliyatibanbibaranSuccess(response.data)

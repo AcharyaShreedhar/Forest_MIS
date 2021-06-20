@@ -1,11 +1,28 @@
 const pool = require("../db");
 //Controller for Listing all DharmikbanBibaran
 async function getAllDharmikbanBibaran(req, res) {
+  const getTotalQuery = "SELECT count(*) as total from dharmikban_bibarans";
   const getAllDharmikbanBibaranQuery =
-    "SELECT dharmikban_bibarans.*,nabikaran_karyayojanas.renewal_date,nabikaran_karyayojanas.renewed_date,nabikaran_karyayojanas.nabikaran_abadhi FROM `dharmikban_bibarans` left JOIN nabikaran_karyayojanas on dharmikban_bibarans.darta_no=nabikaran_karyayojanas.darta_id";
-  pool.query(getAllDharmikbanBibaranQuery, [], (error, results, fields) => {
+    "SELECT dharmikban_bibarans.*,nabikaran_karyayojanas.renewal_date,nabikaran_karyayojanas.renewed_date,nabikaran_karyayojanas.nabikaran_abadhi FROM `dharmikban_bibarans` left JOIN nabikaran_karyayojanas on dharmikban_bibarans.darta_no=nabikaran_karyayojanas.darta_id ORDER BY ? ASC LIMIT ?,?";
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllDharmikbanBibaranQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 

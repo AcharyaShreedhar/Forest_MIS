@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals, length } from "ramda";
+import { equals, length, isNil } from "ramda";
 import {
   SamudayikbanBibaran,
   DharmikbanBibaran,
@@ -20,7 +20,7 @@ import "./Bankaprakar.scss";
 class Bankaprakar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "samudayiklist", perPage: 20, page: 1 };
+    this.state = { loc: "samudayiklist", perPage: 5, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -28,19 +28,65 @@ class Bankaprakar extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
+    var samudayikbanList = [];
+    var dharmikbanList = [];
+    var kabuliyatibanList = [];
+    var nijibanList = [];
+    if (nextProps != prevState) {
+      samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
+      dharmikbanList = nextProps.dharmikbanbibaranDataList.data;
+      nijibanList = nextProps.nijibanbibaranDataList.data;
+      kabuliyatibanList = nextProps.kabuliyatibanbibaranDataList.data;
+    }
 
-    return { loc };
+    return {
+      loc,
+      samudayikbanList,
+      dharmikbanList,
+      nijibanList,
+      kabuliyatibanList,
+    };
   }
 
-  handlePageChange(data) {
+  handlePageChange(data, item) {
     const { perPage } = this.state;
     this.setState({ page: data.selected });
-
-    this.props.fetchallSamudayikbanbibaran({
-      name: "samydayikban_name",
-      page: data.selected * perPage,
-      perPage,
-    });
+    switch (item) {
+      case "samudayikban": {
+        this.props.fetchallSamudayikbanbibaran({
+          name: "samydayikban_name",
+          page: data.selected * perPage,
+          perPage,
+        });
+        break;
+      }
+      case "dharmikban": {
+        this.props.fetchallDharmikbanbibaran({
+          name: "dharmikban_name",
+          page: data.selected * perPage,
+          perPage,
+        });
+        break;
+      }
+      case "kabuliyatiban": {
+        this.props.fetchallKabuliyatibanbibaran({
+          name: "kabuliyatiban_name",
+          page: data.selected * perPage,
+          perPage,
+        });
+        break;
+      }
+      case "nijiban": {
+        this.props.fetchallNijibanbibaran({
+          name: "nijiban_name",
+          page: data.selected * perPage,
+          perPage,
+        });
+        break;
+      }
+      default:
+        break;
+    }
   }
 
   handleSelectMenu(event, item, path) {
@@ -134,12 +180,23 @@ class Bankaprakar extends Component {
     }
   }
   render() {
-    const samudayikbanList = this.props.samudayikbanbibaranDataList.data;
-
-    const dharmikbanList = this.props.dharmikbanbibaranDataList.data;
-    const kabuliyatibanList = this.props.kabuliyatibanbibaranDataList.data;
-    const nijibanList = this.props.nijibanbibaranDataList.data;
-    const { loc, perPage, page } = this.state;
+    const {
+      loc,
+      perPage,
+      page,
+      samudayikbanList,
+      dharmikbanList,
+      kabuliyatibanList,
+      nijibanList,
+    } = this.state;
+    console.log(
+      "dharmikbanlist",
+      dharmikbanList,
+      "kabu",
+      kabuliyatibanList,
+      "niji",
+      nijibanList
+    );
 
     return (
       <div>
@@ -147,12 +204,16 @@ class Bankaprakar extends Component {
           <SamudayikbanBibaran.List
             buttonName="+ सामुदायिक वन"
             title="सामुदायिक वन सम्बन्धी विवरण"
-            pageCount={Math.ceil(samudayikbanList.total / perPage)}
-            data={samudayikbanList.list}
+            pageCount={
+              !isNil(samudayikbanList)
+                ? Math.ceil(samudayikbanList.total / perPage)
+                : 5
+            }
+            data={!isNil(samudayikbanList) ? samudayikbanList.list : []}
             headings={samudayikbanHeadings}
             onAdd={() => this.handleAdd("samudayikban")}
             onSelect={this.handleSelectMenu}
-            onPageClick={this.handlePageChange}
+            onPageClick={(e) => this.handlePageChange(e, "samudayikban")}
           />
         )}
         {equals(loc, "samudayikbanadd") && (
@@ -174,10 +235,16 @@ class Bankaprakar extends Component {
           <DharmikbanBibaran.List
             buttonName="+ धार्मिक बन "
             title="धर्मिक वन सम्बन्धी विवरण"
-            data={dharmikbanList}
+            pageCount={
+              !isNil(dharmikbanList)
+                ? Math.ceil(dharmikbanList.total / perPage)
+                : 5
+            }
+            data={!isNil(dharmikbanList) ? dharmikbanList.List : []}
             headings={dharmikbanHeadings}
             onAdd={() => this.handleAdd("dharmikban")}
             onSelect={this.handleSelectMenu}
+            onPageClick={(e) => this.handlePageChange(e, "dharmikban")}
           />
         )}
         {equals(loc, "dharmikbanadd") && (
@@ -199,10 +266,16 @@ class Bankaprakar extends Component {
           <KabuliyatibanBibaran.List
             buttonName="+ कवुलियती वन "
             title="कवुलियती वन सम्बन्धी विवरण"
-            data={kabuliyatibanList}
+            pageCount={
+              !isNil(kabuliyatibanList)
+                ? Math.ceil(kabuliyatibanList.total / perPage)
+                : 5
+            }
+            data={!isNil(kabuliyatibanList) ? kabuliyatibanList.list : []}
             headings={kabuliyatibanHeadings}
             onAdd={() => this.handleAdd("kabuliyatiban")}
             onSelect={this.handleSelectMenu}
+            onPageClick={(e) => this.handlePageChange(e, "kabuliyatiban")}
           />
         )}
         {equals(loc, "kabuliyatibanadd") && (
@@ -224,10 +297,14 @@ class Bankaprakar extends Component {
           <NijibanBibaran.List
             buttonName="+ निजि वन"
             title="निजि वन सम्बन्धी विवरण"
-            data={nijibanList}
+            pageCount={
+              !isNil(nijibanList) ? Math.ceil(nijibanList.total / perPage) : 5
+            }
+            data={!isNil(nijibanList) ? nijibanList.list : []}
             headings={nijibanHeadings}
             onAdd={() => this.handleAdd("nijiban")}
             onSelect={this.handleSelectMenu}
+            onPageClick={(e) => this.handlePageChange(e, "nijiban")}
           />
         )}
         {equals(loc, "nijibanadd") && (
@@ -290,6 +367,8 @@ const mapDispatchToProps = (dispatch) => ({
       BankaprakarActions.deletesamudayikbanbibaranRequest(samudayikbanbibaranId)
     ),
   //--------------------------Dharmikban
+  fetchallDharmikbanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchalldharmikbanbibaranRequest(payload)),
   addDharmikbanbibaran: (payload) =>
     dispatch(BankaprakarActions.adddharmikbanbibaranRequest(payload)),
   updateDharmikbanbibaran: (payload, dharmikbanbibaranId) =>
@@ -305,6 +384,8 @@ const mapDispatchToProps = (dispatch) => ({
     ),
 
   //--------------------------Kabuliyatiban
+  fetchallKabuliyatibanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest(payload)),
   addKabuliyatibanbibaran: (payload) =>
     dispatch(BankaprakarActions.addkabuliyatibanbibaranRequest(payload)),
   updateKabuliyatibanbibaran: (payload, kabuliyatibanbibaranId) =>
@@ -322,6 +403,8 @@ const mapDispatchToProps = (dispatch) => ({
     ),
 
   //--------------------------Nijiban
+  fetchallNijibanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallnijibanbibaranRequest(payload)),
   addNijibanbibaran: (payload) =>
     dispatch(BankaprakarActions.addnijibanbibaranRequest(payload)),
   updateNijibanbibaran: (payload, nijibanbibaranId) =>
