@@ -4,14 +4,16 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
+import DwandabebasthapanActions from "../../actions/dwandabebasthapan";
 import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
 export class Dwandabebasthapan extends Component {
   componentDidMount() {
-    //function goes here
+    this.props.fetchallBanyajantuuddar();
   }
 
   render() {
+
     const { authenticated } = this.props;
     return (
       <Switch>
@@ -62,7 +64,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  //function
+  fetchallBanyajantuuddar:() =>
+  dispatch(DwandabebasthapanActions.fetchallbanyajantuuddarRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dwandabebasthapan);
