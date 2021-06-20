@@ -23,6 +23,10 @@
    fetchallbanxetraanyaprayojanSuccess: ["response"],
    fetchallbanxetraanyaprayojanFailure: null,
 
+   fetchbanxetraanyaprayojanRequest: ["payload"],
+   fetchbanxetraanyaprayojanSuccess: ["response"],
+   fetchbanxetraanyaprayojanFailure: null,
+
    locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
