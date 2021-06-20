@@ -140,6 +140,9 @@ const create = (baseURL = Config.API_URL) => {
 // Banbibaran_banxetra_anya_prayojan
   const getBanxetraanyaprayojanList = () => api.get("banxetraAnyaprayojan");
 
+
+  const getBanxetraanyaprayojan = (banxetraanyaprayojanId) =>
+    api.get(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
 
@@ -670,6 +673,8 @@ const create = (baseURL = Config.API_URL) => {
     getBaramaditchijbastuList,
     getBaramaditchijbastu,
     getBanxetraanyaprayojanList,
+    getBanxetraanyaprayojan,
+
   };
 };
 export default {
