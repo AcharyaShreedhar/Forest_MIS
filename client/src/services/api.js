@@ -91,7 +91,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`nijibanBibaran/${nijibanBibaranId}`);
 
   const getKabuliyatibanBibaranList = (payload) =>
-    api.get("kabuliyatibanBibaranList", payload);
+    api.post("kabuliyatibanBibaranList", payload);
 
   const getKabuliyatibanBibaran = (kabuliyatibanBibaranId) =>
     api.get(`kabuliyatibanBibaran/${kabuliyatibanBibaranId}`);
