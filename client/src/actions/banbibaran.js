@@ -19,6 +19,10 @@
    fetchbaramaditchijbastuSuccess: ["response"],
    fetchbaramaditchijbastuFailure: null,
 
+   fetchallbanxetraanyaprayojanRequest: ["payload"],
+   fetchallbanxetraanyaprayojanSuccess: ["response"],
+   fetchallbanxetraanyaprayojanFailure: null,
+
    locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
