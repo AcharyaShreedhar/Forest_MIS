@@ -37,7 +37,7 @@ export function* fetchallbandadelobibaranRequest(api, action) {
 export function* addbandadelobibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBandadelobibaranBandadeloAddNew(
+  const response = yield api.postBanbibaranBandadelobibaranAddNew(
     payload.bandadelo.data
   );
 
@@ -46,7 +46,7 @@ export function* addbandadelobibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbandadelobibaranRequest(api);
-    yield call(history.push, "/forests/bandadelolist");
+    yield call(history.push, "/banbibaran/bandadelolist");
     yield put(BandadelobibaranActions.addbandadelobibaranSuccess(response.data));
   } else {
     yield put(BandadelobibaranActions.addbandadelobibaranFailure());
@@ -71,7 +71,7 @@ export function* updatebandadelobibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbandadelobibaranRequest(api);
-    yield call(history.push, "/forests/bandadelolist");
+    yield call(history.push, "/banbibaran/bandadelolist");
     yield put(
       BandadelobibaranActions.updatebandadelobibaranSuccess(response.data)
     );

@@ -22,6 +22,7 @@ import * as BiruwaUtpadan from "./BiruwaUtpadan";
 import * as YearlyActivities from "./YearlyActivities";
 import * as BanpaidawarLilam from "./BanpaidawarLilam";
 import * as BanpaidawarOsarpasar from "./BanpaidawarOsarpasar";
+import * as BandadeloBibaran from "./BandadeloBibaran";
 
 export {
   HeaderComponent,
@@ -48,4 +49,5 @@ export {
   YearlyActivities,
   BanpaidawarLilam,
   BanpaidawarOsarpasar,
+  BandadeloBibaran,
 };
