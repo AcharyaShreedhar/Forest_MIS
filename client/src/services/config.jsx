@@ -151,7 +151,22 @@ const bandadeloHeadings = [
   "नियन्त्रणमा सहभागि पुरुष संख्या",
   "सिर्जना गर्ने",
   "परिमार्जन गर्ने",
+];
 
+const banyajantuuddarHeadings = [
+    "मिति",
+    "स्थानिय तह",
+    "समय",
+    "संरक्षित क्षेत्र/सा.व.क्षेत्र",
+    "वन्यजन्तुको नाम",
+    "उमेर",
+   " अवस्था (मृत,जिउॅदो)",
+   "मरेको भए कारण",
+   "नजिकको वन क्षेत्रबाट दुरी(मि.)",
+   "अन्य विवरण",
+   "कैफियत",
+   "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
 ];
 
 export {
@@ -166,4 +181,6 @@ export {
   banpaidawarlilamHeadings,
   banpaidawarosarpasarHeadings,
   bandadeloHeadings,
+  banyajantuuddarHeadings,
+
 };
