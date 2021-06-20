@@ -14,6 +14,10 @@
    fetchallbaramaditchijbastuRequest: ["payload"],
    fetchallbaramaditchijbastuSuccess: ["response"],
    fetchallbaramaditchijbastuFailure: null,
+   
+   fetchbaramaditchijbastuRequest: ["payload"],
+   fetchbaramaditchijbastuSuccess: ["response"],
+   fetchbaramaditchijbastuFailure: null,
 
    locationsRequest: ["payload"],
   // Clear all caches
@@ -22,3 +26,4 @@
 
 export const BanbibaranTypes = Types;
 export default Creators;
+
