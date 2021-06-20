@@ -27,3 +27,14 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
       yield put(BanbibaranActions.fetchbaramaditchijbastuFailure());
     }
   }
+
+  export function* fetchallbanxetraanyaprayojanRequest(api, action) {
+    const response = yield api.getBanxetraanyaprayojanList();
+    if (response.ok) {
+      yield put(
+        BanbibaranActions.fetchallbanxetraanyaprayojanSuccess(response.data)
+      );
+    } else {
+      yield put(BanbibaranActions.fetchallbanxetraanyaprayojanFailure());
+    }
+  }
