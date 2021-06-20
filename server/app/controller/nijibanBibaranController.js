@@ -1,10 +1,27 @@
 const pool = require("../db");
 //Controller for Listing all NijibanBibaran
 async function getAllNijibanBibaran(req, res) {
-  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans`;
-  pool.query(getAllNijibanBibaranQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from nijiban_bibarans";
+  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans ORDER BY ? ASC LIMIT ?,?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllNijibanBibaranQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 

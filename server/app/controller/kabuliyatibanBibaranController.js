@@ -1,10 +1,27 @@
 const pool = require("../db");
 //Controller for Listing all KabuliyatibanBibaran
 async function getAllKabuliyatibanBibaran(req, res) {
-  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans`;
-  pool.query(getAllKabuliyatibanBibaranQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from kabuliyatiban_bibarans";
+  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans ORDER BY ? ASC LIMIT ?,?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllKabuliyatibanBibaranQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 

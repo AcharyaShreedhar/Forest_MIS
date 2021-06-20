@@ -12,11 +12,23 @@ export class Forests extends Component {
     this.props.fetchallSamudayikbanbibaran({
       name: "samydayikban_name",
       page: 0,
-      perPage: 20,
+      perPage: 5,
     });
-    this.props.fetchallDharmikbanbibaran();
-    this.props.fetchallKabuliyatibanbibaran();
-    this.props.fetchallNijibanbibaran();
+    this.props.fetchallDharmikbanbibaran({
+      name: "dharmikban_name",
+      page: 0,
+      perPage: 5,
+    });
+    this.props.fetchallKabuliyatibanbibaran({
+      name: "kabuliyatiban_name",
+      page: 0,
+      perPage: 5,
+    });
+    this.props.fetchallNijibanbibaran({
+      name: "nijiban_name",
+      page: 0,
+      perPage: 5,
+    });
   }
 
   render() {
@@ -74,12 +86,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallSamudayikbanbibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallsamudayikbanbibaranRequest(payload)),
-  fetchallDharmikbanbibaran: () =>
-    dispatch(BankaprakarActions.fetchalldharmikbanbibaranRequest()),
-  fetchallKabuliyatibanbibaran: () =>
-    dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest()),
-  fetchallNijibanbibaran: () =>
-    dispatch(BankaprakarActions.fetchallnijibanbibaranRequest()),
+  fetchallDharmikbanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchalldharmikbanbibaranRequest(payload)),
+  fetchallKabuliyatibanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest(payload)),
+  fetchallNijibanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallnijibanbibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Forests);
