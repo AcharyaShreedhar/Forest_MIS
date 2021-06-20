@@ -26,7 +26,7 @@ export class BanyajantuUddar extends Component {
         switch (path) {
           case "banyajantuuddar": {
             this.props.history.push({
-              pathname: `/dwandabebasthapan/uddaredit/${item.uddar_id}`,
+              pathname: `/dwandabebasthapan/banyajantuuddaredit/${item.uddar_id}`,
               item,
             });
             break;
@@ -54,7 +54,7 @@ export class BanyajantuUddar extends Component {
   handleAdd(item) {
     switch (item) {
       case "banyajantuuddar": {
-        this.props.history.push("/dwandabebasthapan/uddaradd/new");
+        this.props.history.push("/dwandabebasthapan/banyajantuuddaradd/new");
         break;
       }
 
