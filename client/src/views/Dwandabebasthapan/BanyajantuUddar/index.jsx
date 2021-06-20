@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals } from "ramda";
-import { BanyajantuUddar } from "../../../components";
+import { BanyajantuUddarbibaran } from "../../../components";
 import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
 import { banyajantuuddarHeadings } from "../../../services/config";
 
-export class Uddar extends Component {
+export class BanyajantuUddar extends Component {
   constructor(props) {
     super(props);
     this.state = { loc: "uddarlist" };
@@ -74,7 +74,7 @@ export class Uddar extends Component {
       return (
         <div>
           {equals(loc, "banyajantuuddarlist") && (
-            <BanyajantuUddar.List
+            <BanyajantuUddarbibaran.List
               buttonName="+ वन्यजन्तु उद्दार"
               title="वन्यजन्तु उद्दार सम्बन्धि विवरण"
               data={banyajantuuddarList}
@@ -84,14 +84,14 @@ export class Uddar extends Component {
             />
           )}
           {equals(loc, "uddaradd") && (
-            <BanyajantuUddar.Add
+            <BanyajantuUddarbibaran.Add
               title="+ वन्यजन्तु उद्दार"
               onSelect={this.handleSelectMenu}
               onSubmit={(e) => this.props.addBanyajantuuddar(e)}
             />
           )}
           {equals(loc, "uddaredit") && (
-            <BanyajantuUddar.Edit
+            <BanyajantuUddarbibaran.Edit
               title="वन्यजन्तु उद्दार पुनः प्रविष्ट"
               history={this.props.history}
               onSelect={this.handleSelectMenu}
@@ -103,11 +103,11 @@ export class Uddar extends Component {
     }
   }
   
-  Uddar.propsTypes = {
+  BanyajantuUddar.propsTypes = {
     banyajantuuddarDataList: PropTypes.any,
   };
   
-  Uddar.defaultProps = {
+  BanyajantuUddar.defaultProps = {
     bbanyajantuuddarDataList: {},
   };
   
@@ -129,7 +129,7 @@ export class Uddar extends Component {
       dispatch(DwandabebasthapanActions.deletebanyajantuuddarRequest(banyajantuuddarId)),
   });
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Uddar);
+  export default connect(mapStateToProps, mapDispatchToProps)(BanyajantuUddar);
   
     
 
