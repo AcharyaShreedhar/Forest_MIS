@@ -134,6 +134,9 @@ const create = (baseURL = Config.API_URL) => {
 
   //Banbibaran
   const getBaramaditchijbastuList = () => api.get("baramaditChijbastu");
+  const getBaramaditchijbastu = (baramaditchijbastuId) =>
+    api.get(`baramaditChijbastu/${baramaditchijbastuId}`);
+
 
   //................biruwautpadans
   const getBiruwautpadanList = () => api.get("biruwaUtpadans");
@@ -279,15 +282,15 @@ const create = (baseURL = Config.API_URL) => {
     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);
 
   //Add
-  const postBanbibaranBandadelobibaranAddNew = (payload) =>
+  const postBandadelobibaranBandadeloAddNew = (payload) =>
     api.post(`bandadeloBibaran`, payload);
 
   //update
-  const postBanbibaranBandadelobibaranUpdate = (payload, bandadelobibaranId) =>
+  const postBandadelobibaranBandadeloUpdate = (payload, bandadelobibaranId) =>
     api.put(`bandadeloBibaran/${bandadelobibaranId}`, payload);
 
   //delete
-  const postBanbibaranBandadelobibaranDelete = (bandadelobibaranId) =>
+  const postBandadelobibaranBandadeloDelete = (bandadelobibaranId) =>
     api.delete(`bandadeloBibaran/${bandadelobibaranId}`);
 
   //--------------banpaidawar
@@ -575,9 +578,9 @@ const create = (baseURL = Config.API_URL) => {
     //bandadelobibaran
     getBandadelobibaranList,
     getBandadelobibaran,
-    postBanbibaranBandadelobibaranAddNew,
-    postBanbibaranBandadelobibaranUpdate,
-    postBanbibaranBandadelobibaranDelete,
+    postBandadelobibaranBandadeloAddNew,
+    postBandadelobibaranBandadeloUpdate,
+    postBandadelobibaranBandadeloDelete,
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,
@@ -665,6 +668,7 @@ const create = (baseURL = Config.API_URL) => {
 
     //--------Banbibaran
     getBaramaditchijbastuList,
+    getBaramaditchijbastu,
 
   };
 };
