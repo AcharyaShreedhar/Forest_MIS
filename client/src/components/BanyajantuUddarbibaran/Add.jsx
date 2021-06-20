@@ -1,0 +1,211 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import "nepali-datepicker-reactjs/dist/index.css";
+import { equals } from "ramda";
+
+class Add extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      miti: "",
+      sthaniya_taha: "",
+      samaya: "",
+      samraxit_xetra: "",
+      banyajantuko_naam: "",
+      banyajantuko_umer: "",
+      banyajantuko_abastha: "",
+      sahabhagi_purus: "",
+      mareko_karan: "",
+      banxetra_duri: "",
+      anya_bibaran: "",
+      remarks: "",
+      created_by: "",
+      updated_by: "",
+      createdAt: "",
+      updatedAt: "",
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit() {
+    const {
+      miti,
+      sthaniya_taha,
+      samaya,
+      samraxit_xetra,
+      banyajantuko_naam,
+      banyajantuko_umer,
+      banyajantuko_abastha,
+      mareko_karan,
+      banxetra_duri,
+      anya_bibaran,
+      remarks,
+      created_by,
+      updated_by,
+    } = this.state;
+    const payload = {
+        banyajantuuddar: {
+        data: {
+          miti: miti,
+          sthaniya_taha: sthaniya_taha,
+          samaya: samaya,
+          samraxit_xetra: samraxit_xetra,
+          banyajantuko_naam: banyajantuko_naam,
+          banyajantuko_umer: banyajantuko_umer,
+          banyajantuko_abastha: banyajantuko_abastha,
+          mareko_karan: mareko_karan,
+          banxetra_duri: banxetra_duri,
+          anya_bibaran: anya_bibaran,
+          remarks: remarks,
+          created_by: created_by,
+          updated_by: updated_by,
+        },
+      },
+    };
+    this.props.onSubmit(payload);
+  }
+  handleDate(e) {
+    this.setState({ lilam_date: e });
+  }
+
+  render() {
+    const { title } = this.props;
+    const {
+      miti,
+      sthaniya_taha,
+      samaya,
+      samraxit_xetra,
+      banyajantuko_naam,
+      banyajantuko_umer,
+      banyajantuko_abastha,
+      mareko_karan,
+      banxetra_duri,
+      anya_bibaran,
+      remarks,
+      created_by,
+      updated_by,
+    } = this.state;
+
+    return (
+      <React.Fragment>
+        <div className=" card p-5 border-5">
+          <div className="detail-content">
+            <div className="title">
+              <span className="dsl-b22">{title}</span>
+            </div>
+
+            <Input
+              className="mb-4"
+              title="मिति"
+              value={miti}
+              direction="vertical"
+              onChange={(e) => this.setState({ miti: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="स्थानिय तह"
+              direction="vertical"
+              value={sthaniya_taha}
+              onChange={(e) => this.setState({ sthaniya_taha: e })}
+            />
+            <Input
+              className="mb-4"
+              title="समय"
+              value={samaya}
+              direction="vertical"
+              onChange={(e) => this.setState({ samaya: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="संरक्षित क्षेत्र/सा.व.क्षेत्र"
+              direction="vertical"
+              value={samraxit_xetra}
+              onChange={(e) => this.setState({ samraxit_xetra: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="वन्यजन्तुको नाम"
+              value={banyajantuko_naam}
+              direction="vertical"
+              onChange={(e) => this.setState({ banyajantuko_naam: e })}
+            />
+            <Input
+              className="mb-4"
+              title="उमेर"
+              value={banyajantuko_umer}
+              direction="vertical"
+              onChange={(e) => this.setState({ banyajantuko_umer: e })}
+            />
+            <Input
+              className="mb-4"
+              title="अवस्था (मृत,जिउॅदो)"
+              value={banyajantuko_abastha}
+              direction="vertical"
+              onChange={(e) => this.setState({ banyajantuko_abastha: e })}
+            />
+            <Input
+              className="mb-4"
+              title="मरेको भए कारण"
+              value={mareko_karan}
+              direction="vertical"
+              onChange={(e) => this.setState({ mareko_karan: e })}
+            />
+             <Input
+              className="mb-4"
+              title="नजिकको वन क्षेत्रबाट दुरी(मि.)"
+              value={banxetra_duri}
+              direction="vertical"
+              onChange={(e) => this.setState({ banxetra_duri: e })}
+            />
+             <Input
+              className="mb-4"
+              title="अन्य विवरण"
+              value={anya_bibaran}
+              direction="vertical"
+              onChange={(e) => this.setState({ anya_bibaran: e })}
+            />
+            <Input
+              className="mb-4"
+              title="कैफियत	"
+              value={remarks}
+              direction="vertical"
+              onChange={(e) => this.setState({ remarks: e })}
+            />
+            <Input
+              className="mb-4"
+              title="सिर्जना गर्ने"
+              value={created_by}
+              direction="vertical"
+              onChange={(e) => this.setState({ created_by: e })}
+            />
+            <Input
+              className="mb-4"
+              title="परिमार्जन गर्ने"
+              value={updated_by}
+              direction="vertical"
+              onChange={(e) => this.setState({ updated_by: e })}
+            />
+            
+          </div>
+          <div className="mt-2 border-5">
+            <div className="d-flex justify-content-end align-items-center">
+              <Button
+                className="mr-3"
+                name="Save"
+                onClick={this.handleSubmit.bind(this)}
+              />
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Add;

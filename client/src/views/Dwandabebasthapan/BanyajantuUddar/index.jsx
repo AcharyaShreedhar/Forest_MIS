@@ -83,14 +83,14 @@ export class BanyajantuUddar extends Component {
               onSelect={this.handleSelectMenu}
             />
           )}
-          {equals(loc, "uddaradd") && (
+          {equals(loc, "banyajantuuddaradd") && (
             <BanyajantuUddarbibaran.Add
               title="+ वन्यजन्तु उद्दार"
               onSelect={this.handleSelectMenu}
               onSubmit={(e) => this.props.addBanyajantuuddar(e)}
             />
           )}
-          {equals(loc, "uddaredit") && (
+          {equals(loc, "banyajantuuddaredit") && (
             <BanyajantuUddarbibaran.Edit
               title="वन्यजन्तु उद्दार पुनः प्रविष्ट"
               history={this.props.history}
