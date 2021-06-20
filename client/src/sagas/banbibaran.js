@@ -38,3 +38,16 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
       yield put(BanbibaranActions.fetchallbanxetraanyaprayojanFailure());
     }
   }
+
+  export function* fetchbanxetraanyaprayojanRequest(api, action) {
+    const banxetraanyaprayojanId= action.payload
+  
+    const response = yield api.getBanxetraanyaprayojan(banxetraanyaprayojanId);
+    if (response.ok) {
+      yield put(
+        BanbibaranActions.fetchbanxetraanyaprayojanSuccess(response.data)
+      );
+    } else {
+      yield put(BanbibaranActions.fetchbanxetraanyaprayojanFailure());
+    }
+  }
