@@ -2,6 +2,7 @@ import { takeEvery, takeLatest, all } from "redux-saga/effects";
 import API from "../services/api";
 import { AppTypes } from "../actions/app";
 import { BankaprakarTypes } from "../actions/bankaprakar";
+import { BanbibaranTypes } from "../actions/banbibaran";
 import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
@@ -15,7 +16,7 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes }  from "../actions/inventories";
 import { KarmacharibibaranTypes} from "../actions/karmacharibibaran";
 //------------------app
-import { fetchalldepartmentsRequest, fetchdepartmentsRequest, fetchalldistrictsRequest, fetchdistrictsRequest, fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, fetchprovincesRequest, fetchallusersRequest, fetchusersRequest, loginRequest, logoutRequest} from "./app";
+import {fetchalldepartmentsRequest, fetchdepartmentsRequest, fetchalldistrictsRequest, fetchdistrictsRequest, fetchallmunicipalitiesRequest, fetchmunicipalitiesRequest, fetchallprovincesRequest, fetchprovincesRequest, fetchallusersRequest, fetchusersRequest, loginRequest, logoutRequest} from "./app";
 
 //karmacharidarbandi---------------------
 import{ 
@@ -26,8 +27,14 @@ import{
   deletekarmacharidarbandiRequest,
   } from "./karmacharidarbandi"; 
 
+  import{ 
+    fetchallbaramaditchijbastuRequest,
+    fetchbaramaditchijbastuRequest,
+    } from "./banbibaran"; 
 
-//------------------------banbibaran
+
+
+//------------------------bankaprakar
 import {
   fetchallconsumergroupdetailsRequest,
   fetchconsumergroupdetailsRequest,
@@ -1058,11 +1065,19 @@ export default function* root() {
       api
     ),
 
+    //----------Banbibaran
     takeLatest(
-      AppTypes.FETCHUSERS_REQUEST,
-      fetchusersRequest,
+      BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_REQUEST,
+      fetchallbaramaditchijbastuRequest,
       api
     ),
+
+    takeLatest(
+      BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST,
+      fetchbaramaditchijbastuRequest,
+      api
+    ),
+
 
   ]);
 }

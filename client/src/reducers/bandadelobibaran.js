@@ -22,7 +22,6 @@ const fetchallbandadelobibaranFailure = (state, action) => {
 };
 
 
-
 const fetchbandadelobibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 
@@ -71,8 +70,6 @@ state.merge({
 });
 const deletebandadelobibaranFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
-
-
 
 const locationsRequest = (state, action) => {
     let locations = state.locations;
