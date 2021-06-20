@@ -129,7 +129,6 @@ class Bankaprakar extends Component {
     const dharmikbanList = this.props.dharmikbanbibaranDataList.data;
     const kabuliyatibanList = this.props.kabuliyatibanbibaranDataList.data;
     const nijibanList = this.props.nijibanbibaranDataList.data;
-    console.log("Data==>",this.props.baramaditchijbastuDataList);
     const { loc } = this.state;
 
     return (
@@ -260,7 +259,6 @@ const mapStateToProps = (state) => ({
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
   nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
-  baramaditchijbastuDataList: state.banbibaran.allbaramaditchijbastuData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
