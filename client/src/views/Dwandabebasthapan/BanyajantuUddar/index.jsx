@@ -1,9 +1,135 @@
 import React, { Component } from "react";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
+import { equals } from "ramda";
+import { BanyajantuUddar } from "../../../components";
+import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
+import { banyajantuuddarHeadings } from "../../../services/config";
 
-export class BanyajantuUddar extends Component {
-  render() {
-    return <div>BanyajantuUddar</div>;
+export class Uddar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { loc: "uddarlist" };
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
-}
 
-export default BanyajantuUddar;
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const loc = nextProps.location.pathname.split("/")[2];
+
+    return { loc };
+  }
+
+  handleSelectMenu(event, item, path) {
+   switch (event) {
+      case "edit": {
+        switch (path) {
+          case "banyajantuuddar": {
+            this.props.history.push({
+              pathname: `/dwandabebasthapan/uddaredit/${item.uddar_id}`,
+              item,
+            });
+            break;
+          }
+          default:
+            break;
+        }
+        break;
+      }
+      case "delete": {
+        switch (path) {
+          case "banyajantuuddar": {
+            this.props.deleteBanyajantuUddar(item.uddar_id);
+            break;
+          }
+          default:
+            break;
+        }
+      }
+      default:
+        break;
+    }
+  }
+
+  handleAdd(item) {
+    switch (item) {
+      case "banyajantuuddar": {
+        this.props.history.push("/dwandabebasthapan/uddaradd/new");
+        break;
+      }
+
+      default:
+        break;
+    }
+  }
+
+  render() {
+    const banyajantuuddarList = this.props.banyajantuuddarDataList
+      ? this.props.banyajantuuddarDataList.data
+      : [];
+
+    const { loc } = this.state;
+    console.log("location", loc);
+
+      return (
+        <div>
+          {equals(loc, "banyajantuuddarlist") && (
+            <BanyajantuUddar.List
+              buttonName="+ वन्यजन्तु उद्दार"
+              title="वन्यजन्तु उद्दार सम्बन्धि विवरण"
+              data={banyajantuuddarList}
+              headings={banyajantuuddarHeadings}
+              onAdd={() => this.handleAdd("banyajantuuddar")}
+              onSelect={this.handleSelectMenu}
+            />
+          )}
+          {equals(loc, "uddaradd") && (
+            <BanyajantuUddar.Add
+              title="+ वन्यजन्तु उद्दार"
+              onSelect={this.handleSelectMenu}
+              onSubmit={(e) => this.props.addBanyajantuuddar(e)}
+            />
+          )}
+          {equals(loc, "uddaredit") && (
+            <BanyajantuUddar.Edit
+              title="वन्यजन्तु उद्दार पुनः प्रविष्ट"
+              history={this.props.history}
+              onSelect={this.handleSelectMenu}
+              onUpdate={(e, id) => this.props.updateBanyajantuuddar(e, id)}
+            />
+          )}
+        </div>
+      );
+    }
+  }
+  
+  Uddar.propsTypes = {
+    banyajantuuddarDataList: PropTypes.any,
+  };
+  
+  Uddar.defaultProps = {
+    bbanyajantuuddarDataList: {},
+  };
+  
+  const mapStateToProps = (state) => ({
+    banyajantuuddarDataList: state.dwandabebasthapan.allbanyajantuuddarData,
+  });
+  
+  const mapDispatchToProps = (dispatch) => ({
+  
+    addBanyajantuuddar: (payload) =>
+      dispatch(DwandabebasthapanActions.addbanyajantuuddarRequest(payload)),
+  
+    updateBanyajantuuddar: (payload, banyajantuuddarId) =>
+      dispatch(
+        DwandabebasthapanActions.updatebanyajantuuddarRequest(payload, banyajantuuddarId)
+      ),
+  
+    deleteBanyajantuUddar: (banyajantuuddarId) =>
+      dispatch(DwandabebasthapanActions.deletebanyajantuuddarRequest(banyajantuuddarId)),
+  });
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Uddar);
+  
+    
+
