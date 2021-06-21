@@ -9,7 +9,7 @@ const initialState = Immutable({
 });
 
 const fetchallbaramaditchijbastuRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallbaramaditchijbastuSuccess = (state, action) => {
   console.log("reducer", action.response);
   return state.merge({
@@ -23,7 +23,7 @@ const fetchallbaramaditchijbastuFailure = (state, action) => {
 };
 
 const fetchbaramaditchijbastuRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchbaramaditchijbastuSuccess = (state, action) => {
   return state.merge({
@@ -37,7 +37,7 @@ const fetchbaramaditchijbastuFailure = (state, action) => {
 };
 
 const fetchallbanxetraanyaprayojanRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallbanxetraanyaprayojanSuccess = (state, action) => {
   console.log("reducer", action.response);
   return state.merge({
@@ -51,7 +51,7 @@ const fetchallbanxetraanyaprayojanFailure = (state, action) => {
 };
 
 const fetchbanxetraanyaprayojanRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchbanxetraanyaprayojanSuccess = (state, action) => {
   return state.merge({
