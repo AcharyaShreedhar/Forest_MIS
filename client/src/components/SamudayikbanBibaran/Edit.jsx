@@ -27,8 +27,8 @@ class Edit extends Component {
       forest_maujdat: props.history.location.item.forest_maujdat,
       nikasi_timber: props.history.location.item.nikasi_timber,
       nikasi_wood: props.history.location.item.nikasi_wood,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,6 +48,8 @@ class Edit extends Component {
       forest_maujdat,
       nikasi_timber,
       nikasi_wood,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       samudayikban: {
@@ -61,6 +63,8 @@ class Edit extends Component {
           forest_maujdat: forest_maujdat,
           nikasi_timber: nikasi_timber,
           nikasi_wood: nikasi_wood,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: updated_by || this.props.user.user_name,
         },
       },
     };

@@ -3,10 +3,12 @@ import { toast } from "react-toastify";
 
 import { history } from "../reducers";
 import BankaprakarActions from "../actions/bankaprakar";
+import { isNil } from "ramda";
 
 export function* fetchallsamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
-  const response = yield api.getSamudayikbanBibaranList(payload);
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getSamudayikbanBibaranList(payloaddata);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallsamudayikbanbibaranSuccess(response.data)
@@ -42,7 +44,11 @@ export function* addsamudayikbanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक सामुदायिक वन प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallsamudayikbanbibaranRequest(api);
+    yield fetchallsamudayikbanbibaranRequest(api, {
+      name: "samydayikban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/samudayikbanlist");
     yield put(BankaprakarActions.addsamudayikbanbibaranSuccess(response.data));
   } else {
@@ -69,7 +75,11 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक सामुदायिक वन पुनः प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallsamudayikbanbibaranRequest(api);
+    yield fetchallsamudayikbanbibaranRequest(api, {
+      name: "samydayikban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/samudayikbanlist");
     yield put(
       BankaprakarActions.updatesamudayikbanbibaranSuccess(response.data)
@@ -112,7 +122,8 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
 
 export function* fetchalldharmikbanbibaranRequest(api, action) {
   const { payload } = action;
-  const response = yield api.getDharmikbanBibaranList(payload);
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getDharmikbanBibaranList(payloaddata);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchalldharmikbanbibaranSuccess(response.data)
@@ -146,7 +157,11 @@ export function* adddharmikbanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक धार्मिक वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchalldharmikbanbibaranRequest(api);
+    yield fetchalldharmikbanbibaranRequest(api, {
+      name: "dharmikban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/dharmikbanlist");
     yield put(BankaprakarActions.adddharmikbanbibaranSuccess(response.data));
   } else {
@@ -172,7 +187,11 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchalldharmikbanbibaranRequest(api);
+    yield fetchalldharmikbanbibaranRequest(api, {
+      name: "dharmikban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/dharmikbanlist");
     yield put(BankaprakarActions.updatedharmikbanbibaranSuccess(response.data));
   } else {
@@ -211,7 +230,8 @@ export function* deletedharmikbanbibaranRequest(api, action) {
 
 export function* fetchallnijibanbibaranRequest(api, action) {
   const { payload } = action;
-  const response = yield api.getNijibanBibaranList(payload);
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getNijibanBibaranList(payloaddata);
   if (response.ok) {
     yield put(BankaprakarActions.fetchallnijibanbibaranSuccess(response.data));
   } else {
@@ -240,7 +260,11 @@ export function* addnijibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक निजी वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallnijibanbibaranRequest(api);
+    yield fetchallnijibanbibaranRequest(api, {
+      name: "nijiban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/nijibanlist");
     yield put(BankaprakarActions.addnijibanbibaranSuccess(response.data));
   } else {
@@ -267,7 +291,11 @@ export function* updatenijibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक निजी वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallnijibanbibaranRequest(api);
+    yield fetchallnijibanbibaranRequest(api, {
+      name: "nijiban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/nijibanlist");
     yield put(BankaprakarActions.updatenijibanbibaranSuccess(response.data));
   } else {
@@ -306,7 +334,8 @@ export function* deletenijibanbibaranRequest(api, action) {
 
 export function* fetchallkabuliyatibanbibaranRequest(api, action) {
   const { payload } = action;
-  const response = yield api.getKabuliyatibanBibaranList(payload);
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getKabuliyatibanBibaranList(payloaddata);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallkabuliyatibanbibaranSuccess(response.data)
@@ -341,7 +370,11 @@ export function* addkabuliyatibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक कबुलियती वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield fetchallkabuliyatibanbibaranRequest(api, {
+      name: "kabuliyatiban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/kabuliyatibanlist");
     yield put(BankaprakarActions.addkabuliyatibanbibaranSuccess(response.data));
   } else {
@@ -368,7 +401,11 @@ export function* updatekabuliyatibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield fetchallkabuliyatibanbibaranRequest(api, {
+      name: "kabuliyatiban_name",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/kabuliyatibanlist");
     yield put(
       BankaprakarActions.updatekabuliyatibanbibaranSuccess(response.data)
