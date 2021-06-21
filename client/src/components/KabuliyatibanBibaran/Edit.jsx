@@ -38,8 +38,8 @@ class Edit extends Component {
       adhyakshya_male: props.history.location.item.adhyakshya_male,
       sachib_female: props.history.location.item.sachib_female,
       sachib_male: props.history.location.item.sachib_male,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -71,6 +71,8 @@ class Edit extends Component {
       adhyakshya_male,
       sachib_female,
       sachib_male,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       kabuliyatiban: {
@@ -97,6 +99,8 @@ class Edit extends Component {
           adhyakshya_male: adhyakshya_male,
           sachib_female: sachib_female,
           sachib_male: sachib_male,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: updated_by || this.props.user.user_name,
         },
       },
     };

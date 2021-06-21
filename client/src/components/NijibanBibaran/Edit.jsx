@@ -18,8 +18,8 @@ class Edit extends Component {
       curr_addr: props.history.location.item.curr_addr,
       area: props.history.location.item.area,
       main_species: props.history.location.item.main_species,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -36,6 +36,8 @@ class Edit extends Component {
       curr_addr,
       area,
       main_species,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       nijiban: {
@@ -47,6 +49,8 @@ class Edit extends Component {
           curr_addr: curr_addr,
           area: area,
           main_species: main_species,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: updated_by || this.props.user.user_name,
         },
       },
     };

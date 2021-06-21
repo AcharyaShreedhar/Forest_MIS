@@ -89,6 +89,8 @@ class Add extends Component {
           adhyakshya_male: adhyakshya_male,
           sachib_female: sachib_female,
           sachib_male: sachib_male,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name
         },
       },
     };
