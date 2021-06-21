@@ -2,10 +2,12 @@ import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
 import BanpaidawarActions from "../actions/banpaidawar";
+import { isNil } from "ramda";
 
 export function* fetchallbanpaidawarRequest(api, action) {
- 
-  const response = yield api.getBanpaidawarList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanpaidawarList(payloaddata);
   if (response.ok) {
     yield put(
         BanpaidawarActions.fetchallbanpaidawarSuccess(response.data)
@@ -41,7 +43,11 @@ export function* addbanpaidawarRequest(api, action) {
     toast.success("सफलतापुर्वक वन पैदावार प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanpaidawarRequest(api);
+    yield fetchallbanpaidawarRequest(api,{
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/banpaidawar/osarpasarlist");
     yield put(BanpaidawarActions.addbanpaidawarSuccess(response.data));
   } else {
@@ -105,8 +111,9 @@ export function* deletebanpaidawarRequest(api, action) {
 
 
   export function* fetchallbanpaidawarlilamRequest(api, action) {
- 
-    const response = yield api.getBanpaidawarlilamList();
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getBanpaidawarlilamList(payloaddata);
       if (response.ok) {
       yield put(
           BanpaidawarActions.fetchallbanpaidawarlilamSuccess(response.data)
@@ -142,7 +149,11 @@ export function* addbanpaidawarlilamRequest(api, action) {
     toast.success("सफलतापुर्वक वन पैदावार लिलाम प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanpaidawarlilamRequest(api);
+    yield fetchallbanpaidawarlilamRequest(api,{
+      name: "lilam_date",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/banpaidawar/lilamlist");
     yield put(BanpaidawarActions.addbanpaidawarlilamSuccess(response.data));
   } else {
