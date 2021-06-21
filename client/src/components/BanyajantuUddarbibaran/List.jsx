@@ -53,8 +53,7 @@ function List(props) {
                   <td key={index}> {uddar.remarks}</td>
                   <td key={index}> {uddar.created_by}</td>
                   <td key={index}> {uddar.updated_by}</td>
-                  <td key={index}> {uddar.createdAt}</td>
-                  <td key={index}> {uddar.updatedAt}</td>
+            
                   <td>
                     <div className="edit">
                       <EditDropdown
