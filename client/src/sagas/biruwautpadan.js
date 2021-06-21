@@ -1,10 +1,13 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import BiruwautpadanActions from "../actions/biruwautpadan";
 
 export function* fetchallbiruwautpadanRequest(api, action) {
-  const response = yield api.getBiruwautpadanList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBiruwautpadanList(payloaddata);
    if (response.ok) {
     yield put(
       BiruwautpadanActions.fetchallbiruwautpadanSuccess(response.data)
@@ -41,7 +44,11 @@ export function* fetchbiruwautpadanRequest(api, action) {
       toast.success("सफलतापुर्वक विरुवा उत्पादन प्रविष्ट भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
-      yield fetchallbiruwautpadanRequest(api);
+      yield fetchallbiruwautpadanRequest(api,{
+        name: "arthik_barsa",
+        page: 0,
+        perPage: 10,
+      });
       yield call(history.push, "/activities/nurserylist");
       yield put(BiruwautpadanActions.addbiruwautpadanSuccess(response.data));
     } else {
@@ -105,7 +112,9 @@ export function* fetchbiruwautpadanRequest(api, action) {
   
   
   export function* fetchallactivitiesinfoRequest(api, action) {
-    const response = yield api.getActivitiesinfoList();
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getActivitiesinfoList(payloaddata);
     console.log("Response..sagaa", response);
      if (response.ok) {
       yield put(
@@ -145,7 +154,11 @@ export function* fetchbiruwautpadanRequest(api, action) {
       toast.success("सफलतापुर्वक कार्यक्रम विवरण प्रविष्ट भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
-      yield fetchallactivitiesinfoRequest(api);
+      yield fetchallactivitiesinfoRequest(api,{
+        name: "fiscal_year",
+        page: 0,
+        perPage: 10,
+      });
       yield call(history.push, "/activities/yearlyactivitieslist");
       yield put(BiruwautpadanActions.addactivitiesinfoSuccess(response.data));
     } else {
