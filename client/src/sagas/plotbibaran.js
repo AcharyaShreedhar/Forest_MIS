@@ -1,10 +1,13 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import PlotbibaranActions from "../actions/plotbibaran";
 
 export function* fetchallplotbibaranRequest(api, action) {
-  const response = yield api.getPlotbibaranList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getPlotbibaranList(payloaddata);
 
   if (response.ok) {
     yield put(PlotbibaranActions.fetchallplotbibaranSuccess(response.data));
@@ -40,7 +43,11 @@ export function* addplotbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक बगैंचा विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallplotbibaranRequest(api);
+    yield fetchallplotbibaranRequest(api,{
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/plotbibaranlist");
     yield put(PlotbibaranActions.addplotbibaranSuccess(response.data));
   } else {
