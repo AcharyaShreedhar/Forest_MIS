@@ -189,7 +189,7 @@ class Bankaprakar extends Component {
       kabuliyatibanList,
       nijibanList,
     } = this.state;
-    console.log("dharmikbanlist", dharmikbanList.list);
+    const { user } = this.props;
 
     return (
       <div>
@@ -204,6 +204,7 @@ class Bankaprakar extends Component {
             }
             data={!isNil(samudayikbanList) ? samudayikbanList.list : []}
             headings={samudayikbanHeadings}
+            user={user}
             onAdd={() => this.handleAdd("samudayikban")}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e, "samudayikban")}
@@ -212,6 +213,7 @@ class Bankaprakar extends Component {
         {equals(loc, "samudayikbanadd") && (
           <SamudayikbanBibaran.Add
             title="+ सामुदायिक वन"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addSamudayikbanbibaran(e)}
           />
@@ -220,6 +222,7 @@ class Bankaprakar extends Component {
           <SamudayikbanBibaran.Edit
             title="सामुदायिक वन पुनः प्रविष्ट"
             history={this.props.history}
+            user={user}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateSamudayikbanbibaran(e, id)}
           />
@@ -235,6 +238,7 @@ class Bankaprakar extends Component {
             }
             data={!isNil(dharmikbanList) ? dharmikbanList.list : []}
             headings={dharmikbanHeadings}
+            user={user}
             onAdd={() => this.handleAdd("dharmikban")}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e, "dharmikban")}
@@ -243,6 +247,7 @@ class Bankaprakar extends Component {
         {equals(loc, "dharmikbanadd") && (
           <DharmikbanBibaran.Add
             title="+ धार्मिक बन"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addDharmikbanbibaran(e)}
           />
@@ -251,6 +256,7 @@ class Bankaprakar extends Component {
           <DharmikbanBibaran.Edit
             title="धार्मिक बन पुनः प्रविष्ट"
             history={this.props.history}
+            user={user}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateDharmikbanbibaran(e, id)}
           />
@@ -266,6 +272,7 @@ class Bankaprakar extends Component {
             }
             data={!isNil(kabuliyatibanList) ? kabuliyatibanList.list : []}
             headings={kabuliyatibanHeadings}
+            user={user}
             onAdd={() => this.handleAdd("kabuliyatiban")}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e, "kabuliyatiban")}
@@ -274,6 +281,7 @@ class Bankaprakar extends Component {
         {equals(loc, "kabuliyatibanadd") && (
           <KabuliyatibanBibaran.Add
             title="+ कवुलियती वन"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addKabuliyatibanbibaran(e)}
           />
@@ -282,6 +290,7 @@ class Bankaprakar extends Component {
           <KabuliyatibanBibaran.Edit
             title="कवुलियती वन पुनः प्रविष्ट"
             history={this.props.history}
+            user={user}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateKabuliyatibanbibaran(e, id)}
           />
@@ -295,6 +304,7 @@ class Bankaprakar extends Component {
             }
             data={!isNil(nijibanList) ? nijibanList.list : []}
             headings={nijibanHeadings}
+            user={user}
             onAdd={() => this.handleAdd("nijiban")}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e, "nijiban")}
@@ -303,6 +313,7 @@ class Bankaprakar extends Component {
         {equals(loc, "nijibanadd") && (
           <NijibanBibaran.Add
             title="+ निजि वन"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addNijibanbibaran(e)}
           />
@@ -310,6 +321,7 @@ class Bankaprakar extends Component {
         {equals(loc, "nijibanedit") && (
           <NijibanBibaran.Edit
             title="निजि वन पुनः प्रविष्ट"
+            user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateNijibanbibaran(e, id)}
@@ -335,6 +347,7 @@ Bankaprakar.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  user: state.app.user,
   samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,

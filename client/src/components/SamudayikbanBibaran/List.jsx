@@ -8,7 +8,7 @@ import { Button, EditDropdown } from "../../components";
 import './SamudayikbanBibaran.scss'
 
 function List(props) {
-  const { buttonName, headings, data, title,pageCount, onAdd, onSelect,onPageClick } = props;
+  const { buttonName, headings, data, title,pageCount,user, onAdd, onSelect,onPageClick } = props;
   return (
     <Fragment>
       <div className="card">
@@ -57,8 +57,8 @@ function List(props) {
                   <td key={index}>
                     {englishToNepaliNumber(sban.renewal_date)}
                   </td>
-                  <td key={index}> {sban.created_by}</td>
-                  <td key={index}> {sban.updated_by}</td>
+                  <td key={index}> {sban.created_by||user.user_name}</td>
+                  <td key={index}> {sban.updated_by|| user.user_name}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

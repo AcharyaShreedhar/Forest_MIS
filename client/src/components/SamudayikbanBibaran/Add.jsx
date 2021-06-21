@@ -57,6 +57,8 @@ class Add extends Component {
           forest_maujdat: forest_maujdat,
           nikasi_timber: nikasi_timber,
           nikasi_wood: nikasi_wood,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
@@ -70,7 +72,7 @@ class Add extends Component {
   }
 
   render() {
-    const {title} = this.props;
+    const { title } = this.props;
     const {
       name,
       regno,
