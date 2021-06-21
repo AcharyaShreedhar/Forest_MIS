@@ -5,7 +5,8 @@ import { history } from "../reducers";
 import BanbibaranActions from "../actions/banbibaran";
 
 export function* fetchallbaramaditchijbastuRequest(api, action) {
-  const response = yield api.getBaramaditchijbastuList();
+  const { payload } = action;
+  const response = yield api.getBaramaditchijbastuList(payload);
   if (response.ok) {
     yield put(
       BanbibaranActions.fetchallbaramaditchijbastuSuccess(response.data)
@@ -29,7 +30,8 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
   }
 
   export function* fetchallbanxetraanyaprayojanRequest(api, action) {
-    const response = yield api.getBanxetraanyaprayojanList();
+    const { payload } = action;
+    const response = yield api.getBanxetraanyaprayojanList(payload);
     if (response.ok) {
       yield put(
         BanbibaranActions.fetchallbanxetraanyaprayojanSuccess(response.data)
