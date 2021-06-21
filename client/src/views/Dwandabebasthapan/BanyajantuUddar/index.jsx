@@ -26,7 +26,7 @@ export class BanyajantuUddar extends Component {
         switch (path) {
           case "banyajantuuddar": {
             this.props.history.push({
-              pathname: `/dwandabebasthapan/banyajantuuddaredit/${item.uddar_id}`,
+              pathname: `/dwandabebasthapan/banyajantuuddaredit/${item.banyajantu_uddar_id}`,
               item,
             });
             break;
@@ -39,7 +39,7 @@ export class BanyajantuUddar extends Component {
       case "delete": {
         switch (path) {
           case "banyajantuuddar": {
-            this.props.deleteBanyajantuUddar(item.uddar_id);
+            this.props.deleteBanyajantuUddar(item.banyajantu_uddar_id);
             break;
           }
           default:
