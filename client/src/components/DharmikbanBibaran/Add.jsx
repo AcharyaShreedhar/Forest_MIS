@@ -64,6 +64,8 @@ class Add extends Component {
           nabikaran_abadhi: nabikaran_abadhi,
           forest_maujdat: forest_maujdat,
           renewal_date: renewal_date,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

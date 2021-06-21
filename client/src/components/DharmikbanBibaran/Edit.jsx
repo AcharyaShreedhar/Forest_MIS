@@ -30,8 +30,8 @@ class Edit extends Component {
       forest_maujdat: props.history.location.item.forest_maujdat,
       renewal_date: props.history.location.item.renewal_date,
 
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,6 +54,8 @@ class Edit extends Component {
       nabikaran_abadhi,
       forest_maujdat,
       renewal_date,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       dharmikban: {
@@ -69,6 +71,8 @@ class Edit extends Component {
           nabikaran_abadhi: nabikaran_abadhi,
           forest_maujdat: forest_maujdat,
           renewal_date: renewal_date,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: updated_by || this.props.user.user_name,
         },
       },
     };

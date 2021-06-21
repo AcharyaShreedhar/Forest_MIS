@@ -44,6 +44,8 @@ class Add extends Component {
           curr_addr: curr_addr,
           area: area,
           main_species: main_species,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
