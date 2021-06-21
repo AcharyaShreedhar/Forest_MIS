@@ -1,11 +1,13 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import MuddaanusandhandayariActions from "../actions/muddaanusandhandayari";
 
 export function* fetchallmuddaanusandhandayariRequest(api, action) {
- 
-  const response = yield api.getMuddaanusandhandayariList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getMuddaanusandhandayariList(payloaddata);
     if (response.ok) {
     yield put(
         MuddaanusandhandayariActions.fetchallmuddaanusandhandayariSuccess(response.data)
@@ -43,7 +45,11 @@ export function* addmuddaanusandhandayariRequest(api, action) {
     toast.success("सफलतापुर्वक मुद्दा अनुसन्धान दायरी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallmuddaanusandhandayariRequest(api);
+    yield fetchallmuddaanusandhandayariRequest(api,{
+      name: "jaheri_partibedan_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/muddaanusandhandayarilist");
     yield put(MuddaanusandhandayariActions.addmuddaanusandhandayariSuccess(response.data));
   } else {
