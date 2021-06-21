@@ -154,7 +154,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBiruwautpadanBiruwautpadanDelete = (biruwautpadanId) =>
     api.delete(`biruwautpadans/${biruwautpadanId}`);
 
-  const getActivitiesinfoList = () => api.get("activitiesInfo");
+  const getActivitiesinfoList = () => api.post("activitiesInfo");
 
   const getActivitiesinfo = (activitiesInfoId) =>
     api.get(`activitiesInfo/${activitiesInfoId}`);
