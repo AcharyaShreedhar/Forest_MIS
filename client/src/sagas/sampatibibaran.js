@@ -1,11 +1,13 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import SampatibibaranActions from "../actions/sampatibibaran";
 
 export function* fetchallassetsRequest(api, action) {
- 
-  const response = yield api.getAssetsList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getAssetsList(payloaddata);
     if (response.ok) {
     yield put(
         SampatibibaranActions.fetchallassetsSuccess(response.data)
@@ -42,7 +44,11 @@ export function* addassetsRequest(api, action) {
     toast.success("सफलतापुर्वक सम्पत्ति प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallassetsRequest(api);
+    yield fetchallassetsRequest(api,{
+      name: "kitta_no",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/assetslist");
     yield put(SampatibibaranActions.addassetsSuccess(response.data));
   } else {
@@ -107,8 +113,9 @@ export function* deleteassetsRequest(api, action) {
 
 
   export function* fetchallvehiclesRequest(api, action) {
- 
-    const response = yield api.getVehiclesList();
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getVehiclesList(payloaddata);
     
         if (response.ok) {
       yield put(
@@ -146,7 +153,11 @@ export function* addvehiclesRequest(api, action) {
     toast.success("सफलतापुर्वक गाडी विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallvehiclesRequest(api);
+    yield fetchallvehiclesRequest(api,{
+      name: "vehicle_type",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/vehicleslist");
     yield put(SampatibibaranActions.addvehiclesSuccess(response.data));
   } else {
