@@ -9,7 +9,7 @@ const initialState = Immutable({
 });
 
 const fetchallbaramaditchijbastuRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallbaramaditchijbastuSuccess = (state, action) => {
   console.log("reducer", action.response);
   return state.merge({
@@ -23,7 +23,7 @@ const fetchallbaramaditchijbastuFailure = (state, action) => {
 };
 
 const fetchbaramaditchijbastuRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 
 const fetchbaramaditchijbastuSuccess = (state, action) => {
   return state.merge({
@@ -33,6 +33,34 @@ const fetchbaramaditchijbastuSuccess = (state, action) => {
   });
 };
 const fetchbaramaditchijbastuFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchallbanxetraanyaprayojanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallbanxetraanyaprayojanSuccess = (state, action) => {
+  console.log("reducer", action.response);
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanxetraanyaprayojanData: action.response,
+  });
+};
+const fetchallbanxetraanyaprayojanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchbanxetraanyaprayojanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+
+const fetchbanxetraanyaprayojanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    banxetraanyaprayojanData: action.response,
+  });
+};
+const fetchbanxetraanyaprayojanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
   
@@ -55,6 +83,14 @@ const clearRequest = (state, action) =>
         [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST]: fetchbaramaditchijbastuRequest,
         [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_SUCCESS]: fetchbaramaditchijbastuSuccess,
         [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_FAILURE]: fetchbaramaditchijbastuFailure,
+
+        [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST]: fetchallbanxetraanyaprayojanRequest,
+        [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_SUCCESS]: fetchallbanxetraanyaprayojanSuccess,
+        [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_FAILURE]: fetchallbanxetraanyaprayojanFailure,
+
+        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_REQUEST]: fetchbanxetraanyaprayojanRequest,
+        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_SUCCESS]: fetchbanxetraanyaprayojanSuccess,
+        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_FAILURE]: fetchbanxetraanyaprayojanFailure,
 
         [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
         [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,

@@ -30,6 +30,8 @@ import{
   import{ 
     fetchallbaramaditchijbastuRequest,
     fetchbaramaditchijbastuRequest,
+    fetchallbanxetraanyaprayojanRequest,
+    fetchbanxetraanyaprayojanRequest,
     } from "./banbibaran"; 
 
 
@@ -1065,7 +1067,7 @@ export default function* root() {
       api
     ),
 
-    //----------Banbibaran
+    //----------Banbibaran_baramadit_chij_bastu
     takeLatest(
       BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_REQUEST,
       fetchallbaramaditchijbastuRequest,
@@ -1078,6 +1080,17 @@ export default function* root() {
       api
     ),
 
+    //----------Banbibaran_banxetra_anyaprayojan
+    takeLatest(
+      BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST,
+      fetchallbanxetraanyaprayojanRequest,
+      api
+    ),
 
+    takeLatest(
+      BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_REQUEST,
+      fetchbanxetraanyaprayojanRequest,
+      api
+    ),
   ]);
 }

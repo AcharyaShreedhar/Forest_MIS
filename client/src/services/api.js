@@ -131,13 +131,20 @@ const create = (baseURL = Config.API_URL) => {
     nabikaranKaryayojanaId
   ) => api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
 
-  //Banbibaran
-  const getBaramaditchijbastuList = () => api.get("baramaditChijbastu");
+  //Banbibaran_baramadit_chijbastu
+  const getBaramaditchijbastuList = (payload) => api.get("baramaditChijbastu",payload);
+
   const getBaramaditchijbastu = (baramaditchijbastuId) =>
     api.get(`baramaditChijbastu/${baramaditchijbastuId}`);
 
+// Banbibaran_banxetra_anya_prayojan
+  const getBanxetraanyaprayojanList = (payload) => api.get("banxetraAnyaprayojan",payload);
+
+
+  const getBanxetraanyaprayojan = (banxetraanyaprayojanId) =>
+    api.get(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
   //................biruwautpadans
-  const getBiruwautpadanList = () => api.get("biruwaUtpadans");
+  const getBiruwautpadanList = (payload) => api.get("biruwaUtpadans",payload);
 
   const getBiruwautpadan = (biruwautpadanId) =>
     api.get(`biruwaUtpadans/${biruwautpadanId}`);
@@ -665,6 +672,9 @@ const create = (baseURL = Config.API_URL) => {
     //--------Banbibaran
     getBaramaditchijbastuList,
     getBaramaditchijbastu,
+    getBanxetraanyaprayojanList,
+    getBanxetraanyaprayojan,
+
   };
 };
 export default {

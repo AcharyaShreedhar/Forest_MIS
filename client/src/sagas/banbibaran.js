@@ -1,11 +1,13 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
-
+import { isNil } from "ramda";
 import { history } from "../reducers";
 import BanbibaranActions from "../actions/banbibaran";
 
 export function* fetchallbaramaditchijbastuRequest(api, action) {
-  const response = yield api.getBaramaditchijbastuList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBaramaditchijbastuList(payloaddata);
   if (response.ok) {
     yield put(
       BanbibaranActions.fetchallbaramaditchijbastuSuccess(response.data)
@@ -25,5 +27,31 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
       );
     } else {
       yield put(BanbibaranActions.fetchbaramaditchijbastuFailure());
+    }
+  }
+
+  export function* fetchallbanxetraanyaprayojanRequest(api, action) {
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getBanxetraanyaprayojanList(payloaddata);
+    if (response.ok) {
+      yield put(
+        BanbibaranActions.fetchallbanxetraanyaprayojanSuccess(response.data)
+      );
+    } else {
+      yield put(BanbibaranActions.fetchallbanxetraanyaprayojanFailure());
+    }
+  }
+
+  export function* fetchbanxetraanyaprayojanRequest(api, action) {
+    const banxetraanyaprayojanId= action.payload
+  
+    const response = yield api.getBanxetraanyaprayojan(banxetraanyaprayojanId);
+    if (response.ok) {
+      yield put(
+        BanbibaranActions.fetchbanxetraanyaprayojanSuccess(response.data)
+      );
+    } else {
+      yield put(BanbibaranActions.fetchbanxetraanyaprayojanFailure());
     }
   }
