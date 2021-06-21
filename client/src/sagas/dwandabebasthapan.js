@@ -20,7 +20,6 @@ export function* fetchbanyajantuuddarRequest(api, action) {
     const  banyajantuUddarId  = action.payload
  
     const response = yield api.getBanyajantuUddar(banyajantuUddarId);
-    console.log("response....sagaa....", response);
     if (response.ok) {
       yield put(
         DwandabebasthapanActions.fetchbanyajantuuddarSuccess(response.data)
@@ -43,7 +42,7 @@ export function* addbanyajantuuddarRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanyajantuuddarRequest(api);
-    yield call(history.push, "/forests/banyajantuuddarlist");
+    yield call(history.push, "/dwandabebasthapan/banyajantuuddarlist");
     yield put(DwandabebasthapanActions.addbanyajantuuddarSuccess(response.data));
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuuddarFailure());
@@ -70,7 +69,7 @@ export function* updatebanyajantuuddarRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanyajantuuddarRequest(api);
-    yield call(history.push, "/forests/banyajantuuddarlist");
+    yield call(history.push, "/dwandabebasthapan/banyajantuuddarlist");
     yield put(
       DwandabebasthapanActions.updatebanyajantuuddarSuccess(response.data)
     );
