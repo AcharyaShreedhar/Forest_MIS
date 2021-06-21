@@ -2,10 +2,13 @@ import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import InventoriesActions from "../actions/inventories";
 
 export function* fetchallinventoriesRequest(api, action) {
-  const response = yield api.getInventoriesList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getInventoriesList(payloaddata);
 
   if (response.ok) {
     yield put(InventoriesActions.fetchallinventoriesSuccess(response.data));
@@ -39,7 +42,11 @@ export function* addinventoriesRequest(api, action) {
     toast.success("सफलतापुर्वक  सुचीमा थप गरियो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallinventoriesRequest(api);
+    yield fetchallinventoriesRequest(api,{
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/inventorieslist");
     yield put(InventoriesActions.addinventoriesSuccess(response.data));
   } else {
@@ -109,7 +116,9 @@ export function* deleteinventoriesRequest(api, action) {
 
 
 export function* fetchallentryRequest(api, action) {
-  const response = yield api.getEntryList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getEntryList(payloaddata);
 
   if (response.ok) {
     yield put(InventoriesActions.fetchallentrySuccess(response.data));
@@ -169,7 +178,11 @@ export function* updateentryRequest(api, action) {
     toast.success("सफलतापुर्वक प्रवेश  गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallentryRequest(api);
+    yield fetchallentryRequest(api,{
+      name: "entry_amt",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/entrylist");
     yield put(
       InventoriesActions.updateentrySuccess(response.data)
@@ -212,7 +225,9 @@ export function* deleteentryRequest(api, action) {
 
 
 export function* fetchallexitRequest(api, action) {
-  const response = yield api.getExitList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getExitList(payloaddata);
 
   if (response.ok) {
     yield put(InventoriesActions.fetchallexitSuccess(response.data));
@@ -248,7 +263,11 @@ export function* addexitRequest(api, action) {
     toast.success("सफलतापुर्वक  बहिर्गमन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallexitRequest(api);
+    yield fetchallexitRequest(api,{
+      name: "exit_rate",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/exitlist");
     yield put(InventoriesActions.addexitSuccess(response.data));
   } else {
