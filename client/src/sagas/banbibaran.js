@@ -6,7 +6,8 @@ import BanbibaranActions from "../actions/banbibaran";
 
 export function* fetchallbaramaditchijbastuRequest(api, action) {
   const { payload } = action;
-  const response = yield api.getBaramaditchijbastuList(payload);
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBaramaditchijbastuList(payloaddata);
   if (response.ok) {
     yield put(
       BanbibaranActions.fetchallbaramaditchijbastuSuccess(response.data)
@@ -31,7 +32,8 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
 
   export function* fetchallbanxetraanyaprayojanRequest(api, action) {
     const { payload } = action;
-    const response = yield api.getBanxetraanyaprayojanList(payload);
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getBanxetraanyaprayojanList(payloaddata);
     if (response.ok) {
       yield put(
         BanbibaranActions.fetchallbanxetraanyaprayojanSuccess(response.data)
