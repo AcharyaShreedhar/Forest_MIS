@@ -132,19 +132,19 @@ const create = (baseURL = Config.API_URL) => {
   ) => api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
 
   //Banbibaran_baramadit_chijbastu
-  const getBaramaditchijbastuList = () => api.get("baramaditChijbastu");
+  const getBaramaditchijbastuList = (payload) => api.get("baramaditChijbastu",payload);
 
   const getBaramaditchijbastu = (baramaditchijbastuId) =>
     api.get(`baramaditChijbastu/${baramaditchijbastuId}`);
 
 // Banbibaran_banxetra_anya_prayojan
-  const getBanxetraanyaprayojanList = () => api.get("banxetraAnyaprayojan");
+  const getBanxetraanyaprayojanList = (payload) => api.get("banxetraAnyaprayojan",payload);
 
 
   const getBanxetraanyaprayojan = (banxetraanyaprayojanId) =>
     api.get(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
   //................biruwautpadans
-  const getBiruwautpadanList = () => api.get("biruwaUtpadans");
+  const getBiruwautpadanList = (payload) => api.get("biruwaUtpadans",payload);
 
   const getBiruwautpadan = (biruwautpadanId) =>
     api.get(`biruwaUtpadans/${biruwautpadanId}`);
