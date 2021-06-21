@@ -1,12 +1,29 @@
 const pool = require("../db")
 //Controller for Listing all activities_infos
 async function getAllActivitiesInfo(req, res) {
-    const getAllActivitiesInfoQuery = `select * from activities_infos`;
-    pool.query(getAllActivitiesInfoQuery, [], (error, results, fields) => {
-      if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
-    });
-  }
+  const getTotalQuery = "SELECT count(*) as total from activities_infos";
+  const getAllActivitiesInfoQuery = `select * from activities_infos ORDER BY ? ASC LIMIT ?,?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+    if (error) throw error;
+    pool.query(
+      getAllActivitiesInfoQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
+  });
+}
   
   //Controller for Listing a ActivitiesInfo
   async function getActivitiesInfo(req, res) {
