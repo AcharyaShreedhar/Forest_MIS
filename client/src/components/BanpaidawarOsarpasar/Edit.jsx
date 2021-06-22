@@ -5,7 +5,6 @@ import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
 
-
 class Edit extends Component {
   constructor(props) {
     super(props);
@@ -17,49 +16,52 @@ class Edit extends Component {
       daura: props.history.location.item.daura,
       lavgrahi_sankhya: props.history.location.item.lavgrahi_sankhya,
       mulyaabhibridi_kar: props.history.location.item.mulyaabhibridi_kar,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-        
   }
 
   handleSubmit() {
     const {
-        id,
-        arthik_barsa,
-        mahina,
-        kaath,
-        daura,
-        lavgrahi_sankhya,
-        mulyaabhibridi_kar,
+      id,
+      arthik_barsa,
+      mahina,
+      kaath,
+      daura,
+      lavgrahi_sankhya,
+      mulyaabhibridi_kar,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       banpaidawar: {
         data: {
-            arthik_barsa : arthik_barsa,
-            mahina: mahina,
-            kaath: kaath,
-            daura: daura,
-            lavgrahi_sankhya: lavgrahi_sankhya,
-            mulyaabhibridi_kar: mulyaabhibridi_kar,
+          arthik_barsa: arthik_barsa,
+          mahina: mahina,
+          kaath: kaath,
+          daura: daura,
+          lavgrahi_sankhya: lavgrahi_sankhya,
+          mulyaabhibridi_kar: mulyaabhibridi_kar,
+          created_by: created_by,
+          updated_by: updated_by,
         },
       },
     };
 
-    this.props.onUpdate(payload,id);
+    this.props.onUpdate(payload, id);
   }
-  
-   render() {
+
+  render() {
     const { title } = this.props;
     const {
-        arthik_barsa,
-        mahina,
-        kaath,
-        daura,
-        lavgrahi_sankhya,
-        mulyaabhibridi_kar,
+      arthik_barsa,
+      mahina,
+      kaath,
+      daura,
+      lavgrahi_sankhya,
+      mulyaabhibridi_kar,
     } = this.state;
 
     return (
@@ -99,7 +101,7 @@ class Edit extends Component {
               value={daura}
               onChange={(e) => this.setState({ daura: e })}
             />
-                        
+
             <Input
               className="mb-4"
               title="लाभग्राही संख्या"
@@ -129,6 +131,5 @@ class Edit extends Component {
     );
   }
 }
-
 
 export default Edit;

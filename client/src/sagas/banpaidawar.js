@@ -69,7 +69,11 @@ export function* updatebanpaidawarRequest(api, action) {
     toast.success("सफलतापुर्वक वन पैदावार पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanpaidawarRequest(api);
+    yield fetchallbanpaidawarRequest(api, {
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/banpaidawar/osarpasarlist");
     yield put(BanpaidawarActions.updatebanpaidawarSuccess(response.data));
   } else {
@@ -93,7 +97,11 @@ export function* deletebanpaidawarRequest(api, action) {
     toast.success("सफलतापुर्वक वन पैदावार हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanpaidawarRequest(api);
+    yield fetchallbanpaidawarRequest(api, {
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield put(BanpaidawarActions.deletebanpaidawarSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.deletebanpaidawarFailure());
