@@ -6,10 +6,21 @@ import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import banbibaranRoutes from "../../routes/banbibaran";
 import BandadelobibaranActions from "../../actions/bandadelobibaran";
+import BanxetraatikramanActions from "../../actions/banxetraatikraman";
 
-export class Banbibaran extends Component {
+class Banbibaran extends Component {
   componentDidMount() {
-    this.props.fetchallBandadelo();
+    this.props.fetchallBandadelo({
+      name: "bandadelo_address",
+      page: 0,
+      perPage: 10,
+
+    });
+    this.props.fetchallBanxetraatikraman({
+      name: "address",
+      page: 0,
+      perPage: 10,
+    });
 
   }
 
@@ -64,8 +75,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBandadelo: () =>
-  dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest()),
+  fetchallBandadelo: (payload) =>
+  dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
+
+  fetchallBanxetraatikraman: (payload) =>
+  dispatch(BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);
