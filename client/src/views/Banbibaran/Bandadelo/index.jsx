@@ -27,7 +27,7 @@ class Bandadelo extends Component {
         switch (path) {
           case "bandadelo": {
             this.props.history.push({
-              pathname: `/banbibaran/bandadeloedit/${item.lilam_id}`,
+              pathname: `/banbibaran/bandadeloedit/${item.bandadelo_biabaran_id}`,
               item,
             });
             break;
@@ -121,13 +121,13 @@ const mapDispatchToProps = (dispatch) => ({
   addBandadelo: (payload) =>
     dispatch(BandadelobibaranActions.addbandadelobibaranRequest(payload)),
 
-  updateBandadelo: (payload, bandadeloBibaranId) =>
+  updateBandadelo: (payload, bandadelobibaranId) =>
     dispatch(
-      BandadelobibaranActions.updatebandadelobibaranRequest(payload, bandadeloBibaranId)
+      BandadelobibaranActions.updatebandadelobibaranRequest(payload, bandadelobibaranId)
     ),
 
-  deleteBanpaidawarlilam: (bandadeloBibaranId) =>
-    dispatch(BandadelobibaranActions.deletebanpaidawarlilamRequest(bandadeloBibaranId)),
+  deleteBandadelo: (bandadelobibaranId) =>
+    dispatch(BandadelobibaranActions.deletebandadelobibaranRequest(bandadelobibaranId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bandadelo);

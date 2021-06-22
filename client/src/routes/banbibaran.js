@@ -21,6 +21,14 @@ const banbibaranRoutes = [
     auth: true,
     component: Bandadelo,
   },
+
+  {
+    path: "/banbibaran/bandadeloedit/:id",
+    title: "Bandadelo",
+    name: "Bandadelo",
+    auth: true,
+    component: Bandadelo,
+  },
   {
     path: "/banbibaran/banxetraatikramanlist",
     title: "Banxetraatikraman",
