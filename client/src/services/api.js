@@ -230,7 +230,7 @@ const create = (baseURL = Config.API_URL) => {
   const postSampatibibaranAssetsDelete = (assetId) =>
     api.delete(`assets/${assetId}`);
 
-  const getVehiclesList = () => api.get("vehicles");
+  const getVehiclesList = (payload) => api.post("vehiclesList", payload);
 
   const getVehicles = (vehicleId) => api.get(`vehicles/${vehicleId}`);
 
