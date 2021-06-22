@@ -12,7 +12,7 @@ import Avatar from "./Avatar";
 import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
 import CheckBox from "./CheckBox";
-import CustomDatePicker from './CustomDatePicker'
+import CustomDatePicker from "./CustomDatePicker";
 import EditDropdown from "./EditDropdown";
 import * as SamudayikbanBibaran from "./SamudayikbanBibaran";
 import * as DharmikbanBibaran from "./DharmikbanBibaran";
@@ -24,7 +24,8 @@ import * as BanpaidawarLilam from "./BanpaidawarLilam";
 import * as BanpaidawarOsarpasar from "./BanpaidawarOsarpasar";
 import * as BandadeloBibaran from "./BandadeloBibaran";
 import * as BanyajantuUddarbibaran from "./BanyajantuUddarbibaran";
-import * as BanyajantuXetibibaran from "./BanyajantuUddarbibaran"; 
+import * as BanyajantuXetibibaran from "./BanyajantuUddarbibaran";
+import * as GharjaggaBibaran from "./GharjaggaBibaran";
 
 export {
   HeaderComponent,
@@ -54,4 +55,5 @@ export {
   BandadeloBibaran,
   BanyajantuUddarbibaran,
   BanyajantuXetibibaran,
+  GharjaggaBibaran,
 };

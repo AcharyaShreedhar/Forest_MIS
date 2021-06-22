@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
-import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { Button, Input, Dropdown } from "../../components";
 import { equals } from "ramda";
 
 const AnnualBibaran = [
@@ -10,9 +9,9 @@ const AnnualBibaran = [
 ];
 
 const LekhaParikshyan = [
-    { id: 1, value: "गरेको" },
-    { id: 2, value: "नगरेको" },
-  ];
+  { id: 1, value: "गरेको" },
+  { id: 2, value: "नगरेको" },
+];
 
 class Add extends Component {
   constructor(props) {
@@ -48,25 +47,25 @@ class Add extends Component {
 
   handleSubmit() {
     const {
-        samudayikban_name,
-        fiscal_year,
-        area,
-        production_from_conservation_timber,
-        production_from_conservation_wood,
-        employment,
-        withingroup_timber,
-        withingroup_wood,
-        outsidegroup_timber,
-        outsidegroup_wood,
-        maujdat_timber,
-        maujdat_wood,
-        annual_income,
-        annual_expenditure,
-        netannual_saving,
-        rojgar,
-        udhyam,
-        annual_bibaran,
-        lekha_parikshyan,
+      samudayikban_name,
+      fiscal_year,
+      area,
+      production_from_conservation_timber,
+      production_from_conservation_wood,
+      employment,
+      withingroup_timber,
+      withingroup_wood,
+      outsidegroup_timber,
+      outsidegroup_wood,
+      maujdat_timber,
+      maujdat_wood,
+      annual_income,
+      annual_expenditure,
+      netannual_saving,
+      rojgar,
+      udhyam,
+      annual_bibaran,
+      lekha_parikshyan,
     } = this.state;
     const payload = {
       yearlyactivities: {
@@ -90,44 +89,42 @@ class Add extends Component {
           community_udhyam_bibaran: udhyam,
           annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
           lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
-          
+          created_by: this.props.history.location.item.created_by,
+          updated_by: this.props.history.location.item.updated_by,
         },
       },
     };
     this.props.onSubmit(payload);
   }
   handleAnnualBibaran(e) {
-      console.log("message", e);
     this.setState({ annual_bibaran: e[0] });
   }
   handleLekhaParikshyan(e) {
-    console.log("message...lekha", e);
     this.setState({ lekha_parikshyan: e[0] });
   }
 
   render() {
-      console.log("dataaa....", this.props.onSubmit);
-    const {title} = this.props;
+    const { title } = this.props;
     const {
-        samudayikban_name,
-        fiscal_year,
-        area,
-        production_from_conservation_timber,
-        production_from_conservation_wood,
-        employment,
-        withingroup_timber,
-        withingroup_wood,
-        outsidegroup_timber,
-        outsidegroup_wood,
-        maujdat_timber,
-        maujdat_wood,
-        annual_income,
-        annual_expenditure,
-        netannual_saving,
-        rojgar,
-        udhyam,
-        annual_bibaran,
-        lekha_parikshyan,
+      samudayikban_name,
+      fiscal_year,
+      area,
+      production_from_conservation_timber,
+      production_from_conservation_wood,
+      employment,
+      withingroup_timber,
+      withingroup_wood,
+      outsidegroup_timber,
+      outsidegroup_wood,
+      maujdat_timber,
+      maujdat_wood,
+      annual_income,
+      annual_expenditure,
+      netannual_saving,
+      rojgar,
+      udhyam,
+      annual_bibaran,
+      lekha_parikshyan,
     } = this.state;
 
     return (
@@ -166,7 +163,9 @@ class Add extends Component {
               direction="vertical"
               as="textarea"
               value={production_from_conservation_timber}
-              onChange={(e) => this.setState({ production_from_conservation_timber: e })}
+              onChange={(e) =>
+                this.setState({ production_from_conservation_timber: e })
+              }
             />
 
             <Input
@@ -174,7 +173,9 @@ class Add extends Component {
               title="सम्बर्धनबाट उत्पादन दाउरा पारिमाण (क्यू. फि.)"
               value={production_from_conservation_wood}
               direction="vertical"
-              onChange={(e) => this.setState({ production_from_conservation_wood: e })}
+              onChange={(e) =>
+                this.setState({ production_from_conservation_wood: e })
+              }
             />
 
             <Input
@@ -257,7 +258,7 @@ class Add extends Component {
               onChange={(e) => this.setState({ netannual_saving: e })}
             />
 
-             <Input
+            <Input
               className="mb-4"
               title="सामूहमा नियमित रोजगार संख्या(जना)"
               value={rojgar}
@@ -265,7 +266,7 @@ class Add extends Component {
               onChange={(e) => this.setState({ rojgar: e })}
             />
 
-             <Input
+            <Input
               className="mb-4"
               title="समूहले संचालन गरेको उद्यमको विवरण"
               value={udhyam}
@@ -311,6 +312,5 @@ class Add extends Component {
     );
   }
 }
-
 
 export default Add;

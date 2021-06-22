@@ -9,6 +9,20 @@ const sampatibibaranRoutes = [
     auth: true,
     component: Gharjagga,
   },
+  {
+    path: "/sampatibibaran/gharjaggaadd/new",
+    title: "Gharjagga",
+    name: "gharjagga",
+    auth: true,
+    component: Gharjagga,
+  },
+  {
+    path: "/sampatibibaran/gharjaggaedit/:id",
+    title: "Gharjagga",
+    name: "gharjagga",
+    auth: true,
+    component: Gharjagga,
+  },
 
   {
     path: "/sampatibibaran/sawarisadhanlist",

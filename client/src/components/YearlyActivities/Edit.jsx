@@ -4,16 +4,14 @@ import { Button, Input, DatePicker, Dropdown } from "../../components";
 import { equals } from "ramda";
 
 const AnnualBibaran = [
-    { id: 1, value: "बुझाएको" },
-    { id: 2, value: "नबुझाएको" },
-  ];
+  { id: 1, value: "बुझाएको" },
+  { id: 2, value: "नबुझाएको" },
+];
 
-  const LekhaParikshyan = [
-    { id: 1, value: "गरेको" },
-    { id: 2, value: "नगरेको" },
-  ];
-
-
+const LekhaParikshyan = [
+  { id: 1, value: "गरेको" },
+  { id: 2, value: "नगरेको" },
+];
 
 class Edit extends Component {
   constructor(props) {
@@ -23,8 +21,10 @@ class Edit extends Component {
       samudayikban_name: props.history.location.item.samudayikban_naam,
       fiscal_year: props.history.location.item.fiscal_year,
       area: props.history.location.item.area,
-      conservation_timber: props.history.location.item.production_from_conservation_timber,
-      conservation_wood: props.history.location.item.production_from_conservation_wood,
+      conservation_timber:
+        props.history.location.item.production_from_conservation_timber,
+      conservation_wood:
+        props.history.location.item.production_from_conservation_wood,
       employment: props.history.location.item.employment_generated_workingday,
       withingroup_timber: props.history.location.item.withingroup_timber,
       withingroup_wood: props.history.location.item.withingroup_wood,
@@ -34,71 +34,75 @@ class Edit extends Component {
       maujdat_wood: props.history.location.item.maujdat_wood,
       annual_income: props.history.location.item.annual_income,
       annual_expenditure: props.history.location.item.annual_expenditure,
-      netannual_saving:props.history.location.item.netannual_saving,
-      rojgar:props.history.location.item.niyamit_rojgar_count,
-      udhyam:props.history.location.item.community_udhyam_bibaran,
-      annual_bibaran: equals(props.history.location.item.annual_bibaran, "बुझाएको")
+      netannual_saving: props.history.location.item.netannual_saving,
+      rojgar: props.history.location.item.niyamit_rojgar_count,
+      udhyam: props.history.location.item.community_udhyam_bibaran,
+      annual_bibaran: equals(
+        props.history.location.item.annual_bibaran,
+        "बुझाएको"
+      )
         ? 1
         : 2,
-      lekha_parikshyan: equals(props.history.location.item.lekha_parikshyan, "गरेको")
+      lekha_parikshyan: equals(
+        props.history.location.item.lekha_parikshyan,
+        "गरेको"
+      )
         ? 1
         : 2,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAnnualBibaran = this.handleAnnualBibaran.bind(this);
     this.handleLekhaParikshyan = this.handleLekhaParikshyan.bind(this);
-
-
   }
 
   handleSubmit() {
     const {
-        id,
-        samudayikban_name,
-        fiscal_year,
-        area,
-        conservation_timber,
-        conservation_wood,
-        employment,
-        withingroup_timber,
-        withingroup_wood,
-        outsidegroup_timber,
-        outsidegroup_wood,
-        maujdat_timber,
-        maujdat_wood,
-        annual_income,
-        annual_expenditure,
-        netannual_saving,
-        rojgar,
-        udhyam,
-        annual_bibaran,
-        lekha_parikshyan,
+      id,
+      samudayikban_name,
+      fiscal_year,
+      area,
+      conservation_timber,
+      conservation_wood,
+      employment,
+      withingroup_timber,
+      withingroup_wood,
+      outsidegroup_timber,
+      outsidegroup_wood,
+      maujdat_timber,
+      maujdat_wood,
+      annual_income,
+      annual_expenditure,
+      netannual_saving,
+      rojgar,
+      udhyam,
+      annual_bibaran,
+      lekha_parikshyan,
     } = this.state;
     const payload = {
       yearlyactivities: {
         data: {
-            samudayikban_naam: samudayikban_name,
-            fiscal_year: fiscal_year,
-            area: area,
-            production_from_conservation_timber: conservation_timber,
-            production_from_conservation_wood: conservation_wood,
-            employment_generated_workingday: employment,
-            withingroup_timber: withingroup_timber,
-            withingroup_wood: withingroup_wood,
-            outsidegroup_timber: outsidegroup_timber,
-            outsidegroup_wood: outsidegroup_wood,
-            maujdat_timber: maujdat_timber,
-            maujdat_wood: maujdat_wood,
-            annual_income: annual_income,
-            annual_expenditure: annual_expenditure,
-            netannual_saving: netannual_saving,
-            niyamit_rojgar_count: rojgar,
-            community_udhyam_bibaran: udhyam,
-            annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
-            lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
+          samudayikban_naam: samudayikban_name,
+          fiscal_year: fiscal_year,
+          area: area,
+          production_from_conservation_timber: conservation_timber,
+          production_from_conservation_wood: conservation_wood,
+          employment_generated_workingday: employment,
+          withingroup_timber: withingroup_timber,
+          withingroup_wood: withingroup_wood,
+          outsidegroup_timber: outsidegroup_timber,
+          outsidegroup_wood: outsidegroup_wood,
+          maujdat_timber: maujdat_timber,
+          maujdat_wood: maujdat_wood,
+          annual_income: annual_income,
+          annual_expenditure: annual_expenditure,
+          netannual_saving: netannual_saving,
+          niyamit_rojgar_count: rojgar,
+          community_udhyam_bibaran: udhyam,
+          annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
+          lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
         },
       },
     };
@@ -115,25 +119,25 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-        samudayikban_name,
-        fiscal_year,
-        area,
-        conservation_timber,
-        conservation_wood,
-        employment,
-        withingroup_timber,
-        withingroup_wood,
-        outsidegroup_timber,
-        outsidegroup_wood,
-        maujdat_timber,
-        maujdat_wood,
-        annual_income,
-        annual_expenditure,
-        netannual_saving,
-        rojgar,
-        udhyam,
-        annual_bibaran,
-        lekha_parikshyan,
+      samudayikban_name,
+      fiscal_year,
+      area,
+      conservation_timber,
+      conservation_wood,
+      employment,
+      withingroup_timber,
+      withingroup_wood,
+      outsidegroup_timber,
+      outsidegroup_wood,
+      maujdat_timber,
+      maujdat_wood,
+      annual_income,
+      annual_expenditure,
+      netannual_saving,
+      rojgar,
+      udhyam,
+      annual_bibaran,
+      lekha_parikshyan,
     } = this.state;
 
     return (
@@ -263,7 +267,7 @@ class Edit extends Component {
               onChange={(e) => this.setState({ netannual_saving: e })}
             />
 
-             <Input
+            <Input
               className="mb-4"
               title="सामूहमा नियमित रोजगार संख्या(जना)"
               value={rojgar}
@@ -271,7 +275,7 @@ class Edit extends Component {
               onChange={(e) => this.setState({ rojgar: e })}
             />
 
-             <Input
+            <Input
               className="mb-4"
               title="समूहले संचालन गरेको उद्यमको विवरण"
               value={udhyam}
@@ -317,6 +321,5 @@ class Edit extends Component {
     );
   }
 }
-
 
 export default Edit;
