@@ -1,12 +1,14 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
-
+import { isNil } from "ramda";
 
 import { history } from "../reducers";
 import KarmacharibibaranActions from "../actions/karmacharibibaran";
 
 export function* fetchallemployeesRequest(api, action) {
-  const response = yield api.getEmployeesList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getEmployeesList(payloaddata);
 
   if (response.ok) {
     yield put(KarmacharibibaranActions.fetchallemployeesSuccess(response.data));
@@ -43,7 +45,11 @@ export function* addemployeesRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addemployeesRequest(api);
+    yield addemployeesRequest(api,{
+      name: "emp_fname_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/employeeslist");
     yield put(KarmacharibibaranActions.addemployeesSuccess(response.data));
   } else {
@@ -109,7 +115,9 @@ export function* deleteemployeesRequest(api, action) {
   
 
 export function* fetchallemployeeshistoryRequest(api, action) {
-    const response = yield api.getEmployeeshistoryList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getEmployeeshistoryList(payloaddata);
   
     if (response.ok) {
       yield put(KarmacharibibaranActions.fetchallemployeeshistorySuccess(response.data));
@@ -145,7 +153,11 @@ export function* addemployeeshistoryRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addemployeeshistoryRequest(api);
+    yield addemployeeshistoryRequest(api,{
+      name: "emp_rank_id",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/employeeshistorylist");
     yield put(KarmacharibibaranActions.addemployeeshistorySuccess(response.data));
   } else {
@@ -210,7 +222,9 @@ export function* deleteemployeeshistoryRequest(api, action) {
 
    
 export function* fetchalllevelRequest(api, action) {
-  const response = yield api.getLevelList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getLevelList(payloaddata);
 
   if (response.ok) {
     yield put(KarmacharibibaranActions.fetchalllevelSuccess(response.data));
@@ -246,7 +260,11 @@ export function* addlevelRequest(api, action) {
     toast.success("सफलतापुर्वक तह प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addlevelRequest(api);
+    yield addlevelRequest(api,{
+      name: "level_name_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/levellist");
     yield put(KarmacharibibaranActions.addlevelSuccess(response.data));
   } else {
@@ -312,7 +330,9 @@ export function* deletelevelRequest(api, action) {
 
 
 export function* fetchallpostRequest(api, action) {
-  const response = yield api.getPostList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getPostList(payloaddata);
 
   if (response.ok) {
     yield put(KarmacharibibaranActions.fetchallpostSuccess(response.data));
@@ -349,7 +369,11 @@ export function* addpostRequest(api, action) {
     toast.success("सफलतापुर्वक पद प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addpostRequest(api);
+    yield addpostRequest(api,{
+      name: "post_name_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/postlist");
     yield put(KarmacharibibaranActions.addpostSuccess(response.data));
   } else {

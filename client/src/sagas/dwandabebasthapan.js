@@ -1,11 +1,13 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import DwandabebasthapanActions from "../actions/dwandabebasthapan";
 
 export function* fetchallbanyajantuuddarRequest(api, action) {
- 
-  const response = yield api.getBanyajantuUddarList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanyajantuUddarList(payloaddata);
   if (response.ok) {
     yield put(
         DwandabebasthapanActions.fetchallbanyajantuuddarSuccess(response.data)
@@ -41,7 +43,11 @@ export function* addbanyajantuuddarRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api);
+    yield fetchallbanyajantuuddarRequest(api,{
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/dwandabebasthapan/banyajantuuddarlist");
     yield put(DwandabebasthapanActions.addbanyajantuuddarSuccess(response.data));
   } else {
@@ -111,8 +117,9 @@ export function* deletebanyajantuuddarRequest(api, action) {
 
 
   export function* fetchallbanyajantuxetiRequest(api, action) {
- 
-    const response = yield api.getBanyajantuXetiList();
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getBanyajantuXetiList(payloaddata);
     if (response.ok) {
       yield put(
           DwandabebasthapanActions.fetchallbanyajantuxetiSuccess(response.data)
@@ -149,7 +156,11 @@ export function* addbanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api);
+    yield fetchallbanyajantuxetiRequest(api,{
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/banyajantuxetilist");
     yield put(DwandabebasthapanActions.addbanyajantuxetiSuccess(response.data));
   } else {

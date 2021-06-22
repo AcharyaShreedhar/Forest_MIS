@@ -2,6 +2,7 @@ import { call, put } from "redux-saga/effects";
 
 import { history } from "../reducers";
 import AppActions from "../actions/app";
+import { isNil } from "ramda";
 
 export function* loginRequest(api, action) {
   const { payload } = action;
@@ -22,7 +23,9 @@ export function* loginRequest(api, action) {
 // Municipalities
 
 export function* fetchallmunicipalitiesRequest(api, action) {
-  const response = yield api.getMunicipalitiesList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getMunicipalitiesList(payloaddata);
   if (response.ok) {
     yield put(AppActions.fetchallmunicipalitiesSuccess(response.data));
   } else {
@@ -44,7 +47,9 @@ export function* fetchmunicipalitiesRequest(api, action) {
 
 // Provinces
 export function* fetchallprovincesRequest(api, action) {
-  const response = yield api.getProvincesList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getProvincesList(payloaddata);
   if (response.ok) {
     yield put(AppActions.fetchallprovincesSuccess(response.data));
   } else {
@@ -65,7 +70,9 @@ export function* fetchprovincesRequest(api, action) {
 
 // Districts
 export function* fetchalldistrictsRequest(api, action) {
-  const response = yield api.getDistrictsList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getDistrictsList(payloaddata);
   if (response.ok) {
     yield put(AppActions.fetchalldistrictsSuccess(response.data));
   } else {
@@ -86,7 +93,9 @@ export function* fetchdistrictsRequest(api, action) {
 
 // Departments
 export function* fetchalldepartmentsRequest(api, action) {
-  const response = yield api.getDepartmentsList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getDepartmentsList(payloaddata);
   if (response.ok) {
     yield put(AppActions.fetchalldepartmentsSuccess(response.data));
   } else {
@@ -107,7 +116,9 @@ export function* fetchdepartmentsRequest(api, action) {
 
 // Users
 export function* fetchallusersRequest(api, action) {
-  const response = yield api.getUsersList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getUsersList(payloaddata);
   if (response.ok) {
     yield put(AppActions.fetchallusersSuccess(response.data));
   } else {

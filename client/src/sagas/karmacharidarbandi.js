@@ -1,11 +1,14 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
+import { isNil } from "ramda";
 
 import { history } from "../reducers";
 import KarmacharidarbandiActions from "../actions/karmacharidarbandi";
 
 export function* fetchallkarmacharidarbandiRequest(api, action) {
-  const response = yield api.getKarmacharidarbandiList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getKarmacharidarbandiList(payloaddata);
   if (response.ok) {
     yield put(
       KarmacharidarbandiActions.fetchallkarmacharidarbandiSuccess(response.data)
@@ -42,7 +45,11 @@ export function* addkarmacharidarbandiRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी दरबन्दी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addkarmacharidarbandiRequest(api);
+    yield addkarmacharidarbandiRequest(api,{
+      name: "post",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/karmacharidarbandilist");
     yield put(KarmacharidarbandiActions.addkarmacharidarbandiSuccess(response.data));
   } else {

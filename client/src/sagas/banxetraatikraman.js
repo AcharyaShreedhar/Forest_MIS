@@ -1,11 +1,13 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import BanxetraatikramanActions from "../actions/banxetraatikraman";
 
 export function* fetchallbanxetraatikramanRequest(api, action) {
- 
-  const response = yield api.getBanxetraatikramanList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanxetraatikramanList(payloaddata);
     if (response.ok) {
     yield put(
         BanxetraatikramanActions.fetchallbanxetraatikramanSuccess(response.data)
@@ -41,7 +43,11 @@ export function* addbanxetraatikramanRequest(api, action) {
     toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanxetraatikramanRequest(api);
+    yield fetchallbanxetraatikramanRequest(api,{
+      name: "atikraman_kisim",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/banxetraatikramanlist");
     yield put(BanxetraatikramanActions.addbanxetraatikramanSuccess(response.data));
   } else {
