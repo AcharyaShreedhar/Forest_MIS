@@ -3,10 +3,21 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
+import ReactPaginate from "react-paginate";
 import { Button, EditDropdown } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onAdd, onSelect } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    pageCount,
+    user,
+    onAdd,
+    onSelect,
+    onPageClick,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -40,7 +51,7 @@ function List(props) {
                   <td key={index}> {osarpasar.arthik_barsa}</td>
                   <td key={index}> {osarpasar.mahina}</td>
                   <td key={index}> {osarpasar.kaath}</td>
-                  <td key={index}> {osarpasar.daura}</td>   
+                  <td key={index}> {osarpasar.daura}</td>
                   <td key={index}> {osarpasar.lavgrahi_sankhya}</td>
                   <td key={index}> {osarpasar.mulyaabhibridi_kar}</td>
                   <td key={index}> {osarpasar.created_by}</td>
@@ -49,7 +60,9 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, osarpasar, "banpaidawarosarpasar")}
+                        onChange={(e) =>
+                          onSelect(e, osarpasar, "banpaidawarosarpasar")
+                        }
                       />
                     </div>
                   </td>
@@ -58,6 +71,20 @@ function List(props) {
             )}
           </tbody>
         </Table>
+        <div className="paginationStyle">
+          <ReactPaginate
+            previousLabel={"PREV"}
+            nextLabel={"NEXT"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={onPageClick}
+            containerClassName={"pagination"}
+            activeClassName={"active"}
+          />
+        </div>
       </div>
     </Fragment>
   );

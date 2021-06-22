@@ -8,54 +8,53 @@ class Add extends Component {
     super(props);
     this.state = {
       arthik_barsa: "",
-      mahina:"",
+      mahina: "",
       kaath: "",
       daura: "",
-      lavgrahi_sankhya:"",
-      mulyaabhibridi_kar:"",
+      lavgrahi_sankhya: "",
+      mulyaabhibridi_kar: "",
       created_by: "",
       updated_by: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-        
   }
 
   handleSubmit() {
     const {
-        arthik_barsa,
-        mahina,
-        kaath,
-        daura,
-        lavgrahi_sankhya,
-        mulyaabhibridi_kar,
-      
+      arthik_barsa,
+      mahina,
+      kaath,
+      daura,
+      lavgrahi_sankhya,
+      mulyaabhibridi_kar,
     } = this.state;
     const payload = {
       banpaidawar: {
         data: {
-            arthik_barsa : arthik_barsa,
-            mahina: mahina,
-            kaath: kaath,
-            daura: daura,
-            lavgrahi_sankhya: lavgrahi_sankhya,
-            mulyaabhibridi_kar: mulyaabhibridi_kar,
-                    
+          arthik_barsa: arthik_barsa,
+          mahina: mahina,
+          kaath: kaath,
+          daura: daura,
+          lavgrahi_sankhya: lavgrahi_sankhya,
+          mulyaabhibridi_kar: mulyaabhibridi_kar,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
     this.props.onSubmit(payload);
   }
- 
+
   render() {
-    const {title} = this.props;
+    const { title } = this.props;
     const {
-        arthik_barsa,
-        mahina,
-        kaath,
-        daura,
-        lavgrahi_sankhya,
-        mulyaabhibridi_kar,
+      arthik_barsa,
+      mahina,
+      kaath,
+      daura,
+      lavgrahi_sankhya,
+      mulyaabhibridi_kar,
     } = this.state;
 
     return (
@@ -66,7 +65,7 @@ class Add extends Component {
               <span className="dsl-b22">{title}</span>
             </div>
 
-           <Input
+            <Input
               className="mb-4"
               title="आर्थिक वर्ष"
               value={arthik_barsa}
@@ -96,7 +95,7 @@ class Add extends Component {
               value={daura}
               onChange={(e) => this.setState({ daura: e })}
             />
-                        
+
             <Input
               className="mb-4"
               title="लाभग्राही संख्या"
@@ -111,7 +110,6 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ mulyaabhibridi_kar: e })}
             />
-            
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -127,7 +125,5 @@ class Add extends Component {
     );
   }
 }
-
-
 
 export default Add;
