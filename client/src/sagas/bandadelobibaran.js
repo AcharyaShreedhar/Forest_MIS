@@ -7,7 +7,7 @@ import BandadelobibaranActions from "../actions/bandadelobibaran";
 export function* fetchallbandadelobibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
-  const response = yield api.getBandadelobibaranList(payload);
+  const response = yield api.getBandadelobibaranList(payloaddata);
 
   if (response.ok) {
     yield put(
@@ -76,7 +76,11 @@ export function* updatebandadelobibaranRequest(api, action) {
     toast.success("सफलतापुर्वक वनडडेलो विवरण पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbandadelobibaranRequest(api);
+    yield fetchallbandadelobibaranRequest(api,{
+      name: "bandadelo_address",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/banbibaran/bandadelolist");
     yield put(
       BandadelobibaranActions.updatebandadelobibaranSuccess(response.data)
@@ -102,7 +106,11 @@ export function* deletebandadelobibaranRequest(api, action) {
     toast.success("सफलतापुर्वक वनडडेलो विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbandadelobibaranRequest(api);
+    yield fetchallbandadelobibaranRequest(api,{
+      name: "bandadelo_address",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       BandadelobibaranActions.deletebandadelobibaranSuccess(response.data)
     );
