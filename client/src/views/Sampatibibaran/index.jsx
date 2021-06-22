@@ -4,11 +4,16 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
+import SampatibibaranActions from "../../actions/sampatibibaran";
 import sampatibibaranRoutes from "../../routes/sampatibibaran";
 
 export class Sampatibibaran extends Component {
   componentDidMount() {
-    //function goes here
+    this.props.fetchallGharjagga({
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -62,7 +67,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  //function
+  fetchallGharjagga: (payload) =>
+    dispatch(SampatibibaranActions.fetchallassetsRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sampatibibaran);

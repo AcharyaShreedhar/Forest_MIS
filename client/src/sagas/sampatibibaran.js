@@ -8,31 +8,26 @@ export function* fetchallassetsRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getAssetsList(payloaddata);
-    if (response.ok) {
-    yield put(
-        SampatibibaranActions.fetchallassetsSuccess(response.data)
-    );
+  if (response.ok) {
+    yield put(SampatibibaranActions.fetchallassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.fetchallassetsFailure());
   }
 }
 
 export function* fetchassetsRequest(api, action) {
-    const  assetId  = action.payload
- 
-    const response = yield api.getAssets(assetId);
-    
-    if (response.ok) {
-      yield put(
-        SampatibibaranActions.fetchassetsSuccess(response.data)
-      );
-    } else {
-      yield put(SampatibibaranActions.fetchassetsFailure());
-    }
+  const assetId = action.payload;
+
+  const response = yield api.getAssets(assetId);
+
+  if (response.ok) {
+    yield put(SampatibibaranActions.fetchassetsSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.fetchassetsFailure());
   }
+}
 
-
-    // Add assets
+// Add assets
 export function* addassetsRequest(api, action) {
   const { payload } = action;
 
@@ -44,21 +39,23 @@ export function* addassetsRequest(api, action) {
     toast.success("सफलतापुर्वक सम्पत्ति प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallassetsRequest(api,{
-      name: "kitta_no",
+    yield fetchallassetsRequest(api, {
+      name: "asset_type",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/assetslist");
+    yield call(history.push, "/sampatibibaran/gharjaggalist");
     yield put(SampatibibaranActions.addassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.addassetsFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
 
 // Update assets
 export function* updateassetsRequest(api, action) {
@@ -73,20 +70,23 @@ export function* updateassetsRequest(api, action) {
     toast.success("सफलतापुर्वक सम्पत्ति पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallassetsRequest(api);
-    yield call(history.push, "/forests/assetslist");
-    yield put(
-      SampatibibaranActions.updateassetsSuccess(response.data)
-    );
+    yield fetchallassetsRequest(api, {
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/sampatibibaran/gharjaggalist");
+    yield put(SampatibibaranActions.updateassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.updateassetsFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
-
 
 // Delete assets
 export function* deleteassetsRequest(api, action) {
@@ -98,50 +98,48 @@ export function* deleteassetsRequest(api, action) {
     toast.success("सफलतापुर्वक सम्पत्ति हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallassetsRequest(api);
-    yield put(
-      SampatibibaranActions.deleteassetsSuccess(response.data)
-    );
+    yield fetchallassetsRequest(api, {
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(SampatibibaranActions.deleteassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.deleteassetsFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
+export function* fetchallvehiclesRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getVehiclesList(payloaddata);
 
-
-  export function* fetchallvehiclesRequest(api, action) {
-    const { payload } = action;
-    const payloaddata = isNil(payload) ? action : payload;
-    const response = yield api.getVehiclesList(payloaddata);
-    
-        if (response.ok) {
-      yield put(
-          SampatibibaranActions.fetchallvehiclesSuccess(response.data)
-      );
-    } else {
-      yield put(SampatibibaranActions.fetchallvehiclesFailure());
-    }
+  if (response.ok) {
+    yield put(SampatibibaranActions.fetchallvehiclesSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.fetchallvehiclesFailure());
   }
+}
 
+export function* fetchvehiclesRequest(api, action) {
+  const vehicleId = action.payload;
 
-  export function* fetchvehiclesRequest(api, action) {
-    const  vehicleId  = action.payload
- 
-    const response = yield api.getVehicles(vehicleId);
-    
-    if (response.ok) {
-      yield put(
-        SampatibibaranActions.fetchvehiclesSuccess(response.data)
-      );
-    } else {
-      yield put(SampatibibaranActions.fetchvehiclesFailure());
-    }
+  const response = yield api.getVehicles(vehicleId);
+
+  if (response.ok) {
+    yield put(SampatibibaranActions.fetchvehiclesSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.fetchvehiclesFailure());
   }
+}
 
-    // Add vehicles
+// Add vehicles
 export function* addvehiclesRequest(api, action) {
   const { payload } = action;
 
@@ -153,7 +151,7 @@ export function* addvehiclesRequest(api, action) {
     toast.success("सफलतापुर्वक गाडी विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallvehiclesRequest(api,{
+    yield fetchallvehiclesRequest(api, {
       name: "vehicle_type",
       page: 0,
       perPage: 10,
@@ -162,12 +160,14 @@ export function* addvehiclesRequest(api, action) {
     yield put(SampatibibaranActions.addvehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.addvehiclesFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
 
 // Update vehicles
 export function* updatevehiclesRequest(api, action) {
@@ -184,18 +184,17 @@ export function* updatevehiclesRequest(api, action) {
     });
     yield fetchallvehiclesRequest(api);
     yield call(history.push, "/forests/vehicleslist");
-    yield put(
-      SampatibibaranActions.updatevehiclesSuccess(response.data)
-    );
+    yield put(SampatibibaranActions.updatevehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.updatevehiclesFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
-
 
 // Delete vehicles
 export function* deletevehiclesRequest(api, action) {
@@ -208,13 +207,14 @@ export function* deletevehiclesRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api);
-    yield put(
-      SampatibibaranActions.deletevehiclesSuccess(response.data)
-    );
+    yield put(SampatibibaranActions.deletevehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.deletevehiclesFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
