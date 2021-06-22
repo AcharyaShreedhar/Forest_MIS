@@ -156,7 +156,7 @@ export function* addvehiclesRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/vehicleslist");
+    yield call(history.push, "/sampatibibaran/sawarisadhanlist");
     yield put(SampatibibaranActions.addvehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.addvehiclesFailure());
@@ -174,7 +174,7 @@ export function* updatevehiclesRequest(api, action) {
   const { payload, vehicleId } = action;
 
   const response = yield api.postSampatibibaranVehiclesUpdate(
-    payload.assets.data,
+    payload.vehicles.data,
     vehicleId
   );
 
@@ -182,8 +182,12 @@ export function* updatevehiclesRequest(api, action) {
     toast.success("सफलतापुर्वक गाडी विवरण पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallvehiclesRequest(api);
-    yield call(history.push, "/forests/vehicleslist");
+    yield fetchallvehiclesRequest(api, {
+      name: "vehicle_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/sampatibibaran/sawarisadhanlist");
     yield put(SampatibibaranActions.updatevehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.updatevehiclesFailure());
@@ -206,7 +210,11 @@ export function* deletevehiclesRequest(api, action) {
     toast.success("सफलतापुर्वक गाडी विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallvehiclesRequest(api);
+    yield fetchallvehiclesRequest(api, {
+      name: "vehicle_type",
+      page: 0,
+      perPage: 10,
+    });
     yield put(SampatibibaranActions.deletevehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.deletevehiclesFailure());

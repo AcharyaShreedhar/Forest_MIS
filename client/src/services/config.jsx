@@ -195,6 +195,23 @@ const gharjaggaHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const sawarisadhanHeadings = [
+  "सवारी साधनको प्रकार",
+  "सवारी नम्वर",
+  "इन्जिन नं.",
+  "च्यासिस नं.",
+  "प्राप्ति स्रोत",
+  "प्राप्ति मिति",
+  "प्राप्ति मूल्य",
+  "निर्माता देश",
+  "निर्माता कम्पनी",
+  "मोडेलको नाम",
+  "निर्माण वर्ष",
+  "कैफियत (अवस्था)",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -210,4 +227,5 @@ export {
   banyajantuuddarHeadings,
   banyajantuxetirahatHeadings,
   gharjaggaHeadings,
+  sawarisadhanHeadings,
 };

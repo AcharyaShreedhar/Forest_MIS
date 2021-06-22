@@ -32,6 +32,20 @@ const sampatibibaranRoutes = [
     component: Sawarisadhan,
   },
   {
+    path: "/sampatibibaran/sawarisadhanadd/new",
+    title: "Sawarisadhan",
+    name: "sawarisadhan",
+    auth: true,
+    component: Sawarisadhan,
+  },
+  {
+    path: "/sampatibibaran/sawarisadhanedit/:id",
+    title: "Sawarisadhan",
+    name: "sawarisadhan",
+    auth: true,
+    component: Sawarisadhan,
+  },
+  {
     redirect: true,
     path: "/sampatibibaran",
     to: "/sampatibibaran/gharjaggalist",
