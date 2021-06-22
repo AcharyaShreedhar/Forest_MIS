@@ -1,13 +1,29 @@
 const pool = require("../db")
 //Controller for Listing all Banpaidawar
 async function getAllBanpaidawar(req, res) {
-    const getAllBanpaidawarQuery = `select * from ban_paidawars`;
-    pool.query(getAllBanpaidawarQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from ban_paidawars"
+    const getAllBanpaidawarQuery = `select * from ban_paidawars ORDER BY ? ASC LIMIT ?, ?`;
+    pool.query(getTotalQuery, [], (error, countresults, fields) => {
       if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      pool.query(
+        getAllBanpaidawarQuery,
+        [req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
     });
-  }
-  
+  }  
   //Controller for Listing a Banpaidawar
   async function getBanpaidawar(req, res) {
     const getBanpaidawarQuery = `select * from ban_paidawars where paidawar_id=?`;
