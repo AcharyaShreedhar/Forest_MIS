@@ -22,8 +22,8 @@ class Edit extends Component {
       banxetra_duri: props.history.location.item.banxetra_duri,
       anya_bibaran: props.history.location.item.anya_bibaran,
       remarks: props.history.location.item.remarks,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,6 +45,8 @@ class Edit extends Component {
         banxetra_duri,
         anya_bibaran,
         remarks,
+        created_by,
+        updated_by,
 
         
     } = this.state;
@@ -62,6 +64,8 @@ class Edit extends Component {
             banxetra_duri: banxetra_duri,
             anya_bibaran: anya_bibaran,
             remarks: remarks,
+            created_by: created_by,
+            updated_by: updated_by,
            
         },
       },
@@ -88,6 +92,7 @@ class Edit extends Component {
         banxetra_duri,
         anya_bibaran,
         remarks,
+       
     } = this.state;
 
     return (
