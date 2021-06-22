@@ -10,7 +10,11 @@ import BiruwautpadanActions from "../../actions/biruwautpadan";
 export class Activities extends Component {
   componentDidMount() {
     this.props.fetchallBiruwautpadan();
-    this.props.fetchallYearlyactivities();
+    this.props.fetchallYearlyactivities({
+      name: "fiscal_year",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -68,8 +72,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchallBiruwautpadan: () =>
     dispatch(BiruwautpadanActions.fetchallbiruwautpadanRequest()),
 
-  fetchallYearlyactivities: () =>
-    dispatch(BiruwautpadanActions.fetchallactivitiesinfoRequest()),
+  fetchallYearlyactivities: (payload) =>
+    dispatch(BiruwautpadanActions.fetchallactivitiesinfoRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Activities);

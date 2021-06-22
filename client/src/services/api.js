@@ -160,7 +160,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBiruwautpadanBiruwautpadanDelete = (biruwautpadanId) =>
     api.delete(`biruwautpadans/${biruwautpadanId}`);
 
-  const getActivitiesinfoList = () => api.post("activitiesInfo");
+  const getActivitiesinfoList = (payload) => api.post("activitiesInfoList",payload);
 
   const getActivitiesinfo = (activitiesInfoId) =>
     api.get(`activitiesInfo/${activitiesInfoId}`);
@@ -216,7 +216,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`banyajantuXetiBibarans/${banyajantuxetiId}`);
 
   //sampatibibaran
-  const getAssetsList = () => api.post("assets");
+  const getAssetsList = (payload) => api.post("assetsList",payload);
 
   const getAssets = (assetId) => api.get(`assets/${assetId}`);
 
@@ -286,7 +286,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`banxetraAtikramans/${banxteraatikramanId}`);
 
   //................bandadelobibarans
-  const getBandadelobibaranList = () => api.post("bandadeloBibaran");
+  const getBandadelobibaranList = (payload) => api.post("bandadeloBibaranList",payload);
 
   const getBandadelobibaran = (bandadeloBibaranId) =>
     api.get(`bandadeloBibaran/${bandadeloBibaranId}`);

@@ -1,28 +1,39 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals } from "ramda";
-import {
-  YearlyActivities
-  } from "../../../components";
+import { equals, isNil } from "ramda";
+import { YearlyActivities } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
-import {
-  yearlyactivitiesHeadings,
-} from "../../../services/config";
-
+import { yearlyactivitiesHeadings } from "../../../services/config";
 
 class Yearlyactivities extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "yearlyactivitieslist" };
+    this.state = { loc: "yearlyactivitieslist", perPage: 10, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
 
-    return { loc };
+    var yearlyactivitiesList = [];
+    if (nextProps != prevState) {
+      yearlyactivitiesList = nextProps.activitiesinfoDataList.data;
+    }
+    return { loc, yearlyactivitiesList };
+  }
+
+  handlePageChange(data, item) {
+    const { perPage } = this.state;
+    this.setState({ page: data.selected });
+
+    this.props.fetchallYearlyactivities({
+      name: "fiscal_year",
+      page: data.selected * perPage,
+      perPage,
+    });
   }
 
   handleSelectMenu(event, item, path) {
@@ -62,15 +73,14 @@ class Yearlyactivities extends Component {
         this.props.history.push("/activities/yearlyactivitiesadd/new");
         break;
       }
-      
+
       default:
         break;
     }
   }
   render() {
-    const yearlyactivitiesList = this.props.activitiesinfoDataList.data;
-    
-    const { loc } = this.state;
+    const { loc, perPage, page, yearlyactivitiesList } = this.state;
+    const { user } = this.props;
 
     return (
       <div>
@@ -78,15 +88,23 @@ class Yearlyactivities extends Component {
           <YearlyActivities.List
             buttonName="+ वार्षिक कार्यक्रम"
             title="वार्षिक कार्यक्रम सम्बन्धी विवरण"
-            data={yearlyactivitiesList}
+            pageCount={
+              !isNil(yearlyactivitiesList)
+                ? Math.ceil(yearlyactivitiesList.total / perPage)
+                : 10
+            }
+            data={!isNil(yearlyactivitiesList) ? yearlyactivitiesList.list : []}
+            user={user}
             headings={yearlyactivitiesHeadings}
             onAdd={() => this.handleAdd("yearlyactivities")}
             onSelect={this.handleSelectMenu}
+            onPageClick={(e) => this.handlePageChange(e)}
           />
         )}
         {equals(loc, "yearlyactivitiesadd") && (
           <YearlyActivities.Add
             title="+ वार्षिक कार्यक्रम प्रविष्ट"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addYearlyactivities(e)}
           />
@@ -94,12 +112,12 @@ class Yearlyactivities extends Component {
         {equals(loc, "yearlyactivitiesedit") && (
           <YearlyActivities.Edit
             title="वार्षिक कार्यक्रम पुनः प्रविष्ट"
+            user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateYearlyactivities(e, id)}
           />
         )}
-        
       </div>
     );
   }
@@ -107,21 +125,20 @@ class Yearlyactivities extends Component {
 
 Yearlyactivities.propTypes = {
   activitiesinfoDataList: PropTypes.any,
-  
 };
 
 Yearlyactivities.defaultProps = {
   activitiesinfoDataList: {},
- 
 };
 
 const mapStateToProps = (state) => ({
+  user: state.app.user,
   activitiesinfoDataList: state.biruwautpadan.allactivitiesinfoData,
-  
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  
+  fetchallYearlyactivities: (payload) =>
+    dispatch(BiruwautpadanActions.fetchallactivitiesinfoRequest(payload)),
   addYearlyactivities: (payload) =>
     dispatch(BiruwautpadanActions.addactivitiesinfoRequest(payload)),
 
@@ -137,7 +154,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BiruwautpadanActions.deleteactivitiesinfoRequest(activitiesinfoId)
     ),
-  
-  });
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Yearlyactivities);
