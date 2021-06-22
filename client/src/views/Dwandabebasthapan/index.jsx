@@ -10,6 +10,7 @@ import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 export class Dwandabebasthapan extends Component {
   componentDidMount() {
     this.props.fetchallBanyajantuuddar();
+    this.props.fetchallBanyajantuxetirahat();
   }
 
   render() {
@@ -66,6 +67,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanyajantuuddar:() =>
   dispatch(DwandabebasthapanActions.fetchallbanyajantuuddarRequest()),
+  fetchallBanyajantuxetirahat:() =>
+  dispatch(DwandabebasthapanActions.fetchallbanyajantuxetiRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dwandabebasthapan);

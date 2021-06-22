@@ -31,6 +31,13 @@ const dwandabebasthapanRoutes = [
     auth: true,
     component: BanyajantuUddar,
   },
+  {
+    path: "/dwandabebasthapan/banyajantuuddaredit/:id",
+    title: "BanyajantuUddar",
+    name: "banyajantuuddar",
+    auth: true,
+    component: BanyajantuUddar,
+  },
 ];
 
 export default dwandabebasthapanRoutes;

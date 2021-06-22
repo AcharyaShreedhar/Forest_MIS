@@ -67,7 +67,7 @@ export function* addbandadelobibaranRequest(api, action) {
 export function* updatebandadelobibaranRequest(api, action) {
   const { payload, bandadelobibaranId } = action;
 
-  const response = yield api.postBandadelobibaranBandadeloUpdate(
+  const response = yield api.postBanbibaranBandadelobibaranUpdate(
     payload.bandadelo.data,
     bandadelobibaranId
   );
@@ -96,7 +96,7 @@ export function* updatebandadelobibaranRequest(api, action) {
 export function* deletebandadelobibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBandadelobibaranBandadeloDelete(payload);
+  const response = yield api.postBanbibaranBandadelobibaranDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक वनडडेलो विवरण हटाईयो !!!!!", {

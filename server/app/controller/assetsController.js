@@ -2,10 +2,27 @@ const pool = require("../db");
 
 //Controller for Listing all Assets
 async function getAllAssets(req, res) {
-  const getAllAssetsQuery = `select * from assets`;
-  pool.query(getAllAssetsQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from assets";
+  const getAllAssetsQuery = `select * from assets ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllAssetsQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 

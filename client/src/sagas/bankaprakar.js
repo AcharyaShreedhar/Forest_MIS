@@ -41,15 +41,7 @@ export function* addsamudayikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सामुदायिक वन प्रविष्ट भयो !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallsamudayikbanbibaranRequest(api, {
-      name: "samydayikban_name",
-      page: 0,
-      perPage: 10,
-    });
-    yield call(history.push, "/forests/samudayikbanlist");
+    yield addnabikarankaryayojanaRequest(api, [payload, "samudayikban"]);
     yield put(BankaprakarActions.addsamudayikbanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.addsamudayikbanbibaranFailure());
@@ -72,15 +64,7 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सामुदायिक वन पुनः प्रविष्ट भयो !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallsamudayikbanbibaranRequest(api, {
-      name: "samydayikban_name",
-      page: 0,
-      perPage: 10,
-    });
-    yield call(history.push, "/forests/samudayikbanlist");
+    yield updatenabikarankaryayojanaRequest(api, [payload, "samudayikban"]);
     yield put(
       BankaprakarActions.updatesamudayikbanbibaranSuccess(response.data)
     );
@@ -98,14 +82,10 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
 // Delete samudayikbanbibaran
 export function* deletesamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
-
   const response = yield api.postBankaprakarSamudayikbanDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallsamudayikbanbibaranRequest(api);
+    yield deletenabikarankaryayojanaRequest(api, [payload, "samudayikban"]);
     yield put(
       BankaprakarActions.deletesamudayikbanbibaranSuccess(response.data)
     );
@@ -154,15 +134,7 @@ export function* adddharmikbanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक धार्मिक वन प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchalldharmikbanbibaranRequest(api, {
-      name: "dharmikban_name",
-      page: 0,
-      perPage: 10,
-    });
-    yield call(history.push, "/forests/dharmikbanlist");
+    yield addnabikarankaryayojanaRequest(api, [payload, "dharmikban"]);
     yield put(BankaprakarActions.adddharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.adddharmikbanbibaranFailure());
@@ -184,15 +156,7 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     dharmikbanbibaranId
   );
   if (response.ok) {
-    toast.success("सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchalldharmikbanbibaranRequest(api, {
-      name: "dharmikban_name",
-      page: 0,
-      perPage: 10,
-    });
-    yield call(history.push, "/forests/dharmikbanlist");
+    yield updatenabikarankaryayojanaRequest(api, [payload, "dharmikban"]);
     yield put(BankaprakarActions.updatedharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.updatedharmikbanbibaranFailure());
@@ -212,10 +176,7 @@ export function* deletedharmikbanbibaranRequest(api, action) {
   const response = yield api.postBankaprakarDharmikbanDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक धार्मिक वन हटाईयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchalldharmikbanbibaranRequest(api);
+    yield deletenabikarankaryayojanaRequest(api, [payload, "dharmikban"]);
     yield put(BankaprakarActions.deletedharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.deletedharmikbanbibaranFailure());
@@ -474,17 +435,41 @@ export function* fetchnabikarankaryayojanaRequest(api, action) {
 // Add Nabikarankaryayojana
 export function* addnabikarankaryayojanaRequest(api, action) {
   const { payload } = action;
-
+  const payloaddata = !isNil(payload) ? payload : action[0];
+  const type = action[1];
   const response = yield api.postBankaprakarNabikarankaryayojanaAddNew(
-    payload.nabikarankaryayojana.data
+    payloaddata.nabikarankaryayojana.data
   );
-
   if (response.ok) {
-    toast.success("सफलतापुर्वक नविकरण कार्ययोजना प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallnabikarankaryayojanaRequest(api);
-    yield call(history.push, "/forests/nabikarankaryayojanalist");
+    switch (type) {
+      case "samudayikban": {
+        toast.success("सफलतापुर्वक सामुदायिक वन प्रविष्ट भयो !!!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        yield fetchallsamudayikbanbibaranRequest(api, {
+          name: "samydayikban_name",
+          page: 0,
+          perPage: 10,
+        });
+        yield call(history.push, "/forests/samudayikbanlist");
+        break;
+      }
+      case "dharmikban": {
+        toast.success("सफलतापुर्वक धार्मिक वन प्रविष्ट भयो !!!!! !!!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        yield fetchalldharmikbanbibaranRequest(api, {
+          name: "dharmikban_name",
+          page: 0,
+          perPage: 10,
+        });
+        yield call(history.push, "/forests/dharmikbanlist");
+        break;
+      }
+      default:
+        break;
+    }
+
     yield put(BankaprakarActions.addnabikarankaryayojanaSuccess(response.data));
   } else {
     yield put(BankaprakarActions.addnabikarankaryayojanaFailure());
@@ -500,18 +485,45 @@ export function* addnabikarankaryayojanaRequest(api, action) {
 // Update nabikarankaryayojana
 export function* updatenabikarankaryayojanaRequest(api, action) {
   const { payload } = action;
-
+  const payloaddata = !isNil(payload) ? payload : action[0];
+  const type = action[1];
   const response = yield api.postBankaprakarNabikarankaryayojanaUpdate(
-    payload.nabikarankaryayojana.data,
-    payload.id
+    payloaddata.nabikarankaryayojana.data,
+    payloaddata.nabikarankaryayojana.data.darta_id
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक नविकरण कार्ययोजना पुनः प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallnabikarankaryayojanaRequest(api);
-    yield call(history.push, "/forests/nabikarankaryayojanalist");
+    switch (type) {
+      case "samudayikban": {
+        toast.success("सफलतापुर्वक सामुदायिक वन पुनः प्रविष्ट भयो !!!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        yield fetchallsamudayikbanbibaranRequest(api, {
+          name: "samydayikban_name",
+          page: 0,
+          perPage: 10,
+        });
+        yield call(history.push, "/forests/samudayikbanlist");
+        break;
+      }
+      case "dharmikban": {
+        toast.success(
+          "सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!! !!!!! !!!!",
+          {
+            position: toast.POSITION.TOP_CENTER,
+          }
+        );
+        yield fetchalldharmikbanbibaranRequest(api, {
+          name: "dharmikban_name",
+          page: 0,
+          perPage: 10,
+        });
+        yield call(history.push, "/forests/dharmikbanlist");
+        break;
+      }
+      default:
+        break;
+    }
     yield put(
       BankaprakarActions.updatenabikarankaryayojanaSuccess(response.data)
     );
@@ -529,14 +541,41 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
 // Delete nabikarankaryayojana
 export function* deletenabikarankaryayojanaRequest(api, action) {
   const { payload } = action;
-
-  const response = yield api.postBankaprakarNabikarankaryayojanaDelete(payload);
+  const payloaddata = !isNil(payload) ? payload : action[0];
+  const type = action[1];
+  const response = yield api.postBankaprakarNabikarankaryayojanaDelete(
+    payloaddata
+  );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक नविकरण कार्ययोजना हटाईयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallnabikarankaryayojanaRequest(api);
+    switch (type) {
+      case "samudayikban": {
+        toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        yield fetchallsamudayikbanbibaranRequest(api, {
+          name: "samydayikban_name",
+          page: 0,
+          perPage: 10,
+        });
+        yield call(history.push, "/forests/samudayikbanlist");
+        break;
+      }
+      case "dharmikban": {
+        toast.success("सफलतापुर्वक धार्मिक वन हटाईयो !!!!! !!!!", {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        yield fetchalldharmikbanbibaranRequest(api, {
+          name: "dharmikban_name",
+          page: 0,
+          perPage: 10,
+        });
+        yield call(history.push, "/forests/dharmikbanlist");
+        break;
+      }
+      default:
+        break;
+    }
     yield put(
       BankaprakarActions.deletenabikarankaryayojanaSuccess(response.data)
     );

@@ -57,7 +57,10 @@ function List(props) {
                     {" "}
                     {englishToNepaliNumber(dban.handover_date)}
                   </td>
-                  <td key={index}> {dban.renewed_date}</td>
+                  <td key={index}>
+                    {" "}
+                    {englishToNepaliNumber(dban.renewed_date)}
+                  </td>
                   <td key={index}> {dban.nabikaran_abadhi}</td>
                   <td key={index}> {dban.forest_maujdat}</td>
                   <td key={index}>

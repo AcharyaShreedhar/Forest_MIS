@@ -130,21 +130,21 @@ class Bankaprakar extends Component {
       case "delete": {
         switch (path) {
           case "samudayik": {
-            this.props.deleteSamudayikbanbibaran(item.samudayikban_id);
+            this.props.deleteSamudayikbanbibaran(item.darta_no);
             break;
           }
           case "dharmik": {
-            this.props.deleteDharmikbanbibaran(item.dharmikban_id);
+            this.props.deleteDharmikbanbibaran(item.darta_no);
             break;
           }
           case "kabuliyati": {
             this.props.deleteKabuliyatibanbibaran(
-              item.kabuliyatiban_bibaran_id
+              item.darta_no
             );
             break;
           }
           case "niji": {
-            this.props.deleteNijibanbibaran(item.nijiban_bibaran_id);
+            this.props.deleteNijibanbibaran(item.darta_no);
             break;
           }
           default:
