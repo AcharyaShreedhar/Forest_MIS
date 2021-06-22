@@ -37,11 +37,12 @@ async function getBanxetraAtikramans(req, res) {
 
 //Controller for adding a Banxetra Atikraman
 async function addBanxetraAtikramans(req, res) {
-  const addBanxetraAtikramansQuery = `INSERT INTO banxetra_atikramans (atikramit_area,atikraman_kisim,samalagna_ghardhuri,atikraman_prayojan,samrachana_bibaran,atikraman_abastha,created_by,updated_by) values (?,?,?,?,?,?,?,?)`;
+  const addBanxetraAtikramansQuery = `INSERT INTO banxetra_atikramans (atikramit_area,address,atikraman_kisim,samalagna_ghardhuri,atikraman_prayojan,samrachana_bibaran,atikraman_abastha,created_by,updated_by) values (?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanxetraAtikramansQuery,
     [
       req.body.atikramit_area,
+      req.body.address,
       req.body.atikraman_kisim,
       req.body.samalagna_ghardhuri,
       req.body.atikraman_prayojan,
@@ -61,11 +62,12 @@ async function addBanxetraAtikramans(req, res) {
 
 //Controller for updating a Banxetra Atikraman
 async function updateBanxetraAtikramans(req, res) {
-  const updateBanxetraAtikramansQuery = `UPDATE banxetra_atikramans SET atikramit_area=?,atikraman_kisim=?,samalagna_ghardhuri=?,atikraman_prayojan=?,samrachana_bibaran=?,atikraman_abastha=?,created_by=?,updated_by=? WHERE banxetra_atikraman_id=?`;
+  const updateBanxetraAtikramansQuery = `UPDATE banxetra_atikramans SET atikramit_area=?,address=?,atikraman_kisim=?,samalagna_ghardhuri=?,atikraman_prayojan=?,samrachana_bibaran=?,atikraman_abastha=?,created_by=?,updated_by=? WHERE banxetra_atikraman_id=?`;
   pool.query(
     updateBanxetraAtikramansQuery,
     [
       req.body.atikramit_area,
+      req.body.address,
       req.body.atikraman_kisim,
       req.body.samalagna_ghardhuri,
       req.body.atikraman_prayojan,
