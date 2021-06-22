@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 const banpaidawarLilamController = require("../controller/banpaidawarLilamController");
-router.get("/banpaidawarLilam", banpaidawarLilamController.getAllBanpaidawarLilam);
+router.post("/banpaidawarLilamlist", banpaidawarLilamController.getAllBanpaidawarLilam);
 router.get("/banpaidawarLilam/:banpaidawarLilamId", banpaidawarLilamController.getBanpaidawarLilam);
 router.post("/banpaidawarLilam", banpaidawarLilamController.addBanpaidawarLilam);
 router.put("/banpaidawarLilam/:banpaidawarLilamId", banpaidawarLilamController.updateBanpaidawarLilam);
