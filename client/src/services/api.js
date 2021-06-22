@@ -196,7 +196,7 @@ const create = (baseURL = Config.API_URL) => {
   const postDwandabebasthapanBanyajantuuddarDelete = (banyajantuuddarId) =>
     api.delete(`banyajantuUddars/${banyajantuuddarId}`);
 
-  const getBanyajantuXetiList = () => api.get("banyajantuXetiBibarans");
+  const getBanyajantuXetiList = (payload) => api.post("banyajantuXetiBibaransList", payload);
 
   const getBanyajantuXeti = (banyajantuXetiId) =>
     api.get(`banyajantuXetiBibarans/${banyajantuXetiId}`);
