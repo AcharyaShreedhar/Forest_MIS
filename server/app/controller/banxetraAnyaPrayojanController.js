@@ -1,10 +1,27 @@
 const pool = require("../db")
 //Controller for Listing all BanxetraAnyaprayojan
 async function getAllBanxetraAnyaprayojan(req, res) {
-    const getAllBanxetraAnyaprayojanQuery = `select * from banxetra_anyaprayojans`;
-    pool.query(getAllBanxetraAnyaprayojanQuery, [], (error, results, fields) => {
+    const getTotalQuery = "SELECT count(*) as total from banxetra_anyaprayojans";
+    const getAllBanxetraAnyaprayojanQuery = `select * from banxetra_anyaprayojans ORDER BY ? ASC LIMIT ?, ?`;
+    pool.query(getTotalQuery, [], (error, countresults, fields) => {
       if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      pool.query(
+        getAllBanxetraAnyaprayojanQuery,
+        [req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
     });
   }
   

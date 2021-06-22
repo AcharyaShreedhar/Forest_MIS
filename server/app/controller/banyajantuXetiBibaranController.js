@@ -2,13 +2,29 @@ const pool = require("../db");
 
 //Controller for Listing all Banyajantu Xeti Bibarans
 async function getAllBanyajantuXetiBibarans(req, res) {
-  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans`;
-  pool.query(getAllBanyajantuXetiBibaransQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from banyajantuxeti_bibarans";
+  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllBanyajantuXetiBibaransQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
-
 //Controller for Listing a Banyajantu Xeti Bibaran
 async function getBabyajantuXetiBibarans(req, res) {
   const getBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans where banyajantuxeti_bibaran_id=?`;
