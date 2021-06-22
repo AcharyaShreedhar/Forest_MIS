@@ -10,19 +10,18 @@ class Add extends Component {
     super(props);
     this.state = {
       lilam_date: "",
-      banpaidawar_type:"",
+      banpaidawar_type: "",
       unit: "",
       quantity: "",
-      minimum_price:"",
-      sakaar_price:"",
-      remarks:"",
+      minimum_price: "",
+      sakaar_price: "",
+      remarks: "",
       created_by: "",
       updated_by: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
-    
   }
 
   handleSubmit() {
@@ -34,7 +33,8 @@ class Add extends Component {
       minimum_price,
       sakaar_price,
       remarks,
-      
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       banpaidawarlilam: {
@@ -46,7 +46,8 @@ class Add extends Component {
           minimum_price: minimum_price,
           sakaar_price: sakaar_price,
           remarks: remarks,
-          
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
@@ -57,15 +58,15 @@ class Add extends Component {
   }
 
   render() {
-    const {title} = this.props;
+    const { title } = this.props;
     const {
-        lilam_date,
-        banpaidawar_type,
-        unit,
-        quantity,
-        minimum_price,
-        sakaar_price,
-        remarks,
+      lilam_date,
+      banpaidawar_type,
+      unit,
+      quantity,
+      minimum_price,
+      sakaar_price,
+      remarks,
     } = this.state;
 
     return (
@@ -114,7 +115,7 @@ class Add extends Component {
               value={minimum_price}
               onChange={(e) => this.setState({ minimum_price: e })}
             />
-                        
+
             <Input
               className="mb-4"
               title="सकार रकम (रु)"
@@ -129,7 +130,6 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ remarks: e })}
             />
-            
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -145,7 +145,5 @@ class Add extends Component {
     );
   }
 }
-
-
 
 export default Add;

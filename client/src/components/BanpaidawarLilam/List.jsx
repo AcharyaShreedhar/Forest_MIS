@@ -3,10 +3,21 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
+import ReactPaginate from "react-paginate";
 import { Button, EditDropdown } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onAdd, onSelect } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    pageCount,
+    user,
+    onAdd,
+    onSelect,
+    onPageClick,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -37,13 +48,11 @@ function List(props) {
               data.map((lilam, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>
-                    {englishToNepaliNumber(lilam.lilam_date)}
-                  </td>
+                  <td key={index}>{englishToNepaliNumber(lilam.lilam_date)}</td>
                   <td key={index}> {lilam.banpaidawar_type}</td>
                   <td key={index}> {lilam.unit}</td>
                   <td key={index}> {lilam.quantity}</td>
-                  <td key={index}> {lilam.minimum_price}</td>   
+                  <td key={index}> {lilam.minimum_price}</td>
                   <td key={index}> {lilam.sakaar_price}</td>
                   <td key={index}> {lilam.remarks}</td>
                   <td key={index}> {lilam.created_by}</td>
@@ -61,6 +70,20 @@ function List(props) {
             )}
           </tbody>
         </Table>
+        <div className="paginationStyle">
+          <ReactPaginate
+            previousLabel={"PREV"}
+            nextLabel={"NEXT"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={onPageClick}
+            containerClassName={"pagination"}
+            activeClassName={"active"}
+          />
+        </div>
       </div>
     </Fragment>
   );
