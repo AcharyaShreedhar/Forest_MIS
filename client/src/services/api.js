@@ -138,7 +138,7 @@ const create = (baseURL = Config.API_URL) => {
 
   // Banbibaran_banxetra_anya_prayojan
   const getBanxetraanyaprayojanList = (payload) =>
-    api.get("banxetraAnyaprayojan", payload);
+    api.post("banxetraAnyaprayojanList", payload);
 
   const getBanxetraanyaprayojan = (banxetraanyaprayojanId) =>
     api.get(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
