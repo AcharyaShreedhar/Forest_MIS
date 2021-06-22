@@ -115,6 +115,7 @@ Osarpasar.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  user: state.app.user,
   banpaidawarDataList: state.banpaidawar.allbanpaidawarData,
 });
 
