@@ -172,7 +172,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`activitiesInfo/${activitiesinfoId}`);
 
   //Dwandabebasthapan
-  const getBanyajantuUddarList = () => api.get("banyajantuUddars");
+  const getBanyajantuUddarList = (payload) => api.post("banyajantuUddarsList");
 
   const getBanyajantuUddar = (banyajantuUddarId) =>
     api.get(`banyajantuUddars/${banyajantuUddarId}`);
