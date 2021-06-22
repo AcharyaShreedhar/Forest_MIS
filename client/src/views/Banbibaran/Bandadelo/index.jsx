@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals } from "ramda";
+import { equals, length, isNil } from "ramda";
 import { BandadeloBibaran } from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
 import { bandadeloHeadings } from "../../../services/config";
@@ -10,16 +10,34 @@ import { bandadeloHeadings } from "../../../services/config";
 class Bandadelo extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "bandadelolist" };
+    this.state = { loc: "bandadelolist", perPage: 10, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
+    var bandadelobibaranList = [];
+    if (nextProps != prevState) {
+      bandadelobibaranList = nextProps.bandadelobibaranDataList.data;
+    }
 
-    return { loc };
+    return { 
+      loc,
+      bandadelobibaranList,
+     };
   }
+
+  handlePageChange(data) {
+    
+    const {perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.props.fetchallBandadelo({
+        name:"bandadelo_address",
+        page: data.selected * perPage,
+        perPage,
+    });
+}
 
   handleSelectMenu(event, item, path) {
    switch (event) {
@@ -65,12 +83,14 @@ class Bandadelo extends Component {
   }
 
   render() {
-    const bandadelobibaranList = this.props.bandadelobibaranDataList
-      ? this.props.bandadelobibaranDataList.data
-      : [];
+    const{
+      loc,
+      perPage,
+      bandadelobibaranList,
 
-    const { loc } = this.state;
-    console.log("location", loc);
+    } = this.state;
+    const { user } = this.props;
+    
 
     return (
       <div>
@@ -78,10 +98,16 @@ class Bandadelo extends Component {
           <BandadeloBibaran.List
             buttonName="+ वनडढेलो"
             title="वनडढेलो सम्बन्धि विवरण"
-            data={bandadelobibaranList}
+            pageCount={
+              !isNil(bandadelobibaranList)
+                ? Math.ceil(bandadelobibaranList.total / perPage)
+                : 10
+            }
+            data={!isNil(bandadelobibaranList) ? bandadelobibaranList.list : []}
             headings={bandadeloHeadings}
             onAdd={() => this.handleAdd("bandadelo")}
             onSelect={this.handleSelectMenu}
+            onPageClick={(e) => this.handlePageChange(e)}
           />
         )}
         {equals(loc, "bandadeloadd") && (
@@ -117,6 +143,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchallBandadelo: (payload) =>
+  dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
 
   addBandadelo: (payload) =>
     dispatch(BandadelobibaranActions.addbandadelobibaranRequest(payload)),
