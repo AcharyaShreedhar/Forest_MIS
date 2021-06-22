@@ -123,28 +123,27 @@ const create = (baseURL = Config.API_URL) => {
   const postBankaprakarNabikarankaryayojanaUpdate = (
     payload,
     nabikaranKaryayojanaId
-  ) => api.post(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`, payload);
+  ) => api.put(`nabikaranKaryayojana/${nabikaranKaryayojanaId}`, payload);
 
   //delete
-  const postBankaprakarNabikarankaryayojanaDelete = (
-    payload,
-    nabikaranKaryayojanaId
-  ) => api.post(`nabikarankaryayojana/${nabikaranKaryayojanaId}`, payload);
+  const postBankaprakarNabikarankaryayojanaDelete = (nabikaranKaryayojanaId) =>
+    api.delete(`nabikarankaryayojana/${nabikaranKaryayojanaId}`);
 
   //Banbibaran_baramadit_chijbastu
-  const getBaramaditchijbastuList = (payload) => api.get("baramaditChijbastu",payload);
+  const getBaramaditchijbastuList = (payload) =>
+    api.get("baramaditChijbastu", payload);
 
   const getBaramaditchijbastu = (baramaditchijbastuId) =>
     api.get(`baramaditChijbastu/${baramaditchijbastuId}`);
 
-// Banbibaran_banxetra_anya_prayojan
-  const getBanxetraanyaprayojanList = (payload) => api.get("banxetraAnyaprayojan",payload);
-
+  // Banbibaran_banxetra_anya_prayojan
+  const getBanxetraanyaprayojanList = (payload) =>
+    api.get("banxetraAnyaprayojan", payload);
 
   const getBanxetraanyaprayojan = (banxetraanyaprayojanId) =>
     api.get(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
   //................biruwautpadans
-  const getBiruwautpadanList = (payload) => api.get("biruwaUtpadans",payload);
+  const getBiruwautpadanList = (payload) => api.get("biruwaUtpadans", payload);
 
   const getBiruwautpadan = (biruwautpadanId) =>
     api.get(`biruwaUtpadans/${biruwautpadanId}`);
@@ -674,7 +673,6 @@ const create = (baseURL = Config.API_URL) => {
     getBaramaditchijbastu,
     getBanxetraanyaprayojanList,
     getBanxetraanyaprayojan,
-
   };
 };
 export default {

@@ -24,6 +24,9 @@ class Add extends Component {
       forest_maujdat: "",
       nikasi_timber: "",
       nikasi_wood: "",
+      nabikaran_abadhi: "",
+      renewed_date: "",
+      renewal_date: "",
       created_by: "",
       updated_by: "",
     };
@@ -44,6 +47,9 @@ class Add extends Component {
       forest_maujdat,
       nikasi_timber,
       nikasi_wood,
+      renewed_date,
+      renewal_date,
+      nabikaran_abadhi,
     } = this.state;
     const payload = {
       samudayikban: {
@@ -61,14 +67,39 @@ class Add extends Component {
           updated_by: this.props.user.user_name,
         },
       },
+      nabikarankaryayojana: {
+        data: {
+          darta_id: regno,
+          renewed_date: renewed_date,
+          renewal_date: renewal_date,
+          nabikaran_abadhi: nabikaran_abadhi,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
+        },
+      },
     };
     this.props.onSubmit(payload);
   }
   handleForestType(e) {
     this.setState({ forest_type: e });
   }
-  handleDate(e) {
-    this.setState({ handover_date: e });
+  handleDate(e, type) {
+    switch (type) {
+      case "handover": {
+        this.setState({ handover_date: e });
+        break;
+      }
+      case "renewed": {
+        this.setState({ renewed_date: e });
+        break;
+      }
+      case "renewal": {
+        this.setState({ renewal_date: e });
+        break;
+      }
+      default:
+        break;
+    }
   }
 
   render() {
@@ -83,6 +114,9 @@ class Add extends Component {
       forest_maujdat,
       nikasi_timber,
       nikasi_wood,
+      renewed_date,
+      nabikaran_abadhi,
+      renewal_date,
     } = this.state;
 
     return (
@@ -140,7 +174,7 @@ class Add extends Component {
               inputClassName="form-control"
               className="mb-4"
               value={handover_date}
-              onChange={(e) => this.handleDate(e)}
+              onChange={(e) => this.handleDate(e, "handover")}
               options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
             <Input
@@ -163,6 +197,29 @@ class Add extends Component {
               value={nikasi_wood}
               direction="vertical"
               onChange={(e) => this.setState({ nikasi_wood: e })}
+            />
+            <span className="dsl-b18">नविकरण गरेको मिती</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="mb-4"
+              value={renewed_date}
+              onChange={(e) => this.handleDate(e, "renewed")}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
+            />
+            <Input
+              className="mb-4"
+              title="नविकरण अबधि"
+              value={nabikaran_abadhi}
+              direction="vertical"
+              onChange={(e) => this.setState({ nabikaran_abadhi: e })}
+            />
+            <span className="dsl-b18">नविकरण गर्नुपर्ने आर्थिक बर्ष</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="mb-4"
+              value={renewal_date}
+              onChange={(e) => this.handleDate(e, "renewal")}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
           </div>
           <div className="mt-2 border-5">
