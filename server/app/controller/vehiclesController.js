@@ -2,10 +2,27 @@ const pool = require("../db");
 
 //Controller for Listing all Vehicles
 async function getAllVehicles(req, res) {
-  const getAllVehiclesQuery = `select * from vehicles`;
-  pool.query(getAllVehiclesQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from vehicles";
+  const getAllVehiclesQuery = `select * from vehicles ORDER BY ?  ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllVehiclesQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 
