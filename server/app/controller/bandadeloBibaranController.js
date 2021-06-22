@@ -1,10 +1,27 @@
 const pool = require("../db")
 //Controller for Listing all Banpaidawar
 async function getAllBandadeloBibaran(req, res) {
-    const getAllBandadeloBibaranQuery = `select * from bandadelo_bibarans`;
-    pool.query(getAllBandadeloBibaranQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from bandadelo_bibarans"
+    const getAllBandadeloBibaranQuery = `select * from bandadelo_bibarans ORDER BY ? ASC LIMIT ?, ?`;
+    pool.query(getTotalQuery, [], (error, countresults, fields) => {
       if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      pool.query(
+        getAllBandadeloBibaranQuery,
+        [req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
     });
   }
   
