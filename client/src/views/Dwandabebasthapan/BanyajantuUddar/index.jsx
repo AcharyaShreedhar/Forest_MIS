@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals } from "ramda";
+import { equals, length, isNil } from "ramda";
 import { BanyajantuUddarbibaran } from "../../../components";
 import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
 import { banyajantuuddarHeadings } from "../../../services/config";
@@ -16,9 +16,35 @@ export class BanyajantuUddar extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
+    var banyajantuuddarList = [];
+     if (nextProps != prevState) {
+      banyajantuuddarList = nextProps.banyajantuuddarDataList.data;
+     
 
-    return { loc };
+    return { 
+      loc,
+      banyajantuuddarList,
+    };
   }
+}
+
+  handlePageChange(data, item) {
+    const { perPage } = this.state;
+    this.setState({ page: data.selected });
+    switch (item) {
+      case "banyajantuuddar": {
+        this.props.fetchallBanyajantuuddar({
+          name: "banyajantuuddar_name",
+          page: data.selected * perPage,
+          perPage,
+        });
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  
 
   handleSelectMenu(event, item, path) {
    switch (event) {
@@ -26,7 +52,7 @@ export class BanyajantuUddar extends Component {
         switch (path) {
           case "banyajantuuddar": {
             this.props.history.push({
-              pathname: `/dwandabebasthapan/banyajantuuddaredit/${item.uddar_id}`,
+              pathname: `/dwandabebasthapan/banyajantuuddaredit/${item.banyajantu_uddar_id}`,
               item,
             });
             break;
@@ -39,7 +65,7 @@ export class BanyajantuUddar extends Component {
       case "delete": {
         switch (path) {
           case "banyajantuuddar": {
-            this.props.deleteBanyajantuUddar(item.uddar_id);
+            this.props.deleteBanyajantuUddar(item.banyajantu_uddar_id);
             break;
           }
           default:
@@ -64,28 +90,39 @@ export class BanyajantuUddar extends Component {
   }
 
   render() {
-    const banyajantuuddarList = this.props.banyajantuuddarDataList
-      ? this.props.banyajantuuddarDataList.data
-      : [];
+   
 
-    const { loc } = this.state;
-    console.log("location", loc);
-
+    const { 
+      loc,
+      perPage,
+      page,
+      banyajantuuddarList,
+     } = this.state;
+     const { user } = this.props;
+   
       return (
         <div>
           {equals(loc, "banyajantuuddarlist") && (
             <BanyajantuUddarbibaran.List
               buttonName="+ वन्यजन्तु उद्दार"
               title="वन्यजन्तु उद्दार सम्बन्धि विवरण"
+              pageCount={
+              !isNil(banyajantuuddarList)
+                ? Math.ceil(banyajantuuddarList.total / perPage)
+                : 10
+            }
               data={banyajantuuddarList}
               headings={banyajantuuddarHeadings}
+              user={user}
               onAdd={() => this.handleAdd("banyajantuuddar")}
               onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "banyajantuuddar")}
             />
           )}
           {equals(loc, "banyajantuuddaradd") && (
             <BanyajantuUddarbibaran.Add
               title="+ वन्यजन्तु उद्दार"
+              user={user}
               onSelect={this.handleSelectMenu}
               onSubmit={(e) => this.props.addBanyajantuuddar(e)}
             />
@@ -94,6 +131,7 @@ export class BanyajantuUddar extends Component {
             <BanyajantuUddarbibaran.Edit
               title="वन्यजन्तु उद्दार पुनः प्रविष्ट"
               history={this.props.history}
+              user={user}
               onSelect={this.handleSelectMenu}
               onUpdate={(e, id) => this.props.updateBanyajantuuddar(e, id)}
             />
@@ -108,10 +146,11 @@ export class BanyajantuUddar extends Component {
   };
   
   BanyajantuUddar.defaultProps = {
-    bbanyajantuuddarDataList: {},
+    banyajantuuddarDataList: {},
   };
   
   const mapStateToProps = (state) => ({
+    user: state.app.user,
     banyajantuuddarDataList: state.dwandabebasthapan.allbanyajantuuddarData,
   });
   

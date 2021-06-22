@@ -35,30 +35,32 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((uddar, index) => (
+              data.map((xeti, index) => (
                 <tr>
-                  <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>
-                    {englishToNepaliNumber(uddar.miti)}
-                  </td>
-                  <td key={index}> {uddar.sthaniya_taha}</td>
-                  <td key={index}> {uddar.samaya}</td>
-                  <td key={index}> {uddar.samraxit_xetra}</td>
-                  <td key={index}> {uddar.banyajantuko_naam}</td>   
-                  <td key={index}> {uddar.banyajantuko_umer}</td>
-                  <td key={index}> {uddar.banyajantuko_abastha}</td>
-                  <td key={index}> {uddar.mareko_karan}</td>
-                  <td key={index}> {uddar.banxetra_duri}</td>
-                  <td key={index}> {uddar.anya_bibaran}</td>
-                  <td key={index}> {uddar.remarks}</td>
-                  <td key={index}> {uddar.created_by}</td>
-                  <td key={index}> {uddar.updated_by}</td>
-            
+                  <td key={index}> {xeti.pidit_name}</td>
+                  <td key={index}> {xeti.pidit_address}</td>
+                  <td key={index}> {xeti.jagga_bibaran}</td>
+                  <td key={index}> {xeti.nagrikta_no}</td>   
+                  <td key={index}> {xeti.upabhoktasamiti_name}</td>
+                  <td key={index}> {xeti.xetigarne_animal}</td>
+                  <td key={index}> {xeti.xeti_miti}</td>
+                  <td key={index}> {xeti.pasudhan_ghargoth}</td>
+                  <td key={index}> {xeti.man_injury_normal}</td>
+                  <td key={index}> {xeti.man_injury_medium}</td>
+                  <td key={index}> {xeti.man_death}</td>
+                  <td key={index}> {xeti.mag_rakam}</td>
+                  <td key={index}> {xeti.samitiko_mulkyankan_rakam}</td>
+                  <td key={index}> {xeti.vuktani_rakam}</td>
+                  <td key={index}> {xeti.remarks}</td>  
+                  <td key={index}> {xeti.created_by}</td>
+                  <td key={index}> {xeti.updated_by}</td>
+
+
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, uddar, "banyajantuuddar")}
+                        onChange={(e) => onSelect(e, xeti, "banyajantuxetirahat")}
                       />
                     </div>
                   </td>

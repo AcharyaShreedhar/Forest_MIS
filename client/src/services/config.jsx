@@ -169,6 +169,23 @@ const banyajantuuddarHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const banyajantuxetirahatHeadings = [
+     "पिडितको नाम",
+     "पिडितको ठेगाना",
+     "जग्गाको विवरण",
+     "नागरिकता न.",
+     "सम्बन्धी उपभोक्ता समितिको नाम",
+     "क्षती गर्ने वन्यजन्तुको नाम",
+     "क्षतिको मिति",
+     "पशुधन/घरगोठ",
+     "मानविय क्षति(सामान्य घाइते, गम्भीर घाइते, मृत्यु )",
+     "माग रकम",
+     "समितिको मूल्यांकन रकम(रु)",
+     "भुक्तानि रकम(रु)",
+     "कैफियत",
+];
+
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -182,5 +199,6 @@ export {
   banpaidawarosarpasarHeadings,
   bandadeloHeadings,
   banyajantuuddarHeadings,
+  banyajantuxetirahatHeadings,
 
 };
