@@ -19,8 +19,8 @@ class Edit extends Component {
         niyantran_karta: props.history.location.item.niyantran_karta,
         sahabhagi_mahila: props.history.location.item.sahabhagi_mahila,
         sahabhagi_purus: props.history.location.item.sahabhagi_purus,
-        created_by: "",
-        updated_by: "",
+        created_by: props.history.location.item.created_by,
+        updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,6 +39,8 @@ class Edit extends Component {
         niyantran_karta,
         sahabhagi_mahila,
         sahabhagi_purus,
+        created_by,
+        updated_by,
     } = this.state;
     const payload = {
       bandadelo: {
@@ -51,6 +53,8 @@ class Edit extends Component {
             niyantran_karta: niyantran_karta,
             sahabhagi_mahila: sahabhagi_mahila,
             sahabhagi_purus: sahabhagi_purus,
+            created_by: created_by || this.props.user.user_name,
+            updated_by: updated_by || this.props.user.user_name,
         },
       },
     };
