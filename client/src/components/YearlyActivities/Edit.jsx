@@ -80,6 +80,8 @@ class Edit extends Component {
       udhyam,
       annual_bibaran,
       lekha_parikshyan,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       yearlyactivities: {
@@ -103,6 +105,8 @@ class Edit extends Component {
           community_udhyam_bibaran: udhyam,
           annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
           lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
+          created_by: created_by,
+          updated_by: updated_by,
         },
       },
     };

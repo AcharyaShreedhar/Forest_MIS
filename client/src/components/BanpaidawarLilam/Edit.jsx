@@ -5,7 +5,6 @@ import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
 
-
 class Edit extends Component {
   constructor(props) {
     super(props);
@@ -18,43 +17,46 @@ class Edit extends Component {
       minimum_price: props.history.location.item.minimum_price,
       sakaar_price: props.history.location.item.sakaar_price,
       remarks: props.history.location.item.remarks,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
-    
   }
 
   handleSubmit() {
     const {
-        id,
-        lilam_date,
-        banpaidawar_type,
-        unit,
-        quantity,
-        minimum_price,
-        sakaar_price,
-        remarks,
+      id,
+      lilam_date,
+      banpaidawar_type,
+      unit,
+      quantity,
+      minimum_price,
+      sakaar_price,
+      remarks,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       banpaidawarlilam: {
         data: {
-            lilam_date: lilam_date,
-            banpaidawar_type: banpaidawar_type,
-            unit: unit,
-            quantity: quantity,
-            minimum_price: minimum_price,
-            sakaar_price: sakaar_price,
-            remarks: remarks,
+          lilam_date: lilam_date,
+          banpaidawar_type: banpaidawar_type,
+          unit: unit,
+          quantity: quantity,
+          minimum_price: minimum_price,
+          sakaar_price: sakaar_price,
+          remarks: remarks,
+          created_by: created_by,
+          updated_by: updated_by,
         },
       },
     };
 
-    this.props.onUpdate(payload,id);
+    this.props.onUpdate(payload, id);
   }
-  
+
   handleDate(e) {
     this.setState({ lilam_date: e });
   }
@@ -62,13 +64,13 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-        lilam_date,
-        banpaidawar_type,
-        unit,
-        quantity,
-        minimum_price,
-        sakaar_price,
-        remarks,
+      lilam_date,
+      banpaidawar_type,
+      unit,
+      quantity,
+      minimum_price,
+      sakaar_price,
+      remarks,
     } = this.state;
 
     return (
@@ -116,7 +118,7 @@ class Edit extends Component {
               value={minimum_price}
               onChange={(e) => this.setState({ minimum_price: e })}
             />
-                        
+
             <Input
               className="mb-4"
               title="सकार रकम (रु)"
@@ -146,6 +148,5 @@ class Edit extends Component {
     );
   }
 }
-
 
 export default Edit;
