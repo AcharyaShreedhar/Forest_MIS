@@ -315,7 +315,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBanpaidawarBanpaidawarDelete = (banpaidawarId) =>
     api.delete(`banpaidawar/${banpaidawarId}`);
 
-  const getBanpaidawarlilamList = () => api.get("banpaidawarLilam");
+  const getBanpaidawarlilamList = (payload) => api.post("banpaidawarLilamList", payload);
 
   const getBanpaidawarlilam = (banpaidawarLilamId) =>
     api.get(`banpaidawarLilam/${banpaidawarLilamId}`);
