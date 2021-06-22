@@ -217,7 +217,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`banyajantuXetiBibarans/${banyajantuxetiId}`);
 
   //sampatibibaran
-  const getAssetsList = () => api.get("assets");
+  const getAssetsList = () => api.post("assets");
 
   const getAssets = (assetId) => api.get(`assets/${assetId}`);
 
