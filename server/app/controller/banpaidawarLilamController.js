@@ -1,10 +1,27 @@
 const pool = require("../db")
 //Controller for Listing all activities_infos
 async function getAllBanpaidawarLilam(req, res) {
-    const getAllBanpaidawarLilamQuery = `select * from banpaidawar_lilams`;
-    pool.query(getAllBanpaidawarLilamQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from banpaidawar_lilams";
+    const getAllBanpaidawarLilamQuery = `select * from banpaidawar_lilams ORDER BY ? ASC LIMIT ?, ?`;
+    pool.query(getTotalQuery, [], (error, countresults, fields) => {
       if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      pool.query(
+        getAllBanpaidawarLilamQuery,
+        [req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
     });
   }
   
