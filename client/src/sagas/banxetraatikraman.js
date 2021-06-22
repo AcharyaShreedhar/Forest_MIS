@@ -44,11 +44,11 @@ export function* addbanxetraatikramanRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraatikramanRequest(api,{
-      name: "atikraman_kisim",
+      name: "address",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/banxetraatikramanlist");
+    yield call(history.push, "/banbibaran/banxetraatikramanlist");
     yield put(BanxetraatikramanActions.addbanxetraatikramanSuccess(response.data));
   } else {
     yield put(BanxetraatikramanActions.addbanxetraatikramanFailure());
@@ -72,8 +72,12 @@ export function* updatebanxetraatikramanRequest(api, action) {
     toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanxetraatikramanRequest(api);
-    yield call(history.push, "/forests/banxetraatikramanlist");
+    yield fetchallbanxetraatikramanRequest(api,{
+      name: "address",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/banxetraatikramanlist");
     yield put(
       BanxetraatikramanActions.updatebanxetraatikramanSuccess(response.data)
     );
@@ -97,7 +101,11 @@ export function* deletebanxetraatikramanRequest(api, action) {
     toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanxetraatikramanRequest(api);
+    yield fetchallbanxetraatikramanRequest(api,{
+      name: "address",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       BanxetraatikramanActions.deletebanxetraatikramanSuccess(response.data)
     );
