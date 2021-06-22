@@ -260,7 +260,7 @@ const create = (baseURL = Config.API_URL) => {
   ) => api.delete(`muddaAnusandhanDayari/${muddaAnusandhandayariId}`);
 
   // ------banxetraatikraman
-  const getBanxetraatikramanList = () => api.get("banxetraAtikramans");
+  const getBanxetraatikramanList = (payload) => api.post("banxetraAtikramans",payload);
 
   const getBanxetraatikraman = (banxetraAtikramanId) =>
     api.get(`banxetraAtikramans/${banxetraAtikramanId}`);
