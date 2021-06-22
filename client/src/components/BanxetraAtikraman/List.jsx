@@ -2,22 +2,12 @@ import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
-import { Table } from "react-bootstrap";
 import ReactPaginate from "react-paginate";
+import { Table } from "react-bootstrap";
 import { Button, EditDropdown } from "../../components";
 
 function List(props) {
-  const {
-    buttonName,
-    headings,
-    data,
-    title,
-    pageCount,
-    onAdd,
-    onSelect,
-    onPageClick,
-  } = props;
-  
+  const { buttonName, headings, data, title, onAdd, onSelect,pageCount, onPageClick  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -45,23 +35,23 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((nban, index) => (
+              data.map((banxetraatikraman, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {nban.darta_no}</td>
-                  <td key={index}> {nban.swikrit_miti}</td>
-                  <td key={index}> {nban.nijiban_dhaniko_naam}</td>
-                  <td key={index}> {nban.perm_addr}</td>
-                  <td key={index}> {nban.curr_addr}</td>
-                  <td key={index}> {nban.area}</td>
-                  <td key={index}> {nban.main_species}</td>
-                  <td key={index}> {nban.created_by}</td>
-                  <td key={index}> {nban.updated_by}</td>
+                  <td key={index}> {banxetraatikraman.atikramit_area}</td>
+                  <td key={index}> {banxetraatikraman.address}</td>
+                  <td key={index}> {banxetraatikraman.atikraman_kisim}</td>
+                  <td key={index}> {banxetraatikraman.samalagna_ghardhuri}</td>
+                  <td key={index}> {banxetraatikraman.atikraman_prayojan}</td>   
+                  <td key={index}> {banxetraatikraman.samrachana_bibaran}</td>
+                  <td key={index}> {banxetraatikraman.atikraman_abastha}</td>
+                  <td key={index}> {banxetraatikraman.created_by}</td>
+                  <td key={index}> {banxetraatikraman.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, nban, "niji")}
+                        onChange={(e) => onSelect(e, banxetraatikraman, "banxetraatikraman")}
                       />
                     </div>
                   </td>
@@ -71,18 +61,18 @@ function List(props) {
           </tbody>
         </Table>
         <div className="paginationStyle">
-          <ReactPaginate
-            previousLabel={"PREV"}
-            nextLabel={"NEXT"}
-            breakLabel={"..."}
-            breakClassName={"break-me"}
-            pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={onPageClick}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
-          />
+        <ReactPaginate
+          previousLabel={"PREV"}
+          nextLabel={"NEXT"}
+          breakLabel={"..."}
+          breakClassName={"break-me"}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={onPageClick}
+          containerClassName={"pagination"}
+          activeClassName={"active"}
+        />
         </div>
       </div>
     </Fragment>

@@ -11,6 +11,9 @@ module.exports = {
       atikramit_area: {
         type: Sequelize.STRING,
       },
+      address: {
+        type: Sequelize.STRING,
+      },
       atikraman_kisim: {
         type: Sequelize.STRING,
       },

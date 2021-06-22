@@ -27,6 +27,8 @@ import * as BanyajantuUddarbibaran from "./BanyajantuUddarbibaran";
 import * as BanyajantuXetibibaran from "./BanyajantuUddarbibaran";
 import * as GharjaggaBibaran from "./GharjaggaBibaran";
 import * as SawarisadhanBibaran from "./SawarisadhanBibaran";
+import * as BanyajantuXetibibaran from "./BanyajantuUddarbibaran"; 
+import * as BanxetraAtikraman from "./BanxetraAtikraman";
 
 export {
   HeaderComponent,
@@ -58,4 +60,5 @@ export {
   BanyajantuXetibibaran,
   GharjaggaBibaran,
   SawarisadhanBibaran,
+  BanxetraAtikraman,
 };

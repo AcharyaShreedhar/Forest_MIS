@@ -166,6 +166,7 @@ const banyajantuuddarHeadings = [
   "कैफियत",
   "सिर्जना गर्ने",
   "परिमार्जन गर्ने",
+
 ];
 
 const banyajantuxetirahatHeadings = [
@@ -211,6 +212,18 @@ const sawarisadhanHeadings = [
   "सिर्जना गर्ने",
   "परिमार्जन गर्ने",
 ];
+const banxetraatikramanHeadings = [
+  "अतिक्रमित वनको क्षेत्रफल",
+  "ठेगाना",
+  "किसिम (संस्थागत / व्यक्तिगत)",
+  "संलग्न घरधुरीहरु",
+  "अतिक्रमण प्रयोजन (घरछाप्रो, खेती, पूर्वाधार निर्माण)",
+  "संरचना वनेको भए संरचना विवरण",
+  "अतिक्रमित अवस्था (नयाँ वा पुरानो)",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 
 export {
   AssetsURL,
@@ -228,4 +241,6 @@ export {
   banyajantuxetirahatHeadings,
   gharjaggaHeadings,
   sawarisadhanHeadings,
+  banxetraatikramanHeadings,
+
 };
