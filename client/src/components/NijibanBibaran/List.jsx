@@ -17,7 +17,7 @@ function List(props) {
     onSelect,
     onPageClick,
   } = props;
-  console.log('listbhitra',data)
+  
   return (
     <Fragment>
       <div className="card">
