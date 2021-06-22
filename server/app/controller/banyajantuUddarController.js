@@ -2,12 +2,30 @@ const pool = require("../db");
 
 //Controller for Listing all Banyajantu Uddars
 async function getAllBanyajantuUddars(req, res) {
-  const getAllBanyajantuUddarsQuery = `select * from banyajantu_uddars`;
-  pool.query(getAllBanyajantuUddarsQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from banyajantu_uddars"
+  const getAllBanyajantuUddarsQuery = `select * from banyajantu_uddars ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllBanyajantuUddarsQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
+
 
 //Controller for Listing a Banyajantu Uddar
 async function getBanyajantuUddars(req, res) {
