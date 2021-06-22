@@ -178,7 +178,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`activitiesInfo/${activitiesinfoId}`);
 
   //Dwandabebasthapan
-  const getBanyajantuUddarList = () => api.get("banyajantuUddars");
+  const getBanyajantuUddarList = (payload) => api.post("banyajantuUddarsList", payload);
 
   const getBanyajantuUddar = (banyajantuUddarId) =>
     api.get(`banyajantuUddars/${banyajantuUddarId}`);
@@ -304,7 +304,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`bandadeloBibaran/${bandadelobibaranId}`);
 
   //--------------banpaidawar
-  const getBanpaidawarList = () => api.get("banpaidawar");
+  const getBanpaidawarList = (payload) => api.post("banpaidawarList", payload);
 
   const getBanpaidawar = (banpaidawarId) =>
     api.get(`banpaidawar/${banpaidawarId}`);
