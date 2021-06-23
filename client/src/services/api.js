@@ -438,7 +438,7 @@ const create = (baseURL = Config.API_URL) => {
   const postInventoriesExitDelete = (exitId) => api.delete(`exit/${exitId}`);
 
   //karmacharibibaran
-  const getEmployeesList = () => api.get("employees");
+  const getEmployeesList = (payload) => api.post("employeesList", payload);
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
   //Add
   const postKarmacharibibaranEmployeesAddNew = (payload) =>
