@@ -410,7 +410,8 @@ const create = (baseURL = Config.API_URL) => {
   const postInventoriesInventoriesDelete = (inventoryId) =>
     api.delete(`inventory/${inventoryId}`);
 
-  const getEntryList = () => api.get("entry");
+  const getEntryList = (payload) => api.post("entryList", payload
+  );
   const getEntry = (entryId) => api.get(`entry/${entryId}`);
 
   //Add
@@ -438,7 +439,7 @@ const create = (baseURL = Config.API_URL) => {
   const postInventoriesExitDelete = (exitId) => api.delete(`exit/${exitId}`);
 
   //karmacharibibaran
-  const getEmployeesList = () => api.get("employees");
+  const getEmployeesList = (payload) => api.post("employeesList", payload);
   const getEmployees = (employeesId) => api.get(`employees/${employeesId}`);
   //Add
   const postKarmacharibibaranEmployeesAddNew = (payload) =>
