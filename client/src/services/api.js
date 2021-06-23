@@ -386,7 +386,7 @@ const create = (baseURL = Config.API_URL) => {
   const getDistricts = (districtsId) => api.get(`district/${districtsId}`);
 
   //-------Departments
-  const getDepartmentsList = () => api.get("department");
+  const getDepartmentsList = (payload) => api.post("departmentList", payload);
   const getDepartments = (departmentsId) =>
     api.get(`department/${departmentsId}`);
 
