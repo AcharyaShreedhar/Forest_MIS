@@ -25,7 +25,7 @@ class Yearlyactivities extends Component {
     return { loc, yearlyactivitiesList };
   }
 
-  handlePageChange(data, item) {
+  handlePageChange(data) {
     const { perPage } = this.state;
     this.setState({ page: data.selected });
 
@@ -39,44 +39,23 @@ class Yearlyactivities extends Component {
   handleSelectMenu(event, item, path) {
     switch (event) {
       case "edit": {
-        switch (path) {
-          case "yearlyactivities": {
-            this.props.history.push({
-              pathname: `/activities/yearlyactivitiesedit/${item.activities_info_id}`,
-              item,
-            });
-            break;
-          }
-          default:
-            break;
-        }
+        this.props.history.push({
+          pathname: `/activities/yearlyactivitiesedit/${item.activities_info_id}`,
+          item,
+        });
         break;
       }
       case "delete": {
-        switch (path) {
-          case "yearlyactivities": {
-            this.props.deleteYearlyactivities(item.activities_info_id);
-            break;
-          }
-          default:
-            break;
-        }
+        this.props.deleteYearlyactivities(item.activities_info_id);
+        break;
       }
       default:
         break;
     }
   }
 
-  handleAdd(item) {
-    switch (item) {
-      case "yearlyactivities": {
-        this.props.history.push("/activities/yearlyactivitiesadd/new");
-        break;
-      }
-
-      default:
-        break;
-    }
+  handleAdd() {
+    this.props.history.push("/activities/yearlyactivitiesadd/new");
   }
   render() {
     const { loc, perPage, page, yearlyactivitiesList } = this.state;
@@ -96,7 +75,7 @@ class Yearlyactivities extends Component {
             data={!isNil(yearlyactivitiesList) ? yearlyactivitiesList.list : []}
             user={user}
             headings={yearlyactivitiesHeadings}
-            onAdd={() => this.handleAdd("yearlyactivities")}
+            onAdd={() => this.handleAdd()}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e)}
           />
