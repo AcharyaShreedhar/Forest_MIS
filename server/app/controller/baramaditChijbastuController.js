@@ -1,10 +1,27 @@
 const pool = require("../db")
 //Controller for Listing all BaramaditChijbastu
 async function getAllBaramaditChijbastu(req, res) {
-    const getAllBaramaditChijbastuQuery = `select * from baramadit_chijbastus`;
-    pool.query(getAllBaramaditChijbastuQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from baramadit_chijbastus";
+    const getAllBaramaditChijbastuQuery = `select * from baramadit_chijbastus ORDER BY ? ASC LIMIT ? ,?`;
+    pool.query(getTotalQuery, [], (error, countresults, fields) => {
       if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      pool.query(
+        getAllBaramaditChijbastuQuery,
+        [req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
     });
   }
   
