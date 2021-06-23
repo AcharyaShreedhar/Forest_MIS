@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const consumerGroupDetailsController = require("../controller/ConsumerGroupDetailsController");
-router.get(
-  "/ConsumerGroupDetails",
+router.post(
+  "/ConsumerGroupDetailsList",
   consumerGroupDetailsController.getAllConsumerGroupDetails
 );
 router.get(

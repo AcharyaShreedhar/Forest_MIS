@@ -500,7 +500,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`posts/${postId}`);
 
   //-------Consumer Group Details
-  const getConsumergroupDetailsList = () => api.get("ConsumerGroupDetails");
+  const getConsumergroupDetailsList = (payload) => api.post("ConsumerGroupDetailsList", payload);
   const getConsumergroupDetails = (consumergroupDetailsId) =>
     api.get(`ConsumerGroupDetails/${consumergroupDetailsId}`);
 
