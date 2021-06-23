@@ -357,7 +357,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`karmachariDarbandi/${karmacharidarbandiId}`);
 
   //------plotbibaran
-  const getPlotbibaranList = () => api.get("plot");
+  const getPlotbibaranList = (payload) => api.post("plotList", payload);
 
   const getPlotbibaran = (plotId) => api.get(`plot/${plotId}`);
 
