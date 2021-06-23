@@ -2,10 +2,27 @@ const pool = require("../db");
 
 // controller for getting all KarmachariDarbandi
 async function getAllKarmachariDarbandi(req, res) {
-  const getAllKarmachariDarbandiQuery = `select * from karmachari_darbandis`;
-  pool.query(getAllKarmachariDarbandiQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from karmachari_darbandis";
+  const getAllKarmachariDarbandiQuery = `select * from karmachari_darbandis ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllKarmachariDarbandiQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 
