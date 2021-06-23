@@ -10,13 +10,7 @@ const dwandabebasthapanRoutes = [
     component: BanyajantuUddar,
   },
 
-  {
-    path: "/dwandabebasthapan/banyajantuxetirahatlist",
-    title: "Banyajantuxetirahat",
-    name: "banyajantuxetirahat",
-    auth: true,
-    component: BanyajantuxetiRahat,
-  },
+
   {
     redirect: true,
     path: "/dwandabebasthapan",
@@ -32,12 +26,20 @@ const dwandabebasthapanRoutes = [
     component: BanyajantuUddar,
   },
   {
+    path: "/dwandabebasthapan/banyajantuxetirahatadd/new",
+    title: "BanyajantuxetiRahat",
+    name: "banyajantuxetirahat",
+    auth: true,
+    component: BanyajantuxetiRahat,
+  },
+  {
     path: "/dwandabebasthapan/banyajantuuddaredit/:id",
     title: "BanyajantuUddar",
     name: "banyajantuuddar",
     auth: true,
     component: BanyajantuUddar,
   },
+ 
 ];
 
 export default dwandabebasthapanRoutes;

@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
@@ -9,13 +10,14 @@ import { banyajantuxetirahatHeadings } from "../../../services/config";
 export class BanyajantuxetiRahat extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "xetilist" };
+    this.state = { loc: "xetilist",perPage: 10, page: 1  };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
+    console.log("uddar", nextProps);
     var banyajantuxetirahatList = [];
      if (nextProps != prevState) {
       banyajantuxetirahatList = nextProps.banyajantuxetirahatDataList.data;
@@ -63,7 +65,7 @@ handlePageChange(data, item) {
       }
       case "delete": {
         switch (path) {
-          case "banyajantuxetiRahat": {
+          case "banyajantuxetirahat": {
             this.props.deleteBanyajantuxetiRahat(item.banyajantuxeti_bibaran_id);
             break;
           }
@@ -97,6 +99,7 @@ handlePageChange(data, item) {
     banyajantuxetirahatList,
    } = this.state;
   const { user } = this.props;
+  
 
     return(
     <div>
@@ -118,7 +121,7 @@ handlePageChange(data, item) {
           )}
           {equals(loc, "banyajantuxetirahatadd") && (
             <BanyajantuXetibibaran.Add
-              title="+ वन्यजन्तु उद्दार"
+              title="+ वन्यजन्तु क्षेति राहात"
               user={user}
               onSelect={this.handleSelectMenu}
               onSubmit={(e) => this.props.addBanyajantuxetirahat(e)}
@@ -149,7 +152,7 @@ BanyajantuxetiRahat.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  banyajantuuddarDataList: state.dwandabebasthapan.allbanyajantuxetirahatData,
+  banyajantuxetirahatDataList: state.dwandabebasthapan.allbanyajantuxetiData,
 });
 
 const mapDispatchToProps = (dispatch) => ({

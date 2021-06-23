@@ -31,6 +31,7 @@ import * as BanxetraAtikraman from "./BanxetraAtikraman";
 import * as SeedgardenplotsBibaran from "./SeedgardernplotsBibaran";
 import * as BanxetraanyaprayojanBibaran from "./BanxetraanyaprayojanBibaran";
 
+
 export {
   HeaderComponent,
   NavbarComponent,

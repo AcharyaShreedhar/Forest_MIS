@@ -5,6 +5,11 @@ import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
 
+const BanyajantukoAbastha = [
+  { id: 1, value: "मृत" },
+  { id: 2, value: "जिउॅदो" },
+];
+
 class Add extends Component {
   constructor(props) {
     super(props);
@@ -23,11 +28,11 @@ class Add extends Component {
       remarks: "",
       created_by: "",
       updated_by: "",
-      createdAt: "",
-      updatedAt: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDate = this.handleDate.bind(this);
+    this.handleBanyajantukoAbastha = this.handleBanyajantukoAbastha.bind(this);
   }
 
   handleSubmit() {
@@ -43,8 +48,7 @@ class Add extends Component {
       banxetra_duri,
       anya_bibaran,
       remarks,
-      created_by,
-      updated_by,
+      
     } = this.state;
     const payload = {
         banyajantuuddar: {
@@ -55,20 +59,23 @@ class Add extends Component {
           samraxit_xetra: samraxit_xetra,
           banyajantuko_naam: banyajantuko_naam,
           banyajantuko_umer: banyajantuko_umer,
-          banyajantuko_abastha: banyajantuko_abastha,
+          banyajantuko_abastha: equals(   banyajantuko_abastha, 1) ? "मृत" : "जिउॅदो",
           mareko_karan: mareko_karan,
           banxetra_duri: banxetra_duri,
           anya_bibaran: anya_bibaran,
           remarks: remarks,
-          created_by: created_by,
-          updated_by: updated_by,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name ,
         },
       },
     };
     this.props.onSubmit(payload);
   }
+  handleBanyajantukoAbastha(e) {
+    this.setState({ banyajantuko_abastha: e[0] });
+  }
   handleDate(e) {
-    this.setState({ lilam_date: e });
+    this.setState({ miti: e });
   }
 
   render() {
@@ -85,8 +92,6 @@ class Add extends Component {
       banxetra_duri,
       anya_bibaran,
       remarks,
-      created_by,
-      updated_by,
     } = this.state;
 
     return (
@@ -97,14 +102,14 @@ class Add extends Component {
               <span className="dsl-b22">{title}</span>
             </div>
 
-            <Input
+            <span className="dsl-b18"> मिति</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
               className="mb-4"
-              title="मिति"
               value={miti}
-              direction="vertical"
-              onChange={(e) => this.setState({ miti: e })}
+              onChange={(e) => this.handleDate(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
-
             <Input
               className="mb-4"
               title="स्थानिय तह"
@@ -142,12 +147,16 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ banyajantuko_umer: e })}
             />
-            <Input
-              className="mb-4"
-              title="अवस्था (मृत,जिउॅदो)"
-              value={banyajantuko_abastha}
+             <Dropdown
+              className="dropdownlabel mb-4"
+              title="अवस्था"
               direction="vertical"
-              onChange={(e) => this.setState({ banyajantuko_abastha: e })}
+              width="fit-content"
+              defaultIds={[banyajantuko_abastha]}
+              data={BanyajantukoAbastha}
+              getValue={(BanyajantukoAbastha) => BanyajantukoAbastha["value"]}
+              onChange={(e) => this.handleBanyajantukoAbastha(e)}
+              value={banyajantuko_abastha}
             />
             <Input
               className="mb-4"
@@ -176,20 +185,6 @@ class Add extends Component {
               value={remarks}
               direction="vertical"
               onChange={(e) => this.setState({ remarks: e })}
-            />
-            <Input
-              className="mb-4"
-              title="सिर्जना गर्ने"
-              value={created_by}
-              direction="vertical"
-              onChange={(e) => this.setState({ created_by: e })}
-            />
-            <Input
-              className="mb-4"
-              title="परिमार्जन गर्ने"
-              value={updated_by}
-              direction="vertical"
-              onChange={(e) => this.setState({ updated_by: e })}
             />
             
           </div>

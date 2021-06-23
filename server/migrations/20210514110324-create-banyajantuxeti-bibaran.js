@@ -32,13 +32,7 @@ module.exports = {
       pasudhan_ghargoth: {
         type: Sequelize.STRING,
       },
-      man_injury_normal: {
-        type: Sequelize.STRING,
-      },
-      man_injury_medium: {
-        type: Sequelize.STRING,
-      },
-      man_death: {
+      man_injury: {
         type: Sequelize.STRING,
       },
       mag_rakam: {

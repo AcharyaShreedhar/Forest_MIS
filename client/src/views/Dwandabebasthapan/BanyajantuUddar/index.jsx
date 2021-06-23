@@ -9,9 +9,10 @@ import { banyajantuuddarHeadings } from "../../../services/config";
 export class BanyajantuUddar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "uddarlist" };
+    this.state = { loc: "uddarlist",perPage: 10, page: 1  };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -19,7 +20,7 @@ export class BanyajantuUddar extends Component {
     var banyajantuuddarList = [];
      if (nextProps != prevState) {
       banyajantuuddarList = nextProps.banyajantuuddarDataList.data;
-     
+      
 
     return { 
       loc,
@@ -77,18 +78,9 @@ export class BanyajantuUddar extends Component {
     }
   }
 
-  handleAdd(item) {
-    switch (item) {
-      case "banyajantuuddar": {
-        this.props.history.push("/dwandabebasthapan/banyajantuuddaradd/new");
-        break;
-      }
-
-      default:
-        break;
-    }
+  handleAdd() {
+    this.props.history.push("/dwandabebasthapan/banyajantuuddaradd/new");
   }
-
   render() {
    
 
@@ -111,7 +103,7 @@ export class BanyajantuUddar extends Component {
                 ? Math.ceil(banyajantuuddarList.total / perPage)
                 : 10
             }
-              data={banyajantuuddarList}
+             data={!isNil(banyajantuuddarList) ? banyajantuuddarList.list : []}
               headings={banyajantuuddarHeadings}
               user={user}
               onAdd={() => this.handleAdd("banyajantuuddar")}
@@ -155,10 +147,11 @@ export class BanyajantuUddar extends Component {
   });
   
   const mapDispatchToProps = (dispatch) => ({
-  
+
+    fetchallBanyajantuuddar: (payload) =>
+    dispatch(DwandabebasthapanActions.fetchallbanyajantuuddarRequest(payload)),  
     addBanyajantuuddar: (payload) =>
       dispatch(DwandabebasthapanActions.addbanyajantuuddarRequest(payload)),
-  
     updateBanyajantuuddar: (payload, banyajantuuddarId) =>
       dispatch(
         DwandabebasthapanActions.updatebanyajantuuddarRequest(payload, banyajantuuddarId)
