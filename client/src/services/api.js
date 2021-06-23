@@ -410,7 +410,8 @@ const create = (baseURL = Config.API_URL) => {
   const postInventoriesInventoriesDelete = (inventoryId) =>
     api.delete(`inventory/${inventoryId}`);
 
-  const getEntryList = () => api.get("entry");
+  const getEntryList = (payload) => api.post("entryList", payload
+  );
   const getEntry = (entryId) => api.get(`entry/${entryId}`);
 
   //Add
