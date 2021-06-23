@@ -74,7 +74,11 @@ export function* updateemployeesRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallemployeesRequest(api);
+    yield fetchallemployeesRequest(api,{
+      name: "emp_fname_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/employeeslist");
     yield put(
       KarmacharibibaranActions.updateemployeesSuccess(response.data)
@@ -98,7 +102,11 @@ export function* deleteemployeesRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallemployeesRequest(api);
+    yield fetchallemployeesRequest(api,{
+      name: "emp_fname_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       KarmacharibibaranActions.deleteemployeesSuccess(response.data)
     );
@@ -181,7 +189,12 @@ export function* updateemployeeshistoryRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallemployeeshistoryRequest(api);
+    yield fetchallemployeeshistoryRequest(api,{
+      name: "emp_rank_id",
+      page: 0,
+      perPage: 10,
+    });
+
     yield call(history.push, "/forests/employeeshistorylist");
     yield put(
       KarmacharibibaranActions.updateemployeeshistoryhistorySuccess(response.data)
@@ -205,7 +218,12 @@ export function* deleteemployeeshistoryRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी विवरण  वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallemployeeshistoryRequest(api);
+    yield fetchallemployeeshistoryRequest(api,{
+      name: "emp_rank_id",
+      page: 0,
+      perPage: 10,
+    });
+
     yield put(
       KarmacharibibaranActions.deleteemployeeshistorySuccess(response.data)
     );
@@ -289,7 +307,11 @@ export function* updatelevelRequest(api, action) {
     toast.success("सफलतापुर्वक तह पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchalllevelRequest(api);
+    yield fetchalllevelRequest(api,{
+      name: "level_name_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/levellist");
     yield put(
       KarmacharibibaranActions.updatelevelSuccess(response.data)
@@ -313,7 +335,11 @@ export function* deletelevelRequest(api, action) {
     toast.success("सफलतापुर्वक तह  वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchalllevelRequest(api);
+    yield fetchalllevelRequest(api,{
+      name: "level_name_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       KarmacharibibaranActions.deletelevelSuccess(response.data)
     );
@@ -397,7 +423,11 @@ export function* updatepostRequest(api, action) {
     toast.success("सफलतापुर्वक  पद पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallpostRequest(api);
+    yield fetchallpostRequest(api,{
+      name: "post_name_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/postlist");
     yield put(
       KarmacharibibaranActions.updatepostSuccess(response.data)
@@ -420,7 +450,11 @@ export function* deletepostRequest(api, action) {
     toast.success("सफलतापुर्वक पद वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallpostRequest(api);
+    yield fetchallpostRequest(api,{
+      name: "post_name_nep",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       KarmacharibibaranActions.deletepostSuccess(response.data)
     );

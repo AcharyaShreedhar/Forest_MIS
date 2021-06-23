@@ -74,7 +74,11 @@ export function* updatemuddaanusandhandayariRequest(api, action) {
     toast.success("सफलतापुर्वक मुद्दा अनुसन्धान दायरी पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallmuddaanusandhandayariRequest(api);
+    yield fetchallmuddaanusandhandayariRequest(api,{
+      name: "jaheri_partibedan_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/muddaanusandhandayarilist");
     yield put(
       MuddaanusandhandayariActions.updatemuddaanusandhandayariSuccess(response.data)
@@ -99,7 +103,11 @@ export function* deletemuddaanusandhandayariRequest(api, action) {
     toast.success("सफलतापुर्वक मुद्दा अनुसन्धान दायरी हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallmuddaanusandhandayariRequest(api);
+    yield fetchallmuddaanusandhandayariRequest(api,{
+      name: "jaheri_partibedan_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       MuddaanusandhandayariActions.deletemuddaanusandhandayariSuccess(response.data)
     );

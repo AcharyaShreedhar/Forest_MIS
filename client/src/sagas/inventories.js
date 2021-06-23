@@ -73,7 +73,11 @@ export function* updateinventoriesRequest(api, action) {
     toast.success("सफलतापुर्वक सुचीमा  पुनः थप गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallinventoriesRequest(api);
+    yield fetchallinventoriesRequest(api,{
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/inventorieslist");
     yield put(
       InventoriesActions.updateinventoriesSuccess(response.data)
@@ -99,7 +103,11 @@ export function* deleteinventoriesRequest(api, action) {
     toast.success("सफलतापुर्वक सुची हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallinventoriesRequest(api);
+    yield fetchallinventoriesRequest(api,{
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       InventoriesActions.deleteinventoriesSuccess(response.data)
     );
@@ -151,7 +159,11 @@ export function* addentryRequest(api, action) {
     toast.success("सफलतापुर्वक प्रवेश  गरियो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallentryRequest(api);
+    yield fetchallentryRequest(api,{
+      name: "entry_amt",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/entrylist");
     yield put(InventoriesActions.addentrySuccess(response.data));
   } else {
@@ -208,7 +220,11 @@ export function* deleteentryRequest(api, action) {
     toast.success("सफलतापुर्वक प्रवेश  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallentryRequest(api);
+    yield fetchallentryRequest(api,{
+      name: "entry_amt",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       InventoriesActions.deleteentrySuccess(response.data)
     );
@@ -294,7 +310,11 @@ export function* updateexitRequest(api, action) {
     toast.success("सफलतापुर्वक बहिर्गमन भयो  !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallexitRequest(api);
+    yield fetchallexitRequest(api,{
+      name: "exit_rate",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/exitlist");
     yield put(
       InventoriesActions.updatexitSuccess(response.data)
@@ -320,7 +340,11 @@ export function* deleteexitRequest(api, action) {
     toast.success("सफलतापुर्वक बहिर्गमन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallexitRequest(api);
+    yield fetchallexitRequest(api,{
+      name: "exit_rate",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       InventoriesActions.deleteexitSuccess(response.data)
     );

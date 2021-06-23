@@ -195,7 +195,11 @@ export function* updatebanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति पुनः प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api);
+    yield fetchallbanyajantuxetiRequest(api,{
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/dwandabebasthapan/banyajantuxetilist");
     yield put(
       DwandabebasthapanActions.updatebanyajantuxetiSuccess(response.data)
@@ -221,7 +225,11 @@ export function* deletebanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api);
+    yield fetchallbanyajantuxetiRequest(api,{
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       DwandabebasthapanActions.deletebanyajantuxetiSuccess(response.data)
     );
