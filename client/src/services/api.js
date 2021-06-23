@@ -143,7 +143,7 @@ const create = (baseURL = Config.API_URL) => {
   const getBanxetraanyaprayojan = (banxetraanyaprayojanId) =>
     api.get(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
   //................biruwautpadans
-  const getBiruwautpadanList = (payload) => api.get("biruwaUtpadans", payload);
+  const getBiruwautpadanList = (payload) => api.post("biruwaUtpadansList", payload);
 
   const getBiruwautpadan = (biruwautpadanId) =>
     api.get(`biruwaUtpadans/${biruwautpadanId}`);
