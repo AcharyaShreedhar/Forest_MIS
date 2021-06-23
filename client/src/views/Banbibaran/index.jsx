@@ -7,6 +7,7 @@ import { NotFound } from "../../components";
 import banbibaranRoutes from "../../routes/banbibaran";
 import BandadelobibaranActions from "../../actions/bandadelobibaran";
 import BanxetraatikramanActions from "../../actions/banxetraatikraman";
+import BanbibaranActions from "../../actions/banbibaran";
 
 class Banbibaran extends Component {
   componentDidMount() {
@@ -14,14 +15,17 @@ class Banbibaran extends Component {
       name: "bandadelo_address",
       page: 0,
       perPage: 10,
-
     });
     this.props.fetchallBanxetraatikraman({
       name: "address",
       page: 0,
       perPage: 10,
     });
-
+    this.props.fetchallSeedgardenplots({
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -76,10 +80,14 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBandadelo: (payload) =>
-  dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
+    dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
 
   fetchallBanxetraatikraman: (payload) =>
-  dispatch(BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)),
+    dispatch(
+      BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)
+    ),
+  fetchallSeedgardenplots: (payload) =>
+    dispatch(BanbibaranActions.fetchallplotbibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);

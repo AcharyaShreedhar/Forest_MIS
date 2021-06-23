@@ -166,7 +166,6 @@ const banyajantuuddarHeadings = [
   "कैफियत",
   "सिर्जना गर्ने",
   "परिमार्जन गर्ने",
-
 ];
 
 const banyajantuxetirahatHeadings = [
@@ -223,7 +222,16 @@ const banxetraatikramanHeadings = [
   "सिर्जना गर्ने",
   "परिमार्जन गर्ने",
 ];
-
+const seedgardenplotsHeadings = [
+  "प्लटको किसिम",
+  "प्रजातिहरु",
+  "क्षत्रफल",
+  "ठेगाना",
+  "स्थापना मिति",
+  "अवस्था",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
 
 export {
   AssetsURL,
@@ -242,5 +250,5 @@ export {
   gharjaggaHeadings,
   sawarisadhanHeadings,
   banxetraatikramanHeadings,
-
+  seedgardenplotsHeadings,
 };
