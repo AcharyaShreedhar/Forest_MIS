@@ -131,7 +131,7 @@ const create = (baseURL = Config.API_URL) => {
 
   //Banbibaran_baramadit_chijbastu
   const getBaramaditchijbastuList = (payload) =>
-    api.get("baramaditChijbastu", payload);
+    api.post("baramaditChijbastuList", payload);
 
   const getBaramaditchijbastu = (baramaditchijbastuId) =>
     api.get(`baramaditChijbastu/${baramaditchijbastuId}`);
