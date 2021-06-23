@@ -74,7 +74,11 @@ export function* updatebanyajantuuddarRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार पुनः प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api);
+    yield fetchallbanyajantuuddarRequest(api,{
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/dwandabebasthapan/banyajantuuddarlist");
     yield put(
       DwandabebasthapanActions.updatebanyajantuuddarSuccess(response.data)
@@ -100,7 +104,11 @@ export function* deletebanyajantuuddarRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api);
+    yield fetchallbanyajantuuddarRequest(api,{
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       DwandabebasthapanActions.deletebanyajantuuddarSuccess(response.data)
     );
@@ -161,7 +169,7 @@ export function* addbanyajantuxetiRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/banyajantuxetilist");
+    yield call(history.push, "/dwandabebasthapan/banyajantuxetilist");
     yield put(DwandabebasthapanActions.addbanyajantuxetiSuccess(response.data));
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuxetiFailure());
@@ -188,7 +196,7 @@ export function* updatebanyajantuxetiRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanyajantuxetiRequest(api);
-    yield call(history.push, "/forests/banyajantuxetilist");
+    yield call(history.push, "/dwandabebasthapan/banyajantuxetilist");
     yield put(
       DwandabebasthapanActions.updatebanyajantuxetiSuccess(response.data)
     );
