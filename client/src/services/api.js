@@ -452,7 +452,7 @@ const create = (baseURL = Config.API_URL) => {
   const postKarmacharibibaranEmployeesDelete = (employeeId) =>
     api.delete(`employees/${employeeId}`);
 
-  const getEmployeeshistoryList = () => api.get("employeeHistory");
+  const getEmployeeshistoryList = (payload) => api.post("employeeHistoryList", payload);
   const getEmployeeshistory = (histId) => api.get(`employeeHistory/${histId}`);
 
   //Add
