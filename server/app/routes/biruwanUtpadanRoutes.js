@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const biruwaUtpadanController = require("../controller/biruwaUtpadanController");
-router.get("/biruwaUtpadans", biruwaUtpadanController.getAllBiruwaUtpadans);
+router.post("/biruwaUtpadansList", biruwaUtpadanController.getAllBiruwaUtpadans);
 router.get("/biruwaUtpadans/:biruwaUtpadanId", biruwaUtpadanController.getBiruwaUtpadans);
 router.post("/biruwaUtpadans", biruwaUtpadanController.addBiruwaUtpadans);
 router.put("/biruwaUtpadans/:biruwaUtpadanId", biruwaUtpadanController.updateBiruwaUtpadans);
