@@ -36,7 +36,7 @@ async function getBabyajantuXetiBibarans(req, res) {
 
 //Controller for adding a Banyajantu Xeti Bibaran
 async function addBanyajantuXetiBibarans(req, res) {
-  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,pasudhan_ghargoth,man_injury_normal,man_injury_medium,man_death,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,pasudhan_ghargoth,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuXetiBibaransQuery,
     [
@@ -48,9 +48,7 @@ async function addBanyajantuXetiBibarans(req, res) {
       req.body.xetigarne_animal,
       req.body.xeti_miti,
       req.body.pasudhan_ghargoth,
-      req.body.man_injury_normal,
-      req.body.man_injury_medium,
-      req.body.man_death,
+      req.body.man_injury,
       req.body.mag_rakam,
       req.body.samitiko_mulyankan_rakam,
       req.body.vuktani_rakam,
@@ -69,7 +67,7 @@ async function addBanyajantuXetiBibarans(req, res) {
 
 //Controller for updating a Banyajantu Xeti Bibaran
 async function updateBanyajantuXetiBibarans(req, res) {
-  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,pasudhan_ghargoth=?,man_injury_normal=?,man_injury_medium=?,man_death=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
+  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,pasudhan_ghargoth=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
   pool.query(
     updateBanyajantuXetiBibaransQuery,
     [
@@ -81,9 +79,7 @@ async function updateBanyajantuXetiBibarans(req, res) {
       req.body.xetigarne_animal,
       req.body.xeti_miti,
       req.body.pasudhan_ghargoth,
-      req.body.man_injury_normal,
-      req.body.man_injury_medium,
-      req.body.man_death,
+      req.body.man_injury,
       req.body.mag_rakam,
       req.body.samitiko_mulyankan_rakam,
       req.body.vuktani_rakam,
