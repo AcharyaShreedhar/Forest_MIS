@@ -391,7 +391,7 @@ const create = (baseURL = Config.API_URL) => {
     api.get(`department/${departmentsId}`);
 
   //-------Users
-  const getUsersList = () => api.get("users");
+  const getUsersList = (payload) => api.post("usersList", payload);
   const getUsers = (usersId) => api.get(`users/${usersId}`);
 
   //inventories
