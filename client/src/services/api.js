@@ -339,7 +339,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`banpaidawarLilam/${banpaidawarlilamId}`);
 
   // Karmachari darbandi
-  const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
+  const getKarmacharidarbandiList = (payload) => api.post("karmachariDarbandiList", payload);
 
   const getKarmacharidarbandi = (karmacharidarbandiId) =>
     api.get(`karmachariDarbandi/${karmacharidarbandiId}`);
@@ -391,11 +391,11 @@ const create = (baseURL = Config.API_URL) => {
     api.get(`department/${departmentsId}`);
 
   //-------Users
-  const getUsersList = () => api.get("users");
+  const getUsersList = (payload) => api.post("usersList", payload);
   const getUsers = (usersId) => api.get(`users/${usersId}`);
 
   //inventories
-  const getInventoriesList = () => api.get("inventory");
+  const getInventoriesList = (payload) => api.post("inventoryList", payload);
   const getInventories = (inventId) => api.get(`inventory/${inventId}`);
 
   //Add
@@ -425,7 +425,7 @@ const create = (baseURL = Config.API_URL) => {
   const postInventoriesEntryDelete = (entryId) =>
     api.delete(`entry/${entryId}`);
 
-  const getExitList = () => api.get("exit");
+  const getExitList = (payload) => api.post("exitList", payload);
   const getExit = (exitId) => api.get(`exit/${exitId}`);
 
   //Add

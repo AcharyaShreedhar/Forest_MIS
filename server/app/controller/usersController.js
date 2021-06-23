@@ -4,10 +4,27 @@ const util = require("../db/utility");
 
 //Controller for Listing all Users
 async function getAllUsers(req, res) {
-  const getAllUsersQuery = `select * from users`;
-  pool.query(getAllUsersQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from users";
+  const getAllUsersQuery = `select * from users ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllUsersQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 
