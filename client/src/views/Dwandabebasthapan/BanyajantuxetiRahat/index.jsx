@@ -13,11 +13,11 @@ export class BanyajantuxetiRahat extends Component {
     this.state = { loc: "xetilist",perPage: 10, page: 1  };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
-    console.log("uddar", nextProps);
     var banyajantuxetirahatList = [];
      if (nextProps != prevState) {
       banyajantuxetirahatList = nextProps.banyajantuxetirahatDataList.data;
@@ -36,7 +36,7 @@ handlePageChange(data, item) {
   switch (item) {
     case "banyajantuxetirahat": {
       this.props.fetchallBanyajantuxetirahat({
-        name: "banyajantuxetirahat_name",
+        name: "xeti_miti",
         page: data.selected * perPage,
         perPage,
       });
@@ -53,7 +53,7 @@ handlePageChange(data, item) {
         switch (path) {
           case "banyajantuxetirahat": {
             this.props.history.push({
-              pathname: `/dwandabebasthapan/banyajantuxetiRahatedit/${item.banyajantuxeti_bibaran_id}`,
+              pathname: `/dwandabebasthapan/banyajantuxetirahatedit/${item.banyajantuxeti_bibaran_id}`,
               item,
             });
             break;
@@ -95,7 +95,6 @@ handlePageChange(data, item) {
   const { 
     loc,
     perPage,
-    page,
     banyajantuxetirahatList,
    } = this.state;
   const { user } = this.props;
@@ -112,7 +111,7 @@ handlePageChange(data, item) {
                 ? Math.ceil(banyajantuxetirahatList.total / perPage)
                 : 10
             }
-              data={banyajantuxetirahatList}
+            data={!isNil(banyajantuxetirahatList) ? banyajantuxetirahatList.list : []}
               headings={banyajantuxetirahatHeadings}
               user={user}
               onAdd={() => this.handleAdd("banyajantuxetirahat")}
