@@ -26,6 +26,11 @@ class Banbibaran extends Component {
       page: 0,
       perPage: 10,
     });
+    this.props.fetchallBanxetraanyaprayojan({
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -88,6 +93,8 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   fetchallSeedgardenplots: (payload) =>
     dispatch(BanbibaranActions.fetchallplotbibaranRequest(payload)),
+  fetchallBanxetraanyaprayojan: (payload) =>
+    dispatch(BanbibaranActions.fetchallbanxetraanyaprayojanRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);
