@@ -89,8 +89,8 @@ class Add extends Component {
           community_udhyam_bibaran: udhyam,
           annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
           lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
-          created_by: this.props.history.location.item.created_by,
-          updated_by: this.props.history.location.item.updated_by,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

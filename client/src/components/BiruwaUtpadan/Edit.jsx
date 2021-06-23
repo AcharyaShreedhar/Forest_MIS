@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Button, Input } from "../../components";
 import { equals } from "ramda";
 
-
 class Edit extends Component {
   constructor(props) {
     super(props);
@@ -16,12 +15,11 @@ class Edit extends Component {
       pragati: props.history.location.item.pragati,
       brixyaropan: props.history.location.item.brixyaropan,
       remarks: props.history.location.item.remarks,
-      created_by: "",
-      updated_by: "",
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    
   }
 
   handleSubmit() {
@@ -34,7 +32,8 @@ class Edit extends Component {
       pragati,
       brixyaropan,
       remarks,
-      
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       biruwautpadan: {
@@ -46,14 +45,15 @@ class Edit extends Component {
           pragati: pragati,
           brixyaropan: brixyaropan,
           remarks: remarks,
-         
+          created_by: created_by,
+          updated_by: updated_by,
         },
       },
     };
 
     this.props.onUpdate(payload, id);
   }
-  
+
   render() {
     const { title } = this.props;
     const {
@@ -64,7 +64,6 @@ class Edit extends Component {
       pragati,
       brixyaropan,
       remarks,
-      
     } = this.state;
 
     return (
@@ -104,7 +103,7 @@ class Edit extends Component {
               value={laxya}
               onChange={(e) => this.setState({ laxya: e })}
             />
-            
+
             <Input
               className="mb-4"
               title="प्रगति"
@@ -141,6 +140,5 @@ class Edit extends Component {
     );
   }
 }
-
 
 export default Edit;
