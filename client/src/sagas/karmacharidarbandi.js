@@ -73,7 +73,11 @@ export function* updatekarmacharidarbandiRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी दरबन्दी पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkarmacharidarbandiRequest(api);
+    yield fetchallkarmacharidarbandiRequest(api,{
+      name: "post",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/karmacharidarbandilist");
     yield put(
       KarmacharidarbandiActions.updatekarmacharidarbandiSuccess(response.data)
@@ -97,7 +101,11 @@ export function* deletekarmacharidarbandiRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी दरबन्दी हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkarmacharidarbandiRequest(api);
+    yield fetchallkarmacharidarbandiRequest(api,{
+      name: "post",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       KarmacharidarbandiActions.deletekarmacharidarbandiSuccess(response.data)
     );
