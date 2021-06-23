@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, length, isNil } from "ramda";
 import { BanxetraAtikraman } from "../../../components";
-import BanxetraatikramanActions from "../../../actions/bandadelobibaran";
+import BanxetraatikramanActions from "../../../actions/banxetraatikraman";
 import { banxetraatikramanHeadings } from "../../../services/config";
 
 
@@ -16,8 +16,7 @@ class Banxetraatikraman extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-      console.log("Next props", nextProps);
-    const loc = nextProps.location.pathname.split("/")[2];
+      const loc = nextProps.location.pathname.split("/")[2];
     var banxetraatikramanList = [];
     if (nextProps != prevState) {
         banxetraatikramanList = nextProps.banxetraatikramanDataList.data;
@@ -112,6 +111,7 @@ class Banxetraatikraman extends Component {
         {equals(loc, "banxetraatikramanadd") && (
           <BanxetraAtikraman.Add
             title="+ वनक्षेत्र अतिक्रमण"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBanxetraatikraman (e)}
           />
@@ -120,8 +120,9 @@ class Banxetraatikraman extends Component {
           <BanxetraAtikraman.Edit
             title="वनक्षेत्र अतिक्रमण पुनः प्रविष्ट"
             history={this.props.history}
+            user={user}
             onSelect={this.handleSelectMenu}
-            onUpdate={(e, id) => this.props.updateBandadelo(e, id)}
+            onUpdate={(e, id) => this.props.updateBanxetraatikraman(e, id)}
           />
         )}
       </div>
@@ -138,6 +139,7 @@ Banxetraatikraman.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  user: state.app.user,
   banxetraatikramanDataList: state.banxetraatikraman.allbanxetraatikramanData,
 });
 
