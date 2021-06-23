@@ -10,12 +10,12 @@ import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 export class Dwandabebasthapan extends Component {
   componentDidMount() {
     this.props.fetchallBanyajantuuddar({
-      name: "banyajantuuddar_name",
+      name: "miti",
       page:0,
       perPage:10,
     });
     this.props.fetchallBanyajantuxetirahat({
-      name: "banyajantuxeti_name",
+      name: "xeti_miti",
       page:0,
       perPage:10,
     });
