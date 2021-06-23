@@ -339,7 +339,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`banpaidawarLilam/${banpaidawarlilamId}`);
 
   // Karmachari darbandi
-  const getKarmacharidarbandiList = () => api.get("karmachariDarbandi");
+  const getKarmacharidarbandiList = (payload) => api.post("karmachariDarbandiList", payload);
 
   const getKarmacharidarbandi = (karmacharidarbandiId) =>
     api.get(`karmachariDarbandi/${karmacharidarbandiId}`);
