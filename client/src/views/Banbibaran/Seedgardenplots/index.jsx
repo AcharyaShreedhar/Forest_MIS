@@ -40,14 +40,14 @@ class Seedgardenplots extends Component {
     switch (event) {
       case "edit": {
         this.props.history.push({
-          pathname: `/banbibaran/seedgardenplotsedit/${item.vehicle_id}`,
+          pathname: `/banbibaran/seedgardenplotsedit/${item.plot_id}`,
           item,
         });
         break;
       }
 
       case "delete": {
-        this.props.deleteSeedgardenplots(item.vehicle_id);
+        this.props.deleteSeedgardenplots(item.plot_id);
         break;
       }
       default:
