@@ -26,6 +26,9 @@ class Add extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  handleDate(e) {
+    this.setState({ acquired_date: e });
+  }
 
   handleSubmit() {
     const {

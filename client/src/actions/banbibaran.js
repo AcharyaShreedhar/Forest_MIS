@@ -8,30 +8,50 @@
  * select: When setting reducers, not handling with database, just handling only reducers.
  */
 
- import { createActions } from "reduxsauce";
+import { createActions } from "reduxsauce";
 
- const { Types, Creators } = createActions({
-   fetchallbaramaditchijbastuRequest: ["payload"],
-   fetchallbaramaditchijbastuSuccess: ["response"],
-   fetchallbaramaditchijbastuFailure: null,
-   
-   fetchbaramaditchijbastuRequest: ["payload"],
-   fetchbaramaditchijbastuSuccess: ["response"],
-   fetchbaramaditchijbastuFailure: null,
+const { Types, Creators } = createActions({
+  fetchallbaramaditchijbastuRequest: ["payload"],
+  fetchallbaramaditchijbastuSuccess: ["response"],
+  fetchallbaramaditchijbastuFailure: null,
 
-   fetchallbanxetraanyaprayojanRequest: ["payload"],
-   fetchallbanxetraanyaprayojanSuccess: ["response"],
-   fetchallbanxetraanyaprayojanFailure: null,
+  fetchbaramaditchijbastuRequest: ["payload"],
+  fetchbaramaditchijbastuSuccess: ["response"],
+  fetchbaramaditchijbastuFailure: null,
 
-   fetchbanxetraanyaprayojanRequest: ["payload"],
-   fetchbanxetraanyaprayojanSuccess: ["response"],
-   fetchbanxetraanyaprayojanFailure: null,
+  fetchallbanxetraanyaprayojanRequest: ["payload"],
+  fetchallbanxetraanyaprayojanSuccess: ["response"],
+  fetchallbanxetraanyaprayojanFailure: null,
 
-   locationsRequest: ["payload"],
+  fetchbanxetraanyaprayojanRequest: ["payload"],
+  fetchbanxetraanyaprayojanSuccess: ["response"],
+  fetchbanxetraanyaprayojanFailure: null,
+
+  //gardern seed plot
+  fetchallplotbibaranRequest: ["payload"],
+  fetchallplotbibaranSuccess: ["response"],
+  fetchallplotbibaranFailure: null,
+
+  fetchplotbibaranRequest: ["payload"],
+  fetchplotbibaranSuccess: ["response"],
+  fetchplotbibaranFailure: null,
+
+  addplotbibaranRequest: ["payload"],
+  addplotbibaranSuccess: ["response"],
+  addplotbibaranFailure: null,
+
+  updateplotbibaranRequest: ["payload", "plotId"],
+  updateplotbibaranSuccess: ["response"],
+  updateplotbibaranFailure: null,
+
+  deleteplotbibaranRequest: ["payload", "plotId"],
+  deleteplotbibaranSuccess: ["response"],
+  deleteplotbibaranFailure: null,
+
+  locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
 });
 
 export const BanbibaranTypes = Types;
 export default Creators;
-

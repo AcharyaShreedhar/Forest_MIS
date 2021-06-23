@@ -63,7 +63,66 @@ const fetchbanxetraanyaprayojanSuccess = (state, action) => {
 const fetchbanxetraanyaprayojanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
-  
+
+const fetchallplotbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallplotbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allplotbibaranData: action.response,
+  });
+};
+const fetchallplotbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchplotbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchplotbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    plotbibaranData: action.response,
+  });
+};
+const fetchplotbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add plotbibaran
+const addplotbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addplotbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addplotbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update plotbibaran
+const updateplotbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateplotbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateplotbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete plotbibaran
+const deleteplotbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteplotbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteplotbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -75,23 +134,43 @@ const locationsRequest = (state, action) => {
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
-    export const reducer = createReducer(initialState, {
-        [BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_REQUEST]: fetchallbaramaditchijbastuRequest,
-        [BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_SUCCESS]: fetchallbaramaditchijbastuSuccess,
-        [BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_FAILURE]: fetchallbaramaditchijbastuFailure, 
+export const reducer = createReducer(initialState, {
+  [BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_REQUEST]: fetchallbaramaditchijbastuRequest,
+  [BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_SUCCESS]: fetchallbaramaditchijbastuSuccess,
+  [BanbibaranTypes.FETCHALLBARAMADITCHIJBASTU_FAILURE]: fetchallbaramaditchijbastuFailure,
 
-        [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST]: fetchbaramaditchijbastuRequest,
-        [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_SUCCESS]: fetchbaramaditchijbastuSuccess,
-        [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_FAILURE]: fetchbaramaditchijbastuFailure,
+  [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST]: fetchbaramaditchijbastuRequest,
+  [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_SUCCESS]: fetchbaramaditchijbastuSuccess,
+  [BanbibaranTypes.FETCHBARAMADITCHIJBASTU_FAILURE]: fetchbaramaditchijbastuFailure,
 
-        [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST]: fetchallbanxetraanyaprayojanRequest,
-        [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_SUCCESS]: fetchallbanxetraanyaprayojanSuccess,
-        [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_FAILURE]: fetchallbanxetraanyaprayojanFailure,
+  [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST]: fetchallbanxetraanyaprayojanRequest,
+  [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_SUCCESS]: fetchallbanxetraanyaprayojanSuccess,
+  [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_FAILURE]: fetchallbanxetraanyaprayojanFailure,
 
-        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_REQUEST]: fetchbanxetraanyaprayojanRequest,
-        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_SUCCESS]: fetchbanxetraanyaprayojanSuccess,
-        [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_FAILURE]: fetchbanxetraanyaprayojanFailure,
+  [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_REQUEST]: fetchbanxetraanyaprayojanRequest,
+  [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_SUCCESS]: fetchbanxetraanyaprayojanSuccess,
+  [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_FAILURE]: fetchbanxetraanyaprayojanFailure,
 
-        [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
-        [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
-      });
+  [BanbibaranTypes.FETCHALLPLOTBIBARAN_REQUEST]: fetchallplotbibaranRequest,
+  [BanbibaranTypes.FETCHALLPLOTBIBARAN_SUCCESS]: fetchallplotbibaranSuccess,
+  [BanbibaranTypes.FETCHALLPLOTBIBARAN_FAILURE]: fetchallplotbibaranFailure,
+
+  [BanbibaranTypes.FETCHPLOTBIBARAN_REQUEST]: fetchplotbibaranRequest,
+  [BanbibaranTypes.FETCHPLOTBIBARAN_SUCCESS]: fetchplotbibaranSuccess,
+  [BanbibaranTypes.FETCHPLOTBIBARAN_FAILURE]: fetchplotbibaranFailure,
+
+  [BanbibaranTypes.ADDPLOTBIBARAN_REQUEST]: addplotbibaranRequest,
+  [BanbibaranTypes.ADDPLOTBIBARAN_SUCCESS]: addplotbibaranSuccess,
+  [BanbibaranTypes.ADDPLOTBIBARAN_FAILURE]: addplotbibaranFailure,
+
+  [BanbibaranTypes.UPDATEPLOTBIBARAN_REQUEST]: updateplotbibaranRequest,
+  [BanbibaranTypes.UPDATEPLOTBIBARAN_SUCCESS]: updateplotbibaranSuccess,
+  [BanbibaranTypes.UPDATEPLOTBIBARAN_FAILURE]: updateplotbibaranFailure,
+
+  [BanbibaranTypes.DELETEPLOTBIBARAN_REQUEST]: deleteplotbibaranRequest,
+  [BanbibaranTypes.DELETEPLOTBIBARAN_SUCCESS]: deleteplotbibaranSuccess,
+  [BanbibaranTypes.DELETEPLOTBIBARAN_FAILURE]: deleteplotbibaranFailure,
+
+  [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
+  [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
+});

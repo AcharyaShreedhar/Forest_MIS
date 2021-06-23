@@ -59,6 +59,20 @@ const banbibaranRoutes = [
     component: Seedgardenplots,
   },
   {
+    path: "/banbibaran/seedgardenplotsadd/new",
+    title: "Seedgardenplot",
+    name: "seedgardenplot",
+    auth: true,
+    component: Seedgardenplots,
+  },
+  {
+    path: "/banbibaran/seedgardenplotsedit/:id",
+    title: "Seedgardenplot",
+    name: "seedgardenplot",
+    auth: true,
+    component: Seedgardenplots,
+  },
+  {
     redirect: true,
     path: "/banbibaran",
     to: "/banbibaran/bandadelolist",
