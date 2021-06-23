@@ -245,7 +245,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`vehicles/${vehicleId}`);
 
   // muddaanusandhandayari
-  const getMuddaanusandhandayariList = () => api.get("muddaAnusandhanDayaris");
+  const getMuddaanusandhandayariList = (payload) => api.post("muddaAnusandhanDayarisList", payload);
 
   const getMuddaanusandhandayari = (muddaAnusandhanDayariId) =>
     api.get(`muddaAnusandhanDayaris/${muddaAnusandhanDayariId}`);
