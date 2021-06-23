@@ -1,10 +1,27 @@
 const pool = require("../db")
 //Controller for Listing all Plot
 async function getAllPlot(req, res) {
-    const getAllPlotQuery = `select * from forest_garden_plots`;
-    pool.query(getAllPlotQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from forest_garden_plots";
+    const getAllPlotQuery = `select * from forest_garden_plots ORDER BY ? ASC LIMIT ?, ?`;
+    pool.query(getTotalQuery, [], (error, countresults, fields) => {
       if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      pool.query(
+        getAllPlotQuery,
+        [req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
     });
   }
   

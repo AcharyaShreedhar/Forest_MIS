@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const plotController = require("../controller/plotController");
-router.get("/plot", plotController.getAllPlot);
+router.post("/plotList", plotController.getAllPlot);
 router.get("/plot/:plotId", plotController.getPlot);
 router.post("/plot", plotController.addPlot);
 router.put("/plot/:plotId", plotController.updatePlot);
