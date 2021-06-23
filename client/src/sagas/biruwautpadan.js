@@ -182,7 +182,11 @@ export function* fetchbiruwautpadanRequest(api, action) {
       toast.success("सफलतापुर्वक कार्यक्रम विवरण पुनः प्रविष्ट भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
-      yield fetchallactivitiesinfoRequest(api);
+      yield fetchallactivitiesinfoRequest(api,{
+        name: "fiscal_year",
+        page: 0,
+        perPage: 10,
+      });
       yield call(history.push, "/activities/yearlyactivitieslist");
       yield put(
         BiruwautpadanActions.updateactivitiesinfoSuccess(response.data)
@@ -206,7 +210,11 @@ export function* fetchbiruwautpadanRequest(api, action) {
       toast.success("सफलतापुर्वक कार्यक्रम विवरण हटाईयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
-      yield fetchallactivitiesinfoRequest(api);
+      yield fetchallactivitiesinfoRequest(api,{
+        name: "fiscal_year",
+        page: 0,
+        perPage: 10,
+      });
       yield put(
         BiruwautpadanActions.deleteactivitiesinfoSuccess(response.data)
       );
