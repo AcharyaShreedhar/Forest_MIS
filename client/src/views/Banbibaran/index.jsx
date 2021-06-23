@@ -8,6 +8,7 @@ import banbibaranRoutes from "../../routes/banbibaran";
 import BandadelobibaranActions from "../../actions/bandadelobibaran";
 import BanxetraatikramanActions from "../../actions/banxetraatikraman";
 import BanbibaranActions from "../../actions/banbibaran";
+import MuddaanusandhandayariActions from "../../actions/muddaanusandhandayari";
 
 class Banbibaran extends Component {
   componentDidMount() {
@@ -28,6 +29,11 @@ class Banbibaran extends Component {
     });
     this.props.fetchallBanxetraanyaprayojan({
       name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallMuddaanusandhandayari({
+      name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
     });
@@ -88,9 +94,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
 
   fetchallBanxetraatikraman: (payload) =>
-    dispatch(
-      BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)
-    ),
+    dispatch(BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)),
+
+  fetchallMuddaanusandhandayari: (payload) =>
+    dispatch(MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)),
+
   fetchallSeedgardenplots: (payload) =>
     dispatch(BanbibaranActions.fetchallplotbibaranRequest(payload)),
   fetchallBanxetraanyaprayojan: (payload) =>
