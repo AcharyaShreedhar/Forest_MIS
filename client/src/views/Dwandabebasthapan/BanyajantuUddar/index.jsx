@@ -35,7 +35,7 @@ export class BanyajantuUddar extends Component {
     switch (item) {
       case "banyajantuuddar": {
         this.props.fetchallBanyajantuuddar({
-          name: "banyajantuuddar_name",
+          name: "miti",
           page: data.selected * perPage,
           perPage,
         });
