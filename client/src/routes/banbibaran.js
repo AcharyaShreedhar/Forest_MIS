@@ -36,6 +36,23 @@ const banbibaranRoutes = [
     auth: true,
     component: Banxetraatikraman,
   },
+
+  {
+    path: "/banbibaran/banxetraatikramanadd/new",
+    title: "Banxetraatikraman",
+    name: "Banxetraatikraman",
+    auth: true,
+    component: Banxetraatikraman,
+  },
+
+  {
+    path: "/banbibaran/banxetraatikramanedit/:id",
+    title: "Banxetraatikraman",
+    name: "Banxetraatikraman",
+    auth: true,
+    component: Banxetraatikraman,
+  },
+
   {
     path: "/banbibaran/muddaanusandhandayarilist",
     title: "Muddaanusandhandayari",
