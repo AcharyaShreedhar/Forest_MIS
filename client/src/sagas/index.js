@@ -48,6 +48,7 @@ import {
   fetchplotbibaranRequest,
   addplotbibaranRequest,
   addbaramaditchijbastuRequest,
+  updatebaramaditchijbastuRequest,
   updateplotbibaranRequest,
   deleteplotbibaranRequest,
 } from "./banbibaran";
@@ -995,6 +996,15 @@ export default function* root() {
       BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST,
       fetchbaramaditchijbastuRequest,
       api
+    ),
+    takeLatest(
+      BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST,
+      addbaramaditchijbastuRequest,
+      api
+    ),
+    takeLatest(
+      BanbibaranTypes.FETCHBARAMADITCHIJBASTU_REQUEST,
+      updatebaramaditchijbastuRequest, api
     ),
 
     //----------Banbibaran_banxetra_anyaprayojan
