@@ -262,8 +262,8 @@ const create = (baseURL = Config.API_URL) => {
 
   //delete muddaanusandhandayari
   const postMuddaanusandhandayariMuddaanusandhandayariDelete = (
-    muddaAnusandhandayariId
-  ) => api.delete(`muddaAnusandhanDayari/${muddaAnusandhandayariId}`);
+    muddaanusandhandayariId
+  ) => api.delete(`muddaAnusandhanDayaris/${muddaanusandhandayariId}`);
 
   // ------banxetraatikraman
   const getBanxetraatikramanList = (payload) => api.post("banxetraAtikramansList",payload);
