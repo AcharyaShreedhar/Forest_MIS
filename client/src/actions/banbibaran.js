@@ -46,6 +46,10 @@ const { Types, Creators } = createActions({
   addbanxetraanyaprayojanSuccess: ["response"],
   addbanxetraanyaprayojanFailure: null,
 
+  updatebanxetraanyaprayojanRequest: ["payload", "banxetraanyaprayojanId"],
+  updatebanxetraanyaprayojanSuccess: ["response"],
+  updatebanxetraanyaprayojanFailure: null,
+
   //gardern seed plot
   fetchallplotbibaranRequest: ["payload"],
   fetchallplotbibaranSuccess: ["response"],
