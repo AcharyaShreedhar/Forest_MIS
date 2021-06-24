@@ -24,7 +24,7 @@ import * as BanpaidawarLilam from "./BanpaidawarLilam";
 import * as BanpaidawarOsarpasar from "./BanpaidawarOsarpasar";
 import * as BandadeloBibaran from "./BandadeloBibaran";
 import * as BanyajantuUddarbibaran from "./BanyajantuUddarbibaran";
-import * as BanyajantuXetibibaran from "./BanyajantuUddarbibaran";
+import * as BanyajantuXetibibaran from "./BanyajantuXetibibaran";
 import * as GharjaggaBibaran from "./GharjaggaBibaran";
 import * as SawarisadhanBibaran from "./SawarisadhanBibaran";
 import * as BanxetraAtikraman from "./BanxetraAtikraman";
