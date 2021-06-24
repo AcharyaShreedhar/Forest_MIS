@@ -25,11 +25,11 @@ const { Types, Creators } = createActions({
   addbaramaditchijbastuSuccess: ["response"],
   addbaramaditchijbastuFailure: null,
 
-  updatebaramaditchijbastuRequest: ["payload", "plotId"],
+  updatebaramaditchijbastuRequest: ["payload", "baramaditchijbastuId"],
   updatebaramaditchijbastuSuccess: ["response"],
   updatebaramaditchijbastuFailure: null,
 
-  deletebaramaditchijbastuRequest: ["payload", "plotId"],
+  deletebaramaditchijbastuRequest: ["payload", "baramaditchijbastuId"],
   deletebaramaditchijbastuSuccess: ["response"],
   deletebaramaditchijbastuFailure: null,
 
