@@ -10,7 +10,7 @@ import { muddaanusandhandayariHeadings } from "../../../services/config";
 class Muddaanusandhandayari extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "muddaanusandhandayarilist" };
+    this.state = { loc: "muddaanusandhandayarilist", perPage: 10, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
@@ -28,7 +28,7 @@ class Muddaanusandhandayari extends Component {
      };
   }
 
-  handlePageChange(data, item) {
+  handlePageChange(data) {
       const {perPage } = this.state;
       this.setState({ page: data.selected });
       this.props.fetchallMuddaanusandhandayari({
@@ -82,11 +82,16 @@ class Muddaanusandhandayari extends Component {
   }
 
   render() {
+      
     const {
         loc,
         perPage,
         muddaanusandhandayariList,
     } = this.state;
+    console.log("muddaanusandan....", muddaanusandhandayariList);
+    console.log("page...count", !isNil(muddaanusandhandayariList)
+    ? Math.ceil(muddaanusandhandayariList.total / perPage)
+    : 10);
     const { user } = this.props;
        
     return (
@@ -144,6 +149,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+fetchallMuddaanusandhandayari: (payload) =>
+    dispatch(MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)),
 
   addMuddaanusandhandayari: (payload) =>
     dispatch(MuddaanusandhandayariActions.addmuddaanusandhandayariRequest(payload)),
