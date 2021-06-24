@@ -44,6 +44,7 @@ import {
   fetchbaramaditchijbastuRequest,
   fetchallbanxetraanyaprayojanRequest,
   fetchbanxetraanyaprayojanRequest,
+  addbanxetraanyaprayojanRequest,
   fetchallplotbibaranRequest,
   fetchplotbibaranRequest,
   addplotbibaranRequest,
@@ -1022,5 +1023,12 @@ export default function* root() {
       fetchbanxetraanyaprayojanRequest,
       api
     ),
+
+    takeLatest(
+      BanbibaranTypes.ALLBANXETRAANYAPRAYOJAN_REQUEST,
+      addbanxetraanyaprayojanRequest,
+      api
+    ),
+
   ]);
 }
