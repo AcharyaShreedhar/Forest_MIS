@@ -10,7 +10,7 @@ import { banxetraatikramanHeadings } from "../../../services/config";
 class Banxetraatikraman extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "banxetraatikramanlist" };
+    this.state = { loc: "banxetraatikramanlist" , perPage: 10, page: 1};
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }

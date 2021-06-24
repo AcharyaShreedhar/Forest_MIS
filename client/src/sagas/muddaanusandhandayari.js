@@ -50,7 +50,7 @@ export function* addmuddaanusandhandayariRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/muddaanusandhandayarilist");
+    yield call(history.push, "/banbibaran/muddaanusandhandayarilist");
     yield put(MuddaanusandhandayariActions.addmuddaanusandhandayariSuccess(response.data));
   } else {
     yield put(MuddaanusandhandayariActions.addmuddaanusandhandayariFailure());
