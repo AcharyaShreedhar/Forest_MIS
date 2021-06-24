@@ -29,6 +29,10 @@ const { Types, Creators } = createActions({
   updatebaramaditchijbastuSuccess: ["response"],
   updatebaramaditchijbastuFailure: null,
 
+  deletebaramaditchijbastuRequest: ["payload", "plotId"],
+  deletebaramaditchijbastuSuccess: ["response"],
+  deletebaramaditchijbastuFailure: null,
+
   //banxetraanyaprayojan
   fetchallbanxetraanyaprayojanRequest: ["payload"],
   fetchallbanxetraanyaprayojanSuccess: ["response"],
