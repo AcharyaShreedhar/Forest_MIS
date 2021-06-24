@@ -62,24 +62,51 @@ export function* addbaramaditchijbastuRequest(api, action) {
 export function* updatebaramaditchijbastuRequest(api, action) {
   const { payload, plotId } = action;
 
-  const response = yield api.postPlotbibaranPlotbibaranUpdate(
-    payload.plotbibaran.data,
+  const response = yield api.postbaramaditchijbastuUpdate(
+    payload.baramaditchijbastu.data,
     plotId
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक बरामदितचिज बस्तु पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallplotbibaranRequest(api, {
+    yield fetchallbaramaditchijbastuRequest(api, {
       name: "established_date",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/banbibaran/seedgardenplotslist");
-    yield put(BanbibaranActions.updateplotbibaranSuccess(response.data));
+    yield call(history.push, "/banbibaran/baramaditchijbastulist");
+    yield put(BanbibaranActions.updatebaramaditchijbastuSuccess(response.data));
   } else {
-    yield put(BanbibaranActions.updateplotbibaranFailure());
+    yield put(BanbibaranActions.updatebaramaditchijbastuFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//--------------------delete baramaditchijbastu
+export function* deletebaramaditchijbastuRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBaramaditChijBastuDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बरामदितचिज बस्तु हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbaramaditchijbastuRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BanbibaranActions.deletebaramaditchijbastuSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.deletebaramaditchijbastuFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
