@@ -200,7 +200,6 @@ export function* updatebanyajantuxetiRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield fetchallbanyajantuxetiRequest(api);
     yield call(history.push, "/dwandabebasthapan/banyajantuxetirahatlist");
 
     yield put(
