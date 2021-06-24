@@ -169,7 +169,7 @@ export function* addbanyajantuxetiRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/dwandabebasthapan/banyajantuxetilist");
+    yield call(history.push, "/dwandabebasthapan/banyajantuxetirahatlist");
     yield put(DwandabebasthapanActions.addbanyajantuxetiSuccess(response.data));
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuxetiFailure());
@@ -200,7 +200,8 @@ export function* updatebanyajantuxetiRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/dwandabebasthapan/banyajantuxetilist");
+    yield call(history.push, "/dwandabebasthapan/banyajantuxetirahatlist");
+
     yield put(
       DwandabebasthapanActions.updatebanyajantuxetiSuccess(response.data)
     );

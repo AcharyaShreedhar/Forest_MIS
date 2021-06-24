@@ -13,11 +13,11 @@ export class BanyajantuxetiRahat extends Component {
     this.state = { loc: "xetilist",perPage: 10, page: 1  };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
-    console.log("uddar", nextProps);
     var banyajantuxetirahatList = [];
      if (nextProps != prevState) {
       banyajantuxetirahatList = nextProps.banyajantuxetirahatDataList.data;
@@ -36,7 +36,7 @@ handlePageChange(data, item) {
   switch (item) {
     case "banyajantuxetirahat": {
       this.props.fetchallBanyajantuxetirahat({
-        name: "banyajantuxetirahat_name",
+        name: "xeti_miti",
         page: data.selected * perPage,
         perPage,
       });
@@ -47,25 +47,19 @@ handlePageChange(data, item) {
   }
 }
 
-  handleSelectMenu(event, item, path) {
+  handleSelectMenu(event, item) {
    switch (event) {
       case "edit": {
-        switch (path) {
-          case "banyajantuxetirahat": {
+        
             this.props.history.push({
-              pathname: `/dwandabebasthapan/banyajantuxetiRahatedit/${item.banyajantuxeti_bibaran_id}`,
+              pathname: `/dwandabebasthapan/banyajantuxetirahatedit/${item.banyajantuxeti_bibaran_id}`,
               item,
             });
             break;
           }
-          default:
-            break;
-        }
-        break;
-      }
+    
       case "delete": {
-        switch (path) {
-          case "banyajantuxetirahat": {
+      
             this.props.deleteBanyajantuxetiRahat(item.banyajantuxeti_bibaran_id);
             break;
           }
@@ -73,22 +67,15 @@ handlePageChange(data, item) {
             break;
         }
       }
-      default:
-        break;
-    }
-  }
+      
 
   handleAdd(item) {
-    switch (item) {
-      case "banyajantuxetirahat": {
+
         this.props.history.push("/dwandabebasthapan/banyajantuxetirahatadd/new");
-        break;
+        
       }
 
-      default:
-        break;
-    }
-  }
+    
   render() {
 
 
@@ -112,11 +99,12 @@ handlePageChange(data, item) {
                 ? Math.ceil(banyajantuxetirahatList.total / perPage)
                 : 10
             }
-              data={banyajantuxetirahatList}
+            data={!isNil(banyajantuxetirahatList) ? banyajantuxetirahatList.list : []}
               headings={banyajantuxetirahatHeadings}
               user={user}
               onAdd={() => this.handleAdd("banyajantuxetirahat")}
               onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "banyajantuxetirahat")}
             />
           )}
           {equals(loc, "banyajantuxetirahatadd") && (
@@ -157,9 +145,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 
+   fetchallBanyajantuxetirahat: (payload) =>
+  dispatch(DwandabebasthapanActions.fetchallbanyajantuxetiRequest(payload)), 
   addBanyajantuxetirahat: (payload) =>
     dispatch(DwandabebasthapanActions.addbanyajantuxetiRequest(payload)),
-
   updateBanyajantuxetirahat: (payload, banyajantuxetiId) =>
     dispatch(
       DwandabebasthapanActions.updatebanyajantuxetiRequest(payload, banyajantuxetiId)
