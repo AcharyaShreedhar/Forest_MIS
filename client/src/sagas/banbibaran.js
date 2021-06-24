@@ -28,6 +28,7 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
   }
 }
 
+//----------------add baramaditchijbastu
 export function* addbaramaditchijbastuRequest(api, action) {
   const { payload } = action;
 
@@ -48,6 +49,37 @@ export function* addbaramaditchijbastuRequest(api, action) {
     yield put(BanbibaranActions.addbaramaditchijbastuSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addbaramaditchijbastuFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//------------update baramaditchijbastu
+export function* updatebaramaditchijbastuRequest(api, action) {
+  const { payload, plotId } = action;
+
+  const response = yield api.postPlotbibaranPlotbibaranUpdate(
+    payload.plotbibaran.data,
+    plotId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallplotbibaranRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/seedgardenplotslist");
+    yield put(BanbibaranActions.updateplotbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updateplotbibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
