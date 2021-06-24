@@ -47,25 +47,19 @@ handlePageChange(data, item) {
   }
 }
 
-  handleSelectMenu(event, item, path) {
+  handleSelectMenu(event, item) {
    switch (event) {
       case "edit": {
-        switch (path) {
-          case "banyajantuxetirahat": {
+        
             this.props.history.push({
               pathname: `/dwandabebasthapan/banyajantuxetirahatedit/${item.banyajantuxeti_bibaran_id}`,
               item,
             });
             break;
           }
-          default:
-            break;
-        }
-        break;
-      }
+    
       case "delete": {
-        switch (path) {
-          case "banyajantuxetirahat": {
+      
             this.props.deleteBanyajantuxetiRahat(item.banyajantuxeti_bibaran_id);
             break;
           }
@@ -73,28 +67,22 @@ handlePageChange(data, item) {
             break;
         }
       }
-      default:
-        break;
-    }
-  }
+      
 
   handleAdd(item) {
-    switch (item) {
-      case "banyajantuxetirahat": {
+
         this.props.history.push("/dwandabebasthapan/banyajantuxetirahatadd/new");
-        break;
+        
       }
 
-      default:
-        break;
-    }
-  }
+    
   render() {
 
 
   const { 
     loc,
     perPage,
+    page,
     banyajantuxetirahatList,
    } = this.state;
   const { user } = this.props;
@@ -116,6 +104,7 @@ handlePageChange(data, item) {
               user={user}
               onAdd={() => this.handleAdd("banyajantuxetirahat")}
               onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "banyajantuxetirahat")}
             />
           )}
           {equals(loc, "banyajantuxetirahatadd") && (
@@ -156,9 +145,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 
+   fetchallBanyajantuxetirahat: (payload) =>
+  dispatch(DwandabebasthapanActions.fetchallbanyajantuxetiRequest(payload)), 
   addBanyajantuxetirahat: (payload) =>
     dispatch(DwandabebasthapanActions.addbanyajantuxetiRequest(payload)),
-
   updateBanyajantuxetirahat: (payload, banyajantuxetiId) =>
     dispatch(
       DwandabebasthapanActions.updatebanyajantuxetiRequest(payload, banyajantuxetiId)
