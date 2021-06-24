@@ -47,7 +47,16 @@ const addbaramaditchijbastuSuccess = (state, action) =>
 const addbaramaditchijbastuFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
+//update baramaditchijbastu
+const updatebaramaditchijbastuRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebaramaditchijbastuSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebaramaditchijbastuFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 
 const fetchallbanxetraanyaprayojanRequest = (state, action) =>
@@ -160,6 +169,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.ADDBARAMADITCHIJBASTU_REQUEST]: addbaramaditchijbastuRequest,
   [BanbibaranTypes.ADDBARAMADITCHIJBASTU_SUCCESS]: addbaramaditchijbastuSuccess,
   [BanbibaranTypes.ADDBARAMADITCHIJBASTU_FAILURE]: addbaramaditchijbastuFailure,
+
+  [BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_REQUEST]: updatebaramaditchijbastuRequest,
+  [BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_SUCCESS]: updatebaramaditchijbastuSuccess,
+  [BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_FAILURE]: updatebaramaditchijbastuFailure,
 
   [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST]: fetchallbanxetraanyaprayojanRequest,
   [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_SUCCESS]: fetchallbanxetraanyaprayojanSuccess,
