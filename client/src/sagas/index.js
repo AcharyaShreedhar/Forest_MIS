@@ -47,6 +47,7 @@ import {
   fetchallplotbibaranRequest,
   fetchplotbibaranRequest,
   addplotbibaranRequest,
+  addbaramaditchijbastuRequest,
   updateplotbibaranRequest,
   deleteplotbibaranRequest,
 } from "./banbibaran";
