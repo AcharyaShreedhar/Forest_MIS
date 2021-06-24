@@ -44,12 +44,13 @@ import {
   fetchbaramaditchijbastuRequest,
   fetchallbanxetraanyaprayojanRequest,
   fetchbanxetraanyaprayojanRequest,
-  addbanxetraanyaprayojanRequest,
   fetchallplotbibaranRequest,
   fetchplotbibaranRequest,
   addplotbibaranRequest,
   addbaramaditchijbastuRequest,
+  addbanxetraanyaprayojanRequest,
   updatebaramaditchijbastuRequest,
+  updatebanxetraanyaprayojanRequest,
   updateplotbibaranRequest,
   deleteplotbibaranRequest,
   deletebaramaditchijbastuRequest,
@@ -1025,10 +1026,16 @@ export default function* root() {
     ),
 
     takeLatest(
-      BanbibaranTypes.ALLBANXETRAANYAPRAYOJAN_REQUEST,
+      BanbibaranTypes.ADDBANXETRAANYAPRAYOJAN_REQUEST,
       addbanxetraanyaprayojanRequest,
       api
     ),
+
+    takeLatest(
+      BanbibaranTypes.UPDATEBANXETRAANYAPRAYOJAN_REQUEST,
+      updatebanxetraanyaprayojanRequest,
+      api
+    )
 
   ]);
 }
