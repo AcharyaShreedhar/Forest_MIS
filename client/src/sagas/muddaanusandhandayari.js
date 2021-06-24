@@ -79,7 +79,7 @@ export function* updatemuddaanusandhandayariRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/muddaanusandhandayarilist");
+    yield call(history.push, "/banbibaran/muddaanusandhandayarilist");
     yield put(
       MuddaanusandhandayariActions.updatemuddaanusandhandayariSuccess(response.data)
     );

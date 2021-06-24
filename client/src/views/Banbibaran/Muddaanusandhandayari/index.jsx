@@ -41,44 +41,33 @@ class Muddaanusandhandayari extends Component {
   handleSelectMenu(event, item, path) {
    switch (event) {
       case "edit": {
-        switch (path) {
-          case "muddaanusandhandayari": {
+        
+          
             this.props.history.push({
               pathname: `/banbibaran/muddaanusandhandayariedit/${item.mudda_anusandhan_dayari_id}`,
               item,
             });
             break;
-          }
-          default:
-            break;
-        }
-        break;
+          
       }
       case "delete": {
-        switch (path) {
-          case "muddaanusandhandayari": {
+        
+        
             this.props.deleteMuddaanusandhandayari(item.mudda_anusandhan_dayari_id);
             break;
           }
-          default:
-            break;
-        }
-      }
-      default:
-        break;
+          
     }
-  }
+}
+  
 
-  handleAdd(item) {
-    switch (item) {
-      case "muddaanusandhandayari": {
+  handleAdd() {
+    
         this.props.history.push("/banbibaran/muddaanusandhandayariadd/new");
-        break;
-      }
+        
+      
 
-      default:
-        break;
-    }
+     
   }
 
   render() {

@@ -68,6 +68,13 @@ const banbibaranRoutes = [
     component: Muddaanusandhandayari,
   },
   {
+    path: "/banbibaran/muddaanusandhandayariedit/:id",
+    title: "Muddaanusandhandayari",
+    name: "muddaanusandhandayari",
+    auth: true,
+    component: Muddaanusandhandayari,
+  },
+  {
     path: "/banbibaran/banxetraanyaprayojanlist",
     title: "Banxetraanyaprayojan",
     name: "banxetraanyaprayojan",
