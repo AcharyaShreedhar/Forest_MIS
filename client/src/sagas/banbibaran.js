@@ -60,11 +60,11 @@ export function* addbaramaditchijbastuRequest(api, action) {
 
 //------------update baramaditchijbastu
 export function* updatebaramaditchijbastuRequest(api, action) {
-  const { payload, plotId } = action;
+  const { payload, baramaditchijbastuId } = action;
 
   const response = yield api.postbaramaditchijbastuUpdate(
     payload.baramaditchijbastu.data,
-    plotId
+    baramaditchijbastuId
   );
 
   if (response.ok) {
