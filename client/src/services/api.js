@@ -136,6 +136,9 @@ const create = (baseURL = Config.API_URL) => {
   const getBaramaditchijbastu = (baramaditchijbastuId) =>
     api.get(`baramaditChijbastu/${baramaditchijbastuId}`);
 
+   const postBaramaditchijbastuAddnew = (payload) =>
+   api.post(`baramaditChijbastu`, payload); 
+
   // Banbibaran_banxetra_anya_prayojan
   const getBanxetraanyaprayojanList = (payload) =>
     api.post("banxetraAnyaprayojanList", payload);
@@ -672,6 +675,7 @@ const create = (baseURL = Config.API_URL) => {
     //--------Banbibaran
     getBaramaditchijbastuList,
     getBaramaditchijbastu,
+    postBaramaditchijbastuAddnew,
     getBanxetraanyaprayojanList,
     getBanxetraanyaprayojan,
   };
