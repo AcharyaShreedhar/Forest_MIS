@@ -173,6 +173,38 @@ export function* addbanxetraanyaprayojanRequest(api, action) {
   }
 }
 
+//----------------- update banxetraanyaprayojan
+export function* updatebanxetraanyaprayojanRequest(api, action) {
+  const { payload, banxetraanyaprayojanId } = action;
+
+  const response = yield api.postbanxetraanyaprayojanUpdate(
+    payload.banxetraanyaprayojan.data,
+    banxetraanyaprayojanId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्र्योजन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraanyaprayojanRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/banxetraanyaprayojanlist");
+    yield put(BanbibaranActions.updatebanxetraanyaprayojanSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updatebanxetraanyaprayojanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
 export function* fetchallplotbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
