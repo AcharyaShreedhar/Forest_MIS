@@ -9,11 +9,6 @@ const LijRakam = [
   { id: 2, value: "नगरेको" },
 ];
 
-const BarsikPratibedan = [
-    { id: 1, value: "गरेको"},
-    { id: 2, value: "नगरेको"},
-];
-
 class Add extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +34,7 @@ class Add extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLijRakam = this.handleLijRakam.bind(this);
     this.handleBarsikPratibedan = this.handleBarsikPratibedan.bind(this);
-    
+        
   }
 
   handleSubmit() {
@@ -214,8 +209,8 @@ class Add extends Component {
               direction="vertical"
               width="fit-content"
               defaultIds={[barsik_pratibedan]}
-              data={BarsikPratibedan}
-              getValue={(BarsikPratibedan) => BarsikPratibedan["value"]}
+              data={LijRakam}
+              getValue={(LijRakam) => LijRakam["value"]}
               onChange={(e) => this.handleBarsikPratibedan(e)}
               value={barsik_pratibedan}
             />
