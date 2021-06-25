@@ -40,14 +40,14 @@ class Banxetraanyaprayojan extends Component {
     switch (event) {
       case "edit": {
         this.props.history.push({
-          pathname: `/banbibaran/banxetraanyaprayojanedit/${item.plot_id}`,
+          pathname: `/banbibaran/banxetraanyaprayojanedit/${item.banxetra_anyaprayojan_id}`,
           item,
         });
         break;
       }
 
       case "delete": {
-        this.props.deleteBanxetraanyaprayojan(item.plot_id);
+        this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id);
         break;
       }
       default:
@@ -59,7 +59,7 @@ class Banxetraanyaprayojan extends Component {
     this.props.history.push("/banbibaran/banxetraanyaprayojanadd/new");
   }
   render() {
-    const { loc, perPage, page, banxetraanyaprayojanList } = this.state;
+    const { loc, perPage, banxetraanyaprayojanList } = this.state;
     const { user } = this.props;
 
     return (
@@ -85,6 +85,23 @@ class Banxetraanyaprayojan extends Component {
             onPageClick={(e) => this.handlePageChange(e)}
           />
         )}
+        {equals(loc, "banxetraanyaprayojanadd") && (
+          <BanxetraanyaprayojanBibaran.Add
+            title="+ वनक्षेत्र अन्य प्रयोजन"
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addBanxetraanyaprayojan (e)}
+          />
+        )}
+        {equals(loc, "banxetraanyaprayojanedit") && (
+          <BanxetraanyaprayojanBibaran.Edit
+            title="वनक्षेत्र अन्य प्रयोजन पुनः प्रविष्ट"
+            history={this.props.history}
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateBanxetraanyaprayojan(e, id)}
+          />
+        )}
       </div>
     );
   }
@@ -106,6 +123,17 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanxetraanyaprayojan: (payload) =>
     dispatch(BanbibaranActions.fetchallbanxetraanyaprayojanRequest(payload)),
+
+  addBanxetraanyaprayojan: (payload) =>
+    dispatch(BanbibaranActions.addbanxetraanyaprayojanRequest(payload)),
+
+  updateBanxetraanyaprayojan: (payload, banxetraanyaprayojanId) =>
+    dispatch(
+      BanbibaranActions.updatebanxetraanyaprayojanRequest(payload, banxetraanyaprayojanId)
+    ),
+
+  deleteBanxetraanyaprayojan: (banxetraanyaprayojanId) =>
+    dispatch(BanbibaranActions.deletebanxetraanyaprayojanRequest(banxetraanyaprayojanId)),
 });
 
 export default connect(
