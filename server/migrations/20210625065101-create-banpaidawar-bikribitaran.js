@@ -26,7 +26,7 @@ module.exports = {
       aaapurti_dar:{
         type:Sequelize.STRING,
       },
-      aantarik_parinam:{
+      aaputi_parinam:{
         type:Sequelize.STRING,
       },
       aapurti_rakam:{
