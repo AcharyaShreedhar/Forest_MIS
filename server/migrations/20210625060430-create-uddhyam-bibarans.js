@@ -26,6 +26,12 @@ module.exports = {
       sahakari_rojgari_sankhya: {
         type: Sequelize.STRING
       },
+      created_by: {
+        type: Sequelize.STRING,
+      },
+      updated_by: {
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -34,6 +40,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
+      
     });
   },
   down: async (queryInterface, Sequelize) => {
