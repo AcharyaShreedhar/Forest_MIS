@@ -50,6 +50,10 @@ const { Types, Creators } = createActions({
   updatebanxetraanyaprayojanSuccess: ["response"],
   updatebanxetraanyaprayojanFailure: null,
 
+  deletebanxetraanyaprayojanRequest: ["payload", "banxetraanyaprayojanId"],
+  deletebanxetraanyaprayojanSuccess: ["response"],
+  deletebanxetraanyaprayojanFailure: null,
+
   //gardern seed plot
   fetchallplotbibaranRequest: ["payload"],
   fetchallplotbibaranSuccess: ["response"],
