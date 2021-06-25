@@ -70,16 +70,9 @@ class Banxetraatikraman extends Component {
   }
 
   handleAdd(item) {
-    switch (item) {
-      case "banxetraatikraman": {
         this.props.history.push("/banbibaran/banxetraatikramanadd/new");
-        break;
+        
       }
-
-      default:
-        break;
-    }
-  }
 
   render() {
     const {
