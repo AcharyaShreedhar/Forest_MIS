@@ -89,6 +89,13 @@ const banbibaranRoutes = [
     auth: true,
     component: Banxetraanyaprayojan,
   },
+  {
+    path: "/banbibaran/banxetraanyaprayojanedit/:id",
+    title: "Banxetraanyaprayojan",
+    name: "banxetraanyaprayojan",
+    auth: true,
+    component: Banxetraanyaprayojan,
+  },
 
   {
     path: "/banbibaran/seedgardenplotslist",
