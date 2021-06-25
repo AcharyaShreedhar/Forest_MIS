@@ -143,20 +143,20 @@ export function* fetchbanxetraanyaprayojanRequest(api, action) {
   }
 }
 
-//----------------add banxetraanyaprayojana
+//--Add banxetraanyaprayojan
 export function* addbanxetraanyaprayojanRequest(api, action) {
   const { payload } = action;
-
-  const response = yield api.postbanxetraanyaprayojanAddNew(
+ 
+  const response = yield api.postBanbibaranBanxetraanyaprayojanAddNew(
     payload.banxetraanyaprayojan.data
   );
-
+ 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्र्योजन प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक वनक्षेत्र अन्य प्रयोजन विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanxetraanyaprayojanRequest(api, {
-      name: "established_date",
+    yield fetchallbanxetraanyaprayojanRequest(api,{
+      name: "arthik_barsa",
       page: 0,
       perPage: 10,
     });
@@ -183,11 +183,11 @@ export function* updatebanxetraanyaprayojanRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्र्योजन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्रयोजन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraanyaprayojanRequest(api, {
-      name: "established_date",
+      name: "arthik_barsa",
       page: 0,
       perPage: 10,
     });
@@ -204,6 +204,7 @@ export function* updatebanxetraanyaprayojanRequest(api, action) {
   }
 }
 
+
 //-----------------delete banxetraanyaprayojan
 export function* deletebanxetraanyaprayojanRequest(api, action) {
   const { payload } = action;
@@ -211,11 +212,11 @@ export function* deletebanxetraanyaprayojanRequest(api, action) {
   const response = yield api.postbanxetraanyaprayojanDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्र्योजन हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्रयोजन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraanyaprayojanRequest(api, {
-      name: "established_date",
+      name: "arthik_barsa",
       page: 0,
       perPage: 10,
     });
@@ -230,6 +231,7 @@ export function* deletebanxetraanyaprayojanRequest(api, action) {
     );
   }
 }
+
 
 export function* fetchallplotbibaranRequest(api, action) {
   const { payload } = action;
