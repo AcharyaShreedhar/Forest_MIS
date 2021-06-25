@@ -54,6 +54,7 @@ import {
   updateplotbibaranRequest,
   deleteplotbibaranRequest,
   deletebaramaditchijbastuRequest,
+  deletebanxetraanyaprayojanRequest,
 } from "./banbibaran";
 
 //------------------------bankaprakar
@@ -1034,6 +1035,11 @@ export default function* root() {
     takeLatest(
       BanbibaranTypes.UPDATEBANXETRAANYAPRAYOJAN_REQUEST,
       updatebanxetraanyaprayojanRequest,
+      api
+    ),
+    takeLatest(
+      BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_REQUEST, 
+      deletebanxetraanyaprayojanRequest,
       api
     )
 
