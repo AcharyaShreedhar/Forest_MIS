@@ -25,6 +25,14 @@ const { Types, Creators } = createActions({
   addbaramaditchijbastuSuccess: ["response"],
   addbaramaditchijbastuFailure: null,
 
+  updatebaramaditchijbastuRequest: ["payload", "baramaditchijbastuId"],
+  updatebaramaditchijbastuSuccess: ["response"],
+  updatebaramaditchijbastuFailure: null,
+
+  deletebaramaditchijbastuRequest: ["payload", "baramaditchijbastuId"],
+  deletebaramaditchijbastuSuccess: ["response"],
+  deletebaramaditchijbastuFailure: null,
+
   //banxetraanyaprayojan
   fetchallbanxetraanyaprayojanRequest: ["payload"],
   fetchallbanxetraanyaprayojanSuccess: ["response"],
@@ -33,6 +41,18 @@ const { Types, Creators } = createActions({
   fetchbanxetraanyaprayojanRequest: ["payload"],
   fetchbanxetraanyaprayojanSuccess: ["response"],
   fetchbanxetraanyaprayojanFailure: null,
+
+  addbanxetraanyaprayojanRequest: ["payload"],
+  addbanxetraanyaprayojanSuccess: ["response"],
+  addbanxetraanyaprayojanFailure: null,
+
+  updatebanxetraanyaprayojanRequest: ["payload", "banxetraanyaprayojanId"],
+  updatebanxetraanyaprayojanSuccess: ["response"],
+  updatebanxetraanyaprayojanFailure: null,
+
+  deletebanxetraanyaprayojanRequest: ["payload", "banxetraanyaprayojanId"],
+  deletebanxetraanyaprayojanSuccess: ["response"],
+  deletebanxetraanyaprayojanFailure: null,
 
   //gardern seed plot
   fetchallplotbibaranRequest: ["payload"],

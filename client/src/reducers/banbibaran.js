@@ -47,9 +47,29 @@ const addbaramaditchijbastuSuccess = (state, action) =>
 const addbaramaditchijbastuFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+//update baramaditchijbastu
+const updatebaramaditchijbastuRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebaramaditchijbastuSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebaramaditchijbastuFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
+//----------delete baramaditchijbastu
+const deletebaramaditchijbastuRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebaramaditchijbastuSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebaramaditchijbastuFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
-
+//------------banxetraanyaprayojan
 const fetchallbanxetraanyaprayojanRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallbanxetraanyaprayojanSuccess = (state, action) => {
@@ -77,6 +97,39 @@ const fetchbanxetraanyaprayojanSuccess = (state, action) => {
 const fetchbanxetraanyaprayojanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+//------------ add banxetraanyaprayojan
+const addbanxetraanyaprayojanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanxetraanyaprayojanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanxetraanyaprayojanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//-------------- update banxetraanyaprayojan
+const updatebanxetraanyaprayojanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebanxetraanyaprayojanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebanxetraanyaprayojanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//--------------- delete banxetraanyaprayojan
+const deletebanxetraanyaprayojanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebanxetraanyaprayojanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebanxetraanyaprayojanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });  
 
 const fetchallplotbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -161,6 +214,14 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.ADDBARAMADITCHIJBASTU_SUCCESS]: addbaramaditchijbastuSuccess,
   [BanbibaranTypes.ADDBARAMADITCHIJBASTU_FAILURE]: addbaramaditchijbastuFailure,
 
+  [BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_REQUEST]: updatebaramaditchijbastuRequest,
+  [BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_SUCCESS]: updatebaramaditchijbastuSuccess,
+  [BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_FAILURE]: updatebaramaditchijbastuFailure,
+
+  [BanbibaranTypes.DELETEBARAMADITCHIJBASTU_REQUEST]: deletebaramaditchijbastuRequest,
+  [BanbibaranTypes.DELETEBARAMADITCHIJBASTU_SUCCESS]: deletebaramaditchijbastuSuccess,
+  [BanbibaranTypes.DELETEBARAMADITCHIJBASTU_FAILURE]: deletebaramaditchijbastuFailure,
+
   [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_REQUEST]: fetchallbanxetraanyaprayojanRequest,
   [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_SUCCESS]: fetchallbanxetraanyaprayojanSuccess,
   [BanbibaranTypes.FETCHALLBANXETRAANYAPRAYOJAN_FAILURE]: fetchallbanxetraanyaprayojanFailure,
@@ -168,6 +229,18 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_REQUEST]: fetchbanxetraanyaprayojanRequest,
   [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_SUCCESS]: fetchbanxetraanyaprayojanSuccess,
   [BanbibaranTypes.FETCHBANXETRAANYAPRAYOJAN_FAILURE]: fetchbanxetraanyaprayojanFailure,
+
+  [BanbibaranTypes.ADDBANXETRAANYAPRAYOJAN_REQUEST]: addbanxetraanyaprayojanRequest,
+  [BanbibaranTypes.ADDBANXETRAANYAPRAYOJAN_SUCCESS]: addbanxetraanyaprayojanSuccess,
+  [BanbibaranTypes.ADDBANXETRAANYAPRAYOJAN_FAILURE]: addbanxetraanyaprayojanFailure,
+
+  [BanbibaranTypes.UPDATEBANXETRAANYAPRAYOJAN_REQUEST]: updatebanxetraanyaprayojanRequest,
+  [BanbibaranTypes.UPDATEBANXETRAANYAPRAYOJAN_SUCCESS]: updatebanxetraanyaprayojanSuccess,
+  [BanbibaranTypes.UPDATEBANXETRAANYAPRAYOJAN_FAILURE]: updatebanxetraanyaprayojanFailure,
+
+  [BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_REQUEST]: deletebanxetraanyaprayojanRequest,
+  [BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_SUCCESS]: deletebanxetraanyaprayojanSuccess,
+  [BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_FAILURE]: deletebanxetraanyaprayojanFailure,
 
   [BanbibaranTypes.FETCHALLPLOTBIBARAN_REQUEST]: fetchallplotbibaranRequest,
   [BanbibaranTypes.FETCHALLPLOTBIBARAN_SUCCESS]: fetchallplotbibaranSuccess,

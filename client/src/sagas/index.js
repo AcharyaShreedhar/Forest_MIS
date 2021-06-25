@@ -48,8 +48,13 @@ import {
   fetchplotbibaranRequest,
   addplotbibaranRequest,
   addbaramaditchijbastuRequest,
+  addbanxetraanyaprayojanRequest,
+  updatebaramaditchijbastuRequest,
+  updatebanxetraanyaprayojanRequest,
   updateplotbibaranRequest,
   deleteplotbibaranRequest,
+  deletebaramaditchijbastuRequest,
+  deletebanxetraanyaprayojanRequest,
 } from "./banbibaran";
 
 //------------------------bankaprakar
@@ -996,6 +1001,17 @@ export default function* root() {
       fetchbaramaditchijbastuRequest,
       api
     ),
+    takeLatest(
+      BanbibaranTypes.ADDBARAMADITCHIJBASTU_REQUEST,
+      addbaramaditchijbastuRequest,
+      api
+    ),
+    takeLatest(
+      BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_REQUEST,
+      updatebaramaditchijbastuRequest, api
+    ),
+    takeLatest(BanbibaranTypes.DELETEBARAMADITCHIJBASTU_REQUEST,
+       deletebaramaditchijbastuRequest,api),
 
     //----------Banbibaran_banxetra_anyaprayojan
     takeLatest(
@@ -1009,5 +1025,23 @@ export default function* root() {
       fetchbanxetraanyaprayojanRequest,
       api
     ),
+
+    takeLatest(
+      BanbibaranTypes.ADDBANXETRAANYAPRAYOJAN_REQUEST,
+      addbanxetraanyaprayojanRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.UPDATEBANXETRAANYAPRAYOJAN_REQUEST,
+      updatebanxetraanyaprayojanRequest,
+      api
+    ),
+    takeLatest(
+      BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_REQUEST, 
+      deletebanxetraanyaprayojanRequest,
+      api
+    )
+
   ]);
 }

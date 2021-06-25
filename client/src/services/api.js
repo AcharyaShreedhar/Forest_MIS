@@ -135,9 +135,17 @@ const create = (baseURL = Config.API_URL) => {
 
   const getBaramaditchijbastu = (baramaditchijbastuId) =>
     api.get(`baramaditChijbastu/${baramaditchijbastuId}`);
-
+  //add  
    const postBaramaditchijbastuAddnew = (payload) =>
-   api.post(`baramaditChijbastu`, payload); 
+   api.post(`baramaditChijbastu`, payload);
+   
+   //update
+   const postBaramaditchijbastuUpdate = ( payload, baramaditchijbastuId
+    ) => api.put(`baramaditchijbastu/${baramaditchijbastuId}`, payload);
+
+    //delete
+    const postBaramaditChijBastuDelete = (baramaditchijbastuId) =>
+    api.delete(`baramaditchijbastu/${baramaditchijbastuId}`);
 
   // Banbibaran_banxetra_anya_prayojan
   const getBanxetraanyaprayojanList = (payload) =>
@@ -145,6 +153,19 @@ const create = (baseURL = Config.API_URL) => {
 
   const getBanxetraanyaprayojan = (banxetraanyaprayojanId) =>
     api.get(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
+
+    //add
+    const postbanxetraanyaprayojanAddNew = (payload) =>
+    api.post(`Banxetraanyaprayojan`, payload);
+
+    //update
+    const postbanxetraanyaprayojanUpdate = ( payload, banxetraanyaprayojanId
+      ) => api.put(`banxetraanyaprayojan/${banxetraanyaprayojanId}`, payload);
+  
+      //delete
+    const postbanxetraanyaprayojanDelete = (payload, banxetraanyaprayojanId
+      ) => api.delete(`banxetraanyaprayojan`, payload);
+
   //................biruwautpadans
   const getBiruwautpadanList = (payload) => api.post("biruwaUtpadansList", payload);
 
@@ -676,8 +697,13 @@ const create = (baseURL = Config.API_URL) => {
     getBaramaditchijbastuList,
     getBaramaditchijbastu,
     postBaramaditchijbastuAddnew,
+    postBaramaditchijbastuUpdate,
+    postBaramaditChijBastuDelete,
     getBanxetraanyaprayojanList,
     getBanxetraanyaprayojan,
+    postbanxetraanyaprayojanAddNew,
+    postbanxetraanyaprayojanUpdate,
+    postbanxetraanyaprayojanDelete
   };
 };
 export default {

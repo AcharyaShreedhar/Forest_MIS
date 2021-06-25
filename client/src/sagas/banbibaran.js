@@ -28,6 +28,7 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
   }
 }
 
+//----------------add baramaditchijbastu
 export function* addbaramaditchijbastuRequest(api, action) {
   const { payload } = action;
 
@@ -57,6 +58,65 @@ export function* addbaramaditchijbastuRequest(api, action) {
   }
 }
 
+//------------update baramaditchijbastu
+export function* updatebaramaditchijbastuRequest(api, action) {
+  const { payload, baramaditchijbastuId } = action;
+
+  const response = yield api.postbaramaditchijbastuUpdate(
+    payload.baramaditchijbastu.data,
+    baramaditchijbastuId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बरामदितचिज बस्तु पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbaramaditchijbastuRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/baramaditchijbastulist");
+    yield put(BanbibaranActions.updatebaramaditchijbastuSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updatebaramaditchijbastuFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//--------------------delete baramaditchijbastu
+export function* deletebaramaditchijbastuRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBaramaditChijBastuDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बरामदितचिज बस्तु हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbaramaditchijbastuRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BanbibaranActions.deletebaramaditchijbastuSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.deletebaramaditchijbastuFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//-----------banxetraanyaprayojan
 export function* fetchallbanxetraanyaprayojanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -80,6 +140,94 @@ export function* fetchbanxetraanyaprayojanRequest(api, action) {
     );
   } else {
     yield put(BanbibaranActions.fetchbanxetraanyaprayojanFailure());
+  }
+}
+
+//----------------add banxetraanyaprayojana
+export function* addbanxetraanyaprayojanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postbanxetraanyaprayojanAddNew(
+    payload.banxetraanyaprayojan.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्र्योजन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraanyaprayojanRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/banxetraanyaprayojanlist");
+    yield put(BanbibaranActions.addbanxetraanyaprayojanSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.addbanxetraanyaprayojanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//----------------- update banxetraanyaprayojan
+export function* updatebanxetraanyaprayojanRequest(api, action) {
+  const { payload, banxetraanyaprayojanId } = action;
+
+  const response = yield api.postbanxetraanyaprayojanUpdate(
+    payload.banxetraanyaprayojan.data,
+    banxetraanyaprayojanId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्र्योजन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraanyaprayojanRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/banxetraanyaprayojanlist");
+    yield put(BanbibaranActions.updatebanxetraanyaprayojanSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updatebanxetraanyaprayojanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//-----------------delete banxetraanyaprayojan
+export function* deletebanxetraanyaprayojanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postbanxetraanyaprayojanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्र्योजन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraanyaprayojanRequest(api, {
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BanbibaranActions.deletebanxetraanyaprayojanSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.deletebanxetraanyaprayojanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
