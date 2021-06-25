@@ -156,15 +156,15 @@ const create = (baseURL = Config.API_URL) => {
 
     //add
     const postBanbibaranBanxetraanyaprayojanAddNew = (payload) =>
-    api.post(`Banxetraanyaprayojan`, payload);
+    api.post(`BanxetraAnyaprayojan`, payload);
 
     //update
     const postBanbibaranBanxetraanyaprayojanUpdate = ( payload, banxetraanyaprayojanId
-      ) => api.put(`banxetraanyaprayojan/${banxetraanyaprayojanId}`, payload);
+      ) => api.put(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`, payload);
   
       //delete
-    const postBanbibaranBanxetraanyaprayojanDelete = (payload, banxetraanyaprayojanId
-      ) => api.delete(`banxetraanyaprayojan`, payload);
+    const postBanbibaranBanxetraanyaprayojanDelete = (banxetraanyaprayojanId) => 
+      api.delete(`banxetraAnyaprayojan/${banxetraanyaprayojanId}`);
 
   //................biruwautpadans
   const getBiruwautpadanList = (payload) => api.post("biruwaUtpadansList", payload);
