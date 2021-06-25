@@ -406,24 +406,75 @@ const create = (baseURL = Config.API_URL) => {
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) =>
     api.get(`municipalities/${municipalitiesId}`);
+  //Add
+  const postMunicipalitiesAddNew = (payload) =>
+   api.post(`municipalities`, payload);
+ //update
+ const postMunicipalitiesUpdate = (payload, provincesId) =>
+   api.put(`municipalities/${municipalitiesId}`, payload);
+ //Delete
+ const postMunicipalitiesDelete = (municipalitiesId) =>
+   api.delete(`municipalities/${municipalitiesId}`);
+
 
   //-------Provinces
   const getProvincesList = () => api.get("province");
 
   const getProvinces = (provincesId) => api.get(`province/${provincesId}`);
 
+  //Add
+  const postProvincesAddNew = (payload) =>
+    api.post(`province`, payload);
+  //update
+  const postProvincesUpdate = (payload, provincesId) =>
+    api.put(`province/${provincesId}`, payload);
+  //Delete
+  const postProvincesDelete = (provincesId) =>
+    api.delete(`province/${provincesId}`);
+
   //-------Districts
   const getDistrictsList = () => api.get("district");
   const getDistricts = (districtsId) => api.get(`district/${districtsId}`);
+
+  //Add
+  const postDistrictsAddNew = (payload) =>
+    api.post(`district`, payload);
+  //update
+  const postDistrictsUpdate = (payload, districtsId) =>
+    api.put(`district/${districtsId}`, payload);
+  //Delete
+  const postDistrictsDelete = (districtsId) =>
+    api.delete(`district/${districtsId}`);
+
 
   //-------Departments
   const getDepartmentsList = (payload) => api.post("departmentList", payload);
   const getDepartments = (departmentsId) =>
     api.get(`department/${departmentsId}`);
 
+  //Add
+  const postDepartmentsAddNew = (payload) =>
+    api.post(`department`, payload);
+  //update
+  const postDepartmentsUpdate = (payload, departmentsId) =>
+    api.put(`department/${departmentsId}`, payload);
+  //Delete
+  const postDepartmentsDelete = (departmentsId) =>
+    api.delete(`department/${departmentsId}`);
+
   //-------Users
   const getUsersList = (payload) => api.post("usersList", payload);
   const getUsers = (usersId) => api.get(`users/${usersId}`);
+
+  //Add
+  const postUsersAddNew = (payload) =>
+    api.post(`users`, payload);
+  //update
+  const postUsersUpdate = (payload, usersId) =>
+    api.put(`users/${usersId}`, payload);
+  //Delete
+  const postUsersDelete = (usersId) =>
+    api.delete(`users/${usersId}`);
 
   //inventories
   const getInventoriesList = (payload) => api.post("inventoryList", payload);
@@ -683,18 +734,30 @@ const create = (baseURL = Config.API_URL) => {
     //--municipalities
     getMunicipalitiesList,
     getMunicipalities,
+    postMunicipalitiesAddNew,
+    postMunicipalitiesUpdate,
+    postMunicipalitiesDelete,
 
     //-----Provinces
     getProvincesList,
     getProvinces,
+    postProvincesAddNew,
+    postProvincesUpdate,
+    postProvincesDelete,
 
     //----Districts
     getDistrictsList,
     getDistricts,
+    postDistrictsAddNew,
+    postDistrictsUpdate,
+    postDistrictsDelete,
 
     //-----Users
     getUsersList,
     getUsers,
+    postUsersAddNew,
+    postUsersUpdate,
+    postUsersDelete,
 
     //ConsumerGroupDetails
     getConsumergroupDetailsList,
@@ -703,6 +766,9 @@ const create = (baseURL = Config.API_URL) => {
     //-----Departments
     getDepartmentsList,
     getDepartments,
+    postDepartmentsAddNew,
+    postDepartmentsUpdate,
+    postDepartmentsDelete,
 
     //--------Banbibaran
     getBaramaditchijbastuList,
