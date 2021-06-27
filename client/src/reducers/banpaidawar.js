@@ -140,7 +140,20 @@ const deletebanpaidawarlilamFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+//---------------banpaidawar utpadan tatha bikribitaran
+const fetchallbanpaidawarbikribitaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallbanpaidawarbikribitaranSuccess = (state, action) => {
 
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanpaidawarbikribitaranData: action.response,
+  });
+};
+const fetchallbanpaidawarbikribitaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -194,6 +207,10 @@ export const reducer = createReducer(initialState, {
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_REQUEST]: deletebanpaidawarlilamRequest,
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_SUCCESS]: deletebanpaidawarlilamSuccess,
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_FAILURE]: deletebanpaidawarlilamFailure,
+
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_REQUEST]:  fetchallbanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_SUCCESS]:  fetchallbanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_FAILURE]:  fetchallbanpaidawarbikribitaranFailure,
 
  
   [BanpaidawarTypes.LOCATIONS_REQUEST]: locationsRequest,
