@@ -75,6 +75,12 @@ const { Types, Creators } = createActions({
   deleteplotbibaranSuccess: ["response"],
   deleteplotbibaranFailure: null,
 
+  //uddhyam BIbaran
+  fetchalluddhyambibaranRequest: ["payload"],
+  fetchalluddhyambibaranSuccess: ["response"],
+  fetchalluddhyambibaranFailure: null,
+
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

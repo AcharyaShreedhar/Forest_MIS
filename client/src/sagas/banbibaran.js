@@ -344,3 +344,15 @@ export function* deleteplotbibaranRequest(api, action) {
     );
   }
 }
+
+export function* fetchalluddhyambibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getUddhyambibaranList(payloaddata);
+
+  if (response.ok) {
+    yield put(BanbibaranActions.fetchalluddhyambibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.fetchalluddhyambibaranFailure());
+  }
+}
