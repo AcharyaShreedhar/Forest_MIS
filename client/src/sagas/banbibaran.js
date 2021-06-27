@@ -371,3 +371,15 @@ export function* fetchallbachatbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchallbachatbibaranFailure());
   }
 }
+
+export function* fetchbachatbibaranRequest(api, action) {
+  const bachatId = action.payload;
+
+  const response = yield api.getBachatbibaran(bachatId);
+
+  if (response.ok) {
+    yield put(BanbibaranActions.fetchbachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.fetchbachatbibaranFailure());
+  }
+}
