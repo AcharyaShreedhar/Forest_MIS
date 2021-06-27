@@ -359,6 +359,17 @@ export function* fetchalluddhyambibaranRequest(api, action) {
   }
 }
 
+export function* fetchuddhyambibaranRequest(api, action) {
+  const uddhyamId = action.payload;
+
+  const response = yield api.getUddhyambibaran(uddhyamId);
+  if (response.ok) {
+    yield put(BanbibaranActions.fetchuddhyambibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.fetchuddhyambibaranFailure());
+  }
+}   
+
 //bachat bibaran
 export function* fetchallbachatbibaranRequest(api, action) {
   const { payload } = action;
@@ -369,6 +380,7 @@ export function* fetchallbachatbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchallbachatbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchallbachatbibaranFailure());
+
   }
 }
 
