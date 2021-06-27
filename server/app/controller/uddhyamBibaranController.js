@@ -38,7 +38,7 @@ async function getUddhyamBibaran(req, res) {
 
 //Controller for adding a UddhyamBibaran
 async function addUddhyamBibaran(req, res) {
-  const addUddhyamBibaranQuery = `INSERT INTO udhhyam_bibarans(niji_uddhyam_sankhya,niji_rojgari_sankhya,samudayik_uddhyam_sankhya,samudayik_rojgari_sankhya,sahakari_uddhyam_sankhya,sahakari_rojgari_sankhya,created_by,updated_by) values (?,?,?,?,?,?,?,?)`;
+  const addUddhyamBibaranQuery = `INSERT INTO uddhyam_bibarans(niji_uddhyam_sankhya,niji_rojgari_sankhya,samudayik_uddhyam_sankhya,samudayik_rojgari_sankhya,sahakari_uddhyam_sankhya,sahakari_rojgari_sankhya,created_by,updated_by) values (?,?,?,?,?,?,?,?)`;
   pool.query(
     addUddhyamBibaranQuery,
     [
