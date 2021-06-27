@@ -80,6 +80,11 @@ const { Types, Creators } = createActions({
   fetchalluddhyambibaranSuccess: ["response"],
   fetchalluddhyambibaranFailure: null,
 
+  fetchuddhyambibaranRequest: ["payload"],
+  fetchuddhyambibaranSuccess: ["response"],
+  fetchuddhyambibaranFailure: null,
+
+
   //bachat bibaran
   fetchallbachatbibaranRequest: ["payload"],
   fetchallbachatbibaranSuccess: ["response"],
