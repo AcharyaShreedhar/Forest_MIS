@@ -46,6 +46,7 @@ import {
   fetchbanxetraanyaprayojanRequest,
   fetchallplotbibaranRequest,
   fetchplotbibaranRequest,
+  fetchalluddhyambibaranRequest,
   addplotbibaranRequest,
   addbaramaditchijbastuRequest,
   addbanxetraanyaprayojanRequest,
@@ -783,6 +784,13 @@ export default function* root() {
       deleteplotbibaranRequest,
       api
     ),
+
+      //------uddhyambibaran
+      takeLatest(
+        BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_REQUEST,
+        fetchalluddhyambibaranRequest,
+        api
+      ),
 
     //inventories
     takeLatest(
