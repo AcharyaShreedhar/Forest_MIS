@@ -26,10 +26,10 @@ module.exports = {
       sahakariko_rakam: {
         type: Sequelize.STRING
       },
-      updated_by: {
+      created_by: {
         type: Sequelize.STRING
       },
-      created_by: {
+      updated_by: {
         type: Sequelize.STRING
       },
       createdAt: {
