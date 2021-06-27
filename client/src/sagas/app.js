@@ -49,11 +49,11 @@ export function* addmunicipalitiesRequest(api, action) {
   const { payload } = action;
  
   const response = yield api.postMunicipalitiesAddNew(
-    payload.plotbibaran.data
+    payload.municipalities.data
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallmunicipalitiesRequest(api, {
@@ -62,9 +62,9 @@ export function* addmunicipalitiesRequest(api, action) {
       perPage: 10,
     });
     yield call(history.push, "/app/municipalitieslist");
-    yield put(BanbibaranActions.addplotbibaranSuccess(response.data));
+    yield put(AppActions.addmunicipalitiesSuccess(response.data));
   } else {
-    yield put(BanbibaranActions.addplotbibaranFailure());
+    yield put(AppActions.addmunicipalitiesFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
@@ -84,7 +84,7 @@ export function* updatemunicipalitiesRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallmunicipalitiesRequest(api, {
@@ -109,17 +109,17 @@ export function* updatemunicipalitiesRequest(api, action) {
 export function* deletemunicipalitiesRequest(api, action) {
   const { payload } = action;
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallplotbibaranRequest(api, {
+    yield fetchallmunicipalitiesRequest(api, {
       name: "mun_name_nep",
       page: 0,
       perPage: 10,
     });
-    yield put(AppActions.deleteplotbibaranSuccess(response.data));
+    yield put(AppActions.deletemunicipalitiesSuccess(response.data));
   } else {
-    yield put(AppActions.deleteplotbibaranFailure());
+    yield put(AppActions.deletemunicipalitiesFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
@@ -160,7 +160,7 @@ export function* addprovincesRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallprovincesRequest(api, {
@@ -191,7 +191,7 @@ export function* updateprovincesRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallprovincesRequest(api, {
@@ -219,7 +219,7 @@ export function* deleteprovincesRequest(api, action) {
   const response = yield api.postProvincesDelete(payload);
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallprovincesRequest(api, {
@@ -271,7 +271,7 @@ export function* adddistrictsRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldistrictsRequest(api, {
@@ -302,7 +302,7 @@ export function* updatedistrictsRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldistrictsRequest(api, {
@@ -333,7 +333,7 @@ export function* deletedistrictsRequest(api, action) {
     toast.success("सफलतापुर्वक बगैंचा विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallplotbibaranRequest(api, {
+    yield fetchalldistrictsRequest(api, {
       name: "dist_name_nep",
       page: 0,
       perPage: 10,
@@ -381,7 +381,7 @@ export function* adddepartmentsRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldepartmentsRequest(api, {
@@ -412,7 +412,7 @@ export function* updatedepartmentsRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldepartmentsRequest(api, {
@@ -440,7 +440,7 @@ export function* deletedepartmentsRequest(api, action) {
   const response = yield api.postDepartmentsDelete(payload);
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldepartmentsRequest(api, {
@@ -495,7 +495,7 @@ export function* addusersRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallusersRequest(api, {
@@ -526,7 +526,7 @@ export function* updateusersRequest(api, action) {
   );
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallusersRequest(api, {
@@ -554,7 +554,7 @@ export function* deleteusersRequest(api, action) {
   const response = yield api.postUsersDelete(payload);
  
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण हटाईयो !!!!!", {
+    toast.success("विवरण सफलतापुर्वक हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallusersRequest(api, {
