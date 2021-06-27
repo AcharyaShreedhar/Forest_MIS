@@ -1,8 +1,9 @@
 import { call, put } from "redux-saga/effects";
-
+import { toast } from "react-toastify";
 import { history } from "../reducers";
 import AppActions from "../actions/app";
 import { isNil } from "ramda";
+
 
 export function* loginRequest(api, action) {
   const { payload } = action;
@@ -108,6 +109,7 @@ export function* updatemunicipalitiesRequest(api, action) {
 // Delete municipalities
 export function* deletemunicipalitiesRequest(api, action) {
   const { payload } = action;
+  const response = yield api.postMunicipalitiesDelete(payload);
   if (response.ok) {
     toast.success("सफलतापूर्वक  नगरपालिका विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
