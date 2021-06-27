@@ -233,6 +233,17 @@ const fetchbachatbibaranFailure = (state, action) => {
 };
 
 
+const addbachatbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbachatbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbachatbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -316,6 +327,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHBACHATBIBARAN_REQUEST]: fetchbachatbibaranRequest,
   [BanbibaranTypes.FETCHBACHATBIBARAN_SUCCESS]: fetchbachatbibaranSuccess,
   [BanbibaranTypes.FETCHBACHATBIBARAN_FAILURE]: fetchbachatbibaranFailure,
+
+  [BanbibaranTypes.ADDBACHATBIBARAN_REQUEST]: addbachatbibaranRequest,
+  [BanbibaranTypes.ADDBACHATBIBARAN_SUCCESS]: addbachatbibaranSuccess,
+  [BanbibaranTypes.ADDBACHATBIBARAN_FAILURE]: addbachatbibaranFailure,
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
