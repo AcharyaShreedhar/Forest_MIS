@@ -379,7 +379,7 @@ const create = (baseURL = Config.API_URL) => {
   const postMunicipalitiesAddNew = (payload) =>
    api.post(`municipalities`, payload);
  //update
- const postMunicipalitiesUpdate = (payload, provincesId) =>
+ const postMunicipalitiesUpdate = (payload, municipalitiesId) =>
    api.put(`municipalities/${municipalitiesId}`, payload);
  //Delete
  const postMunicipalitiesDelete = (municipalitiesId) =>
