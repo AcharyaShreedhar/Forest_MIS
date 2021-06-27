@@ -10,7 +10,7 @@ const initialState = Immutable({
 });
 
 const fetchallbanpaidawarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchallbanpaidawarSuccess = (state, action) => {
 
   return state.merge({
@@ -24,7 +24,7 @@ const fetchallbanpaidawarFailure = (state, action) => {
 };
 
 const fetchbanpaidawarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchbanpaidawarSuccess = (state, action) => {
 
   return state.merge({
@@ -76,7 +76,7 @@ state.merge({ ...state, status: "error" });
 
 
 const fetchallbanpaidawarlilamRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchallbanpaidawarlilamSuccess = (state, action) => {
 
   return state.merge({
@@ -91,7 +91,7 @@ const fetchallbanpaidawarlilamFailure = (state, action) => {
 
 
 const fetchbanpaidawarlilamRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchbanpaidawarlilamSuccess = (state, action) => {
 
   return state.merge({
@@ -142,7 +142,7 @@ state.merge({ ...state, status: "error" });
 
 //---------------banpaidawar utpadan tatha bikribitaran
 const fetchallbanpaidawarbikribitaranRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchallbanpaidawarbikribitaranSuccess = (state, action) => {
 
   return state.merge({
