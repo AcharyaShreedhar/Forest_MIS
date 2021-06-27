@@ -52,6 +52,11 @@
    deletebanpaidawarlilamSuccess: ["response"],
    deletebanpaidawarlilamFailure: null,
 
+     // ------ banpaidawarbikribitaran
+  fetchallbanpaidawarbikribitaranRequest: ["payload"],
+  fetchallbanpaidawarbikribitaranSuccess: ["response"],
+  fetchallbanpaidawarbikribitaranFailure: null,
+
 
        locationsRequest: ["payload"],
    // Clear all caches
