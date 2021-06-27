@@ -166,6 +166,10 @@ const create = (baseURL = Config.API_URL) => {
     const postBanbibaranBanxetraanyaprayojanDelete = (payload, banxetraanyaprayojanId
       ) => api.delete(`banxetraanyaprayojan`, payload);
 
+    //UdhhyamBibarans
+    const getUddhyambibaranList = (payload) =>
+    api.post("uddhyamBibaranList", payload);
+
   //................biruwautpadans
   const getBiruwautpadanList = (payload) => api.post("biruwaUtpadansList", payload);
 
@@ -704,6 +708,7 @@ const create = (baseURL = Config.API_URL) => {
     postBanbibaranBanxetraanyaprayojanAddNew,
     postBanbibaranBanxetraanyaprayojanUpdate,
     postBanbibaranBanxetraanyaprayojanDelete,
+    getUddhyambibaranList,
   };
 };
 export default {
