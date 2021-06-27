@@ -164,6 +164,7 @@ import {
   addbanpaidawarlilamRequest,
   updatebanpaidawarlilamRequest,
   deletebanpaidawarlilamRequest,
+  fetchallbanpaidawarbikribitaranRequest,
 } from "./banpaidawar";
 
 //--------------------bandadelobibaran
@@ -1051,7 +1052,6 @@ export default function* root() {
       deletebanxetraanyaprayojanRequest,
       api
     ),
-
     //bachat bibaran
     takeLatest(
       BanbibaranTypes.FETCHALLBACHATBIBARAN_REQUEST, 
@@ -1059,5 +1059,10 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      BanpaidawarTypes.BANPAIDAWARBIKRIBITARAN_REQUEST, 
+      fetchallbanpaidawarbikribitaranRequest,
+      api
+    )
   ]);
 }
