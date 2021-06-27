@@ -190,6 +190,19 @@ const deleteplotbibaranSuccess = (state, action) =>
 const deleteplotbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+  const fetchalluddhyambibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchalluddhyambibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    alluddhyambibaranData: action.response,
+  });
+};
+const fetchalluddhyambibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -261,6 +274,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.DELETEPLOTBIBARAN_REQUEST]: deleteplotbibaranRequest,
   [BanbibaranTypes.DELETEPLOTBIBARAN_SUCCESS]: deleteplotbibaranSuccess,
   [BanbibaranTypes.DELETEPLOTBIBARAN_FAILURE]: deleteplotbibaranFailure,
+
+  [BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_REQUEST]: fetchalluddhyambibaranRequest,
+  [BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_SUCCESS]: fetchalluddhyambibaranSuccess,
+  [BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_FAILURE]: fetchalluddhyambibaranFailure,
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,
