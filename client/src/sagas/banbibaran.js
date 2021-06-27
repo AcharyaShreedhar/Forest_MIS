@@ -177,7 +177,7 @@ export function* addbanxetraanyaprayojanRequest(api, action) {
 export function* updatebanxetraanyaprayojanRequest(api, action) {
   const { payload, banxetraanyaprayojanId } = action;
 
-  const response = yield api.postbanxetraanyaprayojanUpdate(
+  const response = yield api.postBanbibaranBanxetraanyaprayojanUpdate(
     payload.banxetraanyaprayojan.data,
     banxetraanyaprayojanId
   );
@@ -209,7 +209,7 @@ export function* updatebanxetraanyaprayojanRequest(api, action) {
 export function* deletebanxetraanyaprayojanRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postbanxetraanyaprayojanDelete(payload);
+  const response = yield api.postBanbibaranBanxetraanyaprayojanDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्रयोजन हटाईयो !!!!!", {
