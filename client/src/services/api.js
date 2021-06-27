@@ -531,6 +531,10 @@ const create = (baseURL = Config.API_URL) => {
   const postKarmacharibibaranPostDelete = (postId) =>
     api.delete(`posts/${postId}`);
 
+  //banpaidawar_bikribitaran
+  const getBanpaidawarBikribitaranList = (payload) =>
+    api.post("banpaidawarbikribitaransList", payload);
+
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) => api.post("ConsumerGroupDetailsList", payload);
   const getConsumergroupDetails = (consumergroupDetailsId) =>
@@ -626,6 +630,7 @@ const create = (baseURL = Config.API_URL) => {
     postBanpaidawarBanpaidawarlilamAddNew,
     postBanpaidawarBanpaidawarlilamUpdate,
     postBanpaidawarBanpaidawarlilamDelete,
+    getBanpaidawarBikribitaranList,
     // karmacharidarbandi
     getKarmacharidarbandiList,
     getKarmacharidarbandi,
