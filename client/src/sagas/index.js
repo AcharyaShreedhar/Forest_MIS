@@ -73,6 +73,7 @@ import {
   deletebanxetraanyaprayojanRequest,
   fetchallbachatbibaranRequest,
   fetchbachatbibaranRequest,
+  addbachatbibaranRequest,
 } from "./banbibaran";
 
 //------------------------bankaprakar
@@ -1155,6 +1156,13 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      BanbibaranTypes.ADDBACHATBIBARAN_REQUEST, 
+      addbachatbibaranRequest,
+      api
+    ),
+
+    //banpaidawar bikribitaran
     takeLatest(
       BanpaidawarTypes.BANPAIDAWARBIKRIBITARAN_REQUEST, 
       fetchallbanpaidawarbikribitaranRequest,
