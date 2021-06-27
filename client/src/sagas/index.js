@@ -56,6 +56,7 @@ import {
   deleteplotbibaranRequest,
   deletebaramaditchijbastuRequest,
   deletebanxetraanyaprayojanRequest,
+  fetchallbachatbibaranRequest,
 } from "./banbibaran";
 
 //------------------------bankaprakar
@@ -1049,7 +1050,14 @@ export default function* root() {
       BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_REQUEST, 
       deletebanxetraanyaprayojanRequest,
       api
-    )
+    ),
+
+    //bachat bibaran
+    takeLatest(
+      BanbibaranTypes.FETCHALLBACHATBIBARAN_REQUEST, 
+      fetchallbachatbibaranRequest,
+      api
+    ),
 
   ]);
 }

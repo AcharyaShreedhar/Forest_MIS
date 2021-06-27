@@ -399,6 +399,9 @@ const create = (baseURL = Config.API_URL) => {
   const postPlotbibaranPlotbibaranDelete = (plotId) =>
     api.delete(`plot/${plotId}`);
 
+  //bachat bibarans
+  const getBachatbibaranList = (payload) => api.post("bachatBibaranList", payload);
+
   //-----Municipalities
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) =>
@@ -635,6 +638,10 @@ const create = (baseURL = Config.API_URL) => {
     postPlotbibaranPlotbibaranAddNew,
     postPlotbibaranPlotbibaranUpdate,
     postPlotbibaranPlotbibaranDelete,
+
+    //bachat bibaran
+    getBachatbibaranList,
+    
     //inventories
     getInventoriesList,
     getInventories,

@@ -345,6 +345,8 @@ export function* deleteplotbibaranRequest(api, action) {
   }
 }
 
+//uddhyam bibaran
+
 export function* fetchalluddhyambibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -354,5 +356,18 @@ export function* fetchalluddhyambibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchalluddhyambibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchalluddhyambibaranFailure());
+  }
+}
+
+//bachat bibaran
+export function* fetchallbachatbibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBachatbibaranList(payloaddata);
+
+  if (response.ok) {
+    yield put(BanbibaranActions.fetchallbachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.fetchallbachatbibaranFailure());
   }
 }
