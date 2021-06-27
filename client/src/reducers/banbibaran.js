@@ -218,6 +218,16 @@ const fetchuddhyambibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add uddhyambibaran
+const adduddhyambibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const adduddhyambibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const adduddhyambibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 //bachat bibaran
 const fetchallbachatbibaranRequest = (state, action) =>
@@ -337,6 +347,10 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHUDDHYAMBIBARAN_REQUEST]: fetchuddhyambibaranRequest,
   [BanbibaranTypes.FETCHUDDHYAMBIBARAN_SUCCESS]: fetchuddhyambibaranSuccess,
   [BanbibaranTypes.FETCHUDDHYAMBIBARAN_FAILURE]: fetchuddhyambibaranFailure,
+
+  [BanbibaranTypes.ADDUDDHYAMBIBARAN_REQUEST]: adduddhyambibaranRequest,
+  [BanbibaranTypes.ADDUDDHYAMBIBARAN_SUCCESS]: adduddhyambibaranSuccess,
+  [BanbibaranTypes.ADDUDDHYAMBIBARAN_FAILURE]: adduddhyambibaranFailure,
 
   [BanbibaranTypes.FETCHALLBACHATBIBARAN_REQUEST]: fetchallbachatbibaranRequest,
   [BanbibaranTypes.FETCHALLBACHATBIBARAN_SUCCESS]: fetchallbachatbibaranSuccess,
