@@ -18,29 +18,14 @@ import { KarmacharibibaranTypes } from "../actions/karmacharibibaran";
 import {
   fetchalldepartmentsRequest,
   fetchdepartmentsRequest,
-  adddepartmentsRequest,
-  updatedepartmentsRequest,
-  deletedepartmentsRequest,
   fetchalldistrictsRequest,
   fetchdistrictsRequest,
-  adddistrictsRequest,
-  updatedistrictsRequest,
-  deletedistrictsRequest,
   fetchallmunicipalitiesRequest,
   fetchmunicipalitiesRequest,
-  addmunicipalitiesRequest,
-  updatemunicipalitiesRequest,
-  deletemunicipalitiesRequest,
   fetchallprovincesRequest,
   fetchprovincesRequest,
-  addprovincesRequest,
-  updateprovincesRequest,
-  deleteprovincesRequest,
   fetchallusersRequest,
   fetchusersRequest,
-  addusersRequest,
-  updateusersRequest,
-  deleteusersRequest,
   loginRequest,
   logoutRequest,
 } from "./app";
@@ -985,42 +970,14 @@ export default function* root() {
       fetchmunicipalitiesRequest,
       api
     ),
-    takeLatest(AppTypes.ADDMUNICIPALITIES_REQUEST, addmunicipalitiesRequest, api),
-
-    takeLatest(
-      AppTypes.UPDATEMUNICIPALITIES_REQUEST,
-      updatemunicipalitiesRequest,
-      api
-    ),
-
-    takeLatest(
-      AppTypes.DELETEMUNICIPALITIES_REQUEST,
-      deletemunicipalitiesRequest,
-      api
-    ),
     //---------------Provinces
     takeLatest(
       AppTypes.FETCHALLPROVINCES_REQUEST,
       fetchallprovincesRequest,
       api
     ),
-    
+
     takeLatest(AppTypes.FETCHPROVINCES_REQUEST, fetchprovincesRequest, api),
-
-    takeLatest(AppTypes.ADDPROVINCES_REQUEST, addprovincesRequest, api),
-
-    takeLatest(
-      AppTypes.UPDATEPROVINCES_REQUEST,
-      updateprovincesRequest,
-      api
-    ),
-
-    takeLatest(
-      AppTypes.DELETEPROVINCES_REQUEST,
-      deleteprovincesRequest,
-      api
-    ),
-
 
     //--------Districts
     takeLatest(
@@ -1031,21 +988,6 @@ export default function* root() {
 
     takeLatest(AppTypes.FETCHDISTRICTS_REQUEST, fetchdistrictsRequest, api),
 
-    
-    takeLatest(AppTypes.ADDDISTRICTS_REQUEST, adddistrictsRequest, api),
-
-    takeLatest(
-      AppTypes.UPDATEDISTRICTS_REQUEST,
-      updatedistrictsRequest,
-      api
-    ),
-
-    takeLatest(
-      AppTypes.DELETEDISTRICTS_REQUEST,
-      deletedistrictsRequest,
-      api
-    ),
-
     //--------Departments
     takeLatest(
       AppTypes.FETCHALLDEPARTMENTS_REQUEST,
@@ -1054,40 +996,8 @@ export default function* root() {
     ),
     takeLatest(AppTypes.FETCHDEPARTMENTS_REQUEST, fetchdepartmentsRequest, api),
 
-    takeLatest(AppTypes.ADDDEPARTMENTS_REQUEST, adddepartmentsRequest, api),
-
-    takeLatest(
-      AppTypes.UPDATEDEPARTMENTS_REQUEST,
-      updatedepartmentsRequest,
-      api
-    ),
-
-    takeLatest(
-      AppTypes.DELETEDEPARTMENTS_REQUEST,
-      deletedepartmentsRequest,
-      api
-    ),
-
     //--------Users
     takeLatest(AppTypes.FETCHALLUSERS_REQUEST, fetchallusersRequest, api),
-
-    takeLatest(AppTypes.FETCHUSERS_REQUEST, fetchusersRequest, api),
-
-    takeLatest(AppTypes.ADDUSERS_REQUEST, addusersRequest, api),
-
-    takeLatest(
-      AppTypes.UPDATEUSERS_REQUEST,
-      updateusersRequest,
-      api
-    ),
-
-    takeLatest(
-      AppTypes.DELETEUSERS_REQUEST,
-      deleteusersRequest,
-      api
-    ),
-
-    
 
     //----------Banbibaran_baramadit_chij_bastu
     takeLatest(
