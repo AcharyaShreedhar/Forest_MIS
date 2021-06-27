@@ -85,6 +85,10 @@ const { Types, Creators } = createActions({
   fetchallbachatbibaranSuccess: ["response"],
   fetchallbachatbibaranFailure: null,
 
+  fetchbachatbibaranRequest: ["payload"],
+  fetchbachatbibaranSuccess: ["response"],
+  fetchbachatbibaranFailure: null,
+
 
   locationsRequest: ["payload"],
   // Clear all caches

@@ -402,6 +402,8 @@ const create = (baseURL = Config.API_URL) => {
   //bachat bibarans
   const getBachatbibaranList = (payload) => api.post("bachatBibaranList", payload);
 
+  const getBachatbibaran = (bachatId) => api.get(`bachatBibaran/${bachatId}`);
+
   //-----Municipalities
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) =>
@@ -646,6 +648,7 @@ const create = (baseURL = Config.API_URL) => {
 
     //bachat bibaran
     getBachatbibaranList,
+    getBachatbibaran,
     
     //inventories
     getInventoriesList,
