@@ -10,7 +10,7 @@ const initialState = Immutable({
 });
 
 const fetchallbanpaidawarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchallbanpaidawarSuccess = (state, action) => {
 
   return state.merge({
@@ -24,7 +24,7 @@ const fetchallbanpaidawarFailure = (state, action) => {
 };
 
 const fetchbanpaidawarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchbanpaidawarSuccess = (state, action) => {
 
   return state.merge({
@@ -76,7 +76,7 @@ state.merge({ ...state, status: "error" });
 
 
 const fetchallbanpaidawarlilamRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchallbanpaidawarlilamSuccess = (state, action) => {
 
   return state.merge({
@@ -91,7 +91,7 @@ const fetchallbanpaidawarlilamFailure = (state, action) => {
 
 
 const fetchbanpaidawarlilamRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchbanpaidawarlilamSuccess = (state, action) => {
 
   return state.merge({
@@ -140,7 +140,20 @@ const deletebanpaidawarlilamFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+//---------------banpaidawar utpadan tatha bikribitaran
+const fetchallbanpaidawarbikribitaranRequest = (state, action) =>
+  state.merge({ ...state,  status: "pending" });
+const fetchallbanpaidawarbikribitaranSuccess = (state, action) => {
 
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanpaidawarbikribitaranData: action.response,
+  });
+};
+const fetchallbanpaidawarbikribitaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -194,6 +207,10 @@ export const reducer = createReducer(initialState, {
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_REQUEST]: deletebanpaidawarlilamRequest,
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_SUCCESS]: deletebanpaidawarlilamSuccess,
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_FAILURE]: deletebanpaidawarlilamFailure,
+
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_REQUEST]:  fetchallbanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_SUCCESS]:  fetchallbanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_FAILURE]:  fetchallbanpaidawarbikribitaranFailure,
 
  
   [BanpaidawarTypes.LOCATIONS_REQUEST]: locationsRequest,

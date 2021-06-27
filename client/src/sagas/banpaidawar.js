@@ -225,3 +225,15 @@ export function* deletebanpaidawarlilamRequest(api, action) {
     );
   }
 }
+
+//------------ bandapaidawarbikribitaran
+export function* fetchallbanpaidawarbikribitaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanpaidawarBikribitaranList(payloaddata);
+  if (response.ok) {
+    yield put(BanpaidawarActions.fetchallbanpaidawarbikribitaranSuccess(response.data));
+  } else {
+    yield put(BanpaidawarActions.fetchallbanpaidawarbikribitaranFailure());
+  }
+}
