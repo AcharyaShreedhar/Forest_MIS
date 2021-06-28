@@ -92,6 +92,10 @@ const { Types, Creators } = createActions({
   updateuddhyambibaranSuccess: ["response"],
   updateuddhyambibaranFailure: null,
 
+  deleteuddhyambibaranRequest: ["payload","uddhyamId"],
+  deleteuddhyambibaranSuccess: ["response"],
+  deleteuddhyambibaranFailure: null,
+
 
   //bachat bibaran
   fetchallbachatbibaranRequest: ["payload"],
