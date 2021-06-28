@@ -414,6 +414,9 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranBachatbibaranAddNew = (payload) =>
     api.post(`bachatBibaran`, payload);
 
+  const postBanbibaranBachatbibaranUpdate = (payload, bachatId) =>
+    api.put(`bachatBibaran/${bachatId}`, payload);
+
   //-----Municipalities
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) =>
@@ -711,6 +714,7 @@ const create = (baseURL = Config.API_URL) => {
     getBachatbibaranList,
     getBachatbibaran,
     postBanbibaranBachatbibaranAddNew,
+    postBanbibaranBachatbibaranUpdate,
     
     //inventories
     getInventoriesList,

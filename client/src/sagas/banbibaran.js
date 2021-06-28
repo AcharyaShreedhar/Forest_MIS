@@ -455,3 +455,34 @@ export function* addbachatbibaranRequest(api, action) {
     );
   }
 }
+
+// Update bachatbibaran
+export function* updatebachatbibaranRequest(api, action) {
+  const { payload, bachatId } = action;
+
+  const response = yield api.postBanbibaranBachatbibaranUpdate(
+    payload.bachatbibaran.data,
+    bachatId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वचत तथा ऋण विवरण विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbachatbibaranRequest(api, {
+      name: "samuhako_naam",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/bachatbibaranlist");
+    yield put(BanbibaranActions.updatebachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updatebachatbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
