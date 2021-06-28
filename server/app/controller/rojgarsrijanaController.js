@@ -67,7 +67,7 @@ async function addRojgarSrijana(req, res) {
 
 //Controller for updating a rojgar srijana
 
-async function updateRojgarSrijan(req, res) {
+async function updateRojgarSrijana(req, res) {
   const updateRojgarSrijanaQuery = `UPDATE rojgar_srijanas SET karyaharu=?, ekai=?, banka_prakar=?, mahila=?, purus=?, jamma=?, kaifiyat=?,created_by=?,updated_by=? WHERE rojgar_srijana_id=?`;
   await pool.query(
     updateRojgarSrijanaQuery,
@@ -112,6 +112,6 @@ module.exports = {
     getAllRojgarSrijana,
     getRojgarSrijana,
     addRojgarSrijana,
-    updateRojgarSrijan,
+    updateRojgarSrijana,
     deleteRojgarSrijana
 };
