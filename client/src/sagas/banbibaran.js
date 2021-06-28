@@ -486,3 +486,30 @@ export function* updatebachatbibaranRequest(api, action) {
     );
   }
 }
+
+
+export function* deletebachatbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranBachatbibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वचत तथा ऋण विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbachatbibaranRequest(api, {
+      name: "samuhako_naam",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BanbibaranActions.deletebachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.deletebachatbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
