@@ -57,10 +57,17 @@
   fetchallbanpaidawarbikribitaranSuccess: ["response"],
   fetchallbanpaidawarbikribitaranFailure: null,
 
+  fetchbanpaidawarbikribitaranRequest: ["payload"],
+  fetchbanpaidawarbikribitaranSuccess: ["response"],
+  fetchbanpaidawarbikribitaranFailure: null,
 
-       locationsRequest: ["payload"],
+  addbanpaidawarbikribitaranRequest: ["payload"],
+  addbanpaidawarbikribitaranSuccess: ["response"],
+  addbanpaidawarbikribitaranFailure: null,
+
+  locationsRequest: ["payload"],
    // Clear all caches
-   clearRequest: null,
+  clearRequest: null,
  });
  
  export const BanpaidawarTypes = Types;

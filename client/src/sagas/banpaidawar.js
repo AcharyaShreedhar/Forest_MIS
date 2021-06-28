@@ -230,10 +230,54 @@ export function* deletebanpaidawarlilamRequest(api, action) {
 export function* fetchallbanpaidawarbikribitaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
-  const response = yield api.getBanpaidawarBikribitaranList(payloaddata);
+  const response = yield api.getBanpaidawarbikribitaranList(payloaddata);
+  console.log("data saga", response);
   if (response.ok) {
-    yield put(BanpaidawarActions.fetchallbanpaidawarbikribitaranSuccess(response.data));
+    yield put(
+      BanpaidawarActions.fetchallbanpaidawarbikribitaranSuccess(response.data)
+    );
   } else {
     yield put(BanpaidawarActions.fetchallbanpaidawarbikribitaranFailure());
+  }
+}
+
+export function* fetchbanpaidawarbikribitaranRequest(api, action) {
+  const banpaidawarBikribitaranId = action.payload;
+
+  const response = yield api.getBanpaidawarbikribitaran(banpaidawarBikribitaranId);
+  if (response.ok) {
+    yield put(BanpaidawarActions.fetchbanpaidawarbikribitaranSuccess(response.data));
+  } else {
+    yield put(BanpaidawarActions.fetchbanpaidawarbikribitaranFailure());
+  }
+}
+
+// add banpaidawarbikribitaran
+export function* addbanpaidawarbikribitaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanpaidawarbikribitaranAddNew(
+    payload.banpaidawarbikribitaran.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन  प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanpaidawarbikribitaranRequest(api, {
+      name: "banpaidawar_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banpaidawar/banpaidawarbikribitaranlist");
+    yield put(BanpaidawarActions.addbanpaidawarbikribitaranSuccess(response.data));
+  } else {
+    yield put(BanpaidawarActions.addbanpaidawarbikribitaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
