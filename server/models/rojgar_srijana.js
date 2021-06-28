@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
     purus: DataTypes.STRING,
     jamma: DataTypes.STRING,
     kaifiyat: DataTypes.STRING,
+    created_by: DataTypes.STRING,
+    updated_by: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'rojgar_srijana',
