@@ -237,3 +237,14 @@ export function* fetchallbanpaidawarbikribitaranRequest(api, action) {
     yield put(BanpaidawarActions.fetchallbanpaidawarbikribitaranFailure());
   }
 }
+
+export function* fetchbanpaidawarbikribitaranRequest(api, action) {
+  const banpaidawarBikribitaranId = action.payload;
+
+  const response = yield api.getBanpaidawarbikribitaran(banpaidawarBikribitaranId);
+  if (response.ok) {
+    yield put(BanpaidawarActions.fetchbanpaidawarbikribitaranSuccess(response.data));
+  } else {
+    yield put(BanpaidawarActions.fetchbanpaidawarbikribitaranFailure());
+  }
+}
