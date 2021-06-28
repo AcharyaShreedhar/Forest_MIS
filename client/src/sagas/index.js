@@ -187,6 +187,7 @@ import {
   fetchallbanpaidawarbikribitaranRequest,
   fetchbanpaidawarbikribitaranRequest,
   addbanpaidawarbikribitaranRequest,
+  updatebanpaidawarbikribitaranRequest,
 } from "./banpaidawar";
 
 //--------------------bandadelobibaran
@@ -1199,12 +1200,17 @@ export default function* root() {
       fetchbanpaidawarbikribitaranRequest,
       api
     ),
-    
+
     takeLatest(
-      BanpaidawarTypes.ADDBANPAIDAWARBRIBITARAN_REQUEST,
+      BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_REQUEST,
       addbanpaidawarbikribitaranRequest,
       api
     ),
+    takeLatest(
+      BanpaidawarTypes.UPDATEBANPAIDAWARBIKRIBITARAN_REQUEST,
+      updatebanpaidawarbikribitaranRequest,
+      api
+    )
 
   ]);
 }

@@ -65,6 +65,10 @@
   addbanpaidawarbikribitaranSuccess: ["response"],
   addbanpaidawarbikribitaranFailure: null,
 
+  updatebanpaidawarbikribitaranRequest: ["payload","banpaidawarbikribitaranId"],
+  updatebanpaidawarbikribitaranSuccess: ["response"],
+  updatebanpaidawarbikribitaranFailure: null,
+
   locationsRequest: ["payload"],
    // Clear all caches
   clearRequest: null,
