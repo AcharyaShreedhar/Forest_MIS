@@ -64,6 +64,7 @@ import {
   fetchalluddhyambibaranRequest,
   fetchuddhyambibaranRequest,
   adduddhyambibaranRequest,
+  updateuddhyambibaranRequest,
   addplotbibaranRequest,
   addbaramaditchijbastuRequest,
   addbanxetraanyaprayojanRequest,
@@ -824,6 +825,12 @@ export default function* root() {
       takeLatest(
         BanbibaranTypes.ADDUDDHYAMBIBARAN_REQUEST,
         adduddhyambibaranRequest,
+        api
+      ),
+
+      takeLatest(
+        BanbibaranTypes.UPDATEUDDHYAMBIBARAN_REQUEST,
+        updateuddhyambibaranRequest,
         api
       ),
 

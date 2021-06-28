@@ -400,6 +400,38 @@ export function* adduddhyambibaranRequest(api, action) {
   }
 }
 
+// Update uddhyambibaran
+export function* updateuddhyambibaranRequest(api, action) {
+  const { payload, uddhyamId } = action;
+
+  const response = yield api.postBanbibaranUddhyambibaranUpdate(
+    payload.uddhyambibaran.data,
+    uddhyamId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक उद्धयम विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalluddhyambibaranRequest(api, {
+      name: "niji_uddhyam_sankhya",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/uddhyambibaranlist");
+    yield put(BanbibaranActions.updateuddhyambibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updateuddhyambibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
 //bachat bibaran
 export function* fetchallbachatbibaranRequest(api, action) {
   const { payload } = action;
