@@ -186,6 +186,7 @@ import {
   deletebanpaidawarlilamRequest,
   fetchallbanpaidawarbikribitaranRequest,
   fetchbanpaidawarbikribitaranRequest,
+  addbanpaidawarbikribitaranRequest,
 } from "./banpaidawar";
 
 //--------------------bandadelobibaran
@@ -1188,18 +1189,22 @@ export default function* root() {
 
     //banpaidawar bikribitaran
     takeLatest(
-      BanpaidawarTypes.BANPAIDAWARBIKRIBITARAN_REQUEST, 
       BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_REQUEST, 
       fetchallbanpaidawarbikribitaranRequest,
       api
     ),
 
-    
-
     takeLatest(
       BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_REQUEST, 
       fetchbanpaidawarbikribitaranRequest,
       api
-    )
+    ),
+    
+    takeLatest(
+      BanpaidawarTypes.ADDBANPAIDAWARBRIBITARAN_REQUEST,
+      addbanpaidawarbikribitaranRequest,
+      api
+    ),
+
   ]);
 }

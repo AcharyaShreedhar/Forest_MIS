@@ -601,7 +601,9 @@ const create = (baseURL = Config.API_URL) => {
   const getBanpaidawarBikribitaranList = (payload) =>
     api.post("banpaidawarbikribitaransList", payload);
     const getBanpaidawarbikribitaran = (banpaidawarBikribitaranId) =>
-    api.get(`Cbanpaidawarbikribitarans/${banpaidawarBikribitaranId}`);
+    api.get(`banpaidawarbikribitarans/${banpaidawarBikribitaranId}`);
+    const postBanpaidawarbikribitaranAddNew = (payload) =>
+    api.post(`banpaidawarbikribitarans`, payload);
 
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) => api.post("ConsumerGroupDetailsList", payload);
@@ -687,6 +689,7 @@ const create = (baseURL = Config.API_URL) => {
     postBanbibaranBandadelobibaranAddNew,
     postBanbibaranBandadelobibaranUpdate,
     postBanbibaranBandadelobibaranDelete,
+    postBanpaidawarbikribitaranAddNew,
     //------banpaidawar
     getBanpaidawarList,
     getBanpaidawar,

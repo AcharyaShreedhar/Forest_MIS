@@ -171,6 +171,17 @@ const fetchbanpaidawarbikribitaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add Banpaidawar bikribitaran
+const addbanpaidawarbikribitaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanpaidawarbikribitaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanpaidawarbikribitaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -231,6 +242,10 @@ export const reducer = createReducer(initialState, {
   [BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_REQUEST]:  fetchbanpaidawarbikribitaranRequest,
   [BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_SUCCESS]:  fetchbanpaidawarbikribitaranSuccess,
   [BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_FAILURE]:  fetchbanpaidawarbikribitaranFailure,
+
+  [BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_REQUEST]:  addbanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_SUCCESS]:  addbanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_FAILURE]:  addbanpaidawarbikribitaranFailure,
 
  
   [BanpaidawarTypes.LOCATIONS_REQUEST]: locationsRequest,

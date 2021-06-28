@@ -251,3 +251,33 @@ export function* fetchbanpaidawarbikribitaranRequest(api, action) {
     yield put(BanpaidawarActions.fetchbanpaidawarbikribitaranFailure());
   }
 }
+
+// add banpaidawarbikribitaran
+export function* addbanpaidawarbikribitaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanpaidawarbikribitaranAddNew(
+    payload.banpaidawarbikribitaran.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन  प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanpaidawarbikribitaranRequest(api, {
+      name: "banpaidawar_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banpaidawar/banpaidawarbikribitaranlist");
+    yield put(BanpaidawarActions.addbanpaidawarbikribitaranSuccess(response.data));
+  } else {
+    yield put(BanpaidawarActions.addbanpaidawarbikribitaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

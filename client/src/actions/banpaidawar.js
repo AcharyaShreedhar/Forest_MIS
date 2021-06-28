@@ -61,6 +61,10 @@
   fetchbanpaidawarbikribitaranSuccess: ["response"],
   fetchbanpaidawarbikribitaranFailure: null,
 
+  addbanpaidawarbikribitaranRequest: ["payload"],
+  addbanpaidawarbikribitaranSuccess: ["response"],
+  addbanpaidawarbikribitaranFailure: null,
+
   locationsRequest: ["payload"],
    // Clear all caches
   clearRequest: null,
