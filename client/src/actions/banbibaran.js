@@ -107,6 +107,10 @@ const { Types, Creators } = createActions({
   updatebachatbibaranSuccess: ["response"],
   updatebachatbibaranFailure: null,
 
+  deletebachatbibaranRequest: ["payload", "bachatId"],
+  deletebachatbibaranSuccess: ["response"],
+  deletebachatbibaranFailure: null,
+
 
   locationsRequest: ["payload"],
   // Clear all caches
