@@ -188,6 +188,7 @@ import {
   fetchbanpaidawarbikribitaranRequest,
   addbanpaidawarbikribitaranRequest,
   updatebanpaidawarbikribitaranRequest,
+  deletebanpaidawarbikribitaranRequest,
 } from "./banpaidawar";
 
 //--------------------bandadelobibaran
@@ -1209,6 +1210,11 @@ export default function* root() {
     takeLatest(
       BanpaidawarTypes.UPDATEBANPAIDAWARBIKRIBITARAN_REQUEST,
       updatebanpaidawarbikribitaranRequest,
+      api
+    ),
+    takeLatest(
+      BanbibaranTypes.DELETEBANPAIDAWARBIKRIBITARAN_REQUEST,
+      deletebanpaidawarbikribitaranRequest,
       api
     )
 
