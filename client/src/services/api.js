@@ -611,6 +611,7 @@ const create = (baseURL = Config.API_URL) => {
   //banpaidawar_bikribitaran
   const getBanpaidawarBikribitaranList = (payload) =>
     api.post("banpaidawarbikribitaransList", payload);
+
     const getBanpaidawarbikribitaran = (banpaidawarBikribitaranId) =>
     api.get(`banpaidawarbikribitarans/${banpaidawarBikribitaranId}`);
 
@@ -620,7 +621,11 @@ const create = (baseURL = Config.API_URL) => {
     
     //update
     const postBanpaidawarBanpaidawarbikribitaranUpdate = (payload, banpaidawarBikribitaranId) =>
-    api.post( `banpaidawarbikribitarans`, payload);
+    api.put( `banpaidawarbikribitarans/${banpaidawarBikribitaranId}`, payload);
+
+    //delete
+    const postBanpaidawarBanpaidawarbikribitaranDelete = (banpaidawarBikribitaranId) =>
+    api.delete( `banpaidawarbikribitarans/${banpaidawarBikribitaranId}`);
 
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) => api.post("ConsumerGroupDetailsList", payload);
@@ -721,6 +726,7 @@ const create = (baseURL = Config.API_URL) => {
     getBanpaidawarbikribitaran,
     postBanpaidawarBanpaidawarbikribitaranAddNew,
     postBanpaidawarBanpaidawarbikribitaranUpdate,
+    postBanpaidawarBanpaidawarbikribitaranDelete,
 
     // karmacharidarbandi
     getKarmacharidarbandiList,

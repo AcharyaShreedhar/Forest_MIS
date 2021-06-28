@@ -282,7 +282,7 @@ export function* addbanpaidawarbikribitaranRequest(api, action) {
   }
 }
 
-//update banpaidawar bikri
+//update banpaidawarbikribitaran
 export function* updatebanpaidawarbikribitaranRequest(api, action) {
   const { payload, banpaidawarbikritaranId } = action;
 
@@ -304,6 +304,33 @@ export function* updatebanpaidawarbikribitaranRequest(api, action) {
     yield put(BanpaidawarActions.updatebanpaidawarbikribitaranSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.updatebanpaidawarbikribitaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//delete banpaidawarbikribitaran
+export function* deletebanpaidawarbikribitaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanpaidawarBanpaidawarbikribitaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanpaidawarbikribitaranRequest(api, {
+      name: "bandpaidawar_kisim",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BanpaidawarActions.deletebanpaidawarbikribitaranSuccess(response.data));
+  } else {
+    yield put(BanpaidawarActions.deletebanpaidawarbikribitaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
