@@ -253,6 +253,8 @@ import {
 //-------karyabibaran
 import {
   fetchallsamajikkaryabibaranRequest,
+  fetchsamajikkaryabibaranRequest,
+
 } from "./karyabibaran";
 
 const api = API.create();
@@ -1251,6 +1253,13 @@ export default function* root() {
       fetchallsamajikkaryabibaranRequest,
       api
     ),
+
+    takeLatest(
+      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST, 
+      fetchsamajikkaryabibaranRequest,
+      api
+    ),
+
 
   ]);
 }
