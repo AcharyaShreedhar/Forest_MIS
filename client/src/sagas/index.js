@@ -15,6 +15,7 @@ import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes } from "../actions/inventories";
 import { KarmacharibibaranTypes } from "../actions/karmacharibibaran";
 import { KaryabibaranTypes } from "../actions/karyabibaran";
+import { MiscellaneousTypes } from "../actions/miscellaneous";
 //------------------app
 import {
   fetchalldepartmentsRequest,
@@ -256,6 +257,13 @@ import {
   fetchsamajikkaryabibaranRequest,
 
 } from "./karyabibaran";
+
+//miscellaneous
+import {
+ fetchallrojgarsrijanaRequest,
+} from "./miscellaneous";
+
+import { from } from "seamless-immutable";
 
 const api = API.create();
 
@@ -1259,7 +1267,12 @@ export default function* root() {
       fetchsamajikkaryabibaranRequest,
       api
     ),
-
+    //----------- miscellaneous
+    takeLatest(
+      MiscellaneousTypes.FETCHALLROJGARSRIJANA_REQUEST,
+      fetchallrojgarsrijanaRequest,
+      api
+    )
 
   ]);
 }
