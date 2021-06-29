@@ -19,7 +19,7 @@ const { Types, Creators } = createActions({
   logoutSuccess: null,
   logoutFailure: null,
 
-// Municipalities 
+ // Municipalities 
 
   fetchallmunicipalitiesRequest: ["payload"],
   fetchallmunicipalitiesSuccess: ["response"],
@@ -29,7 +29,23 @@ const { Types, Creators } = createActions({
   fetchmunicipalitiesSuccess: ["response"],
   fetchmunicipalitiesFailure: null,
 
-  // PROVINCES
+
+  addmunicipalitiesRequest: ["payload"],
+  addmunicipalitiesSuccess: ["response"],
+  addmunicipalitiesFailure: null,
+
+  updatemunicipalitiesRequest: ["payload", "municipalitiesId"],
+  updatemunicipalitiesSuccess: ["response"],
+  updatemunicipalitiesFailure: null,
+
+  deletemunicipalitiesRequest: ["payload", "municipalitiesId"],
+  deletemunicipalitiesSuccess: ["response"],
+  deletemunicipalitiesFailure: null,
+
+  
+  
+
+//   // PROVINCES
 
   fetchallprovincesRequest: ["payload"],
   fetchallprovincesSuccess: ["response"],
@@ -39,7 +55,19 @@ const { Types, Creators } = createActions({
   fetchprovincesSuccess: ["response"],
   fetchprovincesFailure: null,
 
-  // Districts
+  addprovincesRequest: ["payload"],
+  addprovincesSuccess: ["response"],
+  addprovincesFailure: null,
+
+  updateprovincesRequest: ["payload", "municipalitiesId"],
+  updateprovincesSuccess: ["response"],
+  updateprovincesFailure: null,
+
+  deleteprovincesRequest: ["payload", "municipalitiesId"],
+  deleteprovincesSuccess: ["response"],
+  deleteprovincesFailure: null,
+
+//   // Districts
 
   fetchalldistrictsRequest: ["payload"],
   fetchalldistrictsSuccess: ["response"],
@@ -50,6 +78,18 @@ const { Types, Creators } = createActions({
   fetchdistrictsSuccess: ["response"],
   fetchdistrictsFailure: null,
 
+  adddistrictsRequest: ["payload"],
+  adddistrictsSuccess: ["response"],
+  adddistrictsFailure: null,
+
+  updatedistrictsRequest: ["payload", "districtsId"],
+  updatedistrictsSuccess: ["response"],
+  updatedistrictsFailure: null,
+
+  deletedistrictsRequest: ["payload", "districtsId"],
+  deletedistrictsSuccess: ["response"],
+  deletedistrictsFailure: null,
+
   //Users
   fetchallusersRequest: ["payload"],
   fetchallusersSuccess: ["response"],
@@ -59,7 +99,19 @@ const { Types, Creators } = createActions({
   fetchusersSuccess: ["response"],
   fetchusersFailure: null,
 
-  //Departments
+  addusersRequest: ["payload"],
+  addusersSuccess: ["response"],
+  addusersFailure: null,
+
+  updateusersRequest: ["payload", "usersId"],
+  updateusersSuccess: ["response"],
+  updateusersFailure: null,
+
+  deleteusersRequest: ["payload", "usersId"],
+  deleteusersSuccess: ["response"],
+  deleteusersFailure: null,
+
+//   //Departments
   fetchalldepartmentsRequest: ["payload"],
   fetchalldepartmentsSuccess: ["response"],
   fetchalldepartmentsFailure: null,
@@ -67,6 +119,18 @@ const { Types, Creators } = createActions({
   fetchdepartmentsRequest: ["payload"],
   fetchdepartmentsSuccess: ["response"],
   fetchdepartmentsFailure: null,
+
+  adddepartmentsRequest: ["payload"],
+  adddepartmentsSuccess: ["response"],
+  adddepartmentsFailure: null,
+
+  updatedepartmentsRequest: ["payload", "departmentsId"],
+  updatedepartmentsSuccess: ["response"],
+  updatedepartmentsFailure: null,
+
+  deletedepartmentsRequest: ["payload", "departmentsId"],
+  deletedepartmentsSuccess: ["response"],
+  deletedepartmentsFailure: null,
 
   locationsRequest: ['payload'],
   // Clear all caches
