@@ -402,7 +402,7 @@ const create = (baseURL = Config.API_URL) => {
   //bachat bibarans
   const getBachatbibaranList = (payload) => api.post("bachatBibaranList", payload);
 
-  //-----Municipalities
+//   //-----Municipalities
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) =>
     api.get(`municipalities/${municipalitiesId}`);
@@ -432,7 +432,7 @@ const create = (baseURL = Config.API_URL) => {
   const postProvincesDelete = (provincesId) =>
     api.delete(`province/${provincesId}`);
 
-  //-------Districts
+//   //-------Districts
   const getDistrictsList = () => api.get("district");
   const getDistricts = (districtsId) => api.get(`district/${districtsId}`);
 
@@ -731,44 +731,44 @@ const create = (baseURL = Config.API_URL) => {
     postKarmacharibibaranPostUpdate,
     postKarmacharibibaranPostDelete,
 
-    //--municipalities
+    // //--municipalities
     getMunicipalitiesList,
     getMunicipalities,
     postMunicipalitiesAddNew,
     postMunicipalitiesUpdate,
     postMunicipalitiesDelete,
 
-    //-----Provinces
-    getProvincesList,
-    getProvinces,
-    postProvincesAddNew,
-    postProvincesUpdate,
-    postProvincesDelete,
+    // //-----Provinces
+    // getProvincesList,
+    // getProvinces,
+    // postProvincesAddNew,
+    // postProvincesUpdate,
+    // postProvincesDelete,
 
-    //----Districts
-    getDistrictsList,
-    getDistricts,
-    postDistrictsAddNew,
-    postDistrictsUpdate,
-    postDistrictsDelete,
+    // //----Districts
+    // getDistrictsList,
+    // getDistricts,
+    // postDistrictsAddNew,
+    // postDistrictsUpdate,
+    // postDistrictsDelete,
 
-    //-----Users
-    getUsersList,
-    getUsers,
-    postUsersAddNew,
-    postUsersUpdate,
-    postUsersDelete,
+    // //-----Users
+    // getUsersList,
+    // getUsers,
+    // postUsersAddNew,
+    // postUsersUpdate,
+    // postUsersDelete,
 
-    //ConsumerGroupDetails
-    getConsumergroupDetailsList,
-    getConsumergroupDetails,
+    // //ConsumerGroupDetails
+    // getConsumergroupDetailsList,
+    // getConsumergroupDetails,
 
-    //-----Departments
-    getDepartmentsList,
-    getDepartments,
-    postDepartmentsAddNew,
-    postDepartmentsUpdate,
-    postDepartmentsDelete,
+    // //-----Departments
+    // getDepartmentsList,
+    // getDepartments,
+    // postDepartmentsAddNew,
+    // postDepartmentsUpdate,
+    // postDepartmentsDelete,
 
     //--------Banbibaran
     getBaramaditchijbastuList,
