@@ -549,7 +549,7 @@ export function* updateusersRequest(api, action) {
   }
 }
  
-// Delete users
+// Delete users---------------//
 export function* deleteusersRequest(api, action) {
   const { payload } = action;
  
