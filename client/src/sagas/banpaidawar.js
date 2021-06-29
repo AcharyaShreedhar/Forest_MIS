@@ -231,7 +231,6 @@ export function* fetchallbanpaidawarbikribitaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanpaidawarbikribitaranList(payloaddata);
-  console.log("data saga", response);
   if (response.ok) {
     yield put(
       BanpaidawarActions.fetchallbanpaidawarbikribitaranSuccess(response.data)
