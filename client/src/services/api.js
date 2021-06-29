@@ -739,36 +739,36 @@ const create = (baseURL = Config.API_URL) => {
     postMunicipalitiesDelete,
 
     // //-----Provinces
-    // getProvincesList,
-    // getProvinces,
-    // postProvincesAddNew,
-    // postProvincesUpdate,
-    // postProvincesDelete,
+    getProvincesList,
+    getProvinces,
+    postProvincesAddNew,
+    postProvincesUpdate,
+    postProvincesDelete,
 
-    // //----Districts
-    // getDistrictsList,
-    // getDistricts,
-    // postDistrictsAddNew,
-    // postDistrictsUpdate,
-    // postDistrictsDelete,
+    //----Districts
+    getDistrictsList,
+    getDistricts,
+    postDistrictsAddNew,
+    postDistrictsUpdate,
+    postDistrictsDelete,
 
-    // //-----Users
-    // getUsersList,
-    // getUsers,
-    // postUsersAddNew,
-    // postUsersUpdate,
-    // postUsersDelete,
+    //-----Users
+    getUsersList,
+    getUsers,
+    postUsersAddNew,
+    postUsersUpdate,
+    postUsersDelete,
 
-    // //ConsumerGroupDetails
-    // getConsumergroupDetailsList,
-    // getConsumergroupDetails,
+    //ConsumerGroupDetails
+    getConsumergroupDetailsList,
+    getConsumergroupDetails,
 
-    // //-----Departments
-    // getDepartmentsList,
-    // getDepartments,
-    // postDepartmentsAddNew,
-    // postDepartmentsUpdate,
-    // postDepartmentsDelete,
+    //-----Departments
+    getDepartmentsList,
+    getDepartments,
+    postDepartmentsAddNew,
+    postDepartmentsUpdate,
+    postDepartmentsDelete,
 
     //--------Banbibaran
     getBaramaditchijbastuList,
