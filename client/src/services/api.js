@@ -627,6 +627,11 @@ const create = (baseURL = Config.API_URL) => {
     const postBanpaidawarBanpaidawarbikribitaranDelete = (banpaidawarBikribitaranId) =>
     api.delete( `banpaidawarbikribitarans/${banpaidawarBikribitaranId}`);
 
+    //rojgarsrijana 
+    const getRojgarSrijanaList = (payload) =>
+    api.post("rojgarsrijanaList", payload)
+
+
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) => api.post("ConsumerGroupDetailsList", payload);
   const getConsumergroupDetails = (consumergroupDetailsId) =>
@@ -847,9 +852,14 @@ const create = (baseURL = Config.API_URL) => {
     postBanbibaranUddhyambibaranUpdate,
     postBanbibaranUddhyambibaranDelete,
 
+
     //------karyabibaran
     getSamajikkaryabibaranList,
     getSamajikkaryabibaran,
+
+    
+    //------- rojgarsrijana
+    getRojgarSrijanaList,
   };
 };
 export default {
