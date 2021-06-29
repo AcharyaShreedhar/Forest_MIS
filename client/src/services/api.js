@@ -358,7 +358,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBanpaidawarBanpaidawarlilamAddNew = (payload) =>
     api.post(`banpaidawarLilam`, payload);
 
-  //update
+  //-----------------update---------------//
   const postBanpaidawarBanpaidawarlilamUpdate = (payload, banpaidawarlilamId) =>
     api.put(`banpaidawarLilam/${banpaidawarlilamId}`, payload);
 
