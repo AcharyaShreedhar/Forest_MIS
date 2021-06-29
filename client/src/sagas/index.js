@@ -14,6 +14,7 @@ import { BanpaidawarTypes } from "../actions/banpaidawar";
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes } from "../actions/inventories";
 import { KarmacharibibaranTypes } from "../actions/karmacharibibaran";
+import { KaryabibaranTypes } from "../actions/karyabibaran";
 //------------------app
 import {
   fetchalldepartmentsRequest,
@@ -248,6 +249,13 @@ import {
   updatepostRequest,
   deletepostRequest,
 } from "./karmacharibibaran";
+
+//-------karyabibaran
+import {
+  fetchallsamajikkaryabibaranRequest,
+  fetchsamajikkaryabibaranRequest,
+
+} from "./karyabibaran";
 
 const api = API.create();
 
@@ -1234,10 +1242,24 @@ export default function* root() {
       api
     ),
     takeLatest(
-      BanbibaranTypes.DELETEBANPAIDAWARBIKRIBITARAN_REQUEST,
+      BanpaidawarTypes.DELETEBANPAIDAWARBIKRIBITARAN_REQUEST,
       deletebanpaidawarbikribitaranRequest,
       api
-    )
+    ),
+
+    //karyabibaran
+    takeLatest(
+      KaryabibaranTypes.FETCHALLSAMAJIKKARYABIBARAN_REQUEST, 
+      fetchallsamajikkaryabibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST, 
+      fetchsamajikkaryabibaranRequest,
+      api
+    ),
+
 
   ]);
 }

@@ -632,6 +632,11 @@ const create = (baseURL = Config.API_URL) => {
   const getConsumergroupDetails = (consumergroupDetailsId) =>
     api.get(`ConsumerGroupDetails/${consumergroupDetailsId}`);
 
+  //------karyabibaran
+  const getSamajikkaryabibaranList = (payload) => api.post("samajikkaryaBibaranList", payload);
+  const getSamajikkaryabibaran = (samajikkaryabibaranId) =>
+    api.get(`samajikkaryaBibaran/${samajikkaryabibaranId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -841,6 +846,10 @@ const create = (baseURL = Config.API_URL) => {
     postBanbibaranUddhyambibaranAddNew,
     postBanbibaranUddhyambibaranUpdate,
     postBanbibaranUddhyambibaranDelete,
+
+    //------karyabibaran
+    getSamajikkaryabibaranList,
+    getSamajikkaryabibaran,
   };
 };
 export default {
