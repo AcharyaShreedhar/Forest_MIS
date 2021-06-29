@@ -1021,7 +1021,7 @@ export default function* root() {
     ),
 
 
-    //--------Districts
+    // //--------Districts
     takeLatest(
       AppTypes.FETCHALLDISTRICTS_REQUEST,
       fetchalldistrictsRequest,
@@ -1045,7 +1045,7 @@ export default function* root() {
       api
     ),
 
-    //--------Departments
+    // //--------Departments
     takeLatest(
       AppTypes.FETCHALLDEPARTMENTS_REQUEST,
       fetchalldepartmentsRequest,
@@ -1067,7 +1067,7 @@ export default function* root() {
       api
     ),
 
-    //--------Users
+    // //--------Users
     takeLatest(AppTypes.FETCHALLUSERS_REQUEST, fetchallusersRequest, api),
 
     takeLatest(AppTypes.FETCHUSERS_REQUEST, fetchusersRequest, api),
