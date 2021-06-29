@@ -453,7 +453,7 @@ export const reducer = createReducer(initialState, {
   [AppTypes.DELETEUSERS_FAILURE]: deleteusersFailure,
 
 
-  // //-----Departments
+  // //-----Departments--------------//
   [AppTypes.FETCHALLDEPARTMENTS_REQUEST]: fetchalldepartmentsRequest,
   [AppTypes.FETCHALLDEPARTMENTS_SUCCESS]: fetchalldepartmentsSuccess,
   [AppTypes.FETCHALLDEPARTMENTS_FAILURE]: fetchalldepartmentsFailure,
@@ -477,3 +477,4 @@ export const reducer = createReducer(initialState, {
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
 });
+/** */
