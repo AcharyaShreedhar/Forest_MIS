@@ -1018,119 +1018,119 @@ export default function* root() {
       api
     ),
 
-    // // Municipalities
-    // takeLatest(
-    //   AppTypes.FETCHALLMUNICIPALITIES_REQUEST,
-    //   fetchallmunicipalitiesRequest,
-    //   api
-    // ),
+    // Municipalities
+    takeLatest(
+      AppTypes.FETCHALLMUNICIPALITIES_REQUEST,
+      fetchallmunicipalitiesRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   AppTypes.FETCHMUNICIPALITIES_REQUEST,
-    //   fetchmunicipalitiesRequest,
-    //   api
-    // ),
-    // takeLatest(AppTypes.ADDMUNICIPALITIES_REQUEST, addmunicipalitiesRequest, api),
+    takeLatest(
+      AppTypes.FETCHMUNICIPALITIES_REQUEST,
+      fetchmunicipalitiesRequest,
+      api
+    ),
+    takeLatest(AppTypes.ADDMUNICIPALITIES_REQUEST, addmunicipalitiesRequest, api),
 
-    // takeLatest(
-    //   AppTypes.UPDATEMUNICIPALITIES_REQUEST,
-    //   updatemunicipalitiesRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.UPDATEMUNICIPALITIES_REQUEST,
+      updatemunicipalitiesRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   AppTypes.DELETEMUNICIPALITIES_REQUEST,
-    //   deletemunicipalitiesRequest,
-    //   api
-    // ),
-    // //---------------Provinces
-    // takeLatest(
-    //   AppTypes.FETCHALLPROVINCES_REQUEST,
-    //   fetchallprovincesRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.DELETEMUNICIPALITIES_REQUEST,
+      deletemunicipalitiesRequest,
+      api
+    ),
+    //---------------Provinces
+    takeLatest(
+      AppTypes.FETCHALLPROVINCES_REQUEST,
+      fetchallprovincesRequest,
+      api
+    ),
     
-    // takeLatest(AppTypes.FETCHPROVINCES_REQUEST, fetchprovincesRequest, api),
+    takeLatest(AppTypes.FETCHPROVINCES_REQUEST, fetchprovincesRequest, api),
 
-    // takeLatest(AppTypes.ADDPROVINCES_REQUEST, addprovincesRequest, api),
+    takeLatest(AppTypes.ADDPROVINCES_REQUEST, addprovincesRequest, api),
 
-    // takeLatest(
-    //   AppTypes.UPDATEPROVINCES_REQUEST,
-    //   updateprovincesRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.UPDATEPROVINCES_REQUEST,
+      updateprovincesRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   AppTypes.DELETEPROVINCES_REQUEST,
-    //   deleteprovincesRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.DELETEPROVINCES_REQUEST,
+      deleteprovincesRequest,
+      api
+    ),
 
 
-    // //--------Districts
-    // takeLatest(
-    //   AppTypes.FETCHALLDISTRICTS_REQUEST,
-    //   fetchalldistrictsRequest,
-    //   api
-    // ),
+    //--------Districts
+    takeLatest(
+      AppTypes.FETCHALLDISTRICTS_REQUEST,
+      fetchalldistrictsRequest,
+      api
+    ),
 
-    // takeLatest(AppTypes.FETCHDISTRICTS_REQUEST, fetchdistrictsRequest, api),
+    takeLatest(AppTypes.FETCHDISTRICTS_REQUEST, fetchdistrictsRequest, api),
 
     
-    // takeLatest(AppTypes.ADDDISTRICTS_REQUEST, adddistrictsRequest, api),
+    takeLatest(AppTypes.ADDDISTRICTS_REQUEST, adddistrictsRequest, api),
 
-    // takeLatest(
-    //   AppTypes.UPDATEDISTRICTS_REQUEST,
-    //   updatedistrictsRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.UPDATEDISTRICTS_REQUEST,
+      updatedistrictsRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   AppTypes.DELETEDISTRICTS_REQUEST,
-    //   deletedistrictsRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.DELETEDISTRICTS_REQUEST,
+      deletedistrictsRequest,
+      api
+    ),
 
-    // //--------Departments
-    // takeLatest(
-    //   AppTypes.FETCHALLDEPARTMENTS_REQUEST,
-    //   fetchalldepartmentsRequest,
-    //   api
-    // ),
-    // takeLatest(AppTypes.FETCHDEPARTMENTS_REQUEST, fetchdepartmentsRequest, api),
+    //--------Departments
+    takeLatest(
+      AppTypes.FETCHALLDEPARTMENTS_REQUEST,
+      fetchalldepartmentsRequest,
+      api
+    ),
+    takeLatest(AppTypes.FETCHDEPARTMENTS_REQUEST, fetchdepartmentsRequest, api),
 
-    // takeLatest(AppTypes.ADDDEPARTMENTS_REQUEST, adddepartmentsRequest, api),
+    takeLatest(AppTypes.ADDDEPARTMENTS_REQUEST, adddepartmentsRequest, api),
 
-    // takeLatest(
-    //   AppTypes.UPDATEDEPARTMENTS_REQUEST,
-    //   updatedepartmentsRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.UPDATEDEPARTMENTS_REQUEST,
+      updatedepartmentsRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   AppTypes.DELETEDEPARTMENTS_REQUEST,
-    //   deletedepartmentsRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.DELETEDEPARTMENTS_REQUEST,
+      deletedepartmentsRequest,
+      api
+    ),
 
-    // //--------Users
-    // takeLatest(AppTypes.FETCHALLUSERS_REQUEST, fetchallusersRequest, api),
+    //--------Users
+    takeLatest(AppTypes.FETCHALLUSERS_REQUEST, fetchallusersRequest, api),
 
-    // takeLatest(AppTypes.FETCHUSERS_REQUEST, fetchusersRequest, api),
+    takeLatest(AppTypes.FETCHUSERS_REQUEST, fetchusersRequest, api),
 
-    // takeLatest(AppTypes.ADDUSERS_REQUEST, addusersRequest, api),
+    takeLatest(AppTypes.ADDUSERS_REQUEST, addusersRequest, api),
 
-    // takeLatest(
-    //   AppTypes.UPDATEUSERS_REQUEST,
-    //   updateusersRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.UPDATEUSERS_REQUEST,
+      updateusersRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   AppTypes.DELETEUSERS_REQUEST,
-    //   deleteusersRequest,
-    //   api
-    // ),
+    takeLatest(
+      AppTypes.DELETEUSERS_REQUEST,
+      deleteusersRequest,
+      api
+    ),
 
     
 
