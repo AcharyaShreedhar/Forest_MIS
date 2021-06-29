@@ -111,7 +111,7 @@ const { Types, Creators } = createActions({
   deleteusersSuccess: ["response"],
   deleteusersFailure: null,
 
-//   //Departments
+//   //Departments--------------//
   fetchalldepartmentsRequest: ["payload"],
   fetchalldepartmentsSuccess: ["response"],
   fetchalldepartmentsFailure: null,
@@ -139,3 +139,4 @@ const { Types, Creators } = createActions({
 
 export const AppTypes = Types
 export default Creators
+//** */
