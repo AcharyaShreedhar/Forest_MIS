@@ -261,6 +261,7 @@ import {
 //miscellaneous
 import {
  fetchallrojgarsrijanaRequest,
+ fetchrojgarsrijanaRequest,
 } from "./miscellaneous";
 
 import { from } from "seamless-immutable";
@@ -1272,7 +1273,13 @@ export default function* root() {
       MiscellaneousTypes.FETCHALLROJGARSRIJANA_REQUEST,
       fetchallrojgarsrijanaRequest,
       api
-    )
+    ),
+    takeLatest(
+      MiscellaneousTypes.FETCHROJGARSRIJANA_REQUEST,
+      fetchrojgarsrijanaRequest,
+      api
+    ),
+
 
   ]);
 }

@@ -7,6 +7,11 @@ import { createActions } from "reduxsauce";
    fetchallrojgarsrijanaSuccess: ["response"],
    fetchallrojgarsrijanaFailure: null,
 
+   fetchrojgarsrijanaRequest: ["payload"],
+   fetchrojgarsrijanaSuccess: ["response"],
+   fetchrojgarsrijanaFailure: null,
+
+
 
 
    locationsRequest: ["payload"],

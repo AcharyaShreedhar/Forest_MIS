@@ -17,3 +17,18 @@ export function* fetchallrojgarsrijanaRequest(api, action) {
   }
 }
 
+
+export function* fetchrojgarsrijanaRequest(api, action) {
+  const  rojgarsrijanaId  = action.payload
+
+  const response = yield api.getRojgarSrijana(rojgarsrijanaId);
+  console.log("hello", response);
+  
+  if (response.ok) {
+    yield put(
+      MiscellaneousActions.fetchrojgarsrijanaSuccess(response.data)
+    );
+  } else {
+    yield put(MiscellaneousActions.fetchrojgarsrijanaFailure());
+  }
+}
