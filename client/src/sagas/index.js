@@ -1067,7 +1067,7 @@ export default function* root() {
       api
     ),
 
-    // //--------Users
+    // //--------Users-------------//
     takeLatest(AppTypes.FETCHALLUSERS_REQUEST, fetchallusersRequest, api),
 
     takeLatest(AppTypes.FETCHUSERS_REQUEST, fetchusersRequest, api),
