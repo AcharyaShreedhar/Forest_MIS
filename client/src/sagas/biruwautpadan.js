@@ -115,8 +115,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
     const { payload } = action;
     const payloaddata = isNil(payload) ? action : payload;
     const response = yield api.getActivitiesinfoList(payloaddata);
-    console.log("Response..sagaa", response);
-     if (response.ok) {
+    if (response.ok) {
       yield put(
         BiruwautpadanActions.fetchallactivitiesinfoSuccess(response.data)
       );
@@ -225,3 +224,17 @@ export function* fetchbiruwautpadanRequest(api, action) {
       });
     }
   }
+
+//brixyaropan
+  export function* fetchallbrixyaropanRequest(api, action) {
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getBrixyaropanList(payloaddata);
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchallbrixyaropanSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchallbrixyaropanFailure());
+    }
+  }  

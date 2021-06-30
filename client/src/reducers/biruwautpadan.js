@@ -132,6 +132,21 @@ state.merge({
 const deleteactivitiesinfoFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+//brixyaropan
+
+const fetchallbrixyaropanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallbrixyaropanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allbrixyaropanData: action.response,
+  });
+};
+const fetchallbrixyaropanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 
 
 const locationsRequest = (state, action) => {
@@ -185,6 +200,10 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.DELETEACTIVITIESINFO_REQUEST]: deleteactivitiesinfoRequest,
   [BiruwautpadanTypes.DELETEACTIVITIESINFO_SUCCESS]: deleteactivitiesinfoSuccess,
   [BiruwautpadanTypes.DELETEACTIVITIESINFO_FAILURE]: deleteactivitiesinfoFailure,
+
+  [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_REQUEST]: fetchallbrixyaropanRequest,
+  [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_SUCCESS]: fetchallbrixyaropanSuccess,
+  [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_FAILURE]: fetchallbrixyaropanFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,

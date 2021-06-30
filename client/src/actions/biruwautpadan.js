@@ -52,6 +52,10 @@
    deleteactivitiesinfoSuccess: ["response"],
    deleteactivitiesinfoFailure: null,
 
+   fetchallbrixyaropanRequest: ["payload"],
+   fetchallbrixyaropanSuccess: ["response"],
+   fetchallbrixyaropanFailure: null,
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
