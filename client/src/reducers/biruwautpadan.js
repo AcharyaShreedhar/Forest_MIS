@@ -149,6 +149,22 @@ const fetchallbrixyaropanFailure = (state, action) => {
 
 
 
+const fetchbrixyaropanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+
+  const fetchbrixyaropanSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    brixyaropanData: action.response,
+  });
+};
+const fetchbrixyaropanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -204,6 +220,10 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_REQUEST]: fetchallbrixyaropanRequest,
   [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_SUCCESS]: fetchallbrixyaropanSuccess,
   [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_FAILURE]: fetchallbrixyaropanFailure,
+
+  [BiruwautpadanTypes.FETCHBRIXYAROPAN_REQUEST]: fetchbrixyaropanRequest,
+  [BiruwautpadanTypes.FETCHBRIXYAROPAN_SUCCESS]: fetchbrixyaropanSuccess,
+  [BiruwautpadanTypes.FETCHBRIXYAROPAN_FAILURE]: fetchbrixyaropanFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,

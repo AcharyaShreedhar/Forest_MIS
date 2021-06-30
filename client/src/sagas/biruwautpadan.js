@@ -238,3 +238,18 @@ export function* fetchbiruwautpadanRequest(api, action) {
       yield put(BiruwautpadanActions.fetchallbrixyaropanFailure());
     }
   }  
+
+
+  export function* fetchbrixyaropanRequest(api, action) {
+    const  brixyaropanId  = action.payload
+  
+    const response = yield api.getBrixyaropan(brixyaropanId);
+    
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchbrixyaropanSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchbrixyaropanFailure());
+    }
+  }
