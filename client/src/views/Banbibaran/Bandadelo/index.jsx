@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BandadeloBibaran } from "../../../components";
+import { BandadeloBibaran, Filter, ReportGenerator } from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
 import { bandadeloHeadings } from "../../../services/config";
+import { Fragment } from "react";
 
 class Bandadelo extends Component {
   constructor(props) {
@@ -12,6 +13,9 @@ class Bandadelo extends Component {
     this.state = { loc: "bandadelolist", perPage: 10, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -26,15 +30,23 @@ class Bandadelo extends Component {
       bandadelobibaranList,
     };
   }
+  handlePer(e) {
+    this.setState({ perPage: e });
+    this.fetchResults(0, e);
+  }
+
+  fetchResults(page, perPage) {
+    this.props.fetchallBandadelo({
+      name: "bandadelo_address",
+      page: page,
+      perPage,
+    });
+  }
 
   handlePageChange(data) {
     const { perPage } = this.state;
     this.setState({ page: data.selected });
-    this.props.fetchallBandadelo({
-      name: "bandadelo_address",
-      page: data.selected * perPage,
-      perPage,
-    });
+    this.fetchResults(data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {
@@ -70,24 +82,37 @@ class Bandadelo extends Component {
 
   render() {
     const { loc, perPage, bandadelobibaranList } = this.state;
+    const { user } = this.props;
 
     return (
       <div>
         {equals(loc, "bandadelolist") && (
-          <BandadeloBibaran.List
-            buttonName="+ वनडढेलो"
-            title="वनडढेलो सम्बन्धि विवरण"
-            pageCount={
-              !isNil(bandadelobibaranList)
-                ? Math.ceil(bandadelobibaranList.total / perPage)
-                : 10
-            }
-            data={!isNil(bandadelobibaranList) ? bandadelobibaranList.list : []}
-            headings={bandadeloHeadings}
-            onAdd={() => this.handleAdd("bandadelo")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e)}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter />
+              <ReportGenerator id="bandadelo" />
+            </div>
+            <BandadeloBibaran.List
+              buttonName="+ वनडढेलो"
+              title="वनडढेलो सम्बन्धि विवरण"
+              pageCount={
+                !isNil(bandadelobibaranList)
+                  ? Math.ceil(bandadelobibaranList.total / perPage)
+                  : 10
+              }
+              data={
+                !isNil(bandadelobibaranList) ? bandadelobibaranList.list : []
+              }
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={bandadeloHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("bandadelo")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
+          </Fragment>
         )}
         {equals(loc, "bandadeloadd") && (
           <BandadeloBibaran.Add
@@ -118,6 +143,7 @@ Bandadelo.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  user: state.app.user,
   bandadelobibaranDataList: state.bandadelobibaran.allbandadelobibaranData,
 });
 
