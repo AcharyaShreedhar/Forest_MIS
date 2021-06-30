@@ -578,6 +578,7 @@ export function* deleteusersRequest(api, action) {
  
 
 export function* logoutRequest(api, action) {
+  console.log('yeha aayo ki nai')
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());
   yield call(history.push, "/login");

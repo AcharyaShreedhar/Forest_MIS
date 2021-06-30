@@ -15,7 +15,7 @@ const { Types, Creators } = createActions({
   loginSuccess: ['response'],
   loginFailure: null,
 
-  logoutRequest: null,
+  logoutRequest: ['payload'],
   logoutSuccess: null,
   logoutFailure: null,
 
