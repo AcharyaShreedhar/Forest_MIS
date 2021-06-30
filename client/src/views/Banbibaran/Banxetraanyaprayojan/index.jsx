@@ -19,7 +19,7 @@ class Banxetraanyaprayojan extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var banxetraanyaprayojanList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       banxetraanyaprayojanList = nextProps.banxetraanyaprayojanDataList.data;
     }
     return { loc, banxetraanyaprayojanList };

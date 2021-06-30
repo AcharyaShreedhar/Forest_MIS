@@ -1,16 +1,13 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
- 
 
 class Add extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     pidit_name: "",
+      pidit_name: "",
       pidit_address: "",
       jagga_bibaran: "",
       nagarikta_no: "",
@@ -24,75 +21,73 @@ class Add extends Component {
       vuktani_rakam: "",
       remarks: "",
       created_by: "",
-      updated_by:"",
+      updated_by: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
-    
   }
 
   handleSubmit() {
     const {
-        pidit_name,
-        pidit_address,
-        jagga_bibaran,
-        nagarikta_no,
-        upabhoktasamiti_name,
-        xetigarne_animal,
-        xeti_miti,
-        pasudhan_ghargoth,
-        man_injury,
-        mag_rakam,
-        samitiko_mulyankan_rakam,
-        vuktani_rakam,
-        remarks,
-    
+      pidit_name,
+      pidit_address,
+      jagga_bibaran,
+      nagarikta_no,
+      upabhoktasamiti_name,
+      xetigarne_animal,
+      xeti_miti,
+      pasudhan_ghargoth,
+      man_injury,
+      mag_rakam,
+      samitiko_mulyankan_rakam,
+      vuktani_rakam,
+      remarks,
     } = this.state;
     const payload = {
       banyajantuxeti: {
         data: {
-            pidit_name:pidit_name,
-            pidit_address:pidit_address,
-            jagga_bibaran:jagga_bibaran,
-            nagarikta_no:nagarikta_no ,
-            upabhoktasamiti_name:upabhoktasamiti_name,
-            xetigarne_animal:xetigarne_animal,
-            xeti_miti:xeti_miti,
-            pasudhan_ghargoth:pasudhan_ghargoth,
-            man_injury: man_injury ,
-            mag_rakam:mag_rakam,
-            samitiko_mulyankan_rakam:samitiko_mulyankan_rakam,
-            vuktani_rakam:vuktani_rakam,  
-            remarks: remarks,
-            created_by: this.props.user.user_name,
-            updated_by: this.props.user.user_name,
+          pidit_name: pidit_name,
+          pidit_address: pidit_address,
+          jagga_bibaran: jagga_bibaran,
+          nagarikta_no: nagarikta_no,
+          upabhoktasamiti_name: upabhoktasamiti_name,
+          xetigarne_animal: xetigarne_animal,
+          xeti_miti: xeti_miti,
+          pasudhan_ghargoth: pasudhan_ghargoth,
+          man_injury: man_injury,
+          mag_rakam: mag_rakam,
+          samitiko_mulyankan_rakam: samitiko_mulyankan_rakam,
+          vuktani_rakam: vuktani_rakam,
+          remarks: remarks,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
     this.props.onSubmit(payload);
   }
-  
+
   handleDate(e) {
-    this.setState({xeti_miti: e });
+    this.setState({ xeti_miti: e });
   }
 
   render() {
     const { title } = this.props;
     const {
-        pidit_name,
-        pidit_address,
-        jagga_bibaran,
-        nagarikta_no,
-        upabhoktasamiti_name,
-        xetigarne_animal,
-        xeti_miti,
-        pasudhan_ghargoth,
-        man_injury,
-        mag_rakam,
-        samitiko_mulyankan_rakam,
-        vuktani_rakam,
-        remarks,
+      pidit_name,
+      pidit_address,
+      jagga_bibaran,
+      nagarikta_no,
+      upabhoktasamiti_name,
+      xetigarne_animal,
+      xeti_miti,
+      pasudhan_ghargoth,
+      man_injury,
+      mag_rakam,
+      samitiko_mulyankan_rakam,
+      vuktani_rakam,
+      remarks,
     } = this.state;
 
     return (
@@ -163,14 +158,14 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ pasudhan_ghargoth: e })}
             />
-              <Input
+            <Input
               className="mb-4"
               title="मानविय क्षति"
               value={man_injury}
               direction="vertical"
               onChange={(e) => this.setState({ man_injury: e })}
             />
-             <Input
+            <Input
               className="mb-4"
               title="माग रकम"
               value={mag_rakam}
@@ -198,8 +193,6 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ remarks: e })}
             />
-           
-            
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">

@@ -1,8 +1,5 @@
-import { call, put } from "redux-saga/effects";
-import { toast } from "react-toastify";
+import { put } from "redux-saga/effects";
 import { isNil } from "ramda";
-
-import { history } from "../reducers";
 import KaryabibaranActions from "../actions/karyabibaran";
 
 export function* fetchallsamajikkaryabibaranRequest(api, action) {
@@ -19,10 +16,10 @@ export function* fetchallsamajikkaryabibaranRequest(api, action) {
 }
 
 export function* fetchsamajikkaryabibaranRequest(api, action) {
-  const  samajikkaryabibaranId  = action.payload
- 
+  const samajikkaryabibaranId = action.payload;
+
   const response = yield api.getSamajikkaryabibaran(samajikkaryabibaranId);
-  console.log("...sagadaata",response);
+  console.log("...sagadaata", response);
   if (response.ok) {
     yield put(
       KaryabibaranActions.fetchkarmacharidarbandiSuccess(response.data)

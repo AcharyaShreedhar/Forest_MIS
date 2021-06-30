@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input, Dropdown } from "../../components";
 import { equals } from "ramda";
 
 const AnnualBibaran = [

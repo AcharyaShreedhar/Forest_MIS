@@ -19,7 +19,7 @@ class Sawarisadhan extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var sawarisadhanList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       sawarisadhanList = nextProps.sawarisadhanDataList.data;
     }
     return { loc, sawarisadhanList };
@@ -59,7 +59,7 @@ class Sawarisadhan extends Component {
     this.props.history.push("/sampatibibaran/sawarisadhanadd/new");
   }
   render() {
-    const { loc, perPage, page, sawarisadhanList } = this.state;
+    const { loc, perPage, sawarisadhanList } = this.state;
     const { user } = this.props;
 
     return (
@@ -130,4 +130,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sawarisadhan);
-

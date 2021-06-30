@@ -19,7 +19,7 @@ class Gharjagga extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var gharjaggaList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       gharjaggaList = nextProps.gharjaggaDataList.data;
     }
     return { loc, gharjaggaList };
@@ -59,7 +59,7 @@ class Gharjagga extends Component {
     this.props.history.push("/sampatibibaran/gharjaggaadd/new");
   }
   render() {
-    const { loc, perPage, page, gharjaggaList } = this.state;
+    const { loc, perPage,gharjaggaList } = this.state;
     const { user } = this.props;
 
     return (

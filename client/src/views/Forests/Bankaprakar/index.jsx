@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals, length, isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import {
   DharmikbanBibaran,
   Filter,
@@ -37,7 +37,7 @@ class Bankaprakar extends Component {
     var kabuliyatibanList = [];
     var nijibanList = [];
 
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
       dharmikbanList = nextProps.dharmikbanbibaranDataList.data;
       nijibanList = nextProps.nijibanbibaranDataList.data;
@@ -161,6 +161,7 @@ class Bankaprakar extends Component {
           default:
             break;
         }
+        break;
       }
       default:
         break;
@@ -194,7 +195,6 @@ class Bankaprakar extends Component {
     const {
       loc,
       perPage,
-      page,
       samudayikbanList,
       dharmikbanList,
       kabuliyatibanList,

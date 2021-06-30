@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { Button, Input } from "../../components";
@@ -136,10 +136,10 @@ class Add extends Component {
 
             <Input
               className="mb-4"
-              title="प्राप्ति मिति"
-              value={acquired_date}
+              title="प्राप्ति स्रोत"
+              value={acquired_source}
               direction="vertical"
-              onChange={(e) => this.setState({ acquired_date: e })}
+              onChange={(e) => this.setState({ acquired_source: e })}
             />
             <Input
               className="mb-4"

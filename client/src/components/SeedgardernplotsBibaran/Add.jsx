@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { Button, Input } from "../../components";
@@ -59,8 +58,6 @@ class Add extends Component {
       location,
       established_date,
       status,
-      created_by,
-      updated_by,
     } = this.state;
 
     return (

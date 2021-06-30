@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
-
 
 class Edit extends Component {
   constructor(props) {
@@ -21,7 +18,8 @@ class Edit extends Component {
       pasudhan_ghargoth: props.history.location.item.pasudhan_ghargoth,
       man_injury: props.history.location.item.man_injury,
       mag_rakam: props.history.location.item.mag_rakam,
-      samitiko_mulyankan_rakam: props.history.location.item.samitiko_mulyankan_rakam,
+      samitiko_mulyankan_rakam:
+        props.history.location.item.samitiko_mulyankan_rakam,
       vuktani_rakam: props.history.location.item.vuktani_rakam,
       remarks: props.history.location.item.remarks,
       created_by: props.history.location.item.created_by,
@@ -30,7 +28,6 @@ class Edit extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
-  
   }
 
   handleSubmit() {
@@ -51,7 +48,6 @@ class Edit extends Component {
       remarks,
       updated_by,
       created_by,
-
     } = this.state;
     const payload = {
       banyajantuxeti: {
@@ -74,9 +70,9 @@ class Edit extends Component {
         },
       },
     };
-    this.props.onUpdate(payload,id);
+    this.props.onUpdate(payload, id);
   }
-  
+
   handleDate(e) {
     this.setState({ xeti_miti: e });
   }
@@ -174,7 +170,7 @@ class Edit extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ man_injury: e })}
             />
-           
+
             <Input
               className="mb-4"
               title="माग रकम"

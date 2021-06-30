@@ -19,7 +19,7 @@ class Yearlyactivities extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var yearlyactivitiesList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       yearlyactivitiesList = nextProps.activitiesinfoDataList.data;
     }
     return { loc, yearlyactivitiesList };
@@ -58,7 +58,7 @@ class Yearlyactivities extends Component {
     this.props.history.push("/activities/yearlyactivitiesadd/new");
   }
   render() {
-    const { loc, perPage, page, yearlyactivitiesList } = this.state;
+    const { loc, perPage, yearlyactivitiesList } = this.state;
     const { user } = this.props;
 
     return (

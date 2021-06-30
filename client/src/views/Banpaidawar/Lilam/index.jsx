@@ -19,7 +19,7 @@ class Lilam extends Component {
     console.log("nextprops", nextProps);
     const loc = nextProps.location.pathname.split("/")[2];
     var banpaidawarlilamList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       banpaidawarlilamList = nextProps.banpaidawarlilamDataList.data;
     }
 

@@ -1,68 +1,54 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals, length, isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { BanxetraAtikraman } from "../../../components";
 import BanxetraatikramanActions from "../../../actions/banxetraatikraman";
 import { banxetraatikramanHeadings } from "../../../services/config";
 
-
 class Banxetraatikraman extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "banxetraatikramanlist" , perPage: 10, page: 1};
+    this.state = { loc: "banxetraatikramanlist", perPage: 10, page: 1 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-      const loc = nextProps.location.pathname.split("/")[2];
+    const loc = nextProps.location.pathname.split("/")[2];
     var banxetraatikramanList = [];
-    if (nextProps != prevState) {
-        banxetraatikramanList = nextProps.banxetraatikramanDataList.data;
+    if (nextProps !== prevState) {
+      banxetraatikramanList = nextProps.banxetraatikramanDataList.data;
     }
 
     return {
-        loc,
-        banxetraatikramanList
-     };
+      loc,
+      banxetraatikramanList,
+    };
   }
 
   handlePageChange(data, item) {
-      const {perPage } = this.state;
-      this.setState({ page: data.selected });
-      this.props.fetchallBanxetraatikraman({
-          name:"address",
-          page: data.selected * perPage,
-          perPage,
-      });
+    const { perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.props.fetchallBanxetraatikraman({
+      name: "address",
+      page: data.selected * perPage,
+      perPage,
+    });
   }
 
   handleSelectMenu(event, item, path) {
-   switch (event) {
+    switch (event) {
       case "edit": {
-        switch (path) {
-          case "banxetraatikraman": {
-            this.props.history.push({
-              pathname: `/banbibaran/banxetraatikramanedit/${item.banxetra_atikraman_id}`,
-              item,
-            });
-            break;
-          }
-          default:
-            break;
-        }
+        this.props.history.push({
+          pathname: `/banbibaran/banxetraatikramanedit/${item.banxetra_atikraman_id}`,
+          item,
+        });
         break;
       }
       case "delete": {
-        switch (path) {
-          case "banxetraatikraman": {
-            this.props.deleteBanxetraatikraman(item.banxetra_atikraman_id);
-            break;
-          }
-          default:
-            break;
-        }
+        this.props.deleteBanxetraatikraman(item.banxetra_atikraman_id);
+        break;
       }
       default:
         break;
@@ -70,18 +56,13 @@ class Banxetraatikraman extends Component {
   }
 
   handleAdd(item) {
-        this.props.history.push("/banbibaran/banxetraatikramanadd/new");
-        
-      }
+    this.props.history.push("/banbibaran/banxetraatikramanadd/new");
+  }
 
   render() {
-    const {
-        loc,
-        perPage,
-        banxetraatikramanList,
-    } = this.state;
+    const { loc, perPage, banxetraatikramanList } = this.state;
     const { user } = this.props;
-       
+
     return (
       <div>
         {equals(loc, "banxetraatikramanlist") && (
@@ -89,11 +70,13 @@ class Banxetraatikraman extends Component {
             buttonName="+ वनक्षेत्र अतिक्रमण"
             title="वनक्षेत्र अतिक्रमण सम्बन्धि विवरण"
             pageCount={
-                !isNil(banxetraatikramanList)
-                  ? Math.ceil(banxetraatikramanList.total / perPage)
-                  : 10
-              }
-            data={ !isNil(banxetraatikramanList) ? banxetraatikramanList.list : []}
+              !isNil(banxetraatikramanList)
+                ? Math.ceil(banxetraatikramanList.total / perPage)
+                : 10
+            }
+            data={
+              !isNil(banxetraatikramanList) ? banxetraatikramanList.list : []
+            }
             headings={banxetraatikramanHeadings}
             user={user}
             onAdd={() => this.handleAdd("banxetraatikraman")}
@@ -106,7 +89,7 @@ class Banxetraatikraman extends Component {
             title="+ वनक्षेत्र अतिक्रमण"
             user={user}
             onSelect={this.handleSelectMenu}
-            onSubmit={(e) => this.props.addBanxetraatikraman (e)}
+            onSubmit={(e) => this.props.addBanxetraatikraman(e)}
           />
         )}
         {equals(loc, "banxetraatikramanedit") && (
@@ -137,17 +120,23 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
   addBanxetraatikraman: (payload) =>
     dispatch(BanxetraatikramanActions.addbanxetraatikramanRequest(payload)),
 
   updateBanxetraatikraman: (payload, banxetraatikramanId) =>
     dispatch(
-      BanxetraatikramanActions.updatebanxetraatikramanRequest(payload, banxetraatikramanId)
+      BanxetraatikramanActions.updatebanxetraatikramanRequest(
+        payload,
+        banxetraatikramanId
+      )
     ),
 
   deleteBanxetraatikraman: (banxetraatikramanId) =>
-    dispatch(BanxetraatikramanActions.deletebanxetraatikramanRequest(banxetraatikramanId)),
+    dispatch(
+      BanxetraatikramanActions.deletebanxetraatikramanRequest(
+        banxetraatikramanId
+      )
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banxetraatikraman);

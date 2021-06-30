@@ -1,67 +1,62 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker } from "../../components";
-import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { Button, Input } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
-
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        id: props.history.location.item.bandadelo_bibaran_id,
-        bandadelo_address: props.history.location.item.bandadelo_address,
-        ban_type: props.history.location.item.ban_type,
-        ban_prajati: props.history.location.item.ban_prajati,
-        xeti_area: props.history.location.item.xeti_area,
-        niyantran_prayas: props.history.location.item.niyantran_prayas,
-        niyantran_karta: props.history.location.item.niyantran_karta,
-        sahabhagi_mahila: props.history.location.item.sahabhagi_mahila,
-        sahabhagi_purus: props.history.location.item.sahabhagi_purus,
-        created_by: props.history.location.item.created_by,
-        updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item.bandadelo_bibaran_id,
+      bandadelo_address: props.history.location.item.bandadelo_address,
+      ban_type: props.history.location.item.ban_type,
+      ban_prajati: props.history.location.item.ban_prajati,
+      xeti_area: props.history.location.item.xeti_area,
+      niyantran_prayas: props.history.location.item.niyantran_prayas,
+      niyantran_karta: props.history.location.item.niyantran_karta,
+      sahabhagi_mahila: props.history.location.item.sahabhagi_mahila,
+      sahabhagi_purus: props.history.location.item.sahabhagi_purus,
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
-    
   }
 
   handleSubmit() {
     const {
-        id,
-        bandadelo_address,
-        ban_type,
-        ban_prajati,
-        xeti_area,
-        niyantran_prayas,
-        niyantran_karta,
-        sahabhagi_mahila,
-        sahabhagi_purus,
-        created_by,
-        updated_by,
+      id,
+      bandadelo_address,
+      ban_type,
+      ban_prajati,
+      xeti_area,
+      niyantran_prayas,
+      niyantran_karta,
+      sahabhagi_mahila,
+      sahabhagi_purus,
+      created_by,
+      updated_by,
     } = this.state;
     const payload = {
       bandadelo: {
         data: {
-            bandadelo_address: bandadelo_address,
-            ban_type: ban_type,
-            ban_prajati: ban_prajati,
-            xeti_area: xeti_area,
-            niyantran_prayas: niyantran_prayas,
-            niyantran_karta: niyantran_karta,
-            sahabhagi_mahila: sahabhagi_mahila,
-            sahabhagi_purus: sahabhagi_purus,
-            created_by: created_by || this.props.user.user_name,
-            updated_by: updated_by || this.props.user.user_name,
+          bandadelo_address: bandadelo_address,
+          ban_type: ban_type,
+          ban_prajati: ban_prajati,
+          xeti_area: xeti_area,
+          niyantran_prayas: niyantran_prayas,
+          niyantran_karta: niyantran_karta,
+          sahabhagi_mahila: sahabhagi_mahila,
+          sahabhagi_purus: sahabhagi_purus,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: updated_by || this.props.user.user_name,
         },
       },
     };
 
-    this.props.onUpdate(payload,id);
+    this.props.onUpdate(payload, id);
   }
-  
+
   handleDate(e) {
     this.setState({ lilam_date: e });
   }
@@ -69,14 +64,14 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-        bandadelo_address,
-        ban_type,
-        ban_prajati,
-        xeti_area,
-        niyantran_prayas,
-        niyantran_karta,
-        sahabhagi_mahila,
-        sahabhagi_purus,
+      bandadelo_address,
+      ban_type,
+      ban_prajati,
+      xeti_area,
+      niyantran_prayas,
+      niyantran_karta,
+      sahabhagi_mahila,
+      sahabhagi_purus,
     } = this.state;
 
     return (
@@ -116,7 +111,7 @@ class Edit extends Component {
               value={xeti_area}
               onChange={(e) => this.setState({ xeti_area: e })}
             />
-                        
+
             <Input
               className="mb-4"
               title="समूहबाट नियन्त्रणका लागि भएका प्रयासहरु"
@@ -160,6 +155,5 @@ class Edit extends Component {
     );
   }
 }
-
 
 export default Edit;

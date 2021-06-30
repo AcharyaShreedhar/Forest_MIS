@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
@@ -11,8 +10,8 @@ const JafatMaagdabi = [
 ];
 
 const BojbahakJafat = [
-    { id: 1, value: "भएको"},
-    { id: 2, value: "नभएको"},
+  { id: 1, value: "भएको" },
+  { id: 2, value: "नभएको" },
 ];
 
 class Add extends Component {
@@ -71,29 +70,31 @@ class Add extends Component {
     const payload = {
       muddaanusandhandayari: {
         data: {
-            jaheri_partibedan_miti: jaheri_partibedan_miti,
-            kasurko_kisim: kasurko_kisim,
-            bigo_pariman: bigo_pariman,
-            jaggako_area: jaggako_area,
-            jaggako_thegana: jaggako_thegana,
-            abhiyog_miti: abhiyog_miti,
-            abhiyog_nikaya: abhiyog_nikaya,
-            abhiyog_jariwana: abhiyog_jariwana,
-            kaid: kaid,
-            bojbahak_jafat_maagdabi: equals(bojbahak_jafat_maagdabi, 1) ? "लिएको" : "नलिएको",
-            pratibadi_sankhya: pratibadi_sankhya,
-            thunchek_dharauti: thunchek_dharauti,
-            sadharan_tarekh: sadharan_tarekh,
-            thuna_aadhes: thuna_aadhes,
-            faisala_miti: faisala_miti,
-            faisala_jariwana: faisala_jariwana,
-            faisala_kaid: faisala_kaid,
-            bojbahak_jafat: equals(bojbahak_jafat, 1) ? "भएको" : "नभएको",
-            created_by: this.props.user.user_name,
-            updated_by: this.props.user.user_name,
+          jaheri_partibedan_miti: jaheri_partibedan_miti,
+          kasurko_kisim: kasurko_kisim,
+          bigo_pariman: bigo_pariman,
+          jaggako_area: jaggako_area,
+          jaggako_thegana: jaggako_thegana,
+          abhiyog_miti: abhiyog_miti,
+          abhiyog_nikaya: abhiyog_nikaya,
+          abhiyog_jariwana: abhiyog_jariwana,
+          kaid: kaid,
+          bojbahak_jafat_maagdabi: equals(bojbahak_jafat_maagdabi, 1)
+            ? "लिएको"
+            : "नलिएको",
+          pratibadi_sankhya: pratibadi_sankhya,
+          thunchek_dharauti: thunchek_dharauti,
+          sadharan_tarekh: sadharan_tarekh,
+          thuna_aadhes: thuna_aadhes,
+          faisala_miti: faisala_miti,
+          faisala_jariwana: faisala_jariwana,
+          faisala_kaid: faisala_kaid,
+          bojbahak_jafat: equals(bojbahak_jafat, 1) ? "भएको" : "नभएको",
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
-      };
+    };
     this.props.onSubmit(payload);
   }
   handleJafatMaagdabi(e) {
@@ -120,8 +121,7 @@ class Add extends Component {
         break;
     }
   }
-  
-  
+
   render() {
     const { title } = this.props;
     const {
@@ -293,8 +293,6 @@ class Add extends Component {
               onChange={(e) => this.handleBojbahakJafat(e)}
               value={bojbahak_jafat}
             />
-               
-                        
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -310,7 +308,5 @@ class Add extends Component {
     );
   }
 }
-
-
 
 export default Add;

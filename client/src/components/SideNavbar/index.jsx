@@ -1,19 +1,12 @@
-import SideNav, {
-  Toggle,
-  NavItem,
-  NavIcon,
-  NavText,
-} from "@trendmicro/react-sidenav";
+import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
 // Be sure to include styles at some point, probably during your bootstraping
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import { Link } from "react-router-dom";
-import { NavDropdown, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
   faUsers,
   faTree,
-  faSeedling,
   faBuilding,
   faSignOutAlt,
   faTasks,
@@ -117,13 +110,17 @@ export class SideNavbar extends Component {
             </NavItem>
             <NavItem
               eventKey="banbibaran/muddaanusandhandayarilist"
-              onClick={() => history.push("/banbibaran/muddaanusandhandayarilist")}
+              onClick={() =>
+                history.push("/banbibaran/muddaanusandhandayarilist")
+              }
             >
               <NavText> मुद्दा अनुसन्धान तथा दायरी</NavText>
             </NavItem>
             <NavItem
               eventKey="banbibaran/banxetraanyaprayojanlist"
-              onClick={() => history.push("/banbibaran/banxetraanyaprayojanlist")}
+              onClick={() =>
+                history.push("/banbibaran/banxetraanyaprayojanlist")
+              }
             >
               <NavText> बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि</NavText>
             </NavItem>
@@ -206,7 +203,10 @@ export class SideNavbar extends Component {
             </NavIcon>
             <NavText>कार्यालय सम्पती बिबरण</NavText>
 
-            <NavItem eventKey="sampatibibaran/gharjaggalist" onClick={() => history.push("/sampatibibaran/gharjaggalist")}>
+            <NavItem
+              eventKey="sampatibibaran/gharjaggalist"
+              onClick={() => history.push("/sampatibibaran/gharjaggalist")}
+            >
               <NavText>घर जग्गा</NavText>
             </NavItem>
             <NavItem

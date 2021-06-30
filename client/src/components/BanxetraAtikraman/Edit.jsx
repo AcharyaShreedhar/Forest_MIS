@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input, Dropdown } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
 
@@ -10,8 +9,8 @@ const AtikramanKisim = [
 ];
 
 const AtikramanAbasta = [
-    { id: 1, value: "नयाँ"},
-    { id: 2, value: "पुरानो"},
+  { id: 1, value: "नयाँ" },
+  { id: 2, value: "पुरानो" },
 ];
 
 class Edit extends Component {
@@ -21,15 +20,21 @@ class Edit extends Component {
       id: props.history.location.item.banxetra_atikraman_id,
       atikramit_area: props.history.location.item.atikramit_area,
       address: props.history.location.item.address,
-      atikraman_kisim: equals(props.history.location.item.atikraman_kisim, "संस्थागत")
-      ? 1
-      : 2,
+      atikraman_kisim: equals(
+        props.history.location.item.atikraman_kisim,
+        "संस्थागत"
+      )
+        ? 1
+        : 2,
       samalagna_ghardhuri: props.history.location.item.samalagna_ghardhuri,
-      atikraman_prayojan:props.history.location.item.atikraman_prayojan,
-      samrachana_bibaran:props.history.location.item.samrachana_bibaran,
-      atikraman_abastha: equals(props.history.location.item.atikraman_abastha, "नयाँ")
-      ? 1
-      : 2,
+      atikraman_prayojan: props.history.location.item.atikraman_prayojan,
+      samrachana_bibaran: props.history.location.item.samrachana_bibaran,
+      atikraman_abastha: equals(
+        props.history.location.item.atikraman_abastha,
+        "नयाँ"
+      )
+        ? 1
+        : 2,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -41,30 +46,32 @@ class Edit extends Component {
 
   handleSubmit() {
     const {
-        id,
-        atikramit_area,
-        address,
-        atikraman_kisim,
-        samalagna_ghardhuri,
-        atikraman_prayojan,
-        samrachana_bibaran,
-        atikraman_abastha,
+      id,
+      atikramit_area,
+      address,
+      atikraman_kisim,
+      samalagna_ghardhuri,
+      atikraman_prayojan,
+      samrachana_bibaran,
+      atikraman_abastha,
     } = this.state;
     const payload = {
       banxetraatikraman: {
         data: {
           atikramit_area: atikramit_area,
           address: address,
-          atikraman_kisim: equals(atikraman_kisim, 1) ? "संस्थागत" : "व्यक्तिगत",
+          atikraman_kisim: equals(atikraman_kisim, 1)
+            ? "संस्थागत"
+            : "व्यक्तिगत",
           samalagna_ghardhuri: samalagna_ghardhuri,
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
-          atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" :"पुरानो",
+          atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" : "पुरानो",
           created_by: this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },
-      };
+    };
     this.props.onUpdate(payload, id);
   }
   handleAtikramanKisim(e) {
@@ -73,17 +80,17 @@ class Edit extends Component {
   handleAtikramanAbastha(e) {
     this.setState({ atikraman_abastha: e });
   }
-  
+
   render() {
     const { title } = this.props;
     const {
-        atikramit_area,
-        address,
-        atikraman_kisim,
-        samalagna_ghardhuri,
-        atikraman_prayojan,
-        samrachana_bibaran,
-        atikraman_abastha,
+      atikramit_area,
+      address,
+      atikraman_kisim,
+      samalagna_ghardhuri,
+      atikraman_prayojan,
+      samrachana_bibaran,
+      atikraman_abastha,
     } = this.state;
 
     return (
@@ -135,7 +142,7 @@ class Edit extends Component {
               value={atikraman_prayojan}
               onChange={(e) => this.setState({ atikraman_prayojan: e })}
             />
-                      
+
             <Input
               className="mb-4"
               title="संरचना वनेको भए संरचना विवरण"
@@ -143,7 +150,7 @@ class Edit extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ samrachana_bibaran: e })}
             />
-             <Dropdown
+            <Dropdown
               className="dropdownlabel mb-4"
               title="अतिक्रमित अवस्था"
               direction="vertical"
@@ -154,7 +161,6 @@ class Edit extends Component {
               onChange={(e) => this.handleAtikramanAbastha(e)}
               value={atikraman_abastha}
             />
-            
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -170,7 +176,5 @@ class Edit extends Component {
     );
   }
 }
-
-
 
 export default Edit;

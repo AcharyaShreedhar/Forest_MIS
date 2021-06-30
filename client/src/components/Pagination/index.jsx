@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import ReactPaginate from "react-paginate";
 import { PropTypes } from "prop-types";
-import { isNil, equals, length } from "ramda";
+import { equals, length } from "ramda";
 import "./Pagination.scss";
 
 export class Pagination extends Component {

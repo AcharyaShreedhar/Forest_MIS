@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
-import { equals } from "ramda";
+import { Button, Input } from "../../components";
 
 class Add extends Component {
   constructor(props) {

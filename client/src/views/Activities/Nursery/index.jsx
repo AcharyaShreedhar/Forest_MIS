@@ -19,7 +19,7 @@ class Nursery extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
     var biruwautpadanList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       biruwautpadanList = nextProps.biruwautpadanDataList.data;
     }
     return { biruwautpadanList, loc };

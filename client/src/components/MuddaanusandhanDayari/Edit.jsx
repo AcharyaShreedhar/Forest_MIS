@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
@@ -11,8 +10,8 @@ const JafatMaagdabi = [
 ];
 
 const BojbahakJafat = [
-    { id: 1, value: "भएको"},
-    { id: 2, value: "नभएको"},
+  { id: 1, value: "भएको" },
+  { id: 2, value: "नभएको" },
 ];
 
 class Edit extends Component {
@@ -20,7 +19,8 @@ class Edit extends Component {
     super(props);
     this.state = {
       id: props.history.location.item.mudda_anusandhan_dayari_id,
-      jaheri_partibedan_miti: props.history.location.item.jaheri_partibedan_miti,
+      jaheri_partibedan_miti:
+        props.history.location.item.jaheri_partibedan_miti,
       kasurko_kisim: props.history.location.item.kasurko_kisim,
       bigo_pariman: props.history.location.item.bigo_pariman,
       jaggako_area: props.history.location.item.jaggako_area,
@@ -29,9 +29,12 @@ class Edit extends Component {
       abhiyog_nikaya: props.history.location.item.abhiyog_nikaya,
       abhiyog_jariwana: props.history.location.item.abhiyog_jariwana,
       kaid: props.history.location.item.kaid,
-      bojbahak_jafat_maagdabi: equals(props.history.location.item.bojbahak_jafat_maagdabi, "लिएको")
-      ? 1
-      : 2,
+      bojbahak_jafat_maagdabi: equals(
+        props.history.location.item.bojbahak_jafat_maagdabi,
+        "लिएको"
+      )
+        ? 1
+        : 2,
       pratibadi_sankhya: props.history.location.item.pratibadi_sankhya,
       thunchek_dharauti: props.history.location.item.thunchek_dharauti,
       sadharan_tarekh: props.history.location.item.sadharan_tarekh,
@@ -40,8 +43,8 @@ class Edit extends Component {
       faisala_jariwana: props.history.location.item.faisala_jariwana,
       faisala_kaid: props.history.location.item.faisala_kaid,
       bojbahak_jafat: equals(props.history.location.item.bojbahak_jafat, "भएको")
-      ? 1
-      : 2,
+        ? 1
+        : 2,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -77,29 +80,31 @@ class Edit extends Component {
     const payload = {
       muddaanusandhandayari: {
         data: {
-            jaheri_partibedan_miti: jaheri_partibedan_miti,
-            kasurko_kisim: kasurko_kisim,
-            bigo_pariman: bigo_pariman,
-            jaggako_area: jaggako_area,
-            jaggako_thegana: jaggako_thegana,
-            abhiyog_miti: abhiyog_miti,
-            abhiyog_nikaya: abhiyog_nikaya,
-            abhiyog_jariwana: abhiyog_jariwana,
-            kaid: kaid,
-            bojbahak_jafat_maagdabi: equals(bojbahak_jafat_maagdabi, 1) ? "लिएको" : "नलिएको",
-            pratibadi_sankhya: pratibadi_sankhya,
-            thunchek_dharauti: thunchek_dharauti,
-            sadharan_tarekh: sadharan_tarekh,
-            thuna_aadhes: thuna_aadhes,
-            faisala_miti: faisala_miti,
-            faisala_jariwana: faisala_jariwana,
-            faisala_kaid: faisala_kaid,
-            bojbahak_jafat: equals(bojbahak_jafat, 1) ? "भएको" : "नभएको",
-            created_by: this.props.user.user_name,
-            updated_by: this.props.user.user_name,
+          jaheri_partibedan_miti: jaheri_partibedan_miti,
+          kasurko_kisim: kasurko_kisim,
+          bigo_pariman: bigo_pariman,
+          jaggako_area: jaggako_area,
+          jaggako_thegana: jaggako_thegana,
+          abhiyog_miti: abhiyog_miti,
+          abhiyog_nikaya: abhiyog_nikaya,
+          abhiyog_jariwana: abhiyog_jariwana,
+          kaid: kaid,
+          bojbahak_jafat_maagdabi: equals(bojbahak_jafat_maagdabi, 1)
+            ? "लिएको"
+            : "नलिएको",
+          pratibadi_sankhya: pratibadi_sankhya,
+          thunchek_dharauti: thunchek_dharauti,
+          sadharan_tarekh: sadharan_tarekh,
+          thuna_aadhes: thuna_aadhes,
+          faisala_miti: faisala_miti,
+          faisala_jariwana: faisala_jariwana,
+          faisala_kaid: faisala_kaid,
+          bojbahak_jafat: equals(bojbahak_jafat, 1) ? "भएको" : "नभएको",
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
-      };
+    };
     this.props.onUpdate(payload, id);
   }
   handleJafatMaagdabi(e) {
@@ -126,8 +131,7 @@ class Edit extends Component {
         break;
     }
   }
-  
-  
+
   render() {
     const { title } = this.props;
     const {
@@ -299,8 +303,6 @@ class Edit extends Component {
               onChange={(e) => this.handleBojbahakJafat(e)}
               value={bojbahak_jafat}
             />
-               
-                        
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -316,7 +318,5 @@ class Edit extends Component {
     );
   }
 }
-
-
 
 export default Edit;
