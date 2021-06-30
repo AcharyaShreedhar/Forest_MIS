@@ -10,7 +10,7 @@ const initialState = Immutable({
 });
 
 const fetchallbanpaidawarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchallbanpaidawarSuccess = (state, action) => {
 
   return state.merge({
@@ -24,7 +24,7 @@ const fetchallbanpaidawarFailure = (state, action) => {
 };
 
 const fetchbanpaidawarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchbanpaidawarSuccess = (state, action) => {
 
   return state.merge({
@@ -76,7 +76,7 @@ state.merge({ ...state, status: "error" });
 
 
 const fetchallbanpaidawarlilamRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchallbanpaidawarlilamSuccess = (state, action) => {
 
   return state.merge({
@@ -91,7 +91,7 @@ const fetchallbanpaidawarlilamFailure = (state, action) => {
 
 
 const fetchbanpaidawarlilamRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state,  status: "pending" });
 const fetchbanpaidawarlilamSuccess = (state, action) => {
 
   return state.merge({
@@ -140,6 +140,70 @@ const deletebanpaidawarlilamFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+//---------------banpaidawar utpadan tatha bikribitaran
+const fetchallbanpaidawarbikribitaranRequest = (state, action) =>
+  state.merge({ ...state,  status: "pending" });
+const fetchallbanpaidawarbikribitaranSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanpaidawarbikribitaranData: action.response,
+  });
+};
+const fetchallbanpaidawarbikribitaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
+const fetchbanpaidawarbikribitaranRequest = (state, action) =>
+  state.merge({ ...state,  status: "pending" });
+const fetchbanpaidawarbikribitaranSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    banpaidawarbikribitaranData: action.response,
+  });
+};
+const fetchbanpaidawarbikribitaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add Banpaidawarutpadan tatha bikribitaran
+const addbanpaidawarbikribitaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanpaidawarbikribitaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanpaidawarbikribitaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+// update banpaidawar utpadan tatha bikribitaran  
+  const updatebanpaidawarbikribitaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatebanpaidawarbikribitaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatebanpaidawarbikribitaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete banpaidawar birkibitaran
+const deletebanpaidawarbikribitaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebanpaidawarbikribitaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebanpaidawarbikribitaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
 
 
 const locationsRequest = (state, action) => {
@@ -194,6 +258,26 @@ export const reducer = createReducer(initialState, {
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_REQUEST]: deletebanpaidawarlilamRequest,
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_SUCCESS]: deletebanpaidawarlilamSuccess,
   [BanpaidawarTypes.DELETEBANPAIDAWARLILAM_FAILURE]: deletebanpaidawarlilamFailure,
+
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_REQUEST]:  fetchallbanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_SUCCESS]:  fetchallbanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_FAILURE]:  fetchallbanpaidawarbikribitaranFailure,
+
+  [BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_REQUEST]:  fetchbanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_SUCCESS]:  fetchbanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_FAILURE]:  fetchbanpaidawarbikribitaranFailure,
+
+  [BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_REQUEST]:  addbanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_SUCCESS]:  addbanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_FAILURE]:  addbanpaidawarbikribitaranFailure,
+
+  [BanpaidawarTypes.UPDATEBANPAIDAWARBIKRIBITARAN_REQUEST]:  updatebanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.UPDATEBANPAIDAWARBIKRIBITARAN_SUCCESS]:  updatebanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.UPDATEBANPAIDAWARBIKRIBITARAN_FAILURE]:  updatebanpaidawarbikribitaranFailure,
+
+  [BanpaidawarTypes.DELETEBANPAIDAWARBIKRIBITARAN_REQUEST]:  deletebanpaidawarbikribitaranRequest,
+  [BanpaidawarTypes.DELETEBANPAIDAWARBIKRIBITARAN_SUCCESS]:  deletebanpaidawarbikribitaranSuccess,
+  [BanpaidawarTypes.DELETEBANPAIDAWARBIKRIBITARAN_FAILURE]:  deletebanpaidawarbikribitaranFailure,
 
  
   [BanpaidawarTypes.LOCATIONS_REQUEST]: locationsRequest,

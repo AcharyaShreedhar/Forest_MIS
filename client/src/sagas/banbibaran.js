@@ -359,6 +359,107 @@ export function* fetchalluddhyambibaranRequest(api, action) {
   }
 }
 
+export function* fetchuddhyambibaranRequest(api, action) {
+  const uddhyamId = action.payload;
+
+  const response = yield api.getUddhyambibaran(uddhyamId);
+  if (response.ok) {
+    yield put(BanbibaranActions.fetchuddhyambibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.fetchuddhyambibaranFailure());
+  }
+}   
+
+// Add uddhyambibaran
+export function* adduddhyambibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranUddhyambibaranAddNew(
+    payload.uddhyambibaran.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक उद्धयम विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalluddhyambibaranRequest(api, {
+      name: "niji_uddhyam_sankhya",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/uddhyambibaranlist");
+    yield put(BanbibaranActions.adduddhyambibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.adduddhyambibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update uddhyambibaran
+export function* updateuddhyambibaranRequest(api, action) {
+  const { payload, uddhyamId } = action;
+
+  const response = yield api.postBanbibaranUddhyambibaranUpdate(
+    payload.uddhyambibaran.data,
+    uddhyamId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक उद्धयम विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalluddhyambibaranRequest(api, {
+      name: "niji_uddhyam_sankhya",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/uddhyambibaranlist");
+    yield put(BanbibaranActions.updateuddhyambibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updateuddhyambibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete uddhyambibaran
+export function* deleteuddhyambibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranUddhyambibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक उद्धयम विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalluddhyambibaranRequest(api, {
+      name: "niji_uddhyam_sankhya",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BanbibaranActions.deleteuddhyambibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.deleteuddhyambibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
+
 //bachat bibaran
 export function* fetchallbachatbibaranRequest(api, action) {
   const { payload } = action;
@@ -369,5 +470,106 @@ export function* fetchallbachatbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchallbachatbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchallbachatbibaranFailure());
+
+  }
+}
+
+export function* fetchbachatbibaranRequest(api, action) {
+  const bachatId = action.payload;
+
+  const response = yield api.getBachatbibaran(bachatId);
+
+  if (response.ok) {
+    yield put(BanbibaranActions.fetchbachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.fetchbachatbibaranFailure());
+  }
+}
+
+
+export function* addbachatbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranBachatbibaranAddNew(
+    payload.bachatbibaran.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वचत तथा ऋण विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbachatbibaranRequest(api, {
+      name: "samuhako_naam",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/bachatbibaranlist");
+    yield put(BanbibaranActions.addbachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.addbachatbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update bachatbibaran
+export function* updatebachatbibaranRequest(api, action) {
+  const { payload, bachatId } = action;
+
+  const response = yield api.postBanbibaranBachatbibaranUpdate(
+    payload.bachatbibaran.data,
+    bachatId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वचत तथा ऋण विवरण विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbachatbibaranRequest(api, {
+      name: "samuhako_naam",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/bachatbibaranlist");
+    yield put(BanbibaranActions.updatebachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.updatebachatbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
+export function* deletebachatbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranBachatbibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वचत तथा ऋण विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbachatbibaranRequest(api, {
+      name: "samuhako_naam",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BanbibaranActions.deletebachatbibaranSuccess(response.data));
+  } else {
+    yield put(BanbibaranActions.deletebachatbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }

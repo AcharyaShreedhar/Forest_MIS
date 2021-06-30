@@ -80,10 +80,43 @@ const { Types, Creators } = createActions({
   fetchalluddhyambibaranSuccess: ["response"],
   fetchalluddhyambibaranFailure: null,
 
+  fetchuddhyambibaranRequest: ["payload"],
+  fetchuddhyambibaranSuccess: ["response"],
+  fetchuddhyambibaranFailure: null,
+
+  adduddhyambibaranRequest: ["payload"],
+  adduddhyambibaranSuccess: ["response"],
+  adduddhyambibaranFailure: null,
+
+  updateuddhyambibaranRequest: ["payload","uddhyamId"],
+  updateuddhyambibaranSuccess: ["response"],
+  updateuddhyambibaranFailure: null,
+
+  deleteuddhyambibaranRequest: ["payload","uddhyamId"],
+  deleteuddhyambibaranSuccess: ["response"],
+  deleteuddhyambibaranFailure: null,
+
+
   //bachat bibaran
   fetchallbachatbibaranRequest: ["payload"],
   fetchallbachatbibaranSuccess: ["response"],
   fetchallbachatbibaranFailure: null,
+
+  fetchbachatbibaranRequest: ["payload"],
+  fetchbachatbibaranSuccess: ["response"],
+  fetchbachatbibaranFailure: null,
+
+  addbachatbibaranRequest: ["payload"],
+  addbachatbibaranSuccess: ["response"],
+  addbachatbibaranFailure: null,
+
+  updatebachatbibaranRequest: ["payload", "bachatId"],
+  updatebachatbibaranSuccess: ["response"],
+  updatebachatbibaranFailure: null,
+
+  deletebachatbibaranRequest: ["payload", "bachatId"],
+  deletebachatbibaranSuccess: ["response"],
+  deletebachatbibaranFailure: null,
 
 
   locationsRequest: ["payload"],

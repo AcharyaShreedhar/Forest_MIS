@@ -14,6 +14,7 @@ import { BanpaidawarTypes } from "../actions/banpaidawar";
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes } from "../actions/inventories";
 import { KarmacharibibaranTypes } from "../actions/karmacharibibaran";
+import { KaryabibaranTypes } from "../actions/karyabibaran";
 //------------------app
 import {
   fetchalldepartmentsRequest,
@@ -62,6 +63,10 @@ import {
   fetchallplotbibaranRequest,
   fetchplotbibaranRequest,
   fetchalluddhyambibaranRequest,
+  fetchuddhyambibaranRequest,
+  adduddhyambibaranRequest,
+  updateuddhyambibaranRequest,
+  deleteuddhyambibaranRequest,
   addplotbibaranRequest,
   addbaramaditchijbastuRequest,
   addbanxetraanyaprayojanRequest,
@@ -72,6 +77,10 @@ import {
   deletebaramaditchijbastuRequest,
   deletebanxetraanyaprayojanRequest,
   fetchallbachatbibaranRequest,
+  fetchbachatbibaranRequest,
+  addbachatbibaranRequest,
+  updatebachatbibaranRequest,
+  deletebachatbibaranRequest,
 } from "./banbibaran";
 
 //------------------------bankaprakar
@@ -179,6 +188,11 @@ import {
   addbanpaidawarlilamRequest,
   updatebanpaidawarlilamRequest,
   deletebanpaidawarlilamRequest,
+  fetchallbanpaidawarbikribitaranRequest,
+  fetchbanpaidawarbikribitaranRequest,
+  addbanpaidawarbikribitaranRequest,
+  updatebanpaidawarbikribitaranRequest,
+  deletebanpaidawarbikribitaranRequest,
 } from "./banpaidawar";
 
 //--------------------bandadelobibaran
@@ -235,6 +249,13 @@ import {
   updatepostRequest,
   deletepostRequest,
 } from "./karmacharibibaran";
+
+//-------karyabibaran
+import {
+  fetchallsamajikkaryabibaranRequest,
+  fetchsamajikkaryabibaranRequest,
+
+} from "./karyabibaran";
 
 const api = API.create();
 
@@ -808,6 +829,31 @@ export default function* root() {
         api
       ),
 
+      takeLatest(
+        BanbibaranTypes.FETCHUDDHYAMBIBARAN_REQUEST,
+        fetchuddhyambibaranRequest,
+        api
+      ),
+
+      takeLatest(
+        BanbibaranTypes.ADDUDDHYAMBIBARAN_REQUEST,
+        adduddhyambibaranRequest,
+        api
+      ),
+
+      takeLatest(
+        BanbibaranTypes.UPDATEUDDHYAMBIBARAN_REQUEST,
+        updateuddhyambibaranRequest,
+        api
+      ),
+
+      takeLatest(
+        BanbibaranTypes.DELETEUDDHYAMBIBARAN_REQUEST,
+        deleteuddhyambibaranRequest,
+        api
+      ),
+
+
     //inventories
     takeLatest(
       InventoriesTypes.FETCHALLINVENTORIES_REQUEST,
@@ -1141,13 +1187,79 @@ export default function* root() {
       deletebanxetraanyaprayojanRequest,
       api
     ),
-
     //bachat bibaran
     takeLatest(
       BanbibaranTypes.FETCHALLBACHATBIBARAN_REQUEST, 
       fetchallbachatbibaranRequest,
       api
     ),
+    takeLatest(
+      BanbibaranTypes.FETCHBACHATBIBARAN_REQUEST, 
+      fetchbachatbibaranRequest,
+      api
+    ),
+
+    // bapaidawar_bikribitaran
+    takeLatest(
+      BanbibaranTypes.ADDBACHATBIBARAN_REQUEST, 
+      addbachatbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.UPDATEBACHATBIBARAN_REQUEST, 
+      updatebachatbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanbibaranTypes.DELETEBACHATBIBARAN_REQUEST, 
+      deletebachatbibaranRequest,
+      api
+    ),
+
+    //banpaidawar bikribitaran
+    takeLatest(
+      BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_REQUEST, 
+      fetchallbanpaidawarbikribitaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_REQUEST, 
+      fetchbanpaidawarbikribitaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BanpaidawarTypes.ADDBANPAIDAWARBIKRIBITARAN_REQUEST,
+      addbanpaidawarbikribitaranRequest,
+      api
+    ),
+    takeLatest(
+      BanpaidawarTypes.UPDATEBANPAIDAWARBIKRIBITARAN_REQUEST,
+      updatebanpaidawarbikribitaranRequest,
+      api
+    ),
+    takeLatest(
+      BanpaidawarTypes.DELETEBANPAIDAWARBIKRIBITARAN_REQUEST,
+      deletebanpaidawarbikribitaranRequest,
+      api
+    ),
+
+    //karyabibaran
+    takeLatest(
+      KaryabibaranTypes.FETCHALLSAMAJIKKARYABIBARAN_REQUEST, 
+      fetchallsamajikkaryabibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST, 
+      fetchsamajikkaryabibaranRequest,
+      api
+    ),
+
 
   ]);
 }

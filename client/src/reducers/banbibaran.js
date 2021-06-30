@@ -205,6 +205,52 @@ const fetchalluddhyambibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchuddhyambibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchuddhyambibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    uddhyambibaranData: action.response,
+  });
+};
+const fetchuddhyambibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add uddhyambibaran
+const adduddhyambibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const adduddhyambibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const adduddhyambibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+  //Update uddhyambibaran
+const updateuddhyambibaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateuddhyambibaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateuddhyambibaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+//Delete uddhyambibaran
+const deleteuddhyambibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteuddhyambibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteuddhyambibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 //bachat bibaran
 const fetchallbachatbibaranRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
@@ -218,6 +264,54 @@ const fetchallbachatbibaranSuccess = (state, action) => {
 const fetchallbachatbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+const fetchbachatbibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchbachatbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    bachatbibaranData: action.response,
+  });
+};
+const fetchbachatbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+const addbachatbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbachatbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbachatbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+  const updatebachatbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebachatbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebachatbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+const deletebachatbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebachatbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebachatbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 
 
 const locationsRequest = (state, action) => {
@@ -295,10 +389,42 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_REQUEST]: fetchalluddhyambibaranRequest,
   [BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_SUCCESS]: fetchalluddhyambibaranSuccess,
   [BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_FAILURE]: fetchalluddhyambibaranFailure,
+  
+  [BanbibaranTypes.FETCHUDDHYAMBIBARAN_REQUEST]: fetchuddhyambibaranRequest,
+  [BanbibaranTypes.FETCHUDDHYAMBIBARAN_SUCCESS]: fetchuddhyambibaranSuccess,
+  [BanbibaranTypes.FETCHUDDHYAMBIBARAN_FAILURE]: fetchuddhyambibaranFailure,
+
+  [BanbibaranTypes.ADDUDDHYAMBIBARAN_REQUEST]: adduddhyambibaranRequest,
+  [BanbibaranTypes.ADDUDDHYAMBIBARAN_SUCCESS]: adduddhyambibaranSuccess,
+  [BanbibaranTypes.ADDUDDHYAMBIBARAN_FAILURE]: adduddhyambibaranFailure,
+
+  [BanbibaranTypes.UPDATEUDDHYAMBIBARAN_REQUEST]: updateuddhyambibaranRequest,
+  [BanbibaranTypes.UPDATEUDDHYAMBIBARAN_SUCCESS]: updateuddhyambibaranSuccess,
+  [BanbibaranTypes.UPDATEUDDHYAMBIBARAN_FAILURE]: updateuddhyambibaranFailure,
+
+  [BanbibaranTypes.DELETEUDDHYAMBIBARAN_REQUEST]: deleteuddhyambibaranRequest,
+  [BanbibaranTypes.DELETEUDDHYAMBIBARAN_SUCCESS]: deleteuddhyambibaranSuccess,
+  [BanbibaranTypes.DELETEUDDHYAMBIBARAN_FAILURE]: deleteuddhyambibaranFailure,
 
   [BanbibaranTypes.FETCHALLBACHATBIBARAN_REQUEST]: fetchallbachatbibaranRequest,
   [BanbibaranTypes.FETCHALLBACHATBIBARAN_SUCCESS]: fetchallbachatbibaranSuccess,
   [BanbibaranTypes.FETCHALLBACHATBIBARAN_FAILURE]: fetchallbachatbibaranFailure,
+
+  [BanbibaranTypes.FETCHBACHATBIBARAN_REQUEST]: fetchbachatbibaranRequest,
+  [BanbibaranTypes.FETCHBACHATBIBARAN_SUCCESS]: fetchbachatbibaranSuccess,
+  [BanbibaranTypes.FETCHBACHATBIBARAN_FAILURE]: fetchbachatbibaranFailure,
+
+  [BanbibaranTypes.ADDBACHATBIBARAN_REQUEST]: addbachatbibaranRequest,
+  [BanbibaranTypes.ADDBACHATBIBARAN_SUCCESS]: addbachatbibaranSuccess,
+  [BanbibaranTypes.ADDBACHATBIBARAN_FAILURE]: addbachatbibaranFailure,
+
+  [BanbibaranTypes.UPDATEBACHATBIBARAN_REQUEST]: updatebachatbibaranRequest,
+  [BanbibaranTypes.UPDATEBACHATBIBARAN_SUCCESS]: updatebachatbibaranSuccess,
+  [BanbibaranTypes.UPDATEBACHATBIBARAN_FAILURE]: updatebachatbibaranFailure,
+  
+  [BanbibaranTypes.DELETEBACHATBIBARAN_REQUEST]: deletebachatbibaranRequest,
+  [BanbibaranTypes.DELETEBACHATBIBARAN_SUCCESS]: deletebachatbibaranSuccess,
+  [BanbibaranTypes.DELETEBACHATBIBARAN_FAILURE]: deletebachatbibaranFailure,
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,

@@ -52,10 +52,29 @@
    deletebanpaidawarlilamSuccess: ["response"],
    deletebanpaidawarlilamFailure: null,
 
+     // ------ banpaidawarbikribitaran
+  fetchallbanpaidawarbikribitaranRequest: ["payload"],
+  fetchallbanpaidawarbikribitaranSuccess: ["response"],
+  fetchallbanpaidawarbikribitaranFailure: null,
 
-       locationsRequest: ["payload"],
+  fetchbanpaidawarbikribitaranRequest: ["payload"],
+  fetchbanpaidawarbikribitaranSuccess: ["response"],
+  fetchbanpaidawarbikribitaranFailure: null,
+
+  addbanpaidawarbikribitaranRequest: ["payload"],
+  addbanpaidawarbikribitaranSuccess: ["response"],
+  addbanpaidawarbikribitaranFailure: null,
+
+  updatebanpaidawarbikribitaranRequest: ["payload","banpaidawarbikribitaranId"],
+  updatebanpaidawarbikribitaranSuccess: ["response"],
+  updatebanpaidawarbikribitaranFailure: null,
+
+  deletebanpaidawarbikribitaranRequest: ["payload","banpaidawarbikribitaranId"],
+  deletebanpaidawarbikribitaranSuccess: ["response"],
+  deletebanpaidawarbikribitaranFailure: null,
+  locationsRequest: ["payload"],
    // Clear all caches
-   clearRequest: null,
+  clearRequest: null,
  });
  
  export const BanpaidawarTypes = Types;
