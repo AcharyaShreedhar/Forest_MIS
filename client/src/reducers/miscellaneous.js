@@ -9,8 +9,9 @@ const initialState = Immutable({
   token: "",
 });
 
+//------------ rojgar srijana
 const fetchallrojgarsrijanaRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallrojgarsrijanaSuccess = (state, action) => {
 
   return state.merge({
@@ -24,7 +25,7 @@ const fetchallrojgarsrijanaFailure = (state, action) => {
 };
 
 const fetchrojgarsrijanaRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchrojgarsrijanaSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -35,6 +36,18 @@ const fetchrojgarsrijanaSuccess = (state, action) => {
 const fetchrojgarsrijanaFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+//Add rojgarsrijana
+const addrojgarsrijanaRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addrojgarsrijanaSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addrojgarsrijanaFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -56,6 +69,10 @@ export const reducer = createReducer(initialState, {
   [MiscellaneousTypes.FETCHROJGARSRIJANA_REQUEST]: fetchrojgarsrijanaRequest,
   [MiscellaneousTypes.FETCHROJGARSRIJANA_SUCCESS]: fetchrojgarsrijanaSuccess,
   [MiscellaneousTypes.FETCHROJGARSRIJANA_FAILURE]: fetchrojgarsrijanaFailure,
+
+  [MiscellaneousTypes.ADDROJGARSRIJANA_REQUEST]: addrojgarsrijanaRequest,
+  [MiscellaneousTypes.ADDROJGARSRIJANA_SUCCESS]: addrojgarsrijanaSuccess,
+  [MiscellaneousTypes.ADDROJGARSRIJANA_FAILURE]: addrojgarsrijanaFailure,
   
   [MiscellaneousTypes.LOCATIONS_REQUEST]: locationsRequest,
   [MiscellaneousTypes.CLEAR_REQUEST]: clearRequest,

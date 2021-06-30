@@ -11,6 +11,10 @@ import { createActions } from "reduxsauce";
    fetchrojgarsrijanaSuccess: ["response"],
    fetchrojgarsrijanaFailure: null,
 
+   addrojgarsrijanaRequest: ["payload"],
+   addrojgarsrijanaSuccess: ["response"],
+   addrojgarsrijanaFailure: null,
+
 
 
 
