@@ -129,6 +129,7 @@ import {
   fetchallbrixyaropanRequest,
   fetchbrixyaropanRequest,
   addbrixyaropanRequest,
+  updatebrixyaropanRequest,
 } from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
@@ -514,6 +515,12 @@ export default function* root() {
     takeLatest(
       BiruwautpadanTypes.ADDBRIXYAROPAN_REQUEST,
       addbrixyaropanRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.UPDATEBRIXYAROPAN_REQUEST,
+      updatebrixyaropanRequest,
       api
     ),
 
