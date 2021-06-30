@@ -16,7 +16,7 @@ class HeaderComponent extends Component {
             </div>
             <div className="text-center">
               <p className="mb-0">प्रदेश सरकार</p>
-              <p className="mb-0">उद्योग, पर्यटन, वन तथा वातावरण मन्त्रालय</p>
+              <p className="mb-0">वन,वातावरण तथा भू-संरक्षण मन्त्रालय</p>
               <p className="mb-0">गण्डकी प्रदेश, पोखरा</p>
             </div>
             <div className="flag">
