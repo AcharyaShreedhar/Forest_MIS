@@ -257,6 +257,7 @@ import {
   fetchsamajikkaryabibaranRequest,
   addsamajikkaryabibaranRequest,
   updatesamajikkaryabibaranRequest,
+  deletesamajikkaryabibaranRequest,
 
 } from "./karyabibaran";
 
@@ -1271,6 +1272,12 @@ export default function* root() {
     takeLatest(
       KaryabibaranTypes.UPDATESAMAJIKKARYABIBARAN_REQUEST, 
       updatesamajikkaryabibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      KaryabibaranTypes.DELETESAMAJIKKARYABIBARAN_REQUEST, 
+      deletesamajikkaryabibaranRequest,
       api
     ),
 
