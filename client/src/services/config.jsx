@@ -281,6 +281,17 @@ const muddaanusandhandayariHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const brixyaropanHeadings = [
+  "वृक्षरोपण ठेगाना",
+  "वृक्षरोपण किसिम",
+  "लक्ष",
+  "वृक्षरोपण प्रजाति",
+  "प्रगति",
+  "वृक्षरोपण संख्या",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -301,4 +312,5 @@ export {
   seedgardenplotsHeadings,
   banxetraanyaprayojanHeadings,
   muddaanusandhandayariHeadings,
+  brixyaropanHeadings,
 };
