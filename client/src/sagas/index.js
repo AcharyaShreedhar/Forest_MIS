@@ -255,6 +255,10 @@ import {
 import {
   fetchallsamajikkaryabibaranRequest,
   fetchsamajikkaryabibaranRequest,
+  addsamajikkaryabibaranRequest,
+  updatesamajikkaryabibaranRequest,
+  deletesamajikkaryabibaranRequest,
+
 } from "./karyabibaran";
 
 //miscellaneous
@@ -1193,7 +1197,6 @@ export default function* root() {
       api
     ),
 
-    // bapaidawar_bikribitaran
     takeLatest(
       BanbibaranTypes.ADDBACHATBIBARAN_REQUEST,
       addbachatbibaranRequest,
@@ -1253,6 +1256,31 @@ export default function* root() {
       fetchsamajikkaryabibaranRequest,
       api
     ),
+
+    takeLatest(
+      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST, 
+      fetchsamajikkaryabibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_REQUEST, 
+      addsamajikkaryabibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      KaryabibaranTypes.UPDATESAMAJIKKARYABIBARAN_REQUEST, 
+      updatesamajikkaryabibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      KaryabibaranTypes.DELETESAMAJIKKARYABIBARAN_REQUEST, 
+      deletesamajikkaryabibaranRequest,
+      api
+    ),
+
     //----------- miscellaneous
     takeLatest(
       MiscellaneousTypes.FETCHALLROJGARSRIJANA_REQUEST,

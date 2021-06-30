@@ -20,6 +20,18 @@
    fetchsamajikkaryabibaranSuccess: ["response"],
    fetchsamajikkaryabibaranFailure: null,
 
+   addsamajikkaryabibaranRequest: ["payload"],
+   addsamajikkaryabibaranSuccess: ["response"],
+   addsamajikkaryabibaranFailure: null,
+
+   updatesamajikkaryabibaranRequest: ["payload","samajikkaryabibaranId"],
+   updatesamajikkaryabibaranSuccess: ["response"],
+   updatesamajikkaryabibaranFailure: null,
+
+   deletesamajikkaryabibaranRequest: ["payload","samajikkaryabibaranId"],
+   deletesamajikkaryabibaranSuccess: ["response"],
+   deletesamajikkaryabibaranFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
