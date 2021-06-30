@@ -264,9 +264,11 @@ import {
 
 //miscellaneous
 import {
-  fetchallrojgarsrijanaRequest,
-  fetchrojgarsrijanaRequest,
-  addrojgarsrijanaRequest,
+ fetchallrojgarsrijanaRequest,
+ fetchrojgarsrijanaRequest,
+ addrojgarsrijanaRequest,
+ updaterojgarsrijanaRequest,
+ deleterojgarsrijanaRequest
 } from "./miscellaneous";
 
 const api = API.create();
@@ -1304,5 +1306,18 @@ export default function* root() {
       addrojgarsrijanaRequest,
       api
     ),
+    takeLatest(
+      MiscellaneousTypes.UPDATEROJGARSRIJANA_REQUEST,
+      updaterojgarsrijanaRequest,
+      api
+    ),
+    
+    takeLatest(
+      MiscellaneousTypes.DELETEROJGARSRIJANA_REQUEST,
+      deleterojgarsrijanaRequest,
+      api
+    )
+
+
   ]);
 }

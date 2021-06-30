@@ -40,7 +40,7 @@ export function* addrojgarsrijanaRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक रोजगार सृजना  प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक रोजगार सृजना प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrojgarsrijanaRequest(api,{
@@ -55,5 +55,64 @@ export function* addrojgarsrijanaRequest(api, action) {
     toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
+  }
+}
+
+// Update rojgarsrijana
+export function* updaterojgarsrijanaRequest(api, action) {
+  const { payload,rojgarsrijanaId } = action;
+
+  const response = yield api.postRojgarSrijanaUpdate(
+    payload.rojgarsrijana.data,
+    rojgarsrijanaId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक रोजगार सृजना पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrojgarsrijanaRequest(api,{
+      name: "karyaharu",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/miscellaneous/rojgarsrijanalist");
+    yield put(
+      MiscellaneousActions.updaterojgarsrijanaSuccess(response.data)
+    );
+  } else {
+    yield put(MiscellaneousActions.updaterojgarsrijanaFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+// Delete rojgarsrijana
+export function* deleterojgarsrijanaRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postRojgarSrijanaDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक रोजगार सृजना हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrojgarsrijanaRequest(api,{
+      name: "karyaharu",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      MiscellaneousActions.deleterojgarsrijanaSuccess(response.data)
+    );
+  } else {
+    yield put(MiscellaneousActions.deleterojgarsrijanaFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
