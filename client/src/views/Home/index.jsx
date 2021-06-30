@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
-import ReactDOM from "react-dom";
 import Chart from "react-apexcharts";
 
 export class index extends Component {

@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals, length, isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { BandadeloBibaran } from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
 import { bandadeloHeadings } from "../../../services/config";
-
 
 class Bandadelo extends Component {
   constructor(props) {
@@ -18,52 +17,39 @@ class Bandadelo extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
     var bandadelobibaranList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       bandadelobibaranList = nextProps.bandadelobibaranDataList.data;
     }
 
-    return { 
+    return {
       loc,
       bandadelobibaranList,
-     };
+    };
   }
 
   handlePageChange(data) {
-    
-    const {perPage } = this.state;
+    const { perPage } = this.state;
     this.setState({ page: data.selected });
     this.props.fetchallBandadelo({
-        name:"bandadelo_address",
-        page: data.selected * perPage,
-        perPage,
+      name: "bandadelo_address",
+      page: data.selected * perPage,
+      perPage,
     });
-}
+  }
 
   handleSelectMenu(event, item, path) {
-   switch (event) {
+    switch (event) {
       case "edit": {
-        switch (path) {
-          case "bandadelo": {
-            this.props.history.push({
-              pathname: `/banbibaran/bandadeloedit/${item.bandadelo_biabaran_id}`,
-              item,
-            });
-            break;
-          }
-          default:
-            break;
-        }
+        this.props.history.push({
+          pathname: `/banbibaran/bandadeloedit/${item.bandadelo_biabaran_id}`,
+          item,
+        });
+
         break;
       }
       case "delete": {
-        switch (path) {
-          case "bandadelo": {
-            this.props.deleteBandadelo(item.bandadelo_bibaran_id);
-            break;
-          }
-          default:
-            break;
-        }
+        this.props.deleteBandadelo(item.bandadelo_bibaran_id);
+        break;
       }
       default:
         break;
@@ -83,14 +69,7 @@ class Bandadelo extends Component {
   }
 
   render() {
-    const{
-      loc,
-      perPage,
-      bandadelobibaranList,
-
-    } = this.state;
-    const { user } = this.props;
-    
+    const { loc, perPage, bandadelobibaranList } = this.state;
 
     return (
       <div>
@@ -144,18 +123,23 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBandadelo: (payload) =>
-  dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
+    dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
 
   addBandadelo: (payload) =>
     dispatch(BandadelobibaranActions.addbandadelobibaranRequest(payload)),
 
   updateBandadelo: (payload, bandadelobibaranId) =>
     dispatch(
-      BandadelobibaranActions.updatebandadelobibaranRequest(payload, bandadelobibaranId)
+      BandadelobibaranActions.updatebandadelobibaranRequest(
+        payload,
+        bandadelobibaranId
+      )
     ),
 
   deleteBandadelo: (bandadelobibaranId) =>
-    dispatch(BandadelobibaranActions.deletebandadelobibaranRequest(bandadelobibaranId)),
+    dispatch(
+      BandadelobibaranActions.deletebandadelobibaranRequest(bandadelobibaranId)
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bandadelo);

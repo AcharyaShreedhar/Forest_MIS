@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Button, Input, Dropdown } from "../../components";
 import { equals } from "ramda";
 

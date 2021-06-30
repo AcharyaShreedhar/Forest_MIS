@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { NotFound, NavbarComponent, SideNavbar } from "../../components";
+import { NotFound, SideNavbar } from "../../components";
 import dashboardRoutes from "../../routes/dashboard";
 import "./Dashboard.scss";
 

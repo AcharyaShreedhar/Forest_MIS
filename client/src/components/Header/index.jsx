@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Row, Image } from "react-bootstrap";
 import "./Header.scss";
 
 class HeaderComponent extends Component {

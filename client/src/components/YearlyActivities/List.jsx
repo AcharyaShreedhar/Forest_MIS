@@ -7,7 +7,16 @@ import ReactPaginate from "react-paginate";
 import { Button, EditDropdown } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title,pageCount,user, onAdd, onSelect,onPageClick } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    pageCount,
+    onAdd,
+    onSelect,
+    onPageClick,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -41,9 +50,18 @@ function List(props) {
                   <td key={index}> {activities.samudayikban_naam}</td>
                   <td key={index}> {activities.fiscal_year}</td>
                   <td key={index}> {activities.area}</td>
-                  <td key={index}> {activities.production_from_conservation_timber}</td>
-                  <td key={index}> {activities.production_from_conservation_wood}</td>
-                  <td key={index}> {activities.employment_generated_workingday}</td>
+                  <td key={index}>
+                    {" "}
+                    {activities.production_from_conservation_timber}
+                  </td>
+                  <td key={index}>
+                    {" "}
+                    {activities.production_from_conservation_wood}
+                  </td>
+                  <td key={index}>
+                    {" "}
+                    {activities.employment_generated_workingday}
+                  </td>
                   <td key={index}> {activities.withingroup_timber}</td>
                   <td key={index}> {activities.withingroup_wood}</td>
                   <td key={index}> {activities.outsidegroup_timber}</td>
@@ -63,7 +81,9 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, activities, "yearlyactivities")}
+                        onChange={(e) =>
+                          onSelect(e, activities, "yearlyactivities")
+                        }
                       />
                     </div>
                   </td>
@@ -73,18 +93,18 @@ function List(props) {
           </tbody>
         </Table>
         <div className="paginationStyle">
-        <ReactPaginate
-          previousLabel={"PREV"}
-          nextLabel={"NEXT"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
-          pageCount={pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={onPageClick}
-          containerClassName={"pagination"}
-          activeClassName={"active"}
-        />
+          <ReactPaginate
+            previousLabel={"PREV"}
+            nextLabel={"NEXT"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={pageCount}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={onPageClick}
+            containerClassName={"pagination"}
+            activeClassName={"active"}
+          />
         </div>
       </div>
     </Fragment>

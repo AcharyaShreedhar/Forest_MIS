@@ -1,4 +1,4 @@
-import { takeEvery, takeLatest, all } from "redux-saga/effects";
+import { takeLatest, all } from "redux-saga/effects";
 import API from "../services/api";
 import { AppTypes } from "../actions/app";
 import { BankaprakarTypes } from "../actions/bankaprakar";
@@ -10,7 +10,6 @@ import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
 import { BandadelobibaranTypes } from "../actions/bandadelobibaran";
 import { BanxetraatikramanTypes } from "../actions/banxetraatikraman";
 import { BanpaidawarTypes } from "../actions/banpaidawar";
-
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes } from "../actions/inventories";
 import { KarmacharibibaranTypes } from "../actions/karmacharibibaran";
@@ -255,17 +254,14 @@ import {
 import {
   fetchallsamajikkaryabibaranRequest,
   fetchsamajikkaryabibaranRequest,
-
 } from "./karyabibaran";
 
 //miscellaneous
 import {
- fetchallrojgarsrijanaRequest,
- fetchrojgarsrijanaRequest,
- addrojgarsrijanaRequest,
+  fetchallrojgarsrijanaRequest,
+  fetchrojgarsrijanaRequest,
+  addrojgarsrijanaRequest,
 } from "./miscellaneous";
-
-import { from } from "seamless-immutable";
 
 const api = API.create();
 
@@ -832,37 +828,36 @@ export default function* root() {
       api
     ),
 
-      //------uddhyambibaran
-      takeLatest(
-        BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_REQUEST,
-        fetchalluddhyambibaranRequest,
-        api
-      ),
+    //------uddhyambibaran
+    takeLatest(
+      BanbibaranTypes.FETCHALLUDDHYAMBIBARAN_REQUEST,
+      fetchalluddhyambibaranRequest,
+      api
+    ),
 
-      takeLatest(
-        BanbibaranTypes.FETCHUDDHYAMBIBARAN_REQUEST,
-        fetchuddhyambibaranRequest,
-        api
-      ),
+    takeLatest(
+      BanbibaranTypes.FETCHUDDHYAMBIBARAN_REQUEST,
+      fetchuddhyambibaranRequest,
+      api
+    ),
 
-      takeLatest(
-        BanbibaranTypes.ADDUDDHYAMBIBARAN_REQUEST,
-        adduddhyambibaranRequest,
-        api
-      ),
+    takeLatest(
+      BanbibaranTypes.ADDUDDHYAMBIBARAN_REQUEST,
+      adduddhyambibaranRequest,
+      api
+    ),
 
-      takeLatest(
-        BanbibaranTypes.UPDATEUDDHYAMBIBARAN_REQUEST,
-        updateuddhyambibaranRequest,
-        api
-      ),
+    takeLatest(
+      BanbibaranTypes.UPDATEUDDHYAMBIBARAN_REQUEST,
+      updateuddhyambibaranRequest,
+      api
+    ),
 
-      takeLatest(
-        BanbibaranTypes.DELETEUDDHYAMBIBARAN_REQUEST,
-        deleteuddhyambibaranRequest,
-        api
-      ),
-
+    takeLatest(
+      BanbibaranTypes.DELETEUDDHYAMBIBARAN_REQUEST,
+      deleteuddhyambibaranRequest,
+      api
+    ),
 
     //inventories
     takeLatest(
@@ -1040,7 +1035,11 @@ export default function* root() {
       fetchmunicipalitiesRequest,
       api
     ),
-    takeLatest(AppTypes.ADDMUNICIPALITIES_REQUEST, addmunicipalitiesRequest, api),
+    takeLatest(
+      AppTypes.ADDMUNICIPALITIES_REQUEST,
+      addmunicipalitiesRequest,
+      api
+    ),
 
     takeLatest(
       AppTypes.UPDATEMUNICIPALITIES_REQUEST,
@@ -1059,23 +1058,14 @@ export default function* root() {
       fetchallprovincesRequest,
       api
     ),
-    
+
     takeLatest(AppTypes.FETCHPROVINCES_REQUEST, fetchprovincesRequest, api),
 
     takeLatest(AppTypes.ADDPROVINCES_REQUEST, addprovincesRequest, api),
 
-    takeLatest(
-      AppTypes.UPDATEPROVINCES_REQUEST,
-      updateprovincesRequest,
-      api
-    ),
+    takeLatest(AppTypes.UPDATEPROVINCES_REQUEST, updateprovincesRequest, api),
 
-    takeLatest(
-      AppTypes.DELETEPROVINCES_REQUEST,
-      deleteprovincesRequest,
-      api
-    ),
-
+    takeLatest(AppTypes.DELETEPROVINCES_REQUEST, deleteprovincesRequest, api),
 
     // //--------Districts
     takeLatest(
@@ -1086,20 +1076,11 @@ export default function* root() {
 
     takeLatest(AppTypes.FETCHDISTRICTS_REQUEST, fetchdistrictsRequest, api),
 
-    
     takeLatest(AppTypes.ADDDISTRICTS_REQUEST, adddistrictsRequest, api),
 
-    takeLatest(
-      AppTypes.UPDATEDISTRICTS_REQUEST,
-      updatedistrictsRequest,
-      api
-    ),
+    takeLatest(AppTypes.UPDATEDISTRICTS_REQUEST, updatedistrictsRequest, api),
 
-    takeLatest(
-      AppTypes.DELETEDISTRICTS_REQUEST,
-      deletedistrictsRequest,
-      api
-    ),
+    takeLatest(AppTypes.DELETEDISTRICTS_REQUEST, deletedistrictsRequest, api),
 
     // //--------Departments
     takeLatest(
@@ -1130,19 +1111,9 @@ export default function* root() {
 
     takeLatest(AppTypes.ADDUSERS_REQUEST, addusersRequest, api),
 
-    takeLatest(
-      AppTypes.UPDATEUSERS_REQUEST,
-      updateusersRequest,
-      api
-    ),
+    takeLatest(AppTypes.UPDATEUSERS_REQUEST, updateusersRequest, api),
 
-    takeLatest(
-      AppTypes.DELETEUSERS_REQUEST,
-      deleteusersRequest,
-      api
-    ),
-
-    
+    takeLatest(AppTypes.DELETEUSERS_REQUEST, deleteusersRequest, api),
 
     //----------Banbibaran_baramadit_chij_bastu
     takeLatest(
@@ -1163,10 +1134,14 @@ export default function* root() {
     ),
     takeLatest(
       BanbibaranTypes.UPDATEBARAMADITCHIJBASTU_REQUEST,
-      updatebaramaditchijbastuRequest, api
+      updatebaramaditchijbastuRequest,
+      api
     ),
-    takeLatest(BanbibaranTypes.DELETEBARAMADITCHIJBASTU_REQUEST,
-       deletebaramaditchijbastuRequest,api),
+    takeLatest(
+      BanbibaranTypes.DELETEBARAMADITCHIJBASTU_REQUEST,
+      deletebaramaditchijbastuRequest,
+      api
+    ),
 
     //----------Banbibaran_banxetra_anyaprayojan
     takeLatest(
@@ -1193,50 +1168,50 @@ export default function* root() {
       api
     ),
     takeLatest(
-      BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_REQUEST, 
+      BanbibaranTypes.DELETEBANXETRAANYAPRAYOJAN_REQUEST,
       deletebanxetraanyaprayojanRequest,
       api
     ),
     //bachat bibaran
     takeLatest(
-      BanbibaranTypes.FETCHALLBACHATBIBARAN_REQUEST, 
+      BanbibaranTypes.FETCHALLBACHATBIBARAN_REQUEST,
       fetchallbachatbibaranRequest,
       api
     ),
     takeLatest(
-      BanbibaranTypes.FETCHBACHATBIBARAN_REQUEST, 
+      BanbibaranTypes.FETCHBACHATBIBARAN_REQUEST,
       fetchbachatbibaranRequest,
       api
     ),
 
     // bapaidawar_bikribitaran
     takeLatest(
-      BanbibaranTypes.ADDBACHATBIBARAN_REQUEST, 
+      BanbibaranTypes.ADDBACHATBIBARAN_REQUEST,
       addbachatbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.UPDATEBACHATBIBARAN_REQUEST, 
+      BanbibaranTypes.UPDATEBACHATBIBARAN_REQUEST,
       updatebachatbibaranRequest,
       api
     ),
 
     takeLatest(
-      BanbibaranTypes.DELETEBACHATBIBARAN_REQUEST, 
+      BanbibaranTypes.DELETEBACHATBIBARAN_REQUEST,
       deletebachatbibaranRequest,
       api
     ),
 
     //banpaidawar bikribitaran
     takeLatest(
-      BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_REQUEST, 
+      BanpaidawarTypes.FETCHALLBANPAIDAWARBIKRIBITARAN_REQUEST,
       fetchallbanpaidawarbikribitaranRequest,
       api
     ),
 
     takeLatest(
-      BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_REQUEST, 
+      BanpaidawarTypes.FETCHBANPAIDAWARBIKRIBITARAN_REQUEST,
       fetchbanpaidawarbikribitaranRequest,
       api
     ),
@@ -1259,13 +1234,13 @@ export default function* root() {
 
     //karyabibaran
     takeLatest(
-      KaryabibaranTypes.FETCHALLSAMAJIKKARYABIBARAN_REQUEST, 
+      KaryabibaranTypes.FETCHALLSAMAJIKKARYABIBARAN_REQUEST,
       fetchallsamajikkaryabibaranRequest,
       api
     ),
 
     takeLatest(
-      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST, 
+      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST,
       fetchsamajikkaryabibaranRequest,
       api
     ),
@@ -1285,7 +1260,5 @@ export default function* root() {
       addrojgarsrijanaRequest,
       api
     ),
-
-
   ]);
 }

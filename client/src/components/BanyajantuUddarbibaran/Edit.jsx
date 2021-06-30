@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { Button, Input, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
@@ -14,14 +13,14 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id:props.history.location.item.banyajantu_uddar_id,
+      id: props.history.location.item.banyajantu_uddar_id,
       miti: props.history.location.item.miti,
       sthaniya_taha: props.history.location.item.sthaniya_taha,
       samaya: props.history.location.item.samaya,
       samraxit_xetra: props.history.location.item.samraxit_xetra,
       banyajantuko_naam: props.history.location.item.banyajantuko_naam,
       banyajantuko_umer: props.history.location.item.banyajantuko_umer,
-      banyajantuko_abastha:equals(
+      banyajantuko_abastha: equals(
         props.history.location.item.banyajantuko_abastha,
         "मृत"
       )
@@ -57,10 +56,9 @@ class Edit extends Component {
       remarks,
       updated_by,
       created_by,
-      
     } = this.state;
     const payload = {
-        banyajantuuddar: {
+      banyajantuuddar: {
         data: {
           miti: miti,
           sthaniya_taha: sthaniya_taha,
@@ -68,17 +66,19 @@ class Edit extends Component {
           samraxit_xetra: samraxit_xetra,
           banyajantuko_naam: banyajantuko_naam,
           banyajantuko_umer: banyajantuko_umer,
-          banyajantuko_abastha: equals(   banyajantuko_abastha, 1) ? "मृत" : "जिउॅदो",
+          banyajantuko_abastha: equals(banyajantuko_abastha, 1)
+            ? "मृत"
+            : "जिउॅदो",
           mareko_karan: mareko_karan,
           banxetra_duri: banxetra_duri,
           anya_bibaran: anya_bibaran,
           remarks: remarks,
           created_by: created_by,
-          updated_by: updated_by ,
+          updated_by: updated_by,
         },
       },
     };
-    this.props.onUpdate(payload,id);
+    this.props.onUpdate(payload, id);
   }
   handleBanyajantukoAbastha(e) {
     this.setState({ banyajantuko_abastha: e[0] });
@@ -156,7 +156,7 @@ class Edit extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ banyajantuko_umer: e })}
             />
-             <Dropdown
+            <Dropdown
               className="dropdownlabel mb-4"
               title="अवस्था"
               direction="vertical"
@@ -174,14 +174,14 @@ class Edit extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ mareko_karan: e })}
             />
-             <Input
+            <Input
               className="mb-4"
               title="नजिकको वन क्षेत्रबाट दुरी(मि.)"
               value={banxetra_duri}
               direction="vertical"
               onChange={(e) => this.setState({ banxetra_duri: e })}
             />
-             <Input
+            <Input
               className="mb-4"
               title="अन्य विवरण"
               value={anya_bibaran}
@@ -195,7 +195,6 @@ class Edit extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ remarks: e })}
             />
-            
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { equals } from "ramda";
+import { Button, Input, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./SamudayikbanBibaran.scss";
-import { equals } from "ramda";
+
 
 const ForestTypes = [
   { id: 1, value: "प्राकृतिक्" },

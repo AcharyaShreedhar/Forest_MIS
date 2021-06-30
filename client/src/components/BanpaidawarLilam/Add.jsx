@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+
+import { Button, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
 
 class Add extends Component {
   constructor(props) {
@@ -33,8 +32,6 @@ class Add extends Component {
       minimum_price,
       sakaar_price,
       remarks,
-      created_by,
-      updated_by,
     } = this.state;
     const payload = {
       banpaidawarlilam: {

@@ -19,7 +19,7 @@ class Seedgardenplots extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var seedgardenplotsList = [];
-    if (nextProps != prevState) {
+    if (nextProps !== prevState) {
       seedgardenplotsList = nextProps.seedgardenplotsDataList.data;
     }
     return { loc, seedgardenplotsList };
@@ -59,7 +59,7 @@ class Seedgardenplots extends Component {
     this.props.history.push("/banbibaran/seedgardenplotsadd/new");
   }
   render() {
-    const { loc, perPage, page, seedgardenplotsList } = this.state;
+    const { loc, perPage, seedgardenplotsList } = this.state;
     const { user } = this.props;
 
     return (

@@ -30,7 +30,6 @@ class SignIn extends Component {
   }
 
   render() {
-    const { isBusy } = this.props;
     const { user_name, user_pass } = this.state;
 
     return (

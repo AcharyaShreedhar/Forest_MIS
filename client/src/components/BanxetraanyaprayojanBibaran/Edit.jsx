@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+
+import { Button, Input, Dropdown } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
 
@@ -13,7 +13,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id:props.history.location.item.banxetra_anyaprayojan_id,
+      id: props.history.location.item.banxetra_anyaprayojan_id,
       arthik_barsa: props.history.location.item.arthik_barsa,
       uplabdakarta_naam: props.history.location.item.uplabdakarta_naam,
       upalabdha_address: props.history.location.item.upalabdha_address,
@@ -24,13 +24,20 @@ class Edit extends Component {
       rukh_hatayeko: props.history.location.item.rukh_hatayeko,
       sattajagga_area: props.history.location.item.sattajagga_area,
       xetipurti_brixyaropan: props.history.location.item.xetipurti_brixyaropan,
-      sattajagga_brixyaropan: props.history.location.item.sattajagga_brixyaropan,
-      leejrakam_adhyaadhik: equals(props.history.location.item.leejrakam_adhyaadhik, "गरेको")
-      ? 1
-      : 2,
-      barsik_pratibedan: equals(props.history.location.item.barsik_pratibedan, "गरेको")
-      ? 1
-      : 2,
+      sattajagga_brixyaropan:
+        props.history.location.item.sattajagga_brixyaropan,
+      leejrakam_adhyaadhik: equals(
+        props.history.location.item.leejrakam_adhyaadhik,
+        "गरेको"
+      )
+        ? 1
+        : 2,
+      barsik_pratibedan: equals(
+        props.history.location.item.barsik_pratibedan,
+        "गरेको"
+      )
+        ? 1
+        : 2,
       prapta_rajaswo: props.history.location.item.prapta_rajaswo,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
@@ -39,49 +46,50 @@ class Edit extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLijRakam = this.handleLijRakam.bind(this);
     this.handleBarsikPratibedan = this.handleBarsikPratibedan.bind(this);
-        
   }
 
   handleSubmit() {
     const {
-        id,
-        arthik_barsa,
-        uplabdakarta_naam,
-        upalabdha_address,
-        xetrafal_temp,
-        xetrafal_perm,
-        samaya_abadhi,
-        rukh_hataunuparne,
-        rukh_hatayeko,
-        sattajagga_area,
-        xetipurti_brixyaropan,
-        sattajagga_brixyaropan,
-        leejrakam_adhyaadhik,
-        barsik_pratibedan,
-        prapta_rajaswo,
+      id,
+      arthik_barsa,
+      uplabdakarta_naam,
+      upalabdha_address,
+      xetrafal_temp,
+      xetrafal_perm,
+      samaya_abadhi,
+      rukh_hataunuparne,
+      rukh_hatayeko,
+      sattajagga_area,
+      xetipurti_brixyaropan,
+      sattajagga_brixyaropan,
+      leejrakam_adhyaadhik,
+      barsik_pratibedan,
+      prapta_rajaswo,
     } = this.state;
     const payload = {
-        banxetraanyaprayojan: {
+      banxetraanyaprayojan: {
         data: {
-            arthik_barsa: arthik_barsa,
-            uplabdakarta_naam: uplabdakarta_naam,
-            upalabdha_address: upalabdha_address,
-            xetrafal_temp: xetrafal_temp,
-            xetrafal_perm: xetrafal_perm,
-            samaya_abadhi: samaya_abadhi,
-            rukh_hataunuparne: rukh_hataunuparne,
-            rukh_hatayeko: rukh_hatayeko,
-            sattajagga_area: sattajagga_area,
-            xetipurti_brixyaropan: xetipurti_brixyaropan,
-            sattajagga_brixyaropan: sattajagga_brixyaropan,
-            leejrakam_adhyaadhik: equals(leejrakam_adhyaadhik, 1) ? "गरेको" : "नगरेको",
-            barsik_pratibedan: equals(barsik_pratibedan, 1) ? "गरेको" : "नगरेको",
-            prapta_rajaswo: prapta_rajaswo,
-            created_by: this.props.user.user_name,
-            updated_by: this.props.user.user_name,
+          arthik_barsa: arthik_barsa,
+          uplabdakarta_naam: uplabdakarta_naam,
+          upalabdha_address: upalabdha_address,
+          xetrafal_temp: xetrafal_temp,
+          xetrafal_perm: xetrafal_perm,
+          samaya_abadhi: samaya_abadhi,
+          rukh_hataunuparne: rukh_hataunuparne,
+          rukh_hatayeko: rukh_hatayeko,
+          sattajagga_area: sattajagga_area,
+          xetipurti_brixyaropan: xetipurti_brixyaropan,
+          sattajagga_brixyaropan: sattajagga_brixyaropan,
+          leejrakam_adhyaadhik: equals(leejrakam_adhyaadhik, 1)
+            ? "गरेको"
+            : "नगरेको",
+          barsik_pratibedan: equals(barsik_pratibedan, 1) ? "गरेको" : "नगरेको",
+          prapta_rajaswo: prapta_rajaswo,
+          created_by: this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
-      };
+    };
     this.props.onUpdate(payload, id);
   }
   handleLijRakam(e) {
@@ -90,24 +98,24 @@ class Edit extends Component {
   handleBarsikPratibedan(e) {
     this.setState({ barsik_pratibedan: e });
   }
-    
+
   render() {
     const { title } = this.props;
     const {
-        arthik_barsa,
-        uplabdakarta_naam,
-        upalabdha_address,
-        xetrafal_temp,
-        xetrafal_perm,
-        samaya_abadhi,
-        rukh_hataunuparne,
-        rukh_hatayeko,
-        sattajagga_area,
-        xetipurti_brixyaropan,
-        sattajagga_brixyaropan,
-        leejrakam_adhyaadhik,
-        barsik_pratibedan,
-        prapta_rajaswo,
+      arthik_barsa,
+      uplabdakarta_naam,
+      upalabdha_address,
+      xetrafal_temp,
+      xetrafal_perm,
+      samaya_abadhi,
+      rukh_hataunuparne,
+      rukh_hatayeko,
+      sattajagga_area,
+      xetipurti_brixyaropan,
+      sattajagga_brixyaropan,
+      leejrakam_adhyaadhik,
+      barsik_pratibedan,
+      prapta_rajaswo,
     } = this.state;
 
     return (
@@ -118,7 +126,6 @@ class Edit extends Component {
               <span className="dsl-b22">{title}</span>
             </div>
 
-            
             <Input
               className="mb-4"
               title="आर्थिक वर्ष"
@@ -170,28 +177,28 @@ class Edit extends Component {
               value={rukh_hataunuparne}
               onChange={(e) => this.setState({ rukh_hataunuparne: e })}
             />
-             <Input
+            <Input
               className="mb-4"
               title="हटाएको रुख संख्या"
               direction="vertical"
               value={rukh_hatayeko}
               onChange={(e) => this.setState({ rukh_hatayeko: e })}
             />
-             <Input
+            <Input
               className="mb-4"
               title="सट्टा भर्नावापत उपलब्ध गराएको जग्गाको क्षेत्रफल (हे.)"
               direction="vertical"
               value={sattajagga_area}
               onChange={(e) => this.setState({ sattajagga_area: e })}
             />
-             <Input
+            <Input
               className="mb-4"
               title="क्षतिपूर्ति वृक्षरोपण प्रजाति"
               direction="vertical"
               value={xetipurti_brixyaropan}
               onChange={(e) => this.setState({ xetipurti_brixyaropan: e })}
             />
-             <Input
+            <Input
               className="mb-4"
               title="सट्टा भर्ना जग्गामा वृक्षरोपण प्रजाति"
               direction="vertical"
@@ -227,7 +234,6 @@ class Edit extends Component {
               value={prapta_rajaswo}
               onChange={(e) => this.setState({ prapta_rajaswo: e })}
             />
-                                   
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -243,7 +249,5 @@ class Edit extends Component {
     );
   }
 }
-
-
 
 export default Edit;

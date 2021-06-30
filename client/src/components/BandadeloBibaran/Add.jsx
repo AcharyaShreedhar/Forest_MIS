@@ -1,54 +1,48 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
-import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { Button, Input } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
 
 class Add extends Component {
   constructor(props) {
     super(props);
     this.state = {
       bandadelo_address: "",
-      ban_type:"",
+      ban_type: "",
       ban_prajati: "",
       xeti_area: "",
-      niyantran_prayas:"",
-      niyantran_karta:"",
-      sahabhagi_mahila:"",
-      sahabhagi_purus:"",
+      niyantran_prayas: "",
+      niyantran_karta: "",
+      sahabhagi_mahila: "",
+      sahabhagi_purus: "",
       created_by: "",
       updated_by: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-        
   }
 
   handleSubmit() {
     const {
-        bandadelo_address,
-        ban_type,
-        ban_prajati,
-        xeti_area,
-        niyantran_prayas,
-        niyantran_karta,
-        sahabhagi_mahila,
-        sahabhagi_purus,
-      
+      bandadelo_address,
+      ban_type,
+      ban_prajati,
+      xeti_area,
+      niyantran_prayas,
+      niyantran_karta,
+      sahabhagi_mahila,
+      sahabhagi_purus,
     } = this.state;
     const payload = {
       bandadelo: {
         data: {
-            bandadelo_address: bandadelo_address,
-            ban_type: ban_type,
-            ban_prajati: ban_prajati,
-            xeti_area: xeti_area,
-            niyantran_prayas: niyantran_prayas,
-            niyantran_karta: niyantran_karta,
-            sahabhagi_mahila: sahabhagi_mahila,
-            sahabhagi_purus: sahabhagi_purus,
-          
+          bandadelo_address: bandadelo_address,
+          ban_type: ban_type,
+          ban_prajati: ban_prajati,
+          xeti_area: xeti_area,
+          niyantran_prayas: niyantran_prayas,
+          niyantran_karta: niyantran_karta,
+          sahabhagi_mahila: sahabhagi_mahila,
+          sahabhagi_purus: sahabhagi_purus,
         },
       },
     };
@@ -59,16 +53,16 @@ class Add extends Component {
   }
 
   render() {
-    const {title} = this.props;
+    const { title } = this.props;
     const {
-        bandadelo_address,
-        ban_type,
-        ban_prajati,
-        xeti_area,
-        niyantran_prayas,
-        niyantran_karta,
-        sahabhagi_mahila,
-        sahabhagi_purus,
+      bandadelo_address,
+      ban_type,
+      ban_prajati,
+      xeti_area,
+      niyantran_prayas,
+      niyantran_karta,
+      sahabhagi_mahila,
+      sahabhagi_purus,
     } = this.state;
 
     return (
@@ -78,7 +72,7 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            
+
             <Input
               className="mb-4"
               title="वन डढेलो लागेको ठेगाना"
@@ -109,7 +103,7 @@ class Add extends Component {
               value={xeti_area}
               onChange={(e) => this.setState({ xeti_area: e })}
             />
-                        
+
             <Input
               className="mb-4"
               title="समूहबाट नियन्त्रणका लागि भएका प्रयासहरु"
@@ -138,7 +132,6 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ sahabhagi_purus: e })}
             />
-            
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -154,7 +147,5 @@ class Add extends Component {
     );
   }
 }
-
-
 
 export default Add;

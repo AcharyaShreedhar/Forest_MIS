@@ -21,7 +21,7 @@ import {
 } from "ramda";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { Animations, Avatar, CheckBox, Icon } from "../../components";
+import { Animations, Avatar, CheckBox } from "../../components";
 import { SPECIALOPTIONS } from "../../services/config";
 import "./Dropdown.scss";
 
@@ -184,7 +184,7 @@ class Dropdown extends React.PureComponent {
         );
       } else {
         if (includes(ID, selected)) {
-          newSelected = filter((x) => x != ID, selected);
+          newSelected = filter((x) => x !== ID, selected);
         } else {
           newSelected = append(ID, selected);
         }
@@ -272,10 +272,7 @@ class Dropdown extends React.PureComponent {
       direction,
       titleDirection,
       caret,
-      iconColor,
-      iconSize,
       selectable,
-      disabled,
       placeholder,
       footer,
     } = this.props;

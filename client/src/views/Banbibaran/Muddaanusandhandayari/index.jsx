@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
-import { equals, length, isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { MuddaanusandhanDayari } from "../../../components";
 import MuddaanusandhandayariActions from "../../../actions/muddaanusandhandayari";
 import { muddaanusandhandayariHeadings } from "../../../services/config";
-
 
 class Muddaanusandhandayari extends Component {
   constructor(props) {
@@ -16,73 +15,61 @@ class Muddaanusandhandayari extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-      const loc = nextProps.location.pathname.split("/")[2];
+    const loc = nextProps.location.pathname.split("/")[2];
     var muddaanusandhandayariList = [];
-    if (nextProps != prevState) {
-        muddaanusandhandayariList = nextProps.muddaanusandhandayariDataList.data;
+    if (nextProps !== prevState) {
+      muddaanusandhandayariList = nextProps.muddaanusandhandayariDataList.data;
     }
 
     return {
-        loc,
-        muddaanusandhandayariList
-     };
+      loc,
+      muddaanusandhandayariList,
+    };
   }
 
   handlePageChange(data) {
-      const {perPage } = this.state;
-      this.setState({ page: data.selected });
-      this.props.fetchallMuddaanusandhandayari({
-          name: "jaheri_partibedan_miti",
-          page: data.selected * perPage,
-          perPage,
-      });
+    const { perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.props.fetchallMuddaanusandhandayari({
+      name: "jaheri_partibedan_miti",
+      page: data.selected * perPage,
+      perPage,
+    });
   }
 
   handleSelectMenu(event, item, path) {
-   switch (event) {
+    switch (event) {
       case "edit": {
-        
-          
-            this.props.history.push({
-              pathname: `/banbibaran/muddaanusandhandayariedit/${item.mudda_anusandhan_dayari_id}`,
-              item,
-            });
-            break;
-          
+        this.props.history.push({
+          pathname: `/banbibaran/muddaanusandhandayariedit/${item.mudda_anusandhan_dayari_id}`,
+          item,
+        });
+        break;
       }
       case "delete": {
-        
-        
-            this.props.deleteMuddaanusandhandayari(item.mudda_anusandhan_dayari_id);
-            break;
-          }
-          
+        this.props.deleteMuddaanusandhandayari(item.mudda_anusandhan_dayari_id);
+        break;
+      }
+      default:
+        break;
     }
-}
-  
+  }
 
   handleAdd() {
-    
-        this.props.history.push("/banbibaran/muddaanusandhandayariadd/new");
-        
-      
-
-     
+    this.props.history.push("/banbibaran/muddaanusandhandayariadd/new");
   }
 
   render() {
-      
-    const {
-        loc,
-        perPage,
-        muddaanusandhandayariList,
-    } = this.state;
+    const { loc, perPage, muddaanusandhandayariList } = this.state;
     console.log("muddaanusandan....", muddaanusandhandayariList);
-    console.log("page...count", !isNil(muddaanusandhandayariList)
-    ? Math.ceil(muddaanusandhandayariList.total / perPage)
-    : 10);
+    console.log(
+      "page...count",
+      !isNil(muddaanusandhandayariList)
+        ? Math.ceil(muddaanusandhandayariList.total / perPage)
+        : 10
+    );
     const { user } = this.props;
-       
+
     return (
       <div>
         {equals(loc, "muddaanusandhandayarilist") && (
@@ -90,16 +77,22 @@ class Muddaanusandhandayari extends Component {
             buttonName="+ मुद्दा अनुसन्धान दायरी"
             title="मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण"
             pageCount={
-                !isNil(muddaanusandhandayariList)
-                  ? Math.ceil(muddaanusandhandayariList.total / perPage)
-                  : 10
-              }
-            data={ !isNil(muddaanusandhandayariList) ? muddaanusandhandayariList.list : []}
+              !isNil(muddaanusandhandayariList)
+                ? Math.ceil(muddaanusandhandayariList.total / perPage)
+                : 10
+            }
+            data={
+              !isNil(muddaanusandhandayariList)
+                ? muddaanusandhandayariList.list
+                : []
+            }
             headings={muddaanusandhandayariHeadings}
             user={user}
             onAdd={() => this.handleAdd("muddaanusandhandayari")}
             onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "muddaanusandhandayari")}
+            onPageClick={(e) =>
+              this.handlePageChange(e, "muddaanusandhandayari")
+            }
           />
         )}
         {equals(loc, "muddaanusandhandayariadd") && (
@@ -107,7 +100,7 @@ class Muddaanusandhandayari extends Component {
             title="+ मुद्दा अनुसन्धान दायरी"
             user={user}
             onSelect={this.handleSelectMenu}
-            onSubmit={(e) => this.props.addMuddaanusandhandayari (e)}
+            onSubmit={(e) => this.props.addMuddaanusandhandayari(e)}
           />
         )}
         {equals(loc, "muddaanusandhandayariedit") && (
@@ -134,23 +127,38 @@ Muddaanusandhandayari.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  muddaanusandhandayariDataList: state.muddaanusandhandayari.allmuddaanusandhandayariData,
+  muddaanusandhandayariDataList:
+    state.muddaanusandhandayari.allmuddaanusandhandayariData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-fetchallMuddaanusandhandayari: (payload) =>
-    dispatch(MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)),
+  fetchallMuddaanusandhandayari: (payload) =>
+    dispatch(
+      MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)
+    ),
 
   addMuddaanusandhandayari: (payload) =>
-    dispatch(MuddaanusandhandayariActions.addmuddaanusandhandayariRequest(payload)),
+    dispatch(
+      MuddaanusandhandayariActions.addmuddaanusandhandayariRequest(payload)
+    ),
 
   updateMuddaanusandhandayari: (payload, muddaanusandhandayariId) =>
     dispatch(
-      MuddaanusandhandayariActions.updatemuddaanusandhandayariRequest(payload, muddaanusandhandayariId)
+      MuddaanusandhandayariActions.updatemuddaanusandhandayariRequest(
+        payload,
+        muddaanusandhandayariId
+      )
     ),
 
   deleteMuddaanusandhandayari: (muddaanusandhandayariId) =>
-    dispatch(MuddaanusandhandayariActions.deletemuddaanusandhandayariRequest(muddaanusandhandayariId)),
+    dispatch(
+      MuddaanusandhandayariActions.deletemuddaanusandhandayariRequest(
+        muddaanusandhandayariId
+      )
+    ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Muddaanusandhandayari);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Muddaanusandhandayari);
