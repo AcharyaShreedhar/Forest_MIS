@@ -28,6 +28,10 @@
    updatesamajikkaryabibaranSuccess: ["response"],
    updatesamajikkaryabibaranFailure: null,
 
+   deletesamajikkaryabibaranRequest: ["payload","samajikkaryabibaranId"],
+   deletesamajikkaryabibaranSuccess: ["response"],
+   deletesamajikkaryabibaranFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
