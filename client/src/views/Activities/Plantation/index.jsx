@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { Brixyaropan } from "../../../components";
+import { Brixyaropan, Filter, ReportGenerator} from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import { brixyaropanHeadings } from "../../../services/config";
+import { Fragment } from "react";
 
 class Plantation extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class Plantation extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -23,17 +26,26 @@ class Plantation extends Component {
     }
     return { brixyaropanList, loc };
   }
+  handlePer(e) {
+    this.setState({ perPage: e });
+    this.fetchResults(0, e);
+  }
+
+  fetchResults(page, perPage) {
+    this.props.fetchallBrixyaropan({
+      name: "brixyaropan_thegana",
+      page: page,
+      perPage,
+    });
+  }
+
 
   handlePageChange(data) {
     const { perPage } = this.state;
     this.setState({ page: data.selected });
+    this.fetchResults(data.selected * perPage, perPage);
 
-    this.props.fetchallBrixyaropan({
-      name: "brixyaropan_thegana",
-      page: data.selected * perPage,
-      perPage,
-    });
-  }
+    }
 
   handleSelectMenu(event, item, path) {
     switch (event) {
@@ -44,10 +56,10 @@ class Plantation extends Component {
         });
         break;
       }
-    //   case "delete": {
-    //     this.props.deleteBrixyaropan(item.brixyaropan_id);
-    //     break;
-    //   }
+      case "delete": {
+        this.props.deleteBrixyaropan(item.brixyaropan_id);
+        break;
+      }
       default:
         break;
     }
@@ -64,6 +76,11 @@ class Plantation extends Component {
     return (
       <div>
         {equals(loc, "plantationlist") && (
+            <Fragment>
+            <div className="report-filter">
+              <Filter />
+              <ReportGenerator id="brixyaropan" />
+            </div>
           <Brixyaropan.List
             buttonName="+ वृक्षरोपण"
             title="वृक्षरोपण सम्बन्धी विवरण"
@@ -73,12 +90,16 @@ class Plantation extends Component {
                 : 10
             }
             data={!isNil(brixyaropanList) ? brixyaropanList.list : []}
+            per={perPage}
+            pers={[10, 25, 50, "all"]}
+            onPer={this.handlePer}
             user={user}
             headings={brixyaropanHeadings}
             onAdd={() => this.handleAdd()}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e)}
           />
+          </Fragment>
         )}
         {equals(loc, "brixyaropanadd") && (
           <Brixyaropan.Add
