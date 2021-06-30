@@ -48,6 +48,18 @@ const addrojgarsrijanaSuccess = (state, action) =>
 const addrojgarsrijanaFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+  //Update rojgarsrijana
+const updaterojgarsrijanaRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updaterojgarsrijanaSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updaterojgarsrijanaFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -73,6 +85,10 @@ export const reducer = createReducer(initialState, {
   [MiscellaneousTypes.ADDROJGARSRIJANA_REQUEST]: addrojgarsrijanaRequest,
   [MiscellaneousTypes.ADDROJGARSRIJANA_SUCCESS]: addrojgarsrijanaSuccess,
   [MiscellaneousTypes.ADDROJGARSRIJANA_FAILURE]: addrojgarsrijanaFailure,
+
+  [MiscellaneousTypes.UPDATEROJGARSRIJANA_REQUEST]: updaterojgarsrijanaRequest,
+  [MiscellaneousTypes.UPDATEROJGARSRIJANA_SUCCESS]: updaterojgarsrijanaSuccess,
+  [MiscellaneousTypes.UPDATEROJGARSRIJANA_FAILURE]: updaterojgarsrijanaFailure,
   
   [MiscellaneousTypes.LOCATIONS_REQUEST]: locationsRequest,
   [MiscellaneousTypes.CLEAR_REQUEST]: clearRequest,

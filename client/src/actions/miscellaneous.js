@@ -15,7 +15,9 @@ import { createActions } from "reduxsauce";
    addrojgarsrijanaSuccess: ["response"],
    addrojgarsrijanaFailure: null,
 
-
+   updaterojgarsrijanaRequest: ["payload", "rojgarsrijanaId"],
+   updaterojgarsrijanaSuccess: ["response"],
+   updaterojgarsrijanaFailure: null,
 
 
    locationsRequest: ["payload"],

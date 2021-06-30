@@ -641,9 +641,14 @@ const create = (baseURL = Config.API_URL) => {
   const getRojgarSrijana = (rojgarsrijanaId) =>
     api.get(`/rojgarsrijana/${rojgarsrijanaId}`);
 
+
   //add
   const postRojgarSrijanaAddNew = (payload) =>
     api.post("rojgarsrijana", payload);
+    //update
+    const postRojgarSrijanaUpdate = (payload, rojgarsrijanaId) =>
+    api.put(`/rojgarsrijana/${rojgarsrijanaId}`, payload);
+
 
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) =>
@@ -894,6 +899,8 @@ const create = (baseURL = Config.API_URL) => {
     getRojgarSrijanaList,
     getRojgarSrijana,
     postRojgarSrijanaAddNew,
+    postRojgarSrijanaUpdate,
+
   };
 };
 export default {
