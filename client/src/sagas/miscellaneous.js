@@ -87,3 +87,32 @@ export function* updaterojgarsrijanaRequest(api, action) {
     });
   }
 }
+
+// Delete rojgarsrijana
+export function* deleterojgarsrijanaRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postRojgarSrijanaDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक रोजगार सृजना हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrojgarsrijanaRequest(api,{
+      name: "karyaharu",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      MiscellaneousActions.deleterojgarsrijanaSuccess(response.data)
+    );
+  } else {
+    yield put(MiscellaneousActions.deleterojgarsrijanaFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

@@ -19,6 +19,10 @@ import { createActions } from "reduxsauce";
    updaterojgarsrijanaSuccess: ["response"],
    updaterojgarsrijanaFailure: null,
 
+   deleterojgarsrijanaRequest: ["payload", "rojgarsrijanaId"],
+   deleterojgarsrijanaSuccess: ["response"],
+   deleterojgarsrijanaFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches

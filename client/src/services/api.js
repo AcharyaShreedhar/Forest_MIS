@@ -649,6 +649,9 @@ const create = (baseURL = Config.API_URL) => {
     const postRojgarSrijanaUpdate = (payload, rojgarsrijanaId) =>
     api.put(`/rojgarsrijana/${rojgarsrijanaId}`, payload);
 
+    const postRojgarSrijanaDelete = (rojgarsrijanaId) =>
+    api.delete(`/rojgarsrijana/${rojgarsrijanaId}`);
+
 
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) =>
@@ -900,7 +903,7 @@ const create = (baseURL = Config.API_URL) => {
     getRojgarSrijana,
     postRojgarSrijanaAddNew,
     postRojgarSrijanaUpdate,
-
+    postRojgarSrijanaDelete
   };
 };
 export default {

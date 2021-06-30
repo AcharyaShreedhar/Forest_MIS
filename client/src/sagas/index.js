@@ -268,6 +268,7 @@ import {
  fetchrojgarsrijanaRequest,
  addrojgarsrijanaRequest,
  updaterojgarsrijanaRequest,
+ deleterojgarsrijanaRequest
 } from "./miscellaneous";
 
 const api = API.create();
@@ -1308,6 +1309,12 @@ export default function* root() {
     takeLatest(
       MiscellaneousTypes.UPDATEROJGARSRIJANA_REQUEST,
       updaterojgarsrijanaRequest,
+      api
+    ),
+    
+    takeLatest(
+      MiscellaneousTypes.DELETEROJGARSRIJANA_REQUEST,
+      deleterojgarsrijanaRequest,
       api
     )
 
