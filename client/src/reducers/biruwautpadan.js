@@ -186,6 +186,17 @@ const updatebrixyaropanFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+const deletebrixyaropanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebrixyaropanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebrixyaropanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -254,6 +265,10 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.UPDATEBRIXYAROPAN_REQUEST]: updatebrixyaropanRequest,
   [BiruwautpadanTypes.UPDATEBRIXYAROPAN_SUCCESS]: updatebrixyaropanSuccess,
   [BiruwautpadanTypes.UPDATEBRIXYAROPAN_FAILURE]: updatebrixyaropanFailure,
+
+  [BiruwautpadanTypes.DELETEBRIXYAROPAN_REQUEST]: deletebrixyaropanRequest,
+  [BiruwautpadanTypes.DELETEBRIXYAROPAN_SUCCESS]: deletebrixyaropanSuccess,
+  [BiruwautpadanTypes.DELETEBRIXYAROPAN_FAILURE]: deletebrixyaropanFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,

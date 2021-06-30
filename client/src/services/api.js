@@ -229,6 +229,9 @@ const create = (baseURL = Config.API_URL) => {
   const postBiruwautpadanBrixyaropanUpdate = (payload, brixyaropanId) =>
     api.put(`brixyaropan/${brixyaropanId}`, payload);
 
+    const postBiruwautpadanBrixyaropanDelete = (brixyaropanId) =>
+    api.delete(`brixyaropan/${brixyaropanId}`);
+
   //Dwandabebasthapan
   const getBanyajantuUddarList = (payload) =>
     api.post("banyajantuUddarsList", payload);
@@ -738,6 +741,7 @@ const create = (baseURL = Config.API_URL) => {
     getBrixyaropan,
     postBiruwautpadanBrixyaropanAddNew,
     postBiruwautpadanBrixyaropanUpdate,
+    postBiruwautpadanBrixyaropanDelete,
 
     //sampatibibaran
     getAssetsList,

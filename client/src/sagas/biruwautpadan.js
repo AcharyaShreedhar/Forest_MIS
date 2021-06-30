@@ -311,3 +311,29 @@ export function* fetchbiruwautpadanRequest(api, action) {
       });
     }
   }
+
+
+  export function* deletebrixyaropanRequest(api, action) {
+    const { payload } = action;
+  
+    const response = yield api.postBiruwautpadanBrixyaropanDelete(payload);
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक वृक्षरोपण विवरण हटाईयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallbrixyaropanRequest(api,{
+        name: "brixyaropan_thegana",
+        page: 0,
+        perPage: 10,
+      });
+      yield put(
+        BiruwautpadanActions.deletebrixyaropanSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.deletebrixyaropanFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
