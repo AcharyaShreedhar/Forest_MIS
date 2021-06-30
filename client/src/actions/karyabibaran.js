@@ -24,6 +24,10 @@
    addsamajikkaryabibaranSuccess: ["response"],
    addsamajikkaryabibaranFailure: null,
 
+   updatesamajikkaryabibaranRequest: ["payload","samajikkaryabibaranId"],
+   updatesamajikkaryabibaranSuccess: ["response"],
+   updatesamajikkaryabibaranFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches
