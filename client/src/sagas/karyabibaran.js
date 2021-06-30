@@ -87,3 +87,32 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
     });
   }
 }
+
+// Delete samajikkaryabibaran
+export function* deletesamajikkaryabibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postKaryabibaranSamajikkaryabibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सामाजिक कार्य विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallsamajikkaryabibaranRequest(api,{
+      name: "ban_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      KaryabibaranActions.deletesamajikkaryabibaranSuccess(response.data)
+    );
+  } else {
+    yield put(KaryabibaranActions.deletesamajikkaryabibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
