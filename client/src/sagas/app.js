@@ -21,7 +21,7 @@ export function* loginRequest(api, action) {
   }
 }
 
-// Municipalities
+// // Municipalities
 
 export function* fetchallmunicipalitiesRequest(api, action) {
   const { payload } = action;
@@ -131,7 +131,7 @@ export function* deletemunicipalitiesRequest(api, action) {
   }
 }
  
-// Provinces
+// // Provinces
 export function* fetchallprovincesRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -242,7 +242,7 @@ export function* deleteprovincesRequest(api, action) {
 }
  
 
-// Districts
+// // Districts
 export function* fetchalldistrictsRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -352,7 +352,7 @@ export function* deletedistrictsRequest(api, action) {
   }
 }
 
-// Departments
+// // Departments
 export function* fetchalldepartmentsRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -464,7 +464,7 @@ export function* deletedepartmentsRequest(api, action) {
  
 
 
-// Users
+// // Users
 export function* fetchallusersRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -549,7 +549,7 @@ export function* updateusersRequest(api, action) {
   }
 }
  
-// Delete users
+// Delete users---------------//
 export function* deleteusersRequest(api, action) {
   const { payload } = action;
  

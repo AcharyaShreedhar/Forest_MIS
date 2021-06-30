@@ -32,7 +32,7 @@ const logoutSuccess = (state, action) =>
 const logoutFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-// Municipalities
+// // Municipalities
 const fetchallmunicipalitiesRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallmunicipalitiesSuccess = (state, action) => {
@@ -60,7 +60,41 @@ const fetchmunicipalitiesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-// Provinces
+//Add municipalities
+const addmunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addmunicipalitiesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addmunicipalitiesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update municipalities
+const updatemunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatemunicipalitiesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatemunicipalitiesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete municipalities
+const deletemunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletemunicipalitiesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletemunicipalitiesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// // Provinces
 
 const fetchallprovincesRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -89,7 +123,41 @@ const fetchprovincesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-// Districts
+//Add provinces
+const addprovincesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addprovincesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addprovincesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update provinces
+const updateprovincesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateprovincesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateprovincesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete provinces
+const deleteprovincesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteprovincesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteprovincesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// // Districts
 
 const fetchalldistrictsRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -117,7 +185,41 @@ const fetchdistrictsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-// Departments
+//Add districts
+const adddistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const adddistrictsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const adddistrictsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update districts
+const updatedistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatedistrictsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatedistrictsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete districts
+const deletedistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletedistrictsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletedistrictsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// // Departments
 
 const fetchalldepartmentsRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -145,7 +247,41 @@ const fetchdepartmentsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-//-----------USERS
+//Add departments
+const adddepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const adddepartmentsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const adddepartmentsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update departments
+const updatedepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatedepartmentsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatedepartmentsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete departments
+const deletedepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletedepartmentsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletedepartmentsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// //-----------USERS
 const fetchallusersRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallusersSuccess = (state, action) => {
@@ -180,6 +316,40 @@ const locationsRequest = (state, action) => {
   return state.merge({ ...state, locations });
 };
 
+//Add users
+const addusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addusersSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addusersFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update users
+const updateusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateusersSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateusersFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete users
+const deleteusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteusersSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteusersFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
@@ -203,7 +373,20 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHMUNICIPALITIES_SUCCESS]: fetchmunicipalitiesSuccess,
   [AppTypes.FETCHMUNICIPALITIES_FAILURE]: fetchmunicipalitiesFailure,
 
-  // Provinces
+  [AppTypes.ADDMUNICIPALITIES_REQUEST]: addmunicipalitiesRequest,
+  [AppTypes.ADDMUNICIPALITIES_SUCCESS]: addmunicipalitiesSuccess,
+  [AppTypes.ADDMUNICIPALITIES_FAILURE]: addmunicipalitiesFailure, 
+
+
+  [AppTypes.UPDATEMUNICIPALITIES_REQUEST]: updatemunicipalitiesRequest,
+  [AppTypes.UPDATEMUNICIPALITIES_SUCCESS]: updatemunicipalitiesSuccess,
+  [AppTypes.UPDATEMUNICIPALITIES_FAILURE]: updatemunicipalitiesFailure, 
+
+  [AppTypes.DELETEMUNICIPALITIES_REQUEST]: deletemunicipalitiesRequest,
+  [AppTypes.DELETEMUNICIPALITIES_SUCCESS]: deletemunicipalitiesSuccess,
+  [AppTypes.DELETEMUNICIPALITIES_FAILURE]: deletemunicipalitiesFailure,
+
+  // // Provinces
 
   [AppTypes.FETCHALLPROVINCES_REQUEST]: fetchallprovincesRequest,
   [AppTypes.FETCHALLPROVINCES_SUCCESS]: fetchallprovincesSuccess,
@@ -212,6 +395,19 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHPROVINCES_REQUEST]: fetchprovincesRequest,
   [AppTypes.FETCHPROVINCES_SUCCESS]: fetchprovincesSuccess,
   [AppTypes.FETCHPROVINCES_FAILURE]: fetchprovincesFailure,
+
+  [AppTypes.ADDPROVINCES_REQUEST]: addprovincesRequest,
+  [AppTypes.ADDPROVINCES_SUCCESS]: addprovincesSuccess,
+  [AppTypes.ADDPROVINCES_FAILURE]: addprovincesFailure, 
+
+
+  [AppTypes.UPDATEPROVINCES_REQUEST]: updateprovincesRequest,
+  [AppTypes.UPDATEPROVINCES_SUCCESS]: updateprovincesSuccess,
+  [AppTypes.UPDATEPROVINCES_FAILURE]: updateprovincesFailure, 
+
+  [AppTypes.DELETEPROVINCES_REQUEST]: deleteprovincesRequest,
+  [AppTypes.DELETEPROVINCES_SUCCESS]: deleteprovincesSuccess,
+  [AppTypes.DELETEPROVINCES_FAILURE]: deleteprovincesFailure,
 
   // Districts
 
@@ -223,6 +419,18 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHDISTRICTS_SUCCESS]: fetchdistrictsSuccess,
   [AppTypes.FETCHDISTRICTS_FAILURE]: fetchdistrictsFailure,
 
+  [AppTypes.ADDDISTRICTS_REQUEST]: adddistrictsRequest,
+  [AppTypes.ADDDISTRICTS_SUCCESS]: adddistrictsSuccess,
+  [AppTypes.ADDDISTRICTS_FAILURE]: adddistrictsFailure, 
+
+  [AppTypes.UPDATEDISTRICTS_REQUEST]: updatedistrictsRequest,
+  [AppTypes.UPDATEDISTRICTS_SUCCESS]: updatedistrictsSuccess,
+  [AppTypes.UPDATEDISTRICTS_FAILURE]: updatedistrictsFailure, 
+
+  [AppTypes.DELETEDISTRICTS_REQUEST]: deletedistrictsRequest,
+  [AppTypes.DELETEDISTRICTS_SUCCESS]: deletedistrictsSuccess,
+  [AppTypes.DELETEDISTRICTS_FAILURE]: deletedistrictsFailure,
+
   //-----USERS
   [AppTypes.FETCHALLUSERS_REQUEST]: fetchallusersRequest,
   [AppTypes.FETCHALLUSERS_SUCCESS]: fetchallusersSuccess,
@@ -232,7 +440,20 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHUSERS_SUCCESS]: fetchusersSuccess,
   [AppTypes.FETCHUSERS_FAILURE]: fetchusersFailure,
 
-  //-----Departments
+  [AppTypes.ADDUSERS_REQUEST]: addusersRequest,
+  [AppTypes.ADDUSERS_SUCCESS]: addusersSuccess,
+  [AppTypes.ADDUSERS_FAILURE]: addusersFailure, 
+
+  [AppTypes.UPDATEUSERS_REQUEST]: updateusersRequest,
+  [AppTypes.UPDATEUSERS_SUCCESS]: updateusersSuccess,
+  [AppTypes.UPDATEUSERS_FAILURE]: updateusersFailure, 
+
+  [AppTypes.DELETEUSERS_REQUEST]: deleteusersRequest,
+  [AppTypes.DELETEUSERS_SUCCESS]: deleteusersSuccess,
+  [AppTypes.DELETEUSERS_FAILURE]: deleteusersFailure,
+
+
+  // //-----Departments--------------//
   [AppTypes.FETCHALLDEPARTMENTS_REQUEST]: fetchalldepartmentsRequest,
   [AppTypes.FETCHALLDEPARTMENTS_SUCCESS]: fetchalldepartmentsSuccess,
   [AppTypes.FETCHALLDEPARTMENTS_FAILURE]: fetchalldepartmentsFailure,
@@ -240,7 +461,20 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHDEPARTMENTS_REQUEST]: fetchdepartmentsRequest,
   [AppTypes.FETCHDEPARTMENTS_SUCCESS]: fetchdepartmentsSuccess,
   [AppTypes.FETCHDEPARTMENTS_FAILURE]: fetchdepartmentsFailure,
+
+  [AppTypes.ADDDEPARTMENTS_REQUEST]: adddepartmentsRequest,
+  [AppTypes.ADDDEPARTMENTS_SUCCESS]: adddepartmentsSuccess,
+  [AppTypes.ADDDEPARTMENTS_FAILURE]: adddepartmentsFailure, 
+
+  [AppTypes.UPDATEDEPARTMENTS_REQUEST]: updatedepartmentsRequest,
+  [AppTypes.UPDATEDEPARTMENTS_SUCCESS]: updatedepartmentsSuccess,
+  [AppTypes.UPDATEDEPARTMENTS_FAILURE]: updatedepartmentsFailure, 
+
+  [AppTypes.DELETEUSERS_REQUEST]: deletedepartmentsRequest,
+  [AppTypes.DELETEUSERS_SUCCESS]: deletedepartmentsSuccess,
+  [AppTypes.DELETEUSERS_FAILURE]: deletedepartmentsFailure,
   
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
 });
+/** */

@@ -373,7 +373,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBanpaidawarBanpaidawarlilamAddNew = (payload) =>
     api.post(`banpaidawarLilam`, payload);
 
-  //update
+  //-----------------update---------------//
   const postBanpaidawarBanpaidawarlilamUpdate = (payload, banpaidawarlilamId) =>
     api.put(`banpaidawarLilam/${banpaidawarlilamId}`, payload);
 
@@ -417,6 +417,7 @@ const create = (baseURL = Config.API_URL) => {
   //bachat bibarans
   const getBachatbibaranList = (payload) => api.post("bachatBibaranList", payload);
 
+  
   const getBachatbibaran = (bachatId) => api.get(`bachatBibaran/${bachatId}`);
 
   const postBanbibaranBachatbibaranAddNew = (payload) =>
@@ -428,7 +429,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBanbibaranBachatbibaranDelete = (bachatId) =>
     api.delete(`bachatBibaran/${bachatId}`);
 
-  //-----Municipalities
+
   const getMunicipalitiesList = () => api.get("municipalities");
   const getMunicipalities = (municipalitiesId) =>
     api.get(`municipalities/${municipalitiesId}`);
@@ -458,7 +459,7 @@ const create = (baseURL = Config.API_URL) => {
   const postProvincesDelete = (provincesId) =>
     api.delete(`province/${provincesId}`);
 
-  //-------Districts
+//   //-------Districts
   const getDistrictsList = () => api.get("district");
   const getDistricts = (districtsId) => api.get(`district/${districtsId}`);
 
@@ -791,14 +792,14 @@ const create = (baseURL = Config.API_URL) => {
     postKarmacharibibaranPostUpdate,
     postKarmacharibibaranPostDelete,
 
-    //--municipalities
+    // //--municipalities
     getMunicipalitiesList,
     getMunicipalities,
     postMunicipalitiesAddNew,
     postMunicipalitiesUpdate,
     postMunicipalitiesDelete,
 
-    //-----Provinces
+    // //-----Provinces
     getProvincesList,
     getProvinces,
     postProvincesAddNew,
