@@ -128,6 +128,8 @@ import {
   deleteactivitiesinfoRequest,
   fetchallbrixyaropanRequest,
   fetchbrixyaropanRequest,
+  addbrixyaropanRequest,
+  updatebrixyaropanRequest,
 } from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
@@ -509,6 +511,18 @@ export default function* root() {
     takeLatest(
       BiruwautpadanTypes.FETCHBRIXYAROPAN_REQUEST,
       fetchbrixyaropanRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.ADDBRIXYAROPAN_REQUEST,
+      addbrixyaropanRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.UPDATEBRIXYAROPAN_REQUEST,
+      updatebrixyaropanRequest,
       api
     ),
 
