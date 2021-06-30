@@ -662,6 +662,11 @@ const create = (baseURL = Config.API_URL) => {
   const postKaryabibaranSamajikkaryabibaranUpdate = (payload, samajikkaryabibaranId) =>
   api.put( `samajikkaryabibaran/${samajikkaryabibaranId}`, payload);
 
+  //delete
+  const postKaryabibaranSamajikkaryabibaranDelete = (samajikkaryabibaranId) =>
+  api.delete( `banpaidawarbikribitarans/${samajikkaryabibaranId}`);
+
+
 
   return {
     loginByUsername,
@@ -879,6 +884,7 @@ const create = (baseURL = Config.API_URL) => {
     getSamajikkaryabibaran,
     postKaryabibaranSamajikkaryabibaranAddNew,
     postKaryabibaranSamajikkaryabibaranUpdate,
+    postKaryabibaranSamajikkaryabibaranDelete,
 
     //------- rojgarsrijana
     getRojgarSrijanaList,
