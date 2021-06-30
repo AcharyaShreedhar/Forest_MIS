@@ -34,6 +34,7 @@ import * as BanxetraAtikraman from "./BanxetraAtikraman";
 import * as SeedgardenplotsBibaran from "./SeedgardernplotsBibaran";
 import * as BanxetraanyaprayojanBibaran from "./BanxetraanyaprayojanBibaran";
 import * as MuddaanusandhanDayari from "./MuddaanusandhanDayari";
+import * as Brixyaropan from "./Brixyaropan";
 
 export {
   HeaderComponent,
@@ -72,4 +73,5 @@ export {
   SeedgardenplotsBibaran,
   BanxetraanyaprayojanBibaran,
   MuddaanusandhanDayari,
+  Brixyaropan,
 };
