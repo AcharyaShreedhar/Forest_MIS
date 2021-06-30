@@ -1,12 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, length, isNil } from "ramda";
 import {
-  SamudayikbanBibaran,
   DharmikbanBibaran,
+  Filter,
   KabuliyatibanBibaran,
   NijibanBibaran,
+  SamudayikbanBibaran,
+  ReportGenerator,
 } from "../../../components";
 import BankaprakarActions from "../../../actions/bankaprakar";
 import {
@@ -20,10 +22,12 @@ import "./Bankaprakar.scss";
 class Bankaprakar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "samudayiklist", perPage: 10, page: 1 };
+    this.state = { loc: "samudayiklist", perPage: 10, page: 0 };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -32,6 +36,7 @@ class Bankaprakar extends Component {
     var dharmikbanList = [];
     var kabuliyatibanList = [];
     var nijibanList = [];
+
     if (nextProps != prevState) {
       samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
       dharmikbanList = nextProps.dharmikbanbibaranDataList.data;
@@ -48,14 +53,16 @@ class Bankaprakar extends Component {
     };
   }
 
-  handlePageChange(data, item) {
-    const { perPage } = this.state;
-    this.setState({ page: data.selected });
+  handlePer(e, item) {
+    this.setState({ perPage: e });
+    this.fetchResults(0, e, item);
+  }
+  fetchResults(page, perPage, item) {
     switch (item) {
       case "samudayikban": {
         this.props.fetchallSamudayikbanbibaran({
           name: "samydayikban_name",
-          page: data.selected * perPage,
+          page: page,
           perPage,
         });
         break;
@@ -63,7 +70,7 @@ class Bankaprakar extends Component {
       case "dharmikban": {
         this.props.fetchallDharmikbanbibaran({
           name: "dharmikban_name",
-          page: data.selected * perPage,
+          page: page,
           perPage,
         });
         break;
@@ -71,7 +78,7 @@ class Bankaprakar extends Component {
       case "kabuliyatiban": {
         this.props.fetchallKabuliyatibanbibaran({
           name: "entry_date",
-          page: data.selected * perPage,
+          page: page,
           perPage,
         });
         break;
@@ -79,7 +86,7 @@ class Bankaprakar extends Component {
       case "nijiban": {
         this.props.fetchallNijibanbibaran({
           name: "swikrit_miti",
-          page: data.selected * perPage,
+          page: page,
           perPage,
         });
         break;
@@ -87,6 +94,12 @@ class Bankaprakar extends Component {
       default:
         break;
     }
+  }
+
+  handlePageChange(data, item) {
+    const { perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(data.selected * perPage, perPage, item);
   }
 
   handleSelectMenu(event, item, path) {
@@ -138,9 +151,7 @@ class Bankaprakar extends Component {
             break;
           }
           case "kabuliyati": {
-            this.props.deleteKabuliyatibanbibaran(
-              item.darta_no
-            );
+            this.props.deleteKabuliyatibanbibaran(item.darta_no);
             break;
           }
           case "niji": {
@@ -194,21 +205,30 @@ class Bankaprakar extends Component {
     return (
       <div>
         {equals(loc, "samudayikbanlist") && (
-          <SamudayikbanBibaran.List
-            buttonName="+ सामुदायिक वन"
-            title="सामुदायिक वन सम्बन्धी विवरण"
-            pageCount={
-              !isNil(samudayikbanList)
-                ? Math.ceil(samudayikbanList.total / perPage)
-                : 10
-            }
-            data={!isNil(samudayikbanList) ? samudayikbanList.list : []}
-            headings={samudayikbanHeadings}
-            user={user}
-            onAdd={() => this.handleAdd("samudayikban")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "samudayikban")}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter />
+              <ReportGenerator id="samudayikban" />
+            </div>
+            <SamudayikbanBibaran.List
+              buttonName="+ सामुदायिक वन"
+              title="सामुदायिक वन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(samudayikbanList)
+                  ? Math.ceil(samudayikbanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(samudayikbanList) ? samudayikbanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={samudayikbanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("samudayikban")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "samudayikban")}
+            />
+          </Fragment>
         )}
         {equals(loc, "samudayikbanadd") && (
           <SamudayikbanBibaran.Add

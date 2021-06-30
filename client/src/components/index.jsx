@@ -7,6 +7,7 @@ import Button from "./Button";
 import DatePicker from "./DatePicker";
 import Displaybox from "./Displaybox";
 import Dropdown from "./Dropdown";
+import Filter from "./Filter";
 import * as Animations from "./Animations";
 import Avatar from "./Avatar";
 import Icon from "./Icon";
@@ -14,6 +15,8 @@ import CheckIcon from "./CheckIcon";
 import CheckBox from "./CheckBox";
 import CustomDatePicker from "./CustomDatePicker";
 import EditDropdown from "./EditDropdown";
+import Pagination from "./Pagination";
+import ReportGenerator from "./ReportGenerator";
 import * as SamudayikbanBibaran from "./SamudayikbanBibaran";
 import * as DharmikbanBibaran from "./DharmikbanBibaran";
 import * as KabuliyatibanBibaran from "./KabuliyatibanBibaran";
@@ -42,6 +45,7 @@ export {
   DatePicker,
   Displaybox,
   Dropdown,
+  Filter,
   Animations,
   Avatar,
   Icon,
@@ -49,6 +53,8 @@ export {
   CheckBox,
   CustomDatePicker,
   EditDropdown,
+  ReportGenerator,
+  Pagination,
   SamudayikbanBibaran,
   DharmikbanBibaran,
   KabuliyatibanBibaran,

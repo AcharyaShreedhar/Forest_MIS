@@ -25,15 +25,4 @@
     width: fit-content;
   }
 }
-.paginationStyle {
-  color: darkcyan;
-  ul {
-    li {
-      padding: 0px 10px;
-      &.active {
-        border: 2px solid darkcyan;
-        border-radius: 20px;
-      }
-    }
-  }
-}
+

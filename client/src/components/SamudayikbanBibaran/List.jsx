@@ -3,12 +3,24 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
-import { Button, EditDropdown } from "../../components";
-import './SamudayikbanBibaran.scss'
+import { Button, EditDropdown, Pagination } from "../../components";
+import "./SamudayikbanBibaran.scss";
 
 function List(props) {
-  const { buttonName, headings, data, title,pageCount,user, onAdd, onSelect,onPageClick } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    pageCount,
+    user,
+    onAdd,
+    onSelect,
+    onPageClick,
+    pers,
+    per,
+    onPer,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -22,7 +34,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="samudayikban">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -57,8 +69,8 @@ function List(props) {
                   <td key={index}>
                     {englishToNepaliNumber(sban.renewal_date)}
                   </td>
-                  <td key={index}> {sban.created_by||user.user_name}</td>
-                  <td key={index}> {sban.updated_by|| user.user_name}</td>
+                  <td key={index}> {sban.created_by || user.user_name}</td>
+                  <td key={index}> {sban.updated_by || user.user_name}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
@@ -72,20 +84,14 @@ function List(props) {
             )}
           </tbody>
         </Table>
-        <div className="paginationStyle">
-        <ReactPaginate
-          previousLabel={"PREV"}
-          nextLabel={"NEXT"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
+        <Pagination
+          per={per}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
           pageCount={pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={onPageClick}
-          containerClassName={"pagination"}
-          activeClassName={"active"}
+          type="samudayikban"
         />
-        </div>
       </div>
     </Fragment>
   );
@@ -94,11 +100,30 @@ function List(props) {
 List.propTypes = {
   data: PropTypes.array,
   onSelect: PropTypes.func,
+  current: PropTypes.number.isRequired,
+  per: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  pers: PropTypes.arrayOf(PropTypes.any),
+  size: PropTypes.oneOf(["small", "large"]),
+  suffix: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onPer: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {
   data: [],
   onSelect: () => {},
+  current: 1,
+  // Item counts per page
+  per: 25,
+  // Total page counts
+  total: 2,
+  // Steps
+  pers: [25, 50, "all"],
+  size: "small",
+  suffix: "",
+  onChange: (e) => {},
+  onPer: (e) => {},
 };
 
 export default List;

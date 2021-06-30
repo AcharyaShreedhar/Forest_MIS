@@ -5,7 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #6dbec4;
+
+  background: radial-gradient(
+    #517979,
+    #148686,
+    #1ea5a5,
+    #1ca0a0,
+    #1adede,
+    #22a7a7,
+    #308484,
+    #0aafaf
+  );
+  background: radial-gradient(
+    #517979,
+    #148686,
+    #1ea5a5,
+    #1ca0a0,
+    #1adede,
+    #22a7a7,
+    #308484,
+    #0aafaf
+  );
 }
 
 code {
