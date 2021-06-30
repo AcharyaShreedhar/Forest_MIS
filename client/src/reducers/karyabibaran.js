@@ -34,6 +34,18 @@ const fetchsamajikkaryabibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add samajikkaryabibaran
+const addsamajikkaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addsamajikkaryabibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+  const addsamajikkaryabibaranFailure = (state, action) =>
+    state.merge({ ...state, status: "error" });
+
+
 const locationsRequest = (state, action) => {
     let locations = state.locations;
   
@@ -53,6 +65,11 @@ const locationsRequest = (state, action) => {
       [KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST]: fetchsamajikkaryabibaranRequest,
       [KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_SUCCESS]: fetchsamajikkaryabibaranSuccess,
       [KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_FAILURE]: fetchsamajikkaryabibaranFailure,
+
+      [KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_REQUEST]: addsamajikkaryabibaranRequest,
+      [KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_SUCCESS]: addsamajikkaryabibaranSuccess,
+      [KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_FAILURE]: addsamajikkaryabibaranFailure,
+
 
       [KaryabibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
       [KaryabibaranTypes.CLEAR_REQUEST]: clearRequest,
