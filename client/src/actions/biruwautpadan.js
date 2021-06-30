@@ -68,6 +68,10 @@
    updatebrixyaropanSuccess: ["response"],
    updatebrixyaropanFailure: null,
 
+   deletebrixyaropanRequest: ["payload", "brixyaropanId"],
+   deletebrixyaropanSuccess: ["response"],
+   deletebrixyaropanFailure: null,
+
 
 
 
