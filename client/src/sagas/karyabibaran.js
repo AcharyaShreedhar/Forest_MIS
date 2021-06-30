@@ -44,14 +44,44 @@ export function* addsamajikkaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield addsamajikkaryabibaranRequest(api,{
-      name: "post",
+      name: "ban_type",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/samajikkaryabibaranlist");
+    yield call(history.push, "/karyabibaran/samajikkaryabibaranlist");
     yield put(KaryabibaranActions.addsamajikkaryabibaranSuccess(response.data));
   } else {
     yield put(KaryabibaranActions.addsamajikkaryabibaranFailure());
+    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  }
+}
+
+// Update samajikkaryabibaran
+export function* updatesamajikkaryabibaranRequest(api, action) {
+  const { payload, samajikkaryabibaranId } = action;
+
+  const response = yield api.postKaryabibaranSamajikkaryabibaranUpdate(
+    payload.samajikkaryabibaran.data,
+    samajikkaryabibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सामाजिक कार्य विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallsamajikkaryabibaranRequest(api,{
+      name: "ban_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/karyabibaran/samajikkaryabibaranlist");
+    yield put(
+      KaryabibaranActions.updatesamajikkaryabibaranSuccess(response.data)
+    );
+  } else {
+    yield put(KaryabibaranActions.updatesamajikkaryabibaranFailure());
     toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
