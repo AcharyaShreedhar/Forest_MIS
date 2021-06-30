@@ -63,7 +63,6 @@ const bachatBibaranRoutes = require("./app/routes/bachatBibaranRoutes");
 const banpaidawarBikribitaranRoutes = require("./app/routes/banpaidawarBikribitranRoutes");
 const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes");
 const samajikkaryaBibaranRoutes = require("./app/routes/samajikkaryaBibaranRoutes");
-const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes")
 const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
 
 app.use("/api/v1", provinceRoutes);
