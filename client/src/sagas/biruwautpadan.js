@@ -253,3 +253,31 @@ export function* fetchbiruwautpadanRequest(api, action) {
       yield put(BiruwautpadanActions.fetchbrixyaropanFailure());
     }
   }
+
+
+  export function* addbrixyaropanRequest(api, action) {
+    const { payload } = action;
+        
+    const response = yield api.postBiruwautpadanBrixyaropanAddNew(
+      payload.brixyaropan.data
+    );
+      
+    if (response.ok) {  
+          
+      toast.success("सफलतापुर्वक वृक्षरोपण विवरण प्रविष्ट भयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchallbrixyaropanRequest(api,{
+        name: "brixyaropan_thegana",
+        page: 0,
+        perPage: 10,
+      });
+      yield call(history.push, "/activities/plantationlist");
+      yield put(BiruwautpadanActions.addbrixyaropanSuccess(response.data));
+    } else {
+      yield put(BiruwautpadanActions.addbrixyaropanFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }

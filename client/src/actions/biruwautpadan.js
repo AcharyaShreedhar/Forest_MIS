@@ -60,6 +60,11 @@
    fetchbrixyaropanSuccess: ["response"],
    fetchbrixyaropanFailure: null,
 
+   addbrixyaropanRequest: ["payload"],
+   addbrixyaropanSuccess: ["response"],
+   addbrixyaropanFailure: null,
+
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,
