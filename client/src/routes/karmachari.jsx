@@ -19,7 +19,7 @@ const karmachariRoutes = [
     },
   
     {
-      path: "karmachari/karmacharibibaranedit/:id",
+      path: "/karmachari/karmacharibibaranedit/:id",
       title: "KarmachariBibaran",
       name: "karmacharibibaran",
       auth: true,
