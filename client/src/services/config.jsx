@@ -315,6 +315,31 @@ const karmacharidarbandiHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const karmacharibibaranHeadings = [
+   "नाम",
+   "स्थायी प्रदेश",
+   "स्थायी जिल्ला",
+   "स्थायी नगरपालिका",
+   "स्थायी वडा न.",
+   "स्थायी टोल",
+   "अस्थायी प्रदेश",
+   "अस्थायी जिल्ला",
+   "अस्थायी नगरपालिका",
+   "अस्थायी वडा न.",
+   "अस्थायी टोल", 
+   "सम्पर्क न.",
+   "इमेल",
+   "कार्यालय",
+   "विभाग",
+   "स्तर",
+   "पोष्ट",
+   "श्रेणी",
+   "अपोइन्ट मिति",
+   "स्थिति",
+   "सिर्जना गर्ने",
+   "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -338,4 +363,5 @@ export {
   brixyaropanHeadings,
   karmacharidarbandiHeadings,
   districtList,
+  karmacharibibaranHeadings,
 };
