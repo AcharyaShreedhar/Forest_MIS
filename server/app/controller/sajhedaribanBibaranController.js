@@ -1,6 +1,6 @@
 const pool = require("../db");
 
-//Controller for Listing all activities_infos
+//Controller for Listing allSajhedaribanBibaran
 async function getAllSajhedaribanBibaran(req, res) {
   const getTotalQuery = "SELECT count(*) as total from sajhedariban_bibarans";
   const getAllSajhedaribanBibaranQuery = `select * from sajhedariban_bibarans ORDER BY ? ASC LIMIT ?,?`;
