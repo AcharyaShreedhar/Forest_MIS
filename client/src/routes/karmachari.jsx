@@ -45,7 +45,7 @@ const karmachariRoutes = [
     },
   
     {
-      path: "//karmachari/karmacharidarbandiedit/:id",
+      path: "/karmachari/karmacharidarbandiedit/:id",
       title: "KarmachariDarbandi",
       name: "karmacharidarbandi",
       auth: true,

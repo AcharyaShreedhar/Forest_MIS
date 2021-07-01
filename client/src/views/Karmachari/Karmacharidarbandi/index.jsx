@@ -75,7 +75,7 @@ class Karmacharidarbandi extends Component {
   render() {
     const { loc, perPage, karmacharidarbandiList } = this.state;
     const { user } = this.props;
-
+   
     return (
       <div>
         {equals(loc, "karmacharidarbandilist") && (
@@ -116,7 +116,7 @@ class Karmacharidarbandi extends Component {
         )}
         {equals(loc, "karmacharidarbandiedit") && (
           <KarmachariDarbandi.Edit
-            title="वनडढेलो पुनः प्रविष्ट"
+            title="कर्मचारी दरबन्दी पुनः प्रविष्ट"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -149,10 +149,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(KarmacharidarbandiActions.addkarmacharidarbandiRequest(payload)),
 
   updateKarmacharidarbandi: (payload, karmacharidarbandiId) =>
-    dispatch(KarmacharidarbandiActions.updateKarmacharidarbandiRequest(payload, karmacharidarbandiId)),
+    dispatch(KarmacharidarbandiActions.updatekarmacharidarbandiRequest(payload, karmacharidarbandiId)),
 
   deleteKarmacharidarbandi: (karmacharidarbandiId) =>
-    dispatch(KarmacharidarbandiActions.deletebandadelobibaranRequest(karmacharidarbandiId)),
+    dispatch(KarmacharidarbandiActions.deletekarmacharidarbandiRequest(karmacharidarbandiId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karmacharidarbandi);
