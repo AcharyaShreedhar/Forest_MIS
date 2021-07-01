@@ -1,8 +1,8 @@
 const pool = require("../db");
 
-//Controller for Listing all activities_infos
+//Controller for Listing allchaklabanBibaran
 async function getAllChaklabanBibaran(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from chaklaban_bibarans";
+  const getTotalQuery = "SELECT count(*) as total from Chaklaban_bibarans";
   const getAllChaklabanBibaranQuery = `select * from chaklaban_bibarans ORDER BY ? ASC LIMIT ?,?`;
   pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
@@ -99,7 +99,7 @@ async function deleteChaklabanBibaran(req, res) {
   const deleteChaklabanBibaranQuery = `DELETE  FROM chaklaban_bibarans where chaklaban_bibaran_id=?`;
   pool.query(
     deleteChaklabanBibaranQuery,
-    [req.params.chaklabanBibaranId],
+    [req.params.ChaklabanBibaranId],
     (error, results, fields) => {
       if (error) {
         throw error;
