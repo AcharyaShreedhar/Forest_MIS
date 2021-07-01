@@ -10,7 +10,10 @@ import BankaprakarActions from "../../actions/bankaprakar";
 export class Forests extends Component {
   componentDidMount() {
     this.props.fetchallSamudayikbanbibaran({
-      name: "samydayikban_name",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "handover_date",
       page: 0,
       perPage: 10,
     });
@@ -95,5 +98,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Forests);
-
-//** */

@@ -291,6 +291,20 @@ const brixyaropanHeadings = [
   "सिर्जना गर्ने",
   "परिमार्जन गर्ने",
 ];
+const districtList = [
+  { id: "%", value: "सबै" },
+  { id: 1, value: "कास्की" },
+  { id: 2, value: "गोरखा" },
+  { id: 3, value: "तनहुँ" },
+  { id: 4, value: "नवलपरासी (बर्दघाट सुस्ता पूर्व)" },
+  { id: 5, value: "पर्वत" },
+  { id: 6, value: "बाग्लुङ" },
+  { id: 7, value: "मनाङ" },
+  { id: 8, value: "मुस्ताङ" },
+  { id: 9, value: "म्याग्दी" },
+  { id: 10, value: "लमजुङ" },
+  { id: 11, value: "स्याङजा" },
+];
 
 const karmacharidarbandiHeadings = [
   "पद",
@@ -323,4 +337,5 @@ export {
   muddaanusandhandayariHeadings,
   brixyaropanHeadings,
   karmacharidarbandiHeadings,
+  districtList,
 };

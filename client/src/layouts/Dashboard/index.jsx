@@ -15,6 +15,7 @@ class Dashboard extends Component {
       };
       this.props.saveLocation(payload);
     });
+    this.props.fetchDistricts(4);
   }
 
   render() {
@@ -52,6 +53,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   saveLocation: (e) => dispatch(AppActions.locationsRequest(e)),
   onLogout: (e) => dispatch(AppActions.logoutRequest(e)),
+  fetchDistricts: (e) => dispatch(AppActions.fetchalldistrictsRequest(e)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

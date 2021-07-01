@@ -16,18 +16,29 @@ import {
   dharmikbanHeadings,
   kabuliyatibanHeadings,
   nijibanHeadings,
+  districtList,
 } from "../../../services/config";
 import "./Bankaprakar.scss";
 
 class Bankaprakar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "samudayiklist", perPage: 10, page: 0 };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.state = {
+      loc: "samudayiklist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 0,
+    };
+    this.fetchResults = this.fetchResults.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -54,14 +65,36 @@ class Bankaprakar extends Component {
   }
 
   handlePer(e, item) {
+    const { fromDate, toDate, distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(0, e, item);
+    this.fetchResults(fromDate, toDate, distId, 0, e, item);
   }
-  fetchResults(page, perPage, item) {
+  handleFromDate(e, item) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage, item);
+  }
+
+  handleToDate(e, item) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage, item);
+  }
+
+  handleDistrict(e, item) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage, item);
+  }
+
+  fetchResults(fromDate, toDate, distId, page, perPage, item) {
     switch (item) {
       case "samudayikban": {
         this.props.fetchallSamudayikbanbibaran({
-          name: "samydayikban_name",
+          fromDate,
+          toDate,
+          distId,
+          name: "handover_date",
           page: page,
           perPage,
         });
@@ -97,9 +130,16 @@ class Bankaprakar extends Component {
   }
 
   handlePageChange(data, item) {
-    const { perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(data.selected * perPage, perPage, item);
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage,
+      item
+    );
   }
 
   handleSelectMenu(event, item, path) {
@@ -207,7 +247,13 @@ class Bankaprakar extends Component {
         {equals(loc, "samudayikbanlist") && (
           <Fragment>
             <div className="report-filter">
-              <Filter />
+              <Filter
+                id="samudayikban"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
               <ReportGenerator id="samudayikban" />
             </div>
             <SamudayikbanBibaran.List
@@ -367,6 +413,7 @@ Bankaprakar.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  districts: state.app.alldistrictsData,
   user: state.app.user,
   samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
