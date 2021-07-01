@@ -116,6 +116,8 @@ app.use("/api/v1", samajikkaryaBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
 app.use("/api/v1", brixyaropanRoutes);
 app.use("/api/v1", sajhedaribanBibaranRoutes);
+app.use("/api/v1", sajhedaribanBibaranRoutes);
+
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
