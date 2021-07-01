@@ -113,7 +113,7 @@ class Karmacharibibaran extends Component {
                 history={this.props.history}
                 user={user}
                 onSelect={this.handleSelectMenu}
-                onUpdate={(e, id) => this.props.Karmacharibibaran(e, id)}
+                onUpdate={(e, id) => this.props.updateKarmacharibibaran(e, id)}
               />
             )}
           </div>
