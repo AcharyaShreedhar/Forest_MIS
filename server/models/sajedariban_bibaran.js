@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   sajedariban_bibaran.init({
+    dist_id: DataTypes.INTEGER,
     darta_no: DataTypes.STRING,
     sajedariban_naam: DataTypes.STRING,
     area: DataTypes.STRING,

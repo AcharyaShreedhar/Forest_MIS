@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   vehicles.init(
     {
+      dist_id: DataTypes.INTEGER,
       vehicle_type: DataTypes.STRING,
       vehicle_no: DataTypes.STRING,
       engine_no: DataTypes.STRING,

@@ -8,12 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id:{
+        type: Sequelize.INTEGER,
+      },
       emp_fname_eng: {
         type: Sequelize.STRING,
       },
       emp_lname_eng: {
         type: Sequelize.STRING,
       },
+  
       emp_fname_nep: {
         type: Sequelize.STRING,
       },

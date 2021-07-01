@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   forest_garden_plots.init({
+    dist_id: DataTypes.INTEGER,
     plot_type: DataTypes.STRING,
     prajati: DataTypes.STRING,
     area: DataTypes.STRING,
