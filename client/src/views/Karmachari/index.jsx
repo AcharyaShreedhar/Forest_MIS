@@ -5,9 +5,15 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import karmachariRoutes from "../../routes/karmachari";
+import KarmacharidarbandiActions from "../../actions/karmacharidarbandi";
 
 export class Karmachari extends Component {
   componentDidMount() {
+    this.props.fetchallKarmacharidarbandi({
+      name: "post",
+      page: 0,
+      perPage: 10,
+    });
     
   }
 
@@ -64,6 +70,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchallKarmacharidarbandi: (payload) =>
+    dispatch(KarmacharidarbandiActions.fetchallkarmacharidarbandiRequest(payload)),
  
 });
 
