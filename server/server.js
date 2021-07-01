@@ -8,7 +8,7 @@ require("dotenv").config();
 const express = require("express");
 // const jwt = require('jsonwebtoken');
 // var token = require('crypto').randomBytes(50).toString('hex');
-// // 'e6fb380f0a95ffc1d84d09ceb7a5bb2b1283394e356478268c4ac94db6a15a444254369ee1f57eb348d6a8b95e0b763a9800'
+//** */ // 'e6fb380f0a95ffc1d84d09ceb7a5bb2b1283394e356478268c4ac94db6a15a444254369ee1f57eb348d6a8b95e0b763a9800'
 
 const db = require("./app/db");
 var cors = require("cors");
@@ -63,8 +63,9 @@ const bachatBibaranRoutes = require("./app/routes/bachatBibaranRoutes");
 const banpaidawarBikribitaranRoutes = require("./app/routes/banpaidawarBikribitranRoutes");
 const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes");
 const samajikkaryaBibaranRoutes = require("./app/routes/samajikkaryaBibaranRoutes");
-const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
 const brixyaropanRoutes = require("./app/routes/brixyaropanRoutes");
+const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
+const sajhedaribanBibaranRoutes = require("./app/routes/sajhedaribanBibaranRoutes");
 
 app.use("/api/v1", provinceRoutes);
 
@@ -110,6 +111,8 @@ app.use("/api/v1", rojgarsrijanaRoutes);
 app.use("/api/v1", samajikkaryaBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
 app.use("/api/v1", brixyaropanRoutes);
+app.use("/api/v1", sajhedaribanBibaranRoutes);
+
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
