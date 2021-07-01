@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { Brixyaropan, Filter, ReportGenerator} from "../../../components";
+import { Brixyaropan, Filter, ReportGenerator } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import { brixyaropanHeadings } from "../../../services/config";
 import { Fragment } from "react";
@@ -39,13 +39,11 @@ class Plantation extends Component {
     });
   }
 
-
   handlePageChange(data) {
     const { perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(data.selected * perPage, perPage);
-
-    }
+  }
 
   handleSelectMenu(event, item, path) {
     switch (event) {
@@ -76,29 +74,29 @@ class Plantation extends Component {
     return (
       <div>
         {equals(loc, "plantationlist") && (
-            <Fragment>
+          <Fragment>
             <div className="report-filter">
               <Filter />
               <ReportGenerator id="brixyaropan" />
             </div>
-          <Brixyaropan.List
-            buttonName="+ वृक्षरोपण"
-            title="वृक्षरोपण सम्बन्धी विवरण"
-            pageCount={
-              !isNil(brixyaropanList)
-                ? Math.ceil(brixyaropanList.total / perPage)
-                : 10
-            }
-            data={!isNil(brixyaropanList) ? brixyaropanList.list : []}
-            per={perPage}
-            pers={[10, 25, 50, "all"]}
-            onPer={this.handlePer}
-            user={user}
-            headings={brixyaropanHeadings}
-            onAdd={() => this.handleAdd()}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e)}
-          />
+            <Brixyaropan.List
+              buttonName="+ वृक्षरोपण"
+              title="वृक्षरोपण सम्बन्धी विवरण"
+              pageCount={
+                !isNil(brixyaropanList)
+                  ? Math.ceil(brixyaropanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(brixyaropanList) ? brixyaropanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              user={user}
+              headings={brixyaropanHeadings}
+              onAdd={() => this.handleAdd()}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
           </Fragment>
         )}
         {equals(loc, "brixyaropanadd") && (
@@ -137,11 +135,20 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  //-------------biruwautpadan
+  
   fetchallBrixyaropan: (payload) =>
     dispatch(BiruwautpadanActions.fetchallbrixyaropanRequest(payload)),
 
-  
+  addBrixyaropan: (payload) =>
+    dispatch(BiruwautpadanActions.addbrixyaropanRequest(payload)),
+
+  updateBrixyaropan: (payload, brixyaropanId) =>
+    dispatch(
+      BiruwautpadanActions.updatebrixyaropanRequest(payload, brixyaropanId)
+    ),
+
+  deleteBrixyaropan: (brixyaropanId) =>
+    dispatch(BiruwautpadanActions.deletebrixyaropanRequest(brixyaropanId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plantation);
