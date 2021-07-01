@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   inventory.init(
     {
+      dist_id: DataTypes.INTEGER,
       item_name: DataTypes.STRING,
       entry_id: DataTypes.INTEGER,
       exit_id: DataTypes.INTEGER,

@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   uddhyam_bibarans.init({
+    dist_id: DataTypes.INTEGER,
     niji_uddhyam_sankhya: DataTypes.STRING,
     niji_rojgari_sankhya: DataTypes.STRING,
     samudayik_uddhyam_sankhya: DataTypes.STRING,

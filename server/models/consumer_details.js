@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   consumer_details.init(
     {
+      dist_id: DataTypes.INTEGER,
       registration_no: DataTypes.STRING,
       registration_date: DataTypes.STRING,
       consumer_group_name: DataTypes.STRING,

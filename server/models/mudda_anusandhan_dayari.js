@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   mudda_anusandhan_dayari.init(
     {
+      dist_id: DataTypes.INTEGER,
       jaheri_partibedan_miti: DataTypes.STRING,
       kasurko_kisim: DataTypes.STRING,
       bigo_pariman: DataTypes.STRING,

@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id:{
+        type: Sequelize.INTEGER,
+      },
       registration_no: {
         type: Sequelize.STRING,
       },

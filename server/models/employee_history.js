@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   employee_history.init(
     {
+      dist_id: DataTypes.INTEGER,
       hist_date: DataTypes.STRING,
       emp_id: DataTypes.INTEGER,
       emp_office_id: DataTypes.INTEGER,

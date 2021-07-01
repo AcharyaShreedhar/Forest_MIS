@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   banpaidawar_bikribitaran.init({
+    dist_id: DataTypes.INTEGER,
     bandpaidawar_kisim: DataTypes.STRING,
     ekai: DataTypes.STRING,
     aantarik_dar: DataTypes.STRING,
