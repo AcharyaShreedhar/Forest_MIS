@@ -292,6 +292,15 @@ const brixyaropanHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const karmacharidarbandiHeadings = [
+  "पद",
+  "कायम दरबन्दी संख्या",
+  "पदपपुर्ति संख्या",
+  "खाली संख्या",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -313,4 +322,5 @@ export {
   banxetraanyaprayojanHeadings,
   muddaanusandhandayariHeadings,
   brixyaropanHeadings,
+  karmacharidarbandiHeadings,
 };

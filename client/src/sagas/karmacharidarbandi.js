@@ -9,6 +9,7 @@ export function* fetchallkarmacharidarbandiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getKarmacharidarbandiList(payloaddata);
+  console.log("Dataaa..saga", response);
   if (response.ok) {
     yield put(
       KarmacharidarbandiActions.fetchallkarmacharidarbandiSuccess(response.data)
