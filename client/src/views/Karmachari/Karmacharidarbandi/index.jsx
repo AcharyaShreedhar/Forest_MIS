@@ -109,6 +109,7 @@ class Karmacharidarbandi extends Component {
         {equals(loc, "karmacharidarbandiadd") && (
           <KarmachariDarbandi.Add
             title="+ कर्मचारी दरबन्दी"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addKarmacharidarbandi(e)}
           />
@@ -116,6 +117,7 @@ class Karmacharidarbandi extends Component {
         {equals(loc, "karmacharidarbandiedit") && (
           <KarmachariDarbandi.Edit
             title="वनडढेलो पुनः प्रविष्ट"
+            user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateKarmacharidarbandi(e, id)}

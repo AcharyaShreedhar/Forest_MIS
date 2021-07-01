@@ -9,7 +9,6 @@ export function* fetchallkarmacharidarbandiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getKarmacharidarbandiList(payloaddata);
-  console.log("Dataaa..saga", response);
   if (response.ok) {
     yield put(
       KarmacharidarbandiActions.fetchallkarmacharidarbandiSuccess(response.data)
@@ -46,12 +45,12 @@ export function* addkarmacharidarbandiRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी दरबन्दी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addkarmacharidarbandiRequest(api,{
+    yield fetchallkarmacharidarbandiRequest(api,{
       name: "post",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/karmacharidarbandilist");
+    yield call(history.push, "/karmachari/karmacharidarbandilist");
     yield put(KarmacharidarbandiActions.addkarmacharidarbandiSuccess(response.data));
   } else {
     yield put(KarmacharidarbandiActions.addkarmacharidarbandiFailure());
