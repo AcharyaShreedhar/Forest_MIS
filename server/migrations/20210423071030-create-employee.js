@@ -79,7 +79,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       emp_appoint_date: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       emp_status: {
         type: Sequelize.STRING,
