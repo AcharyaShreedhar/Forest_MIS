@@ -63,11 +63,7 @@ const bachatBibaranRoutes = require("./app/routes/bachatBibaranRoutes");
 const banpaidawarBikribitaranRoutes = require("./app/routes/banpaidawarBikribitranRoutes");
 const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes");
 const samajikkaryaBibaranRoutes = require("./app/routes/samajikkaryaBibaranRoutes");
-const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
 const brixyaropanRoutes = require("./app/routes/brixyaropanRoutes");
-const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes")
-const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes");
-const samajikkaryaBibaranRoutes = require("./app/routes/samajikkaryaBibaranRoutes");
 const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
 const sajhedaribanBibaranRoutes = require("./app/routes/sajhedaribanBibaranRoutes");
 
@@ -115,7 +111,6 @@ app.use("/api/v1", rojgarsrijanaRoutes);
 app.use("/api/v1", samajikkaryaBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
 app.use("/api/v1", brixyaropanRoutes);
-app.use("/api/v1", sajhedaribanBibaranRoutes);
 app.use("/api/v1", sajhedaribanBibaranRoutes);
 
 
