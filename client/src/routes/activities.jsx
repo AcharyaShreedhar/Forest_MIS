@@ -41,6 +41,20 @@ const activitiesRoutes = [
     component: Plantation,
   },
   {
+    path: "/activities/brixyaropanadd/new",
+    title: "Plantation",
+    name: "plantation",
+    auth: true,
+    component: Plantation,
+  },
+  {
+    path: "/activities/brixyaropanedit/:id",
+    title: "Plantation",
+    name: "plantation",
+    auth: true,
+    component: Plantation,
+  },
+  {
     path: "/activities/yearlyactivitiesadd/new",
     title: "Yearlyactivities",
     name: "Yearlyactivities",
