@@ -66,7 +66,7 @@ const samajikkaryaBibaranRoutes = require("./app/routes/samajikkaryaBibaranRoute
 const brixyaropanRoutes = require("./app/routes/brixyaropanRoutes");
 const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
 const sajhedaribanBibaranRoutes = require("./app/routes/sajhedaribanBibaranRoutes");
-
+const commercialkabuliyatibanBibaranRoutes = require("./app/routes/commercialkabuliyatibanBibaranRoutes");
 app.use("/api/v1", provinceRoutes);
 
 //Commenting this block of code until unit test is done
@@ -112,6 +112,7 @@ app.use("/api/v1", samajikkaryaBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
 app.use("/api/v1", brixyaropanRoutes);
 app.use("/api/v1", sajhedaribanBibaranRoutes);
+app.use("/api/v1", commercialkabuliyatibanBibaranRoutes);
 
 
 const port = process.env.PORT || 3001;
