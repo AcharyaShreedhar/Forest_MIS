@@ -56,10 +56,22 @@ export class SideNavbar extends Component {
             </Link>
           </NavItem>
           <NavItem eventKey="employees">
-            <Link to="/employees" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faUsers} className="mr-2" />
-              {expanded && <Displaybox value="कर्मचारी" />}
-            </Link>
+            <NavIcon>
+            <FontAwesomeIcon size="2x" icon={faUsers} className="mr-2" />
+            </NavIcon>
+            <NavText>कर्मचारी</NavText>
+            <NavItem
+            eventKey="/karmachari/karmacharibibaranlist"
+            onClick={() => history.push("/karmachari/karmacharibibaranlist")}
+            >
+            <NavText>कर्मचारी विवरण</NavText>
+            </NavItem>
+            <NavItem
+            eventKey="/karmachari/karmacharidarbandilist"
+            onClick={() => history.push("/karmachari/karmacharidarbandilist")}
+            >
+            <NavText>कर्मचारी दरबन्दी </NavText>
+            </NavItem>
           </NavItem>
           <NavItem eventKey="/forests">
             <NavIcon>

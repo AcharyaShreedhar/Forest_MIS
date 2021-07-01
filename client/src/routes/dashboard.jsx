@@ -6,6 +6,7 @@ import Forests from "../views/Forests";
 import Home from "../views/Home";
 import Login from "../layouts/Login";
 import Sampatibibaran from "../views/Sampatibibaran";
+import Karmachari from "../views/Karmachari";
 
 const dashboardRoutes = [
   {
@@ -48,6 +49,11 @@ const dashboardRoutes = [
     name: "Sampatibibaran",
     component: Sampatibibaran,
   },
+  {
+    path: "/karmachari",
+    name: "karmachari",
+    component: Karmachari,
+  }, 
   {
     redirect: true,
     path: "/",
