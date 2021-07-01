@@ -11,7 +11,7 @@ module.exports = {
       darta_no: {
         type: Sequelize.STRING,
       },
-      sajedariban_naam: {
+      rastriyaban_name: {
         type: Sequelize.STRING
       },
       area: {
