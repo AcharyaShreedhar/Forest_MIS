@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
 
-      darta_no: {
+      dist_id: {
         type: Sequelize.STRING
       },
       sajhedariban_name: {
