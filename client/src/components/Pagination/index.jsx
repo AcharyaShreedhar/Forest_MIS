@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import ReactPaginate from "react-paginate";
+import classNames from 'classnames'
 import { PropTypes } from "prop-types";
 import { equals, length } from "ramda";
 import "./Pagination.scss";
@@ -25,11 +26,9 @@ export class Pagination extends Component {
           {length(pers) > 0 && (
             <div className="d-flex ml-auto">
               {pers.map((item) => {
-                const page = {
-                  active:
-                    equals(item, per) ||
-                    (equals(item, "all") && equals(5000, per)),
-                };
+                 const page = classNames('core-pagination-pers', {
+                  active: equals(item, per) || (equals(item, 'all') && equals(5000, per)),
+                })
                 const counts = equals("all", item) ? 5000 : item;
                 return (
                   <Fragment key={item}>
