@@ -4,7 +4,6 @@ import { history } from "../reducers";
 import AppActions from "../actions/app";
 import { isNil } from "ramda";
 
-
 export function* loginRequest(api, action) {
   const { payload } = action;
 
@@ -48,11 +47,11 @@ export function* fetchmunicipalitiesRequest(api, action) {
 // Add municipalities
 export function* addmunicipalitiesRequest(api, action) {
   const { payload } = action;
- 
+
   const response = yield api.postMunicipalitiesAddNew(
     payload.municipalities.data
   );
- 
+
   if (response.ok) {
     toast.success("सफलतापूर्वक  नगरपालिका विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -74,16 +73,16 @@ export function* addmunicipalitiesRequest(api, action) {
     );
   }
 }
- 
+
 // Update municipalities
 export function* updatemunicipalitiesRequest(api, action) {
   const { payload, municipalitiesId } = action;
- 
+
   const response = yield api.postMunicipalitiesUpdate(
     payload.municipalities.data,
     municipalitiesId
   );
- 
+
   if (response.ok) {
     toast.success("नगरपालिका विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -105,7 +104,7 @@ export function* updatemunicipalitiesRequest(api, action) {
     );
   }
 }
- 
+
 // Delete municipalities
 export function* deletemunicipalitiesRequest(api, action) {
   const { payload } = action;
@@ -130,7 +129,7 @@ export function* deletemunicipalitiesRequest(api, action) {
     );
   }
 }
- 
+
 // // Provinces
 export function* fetchallprovincesRequest(api, action) {
   const { payload } = action;
@@ -156,11 +155,9 @@ export function* fetchprovincesRequest(api, action) {
 // Add provinces
 export function* addprovincesRequest(api, action) {
   const { payload } = action;
- 
-  const response = yield api.postProvincesAddNew(
-    payload.provinces.data
-  );
- 
+
+  const response = yield api.postProvincesAddNew(payload.provinces.data);
+
   if (response.ok) {
     toast.success("प्रदेश विवरण सफलतापूर्वक  प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -182,16 +179,16 @@ export function* addprovincesRequest(api, action) {
     );
   }
 }
- 
+
 // Update provinces
 export function* updateprovincesRequest(api, action) {
   const { payload, provincesId } = action;
- 
+
   const response = yield api.postProvincesUpdate(
     payload.provinces.data,
     provincesId
   );
- 
+
   if (response.ok) {
     toast.success("प्रदेश विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -213,13 +210,13 @@ export function* updateprovincesRequest(api, action) {
     );
   }
 }
- 
+
 // Delete provinces
 export function* deleteprovincesRequest(api, action) {
   const { payload } = action;
- 
+
   const response = yield api.postProvincesDelete(payload);
- 
+
   if (response.ok) {
     toast.success("प्रदेश सफलतापूर्वक  विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -240,7 +237,6 @@ export function* deleteprovincesRequest(api, action) {
     );
   }
 }
- 
 
 // // Districts
 export function* fetchalldistrictsRequest(api, action) {
@@ -267,11 +263,9 @@ export function* fetchdistrictsRequest(api, action) {
 // Add districts
 export function* adddistrictsRequest(api, action) {
   const { payload } = action;
- 
-  const response = yield api.postDistrictsAddNew(
-    payload.districts.data
-  );
- 
+
+  const response = yield api.postDistrictsAddNew(payload.districts.data);
+
   if (response.ok) {
     toast.success("जिल्ला विवरण सफलतापूर्वक  प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -293,16 +287,16 @@ export function* adddistrictsRequest(api, action) {
     );
   }
 }
- 
+
 // Update districts
 export function* updatedistrictsRequest(api, action) {
   const { payload, districtsId } = action;
- 
+
   const response = yield api.postDistrictsUpdate(
     payload.districts.data,
     districtsId
   );
- 
+
   if (response.ok) {
     toast.success("जिल्ला विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -324,13 +318,13 @@ export function* updatedistrictsRequest(api, action) {
     );
   }
 }
- 
+
 // Delete districts
 export function* deletedistrictsRequest(api, action) {
   const { payload } = action;
- 
+
   const response = yield api.postDistrictsDelete(payload);
- 
+
   if (response.ok) {
     toast.success("सफलतापूर्वक  जिल्ला विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -377,11 +371,9 @@ export function* fetchdepartmentsRequest(api, action) {
 // Add departments
 export function* adddepartmentsRequest(api, action) {
   const { payload } = action;
- 
-  const response = yield api.postdepartmentsAddNew(
-    payload.departments.data
-  );
- 
+
+  const response = yield api.postdepartmentsAddNew(payload.departments.data);
+
   if (response.ok) {
     toast.success("बिभाग विवरण सफलतापूर्वक  प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -403,16 +395,16 @@ export function* adddepartmentsRequest(api, action) {
     );
   }
 }
- 
+
 // Update departments
 export function* updatedepartmentsRequest(api, action) {
   const { payload, departmentsId } = action;
- 
+
   const response = yield api.postdepartmentsUpdate(
     payload.departments.data,
     departmentsId
   );
- 
+
   if (response.ok) {
     toast.success("बिभाग विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -434,13 +426,13 @@ export function* updatedepartmentsRequest(api, action) {
     );
   }
 }
- 
+
 // Delete departments
 export function* deletedepartmentsRequest(api, action) {
   const { payload } = action;
- 
+
   const response = yield api.postDepartmentsDelete(payload);
- 
+
   if (response.ok) {
     toast.success("सफलतापूर्वक  बिभाग विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -461,8 +453,6 @@ export function* deletedepartmentsRequest(api, action) {
     );
   }
 }
- 
-
 
 // // Users
 export function* fetchallusersRequest(api, action) {
@@ -491,11 +481,9 @@ export function* fetchusersRequest(api, action) {
 // Add users
 export function* addusersRequest(api, action) {
   const { payload } = action;
- 
-  const response = yield api.postusersAddNew(
-    payload.users.data
-  );
- 
+
+  const response = yield api.postusersAddNew(payload.users.data);
+
   if (response.ok) {
     toast.success("युजर विवरण सफलतापूर्वक  प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -517,16 +505,13 @@ export function* addusersRequest(api, action) {
     );
   }
 }
- 
+
 // Update users
 export function* updateusersRequest(api, action) {
   const { payload, usersId } = action;
- 
-  const response = yield api.postusersUpdate(
-    payload.departments.data,
-    usersId
-  );
- 
+
+  const response = yield api.postusersUpdate(payload.departments.data, usersId);
+
   if (response.ok) {
     toast.success("युजर विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -548,13 +533,13 @@ export function* updateusersRequest(api, action) {
     );
   }
 }
- 
+
 // Delete users---------------//
 export function* deleteusersRequest(api, action) {
   const { payload } = action;
- 
+
   const response = yield api.postUsersDelete(payload);
- 
+
   if (response.ok) {
     toast.success("युजर विवरण सफलतापूर्वक  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -575,10 +560,8 @@ export function* deleteusersRequest(api, action) {
     );
   }
 }
- 
 
 export function* logoutRequest(api, action) {
-  console.log('yeha aayo ki nai')
   yield put(AppActions.clearRequest());
   yield put(AppActions.logoutSuccess());
   yield call(history.push, "/login");

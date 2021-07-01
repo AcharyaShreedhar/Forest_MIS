@@ -2,8 +2,8 @@ const pool = require("../db");
 
 //Controller for Listing all Districts
 async function getAllDistrict(req, res) {
-  const getAllDistrictQuery = `select * from districts`;
-  pool.query(getAllDistrictQuery, [], (error, results, fields) => {
+  const getAllDistrictQuery = `select * from districts where prov_id=?`;
+  pool.query(getAllDistrictQuery, [req.params.provinceId], (error, results, fields) => {
     if (error) throw error;
     res.send(JSON.stringify({ status: 200, error: null, data: results }));
   });

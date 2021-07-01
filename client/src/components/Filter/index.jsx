@@ -1,32 +1,65 @@
 import React, { Component } from "react";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { Dropdown } from "../../components";
 import "./Filter.scss";
 
 export class Filter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: "",
+      fromdate: "2075-01-01",
+      todate: "2090-12-30",
+      district: "%",
     };
-    this.handleDate = this.handleDate.bind(this);
+    this.handletoDate = this.handletoDate.bind(this);
+    this.handlefromDate = this.handlefromDate.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
   }
 
-  handleDate(e) {
-    this.setState({ renewal_date: e });
+  handletoDate(e) {
+    this.setState({ todate: e });
+    this.props.onToDate(e, this.props.id);
+  }
+  handlefromDate(e) {
+    this.setState({ fromdate: e });
+    this.props.onFromDate(e, this.props.id);
+  }
+  handleDistrict(e) {
+    this.setState({ district: e[0] });
+    this.props.onSelect(e[0], this.props.id);
   }
 
   render() {
-    const { date } = this.state;
+    const { district, fromdate, todate } = this.state;
+    const { districtsList } = this.props;
     return (
       <div className="filter">
-        <span className="dsl-b22">मिति</span>
+        <span className="dsl-b22">हस्तान्तरण मिति:</span>
         <NepaliDatePicker
           inputClassName="form-control"
           className="ml-2"
-          value={date}
-          onChange={(e) => this.handleDate(e)}
+          value={fromdate}
+          onChange={(e) => this.handlefromDate(e)}
           options={{ calenderLocale: "ne", valueLocale: "en" }}
+        />
+        <span className="dsl-b22 mx-5">देखी </span>
+        <NepaliDatePicker
+          inputClassName="form-control"
+          className="ml-2"
+          value={todate}
+          onChange={(e) => this.handletoDate(e)}
+          options={{ calenderLocale: "ne", valueLocale: "en" }}
+        />
+        <Dropdown
+          className="dropdownlabel ml-5"
+          title="जिल्ला :"
+          width="fit-content"
+          defaultIds={[district]}
+          data={districtsList}
+          getValue={(districtsList) => districtsList["value"]}
+          onChange={(e) => this.handleDistrict(e)}
+          value={district}
         />
       </div>
     );
