@@ -11,6 +11,9 @@ module.exports = {
       darta_no: {
         type: Sequelize.STRING
       },
+      dist_id: {
+        type: Sequelize.STRING
+      },
       chaklaban_name: {
         type: Sequelize.STRING
       },
