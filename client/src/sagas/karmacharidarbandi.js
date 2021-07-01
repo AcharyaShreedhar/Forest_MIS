@@ -78,7 +78,7 @@ export function* updatekarmacharidarbandiRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/karmacharidarbandilist");
+    yield call(history.push, "/karmachari/karmacharidarbandilist");
     yield put(
       KarmacharidarbandiActions.updatekarmacharidarbandiSuccess(response.data)
     );
