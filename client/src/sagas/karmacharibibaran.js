@@ -45,12 +45,12 @@ export function* addemployeesRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addemployeesRequest(api,{
+    yield fetchallemployeesRequest(api,{
       name: "emp_fname_nep",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/employeeslist");
+    yield call(history.push, "/karmachari/karmacharibibaranlist");
     yield put(KarmacharibibaranActions.addemployeesSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.addemployeesFailure());
@@ -79,7 +79,7 @@ export function* updateemployeesRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/employeeslist");
+    yield call(history.push, "/karmachari/karmacharibibaranlist");
     yield put(
       KarmacharibibaranActions.updateemployeesSuccess(response.data)
     );

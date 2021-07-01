@@ -6,6 +6,7 @@ import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import karmachariRoutes from "../../routes/karmachari";
 import KarmacharidarbandiActions from "../../actions/karmacharidarbandi";
+import KarmacharibibaranActions from "../../actions/karmacharibibaran";
 
 export class Karmachari extends Component {
   componentDidMount() {
@@ -15,6 +16,11 @@ export class Karmachari extends Component {
       perPage: 10,
     });
     
+    this.props.fetchallKarmacharibibaran({
+      name: "emp_fname_eng",
+      page:0,
+      perPage:10,
+    });
   }
 
   
@@ -73,6 +79,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchallKarmacharidarbandi: (payload) =>
     dispatch(KarmacharidarbandiActions.fetchallkarmacharidarbandiRequest(payload)),
  
+  fetchallKarmacharibibaran:(payload) =>
+  dispatch(KarmacharibibaranActions.fetchallemployeesRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karmachari);
