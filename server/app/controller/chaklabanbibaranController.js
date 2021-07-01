@@ -36,6 +36,31 @@ async function getAllChaklabanBibaran(req, res) {
     }
   );
 }
+//Controller for Listing allchaklabanBibaran
+async function getAllChaklabanBibaran(req, res) {
+  const getTotalQuery = "SELECT count(*) as total from Chaklaban_bibarans";
+  const getAllChaklabanBibaranQuery = `select * from chaklaban_bibarans ORDER BY ? ASC LIMIT ?,?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+    if (error) throw error;
+    pool.query(
+      getAllChaklabanBibaranQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
+  });
+}
 
 //Controller for Listing a ChaklabanBibaran
 async function getChaklabanBibaran(req, res) {
@@ -110,7 +135,7 @@ async function deleteChaklabanBibaran(req, res) {
   const deleteChaklabanBibaranQuery = `DELETE  FROM chaklaban_bibarans where chaklaban_bibaran_id=?`;
   pool.query(
     deleteChaklabanBibaranQuery,
-    [req.params.chaklabanBibaranId],
+    [req.params.ChaklabanBibaranId],
     (error, results, fields) => {
       if (error) {
         throw error;
