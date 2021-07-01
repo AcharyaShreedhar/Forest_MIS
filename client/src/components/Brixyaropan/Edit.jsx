@@ -28,6 +28,7 @@ class Edit extends Component {
         brixyaropan_prajati,
         brixyaropan_pragati,
         brixyaropan_sankhya,
+        created_by,
     } = this.state;
     const payload = {
       brixyaropan: {
@@ -38,6 +39,7 @@ class Edit extends Component {
           brixyaropan_prajati: brixyaropan_prajati,
           brixyaropan_pragati: brixyaropan_pragati,
           brixyaropan_sankhya: brixyaropan_sankhya,
+          created_by: created_by,
           updated_by: this.props.user.user_name,
         },
       },
