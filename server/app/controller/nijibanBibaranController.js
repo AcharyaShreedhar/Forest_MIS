@@ -52,10 +52,11 @@ async function getNijibanBibaran(req, res) {
 
 //Controller for adding a NijibanBibaran
 async function addNijibanBibaran(req, res) {
-  const addNijibanBibaranQuery = `INSERT INTO nijiban_bibarans (darta_no,swikrit_miti, nijiban_dhaniko_naam, perm_addr, curr_addr, area, main_species, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addNijibanBibaranQuery = `INSERT INTO nijiban_bibarans (dist_id, darta_no,swikrit_miti, nijiban_dhaniko_naam, perm_addr, curr_addr, area, main_species, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addNijibanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.swikrit_miti,
       req.body.nijiban_dhaniko_naam,
@@ -77,10 +78,11 @@ async function addNijibanBibaran(req, res) {
 
 //Controller for updating a NijibanBibaran
 async function updateNijibanBibaran(req, res) {
-  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?, created_by=?, updated_by=? WHERE nijiban_bibaran_id=?`;
+  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?, created_by=?, updated_by=? WHERE nijiban_bibaran_id=?`;
   pool.query(
     updateNijibanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.swikrit_miti,
       req.body.nijiban_dhaniko_naam,

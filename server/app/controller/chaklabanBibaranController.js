@@ -41,20 +41,21 @@ async function getChaklabanBibaran(req, res) {
 
 //Controller for adding a ChaklabanBibaran
 async function addChaklabanBibaran(req, res) {
-  const addChaklabanBibaranQuery = `INSERT INTO chaklaban_bibarans (darta_no, chaklaban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addChaklabanBibaranQuery = `INSERT INTO chaklaban_bibarans (darta_no,dist_id, chaklaban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addChaklabanBibaranQuery,
     [
       req.body.darta_no,
+      req.body.dist_id,
       req.body.chaklaban_name,
       req.body.area,
       req.body.main_species,
       req.body.forest_type,
-      req.body.handover_date, 
+      req.body.handover_date,
       req.body.forest_maujdat,
       req.body.nikasi_timber,
       req.body.nikasi_wood,
-      req.body.created_by, 
+      req.body.created_by,
       req.body.updated_by,
     ],
     (error, results, fields) => {
@@ -66,20 +67,21 @@ async function addChaklabanBibaran(req, res) {
 
 //Controller for updating a ChaklabanBibaran
 async function updateChaklabanBibaran(req, res) {
-  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET darta_no=?, chaklaban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE chaklaban_bibaran_id=? `;
+  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET darta_no=?, dist_id=?, chaklaban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE chaklaban_bibaran_id=? `;
   pool.query(
     updateChaklabanBibaranQuery,
     [
       req.body.darta_no,
+      req.body.dist_id,
       req.body.chaklaban_name,
       req.body.area,
       req.body.main_species,
       req.body.forest_type,
-      req.body.handover_date, 
+      req.body.handover_date,
       req.body.forest_maujdat,
       req.body.nikasi_timber,
       req.body.nikasi_wood,
-      req.body.created_by, 
+      req.body.created_by,
       req.body.updated_by,
       req.params.chaklabanBibaranId,
     ],

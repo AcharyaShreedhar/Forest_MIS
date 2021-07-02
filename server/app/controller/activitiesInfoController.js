@@ -36,10 +36,11 @@ async function getAllActivitiesInfo(req, res) {
   
   //Controller for adding a ActivitiesInfo
   async function addActivitiesInfo(req, res) {
-    const addActivitiesInfoQuery = `INSERT INTO activities_infos (samudayikban_naam, fiscal_year, area, production_from_conservation_timber, production_from_conservation_wood, employment_generated_workingday, withingroup_timber, withingroup_wood, outsidegroup_timber, outsidegroup_wood, maujdat_timber, maujdat_wood, annual_income, annual_expenditure, netannual_saving, niyamit_rojgar_count, community_udhyam_bibaran, annual_bibaran, lekha_parikshyan,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+    const addActivitiesInfoQuery = `INSERT INTO activities_infos (dist_id, samudayikban_naam, fiscal_year, area, production_from_conservation_timber, production_from_conservation_wood, employment_generated_workingday, withingroup_timber, withingroup_wood, outsidegroup_timber, outsidegroup_wood, maujdat_timber, maujdat_wood, annual_income, annual_expenditure, netannual_saving, niyamit_rojgar_count, community_udhyam_bibaran, annual_bibaran, lekha_parikshyan,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
     pool.query(
       addActivitiesInfoQuery,
       [
+        req.body.dist_id,
         req.body.samudayikban_naam,
         req.body.fiscal_year,                
         req.body.area,
@@ -73,10 +74,11 @@ async function getAllActivitiesInfo(req, res) {
   
   //Controller for updating a ActivitiesInfo
   async function updateActivitiesInfo(req, res) {
-    const updateActivitiesInfoQuery = `UPDATE activities_infos SET samudayikban_naam=?, fiscal_year=?, area=?, production_from_conservation_timber=?, production_from_conservation_wood=?, employment_generated_workingday=?, withingroup_timber=?, withingroup_wood=?, outsidegroup_timber=?, outsidegroup_wood=?, maujdat_timber=?, maujdat_wood=?, annual_income=?, annual_expenditure=?, netannual_saving=?, niyamit_rojgar_count=?, community_udhyam_bibaran=?, annual_bibaran=?, lekha_parikshyan=?,created_by=?, updated_by=? WHERE activities_info_id=?`;
+    const updateActivitiesInfoQuery = `UPDATE activities_infos SET dist_id=?, samudayikban_naam=?, fiscal_year=?, area=?, production_from_conservation_timber=?, production_from_conservation_wood=?, employment_generated_workingday=?, withingroup_timber=?, withingroup_wood=?, outsidegroup_timber=?, outsidegroup_wood=?, maujdat_timber=?, maujdat_wood=?, annual_income=?, annual_expenditure=?, netannual_saving=?, niyamit_rojgar_count=?, community_udhyam_bibaran=?, annual_bibaran=?, lekha_parikshyan=?,created_by=?, updated_by=? WHERE activities_info_id=?`;
     pool.query(
       updateActivitiesInfoQuery,
       [
+        req.body.dist_id,
         req.body.samudayikban_naam,
         req.body.fiscal_year,                
         req.body.area,

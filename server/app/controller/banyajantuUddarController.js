@@ -2,7 +2,7 @@ const pool = require("../db");
 
 //Controller for Listing all Banyajantu Uddars
 async function getAllBanyajantuUddars(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from banyajantu_uddars"
+  const getTotalQuery = "SELECT count(*) as total from banyajantu_uddars";
   const getAllBanyajantuUddarsQuery = `select * from banyajantu_uddars ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
@@ -26,22 +26,26 @@ async function getAllBanyajantuUddars(req, res) {
   });
 }
 
-
 //Controller for Listing a Banyajantu Uddar
 async function getBanyajantuUddars(req, res) {
   const getBanyajantuUddarsQuery = `select * from banyajantu_uddars where banyajantu_uddar_id=?`;
-  pool.query(getBanyajantuUddarsQuery, [req.params.banyajantuUddarId], (error, results, fields) => {
-    if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  pool.query(
+    getBanyajantuUddarsQuery,
+    [req.params.banyajantuUddarId],
+    (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
 }
 
 //Controller for adding a Banyajantu Uddar
 async function addBanyajantuUddars(req, res) {
-  const addBanyajantuUddarsQuery = `INSERT INTO banyajantu_uddars (miti,sthaniya_taha,samaya,samraxit_xetra,banyajantuko_naam,banyajantuko_umer,banyajantuko_abastha,mareko_karan,banxetra_duri,anya_bibaran,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanyajantuUddarsQuery = `INSERT INTO banyajantu_uddars (dist_id, miti,sthaniya_taha,samaya,samraxit_xetra,banyajantuko_naam,banyajantuko_umer,banyajantuko_abastha,mareko_karan,banxetra_duri,anya_bibaran,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuUddarsQuery,
     [
+      req.body.dist_id,
       req.body.miti,
       req.body.sthaniya_taha,
       req.body.samaya,
@@ -67,10 +71,11 @@ async function addBanyajantuUddars(req, res) {
 
 //Controller for updating a Banyajantu Uddar
 async function updateBanyajantuUddars(req, res) {
-  const updateBanyajantuUddarsQuery = `UPDATE banyajantu_uddars SET miti=?,sthaniya_taha=?,samaya=?,samraxit_xetra=?,banyajantuko_naam=?,banyajantuko_umer=?,banyajantuko_abastha=?,mareko_karan=?,banxetra_duri=?,anya_bibaran=?,remarks=?,created_by=?,updated_by=? WHERE banyajantu_uddar_id=?`;
+  const updateBanyajantuUddarsQuery = `UPDATE banyajantu_uddars SET dist_id=?, miti=?,sthaniya_taha=?,samaya=?,samraxit_xetra=?,banyajantuko_naam=?,banyajantuko_umer=?,banyajantuko_abastha=?,mareko_karan=?,banxetra_duri=?,anya_bibaran=?,remarks=?,created_by=?,updated_by=? WHERE banyajantu_uddar_id=?`;
   pool.query(
     updateBanyajantuUddarsQuery,
     [
+      req.body.dist_id,
       req.body.miti,
       req.body.sthaniya_taha,
       req.body.samaya,

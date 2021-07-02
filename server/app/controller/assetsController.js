@@ -37,20 +37,20 @@ async function getAssets(req, res) {
 
 //Controller for adding a Asset
 async function addAsets(req, res) {
-  const addAssetsQuery = `INSERT INTO assets (asset_type,asset_loc,kitta_no,home_area,land_area,unit,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addAssetsQuery = `INSERT INTO assets (dist_id, asset_type,asset_loc,kitta_no,home_area,land_area,unit,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addAssetsQuery,
     [
-
-        req.body.asset_type,
-        req.body.asset_loc,
-        req.body.kitta_no,
-        req.body.home_area,
-        req.body.land_area,
-        req.body.unit,
-        req.body.remarks,
-        req.body.created_by,
-        req.body.updated_by,
+      req.body.dist_id,
+      req.body.asset_type,
+      req.body.asset_loc,
+      req.body.kitta_no,
+      req.body.home_area,
+      req.body.land_area,
+      req.body.unit,
+      req.body.remarks,
+      req.body.created_by,
+      req.body.updated_by,
     ],
     (error, results, fields) => {
       if (error) {
@@ -63,20 +63,21 @@ async function addAsets(req, res) {
 
 //Controller for updating a Asset
 async function updateAssets(req, res) {
-  const updateAssetsQuery = `UPDATE assets SET asset_type=?, asset_loc=?, kitta_no=?, home_area=?, land_area=?, unit=?, remarks=?, created_by=?,updated_by=? WHERE asset_id=?`;
+  const updateAssetsQuery = `UPDATE assets SET dist_id=?, asset_type=?, asset_loc=?, kitta_no=?, home_area=?, land_area=?, unit=?, remarks=?, created_by=?,updated_by=? WHERE asset_id=?`;
   pool.query(
     updateAssetsQuery,
     [
-        req.body.asset_type,
-        req.body.asset_loc,
-        req.body.kitta_no,
-        req.body.home_area,
-        req.body.land_area,
-        req.body.unit,
-        req.body.remarks,
-        req.body.created_by,
-        req.body.updated_by,
-        req.params.assetId,
+      req.body.dist_id,
+      req.body.asset_type,
+      req.body.asset_loc,
+      req.body.kitta_no,
+      req.body.home_area,
+      req.body.land_area,
+      req.body.unit,
+      req.body.remarks,
+      req.body.created_by,
+      req.body.updated_by,
+      req.params.assetId,
     ],
     (error, results, fields) => {
       if (error) {

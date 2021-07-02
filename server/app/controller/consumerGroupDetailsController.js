@@ -40,11 +40,12 @@ async function getConsumerGroupDetails(req, res) {
 
 //Controller for adding a ConsumerGroupDetails
 async function addConsumerGroupDetails(req, res) {
-  const addConsumerGroupDetailsQuery = `INSERT INTO consumer_details (registration_no, registration_date, consumer_group_name, ghardhuri_dalit, perm_addr, curr_addr, ghardhuri_janjati, ghardhuri_anya, ghardhuri_total, population_female, population_male, population_total, samudayik_upavokta_samiti_name, sampannata_starikaran_sampanna, sampannata_starikaran_madhyam, sampannata_starikaran_bipanna, karyasamiti_representation_dalit, karyasamiti_representation_janjati, karyasamiti_representation_anya, adhyakshya_male, adhyakshya_female, sachib_male, sachib_female, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addConsumerGroupDetailsQuery = `INSERT INTO consumer_details (registration_no, dist_id,registration_date, consumer_group_name, ghardhuri_dalit, perm_addr, curr_addr, ghardhuri_janjati, ghardhuri_anya, ghardhuri_total, population_female, population_male, population_total, samudayik_upavokta_samiti_name, sampannata_starikaran_sampanna, sampannata_starikaran_madhyam, sampannata_starikaran_bipanna, karyasamiti_representation_dalit, karyasamiti_representation_janjati, karyasamiti_representation_anya, adhyakshya_male, adhyakshya_female, sachib_male, sachib_female, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addConsumerGroupDetailsQuery,
     [
       req.body.registration_no,
+      req.body.dist_id,
       req.body.registration_date,
       req.body.consumer_group_name,
       req.body.ghardhuri_dalit,
@@ -81,11 +82,12 @@ async function addConsumerGroupDetails(req, res) {
 
 //Controller for updating a ConsumerGroupDetails
 async function updateConsumerGroupDetails(req, res) {
-  const updateConsumerGroupDetailsQuery = `UPDATE consumer_details SET registration_no=?, registration_date=?, consumer_group_name=?, ghardhuri_dalit=?, perm_addr=?, curr_addr=?, ghardhuri_janjati=?, ghardhuri_anya=?, ghardhuri_total=?, population_female=?, population_male=?, population_total=?, samudayik_upavokta_samiti_name=?, sampannata_starikaran_sampanna=?, sampannata_starikaran_madhyam=?, sampannata_starikaran_bipanna=?, karyasamiti_representation_dalit=?, karyasamiti_representation_janjati=?, karyasamiti_representation_anya=?, adhyakshya_male=?, adhyakshya_female=?, sachib_male=?, sachib_female=?, created_by=?, updated_by=? WHERE consumer_group_id=?`;
+  const updateConsumerGroupDetailsQuery = `UPDATE consumer_details SET registration_no=?, dist_id=?, registration_date=?, consumer_group_name=?, ghardhuri_dalit=?, perm_addr=?, curr_addr=?, ghardhuri_janjati=?, ghardhuri_anya=?, ghardhuri_total=?, population_female=?, population_male=?, population_total=?, samudayik_upavokta_samiti_name=?, sampannata_starikaran_sampanna=?, sampannata_starikaran_madhyam=?, sampannata_starikaran_bipanna=?, karyasamiti_representation_dalit=?, karyasamiti_representation_janjati=?, karyasamiti_representation_anya=?, adhyakshya_male=?, adhyakshya_female=?, sachib_male=?, sachib_female=?, created_by=?, updated_by=? WHERE consumer_group_id=?`;
   pool.query(
     updateConsumerGroupDetailsQuery,
     [
       req.body.registration_no,
+      req.body.dist_id,
       req.body.registration_date,
       req.body.consumer_group_name,
       req.body.ghardhuri_dalit,
