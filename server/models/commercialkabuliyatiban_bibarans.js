@@ -14,18 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   commercialkabuliyatiban_bibarans.init({
-    darta_no: DataTypes.STRING,
-    commercialkabuliyatiban_name: DataTypes.STRING,
-    area: DataTypes.STRING,
-    main_species: DataTypes.STRING,
-    forest_type: DataTypes.STRING,
-    handover_date: DataTypes.STRING,
-    forest_maujdat: DataTypes.STRING,
-    nikasi_timber: DataTypes.STRING,
-    nikasi_wood: DataTypes.STRING,
-    created_by: DataTypes.STRING,
-    updated_by: DataTypes.STRING,
-
+    darta_no: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'commercialkabuliyatiban_bibarans',
