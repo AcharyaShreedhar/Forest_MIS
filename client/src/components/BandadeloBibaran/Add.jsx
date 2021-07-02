@@ -32,7 +32,6 @@ class Add extends Component {
       niyantran_karta,
       sahabhagi_mahila,
       sahabhagi_purus,
-      
     } = this.state;
     const payload = {
       bandadelo: {

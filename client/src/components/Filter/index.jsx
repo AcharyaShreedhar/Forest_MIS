@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -89,7 +89,7 @@ Filter.defaultProps = {
   fromdate: "",
   todate: "",
   district: "",
-  yesDate: false,
+  yesDate: true,
   onToDate: () => {},
   onFromDate: () => {},
   onSelect: () => {},

@@ -10,6 +10,13 @@ import sampatibibaranRoutes from "../../routes/sampatibibaran";
 export class Sampatibibaran extends Component {
   componentDidMount() {
     this.props.fetchallGharjagga({
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallSawarisadhan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
       distId: "%",
       name: "asset_type",
       page: 0,
@@ -70,6 +77,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallGharjagga: (payload) =>
     dispatch(SampatibibaranActions.fetchallassetsRequest(payload)),
+  fetchallSawarisadhan: (payload) =>
+    dispatch(SampatibibaranActions.fetchallvehiclesRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sampatibibaran);

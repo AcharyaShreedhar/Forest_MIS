@@ -104,7 +104,7 @@ async function deleteUsers(req, res) {
 }
 
 async function verifyUsers(req, res) {
-  const getUsersPasswordQuery = `select user_id,user_name, user_pass,user_token from users where user_name=?`;
+  const getUsersPasswordQuery = `select user_id,user_name, user_pass,user_token,dist_id from users where user_name=?`;
   pool.query(
     getUsersPasswordQuery,
     [req.body.user_name],
@@ -116,6 +116,7 @@ async function verifyUsers(req, res) {
           user_id: results[0].user_id,
           user_name: results[0].user_name,
           user_token: results[0].user_token,
+          dist_id: results[0].dist_id,
         };
 
         //compare hash and password

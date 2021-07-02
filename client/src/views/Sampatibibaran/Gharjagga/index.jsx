@@ -87,7 +87,6 @@ class Gharjagga extends Component {
             <div className="report-filter">
               <Filter
                 id="gharjagga"
-                title="डढेलो लागेको मिति"
                 districtsList={districtList}
                 onSelect={this.handleDistrict}
                 yesDate={false}
