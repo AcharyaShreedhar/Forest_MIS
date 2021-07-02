@@ -106,13 +106,12 @@ app.use("/api/v1", usersRoutes);
 app.use("/api/v1", karmachariDarbandiRoutes);
 app.use("/api/v1", uddhyamBibaranRoutes);
 app.use("/api/v1", bachatBibaranRoutes);
-app.use("/api/v1", banpaidawarBikribitaranRoutes );
+app.use("/api/v1", banpaidawarBikribitaranRoutes);
 app.use("/api/v1", rojgarsrijanaRoutes);
 app.use("/api/v1", samajikkaryaBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
 app.use("/api/v1", brixyaropanRoutes);
 app.use("/api/v1", sajhedaribanBibaranRoutes);
-
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
