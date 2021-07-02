@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component,Fragment } from "react";
+import { PropTypes } from "prop-types";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { Dropdown } from "../../components";
@@ -32,25 +33,29 @@ export class Filter extends Component {
 
   render() {
     const { district, fromdate, todate } = this.state;
-    const { districtsList,title } = this.props;
+    const { districtsList, title, yesDate } = this.props;
     return (
       <div className="filter">
-        <span className="dsl-b22">{title}:</span>
-        <NepaliDatePicker
-          inputClassName="form-control"
-          className="ml-2"
-          value={fromdate}
-          onChange={(e) => this.handlefromDate(e)}
-          options={{ calenderLocale: "ne", valueLocale: "en" }}
-        />
-        <span className="dsl-b22 mx-5">देखी </span>
-        <NepaliDatePicker
-          inputClassName="form-control"
-          className="ml-2"
-          value={todate}
-          onChange={(e) => this.handletoDate(e)}
-          options={{ calenderLocale: "ne", valueLocale: "en" }}
-        />
+        {yesDate && (
+          <Fragment>
+            <span className="dsl-b22">{title}:</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="ml-2"
+              value={fromdate}
+              onChange={(e) => this.handlefromDate(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
+            />
+            <span className="dsl-b22 mx-5">देखी </span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="ml-2"
+              value={todate}
+              onChange={(e) => this.handletoDate(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
+            />
+          </Fragment>
+        )}
         <Dropdown
           className="dropdownlabel ml-5"
           title="जिल्ला :"
@@ -65,5 +70,29 @@ export class Filter extends Component {
     );
   }
 }
+Filter.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string,
+  yesDate: PropTypes.any,
+  fromdate: PropTypes.string,
+  todate: PropTypes.string,
+  district: PropTypes.string,
+  onToDate: PropTypes.func,
+  onFromDate: PropTypes.func,
+  onSelect: PropTypes.func,
+};
+
+Filter.defaultProps = {
+  className: "",
+  title: "",
+  districtsList: {},
+  fromdate: "",
+  todate: "",
+  district: "",
+  yesDate: false,
+  onToDate: () => {},
+  onFromDate: () => {},
+  onSelect: () => {},
+};
 
 export default Filter;

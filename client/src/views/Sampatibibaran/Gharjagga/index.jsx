@@ -1,18 +1,21 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { GharjaggaBibaran } from "../../../components";
+import { GharjaggaBibaran, Filter, ReportGenerator } from "../../../components";
 import SampatibibaranActions from "../../../actions/sampatibibaran";
-import { gharjaggaHeadings } from "../../../services/config";
+import { gharjaggaHeadings, districtList } from "../../../services/config";
 
 class Gharjagga extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "gharjaggalist", perPage: 10, page: 1 };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.state = { loc: "gharjaggalist", distId: "%", perPage: 10, page: 1 };
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handlePer = this.handlePer.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -25,15 +28,30 @@ class Gharjagga extends Component {
     return { loc, gharjaggaList };
   }
 
-  handlePageChange(data) {
+  handlePer(e) {
+    const { distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(distId, 0, e);
+  }
+  handleDistrict(e, item) {
     const { perPage } = this.state;
-    this.setState({ page: data.selected });
+    this.setState({ distId: e });
+    this.fetchResults(e, 0, perPage);
+  }
 
+  fetchResults(distId, page, perPage) {
     this.props.fetchallGharjagga({
+      distId,
       name: "asset_type",
-      page: data.selected * perPage,
+      page: page,
       perPage,
     });
+  }
+
+  handlePageChange(data) {
+    const { distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(distId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item) {
@@ -59,27 +77,42 @@ class Gharjagga extends Component {
     this.props.history.push("/sampatibibaran/gharjaggaadd/new");
   }
   render() {
-    const { loc, perPage,gharjaggaList } = this.state;
+    const { loc, perPage, gharjaggaList } = this.state;
     const { user } = this.props;
 
     return (
       <div>
         {equals(loc, "gharjaggalist") && (
-          <GharjaggaBibaran.List
-            buttonName="+ घर जग्गा"
-            title="घर जग्गा सम्बन्धी विवरण"
-            pageCount={
-              !isNil(gharjaggaList)
-                ? Math.ceil(gharjaggaList.total / perPage)
-                : 10
-            }
-            data={!isNil(gharjaggaList) ? gharjaggaList.list : []}
-            user={user}
-            headings={gharjaggaHeadings}
-            onAdd={this.handleAdd}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e)}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="gharjagga"
+                title="डढेलो लागेको मिति"
+                districtsList={districtList}
+                onSelect={this.handleDistrict}
+                yesDate={false}
+              />
+              <ReportGenerator id="gharjagga" />
+            </div>
+            <GharjaggaBibaran.List
+              buttonName="+ घर जग्गा"
+              title="घर जग्गा सम्बन्धी विवरण"
+              pageCount={
+                !isNil(gharjaggaList)
+                  ? Math.ceil(gharjaggaList.total / perPage)
+                  : 10
+              }
+              data={!isNil(gharjaggaList) ? gharjaggaList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              user={user}
+              headings={gharjaggaHeadings}
+              onAdd={this.handleAdd}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
+          </Fragment>
         )}
         {equals(loc, "gharjaggaadd") && (
           <GharjaggaBibaran.Add
