@@ -72,6 +72,14 @@
    deletebrixyaropanSuccess: ["response"],
    deletebrixyaropanFailure: null,
 
+   fetchalljadibutiRequest: ["payload"],
+   fetchalljadibutiSuccess: ["response"],
+   fetchalljadibutiFailure: null,
+
+   fetchjadibutiRequest: ["payload"],
+   fetchjadibutiSuccess: ["response"],
+   fetchjadibutiFailure: null,
+
 
 
 

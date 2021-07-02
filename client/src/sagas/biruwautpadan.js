@@ -337,3 +337,33 @@ export function* fetchbiruwautpadanRequest(api, action) {
       });
     }
   }
+
+
+  //jadibuti
+  export function* fetchalljadibutiRequest(api, action) {
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getJadibutiList(payloaddata);
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchalljadibutiSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchalljadibutiFailure());
+    }
+  }  
+
+
+  export function* fetchjadibutiRequest(api, action) {
+    const  jadibutiId  = action.payload
+  
+    const response = yield api.getJadibuti(jadibutiId);
+    
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchjadibutiSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchjadibutiFailure());
+    }
+  }
