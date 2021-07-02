@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Input, Dropdown } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 const AtikramanKisim = [
   { id: 1, value: "संस्थागत" },
@@ -21,6 +22,7 @@ class Add extends Component {
       address: "",
       atikraman_kisim: 1,
       samalagna_ghardhuri: "",
+      atikraman_miti: "",
       atikraman_prayojan: "",
       samrachana_bibaran: "",
       atikraman_abastha: 1,
@@ -32,6 +34,7 @@ class Add extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAtikramanKisim = this.handleAtikramanKisim.bind(this);
     this.handleAtikramanAbastha = this.handleAtikramanAbastha.bind(this);
+    this.handleDate = this.handleDate.bind(this);
   }
 
   handleSubmit() {
@@ -40,6 +43,7 @@ class Add extends Component {
       address,
       atikraman_kisim,
       samalagna_ghardhuri,
+      atikaraman_miti,
       atikraman_prayojan,
       samrachana_bibaran,
       atikraman_abastha,
@@ -53,6 +57,7 @@ class Add extends Component {
             ? "संस्थागत"
             : "व्यक्तिगत",
           samalagna_ghardhuri: samalagna_ghardhuri,
+          atikraman_miti:atikaraman_miti,
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
           atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" : "पुरानो",
@@ -62,6 +67,10 @@ class Add extends Component {
       },
     };
     this.props.onSubmit(payload);
+  }
+
+  handleDate(e) {
+    this.setState({ atikraman_miti: e });
   }
   handleAtikramanKisim(e) {
     this.setState({ atikraman_kisim: e });
@@ -77,6 +86,7 @@ class Add extends Component {
       address,
       atikraman_kisim,
       samalagna_ghardhuri,
+      atikraman_miti,
       atikraman_prayojan,
       samrachana_bibaran,
       atikraman_abastha,
@@ -122,7 +132,14 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ samalagna_ghardhuri: e })}
             />
-
+              <span className="dsl-b18">अतिक्रमण मिति</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="mb-4"
+              value={atikraman_miti}
+              onChange={(e) => this.handleDate(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
+            />
             <Input
               className="mb-4"
               title="अतिक्रमण प्रयोजन (घरछाप्रो, खेती, पूर्वाधार निर्माण)"
