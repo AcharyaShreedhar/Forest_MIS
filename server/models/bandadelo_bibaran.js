@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     niyantran_karta: DataTypes.STRING,
     sahabhagi_mahila: DataTypes.STRING,
     sahabhagi_purus: DataTypes.STRING,
+    bandadelo_miti: DataTypes.STRING,
     created_by: DataTypes.STRING,
     updated_by: DataTypes.STRING
   }, {

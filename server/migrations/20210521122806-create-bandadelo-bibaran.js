@@ -35,6 +35,9 @@ module.exports = {
       sahabhagi_purus: {
         type: Sequelize.STRING,
       },
+      bandadelo_miti: {
+        type: Sequelize.STRING,
+      },
       created_by: {
         type: Sequelize.STRING,
       },
