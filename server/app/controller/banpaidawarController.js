@@ -1,28 +1,40 @@
 const pool = require("../db");
 //Controller for Listing all Banpaidawar
 async function getAllBanpaidawar(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from ban_paidawars";
-  const getAllBanpaidawarQuery = `select * from ban_paidawars ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllBanpaidawarQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from ban_paidawars as b where b.arthik_barsa BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBanpaidawarQuery = `select * from ban_paidawars as b where b.arthik_barsa BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllBanpaidawarQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 //Controller for Listing a Banpaidawar
 async function getBanpaidawar(req, res) {

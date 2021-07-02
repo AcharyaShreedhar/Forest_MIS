@@ -18,6 +18,9 @@ export class Banpaidawar extends Component {
       perPage: 10,
     });
     this.props.fetchallBanpaidawarosarpasar({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,

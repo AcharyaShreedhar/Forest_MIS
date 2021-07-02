@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
 import { BandadeloBibaran, Filter, ReportGenerator } from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
 import { bandadeloHeadings, districtList } from "../../../services/config";
-import { Fragment } from "react";
 
 class Bandadelo extends Component {
   constructor(props) {

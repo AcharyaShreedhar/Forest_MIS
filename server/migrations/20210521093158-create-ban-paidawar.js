@@ -8,16 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         type: Sequelize.INTEGER,
       },
       ban_id: {
         type: Sequelize.STRING,
       },
       arthik_barsa: {
-        type: Sequelize.STRING,
-      },
-      mahina: {
         type: Sequelize.STRING,
       },
       kaath: {
