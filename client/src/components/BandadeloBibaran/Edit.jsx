@@ -15,6 +15,7 @@ class Edit extends Component {
       niyantran_karta: props.history.location.item.niyantran_karta,
       sahabhagi_mahila: props.history.location.item.sahabhagi_mahila,
       sahabhagi_purus: props.history.location.item.sahabhagi_purus,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -48,8 +49,9 @@ class Edit extends Component {
           niyantran_karta: niyantran_karta,
           sahabhagi_mahila: sahabhagi_mahila,
           sahabhagi_purus: sahabhagi_purus,
+          dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
-          updated_by: updated_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

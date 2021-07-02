@@ -29,6 +29,7 @@ class Edit extends Component {
       nabikaran_abadhi: props.history.location.item.nabikaran_abadhi,
       forest_maujdat: props.history.location.item.forest_maujdat,
       renewal_date: props.history.location.item.renewal_date,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -53,7 +54,7 @@ class Edit extends Component {
       forest_maujdat,
       renewal_date,
       created_by,
-      updated_by,
+      
     } = this.state;
     const payload = {
       dharmikban: {
@@ -66,8 +67,9 @@ class Edit extends Component {
           forest_type: equals(forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण",
           handover_date: handover_date,
           forest_maujdat: forest_maujdat,
+          dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
-          updated_by: updated_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
       nabikarankaryayojana: {
@@ -76,7 +78,7 @@ class Edit extends Component {
           renewed_date: renewed_date,
           renewal_date: renewal_date,
           nabikaran_abadhi: nabikaran_abadhi,
-          created_by: this.props.user.user_name,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

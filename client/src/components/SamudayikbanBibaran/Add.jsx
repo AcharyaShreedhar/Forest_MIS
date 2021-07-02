@@ -27,6 +27,7 @@ class Add extends Component {
       nabikaran_abadhi: "",
       renewed_date: "",
       renewal_date: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -63,8 +64,8 @@ class Add extends Component {
           forest_maujdat: forest_maujdat,
           nikasi_timber: nikasi_timber,
           nikasi_wood: nikasi_wood,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
       nabikarankaryayojana: {
@@ -74,7 +75,6 @@ class Add extends Component {
           renewal_date: renewal_date,
           nabikaran_abadhi: nabikaran_abadhi,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

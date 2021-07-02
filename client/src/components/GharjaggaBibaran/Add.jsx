@@ -18,6 +18,7 @@ class Add extends Component {
       land_area: "",
       unit: "",
       remarks: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -46,8 +47,8 @@ class Add extends Component {
           land_area: land_area,
           unit: unit,
           remarks: remarks,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

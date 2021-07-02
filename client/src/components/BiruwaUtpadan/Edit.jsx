@@ -13,6 +13,7 @@ class Edit extends Component {
       pragati: props.history.location.item.pragati,
       brixyaropan: props.history.location.item.brixyaropan,
       remarks: props.history.location.item.remarks,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -31,7 +32,7 @@ class Edit extends Component {
       brixyaropan,
       remarks,
       created_by,
-      updated_by,
+      
     } = this.state;
     const payload = {
       biruwautpadan: {
@@ -43,8 +44,9 @@ class Edit extends Component {
           pragati: pragati,
           brixyaropan: brixyaropan,
           remarks: remarks,
-          created_by: created_by,
-          updated_by: updated_by,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

@@ -11,6 +11,7 @@ class Add extends Component {
       daura: "",
       lavgrahi_sankhya: "",
       mulyaabhibridi_kar: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -36,8 +37,9 @@ class Add extends Component {
           daura: daura,
           lavgrahi_sankhya: lavgrahi_sankhya,
           mulyaabhibridi_kar: mulyaabhibridi_kar,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
+          
         },
       },
     };

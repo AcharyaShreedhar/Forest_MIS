@@ -14,6 +14,7 @@ class Edit extends Component {
       location: props.history.location.item.location,
       established_date: props.history.location.item.established_date,
       status: props.history.location.item.status,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -34,7 +35,6 @@ class Edit extends Component {
       established_date,
       status,
       created_by,
-      updated_by,
     } = this.state;
     const payload = {
       plotbibaran: {
@@ -45,8 +45,9 @@ class Edit extends Component {
           location: location,
           established_date: established_date,
           status: status,
+          dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
-          updated_by: updated_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

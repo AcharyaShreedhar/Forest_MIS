@@ -32,6 +32,7 @@ class Add extends Component {
       emp_rank: "",
       emp_appoint_date: "",
       emp_status: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -94,6 +95,7 @@ class Add extends Component {
           emp_rank:emp_rank,
           emp_appoint_date:emp_appoint_date,
           emp_status: emp_status,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
       },

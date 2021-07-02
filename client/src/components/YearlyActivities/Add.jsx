@@ -35,6 +35,7 @@ class Add extends Component {
       udhyam: "",
       annual_bibaran: "",
       lekha_parikshyan: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -88,8 +89,8 @@ class Add extends Component {
           community_udhyam_bibaran: udhyam,
           annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
           lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

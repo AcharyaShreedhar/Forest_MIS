@@ -10,6 +10,7 @@ class Edit extends Component {
       kayam_darbandi_sankhya: props.history.location.item.kayam_darbandi_sankhya,
       padpurti_sankhya: props.history.location.item.padpurti_sankhya,
       khali_sankhya: props.history.location.item.khali_sankhya,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -33,7 +34,8 @@ class Edit extends Component {
           kayam_darbandi_sankhya: kayam_darbandi_sankhya,
           padpurti_sankhya: padpurti_sankhya,
           khali_sankhya: khali_sankhya,
-          created_by: created_by,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

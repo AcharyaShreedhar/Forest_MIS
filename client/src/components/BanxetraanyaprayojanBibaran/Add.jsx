@@ -26,6 +26,7 @@ class Add extends Component {
       leejrakam_adhyaadhik: 1,
       barsik_pratibedan: 1,
       prapta_rajaswo: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -71,8 +72,8 @@ class Add extends Component {
             : "नगरेको",
           barsik_pratibedan: equals(barsik_pratibedan, 1) ? "गरेको" : "नगरेको",
           prapta_rajaswo: prapta_rajaswo,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

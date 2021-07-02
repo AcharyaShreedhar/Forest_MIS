@@ -25,6 +25,7 @@ class Add extends Component {
       banxetra_duri: "",
       anya_bibaran: "",
       remarks: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -64,8 +65,8 @@ class Add extends Component {
           banxetra_duri: banxetra_duri,
           anya_bibaran: anya_bibaran,
           remarks: remarks,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

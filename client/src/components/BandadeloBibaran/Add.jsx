@@ -14,6 +14,7 @@ class Add extends Component {
       niyantran_karta: "",
       sahabhagi_mahila: "",
       sahabhagi_purus: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -31,6 +32,7 @@ class Add extends Component {
       niyantran_karta,
       sahabhagi_mahila,
       sahabhagi_purus,
+      
     } = this.state;
     const payload = {
       bandadelo: {
@@ -43,6 +45,8 @@ class Add extends Component {
           niyantran_karta: niyantran_karta,
           sahabhagi_mahila: sahabhagi_mahila,
           sahabhagi_purus: sahabhagi_purus,
+          dist_id: this.props.user.dist_id,
+          created_by: this.props.user.user_name,
         },
       },
     };
