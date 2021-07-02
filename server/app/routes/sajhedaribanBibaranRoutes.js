@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
- 
 const sajhedaribanBibaranController = require("../controller/sajhedaribanBibaranController");
 router.post(
   "/sajhedaribanBibaranList",
@@ -10,10 +9,7 @@ router.get(
   "/sajhedaribanBibaran/:sajhedaribanBibaranId",
   sajhedaribanBibaranController.getSajhedaribanBibaran
 );
-router.post(
-  "/sajhedaribanBibaran",
-  sajhedaribanBibaranController.addSajhedaribanBibaran
-);
+router.post("/sajhedaribanBibaran", sajhedaribanBibaranController.addSajhedaribanBibaran);
 router.put(
   "/sajhedaribanBibaran/:sajhedaribanBibaranId",
   sajhedaribanBibaranController.updateSajhedaribanBibaran

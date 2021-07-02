@@ -1,21 +1,27 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('sajedariban_bibarans', {
-      sajedariban_id: {
+    await queryInterface.createTable('sajhedariban_bibarans', {
+      sajhedariban_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      dist_id:{
+      darta_no:{
         type: Sequelize.INTEGER,
       },
-      darta_no: {
+      darta_miti: {
         type: Sequelize.STRING,
       },
-      sajedariban_naam: {
-        type: Sequelize.STRING
+      dist_id: {
+        type: Sequelize.INTEGER,
+      },
+      sajhedariban_naam: {
+        type: Sequelize.STRING,
+      },
+      address: {
+        type: Sequelize.STRING,
       },
       area: {
         type: Sequelize.STRING,
@@ -23,19 +29,10 @@ module.exports = {
       main_species: {
         type: Sequelize.STRING,
       },
-      forest_type: {
+      ghardhuri: {
         type: Sequelize.STRING,
       },
-      handover_date: {
-        type: Sequelize.STRING,
-      },
-      forest_maujdat: {
-        type: Sequelize.STRING,
-      },
-      nikasi_timber: {
-        type: Sequelize.STRING,
-      },
-      nikasi_wood: {
+      lav_jana: {
         type: Sequelize.STRING,
       },
       created_by: {
@@ -53,10 +50,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('sajedariban_bibarans');
+    await queryInterface.dropTable('sajhedariban_bibarans');
   }
 };
