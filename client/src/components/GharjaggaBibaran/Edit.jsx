@@ -19,6 +19,7 @@ class Edit extends Component {
       land_area: props.history.location.item.land_area,
       unit: props.history.location.item.unit,
       remarks: props.history.location.item.remarks,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -50,8 +51,9 @@ class Edit extends Component {
           land_area: land_area,
           unit: unit,
           remarks: remarks,
+          dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
-          updated_by: updated_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

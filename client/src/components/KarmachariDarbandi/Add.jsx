@@ -9,6 +9,7 @@ class Add extends Component {
       kayam_darbandi_sankhya: "",
       padpurti_sankhya: "",
       khali_sankhya: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -31,6 +32,7 @@ class Add extends Component {
           kayam_darbandi_sankhya: kayam_darbandi_sankhya,
           padpurti_sankhya: padpurti_sankhya,
           khali_sankhya: khali_sankhya,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
       },

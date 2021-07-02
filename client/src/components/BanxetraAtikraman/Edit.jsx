@@ -35,6 +35,7 @@ class Edit extends Component {
       )
         ? 1
         : 2,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -54,6 +55,7 @@ class Edit extends Component {
       atikraman_prayojan,
       samrachana_bibaran,
       atikraman_abastha,
+      created_by,
     } = this.state;
     const payload = {
       banxetraatikraman: {
@@ -67,7 +69,8 @@ class Edit extends Component {
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
           atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" : "पुरानो",
-          created_by: this.props.user.user_name,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

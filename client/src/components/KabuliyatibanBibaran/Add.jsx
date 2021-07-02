@@ -31,6 +31,7 @@ class Add extends Component {
       adhyakshya_male: "",
       sachib_female: "",
       sachib_male: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -89,8 +90,8 @@ class Add extends Component {
           adhyakshya_male: adhyakshya_male,
           sachib_female: sachib_female,
           sachib_male: sachib_male,
+          dist_id: this.props.user.user_name,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name
         },
       },
     };

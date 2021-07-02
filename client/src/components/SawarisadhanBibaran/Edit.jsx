@@ -20,6 +20,7 @@ class Edit extends Component {
       model_name: props.history.location.item.model_name,
       manufactured_date: props.history.location.item.manufactured_date,
       remarks: props.history.location.item.remarks,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -42,6 +43,7 @@ class Edit extends Component {
       model_name,
       manufactured_date,
       remarks,
+      created_by,
     } = this.state;
     const payload = {
       vehicles: {
@@ -58,7 +60,8 @@ class Edit extends Component {
           model_name: model_name,
           manufactured_date: manufactured_date,
           remarks: remarks,
-          created_by: this.props.user.user_name,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

@@ -15,6 +15,7 @@ class Edit extends Component {
       minimum_price: props.history.location.item.minimum_price,
       sakaar_price: props.history.location.item.sakaar_price,
       remarks: props.history.location.item.remarks,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -34,7 +35,7 @@ class Edit extends Component {
       sakaar_price,
       remarks,
       created_by,
-      updated_by,
+      
     } = this.state;
     const payload = {
       banpaidawarlilam: {
@@ -46,8 +47,9 @@ class Edit extends Component {
           minimum_price: minimum_price,
           sakaar_price: sakaar_price,
           remarks: remarks,
-          created_by: created_by,
-          updated_by: updated_by,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

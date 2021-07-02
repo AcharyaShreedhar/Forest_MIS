@@ -22,6 +22,7 @@ class Edit extends Component {
         props.history.location.item.samitiko_mulyankan_rakam,
       vuktani_rakam: props.history.location.item.vuktani_rakam,
       remarks: props.history.location.item.remarks,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -46,7 +47,6 @@ class Edit extends Component {
       samitiko_mulyankan_rakam,
       vuktani_rakam,
       remarks,
-      updated_by,
       created_by,
     } = this.state;
     const payload = {
@@ -65,8 +65,9 @@ class Edit extends Component {
           samitiko_mulyankan_rakam: samitiko_mulyankan_rakam,
           vuktani_rakam: vuktani_rakam,
           remarks: remarks,
-          created_by: created_by,
-          updated_by: updated_by,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

@@ -12,6 +12,7 @@ class Edit extends Component {
       brixyaropan_prajati: props.history.location.item.brixyaropan_prajati,
       brixyaropan_pragati: props.history.location.item.brixyaropan_pragati,
       brixyaropan_sankhya: props.history.location.item.brixyaropan_sankhya,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -39,7 +40,8 @@ class Edit extends Component {
           brixyaropan_prajati: brixyaropan_prajati,
           brixyaropan_pragati: brixyaropan_pragati,
           brixyaropan_sankhya: brixyaropan_sankhya,
-          created_by: created_by,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

@@ -12,6 +12,7 @@ class Add extends Component {
       pragati: "",
       brixyaropan: "",
       remarks: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -39,8 +40,8 @@ class Add extends Component {
           pragati: pragati,
           brixyaropan: brixyaropan,
           remarks: remarks,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

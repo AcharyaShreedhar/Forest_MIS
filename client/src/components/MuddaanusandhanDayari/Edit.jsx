@@ -45,6 +45,7 @@ class Edit extends Component {
       bojbahak_jafat: equals(props.history.location.item.bojbahak_jafat, "भएको")
         ? 1
         : 2,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -76,6 +77,7 @@ class Edit extends Component {
       faisala_jariwana,
       faisala_kaid,
       bojbahak_jafat,
+      created_by,
     } = this.state;
     const payload = {
       muddaanusandhandayari: {
@@ -100,7 +102,8 @@ class Edit extends Component {
           faisala_jariwana: faisala_jariwana,
           faisala_kaid: faisala_kaid,
           bojbahak_jafat: equals(bojbahak_jafat, 1) ? "भएको" : "नभएको",
-          created_by: this.props.user.user_name,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

@@ -48,6 +48,7 @@ class Edit extends Component {
       )
         ? 1
         : 2,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -80,7 +81,6 @@ class Edit extends Component {
       annual_bibaran,
       lekha_parikshyan,
       created_by,
-      updated_by,
     } = this.state;
     const payload = {
       yearlyactivities: {
@@ -104,8 +104,9 @@ class Edit extends Component {
           community_udhyam_bibaran: udhyam,
           annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
           lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
-          created_by: created_by,
-          updated_by: updated_by,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.username,
+          updated_by: this.props.user.user_name,
         },
       },
     };

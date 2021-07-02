@@ -20,6 +20,7 @@ class Add extends Component {
       model_name: "",
       manufactured_date: "",
       remarks: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -60,8 +61,8 @@ class Add extends Component {
           model_name: model_name,
           manufactured_date: manufactured_date,
           remarks: remarks,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

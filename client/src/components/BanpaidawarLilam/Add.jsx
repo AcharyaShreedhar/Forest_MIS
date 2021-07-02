@@ -15,6 +15,7 @@ class Add extends Component {
       minimum_price: "",
       sakaar_price: "",
       remarks: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -43,9 +44,9 @@ class Add extends Component {
           minimum_price: minimum_price,
           sakaar_price: sakaar_price,
           remarks: remarks,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
-        },
+          },
       },
     };
     this.props.onSubmit(payload);

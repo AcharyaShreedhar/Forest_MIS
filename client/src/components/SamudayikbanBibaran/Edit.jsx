@@ -31,6 +31,7 @@ class Edit extends Component {
       nabikaran_abadhi: props.history.location.item.nabikaran_abadhi,
       renewed_date: props.history.location.item.renewed_date,
       renewal_date: props.history.location.item.renewal_date,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -56,7 +57,7 @@ class Edit extends Component {
       renewal_date,
       nabikaran_abadhi,
       created_by,
-      updated_by,
+      
     } = this.state;
     const payload = {
       samudayikban: {
@@ -70,8 +71,9 @@ class Edit extends Component {
           forest_maujdat: forest_maujdat,
           nikasi_timber: nikasi_timber,
           nikasi_wood: nikasi_wood,
+          dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
-          updated_by: updated_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
       nabikarankaryayojana: {
@@ -80,7 +82,7 @@ class Edit extends Component {
           renewed_date: renewed_date,
           renewal_date: renewal_date,
           nabikaran_abadhi: nabikaran_abadhi,
-          created_by: this.props.user.user_name,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

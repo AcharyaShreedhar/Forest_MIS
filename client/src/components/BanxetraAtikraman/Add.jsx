@@ -24,6 +24,7 @@ class Add extends Component {
       atikraman_prayojan: "",
       samrachana_bibaran: "",
       atikraman_abastha: 1,
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -55,8 +56,8 @@ class Add extends Component {
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
           atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" : "पुरानो",
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

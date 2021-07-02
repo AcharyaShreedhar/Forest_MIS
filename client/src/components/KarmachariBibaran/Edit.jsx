@@ -33,6 +33,7 @@ class Edit extends Component {
       emp_rank: props.history.location.item.emp_rank,
       emp_appoint_date: props.history.location.item.emp_appoint_date,
       emp_status: props.history.location.item.emp_status,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -97,7 +98,8 @@ class Edit extends Component {
           emp_rank:emp_rank,
           emp_appoint_date:emp_appoint_date,
           emp_status: emp_status,
-          created_by: created_by,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },

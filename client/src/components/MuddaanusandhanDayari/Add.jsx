@@ -36,6 +36,7 @@ class Add extends Component {
       faisala_jariwana: "",
       faisala_kaid: "",
       bojbahak_jafat: 1,
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -90,8 +91,8 @@ class Add extends Component {
           faisala_jariwana: faisala_jariwana,
           faisala_kaid: faisala_kaid,
           bojbahak_jafat: equals(bojbahak_jafat, 1) ? "भएको" : "नभएको",
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

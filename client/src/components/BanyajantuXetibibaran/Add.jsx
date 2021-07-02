@@ -20,6 +20,7 @@ class Add extends Component {
       samitiko_mulyankan_rakam: "",
       vuktani_rakam: "",
       remarks: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -60,8 +61,9 @@ class Add extends Component {
           samitiko_mulyankan_rakam: samitiko_mulyankan_rakam,
           vuktani_rakam: vuktani_rakam,
           remarks: remarks,
+          dist_id: this.props.user.user_name,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
+         
         },
       },
     };

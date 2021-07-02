@@ -13,6 +13,7 @@ class Add extends Component {
       location: "",
       established_date: "",
       status: "",
+      dist_id: "",
       created_by: "",
       updated_by: "",
     };
@@ -41,8 +42,8 @@ class Add extends Component {
           location: location,
           established_date: established_date,
           status: status,
+          dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
         },
       },
     };

@@ -39,6 +39,7 @@ class Edit extends Component {
         ? 1
         : 2,
       prapta_rajaswo: props.history.location.item.prapta_rajaswo,
+      dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
     };
@@ -65,6 +66,7 @@ class Edit extends Component {
       leejrakam_adhyaadhik,
       barsik_pratibedan,
       prapta_rajaswo,
+      created_by,
     } = this.state;
     const payload = {
       banxetraanyaprayojan: {
@@ -85,7 +87,8 @@ class Edit extends Component {
             : "नगरेको",
           barsik_pratibedan: equals(barsik_pratibedan, 1) ? "गरेको" : "नगरेको",
           prapta_rajaswo: prapta_rajaswo,
-          created_by: this.props.user.user_name,
+          dist_id: this.props.user.dist_id,
+          created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
       },
