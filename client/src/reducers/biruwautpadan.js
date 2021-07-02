@@ -196,7 +196,7 @@ state.merge({
 const deletebrixyaropanFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
-//
+//jadibuti
 const fetchalljadibutiRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchalljadibutiSuccess = (state, action) => {
@@ -224,6 +224,39 @@ const fetchjadibutiRequest = (state, action) =>
 const fetchjadibutiFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+
+const addjadibutiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addjadibutiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addjadibutiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+const updatejadibutiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatejadibutiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatejadibutiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+const deletejadibutiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletejadibutiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletejadibutiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
 
 
 
@@ -308,6 +341,18 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.FETCHJADIBUTI_REQUEST]: fetchjadibutiRequest,
   [BiruwautpadanTypes.FETCHJADIBUTI_SUCCESS]: fetchjadibutiSuccess,
   [BiruwautpadanTypes.FETCHJADIBUTI_FAILURE]: fetchjadibutiFailure,
+
+  [BiruwautpadanTypes.ADDJADIBUTI_REQUEST]: addjadibutiRequest,
+  [BiruwautpadanTypes.ADDJADIBUTI_SUCCESS]: addjadibutiSuccess,
+  [BiruwautpadanTypes.ADDJADIBUTI_FAILURE]: addjadibutiFailure,
+
+  [BiruwautpadanTypes.UPDATEJADIBUTI_REQUEST]: updatejadibutiRequest,
+  [BiruwautpadanTypes.UPDATEJADIBUTI_SUCCESS]: updatejadibutiSuccess,
+  [BiruwautpadanTypes.UPDATEJADIBUTI_FAILURE]: updatejadibutiFailure,
+
+  [BiruwautpadanTypes.DELETEJADIBUTI_REQUEST]: deletejadibutiRequest,
+  [BiruwautpadanTypes.DELETEJADIBUTI_SUCCESS]: deletejadibutiSuccess,
+  [BiruwautpadanTypes.DELETEJADIBUTI_FAILURE]: deletejadibutiFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,

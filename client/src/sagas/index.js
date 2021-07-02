@@ -133,6 +133,9 @@ import {
   deletebrixyaropanRequest,
   fetchalljadibutiRequest,
   fetchjadibutiRequest,
+  addjadibutiRequest,
+  updatejadibutiRequest,
+  deletejadibutiRequest,
 } from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
@@ -546,6 +549,24 @@ export default function* root() {
     takeLatest(
       BiruwautpadanTypes.FETCHJADIBUTI_REQUEST,
       fetchjadibutiRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.ADDJADIBUTI_REQUEST,
+      addjadibutiRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.UPDATEJADIBUTI_REQUEST,
+      updatejadibutiRequest,
+      api
+    ),
+
+    takeLatest(
+      BiruwautpadanTypes.DELETEJADIBUTI_REQUEST,
+      deletejadibutiRequest,
       api
     ),
 

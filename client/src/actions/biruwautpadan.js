@@ -80,6 +80,18 @@
    fetchjadibutiSuccess: ["response"],
    fetchjadibutiFailure: null,
 
+   addjadibutiRequest: ["payload"],
+   addjadibutiSuccess: ["response"],
+   addjadibutiFailure: null,
+
+   updatejadibutiRequest: ["payload", "jadibutiId"],
+   updatejadibutiSuccess: ["response"],
+   updatejadibutiFailure: null,
+
+   deletejadibutiRequest: ["payload", "jadibutiId"],
+   deletejadibutiSuccess: ["response"],
+   deletejadibutiFailure: null,
+
 
 
 

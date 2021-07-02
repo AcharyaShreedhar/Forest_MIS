@@ -367,3 +367,87 @@ export function* fetchbiruwautpadanRequest(api, action) {
       yield put(BiruwautpadanActions.fetchjadibutiFailure());
     }
   }
+
+
+  export function* addjadibutiRequest(api, action) {
+    const { payload } = action;
+        
+    const response = yield api.postBiruwautpadanJadibutiAddNew(
+      payload.jadibuti.data
+    );
+      
+    if (response.ok) {  
+          
+      toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण प्रविष्ट भयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchalljadibutiRequest(api,{
+        name: "jadibuti_thegana",
+        page: 0,
+        perPage: 10,
+      });
+      yield call(history.push, "/activities/jadibutilist");
+      yield put(BiruwautpadanActions.addjadibutiSuccess(response.data));
+    } else {
+      yield put(BiruwautpadanActions.addjadibutiFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
+
+
+  export function* updatejadibutiRequest(api, action) {
+    const { payload,jadibutiId } = action;
+    
+    const response = yield api.postBiruwautpadanJadibutiUpdate(
+      payload.jadibuti.data,
+      jadibutiId
+    );
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण पुनः प्रविष्ट भयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchalljadibutiRequest(api,{
+        name: "jadibuti_thegana",
+        page: 0,
+        perPage: 10,
+      });
+      yield call(history.push, "/activities/jadibutilist");
+      yield put(
+        BiruwautpadanActions.updatejadibutiSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.updatejadibutiFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
+
+
+  export function* deletejadibutiRequest(api, action) {
+    const { payload } = action;
+  
+    const response = yield api.postBiruwautpadanJadibutiDelete(payload);
+  
+    if (response.ok) {
+      toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण हटाईयो !!!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+      yield fetchalljadibutiRequest(api,{
+        name: "jadibuti_thegana",
+        page: 0,
+        perPage: 10,
+      });
+      yield put(
+        BiruwautpadanActions.deletejadibutiSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.deletejadibutiFailure());
+      toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
+        position: toast.POSITION.TOP_CENTER,
+      });
+    }
+  }
