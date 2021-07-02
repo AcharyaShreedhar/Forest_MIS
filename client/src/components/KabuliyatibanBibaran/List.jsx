@@ -3,8 +3,7 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
-import { Button, EditDropdown } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
   const {
@@ -16,6 +15,9 @@ function List(props) {
     onAdd,
     onSelect,
     onPageClick,
+    pers,
+    per,
+    onPer,
   } = props;
   return (
     <Fragment>
@@ -85,20 +87,14 @@ function List(props) {
             )}
           </tbody>
         </Table>
-        <div className="paginationStyle">
-          <ReactPaginate
-            previousLabel={"PREV"}
-            nextLabel={"NEXT"}
-            breakLabel={"..."}
-            breakClassName={"break-me"}
-            pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={onPageClick}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
-          />
-        </div>
+        <Pagination
+          per={per}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
+          pageCount={pageCount}
+          type="samudayikban"
+        />
       </div>
     </Fragment>
   );

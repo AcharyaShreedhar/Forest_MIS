@@ -1,28 +1,40 @@
 const pool = require("../db");
 //Controller for Listing all KabuliyatibanBibaran
 async function getAllKabuliyatibanBibaran(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from kabuliyatiban_bibarans";
-  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans ORDER BY ? ASC LIMIT ?,?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllKabuliyatibanBibaranQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from kabuliyatiban_bibarans as k where k.entry_date BETWEEN ? and ? and k.dist_id like ?";
+  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans as k where k.entry_date BETWEEN ? and ? and k.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllKabuliyatibanBibaranQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a KabuliyatibanBibaran

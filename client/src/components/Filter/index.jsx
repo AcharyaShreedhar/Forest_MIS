@@ -32,10 +32,10 @@ export class Filter extends Component {
 
   render() {
     const { district, fromdate, todate } = this.state;
-    const { districtsList } = this.props;
+    const { districtsList,title } = this.props;
     return (
       <div className="filter">
-        <span className="dsl-b22">हस्तान्तरण मिति:</span>
+        <span className="dsl-b22">{title}:</span>
         <NepaliDatePicker
           inputClassName="form-control"
           className="ml-2"

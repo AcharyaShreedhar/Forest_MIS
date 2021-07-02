@@ -3,7 +3,7 @@ const pool = require("../db");
 async function getAllBandadeloBibaran(req, res) {
   const getTotalQuery =
     "SELECT count(*) as total from bandadelo_bibarans as b where b.bandadelo_miti BETWEEN ? and ? and b.dist_id like ?";
-  const getAllBandadeloBibaranQuery = `select * from bandadelo_bibarans as b where b.bandadelo_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+  const getAllBandadeloBibaranQuery = `select * from bandadelo_bibarans as b where b.bandadelo_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId],

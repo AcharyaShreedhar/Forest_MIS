@@ -126,6 +126,7 @@ class Bandadelo extends Component {
             <div className="report-filter">
               <Filter
                 id="samudayikban"
+                title="डढेलो लागेको मिति"
                 districtsList={districtList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
