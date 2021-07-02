@@ -52,14 +52,14 @@ async function getCommercialkabuliyatibanBibaran(req, res) {
 
 //Controller for adding a CommercialkabuliyatibanBibaran
 async function addCommercialkabuliyatibanBibaran(req, res) {
-  const addCommercialkabuliyatibanBibaranQuery = `INSERT INTO commercialkabuliyatiban_bibarans (darta_no, darta_miti, dist_id, sajhedariban_naam, address, area, main_species, ghardhuri, lav_jana, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addCommercialkabuliyatibanBibaranQuery = `INSERT INTO commercialkabuliyatiban_bibarans (darta_no, darta_miti, dist_id, commercialkabuliyatiban_naam, address, area, main_species, ghardhuri, lav_jana, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addCommercialkabuliyatibanBibaranQuery,
     [
       req.body.darta_no, 
       req.body.darta_miti, 
       req.body.dist_id, 
-      req.body.sajhedariban_naam, 
+      req.body.commercialkabuliyatiban_naam, 
       req.body.address, 
       req.body.area, 
       req.body.main_species, 
@@ -86,7 +86,7 @@ async function updateCommercialkabuliyatibanBibaran(req, res) {
         req.body.darta_no, 
         req.body.darta_miti,
         req.body.dist_id, 
-        req.body.sajhedariban_naam, 
+        req.body.commercialkabuliyatiban_naam, 
         req.body.address, 
         req.body.area, 
         req.body.main_species, 
