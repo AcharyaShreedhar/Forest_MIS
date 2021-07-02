@@ -26,9 +26,6 @@ module.exports = {
       main_species: {
         type: Sequelize.STRING,
       },
-      qty: {
-        type: Sequelize.STRING,
-      },
       area: {
         type: Sequelize.STRING,
       },
