@@ -1,29 +1,41 @@
 const pool = require("../db");
 //Controller for Listing all DharmikbanBibaran
 async function getAllDharmikbanBibaran(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from dharmikban_bibarans";
+  const getTotalQuery =
+    "SELECT count(*) as total from dharmikban_bibarans as d where d.handover_date BETWEEN ? and ? and d.dist_id like ?";
   const getAllDharmikbanBibaranQuery =
-    "SELECT dharmikban_bibarans.*,nabikaran_karyayojanas.renewal_date,nabikaran_karyayojanas.renewed_date,nabikaran_karyayojanas.nabikaran_abadhi FROM `dharmikban_bibarans` left JOIN nabikaran_karyayojanas on dharmikban_bibarans.darta_no=nabikaran_karyayojanas.darta_id ORDER BY ? ASC LIMIT ?,?";
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllDharmikbanBibaranQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+    "SELECT d.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM `dharmikban_bibarans` as d left JOIN nabikaran_karyayojanas as n on d.darta_no=n.darta_id HAVING d.handover_date BETWEEN ? and ? and d.dist_id like ? ORDER BY ? DESC LIMIT ?,?";
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllDharmikbanBibaranQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a DharmikbanBibaran

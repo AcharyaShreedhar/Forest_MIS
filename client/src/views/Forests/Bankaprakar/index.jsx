@@ -102,7 +102,10 @@ class Bankaprakar extends Component {
       }
       case "dharmikban": {
         this.props.fetchallDharmikbanbibaran({
-          name: "dharmikban_name",
+          fromDate,
+          toDate,
+          distId,
+          name: "handover_date",
           page: page,
           perPage,
         });
@@ -294,21 +297,36 @@ class Bankaprakar extends Component {
           />
         )}
         {equals(loc, "dharmikbanlist") && (
-          <DharmikbanBibaran.List
-            buttonName="+ धार्मिक बन "
-            title="धर्मिक वन सम्बन्धी विवरण"
-            pageCount={
-              !isNil(dharmikbanList)
-                ? Math.ceil(dharmikbanList.total / perPage)
-                : 10
-            }
-            data={!isNil(dharmikbanList) ? dharmikbanList.list : []}
-            headings={dharmikbanHeadings}
-            user={user}
-            onAdd={() => this.handleAdd("dharmikban")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "dharmikban")}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="dharmikban"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="dharmikban" />
+            </div>
+            <DharmikbanBibaran.List
+              buttonName="+ धार्मिक बन "
+              title="धर्मिक वन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(dharmikbanList)
+                  ? Math.ceil(dharmikbanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(dharmikbanList) ? dharmikbanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={dharmikbanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("dharmikban")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "dharmikban")}
+            />
+          </Fragment>
         )}
         {equals(loc, "dharmikbanadd") && (
           <DharmikbanBibaran.Add
