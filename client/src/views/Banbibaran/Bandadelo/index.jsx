@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
 import { BandadeloBibaran, Filter, ReportGenerator } from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
-import { bandadeloHeadings, districtList, } from "../../../services/config";
+import { bandadeloHeadings, districtList } from "../../../services/config";
 import { Fragment } from "react";
 
 class Bandadelo extends Component {
@@ -125,7 +125,7 @@ class Bandadelo extends Component {
           <Fragment>
             <div className="report-filter">
               <Filter
-                id="samudayikban"
+                id="bandadelo"
                 title="डढेलो लागेको मिति"
                 districtsList={districtList}
                 onToDate={this.handleToDate}
@@ -159,6 +159,7 @@ class Bandadelo extends Component {
         {equals(loc, "bandadeloadd") && (
           <BandadeloBibaran.Add
             title="+ वनडढेलो"
+            user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBandadelo(e)}
           />
@@ -166,6 +167,7 @@ class Bandadelo extends Component {
         {equals(loc, "bandadeloedit") && (
           <BandadeloBibaran.Edit
             title="वनडढेलो पुनः प्रविष्ट"
+            user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateBandadelo(e, id)}

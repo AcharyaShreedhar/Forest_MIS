@@ -2,17 +2,34 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { SawarisadhanBibaran } from "../../../components";
+import {
+  SawarisadhanBibaran,
+  Filter,
+  ReportGenerator,
+} from "../../../components";
 import SampatibibaranActions from "../../../actions/sampatibibaran";
-import { sawarisadhanHeadings } from "../../../services/config";
+import { sawarisadhanHeadings, districtList } from "../../../services/config";
+import { Fragment } from "react";
 
 class Sawarisadhan extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "sawarisadhanlist", perPage: 10, page: 1 };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.state = {
+      loc: "sawarisadhanlist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+    };
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
+    this.handlePer = this.handlePer.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -25,15 +42,47 @@ class Sawarisadhan extends Component {
     return { loc, sawarisadhanList };
   }
 
-  handlePageChange(data) {
-    const { perPage } = this.state;
-    this.setState({ page: data.selected });
-
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
+  }
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallSawarisadhan({
+      fromDate,
+      toDate,
+      distId,
       name: "vehicle_type",
-      page: data.selected * perPage,
+      page: page,
       perPage,
     });
+  }
+
+  handlePageChange(data) {
+    const { fromDate, toDate, distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item) {
@@ -65,21 +114,37 @@ class Sawarisadhan extends Component {
     return (
       <div>
         {equals(loc, "sawarisadhanlist") && (
-          <SawarisadhanBibaran.List
-            buttonName="+ सवारी साधन"
-            title="सवारी साधन सम्बन्धी विवरण"
-            pageCount={
-              !isNil(sawarisadhanList)
-                ? Math.ceil(sawarisadhanList.total / perPage)
-                : 10
-            }
-            data={!isNil(sawarisadhanList) ? sawarisadhanList.list : []}
-            user={user}
-            headings={sawarisadhanHeadings}
-            onAdd={this.handleAdd}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e)}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="vehicle"
+                title="प्राप्ति मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="vehicle" />
+            </div>
+            <SawarisadhanBibaran.List
+              buttonName="+ सवारी साधन"
+              title="सवारी साधन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(sawarisadhanList)
+                  ? Math.ceil(sawarisadhanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(sawarisadhanList) ? sawarisadhanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              user={user}
+              headings={sawarisadhanHeadings}
+              onAdd={this.handleAdd}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
+          </Fragment>
         )}
         {equals(loc, "sawarisadhanadd") && (
           <SawarisadhanBibaran.Add
