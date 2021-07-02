@@ -23,9 +23,6 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
-      qty: {
-        type: Sequelize.STRING,
-      },
       area: {
         type: Sequelize.STRING,
       },
