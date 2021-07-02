@@ -352,3 +352,18 @@ export function* fetchbiruwautpadanRequest(api, action) {
       yield put(BiruwautpadanActions.fetchalljadibutiFailure());
     }
   }  
+
+
+  export function* fetchjadibutiRequest(api, action) {
+    const  jadibutiId  = action.payload
+  
+    const response = yield api.getJadibuti(jadibutiId);
+    
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchjadibutiSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchjadibutiFailure());
+    }
+  }

@@ -211,6 +211,23 @@ const fetchalljadibutiFailure = (state, action) => {
 };
 
 
+const fetchjadibutiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+
+  const fetchjadibutiSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    jadibutiData: action.response,
+  });
+};
+const fetchjadibutiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -287,6 +304,10 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.FETCHALLJADIBUTI_REQUEST]: fetchalljadibutiRequest,
   [BiruwautpadanTypes.FETCHALLJADIBUTI_SUCCESS]: fetchalljadibutiSuccess,
   [BiruwautpadanTypes.FETCHALLJADIBUTI_FAILURE]: fetchalljadibutiFailure,
+
+  [BiruwautpadanTypes.FETCHJADIBUTI_REQUEST]: fetchjadibutiRequest,
+  [BiruwautpadanTypes.FETCHJADIBUTI_SUCCESS]: fetchjadibutiSuccess,
+  [BiruwautpadanTypes.FETCHJADIBUTI_FAILURE]: fetchjadibutiFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,

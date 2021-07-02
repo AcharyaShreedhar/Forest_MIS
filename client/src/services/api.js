@@ -234,6 +234,9 @@ const create = (baseURL = Config.API_URL) => {
   //Jadibuti
   const getJadibutiList = (payload) => api.post("jadibutiList", payload);
 
+  const getJadibuti = (jadibutiId) =>
+    api.get(`jadibuti/${jadibutiId}`);
+
   //Dwandabebasthapan
   const getBanyajantuUddarList = (payload) =>
     api.post("banyajantuUddarsList", payload);
@@ -744,6 +747,7 @@ const create = (baseURL = Config.API_URL) => {
     postBiruwautpadanBrixyaropanUpdate,
     postBiruwautpadanBrixyaropanDelete,
     getJadibutiList,
+    getJadibuti,
 
     //sampatibibaran
     getAssetsList,

@@ -76,6 +76,10 @@
    fetchalljadibutiSuccess: ["response"],
    fetchalljadibutiFailure: null,
 
+   fetchjadibutiRequest: ["payload"],
+   fetchjadibutiSuccess: ["response"],
+   fetchjadibutiFailure: null,
+
 
 
 
