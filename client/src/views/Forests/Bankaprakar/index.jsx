@@ -124,6 +124,9 @@ class Bankaprakar extends Component {
       }
       case "nijiban": {
         this.props.fetchallNijibanbibaran({
+          fromDate,
+          toDate,
+          distId,
           name: "swikrit_miti",
           page: page,
           perPage,
@@ -401,19 +404,37 @@ class Bankaprakar extends Component {
           />
         )}
         {equals(loc, "nijibanlist") && (
-          <NijibanBibaran.List
-            buttonName="+ निजि वन"
-            title="निजि वन सम्बन्धी विवरण"
-            pageCount={
-              !isNil(nijibanList) ? Math.ceil(nijibanList.total / perPage) : 10
-            }
-            data={!isNil(nijibanList) ? nijibanList.list : []}
-            headings={nijibanHeadings}
-            user={user}
-            onAdd={() => this.handleAdd("nijiban")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "nijiban")}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="nijiban"
+                title="स्विकृत मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="nijiban" />
+            </div>
+            <NijibanBibaran.List
+              buttonName="+ निजि वन"
+              title="निजि वन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(nijibanList)
+                  ? Math.ceil(nijibanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(nijibanList) ? nijibanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={nijibanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("nijiban")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "nijiban")}
+            />
+          </Fragment>
         )}
         {equals(loc, "nijibanadd") && (
           <NijibanBibaran.Add
