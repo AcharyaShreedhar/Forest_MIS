@@ -42,10 +42,11 @@ async function getDharmikbanBibaran(req, res) {
 
 //Controller for adding a DharmikbanBibaran
 async function addDharmikbanBibaran(req, res) {
-  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (darta_no,dharmikban_name, community_name, area, main_species, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dist_id, darta_no,dharmikban_name, community_name, area, main_species, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addDharmikbanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.dharmikban_name,
       req.body.community_name,
@@ -69,10 +70,11 @@ async function addDharmikbanBibaran(req, res) {
 
 //Controller for updating a DharmikbanBibaran
 async function updateDharmikbanBibaran(req, res) {
-  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET darta_no=?,dharmikban_name=?, community_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE dharmikban_id=?`;
+  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dist_id=?, darta_no=?,dharmikban_name=?, community_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE dharmikban_id=?`;
   pool.query(
     updateDharmikbanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.dharmikban_name,
       req.body.community_name,

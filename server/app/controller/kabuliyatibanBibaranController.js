@@ -40,10 +40,11 @@ async function getKabuliyatibanBibaran(req, res) {
 
 //Controller for adding a KabuliyatibanBibaran
 async function addKabuliyatibanBibaran(req, res) {
-  const addKabuliyatibanBibaranQuery = `INSERT INTO kabuliyatiban_bibarans (darta_no,entry_date, ghardhuri_dalit, perm_addr, curr_addr, ghardhuri_janjati, ghardhuri_anya, ghardhuri_total, population_female, population_male, population_total, samudayik_upavokta_samiti_name, sampannata_starikaran_sampanna, sampannata_starikaran_madhyam, sampannata_starikaran_bipanna, karyasamiti_representation_dalit, karyasamiti_representation_janjati, karyasamiti_representation_anya, adhyakshya_male, adhyakshya_female, sachib_male, sachib_female, created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addKabuliyatibanBibaranQuery = `INSERT INTO kabuliyatiban_bibarans (dist_id,darta_no,entry_date, ghardhuri_dalit, perm_addr, curr_addr, ghardhuri_janjati, ghardhuri_anya, ghardhuri_total, population_female, population_male, population_total, samudayik_upavokta_samiti_name, sampannata_starikaran_sampanna, sampannata_starikaran_madhyam, sampannata_starikaran_bipanna, karyasamiti_representation_dalit, karyasamiti_representation_janjati, karyasamiti_representation_anya, adhyakshya_male, adhyakshya_female, sachib_male, sachib_female, created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addKabuliyatibanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.entry_date,
       req.body.ghardhuri_dalit,
@@ -80,10 +81,11 @@ async function addKabuliyatibanBibaran(req, res) {
 
 //Controller for updating a KabuliyatibanBibaran
 async function updateKabuliyatibanBibaran(req, res) {
-  const updateKabuliyatibanBibaranQuery = `UPDATE kabuliyatiban_bibarans SET darta_no=?, entry_date=?, ghardhuri_dalit=?, perm_addr=?, curr_addr=?, ghardhuri_janjati=?, ghardhuri_anya=?, ghardhuri_total=?, population_female=?, population_male=?, population_total=?, samudayik_upavokta_samiti_name=?, sampannata_starikaran_sampanna=?, sampannata_starikaran_madhyam=?, sampannata_starikaran_bipanna=?, karyasamiti_representation_dalit=?, karyasamiti_representation_janjati=?, karyasamiti_representation_anya=?, adhyakshya_male=?, adhyakshya_female=?, sachib_male=?, sachib_female=?, created_by=?,updated_by=? WHERE kabuliyatiban_bibaran_id=?`;
+  const updateKabuliyatibanBibaranQuery = `UPDATE kabuliyatiban_bibarans SET dist_id=?, darta_no=?, entry_date=?, ghardhuri_dalit=?, perm_addr=?, curr_addr=?, ghardhuri_janjati=?, ghardhuri_anya=?, ghardhuri_total=?, population_female=?, population_male=?, population_total=?, samudayik_upavokta_samiti_name=?, sampannata_starikaran_sampanna=?, sampannata_starikaran_madhyam=?, sampannata_starikaran_bipanna=?, karyasamiti_representation_dalit=?, karyasamiti_representation_janjati=?, karyasamiti_representation_anya=?, adhyakshya_male=?, adhyakshya_female=?, sachib_male=?, sachib_female=?, created_by=?,updated_by=? WHERE kabuliyatiban_bibaran_id=?`;
   pool.query(
     updateKabuliyatibanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.entry_date,
       req.body.ghardhuri_dalit,

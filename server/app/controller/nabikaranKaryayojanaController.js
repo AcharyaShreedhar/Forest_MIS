@@ -23,10 +23,11 @@ async function getNabikaranKaryayojana(req, res) {
 
 //Controller for adding a NabikaranKaryayojana
 async function addNabikaranKaryayojana(req, res) {
-  const addNabikaranKaryayojanaQuery = `INSERT INTO nabikaran_karyayojanas (renewal_date,renewed_date,nabikaran_abadhi,darta_id,created_by,updated_by) values (?,?,?,?,?,?)`;
+  const addNabikaranKaryayojanaQuery = `INSERT INTO nabikaran_karyayojanas (dist_id,renewal_date,renewed_date,nabikaran_abadhi,darta_id,created_by,updated_by) values (?,?,?,?,?,?,?)`;
   pool.query(
     addNabikaranKaryayojanaQuery,
     [
+      req.body.dist_id,
       req.body.renewal_date,
       req.body.renewed_date,
       req.body.nabikaran_abadhi,
@@ -45,10 +46,11 @@ async function addNabikaranKaryayojana(req, res) {
 
 //Controller for updating a NabikaranKaryayojana
 async function updateNabikaranKaryayojana(req, res) {
-  const updateNabikaranKaryayojanaQuery = `UPDATE nabikaran_karyayojanas SET renewal_date=?, renewed_date=?, nabikaran_abadhi=?, darta_id=?, created_by=?, updated_by=? WHERE darta_id=?`;
+  const updateNabikaranKaryayojanaQuery = `UPDATE nabikaran_karyayojanas SET dist_id=?, renewal_date=?, renewed_date=?, nabikaran_abadhi=?, darta_id=?, created_by=?, updated_by=? WHERE darta_id=?`;
   pool.query(
     updateNabikaranKaryayojanaQuery,
     [
+      req.body.dist_id,
       req.body.renewal_date,
       req.body.renewed_date,
       req.body.nabikaran_abadhi,

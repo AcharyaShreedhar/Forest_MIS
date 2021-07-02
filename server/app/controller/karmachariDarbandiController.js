@@ -28,7 +28,8 @@ async function getAllKarmachariDarbandi(req, res) {
 
 // controller for getting a KarmachariDarbandi
 async function getKarmachariDarbandi(req, res) {
-  const getKarmachariDarbandiQuery = "select * from karmachari_darbandis where karmachari_darbandi_id=?";
+  const getKarmachariDarbandiQuery =
+    "select * from karmachari_darbandis where karmachari_darbandi_id=?";
   await pool.query(
     getKarmachariDarbandiQuery,
     [req.params.karmachariDarbandiId],
@@ -42,10 +43,11 @@ async function getKarmachariDarbandi(req, res) {
 //Service for adding a KarmachariDarbandi
 
 async function addKarmachariDarbandi(req, res) {
-  const addKarmachariDarbandiQuery = `INSERT INTO karmachari_darbandis (post,kayam_darbandi_sankhya,padpurti_sankhya, khali_sankhya, created_by, updated_by) values (?,?,?,?,?,?)`
+  const addKarmachariDarbandiQuery = `INSERT INTO karmachari_darbandis (dist_id,post,kayam_darbandi_sankhya,padpurti_sankhya, khali_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?)`;
   await pool.query(
     addKarmachariDarbandiQuery,
     [
+      req.body.dist_id,
       req.body.post,
       req.body.kayam_darbandi_sankhya,
       req.body.padpurti_sankhya,
@@ -65,10 +67,11 @@ async function addKarmachariDarbandi(req, res) {
 //Controller for updating a KarmachariDarbandi
 
 async function updateKarmachariDarbandi(req, res) {
-  const updateKarmachariDarbandiQuery = `UPDATE karmachari_darbandis SET post=?,kayam_darbandi_sankhya=?,padpurti_sankhya=?, khali_sankhya=?, created_by=?, updated_by=? WHERE karmachari_darbandi_id=?`;
+  const updateKarmachariDarbandiQuery = `UPDATE karmachari_darbandis SET dist_id=?, post=?,kayam_darbandi_sankhya=?,padpurti_sankhya=?, khali_sankhya=?, created_by=?, updated_by=? WHERE karmachari_darbandi_id=?`;
   await pool.query(
     updateKarmachariDarbandiQuery,
     [
+      req.body.dist_id,
       req.body.post,
       req.body.kayam_darbandi_sankhya,
       req.body.padpurti_sankhya,

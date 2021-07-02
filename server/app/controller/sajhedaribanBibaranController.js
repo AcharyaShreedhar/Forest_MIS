@@ -41,20 +41,21 @@ async function getSajhedaribanBibaran(req, res) {
 
 //Controller for adding a SajhedaribanBibaran
 async function addSajhedaribanBibaran(req, res) {
-  const addSajhedaribanBibaranQuery = `INSERT INTO sajhedariban_bibarans (darta_no, sajhedariban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addSajhedaribanBibaranQuery = `INSERT INTO sajhedariban_bibarans (dist_id, darta_no, sajhedariban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSajhedaribanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.sajhedariban_name,
       req.body.area,
       req.body.main_species,
       req.body.forest_type,
-      req.body.handover_date, 
+      req.body.handover_date,
       req.body.forest_maujdat,
       req.body.nikasi_timber,
       req.body.nikasi_wood,
-      req.body.created_by, 
+      req.body.created_by,
       req.body.updated_by,
     ],
     (error, results, fields) => {
@@ -66,20 +67,21 @@ async function addSajhedaribanBibaran(req, res) {
 
 //Controller for updating a SajhedaribanBibaran
 async function updateSajhedaribanBibaran(req, res) {
-  const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET darta_no=?, sajhedariban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE sajhedariban_bibaran_id=? `;
+  const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET dist_id=?, darta_no=?, sajhedariban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE sajhedariban_bibaran_id=? `;
   pool.query(
     updateSajhedaribanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.sajhedariban_name,
       req.body.area,
       req.body.main_species,
       req.body.forest_type,
-      req.body.handover_date, 
+      req.body.handover_date,
       req.body.forest_maujdat,
       req.body.nikasi_timber,
       req.body.nikasi_wood,
-      req.body.created_by, 
+      req.body.created_by,
       req.body.updated_by,
       req.params.sajhedaribanBibaranId,
     ],

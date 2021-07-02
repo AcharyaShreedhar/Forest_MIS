@@ -28,18 +28,23 @@ async function getAllBanyajantuXetiBibarans(req, res) {
 //Controller for Listing a Banyajantu Xeti Bibaran
 async function getBabyajantuXetiBibarans(req, res) {
   const getBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans where banyajantuxeti_bibaran_id=?`;
-  pool.query(getBanyajantuXetiBibaransQuery, [req.params.banyajantuxetiBibaranId], (error, results, fields) => {
-    if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  pool.query(
+    getBanyajantuXetiBibaransQuery,
+    [req.params.banyajantuxetiBibaranId],
+    (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
 }
 
 //Controller for adding a Banyajantu Xeti Bibaran
 async function addBanyajantuXetiBibarans(req, res) {
-  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,pasudhan_ghargoth,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (dist_id, pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,pasudhan_ghargoth,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuXetiBibaransQuery,
     [
+      req.body.dist_id,
       req.body.pidit_name,
       req.body.pidit_address,
       req.body.jagga_bibaran,
@@ -67,10 +72,11 @@ async function addBanyajantuXetiBibarans(req, res) {
 
 //Controller for updating a Banyajantu Xeti Bibaran
 async function updateBanyajantuXetiBibarans(req, res) {
-  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,pasudhan_ghargoth=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
+  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET dist_id=?,pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,pasudhan_ghargoth=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
   pool.query(
     updateBanyajantuXetiBibaransQuery,
     [
+      req.body.dist_id,
       req.body.pidit_name,
       req.body.pidit_address,
       req.body.jagga_bibaran,

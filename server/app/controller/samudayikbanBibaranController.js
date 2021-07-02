@@ -55,10 +55,11 @@ async function getSamudayikbanBibaran(req, res) {
 
 //Controller for adding a SamudayikbanBibaran
 async function addSamudayikbanBibaran(req, res) {
-  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (darta_no, samudayikban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, darta_no,  samudayikban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSamudayikbanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.samudayikban_name,
       req.body.area,
@@ -82,10 +83,11 @@ async function addSamudayikbanBibaran(req, res) {
 
 //Controller for updating a SamudayikbanBibaran
 async function updateSamudayikbanBibaran(req, res) {
-  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET darta_no=?,samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE samudayikban_id=?`;
+  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE samudayikban_id=?`;
   pool.query(
     updateSamudayikbanBibaranQuery,
     [
+      req.body.dist_id,
       req.body.darta_no,
       req.body.samudayikban_name,
       req.body.area,
