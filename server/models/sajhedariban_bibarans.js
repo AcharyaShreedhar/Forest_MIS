@@ -19,7 +19,6 @@ module.exports = (sequelize, DataTypes) => {
     dist_id: DataTypes.STRING,
     sajhedariban_naam: DataTypes.STRING,
     address: DataTypes.STRING,
-    qty:DataTypes.STRING,
     area: DataTypes.STRING,
     main_species: DataTypes.STRING,
     ghardhuri: DataTypes.STRING,
