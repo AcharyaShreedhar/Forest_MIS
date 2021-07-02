@@ -10,6 +10,7 @@ import sampatibibaranRoutes from "../../routes/sampatibibaran";
 export class Sampatibibaran extends Component {
   componentDidMount() {
     this.props.fetchallGharjagga({
+      distId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
