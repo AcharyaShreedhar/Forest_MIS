@@ -90,7 +90,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type="samudayikban"
+          type="dharmikban"
         />
       </div>
     </Fragment>

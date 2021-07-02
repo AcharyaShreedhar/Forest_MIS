@@ -1,28 +1,40 @@
 const pool = require("../db");
 //Controller for Listing all NijibanBibaran
 async function getAllNijibanBibaran(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from nijiban_bibarans";
-  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans ORDER BY ? ASC LIMIT ?,?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllNijibanBibaranQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ?";
+  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllNijibanBibaranQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a NijibanBibaran

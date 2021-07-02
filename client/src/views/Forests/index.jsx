@@ -34,7 +34,10 @@ export class Forests extends Component {
       perPage: 10,
     });
     this.props.fetchallNijibanbibaran({
-      name: "nijiban_name",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "swikrit_miti",
       page: 0,
       perPage: 10,
     });
