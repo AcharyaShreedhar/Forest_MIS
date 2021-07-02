@@ -77,7 +77,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type="bandadelo"
+          type="lilam"
         />
       </div>
     </Fragment>
