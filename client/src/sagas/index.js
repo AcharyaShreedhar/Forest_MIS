@@ -131,6 +131,7 @@ import {
   addbrixyaropanRequest,
   updatebrixyaropanRequest,
   deletebrixyaropanRequest,
+  fetchalljadibutiRequest,
 } from "./biruwautpadan";
 
 //-----------------dwandabebasthapan
@@ -530,6 +531,14 @@ export default function* root() {
     takeLatest(
       BiruwautpadanTypes.DELETEBRIXYAROPAN_REQUEST,
       deletebrixyaropanRequest,
+      api
+    ),
+
+    //jadibuti
+
+    takeLatest(
+      BiruwautpadanTypes.FETCHALLJADIBUTI_REQUEST,
+      fetchalljadibutiRequest,
       api
     ),
 

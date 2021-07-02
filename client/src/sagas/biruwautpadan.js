@@ -337,3 +337,18 @@ export function* fetchbiruwautpadanRequest(api, action) {
       });
     }
   }
+
+
+  //jadibuti
+  export function* fetchalljadibutiRequest(api, action) {
+    const { payload } = action;
+    const payloaddata = isNil(payload) ? action : payload;
+    const response = yield api.getJadibutiList(payloaddata);
+    if (response.ok) {
+      yield put(
+        BiruwautpadanActions.fetchalljadibutiSuccess(response.data)
+      );
+    } else {
+      yield put(BiruwautpadanActions.fetchalljadibutiFailure());
+    }
+  }  
