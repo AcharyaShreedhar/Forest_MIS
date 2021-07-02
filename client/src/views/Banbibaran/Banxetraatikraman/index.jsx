@@ -2,16 +2,30 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanxetraAtikraman } from "../../../components";
+import { BanxetraAtikraman, Filter, ReportGenerator } from "../../../components";
 import BanxetraatikramanActions from "../../../actions/banxetraatikraman";
-import { banxetraatikramanHeadings } from "../../../services/config";
+import { banxetraatikramanHeadings, districtList } from "../../../services/config";
+import { Fragment } from "react";
 
 class Banxetraatikraman extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "banxetraatikramanlist", perPage: 10, page: 1 };
+    this.state = { 
+      loc: "banxetraatikramanlist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -26,12 +40,45 @@ class Banxetraatikraman extends Component {
       banxetraatikramanList,
     };
   }
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
+  }
 
-  handlePageChange(data, item) {
-    const { perPage } = this.state;
+  fetchResults(fromDate, toDate, distId, page, perPage) {
+    this.props.fetchallBanxetraatrikraman({
+      fromDate,
+      toDate,
+      distId,
+      name: "address",
+      page: page,
+      perPage,   
+    });
+  }
+
+  handlePageChange(data) {
+    const { fromDate, toDate, distId,perPage } = this.state;
     this.setState({ page: data.selected });
     this.props.fetchallBanxetraatikraman({
-      name: "address",
+      fromDate,
+      toDate,
+      distId,
       page: data.selected * perPage,
       perPage,
     });
@@ -44,6 +91,7 @@ class Banxetraatikraman extends Component {
           pathname: `/banbibaran/banxetraatikramanedit/${item.banxetra_atikraman_id}`,
           item,
         });
+
         break;
       }
       case "delete": {
@@ -55,8 +103,9 @@ class Banxetraatikraman extends Component {
     }
   }
 
-  handleAdd(item) {
-    this.props.history.push("/banbibaran/banxetraatikramanadd/new");
+  handleAdd() {
+       this.props.history.push("/banbibaran/banxetraatikramanadd/new");
+    
   }
 
   render() {
@@ -66,6 +115,18 @@ class Banxetraatikraman extends Component {
     return (
       <div>
         {equals(loc, "banxetraatikramanlist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="banxetraatikraman"
+                title="अतिक्रमण मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="banxetraatikraman" />
+            </div>
           <BanxetraAtikraman.List
             buttonName="+ वनक्षेत्र अतिक्रमण"
             title="वनक्षेत्र अतिक्रमण सम्बन्धि विवरण"
@@ -77,17 +138,21 @@ class Banxetraatikraman extends Component {
             data={
               !isNil(banxetraatikramanList) ? banxetraatikramanList.list : []
             }
+            per={perPage}
+            pers={[10, 25, 50, "all"]}
+            onPer={this.handlePer}
             headings={banxetraatikramanHeadings}
             user={user}
-            onAdd={() => this.handleAdd("banxetraatikraman")}
+            onAdd={() => this.handleAdd()}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e, "banxetraatikraman")}
           />
+          </Fragment>
         )}
         {equals(loc, "banxetraatikramanadd") && (
           <BanxetraAtikraman.Add
-            title="+ वनक्षेत्र अतिक्रमण"
             user={user}
+            title="+ वनक्षेत्र अतिक्रमण"
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBanxetraatikraman(e)}
           />
@@ -95,8 +160,8 @@ class Banxetraatikraman extends Component {
         {equals(loc, "banxetraatikramanedit") && (
           <BanxetraAtikraman.Edit
             title="वनक्षेत्र अतिक्रमण पुनः प्रविष्ट"
-            history={this.props.history}
             user={user}
+            history={this.props.history}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateBanxetraatikraman(e, id)}
           />
@@ -120,6 +185,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchallBanxetraatrikraman: (payload) =>
+    dispatch(BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)),
+
   addBanxetraatikraman: (payload) =>
     dispatch(BanxetraatikramanActions.addbanxetraatikramanRequest(payload)),
 
@@ -133,9 +201,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBanxetraatikraman: (banxetraatikramanId) =>
     dispatch(
-      BanxetraatikramanActions.deletebanxetraatikramanRequest(
-        banxetraatikramanId
-      )
+      BanxetraatikramanActions.deletebanxetraatikramanRequest(banxetraatikramanId)
     ),
 });
 
