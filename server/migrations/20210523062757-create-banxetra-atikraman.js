@@ -23,6 +23,9 @@ module.exports = {
       samalagna_ghardhuri: {
         type: Sequelize.STRING,
       },
+      atikraman_miti: {
+        type: Sequelize.STRING,
+      },
       atikraman_prayojan: {
         type: Sequelize.STRING,
       },
