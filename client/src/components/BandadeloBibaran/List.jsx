@@ -57,7 +57,10 @@ function List(props) {
                   <td key={index}> {bandadelo.niyantran_karta}</td>
                   <td key={index}> {bandadelo.sahabhagi_mahila}</td>
                   <td key={index}> {bandadelo.sahabhagi_purus}</td>
-                  <td key={index}> {englishToNepaliNumber(bandadelo.bandadelo_miti)}</td>
+                  <td key={index}>
+                    {" "}
+                    {englishToNepaliNumber(bandadelo.bandadelo_miti)}
+                  </td>
                   <td key={index}> {bandadelo.created_by}</td>
                   <td key={index}> {bandadelo.updated_by}</td>
                   <td>

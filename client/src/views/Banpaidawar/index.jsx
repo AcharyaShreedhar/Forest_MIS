@@ -10,6 +10,9 @@ import BanpaidawarActions from "../../actions/banpaidawar";
 export class Banpaidawar extends Component {
   componentDidMount() {
     this.props.fetchallBanpaidawarlilam({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,
