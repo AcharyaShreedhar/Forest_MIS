@@ -26,7 +26,10 @@ export class Forests extends Component {
       perPage: 10,
     });
     this.props.fetchallKabuliyatibanbibaran({
-      name: "kabuliyatiban_name",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "entry_date",
       page: 0,
       perPage: 10,
     });

@@ -113,6 +113,9 @@ class Bankaprakar extends Component {
       }
       case "kabuliyatiban": {
         this.props.fetchallKabuliyatibanbibaran({
+          fromDate,
+          toDate,
+          distId,
           name: "entry_date",
           page: page,
           perPage,
@@ -252,6 +255,7 @@ class Bankaprakar extends Component {
             <div className="report-filter">
               <Filter
                 id="samudayikban"
+                title="हस्तान्तरण मिति"
                 districtsList={districtList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
@@ -301,6 +305,7 @@ class Bankaprakar extends Component {
             <div className="report-filter">
               <Filter
                 id="dharmikban"
+                title="हस्तान्तरण मिति"
                 districtsList={districtList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
@@ -346,21 +351,37 @@ class Bankaprakar extends Component {
           />
         )}
         {equals(loc, "kabuliyatibanlist") && (
-          <KabuliyatibanBibaran.List
-            buttonName="+ कवुलियती वन "
-            title="कवुलियती वन सम्बन्धी विवरण"
-            pageCount={
-              !isNil(kabuliyatibanList)
-                ? Math.ceil(kabuliyatibanList.total / perPage)
-                : 10
-            }
-            data={!isNil(kabuliyatibanList) ? kabuliyatibanList.list : []}
-            headings={kabuliyatibanHeadings}
-            user={user}
-            onAdd={() => this.handleAdd("kabuliyatiban")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "kabuliyatiban")}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="kabuliyatiban"
+                title="दर्ता मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="kabuliyatiban" />
+            </div>
+            <KabuliyatibanBibaran.List
+              buttonName="+ कवुलियती वन "
+              title="कवुलियती वन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(kabuliyatibanList)
+                  ? Math.ceil(kabuliyatibanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(kabuliyatibanList) ? kabuliyatibanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={kabuliyatibanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("kabuliyatiban")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "kabuliyatiban")}
+            />
+          </Fragment>
         )}
         {equals(loc, "kabuliyatibanadd") && (
           <KabuliyatibanBibaran.Add
