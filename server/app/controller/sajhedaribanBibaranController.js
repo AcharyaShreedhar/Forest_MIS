@@ -1,51 +1,36 @@
 const pool = require("../db");
-//Controller for Listing all SajhedaribanBibaran
-async function getAllSajhedaribanBibaran(req, res) {
-  const getTotalQuery =
-    "SELECT count(*) as total from sajhedariban_bibarans as s where s.handover_date BETWEEN ? and ? and s.dist_id like ?";
-  const getAllSajhedaribanBibaranQuery =
-    "SELECT s.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM `sajhedariban_bibarans` as s left JOIN nabikaran_karyayojanas as n on s.darta_no=n.darta_id HAVING s.handover_date BETWEEN ? and ? and s.dist_id like ? ORDER BY ? DESC LIMIT ?,?";
-  pool.query(
-    getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
-    (error, countresults, fields) => {
-      if (error) throw error;
-      pool.query(
-        getAllSajhedaribanBibaranQuery,
-        [
-          req.body.fromDate,
-          req.body.toDate,
-          req.body.distId,
-          req.body.name,
-          req.body.page,
-          req.body.perPage,
-        ],
-        (error, results, fields) => {
-          if (error) throw error;
-
-          res.send(
-            JSON.stringify({
-              status: 200,
-              error: null,
-              data: {
-                total: countresults[0].total,
-                list: results,
-              },
-            })
-          );
-        }
-      );
-    }
-  );
+//Controller for Listing all SajhedariBibaran
+async function getAllSajhedariBibaran(req, res) {
+  const getTotalQuery = "SELECT count(*) as total from sajhedari_bibarans";
+  const getAllSajhedariBibaranQuery = `select * from sajhedari_bibarans ORDER BY ? ASC LIMIT ?,?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+    if (error) throw error;
+    pool.query(
+      getAllSajhedariBibaranQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
+  });
 }
 
-//Controller for Listing a SajhedaribanBibaran
-async function getSajhedaribanBibaran(req, res) {
-  const getSajhedaribanBibaranQuery =
-    "SELECT sajhedariban_bibarans.*,nabikaran_karyayojanas.renewal_date,nabikaran_karyayojanas.renewed_date,nabikaran_karyayojanas.nabikaran_abadhi FROM `sajhedariban_bibarans` left JOIN nabikaran_karyayojanas on sajhedariban_bibarans.darta_no=nabikaran_karyayojanas.darta_id where sajhedariban_bibarans.sajhedariban_id=?";
+//Controller for Listing a SajhedariBibaran
+async function getSajhedariBibaran(req, res) {
+  const getSajhedariBibaranQuery = `select * from sajhedari_bibarans where sajhedari_bibaran_id=?`;
   pool.query(
-    getSajhedaribanBibaranQuery,
-    [req.params.SajhedaribanBibaranId],
+    getSajhedariBibaranQuery,
+    [req.params.sajhedariBibaranId],
     (error, results, fields) => {
       if (error) throw error;
       res.send(JSON.stringify({ status: 200, error: null, data: results }));
@@ -53,23 +38,22 @@ async function getSajhedaribanBibaran(req, res) {
   );
 }
 
-//Controller for adding a SajhedaribanBibaran
-async function addSajhedaribanBibaran(req, res) {
-  const addSajhedaribanBibaranQuery = `INSERT INTO sajhedariban_bibarans (dist_id, darta_no, sajhedariban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
+//Controller for adding a SajhedariBibaran
+async function addSajhedariBibaran(req, res) {
+  const addSajhedariBibaranQuery = `INSERT INTO sajhedari_bibarans (dist_id, darta_no, sajhedari_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
-    addSajhedaribanBibaranQuery,
+    addSajhedariBibaranQuery,
     [
       req.body.dist_id,
-      req.body.darta_no,
-      req.body.dist_id,
-      req.body.sajhedariban_name,
-      req.body.area,
-      req.body.main_species,
-      req.body.forest_type,
-      req.body.handover_date,
-      req.body.forest_maujdat,
-      req.body.nikasi_timber,
-      req.body.nikasi_wood,
+      req.body.darta_no, 
+      req.body.sajhedari_name,
+      req.body.area, 
+      req.body.main_species, 
+      req.body.forest_type, 
+      req.body.handover_date, 
+      req.body.forest_maujdat, 
+      req.body.nikasi_timber, 
+      req.body.nikasi_wood, 
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -82,26 +66,25 @@ async function addSajhedaribanBibaran(req, res) {
   );
 }
 
-//Controller for updating a SajhedaribanBibaran
-async function updateSajhedaribanBibaran(req, res) {
-  const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET dist_id=?, darta_no=?, sajhedariban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE sajhedariban_bibaran_id=? `;
+//Controller for updating a SajhedariBibaran
+async function updateSajhedariBibaran(req, res) {
+  const updateSajhedariBibaranQuery = `UPDATE sajhedari_bibarans SET dist_id=?, darta_no=?, sajhedari_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE sajhedari_bibaran_id=?`;
   pool.query(
-    updateSajhedaribanBibaranQuery,
+    updateSajhedariBibaranQuery,
     [
       req.body.dist_id,
-      req.body.darta_no,
-      req.body.dist_id,
-      req.body.sajhedariban_name,
-      req.body.area,
-      req.body.main_species,
-      req.body.forest_type,
-      req.body.handover_date,
-      req.body.forest_maujdat,
-      req.body.nikasi_timber,
-      req.body.nikasi_wood,
+      req.body.darta_no, 
+      req.body.chaklaban_name,
+      req.body.area, 
+      req.body.main_species, 
+      req.body.forest_type, 
+      req.body.handover_date, 
+      req.body.forest_maujdat, 
+      req.body.nikasi_timber, 
+      req.body.nikasi_wood, 
       req.body.created_by,
       req.body.updated_by,
-      req.params.sajhedaribanBibaranId,
+      req.params.sajhedariBibaranId,
     ],
     (error, results, fields) => {
       if (error) {
@@ -112,12 +95,12 @@ async function updateSajhedaribanBibaran(req, res) {
   );
 }
 
-//Controller for deleting a SajhedaribanBibaran
-async function deleteSajhedaribanBibaran(req, res) {
-  const deleteSajhedaribanBibaranQuery = `DELETE  FROM sajhedariban_bibarans where sajhedariban_id=?`;
+//Controller for deleting a SajhedariBibaran
+async function deleteSajhedariBibaran(req, res) {
+  const deleteSajhedariBibaranQuery = `DELETE  FROM sajhedari_bibarans where sajhedari_bibaran_id=?`;
   pool.query(
-    deleteSajhedaribanBibaranQuery,
-    [req.params.sajhedaribanBibaranId],
+    deleteSajhedariBibaranQuery,
+    [req.params.sajhedariBibaranId],
     (error, results, fields) => {
       if (error) {
         throw error;
@@ -128,11 +111,9 @@ async function deleteSajhedaribanBibaran(req, res) {
 }
 
 module.exports = {
-  getAllSajhedaribanBibaran,
-  getSajhedaribanBibaran,
-  addSajhedaribanBibaran,
-  updateSajhedaribanBibaran,
-  deleteSajhedaribanBibaran,
+  getAllSajhedariBibaran,
+  getSajhedariBibaran,
+  addSajhedariBibaran,
+  updateSajhedariBibaran,
+  deleteSajhedariBibaran,
 };
-
-//** */
