@@ -21,6 +21,9 @@ class Banbibaran extends Component {
       perPage: 10,
     });
     this.props.fetchallBanxetraatikraman({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "address",
       page: 0,
       perPage: 10,

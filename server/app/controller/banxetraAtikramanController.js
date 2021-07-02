@@ -2,13 +2,23 @@ const pool = require("../db");
 
 //Controller for Listing all Banxetra Atikramans
 async function getAllBanxetraAtikramans(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from banxetra_atikramans";
-  const getAllBanxetraAtikramansQuery = `select * from banxetra_atikramans ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from banxetra_atikramans as b where b.atikraman_miti BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBanxetraAtikramansQuery = `select * from banxetra_atikramans as b where b.atikraman_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+     [ req.body.fromDate, req.body.toDate, req.body.distId],
+     (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
       getAllBanxetraAtikramansQuery,
-      [req.body.name, req.body.page, req.body.perPage],
+      [
+        req.body.fromDate,
+        req.body.toDate,
+        req.body.distId,
+        req.body.name,
+        req.body.page,
+        req.body.perPage
+      ],
       (error, results, fields) => {
         if (error) throw error;
         res.send(
@@ -23,7 +33,8 @@ async function getAllBanxetraAtikramans(req, res) {
         );
       }
     );
-  });
+  }
+ );
 }
 
 //Controller for Listing a Banxetra Atikraman
@@ -50,6 +61,7 @@ async function addBanxetraAtikramans(req, res) {
       req.body.address,
       req.body.atikraman_kisim,
       req.body.samalagna_ghardhuri,
+      req.body.atikraman_miti,
       req.body.atikraman_prayojan,
       req.body.samrachana_bibaran,
       req.body.atikraman_abastha,
@@ -76,6 +88,7 @@ async function updateBanxetraAtikramans(req, res) {
       req.body.address,
       req.body.atikraman_kisim,
       req.body.samalagna_ghardhuri,
+      req.body.atikraman_miti,
       req.body.atikraman_prayojan,
       req.body.samrachana_bibaran,
       req.body.atikraman_abastha,

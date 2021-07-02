@@ -2,12 +2,11 @@ import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
-import ReactPaginate from "react-paginate";
 import { Table } from "react-bootstrap";
-import { Button, EditDropdown } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onAdd, onSelect,pageCount, onPageClick  } = props;
+  const { buttonName, headings, data, title, onAdd, onSelect,pageCount, onPageClick,pers,per,onPer  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -42,6 +41,7 @@ function List(props) {
                   <td key={index}> {banxetraatikraman.address}</td>
                   <td key={index}> {banxetraatikraman.atikraman_kisim}</td>
                   <td key={index}> {banxetraatikraman.samalagna_ghardhuri}</td>
+                  <td key={index}> {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}</td>
                   <td key={index}> {banxetraatikraman.atikraman_prayojan}</td>   
                   <td key={index}> {banxetraatikraman.samrachana_bibaran}</td>
                   <td key={index}> {banxetraatikraman.atikraman_abastha}</td>
@@ -60,21 +60,15 @@ function List(props) {
             )}
           </tbody>
         </Table>
-        <div className="paginationStyle">
-        <ReactPaginate
-          previousLabel={"PREV"}
-          nextLabel={"NEXT"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
+        <Pagination
+          per={per}
+          pers={pers}
+          onPer={onPer}
           pageCount={pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
           onPageChange={onPageClick}
-          containerClassName={"pagination"}
-          activeClassName={"active"}
+          type="banxetraatikraman"
         />
         </div>
-      </div>
     </Fragment>
   );
 }
