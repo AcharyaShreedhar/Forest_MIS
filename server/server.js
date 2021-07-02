@@ -66,6 +66,7 @@ const samajikkaryaBibaranRoutes = require("./app/routes/samajikkaryaBibaranRoute
 const brixyaropanRoutes = require("./app/routes/brixyaropanRoutes");
 const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
 const sajhedaribanBibaranRoutes = require("./app/routes/sajhedaribanBibaranRoutes");
+const jadibutiRoutes = require("./app/routes/jadibutiRoutes");
 
 app.use("/api/v1", provinceRoutes);
 
@@ -112,6 +113,7 @@ app.use("/api/v1", samajikkaryaBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
 app.use("/api/v1", brixyaropanRoutes);
 app.use("/api/v1", sajhedaribanBibaranRoutes);
+app.use("/api/v1", jadibutiRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
