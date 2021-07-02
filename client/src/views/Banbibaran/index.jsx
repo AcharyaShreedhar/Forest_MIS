@@ -13,6 +13,9 @@ import MuddaanusandhandayariActions from "../../actions/muddaanusandhandayari";
 class Banbibaran extends Component {
   componentDidMount() {
     this.props.fetchallBandadelo({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "bandadelo_address",
       page: 0,
       perPage: 10,
