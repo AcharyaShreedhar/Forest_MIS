@@ -4,15 +4,25 @@ import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
 import { BandadeloBibaran, Filter, ReportGenerator } from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
-import { bandadeloHeadings } from "../../../services/config";
+import { bandadeloHeadings, districtList, } from "../../../services/config";
 import { Fragment } from "react";
 
 class Bandadelo extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "bandadelolist", perPage: 10, page: 1 };
+    this.state = {
+      loc: "bandadelolist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+    };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
@@ -31,12 +41,31 @@ class Bandadelo extends Component {
     };
   }
   handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(0, e);
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
 
-  fetchResults(page, perPage) {
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallBandadelo({
+      fromDate,
+      toDate,
+      distId,
       name: "bandadelo_address",
       page: page,
       perPage,
@@ -44,9 +73,15 @@ class Bandadelo extends Component {
   }
 
   handlePageChange(data) {
-    const { perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(data.selected * perPage, perPage);
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item, path) {
@@ -89,7 +124,13 @@ class Bandadelo extends Component {
         {equals(loc, "bandadelolist") && (
           <Fragment>
             <div className="report-filter">
-              <Filter />
+              <Filter
+                id="samudayikban"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
               <ReportGenerator id="bandadelo" />
             </div>
             <BandadeloBibaran.List

@@ -3,7 +3,7 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import { Button, EditDropdown,Pagination } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
   const {
@@ -32,7 +32,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="bandadelo" >
+        <Table responsive striped bordered hover id="bandadelo">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -57,6 +57,7 @@ function List(props) {
                   <td key={index}> {bandadelo.niyantran_karta}</td>
                   <td key={index}> {bandadelo.sahabhagi_mahila}</td>
                   <td key={index}> {bandadelo.sahabhagi_purus}</td>
+                  <td key={index}> {englishToNepaliNumber(bandadelo.bandadelo_miti)}</td>
                   <td key={index}> {bandadelo.created_by}</td>
                   <td key={index}> {bandadelo.updated_by}</td>
                   <td>
