@@ -20,6 +20,7 @@ export class Activities extends Component {
       perPage: 10,
     });
     this.props.fetchallJadibuti({
+      distId: "%",
       name: "jadibuti_thegana",
       page: 0,
       perPage: 10,
