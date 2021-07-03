@@ -139,7 +139,7 @@ class Bankaprakar extends Component {
         break;
       }
       case "sajhedariban": {
-        this.props.fetchallSajhedariban({
+        this.props.fetchallSajhedaribanbibaran({
           fromDate,
           toDate,
           distId,
