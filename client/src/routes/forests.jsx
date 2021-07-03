@@ -101,14 +101,7 @@ const forestRoutes = [
     auth: true,
     component: Bankaprakar,
   },
-  {
-    path: "/forests/sajhedaribanedit/:id",
-    title: "Sajhedariban",
-    name: "sajhedariban",
-    auth: true,
-    component: Bankaprakar,
-  },
-
+ 
   {
     path: "/forests/chaklabanlist",
     title: "Chaklaban",
@@ -116,6 +109,14 @@ const forestRoutes = [
     auth: true,
     component: Bankaprakar,
   },
+  {
+    path: "/forests/chaklabanadd/new",
+    title: "Chaklaban",
+    name: "chaklaban",
+    auth: true,
+    component: Bankaprakar,
+  },
+
 
   {
     path: "/forests/sajhedaribanedit/:id",
