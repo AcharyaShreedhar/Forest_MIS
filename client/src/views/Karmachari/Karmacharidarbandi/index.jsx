@@ -43,6 +43,11 @@ class Karmacharidarbandi extends Component {
       karmacharidarbandiList,
     };
   }
+  handlePer(e) {
+    const { distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(distId, 0, e);
+  }
   handleDistrict(e, item) {
     const { perPage } = this.state;
     this.setState({ distId: e });
