@@ -141,7 +141,7 @@ class Banxetraanyaprayojan extends Component {
             onPer={this.handlePer}
             user={user}
             headings={banxetraanyaprayojanHeadings}
-            onAdd={this.handleAdd("banxetraanyaprayojan")}
+            onAdd={() => this.handleAdd("bbanxetraanyaprayojanan")}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e)}
           />

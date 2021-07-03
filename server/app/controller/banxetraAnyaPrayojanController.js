@@ -2,7 +2,7 @@ const pool = require("../db");
 //Controller for Listing all BanxetraAnyaprayojan
 async function getAllBanxetraAnyaprayojan(req, res) {
   const getTotalQuery = "SELECT count(*) as total from banxetra_anyaprayojans as a where a.arthik_barsa BETWEEN ? and ? and a.dist_id like ?";
-  const getAllBanxetraAnyaprayojanQuery = `select * from banxetra_anyaprayojans as a where a.arthik_barsa BETWEEN ? and ? and a.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+  const getAllBanxetraAnyaprayojanQuery = `select * from banxetra_anyaprayojans as a where a.arthik_barsa BETWEEN ? and ? and a.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
