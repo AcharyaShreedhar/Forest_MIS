@@ -8,6 +8,7 @@ import {
   KabuliyatibanBibaran,
   NijibanBibaran,
   SamudayikbanBibaran,
+  SajhedaribanBibaran,
   ReportGenerator,
 } from "../../../components";
 import BankaprakarActions from "../../../actions/bankaprakar";
@@ -16,6 +17,7 @@ import {
   dharmikbanHeadings,
   kabuliyatibanHeadings,
   nijibanHeadings,
+  sajhedaribanHeadings,
   districtList,
 } from "../../../services/config";
 import "./Bankaprakar.scss";
@@ -47,12 +49,14 @@ class Bankaprakar extends Component {
     var dharmikbanList = [];
     var kabuliyatibanList = [];
     var nijibanList = [];
+    var sajhedaribanList = [];
 
     if (nextProps !== prevState) {
       samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
       dharmikbanList = nextProps.dharmikbanbibaranDataList.data;
       nijibanList = nextProps.nijibanbibaranDataList.data;
       kabuliyatibanList = nextProps.kabuliyatibanbibaranDataList.data;
+      sajhedaribanList = nextProps.sajhedaribanbibaranDataList.data;
     }
 
     return {
@@ -61,6 +65,7 @@ class Bankaprakar extends Component {
       dharmikbanList,
       nijibanList,
       kabuliyatibanList,
+      sajhedaribanList,
     };
   }
 
@@ -133,6 +138,17 @@ class Bankaprakar extends Component {
         });
         break;
       }
+      case "sajhedariban": {
+        this.props.fetchallSajhedariban({
+          fromDate,
+          toDate,
+          distId,
+          name: "darta_miti",
+          page: page,
+          perPage,
+        });
+        break;
+      }
       default:
         break;
     }
@@ -183,6 +199,13 @@ class Bankaprakar extends Component {
             });
             break;
           }
+          case "sajhedari": {
+            this.props.history.push({
+              pathname: `/forests/sajhedaribanedit/${item.sajhedariban_id}`,
+              item,
+            });
+            break;
+          }
 
           default:
             break;
@@ -205,6 +228,10 @@ class Bankaprakar extends Component {
           }
           case "niji": {
             this.props.deleteNijibanbibaran(item.darta_no);
+            break;
+          }
+          case "sajhedari": {
+            this.props.deleteSajhedaribanbibaran(item.darta_no);
             break;
           }
           default:
@@ -235,6 +262,10 @@ class Bankaprakar extends Component {
         this.props.history.push("/forests/nijibanadd/new");
         break;
       }
+      case "sajhedariban": {
+        this.props.history.push("/forests/sajhedaribanadd/new");
+        break;
+      }
 
       default:
         break;
@@ -248,6 +279,7 @@ class Bankaprakar extends Component {
       dharmikbanList,
       kabuliyatibanList,
       nijibanList,
+      sajhedaribanList,
     } = this.state;
     const { user } = this.props;
 
@@ -453,6 +485,56 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateNijibanbibaran(e, id)}
           />
         )}
+        {equals(loc, "sajhedaribanlist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="sajhedariban"
+                title="दार्ता मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="sajhedariban" />
+            </div>
+            <SajhedaribanBibaran.List
+              buttonName="+ साझेदारी वन"
+              title="साझेदारी वन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(sajhedaribanList)
+                  ? Math.ceil(sajhedaribanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(sajhedaribanList) ? sajhedaribanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={sajhedaribanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("sajhedariban")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "sajhedariban")}
+            />
+          </Fragment>
+        )}
+        {equals(loc, "sajhedaribanadd") && (
+          <SajhedaribanBibaran.Add
+            title="+ साझेदारी वन"
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addSajhedaribanbibaran(e)}
+          />
+        )}
+        {equals(loc, "sajhedaribanedit") && (
+          <SajhedaribanBibaran.Edit
+            title="साझेदारी वन पुनः प्रविष्ट"
+            user={user}
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateSajhedaribanbibaran(e, id)}
+          />
+        )}
       </div>
     );
   }
@@ -463,6 +545,7 @@ Bankaprakar.propTypes = {
   dharmikbanbibaranDataList: PropTypes.any,
   kabuliyatibanbibaranDataList: PropTypes.any,
   nijibanbibaranDataList: PropTypes.any,
+  sajhedaribanbibaranDataList: PropTypes.any,
 };
 
 Bankaprakar.defaultProps = {
@@ -470,6 +553,7 @@ Bankaprakar.defaultProps = {
   dharmikbanbibaranDataList: {},
   kabuliyatibanbibaranDataList: {},
   nijibanbibaranDataList: {},
+  sajhedaribanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
@@ -479,6 +563,7 @@ const mapStateToProps = (state) => ({
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
   nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
+  sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -546,6 +631,23 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   deleteNijibanbibaran: (nijibanbibaranId) =>
     dispatch(BankaprakarActions.deletenijibanbibaranRequest(nijibanbibaranId)),
+
+  //Sajhedariban
+  fetchallSajhedaribanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
+  addSajhedaribanbibaran: (payload) =>
+    dispatch(BankaprakarActions.addsajhedaribanbibaranRequest(payload)),
+  updateSajhedaribanbibaran: (payload, sajhedaribanId) =>
+    dispatch(
+      BankaprakarActions.updatesajhedaribanbibaranRequest(
+        payload,
+        sajhedaribanId
+      )
+    ),
+  deleteSajhedaribanbibaran: (sajhedaribanId) =>
+    dispatch(
+      BankaprakarActions.deletesajhedaribanbibaranRequest(sajhedaribanId)
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);
