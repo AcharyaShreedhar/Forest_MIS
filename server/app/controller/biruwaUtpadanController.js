@@ -2,28 +2,40 @@ const pool = require("../db");
 
 //Controller for Listing all Biruwa Utpadans
 async function getAllBiruwaUtpadans(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from biruwa_utpadans";
-  const getAllBiruwaUtpadansQuery = `select * from biruwa_utpadans ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllBiruwaUtpadansQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from biruwa_utpadans as b where b.arthik_barsa BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBiruwaUtpadansQuery = `select * from biruwa_utpadans as b where b.arthik_barsa BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllBiruwaUtpadansQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a Biruwa Utpadan
