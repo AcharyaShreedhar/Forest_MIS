@@ -3,7 +3,7 @@ const pool = require("../db");
 async function getAllMuddaAnusandhanDayaris(req, res) {
   const getTotalQuery =
     "SELECT count(*) as total from mudda_anusandhan_dayaris as m where m.jaheri_partibedan_miti BETWEEN ? and ? and m.dist_id like ?";
-  const getAllMuddaAnusandhanDayarisQuery = `select * from mudda_anusandhan_dayaris  as m where m.jaheri_partibedan_miti BETWEEN ? and ? and m.dist_id like ? ORDER BY ? ASC LIMIT ? ,?`;
+  const getAllMuddaAnusandhanDayarisQuery = `select * from mudda_anusandhan_dayaris  as m where m.jaheri_partibedan_miti BETWEEN ? and ? and m.dist_id like ? ORDER BY ? DESC LIMIT ? ,?`;
   pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
