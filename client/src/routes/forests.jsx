@@ -95,6 +95,14 @@ const forestRoutes = [
   },
 
   {
+    path: "/forests/sajhedaribanadd/new",
+    title: "Sajhedariban",
+    name: "sajhedariban",
+    auth: true,
+    component: Bankaprakar,
+  },
+
+  {
     redirect: true,
     path: "/forests",
     to: "/forests/samudayikbanlist",
