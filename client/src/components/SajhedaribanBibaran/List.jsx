@@ -11,9 +11,10 @@ function List(props) {
     headings,
     data,
     title,
+    pageCount,
+    user,
     onAdd,
     onSelect,
-    pageCount,
     onPageClick,
     pers,
     per,
@@ -32,7 +33,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="banxetraanyaprayojan">
+        <Table responsive striped bordered hover id="sajhedariban">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -46,30 +47,27 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((banxetra, index) => (
+              data.map((sban, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {englishToNepaliNumber(banxetra.arthik_barsa)}</td>
-                  <td key={index}> {banxetra.uplabdakarta_naam}</td>
-                  <td key={index}> {banxetra.upalabdha_address}</td>
-                  <td key={index}> {banxetra.xetrafal_temp}</td>
-                  <td key={index}> {banxetra.xetrafal_perm}</td>
-                  <td key={index}> {banxetra.samaya_abadhi}</td>
-                  <td key={index}> {banxetra.rukh_hataunuparne}</td>
-                  <td key={index}> {banxetra.rukh_hatayeko}</td>
-                  <td key={index}> {banxetra.sattajagga_area}</td>
-                  <td key={index}> {banxetra.xetipurti_brixyaropan}</td>
-                  <td key={index}> {banxetra.sattajagga_brixyaropan}</td>
-                  <td key={index}> {banxetra.leejrakam_adhyaadhik}</td>
-                  <td key={index}> {banxetra.barsik_pratibedan}</td>
-                  <td key={index}> {banxetra.prapta_rajaswo}</td>
-                  <td key={index}> {banxetra.created_by}</td>
-                  <td key={index}> {banxetra.updated_by}</td>
+                  <td key={index}> {sban.darta_no}</td>
+                  <td key={index}>
+                    {englishToNepaliNumber(sban.darta_miti)}
+                  </td>
+                  <td key={index}> {sban.sajhedariban_naam}</td>
+                  <td key={index}> {sban.address}</td>
+                  <td key={index}> {sban.area}</td>
+                  <td key={index}> {sban.main_species}</td>
+                  <td key={index}> {sban.ghardhuri}</td>
+                  <td key={index}> {sban.lav_jana}</td>
+                  
+                  <td key={index}> {sban.created_by || user.user_name}</td>
+                  <td key={index}> {sban.updated_by || user.user_name}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, banxetra, "banxetraanyaprayojan")}
+                        onChange={(e) => onSelect(e, sban, "sajhedari")}
                       />
                     </div>
                   </td>
@@ -84,7 +82,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type="banxetraanyaprayojan"
+          type="sajhedariban"
         />
       </div>
     </Fragment>
@@ -94,11 +92,30 @@ function List(props) {
 List.propTypes = {
   data: PropTypes.array,
   onSelect: PropTypes.func,
+  current: PropTypes.number.isRequired,
+  per: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  pers: PropTypes.arrayOf(PropTypes.any),
+  size: PropTypes.oneOf(["small", "large"]),
+  suffix: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+  onPer: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {
   data: [],
   onSelect: () => {},
+  current: 1,
+  // Item counts per page
+  per: 25,
+  // Total page counts
+  total: 2,
+  // Steps
+  pers: [25, 50, "all"],
+  size: "small",
+  suffix: "",
+  onChange: (e) => {},
+  onPer: (e) => {},
 };
 
 export default List;

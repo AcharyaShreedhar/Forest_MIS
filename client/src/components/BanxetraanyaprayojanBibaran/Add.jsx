@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Input, Dropdown } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 const LijRakam = [
   { id: 1, value: "गरेको" },
@@ -34,6 +35,7 @@ class Add extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLijRakam = this.handleLijRakam.bind(this);
     this.handleBarsikPratibedan = this.handleBarsikPratibedan.bind(this);
+    this.handleDate = this.handleDate.bind(this);
   }
 
   handleSubmit() {
@@ -79,11 +81,14 @@ class Add extends Component {
     };
     this.props.onSubmit(payload);
   }
+  handleDate(e) {
+    this.setState({ arthik_barsa: e });
+  }
   handleLijRakam(e) {
-    this.setState({ leejrakam_adhyaadhik: e });
+    this.setState({ leejrakam_adhyaadhik: e[0] });
   }
   handleBarsikPratibedan(e) {
-    this.setState({ barsik_pratibedan: e });
+    this.setState({ barsik_pratibedan: e[0] });
   }
 
   render() {
@@ -113,12 +118,13 @@ class Add extends Component {
               <span className="dsl-b22">{title}</span>
             </div>
 
-            <Input
+            <span className="dsl-b18">आर्थिक वर्ष</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
               className="mb-4"
-              title="आर्थिक वर्ष"
               value={arthik_barsa}
-              direction="vertical"
-              onChange={(e) => this.setState({ arthik_barsa: e })}
+              onChange={(e) => this.handleDate(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
 
             <Input

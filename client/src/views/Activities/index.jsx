@@ -18,11 +18,17 @@ export class Activities extends Component {
       perPage: 10,
     });
     this.props.fetchallBiruwautpadan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
     });
     this.props.fetchallYearlyactivities({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "fiscal_year",
       page: 0,
       perPage: 10,
