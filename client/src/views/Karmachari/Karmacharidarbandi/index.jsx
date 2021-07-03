@@ -2,17 +2,30 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { KarmachariDarbandi, Filter, ReportGenerator } from "../../../components";
+import {
+  KarmachariDarbandi,
+  Filter,
+  ReportGenerator,
+} from "../../../components";
 import KarmacharidarbandiActions from "../../../actions/karmacharidarbandi";
-import { karmacharidarbandiHeadings } from "../../../services/config";
+import {
+  karmacharidarbandiHeadings,
+  districtList,
+} from "../../../services/config";
 import { Fragment } from "react";
 
 class Karmacharidarbandi extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "karmacharidarbandilist", perPage: 10, page: 0 };
+    this.state = {
+      loc: "karmacharidarbandilist",
+      distId: "%",
+      perPage: 10,
+      page: 0,
+    };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
@@ -30,13 +43,15 @@ class Karmacharidarbandi extends Component {
       karmacharidarbandiList,
     };
   }
-  handlePer(e) {
-    this.setState({ perPage: e });
-    this.fetchResults(0, e);
+  handleDistrict(e, item) {
+    const { perPage } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(e, 0, perPage);
   }
 
-  fetchResults(page, perPage) {
+  fetchResults(distId, page, perPage) {
     this.props.fetchallKarmacharidarbandi({
+      distId,
       name: "post",
       page: page,
       perPage,
@@ -44,9 +59,9 @@ class Karmacharidarbandi extends Component {
   }
 
   handlePageChange(data) {
-    const { perPage } = this.state;
+    const { distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(data.selected * perPage, perPage);
+    this.fetchResults(distId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {
@@ -70,18 +85,23 @@ class Karmacharidarbandi extends Component {
 
   handleAdd(item) {
     this.props.history.push("/karmachari/karmacharidarbandiadd/new");
-    }
+  }
 
   render() {
     const { loc, perPage, karmacharidarbandiList } = this.state;
     const { user } = this.props;
-   
+
     return (
       <div>
         {equals(loc, "karmacharidarbandilist") && (
           <Fragment>
             <div className="report-filter">
-              <Filter />
+              <Filter
+                id="karmacharidarbandi"
+                districtsList={districtList}
+                onSelect={this.handleDistrict}
+                yesDate={false}
+              />
               <ReportGenerator id="karmacharidarbandi" />
             </div>
             <KarmachariDarbandi.List
@@ -93,7 +113,9 @@ class Karmacharidarbandi extends Component {
                   : 10
               }
               data={
-                !isNil(karmacharidarbandiList) ? karmacharidarbandiList.list : []
+                !isNil(karmacharidarbandiList)
+                  ? karmacharidarbandiList.list
+                  : []
               }
               per={perPage}
               pers={[10, 25, 50, "all"]}
@@ -138,21 +160,33 @@ Karmacharidarbandi.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  karmacharidarbandiDataList: state.karmacharidarbandi.allkarmacharidarbandiData,
+  karmacharidarbandiDataList:
+    state.karmacharidarbandi.allkarmacharidarbandiData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallKarmacharidarbandi: (payload) =>
-    dispatch(KarmacharidarbandiActions.fetchallkarmacharidarbandiRequest(payload)),
+    dispatch(
+      KarmacharidarbandiActions.fetchallkarmacharidarbandiRequest(payload)
+    ),
 
   addKarmacharidarbandi: (payload) =>
     dispatch(KarmacharidarbandiActions.addkarmacharidarbandiRequest(payload)),
 
   updateKarmacharidarbandi: (payload, karmacharidarbandiId) =>
-    dispatch(KarmacharidarbandiActions.updatekarmacharidarbandiRequest(payload, karmacharidarbandiId)),
+    dispatch(
+      KarmacharidarbandiActions.updatekarmacharidarbandiRequest(
+        payload,
+        karmacharidarbandiId
+      )
+    ),
 
   deleteKarmacharidarbandi: (karmacharidarbandiId) =>
-    dispatch(KarmacharidarbandiActions.deletekarmacharidarbandiRequest(karmacharidarbandiId)),
+    dispatch(
+      KarmacharidarbandiActions.deletekarmacharidarbandiRequest(
+        karmacharidarbandiId
+      )
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karmacharidarbandi);

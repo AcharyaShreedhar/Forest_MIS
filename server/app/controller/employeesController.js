@@ -1,28 +1,40 @@
 const pool = require("../db");
 //Controller for Listing all Employees
 async function getAllEmployees(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from employees";
-  const getAllEmployeesQuery = `select * from employees ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllEmployeesQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from employees as e where e.emp_appoint_date BETWEEN ? and ? and e.emp_add_perm_dist like ?";
+  const getAllEmployeesQuery = `select * from employees as e where e.emp_appoint_date BETWEEN ? and ? and e.emp_add_perm_dist like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllEmployeesQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a Employees

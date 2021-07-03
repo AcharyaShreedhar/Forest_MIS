@@ -16,7 +16,7 @@ class Banbibaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "bandadelo_address",
+      name: "bandadelo_miti",
       page: 0,
       perPage: 10,
     });
@@ -109,10 +109,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
 
   fetchallBanxetraatikraman: (payload) =>
-    dispatch(BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)),
+    dispatch(
+      BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)
+    ),
 
   fetchallMuddaanusandhandayari: (payload) =>
-    dispatch(MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)),
+    dispatch(
+      MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)
+    ),
 
   fetchallSeedgardenplots: (payload) =>
     dispatch(BanbibaranActions.fetchallplotbibaranRequest(payload)),

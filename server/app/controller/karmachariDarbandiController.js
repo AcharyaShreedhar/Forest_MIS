@@ -2,28 +2,33 @@ const pool = require("../db");
 
 // controller for getting all KarmachariDarbandi
 async function getAllKarmachariDarbandi(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from karmachari_darbandis";
-  const getAllKarmachariDarbandiQuery = `select * from karmachari_darbandis ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllKarmachariDarbandiQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from karmachari_darbandis as k where  k.dist_id like ?";
+  const getAllKarmachariDarbandiQuery = `select * from karmachari_darbandis as k where  k.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllKarmachariDarbandiQuery,
+        [req.body.distId, req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 // controller for getting a KarmachariDarbandi

@@ -11,19 +11,21 @@ import KarmacharibibaranActions from "../../actions/karmacharibibaran";
 export class Karmachari extends Component {
   componentDidMount() {
     this.props.fetchallKarmacharidarbandi({
+      distId: "%",
       name: "post",
       page: 0,
       perPage: 10,
     });
-    
+
     this.props.fetchallKarmacharibibaran({
-      name: "emp_fname_eng",
-      page:0,
-      perPage:10,
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "emp_appoint_date",
+      page: 0,
+      perPage: 10,
     });
   }
-
-  
 
   render() {
     const { authenticated } = this.props;
@@ -77,10 +79,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallKarmacharidarbandi: (payload) =>
-    dispatch(KarmacharidarbandiActions.fetchallkarmacharidarbandiRequest(payload)),
- 
-  fetchallKarmacharibibaran:(payload) =>
-  dispatch(KarmacharibibaranActions.fetchallemployeesRequest(payload)),
+    dispatch(
+      KarmacharidarbandiActions.fetchallkarmacharidarbandiRequest(payload)
+    ),
+
+  fetchallKarmacharibibaran: (payload) =>
+    dispatch(KarmacharibibaranActions.fetchallemployeesRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karmachari);
