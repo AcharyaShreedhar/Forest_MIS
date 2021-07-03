@@ -24,7 +24,7 @@ class Banbibaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "address",
+      name: "atikraman_miti",
       page: 0,
       perPage: 10,
     });
@@ -39,6 +39,9 @@ class Banbibaran extends Component {
       perPage: 10,
     });
     this.props.fetchallMuddaanusandhandayari({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
