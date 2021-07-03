@@ -2,17 +2,30 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { SeedgardenplotsBibaran } from "../../../components";
+import { SeedgardenplotsBibaran, Filter, ReportGenerator  } from "../../../components";
 import BanbibaranActions from "../../../actions/banbibaran";
-import { seedgardenplotsHeadings } from "../../../services/config";
+import { seedgardenplotsHeadings, districtList } from "../../../services/config";
+import { Fragment } from "react";
 
 class Seedgardenplots extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "seedgardenplotslist", perPage: 10, page: 1 };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
+    this.state = { 
+      loc: "seedgardenplotslist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1
+       };
+       this.handleSelectMenu = this.handleSelectMenu.bind(this);
+       this.handleAdd = this.handleAdd.bind(this);
+       this.handleDistrict = this.handleDistrict.bind(this);
+       this.handleToDate = this.handleToDate.bind(this);
+       this.handleFromDate = this.handleFromDate.bind(this);
+       this.handlePageChange = this.handlePageChange.bind(this);
+       this.handlePer = this.handlePer.bind(this);
+       this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -25,16 +38,50 @@ class Seedgardenplots extends Component {
     return { loc, seedgardenplotsList };
   }
 
-  handlePageChange(data) {
-    const { perPage } = this.state;
-    this.setState({ page: data.selected });
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
+  }
 
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallSeedgardenplots({
-      name: "established_date",
-      page: data.selected * perPage,
+      fromDate,
+      toDate,
+      distId,
+      name: "bandadelo_address",
+      page: page,
       perPage,
     });
   }
+
+  handlePageChange(data) {
+    const { fromDate, toDate, distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
+  }
+
 
   handleSelectMenu(event, item) {
     switch (event) {
@@ -65,6 +112,18 @@ class Seedgardenplots extends Component {
     return (
       <div>
         {equals(loc, "seedgardenplotslist") && (
+           <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="seedgardenplots"
+                title="स्थापना मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="seedgardenplots" />
+            </div>
           <SeedgardenplotsBibaran.List
             buttonName="+ बन बीउ बगैच/समबर्धन प्लटहरु"
             title="बन बीउ बगैच/समबर्धन प्लटहरु सम्बन्धी विवरण"
@@ -74,12 +133,16 @@ class Seedgardenplots extends Component {
                 : 10
             }
             data={!isNil(seedgardenplotsList) ? seedgardenplotsList.list : []}
+            per={perPage}
+            pers={[10, 25, 50, "all"]}
+            onPer={this.handlePer}
             user={user}
             headings={seedgardenplotsHeadings}
             onAdd={this.handleAdd}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e)}
           />
+          </Fragment>
         )}
         {equals(loc, "seedgardenplotsadd") && (
           <SeedgardenplotsBibaran.Add

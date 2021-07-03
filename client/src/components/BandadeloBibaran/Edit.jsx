@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 class Edit extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class Edit extends Component {
       niyantran_karta: props.history.location.item.niyantran_karta,
       sahabhagi_mahila: props.history.location.item.sahabhagi_mahila,
       sahabhagi_purus: props.history.location.item.sahabhagi_purus,
+      bandadelo_miti: props.history.location.item.bandadelo_miti,
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
@@ -35,6 +37,7 @@ class Edit extends Component {
       niyantran_karta,
       sahabhagi_mahila,
       sahabhagi_purus,
+      bandadelo_miti,
       created_by,
       updated_by,
     } = this.state;
@@ -49,6 +52,7 @@ class Edit extends Component {
           niyantran_karta: niyantran_karta,
           sahabhagi_mahila: sahabhagi_mahila,
           sahabhagi_purus: sahabhagi_purus,
+          bandadelo_miti: bandadelo_miti,
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
@@ -60,7 +64,7 @@ class Edit extends Component {
   }
 
   handleDate(e) {
-    this.setState({ lilam_date: e });
+    this.setState({ bandadelo_miti: e });
   }
 
   render() {
@@ -74,6 +78,7 @@ class Edit extends Component {
       niyantran_karta,
       sahabhagi_mahila,
       sahabhagi_purus,
+      bandadelo_miti,
     } = this.state;
 
     return (
@@ -141,6 +146,14 @@ class Edit extends Component {
               value={sahabhagi_purus}
               direction="vertical"
               onChange={(e) => this.setState({ sahabhagi_purus: e })}
+            />
+            <span className="dsl-b18">डढेलो लागेको मिति</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="mb-4"
+              value={bandadelo_miti}
+              onChange={(e) => this.handleDate(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
           </div>
           <div className="mt-2 border-5">
