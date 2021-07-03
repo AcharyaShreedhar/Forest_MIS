@@ -65,7 +65,7 @@ class Bandadelo extends Component {
       fromDate,
       toDate,
       distId,
-      name: "bandadelo_address",
+      name: "bandadelo_miti",
       page: page,
       perPage,
     });

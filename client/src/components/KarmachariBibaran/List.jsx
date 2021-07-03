@@ -3,7 +3,7 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import { Button, EditDropdown,  Pagination } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
   const {
@@ -33,7 +33,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="karmacharibibaran">
           <thead>
             <tr>
               <th>क्र.सं.</th>
@@ -50,7 +50,11 @@ function List(props) {
               data.map((karmacharibibaran, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {karmacharibibaran.emp_fname_nep} {karmacharibibaran.emp_lname_nep}</td>
+                  <td key={index}>
+                    {" "}
+                    {karmacharibibaran.emp_fname_nep}{" "}
+                    {karmacharibibaran.emp_lname_nep}
+                  </td>
                   <td key={index}> {karmacharibibaran.emp_add_perm_prov} </td>
                   <td key={index}> {karmacharibibaran.emp_add_perm_dist} </td>
                   <td key={index}> {karmacharibibaran.emp_add_perm_mun} </td>
@@ -61,7 +65,11 @@ function List(props) {
                   <td key={index}> {karmacharibibaran.emp_add_temp_mun} </td>
                   <td key={index}> {karmacharibibaran.emp_add_temp_ward} </td>
                   <td key={index}> {karmacharibibaran.emp_add_temp_tole} </td>
-                  <td key={index}> {karmacharibibaran.emp_phone1} {karmacharibibaran.emp_phone2} </td>
+                  <td key={index}>
+                    {" "}
+                    {karmacharibibaran.emp_phone1}{" "}
+                    {karmacharibibaran.emp_phone2}{" "}
+                  </td>
                   <td key={index}> {karmacharibibaran.emp_email} </td>
                   <td key={index}> {karmacharibibaran.emp_office_id} </td>
                   <td key={index}> {karmacharibibaran.emp_dept_id} </td>
@@ -78,7 +86,9 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, karmacharibibaran, "karmacharibibaran")}
+                        onChange={(e) =>
+                          onSelect(e, karmacharibibaran, "karmacharibibaran")
+                        }
                       />
                     </div>
                   </td>
