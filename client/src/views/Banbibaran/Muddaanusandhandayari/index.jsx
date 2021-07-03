@@ -2,16 +2,30 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { MuddaanusandhanDayari } from "../../../components";
+import { MuddaanusandhanDayari, Filter, ReportGenerator } from "../../../components";
 import MuddaanusandhandayariActions from "../../../actions/muddaanusandhandayari";
-import { muddaanusandhandayariHeadings } from "../../../services/config";
+import { muddaanusandhandayariHeadings, districtList, } from "../../../services/config";
+import { Fragment } from "react";
 
 class Muddaanusandhandayari extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "muddaanusandhandayarilist", perPage: 10, page: 1 };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
+    this.state = { 
+      loc: "muddaanusandhandayarilist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+     };
+     this.handleSelectMenu = this.handleSelectMenu.bind(this);
+     this.handleAdd = this.handleAdd.bind(this);
+     this.handleDistrict = this.handleDistrict.bind(this);
+     this.handleToDate = this.handleToDate.bind(this);
+     this.handleFromDate = this.handleFromDate.bind(this);
+     this.handlePageChange = this.handlePageChange.bind(this);
+     this.handlePer = this.handlePer.bind(this);
+     this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -26,15 +40,48 @@ class Muddaanusandhandayari extends Component {
       muddaanusandhandayariList,
     };
   }
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
+  }
+
+  fetchResults(fromDate, toDate, distId, page, perPage) {
+    this.props.fetchallMuddaanusandhandayari({
+      fromDate,
+      toDate,
+      distId,
+      name: "jaheri_partibedan_miti",
+      page: page,
+      perPage,   
+    });
+  }
 
   handlePageChange(data) {
-    const { perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.props.fetchallMuddaanusandhandayari({
-      name: "jaheri_partibedan_miti",
-      page: data.selected * perPage,
-      perPage,
-    });
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item, path) {
@@ -61,18 +108,23 @@ class Muddaanusandhandayari extends Component {
 
   render() {
     const { loc, perPage, muddaanusandhandayariList } = this.state;
-    console.log("muddaanusandan....", muddaanusandhandayariList);
-    console.log(
-      "page...count",
-      !isNil(muddaanusandhandayariList)
-        ? Math.ceil(muddaanusandhandayariList.total / perPage)
-        : 10
-    );
     const { user } = this.props;
 
     return (
       <div>
         {equals(loc, "muddaanusandhandayarilist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="muddaanusandhandayaris"
+                title="जाहेरी प्रतिवेदन मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="muddaanusandhandayaris" />
+            </div>
           <MuddaanusandhanDayari.List
             buttonName="+ मुद्दा अनुसन्धान दायरी"
             title="मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण"
@@ -86,14 +138,18 @@ class Muddaanusandhandayari extends Component {
                 ? muddaanusandhandayariList.list
                 : []
             }
+            per={perPage}
+            pers={[10, 25, 50, "all"]}
+            onPer={this.handlePer}
             headings={muddaanusandhandayariHeadings}
             user={user}
             onAdd={() => this.handleAdd("muddaanusandhandayari")}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) =>
-              this.handlePageChange(e, "muddaanusandhandayari")
+              this.handlePageChange(e)
             }
           />
+          </Fragment>
         )}
         {equals(loc, "muddaanusandhandayariadd") && (
           <MuddaanusandhanDayari.Add
