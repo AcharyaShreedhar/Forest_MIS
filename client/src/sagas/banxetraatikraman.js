@@ -44,7 +44,7 @@ export function* addbanxetraatikramanRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraatikramanRequest(api,{
-      name: "address",
+      name: "atikraman_miti",
       page: 0,
       perPage: 10,
     });

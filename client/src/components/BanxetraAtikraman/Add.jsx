@@ -132,8 +132,8 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ samalagna_ghardhuri: e })}
             />
-              <span className="dsl-b18">अतिक्रमण मिति</span>
-            <NepaliDatePicker
+             <span className="dsl-b18">अतिक्रमण मिति</span>
+             <NepaliDatePicker
               inputClassName="form-control"
               className="mb-4"
               value={atikraman_miti}

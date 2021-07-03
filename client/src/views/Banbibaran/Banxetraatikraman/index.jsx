@@ -66,7 +66,7 @@ class Banxetraatikraman extends Component {
       fromDate,
       toDate,
       distId,
-      name: "address",
+      name: "atikraman_miti",
       page: page,
       perPage,   
     });
@@ -75,13 +75,13 @@ class Banxetraatikraman extends Component {
   handlePageChange(data) {
     const { fromDate, toDate, distId,perPage } = this.state;
     this.setState({ page: data.selected });
-    this.props.fetchallBanxetraatikraman({
+    this.props.fetchResults(
       fromDate,
       toDate,
       distId,
-      page: data.selected * perPage,
-      perPage,
-    });
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item, path) {
