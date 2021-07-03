@@ -116,6 +116,14 @@ const forestRoutes = [
     auth: true,
     component: Bankaprakar,
   },
+  {
+    path: "/forests/chaklabanadd/new",
+    title: "Chaklaban",
+    name: "chaklaban",
+    auth: true,
+    component: Bankaprakar,
+  },
+
 
   {
     redirect: true,
