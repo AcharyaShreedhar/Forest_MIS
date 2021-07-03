@@ -1,8 +1,8 @@
 const pool = require("../db");
 //Controller for Listing all Plot
 async function getAllPlot(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from forest_garden_plots as b where b.established_date BETWEEN ? and ? and b.dist_id like ?";
-  const getAllPlotQuery = `select * from forest_garden_plots as b where b.established_date BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  const getTotalQuery = "SELECT count(*) as total from forest_garden_plots as f where f.established_date BETWEEN ? and ? and f.dist_id like ?";
+  const getAllPlotQuery = `select * from forest_garden_plots as f where f.established_date BETWEEN ? and ? and f.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
