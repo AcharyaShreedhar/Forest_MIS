@@ -80,6 +80,14 @@ const activitiesRoutes = [
   },
 
   {
+    path: "/activities/jadibutiadd/new",
+    title: "Jadibuti",
+    name: "jadibuti",
+    auth: true,
+    component: Jadibuti,
+  },
+
+  {
     redirect: true,
     path: "/activities",
     to: "/activities/nurserylist",
