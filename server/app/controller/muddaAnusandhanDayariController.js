@@ -1,15 +1,14 @@
 const pool = require("../db");
-
 //Controller for Listing all Mudda Anusandhan Dayaris
 async function getAllMuddaAnusandhanDayaris(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from mudda_anusandhan_dayaris";
-  const getAllMuddaAnusandhanDayarisQuery = `select * from mudda_anusandhan_dayaris ORDER BY ? ASC LIMIT ? ,?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+    "SELECT count(*) as total from mudda_anusandhan_dayaris as m where m.jaheri_partibedan_miti BETWEEN ? and ? and m.dist_id like ?";
+  const getAllMuddaAnusandhanDayarisQuery = `select * from mudda_anusandhan_dayaris  as m where m.jaheri_partibedan_miti BETWEEN ? and ? and m.dist_id like ? ORDER BY ? ASC LIMIT ? ,?`;
+  pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
       getAllMuddaAnusandhanDayarisQuery,
-      [req.body.name, req.body.page, req.body.perPage],
+      [req.body.fromDate, req.body.toDate, req.body.distId,req.body.name, req.body.page, req.body.perPage],
       (error, results, fields) => {
         if (error) throw error;
         res.send(
