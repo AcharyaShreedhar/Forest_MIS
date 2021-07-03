@@ -342,6 +342,17 @@ const karmacharibibaranHeadings = [
    "परिमार्जन गर्ने",
 ];
 
+const jadibutiHeadings = [
+  "जडिबुटी उत्पादन ठेगाना",
+  "जडिबुटीको किसिम",
+  "जडिबुटीको प्रजाति",
+  "लक्ष",
+  "प्रगति",
+  "जडिबुटी संख्या",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -366,4 +377,5 @@ export {
   karmacharidarbandiHeadings,
   districtList,
   karmacharibibaranHeadings,
+  jadibutiHeadings,
 };

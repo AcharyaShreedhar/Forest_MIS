@@ -19,6 +19,11 @@ export class Activities extends Component {
       page: 0,
       perPage: 10,
     });
+    this.props.fetchallJadibuti({
+      name: "jadibuti_thegana",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -78,6 +83,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchallYearlyactivities: (payload) =>
     dispatch(BiruwautpadanActions.fetchallactivitiesinfoRequest(payload)),
+
+  fetchallJadibuti: (payload) =>
+    dispatch(BiruwautpadanActions.fetchalljadibutiRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Activities);

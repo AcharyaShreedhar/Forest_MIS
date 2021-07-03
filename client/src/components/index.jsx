@@ -36,7 +36,8 @@ import * as BanxetraanyaprayojanBibaran from "./BanxetraanyaprayojanBibaran";
 import * as MuddaanusandhanDayari from "./MuddaanusandhanDayari";
 import * as Brixyaropan from "./Brixyaropan";
 import * as KarmachariDarbandi from "./KarmachariDarbandi";
-import * as KarmachariBibaran from "./KarmachariBibaran"
+import * as KarmachariBibaran from "./KarmachariBibaran";
+import * as JadibutiUtpadan from "./JadibutiUtpadan";
 
 export {
   HeaderComponent,
@@ -78,4 +79,5 @@ export {
   Brixyaropan,
   KarmachariDarbandi,
   KarmachariBibaran,
+  JadibutiUtpadan,
 };
