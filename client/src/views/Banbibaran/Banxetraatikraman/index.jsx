@@ -2,22 +2,29 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanxetraAtikraman, Filter, ReportGenerator } from "../../../components";
+import {
+  BanxetraAtikraman,
+  Filter,
+  ReportGenerator,
+} from "../../../components";
 import BanxetraatikramanActions from "../../../actions/banxetraatikraman";
-import { banxetraatikramanHeadings, districtList } from "../../../services/config";
+import {
+  banxetraatikramanHeadings,
+  districtList,
+} from "../../../services/config";
 import { Fragment } from "react";
 
 class Banxetraatikraman extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       loc: "banxetraatikramanlist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
       page: 1,
-     };
+    };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
@@ -68,14 +75,14 @@ class Banxetraatikraman extends Component {
       distId,
       name: "atikraman_miti",
       page: page,
-      perPage,   
+      perPage,
     });
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId,perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.props.fetchResults(
+    this.fetchResults(
       fromDate,
       toDate,
       distId,
@@ -104,8 +111,7 @@ class Banxetraatikraman extends Component {
   }
 
   handleAdd() {
-       this.props.history.push("/banbibaran/banxetraatikramanadd/new");
-    
+    this.props.history.push("/banbibaran/banxetraatikramanadd/new");
   }
 
   render() {
@@ -127,26 +133,26 @@ class Banxetraatikraman extends Component {
               />
               <ReportGenerator id="banxetraatikraman" />
             </div>
-          <BanxetraAtikraman.List
-            buttonName="+ वनक्षेत्र अतिक्रमण"
-            title="वनक्षेत्र अतिक्रमण सम्बन्धि विवरण"
-            pageCount={
-              !isNil(banxetraatikramanList)
-                ? Math.ceil(banxetraatikramanList.total / perPage)
-                : 10
-            }
-            data={
-              !isNil(banxetraatikramanList) ? banxetraatikramanList.list : []
-            }
-            per={perPage}
-            pers={[10, 25, 50, "all"]}
-            onPer={this.handlePer}
-            headings={banxetraatikramanHeadings}
-            user={user}
-            onAdd={() => this.handleAdd()}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "banxetraatikraman")}
-          />
+            <BanxetraAtikraman.List
+              buttonName="+ वनक्षेत्र अतिक्रमण"
+              title="वनक्षेत्र अतिक्रमण सम्बन्धि विवरण"
+              pageCount={
+                !isNil(banxetraatikramanList)
+                  ? Math.ceil(banxetraatikramanList.total / perPage)
+                  : 10
+              }
+              data={
+                !isNil(banxetraatikramanList) ? banxetraatikramanList.list : []
+              }
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={banxetraatikramanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd()}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
           </Fragment>
         )}
         {equals(loc, "banxetraatikramanadd") && (
@@ -186,7 +192,9 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanxetraatrikraman: (payload) =>
-    dispatch(BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)),
+    dispatch(
+      BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)
+    ),
 
   addBanxetraatikraman: (payload) =>
     dispatch(BanxetraatikramanActions.addbanxetraatikramanRequest(payload)),
@@ -201,7 +209,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBanxetraatikraman: (banxetraatikramanId) =>
     dispatch(
-      BanxetraatikramanActions.deletebanxetraatikramanRequest(banxetraatikramanId)
+      BanxetraatikramanActions.deletebanxetraatikramanRequest(
+        banxetraatikramanId
+      )
     ),
 });
 

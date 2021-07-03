@@ -6,7 +6,19 @@ import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onAdd, onSelect,pageCount, onPageClick,pers,per,onPer  } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    onAdd,
+    onSelect,
+    pageCount,
+    onPageClick,
+    pers,
+    per,
+    onPer,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -20,7 +32,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="banxetraatikraman">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -41,8 +53,11 @@ function List(props) {
                   <td key={index}> {banxetraatikraman.address}</td>
                   <td key={index}> {banxetraatikraman.atikraman_kisim}</td>
                   <td key={index}> {banxetraatikraman.samalagna_ghardhuri}</td>
-                  <td key={index}> {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}</td>
-                  <td key={index}> {banxetraatikraman.atikraman_prayojan}</td>   
+                  <td key={index}>
+                    {" "}
+                    {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}
+                  </td>
+                  <td key={index}> {banxetraatikraman.atikraman_prayojan}</td>
                   <td key={index}> {banxetraatikraman.samrachana_bibaran}</td>
                   <td key={index}> {banxetraatikraman.atikraman_abastha}</td>
                   <td key={index}> {banxetraatikraman.created_by}</td>
@@ -51,7 +66,9 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, banxetraatikraman, "banxetraatikraman")}
+                        onChange={(e) =>
+                          onSelect(e, banxetraatikraman, "banxetraatikraman")
+                        }
                       />
                     </div>
                   </td>
@@ -65,10 +82,10 @@ function List(props) {
           pers={pers}
           onPer={onPer}
           pageCount={pageCount}
-          onPageChange={onPageClick}
+          onPageClick={onPageClick}
           type="banxetraatikraman"
         />
-        </div>
+      </div>
     </Fragment>
   );
 }

@@ -87,10 +87,10 @@ class Edit extends Component {
     this.setState({ atikraman_miti: e });
   }
   handleAtikramanKisim(e) {
-    this.setState({ atikraman_kisim: e });
+    this.setState({ atikraman_kisim: e[0] });
   }
   handleAtikramanAbastha(e) {
-    this.setState({ atikraman_abastha: e });
+    this.setState({ atikraman_abastha: e[0] });
   }
 
   render() {
@@ -147,7 +147,7 @@ class Edit extends Component {
               onChange={(e) => this.setState({ samalagna_ghardhuri: e })}
             />
             <span className="dsl-b18">अतिक्रमण मिति</span>
-             <NepaliDatePicker
+            <NepaliDatePicker
               inputClassName="form-control"
               className="mb-4"
               value={atikraman_miti}
