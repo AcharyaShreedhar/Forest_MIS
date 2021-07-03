@@ -102,16 +102,8 @@ class Bandadelo extends Component {
     }
   }
 
-  handleAdd(item) {
-    switch (item) {
-      case "bandadelo": {
+  handleAdd() {
         this.props.history.push("/banbibaran/bandadeloadd/new");
-        break;
-      }
-
-      default:
-        break;
-    }
   }
 
   render() {
