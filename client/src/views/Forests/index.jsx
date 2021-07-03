@@ -41,6 +41,14 @@ export class Forests extends Component {
       page: 0,
       perPage: 10,
     });
+    this.props.fetchallSajhedaribanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -104,6 +112,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest(payload)),
   fetchallNijibanbibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallnijibanbibaranRequest(payload)),
+  fetchallSajhedaribanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Forests);
