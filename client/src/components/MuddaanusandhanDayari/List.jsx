@@ -89,7 +89,7 @@ function List(props) {
           pers={pers}
           onPer={onPer}
           pageCount={pageCount}
-          onPageChange={onPageClick}
+          onPageClick={onPageClick}
           type="muddaanusandhandayaris"
         />
       </div>
