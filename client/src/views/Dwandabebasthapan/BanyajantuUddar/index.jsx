@@ -1,18 +1,37 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanyajantuUddarbibaran } from "../../../components";
+import {
+  BanyajantuUddarbibaran,
+  Filter,
+  ReportGenerator,
+} from "../../../components";
 import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
-import { banyajantuuddarHeadings } from "../../../services/config";
+import {
+  banyajantuuddarHeadings,
+  districtList,
+} from "../../../services/config";
 
 export class BanyajantuUddar extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "uddarlist", perPage: 10, page: 1 };
+    this.state = {
+      loc: "uddarlist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+    };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -27,16 +46,48 @@ export class BanyajantuUddar extends Component {
       };
     }
   }
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
+  }
 
-  handlePageChange(data) {
-    const { perPage } = this.state;
-    this.setState({ page: data.selected });
-
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallBanyajantuuddar({
+      fromDate,
+      toDate,
+      distId,
       name: "miti",
-      page: data.selected * perPage,
+      page: page,
       perPage,
     });
+  }
+
+  handlePageChange(data) {
+    const { fromDate, toDate, distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item, path) {
@@ -67,21 +118,37 @@ export class BanyajantuUddar extends Component {
     return (
       <div>
         {equals(loc, "banyajantuuddarlist") && (
-          <BanyajantuUddarbibaran.List
-            buttonName="+ वन्यजन्तु उद्दार"
-            title="वन्यजन्तु उद्दार सम्बन्धि विवरण"
-            pageCount={
-              !isNil(banyajantuuddarList)
-                ? Math.ceil(banyajantuuddarList.total / perPage)
-                : 10
-            }
-            data={!isNil(banyajantuuddarList) ? banyajantuuddarList.list : []}
-            headings={banyajantuuddarHeadings}
-            user={user}
-            onAdd={() => this.handleAdd("banyajantuuddar")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "banyajantuuddar")}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="banyajantuuddar"
+                title="उद्दार मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="banyajantuuddar" />
+            </div>
+            <BanyajantuUddarbibaran.List
+              buttonName="+ वन्यजन्तु उद्दार"
+              title="वन्यजन्तु उद्दार सम्बन्धि विवरण"
+              pageCount={
+                !isNil(banyajantuuddarList)
+                  ? Math.ceil(banyajantuuddarList.total / perPage)
+                  : 10
+              }
+              data={!isNil(banyajantuuddarList) ? banyajantuuddarList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={banyajantuuddarHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("banyajantuuddar")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "banyajantuuddar")}
+            />
+          </Fragment>
         )}
         {equals(loc, "banyajantuuddaradd") && (
           <BanyajantuUddarbibaran.Add

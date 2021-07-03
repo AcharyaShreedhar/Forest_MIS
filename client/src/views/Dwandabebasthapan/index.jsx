@@ -10,19 +10,24 @@ import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 export class Dwandabebasthapan extends Component {
   componentDidMount() {
     this.props.fetchallBanyajantuuddar({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "miti",
-      page:0,
-      perPage:10,
+      page: 0,
+      perPage: 10,
     });
     this.props.fetchallBanyajantuxetirahat({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "xeti_miti",
-      page:0,
-      perPage:10,
+      page: 0,
+      perPage: 10,
     });
   }
 
   render() {
-
     const { authenticated } = this.props;
     return (
       <Switch>
@@ -73,10 +78,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBanyajantuuddar:(payload) =>
-  dispatch(DwandabebasthapanActions.fetchallbanyajantuuddarRequest(payload)),
-  fetchallBanyajantuxetirahat:(payload) =>
-  dispatch(DwandabebasthapanActions.fetchallbanyajantuxetiRequest(payload)),
+  fetchallBanyajantuuddar: (payload) =>
+    dispatch(DwandabebasthapanActions.fetchallbanyajantuuddarRequest(payload)),
+  fetchallBanyajantuxetirahat: (payload) =>
+    dispatch(DwandabebasthapanActions.fetchallbanyajantuxetiRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dwandabebasthapan);

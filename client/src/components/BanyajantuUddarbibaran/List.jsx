@@ -3,11 +3,22 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
-import { Button, EditDropdown } from "..";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title,onPageClick,pageCount, onAdd, onSelect } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    onPageClick,
+    pageCount,
+    pers,
+    per,
+    onPer,
+    onAdd,
+    onSelect,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -21,7 +32,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="banyajantuuddar">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -38,13 +49,11 @@ function List(props) {
               data.map((uddar, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>
-                    {englishToNepaliNumber(uddar.miti)}
-                  </td>
+                  <td key={index}>{englishToNepaliNumber(uddar.miti)}</td>
                   <td key={index}> {uddar.sthaniya_taha}</td>
                   <td key={index}> {uddar.samaya}</td>
                   <td key={index}> {uddar.samraxit_xetra}</td>
-                  <td key={index}> {uddar.banyajantuko_naam}</td>   
+                  <td key={index}> {uddar.banyajantuko_naam}</td>
                   <td key={index}> {uddar.banyajantuko_umer}</td>
                   <td key={index}> {uddar.banyajantuko_abastha}</td>
                   <td key={index}> {uddar.mareko_karan}</td>
@@ -53,7 +62,7 @@ function List(props) {
                   <td key={index}> {uddar.remarks}</td>
                   <td key={index}> {uddar.created_by}</td>
                   <td key={index}> {uddar.updated_by}</td>
-            
+
                   <td>
                     <div className="edit">
                       <EditDropdown
@@ -67,20 +76,14 @@ function List(props) {
             )}
           </tbody>
         </Table>
-        <div className="paginationStyle">
-        <ReactPaginate
-          previousLabel={"PREV"}
-          nextLabel={"NEXT"}
-          breakLabel={"..."}
-          breakClassName={"break-me"}
+        <Pagination
+          per={per}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
           pageCount={pageCount}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={5}
-          onPageChange={onPageClick}
-          containerClassName={"pagination"}
-          activeClassName={"active"}
+          type="banyajantuuddar"
         />
-        </div>
       </div>
     </Fragment>
   );

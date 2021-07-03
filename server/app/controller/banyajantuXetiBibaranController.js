@@ -2,28 +2,40 @@ const pool = require("../db");
 
 //Controller for Listing all Banyajantu Xeti Bibarans
 async function getAllBanyajantuXetiBibarans(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from banyajantuxeti_bibarans";
-  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllBanyajantuXetiBibaransQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllBanyajantuXetiBibaransQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 //Controller for Listing a Banyajantu Xeti Bibaran
 async function getBabyajantuXetiBibarans(req, res) {
