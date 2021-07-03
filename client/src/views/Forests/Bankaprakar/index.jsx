@@ -490,7 +490,7 @@ class Bankaprakar extends Component {
             <div className="report-filter">
               <Filter
                 id="sajhedariban"
-                title="दार्ता मिति"
+                title="दर्ता मिति"
                 districtsList={districtList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
