@@ -43,7 +43,7 @@ class Add extends Component {
       address,
       atikraman_kisim,
       samalagna_ghardhuri,
-      atikaraman_miti,
+      atikraman_miti,
       atikraman_prayojan,
       samrachana_bibaran,
       atikraman_abastha,
@@ -57,7 +57,7 @@ class Add extends Component {
             ? "संस्थागत"
             : "व्यक्तिगत",
           samalagna_ghardhuri: samalagna_ghardhuri,
-          atikraman_miti:atikaraman_miti,
+          atikraman_miti: atikraman_miti,
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
           atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" : "पुरानो",
@@ -73,10 +73,10 @@ class Add extends Component {
     this.setState({ atikraman_miti: e });
   }
   handleAtikramanKisim(e) {
-    this.setState({ atikraman_kisim: e });
+    this.setState({ atikraman_kisim: e[0] });
   }
   handleAtikramanAbastha(e) {
-    this.setState({ atikraman_abastha: e });
+    this.setState({ atikraman_abastha: e[0] });
   }
 
   render() {
@@ -132,8 +132,8 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ samalagna_ghardhuri: e })}
             />
-             <span className="dsl-b18">अतिक्रमण मिति</span>
-             <NepaliDatePicker
+            <span className="dsl-b18">अतिक्रमण मिति</span>
+            <NepaliDatePicker
               inputClassName="form-control"
               className="mb-4"
               value={atikraman_miti}
