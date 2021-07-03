@@ -108,6 +108,12 @@ export class SideNavbar extends Component {
             >
               <NavText>साझेदारी बन</NavText>
             </NavItem>
+            <NavItem
+              eventKey="forests/chaklabanlist"
+              onClick={() => history.push("/forests/chaklabanlist")}
+            >
+              <NavText>चक्ला बन</NavText>
+            </NavItem>
           </NavItem>
           <NavItem eventKey="/banbibaran">
             <NavIcon>
