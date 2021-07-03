@@ -9,6 +9,7 @@ import {
   NijibanBibaran,
   SamudayikbanBibaran,
   SajhedaribanBibaran,
+  ChaklabanBibaran,
   ReportGenerator,
 } from "../../../components";
 import BankaprakarActions from "../../../actions/bankaprakar";
@@ -18,6 +19,7 @@ import {
   kabuliyatibanHeadings,
   nijibanHeadings,
   sajhedaribanHeadings,
+  chaklabanHeadings,
   districtList,
 } from "../../../services/config";
 import "./Bankaprakar.scss";
@@ -50,6 +52,7 @@ class Bankaprakar extends Component {
     var kabuliyatibanList = [];
     var nijibanList = [];
     var sajhedaribanList = [];
+    var chaklabanList = [];
 
     if (nextProps !== prevState) {
       samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
@@ -57,6 +60,7 @@ class Bankaprakar extends Component {
       nijibanList = nextProps.nijibanbibaranDataList.data;
       kabuliyatibanList = nextProps.kabuliyatibanbibaranDataList.data;
       sajhedaribanList = nextProps.sajhedaribanbibaranDataList.data;
+      chaklabanList = nextProps.chaklabanbibaranDataList.data;
     }
 
     return {
@@ -66,6 +70,7 @@ class Bankaprakar extends Component {
       nijibanList,
       kabuliyatibanList,
       sajhedaribanList,
+      chaklabanList,
     };
   }
 
@@ -149,6 +154,17 @@ class Bankaprakar extends Component {
         });
         break;
       }
+      case "chaklaban": {
+        this.props.fetchallChaklabanbibaran({
+          fromDate,
+          toDate,
+          distId,
+          name: "darta_miti",
+          page: page,
+          perPage,
+        });
+        break;
+      }
       default:
         break;
     }
@@ -206,6 +222,13 @@ class Bankaprakar extends Component {
             });
             break;
           }
+          case "chakla": {
+            this.props.history.push({
+              pathname: `/forests/chaklabanedit/${item.chaklaban_bibaran_id}`,
+              item,
+            });
+            break;
+          }
 
           default:
             break;
@@ -232,6 +255,10 @@ class Bankaprakar extends Component {
           }
           case "sajhedari": {
             this.props.deleteSajhedaribanbibaran(item.darta_no);
+            break;
+          }
+          case "chakla": {
+            this.props.deleteChaklabanbibaran(item.darta_no);
             break;
           }
           default:
@@ -266,6 +293,10 @@ class Bankaprakar extends Component {
         this.props.history.push("/forests/sajhedaribanadd/new");
         break;
       }
+      case "chaklaban": {
+        this.props.history.push("/forests/chaklabanadd/new");
+        break;
+      }
 
       default:
         break;
@@ -280,6 +311,7 @@ class Bankaprakar extends Component {
       kabuliyatibanList,
       nijibanList,
       sajhedaribanList,
+      chaklabanList,
     } = this.state;
     const { user } = this.props;
 
@@ -535,6 +567,56 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateSajhedaribanbibaran(e, id)}
           />
         )}
+        {equals(loc, "chaklabanlist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="chaklaban"
+                title="दर्ता मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="chaklaban" />
+            </div>
+            <ChaklabanBibaran.List
+              buttonName="+ चक्ला वन"
+              title="चक्ला वन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(chaklabanList)
+                  ? Math.ceil(chaklabanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(chaklabanList) ? chaklabanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={chaklabanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("chaklaban")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "chaklaban")}
+            />
+          </Fragment>
+        )}
+        {equals(loc, "chaklabanadd") && (
+          <ChaklabanBibaran.Add
+            title="+ चक्ला वन"
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addChaklabanbibaran(e)}
+          />
+        )}
+        {equals(loc, "chaklabanedit") && (
+          <ChaklabanBibaran.Edit
+            title="चक्ला वन पुनः प्रविष्ट"
+            user={user}
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateChaklabanbibaran(e, id)}
+          />
+        )}
       </div>
     );
   }
@@ -546,6 +628,7 @@ Bankaprakar.propTypes = {
   kabuliyatibanbibaranDataList: PropTypes.any,
   nijibanbibaranDataList: PropTypes.any,
   sajhedaribanbibaranDataList: PropTypes.any,
+  chaklabanbibaranDataList: PropTypes.any,
 };
 
 Bankaprakar.defaultProps = {
@@ -554,6 +637,7 @@ Bankaprakar.defaultProps = {
   kabuliyatibanbibaranDataList: {},
   nijibanbibaranDataList: {},
   sajhedaribanbibaranDataList: {},
+  chaklabanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
@@ -564,6 +648,7 @@ const mapStateToProps = (state) => ({
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
   nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
   sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
+  chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -647,6 +732,23 @@ const mapDispatchToProps = (dispatch) => ({
   deleteSajhedaribanbibaran: (sajhedaribanId) =>
     dispatch(
       BankaprakarActions.deletesajhedaribanbibaranRequest(sajhedaribanId)
+    ),
+
+  //Chaklaban
+  fetchallChaklabanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallchaklabanbibaranRequest(payload)),
+  addChaklabanbibaran: (payload) =>
+    dispatch(BankaprakarActions.addchaklabanbibaranRequest(payload)),
+  updateChaklabanbibaran: (payload, chaklabanbibaranId) =>
+    dispatch(
+      BankaprakarActions.updatechaklabanbibaranRequest(
+        payload,
+        chaklabanbibaranId
+      )
+    ),
+  deleteChaklabanbibaran: (chaklabanbibaranId) =>
+    dispatch(
+      BankaprakarActions.deletechaklabanbibaranRequest(chaklabanbibaranId)
     ),
 });
 

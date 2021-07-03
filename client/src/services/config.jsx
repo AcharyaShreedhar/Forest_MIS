@@ -366,6 +366,19 @@ const sajhedaribanHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const chaklabanHeadings = [
+  "दर्ता नं",
+  "दर्ता मिति",
+  "चक्लावनको नाम",
+  "ठेगाना",
+  "क्षेत्रफल",
+  "मूख्य प्रजाति",
+  "संलग्न घरधुरी",
+  "लाभ संख्या",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -392,4 +405,5 @@ export {
   karmacharibibaranHeadings,
   jadibutiHeadings,
   sajhedaribanHeadings,
+  chaklabanHeadings,
 };
