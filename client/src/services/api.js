@@ -237,6 +237,15 @@ const create = (baseURL = Config.API_URL) => {
   const getJadibuti = (jadibutiId) =>
     api.get(`jadibuti/${jadibutiId}`);
 
+  const postBiruwautpadanJadibutiAddNew = (payload) =>
+    api.post(`jadibuti`, payload);
+
+  const postBiruwautpadanJadibutiUpdate = (payload, jadibutiId) =>
+    api.put(`jadibuti/${jadibutiId}`, payload);
+
+  const postBiruwautpadanJadibutiDelete = (jadibutiId) =>
+    api.delete(`jadibuti/${jadibutiId}`);
+
   //Dwandabebasthapan
   const getBanyajantuUddarList = (payload) =>
     api.post("banyajantuUddarsList", payload);
@@ -748,6 +757,9 @@ const create = (baseURL = Config.API_URL) => {
     postBiruwautpadanBrixyaropanDelete,
     getJadibutiList,
     getJadibuti,
+    postBiruwautpadanJadibutiAddNew,
+    postBiruwautpadanJadibutiUpdate,
+    postBiruwautpadanJadibutiDelete,
 
     //sampatibibaran
     getAssetsList,
