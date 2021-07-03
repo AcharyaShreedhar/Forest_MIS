@@ -1,6 +1,7 @@
 import YearlyActivities from "../views/Activities/Yearlyactivities";
 import Plantation from "../views/Activities/Plantation";
 import Nursery from "../views/Activities/Nursery";
+import Jadibuti from "../views/Activities/Jadibuti";
 
 const activitiesRoutes = [
   {
@@ -68,6 +69,14 @@ const activitiesRoutes = [
     name: "Yearlyactivities",
     auth: true,
     component: YearlyActivities,
+  },
+
+  {
+    path: "/activities/jadibutilist",
+    title: "Jadibuti",
+    name: "jadibuti",
+    auth: true,
+    component: Jadibuti,
   },
 
   {
