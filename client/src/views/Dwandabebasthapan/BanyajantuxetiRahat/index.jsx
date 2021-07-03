@@ -1,19 +1,37 @@
-/* eslint-disable no-fallthrough */
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanyajantuXetibibaran } from "../../../components";
+import {
+  BanyajantuXetibibaran,
+  Filter,
+  ReportGenerator,
+} from "../../../components";
 import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
-import { banyajantuxetirahatHeadings } from "../../../services/config";
+import {
+  banyajantuxetirahatHeadings,
+  districtList,
+} from "../../../services/config";
 
 export class BanyajantuxetiRahat extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "xetilist", perPage: 10, page: 1 };
+    this.state = {
+      loc: "xetilist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+    };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -29,15 +47,48 @@ export class BanyajantuxetiRahat extends Component {
     }
   }
 
-  handlePageChange(data) {
-    const { perPage } = this.state;
-    this.setState({ page: data.selected });
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
+  }
 
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallBanyajantuxetirahat({
+      fromDate,
+      toDate,
+      distId,
       name: "xeti_miti",
-      page: data.selected * perPage,
+      page: page,
       perPage,
     });
+  }
+
+  handlePageChange(data) {
+    const { fromDate, toDate, distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item) {
@@ -69,25 +120,43 @@ export class BanyajantuxetiRahat extends Component {
     return (
       <div>
         {equals(loc, "banyajantuxetirahatlist") && (
-          <BanyajantuXetibibaran.List
-            buttonName="+ वन्यजन्तु क्षेति राहात"
-            title="वन्यजन्तु क्षेति राहात सम्बन्धि विवरण"
-            pageCount={
-              !isNil(banyajantuxetirahatList)
-                ? Math.ceil(banyajantuxetirahatList.total / perPage)
-                : 10
-            }
-            data={
-              !isNil(banyajantuxetirahatList)
-                ? banyajantuxetirahatList.list
-                : []
-            }
-            headings={banyajantuxetirahatHeadings}
-            user={user}
-            onAdd={() => this.handleAdd("banyajantuxetirahat")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e, "banyajantuxetirahat")}
-          />
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="banyajantuxetirahat"
+                title="क्षतिको मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="banyajantuxetirahat" />
+            </div>
+            <BanyajantuXetibibaran.List
+              buttonName="+ वन्यजन्तु क्षेति राहात"
+              title="वन्यजन्तु क्षेति राहात सम्बन्धि विवरण"
+              pageCount={
+                !isNil(banyajantuxetirahatList)
+                  ? Math.ceil(banyajantuxetirahatList.total / perPage)
+                  : 10
+              }
+              data={
+                !isNil(banyajantuxetirahatList)
+                  ? banyajantuxetirahatList.list
+                  : []
+              }
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={banyajantuxetirahatHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("banyajantuxetirahat")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) =>
+                this.handlePageChange(e, "banyajantuxetirahat")
+              }
+            />
+          </Fragment>
         )}
         {equals(loc, "banyajantuxetirahatadd") && (
           <BanyajantuXetibibaran.Add
