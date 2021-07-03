@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 class Add extends Component {
   constructor(props) {
@@ -14,12 +15,14 @@ class Add extends Component {
       niyantran_karta: "",
       sahabhagi_mahila: "",
       sahabhagi_purus: "",
+      bandadelo_miti: "",
       dist_id: "",
       created_by: "",
       updated_by: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDate = this.handleDate.bind(this);
   }
 
   handleSubmit() {
@@ -32,6 +35,7 @@ class Add extends Component {
       niyantran_karta,
       sahabhagi_mahila,
       sahabhagi_purus,
+      bandadelo_miti,
     } = this.state;
     const payload = {
       bandadelo: {
@@ -44,6 +48,7 @@ class Add extends Component {
           niyantran_karta: niyantran_karta,
           sahabhagi_mahila: sahabhagi_mahila,
           sahabhagi_purus: sahabhagi_purus,
+          bandadelo_miti: bandadelo_miti,
           dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
@@ -52,7 +57,7 @@ class Add extends Component {
     this.props.onSubmit(payload);
   }
   handleDate(e) {
-    this.setState({ lilam_date: e });
+    this.setState({ bandadelo_miti: e });
   }
 
   render() {
@@ -66,6 +71,7 @@ class Add extends Component {
       niyantran_karta,
       sahabhagi_mahila,
       sahabhagi_purus,
+      bandadelo_miti,
     } = this.state;
 
     return (
@@ -134,6 +140,14 @@ class Add extends Component {
               value={sahabhagi_purus}
               direction="vertical"
               onChange={(e) => this.setState({ sahabhagi_purus: e })}
+            />
+            <span className="dsl-b18">डढेलो लागेको मिति</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
+              className="mb-4"
+              value={bandadelo_miti}
+              onChange={(e) => this.handleDate(e)}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
           </div>
           <div className="mt-2 border-5">

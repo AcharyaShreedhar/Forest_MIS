@@ -3,8 +3,7 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
-import { Button, EditDropdown } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
   const {
@@ -12,10 +11,13 @@ function List(props) {
     headings,
     data,
     title,
-    pageCount,
     onAdd,
     onSelect,
+    pageCount,
     onPageClick,
+    pers,
+    per,
+    onPer,
   } = props;
 
   return (
@@ -60,7 +62,7 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, plot)}
+                        onChange={(e) => onSelect(e, plot, "seedgardenplots")}
                       />
                     </div>
                   </td>
@@ -69,20 +71,14 @@ function List(props) {
             )}
           </tbody>
         </Table>
-        <div className="paginationStyle">
-          <ReactPaginate
-            previousLabel={"PREV"}
-            nextLabel={"NEXT"}
-            breakLabel={"..."}
-            breakClassName={"break-me"}
-            pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={onPageClick}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
-          />
-        </div>
+        <Pagination
+          per={per}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
+          pageCount={pageCount}
+          type="seedgardenplots"
+        />
       </div>
     </Fragment>
   );
