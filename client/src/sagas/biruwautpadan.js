@@ -382,6 +382,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchalljadibutiRequest(api,{
+        distId: "%",
         name: "jadibuti_thegana",
         page: 0,
         perPage: 10,
@@ -410,6 +411,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchalljadibutiRequest(api,{
+        distId: "%",
         name: "jadibuti_thegana",
         page: 0,
         perPage: 10,
@@ -437,6 +439,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchalljadibutiRequest(api,{
+        distId: "%",
         name: "jadibuti_thegana",
         page: 0,
         perPage: 10,
