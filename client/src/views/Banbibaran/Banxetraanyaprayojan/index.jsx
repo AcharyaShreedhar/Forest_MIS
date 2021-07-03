@@ -1,40 +1,88 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanxetraanyaprayojanBibaran } from "../../../components";
+import { BanxetraanyaprayojanBibaran, Filter, ReportGenerator } from "../../../components";
 import BanbibaranActions from "../../../actions/banbibaran";
-import { banxetraanyaprayojanHeadings } from "../../../services/config";
+import { banxetraanyaprayojanHeadings, districtList } from "../../../services/config";
 
 class Banxetraanyaprayojan extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "banxetraanyaprayojanlist", perPage: 10, page: 1 };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
+    this.state = { 
+      loc: "banxetraanyaprayojanlist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+       };
+       this.handleSelectMenu = this.handleSelectMenu.bind(this);
+       this.handleAdd = this.handleAdd.bind(this);
+       this.handleDistrict = this.handleDistrict.bind(this);
+       this.handleToDate = this.handleToDate.bind(this);
+       this.handleFromDate = this.handleFromDate.bind(this);
+       this.handlePageChange = this.handlePageChange.bind(this);
+       this.handlePer = this.handlePer.bind(this);
+       this.fetchResults = this.fetchResults.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
-
     var banxetraanyaprayojanList = [];
     if (nextProps !== prevState) {
       banxetraanyaprayojanList = nextProps.banxetraanyaprayojanDataList.data;
     }
-    return { loc, banxetraanyaprayojanList };
+
+    return { 
+      loc,
+      banxetraanyaprayojanList };
+  }
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
 
-  handlePageChange(data) {
-    const { perPage } = this.state;
-    this.setState({ page: data.selected });
-
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallBanxetraanyaprayojan({
+      fromDate,
+      toDate,
+      distId,
       name: "arthik_barsa",
-      page: data.selected * perPage,
+      page: page,
       perPage,
     });
   }
+
+
+  handlePageChange(data) {
+    const { fromDate, toDate, distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
+  }
+
 
   handleSelectMenu(event, item) {
     switch (event) {
@@ -65,6 +113,18 @@ class Banxetraanyaprayojan extends Component {
     return (
       <div>
         {equals(loc, "banxetraanyaprayojanlist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="banxetraanyaprayojan"
+                title="आर्थिक वर्ष"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="banxetraanyaprayojan" />
+            </div>
           <BanxetraanyaprayojanBibaran.List
             buttonName="+ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि"
             title="बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण"
@@ -74,16 +134,18 @@ class Banxetraanyaprayojan extends Component {
                 : 10
             }
             data={
-              !isNil(banxetraanyaprayojanList)
-                ? banxetraanyaprayojanList.list
-                : []
+              !isNil(banxetraanyaprayojanList) ? banxetraanyaprayojanList.list  : []
             }
+            per={perPage}
+            pers={[10, 25, 50, "all"]}
+            onPer={this.handlePer}
             user={user}
             headings={banxetraanyaprayojanHeadings}
-            onAdd={this.handleAdd}
+            onAdd={this.handleAdd("banxetraanyaprayojan")}
             onSelect={this.handleSelectMenu}
             onPageClick={(e) => this.handlePageChange(e)}
           />
+         </Fragment> 
         )}
         {equals(loc, "banxetraanyaprayojanadd") && (
           <BanxetraanyaprayojanBibaran.Add
