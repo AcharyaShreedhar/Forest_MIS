@@ -1,9 +1,7 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class chaklaban_bibarans extends Model {
+  class chaklaban_bibaran extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,23 +10,27 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  chaklaban_bibarans.init({
-    darta_no: DataTypes.STRING,
-    dist_id: DataTypes.STRING,
-    chaklaban_name: DataTypes.STRING,
-    area: DataTypes.STRING,
-    main_species: DataTypes.STRING,
-    forest_type: DataTypes.STRING,
-    handover_date: DataTypes.STRING,
-    forest_maujdat:DataTypes.STRING,
-    nikasi_timber:DataTypes.STRING,
-    nikasi_wood:DataTypes.STRING,
-    created_by: DataTypes.STRING,
-    updated_by: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'chaklaban_bibarans',
-  });
-  return chaklaban_bibarans;
+  }
+  chaklaban_bibaran.init(
+    {
+      chaklaban_naam: DataTypes.STRING,
+      darta_no: DataTypes.STRING,
+      darta_miti: DataTypes.STRING,
+      dist_id: DataTypes.INTEGER,
+      address: DataTypes.STRING,
+      main_species: DataTypes.STRING,
+      area: DataTypes.STRING,
+      ghardhuri: DataTypes.STRING,
+      lav_jana: DataTypes.STRING,
+      created_by: DataTypes.STRING,
+      updated_by: DataTypes.STRING,
+      createdAt: DataTypes.STRING,
+      updatedAt: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "chaklaban_bibaran",
+    }
+  );
+  return chaklaban_bibaran;
 };
