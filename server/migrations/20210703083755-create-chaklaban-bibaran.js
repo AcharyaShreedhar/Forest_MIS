@@ -23,10 +23,10 @@ module.exports = {
       address: {
         type: Sequelize.STRING,
       },
-      main_species: {
+      area: {
         type: Sequelize.STRING,
       },
-      area: {
+      main_species: {
         type: Sequelize.STRING,
       },
       ghardhuri: {
