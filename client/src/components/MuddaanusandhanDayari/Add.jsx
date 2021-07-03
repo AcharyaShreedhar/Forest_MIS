@@ -99,10 +99,10 @@ class Add extends Component {
     this.props.onSubmit(payload);
   }
   handleJafatMaagdabi(e) {
-    this.setState({ bojbahak_jafat_maagdabi: e });
+    this.setState({ bojbahak_jafat_maagdabi: e[0] });
   }
   handleBojbahakJafat(e) {
-    this.setState({ bojbahak_jafat: e });
+    this.setState({ bojbahak_jafat: e[0] });
   }
   handleDate(e, type) {
     switch (type) {

@@ -103,7 +103,7 @@ class Bandadelo extends Component {
   }
 
   handleAdd() {
-        this.props.history.push("/banbibaran/bandadeloadd/new");
+    this.props.history.push("/banbibaran/bandadeloadd/new");
   }
 
   render() {
