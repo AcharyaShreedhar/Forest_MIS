@@ -9,6 +9,14 @@ import BiruwautpadanActions from "../../actions/biruwautpadan";
 
 export class Activities extends Component {
   componentDidMount() {
+    this.props.fetchallBrixyaropan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "brixyaropan_miti",
+      page: 0,
+      perPage: 10,
+    });
     this.props.fetchallBiruwautpadan({
       name: "arthik_barsa",
       page: 0,
@@ -87,6 +95,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchallJadibuti: (payload) =>
     dispatch(BiruwautpadanActions.fetchalljadibutiRequest(payload)),
+
+  fetchallBrixyaropan: (payload) =>
+    dispatch(BiruwautpadanActions.fetchallbrixyaropanRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Activities);

@@ -33,7 +33,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="brixyaropan">
           <thead>
             <tr>
               <th>क्र.सं.</th>
@@ -62,7 +62,9 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, brixyaropan, "brixyaropan")}
+                        onChange={(e) =>
+                          onSelect(e, brixyaropan, "brixyaropan")
+                        }
                       />
                     </div>
                   </td>

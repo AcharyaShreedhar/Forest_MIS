@@ -1,18 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
 import { Brixyaropan, Filter, ReportGenerator } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
-import { brixyaropanHeadings } from "../../../services/config";
-import { Fragment } from "react";
+import { brixyaropanHeadings,districtList } from "../../../services/config";
 
 class Plantation extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "brixyaropanlist", perPage: 10, page: 1 };
+    this.state = {
+      loc: "brixyaropanlist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+    };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
@@ -27,22 +36,47 @@ class Plantation extends Component {
     return { brixyaropanList, loc };
   }
   handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(0, e);
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
 
-  fetchResults(page, perPage) {
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallBrixyaropan({
-      name: "brixyaropan_thegana",
+      fromDate,
+      toDate,
+      distId,
+      name: "brixyaropan_miti",
       page: page,
       perPage,
     });
   }
 
   handlePageChange(data) {
-    const { perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(data.selected * perPage, perPage);
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item, path) {
@@ -76,7 +110,14 @@ class Plantation extends Component {
         {equals(loc, "plantationlist") && (
           <Fragment>
             <div className="report-filter">
-              <Filter />
+              <Filter
+                id="brixyaropan"
+                title="वृक्षरोपण मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
               <ReportGenerator id="brixyaropan" />
             </div>
             <Brixyaropan.List
@@ -135,7 +176,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  
   fetchallBrixyaropan: (payload) =>
     dispatch(BiruwautpadanActions.fetchallbrixyaropanRequest(payload)),
 
