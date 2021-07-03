@@ -3,8 +3,7 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import ReactPaginate from "react-paginate";
-import { Button, EditDropdown } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
   const {
@@ -12,12 +11,14 @@ function List(props) {
     headings,
     data,
     title,
-    pageCount,
     onAdd,
     onSelect,
+    pageCount,
     onPageClick,
+    pers,
+    per,
+    onPer,
   } = props;
-
   return (
     <Fragment>
       <div className="card">
@@ -31,7 +32,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="banxetraanyaprayojan">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -48,7 +49,7 @@ function List(props) {
               data.map((banxetra, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {banxetra.arthik_barsa}</td>
+                  <td key={index}> {englishToNepaliNumber(banxetra.arthik_barsa)}</td>
                   <td key={index}> {banxetra.uplabdakarta_naam}</td>
                   <td key={index}> {banxetra.upalabdha_address}</td>
                   <td key={index}> {banxetra.xetrafal_temp}</td>
@@ -68,7 +69,7 @@ function List(props) {
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, banxetra)}
+                        onChange={(e) => onSelect(e, banxetra, "banxetraanyaprayojan")}
                       />
                     </div>
                   </td>
@@ -77,20 +78,14 @@ function List(props) {
             )}
           </tbody>
         </Table>
-        <div className="paginationStyle">
-          <ReactPaginate
-            previousLabel={"PREV"}
-            nextLabel={"NEXT"}
-            breakLabel={"..."}
-            breakClassName={"break-me"}
-            pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={onPageClick}
-            containerClassName={"pagination"}
-            activeClassName={"active"}
-          />
-        </div>
+        <Pagination
+          per={per}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
+          pageCount={pageCount}
+          type="banxetraanyaprayojan"
+        />
       </div>
     </Fragment>
   );
