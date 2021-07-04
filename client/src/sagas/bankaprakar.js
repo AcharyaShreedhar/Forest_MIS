@@ -615,3 +615,16 @@ export function* fetchconsumergroupdetailsRequest(api, action) {
     yield put(BankaprakarActions.fetchconsumergroupdetailsFailure());
   }
 }
+
+export function* fetchallrastriyabanbibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getRastriyabanBibaranList(payloaddata);
+  if (response.ok) {
+    yield put(
+      BankaprakarActions.fetchallrastriyabanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.fetchallrastriyabanbibaranFailure());
+  }
+}
