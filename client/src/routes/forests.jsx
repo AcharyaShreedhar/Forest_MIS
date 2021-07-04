@@ -157,6 +157,13 @@ const forestRoutes = [
     auth: true,
     component: Bankaprakar,
   },
+  {
+    path: "/forests/commercialbanadd/new",
+    title: "Commercialban",
+    name: "Commercialban",
+    auth: true,
+    component: Bankaprakar,
+  },
 
   {
     redirect: true,
