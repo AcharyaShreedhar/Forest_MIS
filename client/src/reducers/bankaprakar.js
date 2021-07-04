@@ -354,6 +354,16 @@ const updateconsumergroupdetailsSuccess = (state, action) =>
 const updateconsumergroupdetailsFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+const deleteconsumergroupdetailsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteconsumergroupdetailsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteconsumergroupdetailsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 //rastriyabanbibaran
 const fetchallrastriyabanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -561,6 +571,10 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.UPDATECONSUMERGROUPDETAILS_REQUEST]: updateconsumergroupdetailsRequest,
   [BankaprakarTypes.UPDATECONSUMERGROUPDETAILS_SUCCESS]: updateconsumergroupdetailsSuccess,
   [BankaprakarTypes.UPDATECONSUMERGROUPDETAILS_FAILURE]: updateconsumergroupdetailsFailure,
+
+  [BankaprakarTypes.DELETECONSUMERGROUPDETAILS_REQUEST]: deleteconsumergroupdetailsRequest,
+  [BankaprakarTypes.DELETECONSUMERGROUPDETAILS_SUCCESS]: deleteconsumergroupdetailsSuccess,
+  [BankaprakarTypes.DELETECONSUMERGROUPDETAILS_FAILURE]: deleteconsumergroupdetailsFailure,
 
   [BankaprakarTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BankaprakarTypes.CLEAR_REQUEST]: clearRequest,
