@@ -641,3 +641,33 @@ export function* fetchrastriyabanbibaranRequest(api, action) {
     yield put(BankaprakarActions.fetchrastriyabanbibaranFailure());
   }
 }
+
+// Add rastriyabanbibaran
+export function* addrastriyabanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postRastriyabanBibaranAddNew(
+    payload.rastriyaban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक राष्ट्रिय वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrastriyabanbibaranRequest(api, {
+      name: "rastriyaban_naam",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/rastriyabanlist");
+    yield put(BankaprakarActions.addrastriyabanbibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.addrastriyabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
