@@ -639,6 +639,7 @@ export function* fetchallchaklabanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getChaklabanBibaranList(payloaddata);
+  console.log("...data", response);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallchaklabanbibaranSuccess(response.data)
@@ -653,9 +654,7 @@ export function* fetchchaklabanbibaranRequest(api, action) {
 
   const response = yield api.getChaklabanBibaran(chaklabanBibaranId);
   if (response.ok) {
-    yield put(
-      BankaprakarActions.fetchchaklabanbibaranSuccess(response.data)
-    );
+    yield put(BankaprakarActions.fetchchaklabanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.fetchchaklabanbibaranFailure());
   }
@@ -1052,7 +1051,6 @@ export function* fetchcommercialkabuliyatibanbibaranRequest(api, action) {
   }
 }
 
-
 export function* addcommercialkabuliyatibanbibaranRequest(api, action) {
   const { payload } = action;
 
@@ -1073,7 +1071,9 @@ export function* addcommercialkabuliyatibanbibaranRequest(api, action) {
       perPage: 10,
     });
     yield call(history.push, "/forests/commercialbanlist");
-    yield put(BankaprakarActions.addcommercialkabuliyatibanbibaranSuccess(response.data));
+    yield put(
+      BankaprakarActions.addcommercialkabuliyatibanbibaranSuccess(response.data)
+    );
   } else {
     yield put(BankaprakarActions.addcommercialkabuliyatibanbibaranFailure());
     toast.error(
@@ -1085,7 +1085,6 @@ export function* addcommercialkabuliyatibanbibaranRequest(api, action) {
   }
 }
 
-
 export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
   const { payload, commercialkabuliyatibanbibaranId } = action;
 
@@ -1095,9 +1094,12 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक व्यवसायिक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.success(
+      "सफलतापुर्वक व्यवसायिक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
     yield fetchallkabuliyatibanbibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -1108,7 +1110,9 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
     });
     yield call(history.push, "/forests/commercialbanlist");
     yield put(
-      BankaprakarActions.updatecommercialkabuliyatibanbibaranSuccess(response.data)
+      BankaprakarActions.updatecommercialkabuliyatibanbibaranSuccess(
+        response.data
+      )
     );
   } else {
     yield put(BankaprakarActions.updatecommercialkabuliyatibanbibaranFailure());
@@ -1121,26 +1125,29 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
   }
 }
 
-
 export function* deletecommercialkabuliyatibanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBankaprakarCommercialkabuliyatibanDelete(payload);
+  const response = yield api.postBankaprakarCommercialkabuliyatibanDelete(
+    payload
+  );
 
   if (response.ok) {
     toast.success("सफलतापुर्वक व्यवसायिक कबुलियती वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-  yield fetchallcommercialkabuliyatibanbibaranRequest(api, {
+    yield fetchallcommercialkabuliyatibanbibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       name: "darta_miti",
       page: 0,
       perPage: 10,
-  });
+    });
     yield put(
-      BankaprakarActions.deletecommercialkabuliyatibanbibaranSuccess(response.data)
+      BankaprakarActions.deletecommercialkabuliyatibanbibaranSuccess(
+        response.data
+      )
     );
   } else {
     yield put(BankaprakarActions.deletecommercialkabuliyatibanbibaranFailure());
@@ -1150,5 +1157,17 @@ export function* deletecommercialkabuliyatibanbibaranRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       }
     );
+  }
+}
+export function* fetchallsajhedaribanbibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getSajhedaribanBibaranList(payloaddata);
+  if (response.ok) {
+    yield put(
+      BankaprakarActions.fetchallsajhedaribanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.fetchallsajhedaribanbibaranFailure());
   }
 }
