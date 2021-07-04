@@ -281,7 +281,7 @@ export class SideNavbar extends Component {
             <NavItem
               eventKey="karyabibaran/samajikkaryabibaranlist"
               onClick={() =>
-                history.push("/karyabibaran/samajikkaryabibaranlist")
+                history.push("/karyabibaran/banbikaskaryabibaranlist")
               }
             >
               <NavText> वन विकास कार्य विवरण</NavText>
