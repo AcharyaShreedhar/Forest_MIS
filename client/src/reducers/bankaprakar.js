@@ -309,7 +309,7 @@ const deletenabikarankaryayojanaSuccess = (state, action) =>
 const deletenabikarankaryayojanaFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
   
-
+//chaklabanbibaran
   const fetchallchaklabanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallchaklabanbibaranSuccess = (state, action) => {
@@ -320,6 +320,19 @@ const fetchallchaklabanbibaranSuccess = (state, action) => {
   });
 };
 const fetchallchaklabanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchchaklabanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchchaklabanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    chaklabanbibaranData: action.response,
+  });
+};
+const fetchchaklabanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
@@ -662,6 +675,10 @@ export const reducer = createReducer(initialState, {
    [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_SUCCESS]: fetchallchaklabanbibaranSuccess,
    [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_FAILURE]: fetchallchaklabanbibaranFailure,
    
+  [BankaprakarTypes.FETCHCHAKLABANBIBARAN_REQUEST]: fetchchaklabanbibaranRequest,
+  [BankaprakarTypes.FETCHCHAKLABANBIBARAN_SUCCESS]: fetchchaklabanbibaranSuccess,
+  [BankaprakarTypes.FETCHCHAKLABANBIBARAN_FAILURE]: fetchchaklabanbibaranFailure,
+
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_SUCCESS]: fetchallconsumergroupdetailsSuccess,
