@@ -655,7 +655,10 @@ export function* addrastriyabanbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrastriyabanbibaranRequest(api, {
-      name: "rastriyaban_naam",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
       page: 0,
       perPage: 10,
     });
@@ -663,6 +666,42 @@ export function* addrastriyabanbibaranRequest(api, action) {
     yield put(BankaprakarActions.addrastriyabanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.addrastriyabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update rastriyabanbibaran
+export function* updaterastriyabanbibaranRequest(api, action) {
+  const { payload, rastriyabanbibaranId } = action;
+
+  const response = yield api.postRastriyabanBibaranUpdate(
+    payload.rastriyaban.data,
+    rastriyabanbibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक निजी वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrastriyabanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/rastriyabanlist");
+    yield put(
+      BankaprakarActions.updaterastriyabanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.updaterastriyabanbibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
