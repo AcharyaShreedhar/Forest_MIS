@@ -49,15 +49,15 @@ export class SideNavbar extends Component {
         />
         <SideNav.Nav defaultSelected="forests">
           <HeaderComponent enabled={expanded} side={true} />
-          <NavItem eventKey="home">
-            <Link to="/" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faHome} className="mr-2" />
-              {expanded && <Displaybox value="गृह पृष्ठ" />}
-            </Link>
+          <NavItem eventKey="home" onClick={() => history.push("/home")}>
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faHome} />
+            </NavIcon>
+            <NavText>गृह पृष्ठ</NavText>
           </NavItem>
           <NavItem eventKey="employees">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faUsers} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faUsers} />
             </NavIcon>
             <NavText>कर्मचारी</NavText>
             <NavItem
@@ -75,7 +75,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="/forests">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faTree} />
             </NavIcon>
             <NavText> बनका प्रकारहरु </NavText>
             <NavItem
@@ -135,7 +135,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="/banbibaran">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faListAlt} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faListAlt} />
             </NavIcon>
             <NavText> बन बिबरण </NavText>
             <NavItem
@@ -176,7 +176,7 @@ export class SideNavbar extends Component {
 
           <NavItem eventKey="dwandabebasthapan">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faGavel} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faGavel} />
             </NavIcon>
             <NavText>मानब बन्यजन्तु द्वन्द ब्यबस्थापन</NavText>
 
@@ -199,7 +199,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="banpaidawar">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faTree} />
             </NavIcon>
             <NavText>बन पैदावर</NavText>
             <NavItem
@@ -217,7 +217,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="activities">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faTasks} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faTasks} />
             </NavIcon>
             <NavText>कार्यक्रमहरु </NavText>
             <NavItem
@@ -247,7 +247,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="/sampatibibaran">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faBuilding} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faBuilding} />
             </NavIcon>
             <NavText>कार्यालय सम्पती बिबरण</NavText>
 
@@ -266,7 +266,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="/karyabibaran">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faListAlt} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faListAlt} />
             </NavIcon>
             <NavText>कार्य विवरण</NavText>
 
@@ -287,11 +287,11 @@ export class SideNavbar extends Component {
               <NavText> वन विकास कार्य विवरण</NavText>
             </NavItem>
           </NavItem>
-          <NavItem eventKey="signout" onClick={onlogout}>
-            <Link to="/logout" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faSignOutAlt} className="mr-2" />
-              {expanded && <Displaybox value="लग आउट " />}
-            </Link>
+          <NavItem eventKey="logout" onClick={() => history.push("/logout")}>
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faSignOutAlt} />
+            </NavIcon>
+            <NavText>लग आउट</NavText>
           </NavItem>
         </SideNav.Nav>
       </SideNav>
