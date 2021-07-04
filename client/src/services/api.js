@@ -671,21 +671,22 @@ const create = (baseURL = Config.API_URL) => {
     api.post("rojgarsrijanaList", payload);
 
   const getRojgarSrijana = (rojgarsrijanaId) =>
-    api.get(`/rojgarsrijana/${rojgarsrijanaId}`);
+    api.get(`rojgarsrijana/${rojgarsrijanaId}`);
 
   //add
   const postRojgarSrijanaAddNew = (payload) =>
     api.post("rojgarsrijana", payload);
   //update
   const postRojgarSrijanaUpdate = (payload, rojgarsrijanaId) =>
-    api.put(`/rojgarsrijana/${rojgarsrijanaId}`, payload);
+    api.put(`rojgarsrijana/${rojgarsrijanaId}`, payload);
 
   const postRojgarSrijanaDelete = (rojgarsrijanaId) =>
-    api.delete(`/rojgarsrijana/${rojgarsrijanaId}`);
+    api.delete(`rojgarsrijana/${rojgarsrijanaId}`);
 
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) =>
     api.post("ConsumerGroupDetailsList", payload);
+
   const getConsumergroupDetails = (consumergroupDetailsId) =>
     api.get(`ConsumerGroupDetails/${consumergroupDetailsId}`);
 
@@ -693,7 +694,10 @@ const create = (baseURL = Config.API_URL) => {
     api.post(`ConsumerGroupDetails`, payload);
 
   const postConsumergroupDetailsUpdate = (payload, consumergroupdetailsId) =>
-    api.put(`/ConsumerGroupDetails/${consumergroupdetailsId}`, payload);
+    api.put(`ConsumerGroupDetails/${consumergroupdetailsId}`, payload);
+
+  const postConsumergroupDetailsDelete = (consumergroupdetailsId) =>
+    api.delete(`ConsumerGroupDetails/${consumergroupdetailsId}`);
 
   //------karyabibaran
   const getSamajikkaryabibaranList = (payload) =>
@@ -937,6 +941,7 @@ const create = (baseURL = Config.API_URL) => {
     getConsumergroupDetails,
     postConsumergroupDetailsAddNew,
     postConsumergroupDetailsUpdate,
+    postConsumergroupDetailsDelete,
 
     //-----Departments
     getDepartmentsList,

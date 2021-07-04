@@ -163,6 +163,10 @@ const { Types, Creators } = createActions({
   updateconsumergroupdetailsSuccess: ["response"],
   updateconsumergroupdetailsFailure: null,
 
+  deleteconsumergroupdetailsRequest: ["payload", "consumergroupdetailsId"],
+  deleteconsumergroupdetailsSuccess: ["response"],
+  deleteconsumergroupdetailsFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

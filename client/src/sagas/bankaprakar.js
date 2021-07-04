@@ -720,7 +720,7 @@ export function* updateconsumergroupdetailsRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक उपभोक्ता समुह  पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक उपभोक्ता समुह पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallconsumergroupdetailsRequest(api, {
@@ -737,6 +737,38 @@ export function* updateconsumergroupdetailsRequest(api, action) {
     );
   } else {
     yield put(BankaprakarActions.updateconsumergroupdetailsFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// delete consumergroupdetails
+export function* deleteconsumergroupdetailsRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postConsumergroupDetailsDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक उपभोक्ता समुह हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallconsumergroupdetailsRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      BankaprakarActions.deleteconsumergroupdetailsSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.deleteconsumergroupdetailsFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
