@@ -10,7 +10,7 @@ class Add extends Component {
     this.state = {
       darta_no: "",
       darta_miti: "",
-      chaklaban_naam: "",
+      commercialkabuliyatiban_naam: "",
       address: "",
       area: "",
       main_species: "",
@@ -28,7 +28,7 @@ class Add extends Component {
     const {
         darta_no,
         darta_miti,
-        chaklaban_naam,
+        commercialkabuliyatiban_naam,
         address,
         area,
         main_species,
@@ -36,11 +36,11 @@ class Add extends Component {
         lav_jana,
     } = this.state;
     const payload = {
-      chaklaban: {
+      commercialkabuliyatiban: {
         data: {
           darta_no: darta_no,
           darta_miti: darta_miti,
-          chaklaban_naam: chaklaban_naam,
+          commercialkabuliyatiban_naam: commercialkabuliyatiban_naam,
           address: address,
           area: area,
           main_species: main_species,
@@ -63,7 +63,7 @@ class Add extends Component {
     const {
         darta_no,
         darta_miti,
-        chaklaban_naam,
+        commercialkabuliyatiban_naam,
         address,
         area,
         main_species,
@@ -96,10 +96,10 @@ class Add extends Component {
 
             <Input
               className="mb-4"
-              title="चक्लावनको नाम"
+              title="व्यवसायिक कबुलियति वनको नाम"
               direction="vertical"
-              value={chaklaban_naam}
-              onChange={(e) => this.setState({ chaklaban_naam: e })}
+              value={commercialkabuliyatiban_naam}
+              onChange={(e) => this.setState({ commercialkabuliyatiban_naam: e })}
             />
             <Input
               className="mb-4"
