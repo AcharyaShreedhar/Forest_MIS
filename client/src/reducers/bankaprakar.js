@@ -248,6 +248,8 @@ const deletekabuliyatibanbibaranSuccess = (state, action) =>
 const deletekabuliyatibanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+
+
 const fetchallnabikarankaryayojanaRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallnabikarankaryayojanaSuccess = (state, action) => {
@@ -465,6 +467,42 @@ const fetchcommercialkabuliyatibanbibaranFailure = (state, action) => {
 };
 
 
+const addcommercialkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addcommercialkabuliyatibanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addcommercialkabuliyatibanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+
+  const updatecommercialkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatecommercialkabuliyatibanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatecommercialkabuliyatibanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+
+  const deletecommercialkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletecommercialkabuliyatibanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletecommercialkabuliyatibanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -607,11 +645,23 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: fetchcommercialkabuliyatibanbibaranSuccess,
   [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: fetchcommercialkabuliyatibanbibaranFailure,
 
-  //chaklabanbibaran
-  [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_REQUEST]: fetchallchaklabanbibaranRequest,
-  [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_SUCCESS]: fetchallchaklabanbibaranSuccess,
-  [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_FAILURE]: fetchallchaklabanbibaranFailure,
+  [BankaprakarTypes.ADDCOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: addcommercialkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.ADDCOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: addcommercialkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.ADDCOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: addcommercialkabuliyatibanbibaranFailure,
 
+  [BankaprakarTypes.UPDATECOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: updatecommercialkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.UPDATECOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: updatecommercialkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.UPDATECOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: updatecommercialkabuliyatibanbibaranFailure,
+
+  [BankaprakarTypes.DELETECOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: deletecommercialkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.DELETECOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: deletecommercialkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.DELETECOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: deletecommercialkabuliyatibanbibaranFailure,
+
+   //chaklabanbibaran
+   [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_REQUEST]: fetchallchaklabanbibaranRequest,
+   [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_SUCCESS]: fetchallchaklabanbibaranSuccess,
+   [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_FAILURE]: fetchallchaklabanbibaranFailure,
+   
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_SUCCESS]: fetchallconsumergroupdetailsSuccess,

@@ -141,6 +141,18 @@ const { Types, Creators } = createActions({
   fetchcommercialkabuliyatibanbibaranSuccess: ["response"],
   fetchcommercialkabuliyatibanbibaranFailure: null,
 
+  addcommercialkabuliyatibanbibaranRequest: ["payload"],
+  addcommercialkabuliyatibanbibaranSuccess: ["response"],
+  addcommercialkabuliyatibanbibaranFailure: null,
+
+  updatecommercialkabuliyatibanbibaranRequest: ["payload", "commercialkabuliyatibanbibaranId"],
+  updatecommercialkabuliyatibanbibaranSuccess: ["response"],
+  updatecommercialkabuliyatibanbibaranFailure: null,
+
+  deletecommercialkabuliyatibanbibaranRequest: ["payload", "commercialkabuliyatibanbibaranId"],
+  deletecommercialkabuliyatibanbibaranSuccess: ["response"],
+  deletecommercialkabuliyatibanbibaranFailure: null,
+
   //chaklaban
   fetchallchaklabanbibaranRequest: ["payload"],
   fetchallchaklabanbibaranSuccess: ["response"],

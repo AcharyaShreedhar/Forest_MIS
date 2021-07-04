@@ -108,6 +108,17 @@ const create = (baseURL = Config.API_URL) => {
   const getCommercialkabuliyatibanBibaran = (commercialkabuliyatibanbibaranId) =>
     api.get(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`);
 
+  const postBankaprakarCommercialkabuliyatibanAddNew = (payload) =>
+    api.post(`commercialkabuliyatibanBibaran`, payload);
+
+  const postBankaprakarCommercialkabuliyatibanUpdate = (
+    payload,
+    commercialkabuliyatibanbibaranId
+  ) => api.put(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`, payload);
+
+  const postBankaprakarCommercialkabuliyatibanDelete = (commercialkabuliyatibanbibaranId) =>
+    api.delete(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`);
+
   const getChaklabanBibaranList = (payload) => api.post("chaklabanBibaranList",payload);
 
   const getNabikaranKaryayojanaList = () => api.get("nabikaranKaryayojanaList");
@@ -759,6 +770,9 @@ const create = (baseURL = Config.API_URL) => {
     postBankaprakarKabuliyatibanDelete,
     getCommercialkabuliyatibanBibaranList,
     getCommercialkabuliyatibanBibaran,
+    postBankaprakarCommercialkabuliyatibanAddNew,
+    postBankaprakarCommercialkabuliyatibanUpdate,
+    postBankaprakarCommercialkabuliyatibanDelete,
     getNabikaranKaryayojanaList,
     getNabikaranKaryayojana,
     postBankaprakarNabikarankaryayojanaAddNew,
