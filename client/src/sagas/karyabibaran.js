@@ -21,7 +21,6 @@ export function* fetchsamajikkaryabibaranRequest(api, action) {
   const samajikkaryabibaranId = action.payload;
 
   const response = yield api.getSamajikkaryabibaran(samajikkaryabibaranId);
-  console.log("...sagadaata", response);
   if (response.ok) {
     yield put(
       KaryabibaranActions.fetchkarmacharidarbandiSuccess(response.data)

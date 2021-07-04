@@ -19,10 +19,10 @@ export function* fetchallkarmacharidarbandiRequest(api, action) {
 }
 
 export function* fetchkarmacharidarbandiRequest(api, action) {
-  const  karmacharidarbandiId  = action.payload
+  const karmacharidarbandiId = action.payload;
 
   const response = yield api.getKarmacharidarbandi(karmacharidarbandiId);
-  
+
   if (response.ok) {
     yield put(
       KarmacharidarbandiActions.fetchkarmacharidarbandiSuccess(response.data)
@@ -31,7 +31,6 @@ export function* fetchkarmacharidarbandiRequest(api, action) {
     yield put(KarmacharidarbandiActions.fetchkarmacharidarbandiFailure());
   }
 }
-
 
 // Add karmacharidarbandi
 export function* addkarmacharidarbandiRequest(api, action) {
@@ -45,18 +44,24 @@ export function* addkarmacharidarbandiRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी दरबन्दी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkarmacharidarbandiRequest(api,{
+    yield fetchallkarmacharidarbandiRequest(api, {
+      distId: "%",
       name: "post",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/karmachari/karmacharidarbandilist");
-    yield put(KarmacharidarbandiActions.addkarmacharidarbandiSuccess(response.data));
+    yield put(
+      KarmacharidarbandiActions.addkarmacharidarbandiSuccess(response.data)
+    );
   } else {
     yield put(KarmacharidarbandiActions.addkarmacharidarbandiFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
@@ -73,7 +78,8 @@ export function* updatekarmacharidarbandiRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी दरबन्दी पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkarmacharidarbandiRequest(api,{
+    yield fetchallkarmacharidarbandiRequest(api, {
+      distId: "%",
       name: "post",
       page: 0,
       perPage: 10,
@@ -84,12 +90,14 @@ export function* updatekarmacharidarbandiRequest(api, action) {
     );
   } else {
     yield put(KarmacharidarbandiActions.updatekarmacharidarbandiFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
-
 
 // Delete karmacharidarbandi
 export function* deletekarmacharidarbandiRequest(api, action) {
@@ -101,7 +109,8 @@ export function* deletekarmacharidarbandiRequest(api, action) {
     toast.success("सफलतापुर्वक कर्मचारी दरबन्दी हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkarmacharidarbandiRequest(api,{
+    yield fetchallkarmacharidarbandiRequest(api, {
+      distId: "%",
       name: "post",
       page: 0,
       perPage: 10,

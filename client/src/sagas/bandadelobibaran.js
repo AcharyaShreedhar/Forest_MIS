@@ -43,8 +43,11 @@ export function* addbandadelobibaranRequest(api, action) {
     toast.success("सफलतापुर्वक वनडडेलो विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbandadelobibaranRequest(api,{
-      name: "bandadelo_address",
+    yield fetchallbandadelobibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bandadelo_miti",
       page: 0,
       perPage: 10,
     });
@@ -76,8 +79,11 @@ export function* updatebandadelobibaranRequest(api, action) {
     toast.success("सफलतापुर्वक वनडडेलो विवरण पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbandadelobibaranRequest(api,{
-      name: "bandadelo_address",
+    yield fetchallbandadelobibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bandadelo_miti",
       page: 0,
       perPage: 10,
     });
@@ -106,8 +112,11 @@ export function* deletebandadelobibaranRequest(api, action) {
     toast.success("सफलतापुर्वक वनडडेलो विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbandadelobibaranRequest(api,{
-      name: "bandadelo_address",
+    yield fetchallbandadelobibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bandadelo_miti",
       page: 0,
       perPage: 10,
     });

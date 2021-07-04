@@ -10,28 +10,27 @@ export function* fetchallbanyajantuuddarRequest(api, action) {
   const response = yield api.getBanyajantuUddarList(payloaddata);
   if (response.ok) {
     yield put(
-        DwandabebasthapanActions.fetchallbanyajantuuddarSuccess(response.data)
+      DwandabebasthapanActions.fetchallbanyajantuuddarSuccess(response.data)
     );
   } else {
     yield put(DwandabebasthapanActions.fetchallbanyajantuuddarFailure());
   }
 }
 
-
 export function* fetchbanyajantuuddarRequest(api, action) {
-    const  banyajantuUddarId  = action.payload
- 
-    const response = yield api.getBanyajantuUddar(banyajantuUddarId);
-    if (response.ok) {
-      yield put(
-        DwandabebasthapanActions.fetchbanyajantuuddarSuccess(response.data)
-      );
-    } else {
-      yield put(DwandabebasthapanActions.fetchbanyajantuuddarFailure());
-    }
-  }
+  const banyajantuUddarId = action.payload;
 
-  // Add banyajantuuddar
+  const response = yield api.getBanyajantuUddar(banyajantuUddarId);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchbanyajantuuddarSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchbanyajantuuddarFailure());
+  }
+}
+
+// Add banyajantuuddar
 export function* addbanyajantuuddarRequest(api, action) {
   const { payload } = action;
 
@@ -43,13 +42,18 @@ export function* addbanyajantuuddarRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api,{
+    yield fetchallbanyajantuuddarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/dwandabebasthapan/banyajantuuddarlist");
-    yield put(DwandabebasthapanActions.addbanyajantuuddarSuccess(response.data));
+    yield put(
+      DwandabebasthapanActions.addbanyajantuuddarSuccess(response.data)
+    );
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuuddarFailure());
     toast.error(
@@ -74,7 +78,10 @@ export function* updatebanyajantuuddarRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार पुनः प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api,{
+    yield fetchallbanyajantuuddarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "miti",
       page: 0,
       perPage: 10,
@@ -98,13 +105,18 @@ export function* updatebanyajantuuddarRequest(api, action) {
 export function* deletebanyajantuuddarRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postDwandabebasthapanBanyajantuuddarDelete(payload);
+  const response = yield api.postDwandabebasthapanBanyajantuuddarDelete(
+    payload
+  );
 
   if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api,{
+    yield fetchallbanyajantuuddarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "miti",
       page: 0,
       perPage: 10,
@@ -123,36 +135,33 @@ export function* deletebanyajantuuddarRequest(api, action) {
   }
 }
 
-
-  export function* fetchallbanyajantuxetiRequest(api, action) {
-    const { payload } = action;
-    const payloaddata = isNil(payload) ? action : payload;
-    const response = yield api.getBanyajantuXetiList(payloaddata);
-    if (response.ok) {
-      yield put(
-          DwandabebasthapanActions.fetchallbanyajantuxetiSuccess(response.data)
-      );
-    } else {
-      yield put(DwandabebasthapanActions.fetchallbanyajantuxetiFailure());
-    }
+export function* fetchallbanyajantuxetiRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanyajantuXetiList(payloaddata);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchallbanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchallbanyajantuxetiFailure());
   }
+}
 
+export function* fetchbanyajantuxetiRequest(api, action) {
+  const banyajantuXetiId = action.payload;
 
-  export function* fetchbanyajantuxetiRequest(api, action) {
-    const  banyajantuXetiId  = action.payload
- 
-    const response = yield api.getBanyajantuXeti(banyajantuXetiId);
-    if (response.ok) {
-      yield put(
-        DwandabebasthapanActions.fetchbanyajantuxetiSuccess(response.data)
-      );
-    } else {
-      yield put(DwandabebasthapanActions.fetchbanyajantuxetiFailure());
-    }
+  const response = yield api.getBanyajantuXeti(banyajantuXetiId);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchbanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchbanyajantuxetiFailure());
   }
+}
 
-
-   // Add banyajantuxeti
+// Add banyajantuxeti
 export function* addbanyajantuxetiRequest(api, action) {
   const { payload } = action;
 
@@ -164,7 +173,10 @@ export function* addbanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api,{
+    yield fetchallbanyajantuxetiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "xeti_miti",
       page: 0,
       perPage: 10,
@@ -195,7 +207,10 @@ export function* updatebanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति पुनः प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api,{
+    yield fetchallbanyajantuxetiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "xeti_miti",
       page: 0,
       perPage: 10,
@@ -226,7 +241,10 @@ export function* deletebanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api,{
+    yield fetchallbanyajantuxetiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "xeti_miti",
       page: 0,
       perPage: 10,

@@ -39,6 +39,9 @@ export function* addbanpaidawarRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -70,6 +73,9 @@ export function* updatebanpaidawarRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -98,6 +104,9 @@ export function* deletebanpaidawarRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -151,6 +160,9 @@ export function* addbanpaidawarlilamRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarlilamRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -182,6 +194,9 @@ export function* updatebanpaidawarlilamRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarlilamRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -210,6 +225,9 @@ export function* deletebanpaidawarlilamRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarlilamRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,

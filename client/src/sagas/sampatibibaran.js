@@ -40,6 +40,7 @@ export function* addassetsRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallassetsRequest(api, {
+      distId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -71,6 +72,7 @@ export function* updateassetsRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallassetsRequest(api, {
+      distId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -99,6 +101,7 @@ export function* deleteassetsRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallassetsRequest(api, {
+      distId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -152,7 +155,10 @@ export function* addvehiclesRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api, {
-      name: "vehicle_type",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "asset_type",
       page: 0,
       perPage: 10,
     });
@@ -183,7 +189,10 @@ export function* updatevehiclesRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api, {
-      name: "vehicle_type",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "asset_type",
       page: 0,
       perPage: 10,
     });
@@ -211,7 +220,10 @@ export function* deletevehiclesRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api, {
-      name: "vehicle_type",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "asset_type",
       page: 0,
       perPage: 10,
     });

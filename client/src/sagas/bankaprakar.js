@@ -222,7 +222,10 @@ export function* addnijibanbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallnijibanbibaranRequest(api, {
-      name: "nijiban_name",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "swikrit_miti",
       page: 0,
       perPage: 10,
     });
@@ -253,7 +256,10 @@ export function* updatenijibanbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallnijibanbibaranRequest(api, {
-      name: "nijiban_name",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "swikrit_miti",
       page: 0,
       perPage: 10,
     });
@@ -280,7 +286,14 @@ export function* deletenijibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक निजी वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallnijibanbibaranRequest(api);
+    yield fetchallnijibanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "swikrit_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(BankaprakarActions.deletenijibanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.deletenijibanbibaranFailure());
@@ -332,7 +345,10 @@ export function* addkabuliyatibanbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallkabuliyatibanbibaranRequest(api, {
-      name: "kabuliyatiban_name",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "entry_date",
       page: 0,
       perPage: 10,
     });
@@ -363,7 +379,10 @@ export function* updatekabuliyatibanbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallkabuliyatibanbibaranRequest(api, {
-      name: "kabuliyatiban_name",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "entry_date",
       page: 0,
       perPage: 10,
     });
@@ -392,7 +411,14 @@ export function* deletekabuliyatibanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक कबुलियती वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallkabuliyatibanbibaranRequest(api);
+    yield fetchallkabuliyatibanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "entry_date",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       BankaprakarActions.deletekabuliyatibanbibaranSuccess(response.data)
     );
@@ -447,7 +473,10 @@ export function* addnabikarankaryayojanaRequest(api, action) {
           position: toast.POSITION.TOP_CENTER,
         });
         yield fetchallsamudayikbanbibaranRequest(api, {
-          name: "samydayikban_name",
+          fromDate: "2075-01-01",
+          toDate: "2090-12-30",
+          distId: "%",
+          name: "handover_date",
           page: 0,
           perPage: 10,
         });
@@ -459,7 +488,10 @@ export function* addnabikarankaryayojanaRequest(api, action) {
           position: toast.POSITION.TOP_CENTER,
         });
         yield fetchalldharmikbanbibaranRequest(api, {
-          name: "dharmikban_name",
+          fromDate: "2075-01-01",
+          toDate: "2090-12-30",
+          distId: "%",
+          name: "handover_date",
           page: 0,
           perPage: 10,
         });
@@ -499,7 +531,10 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
           position: toast.POSITION.TOP_CENTER,
         });
         yield fetchallsamudayikbanbibaranRequest(api, {
-          name: "samydayikban_name",
+          fromDate: "2075-01-01",
+          toDate: "2090-12-30",
+          distId: "%",
+          name: "handover_date",
           page: 0,
           perPage: 10,
         });
@@ -514,7 +549,10 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
           }
         );
         yield fetchalldharmikbanbibaranRequest(api, {
-          name: "dharmikban_name",
+          fromDate: "2075-01-01",
+          toDate: "2090-12-30",
+          distId: "%",
+          name: "handover_date",
           page: 0,
           perPage: 10,
         });
@@ -554,7 +592,10 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
           position: toast.POSITION.TOP_CENTER,
         });
         yield fetchallsamudayikbanbibaranRequest(api, {
-          name: "samydayikban_name",
+          fromDate: "2075-01-01",
+          toDate: "2090-12-30",
+          distId: "%",
+          name: "handover_date",
           page: 0,
           perPage: 10,
         });
@@ -566,7 +607,10 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
           position: toast.POSITION.TOP_CENTER,
         });
         yield fetchalldharmikbanbibaranRequest(api, {
-          name: "dharmikban_name",
+          fromDate: "2075-01-01",
+          toDate: "2090-12-30",
+          distId: "%",
+          name: "handover_date",
           page: 0,
           perPage: 10,
         });
@@ -756,7 +800,14 @@ export function* deleterastriyabanbibaranRequest(api, action) {
     toast.success("सफलतापुर्वक राष्ट्रिय वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallrastriyabanbibaranRequest(api);
+    yield fetchallrastriyabanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       BankaprakarActions.deleterastriyabanbibaranSuccess(response.data)
     );
@@ -792,10 +843,16 @@ export function* fetchallcommercialkabuliyatibanbibaranRequest(api, action) {
 export function* fetchcommercialkabuliyatibanbibaranRequest(api, action) {
   const rastriyabanBibaranId = action.payload;
 
-  const response = yield api.getCommercialkabuliyatibanBibaran(rastriyabanBibaranId);
+  const response = yield api.getCommercialkabuliyatibanBibaran(
+    rastriyabanBibaranId
+  );
 
   if (response.ok) {
-    yield put(BankaprakarActions.fetchcommercialkabuliyatibanbibaranSuccess(response.data));
+    yield put(
+      BankaprakarActions.fetchcommercialkabuliyatibanbibaranSuccess(
+        response.data
+      )
+    );
   } else {
     yield put(BankaprakarActions.fetchcommercialkabuliyatibanbibaranFailure());
   }
