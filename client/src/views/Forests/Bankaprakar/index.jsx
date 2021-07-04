@@ -10,6 +10,7 @@ import {
   SamudayikbanBibaran,
   SajhedaribanBibaran,
   ChaklabanBibaran,
+  RastriyabanBibaran,
   ReportGenerator,
 } from "../../../components";
 import BankaprakarActions from "../../../actions/bankaprakar";
@@ -20,6 +21,7 @@ import {
   nijibanHeadings,
   sajhedaribanHeadings,
   chaklabanHeadings,
+  rastriyabanHeadings,
   districtList,
 } from "../../../services/config";
 import "./Bankaprakar.scss";
@@ -53,6 +55,7 @@ class Bankaprakar extends Component {
     var nijibanList = [];
     var sajhedaribanList = [];
     var chaklabanList = [];
+    var rastriyabanList = [];
 
     if (nextProps !== prevState) {
       samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
@@ -61,6 +64,7 @@ class Bankaprakar extends Component {
       kabuliyatibanList = nextProps.kabuliyatibanbibaranDataList.data;
       sajhedaribanList = nextProps.sajhedaribanbibaranDataList.data;
       chaklabanList = nextProps.chaklabanbibaranDataList.data;
+      rastriyabanList = nextProps.rastriyabanbibaranDataList.data;
     }
 
     return {
@@ -71,6 +75,7 @@ class Bankaprakar extends Component {
       kabuliyatibanList,
       sajhedaribanList,
       chaklabanList,
+      rastriyabanList,
     };
   }
 
@@ -165,6 +170,17 @@ class Bankaprakar extends Component {
         });
         break;
       }
+      case "rastriyaban": {
+        this.props.fetchallRastriyabanbibaran({
+          fromDate,
+          toDate,
+          distId,
+          name: "darta_miti",
+          page: page,
+          perPage,
+        });
+        break;
+      }
       default:
         break;
     }
@@ -229,6 +245,13 @@ class Bankaprakar extends Component {
             });
             break;
           }
+          case "rastriya": {
+            this.props.history.push({
+              pathname: `/forests/rastriyabanedit/${item.rastriyabanbibaran_id}`,
+              item,
+            });
+            break;
+          }
 
           default:
             break;
@@ -259,6 +282,10 @@ class Bankaprakar extends Component {
           }
           case "chakla": {
             this.props.deleteChaklabanbibaran(item.darta_no);
+            break;
+          }
+          case "chakla": {
+            this.props.deleteRastriyabanbibaran(item.darta_no);
             break;
           }
           default:
@@ -297,6 +324,10 @@ class Bankaprakar extends Component {
         this.props.history.push("/forests/chaklabanadd/new");
         break;
       }
+      case "rastriyaban": {
+        this.props.history.push("/forests/rastriyabanadd/new");
+        break;
+      }
 
       default:
         break;
@@ -312,6 +343,7 @@ class Bankaprakar extends Component {
       nijibanList,
       sajhedaribanList,
       chaklabanList,
+      rastriyabanList,
     } = this.state;
     const { user } = this.props;
 
@@ -617,6 +649,56 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateChaklabanbibaran(e, id)}
           />
         )}
+        {equals(loc, "rastriyabanlist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="rastriyaban"
+                title="दर्ता मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="rastriyaban" />
+            </div>
+            <RastriyabanBibaran.List
+              buttonName="+ राष्ट्रिय वन"
+              title="राष्ट्रिय वन सम्बन्धी विवरण"
+              pageCount={
+                !isNil(rastriyabanList)
+                  ? Math.ceil(rastriyabanList.total / perPage)
+                  : 10
+              }
+              data={!isNil(rastriyabanList) ? rastriyabanList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={rastriyabanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("rastriyaban")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "rastriyaban")}
+            />
+          </Fragment>
+        )}
+        {equals(loc, "rastriyabanadd") && (
+          <RastriyabanBibaran.Add
+            title="+ राष्ट्रिय वन"
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addRastriyabanbibaran(e)}
+          />
+        )}
+        {equals(loc, "rastriyabanedit") && (
+          <RastriyabanBibaran.Edit
+            title="राष्ट्रिय वन पुनः प्रविष्ट"
+            user={user}
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateRastriyabanbibaran(e, id)}
+          />
+        )}
       </div>
     );
   }
@@ -629,6 +711,7 @@ Bankaprakar.propTypes = {
   nijibanbibaranDataList: PropTypes.any,
   sajhedaribanbibaranDataList: PropTypes.any,
   chaklabanbibaranDataList: PropTypes.any,
+  rastriyabanbibaranDataList: PropTypes.any,
 };
 
 Bankaprakar.defaultProps = {
@@ -638,6 +721,7 @@ Bankaprakar.defaultProps = {
   nijibanbibaranDataList: {},
   sajhedaribanbibaranDataList: {},
   chaklabanbibaranDataList: {},
+  rastriyabanbibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
@@ -649,6 +733,7 @@ const mapStateToProps = (state) => ({
   nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
   sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
   chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
+  rastriyabanbibaranDataList: state.bankaprakar.allrastriyabanbibaranData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -750,6 +835,23 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BankaprakarActions.deletechaklabanbibaranRequest(chaklabanbibaranId)
     ),
+
+//Rastriyaban
+fetchallRastriyabanbibaran: (payload) =>
+  dispatch(BankaprakarActions.fetchallrastriyabanbibaranRequest(payload)),
+addRastriyabanbibaran: (payload) =>
+  dispatch(BankaprakarActions.addrastriyabanbibaranRequest(payload)),
+updateRastriyabanbibaran: (payload, rastriyabanbibaranId) =>
+  dispatch(
+    BankaprakarActions.updaterastriyabanbibaranRequest(
+      payload,
+      rastriyabanbibaranId
+    )
+  ),
+deleteRastriyabanbibaran: (rastriyabanbibaranId) =>
+  dispatch(
+    BankaprakarActions.deleterastriyabanbibaranRequest(rastriyabanbibaranId)
+  ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);

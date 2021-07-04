@@ -40,6 +40,7 @@ import * as KarmachariBibaran from "./KarmachariBibaran";
 import * as JadibutiUtpadan from "./JadibutiUtpadan";
 import * as SajhedaribanBibaran from "./SajhedaribanBibaran";
 import * as ChaklabanBibaran from "./ChaklabanBibaran";
+import * as RastriyabanBibaran from "./RastriyabanBibaran";
 
 export {
   HeaderComponent,
@@ -84,4 +85,5 @@ export {
   JadibutiUtpadan,
   SajhedaribanBibaran,
   ChaklabanBibaran,
+  RastriyabanBibaran,
 };

@@ -379,6 +379,19 @@ const chaklabanHeadings = [
   "परिमार्जन गर्ने",
 ];
 
+const rastriyabanHeadings = [
+  "दर्ता नं",
+  "दर्ता मिति",
+  "राष्ट्रिय वनको नाम",
+  "ठेगाना",
+  "क्षेत्रफल",
+  "मूख्य प्रजाति",
+  "संलग्न घरधुरी",
+  "लाभ संख्या",
+  "सिर्जना गर्ने",
+  "परिमार्जन गर्ने",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -406,4 +419,5 @@ export {
   jadibutiHeadings,
   sajhedaribanHeadings,
   chaklabanHeadings,
+  rastriyabanHeadings,
 };
