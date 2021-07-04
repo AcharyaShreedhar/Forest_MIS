@@ -685,7 +685,7 @@ export function* updaterastriyabanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक निजी वन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक राष्ट्रिय वन पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrastriyabanbibaranRequest(api, {
