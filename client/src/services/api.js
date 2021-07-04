@@ -120,6 +120,9 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`);
 
   const getChaklabanBibaranList = (payload) => api.post("chaklabanBibaranList",payload);
+  
+  const getChaklabanBibaran = (chaklabanBibaranId) =>
+    api.get(`chaklabanBibaran/${chaklabanBibaranId}`);
 
   const getNabikaranKaryayojanaList = () => api.get("nabikaranKaryayojanaList");
 
@@ -784,6 +787,7 @@ const create = (baseURL = Config.API_URL) => {
     postRastriyabanBibaranUpdate,
     postRastriyabanBibaranDelete,
     getChaklabanBibaranList,
+    getChaklabanBibaran,
 
     //dwandabebasthapan
     getBanyajantuUddarList,
