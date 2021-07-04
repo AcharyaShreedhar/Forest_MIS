@@ -698,7 +698,14 @@ export function* deleteconsumergroupdetailsRequest(api, action) {
     toast.success("सफलतापुर्वक उपभोक्ता समुह हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallconsumergroupdetailsRequest(api);
+    yield fetchallconsumergroupdetailsRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       BankaprakarActions.deleteconsumergroupdetailsSuccess(response.data)
     );
