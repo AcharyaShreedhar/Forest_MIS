@@ -348,6 +348,19 @@ const fetchallrastriyabanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchrastriyabanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchrastriyabanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    rastriyabanbibaranData: action.response,
+  });
+};
+const fetchrastriyabanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -460,9 +473,14 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_SUCCESS]: deletenabikarankaryayojanaSuccess,
   [BankaprakarTypes.DELETENABIKARANKARYAYOJANA_FAILURE]: deletenabikarankaryayojanaFailure,
 
+  // rastriyabanbibaran
   [BankaprakarTypes.FETCHALLRASTRIYABANBIBARAN_REQUEST]: fetchallrastriyabanbibaranRequest,
   [BankaprakarTypes.FETCHALLRASTRIYABANBIBARAN_SUCCESS]: fetchallrastriyabanbibaranSuccess,
   [BankaprakarTypes.FETCHALLRASTRIYABANBIBARAN_FAILURE]: fetchallrastriyabanbibaranFailure,
+
+  [BankaprakarTypes.FETCHRASTRIYABANBIBARAN_REQUEST]: fetchrastriyabanbibaranRequest,
+  [BankaprakarTypes.FETCHRASTRIYABANBIBARAN_SUCCESS]: fetchrastriyabanbibaranSuccess,
+  [BankaprakarTypes.FETCHRASTRIYABANBIBARAN_FAILURE]: fetchrastriyabanbibaranFailure,
 
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
