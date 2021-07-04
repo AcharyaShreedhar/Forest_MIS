@@ -162,6 +162,17 @@ const { Types, Creators } = createActions({
   fetchchaklabanbibaranSuccess: ["response"],
   fetchchaklabanbibaranFailure: null,
 
+  addchaklabanbibaranRequest: ["payload"],
+  addchaklabanbibaranSuccess: ["response"],
+  addchaklabanbibaranFailure: null,
+
+  updatechaklabanbibaranRequest: ["payload","chaklabanbibaranId"],
+  updatechaklabanbibaranSuccess: ["response"],
+  updatechaklabanbibaranFailure: null,
+
+  deletechaklabanbibaranRequest: ["payload","chaklabanbibaranId"],
+  deletechaklabanbibaranSuccess: ["response"],
+  deletechaklabanbibaranFailure: null,
 
   //-----ConsumergroupDetails
   fetchallconsumergroupdetailsRequest: ["payload"],
