@@ -158,6 +158,11 @@ const { Types, Creators } = createActions({
   fetchallchaklabanbibaranSuccess: ["response"],
   fetchallchaklabanbibaranFailure: null,
 
+  fetchchaklabanbibaranRequest: ["payload"],
+  fetchchaklabanbibaranSuccess: ["response"],
+  fetchchaklabanbibaranFailure: null,
+
+
   //-----ConsumergroupDetails
   fetchallconsumergroupdetailsRequest: ["payload"],
   fetchallconsumergroupdetailsSuccess: ["response"],
