@@ -264,6 +264,29 @@ export class SideNavbar extends Component {
               <NavText> सवारी साधनहरु</NavText>
             </NavItem>
           </NavItem>
+          <NavItem eventKey="/karyabibaran">
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faListAlt} className="mr-2" />
+            </NavIcon>
+            <NavText>कार्य विवरण</NavText>
+
+            <NavItem
+              eventKey="karyabibaran/samajikkaryabibaranlist"
+              onClick={() =>
+                history.push("/karyabibaran/samajikkaryabibaranlist")
+              }
+            >
+              <NavText>सामाजिक कार्य विवरण</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="karyabibaran/samajikkaryabibaranlist"
+              onClick={() =>
+                history.push("/karyabibaran/banbikaskaryabibaranlist")
+              }
+            >
+              <NavText> वन विकास कार्य विवरण</NavText>
+            </NavItem>
+          </NavItem>
           <NavItem eventKey="signout" onClick={onlogout}>
             <Link to="/logout" className="displaybox">
               <FontAwesomeIcon size="2x" icon={faSignOutAlt} className="mr-2" />
