@@ -105,8 +105,12 @@ const create = (baseURL = Config.API_URL) => {
   const getCommercialkabuliyatibanBibaranList = (payload) =>
     api.post("commercialkabuliyatibanBibaranList", payload);
 
-  const getCommercialkabuliyatibanBibaran = (commercialkabuliyatibanbibaranId) =>
-    api.get(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`);
+  const getCommercialkabuliyatibanBibaran = (
+    commercialkabuliyatibanbibaranId
+  ) =>
+    api.get(
+      `commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`
+    );
 
   const postBankaprakarCommercialkabuliyatibanAddNew = (payload) =>
     api.post(`commercialkabuliyatibanBibaran`, payload);
@@ -114,23 +118,32 @@ const create = (baseURL = Config.API_URL) => {
   const postBankaprakarCommercialkabuliyatibanUpdate = (
     payload,
     commercialkabuliyatibanbibaranId
-  ) => api.put(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`, payload);
+  ) =>
+    api.put(
+      `commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`,
+      payload
+    );
 
-  const postBankaprakarCommercialkabuliyatibanDelete = (commercialkabuliyatibanbibaranId) =>
-    api.delete(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`);
+  const postBankaprakarCommercialkabuliyatibanDelete = (
+    commercialkabuliyatibanbibaranId
+  ) =>
+    api.delete(
+      `commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`
+    );
 
-  const getChaklabanBibaranList = (payload) => api.post("chaklabanBibaranList",payload);
-  
+  const getChaklabanBibaranList = (payload) =>
+    api.post("chaklabanBibaranList", payload);
+
   const getChaklabanBibaran = (chaklabanBibaranId) =>
     api.get(`chaklabanBibaran/${chaklabanBibaranId}`);
 
   //Add
   const postBankaprakarChaklabanAddNew = (payload) =>
-    api.post(`chaklabanBibaran`, payload);  
+    api.post(`chaklabanBibaran`, payload);
 
   //update
   const postBankaprakarChaklabanUpdate = (payload, chaklabanbibaranId) =>
-  api.put(`chaklabanBibaran/${chaklabanbibaranId}`, payload);
+    api.put(`chaklabanBibaran/${chaklabanbibaranId}`, payload);
 
   //delete
   const postBankaprakarChaklabanDelete = (chaklabanbibaranId) =>
@@ -154,7 +167,6 @@ const create = (baseURL = Config.API_URL) => {
   //delete
   const postBankaprakarNabikarankaryayojanaDelete = (nabikaranKaryayojanaId) =>
     api.delete(`nabikarankaryayojana/${nabikaranKaryayojanaId}`);
-
 
   //Banbibaran_baramadit_chijbastu
   const getBaramaditchijbastuList = (payload) =>
@@ -761,6 +773,10 @@ const create = (baseURL = Config.API_URL) => {
   const postRastriyabanBibaranDelete = (rastriyabanbibaranId) =>
     api.delete(`rastriyabanBibaran/${rastriyabanbibaranId}`);
 
+  // sajhedariban bibaran
+  const getSajhedaribanBibaranList = (payload) =>
+    api.post("sajhedaribanBibaranList", payload);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -803,6 +819,7 @@ const create = (baseURL = Config.API_URL) => {
     postBankaprakarChaklabanAddNew,
     postBankaprakarChaklabanUpdate,
     postBankaprakarChaklabanDelete,
+    getSajhedaribanBibaranList,
 
     //dwandabebasthapan
     getBanyajantuUddarList,

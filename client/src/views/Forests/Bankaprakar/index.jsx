@@ -8,6 +8,7 @@ import {
   KabuliyatibanBibaran,
   NijibanBibaran,
   SamudayikbanBibaran,
+
   SajhedaribanBibaran,
   ChaklabanBibaran,
   RastriyabanBibaran,
@@ -650,7 +651,7 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateNijibanbibaran(e, id)}
           />
         )}
-        {/* {equals(loc, "sajhedaribanlist") && (
+         {equals(loc, "sajhedaribanlist") && (
           <Fragment>
             <div className="report-filter">
               <Filter
@@ -699,7 +700,7 @@ class Bankaprakar extends Component {
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateSajhedaribanbibaran(e, id)}
           />
-        )} */}
+        )} 
         {equals(loc, "chaklabanlist") && (
           <Fragment>
             <div className="report-filter">
@@ -887,6 +888,7 @@ const mapStateToProps = (state) => ({
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
   nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
   sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
+   sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
   chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
   rastriyabanbibaranDataList: state.bankaprakar.allrastriyabanbibaranData,
   commercialbanbibaranDataList:
@@ -976,6 +978,22 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BankaprakarActions.deletesajhedaribanbibaranRequest(sajhedaribanId)
     ),
+    //Sajhedariban
+    fetchallSajhedaribanbibaran: (payload) =>
+      dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
+  //   addSajhedaribanbibaran: (payload) =>
+  //     dispatch(BankaprakarActions.addsajhedaribanbibaranRequest(payload)),
+  //   updateSajhedaribanbibaran: (payload, sajhedaribanId) =>
+  //     dispatch(
+  //       BankaprakarActions.updatesajhedaribanbibaranRequest(
+  //         payload,
+  //         sajhedaribanId
+  //       )
+  //     ),
+  //   deleteSajhedaribanbibaran: (sajhedaribanId) =>
+  //     dispatch(
+  //       BankaprakarActions.deletesajhedaribanbibaranRequest(sajhedaribanId)
+  //     ),
 
   //Chaklaban
   fetchallChaklabanbibaran: (payload) =>

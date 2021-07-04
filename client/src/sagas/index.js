@@ -130,6 +130,7 @@ import {
   addchaklabanbibaranRequest,
   updatechaklabanbibaranRequest,
   deletechaklabanbibaranRequest,
+  fetchallsajhedaribanbibaranRequest,
 } from "./bankaprakar";
 
 //------------------------biruwautpadan
@@ -575,7 +576,6 @@ export default function* root() {
       deletechaklabanbibaranRequest,
       api
     ),
-    
 
     //------------------------------Biruwautpadan
     takeLatest(
@@ -639,7 +639,7 @@ export default function* root() {
       api
     ),
 
-    //------------------------------brixyaropan
+    //brixyaropan
     takeLatest(
       BiruwautpadanTypes.FETCHALLBRIXYAROPAN_REQUEST,
       fetchallbrixyaropanRequest,
@@ -1509,6 +1509,12 @@ export default function* root() {
     takeLatest(
       MiscellaneousTypes.DELETEROJGARSRIJANA_REQUEST,
       deleterojgarsrijanaRequest,
+      api
+    ),
+    //--------------------sajhedaribanbibaran
+    takeLatest(
+      BankaprakarTypes.FETCHALLSAJHEDARIBANBIBARAN_REQUEST,
+      fetchallsajhedaribanbibaranRequest,
       api
     ),
   ]);
