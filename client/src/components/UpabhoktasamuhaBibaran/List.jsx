@@ -33,7 +33,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered id="nijiban">
+        <Table responsive striped bordered hover id="upabhoktasamuha">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -47,23 +47,42 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((nban, index) => (
+              data.map((samuha, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {nban.darta_no}</td>
-                  <td key={index}> {nban.swikrit_miti}</td>
-                  <td key={index}> {nban.nijiban_dhaniko_naam}</td>
-                  <td key={index}> {nban.perm_addr}</td>
-                  <td key={index}> {nban.curr_addr}</td>
-                  <td key={index}> {nban.area}</td>
-                  <td key={index}> {nban.main_species}</td>
-                  <td key={index}> {nban.created_by}</td>
-                  <td key={index}> {nban.updated_by}</td>
+                  <td key={index}> {samuha.registration_no}</td>
+                  <td key={index}> {samuha.registration_date}</td>
+                  <td key={index}> {samuha.samudayik_upavokta_samiti_name}</td>
+                  <td key={index}> {samuha.perm_addr}</td>
+                  <td key={index}> {samuha.curr_addr}</td>
+                  <td key={index}> {samuha.ghardhuri_dalit}</td>
+                  <td key={index}> {samuha.ghardhuri_janjati}</td>
+                  <td key={index}> {samuha.ghardhuri_anya}</td>
+                  <td key={index}> {samuha.ghardhuri_total}</td>
+                  <td key={index}> {samuha.population_female}</td>
+                  <td key={index}> {samuha.population_male}</td>
+                  <td key={index}> {samuha.population_total}</td>
+                  <td key={index}> {samuha.sampannata_starikaran_sampanna}</td>
+                  <td key={index}> {samuha.sampannata_starikaran_madhyam}</td>
+                  <td key={index}> {samuha.sampannata_starikaran_bipanna}</td>
+                  <td key={index}>
+                    {" "}
+                    {samuha.karyasamiti_representation_dalit}
+                  </td>
+                  <td key={index}>
+                    {" "}
+                    {samuha.karyasamiti_representation_janjati}
+                  </td>
+                  <td key={index}> {samuha.karyasamiti_representation_anya}</td>
+                  <td key={index}> {samuha.adhyakshya_female}</td>
+                  <td key={index}> {samuha.adhyakshya_male}</td>
+                  <td key={index}> {samuha.sachib_female}</td>
+                  <td key={index}> {samuha.sachib_male}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, nban, "niji")}
+                        onChange={(e) => onSelect(e, samuha, "upabhoktasamuha")}
                       />
                     </div>
                   </td>
@@ -78,7 +97,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type="nijiban"
+          type="upabhoktasamuha"
         />
       </div>
     </Fragment>

@@ -8,10 +8,12 @@ import {
   KabuliyatibanBibaran,
   NijibanBibaran,
   SamudayikbanBibaran,
-  SajhedaribanBibaran,
-  ChaklabanBibaran,
-  RastriyabanBibaran,
-  CommercialbanBibaran,
+
+  // SajhedaribanBibaran,
+  // ChaklabanBibaran,
+  // RastriyabanBibaran,
+  //  CommercialbanBibaran,
+  UpabhoktasamuhaBibaran,
   ReportGenerator,
 } from "../../../components";
 import BankaprakarActions from "../../../actions/bankaprakar";
@@ -20,9 +22,10 @@ import {
   dharmikbanHeadings,
   kabuliyatibanHeadings,
   nijibanHeadings,
-  sajhedaribanHeadings,
-  chaklabanHeadings,
-  rastriyabanHeadings,
+  // sajhedaribanHeadings,
+  // chaklabanHeadings,
+  // rastriyabanHeadings,
+  upabhoktasamuhaHeadings,
   districtList,
   commercialbanHeadings,
 } from "../../../services/config";
@@ -59,16 +62,18 @@ class Bankaprakar extends Component {
     var chaklabanList = [];
     var rastriyabanList = [];
     var commercialbanList = [];
+    var upabhoktasamuhaList = [];
 
     if (nextProps !== prevState) {
       samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
       dharmikbanList = nextProps.dharmikbanbibaranDataList.data;
       nijibanList = nextProps.nijibanbibaranDataList.data;
       kabuliyatibanList = nextProps.kabuliyatibanbibaranDataList.data;
-      sajhedaribanList = nextProps.sajhedaribanbibaranDataList.data;
-      chaklabanList = nextProps.chaklabanbibaranDataList.data;
-      rastriyabanList = nextProps.rastriyabanbibaranDataList.data;
-      commercialbanList = nextProps.commercialbanbibaranDataList.data;
+      // sajhedaribanList = nextProps.sajhedaribanbibaranDataList.data;
+      // chaklabanList = nextProps.chaklabanbibaranDataList.data;
+      // rastriyabanList = nextProps.rastriyabanbibaranDataList.data;
+      //commercialbanList = nextProps.commercialbanbibaranDataList.data;
+      upabhoktasamuhaList = nextProps.upabhoktasamuhabibaranDataList.data;
     }
 
     return {
@@ -81,6 +86,7 @@ class Bankaprakar extends Component {
       chaklabanList,
       rastriyabanList,
       commercialbanList,
+      upabhoktasamuhaList,
     };
   }
 
@@ -186,12 +192,25 @@ class Bankaprakar extends Component {
         });
         break;
       }
+
       case "commercialban": {
         this.props.fetchallCommercialbanbibaran({
           fromDate,
           toDate,
           distId,
           name: "darta_miti",
+          page: page,
+          perPage,
+        });
+        break;
+      }
+
+      case "upabhoktasamuha": {
+        this.props.fetchallUpabhoktasamuhabibaran({
+          fromDate,
+          toDate,
+          distId,
+          name: "registration_date",
           page: page,
           perPage,
         });
@@ -343,22 +362,22 @@ class Bankaprakar extends Component {
         this.props.history.push("/forests/nijibanadd/new");
         break;
       }
-      case "sajhedariban": {
-        this.props.history.push("/forests/sajhedaribanadd/new");
-        break;
-      }
-      case "chaklaban": {
-        this.props.history.push("/forests/chaklabanadd/new");
-        break;
-      }
-      case "rastriyaban": {
-        this.props.history.push("/forests/rastriyabanadd/new");
-        break;
-      }
-      case "commercialban": {
-        this.props.history.push("/forests/commercialbanadd/new");
-        break;
-      }
+      // case "sajhedariban": {
+      //   this.props.history.push("/forests/sajhedaribanadd/new");
+      //   break;
+      // }
+      // case "chaklaban": {
+      //   this.props.history.push("/forests/chaklabanadd/new");
+      //   break;
+      // }
+      // case "rastriyaban": {
+      //   this.props.history.push("/forests/rastriyabanadd/new");
+      //   break;
+      // }
+      // case "commercialban": {
+      //   this.props.history.push("/forests/commercialbanadd/new");
+      //   break;
+      // }
 
       default:
         break;
@@ -372,10 +391,11 @@ class Bankaprakar extends Component {
       dharmikbanList,
       kabuliyatibanList,
       nijibanList,
-      sajhedaribanList,
-      chaklabanList,
-      rastriyabanList,
-      commercialbanList
+      // sajhedaribanList,
+      // chaklabanList,
+      // rastriyabanList,
+      //commercialbanList
+      upabhoktasamuhaList,
     } = this.state;
     const { user } = this.props;
 
@@ -429,6 +449,56 @@ class Bankaprakar extends Component {
             user={user}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateSamudayikbanbibaran(e, id)}
+          />
+        )}
+        {equals(loc, "upabhoktasamuhalist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="upabhoktasamuha"
+                title="दर्ता मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="upabhoktasamuha" />
+            </div>
+            <UpabhoktasamuhaBibaran.List
+              buttonName="+ उपभोक्ता समुह"
+              title="उपभोक्ता समुह सम्बन्धी विवरण"
+              pageCount={
+                !isNil(upabhoktasamuhaList)
+                  ? Math.ceil(upabhoktasamuhaList.total / perPage)
+                  : 10
+              }
+              data={!isNil(upabhoktasamuhaList) ? upabhoktasamuhaList.list : []}
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={upabhoktasamuhaHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("upabhoktasamuha")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e, "upabhoktasamuha")}
+            />
+          </Fragment>
+        )}
+        {equals(loc, "upabhoktasamuhaadd") && (
+          <UpabhoktasamuhaBibaran.Add
+            title="+ उपभोक्ता समुह"
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addUpabhoktasamuhabibaran(e)}
+          />
+        )}
+        {equals(loc, "upabhoktasamuhaedit") && (
+          <UpabhoktasamuhaBibaran.Edit
+            title="उपभोक्ता समुह पुनः प्रविष्ट"
+            history={this.props.history}
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateUpabhoktasamuhabibaran(e, id)}
           />
         )}
         {equals(loc, "dharmikbanlist") && (
@@ -581,7 +651,7 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateNijibanbibaran(e, id)}
           />
         )}
-        {equals(loc, "sajhedaribanlist") && (
+        {/* {equals(loc, "sajhedaribanlist") && (
           <Fragment>
             <div className="report-filter">
               <Filter
@@ -730,8 +800,7 @@ class Bankaprakar extends Component {
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateRastriyabanbibaran(e, id)}
           />
-        )}
-        {equals(loc, "commercialbanlist") && (
+        )} {equals(loc, "commercialbanlist") && (
           <Fragment>
             <div className="report-filter">
               <Filter
@@ -781,6 +850,8 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateCommercialbanbibaran(e, id)}
           />
         )}
+        
+        */}
       </div>
     );
   }
@@ -795,6 +866,7 @@ Bankaprakar.propTypes = {
   chaklabanbibaranDataList: PropTypes.any,
   rastriyabanbibaranDataList: PropTypes.any,
   commercialbanbibaranDataList: PropTypes.any,
+  upabhoktasamuhabibaranDataList: PropTypes.any,
 };
 
 Bankaprakar.defaultProps = {
@@ -806,6 +878,7 @@ Bankaprakar.defaultProps = {
   chaklabanbibaranDataList: {},
   rastriyabanbibaranDataList: {},
   commercialbanbibaranDataList: {},
+  upabhoktasamuhabibaranDataList: {},
 };
 
 const mapStateToProps = (state) => ({
@@ -815,10 +888,11 @@ const mapStateToProps = (state) => ({
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
   nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
-  sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
-  chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
-  rastriyabanbibaranDataList: state.bankaprakar.allrastriyabanbibaranData,
-  commercialbanbibaranDataList: state.bankaprakar.allcommercialkabuliyatibanbibaranData,
+  // sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
+  // chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
+  // rastriyabanbibaranDataList: state.bankaprakar.allrastriyabanbibaranData,
+  //commercialbanbibaranDataList: state.bankaprakar.allcommercialkabuliyatibanbibaranData,
+  upabhoktasamuhabibaranDataList: state.bankaprakar.allconsumergroupdetailsData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -887,73 +961,77 @@ const mapDispatchToProps = (dispatch) => ({
   deleteNijibanbibaran: (nijibanbibaranId) =>
     dispatch(BankaprakarActions.deletenijibanbibaranRequest(nijibanbibaranId)),
 
-  //Sajhedariban
-  fetchallSajhedaribanbibaran: (payload) =>
-    dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
-  addSajhedaribanbibaran: (payload) =>
-    dispatch(BankaprakarActions.addsajhedaribanbibaranRequest(payload)),
-  updateSajhedaribanbibaran: (payload, sajhedaribanId) =>
-    dispatch(
-      BankaprakarActions.updatesajhedaribanbibaranRequest(
-        payload,
-        sajhedaribanId
-      )
-    ),
-  deleteSajhedaribanbibaran: (sajhedaribanId) =>
-    dispatch(
-      BankaprakarActions.deletesajhedaribanbibaranRequest(sajhedaribanId)
-    ),
+  //   //Sajhedariban
+  //   fetchallSajhedaribanbibaran: (payload) =>
+  //     dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
+  //   addSajhedaribanbibaran: (payload) =>
+  //     dispatch(BankaprakarActions.addsajhedaribanbibaranRequest(payload)),
+  //   updateSajhedaribanbibaran: (payload, sajhedaribanId) =>
+  //     dispatch(
+  //       BankaprakarActions.updatesajhedaribanbibaranRequest(
+  //         payload,
+  //         sajhedaribanId
+  //       )
+  //     ),
+  //   deleteSajhedaribanbibaran: (sajhedaribanId) =>
+  //     dispatch(
+  //       BankaprakarActions.deletesajhedaribanbibaranRequest(sajhedaribanId)
+  //     ),
 
-  //Chaklaban
-  fetchallChaklabanbibaran: (payload) =>
-    dispatch(BankaprakarActions.fetchallchaklabanbibaranRequest(payload)),
-  addChaklabanbibaran: (payload) =>
-    dispatch(BankaprakarActions.addchaklabanbibaranRequest(payload)),
-  updateChaklabanbibaran: (payload, chaklabanbibaranId) =>
-    dispatch(
-      BankaprakarActions.updatechaklabanbibaranRequest(
-        payload,
-        chaklabanbibaranId
-      )
-    ),
-  deleteChaklabanbibaran: (chaklabanbibaranId) =>
-    dispatch(
-      BankaprakarActions.deletechaklabanbibaranRequest(chaklabanbibaranId)
-    ),
+  //   //Chaklaban
+  //   fetchallChaklabanbibaran: (payload) =>
+  //     dispatch(BankaprakarActions.fetchallchaklabanbibaranRequest(payload)),
+  //   addChaklabanbibaran: (payload) =>
+  //     dispatch(BankaprakarActions.addchaklabanbibaranRequest(payload)),
+  //   updateChaklabanbibaran: (payload, chaklabanbibaranId) =>
+  //     dispatch(
+  //       BankaprakarActions.updatechaklabanbibaranRequest(
+  //         payload,
+  //         chaklabanbibaranId
+  //       )
+  //     ),
+  //   deleteChaklabanbibaran: (chaklabanbibaranId) =>
+  //     dispatch(
+  //       BankaprakarActions.deletechaklabanbibaranRequest(chaklabanbibaranId)
+  //     ),
 
-//Rastriyaban
-fetchallRastriyabanbibaran: (payload) =>
-  dispatch(BankaprakarActions.fetchallrastriyabanbibaranRequest(payload)),
-addRastriyabanbibaran: (payload) =>
-  dispatch(BankaprakarActions.addrastriyabanbibaranRequest(payload)),
-updateRastriyabanbibaran: (payload, rastriyabanbibaranId) =>
-  dispatch(
-    BankaprakarActions.updaterastriyabanbibaranRequest(
-      payload,
-      rastriyabanbibaranId
-    )
-  ),
-deleteRastriyabanbibaran: (rastriyabanbibaranId) =>
-  dispatch(
-    BankaprakarActions.deleterastriyabanbibaranRequest(rastriyabanbibaranId)
-  ),
+  // //Rastriyaban
+  // fetchallRastriyabanbibaran: (payload) =>
+  //   dispatch(BankaprakarActions.fetchallrastriyabanbibaranRequest(payload)),
+  // addRastriyabanbibaran: (payload) =>
+  //   dispatch(BankaprakarActions.addrastriyabanbibaranRequest(payload)),
+  // updateRastriyabanbibaran: (payload, rastriyabanbibaranId) =>
+  //   dispatch(
+  //     BankaprakarActions.updaterastriyabanbibaranRequest(
+  //       payload,
+  //       rastriyabanbibaranId
+  //     )
+  //   ),
+  // deleteRastriyabanbibaran: (rastriyabanbibaranId) =>
+  //   dispatch(
+  //     BankaprakarActions.deleterastriyabanbibaranRequest(rastriyabanbibaranId)
+  //   ),
 
-  //Commercialban
-fetchallCommercialbanbibaran: (payload) =>
-dispatch(BankaprakarActions.fetchallcommercialkabuliyatibanbibaranRequest(payload)),
-addCommercialbanbibaran: (payload) =>
-dispatch(BankaprakarActions.addcommercialkabuliyatibanbibaranRequest(payload)),
-updateCommercialbanbibaran: (payload, commercialkabuliyatibanId) =>
-dispatch(
-  BankaprakarActions.updatecommercialkabuliyatibanbibaranRequest(
-    payload,
-    commercialkabuliyatibanId
-  )
-),
-deleteCommercialbanbibaran: (commercialkabuliyatibanId) =>
-dispatch(
-  BankaprakarActions.deletecommercialkabuliyatibanbibaranRequest(commercialkabuliyatibanId)
-),
+//   //Commercialban
+// fetchallCommercialbanbibaran: (payload) =>
+// dispatch(BankaprakarActions.fetchallcommercialkabuliyatibanbibaranRequest(payload)),
+// addCommercialbanbibaran: (payload) =>
+// dispatch(BankaprakarActions.addcommercialkabuliyatibanbibaranRequest(payload)),
+// updateCommercialbanbibaran: (payload, commercialkabuliyatibanId) =>
+// dispatch(
+//   BankaprakarActions.updatecommercialkabuliyatibanbibaranRequest(
+//     payload,
+//     commercialkabuliyatibanId
+//   )
+// ),
+// deleteCommercialbanbibaran: (commercialkabuliyatibanId) =>
+// dispatch(
+//   BankaprakarActions.deletecommercialkabuliyatibanbibaranRequest(commercialkabuliyatibanId)
+// ),
+
+  //--------------------------Upabhoktasamuhabibaran
+  fetchallUpabhoktasamuhabibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallconsumergroupdetailsRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);
