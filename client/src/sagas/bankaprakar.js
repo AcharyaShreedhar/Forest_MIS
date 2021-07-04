@@ -788,3 +788,15 @@ export function* fetchallcommercialkabuliyatibanbibaranRequest(api, action) {
     );
   }
 }
+
+export function* fetchcommercialkabuliyatibanbibaranRequest(api, action) {
+  const rastriyabanBibaranId = action.payload;
+
+  const response = yield api.getCommercialkabuliyatibanBibaran(rastriyabanBibaranId);
+
+  if (response.ok) {
+    yield put(BankaprakarActions.fetchcommercialkabuliyatibanbibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.fetchcommercialkabuliyatibanbibaranFailure());
+  }
+}

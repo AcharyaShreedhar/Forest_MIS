@@ -105,6 +105,9 @@ const create = (baseURL = Config.API_URL) => {
   const getCommercialkabuliyatibanBibaranList = (payload) =>
     api.post("commercialkabuliyatibanBibaranList", payload);
 
+  const getCommercialkabuliyatibanBibaran = (commercialkabuliyatibanbibaranId) =>
+    api.get(`commercialkabuliyatibanBibaran/${commercialkabuliyatibanbibaranId}`);
+
   const getNabikaranKaryayojanaList = () => api.get("nabikaranKaryayojana");
 
   const getNabikaranKaryayojana = (nabikaranKaryayojanaId) =>
@@ -745,6 +748,7 @@ const create = (baseURL = Config.API_URL) => {
     postBankaprakarKabuliyatibanUpdate,
     postBankaprakarKabuliyatibanDelete,
     getCommercialkabuliyatibanBibaranList,
+    getCommercialkabuliyatibanBibaran,
     getNabikaranKaryayojanaList,
     getNabikaranKaryayojana,
     postBankaprakarNabikarankaryayojanaAddNew,
