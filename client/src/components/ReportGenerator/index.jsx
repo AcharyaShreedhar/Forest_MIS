@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileExcel } from "@fortawesome/free-solid-svg-icons";
+import { faFileAlt } from "@fortawesome/free-solid-svg-icons";
 import "./ReportGenerator.scss";
 
 export class ReportGenerator extends Component {
@@ -16,9 +16,9 @@ export class ReportGenerator extends Component {
             table={id}
             filename="tablexls"
             sheet="tablexls"
-            buttonText="रिपोर्ट जेनेरेट गर्नुहोस"
+            buttonText="रिपोर्ट"
           />
-          <FontAwesomeIcon size="2x" icon={faFileExcel} className="ml-2" />
+          <FontAwesomeIcon size="2x" icon={faFileAlt} className="ml-2" />
         </div>
       </div>
     );

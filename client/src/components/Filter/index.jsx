@@ -46,7 +46,7 @@ export class Filter extends Component {
               onChange={(e) => this.handlefromDate(e)}
               options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
-            <span className="dsl-b22 mx-5">देखी </span>
+            <span className="dsl-b22 mx-2">देखी </span>
             <NepaliDatePicker
               inputClassName="form-control"
               className="ml-2"
@@ -57,7 +57,7 @@ export class Filter extends Component {
           </Fragment>
         )}
         <Dropdown
-          className="dropdownlabel ml-5"
+          className="dropdownlabel ml-2"
           title="जिल्ला :"
           width="fit-content"
           defaultIds={[district]}
