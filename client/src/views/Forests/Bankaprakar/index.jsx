@@ -10,7 +10,7 @@ import {
   SamudayikbanBibaran,
 
   // SajhedaribanBibaran,
-  // ChaklabanBibaran,
+  ChaklabanBibaran,
   // RastriyabanBibaran,
   CommercialbanBibaran,
   UpabhoktasamuhaBibaran,
@@ -23,7 +23,7 @@ import {
   kabuliyatibanHeadings,
   nijibanHeadings,
   // sajhedaribanHeadings,
-  // chaklabanHeadings,
+  chaklabanHeadings,
   // rastriyabanHeadings,
   commercialbanHeadings,
   upabhoktasamuhaHeadings,
@@ -71,7 +71,7 @@ class Bankaprakar extends Component {
       nijibanList = nextProps.nijibanbibaranDataList.data;
       kabuliyatibanList = nextProps.kabuliyatibanbibaranDataList.data;
       // sajhedaribanList = nextProps.sajhedaribanbibaranDataList.data;
-      // chaklabanList = nextProps.chaklabanbibaranDataList.data;
+      chaklabanList = nextProps.chaklabanbibaranDataList.data;
       // rastriyabanList = nextProps.rastriyabanbibaranDataList.data;
       commercialbanList = nextProps.commercialbanbibaranDataList.data;
       upabhoktasamuhaList = nextProps.upabhoktasamuhabibaranDataList.data;
@@ -367,10 +367,10 @@ class Bankaprakar extends Component {
       //   this.props.history.push("/forests/sajhedaribanadd/new");
       //   break;
       // }
-      // case "chaklaban": {
-      //   this.props.history.push("/forests/chaklabanadd/new");
-      //   break;
-      // }
+      case "chaklaban": {
+        this.props.history.push("/forests/chaklabanadd/new");
+        break;
+      }
       // case "rastriyaban": {
       //   this.props.history.push("/forests/rastriyabanadd/new");
       //   break;
@@ -393,7 +393,7 @@ class Bankaprakar extends Component {
       kabuliyatibanList,
       nijibanList,
       // sajhedaribanList,
-      // chaklabanList,
+      chaklabanList,
       // rastriyabanList,
       commercialbanList,
       upabhoktasamuhaList,
@@ -701,7 +701,7 @@ class Bankaprakar extends Component {
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateSajhedaribanbibaran(e, id)}
           />
-        )}
+        )} */}
         {equals(loc, "chaklabanlist") && (
           <Fragment>
             <div className="report-filter">
@@ -752,7 +752,7 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateChaklabanbibaran(e, id)}
           />
         )}
-        {equals(loc, "rastriyabanlist") && (
+        {/* {equals(loc, "rastriyabanlist") && (
           <Fragment>
             <div className="report-filter">
               <Filter
@@ -891,7 +891,7 @@ const mapStateToProps = (state) => ({
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,
   nijibanbibaranDataList: state.bankaprakar.allnijibanbibaranData,
   // sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
-  // chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
+  chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
   // rastriyabanbibaranDataList: state.bankaprakar.allrastriyabanbibaranData,
   commercialbanbibaranDataList: state.bankaprakar.allcommercialkabuliyatibanbibaranData,
   upabhoktasamuhabibaranDataList: state.bankaprakar.allconsumergroupdetailsData,
