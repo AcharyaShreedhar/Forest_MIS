@@ -107,6 +107,7 @@ import {
   addkabuliyatibanbibaranRequest,
   updatekabuliyatibanbibaranRequest,
   deletekabuliyatibanbibaranRequest,
+  fetchallcommercialkabuliyatibanbibaranRequest,
   fetchallnabikarankaryayojanaRequest,
   fetchnabikarankaryayojanaRequest,
   addnabikarankaryayojanaRequest,
@@ -406,6 +407,12 @@ export default function* root() {
     takeLatest(
       BankaprakarTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
       deletekabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
+      fetchallcommercialkabuliyatibanbibaranRequest,
       api
     ),
 

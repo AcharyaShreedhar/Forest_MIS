@@ -131,6 +131,11 @@ const { Types, Creators } = createActions({
   deleterastriyabanbibaranRequest: ["payload", "rastriyabanbibaranId"],
   deleterastriyabanbibaranSuccess: ["response"],
   deleterastriyabanbibaranFailure: null,
+  
+  //commercialkabuliyatibanbibaran
+  fetchallcommercialkabuliyatibanbibaranRequest: ["payload"],
+  fetchallcommercialkabuliyatibanbibaranSuccess: ["response"],
+  fetchallcommercialkabuliyatibanbibaranFailure: null,
 
   //-----ConsumergroupDetails
   fetchallconsumergroupdetailsRequest: ["payload"],
