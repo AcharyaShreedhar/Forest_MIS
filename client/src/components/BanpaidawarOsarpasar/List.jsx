@@ -55,8 +55,6 @@ function List(props) {
                   <td key={index}> {osarpasar.daura}</td>
                   <td key={index}> {osarpasar.lavgrahi_sankhya}</td>
                   <td key={index}> {osarpasar.mulyaabhibridi_kar}</td>
-                  <td key={index}> {osarpasar.created_by}</td>
-                  <td key={index}> {osarpasar.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

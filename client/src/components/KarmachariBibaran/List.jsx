@@ -80,8 +80,6 @@ function List(props) {
                     {englishToNepaliNumber(karmacharibibaran.emp_appoint_date)}
                   </td>
                   <td key={index}> {karmacharibibaran.emp_status} </td>
-                  <td key={index}> {karmacharibibaran.created_by} </td>
-                  <td key={index}> {karmacharibibaran.updated_by} </td>
                   <td>
                     <div className="edit">
                       <EditDropdown

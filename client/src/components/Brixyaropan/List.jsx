@@ -56,8 +56,6 @@ function List(props) {
                   <td key={index}> {brixyaropan.brixyaropan_prajati} </td>
                   <td key={index}> {brixyaropan.brixyaropan_pragati} </td>
                   <td key={index}> {brixyaropan.brixyaropan_sankhya} </td>
-                  <td key={index}> {brixyaropan.created_by} </td>
-                  <td key={index}> {brixyaropan.updated_by} </td>
                   <td>
                     <div className="edit">
                       <EditDropdown

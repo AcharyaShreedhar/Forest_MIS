@@ -56,8 +56,6 @@ function List(props) {
                   <td key={index}> {asset.land_area}</td>
                   <td key={index}> {asset.unit}</td>
                   <td key={index}> {asset.remarks}</td>
-                  <td key={index}> {asset.created_by}</td>
-                  <td key={index}> {asset.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

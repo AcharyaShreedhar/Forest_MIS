@@ -60,8 +60,6 @@ function List(props) {
                   <td key={index}> {banxetraatikraman.atikraman_prayojan}</td>
                   <td key={index}> {banxetraatikraman.samrachana_bibaran}</td>
                   <td key={index}> {banxetraatikraman.atikraman_abastha}</td>
-                  <td key={index}> {banxetraatikraman.created_by}</td>
-                  <td key={index}> {banxetraatikraman.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

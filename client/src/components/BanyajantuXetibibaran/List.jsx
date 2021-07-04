@@ -62,9 +62,6 @@ function List(props) {
                   <td key={index}> {xeti.samitiko_mulyankan_rakam}</td>
                   <td key={index}> {xeti.vuktani_rakam}</td>
                   <td key={index}> {xeti.remarks}</td>
-                  <td key={index}> {xeti.created_by}</td>
-                  <td key={index}> {xeti.updated_by}</td>
-
                   <td>
                     <div className="edit">
                       <EditDropdown

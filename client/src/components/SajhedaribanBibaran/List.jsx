@@ -51,18 +51,13 @@ function List(props) {
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td key={index}> {sban.darta_no}</td>
-                  <td key={index}>
-                    {englishToNepaliNumber(sban.darta_miti)}
-                  </td>
+                  <td key={index}>{englishToNepaliNumber(sban.darta_miti)}</td>
                   <td key={index}> {sban.sajhedariban_naam}</td>
                   <td key={index}> {sban.address}</td>
                   <td key={index}> {sban.area}</td>
                   <td key={index}> {sban.main_species}</td>
                   <td key={index}> {sban.ghardhuri}</td>
                   <td key={index}> {sban.lav_jana}</td>
-                  
-                  <td key={index}> {sban.created_by || user.user_name}</td>
-                  <td key={index}> {sban.updated_by || user.user_name}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

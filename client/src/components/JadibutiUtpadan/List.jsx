@@ -55,8 +55,6 @@ function List(props) {
                   <td key={index}> {jadibuti.jadibuti_laxya}</td>
                   <td key={index}> {jadibuti.jadibuti_pragati}</td>
                   <td key={index}> {jadibuti.jadibuti_sankhya}</td>
-                  <td key={index}> {jadibuti.created_by}</td>
-                  <td key={index}> {jadibuti.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

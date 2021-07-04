@@ -60,9 +60,6 @@ function List(props) {
                   <td key={index}> {uddar.banxetra_duri}</td>
                   <td key={index}> {uddar.anya_bibaran}</td>
                   <td key={index}> {uddar.remarks}</td>
-                  <td key={index}> {uddar.created_by}</td>
-                  <td key={index}> {uddar.updated_by}</td>
-
                   <td>
                     <div className="edit">
                       <EditDropdown

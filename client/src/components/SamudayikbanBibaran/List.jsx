@@ -69,8 +69,6 @@ function List(props) {
                   <td key={index}>
                     {englishToNepaliNumber(sban.renewal_date)}
                   </td>
-                  <td key={index}> {sban.created_by || user.user_name}</td>
-                  <td key={index}> {sban.updated_by || user.user_name}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

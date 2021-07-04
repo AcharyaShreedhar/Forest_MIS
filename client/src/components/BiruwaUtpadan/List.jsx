@@ -56,8 +56,6 @@ function List(props) {
                   <td key={index}> {biruwa.pragati} </td>
                   <td key={index}> {biruwa.brixyaropan} </td>
                   <td key={index}> {biruwa.remarks} </td>
-                  <td key={index}> {biruwa.created_by} </td>
-                  <td key={index}> {biruwa.updated_by} </td>
                   <td>
                     <div className="edit">
                       <EditDropdown

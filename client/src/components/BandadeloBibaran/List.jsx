@@ -61,8 +61,6 @@ function List(props) {
                     {" "}
                     {englishToNepaliNumber(bandadelo.bandadelo_miti)}
                   </td>
-                  <td key={index}> {bandadelo.created_by}</td>
-                  <td key={index}> {bandadelo.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
