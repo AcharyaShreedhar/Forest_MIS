@@ -287,6 +287,7 @@ import {
   addsamajikkaryabibaranRequest,
   updatesamajikkaryabibaranRequest,
   deletesamajikkaryabibaranRequest,
+  fetchallbanbikaskaryabibaranRequest,
 } from "./karyabibaran";
 
 //miscellaneous
@@ -1519,8 +1520,8 @@ export default function* root() {
       api
     ),
     takeLatest(
-      BankaprakarTypes.FETCHSAJHEDARIBANBIBARAN_REQUEST,
-      fetchsajhedaribanbibaranRequest,
+      KaryabibaranTypes.FETCHALLBANBIKASKARYABIBARAN_REQUEST,
+      fetchallbanbikaskaryabibaranRequest,
       api
     ),
   ]);

@@ -1,4 +1,4 @@
-import { call,put } from "redux-saga/effects";
+import { call, put } from "redux-saga/effects";
 import { isNil } from "ramda";
 import KaryabibaranActions from "../actions/karyabibaran";
 import { toast } from "react-toastify";
@@ -42,7 +42,7 @@ export function* addsamajikkaryabibaranRequest(api, action) {
     toast.success("सफलतापुर्वक सामाजिक कार्य विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addsamajikkaryabibaranRequest(api,{
+    yield addsamajikkaryabibaranRequest(api, {
       name: "ban_type",
       page: 0,
       perPage: 10,
@@ -51,9 +51,12 @@ export function* addsamajikkaryabibaranRequest(api, action) {
     yield put(KaryabibaranActions.addsamajikkaryabibaranSuccess(response.data));
   } else {
     yield put(KaryabibaranActions.addsamajikkaryabibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
@@ -70,7 +73,7 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
     toast.success("सफलतापुर्वक सामाजिक कार्य विवरण पुनः प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallsamajikkaryabibaranRequest(api,{
+    yield fetchallsamajikkaryabibaranRequest(api, {
       name: "ban_type",
       page: 0,
       perPage: 10,
@@ -81,9 +84,12 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
     );
   } else {
     yield put(KaryabibaranActions.updatesamajikkaryabibaranFailure());
-    toast.error("तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }
 
@@ -97,7 +103,7 @@ export function* deletesamajikkaryabibaranRequest(api, action) {
     toast.success("सफलतापुर्वक सामाजिक कार्य विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallsamajikkaryabibaranRequest(api,{
+    yield fetchallsamajikkaryabibaranRequest(api, {
       name: "ban_type",
       page: 0,
       perPage: 10,
@@ -113,5 +119,19 @@ export function* deletesamajikkaryabibaranRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       }
     );
+  }
+}
+
+//-------- banbikas karyabibaran
+export function* fetchallbanbikaskaryabibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanbikasKaryaBibaranList(payloaddata);
+  if (response.ok) {
+    yield put(
+      KaryabibaranActions.fetchallbanbikaskaryabibaranSuccess(response.data)
+    );
+  } else {
+    yield put(KaryabibaranActions.fetchallbanbikaskaryabibaranFailure());
   }
 }

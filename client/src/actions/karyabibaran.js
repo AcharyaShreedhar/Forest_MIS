@@ -8,36 +8,37 @@
  * select: When setting reducers, not handling with database, just handling only reducers.
  */
 
- import { createActions } from "reduxsauce";
+import { createActions } from "reduxsauce";
 
- const { Types, Creators } = createActions({
-     
-   fetchallsamajikkaryabibaranRequest: ["payload"],
-   fetchallsamajikkaryabibaranSuccess: ["response"],
-   fetchallsamajikkaryabibaranFailure: null,
+const { Types, Creators } = createActions({
+  fetchallsamajikkaryabibaranRequest: ["payload"],
+  fetchallsamajikkaryabibaranSuccess: ["response"],
+  fetchallsamajikkaryabibaranFailure: null,
 
-   fetchsamajikkaryabibaranRequest: ["payload"],
-   fetchsamajikkaryabibaranSuccess: ["response"],
-   fetchsamajikkaryabibaranFailure: null,
+  fetchsamajikkaryabibaranRequest: ["payload"],
+  fetchsamajikkaryabibaranSuccess: ["response"],
+  fetchsamajikkaryabibaranFailure: null,
 
-   addsamajikkaryabibaranRequest: ["payload"],
-   addsamajikkaryabibaranSuccess: ["response"],
-   addsamajikkaryabibaranFailure: null,
+  addsamajikkaryabibaranRequest: ["payload"],
+  addsamajikkaryabibaranSuccess: ["response"],
+  addsamajikkaryabibaranFailure: null,
 
-   updatesamajikkaryabibaranRequest: ["payload","samajikkaryabibaranId"],
-   updatesamajikkaryabibaranSuccess: ["response"],
-   updatesamajikkaryabibaranFailure: null,
+  updatesamajikkaryabibaranRequest: ["payload", "samajikkaryabibaranId"],
+  updatesamajikkaryabibaranSuccess: ["response"],
+  updatesamajikkaryabibaranFailure: null,
 
-   deletesamajikkaryabibaranRequest: ["payload","samajikkaryabibaranId"],
-   deletesamajikkaryabibaranSuccess: ["response"],
-   deletesamajikkaryabibaranFailure: null,
+  deletesamajikkaryabibaranRequest: ["payload", "samajikkaryabibaranId"],
+  deletesamajikkaryabibaranSuccess: ["response"],
+  deletesamajikkaryabibaranFailure: null,
 
+  fetchallbanbikaskaryabibaranRequest: ["payload"],
+  fetchallbanbikaskaryabibaranSuccess: ["response"],
+  fetchallbanbikaskaryabibaranFailure: null,
 
-   locationsRequest: ["payload"],
-   // Clear all caches
-   clearRequest: null,
- });
- 
- export const KaryabibaranTypes = Types;
- export default Creators;
-  
+  locationsRequest: ["payload"],
+  // Clear all caches
+  clearRequest: null,
+});
+
+export const KaryabibaranTypes = Types;
+export default Creators;
