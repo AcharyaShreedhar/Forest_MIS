@@ -109,18 +109,12 @@ import {
   addkabuliyatibanbibaranRequest,
   updatekabuliyatibanbibaranRequest,
   deletekabuliyatibanbibaranRequest,
-  fetchallcommercialkabuliyatibanbibaranRequest,
-  fetchcommercialkabuliyatibanbibaranRequest,
   fetchallnabikarankaryayojanaRequest,
   fetchnabikarankaryayojanaRequest,
   addnabikarankaryayojanaRequest,
   updatenabikarankaryayojanaRequest,
   deletenabikarankaryayojanaRequest,
-  fetchallrastriyabanbibaranRequest,
-  fetchrastriyabanbibaranRequest,
-  addrastriyabanbibaranRequest,
-  updaterastriyabanbibaranRequest,
-  deleterastriyabanbibaranRequest,
+  fetchallchaklabanbibaranRequest,
 } from "./bankaprakar";
 
 //------------------------biruwautpadan
@@ -276,15 +270,16 @@ import {
   addsamajikkaryabibaranRequest,
   updatesamajikkaryabibaranRequest,
   deletesamajikkaryabibaranRequest,
+
 } from "./karyabibaran";
 
 //miscellaneous
 import {
-  fetchallrojgarsrijanaRequest,
-  fetchrojgarsrijanaRequest,
-  addrojgarsrijanaRequest,
-  updaterojgarsrijanaRequest,
-  deleterojgarsrijanaRequest,
+ fetchallrojgarsrijanaRequest,
+ fetchrojgarsrijanaRequest,
+ addrojgarsrijanaRequest,
+ updaterojgarsrijanaRequest,
+ deleterojgarsrijanaRequest
 } from "./miscellaneous";
 
 const api = API.create();
@@ -414,18 +409,6 @@ export default function* root() {
     ),
 
     takeLatest(
-      BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
-      fetchallcommercialkabuliyatibanbibaranRequest,
-      api
-    ),
-
-    takeLatest(
-      BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
-      fetchcommercialkabuliyatibanbibaranRequest,
-      api
-    ),
-
-    takeLatest(
       BankaprakarTypes.FETCHALLNABIKARANKARYAYOJANA_REQUEST,
       fetchallnabikarankaryayojanaRequest,
       api
@@ -469,10 +452,14 @@ export default function* root() {
       addconsumergroupdetailsRequest,
       api
     ),
-
     takeLatest(
       BankaprakarTypes.UPDATECONSUMERGROUPDETAILS_REQUEST,
       updateconsumergroupdetailsRequest,
+      api
+    ),
+    takeLatest(
+      BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_REQUEST,
+      fetchallchaklabanbibaranRequest,
       api
     ),
 
@@ -537,6 +524,7 @@ export default function* root() {
       api
     ),
 
+
     //brixyaropan
     takeLatest(
       BiruwautpadanTypes.FETCHALLBRIXYAROPAN_REQUEST,
@@ -582,7 +570,11 @@ export default function* root() {
       api
     ),
 
-    takeLatest(BiruwautpadanTypes.ADDJADIBUTI_REQUEST, addjadibutiRequest, api),
+    takeLatest(
+      BiruwautpadanTypes.ADDJADIBUTI_REQUEST,
+      addjadibutiRequest,
+      api
+    ),
 
     takeLatest(
       BiruwautpadanTypes.UPDATEJADIBUTI_REQUEST,
@@ -1351,25 +1343,25 @@ export default function* root() {
     ),
 
     takeLatest(
-      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST,
+      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST, 
       fetchsamajikkaryabibaranRequest,
       api
     ),
 
     takeLatest(
-      KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_REQUEST,
+      KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_REQUEST, 
       addsamajikkaryabibaranRequest,
       api
     ),
 
     takeLatest(
-      KaryabibaranTypes.UPDATESAMAJIKKARYABIBARAN_REQUEST,
+      KaryabibaranTypes.UPDATESAMAJIKKARYABIBARAN_REQUEST, 
       updatesamajikkaryabibaranRequest,
       api
     ),
 
     takeLatest(
-      KaryabibaranTypes.DELETESAMAJIKKARYABIBARAN_REQUEST,
+      KaryabibaranTypes.DELETESAMAJIKKARYABIBARAN_REQUEST, 
       deletesamajikkaryabibaranRequest,
       api
     ),
@@ -1395,41 +1387,13 @@ export default function* root() {
       updaterojgarsrijanaRequest,
       api
     ),
-
+    
     takeLatest(
       MiscellaneousTypes.DELETEROJGARSRIJANA_REQUEST,
       deleterojgarsrijanaRequest,
       api
-    ),
-    // rastriyabanbibaran
-    takeLatest(
-      BankaprakarTypes.FETCHALLRASTRIYABANBIBARAN_REQUEST,
-      fetchallrastriyabanbibaranRequest,
-      api
-    ),
+    )
 
-    takeLatest(
-      BankaprakarTypes.FETCHRASTRIYABANBIBARAN_REQUEST,
-      fetchrastriyabanbibaranRequest,
-      api
-    ),
 
-    takeLatest(
-      BankaprakarTypes.ADDRASTRIYABANBIBARAN_REQUEST,
-      addrastriyabanbibaranRequest,
-      api
-    ),
-
-    takeLatest(
-      BankaprakarTypes.UPDATERASTRIYABANBIBARAN_REQUEST,
-      updaterastriyabanbibaranRequest,
-      api
-    ),
-
-    takeLatest(
-      BankaprakarTypes.DELETERASTRIYABANBIBARAN_REQUEST,
-      deleterastriyabanbibaranRequest,
-      api
-    ),
   ]);
 }
