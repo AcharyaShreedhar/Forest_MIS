@@ -777,6 +777,9 @@ const create = (baseURL = Config.API_URL) => {
   const getSajhedaribanBibaranList = (payload) =>
     api.post("sajhedaribanBibaranList", payload);
 
+  const getSajhedaribanBibaran = (sajhedaribanBibaranId) =>
+    api.get(`rastriyabanBibaran/${sajhedaribanBibaranId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -820,6 +823,7 @@ const create = (baseURL = Config.API_URL) => {
     postBankaprakarChaklabanUpdate,
     postBankaprakarChaklabanDelete,
     getSajhedaribanBibaranList,
+    getSajhedaribanBibaran,
 
     //dwandabebasthapan
     getBanyajantuUddarList,
