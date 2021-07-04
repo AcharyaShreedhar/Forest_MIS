@@ -406,6 +406,21 @@ const fetchallcommercialkabuliyatibanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+
+const fetchcommercialkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchcommercialkabuliyatibanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    commercialkabuliyatibanbibaranData: action.response,
+  });
+};
+const fetchcommercialkabuliyatibanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -543,6 +558,10 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: fetchallcommercialkabuliyatibanbibaranRequest,
   [BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: fetchallcommercialkabuliyatibanbibaranSuccess,
   [BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: fetchallcommercialkabuliyatibanbibaranFailure,
+
+  [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: fetchcommercialkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: fetchcommercialkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: fetchcommercialkabuliyatibanbibaranFailure,
 
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
