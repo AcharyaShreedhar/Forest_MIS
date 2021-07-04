@@ -110,6 +110,11 @@ import {
   addkabuliyatibanbibaranRequest,
   updatekabuliyatibanbibaranRequest,
   deletekabuliyatibanbibaranRequest,
+  fetchallcommercialkabuliyatibanbibaranRequest,
+  fetchcommercialkabuliyatibanbibaranRequest,
+  addcommercialkabuliyatibanbibaranRequest,
+  updatecommercialkabuliyatibanbibaranRequest,
+  deletecommercialkabuliyatibanbibaranRequest,
   fetchallnabikarankaryayojanaRequest,
   fetchnabikarankaryayojanaRequest,
   addnabikarankaryayojanaRequest,
@@ -406,6 +411,36 @@ export default function* root() {
     takeLatest(
       BankaprakarTypes.DELETEKABULIYATIBANBIBARAN_REQUEST,
       deletekabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
+      fetchallcommercialkabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
+      fetchcommercialkabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.ADDCOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
+      addcommercialkabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.UPDATECOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
+      updatecommercialkabuliyatibanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.DELETECOMMERCIALKABULIYATIBANBIBARAN_REQUEST,
+      deletecommercialkabuliyatibanbibaranRequest,
       api
     ),
 

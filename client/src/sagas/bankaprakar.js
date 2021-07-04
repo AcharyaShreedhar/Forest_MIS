@@ -939,3 +939,104 @@ export function* fetchcommercialkabuliyatibanbibaranRequest(api, action) {
     yield put(BankaprakarActions.fetchcommercialkabuliyatibanbibaranFailure());
   }
 }
+
+
+export function* addcommercialkabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBankaprakarCommercialkabuliyatibanAddNew(
+    payload.commercialban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक व्यवसायिक कबुलियती वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallcommercialkabuliyatibanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/commercialbanlist");
+    yield put(BankaprakarActions.addcommercialkabuliyatibanbibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.addcommercialkabuliyatibanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
+export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
+  const { payload, commercialkabuliyatibanbibaranId } = action;
+
+  const response = yield api.postBankaprakarCommercialkabuliyatibanUpdate(
+    payload.commercialban.data,
+    commercialkabuliyatibanbibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक व्यवसायिक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallkabuliyatibanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/commercialbanlist");
+    yield put(
+      BankaprakarActions.updatecommercialkabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.updatecommercialkabuliyatibanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
+export function* deletecommercialkabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBankaprakarCommercialkabuliyatibanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक व्यवसायिक कबुलियती वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+  yield fetchallcommercialkabuliyatibanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+  });
+    yield put(
+      BankaprakarActions.deletecommercialkabuliyatibanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.deletecommercialkabuliyatibanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
