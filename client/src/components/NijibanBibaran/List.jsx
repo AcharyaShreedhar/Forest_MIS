@@ -57,8 +57,6 @@ function List(props) {
                   <td key={index}> {nban.curr_addr}</td>
                   <td key={index}> {nban.area}</td>
                   <td key={index}> {nban.main_species}</td>
-                  <td key={index}> {nban.created_by}</td>
-                  <td key={index}> {nban.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

@@ -77,8 +77,6 @@ function List(props) {
                   <td key={index}> {activities.community_udhyam_bibaran}</td>
                   <td key={index}> {activities.annual_bibaran}</td>
                   <td key={index}> {activities.lekha_parikshyan}</td>
-                  <td key={index}> {activities.created_by}</td>
-                  <td key={index}> {activities.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

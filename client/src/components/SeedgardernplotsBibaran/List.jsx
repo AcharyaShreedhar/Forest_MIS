@@ -56,8 +56,6 @@ function List(props) {
                   <td key={index}> {plot.location}</td>
                   <td key={index}> {plot.established_date}</td>
                   <td key={index}> {plot.status}</td>
-                  <td key={index}> {plot.created_by}</td>
-                  <td key={index}> {plot.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

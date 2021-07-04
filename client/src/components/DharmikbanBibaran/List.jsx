@@ -69,8 +69,6 @@ function List(props) {
                     {" "}
                     {englishToNepaliNumber(dban.renewaldate)}
                   </td>
-                  <td key={index}> {dban.created_by}</td>
-                  <td key={index}> {dban.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

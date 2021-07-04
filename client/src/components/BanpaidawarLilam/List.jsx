@@ -56,8 +56,6 @@ function List(props) {
                   <td key={index}> {lilam.minimum_price}</td>
                   <td key={index}> {lilam.sakaar_price}</td>
                   <td key={index}> {lilam.remarks}</td>
-                  <td key={index}> {lilam.created_by}</td>
-                  <td key={index}> {lilam.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

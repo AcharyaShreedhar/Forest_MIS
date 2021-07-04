@@ -49,7 +49,10 @@ function List(props) {
               data.map((banxetra, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {englishToNepaliNumber(banxetra.arthik_barsa)}</td>
+                  <td key={index}>
+                    {" "}
+                    {englishToNepaliNumber(banxetra.arthik_barsa)}
+                  </td>
                   <td key={index}> {banxetra.uplabdakarta_naam}</td>
                   <td key={index}> {banxetra.upalabdha_address}</td>
                   <td key={index}> {banxetra.xetrafal_temp}</td>
@@ -63,13 +66,13 @@ function List(props) {
                   <td key={index}> {banxetra.leejrakam_adhyaadhik}</td>
                   <td key={index}> {banxetra.barsik_pratibedan}</td>
                   <td key={index}> {banxetra.prapta_rajaswo}</td>
-                  <td key={index}> {banxetra.created_by}</td>
-                  <td key={index}> {banxetra.updated_by}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, banxetra, "banxetraanyaprayojan")}
+                        onChange={(e) =>
+                          onSelect(e, banxetra, "banxetraanyaprayojan")
+                        }
                       />
                     </div>
                   </td>

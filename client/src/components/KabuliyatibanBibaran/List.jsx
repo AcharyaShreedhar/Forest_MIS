@@ -71,9 +71,6 @@ function List(props) {
                   <td key={index}> {kban.adhyakshya_male}</td>
                   <td key={index}> {kban.sachib_female}</td>
                   <td key={index}> {kban.sachib_male}</td>
-                  <td key={index}> {kban.created_by}</td>
-                  <td key={index}> {kban.updated_by}</td>
-
                   <td>
                     <div className="edit">
                       <EditDropdown
