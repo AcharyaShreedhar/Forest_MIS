@@ -9,7 +9,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.kabuliyatiban_bibaran_id,
+      id: props.history.location.item.darta_no,
       regno: props.history.location.item.darta_no,
       name: props.history.location.item.samudayik_upavokta_samiti_name,
       entry_date: props.history.location.item.entry_date,

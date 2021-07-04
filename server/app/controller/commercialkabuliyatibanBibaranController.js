@@ -39,7 +39,7 @@ async function getAllCommercialkabuliyatibanBibaran(req, res) {
 
 //Controller for Listing a CommercialkabuliyatibanBibaran
 async function getCommercialkabuliyatibanBibaran(req, res) {
-  const getCommercialkabuliyatibanBibaranQuery = `select * from commercialkabuliyatiban_bibarans where commercialkabuliyatiban_id=?`;
+  const getCommercialkabuliyatibanBibaranQuery = `select * from commercialkabuliyatiban_bibarans where darta_no=?`;
   pool.query(
     getCommercialkabuliyatibanBibaranQuery,
     [req.params.commercialkabuliyatibanBibaranId],
@@ -79,7 +79,7 @@ async function addCommercialkabuliyatibanBibaran(req, res) {
 
 //Controller for updating a CommercialkabuliyatibanBibaran
 async function updateCommercialkabuliyatibanBibaran(req, res) {
-  const updateCommercialkabuliyatibanBibaranQuery = `UPDATE commercialkabuliyatiban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, commercialkabuliyatiban_naam=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE commercialkabuliyatiban_id=?`;
+  const updateCommercialkabuliyatibanBibaranQuery = `UPDATE commercialkabuliyatiban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, commercialkabuliyatiban_naam=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateCommercialkabuliyatibanBibaranQuery,
     [

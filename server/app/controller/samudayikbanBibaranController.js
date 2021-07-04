@@ -83,7 +83,7 @@ async function addSamudayikbanBibaran(req, res) {
 
 //Controller for updating a SamudayikbanBibaran
 async function updateSamudayikbanBibaran(req, res) {
-  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE samudayikban_id=?`;
+  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSamudayikbanBibaranQuery,
     [
@@ -112,7 +112,7 @@ async function updateSamudayikbanBibaran(req, res) {
 
 //Controller for deleting a SamudayikbanBibaran
 async function deleteSamudayikbanBibaran(req, res) {
-  const deleteSamudayikbanBibaranQuery = `DELETE  FROM samudayikban_bibarans where samudayikban_id=?`;
+  const deleteSamudayikbanBibaranQuery = `DELETE  FROM samudayikban_bibarans where darta_no=?`;
   pool.query(
     deleteSamudayikbanBibaranQuery,
     [req.params.samudayikbanBibaranId],

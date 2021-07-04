@@ -15,7 +15,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.dharmikban_id,
+      id: props.history.location.item.darta_no,
       regno: props.history.location.item.darta_no,
       name: props.history.location.item.dharmikban_name,
       community_name: props.history.location.item.community_name,
@@ -54,7 +54,6 @@ class Edit extends Component {
       forest_maujdat,
       renewal_date,
       created_by,
-      
     } = this.state;
     const payload = {
       dharmikban: {

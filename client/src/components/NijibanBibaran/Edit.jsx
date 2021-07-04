@@ -9,7 +9,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.nijiban_bibaran_id,
+      id: props.history.location.item.darta_no,
       regno: props.history.location.item.darta_no,
       name: props.history.location.item.nijiban_dhaniko_naam,
       swikrit_miti: props.history.location.item.swikrit_miti,
@@ -37,7 +37,6 @@ class Edit extends Component {
       area,
       main_species,
       created_by,
-      
     } = this.state;
     const payload = {
       nijiban: {
