@@ -4,20 +4,22 @@ import { Button, Input, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 
-class Add extends Component {
+
+class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      darta_no: "",
-      darta_miti: "",
-      chaklaban_naam: "",
-      address: "",
-      area: "",
-      main_species: "",
-      ghardhuri: "",
-      lav_jana: "",
-      created_by: "",
-      updated_by: "",
+      id: props.history.location.item.chaklaban_bibaran_id,
+      darta_no: props.history.location.item.darta_no,
+      darta_miti: props.history.location.item.darta_miti,
+      chaklaban_naam: props.history.location.item.chaklaban_naam,
+      address: props.history.location.item.address,
+      area: props.history.location.item.area,
+      main_species: props.history.location.item.main_species,
+      ghardhuri: props.history.location.item.ghardhuri,
+      lav_jana: props.history.location.item.lav_jana,
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,6 +28,7 @@ class Add extends Component {
 
   handleSubmit() {
     const {
+        id,
         darta_no,
         darta_miti,
         chaklaban_naam,
@@ -34,6 +37,7 @@ class Add extends Component {
         main_species,
         ghardhuri,
         lav_jana,
+        created_by,
     } = this.state;
     const payload = {
       samudayikban: {
@@ -47,11 +51,12 @@ class Add extends Component {
           ghardhuri: ghardhuri,
           lav_jana: lav_jana,
           dist_id: this.props.user.dist_id,
-          created_by: this.props.user.user_name,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
-    this.props.onSubmit(payload);
+    this.props.onUpdate(payload, id);
   }
  
   handleDate(e, type) {
@@ -155,12 +160,12 @@ class Add extends Component {
   }
 }
 
-Add.propTypes = {
+Edit.propTypes = {
   darta_no: PropTypes.number,
 };
 
-Add.defaultProps = {
+Edit.defaultProps = {
   darta_no: 1,
 };
 
-export default Add;
+export default Edit;
