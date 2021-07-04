@@ -23,6 +23,27 @@ const forestRoutes = [
     component: Bankaprakar,
   },
   {
+    path: "/forests/upabhoktasamuhalist",
+    title: "Upabhoktasamuha",
+    name: "Upabhoktasamuha",
+    auth: true,
+    component: Bankaprakar,
+  },
+  {
+    path: "/forests/upabhoktasamuhaadd/new",
+    title: "Upabhoktasamuha",
+    name: "Upabhoktasamuha",
+    auth: true,
+    component: Bankaprakar,
+  },
+  {
+    path: "/forests/upabhoktasamuhaedit/:id",
+    title: "Upabhoktasamuha",
+    name: "Upabhoktasamuha",
+    auth: true,
+    component: Bankaprakar,
+  },
+  {
     path: "/forests/dharmikbanlist",
     title: "Dharmikban",
     name: "dharmikban",

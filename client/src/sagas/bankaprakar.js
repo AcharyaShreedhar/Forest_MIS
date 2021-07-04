@@ -592,7 +592,10 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
 
 // Consumer Group Details
 export function* fetchallconsumergroupdetailsRequest(api, action) {
-  const response = yield api.getConsumergroupDetailsList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getConsumergroupDetailsList(payloaddata);
+
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallconsumergroupdetailsSuccess(response.data)

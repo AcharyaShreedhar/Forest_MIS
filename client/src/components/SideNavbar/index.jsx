@@ -57,20 +57,20 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="employees">
             <NavIcon>
-            <FontAwesomeIcon size="2x" icon={faUsers} className="mr-2" />
+              <FontAwesomeIcon size="2x" icon={faUsers} className="mr-2" />
             </NavIcon>
             <NavText>कर्मचारी</NavText>
             <NavItem
-            eventKey="/karmachari/karmacharibibaranlist"
-            onClick={() => history.push("/karmachari/karmacharibibaranlist")}
+              eventKey="/karmachari/karmacharibibaranlist"
+              onClick={() => history.push("/karmachari/karmacharibibaranlist")}
             >
-            <NavText>कर्मचारी विवरण</NavText>
+              <NavText>कर्मचारी विवरण</NavText>
             </NavItem>
             <NavItem
-            eventKey="/karmachari/karmacharidarbandilist"
-            onClick={() => history.push("/karmachari/karmacharidarbandilist")}
+              eventKey="/karmachari/karmacharidarbandilist"
+              onClick={() => history.push("/karmachari/karmacharidarbandilist")}
             >
-            <NavText>कर्मचारी दरबन्दी </NavText>
+              <NavText>कर्मचारी दरबन्दी </NavText>
             </NavItem>
           </NavItem>
           <NavItem eventKey="/forests">
@@ -83,6 +83,12 @@ export class SideNavbar extends Component {
               onClick={() => history.push("/forests/samudayikbanlist")}
             >
               <NavText>सामुदायिक वन</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="forests/upabhoktasamuhalist"
+              onClick={() => history.push("/forests/upabhoktasamuhalist")}
+            >
+              <NavText>उपभोक्ता समुहको बिबरण </NavText>
             </NavItem>
             <NavItem
               eventKey="forests/dharmikbanlist"

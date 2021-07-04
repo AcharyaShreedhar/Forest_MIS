@@ -1,28 +1,40 @@
 const pool = require("../db");
 //Controller for Listing all ConsumerGroupDetails
 async function getAllConsumerGroupDetails(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from consumer_details";
-  const getAllConsumerGroupDetailsQuery = `select * from consumer_details ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllConsumerGroupDetailsQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from consumer_details as c where c.registration_date BETWEEN ? and ? and c.dist_id like ?";
+  const getAllConsumerGroupDetailsQuery = `select * from consumer_details as c where c.registration_date BETWEEN ? and ? and c.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllConsumerGroupDetailsQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a ConsumerGroupDetails
