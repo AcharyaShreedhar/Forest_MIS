@@ -634,17 +634,30 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
   }
 }
 
+//chaklabanbibaran
 export function* fetchallchaklabanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getChaklabanBibaranList(payloaddata);
-  console.log("...data",response);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallchaklabanbibaranSuccess(response.data)
     );
   } else {
     yield put(BankaprakarActions.fetchallchaklabanbibaranFailure());
+  }
+}
+
+export function* fetchchaklabanbibaranRequest(api, action) {
+  const chaklabanBibaranId = action.payload;
+
+  const response = yield api.getChaklabanBibaran(chaklabanBibaranId);
+  if (response.ok) {
+    yield put(
+      BankaprakarActions.fetchchaklabanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.fetchchaklabanbibaranFailure());
   }
 }
 
