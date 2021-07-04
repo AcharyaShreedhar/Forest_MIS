@@ -43,6 +43,7 @@ import * as ChaklabanBibaran from "./ChaklabanBibaran";
 import * as RastriyabanBibaran from "./RastriyabanBibaran";
 import * as CommercialbanBibaran from "./CommercialbanBibaran";
 import * as UpabhoktasamuhaBibaran from "./UpabhoktasamuhaBibaran"
+import * as BanbikasKaryabibaran from "./BanbikasKaryabibaran";
 
 export {
   HeaderComponent,
@@ -89,5 +90,6 @@ export {
   ChaklabanBibaran,
   RastriyabanBibaran,
   CommercialbanBibaran,
-  UpabhoktasamuhaBibaran
+  UpabhoktasamuhaBibaran,
+  BanbikasKaryabibaran,
 };

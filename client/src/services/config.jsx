@@ -379,6 +379,13 @@ const commercialbanHeadings = [
   "लाभ संख्या",
 ];
 
+const banbikaskaryabibaranHeadings = [
+  "वनविकास कार्याविवरण",
+  "परिणाम",
+  "बजेट खर्च",
+  "वनको किसिम",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -409,4 +416,5 @@ export {
   rastriyabanHeadings,
   commercialbanHeadings,
   upabhoktasamuhaHeadings,
+  banbikaskaryabibaranHeadings,
 };

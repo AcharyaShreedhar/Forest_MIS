@@ -5,10 +5,16 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import karyabibaranRoutes from "../../routes/karyabibaran";
+import KaryabibaranActions from "../../actions/karyabibaran";
 
 export class Karyabibaran extends Component {
   componentDidMount() {
-    
+    this.props.fetchallBanbikaskaryabibaran({
+      distId: "%",
+      name: "ban_type",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -62,6 +68,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchallBanbikaskaryabibaran: (payload) =>
+    dispatch(KaryabibaranActions.fetchallbanbikaskaryayojanaRequest(payload)),
   
 });
 
