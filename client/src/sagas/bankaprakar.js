@@ -1168,3 +1168,22 @@ export function* fetchallsajhedaribanbibaranRequest(api, action) {
     yield put(BankaprakarActions.fetchallsajhedaribanbibaranFailure());
   }
 }
+
+export function* fetchsajhedaribanbibaranRequest(api, action) {
+  const sajhedaribanBibaranId = action.payload;
+
+  const response = yield api.getSajhedaribanBibaran(
+    sajhedaribanBibaranId
+  );
+
+  if (response.ok) {
+    yield put(
+      BankaprakarActions.fetchsajhedaribanbibaranSuccess(
+        response.data
+      )
+    );
+  } else {
+    yield put(BankaprakarActions.fetchsajhedaribanbibaranFailure());
+  }
+}
+
