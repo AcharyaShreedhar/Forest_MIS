@@ -234,8 +234,7 @@ const create = (baseURL = Config.API_URL) => {
   //Jadibuti
   const getJadibutiList = (payload) => api.post("jadibutiList", payload);
 
-  const getJadibuti = (jadibutiId) =>
-    api.get(`jadibuti/${jadibutiId}`);
+  const getJadibuti = (jadibutiId) => api.get(`jadibuti/${jadibutiId}`);
 
   const postBiruwautpadanJadibutiAddNew = (payload) =>
     api.post(`jadibuti`, payload);
@@ -701,6 +700,10 @@ const create = (baseURL = Config.API_URL) => {
   const postKaryabibaranSamajikkaryabibaranDelete = (samajikkaryabibaranId) =>
     api.delete(`banpaidawarbikribitarans/${samajikkaryabibaranId}`);
 
+  // rastriya banbibaran
+  const getRastriyabanBibaranList = (payload) =>
+    api.post("rastriyabanBibaranList", payload);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -728,6 +731,7 @@ const create = (baseURL = Config.API_URL) => {
     postBankaprakarNabikarankaryayojanaAddNew,
     postBankaprakarNabikarankaryayojanaUpdate,
     postBankaprakarNabikarankaryayojanaDelete,
+    getRastriyabanBibaranList,
     //dwandabebasthapan
     getBanyajantuUddarList,
     getBanyajantuUddar,
