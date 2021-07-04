@@ -650,7 +650,7 @@ class Bankaprakar extends Component {
             onUpdate={(e, id) => this.props.updateNijibanbibaran(e, id)}
           />
         )}
-        {equals(loc, "sajhedaribanlist") && (
+        {/* {equals(loc, "sajhedaribanlist") && (
           <Fragment>
             <div className="report-filter">
               <Filter
@@ -699,7 +699,7 @@ class Bankaprakar extends Component {
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateSajhedaribanbibaran(e, id)}
           />
-        )}
+        )} */}
         {equals(loc, "chaklabanlist") && (
           <Fragment>
             <div className="report-filter">
