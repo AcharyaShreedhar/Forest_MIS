@@ -5,7 +5,7 @@
  * samples: postAdminStaffSave
  */
 import apisauce from "apisauce";
-import { applyTo, equals } from "ramda";
+import { equals } from "ramda";
 import { store } from "../reducers";
 import AppActions from "../actions/app";
 const Config = {

@@ -639,7 +639,6 @@ export function* fetchallchaklabanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getChaklabanBibaranList(payloaddata);
-  console.log("...data", response);
   if (response.ok) {
     yield put(
       BankaprakarActions.fetchallchaklabanbibaranSuccess(response.data)
@@ -715,9 +714,7 @@ export function* updatechaklabanbibaranRequest(api, action) {
       perPage: 10,
     });
     yield call(history.push, "/forests/chaklabanlist");
-    yield put(
-      BankaprakarActions.updatechaklabanbibaranSuccess(response.data)
-    );
+    yield put(BankaprakarActions.updatechaklabanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.updatechaklabanbibaranFailure());
     toast.error(
