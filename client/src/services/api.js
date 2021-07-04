@@ -124,6 +124,18 @@ const create = (baseURL = Config.API_URL) => {
   const getChaklabanBibaran = (chaklabanBibaranId) =>
     api.get(`chaklabanBibaran/${chaklabanBibaranId}`);
 
+  //Add
+  const postBankaprakarChaklabanAddNew = (payload) =>
+    api.post(`chaklabanBibaran`, payload);  
+
+  //update
+  const postBankaprakarChaklabanUpdate = (payload, chaklabanbibaranId) =>
+  api.put(`chaklabanBibaran/${chaklabanbibaranId}`, payload);
+
+  //delete
+  const postBankaprakarChaklabanDelete = (chaklabanbibaranId) =>
+    api.delete(`chaklabanBibaran/${chaklabanbibaranId}`);
+
   const getNabikaranKaryayojanaList = () => api.get("nabikaranKaryayojanaList");
 
   const getNabikaranKaryayojana = (nabikaranKaryayojanaId) =>
@@ -788,6 +800,9 @@ const create = (baseURL = Config.API_URL) => {
     postRastriyabanBibaranDelete,
     getChaklabanBibaranList,
     getChaklabanBibaran,
+    postBankaprakarChaklabanAddNew,
+    postBankaprakarChaklabanUpdate,
+    postBankaprakarChaklabanDelete,
 
     //dwandabebasthapan
     getBanyajantuUddarList,
