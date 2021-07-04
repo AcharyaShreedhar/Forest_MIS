@@ -27,17 +27,17 @@ class Add extends Component {
 
   handleSubmit() {
     const {
-        darta_no,
-        darta_miti,
-        sajhedariban_naam,
-        address,
-        area,
-        main_species,
-        ghardhuri,
-        lav_jana,
+      darta_no,
+      darta_miti,
+      sajhedariban_naam,
+      address,
+      area,
+      main_species,
+      ghardhuri,
+      lav_jana,
     } = this.state;
     const payload = {
-      samudayikban: {
+      sajhedariban: {
         data: {
           darta_no: darta_no,
           darta_miti: darta_miti,
@@ -54,7 +54,7 @@ class Add extends Component {
     };
     this.props.onSubmit(payload);
   }
- 
+
   handleDate(e, type) {
     this.setState({ darta_miti: e });
   }
@@ -62,14 +62,14 @@ class Add extends Component {
   render() {
     const { title } = this.props;
     const {
-        darta_no,
-        darta_miti,
-        sajhedariban_naam,
-        address,
-        area,
-        main_species,
-        ghardhuri,
-        lav_jana,
+      darta_no,
+      darta_miti,
+      sajhedariban_naam,
+      address,
+      area,
+      main_species,
+      ghardhuri,
+      lav_jana,
     } = this.state;
 
     return (
@@ -125,7 +125,7 @@ class Add extends Component {
               value={main_species}
               onChange={(e) => this.setState({ main_species: e })}
             />
-                       
+
             <Input
               className="mb-4"
               title="संलग्न घरधुरी"
@@ -140,7 +140,7 @@ class Add extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ lav_jana: e })}
             />
-        </div>
+          </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button

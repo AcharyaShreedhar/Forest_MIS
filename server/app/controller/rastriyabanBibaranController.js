@@ -80,7 +80,7 @@ async function addRastriyabanBibaran(req, res) {
 
 //Controller for updating a RastriyabanBibaran
 async function updateRastriyabanBibaran(req, res) {
-  const updateRastriyabanBibaranQuery = `UPDATE rastriyabanbibarans SET rastriyaban_naam=?, darta_no=?, darta_miti=?, address=?, dist_id=?, main_species=?, area=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE rastriyabanbibaran_id=?`;
+  const updateRastriyabanBibaranQuery = `UPDATE rastriyabanbibarans SET rastriyaban_naam=?, darta_no=?, darta_miti=?, address=?, dist_id=?, main_species=?, area=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateRastriyabanBibaranQuery,
     [
@@ -108,7 +108,7 @@ async function updateRastriyabanBibaran(req, res) {
 
 //Controller for deleting a RastriyabanBibaran
 async function deleteRastriyabanBibaran(req, res) {
-  const deleteRastriyabanBibaranQuery = `DELETE  FROM rastriyabanbibarans where rastriyabanbibaran_id=?`;
+  const deleteRastriyabanBibaranQuery = `DELETE  FROM rastriyabanbibarans where darta_no=?`;
   pool.query(
     deleteRastriyabanBibaranQuery,
     [req.params.rastriyabanBibaranId],

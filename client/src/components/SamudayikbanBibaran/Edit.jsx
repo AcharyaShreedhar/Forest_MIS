@@ -6,7 +6,6 @@ import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./SamudayikbanBibaran.scss";
 
-
 const ForestTypes = [
   { id: 1, value: "प्राकृतिक्" },
   { id: 2, value: "वृक्षरोपण" },
@@ -16,7 +15,7 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.samudayikban_id,
+      id: props.history.location.item.darta_no,
       regno: props.history.location.item.darta_no,
       name: props.history.location.item.samudayikban_name,
       area: props.history.location.item.area,
@@ -57,10 +56,9 @@ class Edit extends Component {
       renewal_date,
       nabikaran_abadhi,
       created_by,
-      
     } = this.state;
     const payload = {
-      sajhedariban: {
+      samudayikban: {
         data: {
           samudayikban_name: name,
           darta_no: regno,

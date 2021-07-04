@@ -79,7 +79,7 @@ async function addSajhedaribanBibaran(req, res) {
 
 //Controller for updating a SajhedaribanBibaran
 async function updateSajhedaribanBibaran(req, res) {
-  const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, sajhedariban_naam=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE sajhedariban_id=?`;
+  const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, sajhedariban_naam=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSajhedaribanBibaranQuery,
     [
@@ -107,7 +107,7 @@ async function updateSajhedaribanBibaran(req, res) {
 
 //Controller for deleting a SajhedaribanBibaran
 async function deleteSajhedaribanBibaran(req, res) {
-  const deleteSajhedaribanBibaranQuery = `DELETE  FROM sajhedariban_bibarans where sajhedariban_id=?`;
+  const deleteSajhedaribanBibaranQuery = `DELETE  FROM sajhedariban_bibarans where darta_no=?`;
   pool.query(
     deleteSajhedaribanBibaranQuery,
     [req.params.sajhedaribanBibaranId],

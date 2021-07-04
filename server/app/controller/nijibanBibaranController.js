@@ -78,7 +78,7 @@ async function addNijibanBibaran(req, res) {
 
 //Controller for updating a NijibanBibaran
 async function updateNijibanBibaran(req, res) {
-  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?, created_by=?, updated_by=? WHERE nijiban_bibaran_id=?`;
+  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateNijibanBibaranQuery,
     [
@@ -105,7 +105,7 @@ async function updateNijibanBibaran(req, res) {
 
 //Controller for deleting a NijibanBibaran
 async function deleteNijibanBibaran(req, res) {
-  const deleteNijibanBibaranQuery = `DELETE  FROM nijiban_bibarans where nijiban_bibaran_id=?`;
+  const deleteNijibanBibaranQuery = `DELETE  FROM nijiban_bibarans where darta_no=?`;
   pool.query(
     deleteNijibanBibaranQuery,
     [req.params.nijibanBibaranId],

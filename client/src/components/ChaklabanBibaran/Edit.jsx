@@ -4,12 +4,11 @@ import { Button, Input, Dropdown } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 
-
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.chaklaban_bibaran_id,
+      id: props.history.location.item.darta_no,
       darta_no: props.history.location.item.darta_no,
       darta_miti: props.history.location.item.darta_miti,
       chaklaban_naam: props.history.location.item.chaklaban_naam,
@@ -28,16 +27,16 @@ class Edit extends Component {
 
   handleSubmit() {
     const {
-        id,
-        darta_no,
-        darta_miti,
-        chaklaban_naam,
-        address,
-        area,
-        main_species,
-        ghardhuri,
-        lav_jana,
-        created_by,
+      id,
+      darta_no,
+      darta_miti,
+      chaklaban_naam,
+      address,
+      area,
+      main_species,
+      ghardhuri,
+      lav_jana,
+      created_by,
     } = this.state;
     const payload = {
       chaklaban: {
@@ -58,7 +57,7 @@ class Edit extends Component {
     };
     this.props.onUpdate(payload, id);
   }
- 
+
   handleDate(e, type) {
     this.setState({ darta_miti: e });
   }
@@ -66,14 +65,14 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-        darta_no,
-        darta_miti,
-        chaklaban_naam,
-        address,
-        area,
-        main_species,
-        ghardhuri,
-        lav_jana,
+      darta_no,
+      darta_miti,
+      chaklaban_naam,
+      address,
+      area,
+      main_species,
+      ghardhuri,
+      lav_jana,
     } = this.state;
 
     return (
@@ -129,7 +128,7 @@ class Edit extends Component {
               value={main_species}
               onChange={(e) => this.setState({ main_species: e })}
             />
-                       
+
             <Input
               className="mb-4"
               title="संलग्न घरधुरी"
@@ -144,7 +143,7 @@ class Edit extends Component {
               direction="vertical"
               onChange={(e) => this.setState({ lav_jana: e })}
             />
-        </div>
+          </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button

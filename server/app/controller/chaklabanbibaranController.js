@@ -39,7 +39,7 @@ async function getAllChaklabanBibaran(req, res) {
 
 //Controller for Listing a ChaklabanBibaran
 async function getChaklabanBibaran(req, res) {
-  const getChaklabanBibaranQuery = `select * from chaklaban_bibarans where chaklaban_bibaran_id=?`;
+  const getChaklabanBibaranQuery = `select * from chaklaban_bibarans where darta_no=?`;
   pool.query(
     getChaklabanBibaranQuery,
     [req.params.chaklabanBibaranId],
@@ -79,7 +79,7 @@ async function addChaklabanBibaran(req, res) {
 
 //Controller for updating a ChaklabanBibaran
 async function updateChaklabanBibaran(req, res) {
-  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET  chaklaban_naam=?, darta_no=?, darta_miti=?, dist_id=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE chaklaban_bibaran_id=?`;
+  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET  chaklaban_naam=?, darta_no=?, darta_miti=?, dist_id=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateChaklabanBibaranQuery,
     [

@@ -239,56 +239,56 @@ class Bankaprakar extends Component {
         switch (path) {
           case "samudayik": {
             this.props.history.push({
-              pathname: `/forests/samudayikbanedit/${item.samudayikban_id}`,
+              pathname: `/forests/samudayikbanedit/${item.darta_no}`,
               item,
             });
             break;
           }
           case "dharmik": {
             this.props.history.push({
-              pathname: `/forests/dharmikbanedit/${item.dharmikban_id}`,
+              pathname: `/forests/dharmikbanedit/${item.darta_no}`,
               item,
             });
             break;
           }
           case "kabuliyati": {
             this.props.history.push({
-              pathname: `/forests/kabuliyatibanedit/${item.kabuliyatiban_bibaran_id}`,
+              pathname: `/forests/kabuliyatibanedit/${item.darta_no}`,
               item,
             });
             break;
           }
           case "niji": {
             this.props.history.push({
-              pathname: `/forests/nijibanedit/${item.nijiban_bibaran_id}`,
+              pathname: `/forests/nijibanedit/${item.darta_no}`,
               item,
             });
             break;
           }
           case "sajhedari": {
             this.props.history.push({
-              pathname: `/forests/sajhedaribanedit/${item.sajhedariban_id}`,
+              pathname: `/forests/sajhedaribanedit/${item.darta_no}`,
               item,
             });
             break;
           }
           case "chakla": {
             this.props.history.push({
-              pathname: `/forests/chaklabanedit/${item.chaklaban_bibaran_id}`,
+              pathname: `/forests/chaklabanedit/${item.darta_no}`,
               item,
             });
             break;
           }
           case "rastriya": {
             this.props.history.push({
-              pathname: `/forests/rastriyabanedit/${item.rastriyabanbibaran_id}`,
+              pathname: `/forests/rastriyabanedit/${item.darta_no}`,
               item,
             });
             break;
           }
           case "commercial": {
             this.props.history.push({
-              pathname: `/forests/commercialbanedit/${item.commercialkabuliyatiban_id}`,
+              pathname: `/forests/commercialbanedit/${item.darta_no}`,
               item,
             });
             break;
