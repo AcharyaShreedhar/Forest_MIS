@@ -146,6 +146,10 @@ const { Types, Creators } = createActions({
   fetchconsumergroupdetailsSuccess: ["response"],
   fetchconsumergroupdetailsFailure: null,
 
+  addconsumergroupdetailsRequest: ["payload"],
+  addconsumergroupdetailsSuccess: ["response"],
+  addconsumergroupdetailsFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

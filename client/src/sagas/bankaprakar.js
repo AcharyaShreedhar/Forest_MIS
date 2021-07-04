@@ -619,6 +619,39 @@ export function* fetchconsumergroupdetailsRequest(api, action) {
   }
 }
 
+// Add rastriyabanbibaran
+export function* addconsumergroupdetailsRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postConsumergroupDetailsAddNew(
+    payload.consumergroupdetails.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक उपभोक्ता समुह प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallconsumergroupdetailsRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/consumergroupdetailslist");
+    yield put(BankaprakarActions.addconsumergroupdetailsSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.addconsumergroupdetailsFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
 //rastriyabanbibaran
 export function* fetchallrastriyabanbibaranRequest(api, action) {
   const { payload } = action;
