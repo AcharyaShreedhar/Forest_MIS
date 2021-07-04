@@ -735,7 +735,8 @@ export function* deleterastriyabanbibaranRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       }
     );
-
+  }
+}
 
 //commercialkabuliyati
 export function* fetchallcommercialkabuliyatibanbibaranRequest(api, action) {
@@ -744,9 +745,13 @@ export function* fetchallcommercialkabuliyatibanbibaranRequest(api, action) {
   const response = yield api.getCommercialkabuliyatibanBibaranList(payloaddata);
   if (response.ok) {
     yield put(
-      BankaprakarActions.fetchallcommercialkabuliyatibanbibaranSuccess(response.data)
+      BankaprakarActions.fetchallcommercialkabuliyatibanbibaranSuccess(
+        response.data
+      )
     );
   } else {
-    yield put(BankaprakarActions.fetchallcommercialkabuliyatibanbibaranFailure());
+    yield put(
+      BankaprakarActions.fetchallcommercialkabuliyatibanbibaranFailure()
+    );
   }
 }

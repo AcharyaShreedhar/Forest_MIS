@@ -12,7 +12,7 @@ import {
   // SajhedaribanBibaran,
   // ChaklabanBibaran,
   // RastriyabanBibaran,
-  //  CommercialbanBibaran,
+  CommercialbanBibaran,
   UpabhoktasamuhaBibaran,
   ReportGenerator,
 } from "../../../components";
@@ -25,9 +25,10 @@ import {
   // sajhedaribanHeadings,
   // chaklabanHeadings,
   // rastriyabanHeadings,
+  commercialbanHeadings,
   upabhoktasamuhaHeadings,
   districtList,
-  commercialbanHeadings,
+  
 } from "../../../services/config";
 import "./Bankaprakar.scss";
 
@@ -72,7 +73,7 @@ class Bankaprakar extends Component {
       // sajhedaribanList = nextProps.sajhedaribanbibaranDataList.data;
       // chaklabanList = nextProps.chaklabanbibaranDataList.data;
       // rastriyabanList = nextProps.rastriyabanbibaranDataList.data;
-      //commercialbanList = nextProps.commercialbanbibaranDataList.data;
+      commercialbanList = nextProps.commercialbanbibaranDataList.data;
       upabhoktasamuhaList = nextProps.upabhoktasamuhabibaranDataList.data;
     }
 
@@ -374,10 +375,10 @@ class Bankaprakar extends Component {
       //   this.props.history.push("/forests/rastriyabanadd/new");
       //   break;
       // }
-      // case "commercialban": {
-      //   this.props.history.push("/forests/commercialbanadd/new");
-      //   break;
-      // }
+      case "commercialban": {
+        this.props.history.push("/forests/commercialbanadd/new");
+        break;
+      }
 
       default:
         break;
@@ -394,7 +395,7 @@ class Bankaprakar extends Component {
       // sajhedaribanList,
       // chaklabanList,
       // rastriyabanList,
-      //commercialbanList
+      commercialbanList,
       upabhoktasamuhaList,
     } = this.state;
     const { user } = this.props;
@@ -800,7 +801,8 @@ class Bankaprakar extends Component {
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateRastriyabanbibaran(e, id)}
           />
-        )} {equals(loc, "commercialbanlist") && (
+        )} */}
+        {equals(loc, "commercialbanlist") && ( 
           <Fragment>
             <div className="report-filter">
               <Filter
@@ -851,7 +853,7 @@ class Bankaprakar extends Component {
           />
         )}
         
-        */}
+       
       </div>
     );
   }
@@ -891,7 +893,7 @@ const mapStateToProps = (state) => ({
   // sajhedaribanbibaranDataList: state.bankaprakar.allsajhedaribanbibaranData,
   // chaklabanbibaranDataList: state.bankaprakar.allchaklabanbibaranData,
   // rastriyabanbibaranDataList: state.bankaprakar.allrastriyabanbibaranData,
-  //commercialbanbibaranDataList: state.bankaprakar.allcommercialkabuliyatibanbibaranData,
+  commercialbanbibaranDataList: state.bankaprakar.allcommercialkabuliyatibanbibaranData,
   upabhoktasamuhabibaranDataList: state.bankaprakar.allconsumergroupdetailsData,
 });
 
@@ -1012,22 +1014,22 @@ const mapDispatchToProps = (dispatch) => ({
   //     BankaprakarActions.deleterastriyabanbibaranRequest(rastriyabanbibaranId)
   //   ),
 
-//   //Commercialban
-// fetchallCommercialbanbibaran: (payload) =>
-// dispatch(BankaprakarActions.fetchallcommercialkabuliyatibanbibaranRequest(payload)),
-// addCommercialbanbibaran: (payload) =>
-// dispatch(BankaprakarActions.addcommercialkabuliyatibanbibaranRequest(payload)),
-// updateCommercialbanbibaran: (payload, commercialkabuliyatibanId) =>
-// dispatch(
-//   BankaprakarActions.updatecommercialkabuliyatibanbibaranRequest(
-//     payload,
-//     commercialkabuliyatibanId
-//   )
-// ),
-// deleteCommercialbanbibaran: (commercialkabuliyatibanId) =>
-// dispatch(
-//   BankaprakarActions.deletecommercialkabuliyatibanbibaranRequest(commercialkabuliyatibanId)
-// ),
+  //Commercialban
+fetchallCommercialbanbibaran: (payload) =>
+dispatch(BankaprakarActions.fetchallcommercialkabuliyatibanbibaranRequest(payload)),
+addCommercialbanbibaran: (payload) =>
+dispatch(BankaprakarActions.addcommercialkabuliyatibanbibaranRequest(payload)),
+updateCommercialbanbibaran: (payload, commercialkabuliyatibanId) =>
+dispatch(
+  BankaprakarActions.updatecommercialkabuliyatibanbibaranRequest(
+    payload,
+    commercialkabuliyatibanId
+  )
+),
+deleteCommercialbanbibaran: (commercialkabuliyatibanId) =>
+dispatch(
+  BankaprakarActions.deletecommercialkabuliyatibanbibaranRequest(commercialkabuliyatibanId)
+),
 
   //--------------------------Upabhoktasamuhabibaran
   fetchallUpabhoktasamuhabibaran: (payload) =>
