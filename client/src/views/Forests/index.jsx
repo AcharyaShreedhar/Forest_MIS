@@ -57,14 +57,14 @@ export class Forests extends Component {
       page: 0,
       perPage: 10,
     });
-    // this.props.fetchallRastriyabanbibaran({
-    //   fromDate: "2075-01-01",
-    //   toDate: "2090-12-30",
-    //   distId: "%",
-    //   name: "darta_miti",
-    //   page: 0,
-    //   perPage: 10,
-    // });
+    this.props.fetchallRastriyabanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
     this.props.fetchallUpabhoktasamuhabibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -81,7 +81,6 @@ export class Forests extends Component {
       page: 0,
       perPage: 10,
     });
-    
   }
 
   render() {
@@ -145,15 +144,16 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest(payload)),
   fetchallNijibanbibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallnijibanbibaranRequest(payload)),
-
-  fetchallSajhedaribanbibaran: (payload) =>
-    dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
+  // fetchallSajhedaribanbibaran: (payload) =>
+  //   dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
   fetchallChaklabanbibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallchaklabanbibaranRequest(payload)),
   fetchallRastriyabanbibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallrastriyabanbibaranRequest(payload)),
   fetchallCommercialbanbibaran: (payload) =>
-    dispatch(BankaprakarActions.fetchallcommercialkabuliyatibanbibaranRequest(payload)),
+    dispatch(
+      BankaprakarActions.fetchallcommercialkabuliyatibanbibaranRequest(payload)
+    ),
   fetchallUpabhoktasamuhabibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallconsumergroupdetailsRequest(payload)),
 });
