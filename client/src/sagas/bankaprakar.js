@@ -661,6 +661,105 @@ export function* fetchchaklabanbibaranRequest(api, action) {
   }
 }
 
+// Add chaklabanbibaran
+export function* addchaklabanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBankaprakarChaklabanAddNew(
+    payload.chaklaban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक चक्ला वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallchaklabanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/chaklabanlist");
+    yield put(BankaprakarActions.addchaklabanbibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.addchaklabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update chaklabanbibaran
+export function* updatechaklabanbibaranRequest(api, action) {
+  const { payload, chaklabanbibaranId } = action;
+
+  const response = yield api.postBankaprakarChaklabanUpdate(
+    payload.chaklaban.data,
+    chaklabanbibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक चक्ला वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallchaklabanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/chaklabanlist");
+    yield put(
+      BankaprakarActions.updatechaklabanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.updatechaklabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete chaklabanbibaran
+export function* deletechaklabanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBankaprakarChaklabanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक चक्ला वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallchaklabanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BankaprakarActions.deletechaklabanbibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.deletechaklabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
 // Consumer Group Details
 export function* fetchallconsumergroupdetailsRequest(api, action) {
   const { payload } = action;
