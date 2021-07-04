@@ -710,3 +710,27 @@ export function* updaterastriyabanbibaranRequest(api, action) {
     );
   }
 }
+
+export function* deleterastriyabanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postRastriyabanBibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक राष्ट्रिय वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrastriyabanbibaranRequest(api);
+    yield put(
+      BankaprakarActions.deleterastriyabanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.deleterastriyabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

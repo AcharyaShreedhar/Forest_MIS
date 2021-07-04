@@ -116,6 +116,7 @@ import {
   fetchrastriyabanbibaranRequest,
   addrastriyabanbibaranRequest,
   updaterastriyabanbibaranRequest,
+  deleterastriyabanbibaranRequest,
 } from "./bankaprakar";
 
 //------------------------biruwautpadan
@@ -1395,6 +1396,12 @@ export default function* root() {
     takeLatest(
       BankaprakarTypes.UPDATERASTRIYABANBIBARAN_REQUEST,
       updaterastriyabanbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.DELETERASTRIYABANBIBARAN_REQUEST,
+      deleterastriyabanbibaranRequest,
       api
     ),
   ]);
