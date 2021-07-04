@@ -382,6 +382,16 @@ const updaterastriyabanbibaranSuccess = (state, action) =>
 const updaterastriyabanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+const deleterastriyabanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleterastriyabanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleterastriyabanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -510,6 +520,10 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.UPDATERASTRIYABANBIBARAN_REQUEST]: updaterastriyabanbibaranRequest,
   [BankaprakarTypes.UPDATERASTRIYABANBIBARAN_SUCCESS]: updaterastriyabanbibaranSuccess,
   [BankaprakarTypes.UPDATERASTRIYABANBIBARAN_FAILURE]: updaterastriyabanbibaranFailure,
+
+  [BankaprakarTypes.DELETERASTRIYABANBIBARAN_REQUEST]: deleterastriyabanbibaranRequest,
+  [BankaprakarTypes.DELETERASTRIYABANBIBARAN_SUCCESS]: deleterastriyabanbibaranSuccess,
+  [BankaprakarTypes.DELETERASTRIYABANBIBARAN_FAILURE]: deleterastriyabanbibaranFailure,
 
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,

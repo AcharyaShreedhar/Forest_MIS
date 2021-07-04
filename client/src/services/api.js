@@ -713,6 +713,9 @@ const create = (baseURL = Config.API_URL) => {
   const postRastriyabanBibaranUpdate = (payload, rastriyabanbibaranId) =>
     api.put(`rastriyabanBibaran/${rastriyabanbibaranId}`, payload);
 
+  const postRastriyabanBibaranDelete = (rastriyabanbibaranId) =>
+    api.delete(`rastriyabanBibaran/${rastriyabanbibaranId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -744,6 +747,7 @@ const create = (baseURL = Config.API_URL) => {
     getRastriyabanBibaran,
     postRastriyabanBibaranAddNew,
     postRastriyabanBibaranUpdate,
+    postRastriyabanBibaranDelete,
 
     //dwandabebasthapan
     getBanyajantuUddarList,
