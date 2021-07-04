@@ -143,6 +143,13 @@ const forestRoutes = [
     auth: true,
     component: Bankaprakar,
   },
+  {
+    path: "/forests/rastriyabanedit/:id",
+    title: "Rastriyaban",
+    name: "rastriyaban",
+    auth: true,
+    component: Bankaprakar,
+  },
 
   {
     redirect: true,

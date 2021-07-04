@@ -60,7 +60,7 @@ class Edit extends Component {
       
     } = this.state;
     const payload = {
-      samudayikban: {
+      sajhedariban: {
         data: {
           samudayikban_name: name,
           darta_no: regno,

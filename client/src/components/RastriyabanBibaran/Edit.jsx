@@ -9,10 +9,10 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.chaklaban_bibaran_id,
+      id: props.history.location.item.rastriyabanbibaran_id,
       darta_no: props.history.location.item.darta_no,
       darta_miti: props.history.location.item.darta_miti,
-      chaklaban_naam: props.history.location.item.chaklaban_naam,
+      rastriyaban_naam: props.history.location.item.rastriyaban_naam,
       address: props.history.location.item.address,
       area: props.history.location.item.area,
       main_species: props.history.location.item.main_species,
@@ -31,7 +31,7 @@ class Edit extends Component {
         id,
         darta_no,
         darta_miti,
-        chaklaban_naam,
+        rastriyaban_naam,
         address,
         area,
         main_species,
@@ -40,11 +40,11 @@ class Edit extends Component {
         created_by,
     } = this.state;
     const payload = {
-      chaklaban: {
+      rastriyaban: {
         data: {
           darta_no: darta_no,
           darta_miti: darta_miti,
-          chaklaban_naam: chaklaban_naam,
+          rastriyaban_naam: rastriyaban_naam,
           address: address,
           area: area,
           main_species: main_species,
@@ -68,7 +68,7 @@ class Edit extends Component {
     const {
         darta_no,
         darta_miti,
-        chaklaban_naam,
+        rastriyaban_naam,
         address,
         area,
         main_species,
@@ -101,10 +101,10 @@ class Edit extends Component {
 
             <Input
               className="mb-4"
-              title="चक्लावनको नाम"
+              title="राष्ट्रिय वनको नाम"
               direction="vertical"
-              value={chaklaban_naam}
-              onChange={(e) => this.setState({ chaklaban_naam: e })}
+              value={rastriyaban_naam}
+              onChange={(e) => this.setState({ rastriyaban_naam: e })}
             />
             <Input
               className="mb-4"
