@@ -391,6 +391,20 @@ const deleterastriyabanbibaranSuccess = (state, action) =>
   });
 const deleterastriyabanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
+  
+//commercial kabuliyatibanbiabaran
+const fetchallcommercialkabuliyatibanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallcommercialkabuliyatibanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allcommercialkabuliyatibanbibaranData: action.response,
+  });
+};
+const fetchallcommercialkabuliyatibanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -524,6 +538,11 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.DELETERASTRIYABANBIBARAN_REQUEST]: deleterastriyabanbibaranRequest,
   [BankaprakarTypes.DELETERASTRIYABANBIBARAN_SUCCESS]: deleterastriyabanbibaranSuccess,
   [BankaprakarTypes.DELETERASTRIYABANBIBARAN_FAILURE]: deleterastriyabanbibaranFailure,
+  
+  //commercialkabuliyatibanbibaran
+  [BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: fetchallcommercialkabuliyatibanbibaranRequest,
+  [BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: fetchallcommercialkabuliyatibanbibaranSuccess,
+  [BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: fetchallcommercialkabuliyatibanbibaranFailure,
 
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,

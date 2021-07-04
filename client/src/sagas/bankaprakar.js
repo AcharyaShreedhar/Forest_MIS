@@ -737,3 +737,21 @@ export function* deleterastriyabanbibaranRequest(api, action) {
     );
   }
 }
+
+//commercialkabuliyati
+export function* fetchallcommercialkabuliyatibanbibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getCommercialkabuliyatibanBibaranList(payloaddata);
+  if (response.ok) {
+    yield put(
+      BankaprakarActions.fetchallcommercialkabuliyatibanbibaranSuccess(
+        response.data
+      )
+    );
+  } else {
+    yield put(
+      BankaprakarActions.fetchallcommercialkabuliyatibanbibaranFailure()
+    );
+  }
+}

@@ -2,7 +2,7 @@ const pool = require("../db");
 //Controller for Listing all CommercialkabuliyatibanBibaran
 async function getAllCommercialkabuliyatibanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from commercialkabuliyatiban_bibarans as c where n.darta_miti BETWEEN ? and ? and c.dist_id like ?";
+    "SELECT count(*) as total from commercialkabuliyatiban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ?";
   const getAllCommercialkabuliyatibanBibaranQuery = `select * from commercialkabuliyatiban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
