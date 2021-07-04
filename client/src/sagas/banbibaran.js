@@ -146,16 +146,22 @@ export function* fetchbanxetraanyaprayojanRequest(api, action) {
 //--Add banxetraanyaprayojan
 export function* addbanxetraanyaprayojanRequest(api, action) {
   const { payload } = action;
- 
+
   const response = yield api.postBanbibaranBanxetraanyaprayojanAddNew(
     payload.banxetraanyaprayojan.data
   );
- 
+
   if (response.ok) {
-    toast.success("सफलतापुर्वक वनक्षेत्र अन्य प्रयोजन विवरण प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-    yield fetchallbanxetraanyaprayojanRequest(api,{
+    toast.success(
+      "सफलतापुर्वक वनक्षेत्र अन्य प्रयोजन विवरण प्रविष्ट भयो !!!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+    yield fetchallbanxetraanyaprayojanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -187,12 +193,17 @@ export function* updatebanxetraanyaprayojanRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraanyaprayojanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/banbibaran/banxetraanyaprayojanlist");
-    yield put(BanbibaranActions.updatebanxetraanyaprayojanSuccess(response.data));
+    yield put(
+      BanbibaranActions.updatebanxetraanyaprayojanSuccess(response.data)
+    );
   } else {
     yield put(BanbibaranActions.updatebanxetraanyaprayojanFailure());
     toast.error(
@@ -203,7 +214,6 @@ export function* updatebanxetraanyaprayojanRequest(api, action) {
     );
   }
 }
-
 
 //-----------------delete banxetraanyaprayojan
 export function* deletebanxetraanyaprayojanRequest(api, action) {
@@ -216,11 +226,16 @@ export function* deletebanxetraanyaprayojanRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraanyaprayojanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
     });
-    yield put(BanbibaranActions.deletebanxetraanyaprayojanSuccess(response.data));
+    yield put(
+      BanbibaranActions.deletebanxetraanyaprayojanSuccess(response.data)
+    );
   } else {
     yield put(BanbibaranActions.deletebanxetraanyaprayojanFailure());
     toast.error(
@@ -231,7 +246,6 @@ export function* deletebanxetraanyaprayojanRequest(api, action) {
     );
   }
 }
-
 
 export function* fetchallplotbibaranRequest(api, action) {
   const { payload } = action;
@@ -270,6 +284,9 @@ export function* addplotbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallplotbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "established_date",
       page: 0,
       perPage: 10,
@@ -301,6 +318,9 @@ export function* updateplotbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallplotbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "established_date",
       page: 0,
       perPage: 10,
@@ -329,6 +349,9 @@ export function* deleteplotbibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallplotbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "established_date",
       page: 0,
       perPage: 10,
@@ -368,7 +391,7 @@ export function* fetchuddhyambibaranRequest(api, action) {
   } else {
     yield put(BanbibaranActions.fetchuddhyambibaranFailure());
   }
-}   
+}
 
 // Add uddhyambibaran
 export function* adduddhyambibaranRequest(api, action) {
@@ -458,8 +481,6 @@ export function* deleteuddhyambibaranRequest(api, action) {
   }
 }
 
-
-
 //bachat bibaran
 export function* fetchallbachatbibaranRequest(api, action) {
   const { payload } = action;
@@ -470,7 +491,6 @@ export function* fetchallbachatbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchallbachatbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchallbachatbibaranFailure());
-
   }
 }
 
@@ -485,7 +505,6 @@ export function* fetchbachatbibaranRequest(api, action) {
     yield put(BanbibaranActions.fetchbachatbibaranFailure());
   }
 }
-
 
 export function* addbachatbibaranRequest(api, action) {
   const { payload } = action;
@@ -526,9 +545,12 @@ export function* updatebachatbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वचत तथा ऋण विवरण विवरण पुनः प्रविष्ट भयो !!!!!", {
-      position: toast.POSITION.TOP_CENTER,
-    });
+    toast.success(
+      "सफलतापुर्वक वचत तथा ऋण विवरण विवरण पुनः प्रविष्ट भयो !!!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
     yield fetchallbachatbibaranRequest(api, {
       name: "samuhako_naam",
       page: 0,
@@ -546,7 +568,6 @@ export function* updatebachatbibaranRequest(api, action) {
     );
   }
 }
-
 
 export function* deletebachatbibaranRequest(api, action) {
   const { payload } = action;
