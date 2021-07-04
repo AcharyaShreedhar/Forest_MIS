@@ -3,8 +3,8 @@ const pool = require("../db");
 //Controller for Listing all rastriyabanBibaran
 async function getAllRastriyabanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from rastriyabanbibarans as n where n.darta_miti BETWEEN ? and ? and n.dist_id like ?";
-  const getAllRastriyabanBibaranQuery = `select * from rastriyabanbibarans as n where n.darta_miti BETWEEN ? and ? and n.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from rastriyabanbibarans as r where r.darta_miti BETWEEN ? and ? and r.dist_id like ?";
+  const getAllRastriyabanBibaranQuery = `select * from rastriyabanbibarans as r where r.darta_miti BETWEEN ? and ? and r.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId],
