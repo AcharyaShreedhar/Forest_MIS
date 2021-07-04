@@ -619,7 +619,7 @@ export function* fetchconsumergroupdetailsRequest(api, action) {
   }
 }
 
-// Add rastriyabanbibaran
+// Add consumer group details
 export function* addconsumergroupdetailsRequest(api, action) {
   const { payload } = action;
 
@@ -643,6 +643,42 @@ export function* addconsumergroupdetailsRequest(api, action) {
     yield put(BankaprakarActions.addconsumergroupdetailsSuccess(response.data));
   } else {
     yield put(BankaprakarActions.addconsumergroupdetailsFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update consumergroupdetails
+export function* updateconsumergroupdetailsRequest(api, action) {
+  const { payload, consumergroupdetailsId } = action;
+
+  const response = yield api.postConsumergroupDetailsUpdate(
+    payload.consumergroupdetails.data,
+    consumergroupdetailsId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक उपभोक्ता समुह  पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallconsumergroupdetailsRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/consumergroupdetailslist");
+    yield put(
+      BankaprakarActions.updateconsumergroupdetailsSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.updateconsumergroupdetailsFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {

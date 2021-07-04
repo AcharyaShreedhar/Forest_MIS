@@ -683,6 +683,9 @@ const create = (baseURL = Config.API_URL) => {
   const postConsumergroupDetailsAddNew = (payload) =>
     api.post(`ConsumerGroupDetails`, payload);
 
+  const postConsumergroupDetailsUpdate = (payload, consumergroupdetailsId) =>
+    api.put(`/ConsumerGroupDetails/${consumergroupdetailsId}`, payload);
+
   //------karyabibaran
   const getSamajikkaryabibaranList = (payload) =>
     api.post("samajikkaryaBibaranList", payload);
@@ -921,6 +924,7 @@ const create = (baseURL = Config.API_URL) => {
     getConsumergroupDetailsList,
     getConsumergroupDetails,
     postConsumergroupDetailsAddNew,
+    postConsumergroupDetailsUpdate,
 
     //-----Departments
     getDepartmentsList,

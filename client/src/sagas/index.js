@@ -88,6 +88,7 @@ import {
   fetchallconsumergroupdetailsRequest,
   fetchconsumergroupdetailsRequest,
   addconsumergroupdetailsRequest,
+  updateconsumergroupdetailsRequest,
   fetchallsamudayikbanbibaranRequest,
   fetchsamudayikbanbibaranRequest,
   addsamudayikbanbibaranRequest,
@@ -452,6 +453,12 @@ export default function* root() {
     takeLatest(
       BankaprakarTypes.ADDCONSUMERGROUPDETAILS_REQUEST,
       addconsumergroupdetailsRequest,
+      api
+    ),
+
+    takeLatest(
+      BankaprakarTypes.UPDATECONSUMERGROUPDETAILS_REQUEST,
+      updateconsumergroupdetailsRequest,
       api
     ),
 
