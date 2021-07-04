@@ -145,7 +145,7 @@ const { Types, Creators } = createActions({
   addconsumergroupdetailsSuccess: ["response"],
   addconsumergroupdetailsFailure: null,
 
-  updateconsumergroupdetailsRequest: ["payload"],
+  updateconsumergroupdetailsRequest: ["payload", "consumergroupdetailsId"],
   updateconsumergroupdetailsSuccess: ["response"],
   updateconsumergroupdetailsFailure: null,
 
