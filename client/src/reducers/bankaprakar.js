@@ -306,6 +306,20 @@ const deletenabikarankaryayojanaSuccess = (state, action) =>
   });
 const deletenabikarankaryayojanaFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
+  
+
+  const fetchallchaklabanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallchaklabanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allchaklabanbibaranData: action.response,
+  });
+};
+const fetchallchaklabanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 //---Consumergroupsdetails
 const fetchallconsumergroupdetailsRequest = (state, action) =>
@@ -582,6 +596,11 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: fetchcommercialkabuliyatibanbibaranRequest,
   [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_SUCCESS]: fetchcommercialkabuliyatibanbibaranSuccess,
   [BankaprakarTypes.FETCHCOMMERCIALKABULIYATIBANBIBARAN_FAILURE]: fetchcommercialkabuliyatibanbibaranFailure,
+
+  //chaklabanbibaran
+  [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_REQUEST]: fetchallchaklabanbibaranRequest,
+  [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_SUCCESS]: fetchallchaklabanbibaranSuccess,
+  [BankaprakarTypes.FETCHALLCHAKLABANBIBARAN_FAILURE]: fetchallchaklabanbibaranFailure,
 
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
