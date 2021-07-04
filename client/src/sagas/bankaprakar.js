@@ -616,6 +616,7 @@ export function* fetchconsumergroupdetailsRequest(api, action) {
   }
 }
 
+//rastriyabanbibaran
 export function* fetchallrastriyabanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -626,5 +627,17 @@ export function* fetchallrastriyabanbibaranRequest(api, action) {
     );
   } else {
     yield put(BankaprakarActions.fetchallrastriyabanbibaranFailure());
+  }
+}
+
+export function* fetchrastriyabanbibaranRequest(api, action) {
+  const rastriyabanBibaranId = action.payload;
+
+  const response = yield api.getRastriyabanBibaran(rastriyabanBibaranId);
+
+  if (response.ok) {
+    yield put(BankaprakarActions.fetchrastriyabanbibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.fetchrastriyabanbibaranFailure());
   }
 }
