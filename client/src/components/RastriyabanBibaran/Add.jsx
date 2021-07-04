@@ -36,7 +36,7 @@ class Add extends Component {
         lav_jana,
     } = this.state;
     const payload = {
-      samudayikban: {
+      rastriyaban: {
         data: {
           darta_no: darta_no,
           darta_miti: darta_miti,

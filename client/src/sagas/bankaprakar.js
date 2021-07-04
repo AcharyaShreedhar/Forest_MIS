@@ -644,3 +644,72 @@ export function* fetchrastriyabanbibaranRequest(api, action) {
     yield put(BankaprakarActions.fetchrastriyabanbibaranFailure());
   }
 }
+
+// Add rastriyabanbibaran
+export function* addrastriyabanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postRastriyabanBibaranAddNew(
+    payload.rastriyaban.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक राष्ट्रिय वन प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrastriyabanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/rastriyabanlist");
+    yield put(BankaprakarActions.addrastriyabanbibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.addrastriyabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update rastriyabanbibaran
+export function* updaterastriyabanbibaranRequest(api, action) {
+  const { payload, rastriyabanbibaranId } = action;
+
+  const response = yield api.postRastriyabanBibaranUpdate(
+    payload.rastriyaban.data,
+    rastriyabanbibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक राष्ट्रिय वन पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallrastriyabanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/rastriyabanlist");
+    yield put(
+      BankaprakarActions.updaterastriyabanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.updaterastriyabanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

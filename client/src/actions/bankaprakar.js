@@ -120,6 +120,14 @@ const { Types, Creators } = createActions({
   fetchrastriyabanbibaranSuccess: ["response"],
   fetchrastriyabanbibaranFailure: null,
 
+  addrastriyabanbibaranRequest: ["payload"],
+  addrastriyabanbibaranSuccess: ["response"],
+  addrastriyabanbibaranFailure: null,
+
+  updaterastriyabanbibaranRequest: ["payload", "rastriyabanbibaranId"],
+  updaterastriyabanbibaranSuccess: ["response"],
+  updaterastriyabanbibaranFailure: null,
+
   //-----ConsumergroupDetails
   fetchallconsumergroupdetailsRequest: ["payload"],
   fetchallconsumergroupdetailsSuccess: ["response"],

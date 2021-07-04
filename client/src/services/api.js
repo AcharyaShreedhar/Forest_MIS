@@ -707,6 +707,12 @@ const create = (baseURL = Config.API_URL) => {
   const getRastriyabanBibaran = (rastriyabanbibaranId) =>
     api.get(`rastriyabanBibaran/${rastriyabanbibaranId}`);
 
+  const postRastriyabanBibaranAddNew = (payload) =>
+    api.post(`rastriyabanBibaran`, payload);
+
+  const postRastriyabanBibaranUpdate = (payload, rastriyabanbibaranId) =>
+    api.put(`rastriyabanBibaran/${rastriyabanbibaranId}`, payload);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -736,6 +742,9 @@ const create = (baseURL = Config.API_URL) => {
     postBankaprakarNabikarankaryayojanaDelete,
     getRastriyabanBibaranList,
     getRastriyabanBibaran,
+    postRastriyabanBibaranAddNew,
+    postRastriyabanBibaranUpdate,
+
     //dwandabebasthapan
     getBanyajantuUddarList,
     getBanyajantuUddar,
