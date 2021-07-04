@@ -784,6 +784,9 @@ const create = (baseURL = Config.API_URL) => {
   const getBanbikasKaryaBibaranList = (payload) =>
     api.post("banbikasKaryabibaranList", payload);
 
+  const getBanbikasKaryabibaran = (banbikasKaryabibaranId) =>
+    api.get(`banbikasKaryabibaran/${banbikasKaryabibaranId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1032,6 +1035,7 @@ const create = (baseURL = Config.API_URL) => {
     postKaryabibaranSamajikkaryabibaranUpdate,
     postKaryabibaranSamajikkaryabibaranDelete,
     getBanbikasKaryaBibaranList,
+    getBanbikasKaryabibaran,
 
     //------- rojgarsrijana
     getRojgarSrijanaList,

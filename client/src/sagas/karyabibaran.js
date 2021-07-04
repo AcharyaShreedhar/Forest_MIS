@@ -135,3 +135,16 @@ export function* fetchallbanbikaskaryabibaranRequest(api, action) {
     yield put(KaryabibaranActions.fetchallbanbikaskaryabibaranFailure());
   }
 }
+
+export function* fetchbanbikaskaryabibaranRequest(api, action) {
+  const banbikasKaryabibaranId = action.payload;
+
+  const response = yield api.getBanbikasKaryabibaran(banbikasKaryabibaranId);
+  if (response.ok) {
+    yield put(
+      KaryabibaranActions.fetchbanbikaskaryabibaranSuccess(response.data)
+    );
+  } else {
+    yield put(KaryabibaranActions.fetchbanbikaskaryabibaranFailure());
+  }
+}
