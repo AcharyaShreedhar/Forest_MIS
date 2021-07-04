@@ -144,8 +144,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BankaprakarActions.fetchallkabuliyatibanbibaranRequest(payload)),
   fetchallNijibanbibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallnijibanbibaranRequest(payload)),
-  // fetchallSajhedaribanbibaran: (payload) =>
-  //   dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
+  fetchallSajhedaribanbibaran: (payload) =>
+    dispatch(BankaprakarActions.fetchallsajhedaribanbibaranRequest(payload)),
   fetchallChaklabanbibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallchaklabanbibaranRequest(payload)),
   fetchallRastriyabanbibaran: (payload) =>
