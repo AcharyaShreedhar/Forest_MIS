@@ -52,18 +52,16 @@ function List(props) {
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td key={index}> {samuha.registration_no}</td>
                   <td key={index}> {samuha.registration_date}</td>
-                  <td key={index}> {samuha.consumer_group_name}</td>
-                  <td key={index}> {samuha.ghardhuri_dalit}</td>
+                  <td key={index}> {samuha.samudayik_upavokta_samiti_name}</td>
                   <td key={index}> {samuha.perm_addr}</td>
                   <td key={index}> {samuha.curr_addr}</td>
+                  <td key={index}> {samuha.ghardhuri_dalit}</td>
                   <td key={index}> {samuha.ghardhuri_janjati}</td>
                   <td key={index}> {samuha.ghardhuri_anya}</td>
                   <td key={index}> {samuha.ghardhuri_total}</td>
-                  <td key={index}> {samuha.ghardhuri_janjati}</td>
                   <td key={index}> {samuha.population_female}</td>
                   <td key={index}> {samuha.population_male}</td>
                   <td key={index}> {samuha.population_total}</td>
-                  <td key={index}> {samuha.samudayik_upavokta_samiti_name}</td>
                   <td key={index}> {samuha.sampannata_starikaran_sampanna}</td>
                   <td key={index}> {samuha.sampannata_starikaran_madhyam}</td>
                   <td key={index}> {samuha.sampannata_starikaran_bipanna}</td>
@@ -76,11 +74,10 @@ function List(props) {
                     {samuha.karyasamiti_representation_janjati}
                   </td>
                   <td key={index}> {samuha.karyasamiti_representation_anya}</td>
-                  <td key={index}> {samuha.adhyakshya_male}</td>
                   <td key={index}> {samuha.adhyakshya_female}</td>
-                  <td key={index}> {samuha.sachib_male}</td>
+                  <td key={index}> {samuha.adhyakshya_male}</td>
                   <td key={index}> {samuha.sachib_female}</td>
-
+                  <td key={index}> {samuha.sachib_male}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
