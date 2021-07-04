@@ -336,6 +336,39 @@ const fetchchaklabanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//Add chaklabanbibaran
+const addchaklabanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addchaklabanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addchaklabanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update chaklabanbibaran
+const updatechaklabanbibaranRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatechaklabanbibaranSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatechaklabanbibaranFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+//Delete Nijibanbibaran
+const deletechaklabanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletechaklabanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletechaklabanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 //---Consumergroupsdetails
 const fetchallconsumergroupdetailsRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -678,6 +711,18 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.FETCHCHAKLABANBIBARAN_REQUEST]: fetchchaklabanbibaranRequest,
   [BankaprakarTypes.FETCHCHAKLABANBIBARAN_SUCCESS]: fetchchaklabanbibaranSuccess,
   [BankaprakarTypes.FETCHCHAKLABANBIBARAN_FAILURE]: fetchchaklabanbibaranFailure,
+
+  [BankaprakarTypes.ADDCHAKLABANBIBARAN_REQUEST]: addchaklabanbibaranRequest,
+  [BankaprakarTypes.ADDCHAKLABANBIBARAN_SUCCESS]: addchaklabanbibaranSuccess,
+  [BankaprakarTypes.ADDCHAKLABANBIBARAN_FAILURE]: addchaklabanbibaranFailure,
+
+  [BankaprakarTypes.UPDATECHAKLABANBIBARAN_REQUEST]: updatechaklabanbibaranRequest,
+  [BankaprakarTypes.UPDATECHAKLABANBIBARAN_SUCCESS]: updatechaklabanbibaranSuccess,
+  [BankaprakarTypes.UPDATECHAKLABANBIBARAN_FAILURE]: updatechaklabanbibaranFailure,
+
+  [BankaprakarTypes.DELETECHAKLABANBIBARAN_REQUEST]: deletechaklabanbibaranRequest,
+  [BankaprakarTypes.DELETECHAKLABANBIBARAN_SUCCESS]: deletechaklabanbibaranSuccess,
+  [BankaprakarTypes.DELETECHAKLABANBIBARAN_FAILURE]: deletechaklabanbibaranFailure,
 
   //------Consumergroup Details
   [BankaprakarTypes.FETCHALLCONSUMERGROUPDETAILS_REQUEST]: fetchallconsumergroupdetailsRequest,
