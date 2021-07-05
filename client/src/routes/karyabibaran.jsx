@@ -23,6 +23,21 @@ const karyabibaranRoutes = [
         auth: true,
         component: SamajikKaryabibaran,
       },
+      {
+        path: "/karyabibaran/samajikkaryabibaranadd/new",
+        title: "SamajikKaryabibaran",
+        name: "samajikkaryabibaran",
+        auth: true,
+        component: SamajikKaryabibaran,
+      },
+
+      {
+        path: "/karyabibaran/samajikkaryabibaranedit/:id",
+        title: "SamajikKaryabibaran",
+        name: "samajikkaryabibaran",
+        auth: true,
+        component: SamajikKaryabibaran,
+      },
 
     {
         redirect: true,
