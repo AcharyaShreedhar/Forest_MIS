@@ -42,7 +42,8 @@ export function* addsamajikkaryabibaranRequest(api, action) {
     toast.success("सफलतापुर्वक सामाजिक कार्य विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addsamajikkaryabibaranRequest(api, {
+    yield fetchallsamajikkaryabibaranRequest(api, {
+      distId: "%",
       name: "ban_type",
       page: 0,
       perPage: 10,
@@ -74,6 +75,7 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
+      distId: "%",
       name: "ban_type",
       page: 0,
       perPage: 10,
@@ -104,6 +106,7 @@ export function* deletesamajikkaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
+      distId: "%",
       name: "ban_type",
       page: 0,
       perPage: 10,
