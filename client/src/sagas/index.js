@@ -287,6 +287,10 @@ import {
   addsamajikkaryabibaranRequest,
   updatesamajikkaryabibaranRequest,
   deletesamajikkaryabibaranRequest,
+  fetchallbanbikaskaryabibaranRequest,
+  fetchbanbikaskaryabibaranRequest,
+  addbanbikaskaryabibaranRequest,
+  updatebanbikaskaryabibaranRequest,
 } from "./karyabibaran";
 
 //miscellaneous
@@ -1521,6 +1525,28 @@ export default function* root() {
     takeLatest(
       BankaprakarTypes.FETCHSAJHEDARIBANBIBARAN_REQUEST,
       fetchsajhedaribanbibaranRequest,
+      api
+    ),
+
+    //-------------------banbikaskaryabibaran
+    takeLatest(
+      KaryabibaranTypes.FETCHALLBANBIKASKARYABIBARAN_REQUEST,
+      fetchallbanbikaskaryabibaranRequest,
+      api
+    ),
+    takeLatest(
+      KaryabibaranTypes.FETCHBANBIKASKARYABIBARAN_REQUEST,
+      fetchbanbikaskaryabibaranRequest,
+      api
+    ),
+    takeLatest(
+      KaryabibaranTypes.ADDBANBIKASKARYABIBARAN_REQUEST,
+      addbanbikaskaryabibaranRequest,
+      api
+    ),
+    takeLatest(
+      KaryabibaranTypes.UPDATEBANBIKASKARYABIBARAN_REQUEST,
+      updatebanbikaskaryabibaranRequest,
       api
     ),
   ]);

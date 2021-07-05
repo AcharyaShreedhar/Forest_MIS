@@ -780,6 +780,19 @@ const create = (baseURL = Config.API_URL) => {
   const getSajhedaribanBibaran = (sajhedaribanBibaranId) =>
     api.get(`rastriyabanBibaran/${sajhedaribanBibaranId}`);
 
+  // banbikas karyabibaran
+  const getBanbikasKaryaBibaranList = (payload) =>
+    api.post("banbikasKaryabibaranList", payload);
+
+  const getBanbikasKaryabibaran = (banbikasKaryabibaranId) =>
+    api.get(`banbikasKaryabibaran/${banbikasKaryabibaranId}`);
+
+  const postBanbikasKaryabibaranAddNew = (payload) =>
+    api.post("banbikasKaryabibaran", payload);
+
+  const postBanbikasKaryabibaranUpdate = (payload, banbikasKaryabibaranId) =>
+    api.put(`banbikasKaryabibaran/${banbikasKaryabibaranId}`, payload);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1027,6 +1040,10 @@ const create = (baseURL = Config.API_URL) => {
     postKaryabibaranSamajikkaryabibaranAddNew,
     postKaryabibaranSamajikkaryabibaranUpdate,
     postKaryabibaranSamajikkaryabibaranDelete,
+    getBanbikasKaryaBibaranList,
+    getBanbikasKaryabibaran,
+    postBanbikasKaryabibaranAddNew,
+    postBanbikasKaryabibaranUpdate,
 
     //------- rojgarsrijana
     getRojgarSrijanaList,
