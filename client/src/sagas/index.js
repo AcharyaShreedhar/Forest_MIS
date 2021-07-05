@@ -132,6 +132,7 @@ import {
   deletechaklabanbibaranRequest,
   fetchallsajhedaribanbibaranRequest,
   fetchsajhedaribanbibaranRequest,
+  addsajhedaribanbibaranRequest,
   addsajhedaribanBibaranRequest,
 } from "./bankaprakar";
 
@@ -1524,6 +1525,12 @@ export default function* root() {
       api
     ),
 
+    takeLatest(
+      BankaprakarTypes.ADDSAJHEDARIBANBIBARAN_REQUEST,
+      addsajhedaribanBibaranRequest,
+      api
+    ),
+
     //-------------------banbikaskaryabibaran
     takeLatest(
       KaryabibaranTypes.FETCHALLBANBIKASKARYABIBARAN_REQUEST,
@@ -1545,9 +1552,9 @@ export default function* root() {
       updatebanbikaskaryabibaranRequest,
       api
     ),
-    takeLatest(
-      BankaprakarTypes.ADDSAJHEDARIBANBIBARAN_REQUEST,
-      addsajhedaribanBibaranRequest,
+    takeLatest(     
+      KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_REQUEST,
+      deletebanbikaskaryabibaranRequest,
       api
     ),
     takeLatest(
