@@ -42,7 +42,7 @@ class Banbikaskaryabibaran extends Component {
   fetchResults(distId, page, perPage) {
     this.props.fetchallBanbikaskaryabibaran({
       distId,
-      name: "ban_type",
+      name: "banbikas_karyabibaran",
       page: page,
       perPage,
     });
@@ -150,7 +150,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanbikaskaryabibaran: (payload) =>
-    dispatch(KaryabibaranActions.fetchallbanbikaskaryayojanaRequest(payload)),
+    dispatch(KaryabibaranActions.fetchallbanbikaskaryabibaranRequest(payload)),
   addBanbikaskaryabibaran: (payload) =>
     dispatch(KaryabibaranActions.addbanbikaskaryabibaranRequest(payload)),
 

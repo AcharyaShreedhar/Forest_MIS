@@ -14,6 +14,7 @@ import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
 import CheckBox from "./CheckBox";
 import CustomDatePicker from "./CustomDatePicker";
+// import confirmAlert from "./ConfirmationDialoge"
 import EditDropdown from "./EditDropdown";
 import Pagination from "./Pagination";
 import ReportGenerator from "./ReportGenerator";
@@ -63,6 +64,7 @@ export {
   CheckIcon,
   CheckBox,
   CustomDatePicker,
+  // confirmAlert,
   EditDropdown,
   ReportGenerator,
   Pagination,
