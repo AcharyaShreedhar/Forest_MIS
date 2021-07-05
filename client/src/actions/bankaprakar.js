@@ -136,6 +136,10 @@ const { Types, Creators } = createActions({
   fetchallsajhedaribanbibaranSuccess: ["response"],
   fetchallsajhedaribanbibaranFailure: null,
 
+  fetchsajhedaribanbibaranRequest: ["payload"],
+  fetchsajhedaribanbibaranSuccess: ["response"],
+  fetchsajhedaribanbibaranFailure: null,
+
   //commercialkabuliyatibanbibaran
   fetchallcommercialkabuliyatibanbibaranRequest: ["payload"],
   fetchallcommercialkabuliyatibanbibaranSuccess: ["response"],
