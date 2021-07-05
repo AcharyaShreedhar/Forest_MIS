@@ -1522,6 +1522,11 @@ export default function* root() {
       fetchallsajhedaribanbibaranRequest,
       api
     ),
+    takeLatest(
+      BankaprakarTypes.FETCHSAJHEDARIBANBIBARAN_REQUEST,
+      fetchsajhedaribanbibaranRequest,
+      api
+    ),
 
     //-------------------banbikaskaryabibaran
     takeLatest(
