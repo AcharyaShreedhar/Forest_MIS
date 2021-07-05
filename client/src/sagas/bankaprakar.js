@@ -1187,10 +1187,10 @@ export function* fetchsajhedaribanbibaranRequest(api, action) {
   }
 }
 
-export function* addsajhedaribanBibaranRequest(api, action) {
+export function* addsajhedaribanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postSajhedaribanBibaranAddNew(
+  const response = yield api.postBankaprakarSajhedaribanbibaranAddNew(
     payload.sajhedariban.data
   );
 
@@ -1206,7 +1206,7 @@ export function* addsajhedaribanBibaranRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/sajhedaribanbibaranlist");
+    yield call(history.push, "/forests/sajhedaribanlist");
     yield put(
       BankaprakarActions.addsajhedaribanbibaranSuccess(response.data)
     );

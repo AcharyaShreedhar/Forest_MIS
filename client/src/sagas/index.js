@@ -133,7 +133,6 @@ import {
   fetchallsajhedaribanbibaranRequest,
   fetchsajhedaribanbibaranRequest,
   addsajhedaribanbibaranRequest,
-  addsajhedaribanBibaranRequest,
 } from "./bankaprakar";
 
 //------------------------biruwautpadan
@@ -1527,7 +1526,7 @@ export default function* root() {
 
     takeLatest(
       BankaprakarTypes.ADDSAJHEDARIBANBIBARAN_REQUEST,
-      addsajhedaribanBibaranRequest,
+      addsajhedaribanbibaranRequest,
       api
     ),
 
