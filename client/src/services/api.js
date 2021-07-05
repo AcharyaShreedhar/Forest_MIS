@@ -751,11 +751,11 @@ const create = (baseURL = Config.API_URL) => {
   const postKaryabibaranSamajikkaryabibaranUpdate = (
     payload,
     samajikkaryabibaranId
-  ) => api.put(`samajikkaryabibaran/${samajikkaryabibaranId}`, payload);
+  ) => api.put(`samajikkaryaBibaran/${samajikkaryabibaranId}`, payload);
 
   //delete
   const postKaryabibaranSamajikkaryabibaranDelete = (samajikkaryabibaranId) =>
-    api.delete(`banpaidawarbikribitarans/${samajikkaryabibaranId}`);
+    api.delete(`samajikkaryaBibaran/${samajikkaryabibaranId}`);
 
   // rastriya banbibaran
   const getRastriyabanBibaranList = (payload) =>
