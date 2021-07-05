@@ -9,7 +9,13 @@ import KaryabibaranActions from "../../actions/karyabibaran";
 
 export class Karyabibaran extends Component {
   componentDidMount() {
-    this.props.fetchallBanbikaskaryabibaran({
+    // this.props.fetchallBanbikaskaryabibaran({
+    //   distId: "%",
+    //   name: "ban_type",
+    //   page: 0,
+    //   perPage: 10,
+    // });
+    this.props.fetchallSamajikkaryabibaran({
       distId: "%",
       name: "ban_type",
       page: 0,
@@ -68,8 +74,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBanbikaskaryabibaran: (payload) =>
-    dispatch(KaryabibaranActions.fetchallbanbikaskaryayojanaRequest(payload)),
+  // fetchallBanbikaskaryabibaran: (payload) =>
+  //   dispatch(KaryabibaranActions.fetchallbanbikaskaryabibaranRequest(payload)),
+    fetchallSamajikkaryabibaran: (payload) =>
+    dispatch(KaryabibaranActions.fetchallsamajikkaryabibaranRequest(payload)),  
   
 });
 
