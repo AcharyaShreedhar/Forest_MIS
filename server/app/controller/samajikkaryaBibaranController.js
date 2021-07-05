@@ -2,13 +2,13 @@ const pool = require("../db");
 
 //Controller for Listing all samajikkaryaBibaran
 async function getAllSamajikkaryaBibaran(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from  samajik_karyabibarans";
-  const getAllSamajikkaryaBibaranQuery = `select * from samajik_karyabibarans ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from  samajik_karyabibarans as s where  s.dist_id like ?";
+  const getAllSamajikkaryaBibaranQuery = `select * from samajik_karyabibarans as s where s.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [req.body.distId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
       getAllSamajikkaryaBibaranQuery,
-      [req.body.name, req.body.page, req.body.perPage],
+      [req.body.distId, req.body.name, req.body.page, req.body.perPage],
       (error, results, fields) => {
         if (error) throw error;
         res.send(
