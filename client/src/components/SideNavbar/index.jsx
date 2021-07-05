@@ -33,7 +33,6 @@ export class SideNavbar extends Component {
   }
   handleLogout(e) {
     this.props.onlogout();
-    this.props.history.push("/login");
   }
 
   render() {
