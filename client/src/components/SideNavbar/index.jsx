@@ -279,7 +279,7 @@ export class SideNavbar extends Component {
               <NavText>सामाजिक कार्य विवरण</NavText>
             </NavItem>
             <NavItem
-              eventKey="karyabibaran/samajikkaryabibaranlist"
+              eventKey="karyabibaran/banbikaskaryabibaranlist"
               onClick={() =>
                 history.push("/karyabibaran/banbikaskaryabibaranlist")
               }
