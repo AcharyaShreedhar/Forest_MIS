@@ -1,0 +1,120 @@
+import React, { Component } from "react";
+import { Button, Input, Dropdown } from "../../components";
+import { equals } from "ramda";
+
+
+class Add extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      banbikas_karyabibaran:"",
+      banbikas_ikai: "",
+      banbikas_parinam:"",
+      banbikas_bajetkharcha:"",
+      ban_type:"",
+      dist_id: "",
+      created_by: "",
+      updated_by: "",
+    };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit() {
+    const {
+        banbikas_karyabibaran,
+        banbikas_ikai,
+        banbikas_parinam,
+        banbikas_bajetkharcha,
+        ban_type,
+    } = this.state;
+    const payload = {
+      banbikaskaryabibaran: {
+        data: {
+          banbikas_karyabibaran: banbikas_karyabibaran,
+          banbikas_ikai: banbikas_ikai,
+          banbikas_parinam: banbikas_parinam,
+          banbikas_bajetkharcha: banbikas_bajetkharcha,
+          ban_type: ban_type,
+          dist_id: this.props.user.dist_id,
+          created_by: this.props.user.user_name,
+        },
+      },
+    };
+    this.props.onSubmit(payload);
+  }
+  
+
+  render() {
+    const { title } = this.props;
+    const {
+        banbikas_karyabibaran,
+        banbikas_ikai,
+        banbikas_parinam,
+        banbikas_bajetkharcha,
+        ban_type,
+    } = this.state;
+
+    return (
+      <React.Fragment>
+        <div className=" card p-5 border-5">
+          <div className="detail-content">
+            <div className="title">
+              <span className="dsl-b22">{title}</span>
+            </div>
+            <Input
+              className="mb-4"
+              title="कार्यविवरण"
+              value={banbikas_karyabibaran}
+              direction="vertical"
+              as="textarea"
+              onChange={(e) => this.setState({ banbikas_karyabibaran: e })}
+            />
+            <Input
+              className="mb-4"
+              title="ईकाइ"
+              direction="vertical"
+              value={banbikas_ikai}
+              onChange={(e) => this.setState({ banbikas_ikai: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="परिणाम"
+              direction="vertical"
+              value={banbikas_parinam}
+              onChange={(e) => this.setState({ banbikas_parinam: e })}
+            />
+            <Input
+              className="mb-4"
+              title="बजेटखर्च"
+              value={banbikas_bajetkharcha}
+              direction="vertical"
+              onChange={(e) => this.setState({ banbikas_bajetkharcha: e })}
+            />
+
+            <Input
+              className="mb-4"
+              title="वनको किसिम"
+              direction="vertical"
+              value={ban_type}
+              onChange={(e) => this.setState({ ban_type: e })}
+            />
+
+          </div>
+          <div className="mt-2 border-5">
+            <div className="d-flex justify-content-end align-items-center">
+              <Button
+                className="mr-3"
+                name="Save"
+                onClick={this.handleSubmit.bind(this)}
+              />
+            </div>
+          </div>
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Add;
