@@ -66,7 +66,7 @@ class Samajikkaryabibaran extends Component {
     );
   }
 
-  handleSelectMenu(event, item, path) {
+  handleSelectMenu(event, item) {
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -92,7 +92,7 @@ class Samajikkaryabibaran extends Component {
   render() {
     const { loc, perPage, samajikkaryabibaranList } = this.state;
     const { user } = this.props;
-
+   
     return (
       <div>
         {equals(loc, "samajikkaryabibaranlist") && (
@@ -136,7 +136,7 @@ class Samajikkaryabibaran extends Component {
             onSubmit={(e) => this.props.addSamajikkaryabibaran(e)}
           />
         )}
-        {equals(loc, "bandadeloedit") && (
+        {equals(loc, "samajikkaryabibaranedit") && (
           <SamajikKaryabibaran.Edit
             title="सामाजिक कार्य पुनः प्रविष्ट"
             user={user}
