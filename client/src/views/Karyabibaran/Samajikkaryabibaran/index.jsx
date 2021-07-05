@@ -1,11 +1,187 @@
-import React, {Component} from "react";
+import React, { Component, Fragment } from "react";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
+import { equals, isNil } from "ramda";
+import { SamajikKaryabibaran, Filter, ReportGenerator } from "../../../components";
+import KaryabibaranActions from "../../../actions/karyabibaran";
+import { samajikkaryabibaranHeadings, districtList } from "../../../services/config";
 
 class Samajikkaryabibaran extends Component {
-    render(){
-        return(
-            <h1>Samajikkaryabibaran component</h1>
-        );
+  constructor(props) {
+    super(props);
+    this.state = {
+      loc: "samajikkaryabibaranlist",
+      distId: "%",
+      perPage: 10,
+      page: 1,
+    };
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const loc = nextProps.location.pathname.split("/")[2];
+    var samajikkaryabibaranList = [];
+    if (nextProps !== prevState) {
+      samajikkaryabibaranList = nextProps.samajikkaryabibaranDataList.data;
     }
+
+    return {
+      loc,
+      samajikkaryabibaranList,
+    };
+  }
+  handlePer(e) {
+    const {  distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults( distId, 0, e);
+  }
+  handleDistrict(e) {
+    const { perPage } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults( e, 0, perPage);
+  }
+
+  fetchResults( distId, page, perPage) {
+    this.props.fetchallSamajikkaryabibaran({
+      distId,
+      name: "ban_type",
+      page: page,
+      perPage,
+    });
+  }
+
+  handlePageChange(data) {
+    const { distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(
+
+      distId,
+      data.selected * perPage,
+      perPage
+    );
+  }
+
+  handleSelectMenu(event, item, path) {
+    switch (event) {
+      case "edit": {
+        this.props.history.push({
+          pathname: `/karyabibaran/samajikkaryabibaranedit/${item.samajik_karyabibaran_id}`,
+          item,
+        });
+
+        break;
+      }
+      case "delete": {
+        this.props.deleteSamajikkaryabibaran(item.samajik_karyabibaran_id);
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  handleAdd() {
+    this.props.history.push("/karyabibaran/samajikkaryabibaranadd/new");
+  }
+
+  render() {
+    const { loc, perPage, samajikkaryabibaranList } = this.state;
+    const { user } = this.props;
+
+    return (
+      <div>
+        {equals(loc, "samajikkaryabibaranlist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="samajikkaryabibaran"
+                districtsList={districtList}
+                onSelect={this.handleDistrict}
+                yesDate={false}
+              />
+              <ReportGenerator id="samajikkaryabibaran" />
+            </div>
+            <SamajikKaryabibaran.List
+              buttonName="+ सामाजिक कार्य"
+              title="सामाजिक कार्य सम्बन्धि विवरण"
+              pageCount={
+                !isNil(samajikkaryabibaranList)
+                  ? Math.ceil(samajikkaryabibaranList.total / perPage)
+                  : 10
+              }
+              data={
+                !isNil(samajikkaryabibaranList) ? samajikkaryabibaranList.list : []
+              }
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={samajikkaryabibaranHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("samajikkaryabibaran")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
+          </Fragment>
+        )}
+        {equals(loc, "samajikkaryabibaranadd") && (
+          <SamajikKaryabibaran.Add
+            title="+ सामाजिक कार्य"
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addSamajikkaryabibaran(e)}
+          />
+        )}
+        {equals(loc, "bandadeloedit") && (
+          <SamajikKaryabibaran.Edit
+            title="सामाजिक कार्य पुनः प्रविष्ट"
+            user={user}
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updateSamajikkaryabibaran(e, id)}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
-export default Samajikkaryabibaran;
+Samajikkaryabibaran.propsTypes = {
+  samajikkaryabibaranDataList: PropTypes.any,
+};
+
+Samajikkaryabibaran.defaultProps = {
+  samajikkaryabibaranDataList: {},
+};
+
+const mapStateToProps = (state) => ({
+  user: state.app.user,
+  samajikkaryabibaranDataList: state.karyabibaran.allsamajikkaryabibaranData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchallSamajikkaryabibaran: (payload) =>
+    dispatch(KaryabibaranActions.fetchallsamajikkaryabibaranRequest(payload)),
+
+  addSamajikkaryabibaran: (payload) =>
+    dispatch(KaryabibaranActions.addsamajikkaryabibaranRequest(payload)),
+
+  updateSamajikkaryabibaran: (payload, samajikkaryabibaranId) =>
+    dispatch(
+      KaryabibaranActions.updatesamajikkaryabibaranRequest(
+        payload,
+        samajikkaryabibaranId
+      )
+    ),
+
+  deleteSamajikkaryabibaran: (samajikkaryabibaranId) =>
+    dispatch(
+        KaryabibaranActions.deletesamajikkaryabibaranRequest(samajikkaryabibaranId)
+    ),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Samajikkaryabibaran);
