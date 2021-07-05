@@ -387,6 +387,15 @@ const banbikaskaryabibaranHeadings = [
   "वनको किसिम",
 ];
 
+const samajikkaryabibaranHeadings = [
+  "सामाजिक कार्याविवरण",
+  "इकाई",
+  "परिणाम",
+  "बजेट खर्च",
+  "वनको किसिम",
+
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -418,4 +427,5 @@ export {
   commercialbanHeadings,
   upabhoktasamuhaHeadings,
   banbikaskaryabibaranHeadings,
+  samajikkaryabibaranHeadings,
 };
