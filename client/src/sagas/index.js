@@ -292,6 +292,7 @@ import {
   fetchbanbikaskaryabibaranRequest,
   addbanbikaskaryabibaranRequest,
   updatebanbikaskaryabibaranRequest,
+  deletebanbikaskaryabibaranRequest,
 } from "./karyabibaran";
 
 //miscellaneous
@@ -1547,6 +1548,11 @@ export default function* root() {
     takeLatest(
       BankaprakarTypes.ADDSAJHEDARIBANBIBARAN_REQUEST,
       addsajhedaribanBibaranRequest,
+      api
+    ),
+    takeLatest(
+      KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_REQUEST,
+      deletebanbikaskaryabibaranRequest,
       api
     ),
   ]);
