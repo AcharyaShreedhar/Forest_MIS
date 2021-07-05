@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import Chart from "react-apexcharts";
+import "./Home.scss";
 
 export class index extends Component {
   constructor(props) {
@@ -40,18 +41,31 @@ export class index extends Component {
       ],
 
       chartOptions: {
-        labels: ["सामुदायिक वन", "धर्मिक वन", "कबुलियती बन", "नीजि वन"],
+        labels: [
+          "सामुदायिक वन",
+          "धर्मिक वन",
+          "कबुलियती बन",
+          "नीजि वन",
+          "साझेदारी बन",
+          "चक्ला बन",
+          "राष्ट्रिय बन",
+          "व्यबसायीक कबुलियती बन",
+        ],
       },
-      series1: [23, 11, 54, 72],
+      series1: [23, 11, 14, 25, 13, 7, 9, 3, 5],
       labels: ["Apple", "Mango", "Banana", "Papaya", "Orange"],
     };
   }
   render() {
     return (
-      <div className="bg-white rounded">
+      <div className="home bg-white rounded card">
         <Row>
           <Col className="p-5">
+            <span>
+              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु उद्दार विवरण
+            </span>
             <Chart
+              className=" chart pt-5"
               options={this.state.options}
               series={this.state.series}
               type="line"
@@ -59,8 +73,13 @@ export class index extends Component {
               height={320}
             />
           </Col>
-          <Col className="p-5">
+          <Col className="pt-5">
+            <span>
+              {" "}
+              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु क्षति विवरण{" "}
+            </span>
             <Chart
+              className=" chart pt-5"
               options={this.state.options}
               series={this.state.series2}
               type="area"
@@ -69,25 +88,9 @@ export class index extends Component {
             />
           </Col>
           <Col className="p-5">
+            <span> बनका प्रकारहरु सम्बन्धी विवरण </span>
             <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="bar"
-              width={500}
-              height={320}
-            />
-          </Col>
-          <Col className="p-5">
-            <Chart
-              options={this.state.options}
-              series={this.state.series}
-              type="scatter"
-              width={500}
-              height={320}
-            />
-          </Col>
-          <Col className="p-5">
-            <Chart
+              className=" chart pt-5"
               options={this.state.chartOptions}
               series={this.state.series1}
               labels={this.state.labels}
@@ -97,7 +100,9 @@ export class index extends Component {
             />
           </Col>
           <Col className="p-5">
+            <span> बनका प्रकारहरु सम्बन्धी विवरण</span>
             <Chart
+              className=" chart pt-5"
               options={this.state.chartOptions}
               series={this.state.series1}
               type="donut"
@@ -105,8 +110,37 @@ export class index extends Component {
               height={320}
             />
           </Col>
-
           <Col className="p-5">
+            <span>
+              {" "}
+              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु उद्दार विवरण
+            </span>
+            <Chart
+              className=" chart pt-5"
+              options={this.state.options}
+              series={this.state.series}
+              type="bar"
+              width={500}
+              height={320}
+            />
+          </Col>
+          <Col className="p-5">
+            <span>
+              {" "}
+              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु उद्दार विवरण
+            </span>
+            <Chart
+              className=" chart pt-5"
+              options={this.state.options}
+              series={this.state.series}
+              type="scatter"
+              width={500}
+              height={320}
+            />
+          </Col>
+
+          {/* <Col className="p-5">
+          <span>बनका प्रकारहरु विवरण</span>
             <Chart
               options={this.state.chartOptions}
               series={this.state.series1}
@@ -114,7 +148,7 @@ export class index extends Component {
               width={500}
               height={320}
             />
-          </Col>
+          </Col> */}
         </Row>
       </div>
     );

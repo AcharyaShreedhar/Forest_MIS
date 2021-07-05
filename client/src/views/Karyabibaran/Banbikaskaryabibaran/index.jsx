@@ -40,12 +40,12 @@ class Banbikaskaryabibaran extends Component {
   }
 
   fetchResults(distId, page, perPage) {
-    this.props.fetchallBanbikaskaryabibaran({
-      distId,
-      name: "ban_type",
-      page: page,
-      perPage,
-    });
+    // this.props.fetchallBanbikaskaryabibaran({
+    //   distId,
+    //   name: "ban_type",
+    //   page: page,
+    //   perPage,
+    // });
   }
 
   handlePageChange(data) {

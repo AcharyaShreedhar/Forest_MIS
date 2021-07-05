@@ -9,12 +9,12 @@ import KaryabibaranActions from "../../actions/karyabibaran";
 
 export class Karyabibaran extends Component {
   componentDidMount() {
-    this.props.fetchallBanbikaskaryabibaran({
-      distId: "%",
-      name: "ban_type",
-      page: 0,
-      perPage: 10,
-    });
+    // this.props.fetchallBanbikaskaryabibaran({
+    //   distId: "%",
+    //   name: "ban_type",
+    //   page: 0,
+    //   perPage: 10,
+    // });
   }
 
   render() {

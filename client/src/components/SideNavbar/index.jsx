@@ -12,6 +12,7 @@ import {
   faTasks,
   faGavel,
   faListAlt,
+  faInfoCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import { HeaderComponent, Displaybox } from "../../components";
@@ -24,10 +25,15 @@ export class SideNavbar extends Component {
       expanded: false,
     };
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleToggle(e) {
     this.setState({ expanded: !this.state.expanded });
+  }
+  handleLogout(e) {
+    this.props.onlogout();
+    this.props.history.push("/login");
   }
 
   render() {
@@ -266,7 +272,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="/karyabibaran">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faListAlt} />
+              <FontAwesomeIcon size="2x" icon={faInfoCircle} />
             </NavIcon>
             <NavText>कार्य विवरण</NavText>
 
@@ -287,7 +293,7 @@ export class SideNavbar extends Component {
               <NavText> वन विकास कार्य विवरण</NavText>
             </NavItem>
           </NavItem>
-          <NavItem eventKey="logout" onClick={() => history.push("/logout")}>
+          <NavItem eventKey="logout" onClick={(e) => this.handleLogout(e)}>
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faSignOutAlt} />
             </NavIcon>
