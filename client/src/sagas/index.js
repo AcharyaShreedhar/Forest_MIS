@@ -290,6 +290,7 @@ import {
   fetchallbanbikaskaryabibaranRequest,
   fetchbanbikaskaryabibaranRequest,
   addbanbikaskaryabibaranRequest,
+  updatebanbikaskaryabibaranRequest,
 } from "./karyabibaran";
 
 //miscellaneous
@@ -1536,6 +1537,11 @@ export default function* root() {
     takeLatest(
       KaryabibaranTypes.ADDBANBIKASKARYABIBARAN_REQUEST,
       addbanbikaskaryabibaranRequest,
+      api
+    ),
+    takeLatest(
+      KaryabibaranTypes.UPDATEBANBIKASKARYABIBARAN_REQUEST,
+      updatebanbikaskaryabibaranRequest,
       api
     ),
   ]);

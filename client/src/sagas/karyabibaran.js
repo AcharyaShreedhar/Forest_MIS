@@ -168,10 +168,43 @@ export function* addbanbikaskaryabibaranRequest(api, action) {
     });
     yield call(history.push, "/karyabibaran/banbikaskaryabibaranlist");
     yield put(
-      KaryabibaranActions.addbanbikaskaryabibaranSuccess(response.data)
+      KaryabibaranActions.addBanbikasKaryabibaranSuccess(response.data)
     );
   } else {
     yield put(KaryabibaranActions.addbanbikaskaryabibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update banbikaskaryabibaran
+export function* updatebanbikaskaryabibaranRequest(api, action) {
+  const { payload, banbikasKaryabibaranId } = action;
+
+  const response = yield api.postBanbikasKaryabibaranUpdate(
+    payload.banbikaskaryabibaran.data,
+    banbikasKaryabibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बनबिकास कार्य विवरण पुनः प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanbikaskaryabibaranRequest(api, {
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/karyabibaran/banbikaskaryabibaranlist");
+    yield put(
+      KaryabibaranActions.updatebanbikaskaryabibaranSuccess(response.data)
+    );
+  } else {
+    yield put(KaryabibaranActions.updatebanbikaskaryabibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
