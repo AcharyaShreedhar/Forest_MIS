@@ -39,6 +39,10 @@ const { Types, Creators } = createActions({
   fetchbanbikaskaryabibaranSuccess: ["response"],
   fetchbanbikaskaryabibaranFailure: null,
 
+  addbanbikaskaryabibaranRequest: ["payload"],
+  addbanbikaskaryabibaranSuccess: ["response"],
+  addbanbikaskaryabibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

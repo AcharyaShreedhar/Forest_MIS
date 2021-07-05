@@ -289,6 +289,7 @@ import {
   deletesamajikkaryabibaranRequest,
   fetchallbanbikaskaryabibaranRequest,
   fetchbanbikaskaryabibaranRequest,
+  addbanbikaskaryabibaranRequest,
 } from "./karyabibaran";
 
 //miscellaneous
@@ -1530,6 +1531,11 @@ export default function* root() {
     takeLatest(
       KaryabibaranTypes.FETCHBANBIKASKARYABIBARAN_REQUEST,
       fetchbanbikaskaryabibaranRequest,
+      api
+    ),
+    takeLatest(
+      KaryabibaranTypes.ADDBANBIKASKARYABIBARAN_REQUEST,
+      addbanbikaskaryabibaranRequest,
       api
     ),
   ]);

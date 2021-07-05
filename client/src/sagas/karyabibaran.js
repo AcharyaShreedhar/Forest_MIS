@@ -148,3 +148,35 @@ export function* fetchbanbikaskaryabibaranRequest(api, action) {
     yield put(KaryabibaranActions.fetchbanbikaskaryabibaranFailure());
   }
 }
+
+//------------ add banbikaskaryabibarans
+export function* addbanbikaskaryabibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postbanbikaskaryabibaranAddNew(
+    payload.banbikaskaryabibaran.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बनबिकास कार्य विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield addbanbikaskaryabibaranRequest(api, {
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/karyabibaran/banbikaskaryabibaranlist");
+    yield put(
+      KaryabibaranActions.addbanbikaskaryabibaranSuccess(response.data)
+    );
+  } else {
+    yield put(KaryabibaranActions.addbanbikaskaryabibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
