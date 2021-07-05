@@ -1467,12 +1467,6 @@ export default function* root() {
     ),
 
     takeLatest(
-      KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST,
-      fetchsamajikkaryabibaranRequest,
-      api
-    ),
-
-    takeLatest(
       KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_REQUEST,
       addsamajikkaryabibaranRequest,
       api
