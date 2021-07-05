@@ -10,6 +10,13 @@ const karyabibaranRoutes = [
         component: BanbikasKaryabibaran,
       },
       {
+        path: "/karyabibaran/banbikaskaryabibaranadd/new",
+        title: "BanbikasKaryabibaran",
+        name: "banbikaskaryabibaran",
+        auth: true,
+        component: BanbikasKaryabibaran,
+      },
+      {
         path: "/karyabibaran/samajikkaryabibaranlist",
         title: "SamajikKaryabibaran",
         name: "samajikkaryabibaran",
