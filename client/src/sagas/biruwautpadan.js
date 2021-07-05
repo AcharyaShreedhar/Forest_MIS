@@ -70,7 +70,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
     );
   
     if (response.ok) {
-      toast.success("सफलतापुर्वक विरुवा उत्पादन पुनः प्रविष्ट भयो !!!!!", {
+      toast.success("सफलतापुर्वक विरुवा उत्पादन शंसोधन भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallbiruwautpadanRequest(api);
@@ -178,7 +178,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
     );
   
     if (response.ok) {
-      toast.success("सफलतापुर्वक कार्यक्रम विवरण पुनः प्रविष्ट भयो !!!!!", {
+      toast.success("सफलतापुर्वक कार्यक्रम विवरण शंसोधन भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallactivitiesinfoRequest(api,{
@@ -292,7 +292,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
     );
   
     if (response.ok) {
-      toast.success("सफलतापुर्वक वृक्षरोपण विवरण पुनः प्रविष्ट भयो !!!!!", {
+      toast.success("सफलतापुर्वक वृक्षरोपण विवरण शंसोधन भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchallbrixyaropanRequest(api,{
@@ -407,7 +407,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
     );
   
     if (response.ok) {
-      toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण पुनः प्रविष्ट भयो !!!!!", {
+      toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण शंसोधन भयो !!!!!", {
         position: toast.POSITION.TOP_CENTER,
       });
       yield fetchalljadibutiRequest(api,{

@@ -53,7 +53,7 @@ export function* addmunicipalitiesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापूर्वक  नगरपालिका विवरण प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापूर्वक नगरपालिका विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallmunicipalitiesRequest(api, {
@@ -84,7 +84,7 @@ export function* updatemunicipalitiesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("नगरपालिका विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("नगरपालिका विवरण सफलतापूर्वक  शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallmunicipalitiesRequest(api, {
@@ -190,7 +190,7 @@ export function* updateprovincesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("प्रदेश विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("प्रदेश विवरण सफलतापूर्वक  शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallprovincesRequest(api, {
@@ -298,7 +298,7 @@ export function* updatedistrictsRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("जिल्ला विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("जिल्ला विवरण सफलतापूर्वक  शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldistrictsRequest(api, {
@@ -406,7 +406,7 @@ export function* updatedepartmentsRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("बिभाग विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("बिभाग विवरण सफलतापूर्वक शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalldepartmentsRequest(api, {
@@ -513,7 +513,7 @@ export function* updateusersRequest(api, action) {
   const response = yield api.postusersUpdate(payload.departments.data, usersId);
 
   if (response.ok) {
-    toast.success("युजर विवरण सफलतापूर्वक  पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("युजर विवरण सफलतापूर्वक  शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallusersRequest(api, {

@@ -72,7 +72,7 @@ export function* updateemployeesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी  पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी  शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallemployeesRequest(api, {
@@ -196,7 +196,7 @@ export function* updateemployeeshistoryRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallemployeeshistoryRequest(api, {
@@ -318,7 +318,7 @@ export function* updatelevelRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक तह पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक तह शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalllevelRequest(api, {
@@ -428,7 +428,7 @@ export function* updatepostRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक  पद पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक  पद शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallpostRequest(api, {

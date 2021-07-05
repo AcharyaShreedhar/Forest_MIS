@@ -70,7 +70,7 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सामाजिक कार्य विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक सामाजिक कार्य विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
@@ -191,7 +191,7 @@ export function* updatebanbikaskaryabibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बनबिकास कार्य विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक बनबिकास कार्य विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanbikaskaryabibaranRequest(api, {

@@ -75,7 +75,7 @@ export function* updatekarmacharidarbandiRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कर्मचारी दरबन्दी पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कर्मचारी दरबन्दी शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallkarmacharidarbandiRequest(api, {

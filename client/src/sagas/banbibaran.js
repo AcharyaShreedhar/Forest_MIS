@@ -68,7 +68,7 @@ export function* updatebaramaditchijbastuRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बरामदितचिज बस्तु पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक बरामदितचिज बस्तु शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbaramaditchijbastuRequest(api, {
@@ -189,7 +189,7 @@ export function* updatebanxetraanyaprayojanRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्रयोजन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक बनक्षेत्र अन्यप्रयोजन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraanyaprayojanRequest(api, {
@@ -314,7 +314,7 @@ export function* updateplotbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बगैंचा विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक बगैंचा विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallplotbibaranRequest(api, {
@@ -433,7 +433,7 @@ export function* updateuddhyambibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक उद्धयम विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक उद्धयम विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchalluddhyambibaranRequest(api, {
@@ -546,7 +546,7 @@ export function* updatebachatbibaranRequest(api, action) {
 
   if (response.ok) {
     toast.success(
-      "सफलतापुर्वक वचत तथा ऋण विवरण विवरण पुनः प्रविष्ट भयो !!!!!",
+      "सफलतापुर्वक वचत तथा ऋण विवरण विवरण शंसोधन भयो !!!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

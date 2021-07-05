@@ -75,7 +75,7 @@ export function* updatebanyajantuuddarRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन्यजन्तु उद्दार पुनः प्रविष्ट भयो !!!!", {
+    toast.success("सफलतापुर्वक वन्यजन्तु उद्दार शंसोधन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanyajantuuddarRequest(api, {
@@ -204,7 +204,7 @@ export function* updatebanyajantuxetiRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन्यजन्तु क्षति पुनः प्रविष्ट भयो !!!!", {
+    toast.success("सफलतापुर्वक वन्यजन्तु क्षति शंसोधन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanyajantuxetiRequest(api, {
