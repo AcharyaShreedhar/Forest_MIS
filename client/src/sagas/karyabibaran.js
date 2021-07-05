@@ -44,7 +44,7 @@ export function* addsamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -76,7 +76,7 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -107,7 +107,7 @@ export function* deletesamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -164,8 +164,8 @@ export function* addbanbikaskaryabibaranRequest(api, action) {
     toast.success("सफलतापुर्वक बनबिकास कार्य विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addbanbikaskaryabibaranRequest(api, {
-      name: "ban_type",
+    yield fetchallbanbikaskaryabibaranRequest(api, {
+      name: "karyabibaran",
       page: 0,
       perPage: 10,
     });
@@ -198,7 +198,7 @@ export function* updatebanbikaskaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanbikaskaryabibaranRequest(api, {
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -228,7 +228,7 @@ export function* deletebanbikaskaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanbikaskaryabibaranRequest(api, {
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
