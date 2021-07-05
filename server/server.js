@@ -21,59 +21,86 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
-const provinceRoutes = require("./app/routes/provinceRoutes");
+//...........................................................APP
 
-//Commenting this block of code until unit test is done
-
+const departmentRoutes = require("./app/routes/departmentRoutes");
 const districtRoutes = require("./app/routes/districtRoutes");
+const levelRoutes = require("./app/routes/levelRoutes");
 const municipalitiesRoutes = require("./app/routes/municipalitiesRoutes");
 const postRoutes = require("./app/routes/postRoutes");
-const levelRoutes = require("./app/routes/levelRoutes");
-const nijibanBibaranRoutes = require("./app/routes/nijibanBibaranRoutes");
-const dharmikbanBibaranRoutes = require("./app/routes/dharmikbanBibaranRoutes");
-const samudayikbanBibaranRoutes = require("./app/routes/samudayikbanBibaranRoutes");
-const banpaidawarLilamRoutes = require("./app/routes/banpaidawarLilamRoutes");
-const kabuliyatibanBibaranRoutes = require("./app/routes/kabuliyatibanBibaranRoutes");
-const consumerGroupDetailsRoutes = require("./app/routes/consumerGroupDetailsRoutes");
-const banxetraAtikramanRoutes = require("./app/routes/banxetraAtikramanRoutes");
-const bandadeloBibaranRoutes = require("./app/routes/bandadeloBibaranRoutes");
-const biruwaUtpadanRoutes = require("./app/routes/biruwanUtpadanRoutes");
-const banpaidawarRoutes = require("./app/routes/banpaidawarRoutes");
-const activitiesInfoRoutes = require("./app/routes/activitiesInfoRoutes");
-const vehiclesRoutes = require("./app/routes/vehiclesRoutes");
-const banyajantuXetiBibaranRoutes = require("./app/routes/banyajantuXetiBibaranRoutes");
-const banxetraAnyaPrayojanRoutes = require("./app/routes/banxetraAnyaPrayojanRoutes");
-const banyajantuUddarRoutes = require("./app/routes/banyajantuUddarRoutes");
-const assetsRoutes = require("./app/routes/assetsRoutes");
-const baramaditChijbastuRoutes = require("./app/routes/baramaditChijbastuRoutes");
-const departmentRoutes = require("./app/routes/departmentRoutes");
-const nabikaranKaryayojanaRoutes = require("./app/routes/nabikaranKaryayojanaRoutes");
-const muddaAnusandhanDayariRoutes = require("./app/routes/muddaAnusandhanDayariRoutes");
+const provinceRoutes = require("./app/routes/provinceRoutes");
+const usersRoutes = require("./app/routes/usersRoutes");
+
+//...........................................................Karmachari
+
 const employeeHistoryRoutes = require("./app/routes/employeeHistoryRoutes");
+const employeesRoutes = require("./app/routes/employeesRoutes");
+const karmachariDarbandiRoutes = require("./app/routes/karmachariDarbandiRoutes");
+const officeStaffPostRoutes = require("./app/routes/officeStaffPostRoutes");
+
+//...........................................................Bankaprakar
+
+const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
+const commercialkabuliyatibanBibaranRoutes = require("./app/routes/commercialkabuliyatibanBibaranRoutes");
+const consumerGroupDetailsRoutes = require("./app/routes/consumerGroupDetailsRoutes");
+const dharmikbanBibaranRoutes = require("./app/routes/dharmikbanBibaranRoutes");
+const kabuliyatibanBibaranRoutes = require("./app/routes/kabuliyatibanBibaranRoutes");
+const nabikaranKaryayojanaRoutes = require("./app/routes/nabikaranKaryayojanaRoutes");
+const nijibanBibaranRoutes = require("./app/routes/nijibanBibaranRoutes");
+const rastriyabanBibaranRoutes = require("./app/routes/rastriyabanBibaranRoutes");
+const sajhedaribanBibaranRoutes = require("./app/routes/sajhedaribanBibaranRoutes");
+const samudayikbanBibaranRoutes = require("./app/routes/samudayikbanBibaranRoutes");
+
+//...........................................................Banbibaran
+
+const bandadeloBibaranRoutes = require("./app/routes/bandadeloBibaranRoutes");
+const banxetraAnyaPrayojanRoutes = require("./app/routes/banxetraAnyaPrayojanRoutes");
+const banxetraAtikramanRoutes = require("./app/routes/banxetraAtikramanRoutes");
+const baramaditChijbastuRoutes = require("./app/routes/baramaditChijbastuRoutes");
+const muddaAnusandhanDayariRoutes = require("./app/routes/muddaAnusandhanDayariRoutes");
+const plotRoutes = require("./app/routes/plotRoutes");
+
+//...........................................................DwandaBebasthapan
+
+const banyajantuXetiBibaranRoutes = require("./app/routes/banyajantuXetiBibaranRoutes");
+const banyajantuUddarRoutes = require("./app/routes/banyajantuUddarRoutes");
+
+//...........................................................Banpaidawar
+
+const banpaidawarRoutes = require("./app/routes/banpaidawarRoutes");
+const banpaidawarLilamRoutes = require("./app/routes/banpaidawarLilamRoutes");
+
+//...........................................................Karyakram
+
+const activitiesInfoRoutes = require("./app/routes/activitiesInfoRoutes");
+const biruwaUtpadanRoutes = require("./app/routes/biruwanUtpadanRoutes");
+const brixyaropanRoutes = require("./app/routes/brixyaropanRoutes");
+const jadibutiRoutes = require("./app/routes/jadibutiRoutes");
+
+//...........................................................Karyalaya Sampati
+
+const vehiclesRoutes = require("./app/routes/vehiclesRoutes");
+const assetsRoutes = require("./app/routes/assetsRoutes");
+
+//...........................................................Karya Bibaran
+
+const banbikaskaryaBibranRoutes = require("./app/routes/samajikkaryaBibaranRoutes");
+const samajikkaryaBibaranRoutes = require("./app/routes/banbikasKaryabibaranRoutes");
+
+//...........................................................Inventory
+
 const entryRoutes = require("./app/routes/entryRoutes");
 const exitRoutes = require("./app/routes/exitRoutes");
-const employeesRoutes = require("./app/routes/employeesRoutes");
-const plotRoutes = require("./app/routes/plotRoutes");
 const inventoryRoutes = require("./app/routes/inventoryRoutes");
-const officeStaffPostRoutes = require("./app/routes/officeStaffPostRoutes");
-const usersRoutes = require("./app/routes/usersRoutes");
-const karmachariDarbandiRoutes = require("./app/routes/karmachariDarbandiRoutes");
-const uddhyamBibaranRoutes = require("./app/routes/uddhyamBibaranRoutes");
+
+//...........................................................MISC
+
 const bachatBibaranRoutes = require("./app/routes/bachatBibaranRoutes");
 const banpaidawarBikribitaranRoutes = require("./app/routes/banpaidawarBikribitranRoutes");
 const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes");
-const samajikkaryaBibaranRoutes = require("./app/routes/samajikkaryaBibaranRoutes");
-const brixyaropanRoutes = require("./app/routes/brixyaropanRoutes");
-const sajhedaribanBibaranRoutes = require("./app/routes/sajhedaribanBibaranRoutes");
-const jadibutiRoutes = require("./app/routes/jadibutiRoutes");
-const rastriyabanBibaranRoutes = require("./app/routes/rastriyabanBibaranRoutes");
-const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
+const uddhyamBibaranRoutes = require("./app/routes/uddhyamBibaranRoutes");
 
-const commercialkabuliyatibanBibaranRoutes = require("./app/routes/commercialkabuliyatibanBibaranRoutes");
 app.use("/api/v1", provinceRoutes);
-
-//Commenting this block of code until unit test is done
-
 app.use("/api/v1", districtRoutes);
 app.use("/api/v1", municipalitiesRoutes);
 app.use("/api/v1", postRoutes);
@@ -111,6 +138,7 @@ app.use("/api/v1", uddhyamBibaranRoutes);
 app.use("/api/v1", bachatBibaranRoutes);
 app.use("/api/v1", banpaidawarBikribitaranRoutes);
 app.use("/api/v1", rojgarsrijanaRoutes);
+app.use("/api/v1", banbikaskaryaBibranRoutes);
 app.use("/api/v1", samajikkaryaBibaranRoutes);
 app.use("/api/v1", brixyaropanRoutes);
 app.use("/api/v1", sajhedaribanBibaranRoutes);
