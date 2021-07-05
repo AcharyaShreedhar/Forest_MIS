@@ -69,7 +69,7 @@ export function* updatebanpaidawarRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन पैदावार पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक वन पैदावार शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarRequest(api, {
@@ -190,7 +190,7 @@ export function* updatebanpaidawarlilamRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन पैदावार लिलाम पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक वन पैदावार लिलाम शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarlilamRequest(api, {
@@ -309,7 +309,7 @@ export function* updatebanpaidawarbikribitaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarbikribitaranRequest(api, {

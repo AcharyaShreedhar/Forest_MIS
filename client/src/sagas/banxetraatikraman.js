@@ -75,7 +75,7 @@ export function* updatebanxetraatikramanRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanxetraatikramanRequest(api, {

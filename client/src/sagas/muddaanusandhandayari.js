@@ -85,7 +85,7 @@ export function* updatemuddaanusandhandayariRequest(api, action) {
 
   if (response.ok) {
     toast.success(
-      "सफलतापुर्वक मुद्दा अनुसन्धान दायरी पुनः प्रविष्ट भयो !!!!!",
+      "सफलतापुर्वक मुद्दा अनुसन्धान दायरी शंसोधन भयो !!!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

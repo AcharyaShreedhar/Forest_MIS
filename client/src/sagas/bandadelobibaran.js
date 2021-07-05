@@ -76,7 +76,7 @@ export function* updatebandadelobibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वनडडेलो विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक वनडडेलो विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbandadelobibaranRequest(api, {

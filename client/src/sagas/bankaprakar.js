@@ -252,7 +252,7 @@ export function* updatenijibanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक निजी वन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक निजी वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallnijibanbibaranRequest(api, {
@@ -375,7 +375,7 @@ export function* updatekabuliyatibanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक कबुलियाती वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallkabuliyatibanbibaranRequest(api, {
@@ -527,7 +527,7 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
   if (response.ok) {
     switch (type) {
       case "samudayikban": {
-        toast.success("सफलतापुर्वक सामुदायिक वन पुनः प्रविष्ट भयो !!!!", {
+        toast.success("सफलतापुर्वक सामुदायिक वन शंसोधन भयो !!!!", {
           position: toast.POSITION.TOP_CENTER,
         });
         yield fetchallsamudayikbanbibaranRequest(api, {
@@ -702,7 +702,7 @@ export function* updatechaklabanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक चक्ला वन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक चक्ला वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallchaklabanbibaranRequest(api, {
@@ -828,7 +828,7 @@ export function* updateconsumergroupdetailsRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक उपभोक्ता समुह पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक उपभोक्ता समुह शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallconsumergroupdetailsRequest(api, {
@@ -955,7 +955,7 @@ export function* updaterastriyabanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक राष्ट्रिय वन पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक राष्ट्रिय वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrastriyabanbibaranRequest(api, {
@@ -1092,7 +1092,7 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
 
   if (response.ok) {
     toast.success(
-      "सफलतापुर्वक व्यवसायिक कबुलियाती वन पुनः प्रविष्ट भयो !!!!!",
+      "सफलतापुर्वक व्यवसायिक कबुलियाती वन शंसोधन भयो !!!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

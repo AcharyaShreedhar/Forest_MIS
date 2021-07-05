@@ -68,7 +68,7 @@ export function* updaterojgarsrijanaRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक रोजगार सृजना पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक रोजगार सृजना शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrojgarsrijanaRequest(api,{

@@ -68,7 +68,7 @@ export function* updateassetsRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सम्पत्ति पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक सम्पत्ति शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallassetsRequest(api, {
@@ -185,7 +185,7 @@ export function* updatevehiclesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक गाडी विवरण पुनः प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक गाडी विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api, {

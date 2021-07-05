@@ -70,7 +70,7 @@ export function* updateinventoriesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सुचीमा  पुनः थप गरियो !!!!", {
+    toast.success("सफलतापुर्वक सुचीमा  शंसोधन गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallinventoriesRequest(api,{
@@ -187,7 +187,7 @@ export function* updateentryRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक प्रवेश  गरियो !!!!", {
+    toast.success("सफलतापुर्वक प्रवेश शंसोधन गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallentryRequest(api,{
@@ -307,7 +307,7 @@ export function* updateexitRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक बहिर्गमन भयो  !!!!", {
+    toast.success("सफलतापुर्वक बहिर्गमन शंसोधन भयो  !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallexitRequest(api,{
