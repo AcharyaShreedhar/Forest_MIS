@@ -165,7 +165,8 @@ export function* addbanbikaskaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanbikaskaryabibaranRequest(api, {
-      name: "karyabibaran",
+      distId: "%",
+      name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
     });
@@ -198,7 +199,8 @@ export function* updatebanbikaskaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanbikaskaryabibaranRequest(api, {
-      name: "banbikas_karyabibaran ",
+      distId: "%",
+      name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
     });
@@ -228,6 +230,7 @@ export function* deletebanbikaskaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanbikaskaryabibaranRequest(api, {
+      distId: "%",
       name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
