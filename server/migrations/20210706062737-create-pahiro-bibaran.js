@@ -1,0 +1,53 @@
+"use strict";
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable("pahiro_bibarans", {
+      pahiro_bibaran_id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER,
+      },
+      pahiro_gayeko_sthan: {
+        type: Sequelize.STRING,
+      },
+      dist_id: {
+        type: Sequelize.INTEGER,
+      },
+      manab_ghaite: {
+        type: Sequelize.STRING,
+      },
+      manab_mareko: {
+        type: Sequelize.STRING,
+      },
+      uddar_sankhya: {
+        type: Sequelize.STRING,
+      },
+      pahero_gayeko_miti: {
+        type: Sequelize.STRING,
+      },
+      xeti_sankhya: {
+        type: Sequelize.STRING,
+      },
+      created_by: {
+        type: Sequelize.STRING,
+      },
+      updated_by: {
+        type: Sequelize.STRING,
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      },
+    });
+  },
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable("pahiro_bibarans");
+  },
+};
