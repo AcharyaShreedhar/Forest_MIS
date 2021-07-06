@@ -49,13 +49,15 @@ function List(props) {
               data.map((lilam, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>{englishToNepaliNumber(lilam.lilam_date)}</td>
-                  <td key={index}> {lilam.banpaidawar_type}</td>
-                  <td key={index}> {lilam.unit}</td>
-                  <td key={index}> {lilam.quantity}</td>
-                  <td key={index}> {lilam.minimum_price}</td>
-                  <td key={index}> {lilam.sakaar_price}</td>
-                  <td key={index}> {lilam.remarks}</td>
+                  <td key={`${lilam.lilam_id}-${index}`}>
+                    {englishToNepaliNumber(lilam.lilam_date)}
+                  </td>
+                  <td> {lilam.banpaidawar_type}</td>
+                  <td> {lilam.unit}</td>
+                  <td> {lilam.quantity}</td>
+                  <td> {lilam.minimum_price}</td>
+                  <td> {lilam.sakaar_price}</td>
+                  <td> {lilam.remarks}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

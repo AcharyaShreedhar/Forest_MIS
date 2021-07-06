@@ -47,30 +47,30 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((kban, index) => (
-                <tr>
-                  <td key={index}>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {kban.darta_no}</td>
-                  <td key={index}> {englishToNepaliNumber(kban.entry_date)}</td>
-                  <td key={index}>{kban.samudayik_upavokta_samiti_name}</td>
-                  <td key={index}> {kban.perm_addr}</td>
-                  <td key={index}> {kban.curr_addr}</td>
-                  <td key={index}> {kban.ghardhuri_dalit}</td>
-                  <td key={index}> {kban.ghardhuri_janjati}</td>
-                  <td key={index}> {kban.ghardhuri_anya}</td>
-                  <td key={index}> {kban.ghardhuri_total}</td>
-                  <td key={index}> {kban.population_female}</td>
-                  <td key={index}> {kban.population_male}</td>
-                  <td key={index}> {kban.population_total}</td>
-                  <td key={index}> {kban.sampannata_starikaran_sampanna}</td>
-                  <td key={index}> {kban.sampannata_starikaran_madhyam}</td>
-                  <td key={index}> {kban.sampannata_starikaran_bipanna}</td>
-                  <td key={index}>{kban.karyasamiti_representation_dalit}</td>
-                  <td key={index}>{kban.karyasamiti_representation_janjati}</td>
-                  <td key={index}>{kban.karyasamiti_representation_anya}</td>
-                  <td key={index}> {kban.adhyakshya_female}</td>
-                  <td key={index}> {kban.adhyakshya_male}</td>
-                  <td key={index}> {kban.sachib_female}</td>
-                  <td key={index}> {kban.sachib_male}</td>
+                <tr key={`${kban.kabuliyatiban_bibaran_id}-${index}`}>
+                  <td>{englishToNepaliNumber(index + 1)}</td>
+                  <td>{kban.darta_no}</td>
+                  <td>{englishToNepaliNumber(kban.entry_date)}</td>
+                  <td>{kban.samudayik_upavokta_samiti_name}</td>
+                  <td>{kban.perm_addr}</td>
+                  <td>{kban.curr_addr}</td>
+                  <td>{kban.ghardhuri_dalit}</td>
+                  <td>{kban.ghardhuri_janjati}</td>
+                  <td>{kban.ghardhuri_anya}</td>
+                  <td>{kban.ghardhuri_total}</td>
+                  <td>{kban.population_female}</td>
+                  <td>{kban.population_male}</td>
+                  <td>{kban.population_total}</td>
+                  <td>{kban.sampannata_starikaran_sampanna}</td>
+                  <td>{kban.sampannata_starikaran_madhyam}</td>
+                  <td>{kban.sampannata_starikaran_bipanna}</td>
+                  <td>{kban.karyasamiti_representation_dalit}</td>
+                  <td>{kban.karyasamiti_representation_janjati}</td>
+                  <td>{kban.karyasamiti_representation_anya}</td>
+                  <td>{kban.adhyakshya_female}</td>
+                  <td>{kban.adhyakshya_male}</td>
+                  <td>{kban.sachib_female}</td>
+                  <td>{kban.sachib_male}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

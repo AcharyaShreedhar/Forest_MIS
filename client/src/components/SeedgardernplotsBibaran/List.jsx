@@ -48,14 +48,14 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((plot, index) => (
-                <tr>
+                <tr key={`${plot.plot_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {plot.plot_type}</td>
-                  <td key={index}> {plot.prajati}</td>
-                  <td key={index}> {plot.area}</td>
-                  <td key={index}> {plot.location}</td>
-                  <td key={index}> {plot.established_date}</td>
-                  <td key={index}> {plot.status}</td>
+                  <td>{plot.plot_type}</td>
+                  <td>{plot.prajati}</td>
+                  <td>{plot.area}</td>
+                  <td>{plot.location}</td>
+                  <td>{plot.established_date}</td>
+                  <td>{plot.status}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

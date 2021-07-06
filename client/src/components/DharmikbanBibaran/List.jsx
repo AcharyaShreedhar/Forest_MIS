@@ -47,28 +47,19 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((dban, index) => (
-                <tr>
+                <tr key={`${dban.dharmikban_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {dban.darta_no}</td>
-                  <td key={index}> {dban.dharmikban_name}</td>
-                  <td key={index}> {dban.community_name}</td>
-                  <td key={index}> {dban.area}</td>
-                  <td key={index}> {dban.main_species}</td>
-                  <td key={index}> {dban.forest_type}</td>
-                  <td key={index}>
-                    {" "}
-                    {englishToNepaliNumber(dban.handover_date)}
-                  </td>
-                  <td key={index}>
-                    {" "}
-                    {englishToNepaliNumber(dban.renewed_date)}
-                  </td>
-                  <td key={index}> {dban.nabikaran_abadhi}</td>
-                  <td key={index}> {dban.forest_maujdat}</td>
-                  <td key={index}>
-                    {" "}
-                    {englishToNepaliNumber(dban.renewaldate)}
-                  </td>
+                  <td>{dban.darta_no}</td>
+                  <td>{dban.dharmikban_name}</td>
+                  <td>{dban.community_name}</td>
+                  <td>{dban.area}</td>
+                  <td>{dban.main_species}</td>
+                  <td>{dban.forest_type}</td>
+                  <td>{englishToNepaliNumber(dban.handover_date)}</td>
+                  <td>{englishToNepaliNumber(dban.renewed_date)}</td>
+                  <td>{dban.nabikaran_abadhi}</td>
+                  <td>{dban.forest_maujdat}</td>
+                  <td>{englishToNepaliNumber(dban.renewaldate)}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

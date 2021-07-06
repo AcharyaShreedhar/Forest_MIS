@@ -47,15 +47,15 @@ function List(props) {
               <p>No data available !!!!</p>
             ) : (
               data.map((biruwa, index) => (
-                <tr>
+                <tr key={`${biruwa.biruwa_utpadan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {biruwa.arthik_barsa} </td>
-                  <td key={index}> {biruwa.narsari_sankhya} </td>
-                  <td key={index}> {biruwa.barga} </td>
-                  <td key={index}> {biruwa.laxya} </td>
-                  <td key={index}> {biruwa.pragati} </td>
-                  <td key={index}> {biruwa.brixyaropan} </td>
-                  <td key={index}> {biruwa.remarks} </td>
+                  <td> {biruwa.arthik_barsa} </td>
+                  <td> {biruwa.narsari_sankhya} </td>
+                  <td> {biruwa.barga} </td>
+                  <td> {biruwa.laxya} </td>
+                  <td> {biruwa.pragati} </td>
+                  <td> {biruwa.brixyaropan} </td>
+                  <td> {biruwa.remarks} </td>
                   <td>
                     <div className="edit">
                       <EditDropdown

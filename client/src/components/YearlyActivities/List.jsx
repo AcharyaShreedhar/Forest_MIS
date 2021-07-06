@@ -47,36 +47,27 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((activities, index) => (
-                <tr>
+                <tr key={`${activities.activities_info_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {activities.samudayikban_naam}</td>
-                  <td key={index}> {activities.fiscal_year}</td>
-                  <td key={index}> {activities.area}</td>
-                  <td key={index}>
-                    {" "}
-                    {activities.production_from_conservation_timber}
-                  </td>
-                  <td key={index}>
-                    {" "}
-                    {activities.production_from_conservation_wood}
-                  </td>
-                  <td key={index}>
-                    {" "}
-                    {activities.employment_generated_workingday}
-                  </td>
-                  <td key={index}> {activities.withingroup_timber}</td>
-                  <td key={index}> {activities.withingroup_wood}</td>
-                  <td key={index}> {activities.outsidegroup_timber}</td>
-                  <td key={index}> {activities.outsidegroup_wood}</td>
-                  <td key={index}> {activities.maujdat_timber}</td>
-                  <td key={index}> {activities.maujdat_wood}</td>
-                  <td key={index}> {activities.annual_income}</td>
-                  <td key={index}> {activities.annual_expenditure}</td>
-                  <td key={index}> {activities.netannual_saving}</td>
-                  <td key={index}> {activities.niyamit_rojgar_count}</td>
-                  <td key={index}> {activities.community_udhyam_bibaran}</td>
-                  <td key={index}> {activities.annual_bibaran}</td>
-                  <td key={index}> {activities.lekha_parikshyan}</td>
+                  <td>{activities.samudayikban_naam}</td>
+                  <td>{activities.fiscal_year}</td>
+                  <td>{activities.area}</td>
+                  <td>{activities.production_from_conservation_timber}</td>
+                  <td>{activities.production_from_conservation_wood}</td>
+                  <td>{activities.employment_generated_workingday}</td>
+                  <td>{activities.withingroup_timber}</td>
+                  <td>{activities.withingroup_wood}</td>
+                  <td>{activities.outsidegroup_timber}</td>
+                  <td>{activities.outsidegroup_wood}</td>
+                  <td>{activities.maujdat_timber}</td>
+                  <td>{activities.maujdat_wood}</td>
+                  <td>{activities.annual_income}</td>
+                  <td>{activities.annual_expenditure}</td>
+                  <td>{activities.netannual_saving}</td>
+                  <td>{activities.niyamit_rojgar_count}</td>
+                  <td>{activities.community_udhyam_bibaran}</td>
+                  <td>{activities.annual_bibaran}</td>
+                  <td>{activities.lekha_parikshyan}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

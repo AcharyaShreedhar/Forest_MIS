@@ -47,46 +47,40 @@ function List(props) {
             {isNil(data) ? (
               <p>No data available !!!!</p>
             ) : (
-              data.map((karmacharibibaran, index) => (
-                <tr>
+              data.map((emp, index) => (
+                <tr key={`${emp.emp_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>
-                    {" "}
-                    {karmacharibibaran.emp_fname_nep}{" "}
-                    {karmacharibibaran.emp_lname_nep}
+                  <td>
+                    {emp.emp_fname_nep}
+                    {emp.emp_lname_nep}
                   </td>
-                  <td key={index}> {karmacharibibaran.emp_add_perm_prov} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_perm_dist} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_perm_mun} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_perm_ward} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_perm_tole} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_temp_prov} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_temp_dist} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_temp_mun} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_temp_ward} </td>
-                  <td key={index}> {karmacharibibaran.emp_add_temp_tole} </td>
-                  <td key={index}>
-                    {" "}
-                    {karmacharibibaran.emp_phone1}{" "}
-                    {karmacharibibaran.emp_phone2}{" "}
+                  <td>{emp.emp_add_perm_prov} </td>
+                  <td>{emp.emp_add_perm_dist} </td>
+                  <td>{emp.emp_add_perm_mun} </td>
+                  <td>{emp.emp_add_perm_ward} </td>
+                  <td>{emp.emp_add_perm_tole} </td>
+                  <td>{emp.emp_add_temp_prov} </td>
+                  <td>{emp.emp_add_temp_dist} </td>
+                  <td>{emp.emp_add_temp_mun} </td>
+                  <td>{emp.emp_add_temp_ward} </td>
+                  <td>{emp.emp_add_temp_tole} </td>
+                  <td>
+                    {emp.emp_phone1}
+                    {emp.emp_phone2}
                   </td>
-                  <td key={index}> {karmacharibibaran.emp_email} </td>
-                  <td key={index}> {karmacharibibaran.emp_office_id} </td>
-                  <td key={index}> {karmacharibibaran.emp_dept_id} </td>
-                  <td key={index}> {karmacharibibaran.emp_level_id} </td>
-                  <td key={index}> {karmacharibibaran.emp_post} </td>
-                  <td key={index}> {karmacharibibaran.emp_rank} </td>
-                  <td key={index}>
-                    {englishToNepaliNumber(karmacharibibaran.emp_appoint_date)}
-                  </td>
-                  <td key={index}> {karmacharibibaran.emp_status} </td>
+                  <td>{emp.emp_email} </td>
+                  <td>{emp.emp_office_id} </td>
+                  <td>{emp.emp_dept_id} </td>
+                  <td>{emp.emp_level_id} </td>
+                  <td>{emp.emp_post} </td>
+                  <td>{emp.emp_rank} </td>
+                  <td>{englishToNepaliNumber(emp.emp_appoint_date)}</td>
+                  <td> {emp.emp_status} </td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) =>
-                          onSelect(e, karmacharibibaran, "karmacharibibaran")
-                        }
+                        onChange={(e) => onSelect(e, emp, "karmacharibibaran")}
                       />
                     </div>
                   </td>

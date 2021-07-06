@@ -47,26 +47,26 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((mudda, index) => (
-                <tr>
+                <tr key={`${mudda.mudda_anusandhan_dayari_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {mudda.jaheri_partibedan_miti}</td>
-                  <td key={index}> {mudda.kasurko_kisim}</td>
-                  <td key={index}> {mudda.bigo_pariman}</td>
-                  <td key={index}> {mudda.jaggako_area}</td>
-                  <td key={index}> {mudda.jaggako_thegana}</td>
-                  <td key={index}> {mudda.abhiyog_miti}</td>
-                  <td key={index}> {mudda.abhiyog_nikaya}</td>
-                  <td key={index}> {mudda.abhiyog_jariwana}</td>
-                  <td key={index}> {mudda.kaid}</td>
-                  <td key={index}> {mudda.bojbahak_jafat_maagdabi}</td>
-                  <td key={index}> {mudda.pratibadi_sankhya}</td>
-                  <td key={index}> {mudda.thunchek_dharauti}</td>
-                  <td key={index}> {mudda.sadharan_tarekh}</td>
-                  <td key={index}> {mudda.thuna_aadhes}</td>
-                  <td key={index}> {mudda.faisala_miti}</td>
-                  <td key={index}> {mudda.faisala_jariwana}</td>
-                  <td key={index}> {mudda.faisala_kaid}</td>
-                  <td key={index}> {mudda.bojbahak_jafat}</td>
+                  <td>{mudda.jaheri_partibedan_miti}</td>
+                  <td>{mudda.kasurko_kisim}</td>
+                  <td>{mudda.bigo_pariman}</td>
+                  <td>{mudda.jaggako_area}</td>
+                  <td>{mudda.jaggako_thegana}</td>
+                  <td>{mudda.abhiyog_miti}</td>
+                  <td>{mudda.abhiyog_nikaya}</td>
+                  <td>{mudda.abhiyog_jariwana}</td>
+                  <td>{mudda.kaid}</td>
+                  <td>{mudda.bojbahak_jafat_maagdabi}</td>
+                  <td>{mudda.pratibadi_sankhya}</td>
+                  <td>{mudda.thunchek_dharauti}</td>
+                  <td>{mudda.sadharan_tarekh}</td>
+                  <td>{mudda.thuna_aadhes}</td>
+                  <td>{mudda.faisala_miti}</td>
+                  <td>{mudda.faisala_jariwana}</td>
+                  <td>{mudda.faisala_kaid}</td>
+                  <td>{mudda.bojbahak_jafat}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

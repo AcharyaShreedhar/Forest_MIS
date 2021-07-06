@@ -47,20 +47,17 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((bandadelo, index) => (
-                <tr>
+                <tr key={`${bandadelo.bandadelo_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {bandadelo.bandadelo_address}</td>
-                  <td key={index}> {bandadelo.ban_type}</td>
-                  <td key={index}> {bandadelo.ban_prajati}</td>
-                  <td key={index}> {bandadelo.xeti_area}</td>
-                  <td key={index}> {bandadelo.niyantran_prayas}</td>
-                  <td key={index}> {bandadelo.niyantran_karta}</td>
-                  <td key={index}> {bandadelo.sahabhagi_mahila}</td>
-                  <td key={index}> {bandadelo.sahabhagi_purus}</td>
-                  <td key={index}>
-                    {" "}
-                    {englishToNepaliNumber(bandadelo.bandadelo_miti)}
-                  </td>
+                  <td> {bandadelo.bandadelo_address}</td>
+                  <td> {bandadelo.ban_type}</td>
+                  <td> {bandadelo.ban_prajati}</td>
+                  <td> {bandadelo.xeti_area}</td>
+                  <td> {bandadelo.niyantran_prayas}</td>
+                  <td> {bandadelo.niyantran_karta}</td>
+                  <td> {bandadelo.sahabhagi_mahila}</td>
+                  <td> {bandadelo.sahabhagi_purus}</td>
+                  <td> {englishToNepaliNumber(bandadelo.bandadelo_miti)}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

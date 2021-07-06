@@ -48,16 +48,16 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((cban, index) => (
-                <tr>
+                <tr key={`${cban.commercialkabuliyatiban_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {cban.darta_no}</td>
-                  <td key={index}>{englishToNepaliNumber(cban.darta_miti)}</td>
-                  <td key={index}> {cban.commercialkabuliyatiban_naam}</td>
-                  <td key={index}> {cban.address}</td>
-                  <td key={index}> {cban.area}</td>
-                  <td key={index}> {cban.main_species}</td>
-                  <td key={index}> {cban.ghardhuri}</td>
-                  <td key={index}> {cban.lav_jana}</td>
+                  <td> {cban.darta_no}</td>
+                  <td>{englishToNepaliNumber(cban.darta_miti)}</td>
+                  <td> {cban.commercialkabuliyatiban_naam}</td>
+                  <td> {cban.address}</td>
+                  <td> {cban.area}</td>
+                  <td> {cban.main_species}</td>
+                  <td> {cban.ghardhuri}</td>
+                  <td> {cban.lav_jana}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

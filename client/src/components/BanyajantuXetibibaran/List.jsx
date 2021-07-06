@@ -47,21 +47,21 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((xeti, index) => (
-                <tr>
+                <tr key={`${xeti.banyajantuxeti_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {xeti.pidit_name}</td>
-                  <td key={index}> {xeti.pidit_address}</td>
-                  <td key={index}> {xeti.jagga_bibaran}</td>
-                  <td key={index}> {xeti.nagarikta_no}</td>
-                  <td key={index}> {xeti.upabhoktasamiti_name}</td>
-                  <td key={index}> {xeti.xetigarne_animal}</td>
-                  <td key={index}>{englishToNepaliNumber(xeti.xeti_miti)}</td>
-                  <td key={index}> {xeti.pasudhan_ghargoth}</td>
-                  <td key={index}> {xeti.man_injury}</td>
-                  <td key={index}> {xeti.mag_rakam}</td>
-                  <td key={index}> {xeti.samitiko_mulyankan_rakam}</td>
-                  <td key={index}> {xeti.vuktani_rakam}</td>
-                  <td key={index}> {xeti.remarks}</td>
+                  <td>{xeti.pidit_name}</td>
+                  <td>{xeti.pidit_address}</td>
+                  <td>{xeti.jagga_bibaran}</td>
+                  <td>{xeti.nagarikta_no}</td>
+                  <td>{xeti.upabhoktasamiti_name}</td>
+                  <td>{xeti.xetigarne_animal}</td>
+                  <td>{englishToNepaliNumber(xeti.xeti_miti)}</td>
+                  <td>{xeti.pasudhan_ghargoth}</td>
+                  <td>{xeti.man_injury}</td>
+                  <td>{xeti.mag_rakam}</td>
+                  <td>{xeti.samitiko_mulyankan_rakam}</td>
+                  <td>{xeti.vuktani_rakam}</td>
+                  <td>{xeti.remarks}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
