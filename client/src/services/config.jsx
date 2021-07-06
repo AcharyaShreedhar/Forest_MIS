@@ -393,7 +393,17 @@ const samajikkaryabibaranHeadings = [
   "परिणाम",
   "बजेट खर्च",
   "वनको किसिम",
+];
 
+
+const rojgarsrijanaHeadings = [
+  "कार्यहरु",
+  "इकाई",
+  "वनका प्रकार",
+  "महिला",
+  "पुरुष",
+  "जम्मा",
+  "कैफियत",
 ];
 
 export {
@@ -428,4 +438,5 @@ export {
   upabhoktasamuhaHeadings,
   banbikaskaryabibaranHeadings,
   samajikkaryabibaranHeadings,
+  rojgarsrijanaHeadings,
 };

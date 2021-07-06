@@ -8,6 +8,7 @@ import Login from "../layouts/Login";
 import Sampatibibaran from "../views/Sampatibibaran";
 import Karmachari from "../views/Karmachari";
 import Karyabibaran from "../views/Karyabibaran";
+import Miscellaneous from "../views/Miscellaneous";
 
 const dashboardRoutes = [
   {
@@ -59,6 +60,11 @@ const dashboardRoutes = [
     path: "/karyabibaran",
     name: "karyabibaran",
     component: Karyabibaran,
+  },
+  {
+    path: "/miscellaneous",
+    name: "Miscellaneous",
+    component: Miscellaneous,
   },
   {
     redirect: true,
