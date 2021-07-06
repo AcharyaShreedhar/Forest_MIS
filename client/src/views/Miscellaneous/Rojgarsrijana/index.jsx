@@ -86,7 +86,7 @@ class Rojgarsrijana extends Component {
   }
 
   handleAdd() {
-    this.props.history.push("//miscellaneous/rojgarsrijanaadd/new");
+    this.props.history.push("/miscellaneous/rojgarsrijanaadd/new");
   }
 
   render() {
@@ -160,7 +160,7 @@ Rojgarsrijana.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  rojgarsrijanaDataList: state.karyabibaran.allrojgarsrijanaData,
+  rojgarsrijanaDataList: state.miscellaneous.allrojgarsrijanaData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
