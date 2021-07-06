@@ -44,7 +44,7 @@ export function* addsamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -76,7 +76,7 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -107,7 +107,7 @@ export function* deletesamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "ban_type",
+      name: "banbikas_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -164,8 +164,9 @@ export function* addbanbikaskaryabibaranRequest(api, action) {
     toast.success("सफलतापुर्वक बनबिकास कार्य विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield addbanbikaskaryabibaranRequest(api, {
-      name: "darta_miti",
+    yield fetchallbanbikaskaryabibaranRequest(api, {
+      distId: "%",
+      name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
     });
@@ -198,7 +199,8 @@ export function* updatebanbikaskaryabibaranRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanbikaskaryabibaranRequest(api, {
-      name: "darta_miti",
+      distId: "%",
+      name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
     });
@@ -208,6 +210,36 @@ export function* updatebanbikaskaryabibaranRequest(api, action) {
     );
   } else {
     yield put(KaryabibaranActions.updatebanbikaskaryabibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete banbikaskaryabibaran
+export function* deletebanbikaskaryabibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbikasKaryabibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बनबिकास कार्य विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanbikaskaryabibaranRequest(api, {
+      distId: "%",
+      name: "banbikas_karyabibaran ",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      KaryabibaranActions.deletebanbikaskaryabibaranSuccess(response.data)
+    );
+  } else {
+    yield put(KaryabibaranActions.deletebanbikaskaryabibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
