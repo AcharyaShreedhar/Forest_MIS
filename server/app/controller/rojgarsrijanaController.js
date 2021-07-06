@@ -2,13 +2,13 @@ const pool = require("../db");
 
 // controller for getting all Rojgar srijana
 async function getAllRojgarSrijana(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from  rojgar_srijanas";
-  const getAllRojgarSrijanaQuery = `select * from rojgar_srijanas ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from  rojgar_srijanas as r where  r.dist_id like ?";
+  const getAllRojgarSrijanaQuery = `select * from rojgar_srijanas as r where  r.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [req.body.distId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
       getAllRojgarSrijanaQuery,
-      [req.body.name, req.body.page, req.body.perPage],
+      [req.body.distId, req.body.name, req.body.page, req.body.perPage],
       (error, results, fields) => {
         if (error) throw error;
         res.send(
