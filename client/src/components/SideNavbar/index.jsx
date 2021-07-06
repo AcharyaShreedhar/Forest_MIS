@@ -292,6 +292,21 @@ export class SideNavbar extends Component {
               <NavText> वन विकास कार्य विवरण</NavText>
             </NavItem>
           </NavItem>
+          <NavItem eventKey="/rojgarsrijana">
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faListAlt} />
+            </NavIcon>
+            <NavText>विविध</NavText>
+
+            <NavItem
+              eventKey="miscellaneous/rojgarsrijanalist"
+              onClick={() =>
+                history.push("/miscellaneous/rojgarsrijanalist")
+              }
+            >
+              <NavText>रोजगार सिर्जना</NavText>
+            </NavItem>
+          </NavItem>
           <NavItem eventKey="logout" onClick={(e) => this.handleLogout(e)}>
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faSignOutAlt} />
