@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      badhi_gayeko_sthan: {
+      badhi_aayeko_sthan: {
         type: Sequelize.STRING,
       },
       dist_id: {
@@ -23,7 +23,7 @@ module.exports = {
       uddar_sankhya: {
         type: Sequelize.STRING,
       },
-      badhi_gayeko_miti: {
+      badhi_aayeko_miti: {
         type: Sequelize.STRING,
       },
       xeti_sankhya: {

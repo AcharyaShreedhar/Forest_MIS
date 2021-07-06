@@ -2,8 +2,8 @@ const pool = require("../db");
 //Controller for Listing all badhiBibaran
 async function getAllBadhiBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from badhi_bibarans as b where b.badhi_gayeko_miti BETWEEN ? and ? and b.dist_id like ?";
-  const getAllBadhiBibaranQuery = `select * from badhi_bibarans as b where b.badhi_gayeko_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBadhiBibaranQuery = `select * from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId],
@@ -52,16 +52,16 @@ async function getBadhiBibaran(req, res) {
 
 //Controller for adding a BadhiBibaran
 async function addBadhiBibaran(req, res) {
-  const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_gayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_gayeko_miti, xeti_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_aayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_aayeko_miti, xeti_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBadhiBibaranQuery,
     [
-      req.body.badhi_gayeko_sthan,
+      req.body.badhi_aayeko_sthan,
       req.body.dist_id,
       req.body.manab_ghaite,
       req.body.manab_mareko,
       req.body.uddar_sankhya,
-      req.body.badhi_gayeko_miti,
+      req.body.badhi_aayeko_miti,
       req.body.xeti_sankhya,
       req.body.created_by,
       req.body.updated_by,
@@ -77,16 +77,16 @@ async function addBadhiBibaran(req, res) {
 
 //Controller for updating a BadhiBibaran
 async function updateBadhiBibaran(req, res) {
-  const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_gayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_gayeko_miti=?, xeti_sankhya=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
+  const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_aayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_aayeko_miti=?, xeti_sankhya=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
   pool.query(
     updateBadhiBibaranQuery,
     [
-      req.body.badhi_gayeko_sthan,
+      req.body.badhi_aayeko_sthan,
       req.body.dist_id,
       req.body.manab_ghaite,
       req.body.manab_mareko,
       req.body.uddar_sankhya,
-      req.body.badhi_gayeko_miti,
+      req.body.badhi_aayeko_miti,
       req.body.xeti_sankhya,
       req.body.created_by,
       req.body.updated_by,
