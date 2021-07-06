@@ -50,7 +50,7 @@ function List(props) {
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td key={index}> {samajik.samajik_karyabibaran}</td>
-                  <td key={index}> {samajik.samajik_ikai}</td>
+                  <td key={index}> {samajik.samajik_ekai}</td>
                   <td key={index}> {samajik.samajik_parinam}</td>
                   <td key={index}> {samajik.samajik_bajetkharcha}</td>
                   <td key={index}> {samajik.ban_type}</td>
