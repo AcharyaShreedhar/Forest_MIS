@@ -44,7 +44,8 @@ export function* addrojgarsrijanaRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrojgarsrijanaRequest(api,{
-      name: "karyaharu",
+      distId: "%",
+      name: "banka_prakar",
       page: 0,
       perPage: 10,
     });
@@ -72,7 +73,8 @@ export function* updaterojgarsrijanaRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrojgarsrijanaRequest(api,{
-      name: "karyaharu",
+      distId: "%",
+      name: "banka_prakar",
       page: 0,
       perPage: 10,
     });
@@ -99,7 +101,8 @@ export function* deleterojgarsrijanaRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallrojgarsrijanaRequest(api,{
-      name: "karyaharu",
+      distId: "%",
+      name: "banka_prakar",
       page: 0,
       perPage: 10,
     });
