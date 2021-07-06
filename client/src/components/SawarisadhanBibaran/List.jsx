@@ -47,20 +47,20 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((sawarisadhan, index) => (
-                <tr>
+                <tr key={`${sawarisadhan.vehicle_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {sawarisadhan.vehicle_type}</td>
-                  <td key={index}> {sawarisadhan.vehicle_no}</td>
-                  <td key={index}> {sawarisadhan.engine_no}</td>
-                  <td key={index}> {sawarisadhan.chasis_no}</td>
-                  <td key={index}> {sawarisadhan.acquired_source}</td>
-                  <td key={index}> {sawarisadhan.acquired_date}</td>
-                  <td key={index}> {sawarisadhan.acquired_price}</td>
-                  <td key={index}> {sawarisadhan.manufacturer_country}</td>
-                  <td key={index}> {sawarisadhan.manufacturer_comp}</td>
-                  <td key={index}> {sawarisadhan.model_name}</td>
-                  <td key={index}> {sawarisadhan.manufactured_date}</td>
-                  <td key={index}> {sawarisadhan.remarks}</td>
+                  <td>{sawarisadhan.vehicle_type}</td>
+                  <td>{sawarisadhan.vehicle_no}</td>
+                  <td>{sawarisadhan.engine_no}</td>
+                  <td>{sawarisadhan.chasis_no}</td>
+                  <td>{sawarisadhan.acquired_source}</td>
+                  <td>{sawarisadhan.acquired_date}</td>
+                  <td>{sawarisadhan.acquired_price}</td>
+                  <td>{sawarisadhan.manufacturer_country}</td>
+                  <td>{sawarisadhan.manufacturer_comp}</td>
+                  <td>{sawarisadhan.model_name}</td>
+                  <td>{sawarisadhan.manufactured_date}</td>
+                  <td>{sawarisadhan.remarks}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

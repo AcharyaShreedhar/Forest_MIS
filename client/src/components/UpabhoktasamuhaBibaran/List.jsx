@@ -48,36 +48,30 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((samuha, index) => (
-                <tr>
+                <tr key={`${samuha.consumer_group_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {samuha.registration_no}</td>
-                  <td key={index}> {samuha.registration_date}</td>
-                  <td key={index}> {samuha.samudayik_upavokta_samiti_name}</td>
-                  <td key={index}> {samuha.perm_addr}</td>
-                  <td key={index}> {samuha.curr_addr}</td>
-                  <td key={index}> {samuha.ghardhuri_dalit}</td>
-                  <td key={index}> {samuha.ghardhuri_janjati}</td>
-                  <td key={index}> {samuha.ghardhuri_anya}</td>
-                  <td key={index}> {samuha.ghardhuri_total}</td>
-                  <td key={index}> {samuha.population_female}</td>
-                  <td key={index}> {samuha.population_male}</td>
-                  <td key={index}> {samuha.population_total}</td>
-                  <td key={index}> {samuha.sampannata_starikaran_sampanna}</td>
-                  <td key={index}> {samuha.sampannata_starikaran_madhyam}</td>
-                  <td key={index}> {samuha.sampannata_starikaran_bipanna}</td>
-                  <td key={index}>
-                    {" "}
-                    {samuha.karyasamiti_representation_dalit}
-                  </td>
-                  <td key={index}>
-                    {" "}
-                    {samuha.karyasamiti_representation_janjati}
-                  </td>
-                  <td key={index}> {samuha.karyasamiti_representation_anya}</td>
-                  <td key={index}> {samuha.adhyakshya_female}</td>
-                  <td key={index}> {samuha.adhyakshya_male}</td>
-                  <td key={index}> {samuha.sachib_female}</td>
-                  <td key={index}> {samuha.sachib_male}</td>
+                  <td>{samuha.registration_no}</td>
+                  <td>{samuha.registration_date}</td>
+                  <td>{samuha.samudayik_upavokta_samiti_name}</td>
+                  <td>{samuha.perm_addr}</td>
+                  <td>{samuha.curr_addr}</td>
+                  <td>{samuha.ghardhuri_dalit}</td>
+                  <td>{samuha.ghardhuri_janjati}</td>
+                  <td>{samuha.ghardhuri_anya}</td>
+                  <td>{samuha.ghardhuri_total}</td>
+                  <td>{samuha.population_female}</td>
+                  <td>{samuha.population_male}</td>
+                  <td>{samuha.population_total}</td>
+                  <td>{samuha.sampannata_starikaran_sampanna}</td>
+                  <td>{samuha.sampannata_starikaran_madhyam}</td>
+                  <td>{samuha.sampannata_starikaran_bipanna}</td>
+                  <td>{samuha.karyasamiti_representation_dalit}</td>
+                  <td>{samuha.karyasamiti_representation_janjati}</td>
+                  <td>{samuha.karyasamiti_representation_anya}</td>
+                  <td>{samuha.adhyakshya_female}</td>
+                  <td>{samuha.adhyakshya_male}</td>
+                  <td>{samuha.sachib_female}</td>
+                  <td>{samuha.sachib_male}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

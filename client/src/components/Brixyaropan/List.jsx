@@ -48,14 +48,14 @@ function List(props) {
               <p>No data available !!!!</p>
             ) : (
               data.map((brixyaropan, index) => (
-                <tr>
+                <tr key={`${brixyaropan.birxyaropan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {brixyaropan.brixyaropan_thegana} </td>
-                  <td key={index}> {brixyaropan.brixyaropan_kisim} </td>
-                  <td key={index}> {brixyaropan.brixyaropan_laxya} </td>
-                  <td key={index}> {brixyaropan.brixyaropan_prajati} </td>
-                  <td key={index}> {brixyaropan.brixyaropan_pragati} </td>
-                  <td key={index}> {brixyaropan.brixyaropan_sankhya} </td>
+                  <td>{brixyaropan.brixyaropan_thegana} </td>
+                  <td>{brixyaropan.brixyaropan_kisim} </td>
+                  <td>{brixyaropan.brixyaropan_laxya} </td>
+                  <td>{brixyaropan.brixyaropan_prajati} </td>
+                  <td>{brixyaropan.brixyaropan_pragati} </td>
+                  <td>{brixyaropan.brixyaropan_sankhya} </td>
                   <td>
                     <div className="edit">
                       <EditDropdown

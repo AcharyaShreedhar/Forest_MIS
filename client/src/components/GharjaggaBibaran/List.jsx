@@ -47,15 +47,15 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((asset, index) => (
-                <tr>
+                <tr key={`${asset.asset_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {asset.asset_type}</td>
-                  <td key={index}> {asset.asset_loc}</td>
-                  <td key={index}> {asset.kitta_no}</td>
-                  <td key={index}> {asset.home_area}</td>
-                  <td key={index}> {asset.land_area}</td>
-                  <td key={index}> {asset.unit}</td>
-                  <td key={index}> {asset.remarks}</td>
+                  <td> {asset.asset_type}</td>
+                  <td> {asset.asset_loc}</td>
+                  <td> {asset.kitta_no}</td>
+                  <td> {asset.home_area}</td>
+                  <td> {asset.land_area}</td>
+                  <td> {asset.unit}</td>
+                  <td> {asset.remarks}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

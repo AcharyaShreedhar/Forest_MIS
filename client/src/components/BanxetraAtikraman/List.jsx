@@ -47,19 +47,19 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((banxetraatikraman, index) => (
-                <tr>
+                <tr key={`${banxetraatikraman.banxetra_atikraman_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {banxetraatikraman.atikramit_area}</td>
-                  <td key={index}> {banxetraatikraman.address}</td>
-                  <td key={index}> {banxetraatikraman.atikraman_kisim}</td>
-                  <td key={index}> {banxetraatikraman.samalagna_ghardhuri}</td>
-                  <td key={index}>
+                  <td> {banxetraatikraman.atikramit_area}</td>
+                  <td> {banxetraatikraman.address}</td>
+                  <td> {banxetraatikraman.atikraman_kisim}</td>
+                  <td> {banxetraatikraman.samalagna_ghardhuri}</td>
+                  <td>
                     {" "}
                     {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}
                   </td>
-                  <td key={index}> {banxetraatikraman.atikraman_prayojan}</td>
-                  <td key={index}> {banxetraatikraman.samrachana_bibaran}</td>
-                  <td key={index}> {banxetraatikraman.atikraman_abastha}</td>
+                  <td> {banxetraatikraman.atikraman_prayojan}</td>
+                  <td> {banxetraatikraman.samrachana_bibaran}</td>
+                  <td> {banxetraatikraman.atikraman_abastha}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

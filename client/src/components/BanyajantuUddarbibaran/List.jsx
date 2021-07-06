@@ -47,19 +47,19 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((uddar, index) => (
-                <tr>
+                <tr key={`${uddar.banyajantu_uddar_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>{englishToNepaliNumber(uddar.miti)}</td>
-                  <td key={index}> {uddar.sthaniya_taha}</td>
-                  <td key={index}> {uddar.samaya}</td>
-                  <td key={index}> {uddar.samraxit_xetra}</td>
-                  <td key={index}> {uddar.banyajantuko_naam}</td>
-                  <td key={index}> {uddar.banyajantuko_umer}</td>
-                  <td key={index}> {uddar.banyajantuko_abastha}</td>
-                  <td key={index}> {uddar.mareko_karan}</td>
-                  <td key={index}> {uddar.banxetra_duri}</td>
-                  <td key={index}> {uddar.anya_bibaran}</td>
-                  <td key={index}> {uddar.remarks}</td>
+                  <td>{englishToNepaliNumber(uddar.miti)}</td>
+                  <td> {uddar.sthaniya_taha}</td>
+                  <td> {uddar.samaya}</td>
+                  <td> {uddar.samraxit_xetra}</td>
+                  <td> {uddar.banyajantuko_naam}</td>
+                  <td> {uddar.banyajantuko_umer}</td>
+                  <td> {uddar.banyajantuko_abastha}</td>
+                  <td> {uddar.mareko_karan}</td>
+                  <td> {uddar.banxetra_duri}</td>
+                  <td> {uddar.anya_bibaran}</td>
+                  <td> {uddar.remarks}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

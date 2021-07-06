@@ -47,25 +47,22 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((banxetra, index) => (
-                <tr>
+                <tr key={`${banxetra.banxetra_anyaprayojan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>
-                    {" "}
-                    {englishToNepaliNumber(banxetra.arthik_barsa)}
-                  </td>
-                  <td key={index}> {banxetra.uplabdakarta_naam}</td>
-                  <td key={index}> {banxetra.upalabdha_address}</td>
-                  <td key={index}> {banxetra.xetrafal_temp}</td>
-                  <td key={index}> {banxetra.xetrafal_perm}</td>
-                  <td key={index}> {banxetra.samaya_abadhi}</td>
-                  <td key={index}> {banxetra.rukh_hataunuparne}</td>
-                  <td key={index}> {banxetra.rukh_hatayeko}</td>
-                  <td key={index}> {banxetra.sattajagga_area}</td>
-                  <td key={index}> {banxetra.xetipurti_brixyaropan}</td>
-                  <td key={index}> {banxetra.sattajagga_brixyaropan}</td>
-                  <td key={index}> {banxetra.leejrakam_adhyaadhik}</td>
-                  <td key={index}> {banxetra.barsik_pratibedan}</td>
-                  <td key={index}> {banxetra.prapta_rajaswo}</td>
+                  <td>{englishToNepaliNumber(banxetra.arthik_barsa)}</td>
+                  <td>{banxetra.uplabdakarta_naam}</td>
+                  <td>{banxetra.upalabdha_address}</td>
+                  <td>{banxetra.xetrafal_temp}</td>
+                  <td>{banxetra.xetrafal_perm}</td>
+                  <td>{banxetra.samaya_abadhi}</td>
+                  <td>{banxetra.rukh_hataunuparne}</td>
+                  <td>{banxetra.rukh_hatayeko}</td>
+                  <td>{banxetra.sattajagga_area}</td>
+                  <td>{banxetra.xetipurti_brixyaropan}</td>
+                  <td>{banxetra.sattajagga_brixyaropan}</td>
+                  <td>{banxetra.leejrakam_adhyaadhik}</td>
+                  <td>{banxetra.barsik_pratibedan}</td>
+                  <td>{banxetra.prapta_rajaswo}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

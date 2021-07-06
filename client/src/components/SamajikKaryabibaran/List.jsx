@@ -47,18 +47,20 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((samajik, index) => (
-                <tr>
+                <tr key={`${samajik.samajik_karyabibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {samajik.samajik_karyabibaran}</td>
-                  <td key={index}> {samajik.samajik_ekai}</td>
-                  <td key={index}> {samajik.samajik_parinam}</td>
-                  <td key={index}> {samajik.samajik_bajetkharcha}</td>
-                  <td key={index}> {samajik.ban_type}</td>
+                  <td>{samajik.samajik_karyabibaran}</td>
+                  <td>{samajik.samajik_ekai}</td>
+                  <td>{samajik.samajik_parinam}</td>
+                  <td>{samajik.samajik_bajetkharcha}</td>
+                  <td>{samajik.ban_type}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, samajik ,"samajikkaryabibaran" )}
+                        onChange={(e) =>
+                          onSelect(e, samajik, "samajikkaryabibaran")
+                        }
                       />
                     </div>
                   </td>
