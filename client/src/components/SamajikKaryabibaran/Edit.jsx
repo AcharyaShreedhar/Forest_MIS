@@ -29,6 +29,7 @@ class Edit extends Component {
         samajik_parinam,
         samajik_bajetkharcha,
         ban_type,
+        created_by,
     } = this.state;
     const payload = {
       samajikkaryabibaran: {
@@ -39,7 +40,8 @@ class Edit extends Component {
           samajik_bajetkharcha: samajik_bajetkharcha,
           ban_type: ban_type,
           dist_id: this.props.user.dist_id,
-          created_by: this.props.user.user_name,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };

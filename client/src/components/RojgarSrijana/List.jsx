@@ -32,7 +32,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="samajikkaryabibaran">
+        <Table responsive striped bordered hover id="rojgarsrijana">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -47,15 +47,15 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((rojgar, index) => (
-                <tr>
+                <tr key={`${rojgar.rojgar_srijana_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {rojgar.karyaharu}</td>
-                  <td key={index}> {rojgar.ekai}</td>
-                  <td key={index}> {rojgar.banka_prakar}</td>
-                  <td key={index}> {rojgar.mahila}</td>
-                  <td key={index}> {rojgar.purus}</td>
-                  <td key={index}> {rojgar.jamma}</td>
-                  <td key={index}> {rojgar.kaifiyat}</td>
+                  <td> {rojgar.karyaharu}</td>
+                  <td> {rojgar.ekai}</td>
+                  <td> {rojgar.banka_prakar}</td>
+                  <td> {rojgar.mahila}</td>
+                  <td> {rojgar.purus}</td>
+                  <td> {rojgar.jamma}</td>
+                  <td> {rojgar.kaifiyat}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
