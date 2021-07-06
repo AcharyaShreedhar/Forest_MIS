@@ -519,6 +519,28 @@ const addsajhedaribanbibaranSuccess = (state, action) =>
   });
 const addsajhedaribanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
+
+
+const updatesajhedaribanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatesajhedaribanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatesajhedaribanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+const deletesajhedaribanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletesajhedaribanbibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletesajhedaribanbibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
   
 
 //commercial kabuliyatibanbiabaran
@@ -723,6 +745,14 @@ export const reducer = createReducer(initialState, {
   [BankaprakarTypes.ADDSAJHEDARIBANBIBARAN_REQUEST]: addsajhedaribanbibaranRequest,
   [BankaprakarTypes.ADDSAJHEDARIBANBIBARAN_SUCCESS]: addsajhedaribanbibaranSuccess,
   [BankaprakarTypes.ADDSAJHEDARIBANBIBARAN_FAILURE]: addsajhedaribanbibaranFailure,
+
+  [BankaprakarTypes.UPDATESAJHEDARIBANBIBARAN_REQUEST]: updatesajhedaribanbibaranRequest,
+  [BankaprakarTypes.UPDATESAJHEDARIBANBIBARAN_SUCCESS]: updatesajhedaribanbibaranSuccess,
+  [BankaprakarTypes.UPDATESAJHEDARIBANBIBARAN_FAILURE]: updatesajhedaribanbibaranFailure,
+
+  [BankaprakarTypes.DELETESAJHEDARIBANBIBARAN_REQUEST]: deletesajhedaribanbibaranRequest,
+  [BankaprakarTypes.DELETESAJHEDARIBANBIBARAN_SUCCESS]: deletesajhedaribanbibaranSuccess,
+  [BankaprakarTypes.DELETESAJHEDARIBANBIBARAN_FAILURE]: deletesajhedaribanbibaranFailure,
 
   //commercialkabuliyatibanbibaran
   [BankaprakarTypes.FETCHALLCOMMERCIALKABULIYATIBANBIBARAN_REQUEST]: fetchallcommercialkabuliyatibanbibaranRequest,

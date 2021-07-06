@@ -1156,6 +1156,8 @@ export function* deletecommercialkabuliyatibanbibaranRequest(api, action) {
     );
   }
 }
+
+//Sajhedaribanbibaran
 export function* fetchallsajhedaribanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -1212,6 +1214,84 @@ export function* addsajhedaribanbibaranRequest(api, action) {
     );
   } else {
     yield put(BankaprakarActions.addsajhedaribanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
+export function* updatesajhedaribanbibaranRequest(api, action) {
+  const { payload, sajhedaribanbibaranId } = action;
+
+  const response = yield api.postBankaprakarSajhedaribanbibaranUpdate(
+    payload.sajhedariban.data,
+    sajhedaribanbibaranId
+  );
+
+  if (response.ok) {
+    toast.success(
+      "सफलतापुर्वक साझेदारी वन शंसोधन भयो !!!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+    yield fetchallsajhedaribanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/sajhedaribanlist");
+    yield put(
+      BankaprakarActions.updatesajhedaribanbibaranSuccess(
+        response.data
+      )
+    );
+  } else {
+    yield put(BankaprakarActions.updatesajhedaribanbibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+
+
+export function* deletesajhedaribanbibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBankaprakarSajhedaribanbibaranDelete(
+    payload
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक साझेदारी वन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallsajhedaribanbibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      BankaprakarActions.deletesajhedaribanbibaranSuccess(
+        response.data
+      )
+    );
+  } else {
+    yield put(BankaprakarActions.deletesajhedaribanbibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
