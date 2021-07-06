@@ -44,7 +44,7 @@ export function* addsamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "banbikas_karyabibaran ",
+      name: "samajik_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -76,7 +76,7 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "banbikas_karyabibaran ",
+      name: "samajik_karyabibaran ",
       page: 0,
       perPage: 10,
     });
@@ -107,7 +107,7 @@ export function* deletesamajikkaryabibaranRequest(api, action) {
     });
     yield fetchallsamajikkaryabibaranRequest(api, {
       distId: "%",
-      name: "banbikas_karyabibaran ",
+      name: "samajik_karyabibaran ",
       page: 0,
       perPage: 10,
     });

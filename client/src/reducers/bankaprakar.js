@@ -508,6 +508,8 @@ const fetchsajhedaribanbibaranSuccess = (state, action) => {
 const fetchsajhedaribanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+
 const addsajhedaribanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const addsajhedaribanbibaranSuccess = (state, action) =>
@@ -517,6 +519,7 @@ const addsajhedaribanbibaranSuccess = (state, action) =>
   });
 const addsajhedaribanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
+  
 
 //commercial kabuliyatibanbiabaran
 const fetchallcommercialkabuliyatibanbibaranRequest = (state, action) =>
