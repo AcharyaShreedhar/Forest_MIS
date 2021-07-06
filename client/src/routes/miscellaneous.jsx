@@ -10,12 +10,30 @@ const miscellaneousRoutes = [
     },
 
     {
+        path: "/miscellaneous/rojgarsrijanaadd/new",
+        title: "Rojgarsrijana",
+        name: "rojgarsrijana",
+        auth: true,
+        component: Rojgarsrijana,
+      },
+
+      {
+        path: "/miscellaneous/rojgarsrijanaedit/:id",
+        title: "Rojgarsrijana",
+        name: "rojgarsrijana",
+        auth: true,
+        component: Rojgarsrijana,
+      },  
+
+
+    {
         redirect: true,
         path: "/miscellaneous",
         to: "/miscellaneous/rojgarsrijanalist",
         name: "rojgarsrijana",
         component: Rojgarsrijana,
       },
+
 ];
 
 export default miscellaneousRoutes;
