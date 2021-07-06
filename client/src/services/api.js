@@ -783,6 +783,13 @@ const create = (baseURL = Config.API_URL) => {
   const postBankaprakarSajhedaribanbibaranAddNew = (payload) =>
     api.post('sajhedaribanBibaran', payload);
 
+  const postBankaprakarSajhedaribanbibaranUpdate = (payload, sajhedaribanbibaranId) =>
+    api.put(`sajhedaribanBibaran/${sajhedaribanbibaranId}`, payload);
+
+  const postBankaprakarSajhedaribanbibaranDelete = (sajhedaribanbibaranId) =>
+    api.delete(`sajhedaribanBibaran/${sajhedaribanbibaranId}`);
+
+
   // banbikas karyabibaran
   const getBanbikasKaryaBibaranList = (payload) =>
     api.post("banbikasKaryabibaranList", payload);
@@ -845,6 +852,8 @@ const create = (baseURL = Config.API_URL) => {
     getSajhedaribanBibaranList,
     getSajhedaribanBibaran,
     postBankaprakarSajhedaribanbibaranAddNew,
+    postBankaprakarSajhedaribanbibaranUpdate,
+    postBankaprakarSajhedaribanbibaranDelete,
 
     //dwandabebasthapan
     getBanyajantuUddarList,
