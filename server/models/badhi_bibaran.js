@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   badhi_bibaran.init(
     {
-      badhi_gayeko_stha: DataTypes.STRING,
+      badhi_aayeko_sthan: DataTypes.STRING,
       dist_id: DataTypes.INTEGER,
       manab_ghaite: DataTypes.STRING,
       manab_mareko: DataTypes.STRING,
       uddar_sankhya: DataTypes.STRING,
-      badhi_gayeko_miti: DataTypes.STRING,
+      badhi_aayeko_miti: DataTypes.STRING,
       xeti_sankhya: DataTypes.STRING,
       created_by: DataTypes.STRING,
       updated_by: DataTypes.STRING,

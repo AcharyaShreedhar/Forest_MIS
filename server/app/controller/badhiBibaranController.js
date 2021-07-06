@@ -1,16 +1,16 @@
 const pool = require("../db");
-//Controller for Listing all pahiroBibaran
-async function getAllPaheroBibaran(req, res) {
+//Controller for Listing all badhiBibaran
+async function getAllBadhiBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from pahiro_bibarans as p where p.pahero_gayeko_miti BETWEEN ? and ? and p.dist_id like ?";
-  const getAllPaheroBibaranQuery = `select * from pahiro_bibarans as p where p.pahero_gayeko_miti BETWEEN ? and ? and p.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBadhiBibaranQuery = `select * from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
-        getAllPaheroBibaranQuery,
+        getAllBadhiBibaranQuery,
         [
           req.body.fromDate,
           req.body.toDate,
@@ -37,12 +37,12 @@ async function getAllPaheroBibaran(req, res) {
   );
 }
 
-//Controller for Listing a PaheroBibaran
-async function getPaheroBibaran(req, res) {
-  const getPaheroBibaranQuery = `select * from pahiro_bibarans where pahiro_bibaran_id=?`;
+//Controller for Listing a BadhiBibaran
+async function getBadhiBibaran(req, res) {
+  const getBadhiBibaranQuery = `select * from badhi_bibarans where badhi_bibaran_id=?`;
   pool.query(
-    getPaheroBibaranQuery,
-    [req.params.paheroBibaranId],
+    getBadhiBibaranQuery,
+    [req.params.badhiBibaranId],
     (error, results, fields) => {
       if (error) throw error;
       res.send(JSON.stringify({ status: 200, error: null, data: results }));
@@ -50,18 +50,18 @@ async function getPaheroBibaran(req, res) {
   );
 }
 
-//Controller for adding a PaheroBibaran
-async function addPaheroBibaran(req, res) {
-  const addPaheroBibaranQuery = `INSERT INTO pahiro_bibarans (pahiro_gayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, pahero_gayeko_miti, xeti_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+//Controller for adding a BadhiBibaran
+async function addBadhiBibaran(req, res) {
+  const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_aayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_aayeko_miti, xeti_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
   pool.query(
-    addPaheroBibaranQuery,
+    addBadhiBibaranQuery,
     [
-      req.body.pahiro_gayeko_sthan,
+      req.body.badhi_aayeko_sthan,
       req.body.dist_id,
       req.body.manab_ghaite,
       req.body.manab_mareko,
       req.body.uddar_sankhya,
-      req.body.pahero_gayeko_miti,
+      req.body.badhi_aayeko_miti,
       req.body.xeti_sankhya,
       req.body.created_by,
       req.body.updated_by,
@@ -75,22 +75,22 @@ async function addPaheroBibaran(req, res) {
   );
 }
 
-//Controller for updating a PaheroBibaran
-async function updatePaheroBibaran(req, res) {
-  const updatePaheroBibaranQuery = `UPDATE pahiro_bibarans SET pahiro_gayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, pahero_gayeko_miti=?, xeti_sankhya=?, created_by=?, updated_by=? WHERE pahiro_bibaran_id=?`;
+//Controller for updating a BadhiBibaran
+async function updateBadhiBibaran(req, res) {
+  const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_aayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_aayeko_miti=?, xeti_sankhya=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
   pool.query(
-    updatePaheroBibaranQuery,
+    updateBadhiBibaranQuery,
     [
-      req.body.pahiro_gayeko_sthan,
+      req.body.badhi_aayeko_sthan,
       req.body.dist_id,
       req.body.manab_ghaite,
       req.body.manab_mareko,
       req.body.uddar_sankhya,
-      req.body.pahero_gayeko_miti,
+      req.body.badhi_aayeko_miti,
       req.body.xeti_sankhya,
       req.body.created_by,
       req.body.updated_by,
-      req.params.paheroBibaranId,
+      req.params.badhiBibaranId,
     ],
     (error, results, fields) => {
       if (error) {
@@ -101,12 +101,12 @@ async function updatePaheroBibaran(req, res) {
   );
 }
 
-//Controller for deleting a PaheroBibaran
-async function deletePaheroBibaran(req, res) {
-  const deletePaheroBibaranQuery = `DELETE  FROM pahiro_bibarans where pahiro_bibaran_id=?`;
+//Controller for deleting a BadhiBibaran
+async function deleteBadhiBibaran(req, res) {
+  const deleteBadhiBibaranQuery = `DELETE  FROM badhi_bibarans where badhi_bibaran_id=?`;
   pool.query(
-    deletePaheroBibaranQuery,
-    [req.params.paheroBibaranId],
+    deleteBadhiBibaranQuery,
+    [req.params.badhiBibaranId],
     (error, results, fields) => {
       if (error) {
         throw error;
@@ -117,9 +117,9 @@ async function deletePaheroBibaran(req, res) {
 }
 
 module.exports = {
-  getAllPaheroBibaran,
-  getPaheroBibaran,
-  addPaheroBibaran,
-  updatePaheroBibaran,
-  deletePaheroBibaran,
+  getAllBadhiBibaran,
+  getBadhiBibaran,
+  addBadhiBibaran,
+  updateBadhiBibaran,
+  deleteBadhiBibaran,
 };
