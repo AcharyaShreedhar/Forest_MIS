@@ -17,7 +17,7 @@ module.exports = {
       qty: {
         type: Sequelize.STRING
       },
-      samrakshyan_suru_miti: {
+      karyakram_miti: {
         type: Sequelize.STRING
       },
       conservation_area: {
