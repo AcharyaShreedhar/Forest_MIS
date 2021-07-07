@@ -392,6 +392,7 @@ class Bankaprakar extends Component {
       default:
         break;
     }
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd(item) {
@@ -432,7 +433,6 @@ class Bankaprakar extends Component {
       default:
         break;
     }
-    this.setState({ showDialog: !this.state.showDialog });
   }
   render() {
     const {
