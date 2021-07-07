@@ -112,9 +112,9 @@ export function* deletepaherobibaranRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield put(BankaprakarActions.deletepaherobibaranSuccess(response.data));
+    yield put(BipatbibaranActions.deletepaherobibaranSuccess(response.data));
   } else {
-    yield put(BankaprakarActions.deletepaherobibaranFailure());
+    yield put(BipatbibaranActions.deletepaherobibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
