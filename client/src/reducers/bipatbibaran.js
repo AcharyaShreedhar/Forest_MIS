@@ -35,6 +35,7 @@ const fetchpaherobibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+// add paherobibaran
 const addpaherobibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const addpaherobibaranSuccess = (state, action) =>
@@ -43,6 +44,17 @@ const addpaherobibaranSuccess = (state, action) =>
     status: "done",
   });
 const addpaherobibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update paherobibaran
+const updatepaherobibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatepaherobibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatepaherobibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 const locationsRequest = (state, action) => {
@@ -68,6 +80,11 @@ export const reducer = createReducer(initialState, {
   [BipatbibaranTypes.ADDPAHEROBIBARAN_REQUEST]: addpaherobibaranRequest,
   [BipatbibaranTypes.ADDPAHEROBIBARAN_SUCCESS]: addpaherobibaranSuccess,
   [BipatbibaranTypes.ADDPAHEROBIBARAN_FAILURE]: addpaherobibaranFailure,
+
+  [BipatbibaranTypes.UPDATEPAHEROBIBARAN_REQUEST]: updatepaherobibaranRequest,
+  [BipatbibaranTypes.UPDATEPAHEROBIBARAN_SUCCESS]: updatepaherobibaranSuccess,
+  [BipatbibaranTypes.UPDATEPAHEROBIBARAN_FAILURE]: updatepaherobibaranFailure,
+
   [BipatbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BipatbibaranTypes.CLEAR_REQUEST]: clearRequest,
 });
