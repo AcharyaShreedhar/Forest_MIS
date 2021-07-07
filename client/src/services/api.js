@@ -815,6 +815,9 @@ const create = (baseURL = Config.API_URL) => {
   const getPaherobibaran = (paherobibaranId) =>
     api.get(`paheroBibaran/${paherobibaranId}`);
 
+  const postPaherobibaranAddNew = (payload) =>
+    api.post("paheroBibaran", payload);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1081,6 +1084,7 @@ const create = (baseURL = Config.API_URL) => {
     //----------bipatbibaran
     getPaherobibaranList,
     getPaherobibaran,
+    postPaherobibaranAddNew,
   };
 };
 export default {
