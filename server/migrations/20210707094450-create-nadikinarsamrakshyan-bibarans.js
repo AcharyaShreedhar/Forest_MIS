@@ -11,6 +11,9 @@ module.exports = {
       dist_id: {
         type: Sequelize.INTEGER
       },
+      darta_no:{
+        type: Sequelize.STRING
+      },
       sthan: {
         type: Sequelize.STRING
       },
