@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { equals } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
-import "react-confirm-alert/src/react-confirm-alert.css";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { Button, Input, Dropdown, confirmAlert } from "../../components";
+import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import "./SamudayikbanBibaran.scss";
 
 const ForestTypes = [
@@ -142,15 +141,15 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-          {/* <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
-            subtitle="के तपाईँ सामुदायिक वनको शंसोधन गर्न चाहनुहुन्छ?"
+            body="के तपाईँ सामुदायिक वनको शंसोधन गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
             onClose={this.handleClose}
-          /> */}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -256,7 +255,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="Update"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
