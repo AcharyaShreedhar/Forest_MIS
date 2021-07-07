@@ -2,55 +2,37 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('nadikinarsamrakshyan_bibarans', {
-      id: {
+      nadikinarsamrakshyan_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      darta_no: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.STRING
-      },
       dist_id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
         type: Sequelize.INTEGER
       },
       sthan: {
         type: Sequelize.STRING
       },
       qty: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
+        type: Sequelize.STRING
+      },
+      samrakshyan_suru_miti: {
         type: Sequelize.STRING
       },
       conservation_area: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
         type: Sequelize.STRING
       },
       affected_area: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
         type: Sequelize.STRING
       },
       created_by: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       updated_by: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
+        type: Sequelize.STRING,
+      },
+      updated_by: {
         type: Sequelize.STRING
       },
       createdAt: {
