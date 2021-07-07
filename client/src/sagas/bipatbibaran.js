@@ -14,3 +14,15 @@ export function* fetchallpaherobibaranRequest(api, action) {
     yield put(BipatbibaranActions.fetchallpaherobibaranFailure());
   }
 }
+
+export function* fetchpaherobibaranRequest(api, action) {
+  const paherobibaranId = action.payload;
+
+  const response = yield api.getPaherobibaran(paherobibaranId);
+
+  if (response.ok) {
+    yield put(BipatbibaranActions.fetchpaherobibaranSuccess(response.data));
+  } else {
+    yield put(BipatbibaranActions.fetchpaherobibaranFailure());
+  }
+}

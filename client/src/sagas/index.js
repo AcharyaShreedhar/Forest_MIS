@@ -308,7 +308,10 @@ import {
 } from "./miscellaneous";
 
 //bipatbibaran
-import { fetchallpaherobibaranRequest } from "./bipatbibaran";
+import {
+  fetchallpaherobibaranRequest,
+  fetchpaherobibaranRequest,
+} from "./bipatbibaran";
 
 const api = API.create();
 
@@ -1583,6 +1586,11 @@ export default function* root() {
     takeLatest(
       BipatbibaranTypes.FETCHALLPAHEROBIBARAN_REQUEST,
       fetchallpaherobibaranRequest,
+      api
+    ),
+    takeLatest(
+      BipatbibaranTypes.FETCHPAHEROBIBARAN_REQUEST,
+      fetchpaherobibaranRequest,
       api
     ),
   ]);

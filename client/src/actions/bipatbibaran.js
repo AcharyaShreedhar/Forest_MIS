@@ -15,6 +15,10 @@ const { Types, Creators } = createActions({
   fetchallpaherobibaranSuccess: ["response"],
   fetchallpaherobibaranFailure: null,
 
+  fetchpaherobibaranRequest: ["payload"],
+  fetchpaherobibaranSuccess: ["response"],
+  fetchpaherobibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
