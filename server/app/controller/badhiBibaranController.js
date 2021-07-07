@@ -52,7 +52,7 @@ async function getBadhiBibaran(req, res) {
 
 //Controller for adding a BadhiBibaran
 async function addBadhiBibaran(req, res) {
-  const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_aayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_aayeko_miti, xeti_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_aayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_aayeko_miti, xeti_bibaran, banyajantu_mareko, botbiruwa_xeti, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBadhiBibaranQuery,
     [
@@ -62,7 +62,9 @@ async function addBadhiBibaran(req, res) {
       req.body.manab_mareko,
       req.body.uddar_sankhya,
       req.body.badhi_aayeko_miti,
-      req.body.xeti_sankhya,
+      req.body.xeti_bibaran,
+      req.body.banyajantu_mareko,
+      req.body.botbiruwa_xeti,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -77,7 +79,7 @@ async function addBadhiBibaran(req, res) {
 
 //Controller for updating a BadhiBibaran
 async function updateBadhiBibaran(req, res) {
-  const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_aayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_aayeko_miti=?, xeti_sankhya=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
+  const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_aayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_aayeko_miti=?,  xeti_bibaran=?, banyajantu_mareko=?, botbiruwa_xeti=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
   pool.query(
     updateBadhiBibaranQuery,
     [
@@ -87,7 +89,9 @@ async function updateBadhiBibaran(req, res) {
       req.body.manab_mareko,
       req.body.uddar_sankhya,
       req.body.badhi_aayeko_miti,
-      req.body.xeti_sankhya,
+      req.body.xeti_bibaran,
+      req.body.banyajantu_mareko,
+      req.body.botbiruwa_xeti,
       req.body.created_by,
       req.body.updated_by,
       req.params.badhiBibaranId,
