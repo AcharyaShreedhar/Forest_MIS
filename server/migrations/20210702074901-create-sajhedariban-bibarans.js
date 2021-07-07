@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       darta_no:{
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       darta_miti: {
         type: Sequelize.STRING,

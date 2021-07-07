@@ -1097,7 +1097,7 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       }
     );
-    yield fetchallkabuliyatibanbibaranRequest(api, {
+    yield fetchallcommercialkabuliyatibanbibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
