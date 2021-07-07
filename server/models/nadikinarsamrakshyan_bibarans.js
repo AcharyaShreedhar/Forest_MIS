@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   nadikinarsamrakshyan_bibarans.init({
-    darta_no: DataTypes.STRING,
     dist_id: DataTypes.INTEGER,
     sthan: DataTypes.STRING,
     qty: DataTypes.STRING,
