@@ -47,7 +47,7 @@ export function* addpaherobibaranRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/bipatbebasthapan/paherobebasthapanlis");
+    yield call(history.push, "/bipatbebasthapan/paherobebasthapanlist");
     yield put(BipatbibaranActions.addpaherobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.addpaherobibaranFailure());

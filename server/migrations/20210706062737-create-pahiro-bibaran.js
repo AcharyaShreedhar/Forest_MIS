@@ -26,7 +26,13 @@ module.exports = {
       pahero_gayeko_miti: {
         type: Sequelize.STRING,
       },
-      xeti_sankhya: {
+      xeti_bibaran: {
+        type: Sequelize.STRING,
+      },
+      banyajantu_mareko: {
+        type: Sequelize.STRING,
+      },
+      botbiruwa_xeti: {
         type: Sequelize.STRING,
       },
       created_by: {
