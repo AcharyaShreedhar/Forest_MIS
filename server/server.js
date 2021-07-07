@@ -103,6 +103,8 @@ const uddhyamBibaranRoutes = require("./app/routes/uddhyamBibaranRoutes");
 const paheroBibaranRoutes = require("./app/routes/paherobibaranRoutes");
 const badhiBibaranRoutes = require("./app/routes/badhibibaranRoutes");
 
+const nadikinarSamrakshyanRoutes = require("./app/routes/nadikinarSamrakshyanRoutes");
+
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
 app.use("/api/v1", municipalitiesRoutes);
@@ -151,6 +153,7 @@ app.use("/api/v1", commercialkabuliyatibanBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
 app.use("/api/v1", paheroBibaranRoutes);
 app.use("/api/v1", badhiBibaranRoutes);
+app.use("/api/v1", nadikinarSamrakshyanRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
