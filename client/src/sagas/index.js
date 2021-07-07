@@ -15,6 +15,7 @@ import { InventoriesTypes } from "../actions/inventories";
 import { KarmacharibibaranTypes } from "../actions/karmacharibibaran";
 import { KaryabibaranTypes } from "../actions/karyabibaran";
 import { MiscellaneousTypes } from "../actions/miscellaneous";
+import { BipatbibaranTypes } from "../actions/bipatbibaran";
 //------------------app
 import {
   fetchalldepartmentsRequest,
@@ -306,6 +307,10 @@ import {
   deleterojgarsrijanaRequest,
 } from "./miscellaneous";
 
+//bipatbibaran
+import { fetchallpaherobibaranRequest } from "./bipatbibaran";
+
+import { from } from "seamless-immutable";
 const api = API.create();
 
 export default function* root() {
@@ -1565,7 +1570,7 @@ export default function* root() {
       updatebanbikaskaryabibaranRequest,
       api
     ),
-    takeLatest(     
+    takeLatest(
       KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_REQUEST,
       deletebanbikaskaryabibaranRequest,
       api
@@ -1573,6 +1578,12 @@ export default function* root() {
     takeLatest(
       KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_REQUEST,
       deletebanbikaskaryabibaranRequest,
+      api
+    ),
+    //-----------------bipatbibaran
+    takeLatest(
+      BipatbibaranTypes.FETCHALLPAHEROBIBARAN_REQUEST,
+      fetchallpaherobibaranRequest,
       api
     ),
   ]);
