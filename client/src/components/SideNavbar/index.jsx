@@ -13,6 +13,7 @@ import {
   faGavel,
   faListAlt,
   faInfoCircle,
+  faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import { HeaderComponent, Displaybox } from "../../components";
@@ -305,6 +306,25 @@ export class SideNavbar extends Component {
               }
             >
               <NavText>रोजगार सिर्जना</NavText>
+            </NavItem>
+          </NavItem>
+          <NavItem eventKey="/bipatbebasthapan">
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faExclamationTriangle} />
+            </NavIcon>
+            <NavText>विपत व्यवस्थापन</NavText>
+
+            <NavItem
+              eventKey="bipatbebasthapan/badibibaranlist"
+              onClick={() => history.push("/bipatbebasthapan/badibebasthapanlist")}
+            >
+              <NavText>बाढी व्यवस्थापन</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="bipatbebasthapan/pahirobibaranlist"
+              onClick={() => history.push("/bipatbebasthapan/pahirobebasthapanlist")}
+            >
+              <NavText> पहिरो व्यवस्थापन</NavText>
             </NavItem>
           </NavItem>
           <NavItem eventKey="logout" onClick={(e) => this.handleLogout(e)}>
