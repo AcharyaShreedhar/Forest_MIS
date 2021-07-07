@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input } from "../../components";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./NijibanBibaran.scss";
@@ -19,11 +19,23 @@ class Add extends Component {
       dist_id: "",
       created_by: "",
       updated_by: "",
+      showDialog: false,
+
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
   }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+
 
   handleSubmit() {
     const {
@@ -67,11 +79,21 @@ class Add extends Component {
       curr_addr,
       area,
       main_species,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="थप"
+            body="के तपाईँ निजि वन थप गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -136,7 +158,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
@@ -148,10 +170,12 @@ class Add extends Component {
 
 Add.propTypes = {
   regno: PropTypes.number,
+  onClose: PropTypes.func,
 };
 
 Add.defaultProps = {
   regno: 1,
+  onClose: () => {},
 };
 
 export default Add;
