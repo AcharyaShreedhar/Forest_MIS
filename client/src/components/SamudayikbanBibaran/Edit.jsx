@@ -144,7 +144,7 @@ class Edit extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
-            body="के तपाईँ सामुदायिक वनको शंसोधन गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ सामुदायिक वनको विवरण शंसोधन गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
