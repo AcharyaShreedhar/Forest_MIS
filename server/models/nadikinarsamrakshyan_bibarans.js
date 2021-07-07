@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
     qty: DataTypes.STRING,
     conservation_area: DataTypes.STRING,
     affected_area: DataTypes.STRING,
-    curr_addr: DataTypes.STRING,
     created_by: DataTypes.STRING,
     updated_by: DataTypes.STRING,
   }, {
