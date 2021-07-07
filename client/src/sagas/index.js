@@ -310,7 +310,6 @@ import {
 //bipatbibaran
 import { fetchallpaherobibaranRequest } from "./bipatbibaran";
 
-import { from } from "seamless-immutable";
 const api = API.create();
 
 export default function* root() {
