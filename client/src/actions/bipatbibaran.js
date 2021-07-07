@@ -27,6 +27,10 @@ const { Types, Creators } = createActions({
   updatepaherobibaranSuccess: ["response"],
   updatepaherobibaranFailure: null,
 
+  deletepaherobibaranRequest: ["payload", "paherobibaranId"],
+  deletepaherobibaranSuccess: ["response"],
+  deletepaherobibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

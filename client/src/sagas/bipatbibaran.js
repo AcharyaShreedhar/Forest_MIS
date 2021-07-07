@@ -47,7 +47,7 @@ export function* addpaherobibaranRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/bipats/paherobibaranlist");
+    yield call(history.push, "/bipatbebasthapan/paherobebasthapanlist");
     yield put(BipatbibaranActions.addpaherobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.addpaherobibaranFailure());
@@ -81,10 +81,40 @@ export function* updatepaherobibaranRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/bipats/paherolist");
+    yield call(history.push, "/bipatbebasthapan/paherobebasthapanlist");
     yield put(BipatbibaranActions.updatepaherobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.updatepaherobibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete paherobibaran
+export function* deletepaherobibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postPaherobibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक पहिरो बिबरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallpaherobibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "pahero_gayeko_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(BankaprakarActions.deletepaherobibaranSuccess(response.data));
+  } else {
+    yield put(BankaprakarActions.deletepaherobibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {

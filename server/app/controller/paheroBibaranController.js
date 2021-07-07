@@ -52,7 +52,7 @@ async function getPaheroBibaran(req, res) {
 
 //Controller for adding a PaheroBibaran
 async function addPaheroBibaran(req, res) {
-  const addPaheroBibaranQuery = `INSERT INTO pahiro_bibarans (pahiro_gayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, pahero_gayeko_miti, xeti_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addPaheroBibaranQuery = `INSERT INTO pahiro_bibarans (pahiro_gayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, pahero_gayeko_miti, xeti_bibaran, banyajantu_mareko, botbiruwa_xeti, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addPaheroBibaranQuery,
     [
@@ -62,7 +62,9 @@ async function addPaheroBibaran(req, res) {
       req.body.manab_mareko,
       req.body.uddar_sankhya,
       req.body.pahero_gayeko_miti,
-      req.body.xeti_sankhya,
+      req.body.xeti_bibaran,
+      req.body.banyajantu_mareko,
+      req.body.botbiruwa_xeti,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -77,7 +79,7 @@ async function addPaheroBibaran(req, res) {
 
 //Controller for updating a PaheroBibaran
 async function updatePaheroBibaran(req, res) {
-  const updatePaheroBibaranQuery = `UPDATE pahiro_bibarans SET pahiro_gayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, pahero_gayeko_miti=?, xeti_sankhya=?, created_by=?, updated_by=? WHERE pahiro_bibaran_id=?`;
+  const updatePaheroBibaranQuery = `UPDATE pahiro_bibarans SET pahiro_gayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, pahero_gayeko_miti=?, xeti_bibaran=?, banyajantu_mareko=?, botbiruwa_xeti=?, created_by=?, updated_by=? WHERE pahiro_bibaran_id=?`;
   pool.query(
     updatePaheroBibaranQuery,
     [
@@ -87,7 +89,9 @@ async function updatePaheroBibaran(req, res) {
       req.body.manab_mareko,
       req.body.uddar_sankhya,
       req.body.pahero_gayeko_miti,
-      req.body.xeti_sankhya,
+      req.body.xeti_bibaran,
+      req.body.banyajantu_mareko,
+      req.body.botbiruwa_xeti,
       req.body.created_by,
       req.body.updated_by,
       req.params.paheroBibaranId,
