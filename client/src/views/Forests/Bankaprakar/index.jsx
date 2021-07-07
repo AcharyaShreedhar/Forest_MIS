@@ -12,6 +12,7 @@ import {
   ChaklabanBibaran,
   RastriyabanBibaran,
   CommercialbanBibaran,
+  ConfirmationDialoge,
   UpabhoktasamuhaBibaran,
   ReportGenerator,
 } from "../../../components";
@@ -40,6 +41,9 @@ class Bankaprakar extends Component {
       distId: "%",
       perPage: 10,
       page: 0,
+      showDialog: false,
+      item: {},
+      path: "samudayik",
     };
     this.fetchResults = this.fetchResults.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -49,6 +53,8 @@ class Bankaprakar extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -234,6 +240,8 @@ class Bankaprakar extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         switch (path) {
@@ -302,40 +310,83 @@ class Bankaprakar extends Component {
       case "delete": {
         switch (path) {
           case "samudayik": {
-            this.props.deleteSamudayikbanbibaran(item.darta_no);
+            this.setState({ messagebody: "सामुदायिक" });
             break;
           }
           case "dharmik": {
-            this.props.deleteDharmikbanbibaran(item.darta_no);
+            this.setState({ messagebody: "धार्मिक" });
             break;
           }
           case "kabuliyati": {
-            this.props.deleteKabuliyatibanbibaran(item.darta_no);
+            this.setState({ messagebody: "कवुलियती" });
             break;
           }
           case "niji": {
-            this.props.deleteNijibanbibaran(item.darta_no);
+            this.setState({ messagebody: "निजि" });
             break;
           }
           case "sajhedari": {
-            this.props.deleteSajhedaribanbibaran(item.darta_no);
+            this.setState({ messagebody: "साझेदारी" });
             break;
           }
           case "chakla": {
-            this.props.deleteChaklabanbibaran(item.darta_no);
+            this.setState({ messagebody: "चक्ला" });
             break;
           }
           case "rastriya": {
-            this.props.deleteRastriyabanbibaran(item.darta_no);
+            this.setState({ messagebody: "राष्ट्रिय" });
             break;
           }
           case "commercial": {
-            this.props.deleteCommercialbanbibaran(item.darta_no);
+            this.setState({ messagebody: "व्यवसायीक कबुलियति" });
             break;
           }
           default:
-            break;
         }
+        this.setState({ showDialog: !this.state.showDialog });
+        break;
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "samudayik": {
+        this.props.deleteSamudayikbanbibaran(item.darta_no);
+        break;
+      }
+      case "dharmik": {
+        this.props.deleteDharmikbanbibaran(item.darta_no);
+        break;
+      }
+      case "kabuliyati": {
+        this.props.deleteKabuliyatibanbibaran(item.darta_no);
+        break;
+      }
+      case "niji": {
+        this.props.deleteNijibanbibaran(item.darta_no);
+        break;
+      }
+      case "sajhedari": {
+        this.props.deleteSajhedaribanbibaran(item.darta_no);
+        break;
+      }
+      case "chakla": {
+        this.props.deleteChaklabanbibaran(item.darta_no);
+        break;
+      }
+      case "rastriya": {
+        this.props.deleteRastriyabanbibaran(item.darta_no);
+        break;
+      }
+      case "commercial": {
+        this.props.deleteCommercialbanbibaran(item.darta_no);
         break;
       }
       default:
@@ -381,6 +432,7 @@ class Bankaprakar extends Component {
       default:
         break;
     }
+    this.setState({ showDialog: !this.state.showDialog });
   }
   render() {
     const {
@@ -395,11 +447,24 @@ class Bankaprakar extends Component {
       rastriyabanList,
       commercialbanList,
       upabhoktasamuhaList,
+      showDialog,
+      messagebody,
     } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+        <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ " + `${messagebody}` + " वनको विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "samudayikbanlist") && (
           <Fragment>
             <div className="report-filter">
@@ -443,7 +508,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "samudayikbanedit") && (
           <SamudayikbanBibaran.Edit
-            title="सामुदायिक वन पुनः प्रविष्ट"
+            title="सामुदायिक वन शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
@@ -493,7 +558,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "upabhoktasamuhaedit") && (
           <UpabhoktasamuhaBibaran.Edit
-            title="उपभोक्ता समुह पुनः प्रविष्ट"
+            title="उपभोक्ता समुह शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
@@ -515,7 +580,7 @@ class Bankaprakar extends Component {
             </div>
             <DharmikbanBibaran.List
               buttonName="+ धार्मिक बन "
-              title="धर्मिक वन सम्बन्धी विवरण"
+              title="धार्मिक वन सम्बन्धी विवरण"
               pageCount={
                 !isNil(dharmikbanList)
                   ? Math.ceil(dharmikbanList.total / perPage)
@@ -543,7 +608,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "dharmikbanedit") && (
           <DharmikbanBibaran.Edit
-            title="धार्मिक बन पुनः प्रविष्ट"
+            title="धार्मिक बन शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
@@ -593,7 +658,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "kabuliyatibanedit") && (
           <KabuliyatibanBibaran.Edit
-            title="कवुलियती वन पुनः प्रविष्ट"
+            title="कवुलियती वन शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
@@ -643,7 +708,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "nijibanedit") && (
           <NijibanBibaran.Edit
-            title="निजि वन पुनः प्रविष्ट"
+            title="निजि वन शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -693,7 +758,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "sajhedaribanedit") && (
           <SajhedaribanBibaran.Edit
-            title="साझेदारी वन पुनः प्रविष्ट"
+            title="साझेदारी वन शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -743,7 +808,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "chaklabanedit") && (
           <ChaklabanBibaran.Edit
-            title="चक्ला वन पुनः प्रविष्ट"
+            title="चक्ला वन शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -793,7 +858,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "rastriyabanedit") && (
           <RastriyabanBibaran.Edit
-            title="राष्ट्रिय वन पुनः प्रविष्ट"
+            title="राष्ट्रिय वन शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -843,7 +908,7 @@ class Bankaprakar extends Component {
         )}
         {equals(loc, "commercialbanedit") && (
           <CommercialbanBibaran.Edit
-            title="व्यवसायीक कबुलियति वन पुनः प्रविष्ट"
+            title="व्यवसायीक कबुलियति वन शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
