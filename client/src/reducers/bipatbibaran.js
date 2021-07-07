@@ -57,6 +57,17 @@ const updatepaherobibaranSuccess = (state, action) =>
 const updatepaherobibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+//Delete paherobibaran
+const deletepaherobibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletepaherobibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletepaherobibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -84,6 +95,10 @@ export const reducer = createReducer(initialState, {
   [BipatbibaranTypes.UPDATEPAHEROBIBARAN_REQUEST]: updatepaherobibaranRequest,
   [BipatbibaranTypes.UPDATEPAHEROBIBARAN_SUCCESS]: updatepaherobibaranSuccess,
   [BipatbibaranTypes.UPDATEPAHEROBIBARAN_FAILURE]: updatepaherobibaranFailure,
+
+  [BipatbibaranTypes.DELETEPAHEROBIBARAN_REQUEST]: deletepaherobibaranRequest,
+  [BipatbibaranTypes.DELETEPAHEROBIBARAN_SUCCESS]: deletepaherobibaranSuccess,
+  [BipatbibaranTypes.DELETEPAHEROBIBARAN_FAILURE]: deletepaherobibaranFailure,
 
   [BipatbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BipatbibaranTypes.CLEAR_REQUEST]: clearRequest,
