@@ -809,20 +809,20 @@ const create = (baseURL = Config.API_URL) => {
 
   // bipatbibaran
 
-  const getPaherobibaranList = (payload) =>
-    api.post("paheroBibaranList", payload);
+  const getPahirobibaranList = (payload) =>
+    api.post("pahiroBibaranList", payload);
 
-  const getPaherobibaran = (paherobibaranId) =>
-    api.get(`paheroBibaran/${paherobibaranId}`);
+  const getPahirobibaran = (pahirobibaranId) =>
+    api.get(`pahiroBibaran/${pahirobibaranId}`);
 
-  const postPaherobibaranAddNew = (payload) =>
-    api.post("paheroBibaran", payload);
+  const postPahirobibaranAddNew = (payload) =>
+    api.post("pahiroBibaran", payload);
 
-  const postPaherobibaranUpdate = (payload, paherobibaranId) =>
-    api.get(`paheroBibaran/${paherobibaranId}`, payload);
+  const postPahirobibaranUpdate = (payload, pahirobibaranId) =>
+    api.get(`pahiroBibaran/${pahirobibaranId}`, payload);
 
-  const postPaherobibaranDelete = (paherobibaranId) =>
-    api.get(`paheroBibaran/${paherobibaranId}`);
+  const postPahirobibaranDelete = (pahirobibaranId) =>
+    api.get(`pahiroBibaran/${pahirobibaranId}`);
 
   return {
     loginByUsername,
@@ -1088,11 +1088,11 @@ const create = (baseURL = Config.API_URL) => {
     postRojgarSrijanaDelete,
 
     //----------bipatbibaran
-    getPaherobibaranList,
-    getPaherobibaran,
-    postPaherobibaranAddNew,
-    postPaherobibaranUpdate,
-    postPaherobibaranDelete,
+    getPahirobibaranList,
+    getPahirobibaran,
+    postPahirobibaranAddNew,
+    postPahirobibaranUpdate,
+    postPahirobibaranDelete,
   };
 };
 export default {

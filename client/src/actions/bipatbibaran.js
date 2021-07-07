@@ -11,25 +11,25 @@
 import { createActions } from "reduxsauce";
 
 const { Types, Creators } = createActions({
-  fetchallpaherobibaranRequest: ["payload"],
-  fetchallpaherobibaranSuccess: ["response"],
-  fetchallpaherobibaranFailure: null,
+  fetchallpahirobibaranRequest: ["payload"],
+  fetchallpahirobibaranSuccess: ["response"],
+  fetchallpahirobibaranFailure: null,
 
-  fetchpaherobibaranRequest: ["payload"],
-  fetchpaherobibaranSuccess: ["response"],
-  fetchpaherobibaranFailure: null,
+  fetchpahirobibaranRequest: ["payload"],
+  fetchpahirobibaranSuccess: ["response"],
+  fetchpahirobibaranFailure: null,
 
-  addpaherobibaranRequest: ["payload"],
-  addpaherobibaranSuccess: ["response"],
-  addpaherobibaranFailure: null,
+  addpahirobibaranRequest: ["payload"],
+  addpahirobibaranSuccess: ["response"],
+  addpahirobibaranFailure: null,
 
-  updatepaherobibaranRequest: ["payload", "paherobibaranId"],
-  updatepaherobibaranSuccess: ["response"],
-  updatepaherobibaranFailure: null,
+  updatepahirobibaranRequest: ["payload", "pahirobibaranId"],
+  updatepahirobibaranSuccess: ["response"],
+  updatepahirobibaranFailure: null,
 
-  deletepaherobibaranRequest: ["payload", "paherobibaranId"],
-  deletepaherobibaranSuccess: ["response"],
-  deletepaherobibaranFailure: null,
+  deletepahirobibaranRequest: ["payload", "pahirobibaranId"],
+  deletepahirobibaranSuccess: ["response"],
+  deletepahirobibaranFailure: null,
 
   locationsRequest: ["payload"],
   // Clear all caches

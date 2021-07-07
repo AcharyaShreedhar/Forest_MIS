@@ -23,7 +23,7 @@ module.exports = {
       uddar_sankhya: {
         type: Sequelize.STRING,
       },
-      pahero_gayeko_miti: {
+      pahiro_gayeko_miti: {
         type: Sequelize.STRING,
       },
       xeti_bibaran: {
