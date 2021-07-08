@@ -6,6 +6,7 @@ import {
   KarmachariDarbandi,
   Filter,
   ReportGenerator,
+  ConfirmationDialoge,
 } from "../../../components";
 import KarmacharidarbandiActions from "../../../actions/karmacharidarbandi";
 import {
@@ -22,6 +23,9 @@ class Karmacharidarbandi extends Component {
       distId: "%",
       perPage: 10,
       page: 0,
+      showDialog: false,
+      item: {},
+      path: "karmacharidarbandi",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -29,6 +33,8 @@ class Karmacharidarbandi extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -48,7 +54,7 @@ class Karmacharidarbandi extends Component {
     this.setState({ perPage: e });
     this.fetchResults(distId, 0, e);
   }
-  handleDistrict(e, item) {
+  handleDistrict(e) {
     const { perPage } = this.state;
     this.setState({ distId: e });
     this.fetchResults(e, 0, perPage);
@@ -70,6 +76,8 @@ class Karmacharidarbandi extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -80,12 +88,27 @@ class Karmacharidarbandi extends Component {
         break;
       }
       case "delete": {
+        this.setState({ showDialog: !this.state.showDialog });
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "karmacharidarbandi": {
         this.props.deleteKarmacharidarbandi(item.karmachari_darbandi_id);
         break;
       }
       default:
         break;
     }
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd(item) {
@@ -93,11 +116,22 @@ class Karmacharidarbandi extends Component {
   }
 
   render() {
-    const { loc, perPage, karmacharidarbandiList } = this.state;
+    const { loc, perPage, karmacharidarbandiList, showDialog, } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+       <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ कर्मचारी दरबन्दी  हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "karmacharidarbandilist") && (
           <Fragment>
             <div className="report-filter">
