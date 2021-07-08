@@ -819,10 +819,10 @@ const create = (baseURL = Config.API_URL) => {
     api.post("pahiroBibaran", payload);
 
   const postPahirobibaranUpdate = (payload, pahirobibaranId) =>
-    api.get(`pahiroBibaran/${pahirobibaranId}`, payload);
+    api.put(`pahiroBibaran/${pahirobibaranId}`, payload);
 
   const postPahirobibaranDelete = (pahirobibaranId) =>
-    api.get(`pahiroBibaran/${pahirobibaranId}`);
+    api.delete(`pahiroBibaran/${pahirobibaranId}`);
 
   const getBadhibibaranList = (payload) =>
     api.post("badhiBibaranList", payload);
