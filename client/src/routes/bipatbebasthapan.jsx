@@ -22,6 +22,13 @@ const bipatbebasthapanRoutes = [
         name: "pahirobebasthapan",
         auth: true,
         component: PahiroBebasthapan,
+      },
+      {
+        path: "/bipatbebasthapan/pahirobebasthapanedit/:id",
+        title: "PahiroBebasthapan",
+        name: "pahirobebasthapan",
+        auth: true,
+        component: PahiroBebasthapan,
       }, 
     
     {
