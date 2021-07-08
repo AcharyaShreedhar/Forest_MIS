@@ -39,6 +39,18 @@ const { Types, Creators } = createActions({
   fetchbadhibibaranSuccess: ["response"],
   fetchbadhibibaranFailure: null,
 
+  addbadhibibaranRequest: ["payload"],
+  addbadhibibaranSuccess: ["response"],
+  addbadhibibaranFailure: null,
+
+  updatebadhibibaranRequest: ["payload", "badhibibaranId"],
+  updatebadhibibaranSuccess: ["response"],
+  updatebadhibibaranFailure: null,
+
+  deletebadhibibaranRequest: ["payload", "badhibibaranId"],
+  deletebadhibibaranSuccess: ["response"],
+  deletebadhibibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

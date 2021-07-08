@@ -830,6 +830,14 @@ const create = (baseURL = Config.API_URL) => {
   const getBadhibibaran = (badhibibaranId) =>
     api.get(`badhiBibaran/${badhibibaranId}`);
 
+  const postBadhibibaranAddNew = (payload) => api.post("badhiBibaran", payload);
+
+  const postBadhibibaranUpdate = (payload, badhibibaranId) =>
+    api.get(`badhiBibaran/${badhibibaranId}`, payload);
+
+  const postBadhibibaranDelete = (badhibibaranId) =>
+    api.delete(`badhiBibaran/${badhibibaranId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1101,6 +1109,9 @@ const create = (baseURL = Config.API_URL) => {
     postPahirobibaranDelete,
     getBadhibibaranList,
     getBadhibibaran,
+    postBadhibibaranAddNew,
+    postBadhibibaranUpdate,
+    postBadhibibaranDelete,
   };
 };
 export default {

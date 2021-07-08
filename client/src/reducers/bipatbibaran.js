@@ -65,6 +65,8 @@ const deletepahirobibaranSuccess = (state, action) =>
     ...state,
     status: "done",
   });
+const deletepahirobibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 //badhi bibaran
 const fetchallbadhibibaranRequest = (state, action) =>
@@ -93,7 +95,37 @@ const fetchbadhibibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-const deletepahirobibaranFailure = (state, action) =>
+// add badhibibaran
+const addbadhibibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbadhibibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbadhibibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update badhibibaran
+const updatebadhibibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebadhibibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebadhibibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete badhibibaran
+const deletebadhibibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebadhibibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebadhibibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 const locationsRequest = (state, action) => {
@@ -135,6 +167,18 @@ export const reducer = createReducer(initialState, {
   [BipatbibaranTypes.FETCHBADHIBIBARAN_REQUEST]: fetchbadhibibaranRequest,
   [BipatbibaranTypes.FETCHBADHIBIBARAN_SUCCESS]: fetchbadhibibaranSuccess,
   [BipatbibaranTypes.FETCHBADHIBIBARAN_FAILURE]: fetchbadhibibaranFailure,
+
+  [BipatbibaranTypes.ADDBADHIBIBARAN_REQUEST]: addbadhibibaranRequest,
+  [BipatbibaranTypes.ADDBADHIBIBARAN_SUCCESS]: addbadhibibaranSuccess,
+  [BipatbibaranTypes.ADDBADHIBIBARAN_FAILURE]: addbadhibibaranFailure,
+
+  [BipatbibaranTypes.UPDATEBADHIBIBARAN_REQUEST]: updatebadhibibaranRequest,
+  [BipatbibaranTypes.UPDATEBADHIBIBARAN_SUCCESS]: updatebadhibibaranSuccess,
+  [BipatbibaranTypes.UPDATEBADHIBIBARAN_FAILURE]: updatebadhibibaranFailure,
+
+  [BipatbibaranTypes.DELETEBADHIBIBARAN_REQUEST]: deletebadhibibaranRequest,
+  [BipatbibaranTypes.DELETEBADHIBIBARAN_SUCCESS]: deletebadhibibaranSuccess,
+  [BipatbibaranTypes.DELETEBADHIBIBARAN_FAILURE]: deletebadhibibaranFailure,
 
   [BipatbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BipatbibaranTypes.CLEAR_REQUEST]: clearRequest,
