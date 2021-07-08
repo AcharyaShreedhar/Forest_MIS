@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Dropdown } from "../../components";
+import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
@@ -29,12 +29,23 @@ class Add extends Component {
       dist_id: "",
       created_by: "",
       updated_by: "",
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleAtikramanKisim = this.handleAtikramanKisim.bind(this);
     this.handleAtikramanAbastha = this.handleAtikramanAbastha.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -90,11 +101,22 @@ class Add extends Component {
       atikraman_prayojan,
       samrachana_bibaran,
       atikraman_abastha,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="थप"
+            body="के तपाईँ वनक्षेत्र अतिक्रमण सम्बन्धि विवरण
+ थप गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -173,7 +195,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
