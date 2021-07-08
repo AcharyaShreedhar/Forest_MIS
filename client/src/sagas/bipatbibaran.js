@@ -4,53 +4,53 @@ import { history } from "../reducers";
 import { isNil } from "ramda";
 import BipatbibaranActions from "../actions/bipatbibaran";
 
-export function* fetchallpaherobibaranRequest(api, action) {
+export function* fetchallpahirobibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
-  const response = yield api.getPaherobibaranList(payloaddata);
+  const response = yield api.getPahirobibaranList(payloaddata);
   if (response.ok) {
-    yield put(BipatbibaranActions.fetchallpaherobibaranSuccess(response.data));
+    yield put(BipatbibaranActions.fetchallpahirobibaranSuccess(response.data));
   } else {
-    yield put(BipatbibaranActions.fetchallpaherobibaranFailure());
+    yield put(BipatbibaranActions.fetchallpahirobibaranFailure());
   }
 }
 
-export function* fetchpaherobibaranRequest(api, action) {
-  const paherobibaranId = action.payload;
+export function* fetchpahirobibaranRequest(api, action) {
+  const pahirobibaranId = action.payload;
 
-  const response = yield api.getPaherobibaran(paherobibaranId);
+  const response = yield api.getPahirobibaran(pahirobibaranId);
 
   if (response.ok) {
-    yield put(BipatbibaranActions.fetchpaherobibaranSuccess(response.data));
+    yield put(BipatbibaranActions.fetchpahirobibaranSuccess(response.data));
   } else {
-    yield put(BipatbibaranActions.fetchpaherobibaranFailure());
+    yield put(BipatbibaranActions.fetchpahirobibaranFailure());
   }
 }
 
-// Add paherobibaran
-export function* addpaherobibaranRequest(api, action) {
+// Add pahirobibaran
+export function* addpahirobibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postPaherobibaranAddNew(
-    payload.paherobibaran.data
+  const response = yield api.postPahirobibaranAddNew(
+    payload.pahirobibaran.data
   );
 
   if (response.ok) {
     toast.success("सफलतापुर्वक पहिरो बिबरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallpaherobibaranRequest(api, {
+    yield fetchallpahirobibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "pahero_gayeko_miti",
+      name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/bipatbebasthapan/paherobebasthapanlist");
-    yield put(BipatbibaranActions.addpaherobibaranSuccess(response.data));
+    yield call(history.push, "/bipatbebasthapan/pahirobebasthapanlist");
+    yield put(BipatbibaranActions.addpahirobibaranSuccess(response.data));
   } else {
-    yield put(BipatbibaranActions.addpaherobibaranFailure());
+    yield put(BipatbibaranActions.addpahirobibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
@@ -61,30 +61,30 @@ export function* addpaherobibaranRequest(api, action) {
 }
 
 // Update Nijibanbibaran
-export function* updatepaherobibaranRequest(api, action) {
-  const { payload, paherobibaranId } = action;
+export function* updatepahirobibaranRequest(api, action) {
+  const { payload, pahirobibaranId } = action;
 
-  const response = yield api.postPaherobibaranUpdate(
-    payload.pahero.data,
-    paherobibaranId
+  const response = yield api.postPahirobibaranUpdate(
+    payload.pahiro.data,
+    pahirobibaranId
   );
 
   if (response.ok) {
     toast.success("सफलतापुर्वक पहिरो बिबरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallpaherobibaranRequest(api, {
+    yield fetchallpahirobibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "pahero_gayeko_miti",
+      name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/bipatbebasthapan/paherobebasthapanlist");
-    yield put(BipatbibaranActions.updatepaherobibaranSuccess(response.data));
+    yield call(history.push, "/bipatbebasthapan/pahirobebasthapanlist");
+    yield put(BipatbibaranActions.updatepahirobibaranSuccess(response.data));
   } else {
-    yield put(BipatbibaranActions.updatepaherobibaranFailure());
+    yield put(BipatbibaranActions.updatepahirobibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
@@ -94,27 +94,27 @@ export function* updatepaherobibaranRequest(api, action) {
   }
 }
 
-// Delete paherobibaran
-export function* deletepaherobibaranRequest(api, action) {
+// Delete pahirobibaran
+export function* deletepahirobibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postPaherobibaranDelete(payload);
+  const response = yield api.postPahirobibaranDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक पहिरो बिबरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallpaherobibaranRequest(api, {
+    yield fetchallpahirobibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "pahero_gayeko_miti",
+      name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
     });
-    yield put(BipatbibaranActions.deletepaherobibaranSuccess(response.data));
+    yield put(BipatbibaranActions.deletepahirobibaranSuccess(response.data));
   } else {
-    yield put(BipatbibaranActions.deletepaherobibaranFailure());
+    yield put(BipatbibaranActions.deletepahirobibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {

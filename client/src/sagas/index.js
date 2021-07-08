@@ -309,11 +309,11 @@ import {
 
 //bipatbibaran
 import {
-  fetchallpaherobibaranRequest,
-  fetchpaherobibaranRequest,
-  addpaherobibaranRequest,
-  updatepaherobibaranRequest,
-  deletepaherobibaranRequest,
+  fetchallpahirobibaranRequest,
+  fetchpahirobibaranRequest,
+  addpahirobibaranRequest,
+  updatepahirobibaranRequest,
+  deletepahirobibaranRequest,
 } from "./bipatbibaran";
 
 const api = API.create();
@@ -1587,28 +1587,28 @@ export default function* root() {
     ),
     //-----------------bipatbibaran
     takeLatest(
-      BipatbibaranTypes.FETCHALLPAHEROBIBARAN_REQUEST,
-      fetchallpaherobibaranRequest,
+      BipatbibaranTypes.FETCHALLPAHIROBIBARAN_REQUEST,
+      fetchallpahirobibaranRequest,
       api
     ),
     takeLatest(
-      BipatbibaranTypes.FETCHPAHEROBIBARAN_REQUEST,
-      fetchpaherobibaranRequest,
+      BipatbibaranTypes.FETCHPAHIROBIBARAN_REQUEST,
+      fetchpahirobibaranRequest,
       api
     ),
     takeLatest(
-      BipatbibaranTypes.ADDPAHEROBIBARAN_REQUEST,
-      addpaherobibaranRequest,
+      BipatbibaranTypes.ADDPAHIROBIBARAN_REQUEST,
+      addpahirobibaranRequest,
       api
     ),
     takeLatest(
-      BipatbibaranTypes.UPDATEPAHEROBIBARAN_REQUEST,
-      updatepaherobibaranRequest,
+      BipatbibaranTypes.UPDATEPAHIROBIBARAN_REQUEST,
+      updatepahirobibaranRequest,
       api
     ),
     takeLatest(
-      BipatbibaranTypes.DELETEPAHEROBIBARAN_REQUEST,
-      deletepaherobibaranRequest,
+      BipatbibaranTypes.DELETEPAHIROBIBARAN_REQUEST,
+      deletepahirobibaranRequest,
       api
     ),
   ]);

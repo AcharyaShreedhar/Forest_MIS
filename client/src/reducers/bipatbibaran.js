@@ -8,64 +8,64 @@ const initialState = Immutable({
   token: "",
 });
 
-//----------- paherobibaran
-const fetchallpaherobibaranRequest = (state, action) =>
+//----------- pahirobibaran
+const fetchallpahirobibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
-const fetchallpaherobibaranSuccess = (state, action) => {
+const fetchallpahirobibaranSuccess = (state, action) => {
   return state.merge({
     ...state,
     status: "done",
-    allpaherobibaranData: action.response,
+    allpahirobibaranData: action.response,
   });
 };
-const fetchallpaherobibaranFailure = (state, action) => {
+const fetchallpahirobibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-const fetchpaherobibaranRequest = (state, action) =>
+const fetchpahirobibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
-const fetchpaherobibaranSuccess = (state, action) => {
+const fetchpahirobibaranSuccess = (state, action) => {
   return state.merge({
     ...state,
     status: "done",
-    paherobibaranData: action.response,
+    pahirobibaranData: action.response,
   });
 };
-const fetchpaherobibaranFailure = (state, action) => {
+const fetchpahirobibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-// add paherobibaran
-const addpaherobibaranRequest = (state, action) =>
+// add pahirobibaran
+const addpahirobibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
-const addpaherobibaranSuccess = (state, action) =>
+const addpahirobibaranSuccess = (state, action) =>
   state.merge({
     ...state,
     status: "done",
   });
-const addpaherobibaranFailure = (state, action) =>
+const addpahirobibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-//Update paherobibaran
-const updatepaherobibaranRequest = (state, action) =>
+//Update pahirobibaran
+const updatepahirobibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
-const updatepaherobibaranSuccess = (state, action) =>
+const updatepahirobibaranSuccess = (state, action) =>
   state.merge({
     ...state,
     status: "done",
   });
-const updatepaherobibaranFailure = (state, action) =>
+const updatepahirobibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-//Delete paherobibaran
-const deletepaherobibaranRequest = (state, action) =>
+//Delete pahirobibaran
+const deletepahirobibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
-const deletepaherobibaranSuccess = (state, action) =>
+const deletepahirobibaranSuccess = (state, action) =>
   state.merge({
     ...state,
     status: "done",
   });
-const deletepaherobibaranFailure = (state, action) =>
+const deletepahirobibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 const locationsRequest = (state, action) => {
@@ -80,25 +80,25 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
-  [BipatbibaranTypes.FETCHALLPAHEROBIBARAN_REQUEST]: fetchallpaherobibaranRequest,
-  [BipatbibaranTypes.FETCHALLPAHEROBIBARAN_SUCCESS]: fetchallpaherobibaranSuccess,
-  [BipatbibaranTypes.FETCHALLPAHEROBIBARAN_FAILURE]: fetchallpaherobibaranFailure,
+  [BipatbibaranTypes.FETCHALLPAHIROBIBARAN_REQUEST]: fetchallpahirobibaranRequest,
+  [BipatbibaranTypes.FETCHALLPAHIROBIBARAN_SUCCESS]: fetchallpahirobibaranSuccess,
+  [BipatbibaranTypes.FETCHALLPAHIROBIBARAN_FAILURE]: fetchallpahirobibaranFailure,
 
-  [BipatbibaranTypes.FETCHPAHEROBIBARAN_REQUEST]: fetchpaherobibaranRequest,
-  [BipatbibaranTypes.FETCHPAHEROBIBARAN_SUCCESS]: fetchpaherobibaranSuccess,
-  [BipatbibaranTypes.FETCHPAHEROBIBARAN_FAILURE]: fetchpaherobibaranFailure,
+  [BipatbibaranTypes.FETCHPAHIROBIBARAN_REQUEST]: fetchpahirobibaranRequest,
+  [BipatbibaranTypes.FETCHPAHIROBIBARAN_SUCCESS]: fetchpahirobibaranSuccess,
+  [BipatbibaranTypes.FETCHPAHIROBIBARAN_FAILURE]: fetchpahirobibaranFailure,
 
-  [BipatbibaranTypes.ADDPAHEROBIBARAN_REQUEST]: addpaherobibaranRequest,
-  [BipatbibaranTypes.ADDPAHEROBIBARAN_SUCCESS]: addpaherobibaranSuccess,
-  [BipatbibaranTypes.ADDPAHEROBIBARAN_FAILURE]: addpaherobibaranFailure,
+  [BipatbibaranTypes.ADDPAHIROBIBARAN_REQUEST]: addpahirobibaranRequest,
+  [BipatbibaranTypes.ADDPAHIROBIBARAN_SUCCESS]: addpahirobibaranSuccess,
+  [BipatbibaranTypes.ADDPAHIROBIBARAN_FAILURE]: addpahirobibaranFailure,
 
-  [BipatbibaranTypes.UPDATEPAHEROBIBARAN_REQUEST]: updatepaherobibaranRequest,
-  [BipatbibaranTypes.UPDATEPAHEROBIBARAN_SUCCESS]: updatepaherobibaranSuccess,
-  [BipatbibaranTypes.UPDATEPAHEROBIBARAN_FAILURE]: updatepaherobibaranFailure,
+  [BipatbibaranTypes.UPDATEPAHIROBIBARAN_REQUEST]: updatepahirobibaranRequest,
+  [BipatbibaranTypes.UPDATEPAHIROBIBARAN_SUCCESS]: updatepahirobibaranSuccess,
+  [BipatbibaranTypes.UPDATEPAHIROBIBARAN_FAILURE]: updatepahirobibaranFailure,
 
-  [BipatbibaranTypes.DELETEPAHEROBIBARAN_REQUEST]: deletepaherobibaranRequest,
-  [BipatbibaranTypes.DELETEPAHEROBIBARAN_SUCCESS]: deletepaherobibaranSuccess,
-  [BipatbibaranTypes.DELETEPAHEROBIBARAN_FAILURE]: deletepaherobibaranFailure,
+  [BipatbibaranTypes.DELETEPAHIROBIBARAN_REQUEST]: deletepahirobibaranRequest,
+  [BipatbibaranTypes.DELETEPAHIROBIBARAN_SUCCESS]: deletepahirobibaranSuccess,
+  [BipatbibaranTypes.DELETEPAHIROBIBARAN_FAILURE]: deletepahirobibaranFailure,
 
   [BipatbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BipatbibaranTypes.CLEAR_REQUEST]: clearRequest,
