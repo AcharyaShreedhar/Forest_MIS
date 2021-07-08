@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -361,14 +360,5 @@ class Add extends Component {
   }
 }
 
-Add.propTypes = {
-  darta_no: PropTypes.number,
-  onClose: PropTypes.func,
-};
-
-Add.defaultProps = {
-  darta_no: 1,
-  onClose: () => {},
-};
 
 export default Add;
