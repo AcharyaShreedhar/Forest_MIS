@@ -2,7 +2,8 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanxetraanyaprayojanBibaran, Filter, ReportGenerator } from "../../../components";
+import { BanxetraanyaprayojanBibaran, Filter, ReportGenerator, ConfirmationDialoge,
+} from "../../../components";
 import BanbibaranActions from "../../../actions/banbibaran";
 import { banxetraanyaprayojanHeadings, districtList } from "../../../services/config";
 
@@ -15,7 +16,10 @@ class Banxetraanyaprayojan extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "banxetraanyaprayojan",
        };
        this.handleSelectMenu = this.handleSelectMenu.bind(this);
        this.handleAdd = this.handleAdd.bind(this);
@@ -25,6 +29,8 @@ class Banxetraanyaprayojan extends Component {
        this.handlePageChange = this.handlePageChange.bind(this);
        this.handlePer = this.handlePer.bind(this);
        this.fetchResults = this.fetchResults.bind(this);
+       this.handleDelete = this.handleDelete.bind(this);
+       this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -84,7 +90,9 @@ class Banxetraanyaprayojan extends Component {
   }
 
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -95,23 +103,49 @@ class Banxetraanyaprayojan extends Component {
       }
 
       case "delete": {
-        this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
   }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "banxetraanyaprayojan": {
+        this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id);
+        break;
+      }
+      default:
+        break;
+    }
+    this.setState({ showDialog: !this.state.showDialog });
+  }
 
   handleAdd() {
     this.props.history.push("/banbibaran/banxetraanyaprayojanadd/new");
   }
   render() {
-    const { loc, perPage, banxetraanyaprayojanList } = this.state;
+    const { loc, perPage, banxetraanyaprayojanList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+       <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "banxetraanyaprayojanlist") && (
           <Fragment>
             <div className="report-filter">
