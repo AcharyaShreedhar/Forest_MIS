@@ -100,7 +100,7 @@ const banpaidawarBikribitaranRoutes = require("./app/routes/banpaidawarBikribitr
 const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes");
 const uddhyamBibaranRoutes = require("./app/routes/uddhyamBibaranRoutes");
 
-const paheroBibaranRoutes = require("./app/routes/paherobibaranRoutes");
+const pahiroBibaranRoutes = require("./app/routes/pahirobibaranRoutes");
 const badhiBibaranRoutes = require("./app/routes/badhibibaranRoutes");
 
 const nadikinarSamrakshyanRoutes = require("./app/routes/nadikinarSamrakshyanRoutes");
@@ -151,7 +151,7 @@ app.use("/api/v1", jadibutiRoutes);
 app.use("/api/v1", rastriyabanBibaranRoutes);
 app.use("/api/v1", commercialkabuliyatibanBibaranRoutes);
 app.use("/api/v1", chaklabanBibaranRoutes);
-app.use("/api/v1", paheroBibaranRoutes);
+app.use("/api/v1", pahiroBibaranRoutes);
 app.use("/api/v1", badhiBibaranRoutes);
 app.use("/api/v1", nadikinarSamrakshyanRoutes);
 
