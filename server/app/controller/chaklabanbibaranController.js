@@ -107,7 +107,7 @@ async function updateChaklabanBibaran(req, res) {
 
 //Controller for deleting a ChaklabanBibaran
 async function deleteChaklabanBibaran(req, res) {
-  const deleteChaklabanBibaranQuery = `DELETE  FROM chaklaban_bibarans where chaklaban_bibaran_id=?`;
+  const deleteChaklabanBibaranQuery = `DELETE  FROM chaklaban_bibarans where darta_no=?`;
   pool.query(
     deleteChaklabanBibaranQuery,
     [req.params.chaklabanBibaranId],
