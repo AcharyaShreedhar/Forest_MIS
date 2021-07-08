@@ -107,7 +107,7 @@ async function updateCommercialkabuliyatibanBibaran(req, res) {
 
 //Controller for deleting a CommercialkabuliyatibanBibaran
 async function deleteCommercialkabuliyatibanBibaran(req, res) {
-  const deleteCommercialkabuliyatibanBibaranQuery = `DELETE  FROM commercialkabuliyatiban_bibarans where commercialkabuliyatiban_id=?`;
+  const deleteCommercialkabuliyatibanBibaranQuery = `DELETE  FROM commercialkabuliyatiban_bibarans where darta_no=?`;
   pool.query(
     deleteCommercialkabuliyatibanBibaranQuery,
     [req.params.commercialkabuliyatibanBibaranId],
