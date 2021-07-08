@@ -9,7 +9,14 @@ import BipatbibaranActions from "../../actions/bipatbibaran";
 
 export class Bipatbebasthapan extends Component {
   componentDidMount() {
-    
+    this.props.fetchallPahirobebasthapan({
+        fromDate: "2075-01-01",
+        toDate: "2090-12-30",
+        distId: "%",
+        name: "pahiro_gayeko_miti",
+        page: 0,
+        perPage: 10,
+    });
   }
 
   render() {
@@ -63,6 +70,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+fetchallPahirobebasthapan: (payload) =>
+    dispatch(BipatbibaranActions.fetchallpahirobibaranRequest(payload)),
   
 });
 
