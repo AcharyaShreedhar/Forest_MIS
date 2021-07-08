@@ -16,6 +16,13 @@ const bipatbebasthapanRoutes = [
         auth: true,
         component: PahiroBebasthapan,
       }, 
+      {
+        path: "/bipatbebasthapan/pahirobebasthapanadd/new",
+        title: "PahiroBebasthapan",
+        name: "pahirobebasthapan",
+        auth: true,
+        component: PahiroBebasthapan,
+      }, 
     
     {
       redirect: true,

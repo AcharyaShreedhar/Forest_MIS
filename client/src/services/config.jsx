@@ -406,6 +406,17 @@ const rojgarsrijanaHeadings = [
   "कैफियत",
 ];
 
+const pahirobebasthapanHeadings = [
+  "पहिरो गएको मिति",
+  "पहिरो गएको स्थान",
+  "उद्दार संख्या",
+  "घाइते मानव संख्या",
+  "मृत मानव संख्या",
+  "क्षेति विवरण",
+  "मर्ने वन्यजन्तु संख्या",
+  "बोटविरुवा क्षेति संख्या",
+]
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -439,4 +450,5 @@ export {
   banbikaskaryabibaranHeadings,
   samajikkaryabibaranHeadings,
   rojgarsrijanaHeadings,
+  pahirobebasthapanHeadings,
 };
