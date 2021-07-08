@@ -51,8 +51,7 @@ function List(props) {
                 <tr key={`${emp.emp_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>
-                    {emp.emp_fname_nep}
-                    {emp.emp_lname_nep}
+                    {emp.emp_fname_nep} {emp.emp_lname_nep}
                   </td>
                   <td>{emp.emp_add_perm_prov} </td>
                   <td>{emp.emp_add_perm_dist} </td>
@@ -65,8 +64,7 @@ function List(props) {
                   <td>{emp.emp_add_temp_ward} </td>
                   <td>{emp.emp_add_temp_tole} </td>
                   <td>
-                    {emp.emp_phone1}
-                    {emp.emp_phone2}
+                    {emp.emp_phone1}  {emp.emp_phone2}
                   </td>
                   <td>{emp.emp_email} </td>
                   <td>{emp.emp_office_id} </td>
