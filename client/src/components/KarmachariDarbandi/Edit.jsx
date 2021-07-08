@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Button, Input,ConfirmationDialoge } from "../../components";
 
 class Edit extends Component {
@@ -129,14 +128,5 @@ class Edit extends Component {
   }
 }
 
-Edit.propTypes = {
-  darta_no: PropTypes.number,
-  onClose: PropTypes.func,
-};
-
-Edit.defaultProps = {
-  darta_no: 1,
-  onClose: () => {},
-};
 
 export default Edit;
