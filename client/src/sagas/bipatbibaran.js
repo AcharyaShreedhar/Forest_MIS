@@ -60,7 +60,7 @@ export function* addpahirobibaranRequest(api, action) {
   }
 }
 
-// Update Nijibanbibaran
+// Update pahiro bibaran
 export function* updatepahirobibaranRequest(api, action) {
   const { payload, pahirobibaranId } = action;
 
@@ -170,6 +170,40 @@ export function* addbadhibibaranRequest(api, action) {
     yield put(BipatbibaranActions.addbadhibibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.addbadhibibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update badhibibaran
+export function* updatebadhibibaranRequest(api, action) {
+  const { payload, badhibibaranId } = action;
+
+  const response = yield api.postBadhibibaranUpdate(
+    payload.badhibibaran.data,
+    badhibibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बाढी बिबरण शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbadhibibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "badhi_aayeko_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/bipatbebasthapan/badhibebasthapanlist");
+    yield put(BipatbibaranActions.updatebadhibibaranSuccess(response.data));
+  } else {
+    yield put(BipatbibaranActions.updatebadhibibaranFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
