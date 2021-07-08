@@ -6,6 +6,7 @@ import {
   BanxetraAtikraman,
   Filter,
   ReportGenerator,
+  ConfirmationDialoge,
 } from "../../../components";
 import BanxetraatikramanActions from "../../../actions/banxetraatikraman";
 import {
@@ -23,7 +24,10 @@ class Banxetraatikraman extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "banxetraatikraman",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -33,6 +37,8 @@ class Banxetraatikraman extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -92,6 +98,8 @@ class Banxetraatikraman extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -102,7 +110,7 @@ class Banxetraatikraman extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteBanxetraatikraman(item.banxetra_atikraman_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
@@ -110,16 +118,43 @@ class Banxetraatikraman extends Component {
     }
   }
 
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "banxetraatikraman": {
+        this.props.deleteBanxetraatikraman(item.banxetra_atikraman_id);
+        break;
+      }
+      default:
+        break;
+    }
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+
   handleAdd() {
     this.props.history.push("/banbibaran/banxetraatikramanadd/new");
   }
 
   render() {
-    const { loc, perPage, banxetraatikramanList } = this.state;
+    const { loc, perPage, banxetraatikramanList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ वनक्षेत्र अतिक्रमण सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "banxetraatikramanlist") && (
           <Fragment>
             <div className="report-filter">
