@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, Dropdown } from "../../components";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 
@@ -20,10 +20,20 @@ class Edit extends Component {
       lav_jana: props.history.location.item.lav_jana,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -74,11 +84,21 @@ class Edit extends Component {
       main_species,
       ghardhuri,
       lav_jana,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="शंसोधन"
+            body="के तपाईँ व्यवसायीक कबुलियति वनको विवरण शंसोधन गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -152,7 +172,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
@@ -164,10 +184,12 @@ class Edit extends Component {
 
 Edit.propTypes = {
   darta_no: PropTypes.number,
+  onClose: PropTypes.func,
 };
 
 Edit.defaultProps = {
   darta_no: 1,
+  onClose: () => {},
 };
 
 export default Edit;
