@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BandadeloBibaran, Filter, ReportGenerator } from "../../../components";
+import { BandadeloBibaran, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
 import { bandadeloHeadings, districtList } from "../../../services/config";
 
@@ -15,7 +15,10 @@ class Bandadelo extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "bandadelo",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -25,6 +28,8 @@ class Bandadelo extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -84,17 +89,19 @@ class Bandadelo extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
-          pathname: `/banbibaran/bandadeloedit/${item.bandadelo_biabaran_id}`,
+          pathname: `/banbibaran/bandadeloedit/${item.bandadelo_bibaran_id}`,
           item,
         });
 
         break;
       }
       case "delete": {
-        this.props.deleteBandadelo(item.bandadelo_bibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
@@ -102,16 +109,43 @@ class Bandadelo extends Component {
     }
   }
 
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "bandadelo": {
+        this.props.deleteBandadelo(item.bandadelo_bibaran_id);
+        break;
+      }
+      default:
+        break;
+    }
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+
   handleAdd() {
     this.props.history.push("/banbibaran/bandadeloadd/new");
   }
 
   render() {
-    const { loc, perPage, bandadelobibaranList } = this.state;
+    const { loc, perPage, bandadelobibaranList, showDialog, } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ वनडढेलो सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "bandadelolist") && (
           <Fragment>
             <div className="report-filter">
