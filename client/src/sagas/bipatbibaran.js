@@ -124,6 +124,7 @@ export function* deletepahirobibaranRequest(api, action) {
   }
 }
 
+//-------------- badhi bibaran
 export function* fetchallbadhibibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -132,5 +133,17 @@ export function* fetchallbadhibibaranRequest(api, action) {
     yield put(BipatbibaranActions.fetchallbadhibibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.fetchallbadhibibaranFailure());
+  }
+}
+
+export function* fetchbadhibibaranRequest(api, action) {
+  const badhibibaranId = action.payload;
+
+  const response = yield api.getBadhibibaran(badhibibaranId);
+
+  if (response.ok) {
+    yield put(BipatbibaranActions.fetchbadhibibaranSuccess(response.data));
+  } else {
+    yield put(BipatbibaranActions.fetchbadhibibaranFailure());
   }
 }
