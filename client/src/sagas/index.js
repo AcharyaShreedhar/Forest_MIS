@@ -314,6 +314,7 @@ import {
   addpahirobibaranRequest,
   updatepahirobibaranRequest,
   deletepahirobibaranRequest,
+  fetchallbadhibibaranRequest,
 } from "./bipatbibaran";
 
 const api = API.create();
@@ -1609,6 +1610,11 @@ export default function* root() {
     takeLatest(
       BipatbibaranTypes.DELETEPAHIROBIBARAN_REQUEST,
       deletepahirobibaranRequest,
+      api
+    ),
+    takeLatest(
+      BipatbibaranTypes.FETCHALLBADHIBIBARAN_REQUEST,
+      fetchallbadhibibaranRequest,
       api
     ),
   ]);

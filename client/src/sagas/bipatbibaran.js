@@ -123,3 +123,14 @@ export function* deletepahirobibaranRequest(api, action) {
     );
   }
 }
+
+export function* fetchallbadhibibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBadhibibaranList(payloaddata);
+  if (response.ok) {
+    yield put(BipatbibaranActions.fetchallbadhibibaranSuccess(response.data));
+  } else {
+    yield put(BipatbibaranActions.fetchallbadhibibaranFailure());
+  }
+}
