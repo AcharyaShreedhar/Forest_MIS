@@ -147,3 +147,34 @@ export function* fetchbadhibibaranRequest(api, action) {
     yield put(BipatbibaranActions.fetchbadhibibaranFailure());
   }
 }
+
+// Add badhibibaran
+export function* addbadhibibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBadhibibaranAddNew(payload.badhibibaran.data);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बाढी बिबरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbadhibibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "badhi_aayeko_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/bipatbebasthapan/badhibebasthapanlist");
+    yield put(BipatbibaranActions.addbadhibibaranSuccess(response.data));
+  } else {
+    yield put(BipatbibaranActions.addbadhibibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
