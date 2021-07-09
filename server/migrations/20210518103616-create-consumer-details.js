@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         type: Sequelize.INTEGER,
       },
       registration_no: {
@@ -16,9 +16,6 @@ module.exports = {
       },
 
       registration_date: {
-        type: Sequelize.STRING,
-      },
-      consumer_group_name: {
         type: Sequelize.STRING,
       },
       ghardhuri_dalit: {
