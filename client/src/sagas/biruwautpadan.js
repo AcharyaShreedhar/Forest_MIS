@@ -256,7 +256,10 @@ export function* addbrixyaropanRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbrixyaropanRequest(api, {
-      name: "brixyaropan_thegana",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "brixyaropan_miti",
       page: 0,
       perPage: 10,
     });
@@ -286,6 +289,9 @@ export function* updatebrixyaropanRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbrixyaropanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
       name: "brixyaropan_thegana",
       page: 0,
       perPage: 10,
