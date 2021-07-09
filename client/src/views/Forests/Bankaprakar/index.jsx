@@ -345,7 +345,6 @@ class Bankaprakar extends Component {
         }
         this.setState({ showDialog: !this.state.showDialog });
         break;
-        break;
       }
       default:
         break;
@@ -428,6 +427,9 @@ class Bankaprakar extends Component {
       case "commercialban": {
         this.props.history.push("/forests/commercialbanadd/new");
         break;
+      }
+      case "upabhoktasamuha": {
+        this.props.history.push("/forests/upabhoktasamuhaadd/new");
       }
 
       default:
@@ -1102,6 +1104,9 @@ const mapDispatchToProps = (dispatch) => ({
   //--------------------------Upabhoktasamuhabibaran
   fetchallUpabhoktasamuhabibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallconsumergroupdetailsRequest(payload)),
+
+  addUpabhoktasamuhabibaran: (payload) =>
+    dispatch(BankaprakarActions.addconsumergroupdetailsRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);

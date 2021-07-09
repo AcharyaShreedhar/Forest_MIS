@@ -801,7 +801,7 @@ export function* addconsumergroupdetailsRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "darta_miti",
+      name: "registration_date",
       page: 0,
       perPage: 10,
     });
@@ -835,7 +835,7 @@ export function* updateconsumergroupdetailsRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "darta_miti",
+      name: "registration_date",
       page: 0,
       perPage: 10,
     });
@@ -1091,12 +1091,9 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success(
-      "सफलतापुर्वक व्यवसायिक कबुलियाती वन शंसोधन भयो !!!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
+    toast.success("सफलतापुर्वक व्यवसायिक कबुलियाती वन शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallcommercialkabuliyatibanbibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -1174,15 +1171,11 @@ export function* fetchallsajhedaribanbibaranRequest(api, action) {
 export function* fetchsajhedaribanbibaranRequest(api, action) {
   const sajhedaribanBibaranId = action.payload;
 
-  const response = yield api.getSajhedaribanBibaran(
-    sajhedaribanBibaranId
-  );
+  const response = yield api.getSajhedaribanBibaran(sajhedaribanBibaranId);
 
   if (response.ok) {
     yield put(
-      BankaprakarActions.fetchsajhedaribanbibaranSuccess(
-        response.data
-      )
+      BankaprakarActions.fetchsajhedaribanbibaranSuccess(response.data)
     );
   } else {
     yield put(BankaprakarActions.fetchsajhedaribanbibaranFailure());
@@ -1209,9 +1202,7 @@ export function* addsajhedaribanbibaranRequest(api, action) {
       perPage: 10,
     });
     yield call(history.push, "/forests/sajhedaribanlist");
-    yield put(
-      BankaprakarActions.addsajhedaribanbibaranSuccess(response.data)
-    );
+    yield put(BankaprakarActions.addsajhedaribanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.addsajhedaribanbibaranFailure());
     toast.error(
@@ -1223,7 +1214,6 @@ export function* addsajhedaribanbibaranRequest(api, action) {
   }
 }
 
-
 export function* updatesajhedaribanbibaranRequest(api, action) {
   const { payload, sajhedaribanbibaranId } = action;
 
@@ -1233,12 +1223,9 @@ export function* updatesajhedaribanbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success(
-      "सफलतापुर्वक साझेदारी वन शंसोधन भयो !!!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
+    toast.success("सफलतापुर्वक साझेदारी वन शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallsajhedaribanbibaranRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -1249,9 +1236,7 @@ export function* updatesajhedaribanbibaranRequest(api, action) {
     });
     yield call(history.push, "/forests/sajhedaribanlist");
     yield put(
-      BankaprakarActions.updatesajhedaribanbibaranSuccess(
-        response.data
-      )
+      BankaprakarActions.updatesajhedaribanbibaranSuccess(response.data)
     );
   } else {
     yield put(BankaprakarActions.updatesajhedaribanbibaranFailure());
@@ -1264,14 +1249,10 @@ export function* updatesajhedaribanbibaranRequest(api, action) {
   }
 }
 
-
-
 export function* deletesajhedaribanbibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBankaprakarSajhedaribanbibaranDelete(
-    payload
-  );
+  const response = yield api.postBankaprakarSajhedaribanbibaranDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक साझेदारी वन हटाईयो !!!!!", {
@@ -1286,9 +1267,7 @@ export function* deletesajhedaribanbibaranRequest(api, action) {
       perPage: 10,
     });
     yield put(
-      BankaprakarActions.deletesajhedaribanbibaranSuccess(
-        response.data
-      )
+      BankaprakarActions.deletesajhedaribanbibaranSuccess(response.data)
     );
   } else {
     yield put(BankaprakarActions.deletesajhedaribanbibaranFailure());
