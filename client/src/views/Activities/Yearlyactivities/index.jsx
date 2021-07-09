@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { YearlyActivities, Filter, ReportGenerator } from "../../../components";
+import { YearlyActivities, Filter, ReportGenerator, ConfirmationDialoge, } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import {
   yearlyactivitiesHeadings,
@@ -18,7 +18,10 @@ class Yearlyactivities extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "yearlyactivities",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -28,6 +31,8 @@ class Yearlyactivities extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -83,6 +88,8 @@ class Yearlyactivities extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -92,23 +99,49 @@ class Yearlyactivities extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteYearlyactivities(item.activities_info_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
   }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "yearlyactivities": {
+        this.props.deleteYearlyactivities(item.activities_info_id);
+        break;
+      }
+      default:
+        break;
+    }
+    this.setState({ showDialog: !this.state.showDialog });
+  }
 
   handleAdd() {
     this.props.history.push("/activities/yearlyactivitiesadd/new");
   }
   render() {
-    const { loc, perPage, yearlyactivitiesList } = this.state;
+    const { loc, perPage, yearlyactivitiesList, showDialog, } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ वार्षिक कार्यक्रम सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "yearlyactivitieslist") && (
           <Fragment>
             <div className="report-filter">
