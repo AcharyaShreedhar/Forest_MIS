@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Dropdown } from "../../components";
+import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals } from "ramda";
@@ -34,11 +34,21 @@ class Edit extends Component {
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleBanyajantukoAbastha = this.handleBanyajantukoAbastha.bind(this);
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -102,11 +112,21 @@ class Edit extends Component {
       banxetra_duri,
       anya_bibaran,
       remarks,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="शंसोधन"
+            body="के तपाईँ चक्ला वन्यजन्तु उद्दार सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -202,7 +222,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
