@@ -2,20 +2,30 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { JadibutiUtpadan, Filter, ReportGenerator } from "../../../components";
+import { JadibutiUtpadan, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import { jadibutiHeadings, districtList } from "../../../services/config";
 
 class Jadibuti extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "jadibutilist", distId: "%", perPage: 10, page: 0 };
+    this.state = { 
+      loc: "jadibutilist",
+      distId: "%", 
+      perPage: 10,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "jadibuti",
+      };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -54,7 +64,9 @@ class Jadibuti extends Component {
     this.fetchResults(distId, data.selected * perPage, perPage);
   }
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -65,23 +77,43 @@ class Jadibuti extends Component {
       }
 
       case "delete": {
-        this.props.deleteJadibuti(item.jadibuti_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
   }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+  
+        this.props.deleteJadibuti(item.jadibuti_id);
+        this.setState({ showDialog: !this.state.showDialog });
+  }
 
   handleAdd() {
     this.props.history.push("/activities/jadibutiadd/new");
   }
   render() {
-    const { loc, perPage, jadibutiList } = this.state;
+    const { loc, perPage, jadibutiList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ जडिबुटी उत्पादन सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "jadibutilist") && (
           <Fragment>
             <div className="report-filter">
