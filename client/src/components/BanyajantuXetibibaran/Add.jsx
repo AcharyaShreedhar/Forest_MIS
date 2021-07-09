@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input } from "../../components";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 
@@ -23,10 +23,20 @@ class Add extends Component {
       dist_id: "",
       created_by: "",
       updated_by: "",
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -90,11 +100,21 @@ class Add extends Component {
       samitiko_mulyankan_rakam,
       vuktani_rakam,
       remarks,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="थप"
+            body="के तपाईँ वन्यजन्तु क्षेति राहात सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -201,7 +221,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
