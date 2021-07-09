@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Dropdown } from "../../components";
+import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import { equals } from "ramda";
 
 const AnnualBibaran = [
@@ -38,11 +38,21 @@ class Add extends Component {
       dist_id: "",
       created_by: "",
       updated_by: "",
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleAnnualBibaran = this.handleAnnualBibaran.bind(this);
     this.handleLekhaParikshyan = this.handleLekhaParikshyan.bind(this);
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -125,11 +135,21 @@ class Add extends Component {
       udhyam,
       annual_bibaran,
       lekha_parikshyan,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="थप"
+            body="के तपाईँ वार्षिक कार्यक्रम सम्बन्धी विवरण थप गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -303,7 +323,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>

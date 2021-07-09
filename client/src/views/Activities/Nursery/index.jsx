@@ -2,11 +2,11 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BiruwaUtpadan, Filter, ReportGenerator } from "../../../components";
+import { BiruwaUtpadan, Filter, ReportGenerator,   ConfirmationDialoge, } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import { biruwautpadanHeadings, districtList } from "../../../services/config";
-
 import "./Nursery.scss";
+
 class Nursery extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +16,10 @@ class Nursery extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "nursery",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -26,6 +29,8 @@ class Nursery extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -82,6 +87,8 @@ class Nursery extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -91,12 +98,23 @@ class Nursery extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteBiruwautpadan(item.biruwa_utpadan_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+        this.props.deleteBiruwautpadan(item.biruwa_utpadan_id);    
+        
+  
+      
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -104,11 +122,22 @@ class Nursery extends Component {
   }
 
   render() {
-    const { biruwautpadanList, loc, perPage } = this.state;
+    const { biruwautpadanList, loc, perPage, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ विरुवा उत्पादन सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "nurserylist") && (
           <Fragment>
             <div className="report-filter">

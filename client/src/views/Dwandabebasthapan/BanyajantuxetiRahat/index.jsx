@@ -6,6 +6,7 @@ import {
   BanyajantuXetibibaran,
   Filter,
   ReportGenerator,
+  ConfirmationDialoge,
 } from "../../../components";
 import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
 import {
@@ -22,7 +23,10 @@ export class BanyajantuxetiRahat extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "banyajantuxetirahat",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -32,6 +36,8 @@ export class BanyajantuxetiRahat extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -91,7 +97,9 @@ export class BanyajantuxetiRahat extends Component {
     );
   }
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -101,12 +109,27 @@ export class BanyajantuxetiRahat extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteBanyajantuxetiRahat(item.banyajantuxeti_bibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "banyajantuxetirahat": {
+        this.props.deleteBanyajantuxetirahat(item.banyajantuxeti_bibaran_id);
+        break;
+      }
+      default:
+        break;
+    }
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -114,11 +137,22 @@ export class BanyajantuxetiRahat extends Component {
   }
 
   render() {
-    const { loc, perPage, banyajantuxetirahatList } = this.state;
+    const { loc, perPage, banyajantuxetirahatList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ वन्यजन्तु क्षेति राहात सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "banyajantuxetirahatlist") && (
           <Fragment>
             <div className="report-filter">
@@ -206,7 +240,7 @@ const mapDispatchToProps = (dispatch) => ({
       )
     ),
 
-  deleteBanyajantuxetiRahat: (banyajantuxetiId) =>
+  deleteBanyajantuxetirahat: (banyajantuxetiId) =>
     dispatch(
       DwandabebasthapanActions.deletebanyajantuxetiRequest(banyajantuxetiId)
     ),
