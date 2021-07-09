@@ -15,7 +15,14 @@ const bipatbebasthapanRoutes = [
       name: "badibebasthapan",
       auth: true,
       component: BadiBebasthapan,
-    },  
+    },
+    {
+      path: "/bipatbebasthapan/badibebasthapanedit/:id",
+      title: "BadiBebasthapan",
+      name: "badibebasthapan",
+      auth: true,
+      component: BadiBebasthapan,
+    },   
     {
         path: "/bipatbebasthapan/pahirobebasthapanlist",
         title: "PahiroBebasthapan",

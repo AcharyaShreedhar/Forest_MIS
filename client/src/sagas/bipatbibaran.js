@@ -200,7 +200,7 @@ export function* updatebadhibibaranRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/bipatbebasthapan/badhibebasthapanlist");
+    yield call(history.push, "/bipatbebasthapan/badibebasthapanlist");
     yield put(BipatbibaranActions.updatebadhibibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.updatebadhibibaranFailure());
