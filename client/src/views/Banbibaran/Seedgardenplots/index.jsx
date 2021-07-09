@@ -2,37 +2,35 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import {
-  SeedgardenplotsBibaran,
-  Filter,
-  ReportGenerator,
-} from "../../../components";
+import { SeedgardenplotsBibaran, Filter, ReportGenerator, ConfirmationDialoge  } from "../../../components";
 import BanbibaranActions from "../../../actions/banbibaran";
-import {
-  seedgardenplotsHeadings,
-  districtList,
-} from "../../../services/config";
+import { seedgardenplotsHeadings, districtList } from "../../../services/config";
 import { Fragment } from "react";
 
 class Seedgardenplots extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
       loc: "seedgardenplotslist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
-    };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleToDate = this.handleToDate.bind(this);
-    this.handleFromDate = this.handleFromDate.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handlePer = this.handlePer.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "seedgardenplots",
+       };
+       this.handleSelectMenu = this.handleSelectMenu.bind(this);
+       this.handleAdd = this.handleAdd.bind(this);
+       this.handleDistrict = this.handleDistrict.bind(this);
+       this.handleToDate = this.handleToDate.bind(this);
+       this.handleFromDate = this.handleFromDate.bind(this);
+       this.handlePageChange = this.handlePageChange.bind(this);
+       this.handlePer = this.handlePer.bind(this);
+       this.fetchResults = this.fetchResults.bind(this);
+       this.handleDelete = this.handleDelete.bind(this);
+       this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -89,7 +87,10 @@ class Seedgardenplots extends Component {
     );
   }
 
-  handleSelectMenu(event, item) {
+
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -100,25 +101,51 @@ class Seedgardenplots extends Component {
       }
 
       case "delete": {
-        this.props.deleteSeedgardenplots(item.plot_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
   }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item, path } = this.state;
+    switch (path) {
+      case "seedgardenplots": {
+        this.props.deleteSeedgardenplots(item.plot_id);
+        break;
+      }
+      default:
+        break;
+    }
+    this.setState({ showDialog: !this.state.showDialog });
+  }
 
   handleAdd() {
     this.props.history.push("/banbibaran/seedgardenplotsadd/new");
   }
   render() {
-    const { loc, perPage, seedgardenplotsList } = this.state;
+    const { loc, perPage, seedgardenplotsList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+        <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ बन बीउ बगैच/समबर्धन प्लटहरु सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "seedgardenplotslist") && (
-          <Fragment>
+           <Fragment>
             <div className="report-filter">
               <Filter
                 id="seedgardenplots"
@@ -130,24 +157,24 @@ class Seedgardenplots extends Component {
               />
               <ReportGenerator id="seedgardenplots" />
             </div>
-            <SeedgardenplotsBibaran.List
-              buttonName="+ बन बीउ बगैच/समबर्धन प्लटहरु"
-              title="बन बीउ बगैच/समबर्धन प्लटहरु सम्बन्धी विवरण"
-              pageCount={
-                !isNil(seedgardenplotsList)
-                  ? Math.ceil(seedgardenplotsList.total / perPage)
-                  : 10
-              }
-              data={!isNil(seedgardenplotsList) ? seedgardenplotsList.list : []}
-              per={perPage}
-              pers={[10, 25, 50, "all"]}
-              onPer={this.handlePer}
-              user={user}
-              headings={seedgardenplotsHeadings}
-              onAdd={this.handleAdd}
-              onSelect={this.handleSelectMenu}
-              onPageClick={(e) => this.handlePageChange(e)}
-            />
+          <SeedgardenplotsBibaran.List
+            buttonName="+ बन बीउ बगैच/समबर्धन प्लटहरु"
+            title="बन बीउ बगैच/समबर्धन प्लटहरु सम्बन्धी विवरण"
+            pageCount={
+              !isNil(seedgardenplotsList)
+                ? Math.ceil(seedgardenplotsList.total / perPage)
+                : 10
+            }
+            data={!isNil(seedgardenplotsList) ? seedgardenplotsList.list : []}
+            per={perPage}
+            pers={[10, 25, 50, "all"]}
+            onPer={this.handlePer}
+            user={user}
+            headings={seedgardenplotsHeadings}
+            onAdd={this.handleAdd}
+            onSelect={this.handleSelectMenu}
+            onPageClick={(e) => this.handlePageChange(e)}
+          />
           </Fragment>
         )}
         {equals(loc, "seedgardenplotsadd") && (
