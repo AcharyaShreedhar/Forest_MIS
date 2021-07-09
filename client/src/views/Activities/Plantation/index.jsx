@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { Brixyaropan, Filter, ReportGenerator } from "../../../components";
+import { Brixyaropan, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import { brixyaropanHeadings,districtList } from "../../../services/config";
 
@@ -15,7 +15,10 @@ class Plantation extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "plantation",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -25,6 +28,8 @@ class Plantation extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -80,6 +85,8 @@ class Plantation extends Component {
   }
 
   handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -89,12 +96,21 @@ class Plantation extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteBrixyaropan(item.brixyaropan_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+     
+        this.props.deleteBrixyaropan(item.brixyaropan_id);
+        this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -102,11 +118,22 @@ class Plantation extends Component {
   }
 
   render() {
-    const { brixyaropanList, loc, perPage } = this.state;
+    const { brixyaropanList, loc, perPage, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ वृक्षरोपण सम्बन्धी विवरण  हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "plantationlist") && (
           <Fragment>
             <div className="report-filter">

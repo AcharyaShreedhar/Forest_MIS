@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input } from "../../components";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 
 class Edit extends Component {
   constructor(props) {
@@ -15,9 +15,19 @@ class Edit extends Component {
       jadibuti_sankhya: props.history.location.item.jadibuti_sankhya,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -59,11 +69,21 @@ class Edit extends Component {
         jadibuti_laxya,
         jadibuti_pragati,
         jadibuti_sankhya,
+        showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="शंसोधन"
+            body="के तपाईँ जडिबुटी उत्पादन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -120,7 +140,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>

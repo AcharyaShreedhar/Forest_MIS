@@ -77,7 +77,7 @@ async function addBrixyaropan(req, res) {
 
 //Controller for updating a Brixyaropan
 async function updateBrixyaropan(req, res) {
-  const updateBrixyaropanQuery = `UPDATE brixyaropans SET ddist_id=?,brixyaropan_thegana=?,brixyaropan_kisim=?,brixyaropan_laxya=?,brixyaropan_prajati=?,brixyaropan_pragati=?,brixyaropan_sankhya=?, created_by=?, updated_by=? WHERE brixyaropan_id=?`;
+  const updateBrixyaropanQuery = `UPDATE brixyaropans SET dist_id=?,brixyaropan_thegana=?,brixyaropan_kisim=?,brixyaropan_laxya=?,brixyaropan_prajati=?,brixyaropan_pragati=?,brixyaropan_sankhya=?, created_by=?, updated_by=? WHERE brixyaropan_id=?`;
   pool.query(
     updateBrixyaropanQuery,
     [

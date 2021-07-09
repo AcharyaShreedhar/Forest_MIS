@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input } from "../../components";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 
 class Add extends Component {
   constructor(props) {
@@ -14,9 +14,19 @@ class Add extends Component {
       dist_id: "",
       created_by: "",
       updated_by: "",
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -55,11 +65,21 @@ class Add extends Component {
         brixyaropan_prajati,
         brixyaropan_pragati,
         brixyaropan_sankhya,
+        showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="थप"
+            body="के तपाईँ वृक्षरोपण सम्बन्धी विवरण गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -117,7 +137,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
