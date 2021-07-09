@@ -48,6 +48,7 @@ import * as BanbikasKaryabibaran from "./BanbikasKaryabibaran";
 import * as SamajikKaryabibaran from "./SamajikKaryabibaran";
 import * as RojgarSrijana from "./RojgarSrijana";
 import * as PahiroBebasthapan from "./PahiroBebasthapan";
+import * as BadiBebasthapan from "./BadiBebasthapan";
 
 export {
   HeaderComponent,
@@ -100,4 +101,5 @@ export {
   SamajikKaryabibaran,
   RojgarSrijana,
   PahiroBebasthapan,
+  BadiBebasthapan,
 };

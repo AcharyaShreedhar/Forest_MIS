@@ -415,7 +415,18 @@ const pahirobebasthapanHeadings = [
   "क्षेति विवरण",
   "मर्ने वन्यजन्तु संख्या",
   "बोटविरुवा क्षेति संख्या",
-]
+];
+
+const badibebasthapanHeadings = [
+  "बाढी आएको मिति",
+  "बाढी आएको स्थान",
+  "उद्दार संख्या",
+  "घाइते मानव संख्या",
+  "मृत मानव संख्या",
+  "क्षेति विवरण",
+  "मर्ने वन्यजन्तु संख्या",
+  "बोटविरुवा क्षेति संख्या",
+];
 
 export {
   AssetsURL,
@@ -451,4 +462,5 @@ export {
   samajikkaryabibaranHeadings,
   rojgarsrijanaHeadings,
   pahirobebasthapanHeadings,
+  badibebasthapanHeadings,
 };
