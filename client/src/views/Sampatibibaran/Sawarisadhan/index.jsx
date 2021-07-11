@@ -6,6 +6,7 @@ import {
   SawarisadhanBibaran,
   Filter,
   ReportGenerator,
+  ConfirmationDialoge,
 } from "../../../components";
 import SampatibibaranActions from "../../../actions/sampatibibaran";
 import { sawarisadhanHeadings, districtList } from "../../../services/config";
@@ -20,7 +21,10 @@ class Sawarisadhan extends Component {
       toDate: "2090-12-30",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "sawarisadhan",
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
@@ -30,6 +34,8 @@ class Sawarisadhan extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -85,7 +91,9 @@ class Sawarisadhan extends Component {
     );
   }
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -96,23 +104,43 @@ class Sawarisadhan extends Component {
       }
 
       case "delete": {
-        this.props.deleteSawarisadhan(item.vehicle_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
   }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+  
+        this.props.deleteSawarisadhan(item.vehicle_id);
+        this.setState({ showDialog: !this.state.showDialog });
+  }
 
   handleAdd() {
     this.props.history.push("/sampatibibaran/sawarisadhanadd/new");
   }
   render() {
-    const { loc, perPage, sawarisadhanList } = this.state;
+    const { loc, perPage, sawarisadhanList, showDialog, } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+        <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ सवारी साधन सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "sawarisadhanlist") && (
           <Fragment>
             <div className="report-filter">
