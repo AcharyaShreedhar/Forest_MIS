@@ -301,6 +301,12 @@ class Bankaprakar extends Component {
             });
             break;
           }
+          case "upabhoktasamuha": {
+            this.props.history.push({
+              pathname: `/forests/upabhoktasamuhaedit/${item.registration_no}`,
+              item,
+            });
+          }
 
           default:
             break;
@@ -1107,6 +1113,14 @@ const mapDispatchToProps = (dispatch) => ({
 
   addUpabhoktasamuhabibaran: (payload) =>
     dispatch(BankaprakarActions.addconsumergroupdetailsRequest(payload)),
+
+  updateUpabhoktasamuhabibaran: (payload, consumergroupdetailsId) =>
+    dispatch(
+      BankaprakarActions.updateconsumergroupdetailsRequest(
+        payload,
+        consumergroupdetailsId
+      )
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);

@@ -14,7 +14,7 @@ export class Add extends Component {
       ghardhuri_dalit: "",
       perm_addr: "",
       curr_addr: "",
-      ghardhuri_janajati: "",
+      ghardhuri_janjati: "",
       ghardhuri_anya: "",
       ghardhuri_total: "",
       population_female: "",
@@ -54,7 +54,7 @@ export class Add extends Component {
       ghardhuri_dalit,
       perm_addr,
       curr_addr,
-      ghardhuri_janajati,
+      ghardhuri_janjati,
       ghardhuri_anya,
       ghardhuri_total,
       population_female,
@@ -79,8 +79,8 @@ export class Add extends Component {
           registration_date: registration_date,
           perm_addr: perm_addr,
           curr_addr: curr_addr,
-          ghardhuri_janajati: ghardhuri_janajati,
-          ghar_dalit: ghardhuri_dalit,
+          ghardhuri_janjati: ghardhuri_janjati,
+          ghardhuri_dalit: ghardhuri_dalit,
           ghardhuri_anya: ghardhuri_anya,
           ghardhuri_total: ghardhuri_total,
           population_female: population_female,
@@ -116,7 +116,7 @@ export class Add extends Component {
       ghardhuri_dalit,
       perm_addr,
       curr_addr,
-      ghardhuri_janajati,
+      ghardhuri_janjati,
       ghardhuri_anya,
       ghardhuri_total,
       population_female,
@@ -203,8 +203,8 @@ export class Add extends Component {
               title="जनजाती घरधुरी"
               direction="vertical"
               as="textarea"
-              value={ghardhuri_janajati}
-              onChange={(e) => this.setState({ ghardhuri_janajati: e })}
+              value={ghardhuri_janjati}
+              onChange={(e) => this.setState({ ghardhuri_janjati: e })}
             />
             <Input
               className="mb-4"

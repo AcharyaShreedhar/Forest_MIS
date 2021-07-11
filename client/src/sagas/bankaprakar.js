@@ -805,7 +805,7 @@ export function* addconsumergroupdetailsRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/consumergroupdetailslist");
+    yield call(history.push, "/forests/upabhoktasamuhalist");
     yield put(BankaprakarActions.addconsumergroupdetailsSuccess(response.data));
   } else {
     yield put(BankaprakarActions.addconsumergroupdetailsFailure());
@@ -826,7 +826,7 @@ export function* updateconsumergroupdetailsRequest(api, action) {
     payload.consumergroupdetails.data,
     consumergroupdetailsId
   );
-
+  console.log("data..", response);
   if (response.ok) {
     toast.success("सफलतापुर्वक उपभोक्ता समुह शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -839,7 +839,7 @@ export function* updateconsumergroupdetailsRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/forests/consumergroupdetailslist");
+    yield call(history.push, "/forests/upabhoktasamuhalist");
     yield put(
       BankaprakarActions.updateconsumergroupdetailsSuccess(response.data)
     );
