@@ -1585,11 +1585,7 @@ export default function* root() {
       deletebanbikaskaryabibaranRequest,
       api
     ),
-    takeLatest(
-      KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_REQUEST,
-      deletebanbikaskaryabibaranRequest,
-      api
-    ),
+    
     //-----------------bipatbibaran
     takeLatest(
       BipatbibaranTypes.FETCHALLPAHIROBIBARAN_REQUEST,

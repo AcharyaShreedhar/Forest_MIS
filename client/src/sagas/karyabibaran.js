@@ -156,7 +156,7 @@ export function* fetchbanbikaskaryabibaranRequest(api, action) {
 export function* addbanbikaskaryabibaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postbanbikaskaryabibaranAddNew(
+  const response = yield api.postBanbikasKaryabibaranAddNew(
     payload.banbikaskaryabibaran.data
   );
 
@@ -172,7 +172,7 @@ export function* addbanbikaskaryabibaranRequest(api, action) {
     });
     yield call(history.push, "/karyabibaran/banbikaskaryabibaranlist");
     yield put(
-      KaryabibaranActions.addBanbikasKaryabibaranSuccess(response.data)
+      KaryabibaranActions.addbanbikaskaryabibaranSuccess(response.data)
     );
   } else {
     yield put(KaryabibaranActions.addbanbikaskaryabibaranFailure());
@@ -187,11 +187,11 @@ export function* addbanbikaskaryabibaranRequest(api, action) {
 
 // Update banbikaskaryabibaran
 export function* updatebanbikaskaryabibaranRequest(api, action) {
-  const { payload, banbikasKaryabibaranId } = action;
+  const { payload, banbikaskaryabibaranId } = action;
 
   const response = yield api.postBanbikasKaryabibaranUpdate(
     payload.banbikaskaryabibaran.data,
-    banbikasKaryabibaranId
+    banbikaskaryabibaranId
   );
 
   if (response.ok) {
