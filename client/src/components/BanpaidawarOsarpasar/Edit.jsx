@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input } from "../../components";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 
 class Edit extends Component {
@@ -16,9 +16,19 @@ class Edit extends Component {
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
@@ -31,7 +41,6 @@ class Edit extends Component {
       lavgrahi_sankhya,
       mulyaabhibridi_kar,
       created_by,
-      updated_by,
     } = this.state;
     const payload = {
       banpaidawar: {
@@ -61,11 +70,21 @@ class Edit extends Component {
       daura,
       lavgrahi_sankhya,
       mulyaabhibridi_kar,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="शंसोधन"
+            body="के तपाईँ वनपैदावार ओसारपसार सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -121,7 +140,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="Update"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
