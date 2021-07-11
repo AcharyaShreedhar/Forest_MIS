@@ -2,7 +2,12 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { YearlyActivities, Filter, ReportGenerator, ConfirmationDialoge, } from "../../../components";
+import {
+  YearlyActivities,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import {
   yearlyactivitiesHeadings,
@@ -110,15 +115,9 @@ class Yearlyactivities extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "yearlyactivities": {
-        this.props.deleteYearlyactivities(item.activities_info_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteYearlyactivities(item.activities_info_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -126,17 +125,15 @@ class Yearlyactivities extends Component {
     this.props.history.push("/activities/yearlyactivitiesadd/new");
   }
   render() {
-    const { loc, perPage, yearlyactivitiesList, showDialog, } = this.state;
+    const { loc, perPage, yearlyactivitiesList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ वार्षिक कार्यक्रम सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ वार्षिक कार्यक्रम सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}

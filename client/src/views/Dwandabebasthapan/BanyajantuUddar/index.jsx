@@ -119,15 +119,9 @@ export class BanyajantuUddar extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "banyajantuuddar": {
-        this.props.deleteBanyajantuuddar(item.banyajantu_uddar_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteBanyajantuuddar(item.banyajantu_uddar_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -140,12 +134,10 @@ export class BanyajantuUddar extends Component {
 
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ वन्यजन्तु उद्दार सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ वन्यजन्तु उद्दार सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}

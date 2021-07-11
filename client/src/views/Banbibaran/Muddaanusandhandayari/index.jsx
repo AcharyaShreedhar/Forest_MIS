@@ -2,15 +2,23 @@ import React, { Component } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { MuddaanusandhanDayari, Filter, ReportGenerator, ConfirmationDialoge, } from "../../../components";
+import {
+  MuddaanusandhanDayari,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import MuddaanusandhandayariActions from "../../../actions/muddaanusandhandayari";
-import { muddaanusandhandayariHeadings, districtList, } from "../../../services/config";
+import {
+  muddaanusandhandayariHeadings,
+  districtList,
+} from "../../../services/config";
 import { Fragment } from "react";
 
 class Muddaanusandhandayari extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       loc: "muddaanusandhandayarilist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -20,17 +28,17 @@ class Muddaanusandhandayari extends Component {
       showDialog: false,
       item: {},
       path: "muddaanusandhandayari",
-     };
-     this.handleSelectMenu = this.handleSelectMenu.bind(this);
-     this.handleAdd = this.handleAdd.bind(this);
-     this.handleDistrict = this.handleDistrict.bind(this);
-     this.handleToDate = this.handleToDate.bind(this);
-     this.handleFromDate = this.handleFromDate.bind(this);
-     this.handlePageChange = this.handlePageChange.bind(this);
-     this.handlePer = this.handlePer.bind(this);
-     this.fetchResults = this.fetchResults.bind(this);
-     this.handleDelete = this.handleDelete.bind(this);
-     this.handleClose = this.handleClose.bind(this);
+    };
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -73,7 +81,7 @@ class Muddaanusandhandayari extends Component {
       distId,
       name: "jaheri_partibedan_miti",
       page: page,
-      perPage,   
+      perPage,
     });
   }
 
@@ -112,15 +120,9 @@ class Muddaanusandhandayari extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "muddaanusandhandayari": {
-        this.props.deleteMuddaanusandhandayari(item.mudda_anusandhan_dayari_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteMuddaanusandhandayari(item.mudda_anusandhan_dayari_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -129,12 +131,12 @@ class Muddaanusandhandayari extends Component {
   }
 
   render() {
-    const { loc, perPage, muddaanusandhandayariList, showDialog, } = this.state;
+    const { loc, perPage, muddaanusandhandayariList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
-       <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
           body={
@@ -158,30 +160,28 @@ class Muddaanusandhandayari extends Component {
               />
               <ReportGenerator id="muddaanusandhandayaris" />
             </div>
-          <MuddaanusandhanDayari.List
-            buttonName="+ मुद्दा अनुसन्धान दायरी"
-            title="मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण"
-            pageCount={
-              !isNil(muddaanusandhandayariList)
-                ? Math.ceil(muddaanusandhandayariList.total / perPage)
-                : 10
-            }
-            data={
-              !isNil(muddaanusandhandayariList)
-                ? muddaanusandhandayariList.list
-                : []
-            }
-            per={perPage}
-            pers={[10, 25, 50, "all"]}
-            onPer={this.handlePer}
-            headings={muddaanusandhandayariHeadings}
-            user={user}
-            onAdd={() => this.handleAdd("muddaanusandhandayari")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) =>
-              this.handlePageChange(e)
-            }
-          />
+            <MuddaanusandhanDayari.List
+              buttonName="+ मुद्दा अनुसन्धान दायरी"
+              title="मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण"
+              pageCount={
+                !isNil(muddaanusandhandayariList)
+                  ? Math.ceil(muddaanusandhandayariList.total / perPage)
+                  : 10
+              }
+              data={
+                !isNil(muddaanusandhandayariList)
+                  ? muddaanusandhandayariList.list
+                  : []
+              }
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={muddaanusandhandayariHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("muddaanusandhandayari")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
           </Fragment>
         )}
         {equals(loc, "muddaanusandhandayariadd") && (

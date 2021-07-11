@@ -2,7 +2,12 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BandadeloBibaran, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
+import {
+  BandadeloBibaran,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import BandadelobibaranActions from "../../../actions/bandadelobibaran";
 import { bandadeloHeadings, districtList } from "../../../services/config";
 
@@ -113,15 +118,9 @@ class Bandadelo extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "bandadelo": {
-        this.props.deleteBandadelo(item.bandadelo_bibaran_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteBandadelo(item.bandadelo_bibaran_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -130,17 +129,15 @@ class Bandadelo extends Component {
   }
 
   render() {
-    const { loc, perPage, bandadelobibaranList, showDialog, } = this.state;
+    const { loc, perPage, bandadelobibaranList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ वनडढेलो सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ वनडढेलो सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
