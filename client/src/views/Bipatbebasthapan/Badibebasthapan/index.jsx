@@ -94,7 +94,7 @@ class Badibebasthapan extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteBadibebasthapan(item.badi_bibaran_id);
+        this.props.deleteBadibebasthapan(item.badhi_bibaran_id);
         break;
       }
       default:
@@ -197,9 +197,9 @@ const mapDispatchToProps = (dispatch) => ({
       )
     ),
 
-  deleteBadibebasthapan: (badibibaranId) =>
+  deleteBadibebasthapan: (badhibibaranId) =>
     dispatch(
-        BipatbibaranActions.deletebadhibibaranRequest(badibibaranId)
+        BipatbibaranActions.deletebadhibibaranRequest(badhibibaranId)
     ),
 });
 

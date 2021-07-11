@@ -833,7 +833,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBadhibibaranAddNew = (payload) => api.post("badhiBibaran", payload);
 
   const postBadhibibaranUpdate = (payload, badhibibaranId) =>
-    api.get(`badhiBibaran/${badhibibaranId}`, payload);
+    api.put(`badhiBibaran/${badhibibaranId}`, payload);
 
   const postBadhibibaranDelete = (badhibibaranId) =>
     api.delete(`badhiBibaran/${badhibibaranId}`);
