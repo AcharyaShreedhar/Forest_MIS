@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input, Dropdown } from "../../components";
-import { equals } from "ramda";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 
 
 class Add extends Component {
@@ -15,10 +14,21 @@ class Add extends Component {
       dist_id: "",
       created_by: "",
       updated_by: "",
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
+
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+
 
   handleSubmit() {
     const {
@@ -53,11 +63,21 @@ class Add extends Component {
         banbikas_parinam,
         banbikas_bajetkharcha,
         ban_type,
+        showDialog
     } = this.state;
 
     return (
       <React.Fragment>
-        <div className=" card p-5 border-5">
+       <div className=" card p-5 border-5">
+        <ConfirmationDialoge
+            showDialog={showDialog}
+            title="थप"
+            body="के तपाईँ वनविकास कार्यविवरण सम्बन्धी विवरण थप गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
@@ -107,7 +127,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
