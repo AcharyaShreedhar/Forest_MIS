@@ -2,20 +2,30 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanbikasKaryabibaran, Filter, ReportGenerator } from "../../../components";
+import { BanbikasKaryabibaran, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import KaryabibaranActions from "../../../actions/karyabibaran";
 import { banbikaskaryabibaranHeadings, districtList } from "../../../services/config";
 
 class Banbikaskaryabibaran extends Component {
   constructor(props) {
     super(props);
-    this.state = { loc: "banbikaskaryabibaranlist", distId: "%", perPage: 10, page: 1 };
+    this.state = { 
+      loc: "banbikaskaryabibaranlist",
+      distId: "%",
+      perPage: 10,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "banbikaskaryabibaran",
+     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -54,7 +64,9 @@ class Banbikaskaryabibaran extends Component {
     this.fetchResults(distId, data.selected * perPage, perPage);
   }
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -65,23 +77,43 @@ class Banbikaskaryabibaran extends Component {
       }
 
       case "delete": {
-        this.props.deleteBanbikaskaryabibaran(item.banbikas_karyabibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
   }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+  
+        this.props.deleteBanbikaskaryabibaran(item.banbikas_karyabibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
+  }
 
   handleAdd() {
     this.props.history.push("/karyabibaran/banbikaskaryabibaranadd/new");
   }
   render() {
-    const { loc, perPage, banbikaskaryabibaranList } = this.state;
+    const { loc, perPage, banbikaskaryabibaranList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ वनविकास कार्यविवरण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "banbikaskaryabibaranlist") && (
           <Fragment>
             <div className="report-filter">
