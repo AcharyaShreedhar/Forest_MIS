@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { SamajikKaryabibaran, Filter, ReportGenerator } from "../../../components";
+import { SamajikKaryabibaran, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import KaryabibaranActions from "../../../actions/karyabibaran";
 import { samajikkaryabibaranHeadings, districtList } from "../../../services/config";
 
@@ -13,7 +13,10 @@ class Samajikkaryabibaran extends Component {
       loc: "samajikkaryabibaranlist",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "samajikkaryabibaran",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -21,6 +24,8 @@ class Samajikkaryabibaran extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -66,7 +71,9 @@ class Samajikkaryabibaran extends Component {
     );
   }
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -77,7 +84,7 @@ class Samajikkaryabibaran extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteSamajikkaryabibaran(item.samajik_karyabibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
@@ -85,16 +92,37 @@ class Samajikkaryabibaran extends Component {
     }
   }
 
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+  
+        this.props.deleteSamajikkaryabibaran(item.samajik_karyabibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
+  }
+
   handleAdd() {
     this.props.history.push("/karyabibaran/samajikkaryabibaranadd/new");
   }
 
   render() {
-    const { loc, perPage, samajikkaryabibaranList } = this.state;
+    const { loc, perPage, samajikkaryabibaranList, showDialog } = this.state;
     const { user } = this.props;
    
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ सामाजिक कार्य सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "samajikkaryabibaranlist") && (
           <Fragment>
             <div className="report-filter">
