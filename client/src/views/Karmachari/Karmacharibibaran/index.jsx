@@ -104,10 +104,9 @@ class Karmacharibibaran extends Component {
         break;
       }
       case "delete": {
-        
-          this.setState({ showDialog: !this.state.showDialog });
-          break;
-        }
+        this.setState({ showDialog: !this.state.showDialog });
+        break;
+      }
       default:
         break;
     }
@@ -116,35 +115,26 @@ class Karmacharibibaran extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "karmacharibibaran": {
-        this.props.deleteKarmacharibibaran(item.emp_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteKarmacharibibaran(item.emp_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
-  
 
   handleAdd() {
     this.props.history.push("/karmachari/karmacharibibaranadd/new");
   }
 
   render() {
-    const { loc, perPage, karmacharibibaranList, showDialog, } = this.state;
+    const { loc, perPage, karmacharibibaranList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
-          <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ कर्मचारी विवरण  हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ कर्मचारी विवरण  हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}

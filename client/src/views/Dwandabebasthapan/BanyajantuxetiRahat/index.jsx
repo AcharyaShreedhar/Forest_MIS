@@ -120,15 +120,9 @@ export class BanyajantuxetiRahat extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "banyajantuxetirahat": {
-        this.props.deleteBanyajantuxetirahat(item.banyajantuxeti_bibaran_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteBanyajantuxetirahat(item.banyajantuxeti_bibaran_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -142,7 +136,7 @@ export class BanyajantuxetiRahat extends Component {
 
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
           body={

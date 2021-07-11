@@ -122,15 +122,9 @@ class Banxetraatikraman extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "banxetraatikraman": {
-        this.props.deleteBanxetraatikraman(item.banxetra_atikraman_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteBanxetraatikraman(item.banxetra_atikraman_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -144,12 +138,10 @@ class Banxetraatikraman extends Component {
 
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ वनक्षेत्र अतिक्रमण सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ वनक्षेत्र अतिक्रमण सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}

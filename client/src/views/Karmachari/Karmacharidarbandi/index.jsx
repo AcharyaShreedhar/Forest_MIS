@@ -99,15 +99,9 @@ class Karmacharidarbandi extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
-    switch (path) {
-      case "karmacharidarbandi": {
-        this.props.deleteKarmacharidarbandi(item.karmachari_darbandi_id);
-        break;
-      }
-      default:
-        break;
-    }
+    const { item } = this.state;
+
+    this.props.deleteKarmacharidarbandi(item.karmachari_darbandi_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -116,17 +110,15 @@ class Karmacharidarbandi extends Component {
   }
 
   render() {
-    const { loc, perPage, karmacharidarbandiList, showDialog, } = this.state;
+    const { loc, perPage, karmacharidarbandiList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
       <div>
-       <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ कर्मचारी दरबन्दी  हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ कर्मचारी दरबन्दी  हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
