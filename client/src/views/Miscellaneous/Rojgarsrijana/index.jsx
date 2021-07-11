@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { RojgarSrijana, Filter, ReportGenerator } from "../../../components";
+import { RojgarSrijana, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import MiscellaneousActions from "../../../actions/miscellaneous";
 import { rojgarsrijanaHeadings, districtList } from "../../../services/config";
 
@@ -13,7 +13,10 @@ class Rojgarsrijana extends Component {
       loc: "rojgarsrijanalist",
       distId: "%",
       perPage: 10,
-      page: 1,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "rojgarsrijana",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -21,6 +24,8 @@ class Rojgarsrijana extends Component {
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -66,7 +71,9 @@ class Rojgarsrijana extends Component {
     );
   }
 
-  handleSelectMenu(event, item) {
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case "edit": {
         this.props.history.push({
@@ -77,12 +84,21 @@ class Rojgarsrijana extends Component {
         break;
       }
       case "delete": {
-        this.props.deleteRojgarsrijana(item.rojgar_srijana_id);
+        this.setState({ showDialog: !this.state.showDialog });
         break;
       }
       default:
         break;
     }
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+  
+        this.props.deleteRojgarsrijana(item.rojgar_srijana_id);
+        this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -90,11 +106,22 @@ class Rojgarsrijana extends Component {
   }
 
   render() {
-    const { loc, perPage, rojgarsrijanaList } = this.state;
+    const { loc, perPage, rojgarsrijanaList, showDialog } = this.state;
     const { user } = this.props;
    
     return (
       <div>
+      <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={
+            "के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
+          }
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
         {equals(loc, "rojgarsrijanalist") && (
           <Fragment>
             <div className="report-filter">
