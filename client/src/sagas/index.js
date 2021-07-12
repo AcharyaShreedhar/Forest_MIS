@@ -16,6 +16,7 @@ import { KarmacharibibaranTypes } from "../actions/karmacharibibaran";
 import { KaryabibaranTypes } from "../actions/karyabibaran";
 import { MiscellaneousTypes } from "../actions/miscellaneous";
 import { BipatbibaranTypes } from "../actions/bipatbibaran";
+import { SamrakshyanTypes } from "../actions/samrakshyan";
 //------------------app
 import {
   fetchalldepartmentsRequest,
@@ -320,6 +321,9 @@ import {
   updatebadhibibaranRequest,
   deletebadhibibaranRequest,
 } from "./bipatbibaran";
+
+// ---------------- samraxan bibaran
+import { fetchallsamrakshyanpokharinirmanRequest } from "./samrakshyan";
 
 const api = API.create();
 
@@ -1585,7 +1589,7 @@ export default function* root() {
       deletebanbikaskaryabibaranRequest,
       api
     ),
-    
+
     //-----------------bipatbibaran
     takeLatest(
       BipatbibaranTypes.FETCHALLPAHIROBIBARAN_REQUEST,
@@ -1635,6 +1639,11 @@ export default function* root() {
     takeLatest(
       BipatbibaranTypes.DELETEBADHIBIBARAN_REQUEST,
       deletebadhibibaranRequest,
+      api
+    ),
+    takeLatest(
+      SamrakshyanTypes.FETCHALLSAMRAKSHYANPOKHARINIRMAN_REQUEST,
+      fetchallsamrakshyanpokharinirmanRequest,
       api
     ),
   ]);
