@@ -39,7 +39,7 @@ async function getAllConsumerGroupDetails(req, res) {
 
 //Controller for Listing a ConsumerGroupDetails
 async function getConsumerGroupDetails(req, res) {
-  const getConsumerGroupDetailsQuery = `select * from consumer_details where consumer_group_id=?`;
+  const getConsumerGroupDetailsQuery = `select * from consumer_details where registration_no=?`;
   pool.query(
     getConsumerGroupDetailsQuery,
     [req.params.consumerGroupDetailsId],
@@ -52,7 +52,7 @@ async function getConsumerGroupDetails(req, res) {
 
 //Controller for adding a ConsumerGroupDetails
 async function addConsumerGroupDetails(req, res) {
-  const addConsumerGroupDetailsQuery = `INSERT INTO consumer_details (registration_no, dist_id,registration_date, ghardhuri_dalit, perm_addr, curr_addr, ghardhuri_janjati, ghardhuri_anya, ghardhuri_total, population_female, population_male, population_total, samudayik_upavokta_samiti_name, sampannata_starikaran_sampanna, sampannata_starikaran_madhyam, sampannata_starikaran_bipanna, karyasamiti_representation_dalit, karyasamiti_representation_janjati, karyasamiti_representation_anya, adhyakshya_male, adhyakshya_female, sachib_male, sachib_female, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addConsumerGroupDetailsQuery = `INSERT INTO consumer_details (registration_no, dist_id,registration_date, ghardhuri_dalit, perm_addr, curr_addr, ghardhuri_janjati, ghardhuri_anya, ghardhuri_total, population_female, population_male, population_total, samudayik_upavokta_samiti_name, sampannata_starikaran_sampanna, sampannata_starikaran_madhyam, sampannata_starikaran_bipanna, karyasamiti_representation_dalit, karyasamiti_representation_janjati, karyasamiti_representation_anya, adhyakshya_male, adhyakshya_female, sachib_male, sachib_female, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addConsumerGroupDetailsQuery,
     [
@@ -93,7 +93,7 @@ async function addConsumerGroupDetails(req, res) {
 
 //Controller for updating a ConsumerGroupDetails
 async function updateConsumerGroupDetails(req, res) {
-  const updateConsumerGroupDetailsQuery = `UPDATE consumer_details SET registration_no=?, dist_id=?, registration_date=?, ghardhuri_dalit=?, perm_addr=?, curr_addr=?, ghardhuri_janjati=?, ghardhuri_anya=?, ghardhuri_total=?, population_female=?, population_male=?, population_total=?, samudayik_upavokta_samiti_name=?, sampannata_starikaran_sampanna=?, sampannata_starikaran_madhyam=?, sampannata_starikaran_bipanna=?, karyasamiti_representation_dalit=?, karyasamiti_representation_janjati=?, karyasamiti_representation_anya=?, adhyakshya_male=?, adhyakshya_female=?, sachib_male=?, sachib_female=?, created_by=?, updated_by=? WHERE consumer_group_id=?`;
+  const updateConsumerGroupDetailsQuery = `UPDATE consumer_details SET registration_no=?, dist_id=?, registration_date=?, ghardhuri_dalit=?, perm_addr=?, curr_addr=?, ghardhuri_janjati=?, ghardhuri_anya=?, ghardhuri_total=?, population_female=?, population_male=?, population_total=?, samudayik_upavokta_samiti_name=?, sampannata_starikaran_sampanna=?, sampannata_starikaran_madhyam=?, sampannata_starikaran_bipanna=?, karyasamiti_representation_dalit=?, karyasamiti_representation_janjati=?, karyasamiti_representation_anya=?, adhyakshya_male=?, adhyakshya_female=?, sachib_male=?, sachib_female=?, created_by=?, updated_by=? WHERE registration_no=?`;
   pool.query(
     updateConsumerGroupDetailsQuery,
     [
@@ -135,7 +135,7 @@ async function updateConsumerGroupDetails(req, res) {
 
 //Controller for deleting a ConsumerGroupDetails
 async function deleteConsumerGroupDetails(req, res) {
-  const deleteConsumerGroupDetailsQuery = `DELETE  FROM consumer_details where consumer_group_id=?`;
+  const deleteConsumerGroupDetailsQuery = `DELETE  FROM consumer_details where registration_no=?`;
   pool.query(
     deleteConsumerGroupDetailsQuery,
     [req.params.consumerGroupDetailsId],

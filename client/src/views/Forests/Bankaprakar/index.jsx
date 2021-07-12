@@ -301,6 +301,12 @@ class Bankaprakar extends Component {
             });
             break;
           }
+          case "upabhoktasamuha": {
+            this.props.history.push({
+              pathname: `/forests/upabhoktasamuhaedit/${item.registration_no}`,
+              item,
+            });
+          }
 
           default:
             break;
@@ -339,6 +345,10 @@ class Bankaprakar extends Component {
           }
           case "commercial": {
             this.setState({ messagebody: "व्यवसायीक कबुलियति" });
+            break;
+          }
+          case "upabhoktasamuha": {
+            this.setState({ messagebody: "उपभोक्ता समुह" });
             break;
           }
           default:
@@ -386,6 +396,10 @@ class Bankaprakar extends Component {
       }
       case "commercial": {
         this.props.deleteCommercialbanbibaran(item.darta_no);
+        break;
+      }
+      case "upabhoktasamuha": {
+        this.props.deleteUpabhoktasamuhabibaran(item.registration_no);
         break;
       }
       default:
@@ -1107,6 +1121,20 @@ const mapDispatchToProps = (dispatch) => ({
 
   addUpabhoktasamuhabibaran: (payload) =>
     dispatch(BankaprakarActions.addconsumergroupdetailsRequest(payload)),
+
+  updateUpabhoktasamuhabibaran: (payload, consumergroupdetailsId) =>
+    dispatch(
+      BankaprakarActions.updateconsumergroupdetailsRequest(
+        payload,
+        consumergroupdetailsId
+      )
+    ),
+  deleteUpabhoktasamuhabibaran: (consumergroupdetailsId) =>
+    dispatch(
+      BankaprakarActions.deleteconsumergroupdetailsRequest(
+        consumergroupdetailsId
+      )
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);
