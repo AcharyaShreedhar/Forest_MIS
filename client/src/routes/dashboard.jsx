@@ -10,6 +10,7 @@ import Karmachari from "../views/Karmachari";
 import Karyabibaran from "../views/Karyabibaran";
 import Miscellaneous from "../views/Miscellaneous";
 import Bipatbebasthapan from "../views/Bipatbebasthapan";
+import Samrakshyan from "../views/Samrakshyan";
 
 const dashboardRoutes = [
   {
@@ -71,6 +72,11 @@ const dashboardRoutes = [
     path: "/bipatbebasthapan",
     name: "Bipatbebasthapan",
     component: Bipatbebasthapan,
+  },
+  {
+    path: "/samrakshyan",
+    name: "Samrakshyan",
+    component: Samrakshyan,
   },
   {
     redirect: true,
