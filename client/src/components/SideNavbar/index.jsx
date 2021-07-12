@@ -14,6 +14,7 @@ import {
   faListAlt,
   faInfoCircle,
   faExclamationTriangle,
+  faHandHoldingWater,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import { HeaderComponent, Displaybox } from "../../components";
@@ -325,6 +326,37 @@ export class SideNavbar extends Component {
               onClick={() => history.push("/bipatbebasthapan/pahirobebasthapanlist")}
             >
               <NavText> पहिरो व्यवस्थापन</NavText>
+            </NavItem>
+          </NavItem>
+          <NavItem eventKey="/samrakshyan">
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faHandHoldingWater} />
+            </NavIcon>
+            <NavText>संरक्षण कार्य</NavText>
+
+            <NavItem
+              eventKey="samrakshyan/pokharisamrakshyanlist"
+              onClick={() => history.push("/samrakshyan/pokharisamrakshyanlist")}
+            >
+              <NavText>पोखरी</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="samrakshyan/panimuhansamrakshyanlist"
+              onClick={() => history.push("/samrakshyan/panimuhansamrakshyanlist")}
+            >
+              <NavText>पानीमुहान</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="samrakshyan/jaladharsamrakshyanlist"
+              onClick={() => history.push("/samrakshyan/jaladharsamrakshyanlist")}
+            >
+              <NavText>जलाधार</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="samrakshyan/nadikinarsamrakshyanlist"
+              onClick={() => history.push("/samrakshyan/nadikinarsamrakshyanlist")}
+            >
+              <NavText>नदी किनार</NavText>
             </NavItem>
           </NavItem>
           <NavItem eventKey="logout" onClick={(e) => this.handleLogout(e)}>
