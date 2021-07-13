@@ -4,11 +4,17 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
-//import SamrakshyanActions from "../../actions/samrakshyan";
+import SamrakshyanActions from "../../actions/samrakshyan";
 import samrakshyanRoutes from "../../routes/samrakshyan";
 
 export class Samrakshyan extends Component {
   componentDidMount() {
+    // this.props.fetchallNadikinarsamrakshyan({
+    //   distId: "%",
+    //   name: "karyakram_miti",
+    //   page: 0,
+    //   perPage: 10,
+    // });
     
   }
 
@@ -63,7 +69,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  
+  // fetchallNadikinarsamrakshyan: (payload) =>
+  //   dispatch(SamrakshyanActions.fetchallnadikinarsamrakshyanRequest(payload)),
 
 });
 
