@@ -54,6 +54,14 @@ const samrakshyanRoutes = [
         auth: true,
         component: PokhariSamrakshyan,
     },
+    {
+      path: "/samrakshyan/pokharisamrakshyanedit/:id",
+      title: "PokhariSamrakshyan",
+      name: "pokharisamrakshyan",
+      auth: true,
+      component: PokhariSamrakshyan,
+  },
+
   
   
     

@@ -228,7 +228,7 @@ const mapDispatchToProps = (dispatch) => ({
       )
     ),
 
-  deleteBandadelo: (pokharisamrakshyanId) =>
+  deletePokharisamrakshyan: (pokharisamrakshyanId) =>
     dispatch(
       SamrakshyanActions.deletesamrakshyanpokharinirmanRequest(pokharisamrakshyanId)
     ),
