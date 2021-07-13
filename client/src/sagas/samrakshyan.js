@@ -141,3 +141,16 @@ export function* deletesamrakshyanpokharinirmanRequest(api, action) {
     );
   }
 }
+
+export function* fetchalljaladharsamrakshyanRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getJaladharSamrakshyanList(payloaddata);
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchalljaladharsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchalljaladharsamrakshyanFailure());
+  }
+}
