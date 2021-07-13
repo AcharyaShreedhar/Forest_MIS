@@ -41,6 +41,9 @@ const { Types, Creators } = createActions({
   fetchalljaladharsamrakshyanSuccess: ["response"],
   fetchalljaladharsamrakshyanFailure: null,
 
+  fetchjaladharsamrakshyanRequest: ["payload"],
+  fetchjaladharsamrakshyanSuccess: ["response"],
+  fetchjaladharsamrakshyanFailure: null,
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

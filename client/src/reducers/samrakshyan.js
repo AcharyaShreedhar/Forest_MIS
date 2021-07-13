@@ -80,6 +80,19 @@ const fetchalljaladharsamrakshyanSuccess = (state, action) => {
 const fetchalljaladharsamrakshyanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+const fetchjaladharsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchjaladharsamrakshyanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    jaladharsamrakshyanData: action.response,
+  });
+};
+const fetchjaladharsamrakshyanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -115,6 +128,10 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.FETCHALLJALADHARSAMRAKSHYAN_REQUEST]: fetchalljaladharsamrakshyanRequest,
   [SamrakshyanTypes.FETCHALLJALADHARSAMRAKSHYAN_SUCCESS]: fetchalljaladharsamrakshyanSuccess,
   [SamrakshyanTypes.FETCHALLJALADHARSAMRAKSHYAN_FAILURE]: fetchalljaladharsamrakshyanFailure,
+
+  [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_REQUEST]: fetchjaladharsamrakshyanRequest,
+  [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_SUCCESS]: fetchjaladharsamrakshyanSuccess,
+  [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_FAILURE]: fetchjaladharsamrakshyanFailure,
 
   [SamrakshyanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SamrakshyanTypes.CLEAR_REQUEST]: clearRequest,
