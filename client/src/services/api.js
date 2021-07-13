@@ -839,20 +839,23 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`badhiBibaran/${badhibibaranId}`);
 
   // samrakshyan bibaran
-  const getSamrakshyanpokhariNirmanList = (payload) =>
+  const getSamrakshyanPokhariNirmanList = (payload) =>
     api.post("samrakshyanpokhariNirmanList", payload);
 
-  const getSamrakshyanpokhariNirman = (samrakshyanpokhariNirmanId) =>
+  const getSamrakshyanPokhariNirman = (samrakshyanpokhariNirmanId) =>
     api.get(`samrakshyanpokhariNirman/${samrakshyanpokhariNirmanId}`);
 
-  const postSamrakshyanpokhariNirmanAddNew = (payload) =>
+  const postSamrakshyanPokhariNirmanAddNew = (payload) =>
     api.post("samrakshyanpokhariNirman", payload);
 
-  const postSamrakshyanpokhariNirmanUpdate = (
+  const postSamrakshyanPokhariNirmanUpdate = (
     payload,
     samrakshyanpokhariNirmanId
   ) =>
     api.put(`samrakshyanpokhariNirman/${samrakshyanpokhariNirmanId}`, payload);
+
+  const postSamrakshyanPokhariNirmanDelete = (samrakshyanpokhariNirmanId) =>
+    api.delete(`samrakshyanpokhariNirman/${samrakshyanpokhariNirmanId}`);
 
   return {
     loginByUsername,
@@ -1130,10 +1133,11 @@ const create = (baseURL = Config.API_URL) => {
     postBadhibibaranDelete,
 
     //samraxan bibaran
-    getSamrakshyanpokhariNirmanList,
-    getSamrakshyanpokhariNirman,
-    postSamrakshyanpokhariNirmanAddNew,
-    postSamrakshyanpokhariNirmanUpdate,
+    getSamrakshyanPokhariNirmanList,
+    getSamrakshyanPokhariNirman,
+    postSamrakshyanPokhariNirmanAddNew,
+    postSamrakshyanPokhariNirmanUpdate,
+    postSamrakshyanPokhariNirmanDelete,
   };
 };
 export default {

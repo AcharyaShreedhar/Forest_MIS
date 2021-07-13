@@ -7,7 +7,7 @@ import SamrakshyanActions from "../actions/samrakshyan";
 export function* fetchallsamrakshyanpokharinirmanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
-  const response = yield api.getSamrakshyanpokhariNirmanList(payloaddata);
+  const response = yield api.getSamrakshyanPokhariNirmanList(payloaddata);
   if (response.ok) {
     yield put(
       SamrakshyanActions.fetchallsamrakshyanpokharinirmanSuccess(response.data)
@@ -20,7 +20,7 @@ export function* fetchallsamrakshyanpokharinirmanRequest(api, action) {
 export function* fetchsamrakshyanpokharinirmanRequest(api, action) {
   const samrakshyanpokhariNirmanId = action.payload;
 
-  const response = yield api.getSamrakshyanpokhariNirman(
+  const response = yield api.getSamrakshyanPokhariNirman(
     samrakshyanpokhariNirmanId
   );
 
@@ -114,7 +114,7 @@ export function* updatesamrakshyanpokharinirmanRequest(api, action) {
 export function* deletesamrakshyanpokharinirmanRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postSamrakshyanpokhariNirmanDelete(payload);
+  const response = yield api.postSamrakshyanPokhariNirmanDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक संरक्षण पोखरी निंमाण कार्यक्रम हटाईयो !!!!!", {
