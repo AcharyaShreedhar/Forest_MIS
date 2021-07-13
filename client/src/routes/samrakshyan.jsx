@@ -20,6 +20,20 @@ const samrakshyanRoutes = [
         component: NadikinarSamrakshyan,
     },
     {
+      path: "/samrakshyan/nadikinarsamrakshyanadd/new",
+      title: "NadikinarSamrakshyan",
+      name: "nadikinarsamrakshyan",
+      auth: true,
+      component: NadikinarSamrakshyan,
+  },
+  {
+    path: "/samrakshyan/nadikinarsamrakshyanedit/:id",
+    title: "NadikinarSamrakshyan",
+    name: "nadikinarsamrakshyan",
+    auth: true,
+    component: NadikinarSamrakshyan,
+},
+    {
         path: "/samrakshyan/panimuhansamrakshyanlist",
         title: "PanimuhanSamrakshyan",
         name: "panimuhansamrakshyan",
