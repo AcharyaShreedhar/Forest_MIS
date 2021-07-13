@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, ConfirmationDialoge } from "../../components";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import "nepali-datepicker-reactjs/dist/index.css";
 
 class Add extends Component {
   constructor(props) {
@@ -19,6 +21,7 @@ class Add extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleDate = this.handleDate.bind(this);
   }
 
   handleConfirm() {
@@ -32,7 +35,7 @@ class Add extends Component {
     const { sthan, qty, karyakram_miti, conservation_area, affected_area } =
       this.state;
     const payload = {
-      jadibuti: {
+      nadikinar: {
         data: {
           sthan: sthan,
           qty: qty,
@@ -45,6 +48,10 @@ class Add extends Component {
       },
     };
     this.props.onSubmit(payload);
+  }
+
+  handleDate(e, type) {
+    this.setState({ karyakram_miti: e });
   }
 
   render() {
@@ -90,12 +97,13 @@ class Add extends Component {
               value={qty}
               onChange={(e) => this.setState({ qty: e })}
             />
-            <Input
+             <span className="dsl-b18">कार्यक्रम मिति</span>
+            <NepaliDatePicker
+              inputClassName="form-control"
               className="mb-4"
-              title="कार्यक्रम मिति"
               value={karyakram_miti}
-              direction="vertical"
-              onChange={(e) => this.setState({ karyakram_miti: e })}
+              onChange={(e) => this.handleDate(e, "karyakram")}
+              options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
             <Input
               className="mb-4"
