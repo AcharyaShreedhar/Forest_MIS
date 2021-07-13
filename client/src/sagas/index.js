@@ -323,7 +323,10 @@ import {
 } from "./bipatbibaran";
 
 // ---------------- samraxan bibaran
-import { fetchallsamrakshyanpokharinirmanRequest } from "./samrakshyan";
+import {
+  fetchallsamrakshyanpokharinirmanRequest,
+  fetchsamrakshyanpokharinirmanRequest,
+} from "./samrakshyan";
 
 const api = API.create();
 
@@ -1644,6 +1647,11 @@ export default function* root() {
     takeLatest(
       SamrakshyanTypes.FETCHALLSAMRAKSHYANPOKHARINIRMAN_REQUEST,
       fetchallsamrakshyanpokharinirmanRequest,
+      api
+    ),
+    takeLatest(
+      SamrakshyanTypes.FETCHSAMRAKSHYANPOKHARINIRMAN_REQUEST,
+      fetchsamrakshyanpokharinirmanRequest,
       api
     ),
   ]);

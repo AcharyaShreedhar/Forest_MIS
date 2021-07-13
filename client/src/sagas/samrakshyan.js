@@ -16,3 +16,19 @@ export function* fetchallsamrakshyanpokharinirmanRequest(api, action) {
     yield put(SamrakshyanActions.fetchallsamrakshyanpokharinirmanFailure());
   }
 }
+
+export function* fetchsamrakshyanpokharinirmanRequest(api, action) {
+  const samrakshyanpokhariNirmanId = action.payload;
+
+  const response = yield api.getSamrakshyanpokhariNirman(
+    samrakshyanpokhariNirmanId
+  );
+
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchsamrakshyanpokharinirmanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchsamrakshyanpokharinirmanFailure());
+  }
+}
