@@ -56,7 +56,7 @@ export function* addsamrakshyanpokharinirmanRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/samrakshyan/samrakshyanpokharinirmanlist");
+    yield call(history.push, "/samrakshyan/pokharisamrakshyanlist");
     yield put(
       SamrakshyanActions.addsamrakshyanpokharinirmanSuccess(response.data)
     );

@@ -16,6 +16,14 @@ export class Samrakshyan extends Component {
     //   perPage: 10,
     // });
     
+    this.props.fetchallPokharisamrakshyan({
+        fromDate: "2075-01-01",
+        toDate: "2090-12-30",
+        distId: "%",
+        name: "karyakram_miti",
+        page: 0,
+        perPage: 10,
+      });
   }
 
   render() {
@@ -71,6 +79,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   // fetchallNadikinarsamrakshyan: (payload) =>
   //   dispatch(SamrakshyanActions.fetchallnadikinarsamrakshyanRequest(payload)),
+  
+    fetchallPokharisamrakshyan: (payload) =>
+    dispatch(SamrakshyanActions.fetchallsamrakshyanpokharinirmanRequest(payload)),  
 
 });
 
