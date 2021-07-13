@@ -52,7 +52,7 @@ export function* addsamrakshyanpokharinirmanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "id",
+      name: "karyakram_miti",
       page: 0,
       perPage: 10,
     });
@@ -91,11 +91,11 @@ export function* updatesamrakshyanpokharinirmanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "id",
+      name: "karyakram_miti",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/samrakshyan/samrakshyanpokharinirmanlist");
+    yield call(history.push, "/samrakshyan/pokharisamrakshyanlist");
     yield put(
       SamrakshyanActions.updatesamrakshyanpokharinirmanSuccess(response.data)
     );
@@ -124,7 +124,7 @@ export function* deletesamrakshyanpokharinirmanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      name: "id",
+      name: "karyakram_miti",
       page: 0,
       perPage: 10,
     });
