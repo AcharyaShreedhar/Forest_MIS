@@ -10,6 +10,8 @@ import samrakshyanRoutes from "../../routes/samrakshyan";
 export class Samrakshyan extends Component {
   componentDidMount() {
     // this.props.fetchallNadikinarsamrakshyan({
+    //   fromDate: "2075-01-01",
+    //   toDate: "2090-12-30",
     //   distId: "%",
     //   name: "karyakram_miti",
     //   page: 0,
