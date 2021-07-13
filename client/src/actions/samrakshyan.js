@@ -30,6 +30,13 @@ const { Types, Creators } = createActions({
   updatesamrakshyanpokharinirmanSuccess: ["response"],
   updatesamrakshyanpokharinirmanFailure: null,
 
+  deletesamrakshyanpokharinirmanRequest: [
+    "payload",
+    "samrakshyanpokhariNirmanId",
+  ],
+  deletesamrakshyanpokharinirmanSuccess: ["response"],
+  deletesamrakshyanpokharinirmanFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
