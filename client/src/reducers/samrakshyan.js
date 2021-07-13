@@ -93,6 +93,18 @@ const fetchjaladharsamrakshyanSuccess = (state, action) => {
 const fetchjaladharsamrakshyanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+//Add  jaladhar samrakshyan
+const addjaladharsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addjaladharsamrakshyanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addjaladharsamrakshyanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -132,6 +144,10 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_REQUEST]: fetchjaladharsamrakshyanRequest,
   [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_SUCCESS]: fetchjaladharsamrakshyanSuccess,
   [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_FAILURE]: fetchjaladharsamrakshyanFailure,
+
+  [SamrakshyanTypes.ADDJALADHARSAMRAKSHYAN_REQUEST]: addjaladharsamrakshyanRequest,
+  [SamrakshyanTypes.ADDJALADHARSAMRAKSHYAN_SUCCESS]: addjaladharsamrakshyanSuccess,
+  [SamrakshyanTypes.ADDJALADHARSAMRAKSHYAN_FAILURE]: addjaladharsamrakshyanFailure,
 
   [SamrakshyanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SamrakshyanTypes.CLEAR_REQUEST]: clearRequest,
