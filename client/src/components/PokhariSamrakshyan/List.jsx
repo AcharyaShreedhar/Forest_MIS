@@ -50,8 +50,8 @@ function List(props) {
                 <tr key={`${pokhari.id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {pokhari.paalika}</td>
-                  <td> {englishToNepaliNumber(pokhari.karyakram_miti)}</td>
                   <td> {pokhari.qty}</td>
+                  <td> {englishToNepaliNumber(pokhari.karyakram_miti)}</td>
                   <td> {pokhari.laagat}</td>
                   <td>
                     <div className="edit">

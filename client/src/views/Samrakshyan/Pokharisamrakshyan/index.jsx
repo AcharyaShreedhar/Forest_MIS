@@ -8,7 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
-//import SamrakshyanActions from "../../../actions/samrakshyan";
+import SamrakshyanActions from "../../../actions/samrakshyan";
 import { pokharisamrakshyanHeadings, districtList } from "../../../services/config";
 
 class Pokharisamrakshyan extends Component {
@@ -41,7 +41,7 @@ class Pokharisamrakshyan extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
     var pokharisamrakshyanList = [];
     if (nextProps !== prevState) {
-      //pokharisamrakshyanList = nextProps.pokharisamraksyanDataList.data;
+      pokharisamrakshyanList = nextProps.pokharisamrakshyanDataList.data;
     }
 
     return {
@@ -205,33 +205,33 @@ Pokharisamrakshyan.propsTypes = {
 };
 
 Pokharisamrakshyan.defaultProps = {
-  PokharisamrakshyanDataList: {},
+  pokharisamrakshyanDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  //pokharisamrakshyanDataList: state.samrakshyan.allpokharisamrakshyanData,
+  pokharisamrakshyanDataList: state.samrakshyan.allsamrakshyanpokharinirmanData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-//   fetchallPokharisamrakshyan: (payload) =>
-//     dispatch(SamrakshyanActions.fetchallsamrakshyanpokharinirmanRequest(payload)),
+  fetchallPokharisamrakshyan: (payload) =>
+    dispatch(SamrakshyanActions.fetchallsamrakshyanpokharinirmanRequest(payload)),
 
-//   addPokharisamrakshyan: (payload) =>
-//     dispatch(SamrakshyanActions.addsamrakshyanpokharinirmanRequest(payload)),
+  addPokharisamrakshyan: (payload) =>
+    dispatch(SamrakshyanActions.addsamrakshyanpokharinirmanRequest(payload)),
 
-//   updatePokharisamrakshyan: (payload, pokharisamrakshyanId) =>
-//     dispatch(
-//       SamrakshyanActions.updatesamrakshyanpokharinirmanRequest(
-//         payload,
-//         pokharisamrakshyanId
-//       )
-//     ),
+  updatePokharisamrakshyan: (payload, pokharisamrakshyanId) =>
+    dispatch(
+      SamrakshyanActions.updatesamrakshyanpokharinirmanRequest(
+        payload,
+        pokharisamrakshyanId
+      )
+    ),
 
-//   deleteBandadelo: (pokharisamrakshyanId) =>
-//     dispatch(
-//       SamrakshyanActions.deletesamrakshyanpokharinirmanRequest(pokharisamrakshyanId)
-//     ),
+  deleteBandadelo: (pokharisamrakshyanId) =>
+    dispatch(
+      SamrakshyanActions.deletesamrakshyanpokharinirmanRequest(pokharisamrakshyanId)
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokharisamrakshyan);
