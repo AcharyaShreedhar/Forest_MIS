@@ -428,6 +428,14 @@ const badibebasthapanHeadings = [
   "बोटविरुवा क्षेति संख्या",
 ];
 
+const nadikinarsamrakshyanHeadings = [
+  "स्थान",
+  "मात्रा",
+  "कार्यक्रम मिति",
+  "संरक्षण क्षेत्र",
+  "प्रभावित क्षेत्र",
+]; 
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -463,4 +471,5 @@ export {
   rojgarsrijanaHeadings,
   pahirobebasthapanHeadings,
   badibebasthapanHeadings,
+  nadikinarsamrakshyanHeadings,
 };
