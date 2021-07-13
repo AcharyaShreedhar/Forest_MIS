@@ -430,7 +430,7 @@ const badibebasthapanHeadings = [
 
 const nadikinarsamrakshyanHeadings = [
   "स्थान",
-  "मात्रा",
+  "परिमाण",
   "कार्यक्रम मिति",
   "संरक्षण क्षेत्र",
   "प्रभावित क्षेत्र",
