@@ -1,11 +1,237 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from "react";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
+import { equals, isNil } from "ramda";
+import {
+  PokhariSamrakshyan,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
+//import SamrakshyanActions from "../../../actions/samrakshyan";
+import { pokharisamrakshyanHeadings, districtList } from "../../../services/config";
 
-export class Pokharisamrakshyan extends Component {
-    render() {
-        return (
-            <h1>pokharisamrakshyan</h1>
-        );
+class Pokharisamrakshyan extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loc: "pokharisamrakshyanlist",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      perPage: 10,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "pokharisamrakshyan",
+    };
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const loc = nextProps.location.pathname.split("/")[2];
+    var pokharisamrakshyanList = [];
+    if (nextProps !== prevState) {
+      //pokharisamrakshyanList = nextProps.pokharisamraksyanDataList.data;
     }
+
+    return {
+      loc,
+      pokharisamrakshyanList,
+    };
+  }
+  handlePer(e) {
+    const { fromDate, toDate, distId } = this.state;
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, 0, e);
+  }
+  handleFromDate(e) {
+    const { distId, perPage, toDate } = this.state;
+    this.setState({ fromDate: e });
+    this.fetchResults(e, toDate, distId, 0, perPage);
+  }
+  handleToDate(e) {
+    const { distId, fromDate, perPage } = this.state;
+    this.setState({ toDate: e });
+    this.fetchResults(fromDate, e, distId, 0, perPage);
+  }
+  handleDistrict(e) {
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({ distId: e });
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
+  }
+
+  fetchResults(fromDate, toDate, distId, page, perPage) {
+    this.props.fetchallPokharisamrakshyan({
+      fromDate,
+      toDate,
+      distId,
+      name: "karyakram_miti",
+      page: page,
+      perPage,
+    });
+  }
+
+  handlePageChange(data) {
+    const { fromDate, toDate, distId, perPage } = this.state;
+    this.setState({ page: data.selected });
+    this.fetchResults(
+      fromDate,
+      toDate,
+      distId,
+      data.selected * perPage,
+      perPage
+    );
+  }
+
+  handleSelectMenu(event, item, path) {
+    this.setState({ item: item });
+    this.setState({ path: path });
+    switch (event) {
+      case "edit": {
+        this.props.history.push({
+          pathname: `/samrakshyan/pokharisamrakshyanedit/${item.id}`,
+          item,
+        });
+
+        break;
+      }
+      case "delete": {
+        this.setState({ showDialog: !this.state.showDialog });
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDelete() {
+    const { item } = this.state;
+
+    this.props.deletePokharisamrakshyan(item.id);
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+
+  handleAdd() {
+    this.props.history.push("/samrakshyan/pokharisamrakshyanadd/new");
+  }
+
+  render() {
+    const { loc, perPage, pokharisamrakshyanList, showDialog } = this.state;
+    const { user } = this.props;
+
+    return (
+      <div>
+        <ConfirmationDialoge
+          showDialog={showDialog}
+          title="Delete"
+          body={"के तपाईँ पोखरी संरक्षण सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleDelete}
+          onClose={this.handleClose}
+        />
+        {equals(loc, "pokharisamrakshyanlist") && (
+          <Fragment>
+            <div className="report-filter">
+              <Filter
+                id="pokharisamrakshyan"
+                title="कार्यक्रम मिति"
+                districtsList={districtList}
+                onToDate={this.handleToDate}
+                onFromDate={this.handleFromDate}
+                onSelect={this.handleDistrict}
+              />
+              <ReportGenerator id="pokharisamrakshyan" />
+            </div>
+            <PokhariSamrakshyan.List
+              buttonName="+ पोखरी संरक्षण"
+              title="पोखरी संरक्षण सम्बन्धि विवरण"
+              pageCount={
+                !isNil(pokharisamrakshyanList)
+                  ? Math.ceil(pokharisamrakshyanList.total / perPage)
+                  : 10
+              }
+              data={
+                !isNil(pokharisamrakshyanList) ? pokharisamrakshyanList.list : []
+              }
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              headings={pokharisamrakshyanHeadings}
+              user={user}
+              onAdd={() => this.handleAdd("pokharisamrakshyan")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
+          </Fragment>
+        )}
+        {equals(loc, "pokharisamrakshyanadd") && (
+          <PokhariSamrakshyan.Add
+            title="+ पोखरी संरक्षण"
+            user={user}
+            onSelect={this.handleSelectMenu}
+            onSubmit={(e) => this.props.addPokharisamrakshyan(e)}
+          />
+        )}
+        {equals(loc, "pokharisamrakshyanedit") && (
+          <PokhariSamrakshyan.Edit
+            title="पोखरी संरक्षण पुनः प्रविष्ट"
+            user={user}
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdate={(e, id) => this.props.updatePokharisamrakshyan(e, id)}
+          />
+        )}
+      </div>
+    );
+  }
 }
 
-export default Pokharisamrakshyan;
+Pokharisamrakshyan.propsTypes = {
+  pokharisamrakshyanDataList: PropTypes.any,
+};
+
+Pokharisamrakshyan.defaultProps = {
+  PokharisamrakshyanDataList: {},
+};
+
+const mapStateToProps = (state) => ({
+  user: state.app.user,
+  //pokharisamrakshyanDataList: state.samrakshyan.allpokharisamrakshyanData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+//   fetchallPokharisamrakshyan: (payload) =>
+//     dispatch(SamrakshyanActions.fetchallsamrakshyanpokharinirmanRequest(payload)),
+
+//   addPokharisamrakshyan: (payload) =>
+//     dispatch(SamrakshyanActions.addsamrakshyanpokharinirmanRequest(payload)),
+
+//   updatePokharisamrakshyan: (payload, pokharisamrakshyanId) =>
+//     dispatch(
+//       SamrakshyanActions.updatesamrakshyanpokharinirmanRequest(
+//         payload,
+//         pokharisamrakshyanId
+//       )
+//     ),
+
+//   deleteBandadelo: (pokharisamrakshyanId) =>
+//     dispatch(
+//       SamrakshyanActions.deletesamrakshyanpokharinirmanRequest(pokharisamrakshyanId)
+//     ),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pokharisamrakshyan);

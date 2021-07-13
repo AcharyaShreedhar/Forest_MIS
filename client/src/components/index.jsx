@@ -50,6 +50,7 @@ import * as RojgarSrijana from "./RojgarSrijana";
 import * as PahiroBebasthapan from "./PahiroBebasthapan";
 import * as BadiBebasthapan from "./BadiBebasthapan";
 import * as NadikinarSamrakshyan from "./NadikinarSamrakshyan"
+import * as PokhariSamrakshyan from "./PokhariSamrakshyan";
 
 export {
   HeaderComponent,
@@ -104,4 +105,5 @@ export {
   PahiroBebasthapan,
   BadiBebasthapan,
   NadikinarSamrakshyan,
+  PokhariSamrakshyan,
 };
