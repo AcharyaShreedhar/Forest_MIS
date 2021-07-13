@@ -869,6 +869,9 @@ const create = (baseURL = Config.API_URL) => {
   const postJaladharSamrakshyanUpdate = (payload, jaladharsamrakshyanId) =>
     api.put(`jaladharSamrakshyan/${jaladharsamrakshyanId}`, payload);
 
+  const postJaladharSamrakshyanDelete = (jaladharsamrakshyanId) =>
+    api.delete(`jaladharSamrakshyan/${jaladharsamrakshyanId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1154,6 +1157,7 @@ const create = (baseURL = Config.API_URL) => {
     getJaladharSamrakshyan,
     postJaldharSamrakshyanAddNew,
     postJaladharSamrakshyanUpdate,
+    postJaladharSamrakshyanDelete,
   };
 };
 export default {

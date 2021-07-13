@@ -238,3 +238,35 @@ export function* updatejaladharsamrakshyanRequest(api, action) {
     );
   }
 }
+
+// Delete jaladharsamrakshyan
+export function* deletejaladharsamrakshyanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postJaladharSamrakshyanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक जलाधर संरक्षण कार्यक्रम हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalljaladharsamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      SamrakshyanActions.deletejaladharsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.deletejaladharsamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
