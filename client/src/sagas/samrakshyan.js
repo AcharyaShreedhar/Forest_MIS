@@ -38,17 +38,63 @@ export function* addsamrakshyanpokharinirmanRequest(api, action) {
   const { payload } = action;
 
   const response = yield api.postSamrakshyanpokhariNirmanAddNew(
-    payload.samrakshyanpokhari.data
+    payload.samrakshyanpokharinirman.data
   );
 
   if (response.ok) {
-    yield addsamrakshyanpokharinirmanRequest(api, [
-      payload,
-      "samrakshyanPokhariNirman",
-    ]);
-    yield put(SamrakshyanActions.addsamrakshyanpokhariSuccess(response.data));
+    toast.success("सफलतापुर्वक संरक्षण पोखरी निंमाण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallsamrakshyanpokharinirmanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "id",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/samrakshyan/samrakshyanpokharinirmanlist");
+    yield put(
+      SamrakshyanActions.addsamrakshyanpokharinirmanSuccess(response.data)
+    );
   } else {
-    yield put(SamrakshyanActions.addsamrakshyanpokhariFailure());
+    yield put(SamrakshyanActions.addsamrakshyanpokharinirmanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update samrakshyanpokharinirman
+export function* updatesamrakshyanpokharinirmanRequest(api, action) {
+  const { payload, samrakshyanpokhariNirmanId } = action;
+
+  const response = yield api.postSamrakshyanpokhariNirmanUpdate(
+    payload.samrakshyanpokharinirman.data,
+    samrakshyanpokhariNirmanId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक संरक्षण पोखरी निंमाण शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallsamrakshyanpokharinirmanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "id",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/samrakshyan/samrakshyanpokharinirmanlist");
+    yield put(
+      SamrakshyanActions.updatesamrakshyanpokharinirmanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.updatesamrakshyanpokharinirmanFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
