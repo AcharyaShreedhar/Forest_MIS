@@ -32,3 +32,28 @@ export function* fetchsamrakshyanpokharinirmanRequest(api, action) {
     yield put(SamrakshyanActions.fetchsamrakshyanpokharinirmanFailure());
   }
 }
+
+// Add samrakshyanpokhari
+export function* addsamrakshyanpokharinirmanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postSamrakshyanpokhariNirmanAddNew(
+    payload.samrakshyanpokhari.data
+  );
+
+  if (response.ok) {
+    yield addsamrakshyanpokharinirmanRequest(api, [
+      payload,
+      "samrakshyanPokhariNirman",
+    ]);
+    yield put(SamrakshyanActions.addsamrakshyanpokhariSuccess(response.data));
+  } else {
+    yield put(SamrakshyanActions.addsamrakshyanpokhariFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
