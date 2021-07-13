@@ -838,6 +838,13 @@ const create = (baseURL = Config.API_URL) => {
   const postBadhibibaranDelete = (badhibibaranId) =>
     api.delete(`badhiBibaran/${badhibibaranId}`);
 
+  // samrakshyan bibaran
+  const getSamrakshyanpokhariNirmanList = (payload) =>
+    api.post("samrakshyanpokhariNirmanList", payload);
+
+  const getSamrakshyanpokhariNirman = (samrakshyanpokhariNirmanId) =>
+    api.get(`samrakshyanpokhariNirman/${samrakshyanpokhariNirmanId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1112,6 +1119,10 @@ const create = (baseURL = Config.API_URL) => {
     postBadhibibaranAddNew,
     postBadhibibaranUpdate,
     postBadhibibaranDelete,
+
+    //samraxan bibaran
+    getSamrakshyanpokhariNirmanList,
+    getSamrakshyanpokhariNirman,
   };
 };
 export default {
