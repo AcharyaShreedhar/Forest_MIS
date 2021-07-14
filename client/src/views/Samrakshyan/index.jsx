@@ -9,6 +9,15 @@ import samrakshyanRoutes from "../../routes/samrakshyan";
 
 export class Samrakshyan extends Component {
   componentDidMount() {
+    this.props.fetchallJaladharsamrakshyan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+
     this.props.fetchallNadikinarsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -79,6 +88,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchallJaladharsamrakshyan: (payload) =>
+    dispatch(SamrakshyanActions.fetchalljaladharsamrakshyanRequest(payload)),
+
   fetchallNadikinarsamrakshyan: (payload) =>
     dispatch(SamrakshyanActions.fetchallnadikinarsamrakshyanRequest(payload)),
 
