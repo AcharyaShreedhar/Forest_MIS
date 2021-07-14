@@ -4,6 +4,7 @@ import { isNil } from "ramda";
 import { history } from "../reducers";
 import SamrakshyanActions from "../actions/samrakshyan";
 
+//------samrakshyanpokhari
 export function* fetchallsamrakshyanpokharinirmanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
@@ -368,6 +369,17 @@ export function* updatenadikinarsamrakshyanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       }
     );
+//-------panimuhansamrakshyan
+export function* fetchallpanimuhansamrakshyanRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getPanimuhanSamrakshyanList(payloaddata);
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchallpanimuhansamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchallpanimuhansamrakshyanFailure());
   }
 }
 

@@ -8,6 +8,7 @@ const initialState = Immutable({
   token: "",
 });
 
+//---------smarakshyanpokhari
 const fetchallsamrakshyanpokharinirmanRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallsamrakshyanpokharinirmanSuccess = (state, action) => {
@@ -175,6 +176,19 @@ const updatenadikinarsamrakshyanSuccess = (state, action) =>
   });
 const updatenadikinarsamrakshyanFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
+//-------panimuhansamrakshyan
+const fetchallpanimuhansamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallpanimuhansamrakshyanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allpanimuhansamrakshyanData: action.response,
+  });
+};
+const fetchallpanimuhansamrakshyanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 //Delete nadikinar samrakshyan
 const deletenadikinarsamrakshyanRequest = (state, action) =>
@@ -254,6 +268,10 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_REQUEST]: updatenadikinarsamrakshyanRequest,
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_SUCCESS]: updatenadikinarsamrakshyanSuccess,
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_FAILURE]: updatenadikinarsamrakshyanFailure,
+  
+  [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_REQUEST]: fetchallpanimuhansamrakshyanRequest,
+  [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_SUCCESS]: fetchallpanimuhansamrakshyanSuccess,
+  [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_FAILURE]: fetchallpanimuhansamrakshyanFailure,
 
   [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_REQUEST]: deletenadikinarsamrakshyanRequest,
   [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_SUCCESS]: deletenadikinarsamrakshyanSuccess,
