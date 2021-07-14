@@ -7,13 +7,13 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.nadikinarsamrakshyan_id,  
+      id: props.history.location.item.nadikinarsamrakshyan_id,
       dist_id: props.history.location.item.dist_id,
-      sthan:  props.history.location.item.sthan,
+      sthan: props.history.location.item.sthan,
       qty: props.history.location.item.qty,
-      karyakram_miti:  props.history.location.item.karyakram_miti,
-      conservation_area:  props.history.location.item.conservation_area,
-      affected_area:  props.history.location.item.affected_area,
+      karyakram_miti: props.history.location.item.karyakram_miti,
+      conservation_area: props.history.location.item.conservation_area,
+      affected_area: props.history.location.item.affected_area,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
@@ -33,10 +33,17 @@ class Edit extends Component {
   }
 
   handleSubmit() {
-    const { id,sthan, qty, karyakram_miti, conservation_area, affected_area, created_by } =
-      this.state;
+    const {
+      id,
+      sthan,
+      qty,
+      karyakram_miti,
+      conservation_area,
+      affected_area,
+      created_by,
+    } = this.state;
     const payload = {
-      nadikinar: {
+      nadikinarsamrakshyan: {
         data: {
           sthan: sthan,
           qty: qty,

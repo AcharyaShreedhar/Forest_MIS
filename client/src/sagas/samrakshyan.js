@@ -334,3 +334,39 @@ export function* addnadikinarsamrakshyanRequest(api, action) {
     );
   }
 }
+
+// Update nadikinarsamrakshyan
+export function* updatenadikinarsamrakshyanRequest(api, action) {
+  const { payload, nadikinarSamrakshyanId } = action;
+
+  const response = yield api.postNadikinarSamrakshyanUpdate(
+    payload.nadikinarsamrakshyan.data,
+    nadikinarSamrakshyanId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक नदि किनार संरक्षण कार्यक्रम शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallnadikinarsamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/samrakshyan/nadikinarsamrakshyanlist");
+    yield put(
+      SamrakshyanActions.updatenadikinarsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.updatenadikinarsamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
