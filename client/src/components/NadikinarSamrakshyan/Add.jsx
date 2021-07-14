@@ -32,10 +32,15 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { sthan, qty, karyakram_miti, conservation_area, affected_area } =
-      this.state;
+    const {
+      sthan,
+      qty,
+      karyakram_miti,
+      conservation_area,
+      affected_area,
+    } = this.state;
     const payload = {
-      nadikinar: {
+      nadikinarsamrakshyan: {
         data: {
           sthan: sthan,
           qty: qty,
@@ -97,7 +102,7 @@ class Add extends Component {
               value={qty}
               onChange={(e) => this.setState({ qty: e })}
             />
-             <span className="dsl-b18">कार्यक्रम मिति</span>
+            <span className="dsl-b18">कार्यक्रम मिति</span>
             <NepaliDatePicker
               inputClassName="form-control"
               className="mb-4"
