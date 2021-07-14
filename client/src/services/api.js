@@ -885,7 +885,7 @@ const create = (baseURL = Config.API_URL) => {
     api.put(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`, payload);
     
   const getPanimuhanSamrakshyanList = (payload) =>
-    api.get(`panimuhanSamrakshyanList/${payload}`);  
+    api.post("panimuhanSamrakshyanList",payload);  
 
   const postNadikinarSamrakshyanDelete = (nadikinarSamrakshyanId) =>
     api.delete(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`);
