@@ -92,7 +92,7 @@ class Add extends Component {
 
             <Input
               className="mb-4"
-              title="मात्रा"
+              title="परिमाण"
               direction="vertical"
               value={qty}
               onChange={(e) => this.setState({ qty: e })}
