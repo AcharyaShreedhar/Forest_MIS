@@ -270,3 +270,18 @@ export function* deletejaladharsamrakshyanRequest(api, action) {
     );
   }
 }
+
+//-------------- nadikiran samrakshyan
+export function* fetchallnadikinarsamrakshyanRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getNadikinarSamrakshyanList(payloaddata);
+  console.log("this data......", response);
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchallnadikinarsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchallnadikinarsamrakshyanFailure());
+  }
+}

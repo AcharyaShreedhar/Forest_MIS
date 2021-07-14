@@ -9,7 +9,10 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import SamrakshyanActions from "../../../actions/samrakshyan";
-import { nadikinarsamrakshyanHeadings, districtList } from "../../../services/config";
+import {
+  nadikinarsamrakshyanHeadings,
+  districtList,
+} from "../../../services/config";
 import { Fragment } from "react";
 
 class Nadikinarsamrakshyan extends Component {
@@ -43,7 +46,7 @@ class Nadikinarsamrakshyan extends Component {
 
     var nadikinarsamrakshyanList = [];
     if (nextProps !== prevState) {
-        // nadikinarsamrakshyanList = nextProps.nadikinarsamrakshyanDataList.data;
+      nadikinarsamrakshyanList = nextProps.nadikinarsamrakshyanDataList.data;
     }
     return { loc, nadikinarsamrakshyanList };
   }
@@ -116,16 +119,16 @@ class Nadikinarsamrakshyan extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-  
-        this.props.deleteNadikinarsamrakshyan(item.nadikinarsamrakshyan_id);
-        this.setState({ showDialog: !this.state.showDialog });
+
+    this.props.deleteNadikinarsamrakshyan(item.nadikinarsamrakshyan_id);
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
     this.props.history.push("/samrakshyan/nadikinarsamrakshyanadd/new");
   }
   render() {
-    const { loc, perPage, nadikinarsamrakshyanList, showDialog, } = this.state;
+    const { loc, perPage, nadikinarsamrakshyanList, showDialog } = this.state;
     const { user } = this.props;
 
     return (
@@ -133,9 +136,7 @@ class Nadikinarsamrakshyan extends Component {
         <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ नदिकिनार संरक्षण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ नदिकिनार संरक्षण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -162,7 +163,11 @@ class Nadikinarsamrakshyan extends Component {
                   ? Math.ceil(nadikinarsamrakshyanList.total / perPage)
                   : 10
               }
-              data={!isNil(nadikinarsamrakshyanList) ? nadikinarsamrakshyanList.list : []}
+              data={
+                !isNil(nadikinarsamrakshyanList)
+                  ? nadikinarsamrakshyanList.list
+                  : []
+              }
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
@@ -201,12 +206,12 @@ Nadikinarsamrakshyan.propTypes = {
 };
 
 Nadikinarsamrakshyan.defaultProps = {
-    nadikinarsamrakshyanList: {},
+  nadikinarsamrakshyanList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  nadikinarsamrakshyanList: state.samrakshyan.allnadikinarsamrakshyanData,
+  nadikinarsamrakshyanDataList: state.samrakshyan.allnadikinarsamrakshyanData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -216,10 +221,22 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(SamrakshyanActions.addnadikinarsamrakshyanRequest(payload)),
 
   updateNadikinarsamrakshyan: (payload, nadikinarSamrakshyanId) =>
-    dispatch(SamrakshyanActions.updatenadikinarsamrakshyanRequest(payload, nadikinarSamrakshyanId)),
+    dispatch(
+      SamrakshyanActions.updatenadikinarsamrakshyanRequest(
+        payload,
+        nadikinarSamrakshyanId
+      )
+    ),
 
   deleteNadikinarsamrakshyan: (nadikinarSamrakshyanId) =>
-    dispatch(SamrakshyanActions.deletenadikinarsamrakshyanRequest(nadikinarSamrakshyanId)),
+    dispatch(
+      SamrakshyanActions.deletenadikinarsamrakshyanRequest(
+        nadikinarSamrakshyanId
+      )
+    ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nadikinarsamrakshyan);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Nadikinarsamrakshyan);
