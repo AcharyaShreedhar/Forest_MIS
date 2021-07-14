@@ -73,7 +73,7 @@ class Edit extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ नदिकिनार संरक्षण सम्बन्धी विवरण थप गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ नदिकिनार संरक्षण सम्बन्धी विवरण शंसोधन  गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -94,7 +94,7 @@ class Edit extends Component {
 
             <Input
               className="mb-4"
-              title="मात्रा"
+              title="परिमाण"
               direction="vertical"
               value={qty}
               onChange={(e) => this.setState({ qty: e })}

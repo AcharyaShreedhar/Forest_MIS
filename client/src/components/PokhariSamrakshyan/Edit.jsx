@@ -3,7 +3,7 @@ import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 
-class Add extends Component {
+class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -70,7 +70,7 @@ class Add extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ पोखरी संरक्षण सम्बन्धी विवरण थप गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ पोखरी संरक्षण सम्बन्धी विवरण शंसोधन  गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -128,4 +128,4 @@ class Add extends Component {
   }
 }
 
-export default Add;
+export default Edit;

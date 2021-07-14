@@ -1,27 +1,27 @@
 import React, { Component } from "react";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
-import "nepali-datepicker-reactjs/dist/index.css";
 
-class Add extends Component {
+
+class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dist_id: "",
-      sthan: "",
-      qty: "",
-      karyakram_miti: "",
-      conservation_area: "",
-      affected_area: "",
-      created_by: "",
-      updated_by: "",
+      id: props.history.location.item.jaladhar_samrakshyan_id,
+      dist_id: props.history.location.item.dist_id,
+      sthan: props.history.location.item.sthan,
+      qty: props.history.location.item.qty,
+      karyakram_miti: props.history.location.item.karyakram_miti,
+      laagat: props.history.location.item.laagat,
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
       showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDate = this.handleDate.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleDate = this.handleDate.bind(this);
   }
 
   handleConfirm() {
@@ -32,25 +32,25 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { sthan, qty, karyakram_miti, conservation_area, affected_area } =
+    const {id, sthan, qty, karyakram_miti, laagat, created_by } =
       this.state;
     const payload = {
-      nadikinar: {
+        jaladharsamrakshyan: {
         data: {
           sthan: sthan,
           qty: qty,
           karyakram_miti: karyakram_miti,
-          conservation_area: conservation_area,
-          affected_area: affected_area,
+          laagat: laagat,
           dist_id: this.props.user.dist_id,
-          created_by: this.props.user.user_name,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
-    this.props.onSubmit(payload);
+    this.props.onUpdate(payload, id);
   }
 
-  handleDate(e, type) {
+  handleDate(e) {
     this.setState({ karyakram_miti: e });
   }
 
@@ -60,8 +60,7 @@ class Add extends Component {
       sthan,
       qty,
       karyakram_miti,
-      conservation_area,
-      affected_area,
+      laagat,
       showDialog,
     } = this.state;
 
@@ -71,7 +70,7 @@ class Add extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ नदिकिनार संरक्षण सम्बन्धी विवरण थप गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ जलाधार संरक्षण सम्बन्धी विवरण शंसोधन  गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -92,33 +91,27 @@ class Add extends Component {
 
             <Input
               className="mb-4"
-              title="परिमाण"
+              title="पारिमाण"
               direction="vertical"
               value={qty}
               onChange={(e) => this.setState({ qty: e })}
             />
-             <span className="dsl-b18">कार्यक्रम मिति</span>
+            <span className="dsl-b18">कार्यक्रम मिति</span>
             <NepaliDatePicker
               inputClassName="form-control"
               className="mb-4"
               value={karyakram_miti}
-              onChange={(e) => this.handleDate(e, "karyakram")}
+              onChange={(e) => this.handleDate(e)}
               options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
-            <Input
+           <Input
               className="mb-4"
-              title="संरक्षण क्षेत्र"
-              value={conservation_area}
+              title="लागत"
+              value={laagat}
               direction="vertical"
-              onChange={(e) => this.setState({ conservation_area: e })}
+              onChange={(e) => this.setState({ laagat: e })}
             />
-            <Input
-              className="mb-4"
-              title="प्रभावित क्षेत्र"
-              direction="vertical"
-              value={affected_area}
-              onChange={(e) => this.setState({ affected_area: e })}
-            />
+            
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
@@ -135,4 +128,4 @@ class Add extends Component {
   }
 }
 
-export default Add;
+export default Edit;
