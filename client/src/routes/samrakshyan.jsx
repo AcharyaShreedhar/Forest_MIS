@@ -13,6 +13,20 @@ const samrakshyanRoutes = [
       component: JaladharSamrakshyan,
     },
     {
+      path: "/samrakshyan/jaladharsamrakshyanadd/new",
+      title: "JaladharSamrakshyan",
+      name: "jaladharsamrakshyan",
+      auth: true,
+      component: JaladharSamrakshyan,
+    },
+    {
+      path: "/samrakshyan/jaladharsamrakshyanedit/:id",
+      title: "JaladharSamrakshyan",
+      name: "jaladharsamrakshyan",
+      auth: true,
+      component: JaladharSamrakshyan,
+    },
+    {
         path: "/samrakshyan/nadikinarsamrakshyanlist",
         title: "NadikinarSamrakshyan",
         name: "nadikinarsamrakshyan",
