@@ -435,8 +435,16 @@ const nadikinarsamrakshyanHeadings = [
   "संरक्षण क्षेत्र",
   "प्रभावित क्षेत्र",
 ]; 
+
 const pokharisamrakshyanHeadings = [
   "पालिका",
+  "परिमाण",
+  "कार्यक्रम मिति",
+  "लागात",
+];
+
+const jaladharsamrakshyanHeadings = [
+  "स्थान",
   "परिमाण",
   "कार्यक्रम मिति",
   "लागात",
@@ -479,4 +487,5 @@ export {
   badibebasthapanHeadings,
   nadikinarsamrakshyanHeadings,
   pokharisamrakshyanHeadings,
+  jaladharsamrakshyanHeadings,
 };
