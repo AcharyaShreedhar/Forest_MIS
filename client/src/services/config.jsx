@@ -442,6 +442,12 @@ const pokharisamrakshyanHeadings = [
   "कार्यक्रम मिति",
   "लागात",
 ];
+const panimuhansamrakshyanHeadings = [
+  "स्थान",
+  "परिमाण",
+  "कार्यक्रम मिति",
+  "लागात",
+];
 
 const jaladharsamrakshyanHeadings = [
   "स्थान",
@@ -488,4 +494,5 @@ export {
   nadikinarsamrakshyanHeadings,
   pokharisamrakshyanHeadings,
   jaladharsamrakshyanHeadings,
+  panimuhansamrakshyanHeadings,
 };
