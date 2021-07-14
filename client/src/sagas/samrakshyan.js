@@ -369,6 +369,9 @@ export function* updatenadikinarsamrakshyanRequest(api, action) {
         position: toast.POSITION.TOP_CENTER,
       }
     );
+  }
+}
+  
 //-------panimuhansamrakshyan
 export function* fetchallpanimuhansamrakshyanRequest(api, action) {
   const { payload } = action;
