@@ -141,6 +141,19 @@ const fetchallnadikinarsamrakshyanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+const fetchnadikinarsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchnadikinarsamrakshyanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    nadikinarsamrakshyanData: action.response,
+  });
+};
+const fetchnadikinarsamrakshyanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -196,6 +209,10 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.FETCHALLNADIKINARSAMRAKSHYAN_REQUEST]: fetchallnadikinarsamrakshyanRequest,
   [SamrakshyanTypes.FETCHALLNADIKINARSAMRAKSHYAN_SUCCESS]: fetchallnadikinarsamrakshyanSuccess,
   [SamrakshyanTypes.FETCHALLNADIKINARSAMRAKSHYAN_FAILURE]: fetchallnadikinarsamrakshyanFailure,
+
+  [SamrakshyanTypes.FETCHNADIKINARSAMRAKSHYAN_REQUEST]: fetchnadikinarsamrakshyanRequest,
+  [SamrakshyanTypes.FETCHNADIKINARSAMRAKSHYAN_SUCCESS]: fetchnadikinarsamrakshyanSuccess,
+  [SamrakshyanTypes.FETCHNADIKINARSAMRAKSHYAN_FAILURE]: fetchnadikinarsamrakshyanFailure,
 
   [SamrakshyanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SamrakshyanTypes.CLEAR_REQUEST]: clearRequest,

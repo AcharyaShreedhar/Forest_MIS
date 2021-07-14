@@ -166,7 +166,7 @@ export function* fetchjaladharsamrakshyanRequest(api, action) {
       SamrakshyanActions.fetchjaladharsamrakshyanSuccess(response.data)
     );
   } else {
-    yield put(SamrakshyanActions.fetchsamrakshyanpokharinirmanFailure());
+    yield put(SamrakshyanActions.fetchjaladharsamrakshyanFailure());
   }
 }
 
@@ -276,12 +276,25 @@ export function* fetchallnadikinarsamrakshyanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getNadikinarSamrakshyanList(payloaddata);
-  console.log("this data......", response);
   if (response.ok) {
     yield put(
       SamrakshyanActions.fetchallnadikinarsamrakshyanSuccess(response.data)
     );
   } else {
     yield put(SamrakshyanActions.fetchallnadikinarsamrakshyanFailure());
+  }
+}
+
+export function* fetchnadikinarsamrakshyanRequest(api, action) {
+  const nadikinarSamrakshyanId = action.payload;
+
+  const response = yield api.getNadikinarSamrakshyan(nadikinarSamrakshyanId);
+
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchnadikinarsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchnadikinarsamrakshyanFailure());
   }
 }
