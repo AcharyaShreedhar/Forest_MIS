@@ -127,6 +127,20 @@ const deletejaladharsamrakshyanSuccess = (state, action) =>
 const deletejaladharsamrakshyanFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+//----------------- nadikinar samrakshyan
+const fetchallnadikinarsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallnadikinarsamrakshyanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allnadikinarsamrakshyanData: action.response,
+  });
+};
+const fetchallnadikinarsamrakshyanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -178,6 +192,10 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.DELETEJALADHARSAMRAKSHYAN_REQUEST]: deletejaladharsamrakshyanRequest,
   [SamrakshyanTypes.DELETEJALADHARSAMRAKSHYAN_SUCCESS]: deletejaladharsamrakshyanSuccess,
   [SamrakshyanTypes.DELETEJALADHARSAMRAKSHYAN_FAILURE]: deletejaladharsamrakshyanFailure,
+
+  [SamrakshyanTypes.FETCHALLNADIKINARSAMRAKSHYAN_REQUEST]: fetchallnadikinarsamrakshyanRequest,
+  [SamrakshyanTypes.FETCHALLNADIKINARSAMRAKSHYAN_SUCCESS]: fetchallnadikinarsamrakshyanSuccess,
+  [SamrakshyanTypes.FETCHALLNADIKINARSAMRAKSHYAN_FAILURE]: fetchallnadikinarsamrakshyanFailure,
 
   [SamrakshyanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SamrakshyanTypes.CLEAR_REQUEST]: clearRequest,
