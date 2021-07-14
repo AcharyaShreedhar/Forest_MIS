@@ -67,6 +67,66 @@ const deletesamrakshyanpokharinirmanSuccess = (state, action) =>
 const deletesamrakshyanpokharinirmanFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+//----------------- jaladhar samrakshyan
+const fetchalljaladharsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchalljaladharsamrakshyanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    alljaladharsamrakshyanData: action.response,
+  });
+};
+const fetchalljaladharsamrakshyanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchjaladharsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchjaladharsamrakshyanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    jaladharsamrakshyanData: action.response,
+  });
+};
+const fetchjaladharsamrakshyanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add  jaladhar samrakshyan
+const addjaladharsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addjaladharsamrakshyanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addjaladharsamrakshyanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update jaladharsamrakshyan
+const updatejaladharsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatejaladharsamrakshyanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatejaladharsamrakshyanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete jaladhar samrakshyan
+const deletejaladharsamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletejaladharsamrakshyanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletejaladharsamrakshyanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -98,6 +158,26 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.DELETESAMRAKSHYANPOKHARINIRMAN_REQUEST]: deletesamrakshyanpokharinirmanRequest,
   [SamrakshyanTypes.DELETESAMRAKSHYANPOKHARINIRMAN_SUCCESS]: deletesamrakshyanpokharinirmanSuccess,
   [SamrakshyanTypes.DELETESAMRAKSHYANPOKHARINIRMAN_FAILURE]: deletesamrakshyanpokharinirmanFailure,
+
+  [SamrakshyanTypes.FETCHALLJALADHARSAMRAKSHYAN_REQUEST]: fetchalljaladharsamrakshyanRequest,
+  [SamrakshyanTypes.FETCHALLJALADHARSAMRAKSHYAN_SUCCESS]: fetchalljaladharsamrakshyanSuccess,
+  [SamrakshyanTypes.FETCHALLJALADHARSAMRAKSHYAN_FAILURE]: fetchalljaladharsamrakshyanFailure,
+
+  [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_REQUEST]: fetchjaladharsamrakshyanRequest,
+  [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_SUCCESS]: fetchjaladharsamrakshyanSuccess,
+  [SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_FAILURE]: fetchjaladharsamrakshyanFailure,
+
+  [SamrakshyanTypes.ADDJALADHARSAMRAKSHYAN_REQUEST]: addjaladharsamrakshyanRequest,
+  [SamrakshyanTypes.ADDJALADHARSAMRAKSHYAN_SUCCESS]: addjaladharsamrakshyanSuccess,
+  [SamrakshyanTypes.ADDJALADHARSAMRAKSHYAN_FAILURE]: addjaladharsamrakshyanFailure,
+
+  [SamrakshyanTypes.UPDATEJALADHARSAMRAKSHYAN_REQUEST]: updatejaladharsamrakshyanRequest,
+  [SamrakshyanTypes.UPDATEJALADHARSAMRAKSHYAN_SUCCESS]: updatejaladharsamrakshyanSuccess,
+  [SamrakshyanTypes.UPDATEJALADHARSAMRAKSHYAN_FAILURE]: updatejaladharsamrakshyanFailure,
+
+  [SamrakshyanTypes.DELETEJALADHARSAMRAKSHYAN_REQUEST]: deletejaladharsamrakshyanRequest,
+  [SamrakshyanTypes.DELETEJALADHARSAMRAKSHYAN_SUCCESS]: deletejaladharsamrakshyanSuccess,
+  [SamrakshyanTypes.DELETEJALADHARSAMRAKSHYAN_FAILURE]: deletejaladharsamrakshyanFailure,
 
   [SamrakshyanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SamrakshyanTypes.CLEAR_REQUEST]: clearRequest,

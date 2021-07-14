@@ -37,6 +37,26 @@ const { Types, Creators } = createActions({
   deletesamrakshyanpokharinirmanSuccess: ["response"],
   deletesamrakshyanpokharinirmanFailure: null,
 
+  fetchalljaladharsamrakshyanRequest: ["payload"],
+  fetchalljaladharsamrakshyanSuccess: ["response"],
+  fetchalljaladharsamrakshyanFailure: null,
+
+  fetchjaladharsamrakshyanRequest: ["payload"],
+  fetchjaladharsamrakshyanSuccess: ["response"],
+  fetchjaladharsamrakshyanFailure: null,
+
+  addjaladharsamrakshyanRequest: ["payload"],
+  addjaladharsamrakshyanSuccess: ["response"],
+  addjaladharsamrakshyanFailure: null,
+
+  updatejaladharsamrakshyanRequest: ["payload", "jaladharsamrakshyanId"],
+  updatejaladharsamrakshyanSuccess: ["response"],
+  updatejaladharsamrakshyanFailure: null,
+
+  deletejaladharsamrakshyanRequest: ["payload", "jaladharsamrakshyanId"],
+  deletejaladharsamrakshyanSuccess: ["response"],
+  deletejaladharsamrakshyanFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

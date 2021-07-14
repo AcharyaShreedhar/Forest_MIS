@@ -329,6 +329,11 @@ import {
   addsamrakshyanpokharinirmanRequest,
   updatesamrakshyanpokharinirmanRequest,
   deletesamrakshyanpokharinirmanRequest,
+  fetchalljaladharsamrakshyanRequest,
+  fetchjaladharsamrakshyanRequest,
+  addjaladharsamrakshyanRequest,
+  updatejaladharsamrakshyanRequest,
+  deletejaladharsamrakshyanRequest,
 } from "./samrakshyan";
 
 const api = API.create();
@@ -1670,6 +1675,31 @@ export default function* root() {
     takeLatest(
       SamrakshyanTypes.DELETESAMRAKSHYANPOKHARINIRMAN_REQUEST,
       deletesamrakshyanpokharinirmanRequest,
+      api
+    ),
+    takeLatest(
+      SamrakshyanTypes.FETCHALLJALADHARSAMRAKSHYAN_REQUEST,
+      fetchalljaladharsamrakshyanRequest,
+      api
+    ),
+    takeLatest(
+      SamrakshyanTypes.FETCHJALADHARSAMRAKSHYAN_REQUEST,
+      fetchjaladharsamrakshyanRequest,
+      api
+    ),
+    takeLatest(
+      SamrakshyanTypes.ADDJALADHARSAMRAKSHYAN_REQUEST,
+      addjaladharsamrakshyanRequest,
+      api
+    ),
+    takeLatest(
+      SamrakshyanTypes.UPDATEJALADHARSAMRAKSHYAN_REQUEST,
+      updatejaladharsamrakshyanRequest,
+      api
+    ),
+    takeLatest(
+      SamrakshyanTypes.DELETEJALADHARSAMRAKSHYAN_REQUEST,
+      deletejaladharsamrakshyanRequest,
       api
     ),
   ]);

@@ -857,6 +857,21 @@ const create = (baseURL = Config.API_URL) => {
   const postSamrakshyanPokhariNirmanDelete = (samrakshyanpokhariNirmanId) =>
     api.delete(`samrakshyanpokhariNirman/${samrakshyanpokhariNirmanId}`);
 
+  const getJaladharSamrakshyanList = (payload) =>
+    api.post("jaladharSamrakshyanList", payload);
+
+  const getJaladharSamrakshyan = (jaladharsamrakshyanId) =>
+    api.get(`jaladharSamrakshyan/${jaladharsamrakshyanId}`);
+
+  const postJaldharSamrakshyanAddNew = (payload) =>
+    api.post("jaladharSamrakshyan", payload);
+
+  const postJaladharSamrakshyanUpdate = (payload, jaladharsamrakshyanId) =>
+    api.put(`jaladharSamrakshyan/${jaladharsamrakshyanId}`, payload);
+
+  const postJaladharSamrakshyanDelete = (jaladharsamrakshyanId) =>
+    api.delete(`jaladharSamrakshyan/${jaladharsamrakshyanId}`);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1138,6 +1153,11 @@ const create = (baseURL = Config.API_URL) => {
     postSamrakshyanPokhariNirmanAddNew,
     postSamrakshyanPokhariNirmanUpdate,
     postSamrakshyanPokhariNirmanDelete,
+    getJaladharSamrakshyanList,
+    getJaladharSamrakshyan,
+    postJaldharSamrakshyanAddNew,
+    postJaladharSamrakshyanUpdate,
+    postJaladharSamrakshyanDelete,
   };
 };
 export default {

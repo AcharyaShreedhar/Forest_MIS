@@ -141,3 +141,132 @@ export function* deletesamrakshyanpokharinirmanRequest(api, action) {
     );
   }
 }
+
+//-------------- jaladhar samrakshyan
+export function* fetchalljaladharsamrakshyanRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getJaladharSamrakshyanList(payloaddata);
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchalljaladharsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchalljaladharsamrakshyanFailure());
+  }
+}
+
+export function* fetchjaladharsamrakshyanRequest(api, action) {
+  const jaladharSamrakshyanId = action.payload;
+
+  const response = yield api.getJaladharSamrakshyan(jaladharSamrakshyanId);
+
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchjaladharsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchsamrakshyanpokharinirmanFailure());
+  }
+}
+
+// Add jaladhar samrakshyan
+export function* addjaladharsamrakshyanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postJaldharSamrakshyanAddNew(
+    payload.jaladharsamrakshyan.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक जलाधर संरक्षण कार्यक्रम प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalljaladharsamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/samrakshyan/jaladharsamrakshyanlist");
+    yield put(SamrakshyanActions.addjaladharsamrakshyanSuccess(response.data));
+  } else {
+    yield put(SamrakshyanActions.addjaladharsamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update jaladhar samrakshyan
+export function* updatejaladharsamrakshyanRequest(api, action) {
+  const { payload, jaladharsamrakshyanId } = action;
+
+  const response = yield api.postJaladharSamrakshyanUpdate(
+    payload.jaladharsamrakshyan.data,
+    jaladharsamrakshyanId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक जलाधर संरक्षण कार्यक्रम शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalljaladharsamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/samrakshyan/jaladharsamrakshyanlist");
+    yield put(
+      SamrakshyanActions.updatejaladharsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.updatejaladharsamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete jaladharsamrakshyan
+export function* deletejaladharsamrakshyanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postJaladharSamrakshyanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक जलाधर संरक्षण कार्यक्रम हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchalljaladharsamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      SamrakshyanActions.deletejaladharsamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.deletejaladharsamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
