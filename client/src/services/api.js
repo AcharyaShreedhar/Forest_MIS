@@ -878,6 +878,9 @@ const create = (baseURL = Config.API_URL) => {
   const getNadikinarSamrakshyan = (nadikinarSamrakshyanId) =>
     api.get(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`);
 
+  const postNadikinarSamrakshyanAddNew = (payload) =>
+    api.post("nadikinarSamrakshyan", payload);
+
   return {
     loginByUsername,
     getSamudayikbanBibaranList,
@@ -1166,6 +1169,7 @@ const create = (baseURL = Config.API_URL) => {
     postJaladharSamrakshyanDelete,
     getNadikinarSamrakshyanList,
     getNadikinarSamrakshyan,
+    postNadikinarSamrakshyanAddNew,
   };
 };
 export default {
