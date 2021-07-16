@@ -5,21 +5,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import banbibaranRoutes from "../../routes/banbibaran";
-import BandadelobibaranActions from "../../actions/bandadelobibaran";
 import BanxetraatikramanActions from "../../actions/banxetraatikraman";
 import BanbibaranActions from "../../actions/banbibaran";
 import MuddaanusandhandayariActions from "../../actions/muddaanusandhandayari";
 
 class Banbibaran extends Component {
-  componentDidMount() {
-    this.props.fetchallBandadelo({
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      name: "bandadelo_miti",
-      page: 0,
-      perPage: 10,
-    });
+  componentDidMount() {    
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -105,9 +96,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBandadelo: (payload) =>
-    dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
-
+  
   fetchallBanxetraatikraman: (payload) =>
     dispatch(
       BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)

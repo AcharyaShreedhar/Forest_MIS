@@ -8,7 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
-import BandadelobibaranActions from "../../../actions/bandadelobibaran";
+import BipatbibaranActions from "../../../actions/bipatbibaran";
 import { bandadeloHeadings, districtList } from "../../../services/config";
 
 class Bandadelo extends Component {
@@ -99,7 +99,7 @@ class Bandadelo extends Component {
     switch (event) {
       case "edit": {
         this.props.history.push({
-          pathname: `/banbibaran/bandadeloedit/${item.bandadelo_bibaran_id}`,
+          pathname: `/bipatbebasthapan/bandadeloedit/${item.bandadelo_bibaran_id}`,
           item,
         });
 
@@ -125,7 +125,7 @@ class Bandadelo extends Component {
   }
 
   handleAdd() {
-    this.props.history.push("/banbibaran/bandadeloadd/new");
+    this.props.history.push("/bipatbebasthapan/bandadeloadd/new");
   }
 
   render() {
@@ -210,19 +210,19 @@ Bandadelo.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  bandadelobibaranDataList: state.bandadelobibaran.allbandadelobibaranData,
+  bandadelobibaranDataList: state.bipatbibaran.allbandadelobibaranData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBandadelo: (payload) =>
-    dispatch(BandadelobibaranActions.fetchallbandadelobibaranRequest(payload)),
+    dispatch(BipatbibaranActions.fetchallbandadelobibaranRequest(payload)),
 
   addBandadelo: (payload) =>
-    dispatch(BandadelobibaranActions.addbandadelobibaranRequest(payload)),
+    dispatch(BipatbibaranActions.addbandadelobibaranRequest(payload)),
 
   updateBandadelo: (payload, bandadelobibaranId) =>
     dispatch(
-      BandadelobibaranActions.updatebandadelobibaranRequest(
+    BipatbibaranActions.updatebandadelobibaranRequest(
         payload,
         bandadelobibaranId
       )
@@ -230,7 +230,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBandadelo: (bandadelobibaranId) =>
     dispatch(
-      BandadelobibaranActions.deletebandadelobibaranRequest(bandadelobibaranId)
+    BipatbibaranActions.deletebandadelobibaranRequest(bandadelobibaranId)
     ),
 });
 

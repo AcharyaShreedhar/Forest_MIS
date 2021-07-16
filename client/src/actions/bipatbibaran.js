@@ -51,6 +51,26 @@ const { Types, Creators } = createActions({
   deletebadhibibaranSuccess: ["response"],
   deletebadhibibaranFailure: null,
 
+  fetchallbandadelobibaranRequest: ["payload"],
+  fetchallbandadelobibaranSuccess: ["response"],
+  fetchallbandadelobibaranFailure: null,
+
+  fetchbandadelobibaranRequest: ["payload"],
+  fetchbandadelobibaranSuccess: ["response"],
+  fetchbandadelobibaranFailure: null,
+
+  addbandadelobibaranRequest: ["payload"],
+  addbandadelobibaranSuccess: ["response"],
+  addbandadelobibaranFailure: null,
+
+  updatebandadelobibaranRequest: ["payload", "bandadelobibaranId"],
+  updatebandadelobibaranSuccess: ["response"],
+  updatebandadelobibaranFailure: null,
+
+  deletebandadelobibaranRequest: ["payload", "bandadelobibaranId"],
+  deletebandadelobibaranSuccess: ["response"],
+  deletebandadelobibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
