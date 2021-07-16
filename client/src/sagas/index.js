@@ -340,6 +340,7 @@ import {
   updatenadikinarsamrakshyanRequest,
   deletenadikinarsamrakshyanRequest,
   fetchallpanimuhansamrakshyanRequest,
+  fetchpanimuhansamrakshyanRequest,
 } from "./samrakshyan";
 
 const api = API.create();
@@ -1728,15 +1729,21 @@ export default function* root() {
       updatenadikinarsamrakshyanRequest,
       api
     ),  
+    takeLatest(
+      SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_REQUEST,
+      deletenadikinarsamrakshyanRequest,
+      api
+    ),
      takeLatest(
       SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_REQUEST,
       fetchallpanimuhansamrakshyanRequest,
       api
     ),
     takeLatest(
-      SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_REQUEST,
-      deletenadikinarsamrakshyanRequest,
+      SamrakshyanTypes.FETCHPANIMUHANSAMRAKSHYAN_REQUEST,
+      fetchpanimuhansamrakshyanRequest,
       api
     ),
+   
   ]);
 }
