@@ -120,7 +120,7 @@ class Panimuhansamrakshyan extends Component {
   handleDelete() {
     const { item } = this.state;
 
-    this.props.deletePanimuhansamrakshyan(item.id);
+    this.props.deletePanimuhansamrakshyan(item.panimuhansamrakshyan_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -220,17 +220,17 @@ const mapDispatchToProps = (dispatch) => ({
   addPanimuhansamrakshyan: (payload) =>
     dispatch(SamrakshyanActions.addpanimuhansamrakshyanRequest(payload)),
 
-  updatePanimuhansamrakshyan: (payload, panimuhansamrakshyanId) =>
+  updatePanimuhansamrakshyan: (payload, panimuhanSamrakshyanId) =>
     dispatch(
       SamrakshyanActions.updatepanimuhansamrakshyanRequest(
         payload,
-        panimuhansamrakshyanId
+        panimuhanSamrakshyanId
       )
     ),
 
-  deletePanimuhansamrakshyan: (panimuhansamrakshyanId) =>
+  deletePanimuhansamrakshyan: (panimuhanSamrakshyanId) =>
     dispatch(
-      SamrakshyanActions.deletepanimuhansamrakshyanRequest(panimuhansamrakshyanId)
+      SamrakshyanActions.deletepanimuhansamrakshyanRequest(panimuhanSamrakshyanId)
     ),
 });
 

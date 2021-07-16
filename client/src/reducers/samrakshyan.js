@@ -176,6 +176,17 @@ const updatenadikinarsamrakshyanSuccess = (state, action) =>
   });
 const updatenadikinarsamrakshyanFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
+
+//Delete nadikinar samrakshyan
+const deletenadikinarsamrakshyanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletenadikinarsamrakshyanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletenadikinarsamrakshyanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
   
 //-------panimuhansamrakshyan
 const fetchallpanimuhansamrakshyanRequest = (state, action) =>
@@ -203,6 +214,39 @@ const fetchpanimuhansamrakshyanSuccess = (state, action) => {
 const fetchpanimuhansamrakshyanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
+
+//Add  panimuhan samrakshyan
+const addpanimuhansamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addpanimuhansamrakshyanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addpanimuhansamrakshyanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update panimuhan samrakshyan
+const updatepanimuhansamrakshyanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatepanimuhansamrakshyanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatepanimuhansamrakshyanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete panimuhan samrakshyan
+const deletepanimuhansamrakshyanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletepanimuhansamrakshyanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletepanimuhansamrakshyanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
 
 
 const locationsRequest = (state, action) => {
@@ -273,6 +317,10 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_SUCCESS]: updatenadikinarsamrakshyanSuccess,
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_FAILURE]: updatenadikinarsamrakshyanFailure,
 
+  [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_REQUEST]: deletenadikinarsamrakshyanRequest,
+  [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_SUCCESS]: deletenadikinarsamrakshyanSuccess,
+  [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_FAILURE]: deletenadikinarsamrakshyanFailure,
+
   [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_REQUEST]: fetchallpanimuhansamrakshyanRequest,
   [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_SUCCESS]: fetchallpanimuhansamrakshyanSuccess,
   [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_FAILURE]: fetchallpanimuhansamrakshyanFailure,
@@ -280,6 +328,18 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.FETCHPANIMUHANSAMRAKSHYAN_REQUEST]: fetchpanimuhansamrakshyanRequest,
   [SamrakshyanTypes.FETCHPANIMUHANSAMRAKSHYAN_SUCCESS]: fetchpanimuhansamrakshyanSuccess,
   [SamrakshyanTypes.FETCHPANIMUHANSAMRAKSHYAN_FAILURE]: fetchpanimuhansamrakshyanFailure,
+
+  [SamrakshyanTypes.ADDPANIMUHANSAMRAKSHYAN_REQUEST]: addpanimuhansamrakshyanRequest,
+  [SamrakshyanTypes.ADDPANIMUHANSAMRAKSHYAN_SUCCESS]: addpanimuhansamrakshyanSuccess,
+  [SamrakshyanTypes.ADDPANIMUHANSAMRAKSHYAN_FAILURE]: addpanimuhansamrakshyanFailure,
+
+  [SamrakshyanTypes.UPDATEPANIMUHANSAMRAKSHYAN_REQUEST]: updatepanimuhansamrakshyanRequest,
+  [SamrakshyanTypes.UPDATEPANIMUHANSAMRAKSHYAN_SUCCESS]: updatepanimuhansamrakshyanSuccess,
+  [SamrakshyanTypes.UPDATEPANIMUHANSAMRAKSHYAN_FAILURE]: updatepanimuhansamrakshyanFailure,
+
+  [SamrakshyanTypes.DELETEPANIMUHANSAMRAKSHYAN_REQUEST]: deletepanimuhansamrakshyanRequest,
+  [SamrakshyanTypes.DELETEPANIMUHANSAMRAKSHYAN_SUCCESS]: deletepanimuhansamrakshyanSuccess,
+  [SamrakshyanTypes.DELETEPANIMUHANSAMRAKSHYAN_FAILURE]: deletepanimuhansamrakshyanFailure,
 
   [SamrakshyanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SamrakshyanTypes.CLEAR_REQUEST]: clearRequest,

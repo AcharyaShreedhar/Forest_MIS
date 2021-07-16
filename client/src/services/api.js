@@ -893,6 +893,14 @@ const create = (baseURL = Config.API_URL) => {
   const getPanimuhanSamrakshyan = (panimuhanSamrakshyanId) =>
     api.get(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);  
 
+  const postPanimuhanSamrakshyanAddNew = (payload) =>
+    api.post("panimuhanSamrakshyan", payload);
+
+  const postPanimuhanSamrakshyanUpdate = (payload, panimuhanSamrakshyanId) =>
+    api.put(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`, payload);
+
+  const postPanimuhanSamrakshyanDelete = (panimuhanSamrakshyanId) =>
+    api.delete(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);   
   
 
   return {
@@ -1188,6 +1196,9 @@ const create = (baseURL = Config.API_URL) => {
     postNadikinarSamrakshyanDelete,
     getPanimuhanSamrakshyanList,
     getPanimuhanSamrakshyan,
+    postPanimuhanSamrakshyanAddNew,
+    postPanimuhanSamrakshyanUpdate,
+    postPanimuhanSamrakshyanDelete,
   };
 };
 export default {
