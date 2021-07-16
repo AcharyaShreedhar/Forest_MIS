@@ -883,12 +883,17 @@ const create = (baseURL = Config.API_URL) => {
 
   const postNadikinarSamrakshyanUpdate = (payload, nadikinarSamrakshyanId) =>
     api.put(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`, payload);
+
+  const postNadikinarSamrakshyanDelete = (nadikinarSamrakshyanId) =>
+    api.delete(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`);
     
   const getPanimuhanSamrakshyanList = (payload) =>
     api.post("panimuhanSamrakshyanList",payload);  
 
-  const postNadikinarSamrakshyanDelete = (nadikinarSamrakshyanId) =>
-    api.delete(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`);
+  const getPanimuhanSamrakshyan = (panimuhanSamrakshyanId) =>
+    api.get(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);  
+
+  
 
   return {
     loginByUsername,
@@ -1182,6 +1187,7 @@ const create = (baseURL = Config.API_URL) => {
     postNadikinarSamrakshyanUpdate,
     postNadikinarSamrakshyanDelete,
     getPanimuhanSamrakshyanList,
+    getPanimuhanSamrakshyan,
   };
 };
 export default {
