@@ -176,6 +176,7 @@ const updatenadikinarsamrakshyanSuccess = (state, action) =>
   });
 const updatenadikinarsamrakshyanFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
+  
 //-------panimuhansamrakshyan
 const fetchallpanimuhansamrakshyanRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -190,16 +191,19 @@ const fetchallpanimuhansamrakshyanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-//Delete nadikinar samrakshyan
-const deletenadikinarsamrakshyanRequest = (state, action) =>
+const fetchpanimuhansamrakshyanRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
-const deletenadikinarsamrakshyanSuccess = (state, action) =>
-  state.merge({
+const fetchpanimuhansamrakshyanSuccess = (state, action) => {
+  return state.merge({
     ...state,
     status: "done",
+    panimuhansamrakshyanData: action.response,
   });
-const deletenadikinarsamrakshyanFailure = (state, action) =>
+};
+const fetchpanimuhansamrakshyanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
+};
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -268,14 +272,14 @@ export const reducer = createReducer(initialState, {
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_REQUEST]: updatenadikinarsamrakshyanRequest,
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_SUCCESS]: updatenadikinarsamrakshyanSuccess,
   [SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_FAILURE]: updatenadikinarsamrakshyanFailure,
-  
+
   [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_REQUEST]: fetchallpanimuhansamrakshyanRequest,
   [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_SUCCESS]: fetchallpanimuhansamrakshyanSuccess,
   [SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_FAILURE]: fetchallpanimuhansamrakshyanFailure,
 
-  [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_REQUEST]: deletenadikinarsamrakshyanRequest,
-  [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_SUCCESS]: deletenadikinarsamrakshyanSuccess,
-  [SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_FAILURE]: deletenadikinarsamrakshyanFailure,
+  [SamrakshyanTypes.FETCHPANIMUHANSAMRAKSHYAN_REQUEST]: fetchpanimuhansamrakshyanRequest,
+  [SamrakshyanTypes.FETCHPANIMUHANSAMRAKSHYAN_SUCCESS]: fetchpanimuhansamrakshyanSuccess,
+  [SamrakshyanTypes.FETCHPANIMUHANSAMRAKSHYAN_FAILURE]: fetchpanimuhansamrakshyanFailure,
 
   [SamrakshyanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SamrakshyanTypes.CLEAR_REQUEST]: clearRequest,
