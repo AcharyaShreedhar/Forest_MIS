@@ -371,20 +371,6 @@ export function* updatenadikinarsamrakshyanRequest(api, action) {
     );
   }
 }
-  
-//-------panimuhansamrakshyan
-export function* fetchallpanimuhansamrakshyanRequest(api, action) {
-  const { payload } = action;
-  const payloaddata = isNil(payload) ? action : payload;
-  const response = yield api.getPanimuhanSamrakshyanList(payloaddata);
-  if (response.ok) {
-    yield put(
-      SamrakshyanActions.fetchallpanimuhansamrakshyanSuccess(response.data)
-    );
-  } else {
-    yield put(SamrakshyanActions.fetchallpanimuhansamrakshyanFailure());
-  }
-}
 
 // Delete nadikinarsamrakshyan
 export function* deletenadikinarsamrakshyanRequest(api, action) {
@@ -417,3 +403,32 @@ export function* deletenadikinarsamrakshyanRequest(api, action) {
     );
   }
 }
+  
+//-------panimuhansamrakshyan
+export function* fetchallpanimuhansamrakshyanRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getPanimuhanSamrakshyanList(payloaddata);
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchallpanimuhansamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchallpanimuhansamrakshyanFailure());
+  }
+}
+
+export function* fetchpanimuhansamrakshyanRequest(api, action) {
+  const panimuhanSamrakshyanId = action.payload;
+
+  const response = yield api.getPanimuhanSamrakshyan(panimuhanSamrakshyanId);
+
+  if (response.ok) {
+    yield put(
+      SamrakshyanActions.fetchpanimuhansamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.fetchpanimuhansamrakshyanFailure());
+  }
+}
+
