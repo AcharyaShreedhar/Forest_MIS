@@ -118,6 +118,27 @@ const { Types, Creators } = createActions({
   deletebachatbibaranSuccess: ["response"],
   deletebachatbibaranFailure: null,
 
+  //banxetra atikraman
+  fetchallbanxetraatikramanRequest: ["payload"],
+   fetchallbanxetraatikramanSuccess: ["response"],
+   fetchallbanxetraatikramanFailure: null,
+
+   fetchbanxetraatikramanRequest: ["payload"],
+   fetchbanxetraatikramanSuccess: ["response"],
+   fetchbanxetraatikramanFailure: null,
+
+   addbanxetraatikramanRequest: ["payload"],
+   addbanxetraatikramanSuccess: ["response"],
+   addbanxetraatikramanFailure: null,
+
+   updatebanxetraatikramanRequest: ["payload","banxetraatikramanId"],
+   updatebanxetraatikramanSuccess: ["response"],
+   updatebanxetraatikramanFailure: null,
+
+   deletebanxetraatikramanRequest: ["payload","banxetraatikramanId"],
+   deletebanxetraatikramanSuccess: ["response"],
+   deletebanxetraatikramanFailure: null,
+
 
   locationsRequest: ["payload"],
   // Clear all caches

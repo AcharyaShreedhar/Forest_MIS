@@ -594,3 +594,136 @@ export function* deletebachatbibaranRequest(api, action) {
     );
   }
 }
+
+
+//banxetra atikraman
+export function* fetchallbanxetraatikramanRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanxetraatikramanList(payloaddata);
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchallbanxetraatikramanSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchallbanxetraatikramanFailure());
+  }
+}
+
+export function* fetchbanxetraatikramanRequest(api, action) {
+  const banxetraAtikramanId = action.payload;
+
+  const response = yield api.getBanxetraatikraman(banxetraAtikramanId);
+  if (response.ok) {
+    yield put(
+      BanbibaranActions.fetchbanxetraatikramanSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.fetchbanxetraatikramanFailure());
+  }
+}
+
+// Add banxetraatikraman
+export function* addbanxetraatikramanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanxetraatikramanBanxetraatikramanAddNew(
+    payload.banxetraatikraman.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraatikramanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "atikraman_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/banxetraatikramanlist");
+    yield put(
+      BanbibaranActions.addbanxetraatikramanSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.addbanxetraatikramanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update banxetraatikraman
+export function* updatebanxetraatikramanRequest(api, action) {
+  const { payload, banxetraatikramanId } = action;
+
+  const response = yield api.postBanxetraatikramanBanxetraatikramanUpdate(
+    payload.banxetraatikraman.data,
+    banxetraatikramanId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraatikramanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "atikraman_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/banbibaran/banxetraatikramanlist");
+    yield put(
+      BanbibaranActions.updatebanxetraatikramanSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.updatebanxetraatikramanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete banxetraatikraman
+export function* deletebanxetraatikramanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanxetraatikramanBanxetraatikramanDelete(
+    payload
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनक्षेत्र अतिक्रमण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbanxetraatikramanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "atikraman_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      BanbibaranActions.deletebanxetraatikramanSuccess(response.data)
+    );
+  } else {
+    yield put(BanbibaranActions.deletebanxetraatikramanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

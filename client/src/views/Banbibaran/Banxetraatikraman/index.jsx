@@ -8,7 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
-import BanxetraatikramanActions from "../../../actions/banxetraatikraman";
+import BanbibaranActions from "../../../actions/banbibaran";
 import {
   banxetraatikramanHeadings,
   districtList,
@@ -214,21 +214,21 @@ Banxetraatikraman.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  banxetraatikramanDataList: state.banxetraatikraman.allbanxetraatikramanData,
+  banxetraatikramanDataList: state.banbibaran.allbanxetraatikramanData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanxetraatrikraman: (payload) =>
     dispatch(
-      BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)
+      BanbibaranActions.fetchallbanxetraatikramanRequest(payload)
     ),
 
   addBanxetraatikraman: (payload) =>
-    dispatch(BanxetraatikramanActions.addbanxetraatikramanRequest(payload)),
+    dispatch(BanbibaranActions.addbanxetraatikramanRequest(payload)),
 
   updateBanxetraatikraman: (payload, banxetraatikramanId) =>
     dispatch(
-      BanxetraatikramanActions.updatebanxetraatikramanRequest(
+      BanbibaranActions.updatebanxetraatikramanRequest(
         payload,
         banxetraatikramanId
       )
@@ -236,7 +236,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBanxetraatikraman: (banxetraatikramanId) =>
     dispatch(
-      BanxetraatikramanActions.deletebanxetraatikramanRequest(
+      BanbibaranActions.deletebanxetraatikramanRequest(
         banxetraatikramanId
       )
     ),

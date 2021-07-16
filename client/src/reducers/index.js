@@ -22,7 +22,6 @@ const reducers = combineReducers({
   biruwautpadan: require("./biruwautpadan").reducer,
   sampatibibaran: require("./sampatibibaran").reducer,
   muddaanusandhandayari: require("./muddaanusandhandayari").reducer,
-  banxetraatikraman: require("./banxetraatikraman").reducer,
   banpaidawar: require("./banpaidawar").reducer,
   karmacharidarbandi: require("./karmacharidarbandi").reducer,
   inventories: require("./inventories").reducer,
