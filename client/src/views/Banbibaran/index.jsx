@@ -6,7 +6,6 @@ import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import banbibaranRoutes from "../../routes/banbibaran";
 import BanbibaranActions from "../../actions/banbibaran";
-import MuddaanusandhandayariActions from "../../actions/muddaanusandhandayari";
 
 class Banbibaran extends Component {
   componentDidMount() {    
@@ -103,7 +102,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchallMuddaanusandhandayari: (payload) =>
     dispatch(
-      MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)
+      BanbibaranActions.fetchallmuddaanusandhandayariRequest(payload)
     ),
 
   fetchallSeedgardenplots: (payload) =>

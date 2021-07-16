@@ -6,7 +6,6 @@ import { BanbibaranTypes } from "../actions/banbibaran";
 import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
-import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
 import { BanpaidawarTypes } from "../actions/banpaidawar";
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes } from "../actions/inventories";
@@ -87,6 +86,12 @@ import {
   addbanxetraatikramanRequest,
   updatebanxetraatikramanRequest,
   deletebanxetraatikramanRequest,
+
+  fetchallmuddaanusandhandayariRequest,
+  fetchmuddaanusandhandayariRequest,
+  addmuddaanusandhandayariRequest,
+  updatemuddaanusandhandayariRequest,
+  deletemuddaanusandhandayariRequest,
 } from "./banbibaran";
 
 //------------------------bankaprakar
@@ -194,16 +199,6 @@ import {
   updatevehiclesRequest,
   deletevehiclesRequest,
 } from "./sampatibibaran";
-
-// ----------muddaanusandandayari
-
-import {
-  fetchallmuddaanusandhandayariRequest,
-  fetchmuddaanusandhandayariRequest,
-  addmuddaanusandhandayariRequest,
-  updatemuddaanusandhandayariRequest,
-  deletemuddaanusandhandayariRequest,
-} from "./muddaanusandhandayari";
 
 
 //-------banpaidawar
@@ -902,31 +897,31 @@ export default function* root() {
     //------muddaanusandhandayari
 
     takeLatest(
-      MuddaanusandhandayariTypes.FETCHALLMUDDAANUSANDHANDAYARI_REQUEST,
+      BanbibaranTypes.FETCHALLMUDDAANUSANDHANDAYARI_REQUEST,
       fetchallmuddaanusandhandayariRequest,
       api
     ),
 
     takeLatest(
-      MuddaanusandhandayariTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST,
+      BanbibaranTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST,
       fetchmuddaanusandhandayariRequest,
       api
     ),
 
     takeLatest(
-      MuddaanusandhandayariTypes.ADDMUDDAANUSANDHANDAYARI_REQUEST,
+      BanbibaranTypes.ADDMUDDAANUSANDHANDAYARI_REQUEST,
       addmuddaanusandhandayariRequest,
       api
     ),
 
     takeLatest(
-      MuddaanusandhandayariTypes.UPDATEMUDDAANUSANDHANDAYARI_REQUEST,
+      BanbibaranTypes.UPDATEMUDDAANUSANDHANDAYARI_REQUEST,
       updatemuddaanusandhandayariRequest,
       api
     ),
 
     takeLatest(
-      MuddaanusandhandayariTypes.DELETEMUDDAANUSANDHANDAYARI_REQUEST,
+      BanbibaranTypes.DELETEMUDDAANUSANDHANDAYARI_REQUEST,
       deletemuddaanusandhandayariRequest,
       api
     ),

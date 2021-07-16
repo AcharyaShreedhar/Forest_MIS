@@ -139,6 +139,26 @@ const { Types, Creators } = createActions({
    deletebanxetraatikramanSuccess: ["response"],
    deletebanxetraatikramanFailure: null,
 
+   fetchallmuddaanusandhandayariRequest: ["payload"],
+   fetchallmuddaanusandhandayariSuccess: ["response"],
+   fetchallmuddaanusandhandayariFailure: null,
+
+   fetchmuddaanusandhandayariRequest: ["payload"],
+   fetchmuddaanusandhandayariSuccess: ["response"],
+   fetchmuddaanusandhandayariFailure: null,
+
+   addmuddaanusandhandayariRequest: ["payload"],
+   addmuddaanusandhandayariSuccess: ["response"],
+   addmuddaanusandhandayariFailure: null,
+
+   updatemuddaanusandhandayariRequest: ["payload","muddaanusandhandayariId"],
+   updatemuddaanusandhandayariSuccess: ["response"],
+   updatemuddaanusandhandayariFailure: null,
+
+   deletemuddaanusandhandayariRequest: ["payload","muddaanusandhandayariId"],
+   deletemuddaanusandhandayariSuccess: ["response"],
+   deletemuddaanusandhandayariFailure: null,
+
 
   locationsRequest: ["payload"],
   // Clear all caches

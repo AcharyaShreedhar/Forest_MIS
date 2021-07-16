@@ -379,6 +379,72 @@ const deletebanxetraatikramanFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+const fetchallmuddaanusandhandayariRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallmuddaanusandhandayariSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    allmuddaanusandhandayariData: action.response,
+  });
+};
+const fetchallmuddaanusandhandayariFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+const fetchmuddaanusandhandayariRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchmuddaanusandhandayariSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    muddaanusandhandayariData: action.response,
+  });
+};
+const fetchmuddaanusandhandayariFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+//Add muddaanusandhandayari
+const addmuddaanusandhandayariRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addmuddaanusandhandayariSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addmuddaanusandhandayariFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update muddaanusandhandayari
+const updatemuddaanusandhandayariRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatemuddaanusandhandayariSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatemuddaanusandhandayariFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete muddaanusandhandayari
+const deletemuddaanusandhandayariRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletemuddaanusandhandayariSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletemuddaanusandhandayariFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 
 const locationsRequest = (state, action) => {
@@ -512,6 +578,26 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_REQUEST]: deletebanxetraatikramanRequest,
   [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_SUCCESS]: deletebanxetraatikramanSuccess,
   [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_FAILURE]: deletebanxetraatikramanFailure,
+
+  [BanbibaranTypes.FETCHALLMUDDAANUSANDHANDAYARI_REQUEST]: fetchallmuddaanusandhandayariRequest,
+  [BanbibaranTypes.FETCHALLMUDDAANUSANDHANDAYARI_SUCCESS]: fetchallmuddaanusandhandayariSuccess,
+  [BanbibaranTypes.FETCHALLMUDDAANUSANDHANDAYARI_FAILURE]: fetchallmuddaanusandhandayariFailure,
+
+  [BanbibaranTypes.FETCHMUDDAANUSANDHANDAYARI_REQUEST]: fetchmuddaanusandhandayariRequest,
+  [BanbibaranTypes.FETCHMUDDAANUSANDHANDAYARI_SUCCESS]: fetchmuddaanusandhandayariSuccess,
+  [BanbibaranTypes.FETCHMUDDAANUSANDHANDAYARI_FAILURE]: fetchmuddaanusandhandayariFailure,
+
+  [BanbibaranTypes.ADDMUDDAANUSANDHANDAYARI_REQUEST]: addmuddaanusandhandayariRequest,
+  [BanbibaranTypes.ADDMUDDAANUSANDHANDAYARI_SUCCESS]: addmuddaanusandhandayariSuccess,
+  [BanbibaranTypes.ADDMUDDAANUSANDHANDAYARI_FAILURE]: addmuddaanusandhandayariFailure,
+
+  [BanbibaranTypes.UPDATEMUDDAANUSANDHANDAYARI_REQUEST]: updatemuddaanusandhandayariRequest,
+  [BanbibaranTypes.UPDATEMUDDAANUSANDHANDAYARI_SUCCESS]: updatemuddaanusandhandayariSuccess,
+  [BanbibaranTypes.UPDATEMUDDAANUSANDHANDAYARI_FAILURE]: updatemuddaanusandhandayariFailure,
+
+  [BanbibaranTypes.DELETEMUDDAANUSANDHANDAYARI_REQUEST]: deletemuddaanusandhandayariRequest,
+  [BanbibaranTypes.DELETEMUDDAANUSANDHANDAYARI_SUCCESS]: deletemuddaanusandhandayariSuccess,
+  [BanbibaranTypes.DELETEMUDDAANUSANDHANDAYARI_FAILURE]: deletemuddaanusandhandayariFailure,
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,

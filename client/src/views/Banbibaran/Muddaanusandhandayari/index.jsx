@@ -8,7 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
-import MuddaanusandhandayariActions from "../../../actions/muddaanusandhandayari";
+import BanbibaranActions from "../../../actions/banbibaran";
 import {
   muddaanusandhandayariHeadings,
   districtList,
@@ -217,23 +217,23 @@ Muddaanusandhandayari.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   muddaanusandhandayariDataList:
-    state.muddaanusandhandayari.allmuddaanusandhandayariData,
+    state.banbibaran.allmuddaanusandhandayariData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallMuddaanusandhandayari: (payload) =>
     dispatch(
-      MuddaanusandhandayariActions.fetchallmuddaanusandhandayariRequest(payload)
+      BanbibaranActions.fetchallmuddaanusandhandayariRequest(payload)
     ),
 
   addMuddaanusandhandayari: (payload) =>
     dispatch(
-      MuddaanusandhandayariActions.addmuddaanusandhandayariRequest(payload)
+      BanbibaranActions.addmuddaanusandhandayariRequest(payload)
     ),
 
   updateMuddaanusandhandayari: (payload, muddaanusandhandayariId) =>
     dispatch(
-      MuddaanusandhandayariActions.updatemuddaanusandhandayariRequest(
+      BanbibaranActions.updatemuddaanusandhandayariRequest(
         payload,
         muddaanusandhandayariId
       )
@@ -241,7 +241,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteMuddaanusandhandayari: (muddaanusandhandayariId) =>
     dispatch(
-      MuddaanusandhandayariActions.deletemuddaanusandhandayariRequest(
+      BanbibaranActions.deletemuddaanusandhandayariRequest(
         muddaanusandhandayariId
       )
     ),
