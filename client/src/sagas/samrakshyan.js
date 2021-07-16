@@ -432,3 +432,107 @@ export function* fetchpanimuhansamrakshyanRequest(api, action) {
   }
 }
 
+// Add panimuhan samrakshyan
+export function* addpanimuhansamrakshyanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postPanimuhanSamrakshyanAddNew(
+    payload.panimuhansamrakshyan.data
+  );
+
+  if (response.ok) {
+    toast.success(
+      "सफलतापुर्वक पानीमुहान संरक्षण कार्यक्रम प्रविष्ट भयो !!!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+    yield fetchallpanimuhansamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/samrakshyan/panimuhansamrakshyanlist");
+    yield put(SamrakshyanActions.addpanimuhansamrakshyanSuccess(response.data));
+  } else {
+    yield put(SamrakshyanActions.panimuhansamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update panimuhansamrakshyan
+export function* updatepanimuhansamrakshyanRequest(api, action) {
+  const { payload, panimuhanSamrakshyanId } = action;
+
+  const response = yield api.postPanimuhanSamrakshyanUpdate(
+    payload.panimuhansamrakshyan.data,
+    panimuhanSamrakshyanId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक पानीमुहान संरक्षण कार्यक्रम शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallpanimuhansamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/samrakshyan/panimuhansamrakshyanlist");
+    yield put(
+      SamrakshyanActions.updatepanimuhansamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.updatepanimuhansamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete panimuhansamrakshyan
+export function* deletepanimuhansamrakshyanRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postPanimuhanSamrakshyanDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक पानीमुहान संरक्षण कार्यक्रम हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallpanimuhansamrakshyanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      SamrakshyanActions.deletepanimuhansamrakshyanSuccess(response.data)
+    );
+  } else {
+    yield put(SamrakshyanActions.deletepanimuhansamrakshyanFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
