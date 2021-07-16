@@ -17,6 +17,14 @@ export class Bipatbebasthapan extends Component {
         page: 0,
         perPage: 10,
     });
+    this.props.fetchallBandadelo({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bandadelo_miti",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -72,6 +80,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 fetchallPahirobebasthapan: (payload) =>
     dispatch(BipatbibaranActions.fetchallpahirobibaranRequest(payload)),
+
+fetchallBandadelo: (payload) =>
+    dispatch(BipatbibaranActions.fetchallbandadelobibaranRequest(payload)),
   
 });
 

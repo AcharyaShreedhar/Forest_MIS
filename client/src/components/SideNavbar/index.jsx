@@ -144,13 +144,7 @@ export class SideNavbar extends Component {
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faListAlt} />
             </NavIcon>
-            <NavText> बन बिबरण </NavText>
-            <NavItem
-              eventKey="banbibaran/bandadelolist"
-              onClick={() => history.push("/banbibaran/bandadelolist")}
-            >
-              <NavText>बन डडेलो</NavText>
-            </NavItem>
+            <NavText> बन बिबरण </NavText>            
             <NavItem
               eventKey="banbibaran/banxetraatikramanlist"
               onClick={() => history.push("/banbibaran/banxetraatikramanlist")}
@@ -326,6 +320,12 @@ export class SideNavbar extends Component {
               onClick={() => history.push("/bipatbebasthapan/pahirobebasthapanlist")}
             >
               <NavText> पहिरो व्यवस्थापन</NavText>
+            </NavItem>
+            <NavItem
+              eventKey="bipatbebasthapan/bandadelolist"
+              onClick={() => history.push("/bipatbebasthapan/bandadelolist")}
+            >
+              <NavText>बन डडेलो</NavText>
             </NavItem>
           </NavItem>
           <NavItem eventKey="/samrakshyan">

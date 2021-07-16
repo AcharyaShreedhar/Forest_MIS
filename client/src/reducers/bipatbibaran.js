@@ -128,6 +128,67 @@ const deletebadhibibaranSuccess = (state, action) =>
 const deletebadhibibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+//bandadelobibaran
+const fetchallbandadelobibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallbandadelobibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allbandadelobibaranData: action.response,
+  });
+};
+const fetchallbandadelobibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchbandadelobibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+
+const fetchbandadelobibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    bandadelobibaranData: action.response,
+  });
+};
+const fetchbandadelobibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add bandadelobibaran
+const addbandadelobibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbandadelobibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbandadelobibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update Bandadelobibaran
+const updatebandadelobibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebandadelobibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebandadelobibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete Bandadelobibaran
+const deletebandadelobibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebandadelobibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebandadelobibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -179,6 +240,26 @@ export const reducer = createReducer(initialState, {
   [BipatbibaranTypes.DELETEBADHIBIBARAN_REQUEST]: deletebadhibibaranRequest,
   [BipatbibaranTypes.DELETEBADHIBIBARAN_SUCCESS]: deletebadhibibaranSuccess,
   [BipatbibaranTypes.DELETEBADHIBIBARAN_FAILURE]: deletebadhibibaranFailure,
+
+  [BipatbibaranTypes.FETCHALLBANDADELOBIBARAN_REQUEST]: fetchallbandadelobibaranRequest,
+  [BipatbibaranTypes.FETCHALLBANDADELOBIBARAN_SUCCESS]: fetchallbandadelobibaranSuccess,
+  [BipatbibaranTypes.FETCHALLBANDADELOBIBARAN_FAILURE]: fetchallbandadelobibaranFailure,
+
+  [BipatbibaranTypes.FETCHBANDADELOBIBARAN_REQUEST]: fetchbandadelobibaranRequest,
+  [BipatbibaranTypes.FETCHBANDADELOBIBARAN_SUCCESS]: fetchbandadelobibaranSuccess,
+  [BipatbibaranTypes.FETCHBANDADELOBIBARAN_FAILURE]: fetchbandadelobibaranFailure,
+
+  [BipatbibaranTypes.ADDBANDADELOBIBARAN_REQUEST]: addbandadelobibaranRequest,
+  [BipatbibaranTypes.ADDBANDADELOBIBARAN_SUCCESS]: addbandadelobibaranSuccess,
+  [BipatbibaranTypes.ADDBANDADELOBIBARAN_FAILURE]: addbandadelobibaranFailure,
+
+  [BipatbibaranTypes.UPDATEBANDADELOBIBARAN_REQUEST]: updatebandadelobibaranRequest,
+  [BipatbibaranTypes.UPDATEBANDADELOBIBARAN_SUCCESS]: updatebandadelobibaranSuccess,
+  [BipatbibaranTypes.UPDATEBANDADELOBIBARAN_FAILURE]: updatebandadelobibaranFailure,
+
+  [BipatbibaranTypes.DELETEBANDADELOBIBARAN_REQUEST]: deletebandadelobibaranRequest,
+  [BipatbibaranTypes.DELETEBANDADELOBIBARAN_SUCCESS]: deletebandadelobibaranSuccess,
+  [BipatbibaranTypes.DELETEBANDADELOBIBARAN_FAILURE]: deletebandadelobibaranFailure,
 
   [BipatbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BipatbibaranTypes.CLEAR_REQUEST]: clearRequest,

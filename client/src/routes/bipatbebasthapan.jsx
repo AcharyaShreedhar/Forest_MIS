@@ -1,5 +1,7 @@
 import BadiBebasthapan from "../views/Bipatbebasthapan/Badibebasthapan";
 import PahiroBebasthapan from "../views/Bipatbebasthapan/Pahirobebasthapan";
+import Bandadelo from "../views/Bipatbebasthapan/Bandadelo";
+
 
 const bipatbebasthapanRoutes = [
     {
@@ -44,6 +46,29 @@ const bipatbebasthapanRoutes = [
         auth: true,
         component: PahiroBebasthapan,
       }, 
+      {
+        path: "/bipatbebasthapan/bandadelolist",
+        title: "Bandadelo",
+        name: "bandadelo",
+        auth: true,
+        component: Bandadelo,
+      },
+    
+      {
+        path: "/bipatbebasthapan/bandadeloadd/new",
+        title: "Bandadelo",
+        name: "Bandadelo",
+        auth: true,
+        component: Bandadelo,
+      },
+    
+      {
+        path: "/bipatbebasthapan/bandadeloedit/:id",
+        title: "Bandadelo",
+        name: "Bandadelo",
+        auth: true,
+        component: Bandadelo,
+      },
     
     {
       redirect: true,

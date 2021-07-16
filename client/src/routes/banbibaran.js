@@ -1,33 +1,10 @@
-import Bandadelo from "../views/Banbibaran/Bandadelo";
 import Banxetraatikraman from "../views/Banbibaran/Banxetraatikraman";
 import Muddaanusandhandayari from "../views/Banbibaran/Muddaanusandhandayari";
 import Banxetraanyaprayojan from "../views/Banbibaran/Banxetraanyaprayojan";
 import Seedgardenplots from "../views/Banbibaran/Seedgardenplots";
 
 const banbibaranRoutes = [
-  {
-    path: "/banbibaran/bandadelolist",
-    title: "Bandadelo",
-    name: "bandadelo",
-    auth: true,
-    component: Bandadelo,
-  },
-
-  {
-    path: "/banbibaran/bandadeloadd/new",
-    title: "Bandadelo",
-    name: "Bandadelo",
-    auth: true,
-    component: Bandadelo,
-  },
-
-  {
-    path: "/banbibaran/bandadeloedit/:id",
-    title: "Bandadelo",
-    name: "Bandadelo",
-    auth: true,
-    component: Bandadelo,
-  },
+  
   {
     path: "/banbibaran/banxetraatikramanlist",
     title: "Banxetraatikraman",
@@ -120,9 +97,9 @@ const banbibaranRoutes = [
   {
     redirect: true,
     path: "/banbibaran",
-    to: "/banbibaran/bandadelolist",
-    name: "Bandadelo",
-    component: Bandadelo,
+    to: "/banbibaran/seedgardenplotslist",
+    name: "seedgardenplot",
+    component: Seedgardenplots,
   },
 ];
 

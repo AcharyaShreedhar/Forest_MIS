@@ -242,3 +242,135 @@ export function* deletebadhibibaranRequest(api, action) {
     );
   }
 }
+
+
+
+//bandadelobibaran
+export function* fetchallbandadelobibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBandadelobibaranList(payloaddata);
+  if (response.ok) {
+    yield put(
+      BipatbibaranActions.fetchallbandadelobibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BipatbibaranActions.fetchallbandadelobibaranFailure());
+  }
+}
+
+export function* fetchbandadelobibaranRequest(api, action) {
+  const bandadeloBibaranId = action.payload;
+
+  const response = yield api.getBandadelobibaran(bandadeloBibaranId);
+  if (response.ok) {
+    yield put(
+      BipatbibaranActions.fetchbandadelobibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BipatbibaranActions.fetchbandadelobibaranFailure());
+  }
+}
+
+// Add Bandadelobibaran
+export function* addbandadelobibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranBandadelobibaranAddNew(
+    payload.bandadelo.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनडडेलो विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbandadelobibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bandadelo_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/bipatbebasthapan/bandadelolist");
+    yield put(
+      BipatbibaranActions.addbandadelobibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BipatbibaranActions.addbandadelobibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update Bandadelobibaran
+export function* updatebandadelobibaranRequest(api, action) {
+  const { payload, bandadelobibaranId } = action;
+
+  const response = yield api.postBanbibaranBandadelobibaranUpdate(
+    payload.bandadelo.data,
+    bandadelobibaranId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनडडेलो विवरण शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbandadelobibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bandadelo_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/bipatbebasthapan/bandadelolist");
+    yield put(
+      BipatbibaranActions.updatebandadelobibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BipatbibaranActions.updatebandadelobibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete Bandadelobibaran
+export function* deletebandadelobibaranRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postBanbibaranBandadelobibaranDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक वनडडेलो विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallbandadelobibaranRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bandadelo_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      BipatbibaranActions.deletebandadelobibaranSuccess(response.data)
+    );
+  } else {
+    yield put(BipatbibaranActions.deletebandadelobibaranFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}

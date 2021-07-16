@@ -7,7 +7,6 @@ import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
 import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
-import { BandadelobibaranTypes } from "../actions/bandadelobibaran";
 import { BanxetraatikramanTypes } from "../actions/banxetraatikraman";
 import { BanpaidawarTypes } from "../actions/banpaidawar";
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
@@ -238,7 +237,7 @@ import {
   addbandadelobibaranRequest,
   updatebandadelobibaranRequest,
   deletebandadelobibaranRequest,
-} from "./bandadelobibaran";
+} from "./bipatbibaran";
 
 //---------inventories
 
@@ -963,31 +962,31 @@ export default function* root() {
     //bandadelobibaran
 
     takeLatest(
-      BandadelobibaranTypes.FETCHALLBANDADELOBIBARAN_REQUEST,
+      BipatbibaranTypes.FETCHALLBANDADELOBIBARAN_REQUEST,
       fetchallbandadelobibaranRequest,
       api
     ),
 
     takeLatest(
-      BandadelobibaranTypes.FETCHBANDADELOBIBARAN_REQUEST,
+      BipatbibaranTypes.FETCHBANDADELOBIBARAN_REQUEST,
       fetchbandadelobibaranRequest,
       api
     ),
 
     takeLatest(
-      BandadelobibaranTypes.ADDBANDADELOBIBARAN_REQUEST,
+      BipatbibaranTypes.ADDBANDADELOBIBARAN_REQUEST,
       addbandadelobibaranRequest,
       api
     ),
 
     takeLatest(
-      BandadelobibaranTypes.UPDATEBANDADELOBIBARAN_REQUEST,
+      BipatbibaranTypes.UPDATEBANDADELOBIBARAN_REQUEST,
       updatebandadelobibaranRequest,
       api
     ),
 
     takeLatest(
-      BandadelobibaranTypes.DELETEBANDADELOBIBARAN_REQUEST,
+      BipatbibaranTypes.DELETEBANDADELOBIBARAN_REQUEST,
       deletebandadelobibaranRequest,
       api
     ),
