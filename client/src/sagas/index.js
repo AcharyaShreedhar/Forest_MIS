@@ -339,6 +339,7 @@ import {
   addnadikinarsamrakshyanRequest,
   updatenadikinarsamrakshyanRequest,
   deletenadikinarsamrakshyanRequest,
+  fetchallpanimuhansamrakshyanRequest,
 } from "./samrakshyan";
 
 const api = API.create();
@@ -1725,6 +1726,11 @@ export default function* root() {
     takeLatest(
       SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_REQUEST,
       updatenadikinarsamrakshyanRequest,
+      api
+    ),  
+     takeLatest(
+      SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_REQUEST,
+      fetchallpanimuhansamrakshyanRequest,
       api
     ),
     takeLatest(

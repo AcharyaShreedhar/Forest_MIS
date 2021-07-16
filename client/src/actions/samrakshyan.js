@@ -11,6 +11,7 @@
 import { createActions } from "reduxsauce";
 
 const { Types, Creators } = createActions({
+  //---------samrakshyanpokhari
   fetchallsamrakshyanpokharinirmanRequest: ["payload"],
   fetchallsamrakshyanpokharinirmanSuccess: ["response"],
   fetchallsamrakshyanpokharinirmanFailure: null,
@@ -74,6 +75,10 @@ const { Types, Creators } = createActions({
   updatenadikinarsamrakshyanRequest: ["payload", "nadikinarSamrakshyanId"],
   updatenadikinarsamrakshyanSuccess: ["response"],
   updatenadikinarsamrakshyanFailure: null,
+  //--------panimuhansamrakshyan
+  fetchallpanimuhansamrakshyanRequest: ["payload"],
+  fetchallpanimuhansamrakshyanSuccess: ["response"],
+  fetchallpanimuhansamrakshyanFailure: null,
 
   deletenadikinarsamrakshyanRequest: ["payload", "nadikinarSamrakshyanId"],
   deletenadikinarsamrakshyanSuccess: ["response"],

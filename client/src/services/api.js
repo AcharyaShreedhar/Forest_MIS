@@ -883,6 +883,9 @@ const create = (baseURL = Config.API_URL) => {
 
   const postNadikinarSamrakshyanUpdate = (payload, nadikinarSamrakshyanId) =>
     api.put(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`, payload);
+    
+  const getPanimuhanSamrakshyanList = (payload) =>
+    api.post("panimuhanSamrakshyanList",payload);  
 
   const postNadikinarSamrakshyanDelete = (nadikinarSamrakshyanId) =>
     api.delete(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`);
@@ -1178,6 +1181,7 @@ const create = (baseURL = Config.API_URL) => {
     postNadikinarSamrakshyanAddNew,
     postNadikinarSamrakshyanUpdate,
     postNadikinarSamrakshyanDelete,
+    getPanimuhanSamrakshyanList,
   };
 };
 export default {

@@ -15,7 +15,7 @@ class Panimuhansamrakshyan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loc: "panumuhansamrakshyanlist",
+      loc: "panimuhansamrakshyanlist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
@@ -23,7 +23,7 @@ class Panimuhansamrakshyan extends Component {
       page: 0,
       showDialog: false,
       item: {},
-      path: "panumuhansamrakshyan",
+      path: "panimuhansamrakshyan",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -39,14 +39,14 @@ class Panimuhansamrakshyan extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
-    var panumuhansamrakshyanList = [];
+    var panimuhansamrakshyanList = [];
     if (nextProps !== prevState) {
-      //panimuhansamrakshyanList = nextProps.panimuhansamrakshyanDataList.data;
+        panimuhansamrakshyanList = nextProps.panimuhansamrakshyanDataList.data;
     }
 
     return {
       loc,
-      panumuhansamrakshyanList,
+      panimuhansamrakshyanList,
     };
   }
   handlePer(e) {
