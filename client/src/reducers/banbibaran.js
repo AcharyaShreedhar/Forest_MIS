@@ -312,6 +312,73 @@ const deletebachatbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 
+//banxetra atikraman
+const fetchallbanxetraatikramanRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallbanxetraatikramanSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanxetraatikramanData: action.response,
+  });
+};
+const fetchallbanxetraatikramanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+const fetchbanxetraatikramanRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchbanxetraatikramanSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    banxetraatikramanData: action.response,
+  });
+};
+const fetchbanxetraatikramanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+//Add banxetraatikraman
+const addbanxetraatikramanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanxetraatikramanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanxetraatikramanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update banxetraatikraman
+const updatebanxetraatikramanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatebanxetraatikramanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatebanxetraatikramanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete banxetraatikraman
+const deletebanxetraatikramanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebanxetraatikramanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebanxetraatikramanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
 
 
 const locationsRequest = (state, action) => {
@@ -425,6 +492,26 @@ export const reducer = createReducer(initialState, {
   [BanbibaranTypes.DELETEBACHATBIBARAN_REQUEST]: deletebachatbibaranRequest,
   [BanbibaranTypes.DELETEBACHATBIBARAN_SUCCESS]: deletebachatbibaranSuccess,
   [BanbibaranTypes.DELETEBACHATBIBARAN_FAILURE]: deletebachatbibaranFailure,
+
+  [BanbibaranTypes.FETCHALLBANXETRAATIKRAMAN_REQUEST]: fetchallbanxetraatikramanRequest,
+  [BanbibaranTypes.FETCHALLBANXETRAATIKRAMAN_SUCCESS]: fetchallbanxetraatikramanSuccess,
+  [BanbibaranTypes.FETCHALLBANXETRAATIKRAMAN_FAILURE]: fetchallbanxetraatikramanFailure,
+
+  [BanbibaranTypes.FETCHBANXETRAATIKRAMAN_REQUEST]: fetchbanxetraatikramanRequest,
+  [BanbibaranTypes.FETCHBANXETRAATIKRAMAN_SUCCESS]: fetchbanxetraatikramanSuccess,
+  [BanbibaranTypes.FETCHBANXETRAATIKRAMAN_FAILURE]: fetchbanxetraatikramanFailure,
+
+  [BanbibaranTypes.ADDBANXETRAATIKRAMAN_REQUEST]: addbanxetraatikramanRequest,
+  [BanbibaranTypes.ADDBANXETRAATIKRAMAN_SUCCESS]: addbanxetraatikramanSuccess,
+  [BanbibaranTypes.ADDBANXETRAATIKRAMAN_FAILURE]: addbanxetraatikramanFailure,
+
+  [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_REQUEST]: updatebanxetraatikramanRequest,
+  [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_SUCCESS]: updatebanxetraatikramanSuccess,
+  [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_FAILURE]: updatebanxetraatikramanFailure,
+
+  [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_REQUEST]: deletebanxetraatikramanRequest,
+  [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_SUCCESS]: deletebanxetraatikramanSuccess,
+  [BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_FAILURE]: deletebanxetraatikramanFailure,
 
   [BanbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BanbibaranTypes.CLEAR_REQUEST]: clearRequest,

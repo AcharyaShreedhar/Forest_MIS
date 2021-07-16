@@ -7,7 +7,6 @@ import { BiruwautpadanTypes } from "../actions/biruwautpadan";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 import { SampatibibaranTypes } from "../actions/sampatibibaran";
 import { MuddaanusandhandayariTypes } from "../actions/muddaanusandhandayari";
-import { BanxetraatikramanTypes } from "../actions/banxetraatikraman";
 import { BanpaidawarTypes } from "../actions/banpaidawar";
 import { KarmacharidarbandiTypes } from "../actions/karmacharidarbandi";
 import { InventoriesTypes } from "../actions/inventories";
@@ -82,6 +81,12 @@ import {
   addbachatbibaranRequest,
   updatebachatbibaranRequest,
   deletebachatbibaranRequest,
+
+  fetchallbanxetraatikramanRequest,
+  fetchbanxetraatikramanRequest,
+  addbanxetraatikramanRequest,
+  updatebanxetraatikramanRequest,
+  deletebanxetraatikramanRequest,
 } from "./banbibaran";
 
 //------------------------bankaprakar
@@ -200,15 +205,6 @@ import {
   deletemuddaanusandhandayariRequest,
 } from "./muddaanusandhandayari";
 
-// ----------banxetraatikraman
-
-import {
-  fetchallbanxetraatikramanRequest,
-  fetchbanxetraatikramanRequest,
-  addbanxetraatikramanRequest,
-  updatebanxetraatikramanRequest,
-  deletebanxetraatikramanRequest,
-} from "./banxetraatikraman";
 
 //-------banpaidawar
 import {
@@ -937,31 +933,31 @@ export default function* root() {
 
     //-----banxetraatikraman
     takeLatest(
-      BanxetraatikramanTypes.FETCHALLBANXETRAATIKRAMAN_REQUEST,
+      BanbibaranTypes.FETCHALLBANXETRAATIKRAMAN_REQUEST,
       fetchallbanxetraatikramanRequest,
       api
     ),
 
     takeLatest(
-      BanxetraatikramanTypes.FETCHBANXETRAATIKRAMAN_REQUEST,
+      BanbibaranTypes.FETCHBANXETRAATIKRAMAN_REQUEST,
       fetchbanxetraatikramanRequest,
       api
     ),
 
     takeLatest(
-      BanxetraatikramanTypes.ADDBANXETRAATIKRAMAN_REQUEST,
+      BanbibaranTypes.ADDBANXETRAATIKRAMAN_REQUEST,
       addbanxetraatikramanRequest,
       api
     ),
 
     takeLatest(
-      BanxetraatikramanTypes.UPDATEBANXETRAATIKRAMAN_REQUEST,
+      BanbibaranTypes.UPDATEBANXETRAATIKRAMAN_REQUEST,
       updatebanxetraatikramanRequest,
       api
     ),
 
     takeLatest(
-      BanxetraatikramanTypes.DELETEBANXETRAATIKRAMAN_REQUEST,
+      BanbibaranTypes.DELETEBANXETRAATIKRAMAN_REQUEST,
       deletebanxetraatikramanRequest,
       api
     ),

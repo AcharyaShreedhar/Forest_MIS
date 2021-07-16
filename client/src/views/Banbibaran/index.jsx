@@ -5,7 +5,6 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import banbibaranRoutes from "../../routes/banbibaran";
-import BanxetraatikramanActions from "../../actions/banxetraatikraman";
 import BanbibaranActions from "../../actions/banbibaran";
 import MuddaanusandhandayariActions from "../../actions/muddaanusandhandayari";
 
@@ -99,7 +98,7 @@ const mapDispatchToProps = (dispatch) => ({
   
   fetchallBanxetraatikraman: (payload) =>
     dispatch(
-      BanxetraatikramanActions.fetchallbanxetraatikramanRequest(payload)
+      BanbibaranActions.fetchallbanxetraatikramanRequest(payload)
     ),
 
   fetchallMuddaanusandhandayari: (payload) =>
