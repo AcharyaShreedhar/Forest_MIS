@@ -1,5 +1,6 @@
 import Lilam from "../views/Banpaidawar/Lilam";
 import Osarpasar from "../views/Banpaidawar/Osarpasar";
+import Bikribitaran from "../views/Banpaidawar/Bikribitaran";
 
 const banpaidawarRoutes = [
   {
@@ -48,6 +49,14 @@ const banpaidawarRoutes = [
     name: "Osarpasar",
     auth: true,
     component: Osarpasar,
+  },
+
+  {
+    path: "/banpaidawar/bikribitaranlist",
+    title: "Bikribitaran",
+    name: "bikribitaran",
+    auth: true,
+    component: Bikribitaran,
   },
  
 ];

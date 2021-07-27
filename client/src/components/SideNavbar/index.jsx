@@ -215,6 +215,12 @@ export class SideNavbar extends Component {
             >
               <NavText>ओसारपसार बिबरण</NavText>
             </NavItem>
+            <NavItem
+              eventKey="banpaidawar/bikribitaranlist"
+              onClick={() => history.push("/banpaidawar/bikribitaranlist")}
+            >
+              <NavText>बिक्रिवितरण बिबरण</NavText>
+            </NavItem>
           </NavItem>
           <NavItem eventKey="activities">
             <NavIcon>
