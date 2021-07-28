@@ -1,57 +1,60 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('banpaidawar_bikribitarans', {
+    await queryInterface.createTable("banpaidawar_bikribitarans", {
       bikribitaran_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      dist_id:{
         type: Sequelize.INTEGER,
       },
+      dist_id: {
+        type: Sequelize.INTEGER,
+      },
+      bikri_miti: {
+        type: Sequelize.STRING,
+      },
       bandpaidawar_kisim: {
-        type: Sequelize.STRING
-      },
-      ekai :{
         type: Sequelize.STRING,
       },
-      aantarik_dar:{
+      ekai: {
         type: Sequelize.STRING,
       },
-      aantarik_parinam:{
-        type:Sequelize.STRING,
+      aantarik_dar: {
+        type: Sequelize.STRING,
       },
-      aantarik_rakam:{
-        type:Sequelize.STRING,
+      aantarik_parinam: {
+        type: Sequelize.STRING,
       },
-      aaapurti_dar:{
-        type:Sequelize.STRING,
+      aantarik_rakam: {
+        type: Sequelize.STRING,
       },
-      aapurti_parinam:{
-        type:Sequelize.STRING,
+      aaapurti_dar: {
+        type: Sequelize.STRING,
       },
-      aapurti_rakam:{
-        type:Sequelize.STRING,
+      aapurti_parinam: {
+        type: Sequelize.STRING,
       },
-      bahiya_dar:{
-        type:Sequelize.STRING,
+      aapurti_rakam: {
+        type: Sequelize.STRING,
       },
-      bahiya_parinam:{
-        type:Sequelize.STRING,
+      bahiya_dar: {
+        type: Sequelize.STRING,
       },
-      bahiya_rakam:{
-        type:Sequelize.STRING,
+      bahiya_parinam: {
+        type: Sequelize.STRING,
       },
-      jamma_parinam:{
-        type:Sequelize.STRING,
+      bahiya_rakam: {
+        type: Sequelize.STRING,
       },
-      jamma_rakam:{
-        type:Sequelize.STRING,
+      jamma_parinam: {
+        type: Sequelize.STRING,
       },
-      kul_jamma:{
-        type:Sequelize.STRING,
+      jamma_rakam: {
+        type: Sequelize.STRING,
+      },
+      kul_jamma: {
+        type: Sequelize.STRING,
       },
       created_by: {
         type: Sequelize.STRING,
@@ -68,10 +71,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      }
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('banpaidawar_bikribitarans');
-  }
+    await queryInterface.dropTable("banpaidawar_bikribitarans");
+  },
 };
