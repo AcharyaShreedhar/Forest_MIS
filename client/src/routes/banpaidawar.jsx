@@ -58,6 +58,13 @@ const banpaidawarRoutes = [
     auth: true,
     component: Bikribitaran,
   },
+  {
+    path: "/banpaidawar/bikribitaranadd/new",
+    title: "Bikribitaran",
+    name: "bikribitaran",
+    auth: true,
+    component: Bikribitaran,
+  },
  
 ];
 
