@@ -456,6 +456,23 @@ const jaladharsamrakshyanHeadings = [
   "लागात",
 ];
 
+const banpaidawarbikribitaranHeadings = [
+  "वनपैदावार किसिम",
+  "इकाई",
+  "आन्तरीक दर",
+  "आन्तरीक पारिमाण",
+  "आन्तरीक रकम",
+  "आपुर्ती दर",
+  "आपुर्ती पारिमाण",
+  "आपुर्ती रकम",
+  "वाह्य दर",
+  "वाह्य परिमाण",
+  "वाह्य रकम",
+  "जम्मा परिमाण",
+  "जम्मा रकम",
+  "कुल जम्मा",
+];
+
 export {
   AssetsURL,
   SPECIALOPTIONS,
@@ -495,4 +512,5 @@ export {
   pokharisamrakshyanHeadings,
   jaladharsamrakshyanHeadings,
   panimuhansamrakshyanHeadings,
+  banpaidawarbikribitaranHeadings,
 };
