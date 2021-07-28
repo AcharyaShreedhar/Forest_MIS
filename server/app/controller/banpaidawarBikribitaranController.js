@@ -2,28 +2,39 @@ const pool = require("../db");
 //Controller for Listing all BanpaidawarBikribitaran
 async function getAllBanpaidawarBikribitaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from banpaidawar_bikribitarans";
-  const getAllBanpaidawarBikribitaranQuery = `select * from banpaidawar_bikribitarans ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllBanpaidawarBikribitaranQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+    "SELECT count(*) as total from banpaidawar_bikribitarans as b where b.bikri_miti BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBanpaidawarBikribitaranQuery = `select * from banpaidawar_bikribitarans as b where b.bikri_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllBanpaidawarBikribitaranQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a Banpaidawar_Bikribitaran
@@ -41,11 +52,12 @@ async function getBanpaidawarBikribitaran(req, res) {
 
 //Controller for adding a Banpaidawar_Bikribitaran
 async function addBanpaidawarBikribitaran(req, res) {
-  const addBanpaidawarBikribitaranQuery = `INSERT INTO banpaidawar_bikribitarans (dist-id, bandpaidawar_kisim, ekai, aantarik_dar, aantarik_parinam ,aantarik_rakam,aaapurti_dar,aapurti_parinam, aapurti_rakam, bahiya_dar, bahiya_parinam 	,bahiya_rakam, jamma_parinam	, jamma_rakam, kul_jamma, created_by, updated_by, createdAt, updatedAt    ) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanpaidawarBikribitaranQuery = `INSERT INTO banpaidawar_bikribitarans (dist_id, bikri_miti, bandpaidawar_kisim, ekai, aantarik_dar, aantarik_parinam ,aantarik_rakam,aaapurti_dar,aapurti_parinam, aapurti_rakam, bahiya_dar, bahiya_parinam 	,bahiya_rakam, jamma_parinam	, jamma_rakam, kul_jamma, created_by, updated_by, createdAt, updatedAt    ) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanpaidawarBikribitaranQuery,
     [
       req.body.dist_id,
+      req.body.bikri_miti,
       req.body.bandpaidawar_kisim,
       req.body.ekai,
       req.body.aantarik_dar,
@@ -76,11 +88,12 @@ async function addBanpaidawarBikribitaran(req, res) {
 
 //Controller for updating a BanpaidawarBikribitaran
 async function updateBanpaidawarBikribitaran(req, res) {
-  const updateBanpaidawarBikribitaranQuery = `UPDATE banpaidawar_bikribitarans SET dist_id=?, bandpaidawar_kisim=?, ekai=?, aantarik_dar=?, aantarik_parinam=?, aantarik_rakam=?, aaapurti_dar=?, aapurti_parinam=?, aapurti_rakam=?, bahiya_dar=?, bahiya_parinam=?, bahiya_rakam=?, jamma_parinam=?, jamma_rakam=?, kul_jamma=?, created_by=?, updated_by=?, createdAt=?, updatedAt=? WHERE bikribitaran_id=?`;
+  const updateBanpaidawarBikribitaranQuery = `UPDATE banpaidawar_bikribitarans SET dist_id=?,bikri_miti=?, bandpaidawar_kisim=?, ekai=?, aantarik_dar=?, aantarik_parinam=?, aantarik_rakam=?, aaapurti_dar=?, aapurti_parinam=?, aapurti_rakam=?, bahiya_dar=?, bahiya_parinam=?, bahiya_rakam=?, jamma_parinam=?, jamma_rakam=?, kul_jamma=?, created_by=?, updated_by=?, createdAt=?, updatedAt=? WHERE bikribitaran_id=?`;
   pool.query(
     updateBanpaidawarBikribitaranQuery,
     [
       req.body.dist_id,
+      req.body.bikri_miti,
       req.body.bandpaidawar_kisim,
       req.body.ekai,
       req.body.aantarik_dar,
