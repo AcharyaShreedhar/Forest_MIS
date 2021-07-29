@@ -225,9 +225,9 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="जम्मा रकम"
-              value={aapurti_dar}
+              value={jamma_rakam}
               direction="vertical"
-              onChange={(e) => this.setState({ aapurti_dar: e })}
+              onChange={(e) => this.setState({ jamma_rakam: e })}
             />
             <Input
               className="mb-4"
