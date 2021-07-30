@@ -18,7 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faPagelines } from "@fortawesome/free-brands-svg-icons";
 import React, { Component } from "react";
-import { HeaderComponent, Displaybox } from "../../components";
+import { HeaderComponent, ConfirmationDialoge } from "../../components";
 import "./Sidenav.scss";
 
 export class SideNavbar extends Component {
@@ -26,21 +26,31 @@ export class SideNavbar extends Component {
     super(props);
     this.state = {
       expanded: false,
+      showDialog: false,
     };
     this.handleToggle = this.handleToggle.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleSubmit(){
+
+    this.props.onlogout();
+  }
   handleToggle(e) {
     this.setState({ expanded: !this.state.expanded });
   }
-  handleLogout(e) {
-    this.props.onlogout();
-  }
 
   render() {
-    const { expanded } = this.state;
-    const { history, onlogout } = this.props;
+    const { expanded, showDialog } = this.state;
+    const { history } = this.props;
     console.log("expanded", expanded);
     return (
       <SideNav
@@ -376,7 +386,16 @@ export class SideNavbar extends Component {
               <NavText>नदी किनार</NavText>
             </NavItem>
           </NavItem>
-          <NavItem eventKey="logout" onClick={(e) => this.handleLogout(e)}>
+          <NavItem eventKey="logout" onClick={(e) => this.handleConfirm(e)}>
+          <ConfirmationDialoge
+            showDialog={showDialog}
+            title="लग आउट"
+            body="के तपाईँ बाहिर निस्किन चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faSignOutAlt} />
             </NavIcon>
