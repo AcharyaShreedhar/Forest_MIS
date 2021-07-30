@@ -278,15 +278,18 @@ export function* addbanpaidawarbikribitaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन  प्रविष्ट भयो !!!!!", {
+    toast.success("सफलतापुर्वक वन पैदावार बिक्रिवितरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarbikribitaranRequest(api, {
-      name: "bandpaidawar_kisim",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bikri_miti",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/banpaidawar/banpaidawarbikribitaranlist");
+    yield call(history.push, "/banpaidawar/bikribitaranlist");
     yield put(BanpaidawarActions.addbanpaidawarbikribitaranSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.addbanpaidawarbikribitaranFailure());
@@ -301,23 +304,26 @@ export function* addbanpaidawarbikribitaranRequest(api, action) {
 
 //update banpaidawarbikribitaran
 export function* updatebanpaidawarbikribitaranRequest(api, action) {
-  const { payload, banpaidawarbikritaranId } = action;
-
+  const { payload, banpaidawarbikribitaranId } = action;
+ 
   const response = yield api.postBanpaidawarBanpaidawarbikribitaranUpdate(
     payload.banpaidawarbikribitaran.data,
-    banpaidawarbikritaranId
+    banpaidawarbikribitaranId
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन शंसोधन भयो !!!!!", {
+    toast.success("सफलतापुर्वक वन पैदावार बिक्रिवितरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarbikribitaranRequest(api, {
-      name: "bandpaidawar_kisim",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bikri_miti",
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/banpaidawar/banpaidawarbikribitaranlist");
+    yield call(history.push, "/banpaidawar/bikribitaranlist");
     yield put(BanpaidawarActions.updatebanpaidawarbikribitaranSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.updatebanpaidawarbikribitaranFailure());
@@ -337,11 +343,14 @@ export function* deletebanpaidawarbikribitaranRequest(api, action) {
   const response = yield api.postBanpaidawarBanpaidawarbikribitaranDelete(payload);
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन पैदावार बिकृबितरन हटाईयो !!!!!", {
+    toast.success("सफलतापुर्वक वन पैदावार बिक्रिवितरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallbanpaidawarbikribitaranRequest(api, {
-      name: "bandpaidawar_kisim",
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bikri_miti",
       page: 0,
       perPage: 10,
     });

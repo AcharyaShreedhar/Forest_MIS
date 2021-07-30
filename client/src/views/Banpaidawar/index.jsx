@@ -25,6 +25,14 @@ export class Banpaidawar extends Component {
       page: 0,
       perPage: 10,
     });
+    this.props.fetchallBanpaidawarbikribitaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "bikri_miti",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -84,6 +92,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchallBanpaidawarosarpasar: (payload) =>
     dispatch(BanpaidawarActions.fetchallbanpaidawarRequest(payload)),
+
+  fetchallBanpaidawarbikribitaran: (payload) =>
+    dispatch(BanpaidawarActions.fetchallbanpaidawarbikribitaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banpaidawar);

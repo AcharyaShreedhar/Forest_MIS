@@ -72,6 +72,7 @@
   deletebanpaidawarbikribitaranRequest: ["payload","banpaidawarbikribitaranId"],
   deletebanpaidawarbikribitaranSuccess: ["response"],
   deletebanpaidawarbikribitaranFailure: null,
+  
   locationsRequest: ["payload"],
    // Clear all caches
   clearRequest: null,

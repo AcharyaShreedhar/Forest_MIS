@@ -53,6 +53,7 @@ import * as NadikinarSamrakshyan from "./NadikinarSamrakshyan"
 import * as PokhariSamrakshyan from "./PokhariSamrakshyan";
 import * as JaladharSamrakshyan from "./JaladharSamrakshyan";
 import * as PanimuhanSamrakshyan from "./PanimuhanSamrakshyan";
+import * as BanpaidawarBikribitaran from "./BanpaidawarBikribitaran";
 
 export {
   HeaderComponent,
@@ -110,4 +111,5 @@ export {
   PokhariSamrakshyan,
   JaladharSamrakshyan,
   PanimuhanSamrakshyan,
+  BanpaidawarBikribitaran,
 };

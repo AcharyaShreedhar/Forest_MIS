@@ -42,7 +42,7 @@ async function getBanpaidawarBikribitaran(req, res) {
   const getBanpaidawarBikribitaranQuery = `select * from banpaidawar_bikribitarans where bikribitaran_id=?`;
   pool.query(
     getBanpaidawarBikribitaranQuery,
-    [req.params.banpaidawarBikribitaranId],
+    [req.params.banpaidawarbikribitaranId],
     (error, results, fields) => {
       if (error) throw error;
       res.send(JSON.stringify({ status: 200, error: null, data: results }));
@@ -52,7 +52,7 @@ async function getBanpaidawarBikribitaran(req, res) {
 
 //Controller for adding a Banpaidawar_Bikribitaran
 async function addBanpaidawarBikribitaran(req, res) {
-  const addBanpaidawarBikribitaranQuery = `INSERT INTO banpaidawar_bikribitarans (dist_id, bikri_miti, bandpaidawar_kisim, ekai, aantarik_dar, aantarik_parinam ,aantarik_rakam,aaapurti_dar,aapurti_parinam, aapurti_rakam, bahiya_dar, bahiya_parinam 	,bahiya_rakam, jamma_parinam	, jamma_rakam, kul_jamma, created_by, updated_by, createdAt, updatedAt    ) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanpaidawarBikribitaranQuery = `INSERT INTO banpaidawar_bikribitarans (dist_id, bikri_miti, bandpaidawar_kisim, ekai, aantarik_dar, aantarik_parinam ,aantarik_rakam,aaapurti_dar,aapurti_parinam,aapurti_rakam, bahiya_dar,bahiya_parinam,bahiya_rakam, jamma_parinam,jamma_rakam,kul_jamma,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanpaidawarBikribitaranQuery,
     [
@@ -64,7 +64,7 @@ async function addBanpaidawarBikribitaran(req, res) {
       req.body.aantarik_parinam,
       req.body.aantarik_rakam,
       req.body.aaapurti_dar,
-      req.body.aaapurti_parinam,
+      req.body.aapurti_parinam,
       req.body.aapurti_rakam,
       req.body.bahiya_dar,
       req.body.bahiya_parinam,
@@ -88,7 +88,7 @@ async function addBanpaidawarBikribitaran(req, res) {
 
 //Controller for updating a BanpaidawarBikribitaran
 async function updateBanpaidawarBikribitaran(req, res) {
-  const updateBanpaidawarBikribitaranQuery = `UPDATE banpaidawar_bikribitarans SET dist_id=?,bikri_miti=?, bandpaidawar_kisim=?, ekai=?, aantarik_dar=?, aantarik_parinam=?, aantarik_rakam=?, aaapurti_dar=?, aapurti_parinam=?, aapurti_rakam=?, bahiya_dar=?, bahiya_parinam=?, bahiya_rakam=?, jamma_parinam=?, jamma_rakam=?, kul_jamma=?, created_by=?, updated_by=?, createdAt=?, updatedAt=? WHERE bikribitaran_id=?`;
+  const updateBanpaidawarBikribitaranQuery = `UPDATE banpaidawar_bikribitarans SET dist_id=?, bikri_miti=?, bandpaidawar_kisim=?, ekai=?, aantarik_dar=?, aantarik_parinam=?, aantarik_rakam=?, aaapurti_dar=?, aapurti_parinam=?, aapurti_rakam=?, bahiya_dar=?, bahiya_parinam=?, bahiya_rakam=?, jamma_parinam=?, jamma_rakam=?, kul_jamma=?, created_by=?, updated_by=? WHERE bikribitaran_id=?`;
   pool.query(
     updateBanpaidawarBikribitaranQuery,
     [
@@ -100,7 +100,7 @@ async function updateBanpaidawarBikribitaran(req, res) {
       req.body.aantarik_parinam,
       req.body.aantarik_rakam,
       req.body.aaapurti_dar,
-      req.body.aaapurti_parinam,
+      req.body.aapurti_parinam,
       req.body.aapurti_rakam,
       req.body.bahiya_dar,
       req.body.bahiya_parinam,
@@ -110,9 +110,7 @@ async function updateBanpaidawarBikribitaran(req, res) {
       req.body.kul_jamma,
       req.body.created_by,
       req.body.updated_by,
-      req.body.createdAt,
-      req.body.updatedAt,
-      req.params.banpaidawarBikribitaranId,
+      req.params.banpaidawarbikribitaranId,
     ],
     (error, results, fields) => {
       if (error) {
@@ -128,7 +126,7 @@ async function deleteBanpaidawarBikribitaran(req, res) {
   const deleteBanpaidawarBikribitaranQuery = `DELETE  FROM banpaidawar_bikribitarans where bikribitaran_id=?`;
   pool.query(
     deleteBanpaidawarBikribitaranQuery,
-    [req.params.banpaidawarBikribitaranId],
+    [req.params.banpaidawarbikribitaranId],
     (error, results, fields) => {
       if (error) {
         throw error;
