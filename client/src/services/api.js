@@ -682,7 +682,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`posts/${postId}`);
 
   //banpaidawar_bikribitaran
-  const getBanpaidawarBikribitaranList = (payload) =>
+  const getBanpaidawarbikribitaranList = (payload) =>
     api.post("banpaidawarbikribitaransList", payload);
 
   const getBanpaidawarbikribitaran = (banpaidawarBikribitaranId) =>
@@ -695,14 +695,14 @@ const create = (baseURL = Config.API_URL) => {
   //update
   const postBanpaidawarBanpaidawarbikribitaranUpdate = (
     payload,
-    banpaidawarBikribitaranId
+    banpaidawarbikribitaranId
   ) =>
-    api.put(`banpaidawarbikribitarans/${banpaidawarBikribitaranId}`, payload);
+    api.put(`banpaidawarbikribitarans/${banpaidawarbikribitaranId}`, payload);
 
   //delete
   const postBanpaidawarBanpaidawarbikribitaranDelete = (
-    banpaidawarBikribitaranId
-  ) => api.delete(`banpaidawarbikribitarans/${banpaidawarBikribitaranId}`);
+    banpaidawarbikribitaranId
+  ) => api.delete(`banpaidawarbikribitarans/${banpaidawarbikribitaranId}`);
 
   //rojgarsrijana
   const getRojgarSrijanaList = (payload) =>
@@ -1024,7 +1024,7 @@ const create = (baseURL = Config.API_URL) => {
     postBanpaidawarBanpaidawarlilamAddNew,
     postBanpaidawarBanpaidawarlilamUpdate,
     postBanpaidawarBanpaidawarlilamDelete,
-    getBanpaidawarBikribitaranList,
+    getBanpaidawarbikribitaranList,
     getBanpaidawarbikribitaran,
     postBanpaidawarBanpaidawarbikribitaranAddNew,
     postBanpaidawarBanpaidawarbikribitaranUpdate,

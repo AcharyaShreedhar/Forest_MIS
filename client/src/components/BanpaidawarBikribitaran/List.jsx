@@ -49,12 +49,13 @@ function List(props) {
               data.map((bikri, index) => (
                 <tr key={`${bikri.bikribitaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td> {bikri.banpaidawar_kisim}</td>
+                  <td> {bikri.bikri_miti}</td>
+                  <td> {bikri.bandpaidawar_kisim}</td>
                   <td> {bikri.ekai}</td>
                   <td> {bikri.aantarik_dar}</td>
                   <td> {bikri.aantarik_parinam}</td>
                   <td> {bikri.aantarik_rakam}</td>
-                  <td> {bikri.aapurti_dar}</td>
+                  <td> {bikri.aaapurti_dar}</td>
                   <td> {bikri.aapurti_parinam}</td>
                   <td> {bikri.aapurti_rakam}</td>
                   <td> {bikri.bahiya_dar}</td>

@@ -457,6 +457,7 @@ const jaladharsamrakshyanHeadings = [
 ];
 
 const banpaidawarbikribitaranHeadings = [
+  "बिक्रि मिति",
   "वनपैदावार किसिम",
   "इकाई",
   "आन्तरीक दर",

@@ -3,28 +3,29 @@ import { Button, Input, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
-class Add extends Component {
+class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      bikri_miti: "",
-      bandpaidawar_kisim: "",
-      ekai: "",
-      aantarik_dar: "",
-      aantarik_parinam: "",
-      aantarik_rakam: "",
-      aaapurti_dar: "",
-      aapurti_parinam: "",
-      aapurti_rakam: "",
-      bahiya_dar: "",
-      bahiya_parinam: "",
-      bahiya_rakam: "",
-      jamma_parinam: "",
-      jamma_rakam: "",
-      kul_jamma: "",
-      dist_id: "",
-      created_by: "",
-      updated_by: "",
+      id: props.history.location.item.bikribitaran_id,
+      bikri_miti: props.history.location.item.bikri_miti,
+      bandpaidawar_kisim: props.history.location.item.bandpaidawar_kisim,
+      ekai: props.history.location.item.ekai,
+      aantarik_dar: props.history.location.item.aantarik_dar,
+      aantarik_parinam: props.history.location.item.aantarik_parinam,
+      aantarik_rakam: props.history.location.item.aantarik_rakam,
+      aaapurti_dar: props.history.location.item.aaapurti_dar,
+      aapurti_parinam: props.history.location.item.aapurti_parinam,
+      aapurti_rakam: props.history.location.item.aapurti_rakam,
+      bahiya_dar: props.history.location.item.bahiya_dar,
+      bahiya_parinam: props.history.location.item.bahiya_parinam,
+      bahiya_rakam: props.history.location.item.bahiya_rakam,
+      jamma_parinam: props.history.location.item.jamma_parinam,
+      jamma_rakam: props.history.location.item.jamma_rakam,
+      kul_jamma: props.history.location.item.kul_jamma,
+      dist_id: props.history.location.item.dist_id,
+      created_by: props.history.location.item.created_by,
+      updated_by: props.history.location.item.updated_by,
       showDialog: false,
     };
 
@@ -43,6 +44,7 @@ class Add extends Component {
 
   handleSubmit() {
     const {
+        id,
         bikri_miti,
         bandpaidawar_kisim,
         ekai,
@@ -58,6 +60,7 @@ class Add extends Component {
         jamma_parinam,
         jamma_rakam,
         kul_jamma,
+        created_by,
     } = this.state;
     const payload = {
       banpaidawarbikribitaran: {
@@ -78,12 +81,13 @@ class Add extends Component {
             jamma_rakam: jamma_rakam,
             kul_jamma: kul_jamma,
             dist_id: this.props.user.dist_id,
-            created_by: this.props.user.user_name,
+            created_by: created_by || this.props.user.user_name,
+            updated_by: this.props.user.user_name,
           
         },
       },
     };
-    this.props.onSubmit(payload);
+    this.props.onUpdate(payload, id);
   }
   handleDate(e) {
     this.setState({ bikri_miti: e });
@@ -116,7 +120,7 @@ class Add extends Component {
         <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ वनपैदावार बिक्रिवितरण सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ वनपैदावार बिक्रिवितरण सम्बन्धि विवरण शंशोधन गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -252,4 +256,4 @@ class Add extends Component {
   }
 }
 
-export default Add;
+export default Edit;
