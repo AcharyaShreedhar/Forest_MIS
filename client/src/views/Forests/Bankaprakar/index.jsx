@@ -306,6 +306,7 @@ class Bankaprakar extends Component {
               pathname: `/forests/upabhoktasamuhaedit/${item.registration_no}`,
               item,
             });
+            break;
           }
 
           default:
@@ -411,6 +412,13 @@ class Bankaprakar extends Component {
   handleAdd(item) {
     switch (item) {
       case "samudayikban": {
+        // const { samudayikbanList } = this.state;
+        // jsreport.serverUrl = "http://localhost:5488";
+        // let reportRequest = {
+        //   template: { name: "Employee" },
+        //   data: { employees: samudayikbanList.list },
+        // };
+        // jsreport.render(this.reportPreview, reportRequest);
         this.props.history.push("/forests/samudayikbanadd/new");
         break;
       }
@@ -444,6 +452,7 @@ class Bankaprakar extends Component {
       }
       case "upabhoktasamuha": {
         this.props.history.push("/forests/upabhoktasamuhaadd/new");
+        break;
       }
 
       default:
@@ -492,7 +501,12 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="samudayikban" />
+              <ReportGenerator
+                id="samudayikban"
+                filename="सामुदायिक वन सम्बन्धी विवरण"
+                sheet="सामुदायिक वन सम्बन्धी विवरण"
+                className="dsl-b24"
+              />
             </div>
             <SamudayikbanBibaran.List
               buttonName="+ सामुदायिक वन"
@@ -542,7 +556,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="upabhoktasamuha" />
+              <ReportGenerator
+                id="upabhoktasamuha"
+                filename="उपभोक्ता समुह सम्बन्धी विवरण"
+                sheet="उपभोक्ता समुह सम्बन्धी विवरण"
+              />
             </div>
             <UpabhoktasamuhaBibaran.List
               buttonName="+ उपभोक्ता समुह"
@@ -592,7 +610,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="dharmikban" />
+              <ReportGenerator
+                id="dharmikban"
+                filename="धार्मिक बन सम्बन्धी विवरण"
+                sheet="धार्मिक बन सम्बन्धी विवरण"
+              />
             </div>
             <DharmikbanBibaran.List
               buttonName="+ धार्मिक बन "
@@ -642,7 +664,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="kabuliyatiban" />
+              <ReportGenerator
+                id="kabuliyatiban"
+                filename="कवुलियती वन सम्बन्धी विवरण"
+                sheet="कवुलियती वन सम्बन्धी विवरण"
+              />
             </div>
             <KabuliyatibanBibaran.List
               buttonName="+ कवुलियती वन "
@@ -692,7 +718,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="nijiban" />
+              <ReportGenerator
+                id="nijiban"
+                filename="निजि वन सम्बन्धी विवरण"
+                sheet="निजि वन सम्बन्धी विवरण "
+              />
             </div>
             <NijibanBibaran.List
               buttonName="+ निजि वन"
@@ -742,7 +772,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="sajhedariban" />
+              <ReportGenerator
+                id="sajhedariban"
+                filename="साझेदारी वन सम्बन्धी विवरण"
+                sheet="साझेदारी वन सम्बन्धी विवरण "
+              />
             </div>
             <SajhedaribanBibaran.List
               buttonName="+ साझेदारी वन"
@@ -792,7 +826,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="chaklaban" />
+              <ReportGenerator
+                id="chaklaban"
+                filename="चक्ला वन सम्बन्धी विवरण"
+                sheet="चक्ला वन सम्बन्धी विवरण "
+              />
             </div>
             <ChaklabanBibaran.List
               buttonName="+ चक्ला वन"
@@ -842,7 +880,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="rastriyaban" />
+              <ReportGenerator
+                id="rastriyaban"
+                filename="राष्ट्रिय वन सम्बन्धी विवरण"
+                sheet="राष्ट्रिय वन सम्बन्धी विवरण "
+              />
             </div>
             <RastriyabanBibaran.List
               buttonName="+ राष्ट्रिय वन"
@@ -892,7 +934,11 @@ class Bankaprakar extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="commercialban" />
+              <ReportGenerator
+                id="commercialban"
+                filename="व्यवसायीक कबुलियति सम्बन्धी विवरण"
+                sheet="व्यवसायीक कबुलियति सम्बन्धी विवरण "
+              />
             </div>
             <CommercialbanBibaran.List
               buttonName="+ व्यवसायीक कबुलियति वन"

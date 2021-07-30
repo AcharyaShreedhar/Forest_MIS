@@ -6,16 +6,16 @@ import "./ReportGenerator.scss";
 
 export class ReportGenerator extends Component {
   render() {
-    const { id } = this.props;
+    const { id, filename, sheet } = this.props;
     return (
       <div>
         <div className="generate">
           <ReactHTMLTableToExcel
             id="test-table-xls-button"
-            className="core-button small size-small download-table-xls-button"
+            className="core-button small size-small download-table-xls-button dsl-b24"
             table={id}
-            filename="tablexls"
-            sheet="tablexls"
+            filename={filename}
+            sheet={sheet}
             buttonText="रिपोर्ट"
           />
           <FontAwesomeIcon size="2x" icon={faFileAlt} className="ml-2" />
@@ -24,5 +24,9 @@ export class ReportGenerator extends Component {
     );
   }
 }
+ReportGenerator.defaultProps = {
+  filename: "report",
+  sheet: "report",
+};
 
 export default ReportGenerator;

@@ -16,6 +16,7 @@ import {
   faExclamationTriangle,
   faHandHoldingWater,
 } from "@fortawesome/free-solid-svg-icons";
+import { faPagelines } from "@fortawesome/free-brands-svg-icons";
 import React, { Component } from "react";
 import { HeaderComponent, Displaybox } from "../../components";
 import "./Sidenav.scss";
@@ -144,7 +145,7 @@ export class SideNavbar extends Component {
             <NavIcon>
               <FontAwesomeIcon size="2x" icon={faListAlt} />
             </NavIcon>
-            <NavText> बन बिबरण </NavText>            
+            <NavText> बन बिबरण </NavText>
             <NavItem
               eventKey="banbibaran/banxetraatikramanlist"
               onClick={() => history.push("/banbibaran/banxetraatikramanlist")}
@@ -200,7 +201,7 @@ export class SideNavbar extends Component {
           </NavItem>
           <NavItem eventKey="banpaidawar">
             <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faTree} />
+              <FontAwesomeIcon size="2x" icon={faPagelines} />
             </NavIcon>
             <NavText>बन पैदावर</NavText>
             <NavItem
@@ -296,9 +297,7 @@ export class SideNavbar extends Component {
 
             <NavItem
               eventKey="miscellaneous/rojgarsrijanalist"
-              onClick={() =>
-                history.push("/miscellaneous/rojgarsrijanalist")
-              }
+              onClick={() => history.push("/miscellaneous/rojgarsrijanalist")}
             >
               <NavText>रोजगार सिर्जना</NavText>
             </NavItem>
@@ -311,13 +310,17 @@ export class SideNavbar extends Component {
 
             <NavItem
               eventKey="bipatbebasthapan/badibibaranlist"
-              onClick={() => history.push("/bipatbebasthapan/badibebasthapanlist")}
+              onClick={() =>
+                history.push("/bipatbebasthapan/badibebasthapanlist")
+              }
             >
               <NavText>बाढी व्यवस्थापन</NavText>
             </NavItem>
             <NavItem
               eventKey="bipatbebasthapan/pahirobibaranlist"
-              onClick={() => history.push("/bipatbebasthapan/pahirobebasthapanlist")}
+              onClick={() =>
+                history.push("/bipatbebasthapan/pahirobebasthapanlist")
+              }
             >
               <NavText> पहिरो व्यवस्थापन</NavText>
             </NavItem>
@@ -336,25 +339,33 @@ export class SideNavbar extends Component {
 
             <NavItem
               eventKey="samrakshyan/pokharisamrakshyanlist"
-              onClick={() => history.push("/samrakshyan/pokharisamrakshyanlist")}
+              onClick={() =>
+                history.push("/samrakshyan/pokharisamrakshyanlist")
+              }
             >
               <NavText>पोखरी</NavText>
             </NavItem>
             <NavItem
               eventKey="samrakshyan/panimuhansamrakshyanlist"
-              onClick={() => history.push("/samrakshyan/panimuhansamrakshyanlist")}
+              onClick={() =>
+                history.push("/samrakshyan/panimuhansamrakshyanlist")
+              }
             >
               <NavText>पानीमुहान</NavText>
             </NavItem>
             <NavItem
               eventKey="samrakshyan/jaladharsamrakshyanlist"
-              onClick={() => history.push("/samrakshyan/jaladharsamrakshyanlist")}
+              onClick={() =>
+                history.push("/samrakshyan/jaladharsamrakshyanlist")
+              }
             >
               <NavText>जलाधार</NavText>
             </NavItem>
             <NavItem
               eventKey="samrakshyan/nadikinarsamrakshyanlist"
-              onClick={() => history.push("/samrakshyan/nadikinarsamrakshyanlist")}
+              onClick={() =>
+                history.push("/samrakshyan/nadikinarsamrakshyanlist")
+              }
             >
               <NavText>नदी किनार</NavText>
             </NavItem>
