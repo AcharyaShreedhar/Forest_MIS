@@ -68,6 +68,7 @@ function List(props) {
                   <td> {sban.forest_maujdat}</td>
                   <td> {sban.nikasi_timber}</td>
                   <td> {sban.nikasi_wood}</td>
+                  <td> {sban.baiganik_ban}</td>
                   <td>{englishToNepaliNumber(sban.renewal_date)}</td>
                   <td>
                     <div className="edit">

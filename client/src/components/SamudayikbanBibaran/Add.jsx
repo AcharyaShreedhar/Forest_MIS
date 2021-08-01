@@ -10,6 +10,10 @@ const ForestTypes = [
   { id: 1, value: "प्राकृतिक्" },
   { id: 2, value: "वृक्षरोपण" },
 ];
+const BaiganikBan = [
+  { id: 1, value: "भएको" },
+  { id: 2, value: "नभएको" },
+];
 
 class Add extends Component {
   constructor(props) {
@@ -27,11 +31,11 @@ class Add extends Component {
       nabikaran_abadhi: "",
       renewed_date: "",
       renewal_date: "",
+      baiganik_ban: 1,
       dist_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
-    
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -39,6 +43,7 @@ class Add extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleForestType = this.handleForestType.bind(this);
+    this.handleBaiganikBan = this.handleBaiganikBan.bind(this);
   }
 
   handleConfirm() {
@@ -61,6 +66,7 @@ class Add extends Component {
       nikasi_wood,
       renewed_date,
       renewal_date,
+      baiganik_ban,
       nabikaran_abadhi,
     } = this.state;
     const payload = {
@@ -75,6 +81,7 @@ class Add extends Component {
           forest_maujdat: forest_maujdat,
           nikasi_timber: nikasi_timber,
           nikasi_wood: nikasi_wood,
+          baiganik_ban: equals(baiganik_ban, 1) ? "भएको" : "नभएको",
           dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
@@ -92,7 +99,10 @@ class Add extends Component {
     this.props.onSubmit(payload);
   }
   handleForestType(e) {
-    this.setState({ forest_type: e });
+    this.setState({ forest_type: e[0] });
+  }
+  handleBaiganikBan(e) {
+    this.setState({ baiganik_ban: e[0] });
   }
   handleDate(e, type) {
     switch (type) {
@@ -128,13 +138,14 @@ class Add extends Component {
       renewed_date,
       nabikaran_abadhi,
       renewal_date,
+      baiganik_ban,
       showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ सामुदायिक वन थप गर्न चाहनुहुन्छ ?"
@@ -218,6 +229,17 @@ class Add extends Component {
               value={nikasi_wood}
               direction="vertical"
               onChange={(e) => this.setState({ nikasi_wood: e })}
+            />
+            <Dropdown
+              className="dropdownlabel mb-4"
+              title="वैज्ञानीक वन व्यबस्थापन (स्विकृती अवस्था)"
+              direction="vertical"
+              width="fit-content"
+              defaultIds={[baiganik_ban]}
+              data={BaiganikBan}
+              getValue={(BaiganikBan) => BaiganikBan["value"]}
+              onChange={(e) => this.handleForestType(e)}
+              value={baiganik_ban}
             />
             <span className="dsl-b18">नविकरण गरेको मिती</span>
             <NepaliDatePicker

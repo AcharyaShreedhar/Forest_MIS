@@ -10,6 +10,10 @@ const ForestTypes = [
   { id: 1, value: "प्राकृतिक्" },
   { id: 2, value: "वृक्षरोपण" },
 ];
+const BaiganikBan = [
+  { id: 1, value: "भएको" },
+  { id: 2, value: "नभएको" },
+];
 
 class Edit extends Component {
   constructor(props) {
@@ -30,6 +34,7 @@ class Edit extends Component {
       nabikaran_abadhi: props.history.location.item.nabikaran_abadhi,
       renewed_date: props.history.location.item.renewed_date,
       renewal_date: props.history.location.item.renewal_date,
+      baiganik_ban: props.history.location.item.baiganik_ban,
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
@@ -62,6 +67,7 @@ class Edit extends Component {
       forest_maujdat,
       nikasi_timber,
       nikasi_wood,
+      baiganik_ban,
       renewed_date,
       renewal_date,
       nabikaran_abadhi,
@@ -79,6 +85,7 @@ class Edit extends Component {
           forest_maujdat: forest_maujdat,
           nikasi_timber: nikasi_timber,
           nikasi_wood: nikasi_wood,
+          baiganik_ban: equals(baiganik_ban, 1) ? "भएको" : "नभएको",
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
@@ -99,7 +106,10 @@ class Edit extends Component {
     this.props.onUpdate(payload, id);
   }
   handleForestType(e) {
-    this.setState({ forest_type: e });
+    this.setState({ forest_type: e[0] });
+  }
+  handleBaiganikBan(e) {
+    this.setState({ baiganik_ban: e[0] });
   }
   handleDate(e, type) {
     switch (type) {
@@ -133,6 +143,7 @@ class Edit extends Component {
       nikasi_timber,
       nikasi_wood,
       renewed_date,
+      baiganik_ban,
       nabikaran_abadhi,
       renewal_date,
       showDialog,
@@ -225,6 +236,17 @@ class Edit extends Component {
               value={nikasi_wood}
               direction="vertical"
               onChange={(e) => this.setState({ nikasi_wood: e })}
+            />
+            <Dropdown
+              className="dropdownlabel mb-4"
+              title="वैज्ञानीक वन व्यबस्थापन (स्विकृती अवस्था)"
+              direction="vertical"
+              width="fit-content"
+              defaultIds={[baiganik_ban]}
+              data={BaiganikBan}
+              getValue={(BaiganikBan) => BaiganikBan["value"]}
+              onChange={(e) => this.handleForestType(e)}
+              value={baiganik_ban}
             />
             <span className="dsl-b18">नविकरण गरेको मिती</span>
             <NepaliDatePicker
