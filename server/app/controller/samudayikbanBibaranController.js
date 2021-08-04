@@ -55,7 +55,7 @@ async function getSamudayikbanBibaran(req, res) {
 
 //Controller for adding a SamudayikbanBibaran
 async function addSamudayikbanBibaran(req, res) {
-  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, darta_no,  samudayikban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, darta_no,  samudayikban_name, area, main_species, forest_type, handover_date, forest_maujdat, nikasi_timber, nikasi_wood, baiganik_ban, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSamudayikbanBibaranQuery,
     [
@@ -69,6 +69,7 @@ async function addSamudayikbanBibaran(req, res) {
       req.body.forest_maujdat,
       req.body.nikasi_timber,
       req.body.nikasi_wood,
+      req.body.baiganik_ban,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -83,7 +84,7 @@ async function addSamudayikbanBibaran(req, res) {
 
 //Controller for updating a SamudayikbanBibaran
 async function updateSamudayikbanBibaran(req, res) {
-  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, nikasi_timber=?, nikasi_wood=?, baiganik_ban=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSamudayikbanBibaranQuery,
     [
@@ -97,6 +98,7 @@ async function updateSamudayikbanBibaran(req, res) {
       req.body.forest_maujdat,
       req.body.nikasi_timber,
       req.body.nikasi_wood,
+      req.body.baiganik_ban,
       req.body.created_by,
       req.body.updated_by,
       req.params.samudayikbanBibaranId,

@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         type: Sequelize.INTEGER,
       },
       darta_no: {
@@ -40,6 +40,9 @@ module.exports = {
         type: Sequelize.STRING,
       },
       nikasi_wood: {
+        type: Sequelize.STRING,
+      },
+      baiganik_ban: {
         type: Sequelize.STRING,
       },
       created_by: {

@@ -23,6 +23,7 @@ const samudayikbanHeadings = [
   "वनको मौज्दात",
   "वार्षिक निकासी परिमाण (घ. मी)काठ",
   "वार्षिक निकासी परिमाण (घ. मी)दाउरा",
+  "वैज्ञानीक वन व्यबस्थापन (स्विकृती अवस्था)",
   "नविकरण गर्नुपर्ने आर्थिक बर्ष",
 ];
 const dharmikbanHeadings = [
@@ -395,7 +396,6 @@ const samajikkaryabibaranHeadings = [
   "वनको किसिम",
 ];
 
-
 const rojgarsrijanaHeadings = [
   "कार्यहरु",
   "इकाई",
@@ -434,7 +434,7 @@ const nadikinarsamrakshyanHeadings = [
   "कार्यक्रम मिति",
   "संरक्षण क्षेत्र",
   "प्रभावित क्षेत्र",
-]; 
+];
 
 const pokharisamrakshyanHeadings = [
   "पालिका",

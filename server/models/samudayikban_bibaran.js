@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
       forest_maujdat: DataTypes.STRING,
       nikasi_timber: DataTypes.STRING,
       nikasi_wood: DataTypes.STRING,
+      baiganik_ban: DataTypes.STRING,
     },
     {
       sequelize,
