@@ -1,0 +1,20 @@
+{
+    "name": "kaski division forest office",
+    "nabikaran_yojana": {
+        "samudayikban": {
+            "expired": 5,
+            "renewed": 1450,
+            "remaining": 50,
+            "tobeexpired": 11,
+            "torenew": 10
+        },
+        "kabuliyatiban": {
+            "expired": 5,
+            "renewed": 1450,
+            "remaining": 50,
+            "tobeexpired": 10,
+            "torenew": 5
+        }
+    }
+
+}
