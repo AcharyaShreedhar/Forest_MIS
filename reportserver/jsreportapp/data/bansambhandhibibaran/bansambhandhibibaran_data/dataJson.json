@@ -1,0 +1,35 @@
+{
+    "name": "kaski division forest office",
+    
+    "psamudayik": {
+        "count": 5,
+        "area": 1450,
+        "ghardhuri": 50
+    },
+    "pbsamudayik": {
+        "count": 6,
+        "area": 1550,
+        "ghardhuri": 50
+    },
+    "pkabuliyatiban": {
+        "count": 7,
+        "area": 1650,
+        "ghardhuri": 60
+    },
+    "csamudayik": {
+        "count": 5,
+        "area": 1450,
+        "ghardhuri": 50
+    },
+    "cbsamudayik": {
+        "count": 6,
+        "area": 1550,
+        "ghardhuri": 50
+    },
+    "ckabuliyatiban": {
+        "count": 7,
+        "area": 1650,
+        "ghardhuri": 60
+    }
+    
+}

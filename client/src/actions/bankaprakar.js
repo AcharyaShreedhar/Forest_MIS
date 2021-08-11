@@ -11,6 +11,10 @@
 import { createActions } from "reduxsauce";
 
 const { Types, Creators } = createActions({
+  fetchallbantypesRequest:["payload"],
+  fetchallbantypesRequest:["response"],
+  fetchallbantypesRequest:null,
+
   fetchallsamudayikbanbibaranRequest: ["payload"],
   fetchallsamudayikbanbibaranSuccess: ["response"],
   fetchallsamudayikbanbibaranFailure: null,

@@ -1,0 +1,558 @@
+{
+    "name": "Kaski Division Forest Office",
+    "arthikbarsa": "२०७८|०७९",
+    "aghilloarthikbarsa": "२०७७|०७८ ",
+    "samudayikban": {
+        "totalcount": 50,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 25,
+        "previous": {
+            "totalcount": 15,
+            "totalarea": 1570,
+            "totalghardhuri": 15,
+            "totallabhanvit": 10,
+            "baiganik": {
+                "count": 5,
+                "area": 1550,
+                "ghardhuri": 5,
+                "labhanvit": 5
+            },
+            "nonbaiganik": {
+                "count": 10,
+                "area": 20,
+                "ghardhuri": 10,
+                "labhanvit": 5
+            }
+        },
+        "baiganik": {
+            "totalcount": 20,
+            "totalarea": 3100,
+            "totalghardhuri": 20,
+            "totallabhanvit": 15
+        },
+        "nonbaiganik": {
+            "totalcount": 30,
+            "totalarea": 50,
+            "totalghardhuri": 30,
+            "totallabhanvit": 10
+        },
+        "current": {
+            "totalcount": 35,
+            "totalarea": 1580,
+            "totalghardhuri": 35,
+            "totallabhanvit": 15,
+            "baiganik": {
+                "count": 15,
+                "area": 1550,
+                "ghardhuri": 15,
+                "labhanvit": 10
+            },
+            "nonbaiganik": {
+                "count": 20,
+                "area": 30,
+                "ghardhuri": 20,
+                "labhanvit": 5
+            }
+        }
+    },
+    "kabuliyatiban": {
+        "totalcount": 40,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 10,
+        "previous": {
+            "count": 15,
+            "area": 1570,
+            "ghardhuri": 15,
+            "labhanvit": 5
+        },
+        "current": {
+            "count": 25,
+            "area": 1580,
+            "ghardhuri": 35,
+            "labhanvit": 5
+        }
+    },
+    "dharmikban": {
+        "totalcount": 40,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 10,
+        "previous": {
+            "count": 15,
+            "area": 1570,
+            "ghardhuri": 15,
+            "labhanvit": 5
+        },
+        "current": {
+            "count": 25,
+            "area": 1580,
+            "ghardhuri": 35,
+            "labhanvit": 5
+        }
+    },
+    "chaklaban": {
+        "totalcount": 40,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 10,
+        "previous": {
+            "count": 15,
+            "area": 1570,
+            "ghardhuri": 15,
+            "labhanvit": 5
+        },
+        "current": {
+            "count": 25,
+            "area": 1580,
+            "ghardhuri": 35,
+            "labhanvit": 5
+        }
+    },
+    "sajhedariban": {
+        "totalcount": 40,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 10,
+        "previous": {
+            "count": 15,
+            "area": 1570,
+            "ghardhuri": 15,
+            "labhanvit": 5
+        },
+        "current": {
+            "count": 25,
+            "area": 1580,
+            "ghardhuri": 35,
+            "labhanvit": 5
+        }
+    },
+    "com_kabuliyatiban": {
+        "totalcount": 40,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 10,
+        "previous": {
+            "count": 15,
+            "area": 1570,
+            "ghardhuri": 15,
+            "labhanvit": 5
+        },
+        "current": {
+            "count": 25,
+            "area": 1580,
+            "ghardhuri": 35,
+            "labhanvit": 5
+        }
+    },
+    "nijiban": {
+        "totalcount": 40,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 10,
+        "previous": {
+            "count": 15,
+            "area": 1570,
+            "ghardhuri": 15,
+            "labhanvit": 5
+        },
+        "current": {
+            "count": 25,
+            "area": 1580,
+            "ghardhuri": 35,
+            "labhanvit": 5
+        }
+    },
+    "rastriyaban": {
+        "totalcount": 40,
+        "totalarea": 3150,
+        "totalghardhuri": 50,
+        "totallabhanvit": 10,
+        "previous": {
+            "count": 15,
+            "area": 1570,
+            "ghardhuri": 15,
+            "labhanvit": 5
+        },
+        "current": {
+            "count": 25,
+            "area": 1580,
+            "ghardhuri": 35,
+            "labhanvit": 5
+        }
+    },
+    "nabikaran_yojana": {
+        "samudayikban": {
+            "expired": 5,
+            "renewed": 1450,
+            "remaining": 50,
+            "tobeexpired": 11,
+            "torenew": 10
+        },
+        "kabuliyatiban": {
+            "expired": 5,
+            "renewed": 1450,
+            "remaining": 50,
+            "tobeexpired": 10,
+            "torenew": 5
+        }
+    },
+    "rajaswo": {
+        "kathdaura": 1500,
+        "gairkastha": 500,
+        "anya": 300,
+        "total": 2800,
+        "vat": 364
+    },
+    "banpaidawar_bikri": {
+        "kathdaura": 500,
+        "gairkastha": 1000,
+        "total": 1500
+    },
+    "beruju_farsyeut": {
+        "beruju": 2000,
+        "farsyeut_karbahi": 700,
+        "farsyeut": 1500
+    },
+    "mudda": {
+        "faisalahunabaki": {
+            "banpaidawar_chorinikasi": 200,
+            "banyajantu_aparad": 30,
+            "banatikraman": 20,
+            "total": 250
+        },
+        "dayar_bhayeka": {
+            "banpaidawar_chorinikasi": 100,
+            "banyajantu_aparad": 30,
+            "banatikraman": 20,
+            "total": 150
+        },
+        "faisala_bhayeka": {
+            "banpaidawar_chorinikasi": 300,
+            "banyajantu_aparad": 30,
+            "banatikraman": 20,
+            "total": 350
+        },
+        "faisalahunabaki_jamma": {
+            "banpaidawar_chorinikasi": 400,
+            "banyajantu_aparad": 30,
+            "banatikraman": 20,
+            "total": 450
+        }
+    },
+    "kathdaura_bikri": {
+        "samuhabhitra": {
+            "totalkath": 80,
+            "totaldaura": 60,
+            "samudayikban": {
+                "baiganik": {
+                    "kath": 50,
+                    "daura": 10
+                },
+                "nonbaiganik": {
+                    "kath": 30,
+                    "daura": 50
+                }
+            },
+            "chaklaban": {
+                "kath": 50,
+                "daura": 10
+            },
+            "sajhedariban": {
+                "kath": 50,
+                "daura": 10
+            },
+            "nijiban": {
+                "kath": 50,
+                "daura": 10
+            },
+            "rastriyaban": {
+                "kath": 50,
+                "daura": 10
+            }
+        },
+        "aapurtisamiti_marfat": {
+            "samudayikban": {
+                "totalkath": 80,
+                "totaldaura": 60,
+                "baiganik": {
+                    "kath": 50,
+                    "daura": 10
+                },
+                "nonbaiganik": {
+                    "kath": 30,
+                    "daura": 50
+                }
+            },
+            "chaklaban": {
+                "kath": 50,
+                "daura": 10
+            },
+            "sajhedariban": {
+                "kath": 50,
+                "daura": 10
+            },
+            "nijiban": {
+                "kath": 50,
+                "daura": 10
+            },
+            "rastriyaban": {
+                "kath": 50,
+                "daura": 10
+            }
+        },
+        "samuha_bahira": {
+            "samudayikban": {
+                "totalkhayar": 80,
+                "totalsaal": 60,
+                "totalanyakath": 80,
+                "totaldaura": 60,
+                "baiganik": {
+                    "khayar": 50,
+                    "saal": 10,
+                    "anyakath": 5,
+                    "daura": 2
+                },
+                "nonbaiganik": {
+                    "khayar": 50,
+                    "saal": 10,
+                    "anyakath": 5,
+                    "daura": 2
+                }
+            },
+            "chaklaban": {
+                "khayar": 50,
+                "saal": 10,
+                "anyakath": 5,
+                "daura": 2
+            },
+            "sajhedariban": {
+                "khayar": 50,
+                "saal": 10,
+                "anyakath": 5,
+                "daura": 2
+            },
+            "nijiban": {
+                "khayar": 50,
+                "saal": 10,
+                "anyakath": 5,
+                "daura": 2
+            },
+            "rastriyaban": {
+                "khayar": 50,
+                "saal": 10,
+                "anyakath": 5,
+                "daura": 2
+            }
+        }
+    },
+    "gairkastha_banpaidawar": [{
+
+            "name": "jadibuti",
+            "unit": 50,
+            "sarkarbata": 40,
+            "samudayik_banbata": 25,
+            "niji": 10,
+            "total": 125
+        },
+        {
+            "name": "khoto",
+            "unit": 50,
+            "sarkarbata": 40,
+            "samudayik_banbata": 25,
+            "niji": 10,
+            "total": 125
+        },
+        {
+            "name": "anya",
+            "unit": 50,
+            "sarkarbata": 40,
+            "samudayik_banbata": 25,
+            "niji": 10,
+            "total": 125
+        }
+
+    ],
+    "banxetra_atikraman": {
+        "previous": {
+            "xetrafal": 500,
+            "ghar_tahara": 200
+        },
+        "current": {
+            "xetrafal": 600,
+            "ghar_tahara": 100
+        },
+        "hatayeko": {
+            "xetrafal": 50,
+            "ghar_tahara": 10
+        },
+        "baki": {
+            "xetrafal": 600,
+            "ghar_tahara": 100
+        }
+    },
+    "banyajantu_xeti_rahat": [{
+            "pidit_name": "hari bahadur",
+            "address": "pokhara",
+            "ghatana_address": "ktm",
+            "ghatana_miti": "2078-01-02",
+            "ghatana_ghataune_banyajantu_prajati": "Tiger",
+            "manisko_mrityu": 20,
+            "manis_ghaete": 10,
+            "pasudhan_xeti": "bakhra",
+            "balinali_noksani": "makai",
+            "ghargoth_xeti": "ghar",
+            "bhandaran_anna": "kodo",
+            "rahat_upalabda": 5000
+        },
+        {
+            "pidit_name": "hari bahadur",
+            "address": "pokhara",
+            "ghatana_address": "ktm",
+            "ghatana_miti": "2078-01-02",
+            "ghatana_ghataune_banyajantu_prajati": "Tiger",
+            "manisko_mrityu": 20,
+            "manis_ghaete": 10,
+            "pasudhan_xeti": "bakhra",
+            "balinali_noksani": "makai",
+            "ghargoth_xeti": "ghar",
+            "bhandaran_anna": "kodo",
+            "rahat_upalabda": 5000
+        }
+    ],
+    "banyajantu_uddar": [{
+            "jaat": "baag",
+            "uddar_sankhya": 500,
+            "uddarpachi_mareko": 50,
+            "mrita_uddar": 20
+        },
+        {
+            "jaat": "mriga",
+            "uddar_sankhya": 5400,
+            "uddarpachi_mareko": 40,
+            "mrita_uddar": 10
+        }
+    ],
+    "rojgar_srijana": {
+        "pujigat_bajet_kharchagarda": 3000,
+        "banpaidawar_sankalan": 400,
+        "anya": 300
+    },
+    "masik_pragati": [{
+        "karyakram": "नर्सरि निर्माण",
+        "bajet": {
+            "pujigat": 4000,
+            "chalu": 5000,
+            "total": 9000
+        },
+        "kharcha": {
+            "pujigat": 4000,
+            "chalu": 5000,
+            "total": 9000
+        }
+    }, {
+        "karyakram": " बिपत ब्यबस्थापन ",
+        "bajet": {
+            "pujigat": 10000,
+            "chalu": 5000,
+            "total": 15000
+        },
+        "kharcha": {
+            "pujigat": 5000,
+            "chalu": 5000,
+            "total": 10000
+        }
+    }],
+    "biruwa": {
+        "utpadan": {
+            "division_ban": {
+                "bahuudyesiya": 1000,
+                "jadibuti": 500,
+                "bahubarsiya": 100
+
+            },
+            "samuha": {
+                "bahuudyesiya": 8000,
+                "jadibuti": 500
+            },
+            "niji": {
+                "bahuudyesiya": 2000,
+                "jadibuti": 500
+            }
+        },
+        "kharid": {
+            "bahuudyesiya": 10000,
+            "jadibuti": 1500
+        },
+        "ropan": {
+            "samudayik_rastriya": 3000,
+            "niji": 500,
+            "sarbajanik": 1000
+        }
+
+    },
+    "susasanko_abastha":{
+        "samuha_with_pan":500,
+        "lekhaparixan_gareka":100,
+        "barsik_pratibedan_pesgareka":50,
+        "sadharansava_nabaseka":100,
+        "mahila_padhadhikari":10
+    },
+
+    "dadelo":[
+        {
+        "sthan":"kathmandu",
+        "area":546,
+        "banpaidawar_xeti":100,
+        "manab_mrityu":10,
+        "manab_ghaete":50
+    },
+    {
+        "sthan":"Syanja",
+        "area":700,
+        "banpaidawar_xeti":100,
+        "manab_mrityu":2,
+        "manab_ghaete":100
+    }
+    ],
+    "banpaidawar_uddham":{
+        "niji":{
+            "jamma_uddham":500,
+            "rojgari_srijana":50
+        },
+        "samudayik":{
+             "jamma_uddham":500,
+            "rojgari_srijana":50
+        },
+        "sahakari":{
+             "jamma_uddham":500,
+            "rojgari_srijana":50
+        }
+
+    },
+    "banxetra_anyaprayojan":[
+        {
+           "sanstha_name": "KB group pvt ltd",
+           "asthai_prayojan_area":7000,
+           "sthai_prayojan_area":2000,
+           "jaggako_sthan":"Pokhara 21",
+           "prayojan":"Bebasayik agro farm sanchalan"
+        },
+         {
+           "sanstha_name": "AB group pvt ltd",
+           "asthai_prayojan_area":10000,
+           "sthai_prayojan_area":2000,
+           "jaggako_sthan":"Pokhara 21",
+           "prayojan":"Uddhyog sanchalan"
+        },
+         {
+           "sanstha_name": "CD group pvt ltd",
+           "asthai_prayojan_area":56000,
+           "sthai_prayojan_area":2000,
+           "jaggako_sthan":"Pokhara 21",
+           "prayojan":"Brixyaropan"
+        }
+    ]
+
+}
