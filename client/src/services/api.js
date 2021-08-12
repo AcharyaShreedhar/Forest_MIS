@@ -36,6 +36,9 @@ const create = (baseURL = Config.API_URL) => {
   // Login API
   const loginByUsername = (payload) => api.post("users/login", payload);
   //Bankaprakars
+  const getBantypesList = (payload) =>
+  api.post("totalBantypesList", payload);
+
   const getSamudayikbanBibaranList = (payload) =>
     api.post("samudayikbanBibaranList", payload);
 
@@ -905,6 +908,7 @@ const create = (baseURL = Config.API_URL) => {
 
   return {
     loginByUsername,
+    getBantypesList,
     getSamudayikbanBibaranList,
     getSamudayikbanBibaran,
     postBankaprakarSamudayikbanAddNew,

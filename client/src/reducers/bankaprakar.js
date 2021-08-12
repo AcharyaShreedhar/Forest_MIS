@@ -8,6 +8,19 @@ const initialState = Immutable({
   token: "",
 });
 
+const fetchallbantypesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallbantypesSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allbantypesData: action.response,
+  });
+};
+const fetchallbantypesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const fetchallsamudayikbanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallsamudayikbanbibaranSuccess = (state, action) => {
@@ -347,14 +360,14 @@ const addchaklabanbibaranFailure = (state, action) =>
 
 //Update chaklabanbibaran
 const updatechaklabanbibaranRequest = (state, action) =>
-state.merge({ ...state, status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const updatechaklabanbibaranSuccess = (state, action) =>
-state.merge({
-  ...state,
-  status: "done",
-});
+  state.merge({
+    ...state,
+    status: "done",
+  });
 const updatechaklabanbibaranFailure = (state, action) =>
-state.merge({ ...state, status: "error" });
+  state.merge({ ...state, status: "error" });
 
 //Delete Nijibanbibaran
 const deletechaklabanbibaranRequest = (state, action) =>
@@ -509,7 +522,6 @@ const fetchsajhedaribanbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
 const addsajhedaribanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const addsajhedaribanbibaranSuccess = (state, action) =>
@@ -519,7 +531,6 @@ const addsajhedaribanbibaranSuccess = (state, action) =>
   });
 const addsajhedaribanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
-
 
 const updatesajhedaribanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -531,7 +542,6 @@ const updatesajhedaribanbibaranSuccess = (state, action) =>
 const updatesajhedaribanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
 const deletesajhedaribanbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const deletesajhedaribanbibaranSuccess = (state, action) =>
@@ -541,7 +551,6 @@ const deletesajhedaribanbibaranSuccess = (state, action) =>
   });
 const deletesajhedaribanbibaranFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
-  
 
 //commercial kabuliyatibanbiabaran
 const fetchallcommercialkabuliyatibanbibaranRequest = (state, action) =>
@@ -612,6 +621,10 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
+  [BankaprakarTypes.FETCHALLBANTYPES_REQUEST]: fetchallbantypesRequest,
+  [BankaprakarTypes.FETCHALLBANTYPES_SUCCESS]: fetchallbantypesSuccess,
+  [BankaprakarTypes.FETCHALLBANTYPES_FAILURE]: fetchallbantypesFailure,
+
   [BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST]: fetchallsamudayikbanbibaranRequest,
   [BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_SUCCESS]: fetchallsamudayikbanbibaranSuccess,
   [BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_FAILURE]: fetchallsamudayikbanbibaranFailure,

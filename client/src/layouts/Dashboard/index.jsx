@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { isEmpty } from "ramda";
 import { Content } from "./dashboard";
 import AppActions from "../../actions/app";
+import BankaprakarActions from "../../actions/bankaprakar";
 import "react-toastify/dist/ReactToastify.css";
 
 class Dashboard extends Component {
@@ -16,6 +17,14 @@ class Dashboard extends Component {
       this.props.saveLocation(payload);
     });
     this.props.fetchDistricts(4);
+    this.props.fetchallBanTypes({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "handover_date",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -54,6 +63,8 @@ const mapDispatchToProps = (dispatch) => ({
   saveLocation: (e) => dispatch(AppActions.locationsRequest(e)),
   onLogout: (e) => dispatch(AppActions.logoutRequest(e)),
   fetchDistricts: (e) => dispatch(AppActions.fetchalldistrictsRequest(e)),
+  fetchallBanTypes: (payload) =>
+    dispatch(BankaprakarActions.fetchallbantypesRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

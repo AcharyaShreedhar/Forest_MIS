@@ -96,6 +96,7 @@ import {
 
 //------------------------bankaprakar
 import {
+  fetchallbantypesRequest,
   fetchallconsumergroupdetailsRequest,
   fetchconsumergroupdetailsRequest,
   addconsumergroupdetailsRequest,
@@ -346,6 +347,13 @@ export default function* root() {
 
     ////----------------------------bankaprakar
     //------------------------------samudayikbanbibaran
+
+    takeLatest(
+      BankaprakarTypes.FETCHALLBANTYPES_REQUEST,
+      fetchallbantypesRequest,
+      api
+    ),
+
     takeLatest(
       BankaprakarTypes.FETCHALLSAMUDAYIKBANBIBARAN_REQUEST,
       fetchallsamudayikbanbibaranRequest,

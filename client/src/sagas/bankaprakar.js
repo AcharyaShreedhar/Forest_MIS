@@ -5,6 +5,19 @@ import { history } from "../reducers";
 import BankaprakarActions from "../actions/bankaprakar";
 import { isNil } from "ramda";
 
+export function* fetchallbantypesRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBantypesList(payloaddata);
+  if (response.ok) {
+    yield put(
+      BankaprakarActions.fetchallbantypesSuccess(response.data)
+    );
+  } else {
+    yield put(BankaprakarActions.fetchallbantypesFailure());
+  }
+}
+
 export function* fetchallsamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
