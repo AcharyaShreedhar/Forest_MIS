@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import Chart from "react-apexcharts";
+
 import "./Home.scss";
 
-export class index extends Component {
+export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -52,8 +54,32 @@ export class index extends Component {
           "व्यबसायीक कबुलियती बन",
         ],
       },
-      series1: [23, 11, 14, 25, 13, 7, 9, 3, 5],
+
       labels: ["Apple", "Mango", "Banana", "Papaya", "Orange"],
+    };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    var bantypesList = [];
+    var series1 = [];
+
+    if (nextProps !== prevState) {
+      bantypesList = nextProps.bantypesDataList.data.list[0];
+      series1 = [
+        bantypesList.samudayikban,
+        bantypesList.dharmikban,
+        bantypesList.kabuliyatiban,
+        bantypesList.nijiban,
+        bantypesList.sajhedariban,
+        bantypesList.chaklaban,
+        bantypesList.rastriyaban,
+        bantypesList.commercialban,
+      ];
+    }
+
+    return {
+      bantypesList,
+      series1,
     };
   }
   render() {
@@ -155,4 +181,8 @@ export class index extends Component {
   }
 }
 
-export default index;
+const mapStateToProps = (state) => ({
+  bantypesDataList: state.bankaprakar.allbantypesData,
+});
+
+export default connect(mapStateToProps, null)(Home);
