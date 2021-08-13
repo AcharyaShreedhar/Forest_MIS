@@ -5,7 +5,7 @@ async function getAllTotalBanyajantuuddar(req, res) {
   const getTotalQuery =
     "select count * from banyajantu_uddars where dist_id like ?  ";
   const getAllTotalBanyajantuuddarQuery =
-    "SELECT miti,dist_id, count(*) FROM `banyajantu_uddars` GROUP BY YEAR(miti) HAVING dist_id=?";
+    "SELECT Year(miti) ,dist_id, count(*) FROM `banyajantu_uddars` GROUP BY YEAR(miti) HAVING dist_id=?";
   pool.query(
     getTotalQuery,
     [req.body.distId],
