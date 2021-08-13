@@ -109,6 +109,7 @@ const samrakshyanpokhariNirmanRoutes = require("./app/routes/samrakshyanpokhariN
 const jaladharSamrakshyanRoutes = require("./app/routes/jaladharSamrakshyanRoutes");
 
 const totalBantypesRoutes = require("./app/routes/totalBantypesRoutes");
+const totalBanyajantuuddarRoutes = require("./app/routes/totalbanyajantuuddarRoutes");
 
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
@@ -163,6 +164,7 @@ app.use("/api/v1", panimuhanSamrakshyanRoutes);
 app.use("/api/v1", samrakshyanpokhariNirmanRoutes);
 app.use("/api/v1", jaladharSamrakshyanRoutes);
 app.use("/api/v1", totalBantypesRoutes);
+app.use("/api/v1", totalBanyajantuuddarRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
