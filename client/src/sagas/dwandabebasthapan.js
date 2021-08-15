@@ -4,6 +4,19 @@ import { history } from "../reducers";
 import { isNil } from "ramda";
 import DwandabebasthapanActions from "../actions/dwandabebasthapan";
 
+export function* fetchtotalbanyajantuuddarRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getTotalBanyajantuUddarList(payloaddata);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchtotalbanyajantuuddarSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchtotalbanyajantuuddarFailure());
+  }
+}
+
 export function* fetchallbanyajantuuddarRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;

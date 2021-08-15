@@ -11,6 +11,11 @@
  import { createActions } from "reduxsauce";
 
  const { Types, Creators } = createActions({
+
+  //.................Banyajantu Uddar
+  fetchtotalbanyajantuuddarRequest: ["payload"],
+  fetchtotalbanyajantuuddarSuccess: ["response"],
+  fetchtotalbanyajantuuddarFailure: null,
      
    fetchallbanyajantuuddarRequest: ["payload"],
    fetchallbanyajantuuddarSuccess: ["response"],

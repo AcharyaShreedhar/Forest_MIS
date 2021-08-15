@@ -4,37 +4,12 @@ import { Row, Col } from "react-bootstrap";
 import Chart from "react-apexcharts";
 
 import "./Home.scss";
+import { isEmpty, isNil } from "ramda";
 
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      options: {
-        chart: {
-          id: "बन्यजन्तु क्षति",
-        },
-        xaxis: {
-          categories: [
-            2011,
-            2012,
-            2013,
-            2014,
-            2015,
-            2016,
-            2017,
-            2018,
-            2019,
-            2020,
-            2021,
-          ],
-        },
-      },
-      series: [
-        {
-          name: "बन्यजन्तु उद्दार",
-          data: [10, 40, 25, 50, 49, 80, 70, 91, 125, 135, 144],
-        },
-      ],
       series2: [
         {
           name: "बन्यजन्तु क्षति",
@@ -61,10 +36,24 @@ export class Home extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     var bantypesList = [];
+    var uddarList = [];
     var series1 = [];
+    var options = {
+      chart: {
+        id: "बन्यजन्तु उद्दार",
+      },
+      xaxis: {
+        categories: [],
+      },
+    };
+    var series = [];
+    let mitis = [];
+    let sankhya = [];
 
     if (nextProps !== prevState) {
       bantypesList = nextProps.bantypesDataList.data.list[0];
+      uddarList = nextProps.totalbanyajantuuddarDataList.data.list;
+
       series1 = [
         bantypesList.samudayikban,
         bantypesList.dharmikban,
@@ -75,11 +64,27 @@ export class Home extends Component {
         bantypesList.rastriyaban,
         bantypesList.commercialban,
       ];
+      if (!isNil(uddarList) && !isEmpty(uddarList)) {
+        uddarList.map((uddar) => {
+          mitis.push(uddar.miti);
+          sankhya.push(uddar.sankhya);
+        });
+        options.xaxis.categories = mitis;
+
+        series = [
+          {
+            name: "बन्यजन्तु उद्दार",
+            data: sankhya,
+          },
+        ];
+      }
     }
 
     return {
       bantypesList,
       series1,
+      series,
+      options,
     };
   }
   render() {
@@ -183,6 +188,8 @@ export class Home extends Component {
 
 const mapStateToProps = (state) => ({
   bantypesDataList: state.bankaprakar.allbantypesData,
+  totalbanyajantuuddarDataList:
+    state.dwandabebasthapan.totalbanyajantuuddarData,
 });
 
 export default connect(mapStateToProps, null)(Home);

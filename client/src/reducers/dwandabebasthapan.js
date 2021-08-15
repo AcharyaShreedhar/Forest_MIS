@@ -9,6 +9,21 @@ const initialState = Immutable({
   token: "",
 });
 
+
+const fetchtotalbanyajantuuddarRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchtotalbanyajantuuddarSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    totalbanyajantuuddarData: action.response,
+  });
+};
+const fetchtotalbanyajantuuddarFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const fetchallbanyajantuuddarRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const fetchallbanyajantuuddarSuccess = (state, action) => {
@@ -149,6 +164,10 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
+
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_REQUEST]: fetchtotalbanyajantuuddarRequest,
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_SUCCESS]: fetchtotalbanyajantuuddarSuccess,
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_FAILURE]: fetchtotalbanyajantuuddarFailure,
 
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_REQUEST]: fetchallbanyajantuuddarRequest,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_SUCCESS]: fetchallbanyajantuuddarSuccess,
