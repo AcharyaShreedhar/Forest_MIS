@@ -51,7 +51,6 @@ export class SideNavbar extends Component {
   render() {
     const { expanded, showDialog } = this.state;
     const { history } = this.props;
-    console.log("expanded", expanded);
     return (
       <SideNav
         expanded={expanded}

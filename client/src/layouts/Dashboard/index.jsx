@@ -6,6 +6,7 @@ import { isEmpty } from "ramda";
 import { Content } from "./dashboard";
 import AppActions from "../../actions/app";
 import BankaprakarActions from "../../actions/bankaprakar";
+import DwandabebasthapanActions from "../../actions/dwandabebasthapan";
 import "react-toastify/dist/ReactToastify.css";
 
 class Dashboard extends Component {
@@ -24,6 +25,9 @@ class Dashboard extends Component {
       name: "handover_date",
       page: 0,
       perPage: 10,
+    });
+    this.props.fetchtotalBanyajantuuddar({
+      distId: "%",
     });
   }
 
@@ -65,6 +69,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchDistricts: (e) => dispatch(AppActions.fetchalldistrictsRequest(e)),
   fetchallBanTypes: (payload) =>
     dispatch(BankaprakarActions.fetchallbantypesRequest(payload)),
+  fetchtotalBanyajantuuddar: (payload) =>
+    dispatch(DwandabebasthapanActions.fetchtotalbanyajantuuddarRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

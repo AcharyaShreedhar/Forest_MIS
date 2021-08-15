@@ -175,6 +175,7 @@ import {
 
 //-----------------dwandabebasthapan
 import {
+  fetchtotalbanyajantuuddarRequest,
   fetchallbanyajantuuddarRequest,
   fetchbanyajantuuddarRequest,
   addbanyajantuuddarRequest,
@@ -747,6 +748,12 @@ export default function* root() {
 
     ////---------Dwandabebasthapan
     //------------------------------banyajantuuddar
+    
+    takeLatest(
+      DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_REQUEST,
+      fetchtotalbanyajantuuddarRequest,
+      api
+    ),
 
     takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_REQUEST,

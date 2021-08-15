@@ -3,9 +3,9 @@ const pool = require("../db");
 //Controller for Listing totalbanyajantuuddar
 async function getAllTotalBanyajantuuddar(req, res) {
   const getTotalQuery =
-    "select count * from banyajantu_uddars where dist_id like ?  ";
+    "select count(*) from banyajantu_uddars where dist_id like ?  ";
   const getAllTotalBanyajantuuddarQuery =
-    "SELECT Year(miti) ,dist_id, count(*) FROM `banyajantu_uddars` GROUP BY YEAR(miti) HAVING dist_id=?";
+    "SELECT Year(miti) as miti ,dist_id, count(*) as sankhya FROM `banyajantu_uddars` GROUP BY YEAR(miti) HAVING dist_id like?";
   pool.query(
     getTotalQuery,
     [req.body.distId],

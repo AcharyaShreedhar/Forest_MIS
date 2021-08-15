@@ -296,6 +296,10 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`jadibuti/${jadibutiId}`);
 
   //Dwandabebasthapan
+  
+  const getTotalBanyajantuUddarList = (payload) =>
+    api.post("totalBanyajantuuddarList", payload);
+
   const getBanyajantuUddarList = (payload) =>
     api.post("banyajantuUddarsList", payload);
 
@@ -956,6 +960,7 @@ const create = (baseURL = Config.API_URL) => {
     postBankaprakarSajhedaribanbibaranDelete,
 
     //dwandabebasthapan
+    getTotalBanyajantuUddarList,
     getBanyajantuUddarList,
     getBanyajantuUddar,
     postDwandabebasthapanBanyajantuuddarAddNew,
