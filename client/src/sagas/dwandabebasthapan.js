@@ -148,6 +148,20 @@ export function* deletebanyajantuuddarRequest(api, action) {
   }
 }
 
+export function* fetchtotalbanyajantuxetiRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getTotalBanyajantuXetiList(payloaddata);
+
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchtotalbanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchtotalbanyajantuxetiFailure());
+  }
+}
+
 export function* fetchallbanyajantuxetiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;

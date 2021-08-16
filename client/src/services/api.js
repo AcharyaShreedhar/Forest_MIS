@@ -36,8 +36,7 @@ const create = (baseURL = Config.API_URL) => {
   // Login API
   const loginByUsername = (payload) => api.post("users/login", payload);
   //Bankaprakars
-  const getBantypesList = (payload) =>
-  api.post("totalBantypesList", payload);
+  const getBantypesList = (payload) => api.post("totalBantypesList", payload);
 
   const getSamudayikbanBibaranList = (payload) =>
     api.post("samudayikbanBibaranList", payload);
@@ -296,7 +295,7 @@ const create = (baseURL = Config.API_URL) => {
     api.delete(`jadibuti/${jadibutiId}`);
 
   //Dwandabebasthapan
-  
+
   const getTotalBanyajantuUddarList = (payload) =>
     api.post("totalBanyajantuuddarList", payload);
 
@@ -318,6 +317,9 @@ const create = (baseURL = Config.API_URL) => {
   //delete banyajantuuddar
   const postDwandabebasthapanBanyajantuuddarDelete = (banyajantuuddarId) =>
     api.delete(`banyajantuUddars/${banyajantuuddarId}`);
+
+  const getTotalBanyajantuXetiList = (payload) =>
+    api.post("totalBanyajantuxetiList", payload);
 
   const getBanyajantuXetiList = (payload) =>
     api.post("banyajantuXetiBibaransList", payload);
@@ -893,12 +895,12 @@ const create = (baseURL = Config.API_URL) => {
 
   const postNadikinarSamrakshyanDelete = (nadikinarSamrakshyanId) =>
     api.delete(`nadikinarSamrakshyan/${nadikinarSamrakshyanId}`);
-    
+
   const getPanimuhanSamrakshyanList = (payload) =>
-    api.post("panimuhanSamrakshyanList",payload);  
+    api.post("panimuhanSamrakshyanList", payload);
 
   const getPanimuhanSamrakshyan = (panimuhanSamrakshyanId) =>
-    api.get(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);  
+    api.get(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);
 
   const postPanimuhanSamrakshyanAddNew = (payload) =>
     api.post("panimuhanSamrakshyan", payload);
@@ -907,8 +909,7 @@ const create = (baseURL = Config.API_URL) => {
     api.put(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`, payload);
 
   const postPanimuhanSamrakshyanDelete = (panimuhanSamrakshyanId) =>
-    api.delete(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);   
-  
+    api.delete(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);
 
   return {
     loginByUsername,
@@ -966,6 +967,7 @@ const create = (baseURL = Config.API_URL) => {
     postDwandabebasthapanBanyajantuuddarAddNew,
     postDwandabebasthapanBanyajantuuddarUpdate,
     postDwandabebasthapanBanyajantuuddarDelete,
+    getTotalBanyajantuXetiList,
     getBanyajantuXetiList,
     getBanyajantuXeti,
     postDwandabebasthapanBanyajantuxetiAddNew,

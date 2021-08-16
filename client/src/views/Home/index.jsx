@@ -2,21 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import Chart from "react-apexcharts";
-
-import "./Home.scss";
 import { isEmpty, isNil } from "ramda";
+import "./Home.scss";
 
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      series2: [
-        {
-          name: "बन्यजन्तु क्षति",
-          data: [30, 40, 35, 50, 49, 60, 70, 91, 125, 124, 144],
-        },
-      ],
-
       chartOptions: {
         labels: [
           "सामुदायिक वन",
@@ -29,16 +21,15 @@ export class Home extends Component {
           "व्यबसायीक कबुलियती बन",
         ],
       },
-
-      labels: ["Apple", "Mango", "Banana", "Papaya", "Orange"],
     };
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     var bantypesList = [];
     var uddarList = [];
+    var xetiList = [];
     var series1 = [];
-    var options = {
+    var uddaroptions = {
       chart: {
         id: "बन्यजन्तु उद्दार",
       },
@@ -46,13 +37,25 @@ export class Home extends Component {
         categories: [],
       },
     };
-    var series = [];
-    let mitis = [];
-    let sankhya = [];
+    var xetioptions = {
+      chart: {
+        id: "बन्यजन्तु उद्दार",
+      },
+      xaxis: {
+        categories: [],
+      },
+    };
+    let uddarseries = [];
+    let uddarmitis = [];
+    let uddarsankhya = [];
+    let xetimitis = [];
+    let xetisankhya = [];
+    let xetiseries = [];
 
     if (nextProps !== prevState) {
       bantypesList = nextProps.bantypesDataList.data.list[0];
       uddarList = nextProps.totalbanyajantuuddarDataList.data.list;
+      xetiList = nextProps.totalbanyajantuxetiDataList.data.list;
 
       series1 = [
         bantypesList.samudayikban,
@@ -66,15 +69,29 @@ export class Home extends Component {
       ];
       if (!isNil(uddarList) && !isEmpty(uddarList)) {
         uddarList.map((uddar) => {
-          mitis.push(uddar.miti);
-          sankhya.push(uddar.sankhya);
+          uddarmitis.push(uddar.miti);
+          uddarsankhya.push(uddar.sankhya);
         });
-        options.xaxis.categories = mitis;
+        uddaroptions.xaxis.categories = uddarmitis;
 
-        series = [
+        uddarseries = [
           {
             name: "बन्यजन्तु उद्दार",
-            data: sankhya,
+            data: uddarsankhya,
+          },
+        ];
+      }
+      if (!isNil(xetiList) && !isEmpty(xetiList)) {
+        xetiList.map((xeti) => {
+          xetimitis.push(xeti.miti);
+          xetisankhya.push(xeti.sankhya);
+        });
+        xetioptions.xaxis.categories = xetimitis;
+
+        xetiseries = [
+          {
+            name: "बन्यजन्तु क्षति",
+            data: xetisankhya,
           },
         ];
       }
@@ -83,8 +100,10 @@ export class Home extends Component {
     return {
       bantypesList,
       series1,
-      series,
-      options,
+      uddarseries,
+      uddaroptions,
+      xetioptions,
+      xetiseries,
     };
   }
   render() {
@@ -97,8 +116,8 @@ export class Home extends Component {
             </span>
             <Chart
               className=" chart pt-5"
-              options={this.state.options}
-              series={this.state.series}
+              options={this.state.uddaroptions}
+              series={this.state.uddarseries}
               type="line"
               width={500}
               height={320}
@@ -111,8 +130,8 @@ export class Home extends Component {
             </span>
             <Chart
               className=" chart pt-5"
-              options={this.state.options}
-              series={this.state.series2}
+              options={this.state.xetioptions}
+              series={this.state.xetiseries}
               type="area"
               width={500}
               height={320}
@@ -148,8 +167,8 @@ export class Home extends Component {
             </span>
             <Chart
               className=" chart pt-5"
-              options={this.state.options}
-              series={this.state.series}
+              options={this.state.uddaroptions}
+              series={this.state.uddarseries}
               type="bar"
               width={500}
               height={320}
@@ -162,8 +181,8 @@ export class Home extends Component {
             </span>
             <Chart
               className=" chart pt-5"
-              options={this.state.options}
-              series={this.state.series}
+              options={this.state.uddaroptions}
+              series={this.state.uddarseries}
               type="scatter"
               width={500}
               height={320}
@@ -190,6 +209,7 @@ const mapStateToProps = (state) => ({
   bantypesDataList: state.bankaprakar.allbantypesData,
   totalbanyajantuuddarDataList:
     state.dwandabebasthapan.totalbanyajantuuddarData,
+  totalbanyajantuxetiDataList: state.dwandabebasthapan.totalbanyajantuxetiData,
 });
 
 export default connect(mapStateToProps, null)(Home);

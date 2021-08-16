@@ -80,13 +80,11 @@ import {
   addbachatbibaranRequest,
   updatebachatbibaranRequest,
   deletebachatbibaranRequest,
-
   fetchallbanxetraatikramanRequest,
   fetchbanxetraatikramanRequest,
   addbanxetraatikramanRequest,
   updatebanxetraatikramanRequest,
   deletebanxetraatikramanRequest,
-
   fetchallmuddaanusandhandayariRequest,
   fetchmuddaanusandhandayariRequest,
   addmuddaanusandhandayariRequest,
@@ -181,6 +179,7 @@ import {
   addbanyajantuuddarRequest,
   updatebanyajantuuddarRequest,
   deletebanyajantuuddarRequest,
+  fetchtotalbanyajantuxetiRequest,
   fetchallbanyajantuxetiRequest,
   fetchbanyajantuxetiRequest,
   addbanyajantuxetiRequest,
@@ -201,7 +200,6 @@ import {
   updatevehiclesRequest,
   deletevehiclesRequest,
 } from "./sampatibibaran";
-
 
 //-------banpaidawar
 import {
@@ -748,7 +746,7 @@ export default function* root() {
 
     ////---------Dwandabebasthapan
     //------------------------------banyajantuuddar
-    
+
     takeLatest(
       DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_REQUEST,
       fetchtotalbanyajantuuddarRequest,
@@ -786,6 +784,13 @@ export default function* root() {
     ),
 
     //------------------------------banyajantuxeti
+
+    takeLatest(
+      DwandabebasthapanTypes.FETCHTOTALBANYAJANTUXETI_REQUEST,
+      fetchtotalbanyajantuxetiRequest,
+      api
+    ),
+
     takeLatest(
       DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_REQUEST,
       fetchallbanyajantuxetiRequest,
@@ -1736,13 +1741,13 @@ export default function* root() {
       SamrakshyanTypes.UPDATENADIKINARSAMRAKSHYAN_REQUEST,
       updatenadikinarsamrakshyanRequest,
       api
-    ),  
+    ),
     takeLatest(
       SamrakshyanTypes.DELETENADIKINARSAMRAKSHYAN_REQUEST,
       deletenadikinarsamrakshyanRequest,
       api
     ),
-     takeLatest(
+    takeLatest(
       SamrakshyanTypes.FETCHALLPANIMUHANSAMRAKSHYAN_REQUEST,
       fetchallpanimuhansamrakshyanRequest,
       api
@@ -1767,6 +1772,5 @@ export default function* root() {
       deletepanimuhansamrakshyanRequest,
       api
     ),
-   
   ]);
 }

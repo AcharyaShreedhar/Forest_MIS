@@ -29,6 +29,9 @@ class Dashboard extends Component {
     this.props.fetchtotalBanyajantuuddar({
       distId: "%",
     });
+    this.props.fetchtotalBanyajantuxeti({
+      distId: "%",
+    });
   }
 
   render() {
@@ -70,7 +73,11 @@ const mapDispatchToProps = (dispatch) => ({
   fetchallBanTypes: (payload) =>
     dispatch(BankaprakarActions.fetchallbantypesRequest(payload)),
   fetchtotalBanyajantuuddar: (payload) =>
-    dispatch(DwandabebasthapanActions.fetchtotalbanyajantuuddarRequest(payload)),
+    dispatch(
+      DwandabebasthapanActions.fetchtotalbanyajantuuddarRequest(payload)
+    ),
+  fetchtotalBanyajantuxeti: (payload) =>
+    dispatch(DwandabebasthapanActions.fetchtotalbanyajantuxetiRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

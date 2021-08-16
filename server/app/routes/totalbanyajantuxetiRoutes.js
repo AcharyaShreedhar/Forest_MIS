@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const totalBanyajantuxetiController = require("../controller/totalBanyajantuxetiController");
+const totalBanyajantuxetiController = require("../controller/totalbanyajantuxetiController");
 router.post(
   "/totalBanyajantuxetiList",
   totalBanyajantuxetiController.getAllTotalBanyajantuxeti
