@@ -5,11 +5,10 @@ import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 
 const initialState = Immutable({
   status: "",
-  token: "",
 });
 
 const fetchtotalbanyajantuuddarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchtotalbanyajantuuddarSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -22,7 +21,7 @@ const fetchtotalbanyajantuuddarFailure = (state, action) => {
 };
 
 const fetchallbanyajantuuddarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallbanyajantuuddarSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -35,7 +34,7 @@ const fetchallbanyajantuuddarFailure = (state, action) => {
 };
 
 const fetchbanyajantuuddarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchbanyajantuuddarSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -81,7 +80,7 @@ const deletebanyajantuuddarFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
 const fetchtotalbanyajantuxetiRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchtotalbanyajantuxetiSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -94,7 +93,7 @@ const fetchtotalbanyajantuxetiFailure = (state, action) => {
 };
 
 const fetchallbanyajantuxetiRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallbanyajantuxetiSuccess = (state, action) => {
   return state.merge({
     ...state,
@@ -107,7 +106,7 @@ const fetchallbanyajantuxetiFailure = (state, action) => {
 };
 
 const fetchbanyajantuxetiRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchbanyajantuxetiSuccess = (state, action) => {
   return state.merge({
     ...state,

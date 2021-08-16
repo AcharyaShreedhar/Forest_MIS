@@ -29,7 +29,7 @@ class Dashboard extends Component {
     this.props.fetchtotalBanyajantuuddar({
       distId: "%",
     });
-    this.props.fetchtotalBanyajantuuddar({
+    this.props.fetchtotalBanyajantuxeti({
       distId: "%",
     });
   }

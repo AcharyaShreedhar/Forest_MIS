@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import Chart from "react-apexcharts";
-
-import "./Home.scss";
 import { isEmpty, isNil } from "ramda";
+import "./Home.scss";
 
 export class Home extends Component {
   constructor(props) {
@@ -35,8 +34,7 @@ export class Home extends Component {
         id: "बन्यजन्तु उद्दार",
       },
       xaxis: {
-        uddarcategories: [],
-        xeticategories: [],
+        categories: [],
       },
     };
     var xetioptions = {
@@ -44,8 +42,7 @@ export class Home extends Component {
         id: "बन्यजन्तु उद्दार",
       },
       xaxis: {
-        uddarcategories: [],
-        xeticategories: [],
+        categories: [],
       },
     };
     let uddarseries = [];
@@ -75,7 +72,7 @@ export class Home extends Component {
           uddarmitis.push(uddar.miti);
           uddarsankhya.push(uddar.sankhya);
         });
-        uddaroptions.xaxis.uddarcategories = uddarmitis;
+        uddaroptions.xaxis.categories = uddarmitis;
 
         uddarseries = [
           {
@@ -89,7 +86,7 @@ export class Home extends Component {
           xetimitis.push(xeti.miti);
           xetisankhya.push(xeti.sankhya);
         });
-        xetioptions.xaxis.xeticategories = xetimitis;
+        xetioptions.xaxis.categories = xetimitis;
 
         xetiseries = [
           {

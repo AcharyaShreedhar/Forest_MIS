@@ -152,6 +152,7 @@ export function* fetchtotalbanyajantuxetiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getTotalBanyajantuXetiList(payloaddata);
+
   if (response.ok) {
     yield put(
       DwandabebasthapanActions.fetchtotalbanyajantuxetiSuccess(response.data)
