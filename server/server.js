@@ -112,6 +112,9 @@ const totalBantypesRoutes = require("./app/routes/totalBantypesRoutes");
 const totalBanyajantuuddarRoutes = require("./app/routes/totalbanyajantuuddarRoutes");
 const totalBanyajantuxetiRoutes = require("./app/routes/totalbanyajantuxetiRoutes");
 
+//.....................................................report
+const nabikaranBibaranRoutes = require("./app/routes/report/nabikaranbibaranRoutes");
+
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
 app.use("/api/v1", municipalitiesRoutes);
@@ -167,6 +170,9 @@ app.use("/api/v1", jaladharSamrakshyanRoutes);
 app.use("/api/v1", totalBantypesRoutes);
 app.use("/api/v1", totalBanyajantuuddarRoutes);
 app.use("/api/v1", totalBanyajantuxetiRoutes);
+
+//.............................................report
+app.use("/api/v1", nabikaranBibaranRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
