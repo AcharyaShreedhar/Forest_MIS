@@ -911,6 +911,11 @@ const create = (baseURL = Config.API_URL) => {
   const postPanimuhanSamrakshyanDelete = (panimuhanSamrakshyanId) =>
     api.delete(`panimuhanSamrakshyan/${panimuhanSamrakshyanId}`);
 
+  //...................................................Report
+
+  const postNabikaranBibaran = (payload) =>
+    api.post("nabikaranBibaran", payload);
+
   return {
     loginByUsername,
     getBantypesList,
@@ -1210,6 +1215,9 @@ const create = (baseURL = Config.API_URL) => {
     postPanimuhanSamrakshyanAddNew,
     postPanimuhanSamrakshyanUpdate,
     postPanimuhanSamrakshyanDelete,
+
+    //............................report
+    postNabikaranBibaran
   };
 };
 export default {
