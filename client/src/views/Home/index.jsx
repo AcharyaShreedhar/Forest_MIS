@@ -112,7 +112,7 @@ export class Home extends Component {
         <Row>
           <Col className="p-5">
             <span>
-              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु उद्दार विवरण
+            बिभिन्न आर्थिक बर्षको बन्यजन्तु उद्दार विवरण
             </span>
             <Chart
               className=" chart pt-5"
@@ -126,7 +126,7 @@ export class Home extends Component {
           <Col className="pt-5">
             <span>
               {" "}
-              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु क्षति विवरण{" "}
+              बिभिन्न आर्थिक बर्षको बन्यजन्तु क्षति विवरण{" "}
             </span>
             <Chart
               className=" chart pt-5"
@@ -163,7 +163,7 @@ export class Home extends Component {
           <Col className="p-5">
             <span>
               {" "}
-              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु उद्दार विवरण
+              बिभिन्न आर्थिक बर्षको  बन्यजन्तु उद्दार विवरण
             </span>
             <Chart
               className=" chart pt-5"
@@ -177,7 +177,7 @@ export class Home extends Component {
           <Col className="p-5">
             <span>
               {" "}
-              आर्थिक बर्ष २०११ देखी २०२१ सम्मको बन्यजन्तु उद्दार विवरण
+              बिभिन्न आर्थिक बर्षको  बन्यजन्तु उद्दार विवरण
             </span>
             <Chart
               className=" chart pt-5"
