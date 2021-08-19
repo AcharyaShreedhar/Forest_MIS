@@ -46,8 +46,8 @@ async function getNabikaranBibaran(req, res) {
               status: 200,
               error: null,
               data: {
-                kabuliyatiban: kresults,
-                samudayikban: sresults,
+                kabuliyatiban: kresults[0],
+                samudayikban: sresults[0],
               },
             })
           );

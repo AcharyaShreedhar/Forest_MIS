@@ -15,6 +15,7 @@ import {
   faInfoCircle,
   faExclamationTriangle,
   faHandHoldingWater,
+  faFileAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { faPagelines } from "@fortawesome/free-brands-svg-icons";
 import React, { Component } from "react";
@@ -384,6 +385,12 @@ export class SideNavbar extends Component {
             >
               <NavText>नदी किनार</NavText>
             </NavItem>
+          </NavItem>
+          <NavItem eventKey="report" onClick={() => history.push("/report")}>
+            <NavIcon>
+              <FontAwesomeIcon size="2x" icon={faFileAlt} />
+            </NavIcon>
+            <NavText>रिपोर्ट</NavText>
           </NavItem>
           <NavItem eventKey="logout" onClick={(e) => this.handleConfirm(e)}>
           <ConfirmationDialoge

@@ -7,6 +7,7 @@ import { Content } from "./dashboard";
 import AppActions from "../../actions/app";
 import BankaprakarActions from "../../actions/bankaprakar";
 import DwandabebasthapanActions from "../../actions/dwandabebasthapan";
+import ReportActions from "../../actions/report";
 import "react-toastify/dist/ReactToastify.css";
 
 class Dashboard extends Component {
@@ -30,6 +31,11 @@ class Dashboard extends Component {
       distId: "%",
     });
     this.props.fetchtotalBanyajantuxeti({
+      distId: "%",
+    });
+    this.props.fetchNabikaranBibaran({
+      currentArthikbarsa:"2078",
+      upcommingArthikbarsa:"2079",
       distId: "%",
     });
   }
@@ -78,6 +84,8 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   fetchtotalBanyajantuxeti: (payload) =>
     dispatch(DwandabebasthapanActions.fetchtotalbanyajantuxetiRequest(payload)),
+  fetchNabikaranBibaran: (payload) =>
+  dispatch(ReportActions.fetchnabikaranbibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
