@@ -39,9 +39,9 @@ const clearRequest = (state, action) =>
 
 export const reducer = createReducer(initialState, {
 
-  [ReportTypes.FETCHNABIKARAN_REQUEST]: fetchnabikaranbibaranRequest,
-  [ReportTypes.FETCHNABIKARAN_SUCCESS]: fetchnabikaranbibaranSuccess,
-  [ReportTypes.FETCHNABIKARAN_FAILURE]: fetchnabikaranbibaranFailure,
+  [ReportTypes.FETCHNABIKARANBIBARAN_REQUEST]: fetchnabikaranbibaranRequest,
+  [ReportTypes.FETCHNABIKARANBIBARAN_SUCCESS]: fetchnabikaranbibaranSuccess,
+  [ReportTypes.FETCHNABIKARANBIBARAN_FAILURE]: fetchnabikaranbibaranFailure,
   
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,

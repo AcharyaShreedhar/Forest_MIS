@@ -11,9 +11,9 @@ export function* fetchnabikaranbibaranRequest(api, action) {
   const response = yield api.postNabikaranBibaran(payloaddata);
 
   if (response.ok) {
-    yield put(ReportActions.fetchnabikaranSuccess(response.data));
+    yield put(ReportActions.fetchnabikaranbibaranSuccess(response.data));
   } else {
-    yield put(ReportActions.fetchnabikaranFailure());
+    yield put(ReportActions.fetchnabikaranbibaranFailure());
   }
 }
 

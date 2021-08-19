@@ -1,15 +1,16 @@
 import Activities from "../views/Activities";
 import Banbibaran from "../views/Banbibaran";
 import Banpaidawar from "../views/Banpaidawar";
+import Bipatbebasthapan from "../views/Bipatbebasthapan";
 import Dwandabebasthapan from "../views/Dwandabebasthapan";
 import Forests from "../views/Forests";
 import Home from "../views/Home";
-import Login from "../layouts/Login";
-import Sampatibibaran from "../views/Sampatibibaran";
 import Karmachari from "../views/Karmachari";
 import Karyabibaran from "../views/Karyabibaran";
+import Login from "../layouts/Login";
 import Miscellaneous from "../views/Miscellaneous";
-import Bipatbebasthapan from "../views/Bipatbebasthapan";
+import Report from "../views/Report";
+import Sampatibibaran from "../views/Sampatibibaran";
 import Samrakshyan from "../views/Samrakshyan";
 
 const dashboardRoutes = [
@@ -72,6 +73,11 @@ const dashboardRoutes = [
     path: "/bipatbebasthapan",
     name: "Bipatbebasthapan",
     component: Bipatbebasthapan,
+  },
+  {
+    path: "/report",
+    name: "Report",
+    component: Report,
   },
   {
     path: "/samrakshyan",
