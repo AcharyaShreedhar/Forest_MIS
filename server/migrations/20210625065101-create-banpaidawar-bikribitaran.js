@@ -47,15 +47,6 @@ module.exports = {
       bahiya_rakam: {
         type: Sequelize.STRING,
       },
-      jamma_parinam: {
-        type: Sequelize.STRING,
-      },
-      jamma_rakam: {
-        type: Sequelize.STRING,
-      },
-      kul_jamma: {
-        type: Sequelize.STRING,
-      },
       created_by: {
         type: Sequelize.STRING,
       },

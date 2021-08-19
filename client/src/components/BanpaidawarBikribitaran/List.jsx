@@ -61,9 +61,6 @@ function List(props) {
                   <td> {bikri.bahiya_dar}</td>
                   <td> {bikri.bahiya_parinam}</td>
                   <td> {bikri.bahiya_rakam}</td>
-                  <td> {bikri.jamma_parinam}</td>
-                  <td> {bikri.jamma_rakam}</td>
-                  <td> {bikri.kul_jamma}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

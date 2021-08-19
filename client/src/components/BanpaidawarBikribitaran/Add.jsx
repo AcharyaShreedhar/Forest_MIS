@@ -19,9 +19,6 @@ class Add extends Component {
       bahiya_dar: "",
       bahiya_parinam: "",
       bahiya_rakam: "",
-      jamma_parinam: "",
-      jamma_rakam: "",
-      kul_jamma: "",
       dist_id: "",
       created_by: "",
       updated_by: "",
@@ -43,43 +40,36 @@ class Add extends Component {
 
   handleSubmit() {
     const {
-        bikri_miti,
-        bandpaidawar_kisim,
-        ekai,
-        aantarik_dar,
-        aantarik_parinam,
-        aantarik_rakam,
-        aaapurti_dar,
-        aapurti_parinam,
-        aapurti_rakam,
-        bahiya_dar,
-        bahiya_parinam,
-        bahiya_rakam,
-        jamma_parinam,
-        jamma_rakam,
-        kul_jamma,
+      bikri_miti,
+      bandpaidawar_kisim,
+      ekai,
+      aantarik_dar,
+      aantarik_parinam,
+      aantarik_rakam,
+      aaapurti_dar,
+      aapurti_parinam,
+      aapurti_rakam,
+      bahiya_dar,
+      bahiya_parinam,
+      bahiya_rakam,
     } = this.state;
     const payload = {
       banpaidawarbikribitaran: {
         data: {
-            bikri_miti: bikri_miti,
-            bandpaidawar_kisim: bandpaidawar_kisim,
-            ekai: ekai,
-            aantarik_dar: aantarik_dar,
-            aantarik_parinam: aantarik_parinam,
-            aantarik_rakam: aantarik_rakam,
-            aaapurti_dar: aaapurti_dar,
-            aapurti_parinam: aapurti_parinam,
-            aapurti_rakam: aapurti_rakam,
-            bahiya_dar: bahiya_dar,
-            bahiya_parinam: bahiya_parinam,
-            bahiya_rakam: bahiya_rakam,
-            jamma_parinam: jamma_parinam,
-            jamma_rakam: jamma_rakam,
-            kul_jamma: kul_jamma,
-            dist_id: this.props.user.dist_id,
-            created_by: this.props.user.user_name,
-          
+          bikri_miti: bikri_miti,
+          bandpaidawar_kisim: bandpaidawar_kisim,
+          ekai: ekai,
+          aantarik_dar: aantarik_dar,
+          aantarik_parinam: aantarik_parinam,
+          aantarik_rakam: aantarik_rakam,
+          aaapurti_dar: aaapurti_dar,
+          aapurti_parinam: aapurti_parinam,
+          aapurti_rakam: aapurti_rakam,
+          bahiya_dar: bahiya_dar,
+          bahiya_parinam: bahiya_parinam,
+          bahiya_rakam: bahiya_rakam,
+          dist_id: this.props.user.dist_id,
+          created_by: this.props.user.user_name,
         },
       },
     };
@@ -92,28 +82,25 @@ class Add extends Component {
   render() {
     const { title } = this.props;
     const {
-        bikri_miti,
-        bandpaidawar_kisim,
-        ekai,
-        aantarik_dar,
-        aantarik_parinam,
-        aantarik_rakam,
-        aaapurti_dar,
-        aapurti_parinam,
-        aapurti_rakam,
-        bahiya_dar,
-        bahiya_parinam,
-        bahiya_rakam,
-        jamma_parinam,
-        jamma_rakam,
-        kul_jamma,
-        showDialog,
+      bikri_miti,
+      bandpaidawar_kisim,
+      ekai,
+      aantarik_dar,
+      aantarik_parinam,
+      aantarik_rakam,
+      aaapurti_dar,
+      aapurti_parinam,
+      aapurti_rakam,
+      bahiya_dar,
+      bahiya_parinam,
+      bahiya_rakam,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ वनपैदावार बिक्रिवितरण सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
@@ -214,27 +201,6 @@ class Add extends Component {
               value={bahiya_rakam}
               direction="vertical"
               onChange={(e) => this.setState({ bahiya_rakam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="जम्मा परिमाण"
-              value={jamma_parinam}
-              direction="vertical"
-              onChange={(e) => this.setState({ jamma_parinam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="जम्मा रकम"
-              value={jamma_rakam}
-              direction="vertical"
-              onChange={(e) => this.setState({ jamma_rakam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कुल जम्मा"
-              value={kul_jamma}
-              direction="vertical"
-              onChange={(e) => this.setState({ kul_jamma: e })}
             />
           </div>
           <div className="mt-2 border-5">

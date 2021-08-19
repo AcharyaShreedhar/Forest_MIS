@@ -20,9 +20,6 @@ class Edit extends Component {
       bahiya_dar: props.history.location.item.bahiya_dar,
       bahiya_parinam: props.history.location.item.bahiya_parinam,
       bahiya_rakam: props.history.location.item.bahiya_rakam,
-      jamma_parinam: props.history.location.item.jamma_parinam,
-      jamma_rakam: props.history.location.item.jamma_rakam,
-      kul_jamma: props.history.location.item.kul_jamma,
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
@@ -57,9 +54,6 @@ class Edit extends Component {
         bahiya_dar,
         bahiya_parinam,
         bahiya_rakam,
-        jamma_parinam,
-        jamma_rakam,
-        kul_jamma,
         created_by,
     } = this.state;
     const payload = {
@@ -77,9 +71,6 @@ class Edit extends Component {
             bahiya_dar: bahiya_dar,
             bahiya_parinam: bahiya_parinam,
             bahiya_rakam: bahiya_rakam,
-            jamma_parinam: jamma_parinam,
-            jamma_rakam: jamma_rakam,
-            kul_jamma: kul_jamma,
             dist_id: this.props.user.dist_id,
             created_by: created_by || this.props.user.user_name,
             updated_by: this.props.user.user_name,
@@ -108,9 +99,6 @@ class Edit extends Component {
         bahiya_dar,
         bahiya_parinam,
         bahiya_rakam,
-        jamma_parinam,
-        jamma_rakam,
-        kul_jamma,
         showDialog,
     } = this.state;
 
@@ -218,27 +206,6 @@ class Edit extends Component {
               value={bahiya_rakam}
               direction="vertical"
               onChange={(e) => this.setState({ bahiya_rakam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="जम्मा परिमाण"
-              value={jamma_parinam}
-              direction="vertical"
-              onChange={(e) => this.setState({ jamma_parinam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="जम्मा रकम"
-              value={jamma_rakam}
-              direction="vertical"
-              onChange={(e) => this.setState({ jamma_rakam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कुल जम्मा"
-              value={kul_jamma}
-              direction="vertical"
-              onChange={(e) => this.setState({ kul_jamma: e })}
             />
           </div>
           <div className="mt-2 border-5">
