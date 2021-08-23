@@ -24,6 +24,20 @@ const fetchnabikaranbibaranFailure = (state, action) => {
 };
 
 
+//...................................Samuha bhitra Banpaidawar bikri
+const fetchsamuhabhitrabanpaidawarbikribibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchsamuhabhitrabanpaidawarbikribibaranSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    banpaidawar_bikri: action.response,
+  });
+};
+const fetchsamuhabhitrabanpaidawarbikribibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 
 const locationsRequest = (state, action) => {
@@ -42,6 +56,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHNABIKARANBIBARAN_REQUEST]: fetchnabikaranbibaranRequest,
   [ReportTypes.FETCHNABIKARANBIBARAN_SUCCESS]: fetchnabikaranbibaranSuccess,
   [ReportTypes.FETCHNABIKARANBIBARAN_FAILURE]: fetchnabikaranbibaranFailure,
+
+  [ReportTypes.FETCHSAMUHABHITRABANPAIDAWARBIKRIBIBARAN_REQUEST]: fetchsamuhabhitrabanpaidawarbikribibaranRequest,
+  [ReportTypes.FETCHSAMUHABHITRABANPAIDAWARBIKRIBIBARAN_SUCCESS]: fetchsamuhabhitrabanpaidawarbikribibaranSuccess,
+  [ReportTypes.FETCHSAMUHABHITRABANPAIDAWARBIKRIBIBARAN_FAILURE]: fetchsamuhabhitrabanpaidawarbikribibaranFailure,
   
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,

@@ -8,6 +8,12 @@ const { Types, Creators } = createActions({
   fetchnabikaranbibaranSuccess: ["response"],
   fetchnabikaranbibaranFailure: null,
 
+  //.....................................banpaidawar bikri samuha bhitra
+  
+  fetchsamuhabhitrabanpaidawarbikribibaranRequest: ["payload"],
+  fetchsamuhabhitrabanpaidawarbikribibaranSuccess: ["response"],
+  fetchsamuhabhitrabanpaidawarbikribibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

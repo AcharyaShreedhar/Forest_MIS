@@ -4,7 +4,7 @@ const pool = require("../../db");
 
 async function getBanpaidawarbikriSamuhaBhitra(req, res) {
   const getBikriBibaranQuery =
-    "SELECT SUM(IF(bandpaidawar_kisim='1',aantarik_rakam*ekai,0)) AS kathdaura, SUM(IF(bandpaidawar_kisim!='1',aantarik_rakam*ekai,0)) AS gairakastha,SUM(aantarik_rakam*ekai) AS total FROM `banpaidawar_bikribitarans` where dist_id like ?";
+    "SELECT SUM(IF(bandpaidawar_kisim='1',aantarik_rakam*ekai,0)) AS kathdaura, SUM(IF(bandpaidawar_kisim!='1',aantarik_rakam*ekai,0)) AS gairkastha,SUM(aantarik_rakam*ekai) AS total FROM `banpaidawar_bikribitarans` where dist_id like ?";
 
   pool.query(
     getBikriBibaranQuery,
@@ -16,7 +16,7 @@ async function getBanpaidawarbikriSamuhaBhitra(req, res) {
           status: 200,
           error: null,
           data: {
-            banpaidawar_bikri_samuhama: results[0],
+            banpaidawar_bikri: results[0],
           },
         })
       );
