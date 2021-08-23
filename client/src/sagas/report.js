@@ -17,4 +17,16 @@ export function* fetchnabikaranbibaranRequest(api, action) {
   }
 }
 
+export function* fetchsamuhabhitrabanpaidawarbikribibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBanpaidawarBikriSamuhaBhitra(payloaddata);
+
+  if (response.ok) {
+    yield put(ReportActions.fetchsamuhabhitrabanpaidawarbikribibaranSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchsamuhabhitrabanpaidawarbikribibaranFailure());
+  }
+}
+
 

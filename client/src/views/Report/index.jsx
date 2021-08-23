@@ -46,11 +46,12 @@ export class Report extends Component {
     this.state = {
       report: "",
       reportScript: "",
-      nabikaran_yojana: {
+      report_data: {
         name: "Kaski Division Forest Office",
         arthikbarsa: "२०७८|०७९",
         aghilloarthikbarsa: "२०७७|०७८ ",
         nabikaran_yojana: props.nabikaranData.data,
+        banpaidawar_bikri:props.samuhabhitraBanpaidawar.data.banpaidawar_bikri
       },
     };
   }
@@ -58,7 +59,7 @@ export class Report extends Component {
     jsreport.serverUrl = "http://localhost:5488";
     let reportRequest = {
       template: { name: "bansambhandhibibaran" },
-      data: this.state.nabikaran_yojana,
+      data: this.state.report_data,
     };
     jsreport.render(this.reportPreview, reportRequest);
   }
@@ -77,6 +78,7 @@ export class Report extends Component {
 
 const mapStateToProps = (state) => ({
   nabikaranData: state.report.nabikaran_yojana,
+  samuhabhitraBanpaidawar:state.report.banpaidawar_bikri
 });
 
 export default connect(mapStateToProps, null)(Report);
