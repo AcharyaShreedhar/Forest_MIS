@@ -114,6 +114,7 @@ const totalBanyajantuxetiRoutes = require("./app/routes/totalbanyajantuxetiRoute
 
 //.....................................................report
 const nabikaranBibaranRoutes = require("./app/routes/report/nabikaranbibaranRoutes");
+const banpaidawarBikriSamuhaRoutes = require("./app/routes/report/banpaidawarBikriSamuhaRoutes");
 
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
@@ -173,6 +174,7 @@ app.use("/api/v1", totalBanyajantuxetiRoutes);
 
 //.............................................report
 app.use("/api/v1", nabikaranBibaranRoutes);
+app.use("/api/v1", banpaidawarBikriSamuhaRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
