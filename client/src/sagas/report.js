@@ -29,4 +29,16 @@ export function* fetchsamuhabhitrabanpaidawarbikribibaranRequest(api, action) {
   }
 }
 
+export function* fetchbanxetraatikramanniyantranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBanxetraAtikramanNiyantran(payloaddata);
+
+  if (response.ok) {
+    yield put(ReportActions.fetchbanxetraatikramanniyantranSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchbanxetraatikramanniyantranFailure());
+  }
+}
+
 

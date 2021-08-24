@@ -55,7 +55,7 @@ const samudayikbanBibaranRoutes = require("./app/routes/samudayikbanBibaranRoute
 
 const bandadeloBibaranRoutes = require("./app/routes/bandadeloBibaranRoutes");
 const banxetraAnyaPrayojanRoutes = require("./app/routes/banxetraAnyaPrayojanRoutes");
-const banxetraAtikramanRoutes = require("./app/routes/banxetraAtikramanRoutes");
+const banxetraAtikramanNiyantranRoutes = require("./app/routes/banxetraAtikramanRoutes");
 const baramaditChijbastuRoutes = require("./app/routes/baramaditChijbastuRoutes");
 const muddaAnusandhanDayariRoutes = require("./app/routes/muddaAnusandhanDayariRoutes");
 const plotRoutes = require("./app/routes/plotRoutes");
@@ -115,6 +115,7 @@ const totalBanyajantuxetiRoutes = require("./app/routes/totalbanyajantuxetiRoute
 //.....................................................report
 const nabikaranBibaranRoutes = require("./app/routes/report/nabikaranbibaranRoutes");
 const banpaidawarBikriSamuhaRoutes = require("./app/routes/report/banpaidawarBikriSamuhaRoutes");
+const banxetraAtikramanRoutes = require("./app/routes/report/banxetraAtikramanRoutes");
 
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
@@ -175,6 +176,7 @@ app.use("/api/v1", totalBanyajantuxetiRoutes);
 //.............................................report
 app.use("/api/v1", nabikaranBibaranRoutes);
 app.use("/api/v1", banpaidawarBikriSamuhaRoutes);
+app.use("/api/v1", banxetraAtikramanNiyantranRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

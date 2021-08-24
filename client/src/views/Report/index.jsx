@@ -51,7 +51,8 @@ export class Report extends Component {
         arthikbarsa: "२०७८|०७९",
         aghilloarthikbarsa: "२०७७|०७८ ",
         nabikaran_yojana: props.nabikaranData.data,
-        banpaidawar_bikri:props.samuhabhitraBanpaidawar.data.banpaidawar_bikri
+        banpaidawar_bikri: props.samuhabhitraBanpaidawar.data.banpaidawar_bikri,
+        banxetra_atikraman: props.banxetraAtikraman.banxetra_atikramans,
       },
     };
   }
@@ -64,6 +65,7 @@ export class Report extends Component {
     jsreport.render(this.reportPreview, reportRequest);
   }
   render() {
+    console.log("afadfadsf", this.props.banxetraAtikraman);
     return (
       <div id="reportPlaceholder">
         <p>रिपोर्ट सेक्सन </p>
@@ -78,7 +80,8 @@ export class Report extends Component {
 
 const mapStateToProps = (state) => ({
   nabikaranData: state.report.nabikaran_yojana,
-  samuhabhitraBanpaidawar:state.report.banpaidawar_bikri
+  samuhabhitraBanpaidawar: state.report.banpaidawar_bikri,
+  banxetraAtikraman: state.report.banxetra_atikraman,
 });
 
 export default connect(mapStateToProps, null)(Report);

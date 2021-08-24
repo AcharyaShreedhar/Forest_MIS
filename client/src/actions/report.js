@@ -14,6 +14,12 @@ const { Types, Creators } = createActions({
   fetchsamuhabhitrabanpaidawarbikribibaranSuccess: ["response"],
   fetchsamuhabhitrabanpaidawarbikribibaranFailure: null,
 
+  //......................................banxetra atikraman niyantran Bibaran
+
+  fetchbanxetraatikramanniyantranRequest: ["payload"],
+  fetchbanxetraatikramanniyantranSuccess: ["response"],
+  fetchbanxetraatikramanniyantranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
