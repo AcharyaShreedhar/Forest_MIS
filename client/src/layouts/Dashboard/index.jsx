@@ -34,11 +34,16 @@ class Dashboard extends Component {
       distId: "%",
     });
     this.props.fetchNabikaranBibaran({
-      currentArthikbarsa:"2078",
-      upcommingArthikbarsa:"2079",
+      currentArthikbarsa: "2078",
+      upcommingArthikbarsa: "2079",
       distId: "%",
     });
     this.props.fetchSamuhaBhitraBanpaidawarBikri({
+      distId: "%",
+    });
+    this.props.fetchBanxetraAtikraman({
+      previousArthikbarsa: "2077",
+      currentArthikbarsa: "2078",
       distId: "%",
     });
   }
@@ -88,9 +93,13 @@ const mapDispatchToProps = (dispatch) => ({
   fetchtotalBanyajantuxeti: (payload) =>
     dispatch(DwandabebasthapanActions.fetchtotalbanyajantuxetiRequest(payload)),
   fetchNabikaranBibaran: (payload) =>
-  dispatch(ReportActions.fetchnabikaranbibaranRequest(payload)),
+    dispatch(ReportActions.fetchnabikaranbibaranRequest(payload)),
   fetchSamuhaBhitraBanpaidawarBikri: (payload) =>
-  dispatch(ReportActions.fetchsamuhabhitrabanpaidawarbikribibaranRequest(payload)),
+    dispatch(
+      ReportActions.fetchsamuhabhitrabanpaidawarbikribibaranRequest(payload)
+    ),
+  fetchBanxetraAtikraman: (payload) =>
+    dispatch(ReportActions.fetchbanxetraatikramanniyantranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

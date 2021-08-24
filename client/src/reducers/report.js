@@ -3,7 +3,6 @@ import Immutable from "seamless-immutable";
 import { dropLast, prepend } from "ramda";
 import { ReportTypes } from "../actions/report";
 
-
 const initialState = Immutable({
   status: "",
 });
@@ -12,7 +11,6 @@ const initialState = Immutable({
 const fetchnabikaranbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchnabikaranbibaranSuccess = (state, action) => {
-
   return state.merge({
     ...state,
     status: "done",
@@ -23,12 +21,10 @@ const fetchnabikaranbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
 //...................................Samuha bhitra Banpaidawar bikri
 const fetchsamuhabhitrabanpaidawarbikribibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchsamuhabhitrabanpaidawarbikribibaranSuccess = (state, action) => {
-
   return state.merge({
     ...state,
     status: "done",
@@ -39,6 +35,19 @@ const fetchsamuhabhitrabanpaidawarbikribibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//...................................banxetra atikraman niyantran
+const fetchbanxetraatikramanniyantranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchbanxetraatikramanniyantranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    banxetra_atikraman: action.response,
+  });
+};
+const fetchbanxetraatikramanniyantranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -52,7 +61,6 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
-
   [ReportTypes.FETCHNABIKARANBIBARAN_REQUEST]: fetchnabikaranbibaranRequest,
   [ReportTypes.FETCHNABIKARANBIBARAN_SUCCESS]: fetchnabikaranbibaranSuccess,
   [ReportTypes.FETCHNABIKARANBIBARAN_FAILURE]: fetchnabikaranbibaranFailure,
@@ -60,7 +68,11 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHSAMUHABHITRABANPAIDAWARBIKRIBIBARAN_REQUEST]: fetchsamuhabhitrabanpaidawarbikribibaranRequest,
   [ReportTypes.FETCHSAMUHABHITRABANPAIDAWARBIKRIBIBARAN_SUCCESS]: fetchsamuhabhitrabanpaidawarbikribibaranSuccess,
   [ReportTypes.FETCHSAMUHABHITRABANPAIDAWARBIKRIBIBARAN_FAILURE]: fetchsamuhabhitrabanpaidawarbikribibaranFailure,
-  
+
+  [ReportTypes.FETCHBANXETRAATIKRAMANNIYANTRAN_REQUEST]: fetchbanxetraatikramanniyantranRequest,
+  [ReportTypes.FETCHBANXETRAATIKRAMANNIYANTRAN_SUCCESS]: fetchbanxetraatikramanniyantranSuccess,
+  [ReportTypes.FETCHBANXETRAATIKRAMANNIYANTRAN_FAILURE]: fetchbanxetraatikramanniyantranFailure,
+
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,
 });
