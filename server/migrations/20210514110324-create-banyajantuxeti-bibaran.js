@@ -42,7 +42,10 @@ module.exports = {
       xeti_miti: {
         type: Sequelize.STRING,
       },
-      pasudhan_ghargoth: {
+      pasudhan_xeti: {
+        type: Sequelize.STRING,
+      },
+      ghargoth_xeti: {
         type: Sequelize.STRING,
       },
       man_injury: {
