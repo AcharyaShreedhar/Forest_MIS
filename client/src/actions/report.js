@@ -1,7 +1,6 @@
 import { createActions } from "reduxsauce";
 
 const { Types, Creators } = createActions({
-
   //....................................nabikaran_bibaran
 
   fetchnabikaranbibaranRequest: ["payload"],
@@ -9,7 +8,7 @@ const { Types, Creators } = createActions({
   fetchnabikaranbibaranFailure: null,
 
   //.....................................banpaidawar bikri samuha bhitra
-  
+
   fetchsamuhabhitrabanpaidawarbikribibaranRequest: ["payload"],
   fetchsamuhabhitrabanpaidawarbikribibaranSuccess: ["response"],
   fetchsamuhabhitrabanpaidawarbikribibaranFailure: null,
@@ -19,6 +18,12 @@ const { Types, Creators } = createActions({
   fetchbanxetraatikramanniyantranRequest: ["payload"],
   fetchbanxetraatikramanniyantranSuccess: ["response"],
   fetchbanxetraatikramanniyantranFailure: null,
+
+  //......................................banyajantu bata bhayeko xeti ra rahat sambhandhi Bibaran
+
+  fetchbanyajantuxetirahatRequest: ["payload"],
+  fetchbanyajantuxetirahatSuccess: ["response"],
+  fetchbanyajantuxetirahatFailure: null,
 
   locationsRequest: ["payload"],
   // Clear all caches

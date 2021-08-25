@@ -41,4 +41,16 @@ export function* fetchbanxetraatikramanniyantranRequest(api, action) {
   }
 }
 
+export function* fetchbanyajantuxetirahatRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBanyajantuxetiRahat(payloaddata);
+
+  if (response.ok) {
+    yield put(ReportActions.fetchbanyajantuxetirahatSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchbanyajantuxetirahatFailure());
+  }
+}
+
 

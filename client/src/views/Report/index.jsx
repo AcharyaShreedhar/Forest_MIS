@@ -2,44 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import jsreport from "jsreport-browser-client-dist";
 
-var json_data = {
-  employees: [
-    {
-      id: "100",
-      name: "Prasad Kambhammettu",
-      designation: "Developer",
-      exp: "6",
-      phone: "9846748631",
-    },
-    {
-      id: "101",
-      name: "Srinivas",
-      designation: "Architect",
-      exp: "9",
-      phone: "9846748631",
-    },
-    {
-      id: "102",
-      name: "Mallikarjun",
-      designation: "Web Developer",
-      exp: "3",
-    },
-    {
-      id: "103",
-      name: "Srivalli",
-      designation: "Test Engineer",
-      exp: "2",
-      phone: "9846748631",
-    },
-    {
-      id: "104",
-      name: "Sriram",
-      designation: "Trainee Engineer",
-      exp: "1",
-      phone: "9846748631",
-    },
-  ],
-};
 export class Report extends Component {
   constructor(props) {
     super(props);
@@ -53,6 +15,7 @@ export class Report extends Component {
         nabikaran_yojana: props.nabikaranData.data,
         banpaidawar_bikri: props.samuhabhitraBanpaidawar.data.banpaidawar_bikri,
         banxetra_atikraman: props.banxetraAtikraman.banxetra_atikramans,
+        banyajantu_xeti_rahat: props.xetiRahatData.banyajantu_xeti_rahat,
       },
     };
   }
@@ -65,7 +28,6 @@ export class Report extends Component {
     jsreport.render(this.reportPreview, reportRequest);
   }
   render() {
-    console.log("afadfadsf", this.props.banxetraAtikraman);
     return (
       <div id="reportPlaceholder">
         <p>रिपोर्ट सेक्सन </p>
@@ -82,6 +44,7 @@ const mapStateToProps = (state) => ({
   nabikaranData: state.report.nabikaran_yojana,
   samuhabhitraBanpaidawar: state.report.banpaidawar_bikri,
   banxetraAtikraman: state.report.banxetra_atikraman,
+  xetiRahatData: state.report.banyajantu_xeti_rahat,
 });
 
 export default connect(mapStateToProps, null)(Report);
