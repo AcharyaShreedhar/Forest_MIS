@@ -53,4 +53,16 @@ export function* fetchbanyajantuxetirahatRequest(api, action) {
   }
 }
 
+export function* fetchbanyajantuuddarbibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBanyajantuUddar(payloaddata);
+
+  if (response.ok) {
+    yield put(ReportActions.fetchbanyajantuuddarbibaranSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchbanyajantuuddarbibaranFailure());
+  }
+}
+
 

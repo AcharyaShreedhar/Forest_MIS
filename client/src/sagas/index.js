@@ -344,6 +344,7 @@ import {
   fetchsamuhabhitrabanpaidawarbikribibaranRequest,
   fetchbanxetraatikramanniyantranRequest,
   fetchbanyajantuxetirahatRequest,
+  fetchbanyajantuuddarbibaranRequest
 } from "./report";
 
 const api = API.create();
@@ -1802,6 +1803,11 @@ export default function* root() {
     takeLatest(
       ReportTypes.FETCHBANYAJANTUXETIRAHAT_REQUEST,
       fetchbanyajantuxetirahatRequest,
+      api
+    ),
+    takeLatest(
+      ReportTypes.FETCHBANYAJANTUUDDARBIBARAN_REQUEST,
+      fetchbanyajantuuddarbibaranRequest,
       api
     ),
 
