@@ -19,10 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     ban_type: DataTypes.STRING,
     ban_prajati: DataTypes.STRING,
     xeti_area: DataTypes.STRING,
+    banpaidawar_xeti:DataTypes.STRING,
     niyantran_prayas: DataTypes.STRING,
     niyantran_karta: DataTypes.STRING,
     sahabhagi_mahila: DataTypes.STRING,
     sahabhagi_purus: DataTypes.STRING,
+    man_injured:DataTypes.STRING,
+    man_dead:DataTypes.STRING,
     bandadelo_miti: DataTypes.STRING,
     created_by: DataTypes.STRING,
     updated_by: DataTypes.STRING
