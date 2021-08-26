@@ -25,6 +25,12 @@ const { Types, Creators } = createActions({
   fetchbanyajantuxetirahatSuccess: ["response"],
   fetchbanyajantuxetirahatFailure: null,
 
+  //......................................banyajantu Uddar sambhandhi Bibaran
+
+  fetchbanyajantuuddarbibaranRequest: ["payload"],
+  fetchbanyajantuuddarbibaranSuccess: ["response"],
+  fetchbanyajantuuddarbibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
