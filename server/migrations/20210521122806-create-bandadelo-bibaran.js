@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         type: Sequelize.INTEGER,
       },
       bandadelo_address: {
@@ -23,6 +23,9 @@ module.exports = {
       xeti_area: {
         type: Sequelize.STRING,
       },
+      banpaidawar_xeti: {
+        type: Sequelize.STRING,
+      },
       niyantran_prayas: {
         type: Sequelize.STRING,
       },
@@ -33,6 +36,12 @@ module.exports = {
         type: Sequelize.STRING,
       },
       sahabhagi_purus: {
+        type: Sequelize.STRING,
+      },
+      man_injured: {
+        type: Sequelize.STRING,
+      },
+      man_dead: {
         type: Sequelize.STRING,
       },
       bandadelo_miti: {
