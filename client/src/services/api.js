@@ -916,18 +916,20 @@ const create = (baseURL = Config.API_URL) => {
   const postNabikaranBibaran = (payload) =>
     api.post("nabikaranBibaran", payload);
 
-
   const postBanpaidawarBikriSamuhaBhitra = (payload) =>
-  api.post("banpaidawarbikri_samuha", payload);
+    api.post("banpaidawarbikri_samuha", payload);
 
   const postBanxetraAtikramanNiyantran = (payload) =>
-  api.post("banxetra_atikraman", payload);
+    api.post("banxetra_atikraman", payload);
 
   const postBanyajantuxetiRahat = (payload) =>
-  api.post("banyajantu_xeti_rahat", payload);
+    api.post("banyajantu_xeti_rahat", payload);
 
   const postBanyajantuUddar = (payload) =>
-  api.post("banyajantu_uddar", payload);
+    api.post("banyajantu_uddar", payload);
+
+  const postBandadeloXeti = (payload) =>
+    api.post("bandadelo_xetibibaran", payload);
 
   return {
     loginByUsername,
@@ -1235,6 +1237,7 @@ const create = (baseURL = Config.API_URL) => {
     postBanxetraAtikramanNiyantran,
     postBanyajantuxetiRahat,
     postBanyajantuUddar,
+    postBandadeloXeti,
   };
 };
 export default {

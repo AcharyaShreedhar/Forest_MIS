@@ -23,7 +23,11 @@ export function* fetchsamuhabhitrabanpaidawarbikribibaranRequest(api, action) {
   const response = yield api.postBanpaidawarBikriSamuhaBhitra(payloaddata);
 
   if (response.ok) {
-    yield put(ReportActions.fetchsamuhabhitrabanpaidawarbikribibaranSuccess(response.data));
+    yield put(
+      ReportActions.fetchsamuhabhitrabanpaidawarbikribibaranSuccess(
+        response.data
+      )
+    );
   } else {
     yield put(ReportActions.fetchsamuhabhitrabanpaidawarbikribibaranFailure());
   }
@@ -35,7 +39,9 @@ export function* fetchbanxetraatikramanniyantranRequest(api, action) {
   const response = yield api.postBanxetraAtikramanNiyantran(payloaddata);
 
   if (response.ok) {
-    yield put(ReportActions.fetchbanxetraatikramanniyantranSuccess(response.data));
+    yield put(
+      ReportActions.fetchbanxetraatikramanniyantranSuccess(response.data)
+    );
   } else {
     yield put(ReportActions.fetchbanxetraatikramanniyantranFailure());
   }
@@ -65,4 +71,14 @@ export function* fetchbanyajantuuddarbibaranRequest(api, action) {
   }
 }
 
+export function* fetchbandadeloxetibibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBandadeloXeti(payloaddata);
 
+  if (response.ok) {
+    yield put(ReportActions.fetchbandadeloxetibibaranSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchbandadeloxetibibaranFailure());
+  }
+}
