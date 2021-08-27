@@ -20,6 +20,9 @@ module.exports = {
       upalabdha_address: {
         type: Sequelize.STRING,
       },
+      prayojan:{
+        type: Sequelize.STRING,
+      },
       xetrafal_temp: {
         type: Sequelize.STRING,
       },
