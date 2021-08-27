@@ -77,6 +77,20 @@ const fetchbanyajantuuddarbibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//...................................banyajantu uddar sambhandhi bibaran
+const fetchbandadeloxetibibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchbandadeloxetibibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    bandadelo_xeti: action.response,
+  });
+};
+const fetchbandadeloxetibibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -108,6 +122,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHBANYAJANTUUDDARBIBARAN_REQUEST]: fetchbanyajantuuddarbibaranRequest,
   [ReportTypes.FETCHBANYAJANTUUDDARBIBARAN_SUCCESS]: fetchbanyajantuuddarbibaranSuccess,
   [ReportTypes.FETCHBANYAJANTUUDDARBIBARAN_FAILURE]: fetchbanyajantuuddarbibaranFailure,
+
+  [ReportTypes.FETCHBANDADELOXETIBIBARAN_REQUEST]: fetchbandadeloxetibibaranRequest,
+  [ReportTypes.FETCHBANDADELOXETIBIBARAN_SUCCESS]: fetchbandadeloxetibibaranSuccess,
+  [ReportTypes.FETCHBANDADELOXETIBIBARAN_FAILURE]: fetchbandadeloxetibibaranFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,
