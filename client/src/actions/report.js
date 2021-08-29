@@ -37,6 +37,12 @@ const { Types, Creators } = createActions({
   fetchbandadeloxetibibaranSuccess: ["response"],
   fetchbandadeloxetibibaranFailure: null,
 
+  //......................................bandadelo bata bhayeko xeti sambhandhi Bibaran
+
+  fetchbanxetraanyaprayojanbibaranRequest: ["payload"],
+  fetchbanxetraanyaprayojanbibaranSuccess: ["response"],
+  fetchbanxetraanyaprayojanbibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

@@ -119,6 +119,7 @@ const banxetraAtikramanRoutes = require("./app/routes/report/banxetraAtikramanRo
 const banyajantuXetiRahatRoutes = require("./app/routes/report/banyajantuXetiRahatRoutes");
 const banyajantuUddarBibaranRoutes = require("./app/routes/report/banyajantuUddarRoutes");
 const bandadeloXetiBibaranRoutes = require("./app/routes/report/bandadeloXetiBibaranRoutes");
+const banxetraAnyaprayojanBibaranRoutes = require("./app/routes/report/banxetraAnyaprayojanRoutes");
 
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
@@ -183,6 +184,8 @@ app.use("/api/v1", banxetraAtikramanNiyantranRoutes);
 app.use("/api/v1", banyajantuXetiRahatRoutes);
 app.use("/api/v1", banyajantuUddarBibaranRoutes);
 app.use("/api/v1", bandadeloXetiBibaranRoutes);
+app.use("/api/v1", bandadeloXetiBibaranRoutes);
+app.use("/api/v1",banxetraAnyaprayojanBibaranRoutes)
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

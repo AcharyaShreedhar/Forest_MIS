@@ -82,3 +82,17 @@ export function* fetchbandadeloxetibibaranRequest(api, action) {
     yield put(ReportActions.fetchbandadeloxetibibaranFailure());
   }
 }
+
+export function* fetchbanxetraanyaprayojanbibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBanxetraAnyaprayojan(payloaddata);
+
+  if (response.ok) {
+    yield put(
+      ReportActions.fetchbanxetraanyaprayojanbibaranSuccess(response.data)
+    );
+  } else {
+    yield put(ReportActions.fetchbanxetraanyaprayojanbibaranFailure());
+  }
+}
