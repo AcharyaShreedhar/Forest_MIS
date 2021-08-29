@@ -14,6 +14,9 @@ module.exports = {
       arthik_barsa: {
         type: Sequelize.STRING,
       },
+      sastha_name:{
+        type: Sequelize.STRING,
+      },
       uplabdakarta_naam: {
         type: Sequelize.STRING,
       },
