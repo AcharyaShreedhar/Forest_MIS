@@ -91,6 +91,20 @@ const fetchbandadeloxetibibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//...................................Banxetrako Jagga Anya prayojan ko lagi bibaran
+const fetchbanxetraanyaprayojanbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchbanxetraanyaprayojanbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    banxetra_anyaprayojan: action.response,
+  });
+};
+const fetchbanxetraanyaprayojanbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -126,6 +140,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHBANDADELOXETIBIBARAN_REQUEST]: fetchbandadeloxetibibaranRequest,
   [ReportTypes.FETCHBANDADELOXETIBIBARAN_SUCCESS]: fetchbandadeloxetibibaranSuccess,
   [ReportTypes.FETCHBANDADELOXETIBIBARAN_FAILURE]: fetchbandadeloxetibibaranFailure,
+
+  [ReportTypes.FETCHBANXETRAANYAPRAYOJANBIBARAN_REQUEST]: fetchbanxetraanyaprayojanbibaranRequest,
+  [ReportTypes.FETCHBANXETRAANYAPRAYOJANBIBARAN_SUCCESS]: fetchbanxetraanyaprayojanbibaranSuccess,
+  [ReportTypes.FETCHBANXETRAANYAPRAYOJANBIBARAN_FAILURE]: fetchbanxetraanyaprayojanbibaranFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,
