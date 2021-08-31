@@ -56,6 +56,9 @@ module.exports = {
       faisala_miti: {
         type: Sequelize.STRING,
       },
+      faisala_status:{
+        type: Sequelize.STRING,
+      },
       faisala_jariwana: {
         type: Sequelize.STRING,
       },
