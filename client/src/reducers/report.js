@@ -155,6 +155,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHBANDADELOXETIBIBARAN_SUCCESS]: fetchbandadeloxetibibaranSuccess,
   [ReportTypes.FETCHBANDADELOXETIBIBARAN_FAILURE]: fetchbandadeloxetibibaranFailure,
 
+  [ReportTypes.FETCHBANXETRAANYAPRAYOJANBIBARAN_REQUEST]: fetchbanxetraanyaprayojanbibaranRequest,
+  [ReportTypes.FETCHBANXETRAANYAPRAYOJANBIBARAN_SUCCESS]: fetchbanxetraanyaprayojanbibaranSuccess,
+  [ReportTypes.FETCHBANXETRAANYAPRAYOJANBIBARAN_FAILURE]: fetchbanxetraanyaprayojanbibaranFailure,
+
   [ReportTypes.FETCHMUDDAANUSANDHANDAYARIBIBARAN_REQUEST]: fetchmuddaanusandhandayaribibaranRequest,
   [ReportTypes.FETCHMUDDAANUSANDHANDAYARIBIBARAN_SUCCESS]: fetchmuddaanusandhandayaribibaranSuccess,
   [ReportTypes.FETCHMUDDAANUSANDHANDAYARIBIBARAN_FAILURE]: fetchmuddaanusandhandayaribibaranFailure,

@@ -56,6 +56,10 @@ class Dashboard extends Component {
     this.props.fetchBandadeloXeti({
       distId: "%",
     });
+    this.props.fetchBanxetraAnyaprayojan({
+      distId: "%",
+    });
+
     this.props.fetchMuddaanusandhandayari({
       previousArthikbarsa: "2078-03-31",
       distId: "%",
@@ -120,6 +124,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ReportActions.fetchbanyajantuuddarbibaranRequest(payload)),
   fetchBandadeloXeti: (payload) =>
     dispatch(ReportActions.fetchbandadeloxetibibaranRequest(payload)),
+  fetchBanxetraAnyaprayojan: (payload) =>
+    dispatch(ReportActions.fetchbanxetraanyaprayojanbibaranRequest(payload)),
   fetchMuddaanusandhandayari: (payload) =>
     dispatch(ReportActions.fetchmuddaanusandhandayaribibaranRequest(payload)),
 });
