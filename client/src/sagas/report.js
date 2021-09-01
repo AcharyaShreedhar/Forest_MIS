@@ -96,3 +96,16 @@ export function* fetchbanxetraanyaprayojanbibaranRequest(api, action) {
     yield put(ReportActions.fetchbanxetraanyaprayojanbibaranFailure());
   }
 }
+export function* fetchmuddaanusandhandayaribibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postMuddaAnusandhandayari(payloaddata);
+
+  if (response.ok) {
+    yield put(
+      ReportActions.fetchmuddaanusandhandayaribibaranSuccess(response.data)
+    );
+  } else {
+    yield put(ReportActions.fetchmuddaanusandhandayaribibaranFailure());
+  }
+}

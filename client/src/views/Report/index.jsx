@@ -20,6 +20,7 @@ export class Report extends Component {
         dadelo: props.bandadeloxetiData.dadelo,
         banxetra_anyaprayojan:
           props.banxetraAnyaprayojanData.banxetra_anyaprayojan,
+        mudda: props.muddaAnusandhandayariData.mudda,
       },
     };
   }
@@ -52,6 +53,7 @@ const mapStateToProps = (state) => ({
   uddarData: state.report.banyajantu_uddar,
   bandadeloxetiData: state.report.bandadelo_xeti,
   banxetraAnyaprayojanData: state.report.banxetra_anyaprayojan,
+  muddaAnusandhandayariData: state.report.mudda_dayari,
 });
 
 export default connect(mapStateToProps, null)(Report);

@@ -43,6 +43,12 @@ const { Types, Creators } = createActions({
   fetchbanxetraanyaprayojanbibaranSuccess: ["response"],
   fetchbanxetraanyaprayojanbibaranFailure: null,
 
+  //......................................Mudda Anusandhan Dayari sambhandhi Bibaran
+
+  fetchmuddaanusandhandayaribibaranRequest: ["payload"],
+  fetchmuddaanusandhandayaribibaranSuccess: ["response"],
+  fetchmuddaanusandhandayaribibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
