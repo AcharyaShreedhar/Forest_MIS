@@ -49,6 +49,12 @@ const { Types, Creators } = createActions({
   fetchmuddaanusandhandayaribibaranSuccess: ["response"],
   fetchmuddaanusandhandayaribibaranFailure: null,
 
+  //......................................Gaira Kastha Banpaidawar Bikri bitaran sambhandhi Bibaran
+
+  fetchgairakasthabanpaidawarbikribitaranRequest: ["payload"],
+  fetchgairakasthabanpaidawarbikribitaranSuccess: ["response"],
+  fetchgairakasthabanpaidawarbikribitaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

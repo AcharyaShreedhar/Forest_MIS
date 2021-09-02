@@ -109,3 +109,21 @@ export function* fetchmuddaanusandhandayaribibaranRequest(api, action) {
     yield put(ReportActions.fetchmuddaanusandhandayaribibaranFailure());
   }
 }
+
+export function* fetchgairakasthabanpaidawarbikribitaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postGairakasthaBanpaidawarBikribitaran(
+    payloaddata
+  );
+
+  if (response.ok) {
+    yield put(
+      ReportActions.fetchgairakasthabanpaidawarbikribitaranSuccess(
+        response.data
+      )
+    );
+  } else {
+    yield put(ReportActions.fetchgairakasthabanpaidawarbikribitaranFailure());
+  }
+}
