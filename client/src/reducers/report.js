@@ -119,6 +119,20 @@ const fetchmuddaanusandhandayaribibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//......................................Gaira Kastha Banpaidawar Bikri bitaran sambhandhi Bibaran
+const fetchgairakasthabanpaidawarbikribitaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchgairakasthabanpaidawarbikribitaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    gairkastha_banpaidawar: action.response,
+  });
+};
+const fetchgairakasthabanpaidawarbikribitaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -162,6 +176,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHMUDDAANUSANDHANDAYARIBIBARAN_REQUEST]: fetchmuddaanusandhandayaribibaranRequest,
   [ReportTypes.FETCHMUDDAANUSANDHANDAYARIBIBARAN_SUCCESS]: fetchmuddaanusandhandayaribibaranSuccess,
   [ReportTypes.FETCHMUDDAANUSANDHANDAYARIBIBARAN_FAILURE]: fetchmuddaanusandhandayaribibaranFailure,
+
+  [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_REQUEST]: fetchgairakasthabanpaidawarbikribitaranRequest,
+  [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_SUCCESS]: fetchgairakasthabanpaidawarbikribitaranSuccess,
+  [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_FAILURE]: fetchgairakasthabanpaidawarbikribitaranFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,

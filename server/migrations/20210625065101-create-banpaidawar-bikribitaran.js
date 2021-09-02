@@ -20,7 +20,7 @@ module.exports = {
       bikri_miti: {
         type: Sequelize.STRING,
       },
-      bandpaidawar_kisim: {
+      banpaidawar_kisim: {
         type: Sequelize.STRING,
       },
       ekai: {
