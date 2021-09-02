@@ -11,6 +11,12 @@ module.exports = {
       dist_id: {
         type: Sequelize.INTEGER,
       },
+      banko_kisim: {
+        type: Sequelize.INTEGER,
+      },
+      bikri_medium: {
+        type: Sequelize.INTEGER,
+      },
       bikri_miti: {
         type: Sequelize.STRING,
       },
