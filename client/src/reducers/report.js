@@ -1,6 +1,6 @@
 import { createReducer } from "reduxsauce";
 import Immutable from "seamless-immutable";
-import { dropLast, prepend } from "ramda";
+import { dropLast, equals, prepend } from "ramda";
 import { ReportTypes } from "../actions/report";
 
 const initialState = Immutable({
@@ -123,10 +123,32 @@ const fetchmuddaanusandhandayaribibaranFailure = (state, action) => {
 const fetchgairakasthabanpaidawarbikribitaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchgairakasthabanpaidawarbikribitaranSuccess = (state, action) => {
+  const gair = action.response.gairkastha_banpaidawar;
+  const data = gair.map((item, index) => {
+    if (equals(item.name, "4")) {
+      return {
+        ...item,
+        name: "जडिबुटि",
+        total: item.sarkarbata + item.samudayik_banbata + item.niji,
+      };
+    } else if (equals(item.name, "5")) {
+      return {
+        ...item,
+        name: "खोटो",
+        total: item.sarkarbata + item.samudayik_banbata + item.niji,
+      };
+    } else {
+      return {
+        ...item,
+        name: "अन्य",
+        total: item.sarkarbata + item.samudayik_banbata + item.niji,
+      };
+    }
+  });
   return state.merge({
     ...state,
     status: "done",
-    gairkastha_banpaidawar: action.response,
+    gairkastha_banpaidawar: data,
   });
 };
 const fetchgairakasthabanpaidawarbikribitaranFailure = (state, action) => {

@@ -22,7 +22,7 @@ export class Report extends Component {
           props.banxetraAnyaprayojanData.banxetra_anyaprayojan,
         mudda: props.muddaAnusandhandayariData.mudda,
         gairkastha_banpaidawar:
-          props.gairkasthabanpaidawarbikribitaranData.gairkastha_banpaidawar,
+          props.gairkasthabanpaidawarbikribitaranData,
       },
     };
   }
