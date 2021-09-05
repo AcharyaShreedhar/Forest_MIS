@@ -26,33 +26,16 @@ module.exports = {
       ekai: {
         type: Sequelize.STRING,
       },
-      aantarik_dar: {
+      dar: {
         type: Sequelize.STRING,
       },
-      aantarik_parinam: {
+      parinam: {
         type: Sequelize.STRING,
       },
-      aantarik_rakam: {
+      rakam: {
         type: Sequelize.STRING,
       },
-      aaapurti_dar: {
-        type: Sequelize.STRING,
-      },
-      aapurti_parinam: {
-        type: Sequelize.STRING,
-      },
-      aapurti_rakam: {
-        type: Sequelize.STRING,
-      },
-      bahiya_dar: {
-        type: Sequelize.STRING,
-      },
-      bahiya_parinam: {
-        type: Sequelize.STRING,
-      },
-      bahiya_rakam: {
-        type: Sequelize.STRING,
-      },
+
       created_by: {
         type: Sequelize.STRING,
       },
