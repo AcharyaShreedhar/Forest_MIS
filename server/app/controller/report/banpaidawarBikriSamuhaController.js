@@ -4,7 +4,7 @@ const pool = require("../../db");
 
 async function getBanpaidawarbikriSamuhaBhitra(req, res) {
   const getBikriBibaranQuery =
-    "SELECT SUM(IF(banpaidawar_kisim='1',aantarik_rakam*ekai,0)) AS kathdaura, SUM(IF(banpaidawar_kisim!='1',aantarik_rakam*ekai,0)) AS gairkastha,SUM(aantarik_rakam*ekai) AS total FROM `banpaidawar_bikribitarans` where dist_id like ?";
+    "SELECT SUM(IF((banpaidawar_kisim='1' && bikri_medium='1'),rakam*ekai,0)) AS kathdaura, SUM(IF(banpaidawar_kisim!='1'&& bikri_medium='1',rakam*ekai,0)) AS gairkastha,SUM(IF( bikri_medium='1',rakam*ekai,0)) AS total FROM `banpaidawar_bikribitarans` where dist_id like ?";
 
   pool.query(
     getBikriBibaranQuery,
