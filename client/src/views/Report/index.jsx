@@ -21,8 +21,8 @@ export class Report extends Component {
         banxetra_anyaprayojan:
           props.banxetraAnyaprayojanData.banxetra_anyaprayojan,
         mudda: props.muddaAnusandhandayariData.mudda,
-        gairkastha_banpaidawar:
-          props.gairkasthabanpaidawarbikribitaranData,
+        gairkastha_banpaidawar: props.gairkasthabanpaidawarbikribitaranData,
+        kathdaura_bikri: props.gairkasthabanpaidawarbikribitaranData,
       },
     };
   }
@@ -57,6 +57,7 @@ const mapStateToProps = (state) => ({
   banxetraAnyaprayojanData: state.report.banxetra_anyaprayojan,
   muddaAnusandhandayariData: state.report.mudda_dayari,
   gairkasthabanpaidawarbikribitaranData: state.report.gairkastha_banpaidawar,
+  kathdaurabikribitaranData: state.report.banpaidawar_bikri,
 });
 
 export default connect(mapStateToProps, null)(Report);

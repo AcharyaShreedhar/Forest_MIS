@@ -940,6 +940,9 @@ const create = (baseURL = Config.API_URL) => {
   const postGairakasthaBanpaidawarBikribitaran = (payload) =>
     api.post("gairakastha_banpaidawar", payload);
 
+  const postKathdauraBikribitaran = (payload) =>
+  api.post("kathdaura_bikribitaran", payload);
+
   return {
     loginByUsername,
     getBantypesList,
@@ -1250,6 +1253,7 @@ const create = (baseURL = Config.API_URL) => {
     postBanxetraAnyaprayojan,
     postMuddaAnusandhandayari,
     postGairakasthaBanpaidawarBikribitaran,
+    postKathdauraBikribitaran
   };
 };
 export default {

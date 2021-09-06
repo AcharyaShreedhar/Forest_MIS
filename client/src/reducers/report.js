@@ -155,6 +155,21 @@ const fetchgairakasthabanpaidawarbikribitaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//......................................Kathdaura Bikri bitaran sambhandhi Bibaran
+const fetchkathdaurabikribitaranbikribitaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
+  const kathdaura = action.response.kathdaura_bikri;
+  return state.merge({
+    ...state,
+    status: "done",
+    kathdaura_bikri: kathdaura,
+  });
+};
+const fetchkathdaurabikribitaranbikribitaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -202,6 +217,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_REQUEST]: fetchgairakasthabanpaidawarbikribitaranRequest,
   [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_SUCCESS]: fetchgairakasthabanpaidawarbikribitaranSuccess,
   [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_FAILURE]: fetchgairakasthabanpaidawarbikribitaranFailure,
+
+  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_REQUEST]: fetchkathdaurabikribitaranbikribitaranRequest,
+  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_SUCCESS]: fetchkathdaurabikribitaranbikribitaranSuccess,
+  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_FAILURE]: fetchkathdaurabikribitaranbikribitaranFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,
