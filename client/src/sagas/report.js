@@ -127,3 +127,23 @@ export function* fetchgairakasthabanpaidawarbikribitaranRequest(api, action) {
     yield put(ReportActions.fetchgairakasthabanpaidawarbikribitaranFailure());
   }
 }
+
+
+export function* fetchkathdaurabikribitaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postKathdauraBikribitaran(
+    payloaddata
+  );
+console.log('response______________>>',response)
+  if (response.ok) {
+    yield put(
+      ReportActions.fetchkathdaurabikribitaranSuccess(
+        response.data
+      )
+    );
+  } else {
+    yield put(ReportActions.fetchkathdaurabikribitaranFailure());
+  }
+}
+
