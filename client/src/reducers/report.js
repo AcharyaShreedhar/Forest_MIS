@@ -159,11 +159,105 @@ const fetchgairakasthabanpaidawarbikribitaranFailure = (state, action) => {
 const fetchkathdaurabikribitaranbikribitaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
-  const kathdaura = action.response.kathdaura_bikri;
+  const kathdaura = {
+    baiganik_ban: {},
+    nonbaiganik_ban: {},
+    dharmikban: {},
+    chaklaban: {},
+    kabuliyatiban: {},
+    commercialkabuliyatiban: {},
+    sajhedariban: {},
+    nijiban: {},
+    rastriyaban: {},
+  };
+  console.log("kathdaura", kathdaura);
+  let totalsamudayikban = {
+    samuhabhitra_kath: 0,
+    samuhabhitra_daura: 0,
+    samuha_saal: 0,
+    samuha_khayar: 0,
+    samuha_daura: 0,
+    samuha_anya: 0,
+    aapurti_kath: 0,
+    aapurti_daura: 0,
+  };
+  let total = {
+    samuhabhitra_kath: 0,
+    samuhabhitra_daura: 0,
+    samuha_saal: 0,
+    samuha_khayar: 0,
+    samuha_daura: 0,
+    samuha_anya: 0,
+    aapurti_kath: 0,
+    aapurti_daura: 0,
+  };
+  action.response.kathdaura_bikri.map((item, index) => {
+    total = {
+      samuhabhitra_kath: total.samuhabhitra_kath + item.samuhabhitra_kath,
+      samuhabhitra_daura: total.samuhabhitra_daura + item.samuhabhitra_daura,
+      samuha_saal: total.samuha_saal + item.samuha_saal,
+      samuha_khayar: total.samuha_khayar + item.samuha_khayar,
+      samuha_daura: total.samuha_daura + item.samuha_daura,
+      samuha_anya: total.samuha_anya + item.samuha_anya,
+      aapurti_kath: total.aapurti_kath + item.aapurti_kaath,
+      aapurti_daura: total.aapurti_daura + item.aapurti_daura,
+    };
+    if (equals(item.banko_kisim, 1)) {
+      totalsamudayikban = {
+        samuhabhitra_kath:
+          totalsamudayikban.samuhabhitra_kath + item.samuhabhitra_kath,
+        samuhabhitra_daura:
+          totalsamudayikban.samuhabhitra_daura + item.samuhabhitra_daura,
+        samuha_saal: totalsamudayikban.samuha_saal + item.samuha_saal,
+        samuha_khayar: totalsamudayikban.samuha_khayar + item.samuha_khayar,
+        samuha_daura: totalsamudayikban.samuha_daura + item.samuha_daura,
+        samuha_anya: totalsamudayikban.samuha_anya + item.samuha_anya,
+        aapurti_kath: totalsamudayikban.aapurti_kath + item.aapurti_kaath,
+        aapurti_daura: totalsamudayikban.aapurti_daura + item.aapurti_daura,
+      };
+
+      kathdaura.baiganik_ban = item;
+    } else if (equals(item.banko_kisim, 2)) {
+      totalsamudayikban = {
+        samuhabhitra_kath:
+          totalsamudayikban.samuhabhitra_kath + item.samuhabhitra_kath,
+        samuhabhitra_daura:
+          totalsamudayikban.samuhabhitra_daura + item.samuhabhitra_daura,
+        samuha_saal: totalsamudayikban.samuha_saal + item.samuha_saal,
+        samuha_khayar: totalsamudayikban.samuha_khayar + item.samuha_khayar,
+        samuha_daura: totalsamudayikban.samuha_daura + item.samuha_daura,
+        samuha_anya: totalsamudayikban.samuha_anya + item.samuha_anya,
+        aapurti_kath: totalsamudayikban.aapurti_kath + item.aapurti_kaath,
+        aapurti_daura: totalsamudayikban.aapurti_daura + item.aapurti_daura,
+      };
+
+      kathdaura.nonbaiganik_ban = item;
+    } else if (equals(item.banko_kisim, 3)) {
+      kathdaura.kabuliyatiban = item;
+    } else if (equals(item.banko_kisim, 4)) {
+      kathdaura.dharmikban = item;
+    } else if (equals(item.banko_kisim, 5)) {
+      kathdaura.chaklaban = item;
+    } else if (equals(item.banko_kisim, 6)) {
+      kathdaura.sajhedariban = item;
+    } else if (equals(item.banko_kisim, 7)) {
+      kathdaura.commercialkabuliyatiban = item;
+    } else if (equals(item.banko_kisim, 8)) {
+      kathdaura.nijiban = item;
+    } else {
+      kathdaura.rastriyaban = item;
+    }
+  });
   return state.merge({
     ...state,
     status: "done",
-    kathdaura_bikri: kathdaura,
+    data: {
+      kathdaura_bikri: {
+        kathdaura,
+        total,
+        totalsamudayikban,
+      },
+    },
   });
 };
 const fetchkathdaurabikribitaranbikribitaranFailure = (state, action) => {

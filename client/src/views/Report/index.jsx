@@ -11,7 +11,7 @@ export class Report extends Component {
       report_data: {
         name: "Kaski Division Forest Office",
         arthikbarsa: "२०७८|०७९",
-        aghilloarthikbarsa: "२०७७|०७८ ",
+        aghilloarthikbarsa: "२०७७|०७८",
         nabikaran_yojana: props.nabikaranData.data,
         banpaidawar_bikri: props.samuhabhitraBanpaidawar.data.banpaidawar_bikri,
         banxetra_atikraman: props.banxetraAtikraman.banxetra_atikramans,
@@ -22,7 +22,7 @@ export class Report extends Component {
           props.banxetraAnyaprayojanData.banxetra_anyaprayojan,
         mudda: props.muddaAnusandhandayariData.mudda,
         gairkastha_banpaidawar: props.gairkasthabanpaidawarbikribitaranData,
-        kathdaura_bikri: props.gairkasthabanpaidawarbikribitaranData,
+        kathdaura_bikri: props.kathdaurabikribitaranData,
       },
     };
   }
@@ -57,7 +57,7 @@ const mapStateToProps = (state) => ({
   banxetraAnyaprayojanData: state.report.banxetra_anyaprayojan,
   muddaAnusandhandayariData: state.report.mudda_dayari,
   gairkasthabanpaidawarbikribitaranData: state.report.gairkastha_banpaidawar,
-  kathdaurabikribitaranData: state.report.banpaidawar_bikri,
+  kathdaurabikribitaranData: state.report.kathdaura_bikri,
 });
 
 export default connect(mapStateToProps, null)(Report);
