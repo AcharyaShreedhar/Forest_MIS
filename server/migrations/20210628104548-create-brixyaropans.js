@@ -14,6 +14,13 @@ module.exports = {
       brixyaropan_miti: {
         type: Sequelize.STRING,
       },
+      xetra: {
+        type: Sequelize.INTEGER,
+      },
+      area: {
+        type: Sequelize.STRING,
+      },
+
       brixyaropan_thegana: {
         type: Sequelize.STRING,
       },

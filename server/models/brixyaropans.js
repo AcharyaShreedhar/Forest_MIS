@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     dist_id: DataTypes.INTEGER,
     brixyaropan_thegana: DataTypes.STRING,
     brixyaropan_miti: DataTypes.STRING,
+    xetra:DataTypes.INTEGER,
+    area:DataTypes.STRING,
     brixyaropan_kisim: DataTypes.STRING,
     brixyaropan_laxya: DataTypes.STRING,
     brixyaropan_prajati: DataTypes.STRING,
