@@ -128,19 +128,12 @@ export function* fetchgairakasthabanpaidawarbikribitaranRequest(api, action) {
   }
 }
 
-
 export function* fetchkathdaurabikribitaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
-  const response = yield api.postKathdauraBikribitaran(
-    payloaddata
-  );
+  const response = yield api.postKathdauraBikribitaran(payloaddata);
   if (response.ok) {
-    yield put(
-      ReportActions.fetchkathdaurabikribitaranSuccess(
-        response.data
-      )
-    );
+    yield put(ReportActions.fetchkathdaurabikribitaranSuccess(response.data));
   } else {
     yield put(ReportActions.fetchkathdaurabikribitaranFailure());
   }
@@ -149,17 +142,21 @@ export function* fetchkathdaurabikribitaranRequest(api, action) {
 export function* fetchbiruwautpadankharidRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
-  const response = yield api.postBiruwautpadanKharid(
-    payloaddata
-  );
+  const response = yield api.postBiruwautpadanKharid(payloaddata);
   if (response.ok) {
-    yield put(
-      ReportActions.fetchbiruwautpadankharidSuccess(
-        response.data
-      )
-    );
+    yield put(ReportActions.fetchbiruwautpadankharidSuccess(response.data));
   } else {
     yield put(ReportActions.fetchbiruwautpadankharidFailure());
   }
 }
 
+export function* fetchuddhambibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postUddhamBibaran(payloaddata);
+  if (response.ok) {
+    yield put(ReportActions.fetchuddhambibaranSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchuddhambibaranFailure());
+  }
+}

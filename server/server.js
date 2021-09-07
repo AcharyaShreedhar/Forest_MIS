@@ -195,7 +195,7 @@ app.use("/api/v1", muddaAnusandhandayariRoutes);
 app.use("/api/v1", gairakasthaBanpaidawarBikribitaranRoutes);
 app.use("/api/v1", kathdauraBikribitaranRoutes);
 app.use("/api/v1", biruwaUtpadanKharidRoutes);
-app.use("/api/v1", uddhyamBibaranRoutes);
+app.use("/api/v1", uddhamBibaranRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
