@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING,
       },
+      dist_id: {
+        type: Sequelize.INTEGER,
+      },
       address: {
         type: Sequelize.STRING,
       },

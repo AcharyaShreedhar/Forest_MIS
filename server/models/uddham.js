@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   uddham.init(
     {
       name: DataTypes.STRING,
+      dist_id: DataTypes.INTEGER,
       address: DataTypes.STRING,
       uddham_type: DataTypes.INTEGER,
       darta_miti: DataTypes.STRING,
