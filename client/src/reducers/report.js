@@ -267,11 +267,34 @@ const fetchkathdaurabikribitaranbikribitaranFailure = (state, action) => {
 const fetchbiruwautpadankharidRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchbiruwautpadankharidSuccess = (state, action) => {
+  const utpadan = {
+    division_ban: {},
+    samuha: {},
+    niji: {},
+  };
+  let kharid = {};
+  const brixyaropan = action.response.biruwautpadan_kharid.brixyaropan;
+  action.response.biruwautpadan_kharid.utpadan.map((item, index) => {
+    if (equals(item.utpadan_medium, 1)) {
+      utpadan.division_ban = item;
+    } else if (equals(item.utpadan_medium, 2)) {
+      utpadan.samuha = item;
+    } else if (equals(item.utpadan_medium, 3)) {
+      utpadan.niji = item;
+    } else {
+      kharid = item;
+    }
+  });
+
   return state.merge({
     ...state,
     status: "done",
 
-    biruwautpadan_kharid: action.response,
+    biruwautpadan_kharid: {
+      utpadan: utpadan,
+      kharid: kharid,
+      ropan: brixyaropan,
+    },
   });
 };
 const fetchbiruwautpadankharidFailure = (state, action) => {

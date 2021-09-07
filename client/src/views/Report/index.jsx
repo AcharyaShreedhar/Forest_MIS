@@ -23,6 +23,7 @@ export class Report extends Component {
         mudda: props.muddaAnusandhandayariData.mudda,
         gairkastha_banpaidawar: props.gairkasthabanpaidawarbikribitaranData,
         kathdaura_bikri: props.kathdaurabikribitaranData,
+        biruwa: props.biruwautpadankharidData,
       },
     };
   }

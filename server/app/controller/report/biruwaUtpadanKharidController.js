@@ -4,7 +4,7 @@ const pool = require("../../db");
 
 async function getBiruwaUtpadanKharid(req, res) {
   const getBiruwaUtpadanKharidQuery =
-    "SELECT utpadan_medium,SUM(IF(biruwa_type=1,biruwa_sankhya,0)) as bahuudesiya, SUM(IF(biruwa_type=2,biruwa_sankhya,0)) as jadibuti, SUM(IF(biruwa_type=3,biruwa_sankhya,0)) as bahubarsiya FROM `biruwa_utpadans` WHERE dist_id like ? GROUP BY utpadan_medium";
+    "SELECT utpadan_medium,SUM(IF(biruwa_type=1,biruwa_sankhya,0)) as bahuudyesiya, SUM(IF(biruwa_type=2,biruwa_sankhya,0)) as jadibuti, SUM(IF(biruwa_type=3,biruwa_sankhya,0)) as bahubarsiya FROM `biruwa_utpadans` WHERE dist_id like ? GROUP BY utpadan_medium";
   const getBirxyaropanQuery =
     "SELECT SUM(IF((xetra=1 || xetra=2),brixyaropan_sankhya,0)) as samudayik_rastriya, SUM(IF(xetra=3,brixyaropan_sankhya,0)) as niji, SUM(IF(xetra=4,brixyaropan_sankhya,0)) as sarbajanik FROM `brixyaropans` WHERE dist_id like ?";
   pool.query(
@@ -23,7 +23,7 @@ async function getBiruwaUtpadanKharid(req, res) {
               error: null,
               biruwautpadan_kharid: {
                 utpadan: utpadanresults,
-                brixyaropan: birxyaropanresults,
+                brixyaropan: birxyaropanresults[0],
               },
             })
           );
