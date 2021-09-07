@@ -305,10 +305,24 @@ const fetchbiruwautpadankharidFailure = (state, action) => {
 const fetchuddhambibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchuddhambibaranSuccess = (state, action) => {
+  const uddham = {
+    niji: {},
+    samudayik: {},
+    sahakari: {},
+  };
+  action.response.banpaidawar_uddham.map((item, index) => {
+    if (equals(item.uddham_type, 1)) {
+      uddham.niji = item;
+    } else if (equals(item.uddham_type, 2)) {
+      uddham.samudayik = item;
+    } else {
+      uddham.sahakari = item;
+    }
+  });
   return state.merge({
     ...state,
     status: "done",
-    banpaidawar_uddham: action.response,
+    banpaidawar_uddham: { uddham },
   });
 };
 const fetchuddhambibaranFailure = (state, action) => {

@@ -24,6 +24,7 @@ export class Report extends Component {
         gairkastha_banpaidawar: props.gairkasthabanpaidawarbikribitaranData,
         kathdaura_bikri: props.kathdaurabikribitaranData,
         biruwa: props.biruwautpadankharidData,
+        banpaidawar_uddham: props.uddhamData,
       },
     };
   }
