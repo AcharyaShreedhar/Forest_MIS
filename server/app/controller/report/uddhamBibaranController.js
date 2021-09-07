@@ -4,7 +4,7 @@ const pool = require("../../db");
 
 async function getUddhamBibaran(req, res) {
   const getUddhamBibaranQuery =
-    "SELECT uddham_type, SUM(rojgar_sankhya) as rojgari_srijana, COUNT(uddham_id) as jamma FROM `uddhams` WHERE dist_id like ? GROUP BY uddham_type";
+    "SELECT uddham_type, SUM(rojgar_sankhya) as rojgari_srijana, COUNT(uddham_id) as jamma_uddham FROM `uddhams` WHERE dist_id like ? GROUP BY uddham_type";
 
   pool.query(
     getUddhamBibaranQuery,
