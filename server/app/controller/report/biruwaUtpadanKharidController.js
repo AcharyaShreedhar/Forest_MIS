@@ -21,9 +21,9 @@ async function getBiruwaUtpadanKharid(req, res) {
             JSON.stringify({
               status: 200,
               error: null,
-              data: {
-                kabuliyatiban: utpadanresults,
-                samudayikban: birxyaropanresults,
+              biruwautpadan_kharid: {
+                utpadan: utpadanresults,
+                brixyaropan: birxyaropanresults,
               },
             })
           );

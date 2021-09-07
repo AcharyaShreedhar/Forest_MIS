@@ -941,7 +941,10 @@ const create = (baseURL = Config.API_URL) => {
     api.post("gairakastha_banpaidawar", payload);
 
   const postKathdauraBikribitaran = (payload) =>
-  api.post("kathdaura_bikribitaran", payload);
+    api.post("kathdaura_bikribitaran", payload);
+
+  const postBiruwautpadanKharid = (payload) =>
+    api.post("biruwautpadan_kharid", payload);
 
   return {
     loginByUsername,
@@ -1253,7 +1256,8 @@ const create = (baseURL = Config.API_URL) => {
     postBanxetraAnyaprayojan,
     postMuddaAnusandhandayari,
     postGairakasthaBanpaidawarBikribitaran,
-    postKathdauraBikribitaran
+    postKathdauraBikribitaran,
+    postBiruwautpadanKharid,
   };
 };
 export default {

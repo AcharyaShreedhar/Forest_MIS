@@ -135,7 +135,6 @@ export function* fetchkathdaurabikribitaranRequest(api, action) {
   const response = yield api.postKathdauraBikribitaran(
     payloaddata
   );
-console.log('response______________>>',response)
   if (response.ok) {
     yield put(
       ReportActions.fetchkathdaurabikribitaranSuccess(
@@ -144,6 +143,23 @@ console.log('response______________>>',response)
     );
   } else {
     yield put(ReportActions.fetchkathdaurabikribitaranFailure());
+  }
+}
+
+export function* fetchbiruwautpadankharidRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBiruwautpadanKharid(
+    payloaddata
+  );
+  if (response.ok) {
+    yield put(
+      ReportActions.fetchbiruwautpadankharidSuccess(
+        response.data
+      )
+    );
+  } else {
+    yield put(ReportActions.fetchbiruwautpadankharidFailure());
   }
 }
 

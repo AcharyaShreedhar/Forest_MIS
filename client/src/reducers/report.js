@@ -170,7 +170,6 @@ const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
     nijiban: {},
     rastriyaban: {},
   };
-  console.log("kathdaura", kathdaura);
   let totalsamudayikban = {
     samuhabhitra_kath: 0,
     samuhabhitra_daura: 0,
@@ -264,6 +263,21 @@ const fetchkathdaurabikribitaranbikribitaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//......................................Biruwa utpadan kharid sambhandhi Bibaran
+const fetchbiruwautpadankharidRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchbiruwautpadankharidSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+
+    biruwautpadan_kharid: action.response,
+  });
+};
+const fetchbiruwautpadankharidFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -315,6 +329,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHKATHDAURABIKRIBITARAN_REQUEST]: fetchkathdaurabikribitaranbikribitaranRequest,
   [ReportTypes.FETCHKATHDAURABIKRIBITARAN_SUCCESS]: fetchkathdaurabikribitaranbikribitaranSuccess,
   [ReportTypes.FETCHKATHDAURABIKRIBITARAN_FAILURE]: fetchkathdaurabikribitaranbikribitaranFailure,
+
+  [ReportTypes.FETCHBIRUWAUTPADANKHARID_REQUEST]: fetchbiruwautpadankharidRequest,
+  [ReportTypes.FETCHBIRUWAUTPADANKHARID_SUCCESS]: fetchbiruwautpadankharidSuccess,
+  [ReportTypes.FETCHBIRUWAUTPADANKHARID_FAILURE]: fetchbiruwautpadankharidFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,

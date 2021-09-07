@@ -61,6 +61,12 @@ const { Types, Creators } = createActions({
   fetchkathdaurabikribitaranSuccess: ["response"],
   fetchkathdaurabikribitaranFailure: null,
 
+  //......................................Kath daura Bikri bitaran sambhandhi Bibaran
+
+  fetchbiruwautpadankharidRequest: ["payload"],
+  fetchbiruwautpadankharidSuccess: ["response"],
+  fetchbiruwautpadankharidFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,
