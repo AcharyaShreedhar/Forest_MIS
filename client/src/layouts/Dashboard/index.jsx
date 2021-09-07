@@ -76,6 +76,9 @@ class Dashboard extends Component {
     this.props.fetchBiruwaUtpadanKharid({
       distId: "%",
     });
+    this.props.fetchUddhamBibaran({
+      distId: "%",
+    });
   }
 
   render() {
@@ -148,6 +151,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ReportActions.fetchkathdaurabikribitaranRequest(payload)),
   fetchBiruwaUtpadanKharid: (payload) =>
     dispatch(ReportActions.fetchbiruwautpadankharidRequest(payload)),
+  fetchUddhamBibaran: (payload) =>
+    dispatch(ReportActions.fetchuddhambibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

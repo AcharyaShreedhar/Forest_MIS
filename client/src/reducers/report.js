@@ -301,6 +301,20 @@ const fetchbiruwautpadankharidFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//......................................Ban paidawarma aadharit Uddham  sambhandhi Bibaran
+const fetchuddhambibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchuddhambibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    banpaidawar_uddham: action.response,
+  });
+};
+const fetchuddhambibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -356,6 +370,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHBIRUWAUTPADANKHARID_REQUEST]: fetchbiruwautpadankharidRequest,
   [ReportTypes.FETCHBIRUWAUTPADANKHARID_SUCCESS]: fetchbiruwautpadankharidSuccess,
   [ReportTypes.FETCHBIRUWAUTPADANKHARID_FAILURE]: fetchbiruwautpadankharidFailure,
+
+  [ReportTypes.FETCHUDDHAMBIBARAN_REQUEST]: fetchuddhambibaranRequest,
+  [ReportTypes.FETCHUDDHAMBIBARAN_SUCCESS]: fetchuddhambibaranSuccess,
+  [ReportTypes.FETCHUDDHAMBIBARAN_FAILURE]: fetchuddhambibaranFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,

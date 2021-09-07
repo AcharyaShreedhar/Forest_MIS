@@ -67,6 +67,12 @@ const { Types, Creators } = createActions({
   fetchbiruwautpadankharidSuccess: ["response"],
   fetchbiruwautpadankharidFailure: null,
 
+  //......................................Ban paidawarma aadharit Uddham  sambhandhi Bibaran
+
+  fetchuddhambibaranRequest: ["payload"],
+  fetchuddhambibaranSuccess: ["response"],
+  fetchuddhambibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

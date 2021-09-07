@@ -15,9 +15,8 @@ async function getUddhamBibaran(req, res) {
         JSON.stringify({
           status: 200,
           error: null,
-          data: {
-            banpaidawar_uddham: results[0],
-          },
+
+          banpaidawar_uddham: results,
         })
       );
     }
