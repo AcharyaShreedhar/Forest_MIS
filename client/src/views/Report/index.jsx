@@ -58,6 +58,7 @@ const mapStateToProps = (state) => ({
   muddaAnusandhandayariData: state.report.mudda_dayari,
   gairkasthabanpaidawarbikribitaranData: state.report.gairkastha_banpaidawar,
   kathdaurabikribitaranData: state.report.kathdaura_bikri,
+  biruwautpadankharidData: state.report.biruwautpadan_kharid,
 });
 
 export default connect(mapStateToProps, null)(Report);
