@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       arthik_barsa: DataTypes.STRING,
       biruwa_type: DataTypes.INTEGER,
       utpadan_medium: DataTypes.INTEGER,
+      biruwa_sankhya:DataTypes.INTEGER,
       narsari_sankhya: DataTypes.STRING,
       barga: DataTypes.STRING,
       laxya: DataTypes.STRING,

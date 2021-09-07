@@ -20,7 +20,9 @@ module.exports = {
       utpadan_medium: {
         type: Sequelize.INTEGER,
       },
-
+      biruwa_sankhya: {
+        type: Sequelize.INTEGER,
+      },
       narsari_sankhya: {
         type: Sequelize.STRING,
       },
