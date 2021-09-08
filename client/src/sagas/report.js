@@ -160,3 +160,14 @@ export function* fetchuddhambibaranRequest(api, action) {
     yield put(ReportActions.fetchuddhambibaranFailure());
   }
 }
+
+export function* fetchsrijanabhayekorojgariRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postSrijanBhayekoRojgari(payloaddata);
+  if (response.ok) {
+    yield put(ReportActions.fetchsrijanabhayekorojgariSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchsrijanabhayekorojgariFailure());
+  }
+}

@@ -73,6 +73,12 @@ const { Types, Creators } = createActions({
   fetchuddhambibaranSuccess: ["response"],
   fetchuddhambibaranFailure: null,
 
+  //......................................Banle srijana gareko rojgari sambhandhi Bibaran
+
+  fetchsrijanabhayekorojgariRequest: ["payload"],
+  fetchsrijanabhayekorojgariSuccess: ["response"],
+  fetchsrijanabhayekorojgariFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

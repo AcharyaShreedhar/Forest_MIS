@@ -4,7 +4,7 @@ const pool = require("../../db");
 
 async function getRojgariSrijana(req, res) {
   const getRojgariSrijanaQuery =
-    "SELECT karya, SUM(mahila+purus) FROM `rojgar_srijanas` WHERE dist_id like ? and miti>=? GROUP BY karya";
+    "SELECT karya, ekai, SUM(mahila)as mahila, SUM(purus) as purus, SUM(mahila+purus*ekai) as jamma, kaifiyat as remarks FROM `rojgar_srijanas`  WHERE dist_id like ? and miti>=? GROUP BY karya";
 
   pool.query(
     getRojgariSrijanaQuery,
