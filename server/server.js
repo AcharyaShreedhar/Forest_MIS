@@ -125,6 +125,7 @@ const gairakasthaBanpaidawarBikribitaranRoutes = require("./app/routes/report/ga
 const kathdauraBikribitaranRoutes = require("./app/routes/report/kathdauraBikribitaranRoutes");
 const biruwaUtpadanKharidRoutes = require("./app/routes/report/biruwaUtpadanKharidRoutes");
 const uddhamBibaranRoutes = require("./app/routes/report/uddhamBibaranRoutes");
+const rojgariSrijanaRoutes = require("./app/routes/report/rojgariSrijanaRoutes");
 
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
@@ -196,6 +197,7 @@ app.use("/api/v1", gairakasthaBanpaidawarBikribitaranRoutes);
 app.use("/api/v1", kathdauraBikribitaranRoutes);
 app.use("/api/v1", biruwaUtpadanKharidRoutes);
 app.use("/api/v1", uddhamBibaranRoutes);
+app.use("/api/v1", rojgariSrijanaRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

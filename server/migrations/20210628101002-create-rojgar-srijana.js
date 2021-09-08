@@ -14,6 +14,9 @@ module.exports = {
       karya: {
         type: Sequelize.STRING,
       },
+      miti: {
+        type: Sequelize.STRING,
+      },
       ekai: {
         type: Sequelize.STRING,
       },
