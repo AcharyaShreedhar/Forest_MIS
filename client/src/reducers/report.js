@@ -329,6 +329,50 @@ const fetchuddhambibaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//......................................Banle srijana gareko rojgari sambhandhi Bibaran
+const fetchsrijanabhayekorojgariRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchsrijanabhayekorojgariSuccess = (state, action) => {
+  const rojgari = action.response.rojgari_srijana;
+  const data = rojgari.map((item, index) => {
+    if (equals(item.karya, 1)) {
+      return {
+        ...item,
+        karya: "स्विकृत बार्षिक कार्यक्रम अनुसारको पुंजिगत खर्च गर्दा",
+      };
+    } else if (equals(item.karya, 2)) {
+      return {
+        ...item,
+        karya: "बन सम्वर्धन गर्दा",
+      };
+    } else if (equals(item.karya, 3)) {
+      return {
+        ...item,
+        karya: "बन संरक्षन गर्दा",
+      };
+    } else if (equals(item.karya, 4)) {
+      return {
+        ...item,
+        karya: "बन पैदावार संकलन तथा घाटगद्दी",
+      };
+    } else {
+      return {
+        ...item,
+        karya: "बन उद्ध्यम ",
+      };
+    }
+  });
+  console.log("data---------->", data);
+  return state.merge({
+    ...state,
+    status: "done",
+    rojgari_srijana: data,
+  });
+};
+const fetchsrijanabhayekorojgariFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -388,6 +432,14 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHUDDHAMBIBARAN_REQUEST]: fetchuddhambibaranRequest,
   [ReportTypes.FETCHUDDHAMBIBARAN_SUCCESS]: fetchuddhambibaranSuccess,
   [ReportTypes.FETCHUDDHAMBIBARAN_FAILURE]: fetchuddhambibaranFailure,
+
+  [ReportTypes.FETCHUDDHAMBIBARAN_REQUEST]: fetchuddhambibaranRequest,
+  [ReportTypes.FETCHUDDHAMBIBARAN_SUCCESS]: fetchuddhambibaranSuccess,
+  [ReportTypes.FETCHUDDHAMBIBARAN_FAILURE]: fetchuddhambibaranFailure,
+
+  [ReportTypes.FETCHSRIJANABHAYEKOROJGARI_REQUEST]: fetchsrijanabhayekorojgariRequest,
+  [ReportTypes.FETCHSRIJANABHAYEKOROJGARI_SUCCESS]: fetchsrijanabhayekorojgariSuccess,
+  [ReportTypes.FETCHSRIJANABHAYEKOROJGARI_FAILURE]: fetchsrijanabhayekorojgariFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,

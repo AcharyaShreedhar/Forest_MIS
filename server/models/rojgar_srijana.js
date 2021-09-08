@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
       dist_id: DataTypes.INTEGER,
       karya: DataTypes.INTEGER,
       miti:DataTypes.STRING,
-      ekai: DataTypes.STRING,
+      ekai: DataTypes.INTEGER,
       banka_prakar: DataTypes.STRING,
       mahila: DataTypes.INTEGER,
       purus: DataTypes.INTEGER,

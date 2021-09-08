@@ -12,13 +12,13 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       karya: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       miti: {
         type: Sequelize.STRING,
       },
       ekai: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       banka_prakar: {
         type: Sequelize.STRING,

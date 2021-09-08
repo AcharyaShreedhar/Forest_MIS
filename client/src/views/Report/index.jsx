@@ -24,7 +24,8 @@ export class Report extends Component {
         gairkastha_banpaidawar: props.gairkasthabanpaidawarbikribitaranData,
         kathdaura_bikri: props.kathdaurabikribitaranData,
         biruwa: props.biruwautpadankharidData,
-        banpaidawar_uddham: props.uddhamData,
+        banpaidawar_uddham: props.uddhamData.uddham,
+        rojgari_srijana: props.rojgarData,
       },
     };
   }
@@ -62,6 +63,7 @@ const mapStateToProps = (state) => ({
   kathdaurabikribitaranData: state.report.kathdaura_bikri,
   biruwautpadankharidData: state.report.biruwautpadan_kharid,
   uddhamData: state.report.banpaidawar_uddham,
+  rojgarData: state.report.rojgari_srijana,
 });
 
 export default connect(mapStateToProps, null)(Report);
