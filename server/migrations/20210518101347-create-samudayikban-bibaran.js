@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       forest_type: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       handover_date: {
         type: Sequelize.STRING,
@@ -33,10 +33,10 @@ module.exports = {
       forest_maujdat: {
         type: Sequelize.STRING,
       },
-      nikasi_timber: {
+      timber: {
         type: Sequelize.STRING,
       },
-      nikasi_wood: {
+      wood: {
         type: Sequelize.STRING,
       },
       baiganik_ban: {
