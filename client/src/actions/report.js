@@ -79,6 +79,12 @@ const { Types, Creators } = createActions({
   fetchsrijanabhayekorojgariSuccess: ["response"],
   fetchsrijanabhayekorojgariFailure: null,
 
+  //......................................Upavokta Samuhako Susasan ko bibaran
+
+  fetchupavoktasusasanRequest: ["payload"],
+  fetchupavoktasusasanSuccess: ["response"],
+  fetchupavoktasusasanFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

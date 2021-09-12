@@ -171,3 +171,14 @@ export function* fetchsrijanabhayekorojgariRequest(api, action) {
     yield put(ReportActions.fetchsrijanabhayekorojgariFailure());
   }
 }
+
+export function* fetchupavoktasusasanRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postUpavoktaSusasan(payloaddata);
+  if (response.ok) {
+    yield put(ReportActions.fetchupavoktasusasanSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchupavoktasusasanFailure());
+  }
+}
