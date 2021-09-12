@@ -948,8 +948,12 @@ const create = (baseURL = Config.API_URL) => {
 
   const postUddhamBibaran = (payload) =>
     api.post("banpaidawar_uddham", payload);
+
   const postSrijanBhayekoRojgari = (payload) =>
     api.post("rojgari_srijana", payload);
+
+  const postUpavoktaSusasan = (payload) =>
+    api.post("upavokta_susasan", payload);
 
   return {
     loginByUsername,
@@ -1265,6 +1269,7 @@ const create = (baseURL = Config.API_URL) => {
     postBiruwautpadanKharid,
     postUddhamBibaran,
     postSrijanBhayekoRojgari,
+    postUpavoktaSusasan,
   };
 };
 export default {

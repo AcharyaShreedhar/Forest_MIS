@@ -373,6 +373,20 @@ const fetchsrijanabhayekorojgariFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//...................................Upavokta Samuhako Susasanko abastha
+const fetchupavoktasusasanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchupavoktasusasanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    susasanko_abastha: action.response,
+  });
+};
+const fetchupavoktasusasanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -440,6 +454,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHSRIJANABHAYEKOROJGARI_REQUEST]: fetchsrijanabhayekorojgariRequest,
   [ReportTypes.FETCHSRIJANABHAYEKOROJGARI_SUCCESS]: fetchsrijanabhayekorojgariSuccess,
   [ReportTypes.FETCHSRIJANABHAYEKOROJGARI_FAILURE]: fetchsrijanabhayekorojgariFailure,
+
+  [ReportTypes.FETCHUPAVOKTASUSASAN_REQUEST]: fetchupavoktasusasanRequest,
+  [ReportTypes.FETCHUPAVOKTASUSASAN_SUCCESS]: fetchupavoktasusasanSuccess,
+  [ReportTypes.FETCHUPAVOKTASUSASAN_FAILURE]: fetchupavoktasusasanFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,
