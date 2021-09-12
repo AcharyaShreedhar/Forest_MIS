@@ -21,9 +21,6 @@ module.exports = {
       area: {
         type: Sequelize.STRING,
       },
-      area: {
-        type: Sequelize.STRING,
-      },
       main_species: {
         type: Sequelize.STRING,
       },
@@ -43,7 +40,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       baiganik_ban: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,
