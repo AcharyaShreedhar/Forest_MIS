@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   Susasan.init(
     {
       darta_no: DataTypes.STRING,
+      arthik_barsa:DataTypes.STRING,
       lekha_parixan_miti: DataTypes.STRING,
       partibedan_miti: DataTypes.STRING,
       sadharansava_miti: DataTypes.STRING,
