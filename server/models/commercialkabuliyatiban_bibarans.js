@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class commercialkabuliyatiban_bibarans extends Model {
     /**
@@ -12,22 +10,28 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  commercialkabuliyatiban_bibarans.init({
-    darta_no: DataTypes.STRING,
-    darta_miti: DataTypes.STRING,
-    dist_id: DataTypes.INTEGER,
-    commercialkabuliyatiban_naam: DataTypes.STRING,
-    address: DataTypes.STRING,
-    area: DataTypes.STRING,
-    main_species: DataTypes.STRING,
-    ghardhuri: DataTypes.STRING,
-    lav_jana: DataTypes.STRING,
-    created_by: DataTypes.STRING,
-    updated_by: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'commercialkabuliyatiban_bibarans',
-  });
+  }
+  commercialkabuliyatiban_bibarans.init(
+    {
+      darta_no: DataTypes.STRING,
+      darta_miti: DataTypes.STRING,
+      dist_id: DataTypes.INTEGER,
+      commercialkabuliyatiban_naam: DataTypes.STRING,
+      address: DataTypes.STRING,
+      area: DataTypes.STRING,
+      main_species: DataTypes.STRING,
+      dalit_ghardhuri: DataTypes.INTEGER,
+      janjati_ghardhuri: DataTypes.INTEGER,
+      anya_ghardhuri: DataTypes.INTEGER,
+      female: DataTypes.INTEGER,
+      male: DataTypes.INTEGER,
+      created_by: DataTypes.STRING,
+      updated_by: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "commercialkabuliyatiban_bibarans",
+    }
+  );
   return commercialkabuliyatiban_bibarans;
 };

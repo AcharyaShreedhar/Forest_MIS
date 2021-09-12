@@ -29,11 +29,20 @@ module.exports = {
       area: {
         type: Sequelize.STRING,
       },
-      ghardhuri: {
-        type: Sequelize.STRING,
+      dalit_ghardhuri: {
+        type: Sequelize.INTEGER,
       },
-      lav_jana: {
-        type: Sequelize.STRING,
+      janjati_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      anya_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      female: {
+        type: Sequelize.INTEGER,
+      },
+      male: {
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,
