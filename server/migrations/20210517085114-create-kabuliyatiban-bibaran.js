@@ -8,18 +8,18 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         type: Sequelize.INTEGER,
       },
       darta_no: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      entry_date: {
+      darta_miti: {
         type: Sequelize.STRING,
       },
-      ghardhuri_dalit: {
-        type: Sequelize.STRING,
+      dalit_ghardhuri: {
+        type: Sequelize.INTEGER,
       },
       perm_addr: {
         type: Sequelize.STRING,
@@ -27,55 +27,55 @@ module.exports = {
       curr_addr: {
         type: Sequelize.STRING,
       },
-      ghardhuri_janjati: {
+      janjati_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      anya_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      female: {
+        type: Sequelize.INTEGER,
+      },
+      male: {
+        type: Sequelize.INTEGER,
+      },
+      kabuliyati_ban_samiti_name: {
         type: Sequelize.STRING,
       },
-      ghardhuri_anya: {
+      sampanna: {
+        type: Sequelize.INTEGER,
+      },
+      madhyam: {
+        type: Sequelize.INTEGER,
+      },
+      bipanna: {
+        type: Sequelize.INTEGER,
+      },
+      dalit_rep: {
+        type: Sequelize.INTEGER,
+      },
+      janjati_rep: {
+        type: Sequelize.INTEGER,
+      },
+      anya_rep: {
+        type: Sequelize.INTEGER,
+      },
+      female_rep: {
+        type: Sequelize.INTEGER,
+      },
+      male_rep: {
+        type: Sequelize.INTEGER,
+      },
+      adhyakshya: {
         type: Sequelize.STRING,
       },
-      ghardhuri_total: {
+      sachib: {
         type: Sequelize.STRING,
       },
-      population_female: {
+      adhyakshya_gender: {
         type: Sequelize.STRING,
       },
-      population_male: {
-        type: Sequelize.STRING,
-      },
-      population_total: {
-        type: Sequelize.STRING,
-      },
-      samudayik_upavokta_samiti_name: {
-        type: Sequelize.STRING,
-      },
-      sampannata_starikaran_sampanna: {
-        type: Sequelize.STRING,
-      },
-      sampannata_starikaran_madhyam: {
-        type: Sequelize.STRING,
-      },
-      sampannata_starikaran_bipanna: {
-        type: Sequelize.STRING,
-      },
-      karyasamiti_representation_dalit: {
-        type: Sequelize.STRING,
-      },
-      karyasamiti_representation_janjati: {
-        type: Sequelize.STRING,
-      },
-      karyasamiti_representation_anya: {
-        type: Sequelize.STRING,
-      },
-      adhyakshya_male: {
-        type: Sequelize.STRING,
-      },
-      adhyakshya_female: {
-        type: Sequelize.STRING,
-      },
-      sachib_male: {
-        type: Sequelize.STRING,
-      },
-      sachib_female: {
+      sachib_gender: {
         type: Sequelize.STRING,
       },
       created_by: {
