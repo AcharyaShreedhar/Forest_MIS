@@ -387,6 +387,20 @@ const fetchupavoktasusasanFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
+//...................................Hastantaran Mitiko aadharma Banko bibaran
+const fetchbanhastantaranbibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchbanhastantaranbibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    ban_bibaran: action.response,
+  });
+};
+const fetchbanhastantaranbibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -458,6 +472,10 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHUPAVOKTASUSASAN_REQUEST]: fetchupavoktasusasanRequest,
   [ReportTypes.FETCHUPAVOKTASUSASAN_SUCCESS]: fetchupavoktasusasanSuccess,
   [ReportTypes.FETCHUPAVOKTASUSASAN_FAILURE]: fetchupavoktasusasanFailure,
+
+  [ReportTypes.FETCHBANHASTANTARANBIBARAN_REQUEST]: fetchbanhastantaranbibaranRequest,
+  [ReportTypes.FETCHBANHASTANTARANBIBARAN_SUCCESS]: fetchbanhastantaranbibaranSuccess,
+  [ReportTypes.FETCHBANHASTANTARANBIBARAN_FAILURE]: fetchbanhastantaranbibaranFailure,
 
   [ReportTypes.LOCATIONS_REQUEST]: locationsRequest,
   [ReportTypes.CLEAR_REQUEST]: clearRequest,

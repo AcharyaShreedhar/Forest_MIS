@@ -85,6 +85,12 @@ const { Types, Creators } = createActions({
   fetchupavoktasusasanSuccess: ["response"],
   fetchupavoktasusasanFailure: null,
 
+  //......................................Hastantaran Mitiko aadharma Banko bibaran
+
+  fetchbanhastantaranbibaranRequest: ["payload"],
+  fetchbanhastantaranbibaranSuccess: ["response"],
+  fetchbanhastantaranbibaranFailure: null,
+
   locationsRequest: ["payload"],
   // Clear all caches
   clearRequest: null,

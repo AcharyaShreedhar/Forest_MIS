@@ -182,3 +182,14 @@ export function* fetchupavoktasusasanRequest(api, action) {
     yield put(ReportActions.fetchupavoktasusasanFailure());
   }
 }
+
+export function* fetchbanhastantaranbibaranRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.postBanHastantaranBibaran(payloaddata);
+  if (response.ok) {
+    yield put(ReportActions.fetchbanhastantaranbibaranSuccess(response.data));
+  } else {
+    yield put(ReportActions.fetchbanhastantaranbibaranFailure());
+  }
+}
