@@ -476,8 +476,9 @@ class Bankaprakar extends Component {
       messagebody,
     } = this.state;
     const { user } = this.props;
-
+    console.log('kabuliyatiban->',this.state.kabuliyatibanList)
     return (
+      
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}

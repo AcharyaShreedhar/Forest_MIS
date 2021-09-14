@@ -2,8 +2,8 @@ const pool = require("../db");
 //Controller for Listing all KabuliyatibanBibaran
 async function getAllKabuliyatibanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from kabuliyatiban_bibarans as k where k.entry_date BETWEEN ? and ? and k.dist_id like ?";
-  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans as k where k.entry_date BETWEEN ? and ? and k.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from kabuliyatiban_bibarans as k where k.darta_miti BETWEEN ? and ? and k.dist_id like ?";
+  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans as k where k.darta_miti BETWEEN ? and ? and k.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId],
@@ -52,33 +52,31 @@ async function getKabuliyatibanBibaran(req, res) {
 
 //Controller for adding a KabuliyatibanBibaran
 async function addKabuliyatibanBibaran(req, res) {
-  const addKabuliyatibanBibaranQuery = `INSERT INTO kabuliyatiban_bibarans (dist_id,darta_no,entry_date, ghardhuri_dalit, perm_addr, curr_addr, ghardhuri_janjati, ghardhuri_anya, ghardhuri_total, population_female, population_male, population_total, samudayik_upavokta_samiti_name, sampannata_starikaran_sampanna, sampannata_starikaran_madhyam, sampannata_starikaran_bipanna, karyasamiti_representation_dalit, karyasamiti_representation_janjati, karyasamiti_representation_anya, adhyakshya_male, adhyakshya_female, sachib_male, sachib_female, created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addKabuliyatibanBibaranQuery = `INSERT INTO kabuliyatiban_bibarans (dist_id,darta_no,darta_miti, dalit_ghardhuri, perm_addr, curr_addr, janjati_ghardhuri, anya_ghardhuri, female, male, samudayik_upavokta_samiti_name, sampanna, madhyam, bipanna, dalit_rep, janjati_rep, anya_rep, adhyakshya, adhyakshya_gender, sachib, sachib_gender, created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addKabuliyatibanBibaranQuery,
     [
       req.body.dist_id,
       req.body.darta_no,
-      req.body.entry_date,
-      req.body.ghardhuri_dalit,
+      req.body.darta_miti,
+      req.body.dalit_ghardhuri,
       req.body.perm_addr,
       req.body.curr_addr,
-      req.body.ghardhuri_janjati,
-      req.body.ghardhuri_anya,
-      req.body.ghardhuri_total,
-      req.body.population_female,
-      req.body.population_male,
-      req.body.population_total,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.samudayik_upavokta_samiti_name,
-      req.body.sampannata_starikaran_sampanna,
-      req.body.sampannata_starikaran_madhyam,
-      req.body.sampannata_starikaran_bipanna,
-      req.body.karyasamiti_representation_dalit,
-      req.body.karyasamiti_representation_janjati,
-      req.body.karyasamiti_representation_anya,
-      req.body.adhyakshya_male,
-      req.body.adhyakshya_female,
-      req.body.sachib_male,
-      req.body.sachib_female,
+      req.body.sampanna,
+      req.body.madhyam,
+      req.body.bipanna,
+      req.body.dalit_rep,
+      req.body.janjati_rep,
+      req.body.anya_rep,
+      req.body.adhyakshya,
+      req.body.adhyakshya_gender,
+      req.body.sachib,
+      req.body.sachib_gender,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -93,33 +91,31 @@ async function addKabuliyatibanBibaran(req, res) {
 
 //Controller for updating a KabuliyatibanBibaran
 async function updateKabuliyatibanBibaran(req, res) {
-  const updateKabuliyatibanBibaranQuery = `UPDATE kabuliyatiban_bibarans SET dist_id=?, darta_no=?, entry_date=?, ghardhuri_dalit=?, perm_addr=?, curr_addr=?, ghardhuri_janjati=?, ghardhuri_anya=?, ghardhuri_total=?, population_female=?, population_male=?, population_total=?, samudayik_upavokta_samiti_name=?, sampannata_starikaran_sampanna=?, sampannata_starikaran_madhyam=?, sampannata_starikaran_bipanna=?, karyasamiti_representation_dalit=?, karyasamiti_representation_janjati=?, karyasamiti_representation_anya=?, adhyakshya_male=?, adhyakshya_female=?, sachib_male=?, sachib_female=?, created_by=?,updated_by=? WHERE darta_no=?`;
+  const updateKabuliyatibanBibaranQuery = `UPDATE kabuliyatiban_bibarans SET dist_id=?, darta_no=?, darta_miti=?, dalit_ghardhuri=?, perm_addr=?, curr_addr=?, janjati_ghardhuri=?, anya_ghardhuri=?, female=?, male=?, samudayik_upavokta_samiti_name=?, sampanna=?, madhyam=?, bipanna=?, dalit_rep=?, janjati_rep=?, anya_rep=?, adhyakshya=?, adhyakshya_gender=?, sachib=?, sachib_gender=?, created_by=?,updated_by=? WHERE darta_no=?`;
   pool.query(
     updateKabuliyatibanBibaranQuery,
     [
       req.body.dist_id,
       req.body.darta_no,
-      req.body.entry_date,
-      req.body.ghardhuri_dalit,
+      req.body.darta_miti,
+      req.body.dalit_ghardhuri,
       req.body.perm_addr,
       req.body.curr_addr,
-      req.body.ghardhuri_janjati,
-      req.body.ghardhuri_anya,
-      req.body.ghardhuri_total,
-      req.body.population_female,
-      req.body.population_male,
-      req.body.population_total,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.samudayik_upavokta_samiti_name,
-      req.body.sampannata_starikaran_sampanna,
-      req.body.sampannata_starikaran_madhyam,
-      req.body.sampannata_starikaran_bipanna,
-      req.body.karyasamiti_representation_dalit,
-      req.body.karyasamiti_representation_janjati,
-      req.body.karyasamiti_representation_anya,
-      req.body.adhyakshya_male,
-      req.body.adhyakshya_female,
-      req.body.sachib_male,
-      req.body.sachib_female,
+      req.body.sampanna,
+      req.body.madhyam,
+      req.body.bipanna,
+      req.body.dalit_rep,
+      req.body.janjati_rep,
+      req.body.anya_rep,
+      req.body.adhyakshya,
+      req.body.adhyakshya_gender,
+      req.body.sachib,
+      req.body.sachib_gender,
       req.body.created_by,
       req.body.updated_by,
       req.params.kabuliyatibanBibaranId,

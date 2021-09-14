@@ -11,31 +11,28 @@ class Add extends Component {
     this.state = {
       regno: "",
       name: "",
-      entry_date: "",
+      darta_miti: "",
       perm_addr: "",
       curr_addr: "",
-      ghardhuri_dalit: "",
-      ghardhuri_janjati: "",
-      ghardhuri_anya: "",
-      ghardhuri_total: "",
-      population_female: "",
-      population_male: "",
-      population_total: "",
-      sampannata_starikaran_sampanna: "",
-      sampannata_starikaran_madhyam: "",
-      sampannata_starikaran_bipanna: "",
-      karyasamiti_representation_dalit: "",
-      karyasamiti_representation_janjati: "",
-      karyasamiti_representation_anya: "",
-      adhyakshya_female: "",
-      adhyakshya_male: "",
-      sachib_female: "",
-      sachib_male: "",
+      dalit_ghardhuri: "",
+      janjati_ghardhuri: "",
+      anya_ghardhuri: "",
+      female: "",
+      male: "",
+      sampanna: "",
+      madhyam: "",
+      bipanna: "",
+      dalit_rep: "",
+      janjati_rep: "",
+      anya_rep: "",
+      adhyakshya: "",
+      adhyakshya_gender: "",
+      sachib: "",
+      sachib_gender: "",
       dist_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
-
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -55,52 +52,52 @@ class Add extends Component {
     const {
       regno,
       name,
-      entry_date,
+      darta_miti,
       perm_addr,
       curr_addr,
-      ghardhuri_dalit,
-      ghardhuri_janjati,
-      ghardhuri_anya,
-      ghardhuri_total,
-      population_female,
-      population_male,
-      population_total,
-      sampannata_starikaran_sampanna,
-      sampannata_starikaran_madhyam,
-      sampannata_starikaran_bipanna,
-      karyasamiti_representation_dalit,
-      karyasamiti_representation_janjati,
-      karyasamiti_representation_anya,
-      adhyakshya_female,
-      adhyakshya_male,
-      sachib_female,
-      sachib_male,
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
+
+      female,
+      male,
+
+      sampanna,
+      madhyam,
+      bipanna,
+      dalit_rep,
+      janjati_rep,
+      anya_rep,
+      adhyakshya,
+      adhyakshya_gender,
+      sachib,
+      sachib_gender,
     } = this.state;
     const payload = {
       kabuliyatiban: {
         data: {
           darta_no: regno,
           samudayik_upavokta_samiti_name: name,
-          entry_date: entry_date,
+          darta_miti: darta_miti,
           perm_addr: perm_addr,
           curr_addr: curr_addr,
-          ghardhuri_dalit: ghardhuri_dalit,
-          ghardhuri_janjati: ghardhuri_janjati,
-          ghardhuri_anya: ghardhuri_anya,
-          ghardhuri_total: ghardhuri_total,
-          population_female: population_female,
-          population_male: population_male,
-          population_total: population_total,
-          sampannata_starikaran_sampanna: sampannata_starikaran_sampanna,
-          sampannata_starikaran_madhyam: sampannata_starikaran_madhyam,
-          sampannata_starikaran_bipanna: sampannata_starikaran_bipanna,
-          karyasamiti_representation_dalit: karyasamiti_representation_dalit,
-          karyasamiti_representation_janjati: karyasamiti_representation_janjati,
-          karyasamiti_representation_anya: karyasamiti_representation_anya,
-          adhyakshya_female: adhyakshya_female,
-          adhyakshya_male: adhyakshya_male,
-          sachib_female: sachib_female,
-          sachib_male: sachib_male,
+          dalit_ghardhuri: dalit_ghardhuri,
+          janjati_ghardhuri: janjati_ghardhuri,
+          anya_ghardhuri: anya_ghardhuri,
+
+          female: female,
+          male: male,
+
+          sampanna: sampanna,
+          madhyam: madhyam,
+          bipanna: bipanna,
+          dalit_rep: dalit_rep,
+          janjati_rep: janjati_rep,
+          anya_rep: anya_rep,
+          adhyakshya: adhyakshya,
+          adhyakshya_gender: adhyakshya_gender,
+          sachib: sachib,
+          sachib_gender: sachib_gender,
           dist_id: this.props.user.user_name,
           created_by: this.props.user.user_name,
         },
@@ -110,7 +107,7 @@ class Add extends Component {
   }
 
   handleDate(e) {
-    this.setState({ entry_date: e });
+    this.setState({ darta_miti: e });
   }
 
   render() {
@@ -118,33 +115,33 @@ class Add extends Component {
     const {
       regno,
       name,
-      entry_date,
+      darta_miti,
       perm_addr,
       curr_addr,
-      ghardhuri_dalit,
-      ghardhuri_janjati,
-      ghardhuri_anya,
-      ghardhuri_total,
-      population_female,
-      population_male,
-      population_total,
-      sampannata_starikaran_sampanna,
-      sampannata_starikaran_madhyam,
-      sampannata_starikaran_bipanna,
-      karyasamiti_representation_dalit,
-      karyasamiti_representation_janjati,
-      karyasamiti_representation_anya,
-      adhyakshya_female,
-      adhyakshya_male,
-      sachib_female,
-      sachib_male,
-      showDialog, 
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
+
+      female,
+      male,
+
+      sampanna,
+      madhyam,
+      bipanna,
+      dalit_rep,
+      janjati_rep,
+      anya_rep,
+      adhyakshya,
+      adhyakshya_gender,
+      sachib,
+      sachib_gender,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ कवुलियती  वन थप गर्न चाहनुहुन्छ ?"
@@ -168,7 +165,7 @@ class Add extends Component {
             <NepaliDatePicker
               inputClassName="form-control"
               className="mb-4"
-              value={entry_date}
+              value={darta_miti}
               onChange={(e) => this.handleDate(e)}
               options={{ calenderLocale: "ne", valueLocale: "en" }}
             />
@@ -197,134 +194,110 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="दलित घरधुरी"
-              value={ghardhuri_dalit}
+              value={dalit_ghardhuri}
               direction="vertical"
-              onChange={(e) => this.setState({ ghardhuri_dalit: e })}
+              onChange={(e) => this.setState({ dalit_ghardhuri: e })}
             />
             <Input
               className="mb-4"
               title="जनजाति घरधुरी"
-              value={ghardhuri_janjati}
+              value={janjati_ghardhuri}
               direction="vertical"
-              onChange={(e) => this.setState({ ghardhuri_janjati: e })}
+              onChange={(e) => this.setState({ janjati_ghardhuri: e })}
             />
             <Input
               className="mb-4"
               title="अन्य घरधुरी"
-              value={ghardhuri_anya}
+              value={anya_ghardhuri}
               direction="vertical"
-              onChange={(e) => this.setState({ ghardhuri_anya: e })}
+              onChange={(e) => this.setState({ anya_ghardhuri: e })}
             />
-            <Input
-              className="mb-4"
-              title="जम्मा घरधुरी"
-              value={ghardhuri_total}
-              direction="vertical"
-              onChange={(e) => this.setState({ ghardhuri_total: e })}
-            />
+
             <Input
               className="mb-4"
               title="महिला जनसंख्या"
-              value={population_female}
+              value={female}
               direction="vertical"
-              onChange={(e) => this.setState({ population_female: e })}
+              onChange={(e) => this.setState({ female: e })}
             />
             <Input
               className="mb-4"
               title="पुरुष जनसंख्या"
-              value={population_male}
+              value={male}
               direction="vertical"
-              onChange={(e) => this.setState({ population_male: e })}
+              onChange={(e) => this.setState({ male: e })}
             />
-            <Input
-              className="mb-4"
-              title="जम्मा जनसंख्या"
-              value={population_total}
-              direction="vertical"
-              onChange={(e) => this.setState({ population_total: e })}
-            />
+
             <Input
               className="mb-4"
               title="सम्पन्न"
-              value={sampannata_starikaran_sampanna}
+              value={sampanna}
               direction="vertical"
-              onChange={(e) =>
-                this.setState({ sampannata_starikaran_sampanna: e })
-              }
+              onChange={(e) => this.setState({ sampanna: e })}
             />
             <Input
               className="mb-4"
               title="मध्यम"
-              value={sampannata_starikaran_madhyam}
+              value={madhyam}
               direction="vertical"
-              onChange={(e) =>
-                this.setState({ sampannata_starikaran_madhyam: e })
-              }
+              onChange={(e) => this.setState({ madhyam: e })}
             />
             <Input
               className="mb-4"
               title="विपन्न"
-              value={sampannata_starikaran_bipanna}
+              value={bipanna}
               direction="vertical"
-              onChange={(e) =>
-                this.setState({ sampannata_starikaran_bipanna: e })
-              }
+              onChange={(e) => this.setState({ bipanna: e })}
             />
             <Input
               className="mb-4"
               title="कार्यसमितिमा दलित प्रतिनिधित्व"
-              value={karyasamiti_representation_dalit}
+              value={dalit_rep}
               direction="vertical"
-              onChange={(e) =>
-                this.setState({ karyasamiti_representation_dalit: e })
-              }
+              onChange={(e) => this.setState({ dalit_rep: e })}
             />
             <Input
               className="mb-4"
               title="कार्यसमितिमा जनजाति प्रतिनिधित्व"
-              value={karyasamiti_representation_janjati}
+              value={janjati_rep}
               direction="vertical"
-              onChange={(e) =>
-                this.setState({ karyasamiti_representation_janjati: e })
-              }
+              onChange={(e) => this.setState({ janjati_rep: e })}
             />
             <Input
               className="mb-4"
               title="कार्यसमितिमा अन्य प्रतिनिधित्व"
-              value={karyasamiti_representation_anya}
+              value={anya_rep}
               direction="vertical"
-              onChange={(e) =>
-                this.setState({ karyasamiti_representation_anya: e })
-              }
+              onChange={(e) => this.setState({ anya_rep: e })}
             />
 
             <Input
               className="mb-4"
               title="मुख्य पदाधिकारीमा प्रतिनिधित्व(महिला अध्यक्ष)"
               direction="vertical"
-              value={adhyakshya_female}
-              onChange={(e) => this.setState({ adhyakshya_female: e })}
+              value={adhyakshya}
+              onChange={(e) => this.setState({ adhyakshya: e })}
             />
             <Input
               className="mb-4"
               title="मुख्य पदाधिकारीमा प्रतिनिधित्व(पुरुष अध्यक्ष)"
               direction="vertical"
-              value={adhyakshya_male}
-              onChange={(e) => this.setState({ adhyakshya_male: e })}
+              value={adhyakshya_gender}
+              onChange={(e) => this.setState({ adhyakshya_gender: e })}
             />
             <Input
               className="mb-4"
               title="मुख्य पदाधिकारीमा प्रतिनिधित्व(महिला सचिव)"
               direction="vertical"
-              value={sachib_female}
-              onChange={(e) => this.setState({ sachib_female: e })}
+              value={sachib}
+              onChange={(e) => this.setState({ sachib: e })}
             />
             <Input
               className="mb-4"
               title="मुख्य पदाधिकारीमा प्रतिनिधित्व(पुरुष सचिव)"
               direction="vertical"
-              value={sachib_male}
-              onChange={(e) => this.setState({ sachib_male: e })}
+              value={sachib_gender}
+              onChange={(e) => this.setState({ sachib_gender: e })}
             />
           </div>
           <div className="mt-2 border-5">
