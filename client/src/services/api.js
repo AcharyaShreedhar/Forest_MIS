@@ -955,6 +955,9 @@ const create = (baseURL = Config.API_URL) => {
   const postUpavoktaSusasan = (payload) =>
     api.post("upavokta_susasan", payload);
 
+  const postBanHastantaranBibaran = (payload) =>
+    api.post("banhastantaran_bibaran", payload);
+
   return {
     loginByUsername,
     getBantypesList,
@@ -1270,6 +1273,7 @@ const create = (baseURL = Config.API_URL) => {
     postUddhamBibaran,
     postSrijanBhayekoRojgari,
     postUpavoktaSusasan,
+    postBanHastantaranBibaran,
   };
 };
 export default {

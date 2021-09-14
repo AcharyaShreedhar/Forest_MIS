@@ -66,6 +66,7 @@ const mapStateToProps = (state) => ({
   uddhamData: state.report.banpaidawar_uddham,
   rojgarData: state.report.rojgari_srijana,
   susasanData: state.report.susasanko_abastha,
+  banhastantaranData: state.report.ban_bibaran.data,
 });
 
 export default connect(mapStateToProps, null)(Report);

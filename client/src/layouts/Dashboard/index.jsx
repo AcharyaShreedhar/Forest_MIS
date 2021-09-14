@@ -88,6 +88,11 @@ class Dashboard extends Component {
       arthikbarsa: "077/78",
       distId: "%",
     });
+
+    this.props.fetchBanHastantaran({
+      currentArthikbarsa: "2078-04-01",
+      distId: "%",
+    });
   }
 
   render() {
@@ -166,6 +171,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ReportActions.fetchsrijanabhayekorojgariRequest(payload)),
   fetchUpavoktaSusasan: (payload) =>
     dispatch(ReportActions.fetchupavoktasusasanRequest(payload)),
+  fetchBanHastantaran: (payload) =>
+    dispatch(ReportActions.fetchbanhastantaranbibaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
