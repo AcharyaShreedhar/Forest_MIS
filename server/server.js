@@ -127,6 +127,7 @@ const biruwaUtpadanKharidRoutes = require("./app/routes/report/biruwaUtpadanKhar
 const uddhamBibaranRoutes = require("./app/routes/report/uddhamBibaranRoutes");
 const rojgariSrijanaRoutes = require("./app/routes/report/rojgariSrijanaRoutes");
 const upavoktaSusasanRoutes = require("./app/routes/report/upavoktaSusasanRoutes");
+const banHastantaranBibaranRoutes = require("./app/routes/report/banHastantaranBibaranRoutes");
 
 app.use("/api/v1", provinceRoutes);
 app.use("/api/v1", districtRoutes);
@@ -200,6 +201,7 @@ app.use("/api/v1", biruwaUtpadanKharidRoutes);
 app.use("/api/v1", uddhamBibaranRoutes);
 app.use("/api/v1", rojgariSrijanaRoutes);
 app.use("/api/v1", upavoktaSusasanRoutes);
+app.use("/api/v1", banHastantaranBibaranRoutes);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {

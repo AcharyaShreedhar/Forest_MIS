@@ -18,6 +18,9 @@ module.exports = {
       darta_miti: {
         type: Sequelize.STRING,
       },
+      area: {
+        type: Sequelize.STRING,
+      },
       dalit_ghardhuri: {
         type: Sequelize.INTEGER,
       },
