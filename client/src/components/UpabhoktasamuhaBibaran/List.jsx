@@ -50,28 +50,26 @@ function List(props) {
               data.map((samuha, index) => (
                 <tr key={`${samuha.consumer_group_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{samuha.registration_no}</td>
-                  <td>{samuha.registration_date}</td>
+                  <td>{samuha.darta_no}</td>
+                  <td>{samuha.darta_miti}</td>
                   <td>{samuha.samudayik_upavokta_samiti_name}</td>
                   <td>{samuha.perm_addr}</td>
                   <td>{samuha.curr_addr}</td>
-                  <td>{samuha.ghardhuri_dalit}</td>
-                  <td>{samuha.ghardhuri_janjati}</td>
-                  <td>{samuha.ghardhuri_anya}</td>
-                  <td>{samuha.ghardhuri_total}</td>
-                  <td>{samuha.population_female}</td>
-                  <td>{samuha.population_male}</td>
-                  <td>{samuha.population_total}</td>
-                  <td>{samuha.sampannata_starikaran_sampanna}</td>
-                  <td>{samuha.sampannata_starikaran_madhyam}</td>
-                  <td>{samuha.sampannata_starikaran_bipanna}</td>
-                  <td>{samuha.karyasamiti_representation_dalit}</td>
-                  <td>{samuha.karyasamiti_representation_janjati}</td>
-                  <td>{samuha.karyasamiti_representation_anya}</td>
-                  <td>{samuha.adhyakshya_female}</td>
-                  <td>{samuha.adhyakshya_male}</td>
-                  <td>{samuha.sachib_female}</td>
-                  <td>{samuha.sachib_male}</td>
+                  <td>{samuha.dalit_ghardhuri}</td>
+                  <td>{samuha.janjati_ghardhuri}</td>
+                  <td>{samuha.anya_ghardhuri}</td>
+                  <td>{samuha.female}</td>
+                  <td>{samuha.male}</td>
+                  <td>{samuha.sampanna}</td>
+                  <td>{samuha.madhyam}</td>
+                  <td>{samuha.bipanna}</td>
+                  <td>{samuha.dalit_rep}</td>
+                  <td>{samuha.janjati_rep}</td>
+                  <td>{samuha.anya_rep}</td>
+                  <td>{samuha.adhyakshya}</td>
+                  <td>{samuha.adhyakshya_gender}</td>
+                  <td>{samuha.sachib}</td>
+                  <td>{samuha.sachib_gender}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
