@@ -50,27 +50,25 @@ function List(props) {
                 <tr key={`${kban.kabuliyatiban_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{kban.darta_no}</td>
-                  <td>{englishToNepaliNumber(kban.entry_date)}</td>
-                  <td>{kban.samudayik_upavokta_samiti_name}</td>
+                  <td>{englishToNepaliNumber(kban.darta_miti)}</td>
+                  <td>{kban.kabuliyati_ban_samiti_name}</td>
                   <td>{kban.perm_addr}</td>
                   <td>{kban.curr_addr}</td>
-                  <td>{kban.ghardhuri_dalit}</td>
-                  <td>{kban.ghardhuri_janjati}</td>
-                  <td>{kban.ghardhuri_anya}</td>
-                  <td>{kban.ghardhuri_total}</td>
-                  <td>{kban.population_female}</td>
-                  <td>{kban.population_male}</td>
-                  <td>{kban.population_total}</td>
-                  <td>{kban.sampannata_starikaran_sampanna}</td>
-                  <td>{kban.sampannata_starikaran_madhyam}</td>
-                  <td>{kban.sampannata_starikaran_bipanna}</td>
-                  <td>{kban.karyasamiti_representation_dalit}</td>
-                  <td>{kban.karyasamiti_representation_janjati}</td>
-                  <td>{kban.karyasamiti_representation_anya}</td>
-                  <td>{kban.adhyakshya_female}</td>
-                  <td>{kban.adhyakshya_male}</td>
-                  <td>{kban.sachib_female}</td>
-                  <td>{kban.sachib_male}</td>
+                  <td>{kban.dalit_ghardhuri}</td>
+                  <td>{kban.janjati_ghardhuri}</td>
+                  <td>{kban.anya_ghardhuri}</td>
+                  <td>{kban.female}</td>
+                  <td>{kban.male}</td>
+                  <td>{kban.sampanna}</td>
+                  <td>{kban.madhyam}</td>
+                  <td>{kban.bipanna}</td>
+                  <td>{kban.dalit_rep}</td>
+                  <td>{kban.janjati_rep}</td>
+                  <td>{kban.anya_rep}</td>
+                  <td>{kban.adhyakshya}</td>
+                  <td>{kban.adhyakshya_gender}</td>
+                  <td>{kban.sachib}</td>
+                  <td>{kban.sachib_gender}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
