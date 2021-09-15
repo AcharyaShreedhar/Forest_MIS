@@ -156,9 +156,9 @@ const fetchgairakasthabanpaidawarbikribitaranFailure = (state, action) => {
 };
 
 //......................................Kathdaura Bikri bitaran sambhandhi Bibaran
-const fetchkathdaurabikribitaranbikribitaranRequest = (state, action) =>
+const fetchkathdaurabikribitaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
-const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
+const fetchkathdaurabikribitaranSuccess = (state, action) => {
   const kathdaura = {
     baiganik_ban: {},
     nonbaiganik_ban: {},
@@ -198,7 +198,7 @@ const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
       samuha_khayar: total.samuha_khayar + item.samuha_khayar,
       samuha_daura: total.samuha_daura + item.samuha_daura,
       samuha_anya: total.samuha_anya + item.samuha_anya,
-      aapurti_kath: total.aapurti_kath + item.aapurti_kaath,
+      aapurti_kath: total.aapurti_kath + item.aapurti_kath,
       aapurti_daura: total.aapurti_daura + item.aapurti_daura,
     };
     if (equals(item.banko_kisim, 1)) {
@@ -211,7 +211,7 @@ const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
         samuha_khayar: totalsamudayikban.samuha_khayar + item.samuha_khayar,
         samuha_daura: totalsamudayikban.samuha_daura + item.samuha_daura,
         samuha_anya: totalsamudayikban.samuha_anya + item.samuha_anya,
-        aapurti_kath: totalsamudayikban.aapurti_kath + item.aapurti_kaath,
+        aapurti_kath: totalsamudayikban.aapurti_kath + item.aapurti_kath,
         aapurti_daura: totalsamudayikban.aapurti_daura + item.aapurti_daura,
       };
 
@@ -226,7 +226,7 @@ const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
         samuha_khayar: totalsamudayikban.samuha_khayar + item.samuha_khayar,
         samuha_daura: totalsamudayikban.samuha_daura + item.samuha_daura,
         samuha_anya: totalsamudayikban.samuha_anya + item.samuha_anya,
-        aapurti_kath: totalsamudayikban.aapurti_kath + item.aapurti_kaath,
+        aapurti_kath: totalsamudayikban.aapurti_kath + item.aapurti_kath,
         aapurti_daura: totalsamudayikban.aapurti_daura + item.aapurti_daura,
       };
 
@@ -250,16 +250,15 @@ const fetchkathdaurabikribitaranbikribitaranSuccess = (state, action) => {
   return state.merge({
     ...state,
     status: "done",
-    data: {
-      kathdaura_bikri: {
-        kathdaura,
-        total,
-        totalsamudayikban,
-      },
+
+    kathdaura_bikri: {
+      kathdaura,
+      total,
+      totalsamudayikban,
     },
   });
 };
-const fetchkathdaurabikribitaranbikribitaranFailure = (state, action) => {
+const fetchkathdaurabikribitaranFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
@@ -362,7 +361,6 @@ const fetchsrijanabhayekorojgariSuccess = (state, action) => {
       };
     }
   });
-  console.log("data---------->", data);
   return state.merge({
     ...state,
     status: "done",
@@ -391,10 +389,191 @@ const fetchupavoktasusasanFailure = (state, action) => {
 const fetchbanhastantaranbibaranRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchbanhastantaranbibaranSuccess = (state, action) => {
+  const previous = {
+    baiganik_ban: {},
+    nonbaiganik_ban: {},
+    kabuliyatiban: {},
+    dharmikban: {},
+    chaklaban: {},
+    sajhedariban: {},
+    commercialkabuliyatiban: {},
+    nijiban: {},
+    rastriyaban: {},
+  };
+  const current = {
+    baiganik_ban: {},
+    nonbaiganik_ban: {},
+    kabuliyatiban: {},
+    dharmikban: {},
+    chaklaban: {},
+    sajhedariban: {},
+    commercialkabuliyatiban: {},
+    nijiban: {},
+    rastriyaban: {},
+  };
+  const total = {
+    baiganik_ban: {},
+    nonbaiganik_ban: {},
+    kabuliyatiban: {},
+    dharmikban: {},
+    chaklaban: {},
+    sajhedariban: {},
+    commercialkabuliyatiban: {},
+    nijiban: {},
+    rastriyaban: {},
+  };
+  const samudayikban = {
+    previous: {},
+    current: {},
+    total: {},
+  };
+  const pre = action.response.data.previous;
+  const cur = action.response.data.current;
+  pre.map((item, index) => {
+    if (equals(index, 0)) {
+      previous.baiganik_ban = item;
+    } else if (equals(index, 1)) {
+      previous.nonbaiganik_ban = item;
+    } else if (equals(index, 2)) {
+      previous.kabuliyatiban = item;
+    } else if (equals(index, 4)) {
+      previous.dharmikban = item;
+    } else if (equals(index, 5)) {
+      previous.chaklaban = item;
+    } else if (equals(index, 6)) {
+      previous.sajhedariban = item;
+    } else if (equals(index, 7)) {
+      previous.commercialkabuliyatiban = item;
+    } else if (equals(index, 8)) {
+      previous.nijiban = item;
+    } else {
+      previous.rastriyaban = item;
+    }
+  });
+
+  cur.map((item, index) => {
+    if (equals(index, 0)) {
+      current.baiganik_ban = item;
+    } else if (equals(index, 1)) {
+      current.nonbaiganik_ban = item;
+    } else if (equals(index, 2)) {
+      current.kabuliyatiban = item;
+    } else if (equals(index, 4)) {
+      current.dharmikban = item;
+    } else if (equals(index, 5)) {
+      current.chaklaban = item;
+    } else if (equals(index, 6)) {
+      current.sajhedariban = item;
+    } else if (equals(index, 7)) {
+      current.commercialkabuliyatiban = item;
+    } else if (equals(index, 8)) {
+      current.nijiban = item;
+    } else {
+      current.rastriyaban = item;
+    }
+  });
+  samudayikban.previous = {
+    sankhya: previous.baiganik_ban.sankhya + previous.nonbaiganik_ban.sankhya,
+    area: previous.baiganik_ban.area + previous.nonbaiganik_ban.area,
+    ghardhuri:
+      previous.baiganik_ban.ghardhuri + previous.nonbaiganik_ban.ghardhuri,
+    labhanvit:
+      previous.baiganik_ban.labhanvit + previous.nonbaiganik_ban.labhanvit,
+  };
+  samudayikban.current = {
+    sankhya: current.baiganik_ban.sankhya + current.nonbaiganik_ban.sankhya,
+    area: current.baiganik_ban.area + current.nonbaiganik_ban.area,
+    ghardhuri:
+      current.baiganik_ban.ghardhuri + current.nonbaiganik_ban.ghardhuri,
+    labhanvit:
+      current.baiganik_ban.labhanvit + current.nonbaiganik_ban.labhanvit,
+  };
+  samudayikban.total = {
+    sankhya: samudayikban.previous.sankhya + samudayikban.current.sankhya,
+    area: samudayikban.previous.area + samudayikban.current.area,
+    ghardhuri: samudayikban.previous.ghardhuri + samudayikban.current.ghardhuri,
+    labhanvit: samudayikban.previous.labhanvit + samudayikban.current.labhanvit,
+  };
+  total.baiganik_ban = {
+    sankhya: previous.baiganik_ban.sankhya + current.baiganik_ban.sankhya,
+    area: previous.baiganik_ban.area + current.baiganik_ban.area,
+    ghardhuri: previous.baiganik_ban.ghardhuri + current.baiganik_ban.ghardhuri,
+    labhanvit: previous.baiganik_ban.labhanvit + current.baiganik_ban.labhanvit,
+  };
+  total.nonbaiganik_ban = {
+    sankhya: previous.nonbaiganik_ban.sankhya + current.nonbaiganik_ban.sankhya,
+    area: previous.nonbaiganik_ban.area + current.nonbaiganik_ban.area,
+    ghardhuri:
+      previous.nonbaiganik_ban.ghardhuri + current.nonbaiganik_ban.ghardhuri,
+    labhanvit:
+      previous.nonbaiganik_ban.labhanvit + current.nonbaiganik_ban.labhanvit,
+  };
+  total.kabuliyatiban = {
+    sankhya: previous.kabuliyatiban.sankhya + current.kabuliyatiban.sankhya,
+    area: previous.kabuliyatiban.area + current.kabuliyatiban.area,
+    ghardhuri:
+      previous.kabuliyatiban.ghardhuri + current.kabuliyatiban.ghardhuri,
+    labhanvit:
+      previous.kabuliyatiban.labhanvit + current.kabuliyatiban.labhanvit,
+  };
+  total.dharmikban = {
+    sankhya: previous.dharmikban.sankhya + current.dharmikban.sankhya,
+    area: previous.dharmikban.area + current.dharmikban.area,
+    ghardhuri: previous.dharmikban.ghardhuri + current.dharmikban.ghardhuri,
+    labhanvit: previous.dharmikban.labhanvit + current.dharmikban.labhanvit,
+  };
+
+  total.chaklaban = {
+    sankhya: previous.chaklaban.sankhya + current.chaklaban.sankhya,
+    area: previous.chaklaban.area + current.chaklaban.area,
+    ghardhuri: previous.chaklaban.ghardhuri + current.chaklaban.ghardhuri,
+    labhanvit: previous.chaklaban.labhanvit + current.chaklaban.labhanvit,
+  };
+
+  total.sajhedariban = {
+    sankhya: previous.sajhedariban.sankhya + current.sajhedariban.sankhya,
+    area: previous.sajhedariban.area + current.sajhedariban.area,
+    ghardhuri: previous.sajhedariban.ghardhuri + current.sajhedariban.ghardhuri,
+    labhanvit: previous.sajhedariban.labhanvit + current.sajhedariban.labhanvit,
+  };
+
+  total.commercialkabuliyatiban = {
+    sankhya:
+      previous.commercialkabuliyatiban.sankhya +
+      current.commercialkabuliyatiban.sankhya,
+    area:
+      previous.commercialkabuliyatiban.area +
+      current.commercialkabuliyatiban.area,
+    ghardhuri:
+      previous.commercialkabuliyatiban.ghardhuri +
+      current.commercialkabuliyatiban.ghardhuri,
+    labhanvit:
+      previous.commercialkabuliyatiban.labhanvit +
+      current.commercialkabuliyatiban.labhanvit,
+  };
+
+  total.nijiban = {
+    sankhya: previous.nijiban.sankhya + current.nijiban.sankhya,
+    area: previous.nijiban.area + current.nijiban.area,
+    ghardhuri: previous.nijiban.ghardhuri + current.nijiban.ghardhuri,
+    labhanvit: previous.nijiban.labhanvit + current.nijiban.labhanvit,
+  };
+
+  total.rastriyaban = {
+    sankhya: previous.rastriyaban.sankhya + current.rastriyaban.sankhya,
+    area: previous.rastriyaban.area + current.rastriyaban.area,
+    ghardhuri: previous.rastriyaban.ghardhuri + current.rastriyaban.ghardhuri,
+    labhanvit: previous.rastriyaban.labhanvit + current.rastriyaban.labhanvit,
+  };
   return state.merge({
     ...state,
     status: "done",
-    ban_bibaran: action.response,
+    ban_bibaran: {
+      previous,
+      current,
+      samudayikban,
+      total,
+    },
   });
 };
 const fetchbanhastantaranbibaranFailure = (state, action) => {
@@ -449,9 +628,9 @@ export const reducer = createReducer(initialState, {
   [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_SUCCESS]: fetchgairakasthabanpaidawarbikribitaranSuccess,
   [ReportTypes.FETCHGAIRAKASTHABANPAIDAWARBIKRIBITARAN_FAILURE]: fetchgairakasthabanpaidawarbikribitaranFailure,
 
-  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_REQUEST]: fetchkathdaurabikribitaranbikribitaranRequest,
-  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_SUCCESS]: fetchkathdaurabikribitaranbikribitaranSuccess,
-  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_FAILURE]: fetchkathdaurabikribitaranbikribitaranFailure,
+  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_REQUEST]: fetchkathdaurabikribitaranRequest,
+  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_SUCCESS]: fetchkathdaurabikribitaranSuccess,
+  [ReportTypes.FETCHKATHDAURABIKRIBITARAN_FAILURE]: fetchkathdaurabikribitaranFailure,
 
   [ReportTypes.FETCHBIRUWAUTPADANKHARID_REQUEST]: fetchbiruwautpadankharidRequest,
   [ReportTypes.FETCHBIRUWAUTPADANKHARID_SUCCESS]: fetchbiruwautpadankharidSuccess,
