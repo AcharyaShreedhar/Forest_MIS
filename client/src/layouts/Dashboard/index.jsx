@@ -11,6 +11,19 @@ import ReportActions from "../../actions/report";
 import "react-toastify/dist/ReactToastify.css";
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      expanded: false,
+    };
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+
+  handleToggle() {
+    console.log('aayoki nai ')
+    this.setState({ expanded: !this.state.expanded });
+  }
+
   componentDidMount() {
     this.props.history.listen((location, action) => {
       const payload = {
@@ -106,6 +119,8 @@ class Dashboard extends Component {
           history={history}
           loggedIn={!isEmpty(token)}
           onLogout={onLogout}
+          onToggle={this.handleToggle}
+          open={this.state.expanded}
         />
       </div>
     );
