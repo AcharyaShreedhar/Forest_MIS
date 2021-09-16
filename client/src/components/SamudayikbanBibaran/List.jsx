@@ -35,21 +35,15 @@ function List(props) {
         </div>
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="samudayikban">
-          <thead align="left">
-            <tr className="dsl-b24 text-center">
-              प्रदेश सरकार वन,वातावरण तथा भू-संरक्षण मन्त्रालय गण्डकी प्रदेश,
-              पोखरा
+          <thead>
+            <tr>
+              <th>क्र.स.</th>
+              {headings.map((heading, index) => (
+                <th key={index}>{heading}</th>
+              ))}
+              <th />
             </tr>
-            <tr className="d-none dsl-b18">Division forest office: Kaski</tr>
-            <tr className="d-none dsl-b18">ban sambhandhi bibaran</tr>
           </thead>
-          <tr>
-            <th>क्र.स.</th>
-            {headings.map((heading, index) => (
-              <th key={index}>{heading}</th>
-            ))}
-            <th />
-          </tr>
           <tbody>
             {isNil(data) ? (
               <p>No data Available !!!</p>

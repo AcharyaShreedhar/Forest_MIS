@@ -1,4 +1,19 @@
 @import "../../layouts/Dashboard/theme.scss";
+$sidebar-bg-color: rgb(25, 61, 61) !important;
+$sidebar-width: 300px !important;
+$sidebar-collapsed-width: 80px !important;
+$highlight-color: white !important;
+$submenu-bg-color: rgb(20, 77, 77) !important;
+$submenu-bg-color-collapsed: rgb(25, 61, 61) !important;
+$icon-bg-color: rgb(25, 61, 61) !important;
+$icon-size: 35px !important;
+$breakpoint-xs: 480px !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
+
+@import "~react-pro-sidebar/dist/scss/styles.scss";
 .sidenav---sidenav---_2tBP {
   background-color: darkcyan;
   position: relative;
@@ -17,7 +32,6 @@
   }
 }
 .leftmarginMin {
-  
   margin-right: 84px;
   .sidenav---sidenav-nav---3tvij {
     display: flex;
@@ -103,4 +117,18 @@
   > .sidenav---sidenav-subnavitem---1cD47:first-child {
   font-weight: 700;
   font-size: 18px;
+}
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item > .pro-icon-wrapper {
+  font-size: 30px !important ;
+  font-weight: bold !important;
+}
+
+.maintitle {
+  // color: white !important;
+  font-weight: 600 !important;
+  font-size: 18px !important;
+}
+
+.pro-sidebar > .pro-sidebar-inner > .pro-sidebar-layout .pro-sidebar-footer {
+  padding: 10px;
 }
