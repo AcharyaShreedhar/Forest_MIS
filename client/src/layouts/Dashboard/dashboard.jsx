@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { NotFound, SideNavbar } from "../../components";
 import dashboardRoutes from "../../routes/dashboard";
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import "./Dashboard.scss";
 
 export const Content = (props) => {
@@ -12,7 +11,12 @@ export const Content = (props) => {
       className={`content${props.loggedIn ? " logged" : ""}`}
     >
       {props.loggedIn && (
-        <SideNavbar history={props.history} onlogout={props.onLogout} onToggle={props.onToggle} open={props.open} />
+        <SideNavbar
+          history={props.history}
+          onlogout={props.onLogout}
+          onToggle={props.onToggle}
+          open={props.open}
+        />
       )}
       <div className="main">
         <Switch>

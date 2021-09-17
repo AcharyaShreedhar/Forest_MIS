@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { isNil, equals } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 import "./SamudayikbanBibaran.scss";
@@ -13,7 +13,6 @@ function List(props) {
     data,
     title,
     pageCount,
-    user,
     onAdd,
     onSelect,
     onPageClick,
@@ -25,16 +24,10 @@ function List(props) {
     <Fragment>
       <div className="card">
         <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
+          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="samudayikban">
+        <Table responsive striped bordered hover id="samudayikban" size="sm">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -55,14 +48,21 @@ function List(props) {
                   <td> {sban.samudayikban_name}</td>
                   <td> {sban.area}</td>
                   <td> {sban.main_species}</td>
-                  <td> {sban.forest_type}</td>
+                  <td>
+                    {equals(sban.forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण"}
+                  </td>
                   <td>{englishToNepaliNumber(sban.handover_date)}</td>
                   <td>{englishToNepaliNumber(sban.renewed_date)}</td>
                   <td> {sban.nabikaran_abadhi}</td>
                   <td> {sban.forest_maujdat}</td>
-                  <td> {sban.nikasi_timber}</td>
-                  <td> {sban.nikasi_wood}</td>
-                  <td> {sban.baiganik_ban}</td>
+                  <td> {sban.timber}</td>
+                  <td> {sban.wood}</td>
+                  <td>
+                    {" "}
+                    {equals(sban.forest_type, 1)
+                      ? "स्विकृत भएको"
+                      : "स्विकृत नभएको"}
+                  </td>
                   <td>{englishToNepaliNumber(sban.renewal_date)}</td>
                   <td>
                     <div className="edit">

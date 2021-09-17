@@ -12,10 +12,16 @@
     .core-dropdown-label {
       flex: 1;
       overflow: hidden;
-      line-height: 22px;
+      line-height: 35px;
       margin-right: auto;
       position: relative;
       text-overflow: ellipsis;
+      justify-content: space-between;
+    display: flex;
+    padding: 10px 0px;
+      width: 100%;
+      border: 1px solid lightgrey;
+      border-radius: 3px;
       span {
         display: inline-block;
         min-width: 20px;
@@ -25,9 +31,9 @@
       }
     }
     .caret {
-      position: absolute;
+      display: inline-flex;
       bottom: 8px !important;
-      right: 10px;
+      right: 0px;
     }
     &.horizontal {
       flex-direction: row;
@@ -35,6 +41,9 @@
       .core-dropdown-label {
         padding-left: 10px;
         padding-right: 10px;
+        width: 100%;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
       }
     }
     &.vertical {
