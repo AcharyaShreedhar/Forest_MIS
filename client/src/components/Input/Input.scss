@@ -21,7 +21,7 @@
     textarea,
     input {
       background-color: $slight;
-      border: 1px solid transparent;
+      border: 1px solid $slight-grey;;
       border-radius: 3px;
       box-shadow: none;
       font-size: 18px;
@@ -45,7 +45,7 @@
       }
       &:hover {
         background-color: $slight;
-        border: 1px solid $slight-grey;
+        border: 1px solid $light-grey;
       }
       &:disabled {
         background-color: transparent;
