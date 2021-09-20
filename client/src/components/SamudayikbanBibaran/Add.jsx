@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
+import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./SamudayikbanBibaran.scss";
@@ -36,20 +36,43 @@ class Add extends Component {
       updated_by: "",
       showDialog: false,
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleBaiganikBan = this.handleBaiganikBan.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleForestType = this.handleForestType.bind(this);
-    this.handleBaiganikBan = this.handleBaiganikBan.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  handleConfirm() {
-    this.setState({ showDialog: !this.state.showDialog });
+  handleBaiganikBan(e) {
+    this.setState({ baiganik_ban: e[0] });
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+
+  handleDate(e, type) {
+    switch (type) {
+      case "handover": {
+        this.setState({ handover_date: e });
+        break;
+      }
+      case "renewed": {
+        this.setState({ renewed_date: e });
+        break;
+      }
+      case "renewal": {
+        this.setState({ renewal_date: e });
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  handleForestType(e) {
+    this.setState({ forest_type: e[0] });
   }
 
   handleSubmit() {
@@ -96,30 +119,6 @@ class Add extends Component {
       },
     };
     this.props.onSubmit(payload);
-  }
-  handleForestType(e) {
-    this.setState({ forest_type: e[0] });
-  }
-  handleBaiganikBan(e) {
-    this.setState({ baiganik_ban: e[0] });
-  }
-  handleDate(e, type) {
-    switch (type) {
-      case "handover": {
-        this.setState({ handover_date: e });
-        break;
-      }
-      case "renewed": {
-        this.setState({ renewed_date: e });
-        break;
-      }
-      case "renewal": {
-        this.setState({ renewal_date: e });
-        break;
-      }
-      default:
-        break;
-    }
   }
 
   render() {
@@ -174,7 +173,7 @@ class Add extends Component {
                 onChange={(e) => this.setState({ name: e })}
               />
             </div>
-            <div className="panel mb-4">
+            <div className="panel">
               <Input
                 className="w-25"
                 title="क्षत्रफल(हे.):"

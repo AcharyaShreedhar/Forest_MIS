@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -23,16 +23,10 @@ function List(props) {
     <Fragment>
       <div className="card">
         <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
+          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="dharmikban">
+        <Table responsive striped bordered hover id="dharmikban" size="sm">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -54,12 +48,14 @@ function List(props) {
                   <td>{dban.community_name}</td>
                   <td>{dban.area}</td>
                   <td>{dban.main_species}</td>
-                  <td>{dban.forest_type}</td>
+                  <td>
+                    {equals(dban.forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण"}
+                  </td>
                   <td>{englishToNepaliNumber(dban.handover_date)}</td>
                   <td>{englishToNepaliNumber(dban.renewed_date)}</td>
                   <td>{dban.nabikaran_abadhi}</td>
                   <td>{dban.forest_maujdat}</td>
-                  <td>{englishToNepaliNumber(dban.renewaldate)}</td>
+                  <td>{englishToNepaliNumber(dban.renewal_date)}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
