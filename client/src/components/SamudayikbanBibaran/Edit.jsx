@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import "./SamudayikbanBibaran.scss";
 
 const ForestTypes = [
@@ -38,11 +38,12 @@ class Edit extends Component {
       showDialog: false,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleBaiganikBan = this.handleBaiganikBan.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleForestType = this.handleForestType.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleConfirm() {
@@ -179,7 +180,7 @@ class Edit extends Component {
                 onChange={(e) => this.setState({ name: e })}
               />
             </div>
-            <div className="panel mb-4">
+            <div className="panel">
               <Input
                 className="w-25"
                 title="क्षत्रफल(हे.)"

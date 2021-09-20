@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
+import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./DharmikbanBibaran.scss";
@@ -35,18 +35,40 @@ class Edit extends Component {
       showDialog: false,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleForestType = this.handleForestType.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
-  handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+
+  handleDate(e, type) {
+    switch (type) {
+      case "handover": {
+        this.setState({ handover_date: e });
+        break;
+      }
+      case "renewed": {
+        this.setState({ renewed_date: e });
+        break;
+      }
+      case "renewal": {
+        this.setState({ renewal_date: e });
+        break;
+      }
+      default:
+        break;
+    }
+  }
+  handleForestType(e) {
+    this.setState({ forest_type: e[0] });
   }
 
   handleSubmit() {
@@ -92,29 +114,7 @@ class Edit extends Component {
         },
       },
     };
-
     this.props.onUpdate(payload, id);
-  }
-  handleForestType(e) {
-    this.setState({ forest_type: e });
-  }
-  handleDate(e, type) {
-    switch (type) {
-      case "handover": {
-        this.setState({ handover_date: e });
-        break;
-      }
-      case "renewed": {
-        this.setState({ renewed_date: e });
-        break;
-      }
-      case "renewal": {
-        this.setState({ renewal_date: e });
-        break;
-      }
-      default:
-        break;
-    }
   }
 
   render() {
@@ -137,7 +137,7 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ धार्मिक वनको विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -150,100 +150,116 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="दर्ता नं"
-              value={regno}
-              direction="vertical"
-              onChange={(e) => this.setState({ regno: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="धर्मिक वनको नाम"
-              direction="vertical"
-              value={name}
-              onChange={(e) => this.setState({ name: e })}
-            />
-            <Input
-              className="mb-4"
-              title="व्यवस्थापन गर्ने धार्मिक निकाय / समुदायको नाम"
-              value={community_name}
-              direction="vertical"
-              onChange={(e) => this.setState({ community_name: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="क्षत्रफल(हे.)"
-              direction="vertical"
-              value={area}
-              onChange={(e) => this.setState({ area: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="मुख्य प्रजाति"
-              direction="vertical"
-              as="textarea"
-              value={main_species}
-              onChange={(e) => this.setState({ main_species: e })}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="वनको किसिम"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[forest_type]}
-              data={ForestTypes}
-              getValue={(ForestTypes) => ForestTypes["value"]}
-              onChange={(e) => this.handleForestType(e)}
-              value={forest_type}
-            />
-
-            <span className="dsl-b18">हस्तान्तरण मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={handover_date}
-              onChange={(e) => this.handleDate(e, "handover")}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <span className="dsl-b18">नविकरण गरेको मिती</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={renewed_date}
-              onChange={(e) => this.handleDate(e, "renewed")}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="नविकरण अबधि"
-              value={nabikaran_abadhi}
-              direction="vertical"
-              onChange={(e) => this.setState({ nabikaran_abadhi: e })}
-            />
-            <Input
-              className="mb-4"
-              title="वनको मौज्दात"
-              value={forest_maujdat}
-              direction="vertical"
-              onChange={(e) => this.setState({ forest_maujdat: e })}
-            />
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={renewal_date}
-              onChange={(e) => this.handleDate(e, "renewal")}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
+            <div className="panel">
+              <Input
+                className="w-25"
+                title="दर्ता नं :"
+                value={regno}
+                direction="vertical"
+                onChange={(e) => this.setState({ regno: e })}
+              />
+              <Input
+                className="pl-5 w-75"
+                title="धर्मिक वनको नाम :"
+                direction="vertical"
+                value={name}
+                onChange={(e) => this.setState({ name: e })}
+              />
+            </div>
+            <div className="section mb-4" />
+            <div className="panel space mb-4">
+              <Input
+                className="w-25"
+                title="व्यवस्थापन गर्ने धार्मिक निकाय / समुदायको नाम :"
+                value={community_name}
+                direction="vertical"
+                onChange={(e) => this.setState({ community_name: e })}
+              />
+              <Input
+                className="w-25"
+                title="क्षत्रफल(हे.) :"
+                direction="vertical"
+                as="textarea"
+                value={area}
+                onChange={(e) => this.setState({ area: e })}
+              />
+              <Input
+                className="w-25"
+                title="मुख्य प्रजाति :"
+                direction="vertical"
+                as="textarea"
+                value={main_species}
+                onChange={(e) => this.setState({ main_species: e })}
+              />
+            </div>
+            <div className="panel space pt-2">
+              <div className="w-25">
+                <Dropdown
+                  className="dropdownlabel mb-4"
+                  title="वनको किसिम :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[forest_type]}
+                  data={ForestTypes}
+                  getValue={(ForestTypes) => ForestTypes["value"]}
+                  onChange={(e) => this.handleForestType(e)}
+                  value={forest_type}
+                />
+              </div>
+              <Input
+                className="w-25"
+                title="वनको मौज्दात :"
+                value={forest_maujdat}
+                direction="vertical"
+                onChange={(e) => this.setState({ forest_maujdat: e })}
+              />
+              <div className="w-25">
+                <span className="dsl-b18">हस्तान्तरण मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  className="mb-4 pt-2"
+                  value={handover_date}
+                  onChange={(e) => this.handleDate(e, "handover")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+            </div>
+            <span className="dsl-b18">नविकरण सम्बन्धी विवरण :</span>
+            <div className="panel space mt-2">
+              <div className="w-25">
+                <span className="dsl-b18">गरेको मिती :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  className="mb-4"
+                  value={renewed_date}
+                  onChange={(e) => this.handleDate(e, "renewed")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="mb-4 w-25"
+                title="अबधि(बर्ष) :"
+                value={nabikaran_abadhi}
+                direction="vertical"
+                onChange={(e) => this.setState({ nabikaran_abadhi: e })}
+              />
+              <div className="w-25">
+                <span className="dsl-b18">गर्नुपर्ने आर्थिक बर्ष :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  className="mb-4"
+                  value={renewal_date}
+                  onChange={(e) => this.handleDate(e, "renewal")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+            </div>
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Update"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

@@ -169,7 +169,7 @@ export class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <div className="panel mb-4">
+            <div className="panel">
               <Input
                 className="w-25"
                 title="दर्ता नं :"
