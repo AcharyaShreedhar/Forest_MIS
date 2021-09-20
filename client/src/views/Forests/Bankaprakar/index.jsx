@@ -303,7 +303,7 @@ class Bankaprakar extends Component {
           }
           case "upabhoktasamuha": {
             this.props.history.push({
-              pathname: `/forests/upabhoktasamuhaedit/${item.registration_no}`,
+              pathname: `/forests/upabhoktasamuhaedit/${item.darta_no}`,
               item,
             });
             break;
@@ -400,7 +400,7 @@ class Bankaprakar extends Component {
         break;
       }
       case "upabhoktasamuha": {
-        this.props.deleteUpabhoktasamuhabibaran(item.registration_no);
+        this.props.deleteUpabhoktasamuhabibaran(item.darta_no);
         break;
       }
       default:
