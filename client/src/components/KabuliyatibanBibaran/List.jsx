@@ -32,7 +32,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="kabuliyatiban">
+        <Table responsive striped bordered hover id="kabuliyatiban" size="md">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -52,6 +52,7 @@ function List(props) {
                   <td>{kban.darta_no}</td>
                   <td>{englishToNepaliNumber(kban.darta_miti)}</td>
                   <td>{kban.kabuliyati_ban_samiti_name}</td>
+                  <td>{kban.area}</td>
                   <td>{kban.perm_addr}</td>
                   <td>{kban.curr_addr}</td>
                   <td>{kban.dalit_ghardhuri}</td>

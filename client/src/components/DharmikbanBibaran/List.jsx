@@ -26,7 +26,7 @@ function List(props) {
           <Button type="low" size="small" name={buttonName} onClick={onAdd} />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="dharmikban" size="sm">
+        <Table responsive striped bordered hover id="dharmikban" size="md">
           <thead>
             <tr>
               <th>क्र.स.</th>

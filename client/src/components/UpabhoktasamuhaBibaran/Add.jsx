@@ -164,16 +164,16 @@ export class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <div className="panel">
+            <div className="panel space">
               <Input
-                className="w-25"
+                className="w-20"
                 title="दर्ता नं :"
                 value={darta_no}
                 direction="vertical"
                 onChange={(e) => this.setState({ darta_no: e })}
               />
               <Input
-                className="w-75 pl-5"
+                className="w-75"
                 title="सामुदायिक वन उपभोक्ता समितिको नाम :"
                 direction="vertical"
                 value={samudayik_upavokta_samiti_name}
@@ -184,8 +184,8 @@ export class Add extends Component {
             </div>
             <div className="section mb-4" />
             <div className="panel space mb-4">
-              <div className="w-25">
-                <span className="dsl-b18">स्विकृत मिति :</span>
+              <div className="w-30">
+                <span className="dsl-b18">दर्ता मिति :</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
                   value={darta_miti}
@@ -194,14 +194,14 @@ export class Add extends Component {
                 />
               </div>
               <Input
-                className="w-25"
+                className="w-30"
                 title="साविक ठेगाना :"
                 value={perm_addr}
                 direction="vertical"
                 onChange={(e) => this.setState({ perm_addr: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="हाल ठेगाना :"
                 direction="vertical"
                 value={curr_addr}
@@ -211,26 +211,23 @@ export class Add extends Component {
             <span className="dsl-b18">घरधुरी विवरण :</span>
             <div className="panel space mt-2 mb-4">
               <Input
-                className="w-25"
+                className="w-30"
                 title="दलित :"
                 direction="vertical"
-                as="textarea"
                 value={dalit_ghardhuri}
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="जनजाती :"
                 direction="vertical"
-                as="textarea"
                 value={janjati_ghardhuri}
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="अन्य :"
                 direction="vertical"
-                as="textarea"
                 value={anya_ghardhuri}
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}
               />
@@ -239,26 +236,23 @@ export class Add extends Component {
             <span className="dsl-b18">सम्पन्नता स्तरीकरण घरधुरी विवरण :</span>
             <div className="panel space mt-2 mb-4">
               <Input
-                className="w-25"
+                className="w-30"
                 title="सम्पन्न : "
                 direction="vertical"
-                as="textarea"
                 value={sampanna}
                 onChange={(e) => this.setState({ sampanna: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="मध्यम : "
                 direction="vertical"
-                as="textarea"
                 value={madhyam}
                 onChange={(e) => this.setState({ madhyam: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="विपन्न : "
                 direction="vertical"
-                as="textarea"
                 value={bipanna}
                 onChange={(e) => this.setState({ bipanna: e })}
               />
@@ -266,27 +260,24 @@ export class Add extends Component {
             <span className="dsl-b18">कार्यसमितिमा प्रतिनिधित्व विवरण :</span>
             <div className="panel space mt-2 mb-4">
               <Input
-                className="w-25"
+                className="w-30"
                 title="दलित :"
                 direction="vertical"
-                as="textarea"
                 value={dalit_rep}
                 onChange={(e) => this.setState({ dalit_rep: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="जनजाती :"
                 direction="vertical"
-                as="textarea"
                 value={janjati_rep}
                 onChange={(e) => this.setState({ janjati_rep: e })}
               />
 
               <Input
-                className="w-25"
+                className="w-30"
                 title="अन्य :"
                 direction="vertical"
-                as="textarea"
                 value={anya_rep}
                 onChange={(e) => this.setState({ anya_rep: e })}
               />
@@ -295,18 +286,16 @@ export class Add extends Component {
             <span className="dsl-b18">जनसंख्या विवरण :</span>
             <div className="panel space mt-2 mb-4">
               <Input
-                className="w-25"
+                className="w-45"
                 title="महिला :"
                 direction="vertical"
-                as="textarea"
                 value={female}
                 onChange={(e) => this.setState({ female: e })}
               />
               <Input
-                className="w-25"
+                className="w-45"
                 title="पुरुष : "
                 direction="vertical"
-                as="textarea"
                 value={male}
                 onChange={(e) => this.setState({ male: e })}
               />
@@ -316,19 +305,17 @@ export class Add extends Component {
             </span>
             <div className="panel space mt-2 mb-4">
               <Input
-                className="w-25"
+                className="w-45"
                 title="अध्यक्ष :"
                 direction="vertical"
-                as="textarea"
                 value={adhyakshya}
                 onChange={(e) => this.setState({ adhyakshya: e })}
               />
-              <div className="w-25">
+              <div className="w-45">
                 <Dropdown
-                  className="dropdownlabel mb-4"
+                  className="dropdownlabel"
                   title="लिङ्ग :"
                   direction="vertical"
-                  width="w-25"
                   defaultIds={[GenderTypes]}
                   data={GenderTypes}
                   getValue={(GenderTypes) => GenderTypes["value"]}
@@ -337,21 +324,20 @@ export class Add extends Component {
                 />
               </div>
             </div>
-            <div className="panel space mt-2 mb-4">
+            <div className="panel space mt-2">
               <Input
-                className="w-25"
+                className="w-45"
                 title="सचिव :"
                 direction="vertical"
                 as="textarea"
                 value={sachib}
                 onChange={(e) => this.setState({ sachib: e })}
               />
-              <div className="w-25">
+              <div className="w-45">
                 <Dropdown
-                  className="dropdownlabel mb-4"
+                  className="dropdownlabel"
                   title="लिङ्ग :"
                   direction="vertical"
-                  width="w-25"
                   defaultIds={[GenderTypes]}
                   data={GenderTypes}
                   getValue={(GenderTypes) => GenderTypes["value"]}
@@ -361,6 +347,7 @@ export class Add extends Component {
               </div>
             </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
