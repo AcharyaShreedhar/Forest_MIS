@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Button, Input, ConfirmationDialoge } from "../../components";
+import { equals } from "ramda";
+import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+
+const GenderTypes = [
+  { id: 1, value: "पुरुष" },
+  { id: 2, value: "महिला" },
+];
 
 export class Edit extends Component {
   constructor(props) {
@@ -34,17 +40,37 @@ export class Edit extends Component {
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleSubmit.bind(this);
     this.handleDate = this.handleDate.bind(this);
-  }
-  handleConfirm() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.handleGender = this.handleGender.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
   }
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleDate(e) {
+    this.setState({ darta_miti: e });
+  }
+
+  handleGender(e, type) {
+    switch (type) {
+      case "adhyakshya": {
+        this.setState({ adhyakshya_gender: equals(e[0], 1) ? "M" : "F" });
+        break;
+      }
+      case "sachib": {
+        this.setState({ sachib_gender: equals(e[0], 1) ? "M" : "F" });
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
   handleSubmit() {
     const {
       id,
@@ -101,9 +127,7 @@ export class Edit extends Component {
     };
     this.props.onUpdate(payload, id);
   }
-  handleDate(e) {
-    this.setState({ darta_miti: e });
-  }
+
   render() {
     const { title } = this.props;
     const {
@@ -145,175 +169,208 @@ export class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="दर्ता नं"
-              value={darta_no}
-              direction="vertical"
-              onChange={(e) => this.setState({ darta_no: e })}
-            />
-            <span className="dsl-b18">स्विकृत मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={darta_miti}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="सामुदायिक वन उपभोक्ता समितिको नाम"
-              direction="vertical"
-              value={samudayik_upavokta_samiti_name}
-              onChange={(e) =>
-                this.setState({ samudayik_upavokta_samiti_name: e })
-              }
-            />
-            <Input
-              className="mb-4"
-              title="साविक ठेगाना"
-              value={perm_addr}
-              direction="vertical"
-              onChange={(e) => this.setState({ perm_addr: e })}
-            />
+            <div className="panel mb-4">
+              <Input
+                className="w-25"
+                title="दर्ता नं :"
+                value={darta_no}
+                direction="vertical"
+                onChange={(e) => this.setState({ darta_no: e })}
+              />
+              <Input
+                className="w-75 pl-5"
+                title="सामुदायिक वन उपभोक्ता समितिको नाम :"
+                direction="vertical"
+                value={samudayik_upavokta_samiti_name}
+                onChange={(e) =>
+                  this.setState({ samudayik_upavokta_samiti_name: e })
+                }
+              />
+            </div>
+            <div className="section mb-4" />
+            <div className="panel space mb-4">
+              <div className="w-25">
+                <span className="dsl-b18">स्विकृत मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={darta_miti}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-25"
+                title="साविक ठेगाना :"
+                value={perm_addr}
+                direction="vertical"
+                onChange={(e) => this.setState({ perm_addr: e })}
+              />
+              <Input
+                className="w-25"
+                title="हाल ठेगाना :"
+                direction="vertical"
+                value={curr_addr}
+                onChange={(e) => this.setState({ curr_addr: e })}
+              />
+            </div>
+            <span className="dsl-b18">घरधुरी विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-25"
+                title="दलित :"
+                direction="vertical"
+                as="textarea"
+                value={dalit_ghardhuri}
+                onChange={(e) => this.setState({ dalit_ghardhuri: e })}
+              />
+              <Input
+                className="w-25"
+                title="जनजाती :"
+                direction="vertical"
+                as="textarea"
+                value={janjati_ghardhuri}
+                onChange={(e) => this.setState({ janjati_ghardhuri: e })}
+              />
+              <Input
+                className="w-25"
+                title="अन्य :"
+                direction="vertical"
+                as="textarea"
+                value={anya_ghardhuri}
+                onChange={(e) => this.setState({ anya_ghardhuri: e })}
+              />
+            </div>
 
-            <Input
-              className="mb-4"
-              title="हाल ठेगाना"
-              direction="vertical"
-              value={curr_addr}
-              onChange={(e) => this.setState({ curr_addr: e })}
-            />
+            <span className="dsl-b18">सम्पन्नता स्तरीकरण घरधुरी विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-25"
+                title="सम्पन्न : "
+                direction="vertical"
+                as="textarea"
+                value={sampanna}
+                onChange={(e) => this.setState({ sampanna: e })}
+              />
+              <Input
+                className="w-25"
+                title="मध्यम : "
+                direction="vertical"
+                as="textarea"
+                value={madhyam}
+                onChange={(e) => this.setState({ madhyam: e })}
+              />
+              <Input
+                className="w-25"
+                title="विपन्न : "
+                direction="vertical"
+                as="textarea"
+                value={bipanna}
+                onChange={(e) => this.setState({ bipanna: e })}
+              />
+            </div>
+            <span className="dsl-b18">कार्यसमितिमा प्रतिनिधित्व विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-25"
+                title="दलित :"
+                direction="vertical"
+                as="textarea"
+                value={dalit_rep}
+                onChange={(e) => this.setState({ dalit_rep: e })}
+              />
+              <Input
+                className="w-25"
+                title="जनजाती :"
+                direction="vertical"
+                as="textarea"
+                value={janjati_rep}
+                onChange={(e) => this.setState({ janjati_rep: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="दलित घरधुरी"
-              direction="vertical"
-              as="textarea"
-              value={dalit_ghardhuri}
-              onChange={(e) => this.setState({ dalit_ghardhuri: e })}
-            />
-            <Input
-              className="mb-4"
-              title="जनजाती घरधुरी"
-              direction="vertical"
-              as="textarea"
-              value={janjati_ghardhuri}
-              onChange={(e) => this.setState({ janjati_ghardhuri: e })}
-            />
-            <Input
-              className="mb-4"
-              title="अन्य घरधुरी "
-              direction="vertical"
-              as="textarea"
-              value={anya_ghardhuri}
-              onChange={(e) => this.setState({ anya_ghardhuri: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="महिला जनसंख्या "
-              direction="vertical"
-              as="textarea"
-              value={female}
-              onChange={(e) => this.setState({ female: e })}
-            />
-            <Input
-              className="mb-4"
-              title="पुरुष जनसंख्या "
-              direction="vertical"
-              as="textarea"
-              value={male}
-              onChange={(e) => this.setState({ male: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="सम्पन्नता स्तरीकरण घरधुरी (सम्पन्न) "
-              direction="vertical"
-              as="textarea"
-              value={sampanna}
-              onChange={(e) => this.setState({ sampanna: e })}
-            />
-            <Input
-              className="mb-4"
-              title="सम्पन्नता स्तरीकरण घरधुरी (मध्यम) "
-              direction="vertical"
-              as="textarea"
-              value={madhyam}
-              onChange={(e) => this.setState({ madhyam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="सम्पन्नता स्तरीकरण घरधुरी (विपन्न) "
-              direction="vertical"
-              as="textarea"
-              value={bipanna}
-              onChange={(e) => this.setState({ bipanna: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कार्यसमितिमा प्रतिनिधित्व (दलित)"
-              direction="vertical"
-              as="textarea"
-              value={dalit_rep}
-              onChange={(e) => this.setState({ dalit_rep: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कार्यसमितिमा प्रतिनिधित्व (जनजाती)"
-              direction="vertical"
-              as="textarea"
-              value={janjati_rep}
-              onChange={(e) => this.setState({ janjati_rep: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="कार्यसमितिमा प्रतिनिधित्व (अन्य)"
-              direction="vertical"
-              as="textarea"
-              value={anya_rep}
-              onChange={(e) => this.setState({ anya_rep: e })}
-            />
-            <Input
-              className="mb-4"
-              title="मुख्य पदाधिकारीमा प्रतिनिधित्व अध्यक्ष (महिला) "
-              direction="vertical"
-              as="textarea"
-              value={adhyakshya}
-              onChange={(e) => this.setState({ adhyakshya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="मुख्य पदाधिकारीमा प्रतिनिधित्व अध्यक्ष (पुरुष)"
-              direction="vertical"
-              as="textarea"
-              value={adhyakshya_gender}
-              onChange={(e) => this.setState({ adhyakshya_gender: e })}
-            />
-            <Input
-              className="mb-4"
-              title="मुख्य पदाधिकारीमा प्रतिनिधित्व सचिव (महिला) "
-              direction="vertical"
-              as="textarea"
-              value={sachib}
-              onChange={(e) => this.setState({ sachib: e })}
-            />
-            <Input
-              className="mb-4"
-              title="मुख्य पदाधिकारीमा प्रतिनिधित्व सचिव (पुरुष) "
-              direction="vertical"
-              as="textarea"
-              value={sachib_gender}
-              onChange={(e) => this.setState({ sachib_gender: e })}
-            />
+              <Input
+                className="w-25"
+                title="अन्य :"
+                direction="vertical"
+                as="textarea"
+                value={anya_rep}
+                onChange={(e) => this.setState({ anya_rep: e })}
+              />
+            </div>
+            <div className="section mb-4" />
+            <span className="dsl-b18">जनसंख्या विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-25"
+                title="महिला :"
+                direction="vertical"
+                as="textarea"
+                value={female}
+                onChange={(e) => this.setState({ female: e })}
+              />
+              <Input
+                className="w-25"
+                title="पुरुष : "
+                direction="vertical"
+                as="textarea"
+                value={male}
+                onChange={(e) => this.setState({ male: e })}
+              />
+            </div>
+            <span className="dsl-b18">
+              मुख्य पदाधिकारीमा प्रतिनिधित्व विवरण :
+            </span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-25"
+                title="अध्यक्ष :"
+                direction="vertical"
+                as="textarea"
+                value={adhyakshya}
+                onChange={(e) => this.setState({ adhyakshya: e })}
+              />
+              <div className="w-25">
+                <Dropdown
+                  className="dropdownlabel mb-4"
+                  title="लिङ्ग :"
+                  direction="vertical"
+                  width="w-25"
+                  defaultIds={equals(adhyakshya_gender, "M") ? [1] : [2]}
+                  data={GenderTypes}
+                  getValue={(GenderTypes) => GenderTypes["value"]}
+                  onChange={(e) => this.handleGender(e, "adhyakshya")}
+                  value={adhyakshya_gender}
+                />
+              </div>
+            </div>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-25"
+                title="सचिव :"
+                direction="vertical"
+                as="textarea"
+                value={sachib}
+                onChange={(e) => this.setState({ sachib: e })}
+              />
+              <div className="w-25">
+                <Dropdown
+                  className="dropdownlabel mb-4"
+                  title="लिङ्ग :"
+                  direction="vertical"
+                  width="w-25"
+                  defaultIds={equals(sachib_gender, "M") ? [1] : [2]}
+                  data={GenderTypes}
+                  getValue={(GenderTypes) => GenderTypes["value"]}
+                  onChange={(e) => this.handleGender(e, "sachib")}
+                  value={sachib_gender}
+                />
+              </div>
+            </div>
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
