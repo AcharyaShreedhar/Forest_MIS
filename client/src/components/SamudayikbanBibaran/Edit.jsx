@@ -163,9 +163,9 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <div className="panel mb-4">
+            <div className="panel space mb-4">
               <Input
-                className="w-25"
+                className="w-20"
                 title="दर्ता नं:"
                 value={regno}
                 direction="vertical"
@@ -173,25 +173,25 @@ class Edit extends Component {
               />
 
               <Input
-                className="pl-5 w-75"
+                className="w-75"
                 title="सामुदायिक वन उपभोक्ता समितिको नाम:"
                 direction="vertical"
                 value={name}
                 onChange={(e) => this.setState({ name: e })}
               />
             </div>
-            <div className="panel">
+            <div className="panel space">
               <Input
-                className="w-25"
-                title="क्षत्रफल(हे.)"
+                className="w-20"
+                title="क्षत्रफल(हे.):"
                 value={area}
                 direction="vertical"
                 onChange={(e) => this.setState({ area: e })}
               />
 
               <Input
-                className="pl-5 w-75"
-                title="मुख्य प्रजाति"
+                className="w-75"
+                title="मुख्य प्रजाति:"
                 direction="vertical"
                 as="textarea"
                 value={main_species}
@@ -199,13 +199,12 @@ class Edit extends Component {
               />
             </div>
             <div className="section mb-4" />
-            <div className="panel space pt-2">
-              <div className="w-25">
+            <div className="panel space mb-4 pt-2">
+              <div className="w-30">
                 <Dropdown
-                  className="dropdownlabel mb-4"
-                  title="वनको किसिम"
+                  className="dropdownlabel"
+                  title="वनको किसिम:"
                   direction="vertical"
-                  width="fit-content"
                   defaultIds={[forest_type]}
                   data={ForestTypes}
                   getValue={(ForestTypes) => ForestTypes["value"]}
@@ -213,22 +212,21 @@ class Edit extends Component {
                   value={forest_type}
                 />
               </div>
-              <div className="w-25">
-                <span className="dsl-b18">हस्तान्तरण मिति</span>
+
+              <div className="w-30">
+                <span className="dsl-b18">हस्तान्तरण मिति:</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
-                  className="mb-4"
                   value={handover_date}
                   onChange={(e) => this.handleDate(e, "handover")}
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
                 />
               </div>
-              <div className="w-25">
+              <div className="w-30">
                 <Dropdown
-                  className="dropdownlabel mb-4 w-25"
+                  className="dropdownlabel"
                   title="वैज्ञानीक वन व्यबस्थापन (स्विकृती अवस्था):"
                   direction="vertical"
-                  width="w-25"
                   defaultIds={[baiganik_ban]}
                   data={BaiganikBan}
                   getValue={(BaiganikBan) => BaiganikBan["value"]}
@@ -237,54 +235,51 @@ class Edit extends Component {
                 />
               </div>
             </div>
-            <div className="panel space">
+            <div className="panel mb-4 space">
               <Input
-                className="mb-4 w-25"
+                className="w-30"
                 title="वनको मौज्दात:"
                 value={forest_maujdat}
                 direction="vertical"
                 onChange={(e) => this.setState({ forest_maujdat: e })}
               />
               <Input
-                className="mb-4 w-25"
+                className="w-30"
                 title="वार्षिक निकासी परिमाण काठ(घ. मी):"
                 value={timber}
                 direction="vertical"
                 onChange={(e) => this.setState({ timber: e })}
               />
               <Input
-                className="mb-4 w-25"
+                className="w-30"
                 title="वार्षिक निकासी परिमाण दाउरा(घ. मी):"
                 value={wood}
                 direction="vertical"
                 onChange={(e) => this.setState({ wood: e })}
               />
             </div>
-
             <span className="dsl-b18">नविकरण सम्बन्धी विवरण:</span>
             <div className="panel space mt-2">
-              <div className="w-25">
+              <div className="w-30">
                 <span className="dsl-b18">गरेको मिती:</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
-                  className="mb-4"
                   value={renewed_date}
                   onChange={(e) => this.handleDate(e, "renewed")}
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
                 />
               </div>
               <Input
-                className="mb-4 w-25"
+                className="w-30"
                 title="अबधि(बर्ष):"
                 value={nabikaran_abadhi}
                 direction="vertical"
                 onChange={(e) => this.setState({ nabikaran_abadhi: e })}
               />
-              <div className="w-25">
+              <div className="w-30">
                 <span className="dsl-b18">गर्नुपर्ने आर्थिक बर्ष:</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
-                  className="mb-4"
                   value={renewal_date}
                   onChange={(e) => this.handleDate(e, "renewal")}
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
@@ -292,6 +287,7 @@ class Edit extends Component {
               </div>
             </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button

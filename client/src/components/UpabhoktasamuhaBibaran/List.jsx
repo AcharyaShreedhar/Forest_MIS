@@ -33,7 +33,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="upabhoktasamuha" size="sm">
+        <Table responsive striped bordered hover id="upabhoktasamuha" size="md">
           <thead>
             <tr>
               <th>क्र.स.</th>

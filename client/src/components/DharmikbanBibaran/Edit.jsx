@@ -150,16 +150,16 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <div className="panel">
+            <div className="panel space">
               <Input
-                className="w-25"
+                className="w-20"
                 title="दर्ता नं :"
                 value={regno}
                 direction="vertical"
                 onChange={(e) => this.setState({ regno: e })}
               />
               <Input
-                className="pl-5 w-75"
+                className="w-75"
                 title="धर्मिक वनको नाम :"
                 direction="vertical"
                 value={name}
@@ -169,14 +169,14 @@ class Edit extends Component {
             <div className="section mb-4" />
             <div className="panel space mb-4">
               <Input
-                className="w-25"
+                className="w-30"
                 title="व्यवस्थापन गर्ने धार्मिक निकाय / समुदायको नाम :"
                 value={community_name}
                 direction="vertical"
                 onChange={(e) => this.setState({ community_name: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="क्षत्रफल(हे.) :"
                 direction="vertical"
                 as="textarea"
@@ -184,7 +184,7 @@ class Edit extends Component {
                 onChange={(e) => this.setState({ area: e })}
               />
               <Input
-                className="w-25"
+                className="w-30"
                 title="मुख्य प्रजाति :"
                 direction="vertical"
                 as="textarea"
@@ -192,10 +192,10 @@ class Edit extends Component {
                 onChange={(e) => this.setState({ main_species: e })}
               />
             </div>
-            <div className="panel space pt-2">
-              <div className="w-25">
+            <div className="panel space mb-4 pt-2">
+              <div className="w-30">
                 <Dropdown
-                  className="dropdownlabel mb-4"
+                  className="dropdownlabel"
                   title="वनको किसिम :"
                   direction="vertical"
                   width="fit-content"
@@ -207,17 +207,17 @@ class Edit extends Component {
                 />
               </div>
               <Input
-                className="w-25"
+                className="w-30"
                 title="वनको मौज्दात :"
                 value={forest_maujdat}
                 direction="vertical"
                 onChange={(e) => this.setState({ forest_maujdat: e })}
               />
-              <div className="w-25">
+              <div className="w-30">
                 <span className="dsl-b18">हस्तान्तरण मिति :</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
-                  className="mb-4 pt-2"
+                  className="pt-2"
                   value={handover_date}
                   onChange={(e) => this.handleDate(e, "handover")}
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
@@ -226,28 +226,26 @@ class Edit extends Component {
             </div>
             <span className="dsl-b18">नविकरण सम्बन्धी विवरण :</span>
             <div className="panel space mt-2">
-              <div className="w-25">
+              <div className="w-30">
                 <span className="dsl-b18">गरेको मिती :</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
-                  className="mb-4"
                   value={renewed_date}
                   onChange={(e) => this.handleDate(e, "renewed")}
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
                 />
               </div>
               <Input
-                className="mb-4 w-25"
+                className="w-30"
                 title="अबधि(बर्ष) :"
                 value={nabikaran_abadhi}
                 direction="vertical"
                 onChange={(e) => this.setState({ nabikaran_abadhi: e })}
               />
-              <div className="w-25">
+              <div className="w-30">
                 <span className="dsl-b18">गर्नुपर्ने आर्थिक बर्ष :</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
-                  className="mb-4"
                   value={renewal_date}
                   onChange={(e) => this.handleDate(e, "renewal")}
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
@@ -255,6 +253,7 @@ class Edit extends Component {
               </div>
             </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
