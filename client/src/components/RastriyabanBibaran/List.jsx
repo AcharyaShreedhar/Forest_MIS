@@ -12,7 +12,6 @@ function List(props) {
     data,
     title,
     pageCount,
-    user,
     onAdd,
     onSelect,
     onPageClick,
@@ -56,8 +55,11 @@ function List(props) {
                   <td> {rban.address}</td>
                   <td> {rban.area}</td>
                   <td> {rban.main_species}</td>
-                  <td> {rban.ghardhuri}</td>
-                  <td> {rban.lav_jana}</td>
+                  <td>{rban.dalit_ghardhuri}</td>
+                  <td>{rban.janjati_ghardhuri}</td>
+                  <td>{rban.anya_ghardhuri}</td>
+                  <td>{rban.female}</td>
+                  <td>{rban.male}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

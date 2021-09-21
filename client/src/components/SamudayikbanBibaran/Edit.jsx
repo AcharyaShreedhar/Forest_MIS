@@ -22,6 +22,11 @@ class Edit extends Component {
       regno: props.history.location.item.darta_no,
       name: props.history.location.item.samudayikban_name,
       area: props.history.location.item.area,
+      dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
+      janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
+      anya_ghardhuri: props.history.location.item.anya_ghardhuri,
+      female: props.history.location.item.female,
+      male: props.history.location.item.male,
       main_species: props.history.location.item.main_species,
       forest_type: props.history.location.item.forest_type,
       handover_date: props.history.location.item.handover_date,
@@ -59,6 +64,11 @@ class Edit extends Component {
       name,
       regno,
       area,
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
+      female,
+      male,
       main_species,
       forest_type,
       handover_date,
@@ -77,6 +87,11 @@ class Edit extends Component {
           samudayikban_name: name,
           darta_no: regno,
           area: area,
+          dalit_ghardhuri: dalit_ghardhuri,
+          janjati_ghardhuri: janjati_ghardhuri,
+          anya_ghardhuri: anya_ghardhuri,
+          female: female,
+          male: male,
           main_species: main_species,
           forest_type: forest_type,
           handover_date: handover_date,
@@ -134,6 +149,11 @@ class Edit extends Component {
       name,
       regno,
       area,
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
+      female,
+      male,
       main_species,
       forest_type,
       handover_date,
@@ -199,6 +219,48 @@ class Edit extends Component {
               />
             </div>
             <div className="section mb-4" />
+            <span className="dsl-b18">जनसंख्या विवरण :</span>
+            <div className="panel space mt-2">
+              <Input
+                className="w-45"
+                title="महिला :"
+                value={female}
+                direction="vertical"
+                onChange={(e) => this.setState({ female: e })}
+              />
+              <Input
+                className="w-45"
+                title="पुरुष :"
+                value={male}
+                direction="vertical"
+                onChange={(e) => this.setState({ male: e })}
+              />
+            </div>
+            <div className="section mb-4" />
+            <span className="dsl-b18">घरधुरी विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-30"
+                title="दलित :"
+                value={dalit_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ dalit_ghardhuri: e })}
+              />
+              <Input
+                className="w-30"
+                title="जनजाति :"
+                value={janjati_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ janjati_ghardhuri: e })}
+              />
+              <Input
+                className="w-30"
+                title="अन्य :"
+                value={anya_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ anya_ghardhuri: e })}
+              />
+            </div>
             <div className="panel space mb-4 pt-2">
               <div className="w-30">
                 <Dropdown

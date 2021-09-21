@@ -14,8 +14,11 @@ class Add extends Component {
       address: "",
       area: "",
       main_species: "",
-      ghardhuri: "",
-      lav_jana: "",
+      dalit_ghardhuri: "",
+      janjati_ghardhuri: "",
+      anya_ghardhuri: "",
+      female: "",
+      male: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -43,8 +46,11 @@ class Add extends Component {
         address,
         area,
         main_species,
-        ghardhuri,
-        lav_jana,
+        dalit_ghardhuri,
+        janjati_ghardhuri,
+        anya_ghardhuri,
+        female,
+        male,
     } = this.state;
     const payload = {
       chaklaban: {
@@ -55,8 +61,11 @@ class Add extends Component {
           address: address,
           area: area,
           main_species: main_species,
-          ghardhuri: ghardhuri,
-          lav_jana: lav_jana,
+          dalit_ghardhuri: dalit_ghardhuri,
+          janjati_ghardhuri: janjati_ghardhuri,
+          anya_ghardhuri: anya_ghardhuri,
+          female: female,
+          male: male,
           dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
@@ -78,8 +87,11 @@ class Add extends Component {
         address,
         area,
         main_species,
-        ghardhuri,
-        lav_jana,
+        dalit_ghardhuri,
+        janjati_ghardhuri,
+        anya_ghardhuri,
+        female,
+        male,
         showDialog,
 
     } = this.state;
@@ -100,73 +112,106 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="दर्ता नं"
-              value={darta_no}
-              direction="vertical"
-              onChange={(e) => this.setState({ darta_no: e })}
-            />
-            <span className="dsl-b18">दर्ता मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={darta_miti}
-              onChange={(e) => this.handleDate(e, "darta")}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
+            <div className="panel space">
+              <Input
+                className="w-20"
+                title="दर्ता नं :"
+                value={darta_no}
+                direction="vertical"
+                onChange={(e) => this.setState({ darta_no: e })}
+              />
+              <Input
+                className="w-75"
+                title="चक्लावनको नाम :"
+                direction="vertical"
+                value={chaklaban_naam}
+                onChange={(e) => this.setState({ chaklaban_naam: e })}
+              />
+            </div>
+            <div className="section mb-4" />
 
-            <Input
-              className="mb-4"
-              title="चक्लावनको नाम"
-              direction="vertical"
-              value={chaklaban_naam}
-              onChange={(e) => this.setState({ chaklaban_naam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="ठेगाना"
-              direction="vertical"
-              value={address}
-              onChange={(e) => this.setState({ address: e })}
-            />
-            <Input
-              className="mb-4"
-              title="क्षत्रफल(हे.)"
-              value={area}
-              direction="vertical"
-              onChange={(e) => this.setState({ area: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="मुख्य प्रजाति"
-              direction="vertical"
-              as="textarea"
-              value={main_species}
-              onChange={(e) => this.setState({ main_species: e })}
-            />
-                       
-            <Input
-              className="mb-4"
-              title="संलग्न घरधुरी"
-              value={ghardhuri}
-              direction="vertical"
-              onChange={(e) => this.setState({ ghardhuri: e })}
-            />
-            <Input
-              className="mb-4"
-              title="लाभ संख्या"
-              value={lav_jana}
-              direction="vertical"
-              onChange={(e) => this.setState({ lav_jana: e })}
-            />
-        </div>
+            <div className="panel space mb-4">
+              <div className="w-30">
+                <span className="dsl-b18">दर्ता मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={darta_miti}
+                  onChange={(e) => this.handleDate(e, "darta")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="ठेगाना :"
+                direction="vertical"
+                value={address}
+                onChange={(e) => this.setState({ address: e })}
+              />
+              <Input
+                className="w-30"
+                title="क्षत्रफल(हे.):"
+                value={area}
+                direction="vertical"
+                onChange={(e) => this.setState({ area: e })}
+              />
+            </div>
+            <span className="dsl-b18">घरधुरी विवरण :</span>
+            <div className="panel space mt-2">
+              <Input
+                className="w-30"
+                title="दलित :"
+                value={dalit_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ dalit_ghardhuri: e })}
+              />
+              <Input
+                className="w-30"
+                title="जनजाति :"
+                value={janjati_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ janjati_ghardhuri: e })}
+              />
+              <Input
+                className="w-30"
+                title="अन्य :"
+                value={anya_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ anya_ghardhuri: e })}
+              />
+            </div>
+            <div className="section mb-4" />
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-45"
+                title="महिला :"
+                value={female}
+                direction="vertical"
+                onChange={(e) => this.setState({ female: e })}
+              />
+              <Input
+                className="w-45"
+                title="पुरुष :"
+                value={male}
+                direction="vertical"
+                onChange={(e) => this.setState({ male: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-100"
+                title="मुख्य प्रजाति :"
+                direction="vertical"
+                as="textarea"
+                value={main_species}
+                onChange={(e) => this.setState({ main_species: e })}
+              />
+            </div>
+          </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शेभ गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

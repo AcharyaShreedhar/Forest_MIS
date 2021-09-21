@@ -56,6 +56,11 @@ function List(props) {
                   <td>{nban.perm_addr}</td>
                   <td>{nban.curr_addr}</td>
                   <td>{nban.area}</td>
+                  <td>{nban.dalit_ghardhuri}</td>
+                  <td>{nban.janjati_ghardhuri}</td>
+                  <td>{nban.anya_ghardhuri}</td>
+                  <td>{nban.female}</td>
+                  <td>{nban.male}</td>
                   <td>{nban.main_species}</td>
                   <td>
                     <div className="edit">
