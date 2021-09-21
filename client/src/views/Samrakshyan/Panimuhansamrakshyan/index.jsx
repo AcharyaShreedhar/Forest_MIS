@@ -188,7 +188,7 @@ class Panimuhansamrakshyan extends Component {
         )}
         {equals(loc, "panimuhansamrakshyanedit") && (
           <PanimuhanSamrakshyan.Edit
-            title="पानीमुहान संरक्षण पुनः प्रविष्ट"
+            title="पानीमुहान संरक्षण सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

@@ -75,7 +75,7 @@ class Add extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ बन बीउ बगैच/समबर्धन प्लटहरु सम्बन्धी विवरण थप गर्न चाहनुहुन्छ ?"
@@ -88,61 +88,62 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="प्लटको किसिम"
-              value={plot_type}
-              direction="vertical"
-              onChange={(e) => this.setState({ plot_type: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="प्रजातिहरु
-              "
-              direction="vertical"
-              value={prajati}
-              onChange={(e) => this.setState({ prajati: e })}
-            />
-            <Input
-              className="mb-4"
-              title="क्षत्रफल
-              "
-              value={area}
-              direction="vertical"
-              onChange={(e) => this.setState({ area: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="ठेगाना"
-              direction="vertical"
-              value={location}
-              onChange={(e) => this.setState({ location: e })}
-            />
-
-            <span className="dsl-b18">स्थापना मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={established_date}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-
-            <Input
-              className="mb-4"
-              title="अवस्था"
-              value={status}
-              direction="vertical"
-              onChange={(e) => this.setState({ status: e })}
-            />
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="प्लटको किसिम :"
+                value={plot_type}
+                direction="vertical"
+                onChange={(e) => this.setState({ plot_type: e })}
+              />
+              <Input
+                className="w-30"
+                title="प्रजातिहरु :"
+                direction="vertical"
+                value={prajati}
+                as="textarea"
+                onChange={(e) => this.setState({ prajati: e })}
+              />
+              <Input
+                className="w-30"
+                title="क्षेत्रफल :"
+                value={area}
+                direction="vertical"
+                onChange={(e) => this.setState({ area: e })}
+              />
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="ठेगाना :"
+                direction="vertical"
+                value={location}
+                onChange={(e) => this.setState({ location: e })}
+              />
+              <div className="w-30">
+                <span className="dsl-b18">स्थापना मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={established_date}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="अवस्था :"
+                value={status}
+                direction="vertical"
+                onChange={(e) => this.setState({ status: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शेभ गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

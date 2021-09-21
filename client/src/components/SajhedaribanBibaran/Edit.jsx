@@ -153,7 +153,7 @@ class Edit extends Component {
               />
               <Input
                 className="w-30"
-                title="क्षत्रफल(हे.) :"
+                title="क्षेत्रफल(हे.) :"
                 value={area}
                 direction="vertical"
                 onChange={(e) => this.setState({ area: e })}
@@ -184,7 +184,7 @@ class Edit extends Component {
               />
             </div>
             <div className="section mb-4" />
-            <div className="panel space mt-2 mb-4">
+            <div className="panel space mt-2">
               <Input
                 className="w-45"
                 title="महिला :"
@@ -211,6 +211,7 @@ class Edit extends Component {
               />
             </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button

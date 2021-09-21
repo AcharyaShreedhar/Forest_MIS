@@ -185,7 +185,7 @@ class Karmacharibibaran extends Component {
         )}
         {equals(loc, "karmacharibibaranedit") && (
           <KarmachariBibaran.Edit
-            title="कर्मचारी विवरण पुनः प्रविष्ट"
+            title="कर्मचारी विवरण सम्बन्धी विवरण शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}

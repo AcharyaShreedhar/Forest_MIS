@@ -189,7 +189,7 @@ class Nadikinarsamrakshyan extends Component {
         )}
         {equals(loc, "nadikinarsamrakshyanedit") && (
           <NadikinarSamrakshyan.Edit
-            title="नदिकिनार संरक्षण पुनः प्रविष्ट"
+            title="नदिकिनार संरक्षण सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

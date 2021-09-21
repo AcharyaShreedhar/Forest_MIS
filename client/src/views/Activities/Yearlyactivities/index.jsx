@@ -185,7 +185,7 @@ class Yearlyactivities extends Component {
         )}
         {equals(loc, "yearlyactivitiesedit") && (
           <YearlyActivities.Edit
-            title="वार्षिक कार्यक्रम पुनः प्रविष्ट"
+            title="वार्षिक कार्यक्रम सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

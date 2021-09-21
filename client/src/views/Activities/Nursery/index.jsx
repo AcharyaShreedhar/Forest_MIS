@@ -181,7 +181,7 @@ class Nursery extends Component {
         )}
         {equals(loc, "biruwautpadanedit") && (
           <BiruwaUtpadan.Edit
-            title="विरुवा उत्पादन पुनः प्रविष्ट"
+            title="विरुवा उत्पादन सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

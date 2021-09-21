@@ -196,7 +196,7 @@ export class BanyajantuxetiRahat extends Component {
         )}
         {equals(loc, "banyajantuxetirahatedit") && (
           <BanyajantuXetibibaran.Edit
-            title="वन्यजन्तु क्षेति राहात पुनः प्रविष्ट"
+            title="वन्यजन्तु क्षेति राहात सम्बन्धी विवरण शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}

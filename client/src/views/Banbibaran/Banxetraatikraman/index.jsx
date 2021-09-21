@@ -192,7 +192,7 @@ class Banxetraatikraman extends Component {
         )}
         {equals(loc, "banxetraatikramanedit") && (
           <BanxetraAtikraman.Edit
-            title="वनक्षेत्र अतिक्रमण पुनः प्रविष्ट"
+            title="वनक्षेत्र अतिक्रमण सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

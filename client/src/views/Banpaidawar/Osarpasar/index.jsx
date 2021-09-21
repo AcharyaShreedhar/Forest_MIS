@@ -191,7 +191,7 @@ class Osarpasar extends Component {
         )}
         {equals(loc, "osarpasaredit") && (
           <BanpaidawarOsarpasar.Edit
-            title="वनपैदावार ओसारपसार पुनः प्रविष्ट"
+            title="वनपैदावार ओसारपसार सम्बन्धी विवरण शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}

@@ -203,7 +203,7 @@ class Edit extends Component {
             <div className="panel space">
               <Input
                 className="w-20"
-                title="क्षत्रफल(हे.):"
+                title="क्षेत्रफल(हे.):"
                 value={area}
                 direction="vertical"
                 onChange={(e) => this.setState({ area: e })}

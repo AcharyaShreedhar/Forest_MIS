@@ -556,7 +556,7 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
       }
       case "dharmikban": {
         toast.success(
-          "सफलतापुर्वक धार्मिक वन पुनः प्रविष्ट भयो !!!!! !!!!! !!!!",
+          "सफलतापुर्वक धार्मिक वन सम्बन्धी विवरण शंसोधन भयो !!!!! !!!!! !!!!",
           {
             position: toast.POSITION.TOP_CENTER,
           }

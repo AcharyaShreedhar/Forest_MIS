@@ -194,7 +194,7 @@ class Muddaanusandhandayari extends Component {
         )}
         {equals(loc, "muddaanusandhandayariedit") && (
           <MuddaanusandhanDayari.Edit
-            title="मुद्दा अनुसन्धान दायरी पुनः प्रविष्ट"
+            title="मुद्दा अनुसन्धान दायरी सम्बन्धी विवरण शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}

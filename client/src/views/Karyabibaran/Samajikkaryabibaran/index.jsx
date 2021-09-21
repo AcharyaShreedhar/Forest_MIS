@@ -166,7 +166,7 @@ class Samajikkaryabibaran extends Component {
         )}
         {equals(loc, "samajikkaryabibaranedit") && (
           <SamajikKaryabibaran.Edit
-            title="सामाजिक कार्य पुनः प्रविष्ट"
+            title="सामाजिक कार्य सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

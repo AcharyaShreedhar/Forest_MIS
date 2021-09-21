@@ -185,7 +185,7 @@ class Banxetraanyaprayojan extends Component {
         )}
         {equals(loc, "banxetraanyaprayojanedit") && (
           <BanxetraanyaprayojanBibaran.Edit
-            title="वनक्षेत्र अन्य प्रयोजन पुनः प्रविष्ट"
+            title="वनक्षेत्र अन्य प्रयोजन सम्बन्धी विवरण शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}

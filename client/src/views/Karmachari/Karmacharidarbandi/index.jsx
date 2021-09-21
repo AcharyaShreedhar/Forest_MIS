@@ -169,7 +169,7 @@ class Karmacharidarbandi extends Component {
         )}
         {equals(loc, "karmacharidarbandiedit") && (
           <KarmachariDarbandi.Edit
-            title="कर्मचारी दरबन्दी पुनः प्रविष्ट"
+            title="कर्मचारी दरबन्दी सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

@@ -188,7 +188,7 @@ class Bandadelo extends Component {
         )}
         {equals(loc, "bandadeloedit") && (
           <BandadeloBibaran.Edit
-            title="वनडढेलो पुनः प्रविष्ट"
+            title="वनडढेलो सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
