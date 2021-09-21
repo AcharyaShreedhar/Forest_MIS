@@ -235,7 +235,7 @@ class Add extends Component {
               />
               <Input
                 className="w-30"
-                title="क्षत्रफल(हे.) :"
+                title="क्षेत्रफल(हे.) :"
                 direction="vertical"
                 as="textarea"
                 value={area}

@@ -155,7 +155,7 @@ class Gharjagga extends Component {
         )}
         {equals(loc, "gharjaggaedit") && (
           <GharjaggaBibaran.Edit
-            title="घर जग्गा पुनः प्रविष्ट"
+            title="घर जग्गा सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

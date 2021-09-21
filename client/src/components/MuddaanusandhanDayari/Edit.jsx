@@ -172,7 +172,7 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -186,152 +186,174 @@ class Edit extends Component {
               <span className="dsl-b22">{title}</span>
             </div>
 
-            <span className="dsl-b18">जाहेरी प्रतिवेदन मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={jaheri_partibedan_miti}
-              onChange={(e) => this.handleDate(e, "partibedan")}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="कसुरको किसिम"
-              value={kasurko_kisim}
-              direction="vertical"
-              onChange={(e) => this.setState({ kasurko_kisim: e })}
-            />
+            <div className="panel space mb-4">
+              <div className="w-30">
+                <span className="dsl-b18">जाहेरी प्रतिवेदन मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={jaheri_partibedan_miti}
+                  onChange={(e) => this.handleDate(e, "partibedan")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="कसुरको किसिम :"
+                value={kasurko_kisim}
+                direction="vertical"
+                onChange={(e) => this.setState({ kasurko_kisim: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="विगो भए विगो परिमाण (रु)"
-              direction="vertical"
-              value={bigo_pariman}
-              onChange={(e) => this.setState({ bigo_pariman: e })}
-            />
+              <Input
+                className="w-30"
+                title="विगो भए विगो परिमाण (रु) :"
+                direction="vertical"
+                value={bigo_pariman}
+                onChange={(e) => this.setState({ bigo_pariman: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="अतिक्रमित जग्गाको ठेगाना :"
+                direction="vertical"
+                value={jaggako_thegana}
+                onChange={(e) => this.setState({ jaggako_thegana: e })}
+              />
+              <Input
+                className="w-30"
+                title="अतिक्रमित जग्गाको क्षेत्रफल :"
+                direction="vertical"
+                value={jaggako_area}
+                onChange={(e) => this.setState({ jaggako_area: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="अतिक्रमित जग्गाको क्षेत्रफल"
-              direction="vertical"
-              value={jaggako_area}
-              onChange={(e) => this.setState({ jaggako_area: e })}
-            />
-            <Input
-              className="mb-4"
-              title="अतिक्रमित जग्गाको ठेगाना"
-              direction="vertical"
-              value={jaggako_thegana}
-              onChange={(e) => this.setState({ jaggako_thegana: e })}
-            />
-            <span className="dsl-b18">अभियोग पत्र दायर भएको मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={abhiyog_miti}
-              onChange={(e) => this.handleDate(e, "abhiyog")}
-              options={{ calenderLocale: "ne", abhiyog_miti: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="अभियोग पत्र दायर भएको निकाय"
-              direction="vertical"
-              value={abhiyog_nikaya}
-              onChange={(e) => this.setState({ abhiyog_nikaya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="अभियोग मागदावी जरीवाना (रु)"
-              direction="vertical"
-              value={abhiyog_jariwana}
-              onChange={(e) => this.setState({ abhiyog_jariwana: e })}
-            />
-            <Input
-              className="mb-4"
-              title="अभियोग मागदावी कैद (वर्ष)"
-              direction="vertical"
-              value={kaid}
-              onChange={(e) => this.setState({ kaid: e })}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="वोझ वाहक जफत माग दावी (लिएको वा नलिएको)"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[bojbahak_jafat_maagdabi]}
-              data={JafatMaagdabi}
-              getValue={(JafatMaagdabi) => JafatMaagdabi["value"]}
-              onChange={(e) => this.handleJafatMaagdabi(e)}
-              value={bojbahak_jafat_maagdabi}
-            />
-            <Input
-              className="mb-4"
-              title="प्रतिवादी संख्या (जना)"
-              direction="vertical"
-              value={pratibadi_sankhya}
-              onChange={(e) => this.setState({ pratibadi_sankhya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="थुनछेक आदेश-धरौटी (रु)"
-              direction="vertical"
-              value={thunchek_dharauti}
-              onChange={(e) => this.setState({ thunchek_dharauti: e })}
-            />
-            <Input
-              className="mb-4"
-              title="थुनछेक आदेश-साधारण तारेख	"
-              direction="vertical"
-              value={sadharan_tarekh}
-              onChange={(e) => this.setState({ sadharan_tarekh: e })}
-            />
-            <Input
-              className="mb-4"
-              title="थुनछेक आदेश-थुना आदेश"
-              direction="vertical"
-              value={thuna_aadhes}
-              onChange={(e) => this.setState({ thuna_aadhes: e })}
-            />
-            <span className="dsl-b18">फैसला मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={faisala_miti}
-              onChange={(e) => this.handleDate(e, "faisala")}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="फैसला जरीवाना"
-              value={faisala_jariwana}
-              direction="vertical"
-              onChange={(e) => this.setState({ faisala_jariwana: e })}
-            />
+              <div className="w-30">
+                <span className="dsl-b18">अभियोग पत्र दायर भएको मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={abhiyog_miti}
+                  onChange={(e) => this.handleDate(e, "abhiyog")}
+                  options={{ calenderLocale: "ne", abhiyog_miti: "en" }}
+                />
+              </div>
+            </div>
+            <span className="dsl-b18">अभियोग मागदावी विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-30"
+                title="अभियोग पत्र दायर भएको निकाय :"
+                direction="vertical"
+                value={abhiyog_nikaya}
+                onChange={(e) => this.setState({ abhiyog_nikaya: e })}
+              />
+              <Input
+                className="w-30"
+                title="जरीवाना (रु) :"
+                direction="vertical"
+                value={abhiyog_jariwana}
+                onChange={(e) => this.setState({ abhiyog_jariwana: e })}
+              />
+              <Input
+                className="w-30"
+                title="कैद (वर्ष) :"
+                direction="vertical"
+                value={kaid}
+                onChange={(e) => this.setState({ kaid: e })}
+              />
+            </div>
+            <span className="dsl-b18">थुनछेक आदेश विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <Input
+                className="w-30"
+                title="धरौटी (रु) :"
+                direction="vertical"
+                value={thunchek_dharauti}
+                onChange={(e) => this.setState({ thunchek_dharauti: e })}
+              />
+              <Input
+                className="w-30"
+                title="साधारण तारेख	:"
+                direction="vertical"
+                value={sadharan_tarekh}
+                onChange={(e) => this.setState({ sadharan_tarekh: e })}
+              />
+              <Input
+                className="w-30"
+                title="थुना आदेश :"
+                direction="vertical"
+                value={thuna_aadhes}
+                onChange={(e) => this.setState({ thuna_aadhes: e })}
+              />
+            </div>
+            <span className="dsl-b18">फैसला विवरण :</span>
+            <div className="panel space mt-2 mb-4">
+              <div className="w-30">
+                <span className="dsl-b18">मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={faisala_miti}
+                  onChange={(e) => this.handleDate(e, "faisala")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="जरीवाना :"
+                value={faisala_jariwana}
+                direction="vertical"
+                onChange={(e) => this.setState({ faisala_jariwana: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="फैसला कैद"
-              direction="vertical"
-              value={faisala_kaid}
-              onChange={(e) => this.setState({ faisala_kaid: e })}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="वोझ वाहक जफत"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[bojbahak_jafat]}
-              data={BojbahakJafat}
-              getValue={(BojbahakJafat) => BojbahakJafat["value"]}
-              onChange={(e) => this.handleBojbahakJafat(e)}
-              value={bojbahak_jafat}
-            />
+              <Input
+                className="w-30"
+                title="कैद :"
+                direction="vertical"
+                value={faisala_kaid}
+                onChange={(e) => this.setState({ faisala_kaid: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="प्रतिवादी संख्या (जना) :"
+                direction="vertical"
+                value={pratibadi_sankhya}
+                onChange={(e) => this.setState({ pratibadi_sankhya: e })}
+              />
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="वोझ वाहक जफत माग दावी :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[bojbahak_jafat_maagdabi]}
+                  data={JafatMaagdabi}
+                  getValue={(JafatMaagdabi) => JafatMaagdabi["value"]}
+                  onChange={(e) => this.handleJafatMaagdabi(e)}
+                  value={bojbahak_jafat_maagdabi}
+                />
+              </div>
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="वोझ वाहक जफत :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[bojbahak_jafat]}
+                  data={BojbahakJafat}
+                  getValue={(BojbahakJafat) => BojbahakJafat["value"]}
+                  onChange={(e) => this.handleBojbahakJafat(e)}
+                  value={bojbahak_jafat}
+                />
+              </div>
+            </div>
           </div>
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

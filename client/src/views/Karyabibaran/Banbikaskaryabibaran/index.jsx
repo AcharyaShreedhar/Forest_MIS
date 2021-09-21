@@ -155,7 +155,7 @@ class Banbikaskaryabibaran extends Component {
         )}
         {equals(loc, "banbikaskaryabibaranedit") && (
           <BanbikasKaryabibaran.Edit
-            title="वनविकास कार्यविवरण पुनः प्रविष्ट"
+            title="वनविकास कार्यविवरण सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

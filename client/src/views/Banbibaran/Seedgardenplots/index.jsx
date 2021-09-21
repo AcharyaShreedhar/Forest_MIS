@@ -188,7 +188,7 @@ class Seedgardenplots extends Component {
         )}
         {equals(loc, "seedgardenplotsedit") && (
           <SeedgardenplotsBibaran.Edit
-            title="बन बीउ बगैच/समबर्धन प्लटहरु पुनः प्रविष्ट"
+            title="बन बीउ बगैच/समबर्धन प्लटहरु सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

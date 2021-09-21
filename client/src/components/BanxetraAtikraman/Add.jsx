@@ -21,7 +21,9 @@ class Add extends Component {
       atikramit_area: "",
       address: "",
       atikraman_kisim: 1,
-      samalagna_ghardhuri: "",
+      dalit_ghardhuri: "",
+      janjati_ghardhuri: "",
+      anya_ghardhuri: "",
       atikraman_miti: "",
       atikraman_prayojan: "",
       samrachana_bibaran: "",
@@ -38,7 +40,6 @@ class Add extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
-    
   }
 
   handleConfirm() {
@@ -53,7 +54,9 @@ class Add extends Component {
       atikramit_area,
       address,
       atikraman_kisim,
-      samalagna_ghardhuri,
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
       atikraman_miti,
       atikraman_prayojan,
       samrachana_bibaran,
@@ -67,7 +70,9 @@ class Add extends Component {
           atikraman_kisim: equals(atikraman_kisim, 1)
             ? "संस्थागत"
             : "व्यक्तिगत",
-          samalagna_ghardhuri: samalagna_ghardhuri,
+          dalit_ghardhuri: dalit_ghardhuri,
+          janjati_ghardhuri: janjati_ghardhuri,
+          anya_ghardhuri: anya_ghardhuri,
           atikraman_miti: atikraman_miti,
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
@@ -96,7 +101,9 @@ class Add extends Component {
       atikramit_area,
       address,
       atikraman_kisim,
-      samalagna_ghardhuri,
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
       atikraman_miti,
       atikraman_prayojan,
       samrachana_bibaran,
@@ -107,11 +114,10 @@ class Add extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ वनक्षेत्र अतिक्रमण सम्बन्धि विवरण
- थप गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ वनक्षेत्र अतिक्रमण सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -121,80 +127,109 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="अतिक्रमित वनको क्षेत्रफल"
-              value={atikramit_area}
-              direction="vertical"
-              onChange={(e) => this.setState({ atikramit_area: e })}
-            />
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="अतिक्रमित वनको क्षेत्रफल :"
+                value={atikramit_area}
+                direction="vertical"
+                onChange={(e) => this.setState({ atikramit_area: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="ठेगाना"
-              direction="vertical"
-              value={address}
-              onChange={(e) => this.setState({ address: e })}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="किसिम"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[atikraman_kisim]}
-              data={AtikramanKisim}
-              getValue={(AtikramanKisim) => AtikramanKisim["value"]}
-              onChange={(e) => this.handleAtikramanKisim(e)}
-              value={atikraman_kisim}
-            />
-            <Input
-              className="mb-4"
-              title="संलग्न घरधुरीहरु"
-              value={samalagna_ghardhuri}
-              direction="vertical"
-              onChange={(e) => this.setState({ samalagna_ghardhuri: e })}
-            />
-            <span className="dsl-b18">अतिक्रमण मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={atikraman_miti}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="अतिक्रमण प्रयोजन (घरछाप्रो, खेती, पूर्वाधार निर्माण)"
-              direction="vertical"
-              as="textarea"
-              value={atikraman_prayojan}
-              onChange={(e) => this.setState({ atikraman_prayojan: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="संरचना वनेको भए संरचना विवरण"
-              value={samrachana_bibaran}
-              direction="vertical"
-              onChange={(e) => this.setState({ samrachana_bibaran: e })}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="अतिक्रमित अवस्था"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[atikraman_abastha]}
-              data={AtikramanAbasta}
-              getValue={(AtikramanAbasta) => AtikramanAbasta["value"]}
-              onChange={(e) => this.handleAtikramanAbastha(e)}
-              value={atikraman_abastha}
-            />
+              <Input
+                className="w-30"
+                title="ठेगाना :"
+                direction="vertical"
+                value={address}
+                onChange={(e) => this.setState({ address: e })}
+              />
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="किसिम :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[atikraman_kisim]}
+                  data={AtikramanKisim}
+                  getValue={(AtikramanKisim) => AtikramanKisim["value"]}
+                  onChange={(e) => this.handleAtikramanKisim(e)}
+                  value={atikraman_kisim}
+                />
+              </div>
+            </div>
+            <span className="dsl-b18">घरधुरी विवरण :</span>
+            <div className="panel space mt-2">
+              <Input
+                className="w-30"
+                title="दलित :"
+                value={dalit_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ dalit_ghardhuri: e })}
+              />
+              <Input
+                className="w-30"
+                title="जनजाति :"
+                value={janjati_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ janjati_ghardhuri: e })}
+              />
+              <Input
+                className="w-30"
+                title="अन्य :"
+                value={anya_ghardhuri}
+                direction="vertical"
+                onChange={(e) => this.setState({ anya_ghardhuri: e })}
+              />
+            </div>
+            <div className="section mb-4" />
+            <div className="panel space mt-2 mb-4">
+              <div className="w-45">
+                <span className="dsl-b18">अतिक्रमण मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={atikraman_miti}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <div className="w-45">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="अतिक्रमित अवस्था :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[atikraman_abastha]}
+                  data={AtikramanAbasta}
+                  getValue={(AtikramanAbasta) => AtikramanAbasta["value"]}
+                  onChange={(e) => this.handleAtikramanAbastha(e)}
+                  value={atikraman_abastha}
+                />
+              </div>
+            </div>
+            <div className="panel space pt-2">
+              <Input
+                className="w-45"
+                title="अतिक्रमण प्रयोजन (घरछाप्रो, खेती, पूर्वाधार निर्माण) :"
+                direction="vertical"
+                as="textarea"
+                value={atikraman_prayojan}
+                onChange={(e) => this.setState({ atikraman_prayojan: e })}
+              />
+              <Input
+                className="w-45"
+                title="संरचना वनेको भए संरचना विवरण :"
+                value={samrachana_bibaran}
+                direction="vertical"
+                onChange={(e) => this.setState({ samrachana_bibaran: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शेभ गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

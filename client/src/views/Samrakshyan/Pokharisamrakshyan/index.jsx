@@ -188,7 +188,7 @@ class Pokharisamrakshyan extends Component {
         )}
         {equals(loc, "pokharisamrakshyanedit") && (
           <PokhariSamrakshyan.Edit
-            title="पोखरी संरक्षण पुनः प्रविष्ट"
+            title="पोखरी संरक्षण सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

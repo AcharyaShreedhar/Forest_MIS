@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         type: Sequelize.INTEGER,
       },
       atikramit_area: {
@@ -20,8 +20,14 @@ module.exports = {
       atikraman_kisim: {
         type: Sequelize.STRING,
       },
-      samalagna_ghardhuri: {
-        type: Sequelize.STRING,
+      dalit_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      janjati_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      anya_ghardhuri: {
+        type: Sequelize.INTEGER,
       },
       atikraman_miti: {
         type: Sequelize.STRING,

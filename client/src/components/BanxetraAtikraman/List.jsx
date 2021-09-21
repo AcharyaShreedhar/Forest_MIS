@@ -52,7 +52,9 @@ function List(props) {
                   <td> {banxetraatikraman.atikramit_area}</td>
                   <td> {banxetraatikraman.address}</td>
                   <td> {banxetraatikraman.atikraman_kisim}</td>
-                  <td> {banxetraatikraman.samalagna_ghardhuri}</td>
+                  <td>{banxetraatikraman.dalit_ghardhuri}</td>
+                  <td>{banxetraatikraman.janjati_ghardhuri}</td>
+                  <td>{banxetraatikraman.anya_ghardhuri}</td>
                   <td>
                     {" "}
                     {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}

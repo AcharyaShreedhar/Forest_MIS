@@ -156,7 +156,7 @@ class Jaladharsamrakshyan extends Component {
         )}
         {equals(loc, "jaladharsamrakshyanedit") && (
           <JaladharSamrakshyan.Edit
-            title="जलाधार संरक्षण पुनः प्रविष्ट"
+            title="जलाधार संरक्षण सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

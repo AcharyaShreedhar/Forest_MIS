@@ -187,7 +187,7 @@ class Add extends Component {
               />
               <Input
                 className="w-15"
-                title="क्षत्रफल(हे.):"
+                title="क्षेत्रफल(हे.):"
                 value={area}
                 direction="vertical"
                 onChange={(e) => this.setState({ area: e })}

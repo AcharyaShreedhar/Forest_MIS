@@ -184,7 +184,7 @@ class Sawarisadhan extends Component {
         )}
         {equals(loc, "sawarisadhanedit") && (
           <SawarisadhanBibaran.Edit
-            title="सवारी साधन पुनः प्रविष्ट"
+            title="सवारी साधन सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

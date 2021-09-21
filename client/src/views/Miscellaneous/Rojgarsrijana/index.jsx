@@ -165,7 +165,7 @@ class Rojgarsrijana extends Component {
         )}
         {equals(loc, "rojgarsrijanaedit") && (
           <RojgarSrijana.Edit
-            title="रोजगार सिर्जना पुनः प्रविष्ट"
+            title="रोजगार सिर्जना सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

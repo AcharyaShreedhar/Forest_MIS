@@ -124,7 +124,7 @@ class Add extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ वनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण थप गर्न चाहनुहुन्छ ?"
@@ -137,122 +137,138 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
+            <div className="panel space">
+              <div className="w-25">
+                <span className="dsl-b18">आर्थिक वर्ष :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={arthik_barsa}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-60"
+                title="वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम :"
+                direction="vertical"
+                value={uplabdakarta_naam}
+                onChange={(e) => this.setState({ uplabdakarta_naam: e })}
+              />
+            </div>
+            <div className="section mb-4" />
+            <span className="dsl-b18">उपलब्ध गराएको जग्गा विवरण :</span>
+            <div className="panel space mb-4 mt-2">
+              <Input
+                className="w-30"
+                title="वन उपलब्ध गराएको ठेगाना:"
+                direction="vertical"
+                value={upalabdha_address}
+                onChange={(e) => this.setState({ upalabdha_address: e })}
+              />
+              <Input
+                className="w-30"
+                title="अस्थायी प्रयोजन क्षेत्रफल (हे) :"
+                direction="vertical"
+                value={xetrafal_temp}
+                onChange={(e) => this.setState({ xetrafal_temp: e })}
+              />
+              <Input
+                className="w-30"
+                title="स्थायी प्रयोजन क्षेत्रफल (हे) :"
+                direction="vertical"
+                value={xetrafal_perm}
+                onChange={(e) => this.setState({ xetrafal_perm: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="समयावधी :"
+                direction="vertical"
+                value={samaya_abadhi}
+                onChange={(e) => this.setState({ samaya_abadhi: e })}
+              />
+              <Input
+                className="w-30"
+                title="हटाउनु पर्ने रुख संख्या :"
+                direction="vertical"
+                value={rukh_hataunuparne}
+                onChange={(e) => this.setState({ rukh_hataunuparne: e })}
+              />
+              <Input
+                className="w-30"
+                title="हटाएको रुख संख्या :"
+                direction="vertical"
+                value={rukh_hatayeko}
+                onChange={(e) => this.setState({ rukh_hatayeko: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="क्षतिपूर्ति वृक्षरोपण प्रजाति :"
+                direction="vertical"
+                value={xetipurti_brixyaropan}
+                onChange={(e) => this.setState({ xetipurti_brixyaropan: e })}
+              />
+              <Input
+                className="w-30"
+                title="सट्टा भर्नावापत उपलब्ध गराएको जग्गाको क्षेत्रफल (हे.):"
+                direction="vertical"
+                value={sattajagga_area}
+                onChange={(e) => this.setState({ sattajagga_area: e })}
+              />
 
-            <span className="dsl-b18">आर्थिक वर्ष</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={arthik_barsa}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-
-            <Input
-              className="mb-4"
-              title="वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम"
-              direction="vertical"
-              value={uplabdakarta_naam}
-              onChange={(e) => this.setState({ uplabdakarta_naam: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="वन उपलब्ध गराएको ठेगाना सामुदायीक वन/ कबुलियति वन/ गाउँपालिका/ नगरपालिका"
-              direction="vertical"
-              value={upalabdha_address}
-              onChange={(e) => this.setState({ upalabdha_address: e })}
-            />
-            <Input
-              className="mb-4"
-              title="अस्थायी प्रयोजनको लागि उपलब्ध गराएको जग्गाको क्षेत्रफल (हे)"
-              direction="vertical"
-              value={xetrafal_temp}
-              onChange={(e) => this.setState({ xetrafal_temp: e })}
-            />
-            <Input
-              className="mb-4"
-              title="स्थायी प्रयोजनको लागि उपलब्ध गराएको जग्गाको क्षेत्रफल (हे)"
-              direction="vertical"
-              value={xetrafal_perm}
-              onChange={(e) => this.setState({ xetrafal_perm: e })}
-            />
-            <Input
-              className="mb-4"
-              title="समयावधी"
-              direction="vertical"
-              value={samaya_abadhi}
-              onChange={(e) => this.setState({ samaya_abadhi: e })}
-            />
-            <Input
-              className="mb-4"
-              title="हटाउनु पर्ने रुख संख्या"
-              direction="vertical"
-              value={rukh_hataunuparne}
-              onChange={(e) => this.setState({ rukh_hataunuparne: e })}
-            />
-            <Input
-              className="mb-4"
-              title="हटाएको रुख संख्या"
-              direction="vertical"
-              value={rukh_hatayeko}
-              onChange={(e) => this.setState({ rukh_hatayeko: e })}
-            />
-            <Input
-              className="mb-4"
-              title="सट्टा भर्नावापत उपलब्ध गराएको जग्गाको क्षेत्रफल (हे.)"
-              direction="vertical"
-              value={sattajagga_area}
-              onChange={(e) => this.setState({ sattajagga_area: e })}
-            />
-            <Input
-              className="mb-4"
-              title="क्षतिपूर्ति वृक्षरोपण प्रजाति"
-              direction="vertical"
-              value={xetipurti_brixyaropan}
-              onChange={(e) => this.setState({ xetipurti_brixyaropan: e })}
-            />
-            <Input
-              className="mb-4"
-              title="सट्टा भर्ना जग्गामा वृक्षरोपण प्रजाति"
-              direction="vertical"
-              value={sattajagga_brixyaropan}
-              onChange={(e) => this.setState({ sattajagga_brixyaropan: e })}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="लिज रकम अध्यावधिक गरेको नगरेको"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[leejrakam_adhyaadhik]}
-              data={LijRakam}
-              getValue={(LijRakam) => LijRakam["value"]}
-              onChange={(e) => this.handleLijRakam(e)}
-              value={leejrakam_adhyaadhik}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="वार्षिक प्रतिवेदन पेश गरेको नगरेको"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[barsik_pratibedan]}
-              data={LijRakam}
-              getValue={(LijRakam) => LijRakam["value"]}
-              onChange={(e) => this.handleBarsikPratibedan(e)}
-              value={barsik_pratibedan}
-            />
-            <Input
-              className="mb-4"
-              title="प्राप्त राजश्व (रु)"
-              direction="vertical"
-              value={prapta_rajaswo}
-              onChange={(e) => this.setState({ prapta_rajaswo: e })}
-            />
+              <Input
+                className="w-30"
+                title="सट्टा भर्ना जग्गामा वृक्षरोपण प्रजाति :"
+                direction="vertical"
+                value={sattajagga_brixyaropan}
+                onChange={(e) => this.setState({ sattajagga_brixyaropan: e })}
+              />
+            </div>
+            <div className="panel space">
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="लिज रकम अध्यावधिक :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[leejrakam_adhyaadhik]}
+                  data={LijRakam}
+                  getValue={(LijRakam) => LijRakam["value"]}
+                  onChange={(e) => this.handleLijRakam(e)}
+                  value={leejrakam_adhyaadhik}
+                />
+              </div>
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="वार्षिक प्रतिवेदन पेश :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[barsik_pratibedan]}
+                  data={LijRakam}
+                  getValue={(LijRakam) => LijRakam["value"]}
+                  onChange={(e) => this.handleBarsikPratibedan(e)}
+                  value={barsik_pratibedan}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="प्राप्त राजश्व (रु) :"
+                direction="vertical"
+                value={prapta_rajaswo}
+                onChange={(e) => this.setState({ prapta_rajaswo: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शेभ गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

@@ -191,7 +191,7 @@ class Bikribitaran extends Component {
         )}
         {equals(loc, "bikribitaranedit") && (
           <BanpaidawarBikribitaran.Edit
-            title="वनपैदावार बिक्रिवितरण पुनः प्रविष्ट"
+            title="वनपैदावार बिक्रिवितरण सम्बन्धी विवरण शंसोधन"
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}

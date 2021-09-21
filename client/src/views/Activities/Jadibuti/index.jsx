@@ -155,7 +155,7 @@ class Jadibuti extends Component {
         )}
         {equals(loc, "jadibutiedit") && (
           <JadibutiUtpadan.Edit
-            title="जडिबुटी उत्पादन पुनः प्रविष्ट"
+            title="जडिबुटी उत्पादन सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

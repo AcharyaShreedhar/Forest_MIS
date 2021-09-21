@@ -185,7 +185,7 @@ class Lilam extends Component {
         )}
         {equals(loc, "lilamedit") && (
           <BanpaidawarLilam.Edit
-            title="वनपैदावार लिलाम पुनः प्रविष्ट"
+            title="वनपैदावार लिलाम सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

@@ -177,7 +177,7 @@ class Plantation extends Component {
         )}
         {equals(loc, "brixyaropanedit") && (
           <Brixyaropan.Edit
-            title="वृक्षरोपण पुनः प्रविष्ट"
+            title="वृक्षरोपण सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
