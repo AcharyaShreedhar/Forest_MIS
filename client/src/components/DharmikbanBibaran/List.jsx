@@ -51,6 +51,11 @@ function List(props) {
                   <td>
                     {equals(dban.forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण"}
                   </td>
+                  <td>{dban.dalit_ghardhuri}</td>
+                  <td>{dban.janjati_ghardhuri}</td>
+                  <td>{dban.anya_ghardhuri}</td>
+                  <td>{dban.female}</td>
+                  <td>{dban.male}</td>
                   <td>{englishToNepaliNumber(dban.handover_date)}</td>
                   <td>{englishToNepaliNumber(dban.renewed_date)}</td>
                   <td>{dban.nabikaran_abadhi}</td>
