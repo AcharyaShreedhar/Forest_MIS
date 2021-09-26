@@ -158,7 +158,7 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ वार्षिक कार्यक्रम सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -171,171 +171,178 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="सामुदायीक वन नाम"
-              value={samudayikban_name}
-              direction="vertical"
-              onChange={(e) => this.setState({ samudayikban_name: e })}
-            />
+            <div className="panel space mb-4">
+              <Input
+                className="w-65"
+                title="सामुदायीक वन नाम :"
+                value={samudayikban_name}
+                direction="vertical"
+                onChange={(e) => this.setState({ samudayikban_name: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="आर्थिक वर्ष"
-              direction="vertical"
-              value={fiscal_year}
-              onChange={(e) => this.setState({ fiscal_year: e })}
-            />
-            <Input
-              className="mb-4"
-              title="सम्बर्धन गरिएको क्षेत्रफल"
-              value={area}
-              direction="vertical"
-              onChange={(e) => this.setState({ area: e })}
-            />
+              <Input
+                className="w-30"
+                title="आर्थिक वर्ष :"
+                direction="vertical"
+                value={fiscal_year}
+                onChange={(e) => this.setState({ fiscal_year: e })}
+              />
+            </div>
+            <span className="dsl-b18">सम्बर्धन विवरण :</span>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="क्षेत्रफल :"
+                value={area}
+                direction="vertical"
+                onChange={(e) => this.setState({ area: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="सम्बर्धनबाट उत्पादन काठ पारिमाण (क्यू. फि.)"
-              direction="vertical"
-              as="textarea"
-              value={conservation_timber}
-              onChange={(e) => this.setState({ conservation_timber: e })}
-            />
+              <Input
+                className="w-30"
+                title="काठ उत्पादन(क्यू. फि.):"
+                direction="vertical"
+                value={conservation_timber}
+                onChange={(e) => this.setState({ conservation_timber: e })}
+              />
+              <Input
+                className="w-30"
+                title="दाउरा उत्पादन(क्यू. फि.) :"
+                value={conservation_wood}
+                direction="vertical"
+                onChange={(e) => this.setState({ conservation_wood: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="रोजगारीको श्रृजना संख्या (श्रम दिन) :"
+                value={employment}
+                direction="vertical"
+                onChange={(e) => this.setState({ employment: e })}
+              />
+              <Input
+                className="w-30"
+                title="मौज्दात काठ (क्यू. फि.) :"
+                value={maujdat_timber}
+                direction="vertical"
+                onChange={(e) => this.setState({ maujdat_timber: e })}
+              />
+              <Input
+                className="w-30"
+                title="मौज्दात दाउरा (चट्ट) :"
+                value={maujdat_wood}
+                direction="vertical"
+                onChange={(e) => this.setState({ maujdat_wood: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="समूहभित्र काठ वितरण (क्यू. फि.) :"
+                value={withingroup_timber}
+                direction="vertical"
+                onChange={(e) => this.setState({ withingroup_timber: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="सम्बर्धनबाट उत्पादन दाउरा पारिमाण (क्यू. फि.)"
-              value={conservation_wood}
-              direction="vertical"
-              onChange={(e) => this.setState({ conservation_wood: e })}
-            />
+              <Input
+                className="w-30"
+                title="समूहभित्र दाउरा वितरण (भारी) :"
+                value={withingroup_wood}
+                direction="vertical"
+                onChange={(e) => this.setState({ withingroup_wood: e })}
+              />
+              <Input
+                className="w-30"
+                title="समूहबाहिर काठ वितरण (क्यू. फि.) :"
+                value={outsidegroup_timber}
+                direction="vertical"
+                onChange={(e) => this.setState({ outsidegroup_timber: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="समूहबाहिर दाउरा वितरण (चट्ट) :"
+                value={outsidegroup_wood}
+                direction="vertical"
+                onChange={(e) => this.setState({ outsidegroup_wood: e })}
+              />
+              <Input
+                className="w-30"
+                title="वार्षिक आम्दानी (रु) :"
+                value={annual_income}
+                direction="vertical"
+                onChange={(e) => this.setState({ annual_income: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="वन सम्बर्धन कार्यबाट रोजगारीको श्रृजना संख्या (श्रम दिन)"
-              value={employment}
-              direction="vertical"
-              onChange={(e) => this.setState({ employment: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="समूहभित्र काठ वितरण (क्यू. फि.)"
-              value={withingroup_timber}
-              direction="vertical"
-              onChange={(e) => this.setState({ withingroup_timber: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="समूहभित्र दाउरा वितरण (भारी)"
-              value={withingroup_wood}
-              direction="vertical"
-              onChange={(e) => this.setState({ withingroup_wood: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="समूहबाहिर काठ वितरण (क्यू. फि.)"
-              value={outsidegroup_timber}
-              direction="vertical"
-              onChange={(e) => this.setState({ outsidegroup_timber: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="समूहबाहिर दाउरा वितरण (चट्ट)"
-              value={outsidegroup_wood}
-              direction="vertical"
-              onChange={(e) => this.setState({ outsidegroup_wood: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="मौज्दात काठ (क्यू. फि.)"
-              value={maujdat_timber}
-              direction="vertical"
-              onChange={(e) => this.setState({ maujdat_timber: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="मौज्दात दाउरा (चट्ट))"
-              value={maujdat_wood}
-              direction="vertical"
-              onChange={(e) => this.setState({ maujdat_wood: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="वार्षिक आम्दानी (रु)"
-              value={annual_income}
-              direction="vertical"
-              onChange={(e) => this.setState({ annual_income: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="वार्षिक खर्च (रु)"
-              value={annual_expenditure}
-              direction="vertical"
-              onChange={(e) => this.setState({ annual_expenditure: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="खुद वचत खुद आम्दानी (रु)"
-              value={netannual_saving}
-              direction="vertical"
-              onChange={(e) => this.setState({ netannual_saving: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="सामूहमा नियमित रोजगार संख्या(जना)"
-              value={rojgar}
-              direction="vertical"
-              onChange={(e) => this.setState({ rojgar: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="समूहले संचालन गरेको उद्यमको विवरण"
-              value={udhyam}
-              direction="vertical"
-              onChange={(e) => this.setState({ udhyam: e })}
-            />
-
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="वार्षिक प्रतिवेदन"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[annual_bibaran]}
-              data={AnnualBibaran}
-              getValue={(AnnualBibaran) => AnnualBibaran["value"]}
-              onChange={(e) => this.handleAnnualBibaran(e)}
-              value={annual_bibaran}
-            />
-
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="लेखा परिक्षण"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[lekha_parikshyan]}
-              data={LekhaParikshyan}
-              getValue={(LekhaParikshyan) => LekhaParikshyan["value"]}
-              onChange={(e) => this.handleLekhaParikshyan(e)}
-              value={lekha_parikshyan}
-            />
+              <Input
+                className="w-30"
+                title="वार्षिक खर्च (रु) :"
+                value={annual_expenditure}
+                direction="vertical"
+                onChange={(e) => this.setState({ annual_expenditure: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="खुद वचत खुद आम्दानी (रु) :"
+                value={netannual_saving}
+                direction="vertical"
+                onChange={(e) => this.setState({ netannual_saving: e })}
+              />
+              <Input
+                className="w-30"
+                title="सामूहमा नियमित रोजगार संख्या(जना) :"
+                value={rojgar}
+                direction="vertical"
+                onChange={(e) => this.setState({ rojgar: e })}
+              />
+              <Input
+                className="w-30"
+                title="समूहले संचालन गरेको उद्यमको विवरण :"
+                value={udhyam}
+                direction="vertical"
+                onChange={(e) => this.setState({ udhyam: e })}
+              />
+            </div>
+            <div className="panel space">
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="वार्षिक प्रतिवेदन :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[annual_bibaran]}
+                  data={AnnualBibaran}
+                  getValue={(AnnualBibaran) => AnnualBibaran["value"]}
+                  onChange={(e) => this.handleAnnualBibaran(e)}
+                  value={annual_bibaran}
+                />
+              </div>
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="लेखा परिक्षण :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[lekha_parikshyan]}
+                  data={LekhaParikshyan}
+                  getValue={(LekhaParikshyan) => LekhaParikshyan["value"]}
+                  onChange={(e) => this.handleLekhaParikshyan(e)}
+                  value={lekha_parikshyan}
+                />
+              </div>
+              <div className="w-30" />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Update"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

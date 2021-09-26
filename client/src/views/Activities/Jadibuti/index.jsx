@@ -2,22 +2,27 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { JadibutiUtpadan, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
+import {
+  JadibutiUtpadan,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import { jadibutiHeadings, districtList } from "../../../services/config";
 
 class Jadibuti extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       loc: "jadibutilist",
-      distId: "%", 
+      distId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
       path: "jadibuti",
-      };
+    };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
     this.handlePer = this.handlePer.bind(this);
@@ -89,9 +94,9 @@ class Jadibuti extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-  
-        this.props.deleteJadibuti(item.jadibuti_id);
-        this.setState({ showDialog: !this.state.showDialog });
+
+    this.props.deleteJadibuti(item.jadibuti_id);
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -103,12 +108,10 @@ class Jadibuti extends Component {
 
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ जडिबुटी उत्पादन सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ जडिबुटी उत्पादन सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -147,7 +150,7 @@ class Jadibuti extends Component {
         )}
         {equals(loc, "jadibutiadd") && (
           <JadibutiUtpadan.Add
-            title="+ जडिबुटी उत्पादन प्रविष्ट"
+            title="+ जडिबुटी उत्पादन विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addJadibuti(e)}

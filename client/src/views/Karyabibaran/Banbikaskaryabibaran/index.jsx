@@ -147,7 +147,7 @@ class Banbikaskaryabibaran extends Component {
         )}
         {equals(loc, "banbikaskaryabibaranadd") && (
           <BanbikasKaryabibaran.Add
-            title="+ वनविकास कार्यविवरण प्रविष्ट"
+            title="+ वनविकास कार्यविवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBanbikaskaryabibaran(e)}

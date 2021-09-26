@@ -18,28 +18,28 @@ class Edit extends Component {
       showDialog: false,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleConfirm() {
+  handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
   }
-  handleClose() {
+  handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleSubmit() {
     const {
-        id,
-        jadibuti_thegana,
-        jadibuti_kisim,
-        jadibuti_prajati,
-        jadibuti_laxya,
-        jadibuti_pragati,
-        jadibuti_sankhya,
-        created_by,
+      id,
+      jadibuti_thegana,
+      jadibuti_kisim,
+      jadibuti_prajati,
+      jadibuti_laxya,
+      jadibuti_pragati,
+      jadibuti_sankhya,
+      created_by,
     } = this.state;
     const payload = {
       jadibuti: {
@@ -58,24 +58,23 @@ class Edit extends Component {
     };
     this.props.onUpdate(payload, id);
   }
-  
 
   render() {
     const { title } = this.props;
     const {
-        jadibuti_thegana,
-        jadibuti_kisim,
-        jadibuti_prajati,
-        jadibuti_laxya,
-        jadibuti_pragati,
-        jadibuti_sankhya,
-        showDialog,
+      jadibuti_thegana,
+      jadibuti_kisim,
+      jadibuti_prajati,
+      jadibuti_laxya,
+      jadibuti_pragati,
+      jadibuti_sankhya,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ जडिबुटी उत्पादन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -88,58 +87,60 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="जडिबुटी उत्पादन ठेगाना :"
+                value={jadibuti_thegana}
+                direction="vertical"
+                onChange={(e) => this.setState({ jadibuti_thegana: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="जडिबुटी उत्पादन ठेगाना"
-              value={jadibuti_thegana}
-              direction="vertical"
-              onChange={(e) => this.setState({ jadibuti_thegana: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="जडिबुटीको किसिम"
-              direction="vertical"
-              value={jadibuti_kisim}
-              onChange={(e) => this.setState({ jadibuti_kisim: e })}
-            />
-            <Input
-              className="mb-4"
-              title="जडिबुटीको प्रजाति"
-              value={jadibuti_prajati}
-              direction="vertical"
-              onChange={(e) => this.setState({ jadibuti_prajati: e })}
-            />
-             <Input
-              className="mb-4"
-              title="लक्ष"
-              value={jadibuti_laxya}
-              direction="vertical"
-              onChange={(e) => this.setState({ jadibuti_laxya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="प्रगति"
-              direction="vertical"
-              value={jadibuti_pragati}
-              onChange={(e) => this.setState({ jadibuti_pragati: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="जडिबुटीको संख्या"
-              value={jadibuti_sankhya}
-              direction="vertical"
-              onChange={(e) => this.setState({ jadibuti_sankhya: e })}
-            />
-            
+              <Input
+                className="w-30"
+                title="जडिबुटीको किसिम :"
+                direction="vertical"
+                value={jadibuti_kisim}
+                onChange={(e) => this.setState({ jadibuti_kisim: e })}
+              />
+              <Input
+                className="w-30"
+                title="जडिबुटीको प्रजाति :"
+                value={jadibuti_prajati}
+                direction="vertical"
+                onChange={(e) => this.setState({ jadibuti_prajati: e })}
+              />
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="लक्ष :"
+                value={jadibuti_laxya}
+                direction="vertical"
+                onChange={(e) => this.setState({ jadibuti_laxya: e })}
+              />
+              <Input
+                className="w-30"
+                title="प्रगति :"
+                direction="vertical"
+                value={jadibuti_pragati}
+                onChange={(e) => this.setState({ jadibuti_pragati: e })}
+              />
+              <Input
+                className="w-30"
+                title="जडिबुटीको संख्या :"
+                value={jadibuti_sankhya}
+                direction="vertical"
+                onChange={(e) => this.setState({ jadibuti_sankhya: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

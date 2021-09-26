@@ -176,7 +176,7 @@ class Sawarisadhan extends Component {
         )}
         {equals(loc, "sawarisadhanadd") && (
           <SawarisadhanBibaran.Add
-            title="+ सवारी साधन प्रविष्ट"
+            title="+ सवारी साधन विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addSawarisadhan(e)}

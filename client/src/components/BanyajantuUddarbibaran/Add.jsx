@@ -20,7 +20,6 @@ class Add extends Component {
       banyajantuko_naam: "",
       banyajantuko_umer: "",
       banyajantuko_abastha: "",
-      sahabhagi_purus: "",
       mareko_karan: "",
       banxetra_duri: "",
       anya_bibaran: "",
@@ -109,7 +108,7 @@ class Add extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ वन्यजन्तु उद्दार सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
@@ -122,97 +121,110 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-
-            <span className="dsl-b18"> मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={miti}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="स्थानिय तह"
-              direction="vertical"
-              value={sthaniya_taha}
-              onChange={(e) => this.setState({ sthaniya_taha: e })}
-            />
-            <Input
-              className="mb-4"
-              title="समय"
-              value={samaya}
-              direction="vertical"
-              onChange={(e) => this.setState({ samaya: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="संरक्षित क्षेत्र/सा.व.क्षेत्र"
-              direction="vertical"
-              value={samraxit_xetra}
-              onChange={(e) => this.setState({ samraxit_xetra: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="वन्यजन्तुको नाम"
-              value={banyajantuko_naam}
-              direction="vertical"
-              onChange={(e) => this.setState({ banyajantuko_naam: e })}
-            />
-            <Input
-              className="mb-4"
-              title="उमेर"
-              value={banyajantuko_umer}
-              direction="vertical"
-              onChange={(e) => this.setState({ banyajantuko_umer: e })}
-            />
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="अवस्था"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[banyajantuko_abastha]}
-              data={BanyajantukoAbastha}
-              getValue={(BanyajantukoAbastha) => BanyajantukoAbastha["value"]}
-              onChange={(e) => this.handleBanyajantukoAbastha(e)}
-              value={banyajantuko_abastha}
-            />
-            <Input
-              className="mb-4"
-              title="मरेको भए कारण"
-              value={mareko_karan}
-              direction="vertical"
-              onChange={(e) => this.setState({ mareko_karan: e })}
-            />
-            <Input
-              className="mb-4"
-              title="नजिकको वन क्षेत्रबाट दुरी(मि.)"
-              value={banxetra_duri}
-              direction="vertical"
-              onChange={(e) => this.setState({ banxetra_duri: e })}
-            />
-            <Input
-              className="mb-4"
-              title="अन्य विवरण"
-              value={anya_bibaran}
-              direction="vertical"
-              onChange={(e) => this.setState({ anya_bibaran: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कैफियत	"
-              value={remarks}
-              direction="vertical"
-              onChange={(e) => this.setState({ remarks: e })}
-            />
+            <div className="panel space mb-4">
+              <div className="w-30">
+                <span className="dsl-b18"> मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={miti}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="समय :"
+                value={samaya}
+                direction="vertical"
+                onChange={(e) => this.setState({ samaya: e })}
+              />
+              <Input
+                className="w-30"
+                title="स्थानिय तह :"
+                direction="vertical"
+                value={sthaniya_taha}
+                onChange={(e) => this.setState({ sthaniya_taha: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-65"
+                title="संरक्षित क्षेत्र/सा.व.क्षेत्र :"
+                direction="vertical"
+                value={samraxit_xetra}
+                onChange={(e) => this.setState({ samraxit_xetra: e })}
+              />
+              <Input
+                className="w-30"
+                title="नजिकको वन क्षेत्रबाट दुरी(मि.) :"
+                value={banxetra_duri}
+                direction="vertical"
+                onChange={(e) => this.setState({ banxetra_duri: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="वन्यजन्तुको नाम :"
+                value={banyajantuko_naam}
+                direction="vertical"
+                onChange={(e) => this.setState({ banyajantuko_naam: e })}
+              />
+              <Input
+                className="w-30"
+                title="उमेर :"
+                value={banyajantuko_umer}
+                direction="vertical"
+                onChange={(e) => this.setState({ banyajantuko_umer: e })}
+              />
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="अवस्था :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[banyajantuko_abastha]}
+                  data={BanyajantukoAbastha}
+                  getValue={(BanyajantukoAbastha) =>
+                    BanyajantukoAbastha["value"]
+                  }
+                  onChange={(e) => this.handleBanyajantukoAbastha(e)}
+                  value={banyajantuko_abastha}
+                />
+              </div>
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="मरेको भए कारण :"
+                value={mareko_karan}
+                direction="vertical"
+                onChange={(e) => this.setState({ mareko_karan: e })}
+              />
+              <Input
+                className="w-30"
+                title="अन्य विवरण :"
+                value={anya_bibaran}
+                direction="vertical"
+                as="textarea"
+                onChange={(e) => this.setState({ anya_bibaran: e })}
+              />
+              <Input
+                className="w-30"
+                title="कैफियत	:"
+                value={remarks}
+                as="textarea"
+                direction="vertical"
+                onChange={(e) => this.setState({ remarks: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शेभ गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
