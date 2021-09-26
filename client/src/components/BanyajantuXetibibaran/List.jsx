@@ -50,14 +50,18 @@ function List(props) {
                 <tr key={`${xeti.banyajantuxeti_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{xeti.pidit_name}</td>
-                  <td>{xeti.pidit_address}</td>
-                  <td>{xeti.jagga_bibaran}</td>
                   <td>{xeti.nagarikta_no}</td>
+                  <td>{xeti.pidit_address}</td>
                   <td>{xeti.upabhoktasamiti_name}</td>
                   <td>{xeti.xetigarne_animal}</td>
                   <td>{englishToNepaliNumber(xeti.xeti_miti)}</td>
-                  <td>{xeti.pasudhan_ghargoth}</td>
+                  <td>{xeti.ghatana_address}</td>
+                  <td>{xeti.jagga_bibaran}</td>
                   <td>{xeti.man_injury}</td>
+                  <td>{xeti.ghargoth_xeti}</td>
+                  <td>{xeti.pasudhan_xeti}</td>
+                  <td>{xeti.balinali_noksani}</td>
+                  <td>{xeti.anna_bhandaran}</td>
                   <td>{xeti.mag_rakam}</td>
                   <td>{xeti.samitiko_mulyankan_rakam}</td>
                   <td>{xeti.vuktani_rakam}</td>

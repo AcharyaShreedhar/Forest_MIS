@@ -147,7 +147,7 @@ class Gharjagga extends Component {
         )}
         {equals(loc, "gharjaggaadd") && (
           <GharjaggaBibaran.Add
-            title="+ घर जग्गा प्रविष्ट"
+            title="+ घर जग्गा विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addGharjagga(e)}

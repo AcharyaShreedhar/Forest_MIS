@@ -223,7 +223,7 @@ export class SideNavbar extends Component {
                 वार्षिक कार्यक्रम
               </MenuItem>
               <MenuItem onClick={() => history.push("/activities/nurserylist")}>
-                ओसारपसार बिबरण
+                विरुवा उत्पादन
               </MenuItem>
               <MenuItem
                 onClick={() => history.push("/activities/plantationlist")}

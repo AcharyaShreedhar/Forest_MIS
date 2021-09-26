@@ -148,7 +148,7 @@ class Jaladharsamrakshyan extends Component {
         )}
         {equals(loc, "jaladharsamrakshyanadd") && (
           <JaladharSamrakshyan.Add
-            title="+ जलाधार संरक्षण प्रविष्ट"
+            title="+ जलाधार संरक्षण विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addJaladharsamrakshyan(e)}

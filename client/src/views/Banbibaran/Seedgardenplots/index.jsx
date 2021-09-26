@@ -180,7 +180,7 @@ class Seedgardenplots extends Component {
         )}
         {equals(loc, "seedgardenplotsadd") && (
           <SeedgardenplotsBibaran.Add
-            title="+ बन बीउ बगैच/समबर्धन प्लटहरु प्रविष्ट"
+            title="+ बन बीउ बगैच/समबर्धन प्लटहरु विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addSeedgardenplots(e)}

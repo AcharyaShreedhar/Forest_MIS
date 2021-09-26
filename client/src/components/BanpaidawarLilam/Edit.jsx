@@ -45,7 +45,6 @@ class Edit extends Component {
       sakaar_price,
       remarks,
       created_by,
-      
     } = this.state;
     const payload = {
       banpaidawarlilam: {
@@ -87,7 +86,7 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ वनपैदावार लिलाम सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -100,65 +99,71 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <span className="dsl-b18">लिलाम मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={lilam_date}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="वन पैदावारको किसिम"
-              value={banpaidawar_type}
-              direction="vertical"
-              onChange={(e) => this.setState({ banpaidawar_type: e })}
-            />
+            <div className="panel space mb-4">
+              <div className="w-30">
+                <span className="dsl-b18">लिलाम मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={lilam_date}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="वन पैदावारको किसिम :"
+                value={banpaidawar_type}
+                direction="vertical"
+                onChange={(e) => this.setState({ banpaidawar_type: e })}
+              />
+              <Input
+                className="w-30"
+                title="इकाई :"
+                direction="vertical"
+                value={unit}
+                onChange={(e) => this.setState({ unit: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="परिमाण :"
+                value={quantity}
+                direction="vertical"
+                onChange={(e) => this.setState({ quantity: e })}
+              />
 
-            <Input
-              className="mb-4"
-              title="इकाई"
-              direction="vertical"
-              value={unit}
-              onChange={(e) => this.setState({ unit: e })}
-            />
-            <Input
-              className="mb-4"
-              title="परिमाण"
-              value={quantity}
-              direction="vertical"
-              onChange={(e) => this.setState({ quantity: e })}
-            />
+              <Input
+                className="w-30"
+                title="न्युनतम मूल्य (रु) :"
+                direction="vertical"
+                value={minimum_price}
+                onChange={(e) => this.setState({ minimum_price: e })}
+              />
 
+              <Input
+                className="w-30"
+                title="सकार रकम (रु) :"
+                value={sakaar_price}
+                direction="vertical"
+                onChange={(e) => this.setState({ sakaar_price: e })}
+              />
+            </div>
             <Input
-              className="mb-4"
-              title="न्युनतम मूल्य (रु)"
-              direction="vertical"
-              value={minimum_price}
-              onChange={(e) => this.setState({ minimum_price: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="सकार रकम (रु)"
-              value={sakaar_price}
-              direction="vertical"
-              onChange={(e) => this.setState({ sakaar_price: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कैफियत"
+              className="w-30"
+              title="कैफियत :"
               value={remarks}
               direction="vertical"
+              as="textarea"
               onChange={(e) => this.setState({ remarks: e })}
             />
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Update"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

@@ -52,11 +52,14 @@ async function getBrixyaropan(req, res) {
 
 //Controller for adding a Brixyaropan
 async function addBrixyaropan(req, res) {
-  const addBrixyaropanQuery = `INSERT INTO brixyaropans (dist_id,brixyaropan_thegana,brixyaropan_kisim,brixyaropan_laxya,brixyaropan_prajati,brixyaropan_pragati,brixyaropan_sankhya,created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addBrixyaropanQuery = `INSERT INTO brixyaropans (dist_id,brixyaropan_miti,xetra,area,brixyaropan_thegana,brixyaropan_kisim,brixyaropan_laxya,brixyaropan_prajati,brixyaropan_pragati,brixyaropan_sankhya,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBrixyaropanQuery,
     [
       req.body.dist_id,
+      req.body.brixyaropan_miti,
+      req.body.xetra,
+      req.body.area,
       req.body.brixyaropan_thegana,
       req.body.brixyaropan_kisim,
       req.body.brixyaropan_laxya,
@@ -77,11 +80,14 @@ async function addBrixyaropan(req, res) {
 
 //Controller for updating a Brixyaropan
 async function updateBrixyaropan(req, res) {
-  const updateBrixyaropanQuery = `UPDATE brixyaropans SET dist_id=?,brixyaropan_thegana=?,brixyaropan_kisim=?,brixyaropan_laxya=?,brixyaropan_prajati=?,brixyaropan_pragati=?,brixyaropan_sankhya=?, created_by=?, updated_by=? WHERE brixyaropan_id=?`;
+  const updateBrixyaropanQuery = `UPDATE brixyaropans SET dist_id=?,brixyaropan_miti=?,xetra=?,area=?,brixyaropan_thegana=?,brixyaropan_kisim=?,brixyaropan_laxya=?,brixyaropan_prajati=?,brixyaropan_pragati=?,brixyaropan_sankhya=?, created_by=?, updated_by=? WHERE brixyaropan_id=?`;
   pool.query(
     updateBrixyaropanQuery,
     [
       req.body.dist_id,
+      req.body.brixyaropan_miti,
+      req.body.xetra,
+      req.body.area,
       req.body.brixyaropan_thegana,
       req.body.brixyaropan_kisim,
       req.body.brixyaropan_laxya,

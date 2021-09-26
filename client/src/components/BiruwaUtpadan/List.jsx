@@ -50,11 +50,13 @@ function List(props) {
                 <tr key={`${biruwa.biruwa_utpadan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {biruwa.arthik_barsa} </td>
+                  <td> {biruwa.biruwa_type} </td>
+                  <td> {biruwa.utpadan_medium} </td>
+                  <td> {biruwa.biruwa_sankhya} </td>
                   <td> {biruwa.narsari_sankhya} </td>
                   <td> {biruwa.barga} </td>
                   <td> {biruwa.laxya} </td>
                   <td> {biruwa.pragati} </td>
-                  <td> {biruwa.brixyaropan} </td>
                   <td> {biruwa.remarks} </td>
                   <td>
                     <div className="edit">

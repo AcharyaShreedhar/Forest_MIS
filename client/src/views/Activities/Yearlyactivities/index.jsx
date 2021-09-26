@@ -177,7 +177,7 @@ class Yearlyactivities extends Component {
 
         {equals(loc, "yearlyactivitiesadd") && (
           <YearlyActivities.Add
-            title="+ वार्षिक कार्यक्रम प्रविष्ट"
+            title="+ वार्षिक कार्यक्रम विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addYearlyactivities(e)}

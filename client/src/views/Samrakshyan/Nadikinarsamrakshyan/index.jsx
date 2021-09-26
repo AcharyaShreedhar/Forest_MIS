@@ -181,7 +181,7 @@ class Nadikinarsamrakshyan extends Component {
         )}
         {equals(loc, "nadikinarsamrakshyanadd") && (
           <NadikinarSamrakshyan.Add
-            title="+ नदिकिनार संरक्षण प्रविष्ट"
+            title="+ नदिकिनार संरक्षण विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addNadikinarsamrakshyan(e)}

@@ -12,7 +12,6 @@ function List(props) {
     data,
     title,
     pageCount,
-    user,
     onAdd,
     onSelect,
     onPageClick,
@@ -50,6 +49,9 @@ function List(props) {
               data.map((brixyaropan, index) => (
                 <tr key={`${brixyaropan.birxyaropan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
+                  <td>{brixyaropan.brixyaropan_miti} </td>
+                  <td>{brixyaropan.xetra} </td>
+                  <td>{brixyaropan.area} </td>
                   <td>{brixyaropan.brixyaropan_thegana} </td>
                   <td>{brixyaropan.brixyaropan_kisim} </td>
                   <td>{brixyaropan.brixyaropan_laxya} </td>

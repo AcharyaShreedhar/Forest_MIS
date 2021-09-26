@@ -52,7 +52,7 @@ async function getBabyajantuXetiBibarans(req, res) {
 
 //Controller for adding a Banyajantu Xeti Bibaran
 async function addBanyajantuXetiBibarans(req, res) {
-  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (dist_id, pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,pasudhan_ghargoth,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (dist_id, pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,ghatana_address,balinali_noksani,anna_bhandaran,pasudhan_xeti,ghargoth_xeti,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuXetiBibaransQuery,
     [
@@ -64,7 +64,11 @@ async function addBanyajantuXetiBibarans(req, res) {
       req.body.upabhoktasamiti_name,
       req.body.xetigarne_animal,
       req.body.xeti_miti,
-      req.body.pasudhan_ghargoth,
+      req.body.ghatana_address,
+      req.body.balinali_noksani,
+      req.body.anna_bhandaran,
+      req.body.pasudhan_xeti,
+      req.body.ghargoth_xeti,
       req.body.man_injury,
       req.body.mag_rakam,
       req.body.samitiko_mulyankan_rakam,
@@ -84,7 +88,7 @@ async function addBanyajantuXetiBibarans(req, res) {
 
 //Controller for updating a Banyajantu Xeti Bibaran
 async function updateBanyajantuXetiBibarans(req, res) {
-  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET dist_id=?,pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,pasudhan_ghargoth=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
+  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET dist_id=?,pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,ghatana_address=?,balinali_noksani=?,anna_bhandaran=?,pasudhan_xeti=?,ghargoth_xeti=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
   pool.query(
     updateBanyajantuXetiBibaransQuery,
     [
@@ -96,7 +100,11 @@ async function updateBanyajantuXetiBibarans(req, res) {
       req.body.upabhoktasamiti_name,
       req.body.xetigarne_animal,
       req.body.xeti_miti,
-      req.body.pasudhan_ghargoth,
+      req.body.ghatana_address,
+      req.body.balinali_noksani,
+      req.body.anna_bhandaran,
+      req.body.pasudhan_xeti,
+      req.body.ghargoth_xeti,
       req.body.man_injury,
       req.body.mag_rakam,
       req.body.samitiko_mulyankan_rakam,

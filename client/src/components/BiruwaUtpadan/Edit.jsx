@@ -1,17 +1,30 @@
 import React, { Component } from "react";
-import { Button, Input, ConfirmationDialoge } from "../../components";
+import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 
+const BiruwaTypes = [
+  { id: 1, value: "बहुउदेशिय " },
+  { id: 2, value: "जडिबुटी " },
+  { id: 3, value: "वहुवर्षिय " },
+];
+const UtpadanMedium = [
+  { id: 1, value: "डिभिजन बन कार्यालय " },
+  { id: 2, value: "समुह मार्फत " },
+  { id: 3, value: "निजी" },
+  { id: 4, value: "खरिद" },
+];
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
       id: props.history.location.item.biruwa_utpadan_id,
       arthik_barsa: props.history.location.item.arthik_barsa,
+      biruwa_type: props.history.location.item.biruwa_type,
+      utpadan_medium: props.history.location.item.utpadan_medium,
+      biruwa_sankhya: props.history.location.item.biruwa_sankhya,
       narsari_sankhya: props.history.location.item.narsari_sankhya,
       barga: props.history.location.item.barga,
       laxya: props.history.location.item.laxya,
       pragati: props.history.location.item.pragati,
-      brixyaropan: props.history.location.item.brixyaropan,
       remarks: props.history.location.item.remarks,
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
@@ -19,15 +32,20 @@ class Edit extends Component {
       showDialog: false,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleBiruwaTypes = this.handleBiruwaTypes.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUtpadanMedium = this.handleUtpadanMedium.bind(this);
   }
 
-  handleConfirm() {
-    this.setState({ showDialog: !this.state.showDialog });
+  handleBiruwaTypes(e) {
+    this.setState({ biruwa_type: e[0] });
   }
   handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
 
@@ -35,24 +53,27 @@ class Edit extends Component {
     const {
       id,
       arthik_barsa,
+      biruwa_type,
+      utpadan_medium,
+      biruwa_sankhya,
       narsari_sankhya,
       barga,
       laxya,
       pragati,
-      brixyaropan,
       remarks,
       created_by,
-      
     } = this.state;
     const payload = {
       biruwautpadan: {
         data: {
           arthik_barsa: arthik_barsa,
+          biruwa_type: biruwa_type,
+          utpadan_medium: utpadan_medium,
+          biruwa_sankhya: biruwa_sankhya,
           narsari_sankhya: narsari_sankhya,
           barga: barga,
           laxya: laxya,
           pragati: pragati,
-          brixyaropan: brixyaropan,
           remarks: remarks,
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
@@ -64,15 +85,21 @@ class Edit extends Component {
     this.props.onUpdate(payload, id);
   }
 
+  handleUtpadanMedium(e) {
+    this.setState({ utpadan_medium: e[0] });
+  }
+
   render() {
     const { title } = this.props;
     const {
       arthik_barsa,
+      biruwa_type,
+      utpadan_medium,
+      biruwa_sankhya,
       narsari_sankhya,
       barga,
       laxya,
       pragati,
-      brixyaropan,
       remarks,
       showDialog,
     } = this.state;
@@ -80,7 +107,7 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ विरुवा उत्पादन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -93,64 +120,92 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="आर्थिक वर्ष"
-              value={arthik_barsa}
-              direction="vertical"
-              onChange={(e) => this.setState({ arthik_barsa: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="नर्सरी संख्या"
-              direction="vertical"
-              value={narsari_sankhya}
-              onChange={(e) => this.setState({ narsari_sankhya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="वर्ग"
-              value={barga}
-              direction="vertical"
-              onChange={(e) => this.setState({ barga: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="लक्ष"
-              direction="vertical"
-              value={laxya}
-              onChange={(e) => this.setState({ laxya: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="प्रगति"
-              value={pragati}
-              direction="vertical"
-              onChange={(e) => this.setState({ pragati: e })}
-            />
-            <Input
-              className="mb-4"
-              title="वृक्षरोपण"
-              value={brixyaropan}
-              direction="vertical"
-              onChange={(e) => this.setState({ brixyaropan: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कैफियत"
-              value={remarks}
-              direction="vertical"
-              onChange={(e) => this.setState({ remarks: e })}
-            />
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="आर्थिक वर्ष :"
+                value={arthik_barsa}
+                direction="vertical"
+                onChange={(e) => this.setState({ arthik_barsa: e })}
+              />
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="बिरुवाको किसिम :"
+                  direction="vertical"
+                  defaultIds={[biruwa_type]}
+                  data={BiruwaTypes}
+                  getValue={(BiruwaTypes) => BiruwaTypes["value"]}
+                  onChange={(e) => this.handleBiruwaTypes(e)}
+                  value={biruwa_type}
+                />
+              </div>
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="उत्पादनको किसिम :"
+                  direction="vertical"
+                  defaultIds={[utpadan_medium]}
+                  data={UtpadanMedium}
+                  getValue={(UtpadanMedium) => UtpadanMedium["value"]}
+                  onChange={(e) => this.handleUtpadanMedium(e)}
+                  value={utpadan_medium}
+                />
+              </div>
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="बिरुवा संख्या :"
+                value={biruwa_sankhya}
+                direction="vertical"
+                onChange={(e) => this.setState({ biruwa_type: e })}
+              />
+              <Input
+                className="w-30"
+                title="नर्सरी संख्या :"
+                value={narsari_sankhya}
+                direction="vertical"
+                onChange={(e) => this.setState({ narsari_sankhya: e })}
+              />
+              <Input
+                className="w-30"
+                title="वर्ग :"
+                value={barga}
+                direction="vertical"
+                onChange={(e) => this.setState({ barga: e })}
+              />
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="लक्ष :"
+                value={laxya}
+                direction="vertical"
+                onChange={(e) => this.setState({ laxya: e })}
+              />
+              <Input
+                className="w-30"
+                title="प्रगति :"
+                value={pragati}
+                direction="vertical"
+                onChange={(e) => this.setState({ pragati: e })}
+              />
+              <Input
+                className="w-30"
+                title="कैफियत :"
+                value={remarks}
+                direction="vertical"
+                onChange={(e) => this.setState({ remarks: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Update"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
