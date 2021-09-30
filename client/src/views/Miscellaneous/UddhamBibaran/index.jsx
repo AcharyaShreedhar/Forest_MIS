@@ -3,22 +3,19 @@ import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
 import {
-  KarmachariBibaran,
+  Uddham,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
-import KarmacharibibaranActions from "../../../actions/karmacharibibaran";
-import {
-  karmacharibibaranHeadings,
-  districtList,
-} from "../../../services/config";
+import MiscellaneousActions from "../../../actions/miscellaneous";
+import { uddhamHeadings, districtList } from "../../../services/config";
 
-class Karmacharibibaran extends Component {
+class UddhamBibaran extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loc: "karmacharibibaranlist",
+      loc: "uddhamlist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
@@ -26,7 +23,7 @@ class Karmacharibibaran extends Component {
       page: 0,
       showDialog: false,
       item: {},
-      path: "karmacharibibaran",
+      path: "uddham",
     };
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
@@ -42,11 +39,15 @@ class Karmacharibibaran extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
-    var karmacharibibaranList = [];
+    var uddhamList = [];
     if (nextProps !== prevState) {
-      karmacharibibaranList = nextProps.karmacharibibaranDataList.data;
+      uddhamList = nextProps.uddhamDataList.data;
     }
-    return { loc, karmacharibibaranList };
+
+    return {
+      loc,
+      uddhamList,
+    };
   }
   handlePer(e) {
     const { fromDate, toDate, distId } = this.state;
@@ -70,11 +71,11 @@ class Karmacharibibaran extends Component {
   }
 
   fetchResults(fromDate, toDate, distId, page, perPage) {
-    this.props.fetchallKarmacharibibaran({
+    this.props.fetchallUddhamBibaran({
       fromDate,
       toDate,
       distId,
-      name: "emp_appoint_date",
+      name: "darta_miti",
       page: page,
       perPage,
     });
@@ -83,6 +84,7 @@ class Karmacharibibaran extends Component {
   handlePageChange(data) {
     const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
+
     this.fetchResults(
       fromDate,
       toDate,
@@ -98,9 +100,10 @@ class Karmacharibibaran extends Component {
     switch (event) {
       case "edit": {
         this.props.history.push({
-          pathname: `/karmachari/karmacharibibaranedit/${item.emp_id}`,
+          pathname: `/miscellaneous/uddhambibaranedit/${item.uddham_id}`,
           item,
         });
+
         break;
       }
       case "delete": {
@@ -117,79 +120,74 @@ class Karmacharibibaran extends Component {
   handleDelete() {
     const { item } = this.state;
 
-    this.props.deleteKarmacharibibaran(item.emp_id);
+    this.props.deleteUddhamBibaran(item.uddham_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
-    this.props.history.push("/karmachari/karmacharibibaranadd/new");
+    this.props.history.push("/miscellaneous/uddhambibaranadd/new");
   }
 
   render() {
-    const { loc, perPage, karmacharibibaranList, showDialog } = this.state;
-    const { user, districtData } = this.props;
+    const { loc, perPage, uddhamList, showDialog } = this.state;
+    const { user } = this.props;
 
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={"के तपाईँ कर्मचारी विवरण  हटाउन चाहनुहुन्छ ?"}
+          body={"के तपाईँ उद्धम सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "karmacharibibaranlist") && (
+        {equals(loc, "uddhamlist") && (
           <Fragment>
             <div className="report-filter">
               <Filter
-                id="karmacharibibaran"
-                title="अपोइन्ट मिति"
+                title="आर्थिक वर्ष"
                 districtsList={districtList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
               />
-              <ReportGenerator id="karmacharibibaran" />
+              <ReportGenerator id="uddham" />
             </div>
-            <KarmachariBibaran.List
-              buttonName="+  कर्मचारी विवरण"
-              title="कर्मचारी विवरण सम्बन्धि विवरण"
+            <Uddham.List
+              buttonName="+ उद्धम"
+              title="उद्धम सम्बन्धि विवरण"
               pageCount={
-                !isNil(karmacharibibaranList)
-                  ? Math.ceil(karmacharibibaranList.total / perPage)
-                  : 10
+                !isNil(uddhamList) ? Math.ceil(uddhamList.total / perPage) : 10
               }
-              data={
-                !isNil(karmacharibibaranList) ? karmacharibibaranList.list : []
-              }
+              data={!isNil(uddhamList) ? uddhamList.list : []}
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
+              headings={uddhamHeadings}
               user={user}
-              headings={karmacharibibaranHeadings}
-              onAdd={() => this.handleAdd("karmacharibibaran")}
+              onAdd={() => this.handleAdd("uddham")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
             />
           </Fragment>
         )}
-        {equals(loc, "karmacharibibaranadd") && (
-          <KarmachariBibaran.Add
-            title="+ कर्मचारी विवरण"
+        {equals(loc, "uddhambibaranadd") && (
+          <Uddham.Add
+            title="+ उद्धम"
             user={user}
             onSelect={this.handleSelectMenu}
-            onSubmit={(e) => this.props.addKarmacharibibaran(e)}
+            onSubmit={(e) => this.props.addUddhamBibaran(e)}
           />
         )}
-        {equals(loc, "karmacharibibaranedit") && (
-          <KarmachariBibaran.Edit
-            title="कर्मचारी विवरण सम्बन्धी विवरण शंसोधन"
-            history={this.props.history}
+        {equals(loc, "uddhambibaranedit") && (
+          <Uddham.Edit
+            title="उद्धम सम्बन्धी विवरण शंसोधन"
             user={user}
+            history={this.props.history}
             onSelect={this.handleSelectMenu}
-            onUpdate={(e, id) => this.props.updateKarmacharibibaran(e, id)}
+            onUpdate={(e, id) => this.props.updateUddhamBibaran(e, id)}
           />
         )}
       </div>
@@ -197,31 +195,31 @@ class Karmacharibibaran extends Component {
   }
 }
 
-Karmacharibibaran.propsTypes = {
-  karmacharibibaranDataList: PropTypes.any,
+UddhamBibaran.propsTypes = {
+  uddhamDataList: PropTypes.any,
 };
 
-Karmacharibibaran.defaultProps = {
-  karmacharibibaranDataList: {},
+UddhamBibaran.defaultProps = {
+  uddhamDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  districtData: state.app,
-  karmacharibibaranDataList: state.karmacharibibaran.allemployeesData,
+  uddhamDataList: state.miscellaneous.alluddhamData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallKarmacharibibaran: (payload) =>
-    dispatch(KarmacharibibaranActions.fetchallemployeesRequest(payload)),
-  addKarmacharibibaran: (payload) =>
-    dispatch(KarmacharibibaranActions.addemployeesRequest(payload)),
-  updateKarmacharibibaran: (payload, employeeId) =>
-    dispatch(
-      KarmacharibibaranActions.updateemployeesRequest(payload, employeeId)
-    ),
-  deleteKarmacharibibaran: (employeeId) =>
-    dispatch(KarmacharibibaranActions.deleteemployeesRequest(employeeId)),
+  fetchallUddhamBibaran: (payload) =>
+    dispatch(MiscellaneousActions.fetchalluddhamRequest(payload)),
+
+  addUddhamBibaran: (payload) =>
+    dispatch(MiscellaneousActions.adduddhamRequest(payload)),
+
+  updateUddhamBibaran: (payload, uddhamId) =>
+    dispatch(MiscellaneousActions.updateuddhamRequest(payload, uddhamId)),
+
+  deleteUddhamBibaran: (uddhamId) =>
+    dispatch(MiscellaneousActions.deleteuddhamRequest(uddhamId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Karmacharibibaran);
+export default connect(mapStateToProps, mapDispatchToProps)(UddhamBibaran);

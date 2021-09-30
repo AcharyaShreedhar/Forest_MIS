@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Button } from "../../components";
 import { connect } from "react-redux";
 import jsreport from "jsreport-browser-client-dist";
+import "./Report.scss";
 
 export class Report extends Component {
   constructor(props) {
@@ -30,21 +32,41 @@ export class Report extends Component {
         ban: props.banhastantaranData,
       },
     };
+    this.handleReport = this.handleReport.bind(this);
   }
-  componentDidMount() {
+
+  handleReport() {
     jsreport.serverUrl = "http://localhost:5488";
     let reportRequest = {
       template: { name: "bansambhandhibibaran" },
       data: this.state.report_data,
     };
+    jsreport.render(null, reportRequest);
+  }
+
+  componentDidMount() {
+    jsreport.serverUrl = "http://localhost:5488";
+    let reportRequest = {
+      template: { name: "bansambhandhibibaran" },
+      data: this.state.report_data,
+      options: {
+        office: {
+          preview: true,
+        },
+      },
+    };
     jsreport.render(this.reportPreview, reportRequest);
   }
   render() {
     return (
-      <div id="reportPlaceholder">
-        <p>रिपोर्ट सेक्सन </p>
+      <div id="reportPlaceholder" className="report_style">
+        <Button
+          className="mr-3 save"
+          name="शेभ गर्नुहोस ।"
+          onClick={this.handleReport.bind(this)}
+        />
         <div
-          style={{ height: "700px" }}
+          style={{ height: "100vh" }}
           ref={(el) => (this.reportPreview = el)}
         />
       </div>

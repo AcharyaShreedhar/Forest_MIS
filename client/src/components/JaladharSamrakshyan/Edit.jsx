@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
-
 class Edit extends Component {
   constructor(props) {
     super(props);
@@ -32,10 +31,9 @@ class Edit extends Component {
   }
 
   handleSubmit() {
-    const {id, sthan, qty, karyakram_miti, laagat, created_by } =
-      this.state;
+    const { id, sthan, qty, karyakram_miti, laagat, created_by } = this.state;
     const payload = {
-        jaladharsamrakshyan: {
+      jaladharsamrakshyan: {
         data: {
           sthan: sthan,
           qty: qty,
@@ -56,13 +54,7 @@ class Edit extends Component {
 
   render() {
     const { title } = this.props;
-    const {
-      sthan,
-      qty,
-      karyakram_miti,
-      laagat,
-      showDialog,
-    } = this.state;
+    const { sthan, qty, karyakram_miti, laagat, showDialog } = this.state;
 
     return (
       <React.Fragment>
@@ -80,44 +72,47 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-
-            <Input
-              className="mb-4"
-              title="स्थान"
-              value={sthan}
-              direction="vertical"
-              onChange={(e) => this.setState({ sthan: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="पारिमाण"
-              direction="vertical"
-              value={qty}
-              onChange={(e) => this.setState({ qty: e })}
-            />
-            <span className="dsl-b18">कार्यक्रम मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={karyakram_miti}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-           <Input
-              className="mb-4"
-              title="लागत"
-              value={laagat}
-              direction="vertical"
-              onChange={(e) => this.setState({ laagat: e })}
-            />
-            
+            <div className="panel mb-4 space">
+              <Input
+                className="w-30"
+                title="स्थान :"
+                value={sthan}
+                direction="vertical"
+                onChange={(e) => this.setState({ sthan: e })}
+              />
+              <Input
+                className="w-30"
+                title="परिमाण :"
+                direction="vertical"
+                value={qty}
+                onChange={(e) => this.setState({ qty: e })}
+              />
+              <div className="w-30">
+                <span className="dsl-b18">कार्यक्रम मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={karyakram_miti}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="लागत :"
+                value={laagat}
+                direction="vertical"
+                onChange={(e) => this.setState({ laagat: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

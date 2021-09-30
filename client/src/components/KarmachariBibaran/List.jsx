@@ -53,16 +53,8 @@ function List(props) {
                   <td>
                     {emp.emp_fname_nep} {emp.emp_lname_nep}
                   </td>
-                  <td>{emp.emp_add_perm_prov} </td>
-                  <td>{emp.emp_add_perm_dist} </td>
-                  <td>{emp.emp_add_perm_mun} </td>
-                  <td>{emp.emp_add_perm_ward} </td>
-                  <td>{emp.emp_add_perm_tole} </td>
-                  <td>{emp.emp_add_temp_prov} </td>
-                  <td>{emp.emp_add_temp_dist} </td>
-                  <td>{emp.emp_add_temp_mun} </td>
-                  <td>{emp.emp_add_temp_ward} </td>
-                  <td>{emp.emp_add_temp_tole} </td>
+                  <td>{emp.emp_add_perm_prov} प्रदेश, {emp.emp_add_perm_dist} जिल्ला, {emp.emp_add_perm_mun}, {emp.emp_add_perm_ward},{emp.emp_add_perm_tole}  </td>
+                  <td>{emp.emp_add_temp_prov} प्रदेश, {emp.emp_add_temp_dist} जिल्ला, {emp.emp_add_temp_mun}, {emp.emp_add_temp_ward},{emp.emp_add_temp_tole}  </td>
                   <td>
                     {emp.emp_phone1}  {emp.emp_phone2}
                   </td>

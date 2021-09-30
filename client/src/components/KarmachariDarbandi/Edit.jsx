@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Input,ConfirmationDialoge } from "../../components";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 
 class Edit extends Component {
   constructor(props) {
@@ -7,7 +7,10 @@ class Edit extends Component {
     this.state = {
       id: props.history.location.item.karmachari_darbandi_id,
       post: props.history.location.item.post,
-      kayam_darbandi_sankhya: props.history.location.item.kayam_darbandi_sankhya,
+      karyalaya: props.history.location.item.karyalaya,
+      thegana: props.history.location.item.thegana,
+      kayam_darbandi_sankhya:
+        props.history.location.item.kayam_darbandi_sankhya,
       padpurti_sankhya: props.history.location.item.padpurti_sankhya,
       khali_sankhya: props.history.location.item.khali_sankhya,
       dist_id: props.history.location.item.dist_id,
@@ -28,20 +31,23 @@ class Edit extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
 
-
   handleSubmit() {
     const {
       id,
       post,
+      karyalaya,
+      thegana,
       kayam_darbandi_sankhya,
       padpurti_sankhya,
       khali_sankhya,
       created_by,
     } = this.state;
     const payload = {
-        karmacharidarbandi: {
+      karmacharidarbandi: {
         data: {
           post: post,
+          karyalaya: karyalaya,
+          thegana: thegana,
           kayam_darbandi_sankhya: kayam_darbandi_sankhya,
           padpurti_sankhya: padpurti_sankhya,
           khali_sankhya: khali_sankhya,
@@ -53,12 +59,13 @@ class Edit extends Component {
     };
     this.props.onUpdate(payload, id);
   }
-  
 
   render() {
     const { title } = this.props;
     const {
       post,
+      karyalaya,
+      thegana,
       kayam_darbandi_sankhya,
       padpurti_sankhya,
       khali_sankhya,
@@ -68,7 +75,7 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ कर्मचारी दरबन्दी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -81,43 +88,59 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-
-            <Input
-              className="mb-4"
-              title="पद"
-              value={post}
-              direction="vertical"
-              onChange={(e) => this.setState({ post: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="कायम दरबन्दी संख्या"
-              direction="vertical"
-              value={kayam_darbandi_sankhya}
-              onChange={(e) => this.setState({ kayam_darbandi_sankhya: e })}
-            />
-             <Input
-              className="mb-4"
-              title="पदपुर्ति संख्या"
-              value={padpurti_sankhya}
-              direction="vertical"
-              onChange={(e) => this.setState({ padpurti_sankhya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="खाली संख्या"
-              value={khali_sankhya}
-              direction="vertical"
-              onChange={(e) => this.setState({ khali_sankhya: e })}
-            />
-                                    
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="पद :"
+                value={post}
+                direction="vertical"
+                onChange={(e) => this.setState({ post: e })}
+              />
+              <Input
+                className="w-30"
+                title="कार्यालय :"
+                value={karyalaya}
+                direction="vertical"
+                onChange={(e) => this.setState({ karyalaya: e })}
+              />
+              <Input
+                className="w-30"
+                title="स्थान :"
+                value={thegana}
+                direction="vertical"
+                onChange={(e) => this.setState({ thegana: e })}
+              />
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="कायम दरबन्दी संख्या :"
+                direction="vertical"
+                value={kayam_darbandi_sankhya}
+                onChange={(e) => this.setState({ kayam_darbandi_sankhya: e })}
+              />
+              <Input
+                className="w-30"
+                title="पदपुर्ति संख्या :"
+                value={padpurti_sankhya}
+                direction="vertical"
+                onChange={(e) => this.setState({ padpurti_sankhya: e })}
+              />
+              <Input
+                className="w-30"
+                title="खाली संख्या :"
+                value={khali_sankhya}
+                direction="vertical"
+                onChange={(e) => this.setState({ khali_sankhya: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
@@ -127,6 +150,5 @@ class Edit extends Component {
     );
   }
 }
-
 
 export default Edit;

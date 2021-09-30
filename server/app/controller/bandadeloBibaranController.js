@@ -52,7 +52,7 @@ async function getBandadeloBibaran(req, res) {
 
 //Controller for adding a BandadeloBibaran
 async function addBandadeloBibaran(req, res) {
-  const addBandadeloBibaranQuery = `INSERT INTO bandadelo_bibarans (dist_id, bandadelo_address, ban_type, ban_prajati, xeti_area, niyantran_prayas, niyantran_karta, sahabhagi_mahila, sahabhagi_purus, bandadelo_miti, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBandadeloBibaranQuery = `INSERT INTO bandadelo_bibarans (dist_id, bandadelo_address, ban_type, ban_prajati, xeti_area, niyantran_prayas, niyantran_karta, sahabhagi_mahila, sahabhagi_purus, bandadelo_miti,man_injured,man_dead, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBandadeloBibaranQuery,
     [
@@ -66,6 +66,8 @@ async function addBandadeloBibaran(req, res) {
       req.body.sahabhagi_mahila,
       req.body.sahabhagi_purus,
       req.body.bandadelo_miti,
+      req.body.man_injured,
+      req.body.man_dead,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -80,7 +82,7 @@ async function addBandadeloBibaran(req, res) {
 
 //Controller for updating a BandadeloBibaran
 async function updateBandadeloBibaran(req, res) {
-  const updateBandadeloBibaranQuery = `UPDATE bandadelo_bibarans SET dist_id=?, bandadelo_address=?, ban_type=?, ban_prajati=?, xeti_area=?, niyantran_prayas=?, niyantran_karta=?, sahabhagi_mahila=?, sahabhagi_purus=?, bandadelo_miti=?, created_by=?, updated_by=? WHERE bandadelo_bibaran_id=?`;
+  const updateBandadeloBibaranQuery = `UPDATE bandadelo_bibarans SET dist_id=?, bandadelo_address=?, ban_type=?, ban_prajati=?, xeti_area=?, niyantran_prayas=?, niyantran_karta=?, sahabhagi_mahila=?, sahabhagi_purus=?, bandadelo_miti=?,man_injured=?,man_dead=?, created_by=?, updated_by=? WHERE bandadelo_bibaran_id=?`;
   pool.query(
     updateBandadeloBibaranQuery,
     [
@@ -94,6 +96,8 @@ async function updateBandadeloBibaran(req, res) {
       req.body.sahabhagi_mahila,
       req.body.sahabhagi_purus,
       req.body.bandadelo_miti,
+      req.body.man_injured,
+      req.body.man_dead,
       req.body.created_by,
       req.body.updated_by,
       req.params.bandadeloBibaranId,

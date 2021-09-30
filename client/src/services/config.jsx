@@ -11,6 +11,30 @@ const SPECIALOPTIONS = {
   LIST: -4, // List
 };
 
+const banList = [
+  { id: 1, value: "बैज्ञानीक सामुदायिक वन" },
+  { id: 2, value: "अबैज्ञानीक सामुदायिक वन" },
+  { id: 3, value: "कबुलियती बन" },
+  { id: 4, value: "धार्मिक बन" },
+  { id: 5, value: "चक्ला बन" },
+  { id: 6, value: "साझेदारी बन" },
+  { id: 7, value: "व्यबसायीक कबुलियती बन" },
+  { id: 8, value: "निजी बन" },
+  { id: 9, value: "राष्ट्रिय बन" },
+];
+
+const karyaList = [
+  { id: 1, value: "वन संबर्धन " },
+  { id: 2, value: "वन संरक्षण " },
+  { id: 3, value: "वन पैदावार संकलन " },
+  { id: 4, value: "वन उद्धम" },
+];
+const uddhamList = [
+  { id: 1, value: "निजी" },
+  { id: 2, value: "सामुदायिक" },
+  { id: 3, value: "सहकारी मार्फत" },
+];
+
 const samudayikbanHeadings = [
   "दर्ता नं",
   "सामुदायिक वन उपभोक्ता समितिको नाम",
@@ -227,6 +251,8 @@ const bandadeloHeadings = [
   "नियन्त्रणमा सहभागि महिला संख्या",
   "नियन्त्रणमा सहभागि पुरुष संख्या",
   "डढेलो लागेको मिति",
+  "घाईते भएका मानिसको संख्या",
+  "मृत्यु भएका मानिसको संख्या",
 ];
 
 const banyajantuuddarHeadings = [
@@ -377,6 +403,8 @@ const districtList = [
 
 const karmacharidarbandiHeadings = [
   "पद",
+  "कार्यालय ",
+  "स्थान ",
   "कायम दरबन्दी संख्या",
   "पदपुर्ति संख्या",
   "खाली संख्या",
@@ -384,16 +412,8 @@ const karmacharidarbandiHeadings = [
 
 const karmacharibibaranHeadings = [
   "नाम",
-  "स्थायी प्रदेश",
-  "स्थायी जिल्ला",
-  "स्थायी नगरपालिका",
-  "स्थायी वडा न.",
-  "स्थायी टोल",
-  "अस्थायी प्रदेश",
-  "अस्थायी जिल्ला",
-  "अस्थायी नगरपालिका",
-  "अस्थायी वडा न.",
-  "अस्थायी टोल",
+  "स्थायी ठेगाना",
+  "अस्थायी ठेगाना",
   "सम्पर्क न.",
   "इमेल",
   "कार्यालय",
@@ -415,7 +435,7 @@ const jadibutiHeadings = [
 ];
 
 const banbikaskaryabibaranHeadings = [
-  "वनविकास कार्याविवरण",
+  "वनविकास कार्यविवरण",
   "ईकाइ",
   "परिणाम",
   "बजेट खर्च",
@@ -423,7 +443,7 @@ const banbikaskaryabibaranHeadings = [
 ];
 
 const samajikkaryabibaranHeadings = [
-  "सामाजिक कार्याविवरण",
+  "सामाजिक कार्यविवरण",
   "इकाई",
   "परिणाम",
   "बजेट खर्च",
@@ -474,7 +494,7 @@ const pokharisamrakshyanHeadings = [
   "पालिका",
   "परिमाण",
   "कार्यक्रम मिति",
-  "लागात",
+  "लागत",
 ];
 const panimuhansamrakshyanHeadings = [
   "स्थान",
@@ -487,7 +507,7 @@ const jaladharsamrakshyanHeadings = [
   "स्थान",
   "परिमाण",
   "कार्यक्रम मिति",
-  "लागात",
+  "लागत",
 ];
 
 const banpaidawarbikribitaranHeadings = [
@@ -495,18 +515,28 @@ const banpaidawarbikribitaranHeadings = [
   "वनपैदावार किसिम",
   "इकाई",
   "आन्तरीक दर",
-  "आन्तरीक पारिमाण",
+  "आन्तरीक परिमाण",
   "आन्तरीक रकम",
   "आपुर्ती दर",
-  "आपुर्ती पारिमाण",
+  "आपुर्ती परिमाण",
   "आपुर्ती रकम",
   "वाह्य दर",
   "वाह्य परिमाण",
   "वाह्य रकम",
 ];
+const uddhamHeadings = [
+  "उद्धम",
+  "जिल्ला ",
+  "स्थान",
+  "उद्धमको प्रकार",
+  "दर्ता मिती ",
+  "रोजगार संख्या ",
+];
 
 export {
   AssetsURL,
+  banList,
+  karyaList,
   SPECIALOPTIONS,
   samudayikbanHeadings,
   dharmikbanHeadings,
@@ -545,4 +575,6 @@ export {
   jaladharsamrakshyanHeadings,
   panimuhansamrakshyanHeadings,
   banpaidawarbikribitaranHeadings,
+  uddhamHeadings,
+  uddhamList,
 };

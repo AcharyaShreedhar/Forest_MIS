@@ -29,13 +29,22 @@ export class SideNavbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false,
+      // expanded: false,
       showDialog: false,
+      karmachari: false,
+      bantype: false,
+      banbibaran: false,
+      dwanda: false,
+      banpaidawar: false,
+      karyakram: false,
+      assets: false,
+      karya: false,
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmenu = this.handleSubmenu.bind(this);
   }
 
   handleConfirm() {
@@ -48,15 +57,189 @@ export class SideNavbar extends Component {
     this.props.onlogout();
   }
   handleToggle(e) {
-    this.setState({ expanded: !this.state.expanded });
+    this.props.menuRequest(e);
+  }
+  handleSubmenu(e, item) {
+    switch (item) {
+      case "karmachari": {
+        this.setState({ karmachari: true });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "bantype": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: true });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "banbibaran": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: true });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "dwanda": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: true });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "banpaidawar": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: true });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "karyakram": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: true });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "assets": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: true });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "karya": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: true });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "bipat": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: true });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "samraxan": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: true });
+        this.setState({ misc: false });
+        break;
+      }
+      case "misc": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: true });
+        break;
+      }
+      default:
+        break;
+    }
   }
 
   render() {
-    const { showDialog, expanded } = this.state;
-    const { history } = this.props;
+    const {
+      showDialog,
+      expanded,
+      bantype,
+      banbibaran,
+      karmachari,
+      dwanda,
+      banpaidawar,
+      karyakram,
+      assets,
+      karya,
+      bipat,
+      samraxan,
+      misc,
+    } = this.state;
+    const { history, menuStatus } = this.props;
 
     return (
-      <ProSidebar collapsed={!expanded}>
+      <ProSidebar collapsed={!menuStatus}>
         <ConfirmationDialoge
           showDialog={showDialog}
           title="लग आउट"
@@ -71,7 +254,7 @@ export class SideNavbar extends Component {
             this.handleToggle(e);
           }}
         >
-          <HeaderComponent enabled={expanded} side={true} />
+          <HeaderComponent enabled={menuStatus} side={true} />
         </SidebarHeader>
         <SidebarContent>
           <Menu iconShape="square">
@@ -82,7 +265,13 @@ export class SideNavbar extends Component {
             >
               गृह पृष्ठ
             </MenuItem>
-            <SubMenu title="कर्मचारी" className="maintitle" icon={<FaUsers />}>
+            <SubMenu
+              title="कर्मचारी"
+              className="maintitle"
+              icon={<FaUsers />}
+              onClick={(e) => this.handleSubmenu(e, "karmachari")}
+              open={karmachari}
+            >
               <MenuItem
                 onClick={() =>
                   history.push("/karmachari/karmacharibibaranlist")
@@ -102,6 +291,8 @@ export class SideNavbar extends Component {
               title="बनका प्रकारहरु"
               className="maintitle"
               icon={<GiForest />}
+              open={bantype}
+              onClick={(e) => this.handleSubmenu(e, "bantype")}
             >
               <SubMenu title="सामुदायिक">
                 <MenuItem
@@ -149,6 +340,8 @@ export class SideNavbar extends Component {
               title="बन बिबरण"
               className="maintitle"
               icon={<FaListAlt />}
+              onClick={(e) => this.handleSubmenu(e, "banbibaran")}
+              open={banbibaran}
             >
               <MenuItem
                 onClick={() =>
@@ -181,6 +374,8 @@ export class SideNavbar extends Component {
               title="मानब बन्यजन्तु द्वन्द ब्यबस्थापन"
               className="maintitle"
               icon={<MdGavel />}
+              open={dwanda}
+              onClick={(e) => this.handleSubmenu(e, "dwanda")}
             >
               <MenuItem
                 onClick={() =>
@@ -202,6 +397,8 @@ export class SideNavbar extends Component {
               title="बन पैदावर"
               className="maintitle"
               icon={<GiWoodPile />}
+              open={banpaidawar}
+              onClick={(e) => this.handleSubmenu(e, "banpaidawar")}
             >
               <MenuItem onClick={() => history.push("/banpaidawar/lilamlist")}>
                 लीलाम बिबरण
@@ -216,6 +413,8 @@ export class SideNavbar extends Component {
               title="कार्यक्रमहरु"
               className="maintitle"
               icon={<FaTasks />}
+              open={karyakram}
+              onClick={(e) => this.handleSubmenu(e, "karyakram")}
             >
               <MenuItem
                 onClick={() => history.push("/activities/yearlyactivitieslist")}
@@ -240,6 +439,8 @@ export class SideNavbar extends Component {
               title="कार्यालय सम्पती बिबरण"
               className="maintitle"
               icon={<FaBuilding />}
+              open={assets}
+              onClick={(e) => this.handleSubmenu(e, "assets")}
             >
               <MenuItem
                 onClick={() => history.push("/sampatibibaran/gharjaggalist")}
@@ -256,6 +457,8 @@ export class SideNavbar extends Component {
               title="कार्य विवरण"
               className="maintitle"
               icon={<BiTask />}
+              open={karya}
+              onClick={(e) => this.handleSubmenu(e, "karya")}
             >
               <MenuItem
                 onClick={() =>
@@ -276,6 +479,8 @@ export class SideNavbar extends Component {
               title="विपत व्यवस्थापन"
               className="maintitle"
               icon={<GiBurningForest />}
+              open={bipat}
+              onClick={(e) => this.handleSubmenu(e, "bipat")}
             >
               <MenuItem
                 onClick={() =>
@@ -301,6 +506,8 @@ export class SideNavbar extends Component {
               title="संरक्षण कार्य"
               className="maintitle"
               icon={<FaWater />}
+              open={samraxan}
+              onClick={(e) => this.handleSubmenu(e, "samraxan")}
             >
               <MenuItem
                 onClick={() =>
@@ -331,11 +538,22 @@ export class SideNavbar extends Component {
                 नदी किनार
               </MenuItem>
             </SubMenu>
-            <SubMenu title="विविध" className="maintitle" icon={<MdWork />}>
+            <SubMenu
+              title="विविध"
+              className="maintitle"
+              icon={<MdWork />}
+              open={misc}
+              onClick={(e) => this.handleSubmenu(e, "misc")}
+            >
               <MenuItem
                 onClick={() => history.push("/miscellaneous/rojgarsrijanalist")}
               >
                 रोजगार सिर्जना
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/miscellaneous/uddhamlist")}
+              >
+                उद्धम विवरण
               </MenuItem>
             </SubMenu>
             <MenuItem

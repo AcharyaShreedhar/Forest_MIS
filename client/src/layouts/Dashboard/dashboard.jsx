@@ -16,6 +16,8 @@ export const Content = (props) => {
           onlogout={props.onLogout}
           onToggle={props.onToggle}
           open={props.open}
+          menuRequest={props.menuRequest}
+          menuStatus={props.menuStatus}
         />
       )}
       <div className="main">

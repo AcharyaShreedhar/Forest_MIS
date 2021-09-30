@@ -8,15 +8,23 @@ import MiscellaneousRoutes from "../../routes/miscellaneous";
 import MiscellaneousActions from "../../actions/miscellaneous";
 
 export class Miscellaneous extends Component {
-    componentDidMount() {
-        this.props.fetchallRojgarsrijana({
-          distId: "%",
-          name: "banka_prakar",
-          page: 0,
-          perPage: 10,
-        });
-      }
- 
+  componentDidMount() {
+    this.props.fetchallRojgarsrijana({
+      distId: "%",
+      name: "banka_prakar",
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallUddham({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+  }
 
   render() {
     const { authenticated } = this.props;
@@ -69,9 +77,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchallRojgarsrijana: (payload) =>
-    dispatch(MiscellaneousActions.fetchallrojgarsrijanaRequest(payload)), 
-  
+  fetchallRojgarsrijana: (payload) =>
+    dispatch(MiscellaneousActions.fetchallrojgarsrijanaRequest(payload)),
+  fetchallUddham: (payload) =>
+    dispatch(MiscellaneousActions.fetchalluddhamRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Miscellaneous);
