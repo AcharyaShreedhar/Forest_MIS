@@ -50,6 +50,8 @@ function List(props) {
                 <tr key={`${karmachari.karmachari_darbandi_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {karmachari.post} </td>
+                  <td> {karmachari.karyalaya} </td>
+                  <td> {karmachari.thegana} </td>
                   <td> {karmachari.kayam_darbandi_sankhya} </td>
                   <td> {karmachari.padpurti_sankhya} </td>
                   <td> {karmachari.khali_sankhya} </td>

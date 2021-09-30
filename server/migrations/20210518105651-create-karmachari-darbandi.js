@@ -8,8 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         type: Sequelize.INTEGER,
+      },
+      karyalaya: {
+        type: Sequelize.STRING,
+      },
+      thegana: {
+        type: Sequelize.STRING,
       },
       post: {
         type: Sequelize.STRING,

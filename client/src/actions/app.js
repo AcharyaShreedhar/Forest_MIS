@@ -133,6 +133,7 @@ const { Types, Creators } = createActions({
   deletedepartmentsFailure: null,
 
   locationsRequest: ['payload'],
+  menuRequest:['payload'],
   // Clear all caches
   clearRequest: null,
 })

@@ -6,6 +6,8 @@ class Add extends Component {
     super(props);
     this.state = {
       post: "",
+      karyalaya: "",
+      thegana: "",
       kayam_darbandi_sankhya: "",
       padpurti_sankhya: "",
       khali_sankhya: "",
@@ -30,15 +32,18 @@ class Add extends Component {
   handleSubmit() {
     const {
       post,
+      karyalaya,
+      thegana,
       kayam_darbandi_sankhya,
       padpurti_sankhya,
       khali_sankhya,
-      
     } = this.state;
     const payload = {
-        karmacharidarbandi: {
+      karmacharidarbandi: {
         data: {
           post: post,
+          karyalaya: karyalaya,
+          thegana: thegana,
           kayam_darbandi_sankhya: kayam_darbandi_sankhya,
           padpurti_sankhya: padpurti_sankhya,
           khali_sankhya: khali_sankhya,
@@ -49,12 +54,13 @@ class Add extends Component {
     };
     this.props.onSubmit(payload);
   }
-  
 
   render() {
     const { title } = this.props;
     const {
       post,
+      karyalaya,
+      thegana,
       kayam_darbandi_sankhya,
       padpurti_sankhya,
       khali_sankhya,
@@ -64,7 +70,7 @@ class Add extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ कर्मचारी दरबन्दी थप गर्न चाहनुहुन्छ ?"
@@ -77,43 +83,59 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-
-            <Input
-              className="mb-4"
-              title="पद"
-              value={post}
-              direction="vertical"
-              onChange={(e) => this.setState({ post: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="कायम दरबन्दी संख्या"
-              direction="vertical"
-              value={kayam_darbandi_sankhya}
-              onChange={(e) => this.setState({ kayam_darbandi_sankhya: e })}
-            />
-             <Input
-              className="mb-4"
-              title="पदपुर्ति संख्या"
-              value={padpurti_sankhya}
-              direction="vertical"
-              onChange={(e) => this.setState({ padpurti_sankhya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="खाली संख्या"
-              value={khali_sankhya}
-              direction="vertical"
-              onChange={(e) => this.setState({ khali_sankhya: e })}
-            />
-                                    
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="पद :"
+                value={post}
+                direction="vertical"
+                onChange={(e) => this.setState({ post: e })}
+              />
+              <Input
+                className="w-30"
+                title="कार्यालय :"
+                value={karyalaya}
+                direction="vertical"
+                onChange={(e) => this.setState({ karyalaya: e })}
+              />
+              <Input
+                className="w-30"
+                title="स्थान :"
+                value={thegana}
+                direction="vertical"
+                onChange={(e) => this.setState({ thegana: e })}
+              />
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="कायम दरबन्दी संख्या :"
+                direction="vertical"
+                value={kayam_darbandi_sankhya}
+                onChange={(e) => this.setState({ kayam_darbandi_sankhya: e })}
+              />
+              <Input
+                className="w-30"
+                title="पदपुर्ति संख्या :"
+                value={padpurti_sankhya}
+                direction="vertical"
+                onChange={(e) => this.setState({ padpurti_sankhya: e })}
+              />
+              <Input
+                className="w-30"
+                title="खाली संख्या :"
+                value={khali_sankhya}
+                direction="vertical"
+                onChange={(e) => this.setState({ khali_sankhya: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शेभ गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
@@ -123,6 +145,5 @@ class Add extends Component {
     );
   }
 }
-
 
 export default Add;

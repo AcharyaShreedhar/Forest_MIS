@@ -16,12 +16,6 @@ class Dashboard extends Component {
     this.state = {
       expanded: false,
     };
-    this.handleToggle = this.handleToggle.bind(this);
-  }
-
-  handleToggle() {
-    console.log('aayoki nai ')
-    this.setState({ expanded: !this.state.expanded });
   }
 
   componentDidMount() {
@@ -109,7 +103,14 @@ class Dashboard extends Component {
   }
 
   render() {
-    const { history, location, token, onLogout } = this.props;
+    const {
+      history,
+      location,
+      token,
+      onLogout,
+      menuRequest,
+      menuStatus,
+    } = this.props;
 
     return (
       <div className="d-flex dashboard">
@@ -120,7 +121,8 @@ class Dashboard extends Component {
           loggedIn={!isEmpty(token)}
           onLogout={onLogout}
           onToggle={this.handleToggle}
-          open={this.state.expanded}
+          menuRequest={menuRequest}
+          menuStatus={menuStatus}
         />
       </div>
     );
@@ -140,6 +142,7 @@ Dashboard.defaultProps = {
 
 const mapStateToProps = (state) => ({
   token: state.app.token,
+  menuStatus: state.app.menuStatus,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -188,6 +191,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ReportActions.fetchupavoktasusasanRequest(payload)),
   fetchBanHastantaran: (payload) =>
     dispatch(ReportActions.fetchbanhastantaranbibaranRequest(payload)),
+  menuRequest: (payload) => dispatch(AppActions.menuRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

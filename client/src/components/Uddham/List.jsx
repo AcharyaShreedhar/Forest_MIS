@@ -26,12 +26,13 @@ function List(props) {
           <Button
             type="low"
             size="small"
+            // className="text-capitalize"
             name={buttonName}
             onClick={onAdd}
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="vehicle">
+        <Table responsive striped bordered hover id="uddham">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -45,28 +46,20 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((sawarisadhan, index) => (
-                <tr key={`${sawarisadhan.vehicle_id}-${index}`}>
+              data.map((uddham, index) => (
+                <tr key={`${uddham.uddham_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{sawarisadhan.vehicle_type}</td>
-                  <td>{sawarisadhan.vehicle_no}</td>
-                  <td>{sawarisadhan.engine_no}</td>
-                  <td>{sawarisadhan.chasis_no}</td>
-                  <td>{sawarisadhan.acquired_source}</td>
-                  <td>{sawarisadhan.acquired_date}</td>
-                  <td>{sawarisadhan.acquired_price}</td>
-                  <td>{sawarisadhan.manufacturer_country}</td>
-                  <td>{sawarisadhan.manufacturer_comp}</td>
-                  <td>{sawarisadhan.model_name}</td>
-                  <td>{sawarisadhan.manufactured_date}</td>
-                  <td>{sawarisadhan.remarks}</td>
+                  <td> {uddham.name}</td>
+                  <td> {uddham.dist_id}</td>
+                  <td> {uddham.address}</td>
+                  <td> {uddham.uddham_type}</td>
+                  <td> {uddham.darta_miti}</td>
+                  <td> {uddham.rojgar_sankhya}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) =>
-                          onSelect(e, sawarisadhan, "yearlysawarisadhan")
-                        }
+                        onChange={(e) => onSelect(e, uddham ,"uddham" )}
                       />
                     </div>
                   </td>
@@ -81,7 +74,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type="vehicle"
+          type="uddham"
         />
       </div>
     </Fragment>

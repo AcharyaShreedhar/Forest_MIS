@@ -58,6 +58,8 @@ function List(props) {
                   <td> {bandadelo.sahabhagi_mahila}</td>
                   <td> {bandadelo.sahabhagi_purus}</td>
                   <td> {englishToNepaliNumber(bandadelo.bandadelo_miti)}</td>
+                  <td> {bandadelo.man_injured}</td>
+                  <td> {bandadelo.man_dead}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

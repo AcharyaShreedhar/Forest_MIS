@@ -7,6 +7,7 @@ const initialState = Immutable({
   status: "",
   user: {},
   token: "",
+  menuStatus:false,
 });
 
 const loginRequest = (state, action) =>
@@ -316,6 +317,11 @@ const locationsRequest = (state, action) => {
   return state.merge({ ...state, locations });
 };
 
+const menuRequest = (state, action) => {
+ let menuStatus= !state.menuStatus
+  return state.merge({ ...state, menuStatus });
+};
+
 //Add users
 const addusersRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -475,6 +481,7 @@ export const reducer = createReducer(initialState, {
   [AppTypes.DELETEUSERS_FAILURE]: deletedepartmentsFailure,
   
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
+  [AppTypes.MENU_REQUEST]: menuRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
 });
 /** */

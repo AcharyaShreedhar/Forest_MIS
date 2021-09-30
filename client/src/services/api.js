@@ -730,6 +730,19 @@ const create = (baseURL = Config.API_URL) => {
   const postRojgarSrijanaDelete = (rojgarsrijanaId) =>
     api.delete(`rojgarsrijana/${rojgarsrijanaId}`);
 
+  //-------------------------------uddham bibaran
+  const getUddhamList = (payload) => api.post("uddhamList", payload);
+
+  const getUddham = (uddhamId) => api.get(`uddham/${uddhamId}`);
+
+  //add
+  const postUddhamAddNew = (payload) => api.post("uddham", payload);
+  //update
+  const postUddhamUpdate = (payload, uddhamId) =>
+    api.put(`uddham/${uddhamId}`, payload);
+
+  const postUddhamDelete = (uddhamId) => api.delete(`uddham/${uddhamId}`);
+
   //-------Consumer Group Details
   const getConsumergroupDetailsList = (payload) =>
     api.post("ConsumerGroupDetailsList", payload);
@@ -1223,6 +1236,13 @@ const create = (baseURL = Config.API_URL) => {
     postRojgarSrijanaAddNew,
     postRojgarSrijanaUpdate,
     postRojgarSrijanaDelete,
+
+    //------- uddham
+    getUddhamList,
+    getUddham,
+    postUddhamAddNew,
+    postUddhamUpdate,
+    postUddhamDelete,
 
     //----------bipatbibaran
     getPahirobibaranList,

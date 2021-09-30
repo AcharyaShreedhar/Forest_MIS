@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Input, ConfirmationDialoge } from "../../components";
+import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
+import { uddhamList } from "../../services/config";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 
@@ -7,46 +8,51 @@ class Add extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      name: "",
+      address: "",
+      uddham_type: "",
+      darta_miti: "",
+      rojgar_sankhya: "",
       dist_id: "",
-      sthan: "",
-      qty: "",
-      karyakram_miti: "",
-      conservation_area: "",
-      affected_area: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleUddhamType = this.handleUddhamType.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  handleUddhamType(e) {
+    this.setState({ uddham_type: e[0] });
+  }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
   }
+  handleDate(e) {
+    this.setState({ darta_miti: e });
+  }
 
   handleSubmit() {
     const {
-      sthan,
-      qty,
-      karyakram_miti,
-      conservation_area,
-      affected_area,
+      name,
+      darta_miti,
+      address,
+      uddham_type,
+      rojgar_sankhya,
     } = this.state;
     const payload = {
-      nadikinarsamrakshyan: {
+      uddham: {
         data: {
-          sthan: sthan,
-          qty: qty,
-          karyakram_miti: karyakram_miti,
-          conservation_area: conservation_area,
-          affected_area: affected_area,
+          name: name,
+          darta_miti: darta_miti,
+          address: address,
+          uddham_type: uddham_type,
+          rojgar_sankhya: rojgar_sankhya,
           dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
@@ -55,18 +61,14 @@ class Add extends Component {
     this.props.onSubmit(payload);
   }
 
-  handleDate(e) {
-    this.setState({ karyakram_miti: e });
-  }
-
   render() {
     const { title } = this.props;
     const {
-      sthan,
-      qty,
-      karyakram_miti,
-      conservation_area,
-      affected_area,
+      name,
+      darta_miti,
+      address,
+      uddham_type,
+      rojgar_sankhya,
       showDialog,
     } = this.state;
 
@@ -76,7 +78,7 @@ class Add extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ नदिकिनार संरक्षण सम्बन्धी विवरण थप गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -89,42 +91,47 @@ class Add extends Component {
             <div className="panel space mb-4">
               <Input
                 className="w-30"
-                title="स्थान :"
-                value={sthan}
+                title="उद्धम :"
                 direction="vertical"
-                onChange={(e) => this.setState({ sthan: e })}
-              />
-              <Input
-                className="w-30"
-                title="परिमाण :"
-                direction="vertical"
-                value={qty}
-                onChange={(e) => this.setState({ qty: e })}
+                value={name}
+                onChange={(e) => this.setState({ name: e })}
               />
               <div className="w-30">
-                <span className="dsl-b18">कार्यक्रम मिति :</span>
+                <Dropdown
+                  className="dropdownlabel"
+                  title="उद्धमको प्रकार :"
+                  direction="vertical"
+                  defaultIds={[uddham_type]}
+                  data={uddhamList}
+                  getValue={(uddhamList) => uddhamList["value"]}
+                  onChange={(e) => this.handleUddhamType(e)}
+                  value={uddham_type}
+                />
+              </div>
+              <div className="w-30">
+                <span className="dsl-b18"> दर्ता मिती :</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
-                  value={karyakram_miti}
+                  value={darta_miti}
                   onChange={(e) => this.handleDate(e)}
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
                 />
               </div>
             </div>
-            <div className="panel space">
+            <div className="panel space mb-4">
               <Input
                 className="w-30"
-                title="संरक्षण क्षेत्र :"
-                value={conservation_area}
+                title="स्थान :"
+                value={address}
                 direction="vertical"
-                onChange={(e) => this.setState({ conservation_area: e })}
+                onChange={(e) => this.setState({ address: e })}
               />
               <Input
                 className="w-30"
-                title="प्रभावित क्षेत्र :"
+                title="रोजगार संख्या :"
                 direction="vertical"
-                value={affected_area}
-                onChange={(e) => this.setState({ affected_area: e })}
+                value={rojgar_sankhya}
+                onChange={(e) => this.setState({ rojgar_sankhya: e })}
               />
               <div className="w-30" />
             </div>

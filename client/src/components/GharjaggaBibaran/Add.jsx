@@ -37,7 +37,6 @@ class Add extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
 
-
   handleSubmit() {
     const {
       asset_type,
@@ -66,7 +65,6 @@ class Add extends Component {
     this.props.onSubmit(payload);
   }
   handleAssetType(e) {
-    console.log("message", e);
     this.setState({ asset_type: e[0] });
   }
 
@@ -86,7 +84,7 @@ class Add extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ घर जग्गा सम्बन्धी विवरण गर्न चाहनुहुन्छ ?"
@@ -99,72 +97,73 @@ class Add extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Dropdown
-              className="dropdownlabel mb-4"
-              title="किसिम (घर, जग्गा, सवारी साधानहरु)"
-              direction="vertical"
-              width="fit-content"
-              defaultIds={[asset_type]}
-              data={assetsType}
-              getValue={(assetsType) => assetsType["value"]}
-              onChange={(e) => this.handleAssetType(e)}
-              value={asset_type}
-            />
+            <div className="panel space mb-4">
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="किसिम (घर, जग्गा) :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[asset_type]}
+                  data={assetsType}
+                  getValue={(assetsType) => assetsType["value"]}
+                  onChange={(e) => this.handleAssetType(e)}
+                  value={asset_type}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="घर/जग्गा रहेको स्थान :"
+                value={asset_loc}
+                direction="vertical"
+                onChange={(e) => this.setState({ asset_loc: e })}
+              />
+              <Input
+                className="w-30"
+                title="कित्ता नंवर :"
+                direction="vertical"
+                value={kitta_no}
+                onChange={(e) => this.setState({ kitta_no: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="घरले चर्चेको क्षेत्रफल :"
+                value={home_area}
+                direction="vertical"
+                onChange={(e) => this.setState({ home_area: e })}
+              />
+              <Input
+                className="w-30"
+                title="जग्गाको क्षेत्रफल :"
+                direction="vertical"
+                as="textarea"
+                value={land_area}
+                onChange={(e) => this.setState({ land_area: e })}
+              />
+              <Input
+                className="w-30"
+                title="इकाई :"
+                value={unit}
+                direction="vertical"
+                onChange={(e) => this.setState({ unit: e })}
+              />
+            </div>
             <Input
-              className="mb-4"
-              title="घर/जग्गा रहेको स्थान"
-              value={asset_loc}
-              direction="vertical"
-              onChange={(e) => this.setState({ asset_loc: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="कित्ता नंवर
-              "
-              direction="vertical"
-              value={kitta_no}
-              onChange={(e) => this.setState({ kitta_no: e })}
-            />
-            <Input
-              className="mb-4"
-              title="घरले चर्चेको क्षेत्रफल
-              "
-              value={home_area}
-              direction="vertical"
-              onChange={(e) => this.setState({ home_area: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="जग्गाको क्षेत्रफल"
-              direction="vertical"
-              as="textarea"
-              value={land_area}
-              onChange={(e) => this.setState({ land_area: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="इकाई"
-              value={unit}
-              direction="vertical"
-              onChange={(e) => this.setState({ unit: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="कैफियत"
+              className="w-30"
+              title="कैफियत :"
               value={remarks}
               direction="vertical"
               onChange={(e) => this.setState({ remarks: e })}
             />
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शेभ गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

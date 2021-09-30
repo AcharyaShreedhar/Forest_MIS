@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, ConfirmationDialoge } from "../../components";
-import "nepali-datepicker-reactjs/dist/index.css";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import "nepali-datepicker-reactjs/dist/index.css";
 
 class Edit extends Component {
   constructor(props) {
@@ -37,19 +37,19 @@ class Edit extends Component {
 
   handleSubmit() {
     const {
-        id,
-        badhi_aayeko_sthan,
-        manab_ghaite,
-        manab_mareko,
-        uddar_sankhya,
-        badhi_aayeko_miti,
-        xeti_bibaran,
-        banyajantu_mareko,
-        botbiruwa_xeti,
-        created_by,
+      id,
+      badhi_aayeko_sthan,
+      manab_ghaite,
+      manab_mareko,
+      uddar_sankhya,
+      badhi_aayeko_miti,
+      xeti_bibaran,
+      banyajantu_mareko,
+      botbiruwa_xeti,
+      created_by,
     } = this.state;
     const payload = {
-        badhibibaran: {
+      badhibibaran: {
         data: {
           badhi_aayeko_sthan: badhi_aayeko_sthan,
           manab_ghaite: manab_ghaite,
@@ -74,21 +74,21 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-        badhi_aayeko_sthan,
-        manab_ghaite,
-        manab_mareko,
-        uddar_sankhya,
-        badhi_aayeko_miti,
-        xeti_bibaran,
-        banyajantu_mareko,
-        botbiruwa_xeti,
-        showDialog,
+      badhi_aayeko_sthan,
+      manab_ghaite,
+      manab_mareko,
+      uddar_sankhya,
+      badhi_aayeko_miti,
+      xeti_bibaran,
+      banyajantu_mareko,
+      botbiruwa_xeti,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ बाढी व्यवस्थापन सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -101,74 +101,78 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <span className="dsl-b18">बाढी आएको मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={badhi_aayeko_miti}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="बाढी आएको स्थान"
-              value={badhi_aayeko_sthan}
-              direction="vertical"
-              onChange={(e) => this.setState({ badhi_aayeko_sthan: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="उद्दार संख्या	"
-              direction="vertical"
-              value={uddar_sankhya}
-              onChange={(e) => this.setState({ uddar_sankhya: e })}
-            />
-            <Input
-              className="mb-4"
-              title="घाइते मानव संख्या"
-              value={manab_ghaite}
-              direction="vertical"
-              onChange={(e) => this.setState({ manab_ghaite: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="मृत मानव संख्या"
-              direction="vertical"
-              value={manab_mareko}
-              onChange={(e) => this.setState({ manab_mareko: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="क्षेति विवरण"
-              value={xeti_bibaran}
-              direction="vertical"
-              onChange={(e) => this.setState({ xeti_bibaran: e })}
-            />
-            <Input
-              className="mb-4"
-              title="मर्ने वन्यजन्तु संख्या"
-              value={banyajantu_mareko}
-              direction="vertical"
-              onChange={(e) => this.setState({ banyajantu_mareko: e })}
-            />
-            
-            <Input
-              className="mb-4"
-              title="बोटविरुवा क्षेति संख्या"
-              value={botbiruwa_xeti}
-              direction="vertical"
-              onChange={(e) => this.setState({ botbiruwa_xeti: e })}
-            />
-                        
+            <div className="panel mb-4 space">
+              <div className="w-30">
+                <span className="dsl-b18">बाढी आएको मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={badhi_aayeko_miti}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="बाढी आएको स्थान :"
+                value={badhi_aayeko_sthan}
+                direction="vertical"
+                onChange={(e) => this.setState({ badhi_aayeko_sthan: e })}
+              />
+              <Input
+                className="w-30"
+                title="उद्दार संख्या :"
+                direction="vertical"
+                value={uddar_sankhya}
+                onChange={(e) => this.setState({ uddar_sankhya: e })}
+              />
+            </div>
+            <div className="panel mb-4 space">
+              <Input
+                className="w-30"
+                title="घाइते मानव संख्या :"
+                value={manab_ghaite}
+                direction="vertical"
+                onChange={(e) => this.setState({ manab_ghaite: e })}
+              />
+              <Input
+                className="w-30"
+                title="मृत मानव संख्या :"
+                direction="vertical"
+                value={manab_mareko}
+                onChange={(e) => this.setState({ manab_mareko: e })}
+              />
+              <Input
+                className="w-30"
+                title="क्षेति विवरण :"
+                value={xeti_bibaran}
+                direction="vertical"
+                onChange={(e) => this.setState({ xeti_bibaran: e })}
+              />
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="मर्ने वन्यजन्तु संख्या :"
+                value={banyajantu_mareko}
+                direction="vertical"
+                onChange={(e) => this.setState({ banyajantu_mareko: e })}
+              />
+              <Input
+                className="w-30"
+                title="बोटविरुवा क्षेति संख्या :"
+                value={botbiruwa_xeti}
+                direction="vertical"
+                onChange={(e) => this.setState({ botbiruwa_xeti: e })}
+              />
+              <div className="w-30" />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

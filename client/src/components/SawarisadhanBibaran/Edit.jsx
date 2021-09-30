@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { Button, Input, ConfirmationDialoge } from "../../components";
 
 class Edit extends Component {
   constructor(props) {
@@ -25,20 +25,35 @@ class Edit extends Component {
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
     };
+
+    this.handleClose = this.handleClose.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
-  handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+
+  handleDate(e, type) {
+    switch (type) {
+      case "prapti": {
+        this.setState({ acquired_date: e });
+        break;
+      }
+      case "nirman": {
+        this.setState({ manufactured_date: e });
+        break;
+      }
+      default:
+        break;
+    }
   }
-
-
   handleSubmit() {
     const {
       id,
@@ -79,9 +94,6 @@ class Edit extends Component {
     };
     this.props.onUpdate(payload, id);
   }
-  handleDate(e) {
-    this.setState({ acquired_date: e });
-  }
 
   render() {
     const { title } = this.props;
@@ -104,7 +116,7 @@ class Edit extends Component {
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ सवारी साधन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -117,106 +129,109 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <Input
-              className="mb-4"
-              title="सवारी साधनको प्रकार"
-              value={vehicle_type}
-              direction="vertical"
-              onChange={(e) => this.setState({ vehicle_type: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="सवारी नम्वर
-              "
-              direction="vertical"
-              value={vehicle_no}
-              onChange={(e) => this.setState({ vehicle_no: e })}
-            />
-            <Input
-              className="mb-4"
-              title="इन्जिन नं.
-              "
-              value={engine_no}
-              direction="vertical"
-              onChange={(e) => this.setState({ engine_no: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="च्यासिस नं."
-              direction="vertical"
-              value={chasis_no}
-              onChange={(e) => this.setState({ chasis_no: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="प्राप्ति स्रोत"
-              value={acquired_source}
-              direction="vertical"
-              onChange={(e) => this.setState({ acquired_source: e })}
-            />
-            <span className="dsl-b18">प्राप्ति मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={acquired_date}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
-            <Input
-              className="mb-4"
-              title="प्राप्ति मूल्य"
-              direction="vertical"
-              value={acquired_price}
-              onChange={(e) => this.setState({ acquired_price: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="निर्माता देश"
-              value={manufacturer_country}
-              direction="vertical"
-              onChange={(e) => this.setState({ manufacturer_country: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="निर्माता कम्पनी"
-              value={manufacturer_comp}
-              direction="vertical"
-              onChange={(e) => this.setState({ manufacturer_comp: e })}
-            />
-            <Input
-              className="mb-4"
-              title="मोडेलको नाम"
-              direction="vertical"
-              value={model_name}
-              onChange={(e) => this.setState({ model_name: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="निर्माण वर्ष"
-              value={manufactured_date}
-              direction="vertical"
-              onChange={(e) => this.setState({ manufactured_date: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="कैफियत (अवस्था)"
-              value={remarks}
-              direction="vertical"
-              onChange={(e) => this.setState({ remarks: e })}
-            />
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="सवारी साधनको प्रकार :"
+                value={vehicle_type}
+                direction="vertical"
+                onChange={(e) => this.setState({ vehicle_type: e })}
+              />
+              <Input
+                className="w-30"
+                title="सवारी नम्वर :"
+                direction="vertical"
+                value={vehicle_no}
+                onChange={(e) => this.setState({ vehicle_no: e })}
+              />
+              <Input
+                className="w-30"
+                title="इन्जिन नं. :"
+                value={engine_no}
+                direction="vertical"
+                onChange={(e) => this.setState({ engine_no: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="च्यासिस नं. :"
+                direction="vertical"
+                value={chasis_no}
+                onChange={(e) => this.setState({ chasis_no: e })}
+              />
+              <Input
+                className="w-30"
+                title="मोडेलको नाम :"
+                direction="vertical"
+                value={model_name}
+                onChange={(e) => this.setState({ model_name: e })}
+              />
+              <div className="w-30">
+                <span className="dsl-b18">प्राप्ति मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={acquired_date}
+                  onChange={(e) => this.handleDate(e, "prapti")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="निर्माता देश :"
+                value={manufacturer_country}
+                direction="vertical"
+                onChange={(e) => this.setState({ manufacturer_country: e })}
+              />
+              <Input
+                className="w-30"
+                title="निर्माता कम्पनी :"
+                value={manufacturer_comp}
+                direction="vertical"
+                onChange={(e) => this.setState({ manufacturer_comp: e })}
+              />
+              <div className="w-30">
+                <span className="dsl-b18">निर्माण वर्ष :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={manufactured_date}
+                  onChange={(e) => this.handleDate(e, "nirman")}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+            </div>
+            <div className="panel space">
+              <Input
+                className="w-30"
+                title="प्राप्ति स्रोत :"
+                value={acquired_source}
+                direction="vertical"
+                onChange={(e) => this.setState({ acquired_source: e })}
+              />
+              <Input
+                className="w-30"
+                title="प्राप्ति मूल्य :"
+                direction="vertical"
+                value={acquired_price}
+                onChange={(e) => this.setState({ acquired_price: e })}
+              />
+              <Input
+                className="w-30"
+                title="कैफियत (अवस्था) :"
+                value={remarks}
+                direction="vertical"
+                onChange={(e) => this.setState({ remarks: e })}
+              />
+            </div>
           </div>
+          <div className="section" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
+                name="शंशोधन गर्नुहोस ।"
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

@@ -1,56 +1,62 @@
 import React, { Component } from "react";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { banList } from "../../services/config";
+import { uddhamList } from "../../services/config";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import "nepali-datepicker-reactjs/dist/index.css";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.samajik_karyabibaran_id,
-      samajik_karyabibaran: props.history.location.item.samajik_karyabibaran,
-      samajik_ekai: props.history.location.item.samajik_ekai,
-      samajik_parinam: props.history.location.item.samajik_parinam,
-      samajik_bajetkharcha: props.history.location.item.samajik_bajetkharcha,
-      ban_type: props.history.location.item.ban_type,
+      id: props.history.location.item.uddham_id,
+      darta_miti: props.history.location.item.darta_miti,
+      name: props.history.location.item.name,
+      address: props.history.location.item.address,
+      uddham_type: props.history.location.item.uddham_type,
+      rojgar_sankhya: props.history.location.item.rojgar_sankhya,
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
     };
-    this.handleBanType = this.handleBanType.bind(this);
+    this.handleUddhamType = this.handleUddhamType.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleBanType(e) {
-    this.setState({ ban_type: e[0] });
+  handleUddhamType(e) {
+    this.setState({ uddham_type: e[0] });
+  }
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
   }
-  handleConfirm() {
-    this.setState({ showDialog: !this.state.showDialog });
+  handleDate(e) {
+    this.setState({ darta_miti: e });
   }
 
   handleSubmit() {
     const {
       id,
-      samajik_karyabibaran,
-      samajik_ekai,
-      samajik_parinam,
-      samajik_bajetkharcha,
-      ban_type,
+      name,
+      darta_miti,
+      address,
+      uddham_type,
+      rojgar_sankhya,
       created_by,
     } = this.state;
     const payload = {
-      samajikkaryabibaran: {
+      uddham: {
         data: {
-          samajik_karyabibaran: samajik_karyabibaran,
-          samajik_ekai: samajik_ekai,
-          samajik_parinam: samajik_parinam,
-          samajik_bajetkharcha: samajik_bajetkharcha,
-          ban_type: ban_type,
+          name: name,
+          darta_miti: darta_miti,
+          address: address,
+          uddham_type: uddham_type,
+          rojgar_sankhya: rojgar_sankhya,
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
@@ -63,11 +69,11 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-      samajik_karyabibaran,
-      samajik_ekai,
-      samajik_parinam,
-      samajik_bajetkharcha,
-      ban_type,
+      name,
+      darta_miti,
+      address,
+      uddham_type,
+      rojgar_sankhya,
       showDialog,
     } = this.state;
 
@@ -77,7 +83,7 @@ class Edit extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
-            body="के तपाईँ सामाजिक कार्य सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -90,45 +96,47 @@ class Edit extends Component {
             <div className="panel space mb-4">
               <Input
                 className="w-30"
-                title="सामाजिक कार्याविवरण :"
-                value={samajik_karyabibaran}
+                title="उद्धम :"
                 direction="vertical"
-                onChange={(e) => this.setState({ samajik_karyabibaran: e })}
+                value={name}
+                onChange={(e) => this.setState({ name: e })}
               />
-              <Input
-                className="w-30"
-                title="ईकाइ :"
-                direction="vertical"
-                value={samajik_ekai}
-                onChange={(e) => this.setState({ samajik_ekai: e })}
-              />
-              <Input
-                className="w-30"
-                title="परिणाम :"
-                direction="vertical"
-                value={samajik_parinam}
-                onChange={(e) => this.setState({ samajik_parinam: e })}
-              />
-            </div>
-            <div className="panel space">
               <div className="w-30">
                 <Dropdown
                   className="dropdownlabel"
-                  title="वनको किसिम :"
+                  title="उद्धमको प्रकार :"
                   direction="vertical"
-                  defaultIds={[ban_type]}
-                  data={banList}
-                  getValue={(banList) => banList["value"]}
-                  onChange={(e) => this.handleBanType(e)}
-                  value={ban_type}
+                  defaultIds={[uddham_type]}
+                  data={uddhamList}
+                  getValue={(uddhamList) => uddhamList["value"]}
+                  onChange={(e) => this.handleUddhamType(e)}
+                  value={uddham_type}
                 />
               </div>
+              <div className="w-30">
+                <span className="dsl-b18"> दर्ता मिती :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={darta_miti}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+            </div>
+            <div className="panel space mb-4">
               <Input
                 className="w-30"
-                title="बजेट खर्च :"
-                value={samajik_bajetkharcha}
+                title="स्थान :"
+                value={address}
                 direction="vertical"
-                onChange={(e) => this.setState({ samajik_bajetkharcha: e })}
+                onChange={(e) => this.setState({ address: e })}
+              />
+              <Input
+                className="w-30"
+                title="रोजगार संख्या :"
+                direction="vertical"
+                value={rojgar_sankhya}
+                onChange={(e) => this.setState({ rojgar_sankhya: e })}
               />
               <div className="w-30" />
             </div>

@@ -298,6 +298,11 @@ import {
   addrojgarsrijanaRequest,
   updaterojgarsrijanaRequest,
   deleterojgarsrijanaRequest,
+  fetchalluddhamRequest,
+  fetchuddhamRequest,
+  adduddhamRequest,
+  updateuddhamRequest,
+  deleteuddhamRequest,
 } from "./miscellaneous";
 
 //bipatbibaran
@@ -1585,6 +1590,27 @@ export default function* root() {
       deleterojgarsrijanaRequest,
       api
     ),
+    //------------------------------uddham bibaran
+
+    takeLatest(
+      MiscellaneousTypes.FETCHALLUDDHAM_REQUEST,
+      fetchalluddhamRequest,
+      api
+    ),
+    takeLatest(MiscellaneousTypes.FETCHUDDHAM_REQUEST, fetchuddhamRequest, api),
+    takeLatest(MiscellaneousTypes.ADDUDDHAM_REQUEST, adduddhamRequest, api),
+    takeLatest(
+      MiscellaneousTypes.UPDATEUDDHAM_REQUEST,
+      updateuddhamRequest,
+      api
+    ),
+
+    takeLatest(
+      MiscellaneousTypes.DELETEUDDHAM_REQUEST,
+      deleteuddhamRequest,
+      api
+    ),
+
     //--------------------sajhedaribanbibaran
     takeLatest(
       BankaprakarTypes.FETCHALLSAJHEDARIBANBIBARAN_REQUEST,

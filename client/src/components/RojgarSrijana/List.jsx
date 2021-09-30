@@ -49,7 +49,7 @@ function List(props) {
               data.map((rojgar, index) => (
                 <tr key={`${rojgar.rojgar_srijana_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td> {rojgar.karyaharu}</td>
+                  <td> {rojgar.karya}</td>
                   <td> {rojgar.ekai}</td>
                   <td> {rojgar.banka_prakar}</td>
                   <td> {rojgar.mahila}</td>
