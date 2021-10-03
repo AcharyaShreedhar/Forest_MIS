@@ -138,7 +138,7 @@ class Add extends Component {
               <span className="dsl-b22">{title}</span>
             </div>
             <div className="panel space">
-              <div className="w-25">
+              <div className="w-30">
                 <span className="dsl-b18">आर्थिक वर्ष :</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
@@ -148,7 +148,7 @@ class Add extends Component {
                 />
               </div>
               <Input
-                className="w-60"
+                className="w-65"
                 title="वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम :"
                 direction="vertical"
                 value={uplabdakarta_naam}

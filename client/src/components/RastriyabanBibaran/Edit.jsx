@@ -116,14 +116,14 @@ class Edit extends Component {
             </div>
             <div className="panel space">
               <Input
-                className="w-20"
+                className="w-30"
                 title="दर्ता नं :"
                 value={darta_no}
                 direction="vertical"
                 onChange={(e) => this.setState({ darta_no: e })}
               />
               <Input
-                className="w-75"
+                className="w-65"
                 title="राष्ट्रियवनको नाम :"
                 direction="vertical"
                 value={rastriyaban_naam}

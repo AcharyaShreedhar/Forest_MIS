@@ -114,14 +114,14 @@ class Add extends Component {
             </div>
             <div className="panel space">
               <Input
-                className="w-20"
+                className="w-30"
                 title="दर्ता नं :"
                 value={darta_no}
                 direction="vertical"
                 onChange={(e) => this.setState({ darta_no: e })}
               />
               <Input
-                className="w-75"
+                className="w-65"
                 title="चक्लावनको नाम :"
                 direction="vertical"
                 value={chaklaban_naam}

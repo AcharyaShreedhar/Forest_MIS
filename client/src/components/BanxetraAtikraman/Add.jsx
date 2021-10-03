@@ -194,10 +194,8 @@ class Add extends Component {
               </div>
               <div className="w-45">
                 <Dropdown
-                  className="dropdownlabel"
                   title="अतिक्रमित अवस्था :"
                   direction="vertical"
-                  width="fit-content"
                   defaultIds={[atikraman_abastha]}
                   data={AtikramanAbasta}
                   getValue={(AtikramanAbasta) => AtikramanAbasta["value"]}
