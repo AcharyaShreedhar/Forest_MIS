@@ -185,15 +185,14 @@ class Edit extends Component {
             </div>
             <div className="panel space mb-4">
               <Input
-                className="w-20"
+                className="w-30"
                 title="दर्ता नं:"
                 value={regno}
                 direction="vertical"
                 onChange={(e) => this.setState({ regno: e })}
               />
-
               <Input
-                className="w-75"
+                className="w-65"
                 title="सामुदायिक वन उपभोक्ता समितिको नाम:"
                 direction="vertical"
                 value={name}
@@ -202,15 +201,14 @@ class Edit extends Component {
             </div>
             <div className="panel space">
               <Input
-                className="w-20"
+                className="w-30"
                 title="क्षेत्रफल(हे.):"
                 value={area}
                 direction="vertical"
                 onChange={(e) => this.setState({ area: e })}
               />
-
               <Input
-                className="w-75"
+                className="w-65"
                 title="मुख्य प्रजाति:"
                 direction="vertical"
                 as="textarea"
@@ -218,25 +216,27 @@ class Edit extends Component {
                 onChange={(e) => this.setState({ main_species: e })}
               />
             </div>
-            <div className="section mb-4" />
+            <div className="section mb-2" />
             <span className="dsl-b18">जनसंख्या विवरण :</span>
             <div className="panel space mt-2">
               <Input
-                className="w-45"
+                className="w-30"
                 title="महिला :"
                 value={female}
                 direction="vertical"
                 onChange={(e) => this.setState({ female: e })}
               />
+
               <Input
-                className="w-45"
+                className="w-30"
                 title="पुरुष :"
                 value={male}
                 direction="vertical"
                 onChange={(e) => this.setState({ male: e })}
               />
+              <div className="w-30" />
             </div>
-            <div className="section mb-4" />
+            <div className="section mb-2" />
             <span className="dsl-b18">घरधुरी विवरण :</span>
             <div className="panel space mt-2 mb-4">
               <Input

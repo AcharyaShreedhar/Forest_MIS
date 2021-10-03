@@ -154,7 +154,7 @@ class Edit extends Component {
             </div>
 
             <div className="panel space">
-              <div className="w-25">
+              <div className="w-30">
                 <span className="dsl-b18">आर्थिक वर्ष :</span>
                 <NepaliDatePicker
                   inputClassName="form-control"
@@ -164,7 +164,7 @@ class Edit extends Component {
                 />
               </div>
               <Input
-                className="w-60"
+                className="w-65"
                 title="वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम :"
                 direction="vertical"
                 value={uplabdakarta_naam}

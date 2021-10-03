@@ -168,14 +168,14 @@ class Add extends Component {
             </div>
             <div className="panel space">
               <Input
-                className="w-20"
+                className="w-30"
                 title="दर्ता नं :"
                 value={regno}
                 direction="vertical"
                 onChange={(e) => this.setState({ regno: e })}
               />
               <Input
-                className="w-75"
+                className="w-65"
                 title="धर्मिक वनको नाम :"
                 direction="vertical"
                 value={name}
@@ -186,19 +186,20 @@ class Add extends Component {
             <span className="dsl-b18">जनसंख्या विवरण :</span>
             <div className="panel space mt-2">
               <Input
-                className="w-45"
+                className="w-30"
                 title="महिला :"
                 value={female}
                 direction="vertical"
                 onChange={(e) => this.setState({ female: e })}
               />
               <Input
-                className="w-45"
+                className="w-30"
                 title="पुरुष :"
                 value={male}
                 direction="vertical"
                 onChange={(e) => this.setState({ male: e })}
               />
+              <div className="w-30" />
             </div>
             <div className="section mb-4" />
             <span className="dsl-b18">घरधुरी विवरण :</span>
