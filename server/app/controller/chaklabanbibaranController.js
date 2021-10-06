@@ -52,7 +52,7 @@ async function getChaklabanBibaran(req, res) {
 
 //Controller for adding a ChaklabanBibaran
 async function addChaklabanBibaran(req, res) {
-  const addChaklabanBibaranQuery = `INSERT INTO chaklaban_bibarans (chaklaban_naam, darta_no, darta_miti,  dist_id,  address, area, main_species, ghardhuri, lav_jana, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addChaklabanBibaranQuery = `INSERT INTO chaklaban_bibarans (chaklaban_naam, darta_no, darta_miti,  dist_id,  address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addChaklabanBibaranQuery,
     [
@@ -63,8 +63,11 @@ async function addChaklabanBibaran(req, res) {
       req.body.address,
       req.body.area,
       req.body.main_species,
-      req.body.ghardhuri,
-      req.body.lav_jana,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -79,7 +82,7 @@ async function addChaklabanBibaran(req, res) {
 
 //Controller for updating a ChaklabanBibaran
 async function updateChaklabanBibaran(req, res) {
-  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET  chaklaban_naam=?, darta_no=?, darta_miti=?, dist_id=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET  chaklaban_naam=?, darta_no=?, darta_miti=?, dist_id=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateChaklabanBibaranQuery,
     [
@@ -90,8 +93,11 @@ async function updateChaklabanBibaran(req, res) {
       req.body.address,
       req.body.area,
       req.body.main_species,
-      req.body.ghardhuri,
-      req.body.lav_jana,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.created_by,
       req.body.updated_by,
       req.params.chaklabanBibaranId,

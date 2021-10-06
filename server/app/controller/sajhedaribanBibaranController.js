@@ -52,20 +52,23 @@ async function getSajhedaribanBibaran(req, res) {
 
 //Controller for adding a SajhedaribanBibaran
 async function addSajhedaribanBibaran(req, res) {
-  const addSajhedaribanBibaranQuery = `INSERT INTO sajhedariban_bibarans (darta_no, darta_miti, dist_id, sajhedariban_naam, address, area, main_species, ghardhuri, lav_jana, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addSajhedaribanBibaranQuery = `INSERT INTO sajhedariban_bibarans (darta_no, darta_miti, dist_id, sajhedariban_naam, address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSajhedaribanBibaranQuery,
     [
-      req.body.darta_no, 
-      req.body.darta_miti, 
-      req.body.dist_id, 
-      req.body.sajhedariban_naam, 
-      req.body.address, 
-      req.body.area, 
-      req.body.main_species, 
-      req.body.ghardhuri, 
-      req.body.lav_jana, 
-      req.body.created_by, 
+      req.body.darta_no,
+      req.body.darta_miti,
+      req.body.dist_id,
+      req.body.sajhedariban_naam,
+      req.body.address,
+      req.body.area,
+      req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
+      req.body.created_by,
       req.body.updated_by,
     ],
     (error, results, fields) => {
@@ -79,22 +82,25 @@ async function addSajhedaribanBibaran(req, res) {
 
 //Controller for updating a SajhedaribanBibaran
 async function updateSajhedaribanBibaran(req, res) {
-  const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, sajhedariban_naam=?, address=?, area=?, main_species=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, sajhedariban_naam=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSajhedaribanBibaranQuery,
     [
-        req.body.darta_no, 
-        req.body.darta_miti,
-        req.body.dist_id, 
-        req.body.sajhedariban_naam, 
-        req.body.address, 
-        req.body.area, 
-        req.body.main_species, 
-        req.body.ghardhuri, 
-        req.body.lav_jana, 
-        req.body.created_by, 
-        req.body.updated_by,
-        req.params.sajhedaribanBibaranId,
+      req.body.darta_no,
+      req.body.darta_miti,
+      req.body.dist_id,
+      req.body.sajhedariban_naam,
+      req.body.address,
+      req.body.area,
+      req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
+      req.body.created_by,
+      req.body.updated_by,
+      req.params.sajhedaribanBibaranId,
     ],
     (error, results, fields) => {
       if (error) {

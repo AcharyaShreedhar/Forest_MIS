@@ -54,7 +54,7 @@ async function getDharmikbanBibaran(req, res) {
 
 //Controller for adding a DharmikbanBibaran
 async function addDharmikbanBibaran(req, res) {
-  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dist_id, darta_no,dharmikban_name, community_name, area, main_species, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dist_id, darta_no,dharmikban_name, community_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addDharmikbanBibaranQuery,
     [
@@ -64,6 +64,11 @@ async function addDharmikbanBibaran(req, res) {
       req.body.community_name,
       req.body.area,
       req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.forest_type,
       req.body.handover_date,
       req.body.forest_maujdat,
@@ -82,7 +87,7 @@ async function addDharmikbanBibaran(req, res) {
 
 //Controller for updating a DharmikbanBibaran
 async function updateDharmikbanBibaran(req, res) {
-  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dist_id=?, darta_no=?,dharmikban_name=?, community_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dist_id=?, darta_no=?,dharmikban_name=?, community_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateDharmikbanBibaranQuery,
     [
@@ -92,6 +97,11 @@ async function updateDharmikbanBibaran(req, res) {
       req.body.community_name,
       req.body.area,
       req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.forest_type,
       req.body.handover_date,
       req.body.forest_maujdat,

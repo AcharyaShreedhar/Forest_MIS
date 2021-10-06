@@ -53,7 +53,7 @@ async function getRastriyabanBibaran(req, res) {
 
 //Controller for adding a RastriyabanBibaran
 async function addRastriyabanBibaran(req, res) {
-  const addRastriyabanBibaranQuery = `INSERT INTO rastriyabanbibarans (rastriyaban_naam, darta_no, darta_miti, dist_id, address, main_species, area, ghardhuri,lav_jana, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addRastriyabanBibaranQuery = `INSERT INTO rastriyabanbibarans (rastriyaban_naam, darta_no, darta_miti,  address,dist_id, main_species, area, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addRastriyabanBibaranQuery,
     [
@@ -64,8 +64,11 @@ async function addRastriyabanBibaran(req, res) {
       req.body.dist_id,
       req.body.main_species,
       req.body.area,
-      req.body.ghardhuri,
-      req.body.lav_jana,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -80,7 +83,7 @@ async function addRastriyabanBibaran(req, res) {
 
 //Controller for updating a RastriyabanBibaran
 async function updateRastriyabanBibaran(req, res) {
-  const updateRastriyabanBibaranQuery = `UPDATE rastriyabanbibarans SET rastriyaban_naam=?, darta_no=?, darta_miti=?, address=?, dist_id=?, main_species=?, area=?, ghardhuri=?, lav_jana=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateRastriyabanBibaranQuery = `UPDATE rastriyabanbibarans SET rastriyaban_naam=?, darta_no=?, darta_miti=?, address=?, dist_id=?, main_species=?, area=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateRastriyabanBibaranQuery,
     [
@@ -91,8 +94,11 @@ async function updateRastriyabanBibaran(req, res) {
       req.body.dist_id,
       req.body.main_species,
       req.body.area,
-      req.body.ghardhuri,
-      req.body.lav_jana,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.created_by,
       req.body.updated_by,
       req.params.rastriyabanBibaranId,

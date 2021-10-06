@@ -269,7 +269,7 @@ export class Edit extends Component {
               />
             </div>
             <span className="dsl-b18">कार्यसमितिमा प्रतिनिधित्व विवरण :</span>
-            <div className="panel space mt-2 mb-4">
+            <div className="panel space mt-2">
               <Input
                 className="w-30"
                 title="दलित :"
@@ -364,7 +364,7 @@ export class Edit extends Component {
               </div>
             </div>
           </div>
-          <div className="section" />
+          <div className="section mb-4" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
