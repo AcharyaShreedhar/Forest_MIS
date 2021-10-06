@@ -21,7 +21,7 @@
     textarea,
     input {
       background-color: $slight;
-      border: 1px solid $slight-grey;;
+      border: 1px solid $slight-grey;
       border-radius: 3px;
       box-shadow: none;
       font-size: 18px;
@@ -145,4 +145,13 @@
       border: 1px solid $red !important;
     }
   }
+}
+
+.title_span {
+  display: flex;
+  justify-content: space-between;
+}
+.required {
+  color: red;
+  align-self: flex-end;
 }

@@ -82,7 +82,10 @@ class Input extends React.PureComponent {
 
     return (
       <div className={classname}>
+        <div className="title_span">
         {!isEmpty(title) && <span className="core-input-label">{title}</span>}
+        <span className="required">*</span>
+        </div>
         <div className="core-input-content">
           <Form.Control
             disabled={disabled}

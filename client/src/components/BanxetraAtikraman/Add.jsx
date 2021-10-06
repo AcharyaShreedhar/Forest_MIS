@@ -67,16 +67,14 @@ class Add extends Component {
         data: {
           atikramit_area: atikramit_area,
           address: address,
-          atikraman_kisim: equals(atikraman_kisim, 1)
-            ? "संस्थागत"
-            : "व्यक्तिगत",
+          atikraman_kisim: atikraman_kisim,
           dalit_ghardhuri: dalit_ghardhuri,
           janjati_ghardhuri: janjati_ghardhuri,
           anya_ghardhuri: anya_ghardhuri,
           atikraman_miti: atikraman_miti,
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
-          atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" : "पुरानो",
+          atikraman_abastha: atikraman_abastha,
           dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
@@ -135,7 +133,6 @@ class Add extends Component {
                 direction="vertical"
                 onChange={(e) => this.setState({ atikramit_area: e })}
               />
-
               <Input
                 className="w-30"
                 title="ठेगाना :"

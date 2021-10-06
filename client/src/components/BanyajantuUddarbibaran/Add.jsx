@@ -67,9 +67,7 @@ class Add extends Component {
           samraxit_xetra: samraxit_xetra,
           banyajantuko_naam: banyajantuko_naam,
           banyajantuko_umer: banyajantuko_umer,
-          banyajantuko_abastha: equals(banyajantuko_abastha, 1)
-            ? "मृत"
-            : "जिउॅदो",
+          banyajantuko_abastha: banyajantuko_abastha,
           mareko_karan: mareko_karan,
           banxetra_duri: banxetra_duri,
           anya_bibaran: anya_bibaran,

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -23,13 +23,7 @@ function List(props) {
     <Fragment>
       <div className="card">
         <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
+          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
         </div>
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="rojgarsrijana">
@@ -49,18 +43,44 @@ function List(props) {
               data.map((rojgar, index) => (
                 <tr key={`${rojgar.rojgar_srijana_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td> {rojgar.karya}</td>
+                  <td>
+                    {equals(rojgar.karya, 1)
+                      ? "वन संबर्धन"
+                      : equals(rojgar.karya, 2)
+                      ? "वन संरक्षण"
+                      : equals(rojgar.karya, 3)
+                      ? "वन पैदावार संकलन"
+                      : "वन उद्धम"}
+                  </td>
                   <td> {rojgar.ekai}</td>
-                  <td> {rojgar.banka_prakar}</td>
+                  <td>
+                    {equals(rojgar.banka_prakar, 1)
+                      ? "बैज्ञानीक सामुदायिक वन"
+                      : equals(rojgar.banka_prakar, 2)
+                      ? "अबैज्ञानीक सामुदायिक वन"
+                      : equals(rojgar.banka_prakar, 3)
+                      ? "कबुलियती बन"
+                      : equals(rojgar.banka_prakar, 4)
+                      ? "धार्मिक बन"
+                      : equals(rojgar.banka_prakar, 5)
+                      ? "चक्ला बन"
+                      : equals(rojgar.banka_prakar, 6)
+                      ? "साझेदारी बन"
+                      : equals(rojgar.banka_prakar, 7)
+                      ? "व्यबसायीक कबुलियती बन"
+                      : equals(rojgar.banka_prakar, 8)
+                      ? "निजी बन"
+                      : "राष्ट्रिय बन"}
+                  </td>
                   <td> {rojgar.mahila}</td>
                   <td> {rojgar.purus}</td>
-                  <td> {rojgar.jamma}</td>
+                  <td> {rojgar.mahila + rojgar.purus}</td>
                   <td> {rojgar.kaifiyat}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, rojgar ,"rojgarsrijana" )}
+                        onChange={(e) => onSelect(e, rojgar, "rojgarsrijana")}
                       />
                     </div>
                   </td>

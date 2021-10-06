@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 
 class Edit extends Component {
@@ -72,6 +73,16 @@ class Edit extends Component {
       showDialog,
     } = this.state;
 
+    let disabled =
+      isEmpty(post) ||
+      isEmpty(karyalaya) ||
+      isEmpty(thegana) ||
+      isEmpty(kayam_darbandi_sankhya) ||
+      isEmpty(padpurti_sankhya) ||
+      isEmpty(khali_sankhya)
+        ? true
+        : false;
+
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
@@ -141,6 +152,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

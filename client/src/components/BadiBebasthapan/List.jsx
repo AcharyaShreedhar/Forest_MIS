@@ -26,7 +26,6 @@ function List(props) {
           <Button
             type="low"
             size="small"
-            // className="text-capitalize"
             name={buttonName}
             onClick={onAdd}
           />

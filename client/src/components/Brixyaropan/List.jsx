@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -50,7 +50,15 @@ function List(props) {
                 <tr key={`${brixyaropan.birxyaropan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{brixyaropan.brixyaropan_miti} </td>
-                  <td>{brixyaropan.xetra} </td>
+                  <td>
+                    {equals(brixyaropan.xetra, 1)
+                      ? "सामुदायिक बन"
+                      : equals(brixyaropan.xetra, 2)
+                      ? "राष्ट्रिय बन "
+                      : equals(brixyaropan.xetra, 3)
+                      ? "निजी जग्गा"
+                      : "सार्वजनिक क्षेत्र "}{" "}
+                  </td>
                   <td>{brixyaropan.area} </td>
                   <td>{brixyaropan.brixyaropan_thegana} </td>
                   <td>{brixyaropan.brixyaropan_kisim} </td>

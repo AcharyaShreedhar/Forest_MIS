@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals,isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -55,7 +55,9 @@ function List(props) {
                   <td> {uddar.samraxit_xetra}</td>
                   <td> {uddar.banyajantuko_naam}</td>
                   <td> {uddar.banyajantuko_umer}</td>
-                  <td> {uddar.banyajantuko_abastha}</td>
+                  <td>
+                    {equals(uddar.banyajantuko_abastha, 1) ? "मृत" : "जिउॅदो"}
+                  </td>
                   <td> {uddar.mareko_karan}</td>
                   <td> {uddar.banxetra_duri}</td>
                   <td> {uddar.anya_bibaran}</td>

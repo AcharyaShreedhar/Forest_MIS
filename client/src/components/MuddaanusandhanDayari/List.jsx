@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -19,20 +19,22 @@ function List(props) {
     per,
     onPer,
   } = props;
+
   return (
     <Fragment>
       <div className="card">
         <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
+          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="muddaanusandhandayaris" size="md">
+        <Table
+          responsive
+          striped
+          bordered
+          hover
+          id="muddaanusandhandayaris"
+          size="md"
+        >
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -50,7 +52,13 @@ function List(props) {
                 <tr key={`${mudda.mudda_anusandhan_dayari_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{mudda.jaheri_partibedan_miti}</td>
-                  <td>{mudda.kasurko_kisim}</td>
+                  <td>
+                    {equals(mudda.kasurko_kisim, 1)
+                      ? "बन पैदावार चोरिनिकासी"
+                      : equals(mudda.kasurko_kisim, 2)
+                      ? "बन्यजन्तु अपराध"
+                      : "बन अतिक्रमण"}
+                  </td>
                   <td>{mudda.bigo_pariman}</td>
                   <td>{mudda.jaggako_area}</td>
                   <td>{mudda.jaggako_thegana}</td>
@@ -58,7 +66,11 @@ function List(props) {
                   <td>{mudda.abhiyog_nikaya}</td>
                   <td>{mudda.abhiyog_jariwana}</td>
                   <td>{mudda.kaid}</td>
-                  <td>{mudda.bojbahak_jafat_maagdabi}</td>
+                  <td>
+                    {equals(mudda.bojbahak_jafat_maagdabi, 1)
+                      ? "लिएको"
+                      : "नलिएको"}
+                  </td>
                   <td>{mudda.pratibadi_sankhya}</td>
                   <td>{mudda.thunchek_dharauti}</td>
                   <td>{mudda.sadharan_tarekh}</td>
@@ -66,7 +78,8 @@ function List(props) {
                   <td>{mudda.faisala_miti}</td>
                   <td>{mudda.faisala_jariwana}</td>
                   <td>{mudda.faisala_kaid}</td>
-                  <td>{mudda.bojbahak_jafat}</td>
+                  <td>{equals(mudda.bojbahak_jafat, 1) ? "भएको" : "नभएको"}</td>
+                  <td>{equals(mudda.faisala_status, 1) ? "भएको" : "नभएको"}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown

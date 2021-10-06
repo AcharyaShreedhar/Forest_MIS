@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -49,7 +49,7 @@ function List(props) {
               data.map((asset, index) => (
                 <tr key={`${asset.asset_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td> {asset.asset_type}</td>
+                  <td>{equals(asset.asset_type, 1) ? " घर " : " जग्गा "}</td>
                   <td> {asset.asset_loc}</td>
                   <td> {asset.kitta_no}</td>
                   <td> {asset.home_area}</td>

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { isNil,equals } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -51,17 +51,22 @@ function List(props) {
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {banxetraatikraman.atikramit_area}</td>
                   <td> {banxetraatikraman.address}</td>
-                  <td> {banxetraatikraman.atikraman_kisim}</td>
+                  <td> {equals(banxetraatikraman.atikraman_kisim, 1)
+            ? "संस्थागत"
+            : "व्यक्तिगत"}</td>
                   <td>{banxetraatikraman.dalit_ghardhuri}</td>
                   <td>{banxetraatikraman.janjati_ghardhuri}</td>
                   <td>{banxetraatikraman.anya_ghardhuri}</td>
                   <td>
-                    {" "}
                     {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}
                   </td>
                   <td> {banxetraatikraman.atikraman_prayojan}</td>
                   <td> {banxetraatikraman.samrachana_bibaran}</td>
-                  <td> {banxetraatikraman.atikraman_abastha}</td>
+                  <td>
+                    {equals(banxetraatikraman.atikraman_abastha, 1)
+                      ? "नयाँ"
+                      : "पुरानो"}
+                  </td>
                   <td>
                     <div className="edit">
                       <EditDropdown

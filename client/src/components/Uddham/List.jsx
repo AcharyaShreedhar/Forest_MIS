@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -52,14 +52,20 @@ function List(props) {
                   <td> {uddham.name}</td>
                   <td> {uddham.dist_id}</td>
                   <td> {uddham.address}</td>
-                  <td> {uddham.uddham_type}</td>
+                  <td>
+                    {equals(uddham.uddham_type, 1)
+                      ? "निजी"
+                      : equals(uddham.uddham_type, 2)
+                      ? "सामुदायिक"
+                      : "सहकारी मार्फत"}
+                  </td>
                   <td> {uddham.darta_miti}</td>
                   <td> {uddham.rojgar_sankhya}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, uddham ,"uddham" )}
+                        onChange={(e) => onSelect(e, uddham, "uddham")}
                       />
                     </div>
                   </td>
