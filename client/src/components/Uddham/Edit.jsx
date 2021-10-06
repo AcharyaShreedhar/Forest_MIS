@@ -141,7 +141,7 @@ class Edit extends Component {
               <div className="w-30" />
             </div>
           </div>
-          <div className="section" />
+          <div className="section mb-4" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button

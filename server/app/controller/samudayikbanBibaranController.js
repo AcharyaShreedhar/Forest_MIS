@@ -55,7 +55,7 @@ async function getSamudayikbanBibaran(req, res) {
 
 //Controller for adding a SamudayikbanBibaran
 async function addSamudayikbanBibaran(req, res) {
-  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, darta_no,  samudayikban_name, area, main_species, forest_type, handover_date, forest_maujdat, timber, wood, baiganik_ban, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, darta_no,  samudayikban_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, timber, wood, baiganik_ban, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSamudayikbanBibaranQuery,
     [
@@ -64,6 +64,11 @@ async function addSamudayikbanBibaran(req, res) {
       req.body.samudayikban_name,
       req.body.area,
       req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.forest_type,
       req.body.handover_date,
       req.body.forest_maujdat,
@@ -84,7 +89,7 @@ async function addSamudayikbanBibaran(req, res) {
 
 //Controller for updating a SamudayikbanBibaran
 async function updateSamudayikbanBibaran(req, res) {
-  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?, forest_type=?, handover_date=?, forest_maujdat=?, timber=?, wood=?, baiganik_ban=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, timber=?, wood=?, baiganik_ban=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSamudayikbanBibaranQuery,
     [
@@ -93,6 +98,11 @@ async function updateSamudayikbanBibaran(req, res) {
       req.body.samudayikban_name,
       req.body.area,
       req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.forest_type,
       req.body.handover_date,
       req.body.forest_maujdat,

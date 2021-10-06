@@ -185,7 +185,7 @@ class Edit extends Component {
               />
             </div>
             <div className="section mb-4" />
-            <div className="panel space mt-2">
+            <div className="panel space mt-2 mb-4">
               <Input
                 className="w-45"
                 title="महिला :"
@@ -201,7 +201,7 @@ class Edit extends Component {
                 onChange={(e) => this.setState({ male: e })}
               />
             </div>
-            <div className="panel space mb-4">
+            <div className="panel space">
               <Input
                 className="w-100"
                 title="मुख्य प्रजाति :"
@@ -212,7 +212,7 @@ class Edit extends Component {
               />
             </div>
           </div>
-          <div className="section" />
+          <div className="section mb-4" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button

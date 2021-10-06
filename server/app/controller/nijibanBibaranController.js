@@ -52,7 +52,7 @@ async function getNijibanBibaran(req, res) {
 
 //Controller for adding a NijibanBibaran
 async function addNijibanBibaran(req, res) {
-  const addNijibanBibaranQuery = `INSERT INTO nijiban_bibarans (dist_id, darta_no,swikrit_miti, nijiban_dhaniko_naam, perm_addr, curr_addr, area, main_species, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
+  const addNijibanBibaranQuery = `INSERT INTO nijiban_bibarans (dist_id, darta_no,swikrit_miti, nijiban_dhaniko_naam, perm_addr, curr_addr, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addNijibanBibaranQuery,
     [
@@ -64,6 +64,11 @@ async function addNijibanBibaran(req, res) {
       req.body.curr_addr,
       req.body.area,
       req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -78,7 +83,7 @@ async function addNijibanBibaran(req, res) {
 
 //Controller for updating a NijibanBibaran
 async function updateNijibanBibaran(req, res) {
-  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateNijibanBibaranQuery,
     [
@@ -90,6 +95,11 @@ async function updateNijibanBibaran(req, res) {
       req.body.curr_addr,
       req.body.area,
       req.body.main_species,
+      req.body.dalit_ghardhuri,
+      req.body.janjati_ghardhuri,
+      req.body.anya_ghardhuri,
+      req.body.female,
+      req.body.male,
       req.body.created_by,
       req.body.updated_by,
       req.params.nijibanBibaranId,

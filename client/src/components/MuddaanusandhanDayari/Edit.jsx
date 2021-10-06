@@ -356,7 +356,7 @@ class Edit extends Component {
                 />
               </div>
             </div>
-            <div className="panel space mb-4">
+            <div className="panel space">
               <div className="w-30">
                 <Dropdown
                   className="dropdownlabel"
@@ -372,6 +372,7 @@ class Edit extends Component {
               </div>
             </div>
           </div>
+          <div className="section mb-4" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button

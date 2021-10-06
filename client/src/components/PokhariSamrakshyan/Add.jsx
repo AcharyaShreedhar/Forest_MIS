@@ -103,6 +103,7 @@ class Add extends Component {
               onChange={(e) => this.setState({ laagat: e })}
             />
           </div>
+          <div className="section mb-4" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
