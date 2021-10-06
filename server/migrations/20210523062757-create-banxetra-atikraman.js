@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       atikraman_kisim: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       dalit_ghardhuri: {
         type: Sequelize.INTEGER,
@@ -39,7 +39,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       atikraman_abastha: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,

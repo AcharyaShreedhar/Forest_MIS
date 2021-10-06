@@ -21,24 +21,16 @@ class Edit extends Component {
       id: props.history.location.item.banxetra_atikraman_id,
       atikramit_area: props.history.location.item.atikramit_area,
       address: props.history.location.item.address,
-      atikraman_kisim: equals(
+      atikraman_kisim: 
         props.history.location.item.atikraman_kisim,
-        "संस्थागत"
-      )
-        ? 1
-        : 2,
       dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
       janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
       anya_ghardhuri: props.history.location.item.anya_ghardhuri,
       atikraman_miti: props.history.location.item.atikraman_miti,
       atikraman_prayojan: props.history.location.item.atikraman_prayojan,
       samrachana_bibaran: props.history.location.item.samrachana_bibaran,
-      atikraman_abastha: equals(
+      atikraman_abastha:
         props.history.location.item.atikraman_abastha,
-        "नयाँ"
-      )
-        ? 1
-        : 2,
       dist_id: props.history.location.item.dist_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
@@ -80,16 +72,14 @@ class Edit extends Component {
         data: {
           atikramit_area: atikramit_area,
           address: address,
-          atikraman_kisim: equals(atikraman_kisim, 1)
-            ? "संस्थागत"
-            : "व्यक्तिगत",
+          atikraman_kisim: atikraman_kisim,
           dalit_ghardhuri: dalit_ghardhuri,
           janjati_ghardhuri: janjati_ghardhuri,
           anya_ghardhuri: anya_ghardhuri,
           atikraman_miti: atikraman_miti,
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
-          atikraman_abastha: equals(atikraman_abastha, 1) ? "नयाँ" : "पुरानो",
+          atikraman_abastha: atikraman_abastha,
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,

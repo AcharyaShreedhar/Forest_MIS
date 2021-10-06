@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
 
 const BanyajantukoAbastha = [
   { id: 1, value: "मृत" },
@@ -20,12 +19,7 @@ class Edit extends Component {
       samraxit_xetra: props.history.location.item.samraxit_xetra,
       banyajantuko_naam: props.history.location.item.banyajantuko_naam,
       banyajantuko_umer: props.history.location.item.banyajantuko_umer,
-      banyajantuko_abastha: equals(
-        props.history.location.item.banyajantuko_abastha,
-        "मृत"
-      )
-        ? 1
-        : 2,
+      banyajantuko_abastha: props.history.location.item.banyajantuko_abastha,
       mareko_karan: props.history.location.item.mareko_karan,
       banxetra_duri: props.history.location.item.banxetra_duri,
       anya_bibaran: props.history.location.item.anya_bibaran,
@@ -75,14 +69,12 @@ class Edit extends Component {
           samraxit_xetra: samraxit_xetra,
           banyajantuko_naam: banyajantuko_naam,
           banyajantuko_umer: banyajantuko_umer,
-          banyajantuko_abastha: equals(banyajantuko_abastha, 1)
-            ? "मृत"
-            : "जिउॅदो",
+          banyajantuko_abastha: banyajantuko_abastha,
           mareko_karan: mareko_karan,
           banxetra_duri: banxetra_duri,
           anya_bibaran: anya_bibaran,
           remarks: remarks,
-          dist_id: this.props.user.user_name,
+          dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },

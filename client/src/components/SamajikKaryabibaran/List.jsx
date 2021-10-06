@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -53,7 +53,25 @@ function List(props) {
                   <td>{samajik.samajik_ekai}</td>
                   <td>{samajik.samajik_parinam}</td>
                   <td>{samajik.samajik_bajetkharcha}</td>
-                  <td>{samajik.ban_type}</td>
+                  <td>
+                    {equals(samajik.ban_type, 1)
+                      ? "बैज्ञानीक सामुदायिक वन"
+                      : equals(samajik.ban_type, 2)
+                      ? "अबैज्ञानीक सामुदायिक वन"
+                      : equals(samajik.ban_type, 3)
+                      ? "कबुलियती बन"
+                      : equals(samajik.ban_type, 4)
+                      ? "धार्मिक बन"
+                      : equals(samajik.ban_type, 5)
+                      ? "चक्ला बन"
+                      : equals(samajik.ban_type, 6)
+                      ? "साझेदारी बन"
+                      : equals(samajik.ban_type, 7)
+                      ? "व्यबसायीक कबुलियती बन"
+                      : equals(samajik.ban_type, 8)
+                      ? "निजी बन"
+                      : "राष्ट्रिय बन"}
+                  </td>
                   <td>
                     <div className="edit">
                       <EditDropdown

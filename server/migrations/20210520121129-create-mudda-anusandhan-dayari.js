@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       kasurko_kisim: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       bigo_pariman: {
         type: Sequelize.STRING,
@@ -39,7 +39,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       bojbahak_jafat_maagdabi: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       pratibadi_sankhya: {
         type: Sequelize.STRING,
@@ -66,7 +66,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       bojbahak_jafat: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,

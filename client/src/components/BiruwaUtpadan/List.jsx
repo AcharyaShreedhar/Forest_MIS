@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { equals,isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -50,8 +50,22 @@ function List(props) {
                 <tr key={`${biruwa.biruwa_utpadan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {biruwa.arthik_barsa} </td>
-                  <td> {biruwa.biruwa_type} </td>
-                  <td> {biruwa.utpadan_medium} </td>
+                  <td>
+                    {equals(biruwa.biruwa_type, 1)
+                      ? "बहुउदेशिय"
+                      : equals(biruwa.biruwa_type, 2)
+                      ? "जडिबुटी"
+                      : "वहुवर्षिय"}
+                  </td>
+                  <td>
+                    {equals(biruwa.utpadan_medium, 1)
+                      ? "डिभिजन बन कार्यालय "
+                      : equals(biruwa.utpadan_medium, 2)
+                      ? "समुह मार्फत "
+                      : equals(biruwa.utpadan_medium, 3)
+                      ? "निजी"
+                      : "खरिद"}
+                  </td>
                   <td> {biruwa.biruwa_sankhya} </td>
                   <td> {biruwa.narsari_sankhya} </td>
                   <td> {biruwa.barga} </td>

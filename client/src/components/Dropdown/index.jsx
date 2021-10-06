@@ -294,8 +294,9 @@ class Dropdown extends React.PureComponent {
                   equals(direction, "vertical") ? "mb-2" : "mr-2"
                 }`}
               >
-                {title}
+                {title}<span className="color-red">*</span>
               </div>
+              
             )}
             {!isEmpty(this.state.title) && selectable && (
               <div className="core-dropdown-label">

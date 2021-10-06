@@ -2,16 +2,21 @@ import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
 
 const JafatMaagdabi = [
   { id: 1, value: "लिएको" },
   { id: 2, value: "नलिएको" },
 ];
 
-const BojbahakJafat = [
+const Status = [
   { id: 1, value: "भएको" },
   { id: 2, value: "नभएको" },
+];
+
+const KasurKisim = [
+  { id: 1, value: "बन पैदावार चोरिनिकासी" },
+  { id: 2, value: "बन्यजन्तु अपराध" },
+  { id: 3, value: "बन अतिक्रमण" },
 ];
 
 class Add extends Component {
@@ -35,6 +40,7 @@ class Add extends Component {
       faisala_miti: "",
       faisala_jariwana: "",
       faisala_kaid: "",
+      faisala_status: "",
       bojbahak_jafat: 1,
       dist_id: "",
       created_by: "",
@@ -43,8 +49,9 @@ class Add extends Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKasurKisim=this.handleKasurKisim.bind(this);
     this.handleJafatMaagdabi = this.handleJafatMaagdabi.bind(this);
-    this.handleBojbahakJafat = this.handleBojbahakJafat.bind(this);
+    this.handleStatus = this.handleStatus.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
@@ -76,6 +83,7 @@ class Add extends Component {
       faisala_miti,
       faisala_jariwana,
       faisala_kaid,
+      faisala_status,
       bojbahak_jafat,
     } = this.state;
     const payload = {
@@ -90,9 +98,7 @@ class Add extends Component {
           abhiyog_nikaya: abhiyog_nikaya,
           abhiyog_jariwana: abhiyog_jariwana,
           kaid: kaid,
-          bojbahak_jafat_maagdabi: equals(bojbahak_jafat_maagdabi, 1)
-            ? "लिएको"
-            : "नलिएको",
+          bojbahak_jafat_maagdabi: bojbahak_jafat_maagdabi,
           pratibadi_sankhya: pratibadi_sankhya,
           thunchek_dharauti: thunchek_dharauti,
           sadharan_tarekh: sadharan_tarekh,
@@ -100,7 +106,8 @@ class Add extends Component {
           faisala_miti: faisala_miti,
           faisala_jariwana: faisala_jariwana,
           faisala_kaid: faisala_kaid,
-          bojbahak_jafat: equals(bojbahak_jafat, 1) ? "भएको" : "नभएको",
+          faisala_status: faisala_status,
+          bojbahak_jafat: bojbahak_jafat,
           dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },
@@ -108,10 +115,14 @@ class Add extends Component {
     };
     this.props.onSubmit(payload);
   }
+  handleKasurKisim(e) {
+    this.setState({ kasurko_kisim: e[0] });
+  }
+
   handleJafatMaagdabi(e) {
     this.setState({ bojbahak_jafat_maagdabi: e[0] });
   }
-  handleBojbahakJafat(e) {
+  handleStatus(e) {
     this.setState({ bojbahak_jafat: e[0] });
   }
   handleDate(e, type) {
@@ -153,6 +164,7 @@ class Add extends Component {
       faisala_miti,
       faisala_jariwana,
       faisala_kaid,
+      faisala_status,
       bojbahak_jafat,
       showDialog,
     } = this.state;
@@ -183,14 +195,19 @@ class Add extends Component {
                   options={{ calenderLocale: "ne", valueLocale: "en" }}
                 />
               </div>
-              <Input
-                className="w-30"
-                title="कसुरको किसिम :"
-                value={kasurko_kisim}
-                direction="vertical"
-                onChange={(e) => this.setState({ kasurko_kisim: e })}
-              />
-
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="कसुरको किसिम :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[kasurko_kisim]}
+                  data={KasurKisim}
+                  getValue={(KasurKisim) => KasurKisim["value"]}
+                  onChange={(e) => this.handleKasurKisim(e)}
+                  value={kasurko_kisim}
+                />
+              </div>
               <Input
                 className="w-30"
                 title="विगो भए विगो परिमाण (रु) :"
@@ -214,7 +231,6 @@ class Add extends Component {
                 value={jaggako_area}
                 onChange={(e) => this.setState({ jaggako_area: e })}
               />
-
               <div className="w-30">
                 <span className="dsl-b18">अभियोग पत्र दायर भएको मिति :</span>
                 <NepaliDatePicker
@@ -328,10 +344,25 @@ class Add extends Component {
                   direction="vertical"
                   width="fit-content"
                   defaultIds={[bojbahak_jafat]}
-                  data={BojbahakJafat}
-                  getValue={(BojbahakJafat) => BojbahakJafat["value"]}
-                  onChange={(e) => this.handleBojbahakJafat(e)}
+                  data={Status}
+                  getValue={(Status) => Status["value"]}
+                  onChange={(e) => this.handleStatus(e)}
                   value={bojbahak_jafat}
+                />
+              </div>
+            </div>
+            <div className="panel space mb-4">
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="फैसला अवस्था  :"
+                  direction="vertical"
+                  width="fit-content"
+                  defaultIds={[faisala_status]}
+                  data={Status}
+                  getValue={(Status) => Status["value"]}
+                  onChange={(e) => this.handleStatus(e)}
+                  value={faisala_status}
                 />
               </div>
             </div>

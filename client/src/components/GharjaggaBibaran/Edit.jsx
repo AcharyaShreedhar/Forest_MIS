@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
-import { equals } from "ramda";
+import { equals, isEmpty } from "ramda";
 
 const assetsType = [
   { id: 1, value: "घर" },
@@ -84,6 +84,16 @@ class Edit extends Component {
       remarks,
       showDialog,
     } = this.state;
+    let disabled =
+      isEmpty(asset_type) ||
+      isEmpty(asset_loc) ||
+      isEmpty(kitta_no) ||
+      isEmpty(home_area) ||
+      isEmpty(land_area) ||
+      isEmpty(unit) ||
+      isEmpty(remarks)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -168,6 +178,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
