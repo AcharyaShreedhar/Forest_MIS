@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {isEmpty} from "ramda"
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 
@@ -8,7 +9,6 @@ class Edit extends Component {
     this.state = {
       id: props.history.location.item.paidawar_id,
       arthik_barsa: props.history.location.item.arthik_barsa,
-      mahina: props.history.location.item.mahina,
       kaath: props.history.location.item.kaath,
       daura: props.history.location.item.daura,
       lavgrahi_sankhya: props.history.location.item.lavgrahi_sankhya,
@@ -35,7 +35,6 @@ class Edit extends Component {
     const {
       id,
       arthik_barsa,
-      mahina,
       kaath,
       daura,
       lavgrahi_sankhya,
@@ -46,7 +45,6 @@ class Edit extends Component {
       banpaidawar: {
         data: {
           arthik_barsa: arthik_barsa,
-          mahina: mahina,
           kaath: kaath,
           daura: daura,
           lavgrahi_sankhya: lavgrahi_sankhya,
@@ -65,13 +63,21 @@ class Edit extends Component {
     const { title } = this.props;
     const {
       arthik_barsa,
-      mahina,
       kaath,
       daura,
       lavgrahi_sankhya,
       mulyaabhibridi_kar,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(arthik_barsa) ||
+      isEmpty(kaath) ||
+      isEmpty(daura) ||
+      isEmpty(lavgrahi_sankhya) ||
+      isEmpty(mulyaabhibridi_kar)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -136,6 +142,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

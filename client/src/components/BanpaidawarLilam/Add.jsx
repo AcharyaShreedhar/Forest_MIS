@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -79,6 +79,17 @@ class Add extends Component {
       showDialog,
     } = this.state;
 
+    let disabled =
+      isEmpty(lilam_date) ||
+      isEmpty(banpaidawar_type) ||
+      isEmpty(unit) ||
+      isEmpty(quantity) ||
+      isEmpty(minimum_price) ||
+      isEmpty(sakaar_price) ||
+      isEmpty(remarks)
+        ? true
+        : false;
+
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
@@ -129,7 +140,6 @@ class Add extends Component {
                 direction="vertical"
                 onChange={(e) => this.setState({ quantity: e })}
               />
-
               <Input
                 className="w-30"
                 title="न्युनतम मूल्य (रु) :"
@@ -137,7 +147,6 @@ class Add extends Component {
                 value={minimum_price}
                 onChange={(e) => this.setState({ minimum_price: e })}
               />
-
               <Input
                 className="w-30"
                 title="सकार रकम (रु) :"
@@ -161,6 +170,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="शेभ गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

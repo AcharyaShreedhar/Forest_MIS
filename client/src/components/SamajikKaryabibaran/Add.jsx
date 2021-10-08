@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList } from "../../services/config";
 
@@ -10,7 +11,7 @@ class Add extends Component {
       samajik_ekai: "",
       samajik_parinam: "",
       samajik_bajetkharcha: "",
-      ban_type:1,
+      ban_type: 1,
       dist_id: "",
       created_by: "",
       updated_by: "",
@@ -65,6 +66,15 @@ class Add extends Component {
       ban_type,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(samajik_karyabibaran) ||
+      isEmpty(samajik_ekai) ||
+      isEmpty(samajik_parinam) ||
+      isEmpty(samajik_bajetkharcha) ||
+      isEmpty(ban_type)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -134,6 +144,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="शेभ गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

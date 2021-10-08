@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
-import { equals } from "ramda";
+import { equals, isEmpty } from "ramda";
 
 const AnnualBibaran = [
   { id: 1, value: "बुझाएको" },
@@ -19,8 +19,8 @@ class Add extends Component {
       samudayikban_name: "",
       fiscal_year: "",
       area: "",
-      production_from_conservation_timber: "",
-      production_from_conservation_wood: "",
+      conservation_timber: "",
+      conservation_wood: "",
       employment: "",
       withingroup_timber: "",
       withingroup_wood: "",
@@ -60,8 +60,8 @@ class Add extends Component {
       samudayikban_name,
       fiscal_year,
       area,
-      production_from_conservation_timber,
-      production_from_conservation_wood,
+      conservation_timber,
+      conservation_wood,
       employment,
       withingroup_timber,
       withingroup_wood,
@@ -83,8 +83,8 @@ class Add extends Component {
           samudayikban_naam: samudayikban_name,
           fiscal_year: fiscal_year,
           area: area,
-          production_from_conservation_timber: production_from_conservation_timber,
-          production_from_conservation_wood: production_from_conservation_wood,
+          conservation_timber: conservation_timber,
+          conservation_wood: conservation_wood,
           employment_generated_workingday: employment,
           withingroup_timber: withingroup_timber,
           withingroup_wood: withingroup_wood,
@@ -119,8 +119,8 @@ class Add extends Component {
       samudayikban_name,
       fiscal_year,
       area,
-      production_from_conservation_timber,
-      production_from_conservation_wood,
+      conservation_timber,
+      conservation_wood,
       employment,
       withingroup_timber,
       withingroup_wood,
@@ -137,6 +137,29 @@ class Add extends Component {
       lekha_parikshyan,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(samudayikban_name) ||
+      isEmpty(fiscal_year) ||
+      isEmpty(area) ||
+      isEmpty(conservation_timber) ||
+      isEmpty(conservation_wood) ||
+      isEmpty(employment) ||
+      isEmpty(withingroup_timber) ||
+      isEmpty(withingroup_wood) ||
+      isEmpty(outsidegroup_timber) ||
+      isEmpty(outsidegroup_wood) ||
+      isEmpty(maujdat_timber) ||
+      isEmpty(maujdat_wood) ||
+      isEmpty(annual_income) ||
+      isEmpty(annual_expenditure) ||
+      isEmpty(netannual_saving) ||
+      isEmpty(rojgar) ||
+      isEmpty(udhyam) ||
+      isEmpty(annual_bibaran) ||
+      isEmpty(lekha_parikshyan)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -185,19 +208,15 @@ class Add extends Component {
                 className="w-30"
                 title="काठ उत्पादन(क्यू. फि.)"
                 direction="vertical"
-                value={production_from_conservation_timber}
-                onChange={(e) =>
-                  this.setState({ production_from_conservation_timber: e })
-                }
+                value={conservation_timber}
+                onChange={(e) => this.setState({ conservation_timber: e })}
               />
               <Input
                 className="w-30"
                 title="दाउरा उत्पादन(क्यू. फि.)"
-                value={production_from_conservation_wood}
+                value={conservation_wood}
                 direction="vertical"
-                onChange={(e) =>
-                  this.setState({ production_from_conservation_wood: e })
-                }
+                onChange={(e) => this.setState({ conservation_wood: e })}
               />
             </div>
             <div className="panel space mb-4">
@@ -331,6 +350,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="शेभ गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
@@ -37,19 +38,19 @@ class Edit extends Component {
 
   handleSubmit() {
     const {
-        id,
-        pahiro_gayeko_sthan,
-        manab_ghaite,
-        manab_mareko,
-        uddar_sankhya,
-        pahiro_gayeko_miti,
-        xeti_bibaran,
-        banyajantu_mareko,
-        botbiruwa_xeti,
-        created_by,
+      id,
+      pahiro_gayeko_sthan,
+      manab_ghaite,
+      manab_mareko,
+      uddar_sankhya,
+      pahiro_gayeko_miti,
+      xeti_bibaran,
+      banyajantu_mareko,
+      botbiruwa_xeti,
+      created_by,
     } = this.state;
     const payload = {
-        pahiro: {
+      pahiro: {
         data: {
           pahiro_gayeko_sthan: pahiro_gayeko_sthan,
           manab_ghaite: manab_ghaite,
@@ -74,21 +75,33 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-        pahiro_gayeko_sthan,
-        manab_ghaite,
-        manab_mareko,
-        uddar_sankhya,
-        pahiro_gayeko_miti,
-        xeti_bibaran,
-        banyajantu_mareko,
-        botbiruwa_xeti,
-        showDialog,
+      pahiro_gayeko_sthan,
+      manab_ghaite,
+      manab_mareko,
+      uddar_sankhya,
+      pahiro_gayeko_miti,
+      xeti_bibaran,
+      banyajantu_mareko,
+      botbiruwa_xeti,
+      showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(pahiro_gayeko_sthan) ||
+      isEmpty(manab_ghaite) ||
+      isEmpty(manab_mareko) ||
+      isEmpty(uddar_sankhya) ||
+      isEmpty(pahiro_gayeko_miti) ||
+      isEmpty(xeti_bibaran) ||
+      isEmpty(banyajantu_mareko) ||
+      isEmpty(botbiruwa_xeti)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="शंसोधन"
             body="के तपाईँ पहिरो व्यवस्थापन सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
@@ -173,6 +186,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

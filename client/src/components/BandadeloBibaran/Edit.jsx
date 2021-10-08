@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -102,6 +103,21 @@ class Edit extends Component {
       man_dead,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(bandadelo_address) ||
+      isEmpty(ban_type) ||
+      isEmpty(ban_prajati) ||
+      isEmpty(xeti_area) ||
+      isEmpty(niyantran_prayas) ||
+      isEmpty(niyantran_karta) ||
+      isEmpty(sahabhagi_mahila) ||
+      isEmpty(sahabhagi_purus) ||
+      isEmpty(bandadelo_miti) ||
+      isEmpty(man_injured) ||
+      isEmpty(man_dead)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -218,6 +234,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { Button, Input, ConfirmationDialoge } from "../../components";
@@ -76,6 +77,16 @@ class Edit extends Component {
       showDialog,
     } = this.state;
 
+    let disabled =
+      isEmpty(plot_type) ||
+      isEmpty(prajati) ||
+      isEmpty(area) ||
+      isEmpty(location) ||
+      isEmpty(established_date) ||
+      isEmpty(status)
+        ? true
+        : false;
+
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
@@ -148,6 +159,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
