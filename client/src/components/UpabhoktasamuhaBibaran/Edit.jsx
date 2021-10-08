@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { equals } from "ramda";
+import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -153,6 +153,26 @@ export class Edit extends Component {
       sachib,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(darta_no) ||
+      isEmpty(samudayik_upavokta_samiti_name) ||
+      isEmpty(darta_miti) ||
+      isEmpty(dalit_ghardhuri) ||
+      isEmpty(janjati_ghardhuri) ||
+      isEmpty(anya_ghardhuri) ||
+      isEmpty(female) ||
+      isEmpty(male) ||
+      isEmpty(sampanna) ||
+      isEmpty(madhyam) ||
+      isEmpty(bipanna) ||
+      isEmpty(dalit_rep) ||
+      isEmpty(anya_rep) ||
+      isEmpty(adhyakshya_gender) ||
+      isEmpty(sachib_gender) ||
+      isEmpty(sachib)
+        ? true
+        : false;
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
@@ -370,6 +390,7 @@ export class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

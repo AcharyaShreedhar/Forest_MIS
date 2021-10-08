@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 
 const BiruwaTypes = [
@@ -104,6 +105,19 @@ class Edit extends Component {
       showDialog,
     } = this.state;
 
+    let disabled =
+      isEmpty(arthik_barsa) ||
+      isEmpty(biruwa_type) ||
+      isEmpty(utpadan_medium) ||
+      isEmpty(biruwa_sankhya) ||
+      isEmpty(narsari_sankhya) ||
+      isEmpty(barga) ||
+      isEmpty(laxya) ||
+      isEmpty(pragati) ||
+      isEmpty(remarks)
+        ? true
+        : false;
+
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
@@ -206,6 +220,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

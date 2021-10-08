@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
-import { equals } from "ramda";
+import { equals, isEmpty } from "ramda";
 
 const AnnualBibaran = [
   { id: 1, value: "बुझाएको" },
@@ -154,6 +154,29 @@ class Edit extends Component {
       lekha_parikshyan,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(samudayikban_name) ||
+      isEmpty(fiscal_year) ||
+      isEmpty(area) ||
+      isEmpty(conservation_timber) ||
+      isEmpty(conservation_wood) ||
+      isEmpty(employment) ||
+      isEmpty(withingroup_timber) ||
+      isEmpty(withingroup_wood) ||
+      isEmpty(outsidegroup_timber) ||
+      isEmpty(outsidegroup_wood) ||
+      isEmpty(maujdat_timber) ||
+      isEmpty(maujdat_wood) ||
+      isEmpty(annual_income) ||
+      isEmpty(annual_expenditure) ||
+      isEmpty(netannual_saving) ||
+      isEmpty(rojgar) ||
+      isEmpty(udhyam) ||
+      isEmpty(annual_bibaran) ||
+      isEmpty(lekha_parikshyan)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -343,6 +366,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

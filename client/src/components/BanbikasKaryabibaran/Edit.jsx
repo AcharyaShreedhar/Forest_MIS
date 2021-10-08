@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList } from "../../services/config";
 
@@ -69,6 +70,15 @@ class Edit extends Component {
       ban_type,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(banbikas_karyabibaran) ||
+      isEmpty(banbikas_ikai) ||
+      isEmpty(banbikas_parinam) ||
+      isEmpty(banbikas_bajetkharcha) ||
+      isEmpty(ban_type)
+        ? true
+        : false;
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
@@ -101,7 +111,6 @@ class Edit extends Component {
                 value={banbikas_ikai}
                 onChange={(e) => this.setState({ banbikas_ikai: e })}
               />
-
               <Input
                 className="w-30"
                 title="परिणाम :"
@@ -139,6 +148,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

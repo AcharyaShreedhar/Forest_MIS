@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import {isEmpty} from "ramda"
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -93,6 +94,21 @@ class Add extends Component {
       male,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(darta_no) ||
+      isEmpty(darta_miti) ||
+      isEmpty(rastriyaban_naam) ||
+      isEmpty(address) ||
+      isEmpty(area) ||
+      isEmpty(anya_ghardhuri) ||
+      isEmpty(dalit_ghardhuri) ||
+      isEmpty(janjati_ghardhuri) ||
+      isEmpty(female) ||
+      isEmpty(male) ||
+      isEmpty(main_species)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -211,6 +227,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="शेभ गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

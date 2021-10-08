@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./DharmikbanBibaran.scss";
-import { equals } from "ramda";
+
 
 const ForestTypes = [
   { id: 1, value: "प्राकृतिक्" },
@@ -149,6 +150,26 @@ class Add extends Component {
       renewal_date,
       showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(name) ||
+      isEmpty(regno) ||
+      isEmpty(community_name) ||
+      isEmpty(area) ||
+      isEmpty(dalit_ghardhuri) ||
+      isEmpty(janjati_ghardhuri) ||
+      isEmpty(anya_ghardhuri)||
+      isEmpty(female) ||
+      isEmpty(male) ||
+      isEmpty(main_species) ||
+      isEmpty(forest_type) ||
+      isEmpty(handover_date) ||
+      isEmpty(forest_maujdat) ||
+      isEmpty(renewed_date) ||
+      isEmpty(nabikaran_abadhi) ||
+      isEmpty(renewal_date)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -318,6 +339,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="शेभ गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { isEmpty } from "ramda";
 import PropTypes from "prop-types";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
@@ -22,7 +23,6 @@ class Add extends Component {
       created_by: "",
       updated_by: "",
       showDialog: false,
-
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -40,17 +40,17 @@ class Add extends Component {
 
   handleSubmit() {
     const {
-        darta_no,
-        darta_miti,
-        chaklaban_naam,
-        address,
-        area,
-        main_species,
-        dalit_ghardhuri,
-        janjati_ghardhuri,
-        anya_ghardhuri,
-        female,
-        male,
+      darta_no,
+      darta_miti,
+      chaklaban_naam,
+      address,
+      area,
+      main_species,
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
+      female,
+      male,
     } = this.state;
     const payload = {
       chaklaban: {
@@ -73,7 +73,7 @@ class Add extends Component {
     };
     this.props.onSubmit(payload);
   }
- 
+
   handleDate(e, type) {
     this.setState({ darta_miti: e });
   }
@@ -81,25 +81,39 @@ class Add extends Component {
   render() {
     const { title } = this.props;
     const {
-        darta_no,
-        darta_miti,
-        chaklaban_naam,
-        address,
-        area,
-        main_species,
-        dalit_ghardhuri,
-        janjati_ghardhuri,
-        anya_ghardhuri,
-        female,
-        male,
-        showDialog,
-
+      darta_no,
+      darta_miti,
+      chaklaban_naam,
+      address,
+      area,
+      main_species,
+      dalit_ghardhuri,
+      janjati_ghardhuri,
+      anya_ghardhuri,
+      female,
+      male,
+      showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(darta_no) ||
+      isEmpty(darta_miti) ||
+      isEmpty(chaklaban_naam) ||
+      isEmpty(address) ||
+      isEmpty(area) ||
+      isEmpty(anya_ghardhuri) ||
+      isEmpty(dalit_ghardhuri) ||
+      isEmpty(janjati_ghardhuri) ||
+      isEmpty(female) ||
+      isEmpty(male) ||
+      isEmpty(main_species)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ चक्ला वन थप गर्न चाहनुहुन्छ ?"
@@ -213,6 +227,7 @@ class Add extends Component {
               <Button
                 className="mr-3"
                 name="शेभ गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>

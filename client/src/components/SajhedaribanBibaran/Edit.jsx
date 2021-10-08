@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -23,7 +24,6 @@ class Edit extends Component {
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
-
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +31,6 @@ class Edit extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
   }
-
 
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -97,8 +96,23 @@ class Edit extends Component {
       anya_ghardhuri,
       female,
       male,
-      showDialog
+      showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(darta_no) ||
+      isEmpty(darta_miti) ||
+      isEmpty(sajhedariban_naam) ||
+      isEmpty(address) ||
+      isEmpty(area) ||
+      isEmpty(anya_ghardhuri) ||
+      isEmpty(dalit_ghardhuri) ||
+      isEmpty(janjati_ghardhuri) ||
+      isEmpty(female) ||
+      isEmpty(male) ||
+      isEmpty(main_species)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
@@ -217,6 +231,7 @@ class Edit extends Component {
               <Button
                 className="mr-3"
                 name="शंशोधन गर्नुहोस ।"
+                disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
             </div>
