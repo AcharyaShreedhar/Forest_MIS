@@ -1,5 +1,4 @@
 {
-  "httpPort": 5488,
   "store": {
     "provider": "fs"
   },
