@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     user_name: DataTypes.STRING,
     user_pass: DataTypes.STRING,
     user_token:DataTypes.STRING,
+    user_office:DataTypes.STRING,
     created_by: DataTypes.STRING,
     updated_by: DataTypes.STRING
   }, {

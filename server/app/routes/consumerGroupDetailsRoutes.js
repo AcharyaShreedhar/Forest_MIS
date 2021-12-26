@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const consumerGroupDetailsController = require("../controller/ConsumerGroupDetailsController");
+const consumerGroupDetailsController = require("../controller/consumerGroupDetailsController");
 router.post(
   "/ConsumerGroupDetailsList",
   consumerGroupDetailsController.getAllConsumerGroupDetails

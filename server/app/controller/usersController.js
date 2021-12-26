@@ -4,28 +4,33 @@ const util = require("../db/utility");
 
 //Controller for Listing all Users
 async function getAllUsers(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from users";
-  const getAllUsersQuery = `select * from users ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [], (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllUsersQuery,
-      [req.body.name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from users where dist_id like ?";
+  const getAllUsersQuery = `select * from users where dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.distId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllUsersQuery,
+        [req.body.distId, req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a User
@@ -41,7 +46,7 @@ async function getUsers(req, res) {
 async function addUsers(req, res) {
   const saltRounds = 10;
   const token = util.generateAccessToken({ username: req.body.user_name });
-  const addUsersQuery = `INSERT INTO users (dist_id,user_type,user_name,user_pass,user_token,created_by,updated_by) values (?,?,?,?,?,?,?)`;
+  const addUsersQuery = `INSERT INTO users (dist_id,user_type,user_name,user_pass,user_token,user_office,created_by,updated_by) values (?,?,?,?,?,?,?,?)`;
   bcrypt.hash(req.body.user_pass, saltRounds, function (error, hash) {
     let values = [
       req.body.dist_id,
@@ -49,6 +54,7 @@ async function addUsers(req, res) {
       req.body.user_name,
       hash,
       token,
+      req.body.user_office,
       req.body.created_by,
       req.body.updated_by,
     ]; // query values
@@ -66,7 +72,7 @@ async function addUsers(req, res) {
 async function updateUsers(req, res) {
   const saltRounds = 10;
   const token = util.generateAccessToken({ username: req.body.user_name });
-  const updateUsersQuery = `UPDATE users SET dist_id=?, user_type=?, user_name=?, user_pass=?,user_token=?,created_by=?,updated_by=? WHERE user_id=?`;
+  const updateUsersQuery = `UPDATE users SET dist_id=?, user_type=?, user_name=?, user_pass=?,user_token=?,user_office=?,created_by=?,updated_by=? WHERE user_id=?`;
   bcrypt.hash(req.body.user_pass, saltRounds, function (error, hash) {
     let values = [
       req.body.dist_id,
@@ -74,6 +80,7 @@ async function updateUsers(req, res) {
       req.body.user_name,
       hash,
       token,
+      req.body.user_office,
       req.body.created_by,
       req.body.updated_by,
       req.params.userId,
@@ -104,7 +111,7 @@ async function deleteUsers(req, res) {
 }
 
 async function verifyUsers(req, res) {
-  const getUsersPasswordQuery = `select user_id,user_name, user_pass,user_token,dist_id from users where user_name=?`;
+  const getUsersPasswordQuery = `select user_id,user_name, user_pass,user_token,dist_id,user_type,user_office from users where user_name=?`;
   pool.query(
     getUsersPasswordQuery,
     [req.body.user_name],
@@ -115,7 +122,9 @@ async function verifyUsers(req, res) {
         const user = {
           user_id: results[0].user_id,
           user_name: results[0].user_name,
+          user_type:results[0].user_type,
           user_token: results[0].user_token,
+          user_office:results[0].user_office,
           dist_id: results[0].dist_id,
         };
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const chaklabanBibaranController = require("../controller/chaklabanBibaranController");
+const chaklabanBibaranController = require("../controller/chaklabanbibaranController");
 router.post(
   "/chaklabanBibaranList",
   chaklabanBibaranController.getAllChaklabanBibaran
@@ -23,3 +23,4 @@ router.delete(
   chaklabanBibaranController.deleteChaklabanBibaran
 );
 module.exports = router;
+
