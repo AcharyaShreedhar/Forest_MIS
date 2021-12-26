@@ -23,6 +23,9 @@ module.exports = {
       user_token:{
         type:Sequelize.STRING
       },
+      user_office:{
+        type:Sequelize.STRING
+      },
       created_by: {
         type: Sequelize.STRING,
       },

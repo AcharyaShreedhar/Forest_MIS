@@ -40,13 +40,13 @@ const officeStaffPostRoutes = require("./app/routes/officeStaffPostRoutes");
 
 //...........................................................Bankaprakar
 
-const chaklabanBibaranRoutes = require("./app/routes/chaklabanBibaranRoutes");
+const chaklabanBibaranRoutes = require("./app/routes//chaklabanbibaranRoutes");
 const commercialkabuliyatibanBibaranRoutes = require("./app/routes/commercialkabuliyatibanBibaranRoutes");
 const consumerGroupDetailsRoutes = require("./app/routes/consumerGroupDetailsRoutes");
 const dharmikbanBibaranRoutes = require("./app/routes/dharmikbanBibaranRoutes");
 const kabuliyatibanBibaranRoutes = require("./app/routes/kabuliyatibanBibaranRoutes");
 const nabikaranKaryayojanaRoutes = require("./app/routes/nabikaranKaryayojanaRoutes");
-const nijibanBibaranRoutes = require("./app/routes/nijibanBibaranRoutes");
+const nijibanBibaranRoutes  = require("./app/routes/nijibanBibaranRoutes");
 const rastriyabanBibaranRoutes = require("./app/routes/rastriyabanBibaranRoutes");
 const sajhedaribanBibaranRoutes = require("./app/routes/sajhedaribanBibaranRoutes");
 const samudayikbanBibaranRoutes = require("./app/routes/samudayikbanBibaranRoutes");
@@ -54,7 +54,7 @@ const samudayikbanBibaranRoutes = require("./app/routes/samudayikbanBibaranRoute
 //...........................................................Banbibaran
 
 const bandadeloBibaranRoutes = require("./app/routes/bandadeloBibaranRoutes");
-const banxetraAnyaPrayojanRoutes = require("./app/routes/banxetraAnyaPrayojanRoutes");
+const banxetraAnyaprayojanRoutes = require("./app/routes/banxetraAnyaprayojanRoutes");
 const banxetraAtikramanNiyantranRoutes = require("./app/routes/banxetraAtikramanRoutes");
 const baramaditChijbastuRoutes = require("./app/routes/baramaditChijbastuRoutes");
 const muddaAnusandhanDayariRoutes = require("./app/routes/muddaAnusandhanDayariRoutes");
@@ -101,7 +101,7 @@ const rojgarsrijanaRoutes = require("./app/routes/rojgarsrijanaRoutes");
 const uddhamRoutes = require("./app/routes/uddhamRoutes");
 
 const pahiroBibaranRoutes = require("./app/routes/pahirobibaranRoutes");
-const badhiBibaranRoutes = require("./app/routes/badhibibaranRoutes");
+const badhiBibaranRoutes = require("./app/routes/badhiBibaranRoutes");
 
 const nadikinarSamrakshyanRoutes = require("./app/routes/nadikinarSamrakshyanRoutes");
 const panimuhanSamrakshyanRoutes = require("./app/routes/panimuhanSamrakshyanRoutes");
@@ -134,7 +134,7 @@ app.use("/api/v1", districtRoutes);
 app.use("/api/v1", municipalitiesRoutes);
 app.use("/api/v1", postRoutes);
 app.use("/api/v1", levelRoutes);
-app.use("/api/v1", nijibanBibaranRoutes);
+app.use("/api/v1",  nijibanBibaranRoutes);
 app.use("/api/v1", dharmikbanBibaranRoutes);
 app.use("/api/v1", samudayikbanBibaranRoutes);
 app.use("/api/v1", banpaidawarLilamRoutes);
@@ -147,7 +147,7 @@ app.use("/api/v1", banpaidawarRoutes);
 app.use("/api/v1", activitiesInfoRoutes);
 app.use("/api/v1", vehiclesRoutes);
 app.use("/api/v1", banyajantuXetiBibaranRoutes);
-app.use("/api/v1", banxetraAnyaPrayojanRoutes);
+app.use("/api/v1", banxetraAnyaprayojanRoutes);
 app.use("/api/v1", banyajantuUddarRoutes);
 app.use("/api/v1", assetsRoutes);
 app.use("/api/v1", baramaditChijbastuRoutes);

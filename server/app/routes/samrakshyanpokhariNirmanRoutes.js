@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const samrakshyanpokhariNirmanController = require("../controller/SamrakshyanpokhariNirmanController");
+const samrakshyanpokhariNirmanController = require("../controller/samrakshyanpokhariNirmanController");
 router.post(
   "/samrakshyanpokhariNirmanList",
   samrakshyanpokhariNirmanController.getAllSamrakshyanpokhariNirman
