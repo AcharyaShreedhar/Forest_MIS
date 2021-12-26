@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
+import { nepaliToEnglishNumber } from "nepali-number";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -59,13 +60,13 @@ class Add extends Component {
           darta_miti: darta_miti,
           commercialkabuliyatiban_naam: commercialkabuliyatiban_naam,
           address: address,
-          area: area,
           main_species: main_species,
-          dalit_ghardhuri: dalit_ghardhuri,
-          janjati_ghardhuri: janjati_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          female: female,
-          male: male,
+          area: nepaliToEnglishNumber(area),
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          female: nepaliToEnglishNumber(female),
+          male: nepaliToEnglishNumber(male),
           dist_id: this.props.user.dist_id,
           created_by: this.props.user.user_name,
         },

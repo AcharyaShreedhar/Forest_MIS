@@ -412,13 +412,6 @@ class Bankaprakar extends Component {
   handleAdd(item) {
     switch (item) {
       case "samudayikban": {
-        // const { samudayikbanList } = this.state;
-        // jsreport.serverUrl = "http://localhost:5488";
-        // let reportRequest = {
-        //   template: { name: "Employee" },
-        //   data: { employees: samudayikbanList.list },
-        // };
-        // jsreport.render(this.reportPreview, reportRequest);
         this.props.history.push("/forests/samudayikbanadd/new");
         break;
       }
@@ -475,7 +468,7 @@ class Bankaprakar extends Component {
       showDialog,
       messagebody,
     } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
     return (
       <div>
         <ConfirmationDialoge
@@ -521,6 +514,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={samudayikbanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("samudayikban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "samudayikban")}
@@ -575,6 +569,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={upabhoktasamuhaHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("upabhoktasamuha")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "upabhoktasamuha")}
@@ -629,6 +624,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={dharmikbanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("dharmikban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "dharmikban")}
@@ -683,6 +679,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={kabuliyatibanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("kabuliyatiban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "kabuliyatiban")}
@@ -737,6 +734,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={nijibanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("nijiban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "nijiban")}
@@ -791,6 +789,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={sajhedaribanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("sajhedariban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "sajhedariban")}
@@ -845,6 +844,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={chaklabanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("chaklaban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "chaklaban")}
@@ -899,6 +899,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={rastriyabanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("rastriyaban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "rastriyaban")}
@@ -953,6 +954,7 @@ class Bankaprakar extends Component {
               onPer={this.handlePer}
               headings={commercialbanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("commercialban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "commercialban")}
@@ -1008,6 +1010,7 @@ Bankaprakar.defaultProps = {
 const mapStateToProps = (state) => ({
   districts: state.app.alldistrictsData,
   user: state.app.user,
+  role:state.app.user.user_type,
   samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,

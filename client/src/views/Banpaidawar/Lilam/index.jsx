@@ -124,7 +124,7 @@ class Lilam extends Component {
 
   render() {
     const { banpaidawarlilamList, loc, perPage, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -168,6 +168,7 @@ class Lilam extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={banpaidawarlilamHeadings}
               onAdd={() => this.handleAdd("banpaidawarlilam")}
               onSelect={this.handleSelectMenu}
@@ -207,6 +208,7 @@ Lilam.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   banpaidawarlilamDataList: state.banpaidawar.allbanpaidawarlilamData,
 });
 

@@ -132,7 +132,7 @@ export class BanyajantuxetiRahat extends Component {
 
   render() {
     const { loc, perPage, banyajantuxetirahatList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -178,6 +178,7 @@ export class BanyajantuxetiRahat extends Component {
               onPer={this.handlePer}
               headings={banyajantuxetirahatHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("banyajantuxetirahat")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) =>
@@ -218,6 +219,7 @@ BanyajantuxetiRahat.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   banyajantuxetirahatDataList: state.dwandabebasthapan.allbanyajantuxetiData,
 });
 

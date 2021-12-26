@@ -12,6 +12,7 @@ import Miscellaneous from "../views/Miscellaneous";
 import Report from "../views/Report";
 import Sampatibibaran from "../views/Sampatibibaran";
 import Samrakshyan from "../views/Samrakshyan";
+import User from "../views/User";
 
 const dashboardRoutes = [
   {
@@ -83,6 +84,28 @@ const dashboardRoutes = [
     path: "/samrakshyan",
     name: "Samrakshyan",
     component: Samrakshyan,
+  },
+  {
+    path: "/userlist",
+    title: "Users",
+    name: "User",
+    auth: true,
+    component: User,
+  },
+
+  {
+    path: "/useradd/new",
+    title: "User",
+    name: "user",
+    auth: true,
+    component: User,
+  },
+  {
+    path: "/useredit/:id",
+    title: "User",
+    name: "user",
+    auth: true,
+    component: User,
   },
   {
     redirect: true,

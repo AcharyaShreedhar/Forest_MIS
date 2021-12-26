@@ -130,7 +130,7 @@ class Seedgardenplots extends Component {
   }
   render() {
     const { loc, perPage, seedgardenplotsList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -171,6 +171,7 @@ class Seedgardenplots extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={seedgardenplotsHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -210,6 +211,7 @@ Seedgardenplots.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   seedgardenplotsDataList: state.banbibaran.allplotbibaranData,
 });
 

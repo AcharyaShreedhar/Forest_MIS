@@ -107,7 +107,7 @@ class Rojgarsrijana extends Component {
 
   render() {
     const { loc, perPage, rojgarsrijanaList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
    
     return (
       <div>
@@ -149,6 +149,7 @@ class Rojgarsrijana extends Component {
               onPer={this.handlePer}
               headings={rojgarsrijanaHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("rojgarsrijana")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -187,6 +188,7 @@ Rojgarsrijana.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   rojgarsrijanaDataList: state.miscellaneous.allrojgarsrijanaData,
 });
 

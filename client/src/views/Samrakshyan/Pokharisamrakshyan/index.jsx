@@ -9,7 +9,10 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import SamrakshyanActions from "../../../actions/samrakshyan";
-import { pokharisamrakshyanHeadings, districtList } from "../../../services/config";
+import {
+  pokharisamrakshyanHeadings,
+  districtList,
+} from "../../../services/config";
 
 class Pokharisamrakshyan extends Component {
   constructor(props) {
@@ -130,7 +133,7 @@ class Pokharisamrakshyan extends Component {
 
   render() {
     const { loc, perPage, pokharisamrakshyanList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user, role } = this.props;
 
     return (
       <div>
@@ -165,13 +168,16 @@ class Pokharisamrakshyan extends Component {
                   : 10
               }
               data={
-                !isNil(pokharisamrakshyanList) ? pokharisamrakshyanList.list : []
+                !isNil(pokharisamrakshyanList)
+                  ? pokharisamrakshyanList.list
+                  : []
               }
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               headings={pokharisamrakshyanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("pokharisamrakshyan")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -210,12 +216,15 @@ Pokharisamrakshyan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role: state.app.user.user_type,
   pokharisamrakshyanDataList: state.samrakshyan.allsamrakshyanpokharinirmanData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallPokharisamrakshyan: (payload) =>
-    dispatch(SamrakshyanActions.fetchallsamrakshyanpokharinirmanRequest(payload)),
+    dispatch(
+      SamrakshyanActions.fetchallsamrakshyanpokharinirmanRequest(payload)
+    ),
 
   addPokharisamrakshyan: (payload) =>
     dispatch(SamrakshyanActions.addsamrakshyanpokharinirmanRequest(payload)),
@@ -230,7 +239,9 @@ const mapDispatchToProps = (dispatch) => ({
 
   deletePokharisamrakshyan: (pokharisamrakshyanId) =>
     dispatch(
-      SamrakshyanActions.deletesamrakshyanpokharinirmanRequest(pokharisamrakshyanId)
+      SamrakshyanActions.deletesamrakshyanpokharinirmanRequest(
+        pokharisamrakshyanId
+      )
     ),
 });
 

@@ -124,7 +124,7 @@ class Badibebasthapan extends Component {
 
   render() {
     const { loc, perPage, badibebasthapanList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -168,6 +168,7 @@ class Badibebasthapan extends Component {
               onPer={this.handlePer}
               headings={badibebasthapanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("badibebasthapan")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -206,6 +207,7 @@ Badibebasthapan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   badibebasthapanDataList: state.bipatbibaran.allbadhibibaranData,
 });
 

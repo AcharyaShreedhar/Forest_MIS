@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {equals} from "ramda"
 import { HeaderComponent, ConfirmationDialoge } from "../../components";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "./Sidenav.scss";
@@ -22,7 +23,7 @@ import {
 } from "react-icons/fa";
 import { GiBurningForest, GiForest, GiWoodPile } from "react-icons/gi";
 import { MdGavel, MdWork } from "react-icons/md";
-import { BiLogOut, BiTask } from "react-icons/bi";
+import { BiLogOut, BiTask,BiUserPlus } from "react-icons/bi";
 import "react-pro-sidebar/dist/css/styles.css";
 
 export class SideNavbar extends Component {
@@ -236,8 +237,7 @@ export class SideNavbar extends Component {
       samraxan,
       misc,
     } = this.state;
-    const { history, menuStatus } = this.props;
-
+    const { history, menuStatus,role } = this.props;
     return (
       <ProSidebar collapsed={!menuStatus}>
         <ConfirmationDialoge
@@ -563,7 +563,15 @@ export class SideNavbar extends Component {
             >
               रिपोर्ट
             </MenuItem>
-
+            {equals(role,3) &&
+            <MenuItem
+              icon={<BiUserPlus />}
+              className="maintitle"
+              onClick={() => history.push("/userlist")}
+            >
+            नयाँ प्रयोगकर्ता 
+            </MenuItem>
+  }
             <MenuItem
               icon={<BiLogOut />}
               className="maintitle"

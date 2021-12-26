@@ -130,7 +130,7 @@ class Bandadelo extends Component {
 
   render() {
     const { loc, perPage, bandadelobibaranList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -172,6 +172,7 @@ class Bandadelo extends Component {
               onPer={this.handlePer}
               headings={bandadeloHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("bandadelo")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -210,6 +211,7 @@ Bandadelo.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   bandadelobibaranDataList: state.bipatbibaran.allbandadelobibaranData,
 });
 

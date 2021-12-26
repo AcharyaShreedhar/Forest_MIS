@@ -130,7 +130,7 @@ class Osarpasar extends Component {
 
   render() {
     const { banpaidawarosarpasarList, loc, perPage, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
     return (
       <div>
         <ConfirmationDialoge
@@ -174,6 +174,7 @@ class Osarpasar extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={banpaidawarosarpasarHeadings}
               onAdd={() => this.handleAdd("banpaidawarosarpasar")}
               onSelect={this.handleSelectMenu}
@@ -213,6 +214,7 @@ Osarpasar.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   banpaidawarDataList: state.banpaidawar.allbanpaidawarData,
 });
 

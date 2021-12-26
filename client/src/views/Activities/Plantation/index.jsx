@@ -119,7 +119,7 @@ class Plantation extends Component {
 
   render() {
     const { brixyaropanList, loc, perPage, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -160,6 +160,7 @@ class Plantation extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={brixyaropanHeadings}
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}
@@ -199,6 +200,7 @@ Plantation.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   brixyaropanDataList: state.biruwautpadan.allbrixyaropanData,
 });
 

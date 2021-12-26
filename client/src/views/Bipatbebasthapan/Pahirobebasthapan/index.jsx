@@ -124,7 +124,7 @@ class Pahirobebasthapan extends Component {
 
   render() {
     const { loc, perPage, pahirobebasthapanList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -168,6 +168,7 @@ class Pahirobebasthapan extends Component {
               onPer={this.handlePer}
               headings={pahirobebasthapanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("pahirobebasthapan")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -206,6 +207,7 @@ Pahirobebasthapan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   pahirobebasthapanDataList: state.bipatbibaran.allpahirobibaranData,
 });
 

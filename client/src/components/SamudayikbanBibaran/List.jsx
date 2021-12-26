@@ -19,6 +19,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
   return (
     <Fragment>
@@ -46,22 +47,22 @@ function List(props) {
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {sban.darta_no}</td>
                   <td> {sban.samudayikban_name}</td>
-                  <td> {sban.area}</td>
+                  <td> {englishToNepaliNumber(sban.area)}</td>
                   <td> {sban.main_species}</td>
                   <td>
                     {equals(sban.forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण"}
                   </td>
-                  <td>{sban.dalit_ghardhuri}</td>
-                  <td>{sban.janjati_ghardhuri}</td>
-                  <td>{sban.anya_ghardhuri}</td>
-                  <td>{sban.female}</td>
-                  <td>{sban.male}</td>
+                  <td>{englishToNepaliNumber(sban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(sban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(sban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(sban.female)}</td>
+                  <td>{englishToNepaliNumber(sban.male)}</td>
                   <td>{englishToNepaliNumber(sban.handover_date)}</td>
                   <td>{englishToNepaliNumber(sban.renewed_date)}</td>
                   <td> {sban.nabikaran_abadhi}</td>
-                  <td> {sban.forest_maujdat}</td>
-                  <td> {sban.timber}</td>
-                  <td> {sban.wood}</td>
+                  <td> {englishToNepaliNumber(sban.forest_maujdat)}</td>
+                  <td> {englishToNepaliNumber(sban.timber)}</td>
+                  <td> {englishToNepaliNumber(sban.wood)}</td>
                   <td>
                     {" "}
                     {equals(sban.forest_type, 1)
@@ -72,7 +73,7 @@ function List(props) {
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, sban, "samudayik")}
                       />
                     </div>

@@ -18,6 +18,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
   return (
     <Fragment>
@@ -53,17 +54,17 @@ function List(props) {
                   <td>{englishToNepaliNumber(rban.darta_miti)}</td>
                   <td> {rban.rastriyaban_naam}</td>
                   <td> {rban.address}</td>
-                  <td> {rban.area}</td>
+                  <td> {englishToNepaliNumber(rban.area)}</td>
                   <td> {rban.main_species}</td>
-                  <td>{rban.dalit_ghardhuri}</td>
-                  <td>{rban.janjati_ghardhuri}</td>
-                  <td>{rban.anya_ghardhuri}</td>
-                  <td>{rban.female}</td>
-                  <td>{rban.male}</td>
+                  <td>{englishToNepaliNumber(rban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(rban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(rban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(rban.female)}</td>
+                  <td>{englishToNepaliNumber(rban.male)}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, rban, "rastriya")}
                       />
                     </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -14,13 +15,13 @@ class Edit extends Component {
       darta_miti: props.history.location.item.darta_miti,
       sajhedariban_naam: props.history.location.item.sajhedariban_naam,
       address: props.history.location.item.address,
-      area: props.history.location.item.area,
+      area: englishToNepaliNumber(props.history.location.item.area),
+      dalit_ghardhuri: englishToNepaliNumber(props.history.location.item.dalit_ghardhuri),
+      janjati_ghardhuri: englishToNepaliNumber(props.history.location.item.janjati_ghardhuri),
+      anya_ghardhuri: englishToNepaliNumber(props.history.location.item.anya_ghardhuri),
+      female: englishToNepaliNumber(props.history.location.item.female),
+      male: englishToNepaliNumber(props.history.location.item.male),
       main_species: props.history.location.item.main_species,
-      dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
-      janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
-      anya_ghardhuri: props.history.location.item.anya_ghardhuri,
-      female: props.history.location.item.female,
-      male: props.history.location.item.male,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
@@ -62,13 +63,13 @@ class Edit extends Component {
           darta_miti: darta_miti,
           sajhedariban_naam: sajhedariban_naam,
           address: address,
-          area: area,
+          area: nepaliToEnglishNumber(area),
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          female: nepaliToEnglishNumber(female),
+          male: nepaliToEnglishNumber(male),
           main_species: main_species,
-          dalit_ghardhuri: dalit_ghardhuri,
-          janjati_ghardhuri: janjati_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          female: female,
-          male: male,
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,

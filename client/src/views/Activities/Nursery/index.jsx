@@ -123,7 +123,7 @@ class Nursery extends Component {
 
   render() {
     const { biruwautpadanList, loc, perPage, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -163,6 +163,7 @@ class Nursery extends Component {
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
+              role={role}
               user={user}
               headings={biruwautpadanHeadings}
               onAdd={() => this.handleAdd()}
@@ -203,6 +204,7 @@ Nursery.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   biruwautpadanDataList: state.biruwautpadan.allbiruwautpadanData,
 });
 

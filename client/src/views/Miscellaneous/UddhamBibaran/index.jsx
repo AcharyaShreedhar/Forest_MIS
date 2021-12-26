@@ -130,7 +130,7 @@ class UddhamBibaran extends Component {
 
   render() {
     const { loc, perPage, uddhamList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -167,6 +167,7 @@ class UddhamBibaran extends Component {
               onPer={this.handlePer}
               headings={uddhamHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("uddham")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -205,6 +206,7 @@ UddhamBibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   uddhamDataList: state.miscellaneous.alluddhamData,
 });
 

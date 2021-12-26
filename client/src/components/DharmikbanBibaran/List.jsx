@@ -18,6 +18,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
   return (
     <Fragment>
@@ -46,16 +47,16 @@ function List(props) {
                   <td>{dban.darta_no}</td>
                   <td>{dban.dharmikban_name}</td>
                   <td>{dban.community_name}</td>
-                  <td>{dban.area}</td>
+                  <td> {englishToNepaliNumber(dban.area)}</td>
                   <td>{dban.main_species}</td>
                   <td>
                     {equals(dban.forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण"}
                   </td>
-                  <td>{dban.dalit_ghardhuri}</td>
-                  <td>{dban.janjati_ghardhuri}</td>
-                  <td>{dban.anya_ghardhuri}</td>
-                  <td>{dban.female}</td>
-                  <td>{dban.male}</td>
+                  <td>{englishToNepaliNumber(dban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(dban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(dban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(dban.female)}</td>
+                  <td>{englishToNepaliNumber(dban.male)}</td>
                   <td>{englishToNepaliNumber(dban.handover_date)}</td>
                   <td>{englishToNepaliNumber(dban.renewed_date)}</td>
                   <td>{dban.nabikaran_abadhi}</td>
@@ -64,7 +65,7 @@ function List(props) {
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, dban, "dharmik")}
                       />
                     </div>

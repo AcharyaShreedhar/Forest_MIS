@@ -18,6 +18,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
 
   return (
@@ -55,17 +56,17 @@ function List(props) {
                   <td>{nban.nijiban_dhaniko_naam}</td>
                   <td>{nban.perm_addr}</td>
                   <td>{nban.curr_addr}</td>
-                  <td>{nban.area}</td>
-                  <td>{nban.dalit_ghardhuri}</td>
-                  <td>{nban.janjati_ghardhuri}</td>
-                  <td>{nban.anya_ghardhuri}</td>
-                  <td>{nban.female}</td>
-                  <td>{nban.male}</td>
+                  <td> {englishToNepaliNumber(nban.area)}</td>
+                  <td>{englishToNepaliNumber(nban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(nban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(nban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(nban.female)}</td>
+                  <td>{englishToNepaliNumber(nban.male)}</td>
                   <td>{nban.main_species}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, nban, "niji")}
                       />
                     </div>

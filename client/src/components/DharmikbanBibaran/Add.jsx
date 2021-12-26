@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { equals, isEmpty } from "ramda";
+import { nepaliToEnglishNumber } from "nepali-number";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -99,12 +100,12 @@ class Add extends Component {
           dharmikban_name: name,
           darta_no: regno,
           community_name: community_name,
-          area: area,
-          dalit_ghardhuri: dalit_ghardhuri,
-          janjati_ghardhuri: janjati_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          female: female,
-          male: male,
+          area: nepaliToEnglishNumber(area),
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          female: nepaliToEnglishNumber(female),
+          male: nepaliToEnglishNumber(male),
           main_species: main_species,
           forest_type: equals(forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण",
           handover_date: handover_date,

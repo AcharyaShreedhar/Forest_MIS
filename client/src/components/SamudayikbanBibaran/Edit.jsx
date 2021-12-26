@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty } from "ramda";
+import {englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -22,18 +23,18 @@ class Edit extends Component {
       id: props.history.location.item.darta_no,
       regno: props.history.location.item.darta_no,
       name: props.history.location.item.samudayikban_name,
-      area: props.history.location.item.area,
-      dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
-      janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
-      anya_ghardhuri: props.history.location.item.anya_ghardhuri,
-      female: props.history.location.item.female,
-      male: props.history.location.item.male,
+      area: englishToNepaliNumber(props.history.location.item.area),
+      dalit_ghardhuri: englishToNepaliNumber(props.history.location.item.dalit_ghardhuri),
+      janjati_ghardhuri: englishToNepaliNumber(props.history.location.item.janjati_ghardhuri),
+      anya_ghardhuri: englishToNepaliNumber(props.history.location.item.anya_ghardhuri),
+      female: englishToNepaliNumber(props.history.location.item.female),
+      male: englishToNepaliNumber(props.history.location.item.male),
       main_species: props.history.location.item.main_species,
       forest_type: props.history.location.item.forest_type,
       handover_date: props.history.location.item.handover_date,
-      forest_maujdat: props.history.location.item.forest_maujdat,
-      timber: props.history.location.item.timber,
-      wood: props.history.location.item.wood,
+      forest_maujdat: englishToNepaliNumber(props.history.location.item.forest_maujdat),
+      timber: englishToNepaliNumber(props.history.location.item.timber),
+      wood: englishToNepaliNumber(props.history.location.item.wood),
       nabikaran_abadhi: props.history.location.item.nabikaran_abadhi,
       renewed_date: props.history.location.item.renewed_date,
       renewal_date: props.history.location.item.renewal_date,
@@ -46,7 +47,7 @@ class Edit extends Component {
 
     this.handleBaiganikBan = this.handleBaiganikBan.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handleConfirm = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleForestType = this.handleForestType.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -87,18 +88,18 @@ class Edit extends Component {
         data: {
           samudayikban_name: name,
           darta_no: regno,
-          area: area,
-          dalit_ghardhuri: dalit_ghardhuri,
-          janjati_ghardhuri: janjati_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          female: female,
-          male: male,
+          area: nepaliToEnglishNumber(area),
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          female: nepaliToEnglishNumber(female),
+          male: nepaliToEnglishNumber(male),
           main_species: main_species,
           forest_type: forest_type,
           handover_date: handover_date,
-          forest_maujdat: forest_maujdat,
-          timber: timber,
-          wood: wood,
+          forest_maujdat: nepaliToEnglishNumber(forest_maujdat),
+          timber: nepaliToEnglishNumber(timber),
+          wood: nepaliToEnglishNumber(wood),
           baiganik_ban: baiganik_ban,
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,

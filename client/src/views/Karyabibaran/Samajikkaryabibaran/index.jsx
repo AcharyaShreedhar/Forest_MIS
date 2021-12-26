@@ -108,7 +108,7 @@ class Samajikkaryabibaran extends Component {
 
   render() {
     const { loc, perPage, samajikkaryabibaranList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
    
     return (
       <div>
@@ -150,6 +150,7 @@ class Samajikkaryabibaran extends Component {
               onPer={this.handlePer}
               headings={samajikkaryabibaranHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("samajikkaryabibaran")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -188,6 +189,7 @@ Samajikkaryabibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   samajikkaryabibaranDataList: state.karyabibaran.allsamajikkaryabibaranData,
 });
 

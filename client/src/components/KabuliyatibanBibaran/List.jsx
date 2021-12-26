@@ -18,6 +18,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
   return (
     <Fragment>
@@ -52,20 +53,20 @@ function List(props) {
                   <td>{kban.darta_no}</td>
                   <td>{englishToNepaliNumber(kban.darta_miti)}</td>
                   <td>{kban.kabuliyati_ban_samiti_name}</td>
-                  <td>{kban.area}</td>
+                  <td> {englishToNepaliNumber(kban.area)}</td>
                   <td>{kban.perm_addr}</td>
                   <td>{kban.curr_addr}</td>
-                  <td>{kban.dalit_ghardhuri}</td>
-                  <td>{kban.janjati_ghardhuri}</td>
-                  <td>{kban.anya_ghardhuri}</td>
-                  <td>{kban.female}</td>
-                  <td>{kban.male}</td>
-                  <td>{kban.sampanna}</td>
-                  <td>{kban.madhyam}</td>
-                  <td>{kban.bipanna}</td>
-                  <td>{kban.dalit_rep}</td>
-                  <td>{kban.janjati_rep}</td>
-                  <td>{kban.anya_rep}</td>
+                  <td>{englishToNepaliNumber(kban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(kban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(kban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(kban.female)}</td>
+                  <td>{englishToNepaliNumber(kban.male)}</td>
+                  <td>{englishToNepaliNumber(kban.sampanna)}</td>
+                  <td>{englishToNepaliNumber(kban.madhyam)}</td>
+                  <td>{englishToNepaliNumber(kban.bipanna)}</td>
+                  <td>{englishToNepaliNumber(kban.dalit_rep)}</td>
+                  <td>{englishToNepaliNumber(kban.janjati_rep)}</td>
+                  <td>{englishToNepaliNumber(kban.anya_rep)}</td>
                   <td>{kban.adhyakshya}</td>
                   <td>{kban.adhyakshya_gender}</td>
                   <td>{kban.sachib}</td>
@@ -73,7 +74,7 @@ function List(props) {
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, kban, "kabuliyati")}
                       />
                     </div>

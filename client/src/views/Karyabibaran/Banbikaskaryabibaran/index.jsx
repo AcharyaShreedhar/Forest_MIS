@@ -99,7 +99,7 @@ class Banbikaskaryabibaran extends Component {
   }
   render() {
     const { loc, perPage, banbikaskaryabibaranList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -138,6 +138,7 @@ class Banbikaskaryabibaran extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={banbikaskaryabibaranHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -177,6 +178,7 @@ Banbikaskaryabibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   banbikaskaryabibaranDataList: state.karyabibaran.allbanbikaskaryabibaranData,
 });
 
