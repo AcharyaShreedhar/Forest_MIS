@@ -5,7 +5,7 @@ import { AssetsURL } from "./config";
 const pkg = require("../../package.json");
 
 /**
- * Author: Hiroki Moto
+ * Author: Shreedhar Acharya
  * Usage: Get version number of Package.json
  * We update package.json version for QA/Production release.
  * Once we release the new version, the app should initialize all the stores.

@@ -2,62 +2,64 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import {
-  JadibutiUtpadan,
-  Filter,
-  ReportGenerator,
-  ConfirmationDialoge,
-} from "../../../components";
-import BiruwautpadanActions from "../../../actions/biruwautpadan";
-import { jadibutiHeadings, districtList } from "../../../services/config";
+import { Filter, UserBibaran, ConfirmationDialoge } from "../../components";
+import AppActions from "../../actions/app";
+import { districtList, userHeadings } from "../../services/config";
 
-class Jadibuti extends Component {
+export class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loc: "jadibutilist",
+      loc: "userlist",
       distId: "%",
       perPage: 10,
       page: 0,
-      showDialog: false,
-      item: {},
-      path: "jadibuti",
+      path: "user",
     };
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
-    this.handlePer = this.handlePer.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split("/")[2];
-
-    var jadibutiList = [];
-    if (nextProps !== prevState) {
-      jadibutiList = nextProps.jadibutiDataList.data;
-    }
-    return { loc, jadibutiList };
+  componentDidMount() {
+    this.props.fetchallUser({
+      distId: "%",
+      name: "user_name",
+      page: 0,
+      perPage: 10,
+    });
   }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const loc = nextProps.location.pathname.split("/")[1];
+    var userList = [];
+    if (nextProps !== prevState) {
+      userList = nextProps.userDataList.data;
+    }
 
+    return {
+      loc,
+      userList,
+    };
+  }
   handlePer(e) {
     const { distId } = this.state;
     this.setState({ perPage: e });
     this.fetchResults(distId, 0, e);
   }
-  handleDistrict(e, item) {
+  handleDistrict(e) {
     const { perPage } = this.state;
     this.setState({ distId: e });
     this.fetchResults(e, 0, perPage);
   }
 
   fetchResults(distId, page, perPage) {
-    this.props.fetchallJadibuti({
+    this.props.fetchallUser({
       distId,
-      name: "jadibuti_thegana",
+      name: "user_name",
       page: page,
       perPage,
     });
@@ -75,12 +77,12 @@ class Jadibuti extends Component {
     switch (event) {
       case "edit": {
         this.props.history.push({
-          pathname: `/activities/jadibutiedit/${item.jadibuti_id}`,
+          pathname: `useredit/${item.user_id}`,
           item,
         });
+
         break;
       }
-
       case "delete": {
         this.setState({ showDialog: !this.state.showDialog });
         break;
@@ -95,75 +97,71 @@ class Jadibuti extends Component {
   handleDelete() {
     const { item } = this.state;
 
-    this.props.deleteJadibuti(item.jadibuti_id);
+    this.props.deleteUser(item.user_id);
     this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
-    this.props.history.push("/activities/jadibutiadd/new");
+    this.props.history.push("/useradd/new");
   }
-  render() {
-    const { loc, perPage, jadibutiList, showDialog } = this.state;
-    const { user,role } = this.props;
 
+  render() {
+    const { loc, perPage, userList, showDialog } = this.state;
+    const { user } = this.props;
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={"के तपाईँ जडिबुटी उत्पादन सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
+          body={"के तपाईँ  प्रयोगकर्ता हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "jadibutilist") && (
+        {equals(loc, "userlist") && (
           <Fragment>
             <div className="report-filter">
               <Filter
-                id="jadibuti"
+                id="user"
                 districtsList={districtList}
                 onSelect={this.handleDistrict}
                 yesDate={false}
               />
-              <ReportGenerator id="jadibuti" />
             </div>
-            <JadibutiUtpadan.List
-              buttonName="+ जडिबुटी उत्पादन"
-              title="जडिबुटी उत्पादन सम्बन्धी विवरण"
+            <UserBibaran.List
+              buttonName="+ नयाँ प्रयोगकर्ता "
+              title="प्रयोगकर्ता सम्बन्धि विवरण"
               pageCount={
-                !isNil(jadibutiList)
-                  ? Math.ceil(jadibutiList.total / perPage)
-                  : 10
+                !isNil(userList) ? Math.ceil(userList.total / perPage) : 10
               }
-              data={!isNil(jadibutiList) ? jadibutiList.list : []}
+              data={!isNil(userList) ? userList.list : []}
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
+              headings={userHeadings}
               user={user}
-              role={role}
-              headings={jadibutiHeadings}
-              onAdd={this.handleAdd}
+              onAdd={() => this.handleAdd("user")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
             />
           </Fragment>
         )}
-        {equals(loc, "jadibutiadd") && (
-          <JadibutiUtpadan.Add
-            title="+ जडिबुटी उत्पादन विवरण"
+        {equals(loc, "useradd") && (
+          <UserBibaran.Add
+            title="+ नयाँ प्रयोगकर्ता"
             user={user}
             onSelect={this.handleSelectMenu}
-            onSubmit={(e) => this.props.addJadibuti(e)}
+            onSubmit={(e) => this.props.addUser(e)}
           />
         )}
-        {equals(loc, "jadibutiedit") && (
-          <JadibutiUtpadan.Edit
-            title="जडिबुटी उत्पादन सम्बन्धी विवरण शंसोधन"
+        {equals(loc, "useredit") && (
+          <UserBibaran.Edit
+            title="प्रयोगकर्ता सम्बन्धि विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
-            onUpdate={(e, id) => this.props.updateJadibuti(e, id)}
+            onUpdate={(e, id) => this.props.updateUser(e, id)}
           />
         )}
       </div>
@@ -171,31 +169,25 @@ class Jadibuti extends Component {
   }
 }
 
-Jadibuti.propTypes = {
-  jadibutiDataList: PropTypes.any,
+User.propsTypes = {
+  userDataList: PropTypes.any,
 };
 
-Jadibuti.defaultProps = {
-  jadibutiDataList: {},
+User.defaultProps = {
+  userDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
-  jadibutiDataList: state.biruwautpadan.alljadibutiData,
+  userDataList: state.app.allusersData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallJadibuti: (payload) =>
-    dispatch(BiruwautpadanActions.fetchalljadibutiRequest(payload)),
-  addJadibuti: (payload) =>
-    dispatch(BiruwautpadanActions.addjadibutiRequest(payload)),
-
-  updateJadibuti: (payload, jadibutiId) =>
-    dispatch(BiruwautpadanActions.updatejadibutiRequest(payload, jadibutiId)),
-
-  deleteJadibuti: (jadibutiId) =>
-    dispatch(BiruwautpadanActions.deletejadibutiRequest(jadibutiId)),
+  fetchallUser: (payload) => dispatch(AppActions.fetchallusersRequest(payload)),
+  addUser: (payload) => dispatch(AppActions.addusersRequest(payload)),
+  updateUser: (payload, userId) =>
+    dispatch(AppActions.updateusersRequest(payload, userId)),
+  deleteUser: (userId) => dispatch(AppActions.deleteusersRequest(userId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Jadibuti);
+export default connect(mapStateToProps, mapDispatchToProps)(User);

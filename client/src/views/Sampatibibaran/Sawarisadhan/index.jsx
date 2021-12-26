@@ -126,7 +126,7 @@ class Sawarisadhan extends Component {
   }
   render() {
     const { loc, perPage, sawarisadhanList, showDialog, } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -167,6 +167,7 @@ class Sawarisadhan extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={sawarisadhanHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -206,6 +207,7 @@ Sawarisadhan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   sawarisadhanDataList: state.sampatibibaran.allvehiclesData,
 });
 

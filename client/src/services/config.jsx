@@ -34,6 +34,11 @@ const uddhamList = [
   { id: 2, value: "सामुदायिक" },
   { id: 3, value: "सहकारी मार्फत" },
 ];
+const usertypeList = [
+  { id: 1, value: "युजर" },
+  { id: 2, value: "एडमिन" },
+  { id: 3, value: "सुपर एडमिन " },
+];
 
 const samudayikbanHeadings = [
   "दर्ता नं",
@@ -368,7 +373,7 @@ const muddaanusandhandayariHeadings = [
   "फैसला जरीवाना",
   "फैसला कैद",
   "वोझ वाहक जफत (भएको वा नभएको)",
-  "फैसला अवस्था"
+  "फैसला अवस्था",
 ];
 
 const brixyaropanHeadings = [
@@ -529,6 +534,15 @@ const uddhamHeadings = [
   "रोजगार संख्या ",
 ];
 
+const userHeadings = [
+  "युजरको नाम ",
+  "युजरको किसिम ",
+  "जिल्ला ",
+  "कार्यालय",
+  "दर्ता मिती ",
+  "दर्ता कर्ता ",
+];
+
 export {
   AssetsURL,
   banList,
@@ -573,4 +587,6 @@ export {
   banpaidawarbikribitaranHeadings,
   uddhamHeadings,
   uddhamList,
+  userHeadings,
+  usertypeList,
 };

@@ -132,7 +132,7 @@ class Muddaanusandhandayari extends Component {
 
   render() {
     const { loc, perPage, muddaanusandhandayariList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -178,6 +178,7 @@ class Muddaanusandhandayari extends Component {
               onPer={this.handlePer}
               headings={muddaanusandhandayariHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("muddaanusandhandayari")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -216,6 +217,7 @@ Muddaanusandhandayari.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   muddaanusandhandayariDataList:
     state.banbibaran.allmuddaanusandhandayariData,
 });

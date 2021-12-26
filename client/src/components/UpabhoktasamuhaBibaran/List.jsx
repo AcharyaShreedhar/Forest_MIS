@@ -18,6 +18,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
 
   return (
@@ -73,7 +74,7 @@ function List(props) {
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, samuha, "upabhoktasamuha")}
                       />
                     </div>

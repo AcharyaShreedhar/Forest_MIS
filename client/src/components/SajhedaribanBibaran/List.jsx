@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { englishToNepaliNumber } from "nepali-number";
+import { englishToNepaliNumber,nepaliToEnglishNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
@@ -18,6 +18,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
   return (
     <Fragment>
@@ -53,17 +54,17 @@ function List(props) {
                   <td>{englishToNepaliNumber(sban.darta_miti)}</td>
                   <td>{sban.sajhedariban_naam}</td>
                   <td>{sban.address}</td>
-                  <td>{sban.area}</td>
+                  <td> {englishToNepaliNumber(sban.area)}</td>
                   <td>{sban.main_species}</td>
-                  <td>{sban.dalit_ghardhuri}</td>
-                  <td>{sban.janjati_ghardhuri}</td>
-                  <td>{sban.anya_ghardhuri}</td>
-                  <td>{sban.female}</td>
-                  <td>{sban.male}</td>
+                  <td>{englishToNepaliNumber(sban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(sban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(sban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(sban.female)}</td>
+                  <td>{englishToNepaliNumber(sban.male)}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, sban, "sajhedari")}
                       />
                     </div>

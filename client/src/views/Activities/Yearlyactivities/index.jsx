@@ -126,7 +126,7 @@ class Yearlyactivities extends Component {
   }
   render() {
     const { loc, perPage, yearlyactivitiesList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -167,6 +167,7 @@ class Yearlyactivities extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={yearlyactivitiesHeadings}
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}
@@ -207,6 +208,7 @@ Yearlyactivities.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   activitiesinfoDataList: state.biruwautpadan.allactivitiesinfoData,
 });
 

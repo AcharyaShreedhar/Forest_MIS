@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
 import PropTypes from "prop-types";
+import { nepaliToEnglishNumber } from "nepali-number";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -100,20 +101,20 @@ class Add extends Component {
           darta_no: regno,
           kabuliyati_ban_samiti_name: name,
           darta_miti: darta_miti,
-          area: area,
+          area: nepaliToEnglishNumber(area),
           perm_addr: perm_addr,
           curr_addr: curr_addr,
-          dalit_ghardhuri: dalit_ghardhuri,
-          janjati_ghardhuri: janjati_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          female: female,
-          male: male,
-          sampanna: sampanna,
-          madhyam: madhyam,
-          bipanna: bipanna,
-          dalit_rep: dalit_rep,
-          janjati_rep: janjati_rep,
-          anya_rep: anya_rep,
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          female: nepaliToEnglishNumber(female),
+          male: nepaliToEnglishNumber(male),
+          sampanna: nepaliToEnglishNumber(sampanna),
+          madhyam: nepaliToEnglishNumber(madhyam),
+          bipanna: nepaliToEnglishNumber(bipanna),
+          dalit_rep: nepaliToEnglishNumber(dalit_rep),
+          janjati_rep: nepaliToEnglishNumber(janjati_rep),
+          anya_rep: nepaliToEnglishNumber(anya_rep),
           adhyakshya: adhyakshya,
           adhyakshya_gender: adhyakshya_gender,
           sachib: sachib,

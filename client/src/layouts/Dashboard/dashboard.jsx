@@ -18,6 +18,7 @@ export const Content = (props) => {
           open={props.open}
           menuRequest={props.menuRequest}
           menuStatus={props.menuStatus}
+          role={props.role}
         />
       )}
       <div className="main">

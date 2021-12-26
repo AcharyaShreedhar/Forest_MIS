@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { equals, isEmpty } from "ramda";
+import {englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -19,12 +20,12 @@ class Edit extends Component {
       regno: props.history.location.item.darta_no,
       name: props.history.location.item.dharmikban_name,
       community_name: props.history.location.item.community_name,
-      area: props.history.location.item.area,
-      dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
-      janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
-      anya_ghardhuri: props.history.location.item.anya_ghardhuri,
-      female: props.history.location.item.female,
-      male: props.history.location.item.male,
+      area: englishToNepaliNumber(props.history.location.item.area),
+      dalit_ghardhuri: englishToNepaliNumber(props.history.location.item.dalit_ghardhuri),
+      janjati_ghardhuri: englishToNepaliNumber(props.history.location.item.janjati_ghardhuri),
+      anya_ghardhuri: englishToNepaliNumber(props.history.location.item.anya_ghardhuri),
+      female: englishToNepaliNumber(props.history.location.item.female),
+      male: englishToNepaliNumber(props.history.location.item.male),
       main_species: props.history.location.item.main_species,
       forest_type: equals(props.history.location.item.forest_type, "प्राकृतिक्")
         ? 1
@@ -103,12 +104,12 @@ class Edit extends Component {
           dharmikban_name: name,
           darta_no: regno,
           community_name: community_name,
-          area: area,
-          dalit_ghardhuri: dalit_ghardhuri,
-          janjati_ghardhuri: janjati_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          female: female,
-          male: male,
+          area: nepaliToEnglishNumber(area),
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          female: nepaliToEnglishNumber(female),
+          male: nepaliToEnglishNumber(male),
           main_species: main_species,
           forest_type: equals(forest_type, 1) ? "प्राकृतिक्" : "वृक्षरोपण",
           handover_date: handover_date,

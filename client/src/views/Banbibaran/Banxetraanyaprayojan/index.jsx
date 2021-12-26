@@ -125,7 +125,7 @@ class Banxetraanyaprayojan extends Component {
   }
   render() {
     const { loc, perPage, banxetraanyaprayojanList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -168,6 +168,7 @@ class Banxetraanyaprayojan extends Component {
             pers={[10, 25, 50, "all"]}
             onPer={this.handlePer}
             user={user}
+            role={role}
             headings={banxetraanyaprayojanHeadings}
             onAdd={() => this.handleAdd("bbanxetraanyaprayojanan")}
             onSelect={this.handleSelectMenu}
@@ -207,6 +208,7 @@ Banxetraanyaprayojan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   banxetraanyaprayojanDataList: state.banbibaran.allbanxetraanyaprayojanData,
 });
 

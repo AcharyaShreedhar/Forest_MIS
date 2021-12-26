@@ -18,6 +18,7 @@ function List(props) {
     pers,
     per,
     onPer,
+    role
   } = props;
   return (
     <Fragment>
@@ -75,7 +76,7 @@ function List(props) {
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, biruwa, "biruwautpadan")}
                       />
                     </div>

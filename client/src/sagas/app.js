@@ -482,8 +482,7 @@ export function* fetchusersRequest(api, action) {
 export function* addusersRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postusersAddNew(payload.users.data);
-
+  const response = yield api.postUsersAddNew(payload.user.data);
   if (response.ok) {
     toast.success("युजर विवरण सफलतापूर्वक  प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
@@ -493,7 +492,7 @@ export function* addusersRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/app/departmentslist");
+    yield call(history.push, "/userlist");
     yield put(AppActions.addusersSuccess(response.data));
   } else {
     yield put(AppActions.adddusersFailure());
@@ -510,7 +509,7 @@ export function* addusersRequest(api, action) {
 export function* updateusersRequest(api, action) {
   const { payload, usersId } = action;
 
-  const response = yield api.postusersUpdate(payload.departments.data, usersId);
+  const response = yield api.postUsersUpdate(payload.user.data, usersId);
 
   if (response.ok) {
     toast.success("युजर विवरण सफलतापूर्वक  शंसोधन भयो !!!!!", {
@@ -521,7 +520,7 @@ export function* updateusersRequest(api, action) {
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/app/departmentslist");
+    yield call(history.push, "/userlist");
     yield put(AppActions.updateusersSuccess(response.data));
   } else {
     yield put(AppActions.usersFailure());

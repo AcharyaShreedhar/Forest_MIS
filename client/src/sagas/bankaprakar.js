@@ -839,7 +839,6 @@ export function* updateconsumergroupdetailsRequest(api, action) {
     payload.consumergroupdetails.data,
     consumergroupdetailsId
   );
-  console.log("data..", response);
   if (response.ok) {
     toast.success("सफलतापुर्वक उपभोक्ता समुह शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,

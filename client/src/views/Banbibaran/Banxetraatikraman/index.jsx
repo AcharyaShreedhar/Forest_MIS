@@ -134,7 +134,7 @@ class Banxetraatikraman extends Component {
 
   render() {
     const { loc, perPage, banxetraatikramanList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -176,6 +176,7 @@ class Banxetraatikraman extends Component {
               onPer={this.handlePer}
               headings={banxetraatikramanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -214,6 +215,7 @@ Banxetraatikraman.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   banxetraatikramanDataList: state.banbibaran.allbanxetraatikramanData,
 });
 

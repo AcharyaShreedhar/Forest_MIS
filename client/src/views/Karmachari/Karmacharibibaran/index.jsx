@@ -127,7 +127,7 @@ class Karmacharibibaran extends Component {
 
   render() {
     const { loc, perPage, karmacharibibaranList, showDialog } = this.state;
-    const { user, districtData } = this.props;
+    const { user, districtData,role } = this.props;
 
     return (
       <div>
@@ -168,6 +168,7 @@ class Karmacharibibaran extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={karmacharibibaranHeadings}
               onAdd={() => this.handleAdd("karmacharibibaran")}
               onSelect={this.handleSelectMenu}
@@ -207,6 +208,7 @@ Karmacharibibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   districtData: state.app,
   karmacharibibaranDataList: state.karmacharibibaran.allemployeesData,
 });

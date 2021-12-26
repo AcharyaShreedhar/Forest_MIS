@@ -111,7 +111,7 @@ class Karmacharidarbandi extends Component {
 
   render() {
     const { loc, perPage, karmacharidarbandiList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -153,6 +153,7 @@ class Karmacharidarbandi extends Component {
               onPer={this.handlePer}
               headings={karmacharidarbandiHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("karmacharidarbandi")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -191,6 +192,7 @@ Karmacharidarbandi.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   karmacharidarbandiDataList:
     state.karmacharidarbandi.allkarmacharidarbandiData,
 });

@@ -99,7 +99,7 @@ class Gharjagga extends Component {
   }
   render() {
     const { loc, perPage, gharjaggaList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -138,6 +138,7 @@ class Gharjagga extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               user={user}
+              role={role}
               headings={gharjaggaHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -177,6 +178,7 @@ Gharjagga.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   gharjaggaDataList: state.sampatibibaran.allassetsData,
 });
 

@@ -130,7 +130,7 @@ class Panimuhansamrakshyan extends Component {
 
   render() {
     const { loc, perPage, panimuhansamrakshyanList, showDialog } = this.state;
-    const { user } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -172,6 +172,7 @@ class Panimuhansamrakshyan extends Component {
               onPer={this.handlePer}
               headings={panimuhansamrakshyanHeadings}
               user={user}
+              role={role}
               onAdd={() => this.handleAdd("panimuhansamrakshyan")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -210,6 +211,7 @@ Panimuhansamrakshyan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
+  role:state.app.user.user_type,
   panimuhansamrakshyanDataList: state.samrakshyan.allpanimuhansamrakshyanData,
 });
 
