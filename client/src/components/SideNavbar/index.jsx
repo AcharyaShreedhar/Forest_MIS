@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {equals} from "ramda"
+import { equals } from "ramda";
 import { HeaderComponent, ConfirmationDialoge } from "../../components";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "./Sidenav.scss";
@@ -23,7 +23,8 @@ import {
 } from "react-icons/fa";
 import { GiBurningForest, GiForest, GiWoodPile } from "react-icons/gi";
 import { MdGavel, MdWork } from "react-icons/md";
-import { BiLogOut, BiTask,BiUserPlus } from "react-icons/bi";
+import { BiLogOut, BiTask, BiUserPlus } from "react-icons/bi";
+import { ImOffice } from "react-icons/im";
 import "react-pro-sidebar/dist/css/styles.css";
 
 export class SideNavbar extends Component {
@@ -237,7 +238,7 @@ export class SideNavbar extends Component {
       samraxan,
       misc,
     } = this.state;
-    const { history, menuStatus,role } = this.props;
+    const { history, menuStatus, role } = this.props;
     return (
       <ProSidebar collapsed={!menuStatus}>
         <ConfirmationDialoge
@@ -452,6 +453,11 @@ export class SideNavbar extends Component {
               >
                 सवारी साधनहरु
               </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/sampatibibaran/anyasampatilist")}
+              >
+                अन्य सम्पति
+              </MenuItem>
             </SubMenu>
             <SubMenu
               title="कार्य विवरण"
@@ -563,15 +569,24 @@ export class SideNavbar extends Component {
             >
               रिपोर्ट
             </MenuItem>
-            {equals(role,3) &&
-            <MenuItem
-              icon={<BiUserPlus />}
-              className="maintitle"
-              onClick={() => history.push("/userlist")}
-            >
-            नयाँ प्रयोगकर्ता 
-            </MenuItem>
-  }
+            {equals(role, 3) && (
+              <MenuItem
+                icon={<BiUserPlus />}
+                className="maintitle"
+                onClick={() => history.push("/userlist")}
+              >
+                नयाँ प्रयोगकर्ता
+              </MenuItem>
+            )}
+            {equals(role, 3) && (
+              <MenuItem
+                icon={<ImOffice />}
+                className="maintitle"
+                onClick={() => history.push("/officelist")}
+              >
+                कार्यालय
+              </MenuItem>
+            )}
             <MenuItem
               icon={<BiLogOut />}
               className="maintitle"
@@ -581,13 +596,6 @@ export class SideNavbar extends Component {
             </MenuItem>
           </Menu>
         </SidebarContent>
-        <SidebarFooter>
-          {expanded ? (
-            <p>©2021 AakarⓔSolution All rights reserved</p>
-          ) : (
-            <p>Aakar ⓔ Solution</p>
-          )}
-        </SidebarFooter>
       </ProSidebar>
     );
   }
