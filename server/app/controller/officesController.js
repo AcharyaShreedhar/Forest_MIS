@@ -42,7 +42,7 @@ async function getOffices(req, res) {
 
 //controller for listing office in Dropdowm.O-DDL
 async function getOfficesDropdownList(req, res) {
-  const getOfficesList = `SELECT '%' AS office_id, 'सबै' AS value, '' as office_locatoin, '%' As dist_id UNION ALL select office_id as id, office_name as value, office_location, dist_id from offices where dist_id like ? ORDER BY ?`;
+  const getOfficesList = `SELECT '%' AS id, 'सबै' AS value, '' as office_location, '%' As dist_id UNION ALL select office_id as id, office_name as value, office_location, dist_id from offices where dist_id like ?`;
   pool.query(getOfficesList,[req.body.distId, req.body.name], (error, results, fields) => {
     if (error) throw error;
     res.send(JSON.stringify({ status: 200, error: null, data: results }));

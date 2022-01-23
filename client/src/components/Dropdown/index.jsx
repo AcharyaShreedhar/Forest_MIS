@@ -80,13 +80,8 @@ class Dropdown extends React.PureComponent {
   }
 
   handleDefaultValues() {
-    const {
-      data,
-      defaultIds,
-      defaultIndexes,
-      mountEvent,
-      returnBy,
-    } = this.props;
+    const { data, defaultIds, defaultIndexes, mountEvent, returnBy } =
+      this.props;
 
     if (equals(0, data.length)) return;
 
@@ -294,9 +289,9 @@ class Dropdown extends React.PureComponent {
                   equals(direction, "vertical") ? "mb-2" : "mr-2"
                 }`}
               >
-                {title}<span className="color-red">*</span>
+                {title}
+                <span className="color-red">*</span>
               </div>
-              
             )}
             {!isEmpty(this.state.title) && selectable && (
               <div className="core-dropdown-label">

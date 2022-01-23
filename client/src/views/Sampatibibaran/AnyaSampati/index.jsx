@@ -53,7 +53,6 @@ class AnyaSampati extends Component {
     if (nextProps !== prevState) {
       officeList = nextProps.officeDataList.data;
     }
-
     return { loc, anyasampatiList, officeList };
   }
 
@@ -101,7 +100,7 @@ class AnyaSampati extends Component {
   fetchOffice(distId) {
     this.props.fetchOfficedropdown({
       distId,
-      name: "value", //"office_name"
+      // name: "value", //"office_name"
     });
   }
 
