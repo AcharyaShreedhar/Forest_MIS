@@ -141,6 +141,70 @@ const deletevehiclesFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
 
+//anyasampati
+const fetchallanyasampatiRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchallanyasampatiSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    allanyasampatiData: action.response,
+  });
+};
+const fetchallanyasampatiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchanyasampatiRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchanyasampatiSuccess = (state, action) => {
+
+  return state.merge({
+    ...state,
+    status: "done",
+    anyasampatiData: action.response,
+  });
+};
+const fetchanyasampatiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add anyasampati
+const addanyasampatiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addanyasampatiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addanyasampatiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+//Update anyasampati
+const updateanyasampatiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updateanyasampatiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updateanyasampatiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+//Delete anyasampati
+const deleteanyasampatiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deleteanyasampatiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deleteanyasampatiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
 
 const locationsRequest = (state, action) => {
   let locations = state.locations;
@@ -195,7 +259,25 @@ export const reducer = createReducer(initialState, {
   [SampatibibaranTypes.DELETEVEHICLES_SUCCESS]: deletevehiclesSuccess,
   [SampatibibaranTypes.DELETEVEHICLES_FAILURE]: deletevehiclesFailure,
 
+  [SampatibibaranTypes.FETCHALLANYASAMPATI_REQUEST]: fetchallanyasampatiRequest,
+  [SampatibibaranTypes.FETCHALLANYASAMPATI_SUCCESS]: fetchallanyasampatiSuccess,
+  [SampatibibaranTypes.FETCHALLANYASAMPATI_FAILURE]: fetchallanyasampatiFailure,
+  
+  [SampatibibaranTypes.FETCHANYASAMPATI_REQUEST]: fetchanyasampatiRequest,
+  [SampatibibaranTypes.FETCHANYASAMPATI_SUCCESS]: fetchanyasampatiSuccess,
+  [SampatibibaranTypes.FETCHANYASAMPATI_FAILURE]: fetchanyasampatiFailure,
 
+  [SampatibibaranTypes.ADDANYASAMPATI_REQUEST]: addanyasampatiRequest,
+  [SampatibibaranTypes.ADDANYASAMPATI_SUCCESS]: addanyasampatiSuccess,
+  [SampatibibaranTypes.ADDANYASAMPATI_FAILURE]: addanyasampatiFailure,
+
+  [SampatibibaranTypes.UPDATEANYASAMPATI_REQUEST]: updateanyasampatiRequest,
+  [SampatibibaranTypes.UPDATEANYASAMPATI_SUCCESS]: updateanyasampatiSuccess,
+  [SampatibibaranTypes.UPDATEANYASAMPATI_FAILURE]: updateanyasampatiFailure,
+
+  [SampatibibaranTypes.DELETEANYASAMPATI_REQUEST]: deleteanyasampatiRequest,
+  [SampatibibaranTypes.DELETEANYASAMPATI_SUCCESS]: deleteanyasampatiSuccess,
+  [SampatibibaranTypes.DELETEANYASAMPATI_FAILURE]: deleteanyasampatiFailure,
  
   [SampatibibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [SampatibibaranTypes.CLEAR_REQUEST]: clearRequest,

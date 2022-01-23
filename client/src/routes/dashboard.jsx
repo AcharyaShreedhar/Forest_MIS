@@ -13,6 +13,7 @@ import Report from "../views/Report";
 import Sampatibibaran from "../views/Sampatibibaran";
 import Samrakshyan from "../views/Samrakshyan";
 import User from "../views/User";
+import Offices from "../views/Offices";
 
 const dashboardRoutes = [
   {
@@ -59,7 +60,7 @@ const dashboardRoutes = [
     path: "/karmachari",
     name: "karmachari",
     component: Karmachari,
-  }, 
+  },
   {
     path: "/karyabibaran",
     name: "karyabibaran",
@@ -107,6 +108,29 @@ const dashboardRoutes = [
     auth: true,
     component: User,
   },
+  {
+    path: "/officelist",
+    title: "Offices",
+    name: "Office",
+    auth: true,
+    component: Offices,
+  },
+
+  {
+    path: "/officeadd/new",
+    title: "Office",
+    name: "office",
+    auth: true,
+    component: Offices,
+  },
+  {
+    path: "/officeedit/:id",
+    title: "Office",
+    name: "office",
+    auth: true,
+    component: Offices,
+  },
+
   {
     redirect: true,
     path: "/",

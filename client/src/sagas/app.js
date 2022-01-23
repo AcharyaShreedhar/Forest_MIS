@@ -10,10 +10,12 @@ export function* loginRequest(api, action) {
   const response = yield api.loginByUsername(payload);
 
   if (response.ok) {
-    const { user } = response.data;
+    // const { user, officeList } = response.data;
+    const { user} = response.data;
     const { user_token } = user;
     window.token = user_token;
-    yield put(AppActions.loginSuccess({ user_token, user }));
+    // yield put(AppActions.loginSuccess({ user_token, user, officeList }));
+    yield put(AppActions.loginSuccess({ user_token, user}));
     yield call(history.push, "/home");
   } else {
     yield put(AppActions.loginFailure());
@@ -551,6 +553,127 @@ export function* deleteusersRequest(api, action) {
     yield put(AppActions.deleteusersSuccess(response.data));
   } else {
     yield put(AppActions.deleteusersFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// // Offices
+export function* fetchallofficesRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getOfficesList(payloaddata);
+  if (response.ok) {
+    yield put(AppActions.fetchallofficesSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchallofficesFailure());
+  }
+}
+
+export function* fetchofficesRequest(api, action) {
+  const officesId = action.payload;
+
+  const response = yield api.getOffices(officesId);
+
+  if (response.ok) {
+    yield put(AppActions.fetchofficesSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchofficesFailure());
+  }
+}
+
+//dropdown O-DDL
+export function* fetchofficesdropdownRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getOfficesDropdownList(payloaddata);
+  if (response.ok) {
+    yield put(AppActions.fetchofficesdropdownSuccess(response.data));
+  } else {
+    yield put(AppActions.fetchofficesdropdownFailure());
+  }
+}
+
+// Add offices
+export function* addofficesRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postOfficesAddNew(payload.office.data);
+  if (response.ok) {
+    toast.success("कार्यालय विवरण सफलतापूर्वक प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallofficesRequest(api, {
+      distId:"%",
+      name: "office_name",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/officelist");
+    yield put(AppActions.addofficesSuccess(response.data));
+  } else {
+    yield put(AppActions.adddofficesFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update offices
+export function* updateofficesRequest(api, action) {
+  const { payload, officesId } = action;
+// console.log("payload",payload)
+  const response = yield api.postOfficesUpdate(payload.office.data, officesId);
+
+  if (response.ok) {
+    toast.success("कार्यालय विवरण सफलतापूर्वक शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallofficesRequest(api, {
+      distId:"%",
+      name: "office_name",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/officelist");
+    yield put(AppActions.updateofficesSuccess(response.data));
+  } else {
+    yield put(AppActions.officesFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete offices---------------//
+export function* deleteofficesRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postOfficesDelete(payload);
+
+  if (response.ok) {
+    toast.success("कार्यालय विवरण सफलतापूर्वक हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallofficesRequest(api, { 
+      distId:"%",
+      name: "office_name",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(AppActions.deleteofficesSuccess(response.data));
+  } else {
+    yield put(AppActions.deleteofficesFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {

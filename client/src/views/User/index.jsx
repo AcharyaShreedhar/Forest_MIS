@@ -127,6 +127,7 @@ export class User extends Component {
                 districtsList={districtList}
                 onSelect={this.handleDistrict}
                 yesDate={false}
+                yesOffice={false}
               />
             </div>
             <UserBibaran.List

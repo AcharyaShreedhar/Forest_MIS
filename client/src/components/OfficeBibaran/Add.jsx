@@ -1,24 +1,20 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList, usertypeList } from "../../services/config";
+import { districtList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 
-class Edit extends Component {
+class Add extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: props.history.location.item.user_id,
-      user_name: props.history.location.item.user_name,
-      user_pass: props.history.location.item.user_pass,
-      user_type: props.history.location.item.user_type,
-      user_office: props.history.location.item.user_office,
-      dist_id: props.history.location.item.dist_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      office_name: "",
+      office_location: "",
+      dist_id: "",
+      created_by: "",
+      updated_by: "",
       showDialog: false,
     };
-    this.handleUserType = this.handleUserType.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
@@ -26,9 +22,6 @@ class Edit extends Component {
   }
   handleDistrict(e) {
     this.setState({ dist_id: e[0] });
-  }
-  handleUserType(e) {
-    this.setState({ user_type: e[0] });
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -38,49 +31,26 @@ class Edit extends Component {
   }
 
   handleSubmit() {
-    const {
-      user_id,
-      user_name,
-      user_pass,
-      user_type,
-      user_office,
-      dist_id,
-      created_by,
-      updated_by,
-    } = this.state;
+    const { office_name, office_location, dist_id } = this.state;
     const payload = {
-      user: {
+      office: {
         data: {
-          user_name: user_name,
-          user_pass: user_pass,
-          user_type: user_type,
-          user_office: user_office,
+          office_name: office_name,
+          office_location: office_location,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
-          created_by: created_by,
-          updated_by: this.props.user.user_name,
+          created_by: this.props.user.user_name,
         },
       },
     };
-    this.props.onUpdate(payload, user_id);
+    this.props.onSubmit(payload);
   }
 
   render() {
     const { title } = this.props;
-    const {
-      user_name,
-      user_pass,
-      user_type,
-      user_office,
-      dist_id,
-      showDialog,
-    } = this.state;
+    const { office_name, office_location, dist_id, showDialog } = this.state;
 
     let disabled =
-      isEmpty(user_name) ||
-      isEmpty(user_name) ||
-      isEmpty(dist_id) ||
-      isEmpty(user_office) ||
-      isEmpty(user_type)
+      isEmpty(office_name) || isEmpty(office_location) || isEmpty(dist_id)
         ? true
         : false;
 
@@ -90,7 +60,7 @@ class Edit extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ कार्यालय सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -103,46 +73,26 @@ class Edit extends Component {
             <div className="panel space mb-4">
               <Input
                 className="w-30"
-                title="युजरको नाम :"
+                title="कार्यालयको नाम :"
                 direction="vertical"
-                value={user_name}
-                onChange={(e) => this.setState({ user_name: e })}
+                value={office_name}
+                onChange={(e) => this.setState({ office_name: e })}
               />
               <Input
                 className="w-30"
-                title="पासवर्ड  :"
+                title="कार्यालयको ठेगाना :"
                 direction="vertical"
-                value={user_pass}
-                type="password"
-                onChange={(e) => this.setState({ user_pass: e })}
+                value={office_location}
+                onChange={(e) => this.setState({ office_location: e })}
               />
-              <div className="w-30">
-                <Dropdown
-                  className="dropdownlabel"
-                  title="युजरको प्रकार :"
-                  direction="vertical"
-                  defaultIds={[user_type]}
-                  data={usertypeList}
-                  getValue={(usertypeList) => usertypeList["value"]}
-                  onChange={(e) => this.handleUserType(e)}
-                  value={user_type}
-                />
-              </div>
             </div>
             <div className="panel space mb-4">
-              <Input
-                className="w-30"
-                title="युजरको कार्यालय :"
-                direction="vertical"
-                value={user_office}
-                onChange={(e) => this.setState({ user_office: e })}
-              />
               <div className="w-30">
                 <Dropdown
                   className="dropdownlabel"
                   title="जिल्ला :"
                   direction="vertical"
-                  defaultIds={[equals(dist_id, 0) ? "%" : dist_id]}
+                  defaultIds={[dist_id]}
                   data={districtList}
                   getValue={(districtList) => districtList["value"]}
                   onChange={(e) => this.handleDistrict(e)}
@@ -169,4 +119,4 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+export default Add;

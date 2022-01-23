@@ -17,7 +17,7 @@
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.12.2"
   },
   "devDependencies": {
     "case-sensitive-paths-webpack-plugin": "^2.4.0",

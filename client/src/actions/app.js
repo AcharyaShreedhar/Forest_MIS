@@ -111,6 +111,32 @@ const { Types, Creators } = createActions({
   deleteusersSuccess: ["response"],
   deleteusersFailure: null,
 
+  //offices
+  fetchallofficesRequest: ["payload"],
+  fetchallofficesSuccess: ["response"],
+  fetchallofficesFailure: null,
+
+  fetchofficesRequest: ["payload"],
+  fetchofficesSuccess: ["response"],
+  fetchofficesFailure: null,
+
+  //O-DDL
+  fetchofficesdropdownRequest: ["payload"],
+  fetchofficesdropdownSuccess: ["response"],
+  fetchofficesdropdownFailure: null,
+
+  addofficesRequest: ["payload"],
+  addofficesSuccess: ["response"],
+  addofficesFailure: null,
+
+  updateofficesRequest: ["payload", "officesId"],
+  updateofficesSuccess: ["response"],
+  updateofficesFailure: null,
+
+  deleteofficesRequest: ["payload", "officesId"],
+  deleteofficesSuccess: ["response"],
+  deleteofficesFailure: null,
+
 //   //Departments--------------//
   fetchalldepartmentsRequest: ["payload"],
   fetchalldepartmentsSuccess: ["response"],

@@ -1,5 +1,6 @@
 import Gharjagga from "../views/Sampatibibaran/Gharjagga";
 import Sawarisadhan from "../views/Sampatibibaran/Sawarisadhan";
+import AnyaSampati from "../views/Sampatibibaran/AnyaSampati";
 
 const sampatibibaranRoutes = [
   {
@@ -45,6 +46,29 @@ const sampatibibaranRoutes = [
     auth: true,
     component: Sawarisadhan,
   },
+ // anya sampati routes
+  {
+    path: "/sampatibibaran/anyasampatilist",
+    title: "Anyasampati",
+    name: "anyasampati",
+    auth: true,
+    component: AnyaSampati,
+  },
+  {
+    path: "/sampatibibaran/anyasampatiadd/new",
+    title: "Anyasampati",
+    name: "anyasampati",
+    auth: true,
+    component: AnyaSampati,
+  },
+  {
+    path: "/sampatibibaran/anyasampatiedit/:id",
+    title: "Anyasampati",
+    name: "anyasampati",
+    auth: true,
+    component: AnyaSampati,
+  },
+
   {
     redirect: true,
     path: "/sampatibibaran",

@@ -1,27 +1,27 @@
-"use strict";
+'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("municipalities", {
-      mun_id: {
+    await queryInterface.createTable('offices', {
+      office_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      mun_name_nep: {
-        type: Sequelize.STRING,
+      office_name: {
+        type: Sequelize.STRING
       },
-      mun_name_eng: {
-        type: Sequelize.STRING,
+      office_location: {
+        type: Sequelize.STRING
       },
       dist_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
-      created_by: {
-        type: Sequelize.STRING,
+      createdBy: {
+        type: Sequelize.STRING
       },
-      updated_by: {
-        type: Sequelize.STRING,
+      updatedBy: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -32,10 +32,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      },
+      }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("municipalities");
-  },
+    await queryInterface.dropTable('offices');
+  }
 };

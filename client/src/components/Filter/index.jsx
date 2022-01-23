@@ -12,10 +12,12 @@ export class Filter extends Component {
       fromdate: "2075-01-01",
       todate: "2090-12-30",
       district: "%",
+      office: "%",
     };
     this.handletoDate = this.handletoDate.bind(this);
     this.handlefromDate = this.handlefromDate.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
   }
 
   handletoDate(e) {
@@ -31,9 +33,15 @@ export class Filter extends Component {
     this.props.onSelect(e[0], this.props.id);
   }
 
+  handleOffice(e) {
+    this.setState({ office: e[0] });
+    this.props.onSelectOffice(e[0], this.props.id);
+  }
+
   render() {
-    const { district, fromdate, todate } = this.state;
-    const { districtsList, title, yesDate } = this.props;
+    const { district, office, fromdate, todate } = this.state;
+    const { districtsList, officesList, title, yesDate, yesOffice } =
+      this.props;
     return (
       <div className="filter">
         {yesDate && (
@@ -66,6 +74,19 @@ export class Filter extends Component {
           onChange={(e) => this.handleDistrict(e)}
           value={district}
         />
+        {yesOffice && (
+          <Dropdown
+            className="dropdownlabel ml-2"
+            title="कार्यालय :"
+            width="fit-content"
+            defaultIds={[office]}
+            data={officesList}
+            getValue={(officesList) => officesList["value"]}
+            onChange={(e) => this.handleOffice(e)}
+            value={office}
+            // multi="true"
+          />
+        )}
       </div>
     );
   }
@@ -74,25 +95,32 @@ Filter.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   yesDate: PropTypes.any,
+  yesOffice: PropTypes.any,
   fromdate: PropTypes.string,
   todate: PropTypes.string,
   district: PropTypes.string,
+  office: PropTypes.string,
   onToDate: PropTypes.func,
   onFromDate: PropTypes.func,
   onSelect: PropTypes.func,
+  onSelectOffice: PropTypes.func,
 };
 
 Filter.defaultProps = {
   className: "",
   title: "",
   districtsList: {},
+  officesList: {},
   fromdate: "",
   todate: "",
   district: "",
+  office: "",
   yesDate: true,
+  yesOffice: false,
   onToDate: () => {},
   onFromDate: () => {},
   onSelect: () => {},
+  onSelectOffice: () => {},
 };
 
 export default Filter;

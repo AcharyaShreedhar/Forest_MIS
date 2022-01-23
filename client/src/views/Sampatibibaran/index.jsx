@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import SampatibibaranActions from "../../actions/sampatibibaran";
+import AppActions from "../../actions/app";
 import sampatibibaranRoutes from "../../routes/sampatibibaran";
 
 export class Sampatibibaran extends Component {
@@ -22,6 +23,19 @@ export class Sampatibibaran extends Component {
       name: "asset_type",
       page: 0,
       perPage: 10,
+    });
+    this.props.fetchallanyasampati({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
@@ -80,6 +94,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(SampatibibaranActions.fetchallassetsRequest(payload)),
   fetchallSawarisadhan: (payload) =>
     dispatch(SampatibibaranActions.fetchallvehiclesRequest(payload)),
+  fetchallanyasampati: (payload) =>
+    dispatch(SampatibibaranActions.fetchallanyasampatiRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sampatibibaran);

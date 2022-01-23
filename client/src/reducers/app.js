@@ -6,6 +6,7 @@ import { AppTypes } from "../actions/app";
 const initialState = Immutable({
   status: "",
   user: {},
+  // officeList: [],
   token: "",
   menuStatus:false,
 });
@@ -13,6 +14,7 @@ const initialState = Immutable({
 const loginRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const loginSuccess = (state, action) => {
+  // const { user_token, user, officeList } = action.response;
   const { user_token, user } = action.response;
 
   return state.merge({
@@ -20,6 +22,7 @@ const loginSuccess = (state, action) => {
     status: "done",
     token: user_token,
     user,
+    // officeList,
   });
 };
 const loginFailure = (state, action) => {
@@ -355,6 +358,80 @@ const deleteusersSuccess = (state, action) =>
 const deleteusersFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+// //-----------Offices
+const fetchallofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallofficesSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allofficesData: action.response,
+  });
+};
+const fetchallofficesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//dropdownlist O-DDL
+const fetchofficesdropdownRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchofficesdropdownSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    officesDropdownData: action.response,
+  });
+};
+
+const fetchofficesdropdownFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchofficesSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    officesData: action.response,
+  });
+};
+const fetchofficesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add offices
+const addofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addofficesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addofficesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update offices
+const updateofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateofficesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateofficesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete offices
+const deleteofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteofficesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteofficesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
 
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
@@ -458,6 +535,31 @@ export const reducer = createReducer(initialState, {
   [AppTypes.DELETEUSERS_SUCCESS]: deleteusersSuccess,
   [AppTypes.DELETEUSERS_FAILURE]: deleteusersFailure,
 
+    //-----Offices
+  [AppTypes.FETCHALLOFFICES_REQUEST]: fetchallofficesRequest,
+  [AppTypes.FETCHALLOFFICES_SUCCESS]: fetchallofficesSuccess,
+  [AppTypes.FETCHALLOFFICES_FAILURE]: fetchallofficesFailure,
+
+  [AppTypes.FETCHOFFICES_REQUEST]: fetchofficesRequest,
+  [AppTypes.FETCHOFFICES_SUCCESS]: fetchofficesSuccess,
+  [AppTypes.FETCHOFFICES_FAILURE]: fetchofficesFailure,
+
+  //dropdown O-DDL
+  [AppTypes.FETCHOFFICESDROPDOWN_REQUEST]: fetchofficesdropdownRequest,
+  [AppTypes.FETCHOFFICESDROPDOWN_SUCCESS]: fetchofficesdropdownSuccess,
+  [AppTypes.FETCHOFFICESDROPDOWN_FAILURE]: fetchofficesdropdownFailure,
+
+  [AppTypes.ADDOFFICES_REQUEST]: addofficesRequest,
+  [AppTypes.ADDOFFICES_SUCCESS]: addofficesSuccess,
+  [AppTypes.ADDOFFICES_FAILURE]: addofficesFailure, 
+
+  [AppTypes.UPDATEOFFICES_REQUEST]: updateofficesRequest,
+  [AppTypes.UPDATEOFFICES_SUCCESS]: updateofficesSuccess,
+  [AppTypes.UPDATEOFFICES_FAILURE]: updateofficesFailure, 
+
+  [AppTypes.DELETEOFFICES_REQUEST]: deleteofficesRequest,
+  [AppTypes.DELETEOFFICES_SUCCESS]: deleteofficesSuccess,
+  [AppTypes.DELETEOFFICES_FAILURE]: deleteofficesFailure,
 
   // //-----Departments--------------//
   [AppTypes.FETCHALLDEPARTMENTS_REQUEST]: fetchalldepartmentsRequest,
@@ -476,9 +578,9 @@ export const reducer = createReducer(initialState, {
   [AppTypes.UPDATEDEPARTMENTS_SUCCESS]: updatedepartmentsSuccess,
   [AppTypes.UPDATEDEPARTMENTS_FAILURE]: updatedepartmentsFailure, 
 
-  [AppTypes.DELETEUSERS_REQUEST]: deletedepartmentsRequest,
-  [AppTypes.DELETEUSERS_SUCCESS]: deletedepartmentsSuccess,
-  [AppTypes.DELETEUSERS_FAILURE]: deletedepartmentsFailure,
+  [AppTypes.DELETEDEPARTMENTS_REQUEST]: deletedepartmentsRequest,
+  [AppTypes.DELETEDEPARTMENTS_SUCCESS]: deletedepartmentsSuccess,
+  [AppTypes.DELETEDEPARTMENTS_FAILURE]: deletedepartmentsFailure,
   
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
   [AppTypes.MENU_REQUEST]: menuRequest,

@@ -9,8 +9,10 @@ import { equals } from "ramda";
 import { store } from "../reducers";
 import AppActions from "../actions/app";
 const Config = {
-  API_URL: "https://forest-mis-server.herokuapp.com/api/v1/",
+  API_URL: "http://localhost:3001/api/v1/",
 };
+//https://forest-mis-server.herokuapp.com/api/v1/
+//http://localhost:3001/api/v1/
 // const authenticated = (api) => {
 //   api.setHeader("Authorization", "Bearer " + window.token);
 //   return api;
@@ -370,6 +372,22 @@ const create = (baseURL = Config.API_URL) => {
   const postSampatibibaranVehiclesDelete = (vehicleId) =>
     api.delete(`vehicles/${vehicleId}`);
 
+
+  // anyasampati
+  const getAnyaSampatiList = (payload) => api.post("anyasampatiList", payload);
+
+  const getAnyaSampati = (sampatiId) => api.get(`anyasampati/${sampatiId}`);
+
+  //Add
+  const postSampatibibaranAnyaSampatiAddNew = (payload) =>
+    api.post(`anyasampati`, payload);
+  //update
+  const postSampatibibaranAnyaSampatiUpdate = (payload, sampatiId) =>
+    api.put(`anyasampati/${sampatiId}`, payload);
+  //Delete
+  const postSampatibibaranAnyaSampatiDelete = (sampatiId) =>
+    api.delete(`anyasampati/${sampatiId}`);
+
   // muddaanusandhandayari
   const getMuddaanusandhandayariList = (payload) =>
     api.post("muddaAnusandhanDayarisList", payload);
@@ -583,6 +601,21 @@ const create = (baseURL = Config.API_URL) => {
     api.put(`users/${usersId}`, payload);
   //Delete
   const postUsersDelete = (usersId) => api.delete(`users/${usersId}`);
+
+    //-------Offices
+  const getOfficesList = (payload) => api.post("officesList", payload);
+  const getOffices = (officesId) => api.get(`offices/${officesId}`);
+
+  //dropdown O-DDL
+   const getOfficesDropdownList = (payload) => api.post("officesDropdownList", payload);
+
+  //Add
+  const postOfficesAddNew = (payload) => api.post(`offices`, payload);
+  //update
+  const postOfficesUpdate = (payload, officesId) =>
+    api.put(`offices/${officesId}`, payload);
+  //Delete
+  const postOfficesDelete = (officesId) => api.delete(`offices/${officesId}`);
 
   //inventories
   const getInventoriesList = (payload) => api.post("inventoryList", payload);
@@ -1066,6 +1099,13 @@ const create = (baseURL = Config.API_URL) => {
     postSampatibibaranVehiclesAddNew,
     postSampatibibaranVehiclesUpdate,
     postSampatibibaranVehiclesDelete,
+    //anyasampati
+    getAnyaSampatiList,
+    getAnyaSampati,
+    postSampatibibaranAnyaSampatiAddNew,
+    postSampatibibaranAnyaSampatiUpdate,
+    postSampatibibaranAnyaSampatiDelete,
+
     //muddaanusandhandayari
     getMuddaanusandhandayariList,
     getMuddaanusandhandayari,
@@ -1186,6 +1226,14 @@ const create = (baseURL = Config.API_URL) => {
     postUsersAddNew,
     postUsersUpdate,
     postUsersDelete,
+
+        //-----Offices
+    getOfficesList,
+    getOffices,
+    getOfficesDropdownList,  //O-DDL
+    postOfficesAddNew,
+    postOfficesUpdate,
+    postOfficesDelete,
 
     //ConsumerGroupDetails
     getConsumergroupDetailsList,
