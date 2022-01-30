@@ -10,6 +10,11 @@ module.exports = {
       },
       dist_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       pidit_name: {
         type: Sequelize.STRING,

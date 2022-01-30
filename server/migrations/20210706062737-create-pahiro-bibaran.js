@@ -12,7 +12,12 @@ module.exports = {
         type: Sequelize.STRING,
       },
       dist_id: {
+        allowNull: false,
         type: Sequelize.INTEGER,
+      },
+      office_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       manab_ghaite: {
         type: Sequelize.STRING,

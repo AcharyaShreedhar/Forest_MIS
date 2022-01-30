@@ -37,13 +37,8 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const {
-      user_name,
-      user_pass,
-      user_type,
-      user_office,
-      dist_id,
-    } = this.state;
+    const { user_name, user_pass, user_type, user_office, dist_id } =
+      this.state;
     const payload = {
       user: {
         data: {

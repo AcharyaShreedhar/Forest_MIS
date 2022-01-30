@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all badhiBibaran
 async function getAllBadhiBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ?";
-  const getAllBadhiBibaranQuery = `select * from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ?";
+  const getAllBadhiBibaranQuery = `select * from badhi_bibarans as b where b.badhi_aayeko_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,6 +15,7 @@ async function getAllBadhiBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
+          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -52,12 +53,13 @@ async function getBadhiBibaran(req, res) {
 
 //Controller for adding a BadhiBibaran
 async function addBadhiBibaran(req, res) {
-  const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_aayeko_sthan, dist_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_aayeko_miti, xeti_bibaran, banyajantu_mareko, botbiruwa_xeti, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_aayeko_sthan, dist_id, office_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_aayeko_miti, xeti_bibaran, banyajantu_mareko, botbiruwa_xeti, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBadhiBibaranQuery,
     [
       req.body.badhi_aayeko_sthan,
       req.body.dist_id,
+      req.body.office_id,
       req.body.manab_ghaite,
       req.body.manab_mareko,
       req.body.uddar_sankhya,
@@ -79,12 +81,13 @@ async function addBadhiBibaran(req, res) {
 
 //Controller for updating a BadhiBibaran
 async function updateBadhiBibaran(req, res) {
-  const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_aayeko_sthan=?, dist_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_aayeko_miti=?,  xeti_bibaran=?, banyajantu_mareko=?, botbiruwa_xeti=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
+  const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_aayeko_sthan=?, dist_id=?, office_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_aayeko_miti=?,  xeti_bibaran=?, banyajantu_mareko=?, botbiruwa_xeti=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
   pool.query(
     updateBadhiBibaranQuery,
     [
       req.body.badhi_aayeko_sthan,
       req.body.dist_id,
+      req.body.office_id,
       req.body.manab_ghaite,
       req.body.manab_mareko,
       req.body.uddar_sankhya,

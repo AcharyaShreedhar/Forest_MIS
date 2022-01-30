@@ -8,6 +8,7 @@ class Add extends Component {
     super(props);
     this.state = {
       dist_id: "",
+      office_id: "",
       paalika: "",
       qty: "",
       karyakram_miti: "",
@@ -40,6 +41,7 @@ class Add extends Component {
           karyakram_miti: karyakram_miti,
           laagat: laagat,
           dist_id: this.props.user.dist_id,
+          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

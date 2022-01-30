@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   activities_info.init({
     dist_id: DataTypes.INTEGER,
+    office_id: DataTypes.INTEGER,
     samudayikban_naam: DataTypes.STRING,
     fiscal_year: DataTypes.STRING,
     area: DataTypes.STRING,

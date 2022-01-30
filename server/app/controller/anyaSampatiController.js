@@ -3,11 +3,11 @@ const pool = require("../db");
 //Controller for Listing all Anya_Sampati
 async function getAllAnyaSampati(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and a.office_id like ? and a.dist_id like ?";
-  const getAllAnyaSampatiQuery = `select * from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and a.office_id like ? and a.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+    "SELECT count(*) as total from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and a.dist_id like ? and a.office_id like ?";
+  const getAllAnyaSampatiQuery = `select * from anya_sampatis as a where a.acquired_date BETWEEN ? and ? like ? and a.dist_id like ? and a.office_id ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.officeId, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,8 +15,8 @@ async function getAllAnyaSampati(req, res) {
         [
           req.body.fromDate,
           req.body.toDate,
-          req.body.officeId,
           req.body.distId,
+          req.body.officeId,
           req.body.sampati_name,
           req.body.page,
           req.body.perPage,
@@ -54,12 +54,12 @@ async function getAnyaSampati(req, res) {
 
 //Controller for adding a Anya_Samapti
 async function addAnyaSampati(req, res) {
-  const addAnyaSampatiQuery = `INSERT INTO anya_sampatis (dist_id,sampati_name,sampati_location,acquired_date,created_by,updated_by) values (?,?,?,?,?,?)`;
+  const addAnyaSampatiQuery = `INSERT INTO anya_sampatis (dist_id,office_id,sampati_name,sampati_location,acquired_date,created_by,updated_by) values (?,?,?,?,?,?,?)`;
   pool.query(
     addAnyaSampatiQuery,
     [
-      // req.body.office_id,
       req.body.dist_id,
+      req.body.office_id,
       req.body.sampati_name,
       req.body.sampati_location,
       req.body.acquired_date,

@@ -3,8 +3,8 @@ const pool = require("../db");
 //Controller for Listing all rastriyabanBibaran
 async function getAllRastriyabanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from rastriyabanbibarans as r where r.darta_miti BETWEEN ? and ? and r.dist_id like ?";
-  const getAllRastriyabanBibaranQuery = `select * from rastriyabanbibarans as r where r.darta_miti BETWEEN ? and ? and r.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from rastriyabanbibarans as r where r.darta_miti BETWEEN ? and ? and r.dist_id like ? and r.office_id like ?";
+  const getAllRastriyabanBibaranQuery = `select * from rastriyabanbibarans as r where r.darta_miti BETWEEN ? and ? and r.dist_id like ? and r.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId],
@@ -16,6 +16,7 @@ async function getAllRastriyabanBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
+          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -53,7 +54,7 @@ async function getRastriyabanBibaran(req, res) {
 
 //Controller for adding a RastriyabanBibaran
 async function addRastriyabanBibaran(req, res) {
-  const addRastriyabanBibaranQuery = `INSERT INTO rastriyabanbibarans (rastriyaban_naam, darta_no, darta_miti,  address,dist_id, main_species, area, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addRastriyabanBibaranQuery = `INSERT INTO rastriyabanbibarans (rastriyaban_naam, darta_no, darta_miti,  address,dist_id,office_id, main_species, area, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addRastriyabanBibaranQuery,
     [
@@ -62,6 +63,7 @@ async function addRastriyabanBibaran(req, res) {
       req.body.darta_miti,
       req.body.address,
       req.body.dist_id,
+      req.body.office_id,
       req.body.main_species,
       req.body.area,
       req.body.dalit_ghardhuri,
@@ -83,7 +85,7 @@ async function addRastriyabanBibaran(req, res) {
 
 //Controller for updating a RastriyabanBibaran
 async function updateRastriyabanBibaran(req, res) {
-  const updateRastriyabanBibaranQuery = `UPDATE rastriyabanbibarans SET rastriyaban_naam=?, darta_no=?, darta_miti=?, address=?, dist_id=?, main_species=?, area=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateRastriyabanBibaranQuery = `UPDATE rastriyabanbibarans SET rastriyaban_naam=?, darta_no=?, darta_miti=?, address=?, dist_id=?, office_id=?, main_species=?, area=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateRastriyabanBibaranQuery,
     [
@@ -92,6 +94,7 @@ async function updateRastriyabanBibaran(req, res) {
       req.body.darta_miti,
       req.body.address,
       req.body.dist_id,
+      req.body.office_id,
       req.body.main_species,
       req.body.area,
       req.body.dalit_ghardhuri,
