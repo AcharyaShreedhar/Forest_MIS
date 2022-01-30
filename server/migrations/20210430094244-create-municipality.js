@@ -16,6 +16,7 @@ module.exports = {
       },
       dist_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       created_by: {
         type: Sequelize.STRING,

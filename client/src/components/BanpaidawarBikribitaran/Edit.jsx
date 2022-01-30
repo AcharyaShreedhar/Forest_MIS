@@ -21,6 +21,7 @@ class Edit extends Component {
       bahiya_parinam: props.history.location.item.bahiya_parinam,
       bahiya_rakam: props.history.location.item.bahiya_rakam,
       dist_id: props.history.location.item.dist_id,
+      office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
@@ -41,40 +42,40 @@ class Edit extends Component {
 
   handleSubmit() {
     const {
-        id,
-        bikri_miti,
-        bandpaidawar_kisim,
-        ekai,
-        aantarik_dar,
-        aantarik_parinam,
-        aantarik_rakam,
-        aaapurti_dar,
-        aapurti_parinam,
-        aapurti_rakam,
-        bahiya_dar,
-        bahiya_parinam,
-        bahiya_rakam,
-        created_by,
+      id,
+      bikri_miti,
+      bandpaidawar_kisim,
+      ekai,
+      aantarik_dar,
+      aantarik_parinam,
+      aantarik_rakam,
+      aaapurti_dar,
+      aapurti_parinam,
+      aapurti_rakam,
+      bahiya_dar,
+      bahiya_parinam,
+      bahiya_rakam,
+      created_by,
     } = this.state;
     const payload = {
       banpaidawarbikribitaran: {
         data: {
-            bikri_miti: bikri_miti,
-            bandpaidawar_kisim: bandpaidawar_kisim,
-            ekai: ekai,
-            aantarik_dar: aantarik_dar,
-            aantarik_parinam: aantarik_parinam,
-            aantarik_rakam: aantarik_rakam,
-            aaapurti_dar: aaapurti_dar,
-            aapurti_parinam: aapurti_parinam,
-            aapurti_rakam: aapurti_rakam,
-            bahiya_dar: bahiya_dar,
-            bahiya_parinam: bahiya_parinam,
-            bahiya_rakam: bahiya_rakam,
-            dist_id: this.props.user.dist_id,
-            created_by: created_by || this.props.user.user_name,
-            updated_by: this.props.user.user_name,
-          
+          bikri_miti: bikri_miti,
+          bandpaidawar_kisim: bandpaidawar_kisim,
+          ekai: ekai,
+          aantarik_dar: aantarik_dar,
+          aantarik_parinam: aantarik_parinam,
+          aantarik_rakam: aantarik_rakam,
+          aaapurti_dar: aaapurti_dar,
+          aapurti_parinam: aapurti_parinam,
+          aapurti_rakam: aapurti_rakam,
+          bahiya_dar: bahiya_dar,
+          bahiya_parinam: bahiya_parinam,
+          bahiya_rakam: bahiya_rakam,
+          dist_id: this.props.user.dist_id,
+          office_id: this.props.user.office_id,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     };
@@ -87,25 +88,25 @@ class Edit extends Component {
   render() {
     const { title } = this.props;
     const {
-        bikri_miti,
-        bandpaidawar_kisim,
-        ekai,
-        aantarik_dar,
-        aantarik_parinam,
-        aantarik_rakam,
-        aaapurti_dar,
-        aapurti_parinam,
-        aapurti_rakam,
-        bahiya_dar,
-        bahiya_parinam,
-        bahiya_rakam,
-        showDialog,
+      bikri_miti,
+      bandpaidawar_kisim,
+      ekai,
+      aantarik_dar,
+      aantarik_parinam,
+      aantarik_rakam,
+      aaapurti_dar,
+      aapurti_parinam,
+      aapurti_rakam,
+      bahiya_dar,
+      bahiya_parinam,
+      bahiya_rakam,
+      showDialog,
     } = this.state;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
-        <ConfirmationDialoge
+          <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
             body="के तपाईँ वनपैदावार बिक्रिवितरण सम्बन्धि विवरण शंशोधन गर्न चाहनुहुन्छ ?"

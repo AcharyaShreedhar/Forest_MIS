@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all NijibanBibaran
 async function getAllNijibanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ?";
-  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ? and n.office_id like ?";
+  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ? and n.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId , req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,6 +15,7 @@ async function getAllNijibanBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
+          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -52,11 +53,12 @@ async function getNijibanBibaran(req, res) {
 
 //Controller for adding a NijibanBibaran
 async function addNijibanBibaran(req, res) {
-  const addNijibanBibaranQuery = `INSERT INTO nijiban_bibarans (dist_id, darta_no,swikrit_miti, nijiban_dhaniko_naam, perm_addr, curr_addr, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addNijibanBibaranQuery = `INSERT INTO nijiban_bibarans (dist_id, office_id, darta_no,swikrit_miti, nijiban_dhaniko_naam, perm_addr, curr_addr, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addNijibanBibaranQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.darta_no,
       req.body.swikrit_miti,
       req.body.nijiban_dhaniko_naam,
@@ -83,11 +85,12 @@ async function addNijibanBibaran(req, res) {
 
 //Controller for updating a NijibanBibaran
 async function updateNijibanBibaran(req, res) {
-  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?,office_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateNijibanBibaranQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.darta_no,
       req.body.swikrit_miti,
       req.body.nijiban_dhaniko_naam,

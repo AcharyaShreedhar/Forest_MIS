@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   employee.init(
     {
       dist_id: DataTypes.INTEGER,
+      office_id: DataTypes.INTEGER,
       emp_fname_eng: DataTypes.STRING,
       emp_lname_eng: DataTypes.STRING,
       emp_fname_nep: DataTypes.STRING,

@@ -1,13 +1,14 @@
 const pool = require("../db");
 //Controller for Listing all BanxetraAnyaprayojan
 async function getAllBanxetraAnyaprayojan(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from banxetra_anyaprayojans as a where a.arthik_barsa BETWEEN ? and ? and a.dist_id like ?";
-  const getAllBanxetraAnyaprayojanQuery = `select * from banxetra_anyaprayojans as a where a.arthik_barsa BETWEEN ? and ? and a.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId], (error, countresults, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from banxetra_anyaprayojans as a where a.arthik_barsa BETWEEN ? and ? and a.dist_id like ? and a.office_id like ?";
+  const getAllBanxetraAnyaprayojanQuery = `select * from banxetra_anyaprayojans as a where a.arthik_barsa BETWEEN ? and ? and a.dist_id like ? and a.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
       getAllBanxetraAnyaprayojanQuery,
-      [req.body.fromDate, req.body.toDate, req.body.distId, req.body.name, req.body.page, req.body.perPage],
+      [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId, req.body.name, req.body.page, req.body.perPage],
       (error, results, fields) => {
         if (error) throw error;
         res.send(
@@ -40,11 +41,12 @@ async function getBanxetraAnyaprayojan(req, res) {
 
 //Controller for adding a BanxetraAnyaprayojan
 async function addBanxetraAnyaprayojan(req, res) {
-  const addBanxetraAnyaprayojanQuery = `INSERT INTO banxetra_anyaprayojans (dist_id, arthik_barsa, uplabdakarta_naam, upalabdha_address, xetrafal_temp, xetrafal_perm, samaya_abadhi, rukh_hataunuparne, rukh_hatayeko, sattajagga_area, xetipurti_brixyaropan, sattajagga_brixyaropan, leejrakam_adhyaadhik, barsik_pratibedan, prapta_rajaswo, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanxetraAnyaprayojanQuery = `INSERT INTO banxetra_anyaprayojans (dist_id, office_id, arthik_barsa, uplabdakarta_naam, upalabdha_address, xetrafal_temp, xetrafal_perm, samaya_abadhi, rukh_hataunuparne, rukh_hatayeko, sattajagga_area, xetipurti_brixyaropan, sattajagga_brixyaropan, leejrakam_adhyaadhik, barsik_pratibedan, prapta_rajaswo, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanxetraAnyaprayojanQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.arthik_barsa,
       req.body.uplabdakarta_naam,
       req.body.upalabdha_address,
@@ -73,11 +75,12 @@ async function addBanxetraAnyaprayojan(req, res) {
 
 //Controller for updating a BanxetraAnyaprayojan
 async function updateBanxetraAnyaprayojan(req, res) {
-  const updateBanxetraAnyaprayojanQuery = `UPDATE banxetra_anyaprayojans SET dist_id=?, arthik_barsa=?, uplabdakarta_naam=?, upalabdha_address=?, xetrafal_temp=?, xetrafal_perm=?, samaya_abadhi=?, rukh_hataunuparne=?, rukh_hatayeko=?, sattajagga_area=?, xetipurti_brixyaropan=?, sattajagga_brixyaropan=?, leejrakam_adhyaadhik=?, barsik_pratibedan=?, prapta_rajaswo=?, created_by=?, updated_by=? WHERE banxetra_anyaprayojan_id=?`;
+  const updateBanxetraAnyaprayojanQuery = `UPDATE banxetra_anyaprayojans SET dist_id=?, office_id=?, arthik_barsa=?, uplabdakarta_naam=?, upalabdha_address=?, xetrafal_temp=?, xetrafal_perm=?, samaya_abadhi=?, rukh_hataunuparne=?, rukh_hatayeko=?, sattajagga_area=?, xetipurti_brixyaropan=?, sattajagga_brixyaropan=?, leejrakam_adhyaadhik=?, barsik_pratibedan=?, prapta_rajaswo=?, created_by=?, updated_by=? WHERE banxetra_anyaprayojan_id=?`;
   pool.query(
     updateBanxetraAnyaprayojanQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.arthik_barsa,
       req.body.uplabdakarta_naam,
       req.body.upalabdha_address,

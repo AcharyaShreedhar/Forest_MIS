@@ -2,7 +2,12 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { RojgarSrijana, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
+import {
+  RojgarSrijana,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import MiscellaneousActions from "../../../actions/miscellaneous";
 import { rojgarsrijanaHeadings, districtList } from "../../../services/config";
 
@@ -12,6 +17,7 @@ class Rojgarsrijana extends Component {
     this.state = {
       loc: "rojgarsrijanalist",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -41,19 +47,20 @@ class Rojgarsrijana extends Component {
     };
   }
   handlePer(e) {
-    const {  distId } = this.state;
+    const { distId, officeId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults( distId, 0, e);
+    this.fetchResults(distId, officeId, 0, e);
   }
   handleDistrict(e) {
-    const { perPage } = this.state;
+    const { officeId, perPage } = this.state;
     this.setState({ distId: e });
-    this.fetchResults( e, 0, perPage);
+    this.fetchResults(e, officeId, 0, perPage);
   }
 
-  fetchResults( distId, page, perPage) {
+  fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallRojgarsrijana({
       distId,
+      officeId,
       name: "banka_prakar",
       page: page,
       perPage,
@@ -61,14 +68,9 @@ class Rojgarsrijana extends Component {
   }
 
   handlePageChange(data) {
-    const { distId, perPage } = this.state;
+    const { distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(
-
-      distId,
-      data.selected * perPage,
-      perPage
-    );
+    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {
@@ -96,9 +98,9 @@ class Rojgarsrijana extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-  
-        this.props.deleteRojgarsrijana(item.rojgar_srijana_id);
-        this.setState({ showDialog: !this.state.showDialog });
+
+    this.props.deleteRojgarsrijana(item.rojgar_srijana_id);
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -107,16 +109,14 @@ class Rojgarsrijana extends Component {
 
   render() {
     const { loc, perPage, rojgarsrijanaList, showDialog } = this.state;
-    const { user,role } = this.props;
-   
+    const { user, role } = this.props;
+
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -141,9 +141,7 @@ class Rojgarsrijana extends Component {
                   ? Math.ceil(rojgarsrijanaList.total / perPage)
                   : 10
               }
-              data={
-                !isNil(rojgarsrijanaList) ? rojgarsrijanaList.list : []
-              }
+              data={!isNil(rojgarsrijanaList) ? rojgarsrijanaList.list : []}
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
@@ -188,7 +186,7 @@ Rojgarsrijana.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
   rojgarsrijanaDataList: state.miscellaneous.allrojgarsrijanaData,
 });
 
@@ -201,16 +199,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   updateRojgarsrijana: (payload, rojgarsrijanaId) =>
     dispatch(
-        MiscellaneousActions.updaterojgarsrijanaRequest(
-        payload,
-        rojgarsrijanaId
-      )
+      MiscellaneousActions.updaterojgarsrijanaRequest(payload, rojgarsrijanaId)
     ),
 
   deleteRojgarsrijana: (rojgarsrijanaId) =>
-    dispatch(
-        MiscellaneousActions.deleterojgarsrijanaRequest(rojgarsrijanaId)
-    ),
+    dispatch(MiscellaneousActions.deleterojgarsrijanaRequest(rojgarsrijanaId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rojgarsrijana);

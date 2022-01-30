@@ -21,6 +21,7 @@ class Karmacharidarbandi extends Component {
     this.state = {
       loc: "karmacharidarbandilist",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -50,19 +51,20 @@ class Karmacharidarbandi extends Component {
     };
   }
   handlePer(e) {
-    const { distId } = this.state;
+    const { distId, officeId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(distId, 0, e);
+    this.fetchResults(distId, officeId, 0, e);
   }
   handleDistrict(e) {
-    const { perPage } = this.state;
+    const { officeId, perPage } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(e, 0, perPage);
+    this.fetchResults(e, officeId, 0, perPage);
   }
 
-  fetchResults(distId, page, perPage) {
+  fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallKarmacharidarbandi({
       distId,
+      officeId,
       name: "post",
       page: page,
       perPage,
@@ -70,9 +72,9 @@ class Karmacharidarbandi extends Component {
   }
 
   handlePageChange(data) {
-    const { distId, perPage } = this.state;
+    const { distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(distId, data.selected * perPage, perPage);
+    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {
@@ -111,7 +113,7 @@ class Karmacharidarbandi extends Component {
 
   render() {
     const { loc, perPage, karmacharidarbandiList, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role } = this.props;
 
     return (
       <div>
@@ -192,7 +194,7 @@ Karmacharidarbandi.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
   karmacharidarbandiDataList:
     state.karmacharidarbandi.allkarmacharidarbandiData,
 });

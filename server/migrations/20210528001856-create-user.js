@@ -10,9 +10,14 @@ module.exports = {
       },
       dist_id:{
         type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       user_type: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       user_name: {
         type: Sequelize.STRING,

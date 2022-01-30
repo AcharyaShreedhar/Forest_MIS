@@ -2,9 +2,17 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { PahiroBebasthapan, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
+import {
+  PahiroBebasthapan,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import BipatbibaranActions from "../../../actions/bipatbibaran";
-import { pahirobebasthapanHeadings, districtList } from "../../../services/config";
+import {
+  pahirobebasthapanHeadings,
+  districtList,
+} from "../../../services/config";
 
 class Pahirobebasthapan extends Component {
   constructor(props) {
@@ -14,6 +22,7 @@ class Pahirobebasthapan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -45,31 +54,32 @@ class Pahirobebasthapan extends Component {
     };
   }
   handlePer(e) {
-    const { fromDate, toDate, distId } = this.state;
+    const { fromDate, toDate, distId, officeId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, 0, e);
+    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state;
     this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, 0, perPage);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state;
     this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
   }
 
-  fetchResults(fromDate, toDate, distId, page, perPage) {
+  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallPahirobebasthapan({
       fromDate,
       toDate,
       distId,
+      officeId,
       name: "pahiro_gayeko_miti",
       page: page,
       perPage,
@@ -77,12 +87,13 @@ class Pahirobebasthapan extends Component {
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, perPage } = this.state;
+    const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
       distId,
+      officeId,
       data.selected * perPage,
       perPage
     );
@@ -113,9 +124,9 @@ class Pahirobebasthapan extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-  
-        this.props.deletePahirobebasthapan(item.pahiro_bibaran_id);
-        this.setState({ showDialog: !this.state.showDialog });
+
+    this.props.deletePahirobebasthapan(item.pahiro_bibaran_id);
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -124,16 +135,14 @@ class Pahirobebasthapan extends Component {
 
   render() {
     const { loc, perPage, pahirobebasthapanList, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role } = this.props;
 
     return (
       <div>
-       <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ पहिरो व्यवस्थापन सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ पहिरो व्यवस्थापन सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -207,7 +216,7 @@ Pahirobebasthapan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
   pahirobebasthapanDataList: state.bipatbibaran.allpahirobibaranData,
 });
 
@@ -220,16 +229,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   updatePahirobebasthapan: (payload, pahirobibaranId) =>
     dispatch(
-        BipatbibaranActions.updatepahirobibaranRequest(
-        payload,
-        pahirobibaranId
-      )
+      BipatbibaranActions.updatepahirobibaranRequest(payload, pahirobibaranId)
     ),
 
   deletePahirobebasthapan: (pahirobibaranId) =>
-    dispatch(
-        BipatbibaranActions.deletepahirobibaranRequest(pahirobibaranId)
-    ),
+    dispatch(BipatbibaranActions.deletepahirobibaranRequest(pahirobibaranId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pahirobebasthapan);
