@@ -25,6 +25,7 @@ class Edit extends Component {
       brixyaropan_pragati: props.history.location.item.brixyaropan_pragati,
       brixyaropan_sankhya: props.history.location.item.brixyaropan_sankhya,
       dist_id: props.history.location.item.dist_id,
+      office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,

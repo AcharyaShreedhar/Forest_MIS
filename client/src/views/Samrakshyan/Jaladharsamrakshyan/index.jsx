@@ -2,22 +2,31 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { JaladharSamrakshyan, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
+import {
+  JaladharSamrakshyan,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import SamrakshyanActions from "../../../actions/samrakshyan";
-import { jaladharsamrakshyanHeadings, districtList } from "../../../services/config";
+import {
+  jaladharsamrakshyanHeadings,
+  districtList,
+} from "../../../services/config";
 
 class Jaladharsamrakshyan extends Component {
   constructor(props) {
     super(props);
     this.state = {
-       loc: "jaladharsamrakshyanlist",
-       distId: "%",
-       perPage: 10, 
-       page: 0,
-       showDialog: false,
-       item: {},
-       path: "jaladharsamrakshyan",
-       };
+      loc: "jaladharsamrakshyanlist",
+      distId: "%",
+      officeId: "%",
+      perPage: 10,
+      page: 0,
+      showDialog: false,
+      item: {},
+      path: "jaladharsamrakshyan",
+    };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
     this.handlePer = this.handlePer.bind(this);
@@ -33,25 +42,26 @@ class Jaladharsamrakshyan extends Component {
 
     var jaladharsamrakshyanList = [];
     if (nextProps !== prevState) {
-        jaladharsamrakshyanList = nextProps.jaladharsamrakshyanDataList.data;
+      jaladharsamrakshyanList = nextProps.jaladharsamrakshyanDataList.data;
     }
     return { loc, jaladharsamrakshyanList };
   }
 
   handlePer(e) {
-    const { distId } = this.state;
+    const { distId, officeId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(distId, 0, e);
+    this.fetchResults(distId, officeId, 0, e);
   }
   handleDistrict(e, item) {
-    const { perPage } = this.state;
+    const { officeId, perPage } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(e, 0, perPage);
+    this.fetchResults(e, officeId, 0, perPage);
   }
 
-  fetchResults(distId, page, perPage) {
+  fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallJaladharsamrakshyan({
       distId,
+      officeId,
       name: "karyakram_miti",
       page: page,
       perPage,
@@ -59,9 +69,9 @@ class Jaladharsamrakshyan extends Component {
   }
 
   handlePageChange(data) {
-    const { distId, perPage } = this.state;
+    const { distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(distId, data.selected * perPage, perPage);
+    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {
@@ -77,8 +87,8 @@ class Jaladharsamrakshyan extends Component {
       }
 
       case "delete": {
-        this.setState({ showDialog: !this.state.showDialog });      
-      break;
+        this.setState({ showDialog: !this.state.showDialog });
+        break;
       }
       default:
         break;
@@ -90,9 +100,9 @@ class Jaladharsamrakshyan extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-  
-        this.props.deleteJaladharsamrakshyan(item.jaladhar_samrakshyan_id);
-        this.setState({ showDialog: !this.state.showDialog });
+
+    this.props.deleteJaladharsamrakshyan(item.jaladhar_samrakshyan_id);
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -100,16 +110,14 @@ class Jaladharsamrakshyan extends Component {
   }
   render() {
     const { loc, perPage, jaladharsamrakshyanList, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role } = this.props;
 
     return (
       <div>
-       <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ जलाधार संरक्षण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ जलाधार संरक्षण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -134,7 +142,11 @@ class Jaladharsamrakshyan extends Component {
                   ? Math.ceil(jaladharsamrakshyanList.total / perPage)
                   : 10
               }
-              data={!isNil(jaladharsamrakshyanList) ? jaladharsamrakshyanList.list : []}
+              data={
+                !isNil(jaladharsamrakshyanList)
+                  ? jaladharsamrakshyanList.list
+                  : []
+              }
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
@@ -170,16 +182,16 @@ class Jaladharsamrakshyan extends Component {
 }
 
 Jaladharsamrakshyan.propTypes = {
-    jaladharsamrakshyanDataList: PropTypes.any,
+  jaladharsamrakshyanDataList: PropTypes.any,
 };
 
 Jaladharsamrakshyan.defaultProps = {
-    jaladharsamrakshyanDataList: {},
+  jaladharsamrakshyanDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
   jaladharsamrakshyanDataList: state.samrakshyan.alljaladharsamrakshyanData,
 });
 
@@ -190,10 +202,20 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(SamrakshyanActions.addjaladharsamrakshyanRequest(payload)),
 
   updateJaladharsamrakshyan: (payload, jaladharsamrakshyanId) =>
-    dispatch(SamrakshyanActions.updatejaladharsamrakshyanRequest(payload, jaladharsamrakshyanId)),
+    dispatch(
+      SamrakshyanActions.updatejaladharsamrakshyanRequest(
+        payload,
+        jaladharsamrakshyanId
+      )
+    ),
 
   deleteJaladharsamrakshyan: (jaladharsamrakshyanId) =>
-    dispatch(SamrakshyanActions.deletejaladharsamrakshyanRequest(jaladharsamrakshyanId)),
+    dispatch(
+      SamrakshyanActions.deletejaladharsamrakshyanRequest(jaladharsamrakshyanId)
+    ),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Jaladharsamrakshyan);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Jaladharsamrakshyan);

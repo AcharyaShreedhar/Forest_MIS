@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   jadibutis.init({
     dist_id: DataTypes.INTEGER,
+    office_id: DataTypes.INTEGER,
     jadibuti_thegana: DataTypes.STRING,
     jadibuti_kisim: DataTypes.STRING,
     jadibuti_prajati: DataTypes.STRING,

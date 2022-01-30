@@ -3,11 +3,11 @@ const pool = require("../db");
 //Controller for Listing all Vehicles
 async function getAllVehicles(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from vehicles as v where v.acquired_date BETWEEN ? and ? and v.dist_id like ?";
-  const getAllVehiclesQuery = `select * from vehicles as v where v.acquired_date BETWEEN ? and ? and v.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from vehicles as v where v.acquired_date BETWEEN ? and ? and v.dist_id like ? and v.office_id like ?";
+  const getAllVehiclesQuery = `select * from vehicles as v where v.acquired_date BETWEEN ? and ? and v.dist_id like ? and v.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -16,6 +16,7 @@ async function getAllVehicles(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
+          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -53,11 +54,12 @@ async function getVehicles(req, res) {
 
 //Controller for adding a Vehicled
 async function addVehicles(req, res) {
-  const addVehiclesQuery = `INSERT INTO vehicles (dist_id,vehicle_type,vehicle_no,engine_no,chasis_no,acquired_source,acquired_date,acquired_price,manufacturer_country,manufacturer_comp,model_name,manufactured_date,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addVehiclesQuery = `INSERT INTO vehicles (dist_id, office_id,vehicle_type,vehicle_no,engine_no,chasis_no,acquired_source,acquired_date,acquired_price,manufacturer_country,manufacturer_comp,model_name,manufactured_date,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addVehiclesQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.vehicle_type,
       req.body.vehicle_no,
       req.body.engine_no,
@@ -84,11 +86,12 @@ async function addVehicles(req, res) {
 
 //Controller for updating a Vehicle
 async function updateVehicles(req, res) {
-  const updateVehiclesQuery = `UPDATE vehicles SET dist_id=?, vehicle_type=?, vehicle_no=?, engine_no=?, chasis_no=?, acquired_source=?, acquired_date=?, acquired_price=?, manufacturer_country=?, manufacturer_comp=?, model_name=?, manufactured_date=?, remarks=?, created_by=?,updated_by=? WHERE vehicle_id=?`;
+  const updateVehiclesQuery = `UPDATE vehicles SET dist_id=?, office_id=?, vehicle_type=?, vehicle_no=?, engine_no=?, chasis_no=?, acquired_source=?, acquired_date=?, acquired_price=?, manufacturer_country=?, manufacturer_comp=?, model_name=?, manufactured_date=?, remarks=?, created_by=?,updated_by=? WHERE vehicle_id=?`;
   pool.query(
     updateVehiclesQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.vehicle_type,
       req.body.vehicle_no,
       req.body.engine_no,

@@ -11,10 +11,12 @@ module.exports = {
       sampati_name: {
         type: Sequelize.STRING
       },
-      office_id: {
+      dist_id: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
-      dist_id: {
+      office_id: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       sampati_location: {

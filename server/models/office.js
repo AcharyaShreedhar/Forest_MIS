@@ -17,12 +17,12 @@ module.exports = (sequelize, DataTypes) => {
     office_id: DataTypes.INTEGER,
     office_name: DataTypes.STRING,
     office_location: DataTypes.STRING,
-    office_id: DataTypes.INTEGER,
+    dist_id: DataTypes.INTEGER,
     created_by: DataTypes.STRING,
     updated_by: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'office',
+    modelName: 'offices',
   });
   return office;
 };

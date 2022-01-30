@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all ChaklabanBibaran
 async function getAllChaklabanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from chaklaban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ?";
-  const getAllChaklabanBibaranQuery = `select * from chaklaban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from chaklaban_bibarans as c where c.darta_miti BETWEEN ? and ? and  c.dist_id like ? and c.office_id like ?";
+  const getAllChaklabanBibaranQuery = `select * from chaklaban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ? and c.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,6 +15,7 @@ async function getAllChaklabanBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
+          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -52,7 +53,7 @@ async function getChaklabanBibaran(req, res) {
 
 //Controller for adding a ChaklabanBibaran
 async function addChaklabanBibaran(req, res) {
-  const addChaklabanBibaranQuery = `INSERT INTO chaklaban_bibarans (chaklaban_naam, darta_no, darta_miti,  dist_id,  address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addChaklabanBibaranQuery = `INSERT INTO chaklaban_bibarans (chaklaban_naam, darta_no, darta_miti,  dist_id, office_id,  address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addChaklabanBibaranQuery,
     [
@@ -60,6 +61,7 @@ async function addChaklabanBibaran(req, res) {
       req.body.darta_no,
       req.body.darta_miti,
       req.body.dist_id,
+      req.body.office_id,
       req.body.address,
       req.body.area,
       req.body.main_species,
@@ -82,7 +84,7 @@ async function addChaklabanBibaran(req, res) {
 
 //Controller for updating a ChaklabanBibaran
 async function updateChaklabanBibaran(req, res) {
-  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET  chaklaban_naam=?, darta_no=?, darta_miti=?, dist_id=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET  chaklaban_naam=?, darta_no=?, darta_miti=?, dist_id=?,office_id=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateChaklabanBibaranQuery,
     [
@@ -90,6 +92,7 @@ async function updateChaklabanBibaran(req, res) {
       req.body.darta_no,
       req.body.darta_miti,
       req.body.dist_id,
+      req.body.office_id,
       req.body.address,
       req.body.area,
       req.body.main_species,

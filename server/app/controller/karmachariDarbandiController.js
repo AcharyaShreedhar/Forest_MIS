@@ -3,16 +3,16 @@ const pool = require("../db");
 // controller for getting all KarmachariDarbandi
 async function getAllKarmachariDarbandi(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from karmachari_darbandis as k where  k.dist_id like ?";
-  const getAllKarmachariDarbandiQuery = `select * from karmachari_darbandis as k where  k.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+    "SELECT count(*) as total from karmachari_darbandis as k where k.dist_id like ? and k.office_id like ?";
+  const getAllKarmachariDarbandiQuery = `select * from karmachari_darbandis as k where k.dist_id like ? and k.office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.distId],
+    [req.body.distId,req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
         getAllKarmachariDarbandiQuery,
-        [req.body.distId, req.body.name, req.body.page, req.body.perPage],
+        [req.body.distId, req.body.officeId, req.body.name, req.body.page, req.body.perPage],
         (error, results, fields) => {
           if (error) throw error;
           res.send(
@@ -48,11 +48,12 @@ async function getKarmachariDarbandi(req, res) {
 //Service for adding a KarmachariDarbandi
 
 async function addKarmachariDarbandi(req, res) {
-  const addKarmachariDarbandiQuery = `INSERT INTO karmachari_darbandis (dist_id,post,karyalaya,thegana,kayam_darbandi_sankhya,padpurti_sankhya, khali_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addKarmachariDarbandiQuery = `INSERT INTO karmachari_darbandis (dist_id,office_id,post,karyalaya,thegana,kayam_darbandi_sankhya,padpurti_sankhya, khali_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   await pool.query(
     addKarmachariDarbandiQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.post,
       req.body.karyalaya,
       req.body.thegana,
@@ -74,11 +75,12 @@ async function addKarmachariDarbandi(req, res) {
 //Controller for updating a KarmachariDarbandi
 
 async function updateKarmachariDarbandi(req, res) {
-  const updateKarmachariDarbandiQuery = `UPDATE karmachari_darbandis SET dist_id=?, post=?,karyalaya=?,thegana=?,kayam_darbandi_sankhya=?,padpurti_sankhya=?, khali_sankhya=?, created_by=?, updated_by=? WHERE karmachari_darbandi_id=?`;
+  const updateKarmachariDarbandiQuery = `UPDATE karmachari_darbandis SET dist_id=?,office_id=?, post=?,karyalaya=?,thegana=?,kayam_darbandi_sankhya=?,padpurti_sankhya=?, khali_sankhya=?, created_by=?, updated_by=? WHERE karmachari_darbandi_id=?`;
   await pool.query(
     updateKarmachariDarbandiQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.post,
       req.body.karyalaya,
       req.body.thegana,
