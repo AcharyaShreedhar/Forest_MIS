@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals, isEmpty } from "ramda";
+import { equals,isEmpty } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 const AtikramanKisim = [
@@ -29,7 +29,6 @@ class Add extends Component {
       samrachana_bibaran: "",
       atikraman_abastha: 1,
       dist_id: "",
-      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -77,7 +76,6 @@ class Add extends Component {
           samrachana_bibaran: samrachana_bibaran,
           atikraman_abastha: atikraman_abastha,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

@@ -12,7 +12,6 @@ class Add extends Component {
       lavgrahi_sankhya: "",
       mulyaabhibridi_kar: "",
       dist_id: "",
-      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -31,8 +30,13 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { arthik_barsa, kaath, daura, lavgrahi_sankhya, mulyaabhibridi_kar } =
-      this.state;
+    const {
+      arthik_barsa,
+      kaath,
+      daura,
+      lavgrahi_sankhya,
+      mulyaabhibridi_kar,
+    } = this.state;
     const payload = {
       banpaidawar: {
         data: {
@@ -42,7 +46,6 @@ class Add extends Component {
           lavgrahi_sankhya: lavgrahi_sankhya,
           mulyaabhibridi_kar: mulyaabhibridi_kar,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

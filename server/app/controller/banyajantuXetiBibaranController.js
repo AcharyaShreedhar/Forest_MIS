@@ -3,11 +3,11 @@ const pool = require("../db");
 //Controller for Listing all Banyajantu Xeti Bibarans
 async function getAllBanyajantuXetiBibarans(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ?";
-  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ?";
+  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -16,7 +16,6 @@ async function getAllBanyajantuXetiBibarans(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -53,12 +52,11 @@ async function getBabyajantuXetiBibarans(req, res) {
 
 //Controller for adding a Banyajantu Xeti Bibaran
 async function addBanyajantuXetiBibarans(req, res) {
-  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (dist_id, office_id, pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,ghatana_address,balinali_noksani,anna_bhandaran,pasudhan_xeti,ghargoth_xeti,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (dist_id, pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,ghatana_address,balinali_noksani,anna_bhandaran,pasudhan_xeti,ghargoth_xeti,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuXetiBibaransQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.pidit_name,
       req.body.pidit_address,
       req.body.jagga_bibaran,
@@ -90,12 +88,11 @@ async function addBanyajantuXetiBibarans(req, res) {
 
 //Controller for updating a Banyajantu Xeti Bibaran
 async function updateBanyajantuXetiBibarans(req, res) {
-  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET dist_id=?,office_id=?,pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,ghatana_address=?,balinali_noksani=?,anna_bhandaran=?,pasudhan_xeti=?,ghargoth_xeti=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
+  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET dist_id=?,pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,ghatana_address=?,balinali_noksani=?,anna_bhandaran=?,pasudhan_xeti=?,ghargoth_xeti=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
   pool.query(
     updateBanyajantuXetiBibaransQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.pidit_name,
       req.body.pidit_address,
       req.body.jagga_bibaran,

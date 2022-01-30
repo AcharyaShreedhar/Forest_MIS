@@ -9,12 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       dist_id:{
-        allowNull: false,
         type: Sequelize.INTEGER,
-      },
-      office_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER
       },
       jaheri_partibedan_miti: {
         type: Sequelize.STRING,

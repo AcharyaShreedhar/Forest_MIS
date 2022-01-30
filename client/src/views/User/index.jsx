@@ -12,7 +12,6 @@ export class User extends Component {
     this.state = {
       loc: "userlist",
       distId: "%",
-      officeId: "%",
       perPage: 10,
       page: 0,
       path: "user",
@@ -29,7 +28,6 @@ export class User extends Component {
   componentDidMount() {
     this.props.fetchallUser({
       distId: "%",
-      officeId: "%",
       name: "user_name",
       page: 0,
       perPage: 10,
@@ -48,20 +46,19 @@ export class User extends Component {
     };
   }
   handlePer(e) {
-    const { distId, officeId } = this.state;
+    const { distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(distId, officeId, 0, e);
+    this.fetchResults(distId, 0, e);
   }
   handleDistrict(e) {
-    const { officeId, perPage } = this.state;
+    const { perPage } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(e, officeId, 0, perPage);
+    this.fetchResults(e, 0, perPage);
   }
 
-  fetchResults(distId, officeId, page, perPage) {
+  fetchResults(distId, page, perPage) {
     this.props.fetchallUser({
       distId,
-      officeId,
       name: "user_name",
       page: page,
       perPage,
@@ -69,9 +66,9 @@ export class User extends Component {
   }
 
   handlePageChange(data) {
-    const { distId, officeId, perPage } = this.state;
+    const { distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
+    this.fetchResults(distId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {

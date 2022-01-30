@@ -2,31 +2,22 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import {
-  BanbikasKaryabibaran,
-  Filter,
-  ReportGenerator,
-  ConfirmationDialoge,
-} from "../../../components";
+import { BanbikasKaryabibaran, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import KaryabibaranActions from "../../../actions/karyabibaran";
-import {
-  banbikaskaryabibaranHeadings,
-  districtList,
-} from "../../../services/config";
+import { banbikaskaryabibaranHeadings, districtList } from "../../../services/config";
 
 class Banbikaskaryabibaran extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = { 
       loc: "banbikaskaryabibaranlist",
       distId: "%",
-      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
       path: "banbikaskaryabibaran",
-    };
+     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
     this.handlePer = this.handlePer.bind(this);
@@ -48,20 +39,19 @@ class Banbikaskaryabibaran extends Component {
   }
 
   handlePer(e) {
-    const { distId, officeId } = this.state;
+    const { distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(distId, officeId, 0, e);
+    this.fetchResults(distId, 0, e);
   }
   handleDistrict(e, item) {
-    const { officeId, perPage } = this.state;
+    const { perPage } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(e, officeId, 0, perPage);
+    this.fetchResults(e, 0, perPage);
   }
 
-  fetchResults(distId, officeId, page, perPage) {
+  fetchResults(distId, page, perPage) {
     this.props.fetchallBanbikaskaryabibaran({
       distId,
-      officeId,
       name: "banbikas_karyabibaran",
       page: page,
       perPage,
@@ -69,9 +59,9 @@ class Banbikaskaryabibaran extends Component {
   }
 
   handlePageChange(data) {
-    const { distId, officeId, perPage } = this.state;
+    const { distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
+    this.fetchResults(distId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {
@@ -99,9 +89,9 @@ class Banbikaskaryabibaran extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-
-    this.props.deleteBanbikaskaryabibaran(item.banbikas_karyabibaran_id);
-    this.setState({ showDialog: !this.state.showDialog });
+  
+        this.props.deleteBanbikaskaryabibaran(item.banbikas_karyabibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -109,14 +99,16 @@ class Banbikaskaryabibaran extends Component {
   }
   render() {
     const { loc, perPage, banbikaskaryabibaranList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
-        <ConfirmationDialoge
+      <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={"के तपाईँ वनविकास कार्यविवरण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
+          body={
+            "के तपाईँ वनविकास कार्यविवरण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"
+          }
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -141,11 +133,7 @@ class Banbikaskaryabibaran extends Component {
                   ? Math.ceil(banbikaskaryabibaranList.total / perPage)
                   : 10
               }
-              data={
-                !isNil(banbikaskaryabibaranList)
-                  ? banbikaskaryabibaranList.list
-                  : []
-              }
+              data={!isNil(banbikaskaryabibaranList) ? banbikaskaryabibaranList.list : []}
               per={perPage}
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
@@ -190,7 +178,7 @@ Banbikaskaryabibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role: state.app.user.user_type,
+  role:state.app.user.user_type,
   banbikaskaryabibaranDataList: state.karyabibaran.allbanbikaskaryabibaranData,
 });
 
@@ -201,22 +189,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(KaryabibaranActions.addbanbikaskaryabibaranRequest(payload)),
 
   updateBanbikaskaryabibaran: (payload, banbikaskaryabibaranId) =>
-    dispatch(
-      KaryabibaranActions.updatebanbikaskaryabibaranRequest(
-        payload,
-        banbikaskaryabibaranId
-      )
-    ),
+    dispatch(KaryabibaranActions.updatebanbikaskaryabibaranRequest(payload, banbikaskaryabibaranId)),
 
   deleteBanbikaskaryabibaran: (banbikaskaryabibaranId) =>
-    dispatch(
-      KaryabibaranActions.deletebanbikaskaryabibaranRequest(
-        banbikaskaryabibaranId
-      )
-    ),
+    dispatch(KaryabibaranActions.deletebanbikaskaryabibaranRequest(banbikaskaryabibaranId)),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Banbikaskaryabibaran);
+export default connect(mapStateToProps, mapDispatchToProps)(Banbikaskaryabibaran);

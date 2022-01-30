@@ -3,11 +3,11 @@ const pool = require("../db");
 //Controller for Listing all UddhamBibaran
 async function getAllUddhamBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from  uddhams as u where u.darta_miti BETWEEN ? and ? and u.dist_id like ? and u.office_id like ?";
-  const getAllUddhamBibaranQuery = `select * from uddhams as u where u.darta_miti BETWEEN ? and ? and u.dist_id like ?  and u.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from  uddhams as u where u.darta_miti BETWEEN ? and ? and u.dist_id like ?";
+  const getAllUddhamBibaranQuery = `select * from uddhams as u where u.darta_miti BETWEEN ? and ? and u.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -16,7 +16,6 @@ async function getAllUddhamBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -54,12 +53,11 @@ async function getUddhamBibaran(req, res) {
 
 //Controller for adding a UddhamBibaran
 async function addUddhamBibaran(req, res) {
-  const addUddhamBibaranQuery = `INSERT INTO uddhams(dist_id,office_id,name,address,uddham_type,darta_miti,rojgar_sankhya,created_by,updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addUddhamBibaranQuery = `INSERT INTO uddhams(dist_id,name,address,uddham_type,darta_miti,rojgar_sankhya,created_by,updated_by) values (?,?,?,?,?,?,?,?)`;
   pool.query(
     addUddhamBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.name,
       req.body.address,
       req.body.uddham_type,
@@ -79,12 +77,11 @@ async function addUddhamBibaran(req, res) {
 
 //Controller for updating a UddhamBibaran
 async function updateUddhamBibaran(req, res) {
-  const updateUddhamBibaranQuery = `UPDATE uddhams SET dist_id=?, office_id=?, name=?,address=?,uddham_type=?,darta_miti=?,rojgar_sankhya=?,created_by=?,updated_by=? WHERE uddham_id=?`;
+  const updateUddhamBibaranQuery = `UPDATE uddhams SET dist_id=?, name=?,address=?,uddham_type=?,darta_miti=?,rojgar_sankhya=?,created_by=?,updated_by=? WHERE uddham_id=?`;
   pool.query(
     updateUddhamBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.name,
       req.body.address,
       req.body.uddham_type,

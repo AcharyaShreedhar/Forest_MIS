@@ -15,10 +15,11 @@ async function getMuddaAnusandhandayariBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) throw error;
-      // console.log("result-faisala",results, results.length);
-      let mudda = {};
-      if (results.length!==0){
-        mudda = {
+      res.send(
+        JSON.stringify({
+          status: 200,
+          error: null,
+          mudda: {
             banpaidawar_chorinikasi: results[0],
             banyajantu_aparad: results[1],
             banatikraman: results[2],
@@ -39,40 +40,8 @@ async function getMuddaAnusandhandayariBibaran(req, res) {
                 results[0].faisalahunabaki_jamma +
                 results[1].faisalahunabaki_jamma +
                 results[2].faisalahunabaki_jamma,
-            }
-          }
-      }else{
-        mudda = {}
-      }
-      // console.log("mudda",mudda);
-      res.send(
-        JSON.stringify({
-          status: 200,
-          error: null,
-          mudda: mudda
-          // mudda: {
-          //   banpaidawar_chorinikasi: results[0],
-          //   banyajantu_aparad: results[1],
-          //   banatikraman: results[2],
-          //   total: {
-          //     faisalahunabaki:
-          //       results[0].faisalahunabaki +
-          //       results[1].faisalahunabaki +
-          //       results[2].faisalahunabaki,
-          //     dayar_bhayeka:
-          //       results[0].dayar_bhayeka +
-          //       results[1].dayar_bhayeka +
-          //       results[2].dayar_bhayeka,
-          //     faisala_bhayeka:
-          //       results[0].faisala_bhayeka +
-          //       results[1].faisala_bhayeka +
-          //       results[2].faisala_bhayeka,
-          //     faisalahunabaki_jamma:
-          //       results[0].faisalahunabaki_jamma +
-          //       results[1].faisalahunabaki_jamma +
-          //       results[2].faisalahunabaki_jamma,
-          //   },
-          // },
+            },
+          },
         })
       );
     }

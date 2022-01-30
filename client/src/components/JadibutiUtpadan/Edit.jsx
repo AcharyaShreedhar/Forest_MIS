@@ -8,7 +8,6 @@ class Edit extends Component {
     this.state = {
       id: props.history.location.item.jadibuti_id,
       dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
       jadibuti_thegana: props.history.location.item.jadibuti_thegana,
       jadibuti_kisim: props.history.location.item.jadibuti_kisim,
       jadibuti_prajati: props.history.location.item.jadibuti_prajati,
@@ -53,7 +52,6 @@ class Edit extends Component {
           jadibuti_pragati: jadibuti_pragati,
           jadibuti_sankhya: jadibuti_sankhya,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },

@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all PanimuhanSamrakshyan
 async function getAllPanimuhanSamrakshyan(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from panimuhansamrakshyan_bibarans as p where p.karyakram_miti BETWEEN ? and ? and p.dist_id like ? and p.office_id like ?";
-  const getAllPanimuhanSamrakshyanQuery = `select * from panimuhansamrakshyan_bibarans as p where p.karyakram_miti BETWEEN ? and ? and p.dist_id like ? and p.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from panimuhansamrakshyan_bibarans as p where p.karyakram_miti BETWEEN ? and ? and p.dist_id like ?";
+  const getAllPanimuhanSamrakshyanQuery = `select * from panimuhansamrakshyan_bibarans as p where p.karyakram_miti BETWEEN ? and ? and p.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,7 +15,6 @@ async function getAllPanimuhanSamrakshyan(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -53,12 +52,11 @@ async function getPanimuhanSamrakshyan(req, res) {
 
 //Controller for adding a PanimuhanSamrakshyan
 async function addPanimuhanSamrakshyan(req, res) {
-  const addPanimuhanSamrakshyanQuery = `INSERT INTO panimuhansamrakshyan_bibarans (dist_id, office_id, sthan, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?,?)`;
+  const addPanimuhanSamrakshyanQuery = `INSERT INTO panimuhansamrakshyan_bibarans (dist_id, sthan, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?)`;
   pool.query(
     addPanimuhanSamrakshyanQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.sthan,
       req.body.qty,
       req.body.karyakram_miti,
@@ -77,12 +75,11 @@ async function addPanimuhanSamrakshyan(req, res) {
 
 //Controller for updating a PanimuhanSamrakshyan
 async function updatePanimuhanSamrakshyan(req, res) {
-  const updatePanimuhanSamrakshyanQuery = `UPDATE panimuhansamrakshyan_bibarans SET dist_id=?, office_id=?, sthan=?, qty=?, karyakram_miti=?, laagat=?, created_by=?, updated_by=? WHERE panimuhansamrakshyan_id=?`;
+  const updatePanimuhanSamrakshyanQuery = `UPDATE panimuhansamrakshyan_bibarans SET dist_id=?, sthan=?, qty=?, karyakram_miti=?, laagat=?, created_by=?, updated_by=? WHERE panimuhansamrakshyan_id=?`;
   pool.query(
     updatePanimuhanSamrakshyanQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.sthan,
       req.body.qty,
       req.body.karyakram_miti,

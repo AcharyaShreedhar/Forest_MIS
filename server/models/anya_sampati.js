@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   anya_sampatis.init({
     sampati_name: DataTypes.STRING,
-    dist_id: DataTypes.INTEGER,
     office_id: DataTypes.INTEGER,
+    dist_id: DataTypes.INTEGER,
     sampati_location: DataTypes.STRING,
     acquired_date: DataTypes.STRING,
     created_by: DataTypes.STRING,

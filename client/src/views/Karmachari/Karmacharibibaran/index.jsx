@@ -22,7 +22,6 @@ class Karmacharibibaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -50,32 +49,31 @@ class Karmacharibibaran extends Component {
     return { loc, karmacharibibaranList };
   }
   handlePer(e) {
-    const { fromDate, toDate, distId, officeId } = this.state;
+    const { fromDate, toDate, distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
+    this.fetchResults(fromDate, toDate, distId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
+    const { distId, perPage, toDate } = this.state;
     this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    this.fetchResults(e, toDate, distId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
+    const { distId, fromDate, perPage } = this.state;
     this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
 
-  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallKarmacharibibaran({
       fromDate,
       toDate,
       distId,
-      officeId,
       name: "emp_appoint_date",
       page: page,
       perPage,
@@ -83,13 +81,12 @@ class Karmacharibibaran extends Component {
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
       distId,
-      officeId,
       data.selected * perPage,
       perPage
     );
@@ -130,7 +127,7 @@ class Karmacharibibaran extends Component {
 
   render() {
     const { loc, perPage, karmacharibibaranList, showDialog } = this.state;
-    const { user, districtData, role } = this.props;
+    const { user, districtData,role } = this.props;
 
     return (
       <div>
@@ -211,7 +208,7 @@ Karmacharibibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role: state.app.user.user_type,
+  role:state.app.user.user_type,
   districtData: state.app,
   karmacharibibaranDataList: state.karmacharibibaran.allemployeesData,
 });

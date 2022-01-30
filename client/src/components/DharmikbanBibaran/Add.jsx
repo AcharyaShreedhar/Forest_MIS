@@ -7,6 +7,7 @@ import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import "./DharmikbanBibaran.scss";
 
+
 const ForestTypes = [
   { id: 1, value: "प्राकृतिक्" },
   { id: 2, value: "वृक्षरोपण" },
@@ -33,7 +34,6 @@ class Add extends Component {
       renewed_date: "",
       renewal_date: "",
       dist_id: "",
-      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -114,7 +114,6 @@ class Add extends Component {
           forest_maujdat: forest_maujdat,
           renewal_date: renewal_date,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },
@@ -160,7 +159,7 @@ class Add extends Component {
       isEmpty(area) ||
       isEmpty(dalit_ghardhuri) ||
       isEmpty(janjati_ghardhuri) ||
-      isEmpty(anya_ghardhuri) ||
+      isEmpty(anya_ghardhuri)||
       isEmpty(female) ||
       isEmpty(male) ||
       isEmpty(main_species) ||

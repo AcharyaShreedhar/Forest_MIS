@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all activities_infos
 async function getAllActivitiesInfo(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from activities_infos as a where a.fiscal_year BETWEEN ? and ? and a.dist_id like ? and a.office_id like ?";
-  const getAllActivitiesInfoQuery = `select * from activities_infos as a where a.fiscal_year BETWEEN ? and ? and a.dist_id  like ? and a.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from activities_infos as a where a.fiscal_year BETWEEN ? and ? and a.dist_id like ?";
+  const getAllActivitiesInfoQuery = `select * from activities_infos as a where a.fiscal_year BETWEEN ? and ? and a.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,7 +15,6 @@ async function getAllActivitiesInfo(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -53,12 +52,11 @@ async function getActivitiesInfo(req, res) {
 
 //Controller for adding a ActivitiesInfo
 async function addActivitiesInfo(req, res) {
-  const addActivitiesInfoQuery = `INSERT INTO activities_infos (dist_id, office_id, samudayikban_naam, fiscal_year, area, production_from_conservation_timber, production_from_conservation_wood, employment_generated_workingday, withingroup_timber, withingroup_wood, outsidegroup_timber, outsidegroup_wood, maujdat_timber, maujdat_wood, annual_income, annual_expenditure, netannual_saving, niyamit_rojgar_count, community_udhyam_bibaran, annual_bibaran, lekha_parikshyan,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addActivitiesInfoQuery = `INSERT INTO activities_infos (dist_id, samudayikban_naam, fiscal_year, area, production_from_conservation_timber, production_from_conservation_wood, employment_generated_workingday, withingroup_timber, withingroup_wood, outsidegroup_timber, outsidegroup_wood, maujdat_timber, maujdat_wood, annual_income, annual_expenditure, netannual_saving, niyamit_rojgar_count, community_udhyam_bibaran, annual_bibaran, lekha_parikshyan,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addActivitiesInfoQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.samudayikban_naam,
       req.body.fiscal_year,
       req.body.area,
@@ -92,12 +90,11 @@ async function addActivitiesInfo(req, res) {
 
 //Controller for updating a ActivitiesInfo
 async function updateActivitiesInfo(req, res) {
-  const updateActivitiesInfoQuery = `UPDATE activities_infos SET dist_id=?, office_id=? samudayikban_naam=?, fiscal_year=?, area=?, production_from_conservation_timber=?, production_from_conservation_wood=?, employment_generated_workingday=?, withingroup_timber=?, withingroup_wood=?, outsidegroup_timber=?, outsidegroup_wood=?, maujdat_timber=?, maujdat_wood=?, annual_income=?, annual_expenditure=?, netannual_saving=?, niyamit_rojgar_count=?, community_udhyam_bibaran=?, annual_bibaran=?, lekha_parikshyan=?,created_by=?, updated_by=? WHERE activities_info_id=?`;
+  const updateActivitiesInfoQuery = `UPDATE activities_infos SET dist_id=?, samudayikban_naam=?, fiscal_year=?, area=?, production_from_conservation_timber=?, production_from_conservation_wood=?, employment_generated_workingday=?, withingroup_timber=?, withingroup_wood=?, outsidegroup_timber=?, outsidegroup_wood=?, maujdat_timber=?, maujdat_wood=?, annual_income=?, annual_expenditure=?, netannual_saving=?, niyamit_rojgar_count=?, community_udhyam_bibaran=?, annual_bibaran=?, lekha_parikshyan=?,created_by=?, updated_by=? WHERE activities_info_id=?`;
   pool.query(
     updateActivitiesInfoQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.samudayikban_naam,
       req.body.fiscal_year,
       req.body.area,

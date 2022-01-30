@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       badhi_aayeko_sthan: DataTypes.STRING,
       dist_id: DataTypes.INTEGER,
-      office_id: DataTypes.INTEGER,
       manab_ghaite: DataTypes.STRING,
       manab_mareko: DataTypes.STRING,
       uddar_sankhya: DataTypes.STRING,

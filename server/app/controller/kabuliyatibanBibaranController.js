@@ -2,8 +2,8 @@ const pool = require("../db");
 //Controller for Listing all KabuliyatibanBibaran
 async function getAllKabuliyatibanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from kabuliyatiban_bibarans as k where k.darta_miti BETWEEN ? and ? and k.dist_id like ? and k.office_id like ? ";
-  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans as k where k.darta_miti BETWEEN ? and ? and k.dist_id like ? and k.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from kabuliyatiban_bibarans as k where k.darta_miti BETWEEN ? and ? and k.dist_id like ?";
+  const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans as k where k.darta_miti BETWEEN ? and ? and k.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId],
@@ -15,7 +15,6 @@ async function getAllKabuliyatibanBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -53,12 +52,11 @@ async function getKabuliyatibanBibaran(req, res) {
 
 //Controller for adding a KabuliyatibanBibaran
 async function addKabuliyatibanBibaran(req, res) {
-  const addKabuliyatibanBibaranQuery = `INSERT INTO kabuliyatiban_bibarans (dist_id,office_id,darta_no,darta_miti,area, dalit_ghardhuri, perm_addr, curr_addr, janjati_ghardhuri, anya_ghardhuri, female, male, kabuliyati_ban_samiti_name, sampanna, madhyam, bipanna, dalit_rep, janjati_rep, anya_rep, adhyakshya, adhyakshya_gender, sachib, sachib_gender, created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addKabuliyatibanBibaranQuery = `INSERT INTO kabuliyatiban_bibarans (dist_id,darta_no,darta_miti,area, dalit_ghardhuri, perm_addr, curr_addr, janjati_ghardhuri, anya_ghardhuri, female, male, kabuliyati_ban_samiti_name, sampanna, madhyam, bipanna, dalit_rep, janjati_rep, anya_rep, adhyakshya, adhyakshya_gender, sachib, sachib_gender, created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addKabuliyatibanBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.darta_no,
       req.body.darta_miti,
       req.body.area,
@@ -94,12 +92,11 @@ async function addKabuliyatibanBibaran(req, res) {
 
 //Controller for updating a KabuliyatibanBibaran
 async function updateKabuliyatibanBibaran(req, res) {
-  const updateKabuliyatibanBibaranQuery = `UPDATE kabuliyatiban_bibarans SET dist_id=?, office_id=?, darta_no=?, darta_miti=?,area=?, dalit_ghardhuri=?, perm_addr=?, curr_addr=?, janjati_ghardhuri=?, anya_ghardhuri=?, female=?, male=?, kabuliyati_ban_samiti_name=?, sampanna=?, madhyam=?, bipanna=?, dalit_rep=?, janjati_rep=?, anya_rep=?, adhyakshya=?, adhyakshya_gender=?, sachib=?, sachib_gender=?, created_by=?,updated_by=? WHERE darta_no=?`;
+  const updateKabuliyatibanBibaranQuery = `UPDATE kabuliyatiban_bibarans SET dist_id=?, darta_no=?, darta_miti=?,area=?, dalit_ghardhuri=?, perm_addr=?, curr_addr=?, janjati_ghardhuri=?, anya_ghardhuri=?, female=?, male=?, kabuliyati_ban_samiti_name=?, sampanna=?, madhyam=?, bipanna=?, dalit_rep=?, janjati_rep=?, anya_rep=?, adhyakshya=?, adhyakshya_gender=?, sachib=?, sachib_gender=?, created_by=?,updated_by=? WHERE darta_no=?`;
   pool.query(
     updateKabuliyatibanBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.darta_no,
       req.body.darta_miti,
       req.body.area,

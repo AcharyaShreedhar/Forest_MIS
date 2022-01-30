@@ -104,7 +104,7 @@ class Jadibuti extends Component {
   }
   render() {
     const { loc, perPage, jadibutiList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -181,7 +181,7 @@ Jadibuti.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role: state.app.user.user_type,
+  role:state.app.user.user_type,
   jadibutiDataList: state.biruwautpadan.alljadibutiData,
 });
 

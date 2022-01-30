@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals, isEmpty } from "ramda";
+import { equals,isEmpty } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 const AtikramanKisim = [
@@ -21,16 +21,17 @@ class Edit extends Component {
       id: props.history.location.item.banxetra_atikraman_id,
       atikramit_area: props.history.location.item.atikramit_area,
       address: props.history.location.item.address,
-      atikraman_kisim: props.history.location.item.atikraman_kisim,
+      atikraman_kisim: 
+        props.history.location.item.atikraman_kisim,
       dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
       janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
       anya_ghardhuri: props.history.location.item.anya_ghardhuri,
       atikraman_miti: props.history.location.item.atikraman_miti,
       atikraman_prayojan: props.history.location.item.atikraman_prayojan,
       samrachana_bibaran: props.history.location.item.samrachana_bibaran,
-      atikraman_abastha: props.history.location.item.atikraman_abastha,
+      atikraman_abastha:
+        props.history.location.item.atikraman_abastha,
       dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
@@ -80,7 +81,6 @@ class Edit extends Component {
           samrachana_bibaran: samrachana_bibaran,
           atikraman_abastha: atikraman_abastha,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },

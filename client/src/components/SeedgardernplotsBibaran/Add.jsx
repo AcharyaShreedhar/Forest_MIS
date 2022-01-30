@@ -15,7 +15,6 @@ class Add extends Component {
       established_date: "",
       status: "",
       dist_id: "",
-      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -37,8 +36,14 @@ class Add extends Component {
     this.setState({ established_date: e });
   }
   handleSubmit() {
-    const { plot_type, prajati, area, location, established_date, status } =
-      this.state;
+    const {
+      plot_type,
+      prajati,
+      area,
+      location,
+      established_date,
+      status,
+    } = this.state;
     const payload = {
       plotbibaran: {
         data: {
@@ -49,7 +54,6 @@ class Add extends Component {
           established_date: established_date,
           status: status,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

@@ -22,7 +22,6 @@ class Bikribitaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -45,39 +44,37 @@ class Bikribitaran extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
     var banpaidawarbikribitaranList = [];
     if (nextProps !== prevState) {
-      banpaidawarbikribitaranList =
-        nextProps.banpaidawarbikribitaranDataList.data;
+      banpaidawarbikribitaranList = nextProps.banpaidawarbikribitaranDataList.data;
     }
     return { banpaidawarbikribitaranList, loc };
   }
 
   handlePer(e) {
-    const { fromDate, toDate, distId, officeId } = this.state;
+    const { fromDate, toDate, distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
+    this.fetchResults(fromDate, toDate, distId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
+    const { distId, perPage, toDate } = this.state;
     this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    this.fetchResults(e, toDate, distId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
+    const { distId, fromDate, perPage } = this.state;
     this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
 
-  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallBanpaidawarbikribitaran({
       fromDate,
       toDate,
       distId,
-      officeId,
       name: "bikri_miti",
       page: page,
       perPage,
@@ -85,14 +82,13 @@ class Bikribitaran extends Component {
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
 
     this.fetchResults(
       fromDate,
       toDate,
       distId,
-      officeId,
       data.selected * perPage,
       perPage
     );
@@ -123,9 +119,9 @@ class Bikribitaran extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-
-    this.props.deleteBanpaidawarbikribitaran(item.bikribitaran_id);
-    this.setState({ showDialog: !this.state.showDialog });
+  
+        this.props.deleteBanpaidawarbikribitaran(item.bikribitaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -133,9 +129,8 @@ class Bikribitaran extends Component {
   }
 
   render() {
-    const { banpaidawarbikribitaranList, loc, perPage, showDialog } =
-      this.state;
-    const { user, role } = this.props;
+    const { banpaidawarbikribitaranList, loc, perPage, showDialog } = this.state;
+    const { user,role } = this.props;
     return (
       <div>
         <ConfirmationDialoge
@@ -201,9 +196,7 @@ class Bikribitaran extends Component {
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
-            onUpdate={(e, id) =>
-              this.props.updateBanpaidawarbikribitaran(e, id)
-            }
+            onUpdate={(e, id) => this.props.updateBanpaidawarbikribitaran(e, id)}
           />
         )}
       </div>
@@ -221,31 +214,21 @@ Bikribitaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role: state.app.user.user_type,
-  banpaidawarbikribitaranDataList:
-    state.banpaidawar.allbanpaidawarbikribitaranData,
+  role:state.app.user.user_type,
+  banpaidawarbikribitaranDataList: state.banpaidawar.allbanpaidawarbikribitaranData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanpaidawarbikribitaran: (payload) =>
-    dispatch(
-      BanpaidawarActions.fetchallbanpaidawarbikribitaranRequest(payload)
-    ),
+    dispatch(BanpaidawarActions.fetchallbanpaidawarbikribitaranRequest(payload)),
   addBanpaidawarbikribitaran: (payload) =>
     dispatch(BanpaidawarActions.addbanpaidawarbikribitaranRequest(payload)),
 
   updateBanpaidawarbikribitaran: (payload, bikribitaranId) =>
-    dispatch(
-      BanpaidawarActions.updatebanpaidawarbikribitaranRequest(
-        payload,
-        bikribitaranId
-      )
-    ),
+    dispatch(BanpaidawarActions.updatebanpaidawarbikribitaranRequest(payload, bikribitaranId)),
 
   deleteBanpaidawarbikribitaran: (bikribitaranId) =>
-    dispatch(
-      BanpaidawarActions.deletebanpaidawarbikribitaranRequest(bikribitaranId)
-    ),
+    dispatch(BanpaidawarActions.deletebanpaidawarbikribitaranRequest(bikribitaranId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bikribitaran);

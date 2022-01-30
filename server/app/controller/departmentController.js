@@ -41,13 +41,12 @@ async function getDepartment(req, res) {
 
 //Controller for adding a Department
 async function addDepartment(req, res) {
-  const addDepartmentQuery = `INSERT INTO departments (dept_name_nep, office_id, dist_id, dept_name_eng,created_by,updated_by) values (?,?,?,?,?)`;
+  const addDepartmentQuery = `INSERT INTO departments (dept_name_nep, dist_id, dept_name_eng,created_by,updated_by) values (?,?,?,?,?)`;
   pool.query(
     addDepartmentQuery,
     [
       req.body.dept_name_nep,
       req.body.dist_id,
-      req.body.office_id,
       req.body.dept_name_eng,
       req.body.created_by,
       req.body.updated_by,
@@ -63,13 +62,12 @@ async function addDepartment(req, res) {
 
 //Controller for updating a Department
 async function updateDepartment(req, res) {
-  const updateDepartmentQuery = `UPDATE departments SET  dept_name_nep=?, dist_id=?,office_id=?,dept_name_nep=?,created_by=?,updated_by=? WHERE dept_id=?`;
+  const updateDepartmentQuery = `UPDATE departments SET  dept_name_nep=?, dist_id=?,dept_name_nep=?,created_by=?,updated_by=? WHERE dept_id=?`;
   pool.query(
     updateDepartmentQuery,
     [
       req.body.dept_name_nep,
       req.body.dist_id,
-      req.body.office_id,
       req.body.dept_name_eng,
       req.body.created_by,
       req.body.updated_by,

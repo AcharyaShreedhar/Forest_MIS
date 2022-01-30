@@ -55,7 +55,7 @@ class Add extends Component {
           sampati_location: sampati_location,
           acquired_date: acquired_date,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
+          // office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

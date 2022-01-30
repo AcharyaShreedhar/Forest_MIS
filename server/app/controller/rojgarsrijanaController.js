@@ -3,16 +3,16 @@ const pool = require("../db");
 // controller for getting all Rojgar srijana
 async function getAllRojgarSrijana(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from  rojgar_srijanas as r where  r.dist_id like ? and r.office_id like ?";
-  const getAllRojgarSrijanaQuery = `select * from rojgar_srijanas as r where  r.dist_id like ? and r.office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+    "SELECT count(*) as total from  rojgar_srijanas as r where  r.dist_id like ?";
+  const getAllRojgarSrijanaQuery = `select * from rojgar_srijanas as r where  r.dist_id like ? ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.distId, req.body.officeId],
+    [req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
         getAllRojgarSrijanaQuery,
-        [req.body.distId, req.body.officeId, req.body.name, req.body.page, req.body.perPage],
+        [req.body.distId, req.body.name, req.body.page, req.body.perPage],
         (error, results, fields) => {
           if (error) throw error;
           res.send(
@@ -48,12 +48,11 @@ async function getRojgarSrijana(req, res) {
 //Service for adding a rojgar srijana
 
 async function addRojgarSrijana(req, res) {
-  const addRojgarSrijanaQuery = `INSERT INTO rojgar_srijanas (dist_id, office_id, karya,miti,ekai,banka_prakar,mahila,purus,kaifiyat,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
+  const addRojgarSrijanaQuery = `INSERT INTO rojgar_srijanas (dist_id, karya,miti,ekai,banka_prakar,mahila,purus,kaifiyat,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   await pool.query(
     addRojgarSrijanaQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.karya,
       req.body.miti,
       req.body.ekai,
@@ -76,12 +75,11 @@ async function addRojgarSrijana(req, res) {
 //Controller for updating a rojgar srijana
 
 async function updateRojgarSrijana(req, res) {
-  const updateRojgarSrijanaQuery = `UPDATE rojgar_srijanas SET dist_id=?, office_id=?, karya=?,miti=?, ekai=?, banka_prakar=?, mahila=?, purus=?, kaifiyat=?,created_by=?,updated_by=? WHERE rojgar_srijana_id=?`;
+  const updateRojgarSrijanaQuery = `UPDATE rojgar_srijanas SET dist_id=?, karya=?,miti=?, ekai=?, banka_prakar=?, mahila=?, purus=?, kaifiyat=?,created_by=?,updated_by=? WHERE rojgar_srijana_id=?`;
   await pool.query(
     updateRojgarSrijanaQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.karya,
       req.body.miti,
       req.body.ekai,

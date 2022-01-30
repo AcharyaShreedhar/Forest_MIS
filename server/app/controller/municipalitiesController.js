@@ -24,12 +24,11 @@ async function getMunicipalities(req, res) {
 
 //Controller for adding a Municipality
 async function addMunicipalities(req, res) {
-  const addMunicipalitiesQuery = `INSERT INTO municipalities (dist_id,office_id,mun_name_nep,mun_name_eng,dist_id,created_by,updated_by) values (?,?,?,?,?,?,?)`;
+  const addMunicipalitiesQuery = `INSERT INTO municipalities (dist_id,mun_name_nep,mun_name_eng,dist_id,created_by,updated_by) values (?,?,?,?,?,?)`;
   pool.query(
     addMunicipalitiesQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.mun_name_nep,
       req.body.mun_name_eng,
       req.body.dist_id,
@@ -47,12 +46,11 @@ async function addMunicipalities(req, res) {
 
 //Controller for updating a Municapility
 async function updateMunicipalities(req, res) {
-  const updateMunicipalitiesQuery = `UPDATE municipalities SET dist_id=?, office_id=?, mun_name_nep=?, mun_name_eng=?, dist_id=?, created_by=?,updated_by=? WHERE mun_id=?`;
+  const updateMunicipalitiesQuery = `UPDATE municipalities SET dist_id=?, mun_name_nep=?, mun_name_eng=?, dist_id=?, created_by=?,updated_by=? WHERE mun_id=?`;
   pool.query(
     updateMunicipalitiesQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.mun_name_nep,
       req.body.mun_name_eng,
       req.body.dist_id,

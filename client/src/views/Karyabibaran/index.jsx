@@ -17,7 +17,6 @@ export class Karyabibaran extends Component {
     // });
     this.props.fetchallSamajikkaryabibaran({
       distId: "%",
-      officeId: "%",
       name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
@@ -77,8 +76,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanbikaskaryabibaran: (payload) =>
     dispatch(KaryabibaranActions.fetchallbanbikaskaryabibaranRequest(payload)),
-  fetchallSamajikkaryabibaran: (payload) =>
-    dispatch(KaryabibaranActions.fetchallsamajikkaryabibaranRequest(payload)),
+    fetchallSamajikkaryabibaran: (payload) =>
+    dispatch(KaryabibaranActions.fetchallsamajikkaryabibaranRequest(payload)), 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karyabibaran);

@@ -2,12 +2,12 @@ const pool = require("../db");
 //Controller for Listing all DharmikbanBibaran
 async function getAllDharmikbanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from dharmikban_bibarans as d where d.handover_date BETWEEN ? and ? and d.dist_id like ? and d.office_id like ?";
+    "SELECT count(*) as total from dharmikban_bibarans as d where d.handover_date BETWEEN ? and ? and d.dist_id like ?";
   const getAllDharmikbanBibaranQuery =
-    "SELECT d.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM `dharmikban_bibarans` as d left JOIN nabikaran_karyayojanas as n on d.darta_no=n.darta_id HAVING d.handover_date BETWEEN ? and ? and d.dist_id like ? and d.office_id like ? ORDER BY ? DESC LIMIT ?,?";
+    "SELECT d.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM `dharmikban_bibarans` as d left JOIN nabikaran_karyayojanas as n on d.darta_no=n.darta_id HAVING d.handover_date BETWEEN ? and ? and d.dist_id like ? ORDER BY ? DESC LIMIT ?,?";
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -16,7 +16,6 @@ async function getAllDharmikbanBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -55,12 +54,11 @@ async function getDharmikbanBibaran(req, res) {
 
 //Controller for adding a DharmikbanBibaran
 async function addDharmikbanBibaran(req, res) {
-  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dist_id, office_id, darta_no,dharmikban_name, community_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dist_id, darta_no,dharmikban_name, community_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addDharmikbanBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.darta_no,
       req.body.dharmikban_name,
       req.body.community_name,
@@ -89,12 +87,11 @@ async function addDharmikbanBibaran(req, res) {
 
 //Controller for updating a DharmikbanBibaran
 async function updateDharmikbanBibaran(req, res) {
-  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dist_id=?, office_id=?, darta_no=?,dharmikban_name=?, community_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dist_id=?, darta_no=?,dharmikban_name=?, community_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateDharmikbanBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.darta_no,
       req.body.dharmikban_name,
       req.body.community_name,

@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
   nabikaran_karyayojana.init(
     {
       dist_id: DataTypes.INTEGER,
-      office_id: DataTypes.INTEGER,
       renewal_date: DataTypes.STRING,
       renewed_date: DataTypes.STRING,
       nabikaran_abadhi: DataTypes.STRING,

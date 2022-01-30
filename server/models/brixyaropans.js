@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   brixyaropans.init({
     dist_id: DataTypes.INTEGER,
-    office_id: DataTypes.INTEGER,
     brixyaropan_thegana: DataTypes.STRING,
     brixyaropan_miti: DataTypes.STRING,
     xetra:DataTypes.INTEGER,

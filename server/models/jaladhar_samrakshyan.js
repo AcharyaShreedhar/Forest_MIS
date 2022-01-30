@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
   jaladhar_samrakshyan.init(
     {
       dist_id: DataTypes.STRING,
-      office_id: DataTypes.INTEGER,
       sthan: DataTypes.STRING,
       qty: DataTypes.STRING,
       karyakram_miti: DataTypes.STRING,

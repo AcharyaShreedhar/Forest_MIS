@@ -15,7 +15,6 @@ class Add extends Component {
       darta_miti: "",
       rojgar_sankhya: "",
       dist_id: "",
-      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -40,8 +39,13 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { name, darta_miti, address, uddham_type, rojgar_sankhya } =
-      this.state;
+    const {
+      name,
+      darta_miti,
+      address,
+      uddham_type,
+      rojgar_sankhya,
+    } = this.state;
     const payload = {
       uddham: {
         data: {
@@ -51,7 +55,6 @@ class Add extends Component {
           uddham_type: uddham_type,
           rojgar_sankhya: rojgar_sankhya,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

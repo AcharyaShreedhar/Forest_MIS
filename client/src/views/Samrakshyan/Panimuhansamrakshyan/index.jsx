@@ -9,10 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import SamrakshyanActions from "../../../actions/samrakshyan";
-import {
-  panimuhansamrakshyanHeadings,
-  districtList,
-} from "../../../services/config";
+import { panimuhansamrakshyanHeadings, districtList } from "../../../services/config";
 
 class Panimuhansamrakshyan extends Component {
   constructor(props) {
@@ -22,7 +19,6 @@ class Panimuhansamrakshyan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -45,7 +41,7 @@ class Panimuhansamrakshyan extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
     var panimuhansamrakshyanList = [];
     if (nextProps !== prevState) {
-      panimuhansamrakshyanList = nextProps.panimuhansamrakshyanDataList.data;
+        panimuhansamrakshyanList = nextProps.panimuhansamrakshyanDataList.data;
     }
 
     return {
@@ -54,32 +50,31 @@ class Panimuhansamrakshyan extends Component {
     };
   }
   handlePer(e) {
-    const { fromDate, toDate, distId, officeId } = this.state;
+    const { fromDate, toDate, distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
+    this.fetchResults(fromDate, toDate, distId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
+    const { distId, perPage, toDate } = this.state;
     this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    this.fetchResults(e, toDate, distId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
+    const { distId, fromDate, perPage } = this.state;
     this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
 
-  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
+  fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallPanimuhansamrakshyan({
       fromDate,
       toDate,
       distId,
-      officeId,
       name: "karyakram_miti",
       page: page,
       perPage,
@@ -87,13 +82,12 @@ class Panimuhansamrakshyan extends Component {
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state;
+    const { fromDate, toDate, distId, perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
       distId,
-      officeId,
       data.selected * perPage,
       perPage
     );
@@ -136,7 +130,7 @@ class Panimuhansamrakshyan extends Component {
 
   render() {
     const { loc, perPage, panimuhansamrakshyanList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user,role } = this.props;
 
     return (
       <div>
@@ -171,9 +165,7 @@ class Panimuhansamrakshyan extends Component {
                   : 10
               }
               data={
-                !isNil(panimuhansamrakshyanList)
-                  ? panimuhansamrakshyanList.list
-                  : []
+                !isNil(panimuhansamrakshyanList) ? panimuhansamrakshyanList.list : []
               }
               per={perPage}
               pers={[10, 25, 50, "all"]}
@@ -219,7 +211,7 @@ Panimuhansamrakshyan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role: state.app.user.user_type,
+  role:state.app.user.user_type,
   panimuhansamrakshyanDataList: state.samrakshyan.allpanimuhansamrakshyanData,
 });
 
@@ -240,13 +232,8 @@ const mapDispatchToProps = (dispatch) => ({
 
   deletePanimuhansamrakshyan: (panimuhanSamrakshyanId) =>
     dispatch(
-      SamrakshyanActions.deletepanimuhansamrakshyanRequest(
-        panimuhanSamrakshyanId
-      )
+      SamrakshyanActions.deletepanimuhansamrakshyanRequest(panimuhanSamrakshyanId)
     ),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Panimuhansamrakshyan);
+export default connect(mapStateToProps, mapDispatchToProps)(Panimuhansamrakshyan);

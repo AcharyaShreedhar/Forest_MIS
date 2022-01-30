@@ -49,7 +49,6 @@ class Edit extends Component {
         ? 1
         : 2,
       dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
@@ -116,7 +115,6 @@ class Edit extends Component {
           annual_bibaran: equals(annual_bibaran, 1) ? "बुझाएको" : "नबुझाएको",
           lekha_parikshyan: equals(lekha_parikshyan, 1) ? "गरेको" : "नगरेको",
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.username,
           updated_by: this.props.user.user_name,
         },

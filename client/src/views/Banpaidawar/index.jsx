@@ -13,7 +13,6 @@ export class Banpaidawar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -22,7 +21,6 @@ export class Banpaidawar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -31,7 +29,6 @@ export class Banpaidawar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "bikri_miti",
       page: 0,
       perPage: 10,
@@ -97,9 +94,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BanpaidawarActions.fetchallbanpaidawarRequest(payload)),
 
   fetchallBanpaidawarbikribitaran: (payload) =>
-    dispatch(
-      BanpaidawarActions.fetchallbanpaidawarbikribitaranRequest(payload)
-    ),
+    dispatch(BanpaidawarActions.fetchallbanpaidawarbikribitaranRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banpaidawar);

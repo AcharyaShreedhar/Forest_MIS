@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { isEmpty } from "ramda";
 import PropTypes from "prop-types";
-import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
+import {englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -18,20 +18,13 @@ class Edit extends Component {
       perm_addr: props.history.location.item.perm_addr,
       curr_addr: props.history.location.item.curr_addr,
       area: englishToNepaliNumber(props.history.location.item.area),
-      dalit_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.dalit_ghardhuri
-      ),
-      janjati_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.janjati_ghardhuri
-      ),
-      anya_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.anya_ghardhuri
-      ),
+      dalit_ghardhuri: englishToNepaliNumber(props.history.location.item.dalit_ghardhuri),
+      janjati_ghardhuri: englishToNepaliNumber(props.history.location.item.janjati_ghardhuri),
+      anya_ghardhuri: englishToNepaliNumber(props.history.location.item.anya_ghardhuri),
       female: englishToNepaliNumber(props.history.location.item.female),
       male: englishToNepaliNumber(props.history.location.item.male),
       main_species: props.history.location.item.main_species,
       dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,

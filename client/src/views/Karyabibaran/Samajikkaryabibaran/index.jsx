@@ -2,18 +2,9 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import {
-  SamajikKaryabibaran,
-  Filter,
-  ReportGenerator,
-  ConfirmationDialoge,
-} from "../../../components";
+import { SamajikKaryabibaran, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
 import KaryabibaranActions from "../../../actions/karyabibaran";
-import {
-  samajikkaryabibaranHeadings,
-  districtList,
-  officeList,
-} from "../../../services/config";
+import { samajikkaryabibaranHeadings, districtList } from "../../../services/config";
 
 class Samajikkaryabibaran extends Component {
   constructor(props) {
@@ -21,7 +12,6 @@ class Samajikkaryabibaran extends Component {
     this.state = {
       loc: "samajikkaryabibaranlist",
       distId: "%",
-      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -51,20 +41,19 @@ class Samajikkaryabibaran extends Component {
     };
   }
   handlePer(e) {
-    const { distId, officeId } = this.state;
+    const {  distId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(distId, officeId, 0, e);
+    this.fetchResults( distId, 0, e);
   }
   handleDistrict(e) {
-    const { officeId, perPage } = this.state;
+    const { perPage } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(e, officeId, 0, perPage);
+    this.fetchResults( e, 0, perPage);
   }
 
-  fetchResults(distId, officeId, page, perPage) {
+  fetchResults( distId, page, perPage) {
     this.props.fetchallSamajikkaryabibaran({
       distId,
-      officeId,
       name: "ban_type",
       page: page,
       perPage,
@@ -72,9 +61,14 @@ class Samajikkaryabibaran extends Component {
   }
 
   handlePageChange(data) {
-    const { distId, officeId, perPage } = this.state;
+    const { distId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
+    this.fetchResults(
+
+      distId,
+      data.selected * perPage,
+      perPage
+    );
   }
 
   handleSelectMenu(event, item, path) {
@@ -103,9 +97,9 @@ class Samajikkaryabibaran extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-
-    this.props.deleteSamajikkaryabibaran(item.samajik_karyabibaran_id);
-    this.setState({ showDialog: !this.state.showDialog });
+  
+        this.props.deleteSamajikkaryabibaran(item.samajik_karyabibaran_id);
+        this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -114,14 +108,16 @@ class Samajikkaryabibaran extends Component {
 
   render() {
     const { loc, perPage, samajikkaryabibaranList, showDialog } = this.state;
-    const { user, role } = this.props;
-
+    const { user,role } = this.props;
+   
     return (
       <div>
-        <ConfirmationDialoge
+      <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={"के तपाईँ सामाजिक कार्य सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
+          body={
+            "के तपाईँ सामाजिक कार्य सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
+          }
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -147,9 +143,7 @@ class Samajikkaryabibaran extends Component {
                   : 10
               }
               data={
-                !isNil(samajikkaryabibaranList)
-                  ? samajikkaryabibaranList.list
-                  : []
+                !isNil(samajikkaryabibaranList) ? samajikkaryabibaranList.list : []
               }
               per={perPage}
               pers={[10, 25, 50, "all"]}
@@ -195,7 +189,7 @@ Samajikkaryabibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role: state.app.user.user_type,
+  role:state.app.user.user_type,
   samajikkaryabibaranDataList: state.karyabibaran.allsamajikkaryabibaranData,
 });
 
@@ -216,13 +210,8 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteSamajikkaryabibaran: (samajikkaryabibaranId) =>
     dispatch(
-      KaryabibaranActions.deletesamajikkaryabibaranRequest(
-        samajikkaryabibaranId
-      )
+        KaryabibaranActions.deletesamajikkaryabibaranRequest(samajikkaryabibaranId)
     ),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Samajikkaryabibaran);
+export default connect(mapStateToProps, mapDispatchToProps)(Samajikkaryabibaran);

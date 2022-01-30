@@ -12,7 +12,6 @@ export class Karmachari extends Component {
   componentDidMount() {
     this.props.fetchallKarmacharidarbandi({
       distId: "%",
-      officeId: "%",
       name: "post",
       page: 0,
       perPage: 10,
@@ -22,7 +21,6 @@ export class Karmachari extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "emp_appoint_date",
       page: 0,
       perPage: 10,

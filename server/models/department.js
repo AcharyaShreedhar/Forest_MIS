@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   department.init({
     dist_id: DataTypes.INTEGER,
-    office_id: DataTypes.INTEGER,
     dept_name_nep: DataTypes.STRING,
     dept_name_eng: DataTypes.STRING
   }, {

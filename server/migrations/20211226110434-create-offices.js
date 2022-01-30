@@ -17,10 +17,10 @@ module.exports = {
       dist_id: {
         type: Sequelize.INTEGER
       },
-      created_by: {
+      createdBy: {
         type: Sequelize.STRING
       },
-      updated_by: {
+      updatedBy: {
         type: Sequelize.STRING
       },
       createdAt: {

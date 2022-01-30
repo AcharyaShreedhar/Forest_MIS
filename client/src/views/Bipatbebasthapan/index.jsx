@@ -10,19 +10,17 @@ import BipatbibaranActions from "../../actions/bipatbibaran";
 export class Bipatbebasthapan extends Component {
   componentDidMount() {
     this.props.fetchallPahirobebasthapan({
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "pahiro_gayeko_miti",
-      page: 0,
-      perPage: 10,
+        fromDate: "2075-01-01",
+        toDate: "2090-12-30",
+        distId: "%",
+        name: "pahiro_gayeko_miti",
+        page: 0,
+        perPage: 10,
     });
     this.props.fetchallBandadelo({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "bandadelo_miti",
       page: 0,
       perPage: 10,
@@ -80,11 +78,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallPahirobebasthapan: (payload) =>
+fetchallPahirobebasthapan: (payload) =>
     dispatch(BipatbibaranActions.fetchallpahirobibaranRequest(payload)),
 
-  fetchallBandadelo: (payload) =>
+fetchallBandadelo: (payload) =>
     dispatch(BipatbibaranActions.fetchallbandadelobibaranRequest(payload)),
+  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bipatbebasthapan);

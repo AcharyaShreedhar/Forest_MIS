@@ -14,7 +14,6 @@ export class Add extends Component {
     super(props);
     this.state = {
       dist_id: "",
-      office_id: "",
       darta_no: "",
       samudayik_upavokta_samiti_name: "",
       darta_miti: "",
@@ -116,7 +115,6 @@ export class Add extends Component {
           sachib_gender: sachib_gender,
           sachib: sachib,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
           showDialog: false,
         },
@@ -157,7 +155,7 @@ export class Add extends Component {
       isEmpty(darta_miti) ||
       isEmpty(dalit_ghardhuri) ||
       isEmpty(janjati_ghardhuri) ||
-      isEmpty(anya_ghardhuri) ||
+      isEmpty(anya_ghardhuri)||
       isEmpty(female) ||
       isEmpty(male) ||
       isEmpty(sampanna) ||

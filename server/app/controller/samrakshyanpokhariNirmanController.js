@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all SamrakshyanpokhariNirman
 async function getAllSamrakshyanpokhariNirman(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from samrakshyanpokharinirman_bibarans as s where s.karyakram_miti BETWEEN ? and ? and s.dist_id like ? and s.office_id like ?";
-  const getAllSamrakshyanpokhariNirmanQuery = `select * from samrakshyanpokharinirman_bibarans as s where s.karyakram_miti BETWEEN ? and ? and s.dist_id like ? and s.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from samrakshyanpokharinirman_bibarans as s where s.karyakram_miti BETWEEN ? and ? and s.dist_id like ?";
+  const getAllSamrakshyanpokhariNirmanQuery = `select * from samrakshyanpokharinirman_bibarans as s where s.karyakram_miti BETWEEN ? and ? and s.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,7 +15,6 @@ async function getAllSamrakshyanpokhariNirman(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -53,12 +52,11 @@ async function getSamrakshyanpokhariNirman(req, res) {
 
 //Controller for adding a SamrakshyanpokhariNirman
 async function addSamrakshyanpokhariNirman(req, res) {
-  const addSamrakshyanpokhariNirmanQuery = `INSERT INTO samrakshyanpokharinirman_bibarans (dist_id,office_id, paalika, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?)`;
+  const addSamrakshyanpokhariNirmanQuery = `INSERT INTO samrakshyanpokharinirman_bibarans (dist_id, paalika, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?)`;
   pool.query(
     addSamrakshyanpokhariNirmanQuery,
     [
       req.body.dist_id, 
-      req.body.office_id, 
       req.body.paalika, 
       req.body.qty, 
       req.body.karyakram_miti, 
@@ -77,12 +75,11 @@ async function addSamrakshyanpokhariNirman(req, res) {
 
 //Controller for updating a SamrakshyanpokhariNirman
 async function updateSamrakshyanpokhariNirman(req, res) {
-  const updateSamrakshyanpokhariNirmanQuery = `UPDATE samrakshyanpokharinirman_bibarans SET dist_id=?,office_id=?, paalika=?, qty=?, karyakram_miti=?, laagat=?, created_by=?, updated_by=? WHERE id=?`;
+  const updateSamrakshyanpokhariNirmanQuery = `UPDATE samrakshyanpokharinirman_bibarans SET dist_id=?, paalika=?, qty=?, karyakram_miti=?, laagat=?, created_by=?, updated_by=? WHERE id=?`;
   pool.query(
     updateSamrakshyanpokhariNirmanQuery,
     [
         req.body.dist_id,
-        req.body.office_id,
         req.body.paalika, 
         req.body.qty, 
         req.body.karyakram_miti, 

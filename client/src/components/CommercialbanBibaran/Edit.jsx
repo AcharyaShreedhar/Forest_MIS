@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { isEmpty } from "ramda";
-import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
+import {isEmpty} from "ramda"
+import {englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -18,15 +18,9 @@ class Edit extends Component {
       address: props.history.location.item.address,
       main_species: props.history.location.item.main_species,
       area: englishToNepaliNumber(props.history.location.item.area),
-      dalit_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.dalit_ghardhuri
-      ),
-      janjati_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.janjati_ghardhuri
-      ),
-      anya_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.anya_ghardhuri
-      ),
+      dalit_ghardhuri: englishToNepaliNumber(props.history.location.item.dalit_ghardhuri),
+      janjati_ghardhuri: englishToNepaliNumber(props.history.location.item.janjati_ghardhuri),
+      anya_ghardhuri: englishToNepaliNumber(props.history.location.item.anya_ghardhuri),
       female: englishToNepaliNumber(props.history.location.item.female),
       male: englishToNepaliNumber(props.history.location.item.male),
       created_by: props.history.location.item.created_by,
@@ -78,7 +72,6 @@ class Edit extends Component {
           female: nepaliToEnglishNumber(female),
           male: nepaliToEnglishNumber(male),
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
@@ -107,7 +100,7 @@ class Edit extends Component {
       male,
       showDialog,
     } = this.state;
-
+    
     let disabled =
       isEmpty(darta_no) ||
       isEmpty(darta_miti) ||

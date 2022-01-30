@@ -2,12 +2,12 @@ const pool = require("../db");
 //Controller for Listing all SamudayikbanBibaran
 async function getAllSamudayikbanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from samudayikban_bibarans as s where s.handover_date BETWEEN ? and ? and s.dist_id like ? and s.office_id like ?";
+    "SELECT count(*) as total from samudayikban_bibarans as s where s.handover_date BETWEEN ? and ? and s.dist_id like ?";
   const getAllSamudayikbanBibaranQuery =
-    "SELECT s.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM `samudayikban_bibarans` as s left JOIN nabikaran_karyayojanas as n on s.darta_no=n.darta_id HAVING s.handover_date BETWEEN ? and ? and s.dist_id like ? and s.office_id like ? ORDER BY ? DESC LIMIT ?,?";
+    "SELECT s.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM `samudayikban_bibarans` as s left JOIN nabikaran_karyayojanas as n on s.darta_no=n.darta_id HAVING s.handover_date BETWEEN ? and ? and s.dist_id like ? ORDER BY ? DESC LIMIT ?,?";
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -16,7 +16,6 @@ async function getAllSamudayikbanBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
-          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -56,12 +55,11 @@ async function getSamudayikbanBibaran(req, res) {
 
 //Controller for adding a SamudayikbanBibaran
 async function addSamudayikbanBibaran(req, res) {
-  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, office_id, darta_no,  samudayikban_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, timber, wood, baiganik_ban, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, darta_no,  samudayikban_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, timber, wood, baiganik_ban, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSamudayikbanBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.darta_no,
       req.body.samudayikban_name,
       req.body.area,
@@ -91,12 +89,11 @@ async function addSamudayikbanBibaran(req, res) {
 
 //Controller for updating a SamudayikbanBibaran
 async function updateSamudayikbanBibaran(req, res) {
-  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?,office_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, timber=?, wood=?, baiganik_ban=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, timber=?, wood=?, baiganik_ban=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSamudayikbanBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.darta_no,
       req.body.samudayikban_name,
       req.body.area,

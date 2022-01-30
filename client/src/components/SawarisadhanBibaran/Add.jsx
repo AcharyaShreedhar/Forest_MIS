@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { isEmpty } from "ramda";
+import {isEmpty} from "ramda"
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
@@ -21,7 +21,6 @@ class Add extends Component {
       manufactured_date: "",
       remarks: "",
       dist_id: "",
-      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -86,7 +85,6 @@ class Add extends Component {
           manufactured_date: manufactured_date,
           remarks: remarks,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   };
   banpaidawar_lilam.init({
     dist_id: DataTypes.INTEGER,
-    office_id: DataTypes.INTEGER,
     lilam_date: DataTypes.STRING,
     banpaidawar_type: DataTypes.STRING,
     unit: DataTypes.STRING,

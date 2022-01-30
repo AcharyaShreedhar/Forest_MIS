@@ -13,7 +13,6 @@ export class Samrakshyan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -23,7 +22,6 @@ export class Samrakshyan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -33,7 +31,6 @@ export class Samrakshyan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -43,7 +40,6 @@ export class Samrakshyan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -113,7 +109,9 @@ const mapDispatchToProps = (dispatch) => ({
     ),
 
   fetchallPanimuhansamrakshyan: (payload) =>
-    dispatch(SamrakshyanActions.fetchallpanimuhansamrakshyanRequest(payload)),
+    dispatch(
+      SamrakshyanActions.fetchallpanimuhansamrakshyanRequest(payload)
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Samrakshyan);

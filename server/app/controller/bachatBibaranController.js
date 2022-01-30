@@ -40,12 +40,11 @@ async function getBachatBibaran(req, res) {
 
 //Controller for adding a BachatBibaran
 async function addBachatBibaran(req, res) {
-  const addBachatBibaranQuery = `INSERT INTO bachat_bibarans (dist_id,office_id,samuhako_naam, bachatma_gharduri, bachat_rakam, lagani_rakam, sahakariko_rakam, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addBachatBibaranQuery = `INSERT INTO bachat_bibarans (dist_id,samuhako_naam, bachatma_gharduri, bachat_rakam, lagani_rakam, sahakariko_rakam, created_by, updated_by) values (?,?,?,?,?,?,?,?)`;
   pool.query(
     addBachatBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.samuhako_naam,
       req.body.bachatma_gharduri,
       req.body.bachat_rakam,
@@ -65,12 +64,11 @@ async function addBachatBibaran(req, res) {
 
 //Controller for updating a BachatBibaran
 async function updateBachatBibaran(req, res) {
-  const updateBachatBibaranQuery = `UPDATE bachat_bibarans SET dist_id=?,office_id=?, samuhako_naam=?, bachatma_gharduri=?, bachat_rakam=?, lagani_rakam=?, sahakariko_rakam=?, created_by=?, updated_by=? WHERE bachat_id=?`;
+  const updateBachatBibaranQuery = `UPDATE bachat_bibarans SET dist_id=?, samuhako_naam=?, bachatma_gharduri=?, bachat_rakam=?, lagani_rakam=?, sahakariko_rakam=?, created_by=?, updated_by=? WHERE bachat_id=?`;
   pool.query(
     updateBachatBibaranQuery,
     [
       req.body.dist_id,
-      req.body.office_id,
       req.body.samuhako_naam,
       req.body.bachatma_gharduri,
       req.body.bachat_rakam,

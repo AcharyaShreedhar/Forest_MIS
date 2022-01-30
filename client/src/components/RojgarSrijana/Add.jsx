@@ -17,7 +17,6 @@ class Add extends Component {
       purus: "",
       kaifiyat: "",
       dist_id: "",
-      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -46,8 +45,15 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { karya, miti, ekai, banka_prakar, mahila, purus, kaifiyat } =
-      this.state;
+    const {
+      karya,
+      miti,
+      ekai,
+      banka_prakar,
+      mahila,
+      purus,
+      kaifiyat,
+    } = this.state;
     const payload = {
       rojgarsrijana: {
         data: {
@@ -59,7 +65,6 @@ class Add extends Component {
           purus: purus,
           kaifiyat: kaifiyat,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

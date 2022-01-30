@@ -12,7 +12,6 @@ export class Sampatibibaran extends Component {
   componentDidMount() {
     this.props.fetchallGharjagga({
       distId: "%",
-      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -21,7 +20,6 @@ export class Sampatibibaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,

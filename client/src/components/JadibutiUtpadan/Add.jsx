@@ -7,7 +7,6 @@ class Add extends Component {
     super(props);
     this.state = {
       dist_id: "",
-      office_id: "",
       jadibuti_thegana: "",
       jadibuti_kisim: "",
       jadibuti_prajati: "",
@@ -48,7 +47,6 @@ class Add extends Component {
           jadibuti_pragati: jadibuti_pragati,
           jadibuti_sankhya: jadibuti_sankhya,
           dist_id: this.props.user.dist_id,
-          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },
