@@ -31,7 +31,6 @@ export class Filter extends Component {
   handleDistrict(e) {
     this.setState({ district: e[0] });
     this.props.onSelect(e[0], this.props.id);
-    this.props.yesOffice && this.setState({office: '%'})
   }
 
   handleOffice(e) {
@@ -85,6 +84,7 @@ export class Filter extends Component {
             getValue={(officesList) => officesList["value"]}
             onChange={(e) => this.handleOffice(e)}
             value={office}
+            // multi="true"
           />
         )}
       </div>
