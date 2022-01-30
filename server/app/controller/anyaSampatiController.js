@@ -4,7 +4,7 @@ const pool = require("../db");
 async function getAllAnyaSampati(req, res) {
   const getTotalQuery =
     "SELECT count(*) as total from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and a.dist_id like ? and a.office_id like ?";
-  const getAllAnyaSampatiQuery = `select * from anya_sampatis as a where a.acquired_date BETWEEN ? and ? like ? and a.dist_id like ? and a.office_id ORDER BY ? ASC LIMIT ?, ?`;
+  const getAllAnyaSampatiQuery = `select * from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and a.dist_id like ? and a.office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
