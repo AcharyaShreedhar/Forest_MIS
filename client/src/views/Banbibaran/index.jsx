@@ -8,11 +8,12 @@ import banbibaranRoutes from "../../routes/banbibaran";
 import BanbibaranActions from "../../actions/banbibaran";
 
 class Banbibaran extends Component {
-  componentDidUpdate() {    
+  componentDidUpdate() {
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "atikraman_miti",
       page: 0,
       perPage: 10,
@@ -21,6 +22,7 @@ class Banbibaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "established_date",
       page: 0,
       perPage: 10,
@@ -29,6 +31,7 @@ class Banbibaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -37,6 +40,7 @@ class Banbibaran extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
@@ -94,16 +98,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  
   fetchallBanxetraatikraman: (payload) =>
-    dispatch(
-      BanbibaranActions.fetchallbanxetraatikramanRequest(payload)
-    ),
+    dispatch(BanbibaranActions.fetchallbanxetraatikramanRequest(payload)),
 
   fetchallMuddaanusandhandayari: (payload) =>
-    dispatch(
-      BanbibaranActions.fetchallmuddaanusandhandayariRequest(payload)
-    ),
+    dispatch(BanbibaranActions.fetchallmuddaanusandhandayariRequest(payload)),
 
   fetchallSeedgardenplots: (payload) =>
     dispatch(BanbibaranActions.fetchallplotbibaranRequest(payload)),

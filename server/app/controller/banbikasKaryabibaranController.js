@@ -3,7 +3,7 @@ const pool = require("../db");
 async function getAllBanbikasKaryabibaran(req, res) {
   const getTotalQuery = "SELECT count(*) as total from banbikas_karyabibarans as b where b.dist_id like ? and b.office_id like ?";
   const getAllBanbikasKaryabibaranQuery = `select * from banbikas_karyabibarans as b where  b.dist_id like ? and b.office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [req.body.distId], (error, countresults, fields) => {
+  pool.query(getTotalQuery, [req.body.distId, req.body.officeId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
       getAllBanbikasKaryabibaranQuery,

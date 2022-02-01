@@ -8,7 +8,7 @@ async function getAllSamajikkaryaBibaran(req, res) {
     if (error) throw error;
     pool.query(
       getAllSamajikkaryaBibaranQuery,
-      [req.body.distId, req.officeId, req.body.name, req.body.page, req.body.perPage],
+      [req.body.distId, req.body.officeId, req.body.name, req.body.page, req.body.perPage],
       (error, results, fields) => {
         if (error) throw error;
         res.send(
