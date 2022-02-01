@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all Brixyaropan
 async function getAllBrixyaropan(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from brixyaropans as b where b.brixyaropan_miti BETWEEN ? and ? and b.dist_id like ?";
-  const getAllBrixyaropanQuery = `select * from brixyaropans as b where b.brixyaropan_miti BETWEEN ? and ? and b.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from brixyaropans as b where b.brixyaropan_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ?";
+  const getAllBrixyaropanQuery = `select * from brixyaropans as b where b.brixyaropan_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,6 +15,7 @@ async function getAllBrixyaropan(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
+          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -52,11 +53,12 @@ async function getBrixyaropan(req, res) {
 
 //Controller for adding a Brixyaropan
 async function addBrixyaropan(req, res) {
-  const addBrixyaropanQuery = `INSERT INTO brixyaropans (dist_id,brixyaropan_miti,xetra,area,brixyaropan_thegana,brixyaropan_kisim,brixyaropan_laxya,brixyaropan_prajati,brixyaropan_pragati,brixyaropan_sankhya,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBrixyaropanQuery = `INSERT INTO brixyaropans (dist_id,office_id,brixyaropan_miti,xetra,area,brixyaropan_thegana,brixyaropan_kisim,brixyaropan_laxya,brixyaropan_prajati,brixyaropan_pragati,brixyaropan_sankhya,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBrixyaropanQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.brixyaropan_miti,
       req.body.xetra,
       req.body.area,
@@ -80,11 +82,12 @@ async function addBrixyaropan(req, res) {
 
 //Controller for updating a Brixyaropan
 async function updateBrixyaropan(req, res) {
-  const updateBrixyaropanQuery = `UPDATE brixyaropans SET dist_id=?,brixyaropan_miti=?,xetra=?,area=?,brixyaropan_thegana=?,brixyaropan_kisim=?,brixyaropan_laxya=?,brixyaropan_prajati=?,brixyaropan_pragati=?,brixyaropan_sankhya=?, created_by=?, updated_by=? WHERE brixyaropan_id=?`;
+  const updateBrixyaropanQuery = `UPDATE brixyaropans SET dist_id=?,office_id=?,brixyaropan_miti=?,xetra=?,area=?,brixyaropan_thegana=?,brixyaropan_kisim=?,brixyaropan_laxya=?,brixyaropan_prajati=?,brixyaropan_pragati=?,brixyaropan_sankhya=?, created_by=?, updated_by=? WHERE brixyaropan_id=?`;
   pool.query(
     updateBrixyaropanQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.brixyaropan_miti,
       req.body.xetra,
       req.body.area,

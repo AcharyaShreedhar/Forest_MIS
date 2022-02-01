@@ -54,7 +54,7 @@ class Edit extends Component {
           user_name: user_name,
           user_pass: user_pass,
           user_type: user_type,
-          user_office:user_office,
+          user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
           created_by: created_by,
           updated_by: this.props.user.user_name,
@@ -66,7 +66,14 @@ class Edit extends Component {
 
   render() {
     const { title } = this.props;
-    const { user_name, user_pass, user_type,user_office, dist_id, showDialog } = this.state;
+    const {
+      user_name,
+      user_pass,
+      user_type,
+      user_office,
+      dist_id,
+      showDialog,
+    } = this.state;
 
     let disabled =
       isEmpty(user_name) ||
@@ -83,7 +90,7 @@ class Edit extends Component {
           <ConfirmationDialoge
             showDialog={showDialog}
             title="थप"
-            body="के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
+            body="के तपाईँ रोजगार सिर्जना सम्बन्धि विवरण शंसोधन गर्न चाहनुहुन्छ ?"
             confirmLabel="चाहन्छु "
             cancelLabel="चाहंदिन "
             onYes={this.handleSubmit}
@@ -123,7 +130,7 @@ class Edit extends Component {
               </div>
             </div>
             <div className="panel space mb-4">
-            <Input
+              <Input
                 className="w-30"
                 title="युजरको कार्यालय :"
                 direction="vertical"

@@ -8,9 +8,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
-        type: Sequelize.INTEGER,
-      },
       mun_name_nep: {
         type: Sequelize.STRING,
       },
@@ -19,6 +16,7 @@ module.exports = {
       },
       dist_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       created_by: {
         type: Sequelize.STRING,

@@ -42,6 +42,7 @@ export function* addrojgarsrijanaRequest(api, action) {
     });
     yield fetchallrojgarsrijanaRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "banka_prakar",
       page: 0,
       perPage: 10,
@@ -74,6 +75,7 @@ export function* updaterojgarsrijanaRequest(api, action) {
     });
     yield fetchallrojgarsrijanaRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "banka_prakar",
       page: 0,
       perPage: 10,
@@ -103,6 +105,7 @@ export function* deleterojgarsrijanaRequest(api, action) {
     });
     yield fetchallrojgarsrijanaRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "banka_prakar",
       page: 0,
       perPage: 10,
@@ -156,6 +159,7 @@ export function* adduddhamRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "darta_miti",
       page: 0,
       perPage: 10,
@@ -187,6 +191,7 @@ export function* updateuddhamRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "darta_miti",
       page: 0,
       perPage: 10,
@@ -218,6 +223,7 @@ export function* deleteuddhamRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "darta_miti",
       page: 0,
       perPage: 10,

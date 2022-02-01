@@ -9,6 +9,7 @@ class Add extends Component {
     super(props);
     this.state = {
       dist_id: "",
+      office_id: "",
       sthan: "",
       qty: "",
       karyakram_miti: "",
@@ -33,13 +34,8 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const {
-      sthan,
-      qty,
-      karyakram_miti,
-      conservation_area,
-      affected_area,
-    } = this.state;
+    const { sthan, qty, karyakram_miti, conservation_area, affected_area } =
+      this.state;
     const payload = {
       nadikinarsamrakshyan: {
         data: {
@@ -49,6 +45,7 @@ class Add extends Component {
           conservation_area: conservation_area,
           affected_area: affected_area,
           dist_id: this.props.user.dist_id,
+          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

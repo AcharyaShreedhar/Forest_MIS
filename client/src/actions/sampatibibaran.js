@@ -51,6 +51,27 @@
    deletevehiclesRequest: ["payload", "vehicleId"],
    deletevehiclesSuccess: ["response"],
    deletevehiclesFailure: null,
+
+   // Anya Sampati
+   fetchallanyasampatiRequest: ["payload"],
+   fetchallanyasampatiSuccess: ["response"],
+   fetchallanyasampatiFailure: null,
+
+   fetchanyasampatiRequest: ["payload"],
+   fetchanyasampatiSuccess: ["response"],
+   fetchanyasampatiFailure: null,
+
+   addanyasampatiRequest: ["payload"],
+   addanyasampatiSuccess: ["response"],
+   addanyasampatiFailure: null,
+
+   updateanyasampatiRequest: ["payload", "sampatiId"],
+   updateanyasampatiSuccess: ["response"],
+   updateanyasampatiFailure: null,
+
+   deleteanyasampatiRequest: ["payload", "sampatiId"],
+   deleteanyasampatiSuccess: ["response"],
+   deleteanyasampatiFailure: null,
  
     locationsRequest: ["payload"],
    // Clear all caches

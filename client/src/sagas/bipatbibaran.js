@@ -43,6 +43,7 @@ export function* addpahirobibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
@@ -77,6 +78,7 @@ export function* updatepahirobibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
@@ -108,6 +110,7 @@ export function* deletepahirobibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
@@ -162,6 +165,7 @@ export function* addbadhibibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "badhi_aayeko_miti",
       page: 0,
       perPage: 10,
@@ -196,6 +200,7 @@ export function* updatebadhibibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "badhi_aayeko_miti",
       page: 0,
       perPage: 10,
@@ -227,6 +232,7 @@ export function* deletebadhibibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "badhi_aayeko_miti",
       page: 0,
       perPage: 10,
@@ -242,8 +248,6 @@ export function* deletebadhibibaranRequest(api, action) {
     );
   }
 }
-
-
 
 //bandadelobibaran
 export function* fetchallbandadelobibaranRequest(api, action) {
@@ -264,9 +268,7 @@ export function* fetchbandadelobibaranRequest(api, action) {
 
   const response = yield api.getBandadelobibaran(bandadeloBibaranId);
   if (response.ok) {
-    yield put(
-      BipatbibaranActions.fetchbandadelobibaranSuccess(response.data)
-    );
+    yield put(BipatbibaranActions.fetchbandadelobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.fetchbandadelobibaranFailure());
   }
@@ -288,14 +290,13 @@ export function* addbandadelobibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "bandadelo_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/bipatbebasthapan/bandadelolist");
-    yield put(
-      BipatbibaranActions.addbandadelobibaranSuccess(response.data)
-    );
+    yield put(BipatbibaranActions.addbandadelobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.addbandadelobibaranFailure());
     toast.error(
@@ -324,14 +325,13 @@ export function* updatebandadelobibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "bandadelo_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/bipatbebasthapan/bandadelolist");
-    yield put(
-      BipatbibaranActions.updatebandadelobibaranSuccess(response.data)
-    );
+    yield put(BipatbibaranActions.updatebandadelobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.updatebandadelobibaranFailure());
     toast.error(
@@ -357,13 +357,12 @@ export function* deletebandadelobibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "bandadelo_miti",
       page: 0,
       perPage: 10,
     });
-    yield put(
-      BipatbibaranActions.deletebandadelobibaranSuccess(response.data)
-    );
+    yield put(BipatbibaranActions.deletebandadelobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.deletebandadelobibaranFailure());
     toast.error(

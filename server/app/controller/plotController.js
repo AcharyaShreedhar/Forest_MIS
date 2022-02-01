@@ -1,13 +1,13 @@
 const pool = require("../db");
 //Controller for Listing all Plot
 async function getAllPlot(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from forest_garden_plots as f where f.established_date BETWEEN ? and ? and f.dist_id like ?";
-  const getAllPlotQuery = `select * from forest_garden_plots as f where f.established_date BETWEEN ? and ? and f.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
-  pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId], (error, countresults, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from forest_garden_plots as f where f.established_date BETWEEN ? and ? and f.dist_id like ?  and f.office_id like ?";
+  const getAllPlotQuery = `select * from forest_garden_plots as f where f.established_date BETWEEN ? and ? and f.dist_id like ?  and f.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(
       getAllPlotQuery,
-      [req.body.fromDate, req.body.toDate, req.body.distId, req.body.name, req.body.page, req.body.perPage],
+      [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId, req.body.name, req.body.page, req.body.perPage],
       (error, results, fields) => {
         if (error) throw error;
         res.send(
@@ -36,11 +36,12 @@ async function getPlot(req, res) {
 
 //Controller for adding a Plot
 async function addPlot(req, res) {
-  const addPlotQuery = `INSERT INTO forest_garden_plots (dist_id,plot_type, prajati, area, location, established_date, status, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addPlotQuery = `INSERT INTO forest_garden_plots (dist_id,office_id,plot_type, prajati, area, location, established_date, status, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addPlotQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.plot_type,
       req.body.prajati,
       req.body.area,
@@ -61,11 +62,12 @@ async function addPlot(req, res) {
 
 //Controller for updating a Plot
 async function updatePlot(req, res) {
-  const updatePlotQuery = `UPDATE forest_garden_plots SET dist_id=?, plot_type=?, prajati=?, area=?, location=?, established_date=?, status=?, created_by =?, updated_by=? WHERE plot_id=?`;
+  const updatePlotQuery = `UPDATE forest_garden_plots SET dist_id=?, office_id=?, plot_type=?, prajati=?, area=?, location=?, established_date=?, status=?, created_by =?, updated_by=? WHERE plot_id=?`;
   pool.query(
     updatePlotQuery,
     [
       req.body.dist_id,
+      req.body.office_id,
       req.body.plot_type,
       req.body.prajati,
       req.body.area,

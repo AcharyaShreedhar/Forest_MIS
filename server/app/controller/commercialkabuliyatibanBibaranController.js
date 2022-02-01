@@ -2,11 +2,11 @@ const pool = require("../db");
 //Controller for Listing all CommercialkabuliyatibanBibaran
 async function getAllCommercialkabuliyatibanBibaran(req, res) {
   const getTotalQuery =
-    "SELECT count(*) as total from commercialkabuliyatiban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ?";
-  const getAllCommercialkabuliyatibanBibaranQuery = `select * from commercialkabuliyatiban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    "SELECT count(*) as total from commercialkabuliyatiban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ? and c.office_id like ?";
+  const getAllCommercialkabuliyatibanBibaranQuery = `select * from commercialkabuliyatiban_bibarans as c where c.darta_miti BETWEEN ? and ? and c.dist_id like ? and c.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
@@ -15,6 +15,7 @@ async function getAllCommercialkabuliyatibanBibaran(req, res) {
           req.body.fromDate,
           req.body.toDate,
           req.body.distId,
+          req.body.officeId,
           req.body.name,
           req.body.page,
           req.body.perPage,
@@ -52,13 +53,14 @@ async function getCommercialkabuliyatibanBibaran(req, res) {
 
 //Controller for adding a CommercialkabuliyatibanBibaran
 async function addCommercialkabuliyatibanBibaran(req, res) {
-  const addCommercialkabuliyatibanBibaranQuery = `INSERT INTO commercialkabuliyatiban_bibarans (darta_no, darta_miti, dist_id, commercialkabuliyatiban_naam, address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addCommercialkabuliyatibanBibaranQuery = `INSERT INTO commercialkabuliyatiban_bibarans (darta_no, darta_miti, dist_id, office_id, commercialkabuliyatiban_naam, address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addCommercialkabuliyatibanBibaranQuery,
     [
       req.body.darta_no,
       req.body.darta_miti,
       req.body.dist_id,
+      req.body.office_id,
       req.body.commercialkabuliyatiban_naam,
       req.body.address,
       req.body.area,
@@ -82,13 +84,14 @@ async function addCommercialkabuliyatibanBibaran(req, res) {
 
 //Controller for updating a CommercialkabuliyatibanBibaran
 async function updateCommercialkabuliyatibanBibaran(req, res) {
-  const updateCommercialkabuliyatibanBibaranQuery = `UPDATE commercialkabuliyatiban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, commercialkabuliyatiban_naam=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
+  const updateCommercialkabuliyatibanBibaranQuery = `UPDATE commercialkabuliyatiban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, office_id=?,commercialkabuliyatiban_naam=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateCommercialkabuliyatibanBibaranQuery,
     [
       req.body.darta_no,
       req.body.darta_miti,
       req.body.dist_id,
+      req.body.office_id,
       req.body.commercialkabuliyatiban_naam,
       req.body.address,
       req.body.area,

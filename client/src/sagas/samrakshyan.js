@@ -53,6 +53,7 @@ export function* addsamrakshyanpokharinirmanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -92,6 +93,7 @@ export function* updatesamrakshyanpokharinirmanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -125,6 +127,7 @@ export function* deletesamrakshyanpokharinirmanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -187,6 +190,7 @@ export function* addjaladharsamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -221,6 +225,7 @@ export function* updatejaladharsamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -254,6 +259,7 @@ export function* deletejaladharsamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -319,6 +325,7 @@ export function* addnadikinarsamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -353,6 +360,7 @@ export function* updatenadikinarsamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -386,6 +394,7 @@ export function* deletenadikinarsamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -403,7 +412,7 @@ export function* deletenadikinarsamrakshyanRequest(api, action) {
     );
   }
 }
-  
+
 //-------panimuhansamrakshyan
 export function* fetchallpanimuhansamrakshyanRequest(api, action) {
   const { payload } = action;
@@ -451,6 +460,7 @@ export function* addpanimuhansamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -485,6 +495,7 @@ export function* updatepanimuhansamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -518,6 +529,7 @@ export function* deletepanimuhansamrakshyanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
@@ -535,4 +547,3 @@ export function* deletepanimuhansamrakshyanRequest(api, action) {
     );
   }
 }
-

@@ -22,6 +22,7 @@ class Osarpasar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -50,31 +51,32 @@ class Osarpasar extends Component {
   }
 
   handlePer(e) {
-    const { fromDate, toDate, distId } = this.state;
+    const { fromDate, toDate, distId, officeId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, 0, e);
+    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state;
     this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, 0, perPage);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state;
     this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
   }
 
-  fetchResults(fromDate, toDate, distId, page, perPage) {
+  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBanpaidawarosarpasar({
       fromDate,
       toDate,
       distId,
+      officeId,
       name: "arthik_barsa",
       page: page,
       perPage,
@@ -82,13 +84,14 @@ class Osarpasar extends Component {
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, perPage } = this.state;
+    const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
 
     this.fetchResults(
       fromDate,
       toDate,
       distId,
+      officeId,
       data.selected * perPage,
       perPage
     );
@@ -119,9 +122,9 @@ class Osarpasar extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-  
-        this.props.deleteBanpaidawarosarpasar(item.paidawar_id);
-        this.setState({ showDialog: !this.state.showDialog });
+
+    this.props.deleteBanpaidawarosarpasar(item.paidawar_id);
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -130,15 +133,13 @@ class Osarpasar extends Component {
 
   render() {
     const { banpaidawarosarpasarList, loc, perPage, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role } = this.props;
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ वनपैदावार ओसारपसार सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ वनपैदावार ओसारपसार सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -214,7 +215,7 @@ Osarpasar.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
   banpaidawarDataList: state.banpaidawar.allbanpaidawarData,
 });
 

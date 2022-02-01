@@ -8,11 +8,12 @@ import DwandabebasthapanActions from "../../actions/dwandabebasthapan";
 import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
 export class Dwandabebasthapan extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallBanyajantuuddar({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "miti",
       page: 0,
       perPage: 10,
@@ -21,6 +22,7 @@ export class Dwandabebasthapan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "xeti_miti",
       page: 0,
       perPage: 10,

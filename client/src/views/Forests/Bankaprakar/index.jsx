@@ -39,6 +39,7 @@ class Bankaprakar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -96,35 +97,36 @@ class Bankaprakar extends Component {
   }
 
   handlePer(e, item) {
-    const { fromDate, toDate, distId } = this.state;
+    const { fromDate, toDate, distId, officeId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, 0, e, item);
+    this.fetchResults(fromDate, toDate, distId, officeId, 0, e, item);
   }
   handleFromDate(e, item) {
-    const { distId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state;
     this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, 0, perPage, item);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage, item);
   }
 
   handleToDate(e, item) {
-    const { distId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state;
     this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, 0, perPage, item);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage, item);
   }
 
   handleDistrict(e, item) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, 0, perPage, item);
+    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage, item);
   }
 
-  fetchResults(fromDate, toDate, distId, page, perPage, item) {
+  fetchResults(fromDate, toDate, distId, officeId, page, perPage, item) {
     switch (item) {
       case "samudayikban": {
         this.props.fetchallSamudayikbanbibaran({
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "handover_date",
           page: page,
           perPage,
@@ -136,6 +138,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "handover_date",
           page: page,
           perPage,
@@ -147,6 +150,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "entry_date",
           page: page,
           perPage,
@@ -158,6 +162,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "swikrit_miti",
           page: page,
           perPage,
@@ -169,6 +174,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "darta_miti",
           page: page,
           perPage,
@@ -180,6 +186,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "darta_miti",
           page: page,
           perPage,
@@ -191,6 +198,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "darta_miti",
           page: page,
           perPage,
@@ -203,6 +211,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "darta_miti",
           page: page,
           perPage,
@@ -215,6 +224,7 @@ class Bankaprakar extends Component {
           fromDate,
           toDate,
           distId,
+          officeId,
           name: "registration_date",
           page: page,
           perPage,
@@ -227,12 +237,13 @@ class Bankaprakar extends Component {
   }
 
   handlePageChange(data, item) {
-    const { fromDate, toDate, distId, perPage } = this.state;
+    const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
       distId,
+      officeId,
       data.selected * perPage,
       perPage,
       item
@@ -468,7 +479,7 @@ class Bankaprakar extends Component {
       showDialog,
       messagebody,
     } = this.state;
-    const { user,role } = this.props;
+    const { user, role } = this.props;
     return (
       <div>
         <ConfirmationDialoge
@@ -1010,7 +1021,7 @@ Bankaprakar.defaultProps = {
 const mapStateToProps = (state) => ({
   districts: state.app.alldistrictsData,
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
   samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,

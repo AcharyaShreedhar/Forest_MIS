@@ -43,6 +43,7 @@ export function* addbiruwautpadanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -262,6 +263,7 @@ export function* addbrixyaropanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "brixyaropan_miti",
       page: 0,
       perPage: 10,
@@ -295,6 +297,7 @@ export function* updatebrixyaropanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "brixyaropan_thegana",
       page: 0,
       perPage: 10,
@@ -375,6 +378,7 @@ export function* addjadibutiRequest(api, action) {
     });
     yield fetchalljadibutiRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "jadibuti_thegana",
       page: 0,
       perPage: 10,
@@ -406,6 +410,7 @@ export function* updatejadibutiRequest(api, action) {
     });
     yield fetchalljadibutiRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "jadibuti_thegana",
       page: 0,
       perPage: 10,
@@ -434,6 +439,7 @@ export function* deletejadibutiRequest(api, action) {
     });
     yield fetchalljadibutiRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "jadibuti_thegana",
       page: 0,
       perPage: 10,

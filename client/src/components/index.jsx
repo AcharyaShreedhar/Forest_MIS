@@ -13,7 +13,7 @@ import Icon from "./Icon";
 import CheckIcon from "./CheckIcon";
 import CheckBox from "./CheckBox";
 import CustomDatePicker from "./CustomDatePicker";
-import ConfirmationDialoge from "./ConfirmationDialoge"
+import ConfirmationDialoge from "./ConfirmationDialoge";
 import EditDropdown from "./EditDropdown";
 import Pagination from "./Pagination";
 import ReportGenerator from "./ReportGenerator";
@@ -42,19 +42,22 @@ import * as SajhedaribanBibaran from "./SajhedaribanBibaran";
 import * as ChaklabanBibaran from "./ChaklabanBibaran";
 import * as RastriyabanBibaran from "./RastriyabanBibaran";
 import * as CommercialbanBibaran from "./CommercialbanBibaran";
-import * as UpabhoktasamuhaBibaran from "./UpabhoktasamuhaBibaran"
+import * as UpabhoktasamuhaBibaran from "./UpabhoktasamuhaBibaran";
 import * as BanbikasKaryabibaran from "./BanbikasKaryabibaran";
 import * as SamajikKaryabibaran from "./SamajikKaryabibaran";
 import * as RojgarSrijana from "./RojgarSrijana";
 import * as PahiroBebasthapan from "./PahiroBebasthapan";
 import * as BadiBebasthapan from "./BadiBebasthapan";
-import * as NadikinarSamrakshyan from "./NadikinarSamrakshyan"
+import * as NadikinarSamrakshyan from "./NadikinarSamrakshyan";
 import * as PokhariSamrakshyan from "./PokhariSamrakshyan";
 import * as JaladharSamrakshyan from "./JaladharSamrakshyan";
 import * as PanimuhanSamrakshyan from "./PanimuhanSamrakshyan";
 import * as BanpaidawarBikribitaran from "./BanpaidawarBikribitaran";
-import * as Uddham from "./Uddham"
-import * as UserBibaran from "./UserBibaran"
+import * as Uddham from "./Uddham";
+import * as UserBibaran from "./UserBibaran";
+import * as OfficeBibaran from "./OfficeBibaran";
+
+import * as AnyaSampatiBibaran from "./AnyaSampatiBibaran";
 
 export {
   HeaderComponent,
@@ -113,5 +116,7 @@ export {
   PanimuhanSamrakshyan,
   BanpaidawarBikribitaran,
   Uddham,
-  UserBibaran
+  UserBibaran,
+  OfficeBibaran,
+  AnyaSampatiBibaran,
 };

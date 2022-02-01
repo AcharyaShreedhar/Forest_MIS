@@ -317,6 +317,19 @@ const sawarisadhanHeadings = [
   "निर्माण वर्ष",
   "कैफियत (अवस्था)",
 ];
+
+const anyasampatiHeadings = [
+  "सम्पतीको नाम",
+  "सम्पती रहेको स्थान",
+  "प्राप्ति मिती",
+  "दर्ता कर्ता",
+];
+
+const officeList = [
+  { id: "%", value: "सबै" },
+  { id: 1, value: "कास्की" },
+];
+
 const banxetraatikramanHeadings = [
   "अतिक्रमित वनको क्षेत्रफल",
   "ठेगाना",
@@ -543,6 +556,14 @@ const userHeadings = [
   "दर्ता कर्ता ",
 ];
 
+const officeHeadings = [
+  "कार्यालयको नाम ",
+  "कार्यालयको ठेगाना ",
+  "जिल्ला ",
+  // "दर्ता मिती ",
+  "दर्ता कर्ता ",
+];
+
 export {
   AssetsURL,
   banList,
@@ -561,6 +582,8 @@ export {
   banyajantuxetirahatHeadings,
   gharjaggaHeadings,
   sawarisadhanHeadings,
+  anyasampatiHeadings,
+  officeList,
   banxetraatikramanHeadings,
   seedgardenplotsHeadings,
   banxetraanyaprayojanHeadings,
@@ -588,5 +611,6 @@ export {
   uddhamHeadings,
   uddhamList,
   userHeadings,
+  officeHeadings,
   usertypeList,
 };

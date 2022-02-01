@@ -8,9 +8,10 @@ import MiscellaneousRoutes from "../../routes/miscellaneous";
 import MiscellaneousActions from "../../actions/miscellaneous";
 
 export class Miscellaneous extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallRojgarsrijana({
       distId: "%",
+      officeId: "%",
       name: "banka_prakar",
       page: 0,
       perPage: 10,
@@ -20,6 +21,7 @@ export class Miscellaneous extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "darta_miti",
       page: 0,
       perPage: 10,

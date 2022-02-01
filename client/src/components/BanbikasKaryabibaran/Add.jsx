@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {isEmpty} from "ramda"
+import { isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList } from "../../services/config";
 
@@ -13,6 +13,7 @@ class Add extends Component {
       banbikas_bajetkharcha: "",
       ban_type: 1,
       dist_id: "",
+      office_id: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -51,6 +52,7 @@ class Add extends Component {
           banbikas_bajetkharcha: banbikas_bajetkharcha,
           ban_type: ban_type,
           dist_id: this.props.user.dist_id,
+          office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
         },
       },

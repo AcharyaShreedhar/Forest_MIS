@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {isEmpty} from "ramda"
+import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 
@@ -14,6 +14,7 @@ class Edit extends Component {
       lavgrahi_sankhya: props.history.location.item.lavgrahi_sankhya,
       mulyaabhibridi_kar: props.history.location.item.mulyaabhibridi_kar,
       dist_id: props.history.location.item.dist_id,
+      office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
@@ -50,6 +51,7 @@ class Edit extends Component {
           lavgrahi_sankhya: lavgrahi_sankhya,
           mulyaabhibridi_kar: mulyaabhibridi_kar,
           dist_id: this.props.user.dist_id,
+          office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },

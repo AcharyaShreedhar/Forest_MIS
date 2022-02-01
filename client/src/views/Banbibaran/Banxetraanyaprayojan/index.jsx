@@ -2,35 +2,43 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { BanxetraanyaprayojanBibaran, Filter, ReportGenerator, ConfirmationDialoge,
+import {
+  BanxetraanyaprayojanBibaran,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
 } from "../../../components";
 import BanbibaranActions from "../../../actions/banbibaran";
-import { banxetraanyaprayojanHeadings, districtList } from "../../../services/config";
+import {
+  banxetraanyaprayojanHeadings,
+  districtList,
+} from "../../../services/config";
 
 class Banxetraanyaprayojan extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       loc: "banxetraanyaprayojanlist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
       path: "banxetraanyaprayojan",
-       };
-       this.handleSelectMenu = this.handleSelectMenu.bind(this);
-       this.handleAdd = this.handleAdd.bind(this);
-       this.handleDistrict = this.handleDistrict.bind(this);
-       this.handleToDate = this.handleToDate.bind(this);
-       this.handleFromDate = this.handleFromDate.bind(this);
-       this.handlePageChange = this.handlePageChange.bind(this);
-       this.handlePer = this.handlePer.bind(this);
-       this.fetchResults = this.fetchResults.bind(this);
-       this.handleDelete = this.handleDelete.bind(this);
-       this.handleClose = this.handleClose.bind(this);
+    };
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -40,55 +48,56 @@ class Banxetraanyaprayojan extends Component {
       banxetraanyaprayojanList = nextProps.banxetraanyaprayojanDataList.data;
     }
 
-    return { 
+    return {
       loc,
-      banxetraanyaprayojanList };
+      banxetraanyaprayojanList,
+    };
   }
   handlePer(e) {
-    const { fromDate, toDate, distId } = this.state;
+    const { fromDate, toDate, distId, officeId } = this.state;
     this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, 0, e);
+    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state;
     this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, 0, perPage);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state;
     this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
   }
 
-  fetchResults(fromDate, toDate, distId, page, perPage) {
+  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBanxetraanyaprayojan({
       fromDate,
       toDate,
       distId,
+      officeId,
       name: "arthik_barsa",
       page: page,
       perPage,
     });
   }
 
-
   handlePageChange(data) {
-    const { fromDate, toDate, distId, perPage } = this.state;
+    const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
       distId,
+      officeId,
       data.selected * perPage,
       perPage
     );
   }
-
 
   handleSelectMenu(event, item, path) {
     this.setState({ item: item });
@@ -115,9 +124,9 @@ class Banxetraanyaprayojan extends Component {
   }
   handleDelete() {
     const { item } = this.state;
-   
-        this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id);
-        this.setState({ showDialog: !this.state.showDialog });
+
+    this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id);
+    this.setState({ showDialog: !this.state.showDialog });
   }
 
   handleAdd() {
@@ -125,11 +134,11 @@ class Banxetraanyaprayojan extends Component {
   }
   render() {
     const { loc, perPage, banxetraanyaprayojanList, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role } = this.props;
 
     return (
       <div>
-       <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
           body={
@@ -153,35 +162,37 @@ class Banxetraanyaprayojan extends Component {
               />
               <ReportGenerator id="banxetraanyaprayojan" />
             </div>
-          <BanxetraanyaprayojanBibaran.List
-            buttonName="+ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि"
-            title="बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण"
-            pageCount={
-              !isNil(banxetraanyaprayojanList)
-                ? Math.ceil(banxetraanyaprayojanList.total / perPage)
-                : 10
-            }
-            data={
-              !isNil(banxetraanyaprayojanList) ? banxetraanyaprayojanList.list  : []
-            }
-            per={perPage}
-            pers={[10, 25, 50, "all"]}
-            onPer={this.handlePer}
-            user={user}
-            role={role}
-            headings={banxetraanyaprayojanHeadings}
-            onAdd={() => this.handleAdd("bbanxetraanyaprayojanan")}
-            onSelect={this.handleSelectMenu}
-            onPageClick={(e) => this.handlePageChange(e)}
-          />
-         </Fragment> 
+            <BanxetraanyaprayojanBibaran.List
+              buttonName="+ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि"
+              title="बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण"
+              pageCount={
+                !isNil(banxetraanyaprayojanList)
+                  ? Math.ceil(banxetraanyaprayojanList.total / perPage)
+                  : 10
+              }
+              data={
+                !isNil(banxetraanyaprayojanList)
+                  ? banxetraanyaprayojanList.list
+                  : []
+              }
+              per={perPage}
+              pers={[10, 25, 50, "all"]}
+              onPer={this.handlePer}
+              user={user}
+              role={role}
+              headings={banxetraanyaprayojanHeadings}
+              onAdd={() => this.handleAdd("bbanxetraanyaprayojanan")}
+              onSelect={this.handleSelectMenu}
+              onPageClick={(e) => this.handlePageChange(e)}
+            />
+          </Fragment>
         )}
         {equals(loc, "banxetraanyaprayojanadd") && (
           <BanxetraanyaprayojanBibaran.Add
             title="+ वनक्षेत्र अन्य प्रयोजन"
             user={user}
             onSelect={this.handleSelectMenu}
-            onSubmit={(e) => this.props.addBanxetraanyaprayojan (e)}
+            onSubmit={(e) => this.props.addBanxetraanyaprayojan(e)}
           />
         )}
         {equals(loc, "banxetraanyaprayojanedit") && (
@@ -208,7 +219,7 @@ Banxetraanyaprayojan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
   banxetraanyaprayojanDataList: state.banbibaran.allbanxetraanyaprayojanData,
 });
 
@@ -221,11 +232,18 @@ const mapDispatchToProps = (dispatch) => ({
 
   updateBanxetraanyaprayojan: (payload, banxetraanyaprayojanId) =>
     dispatch(
-      BanbibaranActions.updatebanxetraanyaprayojanRequest(payload, banxetraanyaprayojanId)
+      BanbibaranActions.updatebanxetraanyaprayojanRequest(
+        payload,
+        banxetraanyaprayojanId
+      )
     ),
 
   deleteBanxetraanyaprayojan: (banxetraanyaprayojanId) =>
-    dispatch(BanbibaranActions.deletebanxetraanyaprayojanRequest(banxetraanyaprayojanId)),
+    dispatch(
+      BanbibaranActions.deletebanxetraanyaprayojanRequest(
+        banxetraanyaprayojanId
+      )
+    ),
 });
 
 export default connect(

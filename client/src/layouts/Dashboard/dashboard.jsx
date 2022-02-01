@@ -28,6 +28,9 @@ export const Content = (props) => {
               return (
                 <Redirect exact from={route.path} to={route.to} key={key} />
               );
+            if (!route.redirect && route.auth && !props.loggedIn) {
+              return <Redirect exact from={route.path} to="/" key={key} />;
+            }
             return (
               <Route path={route.path} component={route.component} key={key} />
             );

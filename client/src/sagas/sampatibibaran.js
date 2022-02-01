@@ -41,6 +41,7 @@ export function* addassetsRequest(api, action) {
     });
     yield fetchallassetsRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -73,6 +74,7 @@ export function* updateassetsRequest(api, action) {
     });
     yield fetchallassetsRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -102,6 +104,7 @@ export function* deleteassetsRequest(api, action) {
     });
     yield fetchallassetsRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -158,6 +161,7 @@ export function* addvehiclesRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -192,6 +196,7 @@ export function* updatevehiclesRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -223,6 +228,7 @@ export function* deletevehiclesRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -230,6 +236,134 @@ export function* deletevehiclesRequest(api, action) {
     yield put(SampatibibaranActions.deletevehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.deletevehiclesFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//anyasampati
+export function* fetchallanyasampatiRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getAnyaSampatiList(payloaddata);
+
+  if (response.ok) {
+    yield put(SampatibibaranActions.fetchallanyasampatiSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.fetchallanyasampatiFailure());
+  }
+}
+
+export function* fetchanyasampatiRequest(api, action) {
+  const sampatiId = action.payload;
+
+  const response = yield api.getAnyaSampati(sampatiId);
+
+  if (response.ok) {
+    yield put(SampatibibaranActions.fetchanyasampatiSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.fetchanyasampatiFailure());
+  }
+}
+
+// Add anyasampati
+export function* addanyasampatiRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postSampatibibaranAnyaSampatiAddNew(
+    payload.anyasampati.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सम्पती विवरण प्रविष्ट भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallanyasampatiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/sampatibibaran/anyasampatilist");
+    yield put(SampatibibaranActions.addanyasampatiSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.addanyasampatiFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update anyasampati
+export function* updateanyasampatiRequest(api, action) {
+  const { payload, sampatiId } = action;
+
+  const response = yield api.postSampatibibaranAnyaSampatiUpdate(
+    payload.anyasampati.data,
+    sampatiId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सम्पती विवरण शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallanyasampatiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/sampatibibaran/anyasampatilist");
+    yield put(SampatibibaranActions.updateanyasampatiSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.updateanyasampatiFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Delete anyasampati
+export function* deleteanyasampatiRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postSampatibibaranAnyaSampatiDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक सम्पती विवरण हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallanyasampatiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(SampatibibaranActions.deleteanyasampatisSuccess(response.data));
+  } else {
+    yield put(SampatibibaranActions.deleteanyasampatiFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {

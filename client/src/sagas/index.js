@@ -43,6 +43,12 @@ import {
   addusersRequest,
   updateusersRequest,
   deleteusersRequest,
+  fetchallofficesRequest,
+  fetchofficesRequest,
+  fetchofficesdropdownRequest, // O-DDL
+  addofficesRequest,
+  updateofficesRequest,
+  deleteofficesRequest,
   loginRequest,
   logoutRequest,
 } from "./app";
@@ -201,6 +207,11 @@ import {
   addvehiclesRequest,
   updatevehiclesRequest,
   deletevehiclesRequest,
+  fetchallanyasampatiRequest,
+  fetchanyasampatiRequest,
+  addanyasampatiRequest,
+  updateanyasampatiRequest,
+  deleteanyasampatiRequest,
 } from "./sampatibibaran";
 
 //-------banpaidawar
@@ -908,13 +919,13 @@ export default function* root() {
       api
     ),
 
+    //------------------------------vehicles
+
     takeLatest(
       SampatibibaranTypes.FETCHALLVEHICLES_REQUEST,
       fetchallvehiclesRequest,
       api
     ),
-
-    //------------------------------vehicles
 
     takeLatest(
       SampatibibaranTypes.FETCHVEHICLES_REQUEST,
@@ -937,6 +948,37 @@ export default function* root() {
     takeLatest(
       SampatibibaranTypes.DELETEVEHICLES_REQUEST,
       deletevehiclesRequest,
+      api
+    ),
+
+    //------------------------------anyasampati
+    takeLatest(
+      SampatibibaranTypes.FETCHALLANYASAMPATI_REQUEST,
+      fetchallanyasampatiRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.FETCHANYASAMPATI_REQUEST,
+      fetchanyasampatiRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.ADDANYASAMPATI_REQUEST,
+      addanyasampatiRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.UPDATEANYASAMPATI_REQUEST,
+      updateanyasampatiRequest,
+      api
+    ),
+
+    takeLatest(
+      SampatibibaranTypes.DELETEANYASAMPATI_REQUEST,
+      deleteanyasampatiRequest,
       api
     ),
 
@@ -1415,6 +1457,19 @@ export default function* root() {
     takeLatest(AppTypes.UPDATEUSERS_REQUEST, updateusersRequest, api),
 
     takeLatest(AppTypes.DELETEUSERS_REQUEST, deleteusersRequest, api),
+
+       // //--------Offices-------------//
+    takeLatest(AppTypes.FETCHALLOFFICES_REQUEST, fetchallofficesRequest, api),
+
+    takeLatest(AppTypes.FETCHOFFICES_REQUEST, fetchofficesRequest, api),
+
+    takeLatest(AppTypes.FETCHOFFICESDROPDOWN_REQUEST, fetchofficesdropdownRequest, api), //O-DDL
+
+    takeLatest(AppTypes.ADDOFFICES_REQUEST, addofficesRequest, api),
+
+    takeLatest(AppTypes.UPDATEOFFICES_REQUEST, updateofficesRequest, api),
+
+    takeLatest(AppTypes.DELETEOFFICES_REQUEST, deleteofficesRequest, api),
 
     //----------Banbibaran_baramadit_chij_bastu
     takeLatest(

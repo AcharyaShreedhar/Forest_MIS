@@ -30,6 +30,7 @@ const municipalitiesRoutes = require("./app/routes/municipalitiesRoutes");
 const postRoutes = require("./app/routes/postRoutes");
 const provinceRoutes = require("./app/routes/provinceRoutes");
 const usersRoutes = require("./app/routes/usersRoutes");
+const officesRoutes = require("./app/routes/officesRoutes");
 
 //...........................................................Karmachari
 
@@ -81,6 +82,7 @@ const jadibutiRoutes = require("./app/routes/jadibutiRoutes");
 
 const vehiclesRoutes = require("./app/routes/vehiclesRoutes");
 const assetsRoutes = require("./app/routes/assetsRoutes");
+const anyasampatiRoutes = require("./app/routes/anyaSampatiRoutes")
 
 //...........................................................Karya Bibaran
 
@@ -146,6 +148,7 @@ app.use("/api/v1", biruwaUtpadanRoutes);
 app.use("/api/v1", banpaidawarRoutes);
 app.use("/api/v1", activitiesInfoRoutes);
 app.use("/api/v1", vehiclesRoutes);
+app.use("/api/v1", anyasampatiRoutes);
 app.use("/api/v1", banyajantuXetiBibaranRoutes);
 app.use("/api/v1", banxetraAnyaprayojanRoutes);
 app.use("/api/v1", banyajantuUddarRoutes);
@@ -162,6 +165,7 @@ app.use("/api/v1", plotRoutes);
 app.use("/api/v1", inventoryRoutes);
 app.use("/api/v1", officeStaffPostRoutes);
 app.use("/api/v1", usersRoutes);
+app.use("/api/v1", officesRoutes);
 app.use("/api/v1", karmachariDarbandiRoutes);
 app.use("/api/v1", uddhamRoutes);
 app.use("/api/v1", bachatBibaranRoutes);
