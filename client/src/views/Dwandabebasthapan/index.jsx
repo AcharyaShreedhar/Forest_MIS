@@ -8,7 +8,7 @@ import DwandabebasthapanActions from "../../actions/dwandabebasthapan";
 import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
 export class Dwandabebasthapan extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallBanyajantuuddar({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

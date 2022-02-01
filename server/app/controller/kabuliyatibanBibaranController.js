@@ -6,7 +6,7 @@ async function getAllKabuliyatibanBibaran(req, res) {
   const getAllKabuliyatibanBibaranQuery = `select * from kabuliyatiban_bibarans as k where k.darta_miti BETWEEN ? and ? and k.dist_id like ? and k.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(

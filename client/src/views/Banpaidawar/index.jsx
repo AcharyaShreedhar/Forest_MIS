@@ -8,7 +8,7 @@ import banpaidawarRoutes from "../../routes/banpaidawar";
 import BanpaidawarActions from "../../actions/banpaidawar";
 
 export class Banpaidawar extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

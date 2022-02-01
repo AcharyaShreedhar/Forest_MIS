@@ -11,11 +11,11 @@ export function* loginRequest(api, action) {
 
   if (response.ok) {
     // const { user, officeList } = response.data;
-    const { user} = response.data;
+    const { user } = response.data;
     const { user_token } = user;
     window.token = user_token;
     // yield put(AppActions.loginSuccess({ user_token, user, officeList }));
-    yield put(AppActions.loginSuccess({ user_token, user}));
+    yield put(AppActions.loginSuccess({ user_token, user }));
     yield call(history.push, "/home");
   } else {
     yield put(AppActions.loginFailure());
@@ -608,7 +608,8 @@ export function* addofficesRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallofficesRequest(api, {
-      distId:"%",
+      distId: "%",
+      officeId: "%",
       name: "office_name",
       page: 0,
       perPage: 10,
@@ -629,7 +630,7 @@ export function* addofficesRequest(api, action) {
 // Update offices
 export function* updateofficesRequest(api, action) {
   const { payload, officesId } = action;
-// console.log("payload",payload)
+  // console.log("payload",payload)
   const response = yield api.postOfficesUpdate(payload.office.data, officesId);
 
   if (response.ok) {
@@ -637,7 +638,8 @@ export function* updateofficesRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallofficesRequest(api, {
-      distId:"%",
+      distId: "%",
+      officeId: "%",
       name: "office_name",
       page: 0,
       perPage: 10,
@@ -665,8 +667,9 @@ export function* deleteofficesRequest(api, action) {
     toast.success("कार्यालय विवरण सफलतापूर्वक हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallofficesRequest(api, { 
-      distId:"%",
+    yield fetchallofficesRequest(api, {
+      distId: "%",
+      officeId: "%",
       name: "office_name",
       page: 0,
       perPage: 10,

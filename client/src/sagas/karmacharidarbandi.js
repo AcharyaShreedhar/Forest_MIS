@@ -46,6 +46,7 @@ export function* addkarmacharidarbandiRequest(api, action) {
     });
     yield fetchallkarmacharidarbandiRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "post",
       page: 0,
       perPage: 10,
@@ -80,6 +81,7 @@ export function* updatekarmacharidarbandiRequest(api, action) {
     });
     yield fetchallkarmacharidarbandiRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "post",
       page: 0,
       perPage: 10,
@@ -111,6 +113,7 @@ export function* deletekarmacharidarbandiRequest(api, action) {
     });
     yield fetchallkarmacharidarbandiRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "post",
       page: 0,
       perPage: 10,

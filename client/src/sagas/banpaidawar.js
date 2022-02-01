@@ -42,6 +42,7 @@ export function* addbanpaidawarRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -76,6 +77,7 @@ export function* updatebanpaidawarRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -107,6 +109,7 @@ export function* deletebanpaidawarRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -163,6 +166,7 @@ export function* addbanpaidawarlilamRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -197,6 +201,7 @@ export function* updatebanpaidawarlilamRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -228,6 +233,7 @@ export function* deletebanpaidawarlilamRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -261,9 +267,13 @@ export function* fetchallbanpaidawarbikribitaranRequest(api, action) {
 export function* fetchbanpaidawarbikribitaranRequest(api, action) {
   const banpaidawarBikribitaranId = action.payload;
 
-  const response = yield api.getBanpaidawarbikribitaran(banpaidawarBikribitaranId);
+  const response = yield api.getBanpaidawarbikribitaran(
+    banpaidawarBikribitaranId
+  );
   if (response.ok) {
-    yield put(BanpaidawarActions.fetchbanpaidawarbikribitaranSuccess(response.data));
+    yield put(
+      BanpaidawarActions.fetchbanpaidawarbikribitaranSuccess(response.data)
+    );
   } else {
     yield put(BanpaidawarActions.fetchbanpaidawarbikribitaranFailure());
   }
@@ -285,12 +295,15 @@ export function* addbanpaidawarbikribitaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "bikri_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/banpaidawar/bikribitaranlist");
-    yield put(BanpaidawarActions.addbanpaidawarbikribitaranSuccess(response.data));
+    yield put(
+      BanpaidawarActions.addbanpaidawarbikribitaranSuccess(response.data)
+    );
   } else {
     yield put(BanpaidawarActions.addbanpaidawarbikribitaranFailure());
     toast.error(
@@ -305,7 +318,7 @@ export function* addbanpaidawarbikribitaranRequest(api, action) {
 //update banpaidawarbikribitaran
 export function* updatebanpaidawarbikribitaranRequest(api, action) {
   const { payload, banpaidawarbikribitaranId } = action;
- 
+
   const response = yield api.postBanpaidawarBanpaidawarbikribitaranUpdate(
     payload.banpaidawarbikribitaran.data,
     banpaidawarbikribitaranId
@@ -319,12 +332,15 @@ export function* updatebanpaidawarbikribitaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "bikri_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/banpaidawar/bikribitaranlist");
-    yield put(BanpaidawarActions.updatebanpaidawarbikribitaranSuccess(response.data));
+    yield put(
+      BanpaidawarActions.updatebanpaidawarbikribitaranSuccess(response.data)
+    );
   } else {
     yield put(BanpaidawarActions.updatebanpaidawarbikribitaranFailure());
     toast.error(
@@ -340,7 +356,9 @@ export function* updatebanpaidawarbikribitaranRequest(api, action) {
 export function* deletebanpaidawarbikribitaranRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postBanpaidawarBanpaidawarbikribitaranDelete(payload);
+  const response = yield api.postBanpaidawarBanpaidawarbikribitaranDelete(
+    payload
+  );
 
   if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार बिक्रिवितरण हटाईयो !!!!!", {
@@ -350,11 +368,14 @@ export function* deletebanpaidawarbikribitaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "bikri_miti",
       page: 0,
       perPage: 10,
     });
-    yield put(BanpaidawarActions.deletebanpaidawarbikribitaranSuccess(response.data));
+    yield put(
+      BanpaidawarActions.deletebanpaidawarbikribitaranSuccess(response.data)
+    );
   } else {
     yield put(BanpaidawarActions.deletebanpaidawarbikribitaranFailure());
     toast.error(

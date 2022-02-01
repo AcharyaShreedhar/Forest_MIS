@@ -8,7 +8,7 @@ import forestRoutes from "../../routes/forests";
 import BankaprakarActions from "../../actions/bankaprakar";
 
 export class Forests extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallSamudayikbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

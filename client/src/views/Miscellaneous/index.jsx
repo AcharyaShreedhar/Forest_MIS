@@ -8,7 +8,7 @@ import MiscellaneousRoutes from "../../routes/miscellaneous";
 import MiscellaneousActions from "../../actions/miscellaneous";
 
 export class Miscellaneous extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallRojgarsrijana({
       distId: "%",
       officeId: "%",

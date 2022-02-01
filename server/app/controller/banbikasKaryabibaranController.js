@@ -7,7 +7,7 @@ async function getAllBanbikasKaryabibaran(req, res) {
     if (error) throw error;
     pool.query(
       getAllBanbikasKaryabibaranQuery,
-      [req.body.distId,req.body.officeId,req.body.name, req.body.page, req.body.perPage],
+      [req.body.distId,req.body.officeId,req.body.name, req.body.page, req.body.perPage, req.body.officeId],
       (error, results, fields) => {
         if (error) throw error;
         res.send(

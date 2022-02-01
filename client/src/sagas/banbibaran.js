@@ -162,6 +162,7 @@ export function* addbanxetraanyaprayojanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -196,6 +197,7 @@ export function* updatebanxetraanyaprayojanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -229,6 +231,7 @@ export function* deletebanxetraanyaprayojanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -287,6 +290,7 @@ export function* addplotbibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "established_date",
       page: 0,
       perPage: 10,
@@ -321,6 +325,7 @@ export function* updateplotbibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "established_date",
       page: 0,
       perPage: 10,
@@ -352,6 +357,7 @@ export function* deleteplotbibaranRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "established_date",
       page: 0,
       perPage: 10,
@@ -545,12 +551,9 @@ export function* updatebachatbibaranRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success(
-      "सफलतापुर्वक वचत तथा ऋण विवरण विवरण शंसोधन भयो !!!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
+    toast.success("सफलतापुर्वक वचत तथा ऋण विवरण विवरण शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallbachatbibaranRequest(api, {
       name: "samuhako_naam",
       page: 0,
@@ -595,7 +598,6 @@ export function* deletebachatbibaranRequest(api, action) {
   }
 }
 
-
 //banxetra atikraman
 export function* fetchallbanxetraatikramanRequest(api, action) {
   const { payload } = action;
@@ -615,9 +617,7 @@ export function* fetchbanxetraatikramanRequest(api, action) {
 
   const response = yield api.getBanxetraatikraman(banxetraAtikramanId);
   if (response.ok) {
-    yield put(
-      BanbibaranActions.fetchbanxetraatikramanSuccess(response.data)
-    );
+    yield put(BanbibaranActions.fetchbanxetraatikramanSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchbanxetraatikramanFailure());
   }
@@ -639,14 +639,13 @@ export function* addbanxetraatikramanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "atikraman_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/banbibaran/banxetraatikramanlist");
-    yield put(
-      BanbibaranActions.addbanxetraatikramanSuccess(response.data)
-    );
+    yield put(BanbibaranActions.addbanxetraatikramanSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addbanxetraatikramanFailure());
     toast.error(
@@ -675,14 +674,13 @@ export function* updatebanxetraatikramanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "atikraman_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/banbibaran/banxetraatikramanlist");
-    yield put(
-      BanbibaranActions.updatebanxetraatikramanSuccess(response.data)
-    );
+    yield put(BanbibaranActions.updatebanxetraatikramanSuccess(response.data));
   } else {
     yield put(BanbibaranActions.updatebanxetraatikramanFailure());
     toast.error(
@@ -710,13 +708,12 @@ export function* deletebanxetraatikramanRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "atikraman_miti",
       page: 0,
       perPage: 10,
     });
-    yield put(
-      BanbibaranActions.deletebanxetraatikramanSuccess(response.data)
-    );
+    yield put(BanbibaranActions.deletebanxetraatikramanSuccess(response.data));
   } else {
     yield put(BanbibaranActions.deletebanxetraatikramanFailure());
     toast.error(
@@ -728,7 +725,6 @@ export function* deletebanxetraatikramanRequest(api, action) {
   }
 }
 
-
 //muddaanusandhan dayari
 
 export function* fetchallmuddaanusandhandayariRequest(api, action) {
@@ -737,14 +733,10 @@ export function* fetchallmuddaanusandhandayariRequest(api, action) {
   const response = yield api.getMuddaanusandhandayariList(payloaddata);
   if (response.ok) {
     yield put(
-      BanbibaranActions.fetchallmuddaanusandhandayariSuccess(
-        response.data
-      )
+      BanbibaranActions.fetchallmuddaanusandhandayariSuccess(response.data)
     );
   } else {
-    yield put(
-      BanbibaranActions.fetchallmuddaanusandhandayariFailure()
-    );
+    yield put(BanbibaranActions.fetchallmuddaanusandhandayariFailure());
   }
 }
 
@@ -755,9 +747,7 @@ export function* fetchmuddaanusandhandayariRequest(api, action) {
 
   if (response.ok) {
     yield put(
-      BanbibaranActions.fetchmuddaanusandhandayariSuccess(
-        response.data
-      )
+      BanbibaranActions.fetchmuddaanusandhandayariSuccess(response.data)
     );
   } else {
     yield put(BanbibaranActions.fetchmuddaanusandhandayariFailure());
@@ -768,9 +758,10 @@ export function* fetchmuddaanusandhandayariRequest(api, action) {
 export function* addmuddaanusandhandayariRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postMuddaanusandhandayariMuddaanusandhandayariAddNew(
-    payload.muddaanusandhandayari.data
-  );
+  const response =
+    yield api.postMuddaanusandhandayariMuddaanusandhandayariAddNew(
+      payload.muddaanusandhandayari.data
+    );
 
   if (response.ok) {
     toast.success("सफलतापुर्वक मुद्दा अनुसन्धान दायरी प्रविष्ट भयो !!!!!", {
@@ -780,16 +771,13 @@ export function* addmuddaanusandhandayariRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/banbibaran/muddaanusandhandayarilist");
-    yield put(
-      BanbibaranActions.addmuddaanusandhandayariSuccess(
-        response.data
-      )
-    );
+    yield put(BanbibaranActions.addmuddaanusandhandayariSuccess(response.data));
   } else {
     yield put(BanbibaranActions.addmuddaanusandhandayariFailure());
     toast.error(
@@ -805,36 +793,31 @@ export function* addmuddaanusandhandayariRequest(api, action) {
 export function* updatemuddaanusandhandayariRequest(api, action) {
   const { payload, muddaanusandhandayariId } = action;
 
-  const response = yield api.postMuddaanusandhandayariMuddaanusandhandayariUpdate(
-    payload.muddaanusandhandayari.data,
-    muddaanusandhandayariId
-  );
+  const response =
+    yield api.postMuddaanusandhandayariMuddaanusandhandayariUpdate(
+      payload.muddaanusandhandayari.data,
+      muddaanusandhandayariId
+    );
 
   if (response.ok) {
-    toast.success(
-      "सफलतापुर्वक मुद्दा अनुसन्धान दायरी शंसोधन भयो !!!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
+    toast.success("सफलतापुर्वक मुद्दा अनुसन्धान दायरी शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
     yield fetchallmuddaanusandhandayariRequest(api, {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
     });
     yield call(history.push, "/banbibaran/muddaanusandhandayarilist");
     yield put(
-      BanbibaranActions.updatemuddaanusandhandayariSuccess(
-        response.data
-      )
+      BanbibaranActions.updatemuddaanusandhandayariSuccess(response.data)
     );
   } else {
-    yield put(
-      BanbibaranActions.updatemuddaanusandhandayariFailure()
-    );
+    yield put(BanbibaranActions.updatemuddaanusandhandayariFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
@@ -848,9 +831,8 @@ export function* updatemuddaanusandhandayariRequest(api, action) {
 export function* deletemuddaanusandhandayariRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postMuddaanusandhandayariMuddaanusandhandayariDelete(
-    payload
-  );
+  const response =
+    yield api.postMuddaanusandhandayariMuddaanusandhandayariDelete(payload);
 
   if (response.ok) {
     toast.success("सफलतापुर्वक मुद्दा अनुसन्धान दायरी हटाईयो !!!!!", {
@@ -860,19 +842,16 @@ export function* deletemuddaanusandhandayariRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
     });
     yield put(
-      BanbibaranActions.deletemuddaanusandhandayariSuccess(
-        response.data
-      )
+      BanbibaranActions.deletemuddaanusandhandayariSuccess(response.data)
     );
   } else {
-    yield put(
-      BanbibaranActions.deletemuddaanusandhandayariFailure()
-    );
+    yield put(BanbibaranActions.deletemuddaanusandhandayariFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
@@ -881,4 +860,3 @@ export function* deletemuddaanusandhandayariRequest(api, action) {
     );
   }
 }
-

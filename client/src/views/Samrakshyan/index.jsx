@@ -8,7 +8,7 @@ import SamrakshyanActions from "../../actions/samrakshyan";
 import samrakshyanRoutes from "../../routes/samrakshyan";
 
 export class Samrakshyan extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallJaladharsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

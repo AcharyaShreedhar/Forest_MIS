@@ -73,7 +73,7 @@ class AnyaSampati extends Component {
   }
   handleDistrict(e) {
     const { fromDate, perPage, toDate, officeId } = this.state;
-    this.setState({ distId: e });
+    this.setState({ distId: e });    
     this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
 
     //O-DDL
@@ -87,13 +87,17 @@ class AnyaSampati extends Component {
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallanyasampati({
       fromDate,
-      toDate,
+      toDate, 
       distId,
       officeId,
       name: "sampati_name",
       page: page,
       perPage,
     });
+    this.setState({
+      distId: "%",
+      officeId: "%",
+    })
   }
 
   // O-DDL

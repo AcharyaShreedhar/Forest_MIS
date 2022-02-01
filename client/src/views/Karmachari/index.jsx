@@ -9,7 +9,7 @@ import KarmacharidarbandiActions from "../../actions/karmacharidarbandi";
 import KarmacharibibaranActions from "../../actions/karmacharibibaran";
 
 export class Karmachari extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallKarmacharidarbandi({
       distId: "%",
       officeId: "%",

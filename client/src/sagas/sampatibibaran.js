@@ -41,6 +41,7 @@ export function* addassetsRequest(api, action) {
     });
     yield fetchallassetsRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -73,6 +74,7 @@ export function* updateassetsRequest(api, action) {
     });
     yield fetchallassetsRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -102,6 +104,7 @@ export function* deleteassetsRequest(api, action) {
     });
     yield fetchallassetsRequest(api, {
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -158,6 +161,7 @@ export function* addvehiclesRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -192,6 +196,7 @@ export function* updatevehiclesRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -223,6 +228,7 @@ export function* deletevehiclesRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -281,6 +287,7 @@ export function* addanyasampatiRequest(api, action) {
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -315,7 +322,8 @@ export function* updateanyasampatiRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId:"%",
+      officeId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
@@ -347,7 +355,8 @@ export function* deleteanyasampatiRequest(api, action) {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
-      officeId:"%",
+      officeId: "%",
+      officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,

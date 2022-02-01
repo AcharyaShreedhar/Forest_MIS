@@ -7,7 +7,7 @@ async function getAllRastriyabanBibaran(req, res) {
   const getAllRastriyabanBibaranQuery = `select * from rastriyabanbibarans as r where r.darta_miti BETWEEN ? and ? and r.dist_id like ? and r.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId],
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(

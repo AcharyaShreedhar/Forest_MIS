@@ -8,7 +8,7 @@ import banbibaranRoutes from "../../routes/banbibaran";
 import BanbibaranActions from "../../actions/banbibaran";
 
 class Banbibaran extends Component {
-  componentDidMount() {    
+  componentDidUpdate() {    
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

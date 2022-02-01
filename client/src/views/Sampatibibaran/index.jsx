@@ -9,7 +9,7 @@ import AppActions from "../../actions/app";
 import sampatibibaranRoutes from "../../routes/sampatibibaran";
 
 export class Sampatibibaran extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallGharjagga({
       distId: "%",
       officeId: "%",

@@ -8,7 +8,7 @@ import activitiesRoutes from "../../routes/activities";
 import BiruwautpadanActions from "../../actions/biruwautpadan";
 
 export class Activities extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallBrixyaropan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

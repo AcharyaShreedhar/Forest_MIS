@@ -69,7 +69,7 @@ class Lilam extends Component {
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, officeId, e, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -82,6 +82,10 @@ class Lilam extends Component {
       page: page,
       perPage,
     });
+    // this.setState({
+    //   distId: "%",
+    //   officeId: "%",
+    // })
   }
 
   handlePageChange(data) {

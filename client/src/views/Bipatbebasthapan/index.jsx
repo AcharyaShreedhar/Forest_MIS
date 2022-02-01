@@ -8,7 +8,7 @@ import bipatbebasthapanRoutes from "../../routes/bipatbebasthapan";
 import BipatbibaranActions from "../../actions/bipatbibaran";
 
 export class Bipatbebasthapan extends Component {
-  componentDidMount() {
+  componentDidUpdate() {
     this.props.fetchallPahirobebasthapan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
