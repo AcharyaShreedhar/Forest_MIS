@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { districtList, usertypeList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
+import AppActions from "../../actions/app";
 
 class Add extends Component {
   constructor(props) {
@@ -12,6 +15,7 @@ class Add extends Component {
       user_pass: "",
       user_type: "",
       dist_id: "",
+      office_id: "",
       user_office: "",
       created_by: "",
       updated_by: "",
@@ -19,12 +23,25 @@ class Add extends Component {
     };
     this.handleUserType = this.handleUserType.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+    return { officeList };
+  }
+
   handleDistrict(e) {
     this.setState({ dist_id: e[0] });
+    this.setState({ office_id: "%" });
+    //O-DDL
+    this.fetchOffice(e[0]);
   }
   handleUserType(e) {
     this.setState({ user_type: e[0] });
@@ -35,9 +52,15 @@ class Add extends Component {
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
   }
+  handleOffice(e) {
+    const id = e[0].id;
+    const value = e[0].value;
+    this.setState({ office_id: id });
+    this.setState({ user_office: value });
+  }
 
   handleSubmit() {
-    const { user_name, user_pass, user_type, user_office, dist_id } =
+    const { user_name, user_pass, user_type, user_office, dist_id, office_id } =
       this.state;
     const payload = {
       user: {
@@ -47,11 +70,21 @@ class Add extends Component {
           user_type: user_type,
           user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
+          office_id: equals(office_id, "%") ? 0 : office_id,
           created_by: this.props.user.user_name,
         },
       },
     };
     this.props.onSubmit(payload);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+    // this.setState({ office_id: "0" });
   }
 
   render() {
@@ -62,6 +95,8 @@ class Add extends Component {
       user_type,
       user_office,
       dist_id,
+      office_id,
+      officeList,
       showDialog,
     } = this.state;
 
@@ -120,13 +155,13 @@ class Add extends Component {
               </div>
             </div>
             <div className="panel space mb-4">
-              <Input
+              {/* <Input
                 className="w-30"
                 title="युजरको कार्यालय :"
                 direction="vertical"
                 value={user_office}
                 onChange={(e) => this.setState({ user_office: e })}
-              />
+              /> */}
               <div className="w-30">
                 <Dropdown
                   className="dropdownlabel"
@@ -137,6 +172,19 @@ class Add extends Component {
                   getValue={(districtList) => districtList["value"]}
                   onChange={(e) => this.handleDistrict(e)}
                   value={dist_id}
+                />
+              </div>
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="युजरको कार्यालय :"
+                  direction="vertical"
+                  returnBy="data"
+                  defaultIds={[office_id]}
+                  data={officeList}
+                  getValue={(officeList) => officeList["value"]}
+                  onChange={(e) => this.handleOffice(e)}
+                  value={office_id}
                 />
               </div>
               <div className="w-30" />
@@ -159,4 +207,22 @@ class Add extends Component {
   }
 }
 
-export default Add;
+Add.propTypes = {
+  officeDataList: PropTypes.any,
+};
+
+Add.defaultProps = {
+  officeDataList: {},
+};
+
+const mapStateToProps = (state) => ({
+  officeDataList: state.app.officesDropdownData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Add);
