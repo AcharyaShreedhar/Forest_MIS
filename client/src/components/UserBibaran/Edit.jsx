@@ -3,6 +3,9 @@ import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { districtList, usertypeList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { PropTypes } from "prop-types";
+import { connect } from "react-redux";
+import AppActions from "../../actions/app";
 
 class Edit extends Component {
   constructor(props) {
@@ -14,18 +17,32 @@ class Edit extends Component {
       user_type: props.history.location.item.user_type,
       user_office: props.history.location.item.user_office,
       dist_id: props.history.location.item.dist_id,
+      office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
     };
     this.handleUserType = this.handleUserType.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+    return { officeList };
+  }
+
   handleDistrict(e) {
     this.setState({ dist_id: e[0] });
+    this.setState({ office_id: "%" });
+    //O-DDL
+    this.fetchOffice(e[0]);
   }
   handleUserType(e) {
     this.setState({ user_type: e[0] });
@@ -36,6 +53,12 @@ class Edit extends Component {
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
   }
+  handleOffice(e) {
+    const id = e[0].id;
+    const value = e[0].value;
+    this.setState({ office_id: id });
+    this.setState({ user_office: value });
+  }
 
   handleSubmit() {
     const {
@@ -45,6 +68,7 @@ class Edit extends Component {
       user_type,
       user_office,
       dist_id,
+      office_id,
       created_by,
       updated_by,
     } = this.state;
@@ -56,12 +80,21 @@ class Edit extends Component {
           user_type: user_type,
           user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
+          office_id: equals(office_id, "%") ? 0 : office_id,
           created_by: created_by,
           updated_by: this.props.user.user_name,
         },
       },
     };
     this.props.onUpdate(payload, user_id);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
   }
 
   render() {
@@ -72,6 +105,8 @@ class Edit extends Component {
       user_type,
       user_office,
       dist_id,
+      office_id,
+      officeList,
       showDialog,
     } = this.state;
 
@@ -130,13 +165,13 @@ class Edit extends Component {
               </div>
             </div>
             <div className="panel space mb-4">
-              <Input
+              {/* <Input
                 className="w-30"
                 title="युजरको कार्यालय :"
                 direction="vertical"
                 value={user_office}
                 onChange={(e) => this.setState({ user_office: e })}
-              />
+              /> */}
               <div className="w-30">
                 <Dropdown
                   className="dropdownlabel"
@@ -147,6 +182,19 @@ class Edit extends Component {
                   getValue={(districtList) => districtList["value"]}
                   onChange={(e) => this.handleDistrict(e)}
                   value={dist_id}
+                />
+              </div>
+              <div className="w-30">
+                <Dropdown
+                  className="dropdownlabel"
+                  title="युजरको कार्यालय :"
+                  direction="vertical"
+                  returnBy="data"
+                  defaultIds={[equals(office_id, 0) ? "%" : `${office_id}`]}
+                  data={officeList}
+                  getValue={(officeList) => officeList["value"]}
+                  onChange={(e) => this.handleOffice(e)}
+                  value={office_id}
                 />
               </div>
               <div className="w-30" />
@@ -169,4 +217,22 @@ class Edit extends Component {
   }
 }
 
-export default Edit;
+Edit.propTypes = {
+  officeDataList: PropTypes.any,
+};
+
+Edit.defaultProps = {
+  officeDataList: {},
+};
+
+const mapStateToProps = (state) => ({
+  officeDataList: state.app.officesDropdownData,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Edit);

@@ -29,13 +29,13 @@ export class Filter extends Component {
     this.props.onFromDate(e, this.props.id);
   }
   handleDistrict(e) {
-    this.setState({ district: e[0] }, ()=> console.log(`district: ${this.state.district}, office: ${this.state.office}`));
+    this.setState({ district: e[0] });
     this.props.onSelect(e[0], this.props.id);
-    this.props.yesOffice && this.setState({office: "%"}, ()=> console.log(`district: ${this.state.district}, office: ${this.state.office}`))
+    this.props.yesOffice && this.setState({ office: "%" });
   }
 
   handleOffice(e) {
-    this.setState({ office: e[0] }, ()=> console.log("district, office", this.state.district, this.state.office));
+    this.setState({ office: e[0] });
     this.props.onSelectOffice(e[0], this.props.id);
   }
 

@@ -546,6 +546,8 @@ export function* deleteusersRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallusersRequest(api, {
+      distId: "%",
+      officeId: "%",
       name: "user_name",
       page: 0,
       perPage: 10,

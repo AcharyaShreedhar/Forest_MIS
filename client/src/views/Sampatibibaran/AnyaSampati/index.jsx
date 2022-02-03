@@ -95,7 +95,7 @@ class AnyaSampati extends Component {
       perPage,
     });
     this.setState({
-      distId: "%",
+      // distId: "%",
       officeId: "%",
     });
   }
@@ -183,7 +183,7 @@ class AnyaSampati extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
-                yesOffice="true"
+                yesOffice={true}
               />
               <ReportGenerator id="sampati" />
             </div>
