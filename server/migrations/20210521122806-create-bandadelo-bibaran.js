@@ -38,16 +38,16 @@ module.exports = {
         type: Sequelize.STRING,
       },
       sahabhagi_mahila: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       sahabhagi_purus: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       man_injured: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       man_dead: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       bandadelo_miti: {
         type: Sequelize.STRING,

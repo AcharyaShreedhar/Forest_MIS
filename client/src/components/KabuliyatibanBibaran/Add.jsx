@@ -200,7 +200,7 @@ class Add extends Component {
             <div className="panel space">
               <Input
                 className="w-15"
-                title="दर्ता नं :"
+                title="दर्ता नं :" 
                 value={regno}
                 direction="vertical"
                 onChange={(e) => this.setState({ regno: e })}
@@ -252,6 +252,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
+                type="number"
                 value={dalit_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
@@ -259,6 +260,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
+                type="number"
                 value={janjati_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
@@ -266,6 +268,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
+                type="number"
                 value={anya_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}
@@ -276,6 +279,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="सम्पन्न :"
+                type="number"
                 value={sampanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ sampanna: e })}
@@ -283,6 +287,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="मध्यम :"
+                type="number"
                 value={madhyam}
                 direction="vertical"
                 onChange={(e) => this.setState({ madhyam: e })}
@@ -290,6 +295,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="विपन्न :"
+                type="number"
                 value={bipanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ bipanna: e })}
@@ -301,6 +307,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
+                type="number"
                 value={dalit_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_rep: e })}
@@ -308,6 +315,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
+                type="number"
                 value={janjati_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_rep: e })}
@@ -315,6 +323,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
+                type="number"
                 value={anya_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_rep: e })}
@@ -326,6 +335,7 @@ class Add extends Component {
               <Input
                 className="w-45"
                 title="महिला :"
+                type="number"
                 value={female}
                 direction="vertical"
                 onChange={(e) => this.setState({ female: e })}
@@ -333,6 +343,7 @@ class Add extends Component {
               <Input
                 className="w-45"
                 title="पुरुष :"
+                type="number"
                 value={male}
                 direction="vertical"
                 onChange={(e) => this.setState({ male: e })}

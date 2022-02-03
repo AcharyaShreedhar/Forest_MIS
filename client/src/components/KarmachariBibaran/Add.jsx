@@ -196,6 +196,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="स्थायी प्रदेश"
+              type="number"
               direction="vertical"
               value={emp_add_perm_prov}
               onChange={(e) => this.setState({ emp_add_perm_prov: e })}
@@ -204,6 +205,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="स्थायी जिल्ला"
+              type="number"
               value={emp_add_perm_dist}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_perm_dist: e })}
@@ -211,6 +213,7 @@ class Add extends Component {
              <Input
               className="mb-4"
               title="स्थायी नगरपालिका"
+              type="number"
               value={emp_add_perm_mun}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_perm_mun: e })}
@@ -219,6 +222,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="स्थायी वडा न."
+              type="number"
               direction="vertical"
               value={emp_add_perm_ward}
               onChange={(e) => this.setState({ emp_add_perm_ward: e })}
@@ -226,6 +230,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="स्थायी टोल"
+              type="number"
               value={emp_add_perm_tole}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_perm_tole: e })}
@@ -233,6 +238,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="अस्थायी प्रदेश"
+              type="number"
               value={emp_add_temp_prov}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_temp_prov: e })}
@@ -241,6 +247,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="अस्थायी जिल्ला"
+              type="number"
               direction="vertical"
               value={emp_add_temp_dist}
               onChange={(e) => this.setState({ emp_add_temp_dist: e })}
@@ -249,6 +256,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="अस्थायी नगरपालिका"
+              type="number"
               value={emp_add_temp_mun}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_temp_mun: e })}
@@ -256,6 +264,7 @@ class Add extends Component {
              <Input
               className="mb-4"
               title="अस्थायी वडा न."
+              type="number"
               value={emp_add_temp_ward}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_temp_ward: e })}
@@ -264,6 +273,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="अस्थायी टोल"
+              type="number"
               direction="vertical"
               value={emp_add_temp_tole}
               onChange={(e) => this.setState({ emp_add_temp_tole: e })}
@@ -294,6 +304,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="कार्यालय"
+              type="number"
               value={emp_office_id}
               direction="vertical"
               onChange={(e) => this.setState({ emp_office_id: e })}
@@ -301,6 +312,7 @@ class Add extends Component {
              <Input
               className="mb-4"
               title="विभाग"
+              type="number"
               value={emp_dept_id}
               direction="vertical"
               onChange={(e) => this.setState({ emp_dept_id: e })}
@@ -309,6 +321,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="स्तर"
+              type="number"
               direction="vertical"
               value={emp_level_id}
               onChange={(e) => this.setState({ emp_level_id: e })}
@@ -323,6 +336,7 @@ class Add extends Component {
             <Input
               className="mb-4"
               title="श्रेणी"
+              type="number"
               value={emp_rank}
               direction="vertical"
               onChange={(e) => this.setState({ emp_rank: e })}

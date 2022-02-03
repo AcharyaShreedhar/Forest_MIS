@@ -173,6 +173,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="बिरुवा संख्या :"
+                type="number"
                 value={biruwa_sankhya}
                 direction="vertical"
                 onChange={(e) => this.setState({ biruwa_sankhya: e })}
@@ -180,6 +181,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="नर्सरी संख्या :"
+                type="number"
                 value={narsari_sankhya}
                 direction="vertical"
                 onChange={(e) => this.setState({ narsari_sankhya: e })}

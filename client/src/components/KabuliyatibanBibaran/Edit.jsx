@@ -268,6 +268,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
+                type="number"
                 value={dalit_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
@@ -275,6 +276,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
+                type="number"
                 value={janjati_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
@@ -282,6 +284,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
+                type="number"
                 value={anya_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}
@@ -292,6 +295,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="सम्पन्न :"
+                type="number"
                 value={sampanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ sampanna: e })}
@@ -299,6 +303,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="मध्यम :"
+                type="number"
                 value={madhyam}
                 direction="vertical"
                 onChange={(e) => this.setState({ madhyam: e })}
@@ -306,6 +311,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="विपन्न :"
+                type="number"
                 value={bipanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ bipanna: e })}
@@ -317,6 +323,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
+                type="number"
                 value={dalit_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_rep: e })}
@@ -324,6 +331,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
+                type="number"
                 value={janjati_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_rep: e })}
@@ -331,6 +339,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
+                type="number"
                 value={anya_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_rep: e })}
@@ -342,6 +351,7 @@ class Edit extends Component {
               <Input
                 className="w-45"
                 title="महिला :"
+                type="number"
                 value={female}
                 direction="vertical"
                 onChange={(e) => this.setState({ female: e })}
@@ -349,6 +359,7 @@ class Edit extends Component {
               <Input
                 className="w-45"
                 title="पुरुष :"
+                type="number"
                 value={male}
                 direction="vertical"
                 onChange={(e) => this.setState({ male: e })}
