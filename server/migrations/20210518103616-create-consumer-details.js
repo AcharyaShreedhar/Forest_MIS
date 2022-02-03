@@ -32,7 +32,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       curr_addr: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING, 
       },
       janjati_ghardhuri: {
         type: Sequelize.INTEGER,

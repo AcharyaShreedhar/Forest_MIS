@@ -135,6 +135,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="उद्दार संख्या :"
+                type="number"
                 direction="vertical"
                 value={uddar_sankhya}
                 onChange={(e) => this.setState({ uddar_sankhya: e })}
@@ -144,6 +145,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="घाइते मानव संख्या :"
+                type="number"
                 value={manab_ghaite}
                 direction="vertical"
                 onChange={(e) => this.setState({ manab_ghaite: e })}
@@ -151,6 +153,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="मृत मानव संख्या :"
+                type="number"
                 direction="vertical"
                 value={manab_mareko}
                 onChange={(e) => this.setState({ manab_mareko: e })}
@@ -166,6 +169,7 @@ class Edit extends Component {
             <div className="panel space">
               <Input
                 className="w-30"
+                type="number"
                 title="मर्ने वन्यजन्तु संख्या :"
                 value={banyajantu_mareko}
                 direction="vertical"
@@ -173,6 +177,7 @@ class Edit extends Component {
               />
               <Input
                 className="w-30"
+                type="number"
                 title="बोटविरुवा क्षेति संख्या :"
                 value={botbiruwa_xeti}
                 direction="vertical"

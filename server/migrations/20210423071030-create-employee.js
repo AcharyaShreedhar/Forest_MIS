@@ -42,7 +42,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       emp_add_perm_tole: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       emp_add_temp_prov: {
         type: Sequelize.INTEGER,
@@ -57,7 +57,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       emp_add_temp_tole: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       emp_phone1: {
         type: Sequelize.STRING,

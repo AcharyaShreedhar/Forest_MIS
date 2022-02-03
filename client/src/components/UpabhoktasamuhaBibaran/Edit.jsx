@@ -239,6 +239,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={dalit_ghardhuri}
@@ -247,6 +248,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाती :"
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={janjati_ghardhuri}
@@ -255,6 +257,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={anya_ghardhuri}
@@ -267,6 +270,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="सम्पन्न : "
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={sampanna}
@@ -275,6 +279,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="मध्यम : "
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={madhyam}
@@ -283,6 +288,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="विपन्न : "
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={bipanna}
@@ -294,6 +300,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={dalit_rep}
@@ -302,6 +309,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाती :"
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={janjati_rep}
@@ -311,6 +319,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={anya_rep}
@@ -323,6 +332,7 @@ export class Edit extends Component {
               <Input
                 className="w-45"
                 title="महिला :"
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={female}
@@ -331,6 +341,7 @@ export class Edit extends Component {
               <Input
                 className="w-45"
                 title="पुरुष : "
+                type="number"
                 direction="vertical"
                 as="textarea"
                 value={male}

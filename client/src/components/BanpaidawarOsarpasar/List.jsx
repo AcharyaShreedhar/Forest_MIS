@@ -51,7 +51,6 @@ function List(props) {
                 <tr key={`${osarpasar.paidawar_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {osarpasar.arthik_barsa}</td>
-                  <td> {osarpasar.mahina}</td>
                   <td> {osarpasar.kaath}</td>
                   <td> {osarpasar.daura}</td>
                   <td> {osarpasar.lavgrahi_sankhya}</td>

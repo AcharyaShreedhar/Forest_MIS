@@ -136,6 +136,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="रोजगार संख्या :"
+                type-="number"
                 direction="vertical"
                 value={rojgar_sankhya}
                 onChange={(e) => this.setState({ rojgar_sankhya: e })}

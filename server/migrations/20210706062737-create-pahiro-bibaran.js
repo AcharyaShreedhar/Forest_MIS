@@ -20,13 +20,13 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       manab_ghaite: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       manab_mareko: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       uddar_sankhya: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       pahiro_gayeko_miti: {
         type: Sequelize.STRING,
@@ -35,10 +35,10 @@ module.exports = {
         type: Sequelize.STRING,
       },
       banyajantu_mareko: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       botbiruwa_xeti: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,
