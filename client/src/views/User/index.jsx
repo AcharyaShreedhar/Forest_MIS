@@ -53,9 +53,12 @@ export class User extends Component {
     this.fetchResults(distId, officeId, 0, e);
   }
   handleDistrict(e) {
-    const { officeId, perPage } = this.state;
-    this.setState({ distId: e });
-    this.fetchResults(e, officeId, 0, perPage);
+    const { officeId, page, perPage } = this.state;
+    this.setState({ 
+      distId: e,
+      page: page-page,
+    });
+    this.fetchResults(e, officeId, page, perPage);
   }
 
   fetchResults(distId, officeId, page, perPage) {
@@ -98,10 +101,13 @@ export class User extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteUser(item.user_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: page-page, 
+    });
   }
 
   handleAdd() {
@@ -148,6 +154,7 @@ export class User extends Component {
               onAdd={() => this.handleAdd("user")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

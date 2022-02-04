@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { F, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 
@@ -18,7 +18,8 @@ function List(props) {
     pers,
     per,
     onPer,
-    role
+    role,
+    forcePage,
   } = props;
   return (
     <Fragment>
@@ -74,6 +75,7 @@ function List(props) {
         </Table>
         <Pagination
           per={per}
+          forcePage={forcePage}
           pers={pers}
           onPer={onPer}
           onPageClick={onPageClick}

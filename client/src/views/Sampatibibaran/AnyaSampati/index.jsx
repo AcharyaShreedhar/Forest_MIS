@@ -62,27 +62,39 @@ class AnyaSampati extends Component {
     this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    const { distId, officeId, page, perPage, toDate } = this.state;
+    this.setState({ 
+      fromDate: e,
+      page: page-page,
+    });
+    this.fetchResults(e, toDate, distId, officeId, page, perPage);
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    const { distId, officeId, fromDate, page, perPage } = this.state;
+    this.setState({ 
+      toDate: e,
+      page: page-page, 
+    });
+    this.fetchResults(fromDate, e, distId, officeId, page, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate, officeId } = this.state;
-    this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    const { fromDate, perPage, toDate, page, officeId } = this.state;
+    this.setState({ 
+      distId: e,
+      page: page-page, 
+    });
+    this.fetchResults(fromDate, toDate, e, officeId, page, perPage);
 
     //O-DDL
     this.fetchOffice(e);
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId } = this.state;
-    this.setState({ officeId: e });
-    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+    const { fromDate, page, perPage, toDate, distId } = this.state;
+    this.setState({ 
+      officeId: e,
+      page: page-page, 
+    });
+    this.fetchResults(fromDate, toDate, distId, e, page, perPage);
   }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallanyasampati({
@@ -145,10 +157,13 @@ class AnyaSampati extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteanyasampati(item.sampati_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: page-page, 
+    });
   }
 
   handleAdd() {
@@ -205,6 +220,7 @@ class AnyaSampati extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

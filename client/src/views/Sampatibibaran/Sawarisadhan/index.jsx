@@ -55,19 +55,28 @@ class Sawarisadhan extends Component {
     this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    const { distId, officeId, perPage, page, toDate } = this.state;
+    this.setState({ 
+      fromDate: e,
+      page: page-page,
+    });
+    this.fetchResults(e, toDate, distId, officeId, page, perPage);
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    const { distId, officeId, fromDate, page, perPage } = this.state;
+    this.setState({ 
+      toDate: e,
+      page: page-page,
+     });
+    this.fetchResults(fromDate, e, distId, officeId, page, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    const { fromDate, officeId, page, perPage, toDate } = this.state;
+    this.setState({ 
+      distId: e,
+      page: page-page, 
+    });
+    this.fetchResults(fromDate, toDate, e, officeId, page, perPage);
   }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallSawarisadhan({
@@ -118,10 +127,13 @@ class Sawarisadhan extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteSawarisadhan(item.vehicle_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog, 
+      page: page-page,
+    });
   }
 
   handleAdd() {
@@ -173,7 +185,9 @@ class Sawarisadhan extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page} 
             />
+     
           </Fragment>
         )}
         {equals(loc, "sawarisadhanadd") && (

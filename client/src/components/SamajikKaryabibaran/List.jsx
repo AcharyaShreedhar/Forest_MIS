@@ -18,7 +18,8 @@ function List(props) {
     pers,
     per,
     onPer,
-    role
+    role,
+    forcePage,
   } = props;
   return (
     <Fragment>
@@ -90,6 +91,7 @@ function List(props) {
         </Table>
         <Pagination
           per={per}
+          forcePage={forcePage}
           pers={pers}
           onPer={onPer}
           onPageClick={onPageClick}

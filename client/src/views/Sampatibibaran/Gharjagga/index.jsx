@@ -58,17 +58,23 @@ class Gharjagga extends Component {
     this.fetchResults(distId, officeId, 0, e);
   }
   handleDistrict(e, item) {
-    const { officeId, perPage } = this.state;
-    this.setState({ distId: e });
-    this.fetchResults(e, officeId, 0, perPage);
+    const { officeId, page, perPage } = this.state;
+    this.setState({ 
+      distId: e,
+      page: page-page, 
+    });
+    this.fetchResults(e, officeId, page, perPage);
 
     //O-DDL
     this.fetchOffice(e);
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId, officeId } = this.state;
-    this.setState({ officeId: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, e, 0, perPage);
+    const { fromDate, page, perPage, toDate, distId, officeId } = this.state;
+    this.setState({ 
+      officeId: e,
+      page: page-page, 
+    });
+    this.fetchResults(fromDate, toDate, distId, officeId, e, page, perPage);
   }
   fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallGharjagga({
@@ -119,10 +125,13 @@ class Gharjagga extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteGharjagga(item.asset_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog, 
+      page: page-page,
+    });
   }
 
   handleAdd() {
@@ -174,7 +183,9 @@ class Gharjagga extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page} 
             />
+     
           </Fragment>
         )}
         {equals(loc, "gharjaggaadd") && (

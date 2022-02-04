@@ -49,9 +49,12 @@ class Jadibuti extends Component {
     this.fetchResults(distId, 0, e);
   }
   handleDistrict(e, item) {
-    const { perPage } = this.state;
-    this.setState({ distId: e });
-    this.fetchResults(e, 0, perPage);
+    const { perPage, page } = this.state;
+    this.setState({ 
+      distId: e,
+      page: page-page,
+    });
+    this.fetchResults(e, page, perPage);
   }
 
   fetchResults(distId, page, perPage) {
@@ -93,10 +96,13 @@ class Jadibuti extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteJadibuti(item.jadibuti_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: page-page, 
+    });
   }
 
   handleAdd() {
@@ -146,6 +152,7 @@ class Jadibuti extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

@@ -46,19 +46,28 @@ class Plantation extends Component {
     this.fetchResults(fromDate, toDate, distId, 0, e);
   }
   handleFromDate(e) {
-    const { distId, perPage, toDate } = this.state;
-    this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, 0, perPage);
+    const { distId, page, perPage, toDate } = this.state;
+    this.setState({ 
+      fromDate: e,
+      page: page-page,
+    });
+    this.fetchResults(e, toDate, distId, page, perPage);
   }
   handleToDate(e) {
-    const { distId, fromDate, perPage } = this.state;
-    this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, 0, perPage);
+     const { distId, fromDate,page, perPage } = this.state;
+    this.setState({ 
+      fromDate: e,
+      page: page-page,
+    });
+    this.fetchResults(fromDate, e, distId, page, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
-    this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, 0, perPage);
+    const { fromDate, page, perPage, toDate } = this.state;
+    this.setState({ 
+      distId: e,
+      page: page-page,
+    });
+    this.fetchResults(fromDate, toDate, e, page, perPage);
   }
 
   fetchResults(fromDate, toDate, distId, page, perPage) {
@@ -107,10 +116,13 @@ class Plantation extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
      
         this.props.deleteBrixyaropan(item.brixyaropan_id);
-        this.setState({ showDialog: !this.state.showDialog });
+        this.setState({ 
+          showDialog: !this.state.showDialog,
+          page: page-page, 
+        });
   }
 
   handleAdd() {
@@ -165,6 +177,7 @@ class Plantation extends Component {
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
