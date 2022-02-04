@@ -9,34 +9,12 @@ import KaryabibaranActions from "../../actions/karyabibaran";
 
 export class Karyabibaran extends Component {
   componentDidMount() {
-    this.props.fetchallGharjagga({
+    this.props.fetchallSamajikkaryabibaran({
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
-    });
-    this.props.fetchallSawarisadhan({
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchallanyasampati({
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
     });
   }
 

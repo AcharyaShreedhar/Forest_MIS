@@ -9,34 +9,23 @@ import BipatbibaranActions from "../../actions/bipatbibaran";
 
 export class Bipatbebasthapan extends Component {
   componentDidMount() {
-    this.props.fetchallGharjagga({
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchallSawarisadhan({
+    this.props.fetchallPahirobebasthapan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchallanyasampati({
+    this.props.fetchallBandadelo({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "bandadelo_miti",
       page: 0,
       perPage: 10,
-    });
-    this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
     });
   }
 

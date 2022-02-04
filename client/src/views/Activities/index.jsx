@@ -9,34 +9,39 @@ import BiruwautpadanActions from "../../actions/biruwautpadan";
 
 export class Activities extends Component {
   componentDidMount() {
-    this.props.fetchallGharjagga({
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchallSawarisadhan({
+    this.props.fetchallBrixyaropan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "brixyaropan_miti",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchallanyasampati({
+    this.props.fetchallBiruwautpadan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "arthik_barsa",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchOfficedropdown({
+    this.props.fetchallYearlyactivities({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
       distId: "%",
-      name: "value", //"office_name"
+      officeId: "%",
+      name: "fiscal_year",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallJadibuti({
+      distId: "%",
+      officeId: "%",
+      name: "jadibuti_thegana",
+      page: 0,
+      perPage: 10,
     });
   }
 

@@ -9,34 +9,44 @@ import samrakshyanRoutes from "../../routes/samrakshyan";
 
 export class Samrakshyan extends Component {
   componentDidMount() {
-    this.props.fetchallGharjagga({
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchallSawarisadhan({
+    this.props.fetchallJaladharsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "karyakram_miti",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchallanyasampati({
+
+    this.props.fetchallNadikinarsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "karyakram_miti",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchOfficedropdown({
+
+    this.props.fetchallPokharisamrakshyan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
       distId: "%",
-      name: "value", //"office_name"
+      officeId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallPanimuhansamrakshyan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
     });
   }
 

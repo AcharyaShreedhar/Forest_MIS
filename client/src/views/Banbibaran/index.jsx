@@ -9,34 +9,41 @@ import BanbibaranActions from "../../actions/banbibaran";
 
 class Banbibaran extends Component {
   componentDidMount() {
-    this.props.fetchallGharjagga({
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchallSawarisadhan({
+    this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "atikraman_miti",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchallanyasampati({
+    this.props.fetchallSeedgardenplots({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "established_date",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchOfficedropdown({
+    this.props.fetchallBanxetraanyaprayojan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
       distId: "%",
-      name: "value", //"office_name"
+      officeId: "%",
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallMuddaanusandhandayari({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "jaheri_partibedan_miti",
+      page: 0,
+      perPage: 10,
     });
   }
 

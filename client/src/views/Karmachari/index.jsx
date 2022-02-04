@@ -10,34 +10,22 @@ import KarmacharibibaranActions from "../../actions/karmacharibibaran";
 
 export class Karmachari extends Component {
   componentDidMount() {
-    this.props.fetchallGharjagga({
+    this.props.fetchallKarmacharidarbandi({
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "post",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchallSawarisadhan({
+
+    this.props.fetchallKarmacharibibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "emp_appoint_date",
       page: 0,
       perPage: 10,
-    });
-    this.props.fetchallanyasampati({
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
     });
   }
 

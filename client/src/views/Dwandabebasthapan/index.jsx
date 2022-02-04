@@ -9,34 +9,23 @@ import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
 export class Dwandabebasthapan extends Component {
   componentDidMount() {
-    this.props.fetchallGharjagga({
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
-      page: 0,
-      perPage: 10,
-    });
-    this.props.fetchallSawarisadhan({
+    this.props.fetchallBanyajantuuddar({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "miti",
       page: 0,
       perPage: 10,
     });
-    this.props.fetchallanyasampati({
+    this.props.fetchallBanyajantuxetirahat({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
       officeId: "%",
-      name: "asset_type",
+      name: "xeti_miti",
       page: 0,
       perPage: 10,
-    });
-    this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
     });
   }
 
