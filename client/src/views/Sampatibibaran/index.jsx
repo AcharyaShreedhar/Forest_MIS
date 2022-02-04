@@ -9,7 +9,39 @@ import AppActions from "../../actions/app";
 import sampatibibaranRoutes from "../../routes/sampatibibaran";
 
 export class Sampatibibaran extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallGharjagga({
+      distId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallSawarisadhan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallanyasampati({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
+    });
+  }
+
+componentDidUpdate() {
     this.props.fetchallGharjagga({
       distId: "%",
       officeId: "%",

@@ -8,7 +8,39 @@ import banpaidawarRoutes from "../../routes/banpaidawar";
 import BanpaidawarActions from "../../actions/banpaidawar";
 
 export class Banpaidawar extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallGharjagga({
+      distId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallSawarisadhan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallanyasampati({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "asset_type",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
+    });
+  }
+
+componentDidUpdate() {
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
