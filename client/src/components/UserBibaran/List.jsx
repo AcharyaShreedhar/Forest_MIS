@@ -85,7 +85,11 @@ function List(props) {
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
+                        options={
+                          role < 3
+                            ? ["Edit Profile", "Change Password"]
+                            : ["Edit Profile", "Change Password", "Delete"]
+                        }
                         onChange={(e) => onSelect(e, user, "user")}
                       />
                     </div>

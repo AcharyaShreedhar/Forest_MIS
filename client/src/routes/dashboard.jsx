@@ -108,6 +108,14 @@ const dashboardRoutes = [
     auth: true,
     component: User,
   },
+  // change password
+  {
+    path: "/userpassedit/:id",
+    title: "User",
+    name: "user",
+    auth: true,
+    component: User,
+  },
   {
     path: "/officelist",
     title: "Offices",
