@@ -525,7 +525,35 @@ export function* updateusersRequest(api, action) {
     yield call(history.push, "/userlist");
     yield put(AppActions.updateusersSuccess(response.data));
   } else {
-    yield put(AppActions.usersFailure());
+    yield put(AppActions.updateusersFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// change password
+export function* updateuserspasswordRequest(api, action) {
+  const { payload, usersId } = action;
+
+  const response = yield api.postUsersPasswordUpdate(payload.user.data, usersId);
+
+  if (response.ok) {
+    toast.success("युजरको पासवर्ड सफलतापूर्वक शंसोधन भयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallusersRequest(api, {
+      name: "user_name",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/userlist");
+    yield put(AppActions.updateuserspasswordSuccess(response.data));
+  } else {
+    yield put(AppActions.updateuserspasswordFailure());
     toast.error(
       "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {

@@ -347,6 +347,17 @@ const updateusersSuccess = (state, action) =>
 const updateusersFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+//change password
+const updateuserspasswordRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateuserspasswordSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateuserspasswordFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 //Delete users
 const deleteusersRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -530,6 +541,11 @@ export const reducer = createReducer(initialState, {
   [AppTypes.UPDATEUSERS_REQUEST]: updateusersRequest,
   [AppTypes.UPDATEUSERS_SUCCESS]: updateusersSuccess,
   [AppTypes.UPDATEUSERS_FAILURE]: updateusersFailure, 
+
+  //change password
+  [AppTypes.UPDATEUSERSPASSWORD_REQUEST]: updateuserspasswordRequest,
+  [AppTypes.UPDATEUSERSPASSWORD_SUCCESS]: updateuserspasswordSuccess,
+  [AppTypes.UPDATEUSERSPASSWORD_FAILURE]: updateuserspasswordFailure, 
 
   [AppTypes.DELETEUSERS_REQUEST]: deleteusersRequest,
   [AppTypes.DELETEUSERS_SUCCESS]: deleteusersSuccess,

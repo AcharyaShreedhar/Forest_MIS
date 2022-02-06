@@ -107,6 +107,12 @@ const { Types, Creators } = createActions({
   updateusersSuccess: ["response"],
   updateusersFailure: null,
 
+  //change password
+  
+  updateuserspasswordRequest: ["payload", "usersId"],
+  updateuserspasswordSuccess: ["response"],
+  updateuserspasswordFailure: null,
+
   deleteusersRequest: ["payload", "usersId"],
   deleteusersSuccess: ["response"],
   deleteusersFailure: null,

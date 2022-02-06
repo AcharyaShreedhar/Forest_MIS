@@ -13,7 +13,7 @@ class Edit extends Component {
     this.state = {
       user_id: props.history.location.item.user_id,
       user_name: props.history.location.item.user_name,
-      user_pass: props.history.location.item.user_pass,
+      user_pass: "",
       user_type: props.history.location.item.user_type,
       user_office: props.history.location.item.user_office,
       dist_id: props.history.location.item.dist_id,
@@ -21,6 +21,7 @@ class Edit extends Component {
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
+      officeDisabled: false,
     };
     this.handleUserType = this.handleUserType.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
@@ -28,6 +29,7 @@ class Edit extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.fetchOffice(props.history.location.item.dist_id);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -41,6 +43,14 @@ class Edit extends Component {
   handleDistrict(e) {
     this.setState({ dist_id: e[0] });
     this.setState({ office_id: "%" });
+    this.setState({ user_office: "सबै" });
+    // this.setState({ officeDisabled: false });
+    // if district is not selected officedropdown is disabled.
+    if (e[0] === "%") {
+      this.setState({ officeDisabled: true });
+    } else {
+      this.setState({ officeDisabled: false });
+    }
     //O-DDL
     this.fetchOffice(e[0]);
   }
@@ -86,7 +96,8 @@ class Edit extends Component {
         },
       },
     };
-    this.props.onUpdate(payload, user_id);
+    this.props.editProfile && this.props.onUpdate(payload, user_id);
+    this.props.changePassword && this.props.onUpdatePassword(payload, user_id);
   }
 
   // O-DDL
@@ -108,11 +119,12 @@ class Edit extends Component {
       office_id,
       officeList,
       showDialog,
+      officeDisabled,
     } = this.state;
 
     let disabled =
       isEmpty(user_name) ||
-      isEmpty(user_name) ||
+      (this.props.changePassword && isEmpty(user_pass)) ||
       isEmpty(dist_id) ||
       isEmpty(user_office) ||
       isEmpty(user_type)
@@ -135,70 +147,73 @@ class Edit extends Component {
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
-            <div className="panel space mb-4">
-              <Input
-                className="w-30"
-                title="युजरको नाम :"
-                direction="vertical"
-                value={user_name}
-                onChange={(e) => this.setState({ user_name: e })}
-              />
-              <Input
-                className="w-30"
-                title="पासवर्ड  :"
-                direction="vertical"
-                value={user_pass}
-                type="password"
-                onChange={(e) => this.setState({ user_pass: e })}
-              />
-              <div className="w-30">
-                <Dropdown
-                  className="dropdownlabel"
-                  title="युजरको प्रकार :"
+            {this.props.changePassword && (
+              <div className="panel space mb-4">
+                <Input
+                  className="w-30"
+                  title="पासवर्ड  :"
                   direction="vertical"
-                  defaultIds={[user_type]}
-                  data={usertypeList}
-                  getValue={(usertypeList) => usertypeList["value"]}
-                  onChange={(e) => this.handleUserType(e)}
-                  value={user_type}
+                  value={user_pass}
+                  type="password"
+                  onChange={(e) => this.setState({ user_pass: e })}
                 />
               </div>
-            </div>
-            <div className="panel space mb-4">
-              {/* <Input
-                className="w-30"
-                title="युजरको कार्यालय :"
-                direction="vertical"
-                value={user_office}
-                onChange={(e) => this.setState({ user_office: e })}
-              /> */}
-              <div className="w-30">
-                <Dropdown
-                  className="dropdownlabel"
-                  title="जिल्ला :"
-                  direction="vertical"
-                  defaultIds={[equals(dist_id, 0) ? "%" : dist_id]}
-                  data={districtList}
-                  getValue={(districtList) => districtList["value"]}
-                  onChange={(e) => this.handleDistrict(e)}
-                  value={dist_id}
-                />
-              </div>
-              <div className="w-30">
-                <Dropdown
-                  className="dropdownlabel"
-                  title="युजरको कार्यालय :"
-                  direction="vertical"
-                  returnBy="data"
-                  defaultIds={[equals(office_id, 0) ? "%" : `${office_id}`]}
-                  data={officeList}
-                  getValue={(officeList) => officeList["value"]}
-                  onChange={(e) => this.handleOffice(e)}
-                  value={office_id}
-                />
-              </div>
-              <div className="w-30" />
-            </div>
+            )}
+
+            {this.props.editProfile && (
+              <React.Fragment>
+                <div className="panel space mb-4">
+                  <Input
+                    className="w-30"
+                    title="युजरको नाम :"
+                    direction="vertical"
+                    value={user_name}
+                    onChange={(e) => this.setState({ user_name: e })}
+                  />
+                  <div className="w-30">
+                    <Dropdown
+                      className="dropdownlabel"
+                      title="युजरको प्रकार :"
+                      direction="vertical"
+                      defaultIds={[user_type]}
+                      data={usertypeList}
+                      getValue={(usertypeList) => usertypeList["value"]}
+                      onChange={(e) => this.handleUserType(e)}
+                      value={user_type}
+                    />
+                  </div>
+                  <div className="w-30">
+                    <Dropdown
+                      className="dropdownlabel"
+                      title="जिल्ला :"
+                      direction="vertical"
+                      defaultIds={[equals(dist_id, 0) ? "%" : dist_id]}
+                      data={districtList}
+                      getValue={(districtList) => districtList["value"]}
+                      onChange={(e) => this.handleDistrict(e)}
+                      value={dist_id}
+                    />
+                  </div>
+                </div>
+                <div className="panel space mb-4">
+                  <div className="w-30">
+                    <Dropdown
+                      className="dropdownlabel"
+                      title="युजरको कार्यालय :"
+                      direction="vertical"
+                      returnBy="data"
+                      defaultIds={[equals(office_id, 0) ? "%" : `${office_id}`]}
+                      disabled={officeDisabled}
+                      data={officeList}
+                      getValue={(officeList) => officeList["value"]}
+                      onChange={(e) => this.handleOffice(e)}
+                      value={office_id}
+                    />
+                  </div>
+                  <div className="w-30" />
+                </div>
+              </React.Fragment>
+            )}
           </div>
           <div className="section mb-4" />
           <div className="mt-2 border-5">
@@ -218,10 +233,14 @@ class Edit extends Component {
 }
 
 Edit.propTypes = {
+  changePassword: PropTypes.bool,
+  editProfile: PropTypes.bool,
   officeDataList: PropTypes.any,
 };
 
 Edit.defaultProps = {
+  changePassword: false,
+  editProfile: false,
   officeDataList: {},
 };
 
