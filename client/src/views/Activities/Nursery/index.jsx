@@ -42,9 +42,12 @@ class Nursery extends Component {
     return { biruwautpadanList, loc };
   }
   handlePer(e) {
-    const { fromDate, toDate, distId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, 0, e);
+    const { fromDate, toDate, distId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+      page: page-page,
+    });
+    this.fetchResults(fromDate, toDate, distId, page, e);
   }
   handleFromDate(e) {
     const { distId, page, perPage, toDate } = this.state;
@@ -123,6 +126,7 @@ class Nursery extends Component {
     this.setState({ 
       showDialog: !this.state.showDialog,
       page: page-page, 
+      perPage: 10,
     });
   }
 

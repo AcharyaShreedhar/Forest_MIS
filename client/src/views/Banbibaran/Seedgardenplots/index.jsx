@@ -53,9 +53,12 @@ class Seedgardenplots extends Component {
   }
 
   handlePer(e) {
-    const { fromDate, toDate, distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
+    const { fromDate, toDate, distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+      page: page-page,
+     });
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, page, perPage, toDate } = this.state;
@@ -137,6 +140,7 @@ class Seedgardenplots extends Component {
     this.setState({ 
       showDialog: !this.state.showDialog, 
       page: page-page,
+      perPage: 10,
     });
   }
 

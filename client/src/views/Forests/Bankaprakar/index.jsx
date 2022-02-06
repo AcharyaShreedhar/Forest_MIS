@@ -97,9 +97,12 @@ class Bankaprakar extends Component {
   }
 
   handlePer(e, item) {
-    const { fromDate, toDate, distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e, item);
+    const { fromDate, toDate, distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e, 
+      page: page-page
+    });
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e, item);
   }
   handleFromDate(e, item) {
     const { distId, officeId, page, perPage, toDate } = this.state;
@@ -432,6 +435,7 @@ class Bankaprakar extends Component {
     this.setState({ 
       showDialog: !this.state.showDialog,
       page: page-page, 
+      perPage: 10,
     });
   }
 

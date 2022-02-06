@@ -48,9 +48,12 @@ class Jaladharsamrakshyan extends Component {
   }
 
   handlePer(e) {
-    const { distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(distId, officeId, 0, e);
+    const { distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+      page:page-page,
+   });
+    this.fetchResults(distId, officeId, page, e);
   }
   handleDistrict(e, item) {
     const { officeId, page, perPage } = this.state;
@@ -108,6 +111,7 @@ class Jaladharsamrakshyan extends Component {
     this.setState({ 
       showDialog: !this.state.showDialog,
       page: page-page, 
+      perPage: 10,
     });
   }
 

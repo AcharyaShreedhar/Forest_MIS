@@ -48,9 +48,12 @@ class Banbikaskaryabibaran extends Component {
   }
 
   handlePer(e) {
-    const { distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(distId, officeId, 0, e);
+    const { distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+      page:page-page,
+   });
+    this.fetchResults(distId, officeId, page, e);
   }
   handleDistrict(e, item) {
     const { officeId, page, perPage } = this.state;
@@ -106,7 +109,8 @@ class Banbikaskaryabibaran extends Component {
     this.props.deleteBanbikaskaryabibaran(item.banbikas_karyabibaran_id);
     this.setState({ 
       showDialog: !this.state.showDialog,
-      page: page-page, 
+      page: page-page,
+      perPage: 10, 
     });
   }
 

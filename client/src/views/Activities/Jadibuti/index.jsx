@@ -44,9 +44,12 @@ class Jadibuti extends Component {
   }
 
   handlePer(e) {
-    const { distId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(distId, 0, e);
+    const { distId, page } = this.state;
+    this.setState({ 
+      perPage: e, 
+      page: page-page
+    });
+    this.fetchResults(distId, page, e);
   }
   handleDistrict(e, item) {
     const { perPage, page } = this.state;
@@ -102,6 +105,7 @@ class Jadibuti extends Component {
     this.setState({ 
       showDialog: !this.state.showDialog,
       page: page-page, 
+      perPage: 10,
     });
   }
 

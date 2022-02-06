@@ -46,9 +46,12 @@ export class Office extends Component {
     };
   }
   handlePer(e) {
-    const { distId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(distId, 0, e);
+    const { distId, page } = this.state;
+    this.setState({ 
+      perPage: e, 
+      page: page-page
+    });
+    this.fetchResults(distId, page, e);
   }
   handleDistrict(e) {
     const { page, perPage } = this.state;
@@ -103,7 +106,8 @@ export class Office extends Component {
     this.props.deleteOffice(item.office_id);
     this.setState({ 
       showDialog: !this.state.showDialog,
-      page: page-page 
+      page: page-page,
+      perPage: 10, 
     });
   }
 
