@@ -97,8 +97,8 @@ class Bankaprakar extends Component {
     };
   }
 
-  handlePer(e) {
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e))
+  handlePer(e, item) {
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e, item))
   }
 
   handlePerCallback(e, item) {
