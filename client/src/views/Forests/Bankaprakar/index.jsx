@@ -109,33 +109,33 @@ class Bankaprakar extends Component {
     this.fetchResults(fromDate, toDate, distId, officeId, page, e, item);
   }
   handleFromDate(e, item) {
-    const { distId, officeId, page, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state;
     this.setState({ 
       fromDate: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(e, toDate, distId, officeId, page, perPage, item);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage, item);
   }
 
   handleToDate(e, item) {
-    const { distId, officeId, page, perPage, fromDate } = this.state;
+    const { distId, officeId, perPage, fromDate } = this.state;
     this.setState({ 
       toDate: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(fromDate, e, distId, officeId, page, perPage, item);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage, item);
   }
 
   handleDistrict(e, item) {
-    const { fromDate, officeId, page, perPage, toDate } = this.state;
+    const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({ 
       distId: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, page, perPage, item);
+    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage, item);
   }
 
-  fetchResults(fromDate, toDate, distId, officeId, page, perPage, item) {
+  fetchResults(fromDate, toDate, distId, officeId, perPage, item) {
     switch (item) {
       case "samudayikban": {
         this.props.fetchallSamudayikbanbibaran({
@@ -438,7 +438,7 @@ class Bankaprakar extends Component {
     }
     this.setState({ 
       showDialog: !this.state.showDialog,
-      page: page-page, 
+      page: 0, 
       perPage: 10,
     });
   }

@@ -62,28 +62,28 @@ class Bandadelo extends Component {
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
-    const { distId, officeId, page, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state;
     this.setState({ 
       fromDate: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(e, toDate, distId, officeId, page, perPage);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, officeId, page, perPage, fromDate } = this.state;
+    const { distId, officeId, perPage, fromDate } = this.state;
     this.setState({ 
       fromDate: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(fromDate, e, distId, officeId, page, perPage);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, page, perPage, toDate } = this.state;
+    const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({ 
       distId: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, page, perPage);
+    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -141,7 +141,7 @@ class Bandadelo extends Component {
     this.props.deleteBandadelo(item.bandadelo_bibaran_id);
     this.setState({ 
       showDialog: !this.state.showDialog,
-      page: page-page, 
+      page: 0, 
       perPage: 10,
     });
   }

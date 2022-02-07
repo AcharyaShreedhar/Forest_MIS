@@ -60,9 +60,9 @@ class Jadibuti extends Component {
     const { perPage, page } = this.state;
     this.setState({ 
       distId: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(e, page, perPage);
+    this.fetchResults(e, 0, perPage);
   }
 
   fetchResults(distId, page, perPage) {
@@ -109,7 +109,7 @@ class Jadibuti extends Component {
     this.props.deleteJadibuti(item.jadibuti_id);
     this.setState({ 
       showDialog: !this.state.showDialog,
-      page: page-page, 
+      page: 0, 
       perPage: 10,
     });
   }

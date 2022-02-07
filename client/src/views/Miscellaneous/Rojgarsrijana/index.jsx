@@ -60,12 +60,12 @@ class Rojgarsrijana extends Component {
   }
 
   handleDistrict(e) {
-    const { officeId, page, perPage } = this.state;
+    const { officeId, perPage } = this.state;
     this.setState({ 
       distId: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(e, officeId, page, perPage);
+    this.fetchResults(e, officeId, 0, perPage);
   }
 
   fetchResults(distId, officeId, page, perPage) {
@@ -113,7 +113,7 @@ class Rojgarsrijana extends Component {
     this.props.deleteRojgarsrijana(item.rojgar_srijana_id);
     this.setState({ 
       showDialog: !this.state.showDialog,
-      page: page-page, 
+      page: 0, 
       perPage: 10,
     });
   }

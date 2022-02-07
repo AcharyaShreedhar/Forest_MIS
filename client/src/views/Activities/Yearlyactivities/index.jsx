@@ -59,34 +59,34 @@ class Yearlyactivities extends Component {
     const { fromDate, toDate, distId, page } = this.state;
     this.setState({ 
       perPage: e,
-      page: page-page,
+      page: 0,
     });
     this.fetchResults(fromDate, toDate, distId, page, e);
   }
 
   handleFromDate(e) {
-    const { distId, page, perPage, toDate } = this.state;
+    const { distId, perPage, toDate } = this.state;
     this.setState({ 
       fromDate: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(e, toDate, distId, page, perPage);
+    this.fetchResults(e, toDate, distId, 0, perPage);
   }
   handleToDate(e) {
-     const { distId, fromDate,page, perPage } = this.state;
+     const { distId, fromDate, perPage } = this.state;
     this.setState({ 
       fromDate: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(fromDate, e, distId, page, perPage);
+    this.fetchResults(fromDate, e, distId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, page, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({ 
       distId: e,
-      page: page-page,
+      page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, page, perPage);
+    this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
   fetchResults(fromDate, toDate, distId, page, perPage) {
     this.props.fetchallYearlyactivities({
@@ -139,7 +139,7 @@ class Yearlyactivities extends Component {
     this.props.deleteYearlyactivities(item.activities_info_id);
     this.setState({ 
       showDialog: !this.state.showDialog,
-      page: page-page, 
+      page: 0, 
       perPage: 10,
     });
   }

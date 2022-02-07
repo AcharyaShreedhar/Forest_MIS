@@ -66,23 +66,23 @@ class Gharjagga extends Component {
   }
   
   handleDistrict(e, item) {
-    const { officeId, page, perPage } = this.state;
+    const { officeId, perPage } = this.state;
     this.setState({ 
       distId: e,
-      page: page-page, 
+      page: 0, 
     });
-    this.fetchResults(e, officeId, page, perPage);
+    this.fetchResults(e, officeId, 0, perPage);
 
     //O-DDL
     this.fetchOffice(e);
   }
   handleOffice(e) {
-    const { fromDate, page, perPage, toDate, distId, officeId } = this.state;
+    const { fromDate, perPage, toDate, distId, officeId } = this.state;
     this.setState({ 
       officeId: e,
-      page: page-page, 
+      page: 0, 
     });
-    this.fetchResults(fromDate, toDate, distId, officeId, e, page, perPage);
+    this.fetchResults(fromDate, toDate, distId, officeId, e, 0, perPage);
   }
   fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallGharjagga({
@@ -138,7 +138,7 @@ class Gharjagga extends Component {
     this.props.deleteGharjagga(item.asset_id);
     this.setState({ 
       showDialog: !this.state.showDialog, 
-      page: page-page, 
+      page: 0, 
       perPage: 10,
     });
   }
