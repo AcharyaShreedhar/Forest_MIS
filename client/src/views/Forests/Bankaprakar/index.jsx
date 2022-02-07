@@ -135,7 +135,7 @@ class Bankaprakar extends Component {
     this.fetchResults(fromDate, toDate, e, officeId, 0, perPage, item);
   }
 
-  fetchResults(fromDate, toDate, distId, officeId, perPage, item) {
+  fetchResults(fromDate, toDate, distId, officeId, page, perPage, item) {
     switch (item) {
       case "samudayikban": {
         this.props.fetchallSamudayikbanbibaran({
