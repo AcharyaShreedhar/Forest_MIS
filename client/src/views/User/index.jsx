@@ -89,9 +89,17 @@ export class User extends Component {
     this.setState({ item: item });
     this.setState({ path: path });
     switch (event) {
-      case "edit": {
+      case "edit profile": {
         this.props.history.push({
           pathname: `useredit/${item.user_id}`,
+          item,
+        });
+
+        break;
+      }
+      case "change password": {
+        this.props.history.push({
+          pathname: `userpassedit/${item.user_id}`,
           item,
         });
 
@@ -182,6 +190,17 @@ export class User extends Component {
             history={this.props.history}
             onSelect={this.handleSelectMenu}
             onUpdate={(e, id) => this.props.updateUser(e, id)}
+            editProfile={true}
+          />
+        )}
+        {equals(loc, "userpassedit") && (
+          <UserBibaran.Edit
+            title="प्रयोगकर्ताको पासवर्ड शंसोधन"
+            user={user}
+            history={this.props.history}
+            onSelect={this.handleSelectMenu}
+            onUpdatePassword={(e, id) => this.props.updateUserPassword(e, id)}
+            changePassword={true}
           />
         )}
       </div>
@@ -208,6 +227,9 @@ const mapDispatchToProps = (dispatch) => ({
   updateUser: (payload, userId) =>
     dispatch(AppActions.updateusersRequest(payload, userId)),
   deleteUser: (userId) => dispatch(AppActions.deleteusersRequest(userId)),
+  //change password
+  updateUserPassword: (payload, userId) =>
+    dispatch(AppActions.updateuserspasswordRequest(payload, userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(User);

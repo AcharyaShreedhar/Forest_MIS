@@ -42,6 +42,7 @@ import {
   fetchusersRequest,
   addusersRequest,
   updateusersRequest,
+  updateuserspasswordRequest, //change password
   deleteusersRequest,
   fetchallofficesRequest,
   fetchofficesRequest,
@@ -1455,6 +1456,8 @@ export default function* root() {
     takeLatest(AppTypes.ADDUSERS_REQUEST, addusersRequest, api),
 
     takeLatest(AppTypes.UPDATEUSERS_REQUEST, updateusersRequest, api),
+
+    takeLatest(AppTypes.UPDATEUSERSPASSWORD_REQUEST, updateuserspasswordRequest, api), //change password
 
     takeLatest(AppTypes.DELETEUSERS_REQUEST, deleteusersRequest, api),
 

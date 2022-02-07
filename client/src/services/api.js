@@ -599,6 +599,11 @@ const create = (baseURL = Config.API_URL) => {
   //update
   const postUsersUpdate = (payload, usersId) =>
     api.put(`users/${usersId}`, payload);
+  
+  //change password
+  const postUsersPasswordUpdate = (payload, usersId) =>
+    api.put(`userspass/${usersId}`, payload);
+
   //Delete
   const postUsersDelete = (usersId) => api.delete(`users/${usersId}`);
 
@@ -1225,6 +1230,7 @@ const create = (baseURL = Config.API_URL) => {
     getUsers,
     postUsersAddNew,
     postUsersUpdate,
+    postUsersPasswordUpdate, //change password
     postUsersDelete,
 
         //-----Offices

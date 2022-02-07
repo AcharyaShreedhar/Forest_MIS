@@ -71,23 +71,43 @@ async function addUsers(req, res) {
 
 //Controller for updating a User
 async function updateUsers(req, res) {
-  const saltRounds = 10;
   const token = util.generateAccessToken({ username: req.body.user_name });
-  const updateUsersQuery = `UPDATE users SET dist_id=?, office_id=?, user_type=?, user_name=?, user_pass=?,user_token=?,user_office=?,created_by=?,updated_by=? WHERE user_id=?`;
-  bcrypt.hash(req.body.user_pass, saltRounds, function (error, hash) {
-    let values = [
+  const updateUsersQuery = `UPDATE users SET dist_id=?, office_id=?, user_type=?, user_name=?, user_token=?, user_office=?,created_by=?,updated_by=? WHERE user_id=?`;
+  pool.query(updateUsersQuery,  
+    [
       req.body.dist_id,
       req.body.office_id,
       req.body.user_type,
       req.body.user_name,
-      hash,
       token,
       req.body.user_office,
       req.body.created_by,
       req.body.updated_by,
       req.params.userId,
+    ],
+    function (error, results) {
+      if (error) {
+        throw error;
+      }
+      else {
+        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      }
+    });
+}
+
+//Controller for change password
+async function updateUsersPassword(req, res) {
+  const saltRounds = 10;
+  const token = util.generateAccessToken({ username: req.body.user_name });
+  const updateUsersPasswordQuery = `UPDATE users SET user_pass=?,user_token=?,updated_by=? WHERE user_id=?`;
+  bcrypt.hash(req.body.user_pass, saltRounds, function (error, hash) {
+    let values = [
+      hash,
+      token,
+      req.body.updated_by,
+      req.params.userId,
     ];
-    pool.query(updateUsersQuery, values, function (error, results) {
+    pool.query(updateUsersPasswordQuery, values, function (error, results) {
       if (error) {
         throw error;
       } else {
@@ -179,6 +199,7 @@ module.exports = {
   getUsers,
   addUsers,
   updateUsers,
+  updateUsersPassword,  // change password
   deleteUsers,
   verifyUsers,
 };

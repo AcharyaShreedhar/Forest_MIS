@@ -20,6 +20,7 @@ class Add extends Component {
       created_by: "",
       updated_by: "",
       showDialog: false,
+      officeDisabled: false,
     };
     this.handleUserType = this.handleUserType.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
@@ -40,6 +41,13 @@ class Add extends Component {
   handleDistrict(e) {
     this.setState({ dist_id: e[0] });
     this.setState({ office_id: "%" });
+    this.setState({ user_office: "सबै" });
+    // if district is not selected officedropdown is disabled.
+    if (e[0] === "%") {
+      this.setState({ officeDisabled: true });
+    } else {
+      this.setState({ officeDisabled: false });
+    }
     //O-DDL
     this.fetchOffice(e[0]);
   }
@@ -98,6 +106,7 @@ class Add extends Component {
       office_id,
       officeList,
       showDialog,
+      officeDisabled,
     } = this.state;
 
     let disabled =
@@ -182,6 +191,7 @@ class Add extends Component {
                   returnBy="data"
                   defaultIds={[office_id]}
                   data={officeList}
+                  disabled={officeDisabled}
                   getValue={(officeList) => officeList["value"]}
                   onChange={(e) => this.handleOffice(e)}
                   value={office_id}
