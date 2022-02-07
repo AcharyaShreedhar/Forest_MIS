@@ -1,29 +1,54 @@
 const pool = require("../db");
-
 //Controller for Listing all Mudda Anusandhan Dayaris
 async function getAllMuddaAnusandhanDayaris(req, res) {
-  const getAllMuddaAnusandhanDayarisQuery = `select * from mudda_anusandhan_dayaris`;
-  pool.query(getAllMuddaAnusandhanDayarisQuery, [], (error, results, fields) => {
+  const getTotalQuery =
+    "SELECT count(*) as total from mudda_anusandhan_dayaris as m where m.jaheri_partibedan_miti BETWEEN ? and ? and m.dist_id like ? and m.office_id like ?";
+  const getAllMuddaAnusandhanDayarisQuery = `select * from mudda_anusandhan_dayaris  as m where m.jaheri_partibedan_miti BETWEEN ? and ? and m.dist_id like ? and m.office_id like ? ORDER BY ? DESC LIMIT ? ,?`;
+  pool.query(getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllMuddaAnusandhanDayarisQuery,
+      [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId,req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 
 //Controller for Listing a Mudda Anusandhan Dayari
 async function getMuddaAnusandhanDayaris(req, res) {
   const getMuddaAnusandhanDayarisQuery = `select * from mudda_anusandhan_dayaris where mudda_anusandhan_dayari_id=?`;
-  pool.query(getMuddaAnusandhanDayarisQuery, [req.params.muddaAnusandhanDayariId], (error, results, fields) => {
-    if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  pool.query(
+    getMuddaAnusandhanDayarisQuery,
+    [req.params.muddaAnusandhanDayariId],
+    (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
 }
 
 //Controller for adding a Mudda Anusandhan Dayari
 async function addMuddaAnusandhanDayaris(req, res) {
-  const addMuddaAnusandhanDayarisQuery = `INSERT INTO mudda_anusandhan_dayaris (jaheri_partibedan_miti,kasurko_kisim,bigo_pariman,jaggako_area,jaggako_thegana,abhiyog_miti,abhiyog_nikaya,abhiyog_jariwana,kaid,bojbahak_jafat_maagdabi,pratibadi_sankhya,thunchek_dharauti,sadharan_tarekh,thuna_aadhes,faisala_miti,faisala_jariwana,faisala_kaid,bojbahak_jafat,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addMuddaAnusandhanDayarisQuery = `INSERT INTO mudda_anusandhan_dayaris (dist_id,office_id,jaheri_partibedan_miti,kasurko_kisim,bigo_pariman,jaggako_area,jaggako_thegana,abhiyog_miti,abhiyog_nikaya,abhiyog_jariwana,kaid,bojbahak_jafat_maagdabi,pratibadi_sankhya,thunchek_dharauti,sadharan_tarekh,thuna_aadhes,faisala_miti,faisala_jariwana,faisala_kaid,faisala_status,bojbahak_jafat,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addMuddaAnusandhanDayarisQuery,
     [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.jaheri_partibedan_miti,
       req.body.kasurko_kisim,
       req.body.bigo_pariman,
@@ -41,6 +66,7 @@ async function addMuddaAnusandhanDayaris(req, res) {
       req.body.faisala_miti,
       req.body.faisala_jariwana,
       req.body.faisala_kaid,
+      req.body.faisala_status,
       req.body.bojbahak_jafat,
       req.body.created_by,
       req.body.updated_by,
@@ -56,10 +82,12 @@ async function addMuddaAnusandhanDayaris(req, res) {
 
 //Controller for updating a Mudda Anusandhan Dayari
 async function updateMuddaAnusandhanDayaris(req, res) {
-  const updateMuddaAnusandhanDayarisQuery = `UPDATE mudda_anusandhan_dayaris SET jaheri_partibedan_miti=?,kasurko_kisim=?,bigo_pariman=?,jaggako_area=?,jaggako_thegana=?,abhiyog_miti=?,abhiyog_nikaya=?,abhiyog_jariwana=?,kaid=?,bojbahak_jafat_maagdabi=?,pratibadi_sankhya=?,thunchek_dharauti=?,sadharan_tarekh=?,thuna_aadhes=?,faisala_miti=?,faisala_jariwana=?,faisala_kaid=?,bojbahak_jafat=?,created_by=?,updated_by=? WHERE mudda_anusandhan_dayari_id=?`;
+  const updateMuddaAnusandhanDayarisQuery = `UPDATE mudda_anusandhan_dayaris SET dist_id=?,office_id=?,jaheri_partibedan_miti=?,kasurko_kisim=?,bigo_pariman=?,jaggako_area=?,jaggako_thegana=?,abhiyog_miti=?,abhiyog_nikaya=?,abhiyog_jariwana=?,kaid=?,bojbahak_jafat_maagdabi=?,pratibadi_sankhya=?,thunchek_dharauti=?,sadharan_tarekh=?,thuna_aadhes=?,faisala_miti=?,faisala_jariwana=?,faisala_kaid=?,faisala_status=?, bojbahak_jafat=?,created_by=?,updated_by=? WHERE mudda_anusandhan_dayari_id=?`;
   pool.query(
     updateMuddaAnusandhanDayarisQuery,
     [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.jaheri_partibedan_miti,
       req.body.kasurko_kisim,
       req.body.bigo_pariman,
@@ -77,6 +105,7 @@ async function updateMuddaAnusandhanDayaris(req, res) {
       req.body.faisala_miti,
       req.body.faisala_jariwana,
       req.body.faisala_kaid,
+      req.body.faisala_status,
       req.body.bojbahak_jafat,
       req.body.created_by,
       req.body.updated_by,

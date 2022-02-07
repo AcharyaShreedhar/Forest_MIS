@@ -25,3 +25,14 @@
     width: fit-content;
   }
 }
+.panel {
+  display: flex;
+  flex-direction: row;
+  &.space {
+    justify-content: space-between;
+  }
+}
+.section {
+  padding: 20px;
+  border-bottom: 1px solid lightgrey;
+}

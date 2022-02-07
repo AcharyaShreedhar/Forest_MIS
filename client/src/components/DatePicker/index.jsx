@@ -77,7 +77,6 @@ class DatePicker extends React.PureComponent {
       title,
       placeholder,
       disabled,
-      months,
       minDate,
       maxDate,
       fontColor,
@@ -87,19 +86,8 @@ class DatePicker extends React.PureComponent {
       append,
       appendSize,
       align,
-      disabledDate,
     } = this.props;
     const { open, value } = this.state;
-
-    const monthPickerTrigger = (
-      <div className="d-flex cursor-pointer">
-        <p className="dsl-b14 text-400 mb-0 mr-2">
-          {moment(value).format("MMM YYYY")}
-        </p>
-        <Icon name="fas fa-chevron-down" color={iconColor} size={appendSize} />
-      </div>
-    );
-
     const showLabel = !equals(as, "input") && !isNil(title);
 
     return (

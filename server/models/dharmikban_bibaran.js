@@ -13,9 +13,16 @@ module.exports = (sequelize, DataTypes) => {
   }
   dharmikban_bibaran.init(
     {
+      dist_id: DataTypes.INTEGER,
+      office_id: DataTypes.INTEGER,
       dharmikban_name: DataTypes.STRING,
       darta_no: DataTypes.STRING,
       community_name: DataTypes.STRING,
+      dalit_ghardhuri: DataTypes.INTEGER,
+      janjati_ghardhuri: DataTypes.INTEGER,
+      anya_ghardhuri: DataTypes.INTEGER,
+      female: DataTypes.INTEGER,
+      male: DataTypes.INTEGER,
       area: DataTypes.STRING,
       main_species: DataTypes.STRING,
       forest_type: DataTypes.STRING,

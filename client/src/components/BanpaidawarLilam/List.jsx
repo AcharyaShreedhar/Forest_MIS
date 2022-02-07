@@ -1,12 +1,26 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { isNil } from "ramda";
+import { F, isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import { Button, EditDropdown } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onAdd, onSelect } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    pageCount,
+    onAdd,
+    onSelect,
+    onPageClick,
+    pers,
+    per,
+    onPer,
+    role,
+    forcePage,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -20,7 +34,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="lilam">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -37,21 +51,19 @@ function List(props) {
               data.map((lilam, index) => (
                 <tr>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}>
+                  <td key={`${lilam.lilam_id}-${index}`}>
                     {englishToNepaliNumber(lilam.lilam_date)}
                   </td>
-                  <td key={index}> {lilam.banpaidawar_type}</td>
-                  <td key={index}> {lilam.unit}</td>
-                  <td key={index}> {lilam.quantity}</td>
-                  <td key={index}> {lilam.minimum_price}</td>   
-                  <td key={index}> {lilam.sakaar_price}</td>
-                  <td key={index}> {lilam.remarks}</td>
-                  <td key={index}> {lilam.created_by}</td>
-                  <td key={index}> {lilam.updated_by}</td>
+                  <td> {lilam.banpaidawar_type}</td>
+                  <td> {lilam.unit}</td>
+                  <td> {lilam.quantity}</td>
+                  <td> {lilam.minimum_price}</td>
+                  <td> {lilam.sakaar_price}</td>
+                  <td> {lilam.remarks}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, lilam, "banpaidawarlilam")}
                       />
                     </div>
@@ -61,6 +73,15 @@ function List(props) {
             )}
           </tbody>
         </Table>
+        <Pagination
+          per={per}
+          forcePage={forcePage}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
+          pageCount={pageCount}
+          type="lilam"
+        />
       </div>
     </Fragment>
   );

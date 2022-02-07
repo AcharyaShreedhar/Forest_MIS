@@ -14,6 +14,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   assets.init({
+    dist_id: DataTypes.INTEGER,
+    office_id: DataTypes.INTEGER,
     asset_type: DataTypes.STRING,
     asset_loc: DataTypes.STRING,
     kitta_no: DataTypes.STRING,

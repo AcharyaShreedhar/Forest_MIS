@@ -132,6 +132,134 @@ state.merge({
 const deleteactivitiesinfoFailure = (state, action) =>
 state.merge({ ...state, status: "error" });
 
+//brixyaropan
+
+const fetchallbrixyaropanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallbrixyaropanSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allbrixyaropanData: action.response,
+  });
+};
+const fetchallbrixyaropanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+
+const fetchbrixyaropanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+
+  const fetchbrixyaropanSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    brixyaropanData: action.response,
+  });
+};
+const fetchbrixyaropanFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+const addbrixyaropanRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbrixyaropanSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbrixyaropanFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+const updatebrixyaropanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatebrixyaropanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatebrixyaropanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+const deletebrixyaropanRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletebrixyaropanSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletebrixyaropanFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+//jadibuti
+const fetchalljadibutiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchalljadibutiSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    alljadibutiData: action.response,
+  });
+};
+const fetchalljadibutiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+const fetchjadibutiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+
+  const fetchjadibutiSuccess = (state, action) => {
+    return state.merge({
+    ...state,
+    status: "done",
+    jadibutiData: action.response,
+  });
+};
+const fetchjadibutiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+
+const addjadibutiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addjadibutiSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addjadibutiFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+const updatejadibutiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const updatejadibutiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const updatejadibutiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+const deletejadibutiRequest = (state, action) =>
+state.merge({ ...state, status: "pending" });
+const deletejadibutiSuccess = (state, action) =>
+state.merge({
+  ...state,
+  status: "done",
+});
+const deletejadibutiFailure = (state, action) =>
+state.merge({ ...state, status: "error" });
+
+
+
 
 
 const locationsRequest = (state, action) => {
@@ -185,6 +313,46 @@ export const reducer = createReducer(initialState, {
   [BiruwautpadanTypes.DELETEACTIVITIESINFO_REQUEST]: deleteactivitiesinfoRequest,
   [BiruwautpadanTypes.DELETEACTIVITIESINFO_SUCCESS]: deleteactivitiesinfoSuccess,
   [BiruwautpadanTypes.DELETEACTIVITIESINFO_FAILURE]: deleteactivitiesinfoFailure,
+
+  [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_REQUEST]: fetchallbrixyaropanRequest,
+  [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_SUCCESS]: fetchallbrixyaropanSuccess,
+  [BiruwautpadanTypes.FETCHALLBRIXYAROPAN_FAILURE]: fetchallbrixyaropanFailure,
+
+  [BiruwautpadanTypes.FETCHBRIXYAROPAN_REQUEST]: fetchbrixyaropanRequest,
+  [BiruwautpadanTypes.FETCHBRIXYAROPAN_SUCCESS]: fetchbrixyaropanSuccess,
+  [BiruwautpadanTypes.FETCHBRIXYAROPAN_FAILURE]: fetchbrixyaropanFailure,
+
+  [BiruwautpadanTypes.ADDBRIXYAROPAN_REQUEST]: addbrixyaropanRequest,
+  [BiruwautpadanTypes.ADDBRIXYAROPAN_SUCCESS]: addbrixyaropanSuccess,
+  [BiruwautpadanTypes.ADDBRIXYAROPAN_FAILURE]: addbrixyaropanFailure,
+
+  [BiruwautpadanTypes.UPDATEBRIXYAROPAN_REQUEST]: updatebrixyaropanRequest,
+  [BiruwautpadanTypes.UPDATEBRIXYAROPAN_SUCCESS]: updatebrixyaropanSuccess,
+  [BiruwautpadanTypes.UPDATEBRIXYAROPAN_FAILURE]: updatebrixyaropanFailure,
+
+  [BiruwautpadanTypes.DELETEBRIXYAROPAN_REQUEST]: deletebrixyaropanRequest,
+  [BiruwautpadanTypes.DELETEBRIXYAROPAN_SUCCESS]: deletebrixyaropanSuccess,
+  [BiruwautpadanTypes.DELETEBRIXYAROPAN_FAILURE]: deletebrixyaropanFailure,
+
+  [BiruwautpadanTypes.FETCHALLJADIBUTI_REQUEST]: fetchalljadibutiRequest,
+  [BiruwautpadanTypes.FETCHALLJADIBUTI_SUCCESS]: fetchalljadibutiSuccess,
+  [BiruwautpadanTypes.FETCHALLJADIBUTI_FAILURE]: fetchalljadibutiFailure,
+
+  [BiruwautpadanTypes.FETCHJADIBUTI_REQUEST]: fetchjadibutiRequest,
+  [BiruwautpadanTypes.FETCHJADIBUTI_SUCCESS]: fetchjadibutiSuccess,
+  [BiruwautpadanTypes.FETCHJADIBUTI_FAILURE]: fetchjadibutiFailure,
+
+  [BiruwautpadanTypes.ADDJADIBUTI_REQUEST]: addjadibutiRequest,
+  [BiruwautpadanTypes.ADDJADIBUTI_SUCCESS]: addjadibutiSuccess,
+  [BiruwautpadanTypes.ADDJADIBUTI_FAILURE]: addjadibutiFailure,
+
+  [BiruwautpadanTypes.UPDATEJADIBUTI_REQUEST]: updatejadibutiRequest,
+  [BiruwautpadanTypes.UPDATEJADIBUTI_SUCCESS]: updatejadibutiSuccess,
+  [BiruwautpadanTypes.UPDATEJADIBUTI_FAILURE]: updatejadibutiFailure,
+
+  [BiruwautpadanTypes.DELETEJADIBUTI_REQUEST]: deletejadibutiRequest,
+  [BiruwautpadanTypes.DELETEJADIBUTI_SUCCESS]: deletejadibutiSuccess,
+  [BiruwautpadanTypes.DELETEJADIBUTI_FAILURE]: deletejadibutiFailure,
 
    
   [BiruwautpadanTypes.LOCATIONS_REQUEST]: locationsRequest,

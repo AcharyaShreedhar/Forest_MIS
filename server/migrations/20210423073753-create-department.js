@@ -8,6 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       dept_name_nep: {
         type: Sequelize.STRING,
       },

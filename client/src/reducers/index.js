@@ -21,14 +21,16 @@ const reducers = combineReducers({
   dwandabebasthapan: require("./dwandabebasthapan").reducer,
   biruwautpadan: require("./biruwautpadan").reducer,
   sampatibibaran: require("./sampatibibaran").reducer,
-  muddaanusandhandayari: require("./muddaanusandhandayari").reducer,
-  bandadelobibaran: require("./bandadelobibaran").reducer,
-  banxetraatikraman: require("./banxetraatikraman").reducer,
   banpaidawar: require("./banpaidawar").reducer,
   karmacharidarbandi: require("./karmacharidarbandi").reducer,
-  plotbibaran: require("./plotbibaran").reducer,
   inventories: require("./inventories").reducer,
   karmacharibibaran: require("./karmacharibibaran").reducer,
+  banbibaran: require("./banbibaran").reducer,
+  karyabibaran: require("./karyabibaran").reducer,
+  miscellaneous: require("./miscellaneous").reducer,
+  bipatbibaran: require("./bipatbibaran").reducer,
+  samrakshyan: require("./samrakshyan").reducer,
+  report:require("./report").reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

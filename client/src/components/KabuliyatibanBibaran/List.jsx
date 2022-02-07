@@ -3,10 +3,24 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import { Button, EditDropdown } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onAdd, onSelect } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    pageCount,
+    onAdd,
+    onSelect,
+    onPageClick,
+    pers,
+    per,
+    onPer,
+    role,
+    forcePage,
+  } = props;
   return (
     <Fragment>
       <div className="card">
@@ -20,7 +34,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered hover id="kabuliyatiban" size="md">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -35,37 +49,33 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((kban, index) => (
-                <tr>
-                  <td key={index}>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {kban.darta_no}</td>
-                  <td key={index}> {englishToNepaliNumber(kban.entry_date)}</td>
-                  <td key={index}>{kban.samudayik_upavokta_samiti_name}</td>
-                  <td key={index}> {kban.perm_addr}</td>
-                  <td key={index}> {kban.curr_addr}</td>
-                  <td key={index}> {kban.ghardhuri_dalit}</td>
-                  <td key={index}> {kban.ghardhuri_janjati}</td>
-                  <td key={index}> {kban.ghardhuri_anya}</td>
-                  <td key={index}> {kban.ghardhuri_total}</td>
-                  <td key={index}> {kban.population_female}</td>
-                  <td key={index}> {kban.population_male}</td>
-                  <td key={index}> {kban.population_total}</td>
-                  <td key={index}> {kban.sampannata_starikaran_sampanna}</td>
-                  <td key={index}> {kban.sampannata_starikaran_madhyam}</td>
-                  <td key={index}> {kban.sampannata_starikaran_bipanna}</td>
-                  <td key={index}>{kban.karyasamiti_representation_dalit}</td>
-                  <td key={index}>{kban.karyasamiti_representation_janjati}</td>
-                  <td key={index}>{kban.karyasamiti_representation_anya}</td>
-                  <td key={index}> {kban.adhyakshya_female}</td>
-                  <td key={index}> {kban.adhyakshya_male}</td>
-                  <td key={index}> {kban.sachib_female}</td>
-                  <td key={index}> {kban.sachib_male}</td>
-                  <td key={index}> {kban.created_by}</td>
-                  <td key={index}> {kban.updated_by}</td>
-
+                <tr key={`${kban.kabuliyatiban_bibaran_id}-${index}`}>
+                  <td>{englishToNepaliNumber(index + 1)}</td>
+                  <td>{kban.darta_no}</td>
+                  <td>{englishToNepaliNumber(kban.darta_miti)}</td>
+                  <td>{kban.kabuliyati_ban_samiti_name}</td>
+                  <td> {englishToNepaliNumber(kban.area)}</td>
+                  <td>{kban.perm_addr}</td>
+                  <td>{kban.curr_addr}</td>
+                  <td>{englishToNepaliNumber(kban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(kban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(kban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(kban.female)}</td>
+                  <td>{englishToNepaliNumber(kban.male)}</td>
+                  <td>{englishToNepaliNumber(kban.sampanna)}</td>
+                  <td>{englishToNepaliNumber(kban.madhyam)}</td>
+                  <td>{englishToNepaliNumber(kban.bipanna)}</td>
+                  <td>{englishToNepaliNumber(kban.dalit_rep)}</td>
+                  <td>{englishToNepaliNumber(kban.janjati_rep)}</td>
+                  <td>{englishToNepaliNumber(kban.anya_rep)}</td>
+                  <td>{kban.adhyakshya}</td>
+                  <td>{kban.adhyakshya_gender}</td>
+                  <td>{kban.sachib}</td>
+                  <td>{kban.sachib_gender}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, kban, "kabuliyati")}
                       />
                     </div>
@@ -75,6 +85,15 @@ function List(props) {
             )}
           </tbody>
         </Table>
+        <Pagination
+          per={per}
+          forcePage={forcePage}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
+          pageCount={pageCount}
+          type="kabuliyatiban"
+        />
       </div>
     </Fragment>
   );

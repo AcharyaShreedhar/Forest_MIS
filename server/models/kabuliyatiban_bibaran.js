@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class kabuliyatiban_bibaran extends Model {
     /**
@@ -12,33 +10,39 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  kabuliyatiban_bibaran.init({
-    darta_no: DataTypes.STRING,
-    entry_date: DataTypes.STRING,
-    ghardhuri_dalit: DataTypes.STRING,
-    perm_addr: DataTypes.STRING,
-    curr_addr: DataTypes.STRING,
-    ghardhuri_janjati: DataTypes.STRING,
-    ghardhuri_anya: DataTypes.STRING,
-    ghardhuri_total: DataTypes.STRING,
-    population_female: DataTypes.STRING,
-    population_male: DataTypes.STRING,
-    population_total: DataTypes.STRING,
-    samudayik_upavokta_samiti_name: DataTypes.STRING,
-    sampannata_starikaran_sampanna: DataTypes.STRING,
-    sampannata_starikaran_madhyam: DataTypes.STRING,
-    sampannata_starikaran_bipanna: DataTypes.STRING,
-    karyasamiti_representation_dalit: DataTypes.STRING,
-    karyasamiti_representation_janjati: DataTypes.STRING,
-    karyasamiti_representation_anya: DataTypes.STRING,
-    adhyakshya_male: DataTypes.STRING,
-    adhyakshya_female: DataTypes.STRING,
-    sachib_male: DataTypes.STRING,
-    sachib_female: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'kabuliyatiban_bibaran',
-  });
+  }
+  kabuliyatiban_bibaran.init(
+    {
+      dist_id: DataTypes.INTEGER,
+      office_id: DataTypes.INTEGER,
+      darta_no: DataTypes.STRING,
+      kabuliyati_ban_samiti_name: DataTypes.STRING,
+      darta_miti: DataTypes.STRING,
+      area: DataTypes.STRING,
+      perm_addr: DataTypes.STRING,
+      curr_addr: DataTypes.STRING,
+      dalit_ghardhuri: DataTypes.INTEGER,
+      janjati_ghardhuri: DataTypes.INTEGER,
+      anya_ghardhuri: DataTypes.INTEGER,
+      female: DataTypes.INTEGER,
+      male: DataTypes.INTEGER,
+      sampanna: DataTypes.INTEGER,
+      madhyam: DataTypes.INTEGER,
+      bipanna: DataTypes.INTEGER,
+      dalit_rep: DataTypes.INTEGER,
+      janjati_rep: DataTypes.INTEGER,
+      anya_rep: DataTypes.INTEGER,
+      female_rep: DataTypes.INTEGER,
+      male_rep: DataTypes.INTEGER,
+      adhyakshya: DataTypes.STRING,
+      sachib: DataTypes.STRING,
+      adhyakshya_gender: DataTypes.STRING,
+      sachib_gender: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "kabuliyatiban_bibaran",
+    }
+  );
   return kabuliyatiban_bibaran;
 };

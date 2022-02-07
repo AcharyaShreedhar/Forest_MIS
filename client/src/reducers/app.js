@@ -6,12 +6,15 @@ import { AppTypes } from "../actions/app";
 const initialState = Immutable({
   status: "",
   user: {},
+  // officeList: [],
   token: "",
+  menuStatus:false,
 });
 
 const loginRequest = (state, action) =>
   state.merge({ ...state, token: "", status: "pending" });
 const loginSuccess = (state, action) => {
+  // const { user_token, user, officeList } = action.response;
   const { user_token, user } = action.response;
 
   return state.merge({
@@ -19,6 +22,7 @@ const loginSuccess = (state, action) => {
     status: "done",
     token: user_token,
     user,
+    // officeList,
   });
 };
 const loginFailure = (state, action) => {
@@ -32,7 +36,7 @@ const logoutSuccess = (state, action) =>
 const logoutFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-// Municipalities
+// // Municipalities
 const fetchallmunicipalitiesRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallmunicipalitiesSuccess = (state, action) => {
@@ -60,7 +64,41 @@ const fetchmunicipalitiesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-// Provinces
+//Add municipalities
+const addmunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addmunicipalitiesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addmunicipalitiesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update municipalities
+const updatemunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatemunicipalitiesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatemunicipalitiesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete municipalities
+const deletemunicipalitiesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletemunicipalitiesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletemunicipalitiesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// // Provinces
 
 const fetchallprovincesRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -89,7 +127,41 @@ const fetchprovincesFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-// Districts
+//Add provinces
+const addprovincesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addprovincesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addprovincesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update provinces
+const updateprovincesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateprovincesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateprovincesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete provinces
+const deleteprovincesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteprovincesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteprovincesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// // Districts
 
 const fetchalldistrictsRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
@@ -117,7 +189,103 @@ const fetchdistrictsFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-//-----------USERS
+//Add districts
+const adddistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const adddistrictsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const adddistrictsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update districts
+const updatedistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatedistrictsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatedistrictsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete districts
+const deletedistrictsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletedistrictsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletedistrictsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// // Departments
+
+const fetchalldepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchalldepartmentsSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    alldepartmentsData: action.response,
+  });
+};
+const fetchalldepartmentsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchdepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchdepartmentsSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    departmentsData: action.response,
+  });
+};
+const fetchdepartmentsFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add departments
+const adddepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const adddepartmentsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const adddepartmentsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update departments
+const updatedepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatedepartmentsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatedepartmentsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete departments
+const deletedepartmentsRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletedepartmentsSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletedepartmentsFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+
+// //-----------USERS
 const fetchallusersRequest = (state, action) =>
   state.merge({ ...state, status: "pending" });
 const fetchallusersSuccess = (state, action) => {
@@ -152,6 +320,130 @@ const locationsRequest = (state, action) => {
   return state.merge({ ...state, locations });
 };
 
+const menuRequest = (state, action) => {
+ let menuStatus= !state.menuStatus
+  return state.merge({ ...state, menuStatus });
+};
+
+//Add users
+const addusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addusersSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addusersFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update users
+const updateusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateusersSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateusersFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//change password
+const updateuserspasswordRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateuserspasswordSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateuserspasswordFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete users
+const deleteusersRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteusersSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteusersFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+// //-----------Offices
+const fetchallofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallofficesSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allofficesData: action.response,
+  });
+};
+const fetchallofficesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//dropdownlist O-DDL
+const fetchofficesdropdownRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchofficesdropdownSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    officesDropdownData: action.response,
+  });
+};
+
+const fetchofficesdropdownFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchofficesSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    officesData: action.response,
+  });
+};
+const fetchofficesFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add offices
+const addofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addofficesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addofficesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update offices
+const updateofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updateofficesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updateofficesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete offices
+const deleteofficesRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deleteofficesSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deleteofficesFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
 const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
@@ -175,7 +467,20 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHMUNICIPALITIES_SUCCESS]: fetchmunicipalitiesSuccess,
   [AppTypes.FETCHMUNICIPALITIES_FAILURE]: fetchmunicipalitiesFailure,
 
-  // Provinces
+  [AppTypes.ADDMUNICIPALITIES_REQUEST]: addmunicipalitiesRequest,
+  [AppTypes.ADDMUNICIPALITIES_SUCCESS]: addmunicipalitiesSuccess,
+  [AppTypes.ADDMUNICIPALITIES_FAILURE]: addmunicipalitiesFailure, 
+
+
+  [AppTypes.UPDATEMUNICIPALITIES_REQUEST]: updatemunicipalitiesRequest,
+  [AppTypes.UPDATEMUNICIPALITIES_SUCCESS]: updatemunicipalitiesSuccess,
+  [AppTypes.UPDATEMUNICIPALITIES_FAILURE]: updatemunicipalitiesFailure, 
+
+  [AppTypes.DELETEMUNICIPALITIES_REQUEST]: deletemunicipalitiesRequest,
+  [AppTypes.DELETEMUNICIPALITIES_SUCCESS]: deletemunicipalitiesSuccess,
+  [AppTypes.DELETEMUNICIPALITIES_FAILURE]: deletemunicipalitiesFailure,
+
+  // // Provinces
 
   [AppTypes.FETCHALLPROVINCES_REQUEST]: fetchallprovincesRequest,
   [AppTypes.FETCHALLPROVINCES_SUCCESS]: fetchallprovincesSuccess,
@@ -184,6 +489,19 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHPROVINCES_REQUEST]: fetchprovincesRequest,
   [AppTypes.FETCHPROVINCES_SUCCESS]: fetchprovincesSuccess,
   [AppTypes.FETCHPROVINCES_FAILURE]: fetchprovincesFailure,
+
+  [AppTypes.ADDPROVINCES_REQUEST]: addprovincesRequest,
+  [AppTypes.ADDPROVINCES_SUCCESS]: addprovincesSuccess,
+  [AppTypes.ADDPROVINCES_FAILURE]: addprovincesFailure, 
+
+
+  [AppTypes.UPDATEPROVINCES_REQUEST]: updateprovincesRequest,
+  [AppTypes.UPDATEPROVINCES_SUCCESS]: updateprovincesSuccess,
+  [AppTypes.UPDATEPROVINCES_FAILURE]: updateprovincesFailure, 
+
+  [AppTypes.DELETEPROVINCES_REQUEST]: deleteprovincesRequest,
+  [AppTypes.DELETEPROVINCES_SUCCESS]: deleteprovincesSuccess,
+  [AppTypes.DELETEPROVINCES_FAILURE]: deleteprovincesFailure,
 
   // Districts
 
@@ -195,6 +513,18 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHDISTRICTS_SUCCESS]: fetchdistrictsSuccess,
   [AppTypes.FETCHDISTRICTS_FAILURE]: fetchdistrictsFailure,
 
+  [AppTypes.ADDDISTRICTS_REQUEST]: adddistrictsRequest,
+  [AppTypes.ADDDISTRICTS_SUCCESS]: adddistrictsSuccess,
+  [AppTypes.ADDDISTRICTS_FAILURE]: adddistrictsFailure, 
+
+  [AppTypes.UPDATEDISTRICTS_REQUEST]: updatedistrictsRequest,
+  [AppTypes.UPDATEDISTRICTS_SUCCESS]: updatedistrictsSuccess,
+  [AppTypes.UPDATEDISTRICTS_FAILURE]: updatedistrictsFailure, 
+
+  [AppTypes.DELETEDISTRICTS_REQUEST]: deletedistrictsRequest,
+  [AppTypes.DELETEDISTRICTS_SUCCESS]: deletedistrictsSuccess,
+  [AppTypes.DELETEDISTRICTS_FAILURE]: deletedistrictsFailure,
+
   //-----USERS
   [AppTypes.FETCHALLUSERS_REQUEST]: fetchallusersRequest,
   [AppTypes.FETCHALLUSERS_SUCCESS]: fetchallusersSuccess,
@@ -203,7 +533,73 @@ export const reducer = createReducer(initialState, {
   [AppTypes.FETCHUSERS_REQUEST]: fetchusersRequest,
   [AppTypes.FETCHUSERS_SUCCESS]: fetchusersSuccess,
   [AppTypes.FETCHUSERS_FAILURE]: fetchusersFailure,
+
+  [AppTypes.ADDUSERS_REQUEST]: addusersRequest,
+  [AppTypes.ADDUSERS_SUCCESS]: addusersSuccess,
+  [AppTypes.ADDUSERS_FAILURE]: addusersFailure, 
+
+  [AppTypes.UPDATEUSERS_REQUEST]: updateusersRequest,
+  [AppTypes.UPDATEUSERS_SUCCESS]: updateusersSuccess,
+  [AppTypes.UPDATEUSERS_FAILURE]: updateusersFailure, 
+
+  //change password
+  [AppTypes.UPDATEUSERSPASSWORD_REQUEST]: updateuserspasswordRequest,
+  [AppTypes.UPDATEUSERSPASSWORD_SUCCESS]: updateuserspasswordSuccess,
+  [AppTypes.UPDATEUSERSPASSWORD_FAILURE]: updateuserspasswordFailure, 
+
+  [AppTypes.DELETEUSERS_REQUEST]: deleteusersRequest,
+  [AppTypes.DELETEUSERS_SUCCESS]: deleteusersSuccess,
+  [AppTypes.DELETEUSERS_FAILURE]: deleteusersFailure,
+
+    //-----Offices
+  [AppTypes.FETCHALLOFFICES_REQUEST]: fetchallofficesRequest,
+  [AppTypes.FETCHALLOFFICES_SUCCESS]: fetchallofficesSuccess,
+  [AppTypes.FETCHALLOFFICES_FAILURE]: fetchallofficesFailure,
+
+  [AppTypes.FETCHOFFICES_REQUEST]: fetchofficesRequest,
+  [AppTypes.FETCHOFFICES_SUCCESS]: fetchofficesSuccess,
+  [AppTypes.FETCHOFFICES_FAILURE]: fetchofficesFailure,
+
+  //dropdown O-DDL
+  [AppTypes.FETCHOFFICESDROPDOWN_REQUEST]: fetchofficesdropdownRequest,
+  [AppTypes.FETCHOFFICESDROPDOWN_SUCCESS]: fetchofficesdropdownSuccess,
+  [AppTypes.FETCHOFFICESDROPDOWN_FAILURE]: fetchofficesdropdownFailure,
+
+  [AppTypes.ADDOFFICES_REQUEST]: addofficesRequest,
+  [AppTypes.ADDOFFICES_SUCCESS]: addofficesSuccess,
+  [AppTypes.ADDOFFICES_FAILURE]: addofficesFailure, 
+
+  [AppTypes.UPDATEOFFICES_REQUEST]: updateofficesRequest,
+  [AppTypes.UPDATEOFFICES_SUCCESS]: updateofficesSuccess,
+  [AppTypes.UPDATEOFFICES_FAILURE]: updateofficesFailure, 
+
+  [AppTypes.DELETEOFFICES_REQUEST]: deleteofficesRequest,
+  [AppTypes.DELETEOFFICES_SUCCESS]: deleteofficesSuccess,
+  [AppTypes.DELETEOFFICES_FAILURE]: deleteofficesFailure,
+
+  // //-----Departments--------------//
+  [AppTypes.FETCHALLDEPARTMENTS_REQUEST]: fetchalldepartmentsRequest,
+  [AppTypes.FETCHALLDEPARTMENTS_SUCCESS]: fetchalldepartmentsSuccess,
+  [AppTypes.FETCHALLDEPARTMENTS_FAILURE]: fetchalldepartmentsFailure,
+
+  [AppTypes.FETCHDEPARTMENTS_REQUEST]: fetchdepartmentsRequest,
+  [AppTypes.FETCHDEPARTMENTS_SUCCESS]: fetchdepartmentsSuccess,
+  [AppTypes.FETCHDEPARTMENTS_FAILURE]: fetchdepartmentsFailure,
+
+  [AppTypes.ADDDEPARTMENTS_REQUEST]: adddepartmentsRequest,
+  [AppTypes.ADDDEPARTMENTS_SUCCESS]: adddepartmentsSuccess,
+  [AppTypes.ADDDEPARTMENTS_FAILURE]: adddepartmentsFailure, 
+
+  [AppTypes.UPDATEDEPARTMENTS_REQUEST]: updatedepartmentsRequest,
+  [AppTypes.UPDATEDEPARTMENTS_SUCCESS]: updatedepartmentsSuccess,
+  [AppTypes.UPDATEDEPARTMENTS_FAILURE]: updatedepartmentsFailure, 
+
+  [AppTypes.DELETEDEPARTMENTS_REQUEST]: deletedepartmentsRequest,
+  [AppTypes.DELETEDEPARTMENTS_SUCCESS]: deletedepartmentsSuccess,
+  [AppTypes.DELETEDEPARTMENTS_FAILURE]: deletedepartmentsFailure,
   
   [AppTypes.LOCATIONS_REQUEST]: locationsRequest,
+  [AppTypes.MENU_REQUEST]: menuRequest,
   [AppTypes.CLEAR_REQUEST]: clearRequest,
 });
+/** */

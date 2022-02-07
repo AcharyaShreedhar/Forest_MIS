@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-import { NotFound, NavbarComponent, SideNavbar } from "../../components";
+import { NotFound, SideNavbar } from "../../components";
 import dashboardRoutes from "../../routes/dashboard";
 import "./Dashboard.scss";
 
@@ -11,7 +11,15 @@ export const Content = (props) => {
       className={`content${props.loggedIn ? " logged" : ""}`}
     >
       {props.loggedIn && (
-        <SideNavbar history={props.history} onlogout={props.onLogout} />
+        <SideNavbar
+          history={props.history}
+          onlogout={props.onLogout}
+          onToggle={props.onToggle}
+          open={props.open}
+          menuRequest={props.menuRequest}
+          menuStatus={props.menuStatus}
+          role={props.role}
+        />
       )}
       <div className="main">
         <Switch>
@@ -20,6 +28,9 @@ export const Content = (props) => {
               return (
                 <Redirect exact from={route.path} to={route.to} key={key} />
               );
+            if (!route.redirect && route.auth && !props.loggedIn) {
+              return <Redirect exact from={route.path} to="/" key={key} />;
+            }
             return (
               <Route path={route.path} component={route.component} key={key} />
             );

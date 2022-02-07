@@ -1,229 +1,602 @@
-import SideNav, {
-  Toggle,
-  NavItem,
-  NavIcon,
-  NavText,
-} from "@trendmicro/react-sidenav";
-// Be sure to include styles at some point, probably during your bootstraping
-import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import { Link } from "react-router-dom";
-import { NavDropdown, Image } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faHome,
-  faUsers,
-  faTree,
-  faSeedling,
-  faBuilding,
-  faSignOutAlt,
-  faTasks,
-  faGavel,
-  faListAlt,
-} from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
-import { HeaderComponent, Displaybox } from "../../components";
+import { equals } from "ramda";
+import { HeaderComponent, ConfirmationDialoge } from "../../components";
+import "@trendmicro/react-sidenav/dist/react-sidenav.css";
 import "./Sidenav.scss";
+import {
+  ProSidebar,
+  SidebarHeader,
+  SidebarFooter,
+  SidebarContent,
+  Menu,
+  MenuItem,
+  SubMenu,
+} from "react-pro-sidebar";
+import {
+  FaBuilding,
+  FaFileWord,
+  FaHome,
+  FaListAlt,
+  FaTasks,
+  FaUsers,
+  FaWater,
+} from "react-icons/fa";
+import { GiBurningForest, GiForest, GiWoodPile } from "react-icons/gi";
+import { MdGavel, MdWork } from "react-icons/md";
+import { BiLogOut, BiTask, BiUserPlus } from "react-icons/bi";
+import { ImOffice } from "react-icons/im";
+import "react-pro-sidebar/dist/css/styles.css";
 
 export class SideNavbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false,
+      // expanded: false,
+      showDialog: false,
+      karmachari: false,
+      bantype: false,
+      banbibaran: false,
+      dwanda: false,
+      banpaidawar: false,
+      karyakram: false,
+      assets: false,
+      karya: false,
     };
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmenu = this.handleSubmenu.bind(this);
   }
 
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleSubmit() {
+    this.props.onlogout();
+  }
   handleToggle(e) {
-    this.setState({ expanded: !this.state.expanded });
+    this.props.menuRequest(e);
+  }
+  handleSubmenu(e, item) {
+    switch (item) {
+      case "karmachari": {
+        this.setState({ karmachari: true });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "bantype": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: true });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "banbibaran": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: true });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "dwanda": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: true });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "banpaidawar": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: true });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "karyakram": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: true });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "assets": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: true });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "karya": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: true });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "bipat": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: true });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        break;
+      }
+      case "samraxan": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: true });
+        this.setState({ misc: false });
+        break;
+      }
+      case "misc": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: true });
+        break;
+      }
+      default:
+        break;
+    }
   }
 
   render() {
-    const { expanded } = this.state;
-    const { history, onlogout } = this.props;
-    console.log("expanded", expanded);
+    const {
+      showDialog,
+      expanded,
+      bantype,
+      banbibaran,
+      karmachari,
+      dwanda,
+      banpaidawar,
+      karyakram,
+      assets,
+      karya,
+      bipat,
+      samraxan,
+      misc,
+    } = this.state;
+    const { history, menuStatus, role } = this.props;
     return (
-      <SideNav
-        expanded={expanded}
-        onToggle={(selected) => {
-          this.handleToggle(selected);
-        }}
-      >
-        <SideNav.Toggle
-          onSelect={(selected) => {
-            this.handleToggle(selected);
-          }}
-          className={expanded ? "displayNone" : ""}
+      <ProSidebar collapsed={!menuStatus}>
+        <ConfirmationDialoge
+          showDialog={showDialog}
+          title="लग आउट"
+          body="के तपाईँ बाहिर निस्किन चाहनुहुन्छ ?"
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
+          onYes={this.handleSubmit}
+          onClose={this.handleClose}
         />
-        <SideNav.Nav defaultSelected="forests">
-          <HeaderComponent enabled={expanded} side={true} />
-          <NavItem eventKey="home">
-            <Link to="/" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faHome} className="mr-2" />
-              {expanded && <Displaybox value="गृह पृष्ठ" />}
-            </Link>
-          </NavItem>
-          <NavItem eventKey="employees">
-            <Link to="/employees" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faUsers} className="mr-2" />
-              {expanded && <Displaybox value="कर्मचारी" />}
-            </Link>
-          </NavItem>
-          <NavItem eventKey="/forests">
-            <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
-            </NavIcon>
-            <NavText> बनका प्रकारहरु </NavText>
-            <NavItem
-              eventKey="forests/samudayikbanlist"
-              onClick={() => history.push("/forests/samudayikbanlist")}
+        <SidebarHeader
+          onClick={(e) => {
+            this.handleToggle(e);
+          }}
+        >
+          <HeaderComponent enabled={menuStatus} side={true} />
+        </SidebarHeader>
+        <SidebarContent>
+          <Menu iconShape="square">
+            <MenuItem
+              className="maintitle"
+              icon={<FaHome />}
+              onClick={() => history.push("/home")}
             >
-              <NavText>सामुदायिक वन</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="forests/dharmikbanlist"
-              onClick={() => history.push("/forests/dharmikbanlist")}
+              गृह पृष्ठ
+            </MenuItem>
+            <SubMenu
+              title="कर्मचारी"
+              className="maintitle"
+              icon={<FaUsers />}
+              onClick={(e) => this.handleSubmenu(e, "karmachari")}
+              open={karmachari}
             >
-              <NavText>धार्मिक बन</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="forests/kabuliyatibanlist"
-              onClick={() => history.push("/forests/kabuliyatibanlist")}
+              <MenuItem
+                onClick={() =>
+                  history.push("/karmachari/karmacharibibaranlist")
+                }
+              >
+                कर्मचारी विवरण
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/karmachari/karmacharidarbandilist")
+                }
+              >
+                कर्मचारी दरबन्दी
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="बनका प्रकारहरु"
+              className="maintitle"
+              icon={<GiForest />}
+              open={bantype}
+              onClick={(e) => this.handleSubmenu(e, "bantype")}
             >
-              <NavText>कबुलियती बन</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="forests/nijibanlist"
-              onClick={() => history.push("/forests/nijibanlist")}
+              <SubMenu title="सामुदायिक">
+                <MenuItem
+                  onClick={() => history.push("/forests/samudayikbanlist")}
+                >
+                  सामुदायिक वन
+                </MenuItem>
+                <MenuItem
+                  onClick={() => history.push("/forests/upabhoktasamuhalist")}
+                >
+                  उपभोक्ता समुहको बिबरण
+                </MenuItem>
+              </SubMenu>
+              <MenuItem onClick={() => history.push("/forests/dharmikbanlist")}>
+                धार्मिक बन
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/forests/kabuliyatibanlist")}
+              >
+                कबुलियती बन
+              </MenuItem>
+              <MenuItem onClick={() => history.push("/forests/nijibanlist")}>
+                निजी बन
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/forests/sajhedaribanlist")}
+              >
+                साझेदारी बन
+              </MenuItem>
+              <MenuItem onClick={() => history.push("/forests/chaklabanlist")}>
+                चक्ला बन
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/forests/rastriyabanlist")}
+              >
+                राष्ट्रिय बन
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/forests/commercialbanlist")}
+              >
+                व्यबसायीक कबुलियती बन
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="बन बिबरण"
+              className="maintitle"
+              icon={<FaListAlt />}
+              onClick={(e) => this.handleSubmenu(e, "banbibaran")}
+              open={banbibaran}
             >
-              <NavText>निजी बन</NavText>
-            </NavItem>
-          </NavItem>
-          <NavItem eventKey="/banbibaran">
-            <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faListAlt} className="mr-2" />
-            </NavIcon>
-            <NavText> बन बिबरण </NavText>
-            <NavItem
-              eventKey="banbibaran/forestfirelist"
-              onClick={() => history.push("/banbibaran/forestfirelist")}
+              <MenuItem
+                onClick={() =>
+                  history.push("/banbibaran/banxetraatikramanlist")
+                }
+              >
+                बन क्षेत्र अतिक्रमण
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/banbibaran/muddaanusandhandayarilist")
+                }
+              >
+                मुद्दा अनुसन्धान तथा दायरी
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/banbibaran/banxetraanyaprayojanlist")
+                }
+              >
+                बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/banbibaran/seedgardenplotslist")}
+              >
+                बन बीउ बगैच/समबर्धन प्लटहरु
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="मानब बन्यजन्तु द्वन्द ब्यबस्थापन"
+              className="maintitle"
+              icon={<MdGavel />}
+              open={dwanda}
+              onClick={(e) => this.handleSubmenu(e, "dwanda")}
             >
-              <NavText>बन डडेलो</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="banbibaran/atikramanlist"
-              onClick={() => history.push("/banbibaran/atikramanlist")}
-            >
-              <NavText>बन क्षेत्र अतिक्रमण</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="banbibaran/muddaanusandhanlist"
-              onClick={() => history.push("/banbibaran/muddaanusandhanlist")}
-            >
-              <NavText> मुद्दा अनुसन्धान तथा दायरी</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="banbibaran/anyaprayojanlist"
-              onClick={() => history.push("/banbibaran/anyaprayojanlist")}
-            >
-              <NavText> बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="banbibaran/seedgardernplotslist"
-              onClick={() => history.push("/banbibaran/seedgardernplotslist")}
-            >
-              <NavText> बन बीउ बगैच/समबर्धन प्लटहरु</NavText>
-            </NavItem>
-          </NavItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/dwandabebasthapan/banyajantuuddarlist")
+                }
+              >
+                बन्यजन्तु उद्दार तथा ब्यबस्थापन बिबरण
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/dwandabebasthapan/banyajantuxetirahatlist")
+                }
+              >
+                बन्यजन्तु क्षति राहत बिबरण
+              </MenuItem>
+            </SubMenu>
 
-          <NavItem eventKey="dwandabebasthapan">
-            <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faGavel} className="mr-2" />
-            </NavIcon>
-            <NavText>मानब बन्यजन्तु द्वन्द ब्यबस्थापन</NavText>
-
-            <NavItem
-              eventKey="dwandabebasthapan/banyajantuuddarlist"
-              onClick={() =>
-                history.push("/dwandabebasthapan/banyajantuuddarlist")
-              }
+            <SubMenu
+              title="बन पैदावर"
+              className="maintitle"
+              icon={<GiWoodPile />}
+              open={banpaidawar}
+              onClick={(e) => this.handleSubmenu(e, "banpaidawar")}
             >
-              <NavText>बन्यजन्तु उद्दार तथा ब्यबस्थापन बिबरण </NavText>
-            </NavItem>
-            <NavItem
-              eventKey="dwandabebasthapan/banyajantuxetirahatlist"
-              onClick={() =>
-                history.push("/dwandabebasthapan/banyajantuxetirahatlist")
-              }
+              <MenuItem onClick={() => history.push("/banpaidawar/lilamlist")}>
+                लीलाम बिबरण
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/banpaidawar/osarpasarlist")}
+              >
+                ओसारपसार बिबरण
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="कार्यक्रमहरु"
+              className="maintitle"
+              icon={<FaTasks />}
+              open={karyakram}
+              onClick={(e) => this.handleSubmenu(e, "karyakram")}
             >
-              <NavText>बन्यजन्तु क्षति राहत बिबरण</NavText>
-            </NavItem>
-          </NavItem>
-          <NavItem eventKey="banpaidawar">
-            <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faTree} className="mr-2" />
-            </NavIcon>
-            <NavText>बन पैदावर</NavText>
-            <NavItem
-              eventKey="banpaidawar/lilamlist"
-              onClick={() => history.push("/banpaidawar/lilamlist")}
+              <MenuItem
+                onClick={() => history.push("/activities/yearlyactivitieslist")}
+              >
+                वार्षिक कार्यक्रम
+              </MenuItem>
+              <MenuItem onClick={() => history.push("/activities/nurserylist")}>
+                विरुवा उत्पादन
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/activities/plantationlist")}
+              >
+                बृक्षरोपन
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/activities/jadibutilist")}
+              >
+                जडिबुटी उत्पादन
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="कार्यालय सम्पती बिबरण"
+              className="maintitle"
+              icon={<FaBuilding />}
+              open={assets}
+              onClick={(e) => this.handleSubmenu(e, "assets")}
             >
-              <NavText>लीलाम बिबरण </NavText>
-            </NavItem>
-            <NavItem
-              eventKey="banpaidawar/osarpasarlist"
-              onClick={() => history.push("/banpaidawar/osarpasarlist")}
+              <MenuItem
+                onClick={() => history.push("/sampatibibaran/gharjaggalist")}
+              >
+                घर जग्गा
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/sampatibibaran/sawarisadhanlist")}
+              >
+                सवारी साधनहरु
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/sampatibibaran/anyasampatilist")}
+              >
+                अन्य सम्पति
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="कार्य विवरण"
+              className="maintitle"
+              icon={<BiTask />}
+              open={karya}
+              onClick={(e) => this.handleSubmenu(e, "karya")}
             >
-              <NavText>ओसारपसार बिबरण</NavText>
-            </NavItem>
-          </NavItem>
-          <NavItem eventKey="activities">
-            <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faTasks} className="mr-2" />
-            </NavIcon>
-            <NavText>कार्यक्रमहरु </NavText>
-            <NavItem
-              eventKey="activities/yearlyactivitieslist"
-              onClick={() => history.push("/activities/yearlyactivitieslist")}
+              <MenuItem
+                onClick={() =>
+                  history.push("/karyabibaran/samajikkaryabibaranlist")
+                }
+              >
+                सामाजिक कार्य विवरण
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/karyabibaran/banbikaskaryabibaranlist")
+                }
+              >
+                वन विकास कार्य विवरण
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="विपत व्यवस्थापन"
+              className="maintitle"
+              icon={<GiBurningForest />}
+              open={bipat}
+              onClick={(e) => this.handleSubmenu(e, "bipat")}
             >
-              <NavText>वार्षिक कार्यक्रम </NavText>
-            </NavItem>
-            <NavItem
-              eventKey="activities/nurserylist"
-              onClick={() => history.push("/activities/nurserylist")}
+              <MenuItem
+                onClick={() =>
+                  history.push("/bipatbebasthapan/badibebasthapanlist")
+                }
+              >
+                बाढी व्यवस्थापन
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/bipatbebasthapan/pahirobebasthapanlist")
+                }
+              >
+                पहिरो व्यवस्थापन
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/bipatbebasthapan/bandadelolist")}
+              >
+                बन डडेलो
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="संरक्षण कार्य"
+              className="maintitle"
+              icon={<FaWater />}
+              open={samraxan}
+              onClick={(e) => this.handleSubmenu(e, "samraxan")}
             >
-              <NavText>बिरुवा उत्पादन</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="activities/plantationlist"
-              onClick={() => history.push("/activities/plantationlist")}
+              <MenuItem
+                onClick={() =>
+                  history.push("/samrakshyan/pokharisamrakshyanlist")
+                }
+              >
+                पोखरी
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/samrakshyan/panimuhansamrakshyanlist")
+                }
+              >
+                पानीमुहान
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/samrakshyan/jaladharsamrakshyanlist")
+                }
+              >
+                जलाधार
+              </MenuItem>
+              <MenuItem
+                onClick={() =>
+                  history.push("/samrakshyan/nadikinarsamrakshyanlist")
+                }
+              >
+                नदी किनार
+              </MenuItem>
+            </SubMenu>
+            <SubMenu
+              title="विविध"
+              className="maintitle"
+              icon={<MdWork />}
+              open={misc}
+              onClick={(e) => this.handleSubmenu(e, "misc")}
             >
-              <NavText> बृक्षरोपन</NavText>
-            </NavItem>
-          </NavItem>
-          <NavItem eventKey="/organizationassets">
-            <NavIcon>
-              <FontAwesomeIcon size="2x" icon={faBuilding} className="mr-2" />
-            </NavIcon>
-            <NavText>कार्यालय सम्पती बिबरण</NavText>
-
-            <NavItem eventKey="assets" onClick={() => history.push("/assets")}>
-              <NavText>घर जग्गा</NavText>
-            </NavItem>
-            <NavItem
-              eventKey="vehicles"
-              onClick={() => history.push("/vehicles")}
+              <MenuItem
+                onClick={() => history.push("/miscellaneous/rojgarsrijanalist")}
+              >
+                रोजगार सिर्जना
+              </MenuItem>
+              <MenuItem
+                onClick={() => history.push("/miscellaneous/uddhamlist")}
+              >
+                उद्धम विवरण
+              </MenuItem>
+            </SubMenu>
+            <MenuItem
+              icon={<FaFileWord />}
+              className="maintitle"
+              onClick={() => history.push("/report")}
             >
-              <NavText> सवारी साधनहरु</NavText>
-            </NavItem>
-          </NavItem>
-          <NavItem eventKey="signout" onClick={onlogout}>
-            <Link to="/logout" className="displaybox">
-              <FontAwesomeIcon size="2x" icon={faSignOutAlt} className="mr-2" />
-              {expanded && <Displaybox value="लग आउट " />}
-            </Link>
-          </NavItem>
-        </SideNav.Nav>
-      </SideNav>
+              रिपोर्ट
+            </MenuItem>
+            {equals(role, 3) && (
+              <MenuItem
+                icon={<BiUserPlus />}
+                className="maintitle"
+                onClick={() => history.push("/userlist")}
+              >
+                नयाँ प्रयोगकर्ता
+              </MenuItem>
+            )}
+            {equals(role, 3) && (
+              <MenuItem
+                icon={<ImOffice />}
+                className="maintitle"
+                onClick={() => history.push("/officelist")}
+              >
+                कार्यालय
+              </MenuItem>
+            )}
+            <MenuItem
+              icon={<BiLogOut />}
+              className="maintitle"
+              onClick={(e) => this.handleConfirm(e)}
+            >
+              लग आउट
+            </MenuItem>
+          </Menu>
+        </SidebarContent>
+      </ProSidebar>
     );
   }
 }

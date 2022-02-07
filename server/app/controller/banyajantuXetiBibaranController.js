@@ -2,28 +2,63 @@ const pool = require("../db");
 
 //Controller for Listing all Banyajantu Xeti Bibarans
 async function getAllBanyajantuXetiBibarans(req, res) {
-  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans`;
-  pool.query(getAllBanyajantuXetiBibaransQuery, [], (error, results, fields) => {
-    if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ?";
+  const getAllBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans as b where b.xeti_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllBanyajantuXetiBibaransQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.officeId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
-
 //Controller for Listing a Banyajantu Xeti Bibaran
 async function getBabyajantuXetiBibarans(req, res) {
   const getBanyajantuXetiBibaransQuery = `select * from banyajantuxeti_bibarans where banyajantuxeti_bibaran_id=?`;
-  pool.query(getBanyajantuXetiBibaransQuery, [req.params.banyajantuxetiBibaranId], (error, results, fields) => {
-    if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  pool.query(
+    getBanyajantuXetiBibaransQuery,
+    [req.params.banyajantuxetiBibaranId],
+    (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
 }
 
 //Controller for adding a Banyajantu Xeti Bibaran
 async function addBanyajantuXetiBibarans(req, res) {
-  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,pasudhan_ghargoth,man_injury_normal,man_injury_medium,man_death,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (dist_id, office_id, pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,ghatana_address,balinali_noksani,anna_bhandaran,pasudhan_xeti,ghargoth_xeti,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuXetiBibaransQuery,
     [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.pidit_name,
       req.body.pidit_address,
       req.body.jagga_bibaran,
@@ -31,10 +66,12 @@ async function addBanyajantuXetiBibarans(req, res) {
       req.body.upabhoktasamiti_name,
       req.body.xetigarne_animal,
       req.body.xeti_miti,
-      req.body.pasudhan_ghargoth,
-      req.body.man_injury_normal,
-      req.body.man_injury_medium,
-      req.body.man_death,
+      req.body.ghatana_address,
+      req.body.balinali_noksani,
+      req.body.anna_bhandaran,
+      req.body.pasudhan_xeti,
+      req.body.ghargoth_xeti,
+      req.body.man_injury,
       req.body.mag_rakam,
       req.body.samitiko_mulyankan_rakam,
       req.body.vuktani_rakam,
@@ -53,10 +90,12 @@ async function addBanyajantuXetiBibarans(req, res) {
 
 //Controller for updating a Banyajantu Xeti Bibaran
 async function updateBanyajantuXetiBibarans(req, res) {
-  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,pasudhan_ghargoth=?,man_injury_normal=?,man_injury_medium=?,man_death=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
+  const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET dist_id=?,office_id=?,pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,ghatana_address=?,balinali_noksani=?,anna_bhandaran=?,pasudhan_xeti=?,ghargoth_xeti=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
   pool.query(
     updateBanyajantuXetiBibaransQuery,
     [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.pidit_name,
       req.body.pidit_address,
       req.body.jagga_bibaran,
@@ -64,10 +103,12 @@ async function updateBanyajantuXetiBibarans(req, res) {
       req.body.upabhoktasamiti_name,
       req.body.xetigarne_animal,
       req.body.xeti_miti,
-      req.body.pasudhan_ghargoth,
-      req.body.man_injury_normal,
-      req.body.man_injury_medium,
-      req.body.man_death,
+      req.body.ghatana_address,
+      req.body.balinali_noksani,
+      req.body.anna_bhandaran,
+      req.body.pasudhan_xeti,
+      req.body.ghargoth_xeti,
+      req.body.man_injury,
       req.body.mag_rakam,
       req.body.samitiko_mulyankan_rakam,
       req.body.vuktani_rakam,

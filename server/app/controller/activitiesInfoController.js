@@ -1,118 +1,154 @@
-const pool = require("../db")
+const pool = require("../db");
 //Controller for Listing all activities_infos
 async function getAllActivitiesInfo(req, res) {
-    const getAllActivitiesInfoQuery = `select * from activities_infos`;
-    pool.query(getAllActivitiesInfoQuery, [], (error, results, fields) => {
+  const getTotalQuery =
+    "SELECT count(*) as total from activities_infos as a where a.fiscal_year BETWEEN ? and ? and a.dist_id like ? and a.office_id like ?";
+  const getAllActivitiesInfoQuery = `select * from activities_infos as a where a.fiscal_year BETWEEN ? and ? and a.dist_id  like ? and a.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllActivitiesInfoQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.officeId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
+}
+
+//Controller for Listing a ActivitiesInfo
+async function getActivitiesInfo(req, res) {
+  const getActivitiesInfoQuery = `select * from activities_infos where activities_info_id=?`;
+  pool.query(
+    getActivitiesInfoQuery,
+    [req.params.activitiesInfoId],
+    (error, results, fields) => {
       if (error) throw error;
       res.send(JSON.stringify({ status: 200, error: null, data: results }));
-    });
-  }
-  
-  //Controller for Listing a ActivitiesInfo
-  async function getActivitiesInfo(req, res) {
-    const getActivitiesInfoQuery = `select * from activities_infos where activities_info_id=?`;
-    pool.query(getActivitiesInfoQuery, [req.params.activitiesInfoId], (error, results, fields) => {
-      if (error) throw error;
+    }
+  );
+}
+
+//Controller for adding a ActivitiesInfo
+async function addActivitiesInfo(req, res) {
+  const addActivitiesInfoQuery = `INSERT INTO activities_infos (dist_id, office_id, samudayikban_naam, fiscal_year, area, production_from_conservation_timber, production_from_conservation_wood, employment_generated_workingday, withingroup_timber, withingroup_wood, outsidegroup_timber, outsidegroup_wood, maujdat_timber, maujdat_wood, annual_income, annual_expenditure, netannual_saving, niyamit_rojgar_count, community_udhyam_bibaran, annual_bibaran, lekha_parikshyan,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  pool.query(
+    addActivitiesInfoQuery,
+    [
+      req.body.dist_id,
+      req.body.office_id,
+      req.body.samudayikban_naam,
+      req.body.fiscal_year,
+      req.body.area,
+      req.body.production_from_conservation_timber,
+      req.body.production_from_conservation_wood,
+      req.body.employment_generated_workingday,
+      req.body.withingroup_timber,
+      req.body.withingroup_wood,
+      req.body.outsidegroup_timber,
+      req.body.outsidegroup_wood,
+      req.body.maujdat_timber,
+      req.body.maujdat_wood,
+      req.body.annual_income,
+      req.body.annual_expenditure,
+      req.body.netannual_saving,
+      req.body.niyamit_rojgar_count,
+      req.body.community_udhyam_bibaran,
+      req.body.annual_bibaran,
+      req.body.lekha_parikshyan,
+      req.body.created_by,
+      req.body.updated_by,
+    ],
+    (error, results, fields) => {
+      if (error) {
+        throw error;
+      }
       res.send(JSON.stringify({ status: 200, error: null, data: results }));
-    });
-  }
-  
-  //Controller for adding a ActivitiesInfo
-  async function addActivitiesInfo(req, res) {
-    const addActivitiesInfoQuery = `INSERT INTO activities_infos (samudayikban_naam, fiscal_year, area, production_from_conservation_timber, production_from_conservation_wood, employment_generated_workingday, withingroup_timber, withingroup_wood, outsidegroup_timber, outsidegroup_wood, maujdat_timber, maujdat_wood, annual_income, annual_expenditure, netannual_saving, niyamit_rojgar_count, community_udhyam_bibaran, annual_bibaran, lekha_parikshyan,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
-    pool.query(
-      addActivitiesInfoQuery,
-      [
-        req.body.samudayikban_naam,
-        req.body.fiscal_year,                
-        req.body.area,
-        req.body.production_from_conservation_timber, 
-        req.body.production_from_conservation_wood, 
-        req.body.employment_generated_workingday, 
-        req.body.withingroup_timber, 
-        req.body.withingroup_wood,  
-        req.body.outsidegroup_timber, 
-        req.body.outsidegroup_wood, 
-        req.body.maujdat_timber, 
-        req.body.maujdat_wood, 
-        req.body.annual_income, 
-        req.body.annual_expenditure, 
-        req.body.netannual_saving, 
-        req.body.niyamit_rojgar_count, 
-        req.body.community_udhyam_bibaran, 
-        req.body.annual_bibaran, 
-        req.body.lekha_parikshyan, 
-        req.body.created_by, 
-        req.body.updated_by,         
-      ],
-      (error, results, fields) => {
-        if (error) {
-          throw error;
-        }
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
+}
+
+//Controller for updating a ActivitiesInfo
+async function updateActivitiesInfo(req, res) {
+  const updateActivitiesInfoQuery = `UPDATE activities_infos SET dist_id=?, office_id=? samudayikban_naam=?, fiscal_year=?, area=?, production_from_conservation_timber=?, production_from_conservation_wood=?, employment_generated_workingday=?, withingroup_timber=?, withingroup_wood=?, outsidegroup_timber=?, outsidegroup_wood=?, maujdat_timber=?, maujdat_wood=?, annual_income=?, annual_expenditure=?, netannual_saving=?, niyamit_rojgar_count=?, community_udhyam_bibaran=?, annual_bibaran=?, lekha_parikshyan=?,created_by=?, updated_by=? WHERE activities_info_id=?`;
+  pool.query(
+    updateActivitiesInfoQuery,
+    [
+      req.body.dist_id,
+      req.body.office_id,
+      req.body.samudayikban_naam,
+      req.body.fiscal_year,
+      req.body.area,
+      req.body.production_from_conservation_timber,
+      req.body.production_from_conservation_wood,
+      req.body.employment_generated_workingday,
+      req.body.withingroup_timber,
+      req.body.withingroup_wood,
+      req.body.outsidegroup_timber,
+      req.body.outsidegroup_wood,
+      req.body.maujdat_timber,
+      req.body.maujdat_wood,
+      req.body.annual_income,
+      req.body.annual_expenditure,
+      req.body.netannual_saving,
+      req.body.niyamit_rojgar_count,
+      req.body.community_udhyam_bibaran,
+      req.body.annual_bibaran,
+      req.body.lekha_parikshyan,
+      req.body.created_by,
+      req.body.updated_by,
+      req.params.activitiesInfoId,
+    ],
+    (error, results, fields) => {
+      if (error) {
+        throw error;
       }
-    );
-  }
-  
-  //Controller for updating a ActivitiesInfo
-  async function updateActivitiesInfo(req, res) {
-    const updateActivitiesInfoQuery = `UPDATE activities_infos SET samudayikban_naam=?, fiscal_year=?, area=?, production_from_conservation_timber=?, production_from_conservation_wood=?, employment_generated_workingday=?, withingroup_timber=?, withingroup_wood=?, outsidegroup_timber=?, outsidegroup_wood=?, maujdat_timber=?, maujdat_wood=?, annual_income=?, annual_expenditure=?, netannual_saving=?, niyamit_rojgar_count=?, community_udhyam_bibaran=?, annual_bibaran=?, lekha_parikshyan=?,created_by=?, updated_by=? WHERE activities_info_id=?`;
-    pool.query(
-      updateActivitiesInfoQuery,
-      [
-        req.body.samudayikban_naam,
-        req.body.fiscal_year,                
-        req.body.area,
-        req.body.production_from_conservation_timber, 
-        req.body.production_from_conservation_wood, 
-        req.body.employment_generated_workingday, 
-        req.body.withingroup_timber, 
-        req.body.withingroup_wood, 
-        req.body.outsidegroup_timber, 
-        req.body.outsidegroup_wood, 
-        req.body.maujdat_timber, 
-        req.body.maujdat_wood, 
-        req.body.annual_income, 
-        req.body.annual_expenditure, 
-        req.body.netannual_saving, 
-        req.body.niyamit_rojgar_count, 
-        req.body.community_udhyam_bibaran, 
-        req.body.annual_bibaran, 
-        req.body.lekha_parikshyan, 
-        req.body.created_by, 
-        req.body.updated_by,         
-        req.params.activitiesInfoId,
-      ],
-      (error, results, fields) => {
-        if (error) {
-          throw error;
-        }
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
+}
+
+//Controller for deleting a ActivitiesInfo
+async function deleteActivitiesInfo(req, res) {
+  const deleteActivitiesInfoQuery = `DELETE  FROM activities_infos where activities_info_id=?`;
+  pool.query(
+    deleteActivitiesInfoQuery,
+    [req.params.activitiesInfoId],
+    (error, results, fields) => {
+      if (error) {
+        throw error;
       }
-    );
-  }
-  
-  //Controller for deleting a ActivitiesInfo
-  async function deleteActivitiesInfo(req, res) {
-    const deleteActivitiesInfoQuery = `DELETE  FROM activities_infos where activities_info_id=?`;
-    pool.query(
-      deleteActivitiesInfoQuery,
-      [req.params.activitiesInfoId],
-      (error, results, fields) => {
-        if (error) {
-          throw error;
-        }
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
-      }
-    );
-  }
-  
-  module.exports = {
-    getAllActivitiesInfo,
-    getActivitiesInfo,
-    addActivitiesInfo,
-    updateActivitiesInfo,
-    deleteActivitiesInfo,
-  };
-  
-  
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
+}
+
+module.exports = {
+  getAllActivitiesInfo,
+  getActivitiesInfo,
+  addActivitiesInfo,
+  updateActivitiesInfo,
+  deleteActivitiesInfo,
+};

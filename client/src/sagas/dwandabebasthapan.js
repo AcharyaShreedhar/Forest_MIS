@@ -1,36 +1,49 @@
 import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import DwandabebasthapanActions from "../actions/dwandabebasthapan";
 
-export function* fetchallbanyajantuuddarRequest(api, action) {
- 
-  const response = yield api.getBanyajantuUddarList();
+export function* fetchtotalbanyajantuuddarRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getTotalBanyajantuUddarList(payloaddata);
   if (response.ok) {
     yield put(
-        DwandabebasthapanActions.fetchallbanyajantuuddarSuccess(response.data)
+      DwandabebasthapanActions.fetchtotalbanyajantuuddarSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchtotalbanyajantuuddarFailure());
+  }
+}
+
+export function* fetchallbanyajantuuddarRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanyajantuUddarList(payloaddata);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchallbanyajantuuddarSuccess(response.data)
     );
   } else {
     yield put(DwandabebasthapanActions.fetchallbanyajantuuddarFailure());
   }
 }
 
-
 export function* fetchbanyajantuuddarRequest(api, action) {
-    const  banyajantuUddarId  = action.payload
- 
-    const response = yield api.getBanyajantuUddar(banyajantuUddarId);
-    console.log("response....sagaa....", response);
-    if (response.ok) {
-      yield put(
-        DwandabebasthapanActions.fetchbanyajantuuddarSuccess(response.data)
-      );
-    } else {
-      yield put(DwandabebasthapanActions.fetchbanyajantuuddarFailure());
-    }
-  }
+  const banyajantuUddarId = action.payload;
 
-  // Add banyajantuuddar
+  const response = yield api.getBanyajantuUddar(banyajantuUddarId);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchbanyajantuuddarSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchbanyajantuuddarFailure());
+  }
+}
+
+// Add banyajantuuddar
 export function* addbanyajantuuddarRequest(api, action) {
   const { payload } = action;
 
@@ -42,9 +55,19 @@ export function* addbanyajantuuddarRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api);
-    yield call(history.push, "/forests/banyajantuuddarlist");
-    yield put(DwandabebasthapanActions.addbanyajantuuddarSuccess(response.data));
+    yield fetchallbanyajantuuddarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/dwandabebasthapan/banyajantuuddarlist");
+    yield put(
+      DwandabebasthapanActions.addbanyajantuuddarSuccess(response.data)
+    );
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuuddarFailure());
     toast.error(
@@ -66,11 +89,19 @@ export function* updatebanyajantuuddarRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन्यजन्तु उद्दार पुनः प्रविष्ट भयो !!!!", {
+    toast.success("सफलतापुर्वक वन्यजन्तु उद्दार शंसोधन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api);
-    yield call(history.push, "/forests/banyajantuuddarlist");
+    yield fetchallbanyajantuuddarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/dwandabebasthapan/banyajantuuddarlist");
     yield put(
       DwandabebasthapanActions.updatebanyajantuuddarSuccess(response.data)
     );
@@ -89,13 +120,23 @@ export function* updatebanyajantuuddarRequest(api, action) {
 export function* deletebanyajantuuddarRequest(api, action) {
   const { payload } = action;
 
-  const response = yield api.postDwandabebasthapanBanyajantuuddarDelete(payload);
+  const response = yield api.postDwandabebasthapanBanyajantuuddarDelete(
+    payload
+  );
 
   if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuuddarRequest(api);
+    yield fetchallbanyajantuuddarRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       DwandabebasthapanActions.deletebanyajantuuddarSuccess(response.data)
     );
@@ -110,35 +151,47 @@ export function* deletebanyajantuuddarRequest(api, action) {
   }
 }
 
+export function* fetchtotalbanyajantuxetiRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getTotalBanyajantuXetiList(payloaddata);
 
-  export function* fetchallbanyajantuxetiRequest(api, action) {
- 
-    const response = yield api.getBanyajantuXetiList();
-    if (response.ok) {
-      yield put(
-          DwandabebasthapanActions.fetchallbanyajantuxetiSuccess(response.data)
-      );
-    } else {
-      yield put(DwandabebasthapanActions.fetchallbanyajantuxetiFailure());
-    }
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchtotalbanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchtotalbanyajantuxetiFailure());
   }
+}
 
-
-  export function* fetchbanyajantuxetiRequest(api, action) {
-    const  banyajantuXetiId  = action.payload
- 
-    const response = yield api.getBanyajantuXeti(banyajantuXetiId);
-    if (response.ok) {
-      yield put(
-        DwandabebasthapanActions.fetchbanyajantuxetiSuccess(response.data)
-      );
-    } else {
-      yield put(DwandabebasthapanActions.fetchbanyajantuxetiFailure());
-    }
+export function* fetchallbanyajantuxetiRequest(api, action) {
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getBanyajantuXetiList(payloaddata);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchallbanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchallbanyajantuxetiFailure());
   }
+}
 
+export function* fetchbanyajantuxetiRequest(api, action) {
+  const banyajantuXetiId = action.payload;
 
-   // Add banyajantuxeti
+  const response = yield api.getBanyajantuXeti(banyajantuXetiId);
+  if (response.ok) {
+    yield put(
+      DwandabebasthapanActions.fetchbanyajantuxetiSuccess(response.data)
+    );
+  } else {
+    yield put(DwandabebasthapanActions.fetchbanyajantuxetiFailure());
+  }
+}
+
+// Add banyajantuxeti
 export function* addbanyajantuxetiRequest(api, action) {
   const { payload } = action;
 
@@ -150,8 +203,16 @@ export function* addbanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api);
-    yield call(history.push, "/forests/banyajantuxetilist");
+    yield fetchallbanyajantuxetiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/dwandabebasthapan/banyajantuxetirahatlist");
     yield put(DwandabebasthapanActions.addbanyajantuxetiSuccess(response.data));
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuxetiFailure());
@@ -174,11 +235,20 @@ export function* updatebanyajantuxetiRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक वन्यजन्तु क्षति पुनः प्रविष्ट भयो !!!!", {
+    toast.success("सफलतापुर्वक वन्यजन्तु क्षति शंसोधन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api);
-    yield call(history.push, "/forests/banyajantuxetilist");
+    yield fetchallbanyajantuxetiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/dwandabebasthapan/banyajantuxetirahatlist");
+
     yield put(
       DwandabebasthapanActions.updatebanyajantuxetiSuccess(response.data)
     );
@@ -203,7 +273,15 @@ export function* deletebanyajantuxetiRequest(api, action) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbanyajantuxetiRequest(api);
+    yield fetchallbanyajantuxetiRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       DwandabebasthapanActions.deletebanyajantuxetiSuccess(response.data)
     );

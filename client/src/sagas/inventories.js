@@ -2,10 +2,13 @@ import { call, put } from "redux-saga/effects";
 import { toast } from "react-toastify";
 
 import { history } from "../reducers";
+import { isNil } from "ramda";
 import InventoriesActions from "../actions/inventories";
 
 export function* fetchallinventoriesRequest(api, action) {
-  const response = yield api.getInventoriesList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getInventoriesList(payloaddata);
 
   if (response.ok) {
     yield put(InventoriesActions.fetchallinventoriesSuccess(response.data));
@@ -39,7 +42,11 @@ export function* addinventoriesRequest(api, action) {
     toast.success("सफलतापुर्वक  सुचीमा थप गरियो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallinventoriesRequest(api);
+    yield fetchallinventoriesRequest(api,{
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/inventorieslist");
     yield put(InventoriesActions.addinventoriesSuccess(response.data));
   } else {
@@ -63,10 +70,14 @@ export function* updateinventoriesRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक सुचीमा  पुनः थप गरियो !!!!", {
+    toast.success("सफलतापुर्वक सुचीमा  शंसोधन गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallinventoriesRequest(api);
+    yield fetchallinventoriesRequest(api,{
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/inventorieslist");
     yield put(
       InventoriesActions.updateinventoriesSuccess(response.data)
@@ -92,7 +103,11 @@ export function* deleteinventoriesRequest(api, action) {
     toast.success("सफलतापुर्वक सुची हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallinventoriesRequest(api);
+    yield fetchallinventoriesRequest(api,{
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       InventoriesActions.deleteinventoriesSuccess(response.data)
     );
@@ -109,7 +124,9 @@ export function* deleteinventoriesRequest(api, action) {
 
 
 export function* fetchallentryRequest(api, action) {
-  const response = yield api.getEntryList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getEntryList(payloaddata);
 
   if (response.ok) {
     yield put(InventoriesActions.fetchallentrySuccess(response.data));
@@ -142,7 +159,11 @@ export function* addentryRequest(api, action) {
     toast.success("सफलतापुर्वक प्रवेश  गरियो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallentryRequest(api);
+    yield fetchallentryRequest(api,{
+      name: "entry_amt",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/entrylist");
     yield put(InventoriesActions.addentrySuccess(response.data));
   } else {
@@ -166,10 +187,14 @@ export function* updateentryRequest(api, action) {
   );
 
   if (response.ok) {
-    toast.success("सफलतापुर्वक प्रवेश  गरियो !!!!", {
+    toast.success("सफलतापुर्वक प्रवेश शंसोधन गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallentryRequest(api);
+    yield fetchallentryRequest(api,{
+      name: "entry_amt",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/forests/entrylist");
     yield put(
       InventoriesActions.updateentrySuccess(response.data)
@@ -195,7 +220,11 @@ export function* deleteentryRequest(api, action) {
     toast.success("सफलतापुर्वक प्रवेश  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallentryRequest(api);
+    yield fetchallentryRequest(api,{
+      name: "entry_amt",
+      page: 0,
+      perPage: 10,
+    });
     yield put(
       InventoriesActions.deleteentrySuccess(response.data)
     );
@@ -212,7 +241,9 @@ export function* deleteentryRequest(api, action) {
 
 
 export function* fetchallexitRequest(api, action) {
-  const response = yield api.getExitList();
+  const { payload } = action;
+  const payloaddata = isNil(payload) ? action : payload;
+  const response = yield api.getExitList(payloaddata);
 
   if (response.ok) {
     yield put(InventoriesActions.fetchallexitSuccess(response.data));
@@ -233,5 +264,97 @@ export function* fetchexitRequest(api, action) {
     );
   } else {
     yield put(InventoriesActions.fetchexitFailure());
+  }
+}
+
+// Add exit
+export function* addexitRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesExitAddNew(
+    payload.exit.data
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक  बहिर्गमन भयो !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallexitRequest(api,{
+      name: "exit_rate",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/exitlist");
+    yield put(InventoriesActions.addexitSuccess(response.data));
+  } else {
+    yield put(InventoriesActions.addexitFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+// Update exit
+export function* updateexitRequest(api, action) {
+  const { payload, exitId } = action;
+
+  const response = yield api.postInventoriesExitUpdate(
+    payload.exit.data,
+    exitId
+  );
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बहिर्गमन शंसोधन भयो  !!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallexitRequest(api,{
+      name: "exit_rate",
+      page: 0,
+      perPage: 10,
+    });
+    yield call(history.push, "/forests/exitlist");
+    yield put(
+      InventoriesActions.updatexitSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.updateexitFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  }
+}
+
+//Delete exit
+export function* deleteexitRequest(api, action) {
+  const { payload } = action;
+
+  const response = yield api.postInventoriesExitDelete(payload);
+
+  if (response.ok) {
+    toast.success("सफलतापुर्वक बहिर्गमन हटाईयो !!!!!", {
+      position: toast.POSITION.TOP_CENTER,
+    });
+    yield fetchallexitRequest(api,{
+      name: "exit_rate",
+      page: 0,
+      perPage: 10,
+    });
+    yield put(
+      InventoriesActions.deleteexitSuccess(response.data)
+    );
+  } else {
+    yield put(InventoriesActions.deleteexitFailure());
+    toast.error(
+      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
   }
 }

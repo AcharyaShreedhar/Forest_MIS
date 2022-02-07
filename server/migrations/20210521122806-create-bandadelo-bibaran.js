@@ -8,6 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      office_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       bandadelo_address: {
         type: Sequelize.STRING,
       },
@@ -20,13 +28,28 @@ module.exports = {
       xeti_area: {
         type: Sequelize.STRING,
       },
+      banpaidawar_xeti: {
+        type: Sequelize.STRING,
+      },
+      niyantran_prayas: {
+        type: Sequelize.STRING,
+      },
       niyantran_karta: {
         type: Sequelize.STRING,
       },
       sahabhagi_mahila: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       sahabhagi_purus: {
+        type: Sequelize.INTEGER,
+      },
+      man_injured: {
+        type: Sequelize.INTEGER,
+      },
+      man_dead: {
+        type: Sequelize.INTEGER,
+      },
+      bandadelo_miti: {
         type: Sequelize.STRING,
       },
       created_by: {

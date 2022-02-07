@@ -4,11 +4,33 @@ const util = require("../db/utility");
 
 //Controller for Listing all Users
 async function getAllUsers(req, res) {
-  const getAllUsersQuery = `select * from users`;
-  pool.query(getAllUsersQuery, [], (error, results, fields) => {
-    if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  const getTotalQuery =
+    "SELECT count(*) as total from users where dist_id like ? and office_id like ?";
+  const getAllUsersQuery = `select * from users where dist_id like ? and office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.distId, req.body.officeId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllUsersQuery,
+        [req.body.distId, req.body.officeId, req.body.name, req.body.page, req.body.perPage],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
 }
 
 //Controller for Listing a User
@@ -24,13 +46,16 @@ async function getUsers(req, res) {
 async function addUsers(req, res) {
   const saltRounds = 10;
   const token = util.generateAccessToken({ username: req.body.user_name });
-  const addUsersQuery = `INSERT INTO users (user_type,user_name,user_pass,user_token,created_by,updated_by) values (?,?,?,?,?,?)`;
+  const addUsersQuery = `INSERT INTO users (dist_id,office_id,user_type,user_name,user_pass,user_token,user_office,created_by,updated_by) values (?,?,?,?,?,?,?,?,?)`;
   bcrypt.hash(req.body.user_pass, saltRounds, function (error, hash) {
     let values = [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.user_type,
       req.body.user_name,
       hash,
       token,
+      req.body.user_office,
       req.body.created_by,
       req.body.updated_by,
     ]; // query values
@@ -46,20 +71,43 @@ async function addUsers(req, res) {
 
 //Controller for updating a User
 async function updateUsers(req, res) {
-  const saltRounds = 10;
   const token = util.generateAccessToken({ username: req.body.user_name });
-  const updateUsersQuery = `UPDATE users SET user_type=?, user_name=?, user_pass=?,user_token=?,created_by=?,updated_by=? WHERE user_id=?`;
-  bcrypt.hash(req.body.user_pass, saltRounds, function (error, hash) {
-    let values = [
+  const updateUsersQuery = `UPDATE users SET dist_id=?, office_id=?, user_type=?, user_name=?, user_token=?, user_office=?,created_by=?,updated_by=? WHERE user_id=?`;
+  pool.query(updateUsersQuery,  
+    [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.user_type,
       req.body.user_name,
-      hash,
       token,
+      req.body.user_office,
       req.body.created_by,
       req.body.updated_by,
       req.params.userId,
+    ],
+    function (error, results) {
+      if (error) {
+        throw error;
+      }
+      else {
+        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      }
+    });
+}
+
+//Controller for change password
+async function updateUsersPassword(req, res) {
+  const saltRounds = 10;
+  const token = util.generateAccessToken({ username: req.body.user_name });
+  const updateUsersPasswordQuery = `UPDATE users SET user_pass=?,user_token=?,updated_by=? WHERE user_id=?`;
+  bcrypt.hash(req.body.user_pass, saltRounds, function (error, hash) {
+    let values = [
+      hash,
+      token,
+      req.body.updated_by,
+      req.params.userId,
     ];
-    pool.query(updateUsersQuery, values, function (error, results) {
+    pool.query(updateUsersPasswordQuery, values, function (error, results) {
       if (error) {
         throw error;
       } else {
@@ -85,18 +133,35 @@ async function deleteUsers(req, res) {
 }
 
 async function verifyUsers(req, res) {
-  const getUsersPasswordQuery = `select user_id,user_name, user_pass,user_token from users where user_name=?`;
+  const getUsersPasswordQuery = `select user_id,user_name, user_pass,user_token,dist_id,office_id,user_type,user_office from users where user_name=?`;
+  // const getOfficesList = `SELECT '%' AS id, 'सबै' AS value, '' as office_locatoin, '%' As dist_id UNION ALL select office_id as id, office_name as value, office_location, dist_id from offices`;
   pool.query(
     getUsersPasswordQuery,
     [req.body.user_name],
     (error, results, fields) => {
       if (error) throw error;
       else {
+        // var officeList = []
+        // office list
+        // pool.query(
+        //   getOfficesList,
+        //   (error, results, fields) =>{
+        //     if(error) throw error;
+        //     else{
+        //       officeList = results;   
+        //     }
+        //   }
+        // )
+        //
         var hash = results[0].user_pass;
         const user = {
           user_id: results[0].user_id,
           user_name: results[0].user_name,
+          user_type:results[0].user_type,
           user_token: results[0].user_token,
+          user_office:results[0].user_office,
+          dist_id: results[0].dist_id,
+          office_id: results[0].office_id,
         };
 
         //compare hash and password
@@ -108,6 +173,7 @@ async function verifyUsers(req, res) {
                 status: 200,
                 error: null,
                 user: user,
+                // officeList: officeList, //officeList
                 message: "You are successfully logged In",
               })
             );
@@ -133,6 +199,7 @@ module.exports = {
   getUsers,
   addUsers,
   updateUsers,
+  updateUsersPassword,  // change password
   deleteUsers,
   verifyUsers,
 };

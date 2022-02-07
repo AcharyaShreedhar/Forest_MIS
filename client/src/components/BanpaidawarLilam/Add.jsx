@@ -1,28 +1,42 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Button, Input, DatePicker, Dropdown } from "../../components";
+import { isEmpty } from "ramda";
+import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals } from "ramda";
 
 class Add extends Component {
   constructor(props) {
     super(props);
     this.state = {
       lilam_date: "",
-      banpaidawar_type:"",
+      banpaidawar_type: "",
       unit: "",
       quantity: "",
-      minimum_price:"",
-      sakaar_price:"",
-      remarks:"",
+      minimum_price: "",
+      sakaar_price: "",
+      remarks: "",
+      dist_id: "",
+      office_id: "",
       created_by: "",
       updated_by: "",
+      showDialog: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
-    
+  }
+
+  handleClose() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleConfirm() {
+    this.setState({ showDialog: !this.state.showDialog });
+  }
+
+  handleDate(e) {
+    this.setState({ lilam_date: e });
   }
 
   handleSubmit() {
@@ -34,7 +48,6 @@ class Add extends Component {
       minimum_price,
       sakaar_price,
       remarks,
-      
     } = this.state;
     const payload = {
       banpaidawarlilam: {
@@ -46,97 +59,121 @@ class Add extends Component {
           minimum_price: minimum_price,
           sakaar_price: sakaar_price,
           remarks: remarks,
-          
+          dist_id: this.props.user.dist_id,
+          office_id: this.props.user.office_id,
+          created_by: this.props.user.user_name,
         },
       },
     };
     this.props.onSubmit(payload);
   }
-  handleDate(e) {
-    this.setState({ lilam_date: e });
-  }
 
   render() {
-    const {title} = this.props;
+    const { title } = this.props;
     const {
-        lilam_date,
-        banpaidawar_type,
-        unit,
-        quantity,
-        minimum_price,
-        sakaar_price,
-        remarks,
+      lilam_date,
+      banpaidawar_type,
+      unit,
+      quantity,
+      minimum_price,
+      sakaar_price,
+      remarks,
+      showDialog,
     } = this.state;
+
+    let disabled =
+      isEmpty(lilam_date) ||
+      isEmpty(banpaidawar_type) ||
+      isEmpty(unit) ||
+      isEmpty(quantity) ||
+      isEmpty(minimum_price) ||
+      isEmpty(sakaar_price) ||
+      isEmpty(remarks)
+        ? true
+        : false;
 
     return (
       <React.Fragment>
         <div className=" card p-5 border-5">
+          <ConfirmationDialoge
+            showDialog={showDialog}
+            title="थप"
+            body="के तपाईँ वनपैदावार लिलाम सम्बन्धि विवरण थप गर्न चाहनुहुन्छ ?"
+            confirmLabel="चाहन्छु "
+            cancelLabel="चाहंदिन "
+            onYes={this.handleSubmit}
+            onClose={this.handleClose}
+          />
           <div className="detail-content">
             <div className="title">
               <span className="dsl-b22">{title}</span>
             </div>
+            <div className="panel space mb-4">
+              <div className="w-30">
+                <span className="dsl-b18">लिलाम मिति :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={lilam_date}
+                  onChange={(e) => this.handleDate(e)}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
+              <Input
+                className="w-30"
+                title="वन पैदावारको किसिम :"
+                value={banpaidawar_type}
+                direction="vertical"
+                onChange={(e) => this.setState({ banpaidawar_type: e })}
+              />
 
-            <span className="dsl-b18">लिलाम मिति</span>
-            <NepaliDatePicker
-              inputClassName="form-control"
-              className="mb-4"
-              value={lilam_date}
-              onChange={(e) => this.handleDate(e)}
-              options={{ calenderLocale: "ne", valueLocale: "en" }}
-            />
+              <Input
+                className="w-30"
+                title="इकाई :"
+                direction="vertical"
+                value={unit}
+                onChange={(e) => this.setState({ unit: e })}
+              />
+            </div>
+            <div className="panel space mb-4">
+              <Input
+                className="w-30"
+                title="परिमाण :"
+                value={quantity}
+                direction="vertical"
+                onChange={(e) => this.setState({ quantity: e })}
+              />
+              <Input
+                className="w-30"
+                title="न्युनतम मूल्य (रु) :"
+                direction="vertical"
+                value={minimum_price}
+                onChange={(e) => this.setState({ minimum_price: e })}
+              />
+              <Input
+                className="w-30"
+                title="सकार रकम (रु) :"
+                value={sakaar_price}
+                direction="vertical"
+                onChange={(e) => this.setState({ sakaar_price: e })}
+              />
+            </div>
             <Input
-              className="mb-4"
-              title="वन पैदावारको किसिम"
-              value={banpaidawar_type}
-              direction="vertical"
-              onChange={(e) => this.setState({ banpaidawar_type: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="इकाई"
-              direction="vertical"
-              value={unit}
-              onChange={(e) => this.setState({ unit: e })}
-            />
-            <Input
-              className="mb-4"
-              title="परिमाण"
-              value={quantity}
-              direction="vertical"
-              onChange={(e) => this.setState({ quantity: e })}
-            />
-
-            <Input
-              className="mb-4"
-              title="न्युनतम मूल्य (रु)"
-              direction="vertical"
-              value={minimum_price}
-              onChange={(e) => this.setState({ minimum_price: e })}
-            />
-                        
-            <Input
-              className="mb-4"
-              title="सकार रकम (रु)"
-              value={sakaar_price}
-              direction="vertical"
-              onChange={(e) => this.setState({ sakaar_price: e })}
-            />
-            <Input
-              className="mb-4"
-              title="कैफियत"
+              className="w-30"
+              title="कैफियत :"
               value={remarks}
               direction="vertical"
+              as="textarea"
               onChange={(e) => this.setState({ remarks: e })}
             />
-            
           </div>
+          <div className="section mb-4" />
           <div className="mt-2 border-5">
             <div className="d-flex justify-content-end align-items-center">
               <Button
                 className="mr-3"
-                name="Save"
-                onClick={this.handleSubmit.bind(this)}
+                name="शेभ गर्नुहोस ।"
+                disabled={disabled}
+                onClick={this.handleConfirm.bind(this)}
               />
             </div>
           </div>
@@ -145,7 +182,5 @@ class Add extends Component {
     );
   }
 }
-
-
 
 export default Add;

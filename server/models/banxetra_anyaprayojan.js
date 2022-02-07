@@ -13,9 +13,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   banxetra_anyaprayojan.init(
     {
+      dist_id: DataTypes.INTEGER,
+      office_id: DataTypes.INTEGER,
       arthik_barsa: DataTypes.STRING,
       uplabdakarta_naam: DataTypes.STRING,
       upalabdha_address: DataTypes.STRING,
+      sanstha_name:DataTypes.STRING,
+      prayojan:DataTypes.STRING,
       xetrafal_temp: DataTypes.STRING,
       xetrafal_perm: DataTypes.STRING,
       samaya_abadhi: DataTypes.STRING,

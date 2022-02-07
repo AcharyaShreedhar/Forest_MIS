@@ -9,11 +9,66 @@ import BanpaidawarActions from "../../actions/banpaidawar";
 
 export class Banpaidawar extends Component {
   componentDidMount() {
-    this.props.fetchallBanpaidawarlilam();
+    this.props.fetchallBanpaidawarlilam({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "lilam_date",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBanpaidawarosarpasar({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBanpaidawarbikribitaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "bikri_miti",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
+    this.props.fetchallBanpaidawarlilam({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "lilam_date",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBanpaidawarosarpasar({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBanpaidawarbikribitaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "bikri_miti",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
-
     const { authenticated } = this.props;
     return (
       <Switch>
@@ -21,7 +76,19 @@ export class Banpaidawar extends Component {
           if (prop.redirect && authenticated) {
             return <Redirect exact from={prop.path} to={prop.to} key={key} />;
           }
-          if (prop.redirect && authenticated){
+          if (prop.redirect && authenticated) {
+            return (
+              <Route
+                exact
+                path={prop.path}
+                component={prop.component}
+                key={key}
+              />
+            );
+          }
+          if (!prop.redirect && prop.auth && !authenticated) {
+            return <Redirect exact from={prop.path} to="/" key={key} />;
+          }
           return (
             <Route
               exact
@@ -30,20 +97,7 @@ export class Banpaidawar extends Component {
               key={key}
             />
           );
-        }
-        if(!prop.redirect && prop.auth && !authenticated){
-          return <Redirect exact from = { prop.path} to="/" key={key} />;
-        }
-        return (
-          <Route
-              exact
-              path={prop.path}
-              component={prop.component}
-              key={key}
-          />
-        );
-        }
-        )}
+        })}
         <Route path="*" exact component={NotFound} />
       </Switch>
     );
@@ -66,8 +120,16 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBanpaidawarlilam: () =>
-  dispatch(BanpaidawarActions.fetchallbanpaidawarlilamRequest()),
+  fetchallBanpaidawarlilam: (payload) =>
+    dispatch(BanpaidawarActions.fetchallbanpaidawarlilamRequest(payload)),
+
+  fetchallBanpaidawarosarpasar: (payload) =>
+    dispatch(BanpaidawarActions.fetchallbanpaidawarRequest(payload)),
+
+  fetchallBanpaidawarbikribitaran: (payload) =>
+    dispatch(
+      BanpaidawarActions.fetchallbanpaidawarbikribitaranRequest(payload)
+    ),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banpaidawar);

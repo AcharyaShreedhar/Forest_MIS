@@ -8,13 +8,33 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      office_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       atikramit_area: {
         type: Sequelize.STRING,
       },
-      atikraman_kisim: {
+      address: {
         type: Sequelize.STRING,
       },
-      samalagna_ghardhuri: {
+      atikraman_kisim: {
+        type: Sequelize.INTEGER,
+      },
+      dalit_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      janjati_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      anya_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      atikraman_miti: {
         type: Sequelize.STRING,
       },
       atikraman_prayojan: {
@@ -24,7 +44,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       atikraman_abastha: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,

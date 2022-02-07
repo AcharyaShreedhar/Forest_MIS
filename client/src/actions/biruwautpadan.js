@@ -52,6 +52,49 @@
    deleteactivitiesinfoSuccess: ["response"],
    deleteactivitiesinfoFailure: null,
 
+   fetchallbrixyaropanRequest: ["payload"],
+   fetchallbrixyaropanSuccess: ["response"],
+   fetchallbrixyaropanFailure: null,
+
+   fetchbrixyaropanRequest: ["payload"],
+   fetchbrixyaropanSuccess: ["response"],
+   fetchbrixyaropanFailure: null,
+
+   addbrixyaropanRequest: ["payload"],
+   addbrixyaropanSuccess: ["response"],
+   addbrixyaropanFailure: null,
+
+   updatebrixyaropanRequest: ["payload", "brixyaropanId"],
+   updatebrixyaropanSuccess: ["response"],
+   updatebrixyaropanFailure: null,
+
+   deletebrixyaropanRequest: ["payload", "brixyaropanId"],
+   deletebrixyaropanSuccess: ["response"],
+   deletebrixyaropanFailure: null,
+
+   fetchalljadibutiRequest: ["payload"],
+   fetchalljadibutiSuccess: ["response"],
+   fetchalljadibutiFailure: null,
+
+   fetchjadibutiRequest: ["payload"],
+   fetchjadibutiSuccess: ["response"],
+   fetchjadibutiFailure: null,
+
+   addjadibutiRequest: ["payload"],
+   addjadibutiSuccess: ["response"],
+   addjadibutiFailure: null,
+
+   updatejadibutiRequest: ["payload", "jadibutiId"],
+   updatejadibutiSuccess: ["response"],
+   updatejadibutiFailure: null,
+
+   deletejadibutiRequest: ["payload", "jadibutiId"],
+   deletejadibutiSuccess: ["response"],
+   deletejadibutiFailure: null,
+
+
+
+
    locationsRequest: ["payload"],
    // Clear all caches
    clearRequest: null,

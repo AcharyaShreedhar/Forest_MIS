@@ -13,9 +13,9 @@ module.exports = (sequelize, DataTypes) => {
   }
   municipality.init(
     {
+      dist_id: DataTypes.INTEGER,
       mun_name_nep: DataTypes.STRING,
       mun_name_eng: DataTypes.STRING,
-      dist_id: DataTypes.INTEGER,
     },
     {
       sequelize,

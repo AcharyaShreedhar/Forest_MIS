@@ -8,6 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       darta_no: {
         allowNull: false,
         type: Sequelize.STRING,
@@ -18,14 +26,26 @@ module.exports = {
       area: {
         type: Sequelize.STRING,
       },
-      area: {
-        type: Sequelize.STRING,
+      dalit_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      janjati_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      anya_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      female: {
+        type: Sequelize.INTEGER,
+      },
+      male: {
+        type: Sequelize.INTEGER,
       },
       main_species: {
         type: Sequelize.STRING,
       },
       forest_type: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       handover_date: {
         type: Sequelize.STRING,
@@ -33,11 +53,14 @@ module.exports = {
       forest_maujdat: {
         type: Sequelize.STRING,
       },
-      nikasi_timber: {
+      timber: {
         type: Sequelize.STRING,
       },
-      nikasi_wood: {
+      wood: {
         type: Sequelize.STRING,
+      },
+      baiganik_ban: {
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,

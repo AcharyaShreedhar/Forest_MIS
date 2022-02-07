@@ -8,8 +8,25 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      office_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       arthik_barsa: {
         type: Sequelize.STRING,
+      },
+      biruwa_type: {
+        type: Sequelize.INTEGER,
+      },
+      utpadan_medium: {
+        type: Sequelize.INTEGER,
+      },
+      biruwa_sankhya: {
+        type: Sequelize.INTEGER,
       },
       narsari_sankhya: {
         type: Sequelize.STRING,
@@ -21,9 +38,6 @@ module.exports = {
         type: Sequelize.STRING,
       },
       pragati: {
-        type: Sequelize.STRING,
-      },
-      brixyaropan: {
         type: Sequelize.STRING,
       },
       remarks: {

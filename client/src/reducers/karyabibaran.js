@@ -1,0 +1,183 @@
+import { createReducer } from "reduxsauce";
+import Immutable from "seamless-immutable";
+import { dropLast, prepend } from "ramda";
+import { KaryabibaranTypes } from "../actions/karyabibaran";
+
+const initialState = Immutable({
+  status: "",
+});
+
+const fetchallsamajikkaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallsamajikkaryabibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allsamajikkaryabibaranData: action.response,
+  });
+};
+const fetchallsamajikkaryabibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchsamajikkaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchsamajikkaryabibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    samajikkaryabibaranData: action.response,
+  });
+};
+const fetchsamajikkaryabibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add samajikkaryabibaran
+const addsamajikkaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addsamajikkaryabibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addsamajikkaryabibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update samajikkaryabibaran
+const updatesamajikkaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatesamajikkaryabibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatesamajikkaryabibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete samajikkaryabibaran
+const deletesamajikkaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletesamajikkaryabibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletesamajikkaryabibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+// banbikash karyabibaran
+const fetchallbanbikaskaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallbanbikaskaryabibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    allbanbikaskaryabibaranData: action.response,
+  });
+};
+const fetchallbanbikaskaryabibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+const fetchbanbikaskaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, token: "", status: "pending" });
+const fetchbanbikaskaryabibaranSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    banbikaskaryabibaranData: action.response,
+  });
+};
+const fetchbanbikaskaryabibaranFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
+
+//Add banbikaskaryabibaran
+const addbanbikaskaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const addbanbikaskaryabibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const addbanbikaskaryabibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Update banbikaskaryabibaran
+const updatebanbikaskaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const updatebanbikaskaryabibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const updatebanbikaskaryabibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+//Delete banbikaskaryabibaran
+const deletebanbikaskaryabibaranRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const deletebanbikaskaryabibaranSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: "done",
+  });
+const deletebanbikaskaryabibaranFailure = (state, action) =>
+  state.merge({ ...state, status: "error" });
+
+const locationsRequest = (state, action) => {
+  let locations = state.locations;
+
+  locations = prepend(action.payload.route, locations);
+  locations = dropLast(1, locations);
+  return state.merge({ ...state, locations });
+};
+
+const clearRequest = (state, action) =>
+  state.merge({ ...state, ...initialState });
+
+export const reducer = createReducer(initialState, {
+  [KaryabibaranTypes.FETCHALLSAMAJIKKARYABIBARAN_REQUEST]: fetchallsamajikkaryabibaranRequest,
+  [KaryabibaranTypes.FETCHALLSAMAJIKKARYABIBARAN_SUCCESS]: fetchallsamajikkaryabibaranSuccess,
+  [KaryabibaranTypes.FETCHALLSAMAJIKKARYABIBARAN_FAILURE]: fetchallsamajikkaryabibaranFailure,
+
+  [KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_REQUEST]: fetchsamajikkaryabibaranRequest,
+  [KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_SUCCESS]: fetchsamajikkaryabibaranSuccess,
+  [KaryabibaranTypes.FETCHSAMAJIKKARYABIBARAN_FAILURE]: fetchsamajikkaryabibaranFailure,
+
+  [KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_REQUEST]: addsamajikkaryabibaranRequest,
+  [KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_SUCCESS]: addsamajikkaryabibaranSuccess,
+  [KaryabibaranTypes.ADDSAMAJIKKARYABIBARAN_FAILURE]: addsamajikkaryabibaranFailure,
+
+  [KaryabibaranTypes.UPDATESAMAJIKKARYABIBARAN_REQUEST]: updatesamajikkaryabibaranRequest,
+  [KaryabibaranTypes.UPDATESAMAJIKKARYABIBARAN_SUCCESS]: updatesamajikkaryabibaranSuccess,
+  [KaryabibaranTypes.UPDATESAMAJIKKARYABIBARAN_FAILURE]: updatesamajikkaryabibaranFailure,
+
+  [KaryabibaranTypes.DELETESAMAJIKKARYABIBARAN_REQUEST]: deletesamajikkaryabibaranRequest,
+  [KaryabibaranTypes.DELETESAMAJIKKARYABIBARAN_SUCCESS]: deletesamajikkaryabibaranSuccess,
+  [KaryabibaranTypes.DELETESAMAJIKKARYABIBARAN_FAILURE]: deletesamajikkaryabibaranFailure,
+
+  [KaryabibaranTypes.FETCHALLBANBIKASKARYABIBARAN_REQUEST]: fetchallbanbikaskaryabibaranRequest,
+  [KaryabibaranTypes.FETCHALLBANBIKASKARYABIBARAN_SUCCESS]: fetchallbanbikaskaryabibaranSuccess,
+  [KaryabibaranTypes.FETCHALLBANBIKASKARYABIBARAN_FAILURE]: fetchallbanbikaskaryabibaranFailure,
+
+  [KaryabibaranTypes.FETCHBANBIKASKARYABIBARAN_REQUEST]: fetchbanbikaskaryabibaranRequest,
+  [KaryabibaranTypes.FETCHBANBIKASKARYABIBARAN_SUCCESS]: fetchbanbikaskaryabibaranSuccess,
+  [KaryabibaranTypes.FETCHBANBIKASKARYABIBARAN_FAILURE]: fetchbanbikaskaryabibaranFailure,
+
+  [KaryabibaranTypes.ADDBANBIKASKARYABIBARAN_REQUEST]: addbanbikaskaryabibaranRequest,
+  [KaryabibaranTypes.ADDBANBIKASKARYABIBARAN_SUCCESS]: addbanbikaskaryabibaranSuccess,
+  [KaryabibaranTypes.ADDBANBIKASKARYABIBARAN_FAILURE]: addbanbikaskaryabibaranFailure,
+
+  [KaryabibaranTypes.UPDATEBANBIKASKARYABIBARAN_REQUEST]: updatebanbikaskaryabibaranRequest,
+  [KaryabibaranTypes.UPDATEBANBIKASKARYABIBARAN_SUCCESS]: updatebanbikaskaryabibaranSuccess,
+  [KaryabibaranTypes.UPDATEBANBIKASKARYABIBARAN_FAILURE]: updatebanbikaskaryabibaranFailure,
+
+  [KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_REQUEST]: deletebanbikaskaryabibaranRequest,
+  [KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_SUCCESS]: deletebanbikaskaryabibaranSuccess,
+  [KaryabibaranTypes.DELETEBANBIKASKARYABIBARAN_FAILURE]: deletebanbikaskaryabibaranFailure,
+
+  [KaryabibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
+  [KaryabibaranTypes.CLEAR_REQUEST]: clearRequest,
+});

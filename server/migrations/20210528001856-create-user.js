@@ -8,8 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       user_type: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       user_name: {
         type: Sequelize.STRING,
@@ -18,6 +26,9 @@ module.exports = {
         type: Sequelize.STRING,
       },
       user_token:{
+        type:Sequelize.STRING
+      },
+      user_office:{
         type:Sequelize.STRING
       },
       created_by: {

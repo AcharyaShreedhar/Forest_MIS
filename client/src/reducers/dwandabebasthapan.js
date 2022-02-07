@@ -3,16 +3,26 @@ import Immutable from "seamless-immutable";
 import { dropLast, prepend } from "ramda";
 import { DwandabebasthapanTypes } from "../actions/dwandabebasthapan";
 
-
 const initialState = Immutable({
   status: "",
-  token: "",
 });
 
-const fetchallbanyajantuuddarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
-const fetchallbanyajantuuddarSuccess = (state, action) => {
+const fetchtotalbanyajantuuddarRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchtotalbanyajantuuddarSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    totalbanyajantuuddarData: action.response,
+  });
+};
+const fetchtotalbanyajantuuddarFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
+const fetchallbanyajantuuddarRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchallbanyajantuuddarSuccess = (state, action) => {
   return state.merge({
     ...state,
     status: "done",
@@ -23,11 +33,9 @@ const fetchallbanyajantuuddarFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
 const fetchbanyajantuuddarRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchbanyajantuuddarSuccess = (state, action) => {
-
   return state.merge({
     ...state,
     status: "done",
@@ -37,7 +45,6 @@ const fetchbanyajantuuddarSuccess = (state, action) => {
 const fetchbanyajantuuddarFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
-
 
 //Add banyajantuuddar
 const addbanyajantuuddarRequest = (state, action) =>
@@ -72,11 +79,22 @@ const deletebanyajantuuddarSuccess = (state, action) =>
 const deletebanyajantuuddarFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
+const fetchtotalbanyajantuxetiRequest = (state, action) =>
+  state.merge({ ...state, status: "pending" });
+const fetchtotalbanyajantuxetiSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: "done",
+    totalbanyajantuxetiData: action.response,
+  });
+};
+const fetchtotalbanyajantuxetiFailure = (state, action) => {
+  state.merge({ ...state, status: "error" });
+};
 
 const fetchallbanyajantuxetiRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchallbanyajantuxetiSuccess = (state, action) => {
-
   return state.merge({
     ...state,
     status: "done",
@@ -87,11 +105,9 @@ const fetchallbanyajantuxetiFailure = (state, action) => {
   state.merge({ ...state, status: "error" });
 };
 
-
 const fetchbanyajantuxetiRequest = (state, action) =>
-  state.merge({ ...state, token: "", status: "pending" });
+  state.merge({ ...state, status: "pending" });
 const fetchbanyajantuxetiSuccess = (state, action) => {
-
   return state.merge({
     ...state,
     status: "done",
@@ -135,8 +151,6 @@ const deletebanyajantuxetiSuccess = (state, action) =>
 const deletebanyajantuxetiFailure = (state, action) =>
   state.merge({ ...state, status: "error" });
 
-
-
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -149,6 +163,9 @@ const clearRequest = (state, action) =>
   state.merge({ ...state, ...initialState });
 
 export const reducer = createReducer(initialState, {
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_REQUEST]: fetchtotalbanyajantuuddarRequest,
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_SUCCESS]: fetchtotalbanyajantuuddarSuccess,
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUUDDAR_FAILURE]: fetchtotalbanyajantuuddarFailure,
 
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_REQUEST]: fetchallbanyajantuuddarRequest,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUUDDAR_SUCCESS]: fetchallbanyajantuuddarSuccess,
@@ -170,6 +187,10 @@ export const reducer = createReducer(initialState, {
   [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_SUCCESS]: deletebanyajantuuddarSuccess,
   [DwandabebasthapanTypes.DELETEBANYAJANTUUDDAR_FAILURE]: deletebanyajantuuddarFailure,
 
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUXETI_REQUEST]: fetchtotalbanyajantuxetiRequest,
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUXETI_SUCCESS]: fetchtotalbanyajantuxetiSuccess,
+  [DwandabebasthapanTypes.FETCHTOTALBANYAJANTUXETI_FAILURE]: fetchtotalbanyajantuxetiFailure,
+
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_REQUEST]: fetchallbanyajantuxetiRequest,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_SUCCESS]: fetchallbanyajantuxetiSuccess,
   [DwandabebasthapanTypes.FETCHALLBANYAJANTUXETI_FAILURE]: fetchallbanyajantuxetiFailure,
@@ -189,7 +210,7 @@ export const reducer = createReducer(initialState, {
   [DwandabebasthapanTypes.DELETEBANYAJANTUXETI_REQUEST]: deletebanyajantuxetiRequest,
   [DwandabebasthapanTypes.DELETEBANYAJANTUXETI_SUCCESS]: deletebanyajantuxetiSuccess,
   [DwandabebasthapanTypes.DELETEBANYAJANTUXETI_FAILURE]: deletebanyajantuxetiFailure,
-  
+
   [DwandabebasthapanTypes.LOCATIONS_REQUEST]: locationsRequest,
   [DwandabebasthapanTypes.CLEAR_REQUEST]: clearRequest,
 });

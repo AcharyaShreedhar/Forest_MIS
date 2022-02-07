@@ -11,12 +11,47 @@ const dwandabebasthapanRoutes = [
   },
 
   {
+    path: "/dwandabebasthapan/banyajantuuddaradd/new",
+    title: "BanyajantuUddar",
+    name: "banyajantuuddar",
+    auth: true,
+    component: BanyajantuUddar,
+  },
+
+  {
+    path: "/dwandabebasthapan/banyajantuuddaredit/:id",
+    title: "BanyajantuUddar",
+    name: "banyajantuuddar",
+    auth: true,
+    component: BanyajantuUddar,
+  },
+
+
+  {
     path: "/dwandabebasthapan/banyajantuxetirahatlist",
-    title: "Banyajantuxetirahat",
+    title:"Banyajantuxetirahat",
     name: "banyajantuxetirahat",
     auth: true,
     component: BanyajantuxetiRahat,
   },
+
+ 
+  {
+    path: "/dwandabebasthapan/banyajantuxetirahatadd/new",
+    title: "BanyajantuxetiRahat",
+    name: "banyajantuxetirahat",
+    auth: true,
+    component: BanyajantuxetiRahat,
+  },
+
+  {
+    path: "/dwandabebasthapan/banyajantuxetirahatedit/:id",
+    title: "BanyajantuxetiRahat",
+    name: "banyajantuxetirahat",
+    auth: true,
+    component: BanyajantuxetiRahat,
+  },
+  
   {
     redirect: true,
     path: "/dwandabebasthapan",
@@ -24,6 +59,7 @@ const dwandabebasthapanRoutes = [
     name: "banyajantuuddar",
     component: BanyajantuUddar,
   },
+ 
 ];
 
 export default dwandabebasthapanRoutes;

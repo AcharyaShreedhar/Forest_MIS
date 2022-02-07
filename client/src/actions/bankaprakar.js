@@ -11,6 +11,10 @@
 import { createActions } from "reduxsauce";
 
 const { Types, Creators } = createActions({
+  fetchallbantypesRequest:["payload"],
+  fetchallbantypesSuccess:["response"],
+  fetchallbantypesFailure:null,
+
   fetchallsamudayikbanbibaranRequest: ["payload"],
   fetchallsamudayikbanbibaranSuccess: ["response"],
   fetchallsamudayikbanbibaranFailure: null,
@@ -71,7 +75,6 @@ const { Types, Creators } = createActions({
   deletenijibanbibaranSuccess: ["response"],
   deletenijibanbibaranFailure: null,
 
-
   fetchallkabuliyatibanbibaranRequest: ["payload"],
   fetchallkabuliyatibanbibaranSuccess: ["response"],
   fetchallkabuliyatibanbibaranFailure: null,
@@ -111,6 +114,110 @@ const { Types, Creators } = createActions({
   deletenabikarankaryayojanaRequest: ["payload", "nabikarankaryayojanaId"],
   deletenabikarankaryayojanaSuccess: ["response"],
   deletenabikarankaryayojanaFailure: null,
+
+  //rastriyabanbibaran
+  fetchallrastriyabanbibaranRequest: ["payload"],
+  fetchallrastriyabanbibaranSuccess: ["response"],
+  fetchallrastriyabanbibaranFailure: null,
+
+  fetchrastriyabanbibaranRequest: ["payload"],
+  fetchrastriyabanbibaranSuccess: ["response"],
+  fetchrastriyabanbibaranFailure: null,
+
+  addrastriyabanbibaranRequest: ["payload"],
+  addrastriyabanbibaranSuccess: ["response"],
+  addrastriyabanbibaranFailure: null,
+
+  updaterastriyabanbibaranRequest: ["payload", "rastriyabanbibaranId"],
+  updaterastriyabanbibaranSuccess: ["response"],
+  updaterastriyabanbibaranFailure: null,
+
+  deleterastriyabanbibaranRequest: ["payload", "rastriyabanbibaranId"],
+  deleterastriyabanbibaranSuccess: ["response"],
+  deleterastriyabanbibaranFailure: null,
+
+  fetchallsajhedaribanbibaranRequest: ["payload"],
+  fetchallsajhedaribanbibaranSuccess: ["response"],
+  fetchallsajhedaribanbibaranFailure: null,
+
+  fetchsajhedaribanbibaranRequest: ["payload"],
+  fetchsajhedaribanbibaranSuccess: ["response"],
+  fetchsajhedaribanbibaranFailure: null,
+
+  addsajhedaribanbibaranRequest: ["payload"],
+  addsajhedaribanbibaranSuccess: ["response"],
+  addsajhedaribanbibaranFailure: null,
+
+  updatesajhedaribanbibaranRequest: ["payload", "sajhedaribanbibaranId"],
+  updatesajhedaribanbibaranSuccess: ["response"],
+  updatesajhedaribanbibaranFailure: null,
+
+  deletesajhedaribanbibaranRequest: ["payload", "sajhedaribanbibaranId"],
+  deletesajhedaribanbibaranSuccess: ["response"],
+  deletesajhedaribanbibaranFailure: null,
+
+  //commercialkabuliyatibanbibaran
+  fetchallcommercialkabuliyatibanbibaranRequest: ["payload"],
+  fetchallcommercialkabuliyatibanbibaranSuccess: ["response"],
+  fetchallcommercialkabuliyatibanbibaranFailure: null,
+
+  fetchcommercialkabuliyatibanbibaranRequest: ["payload"],
+  fetchcommercialkabuliyatibanbibaranSuccess: ["response"],
+  fetchcommercialkabuliyatibanbibaranFailure: null,
+
+  addcommercialkabuliyatibanbibaranRequest: ["payload"],
+  addcommercialkabuliyatibanbibaranSuccess: ["response"],
+  addcommercialkabuliyatibanbibaranFailure: null,
+
+  updatecommercialkabuliyatibanbibaranRequest: ["payload", "commercialkabuliyatibanbibaranId"],
+  updatecommercialkabuliyatibanbibaranSuccess: ["response"],
+  updatecommercialkabuliyatibanbibaranFailure: null,
+
+  deletecommercialkabuliyatibanbibaranRequest: ["payload", "commercialkabuliyatibanbibaranId"],
+  deletecommercialkabuliyatibanbibaranSuccess: ["response"],
+  deletecommercialkabuliyatibanbibaranFailure: null,
+
+  //chaklaban
+  fetchallchaklabanbibaranRequest: ["payload"],
+  fetchallchaklabanbibaranSuccess: ["response"],
+  fetchallchaklabanbibaranFailure: null,
+
+  fetchchaklabanbibaranRequest: ["payload"],
+  fetchchaklabanbibaranSuccess: ["response"],
+  fetchchaklabanbibaranFailure: null,
+
+  addchaklabanbibaranRequest: ["payload"],
+  addchaklabanbibaranSuccess: ["response"],
+  addchaklabanbibaranFailure: null,
+
+  updatechaklabanbibaranRequest: ["payload","chaklabanbibaranId"],
+  updatechaklabanbibaranSuccess: ["response"],
+  updatechaklabanbibaranFailure: null,
+
+  deletechaklabanbibaranRequest: ["payload","chaklabanbibaranId"],
+  deletechaklabanbibaranSuccess: ["response"],
+  deletechaklabanbibaranFailure: null,
+
+  //-----ConsumergroupDetails
+  fetchallconsumergroupdetailsRequest: ["payload"],
+  fetchallconsumergroupdetailsSuccess: ["response"],
+  fetchallconsumergroupdetailsFailure: null,
+
+  fetchconsumergroupdetailsRequest: ["payload"],
+  fetchconsumergroupdetailsSuccess: ["response"],
+  fetchconsumergroupdetailsFailure: null,
+
+  addconsumergroupdetailsRequest: ["payload"],
+  addconsumergroupdetailsSuccess: ["response"],
+  addconsumergroupdetailsFailure: null,
+
+  updateconsumergroupdetailsRequest: ["payload", "consumergroupdetailsId"],
+  updateconsumergroupdetailsSuccess: ["response"],
+  updateconsumergroupdetailsFailure: null,
+
+  deleteconsumergroupdetailsRequest: ["payload", "consumergroupdetailsId"],
+  deleteconsumergroupdetailsSuccess: ["response"],
+  deleteconsumergroupdetailsFailure: null,
 
   locationsRequest: ["payload"],
   // Clear all caches

@@ -2,10 +2,27 @@ const pool = require("../db");
 
 //Controller for Listing all Exits
 async function getAllExit(req, res) {
-  const getAllExitQuery = `select * from exits`;
-  pool.query(getAllExitQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from exits";
+  const getAllExitQuery = `select * from exits ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllExitQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 

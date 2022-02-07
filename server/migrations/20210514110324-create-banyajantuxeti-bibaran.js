@@ -8,12 +8,30 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       pidit_name: {
         type: Sequelize.STRING,
       },
       pidit_address: {
         type: Sequelize.STRING,
       },
+      ghatana_address: {
+        type: Sequelize.STRING,
+      },
+      balinali_noksani: {
+        type: Sequelize.STRING,
+      },
+      anna_bhandaran: {
+        type: Sequelize.STRING,
+      },
+
       jagga_bibaran: {
         type: Sequelize.STRING,
       },
@@ -29,16 +47,13 @@ module.exports = {
       xeti_miti: {
         type: Sequelize.STRING,
       },
-      pasudhan_ghargoth: {
+      pasudhan_xeti: {
         type: Sequelize.STRING,
       },
-      man_injury_normal: {
+      ghargoth_xeti: {
         type: Sequelize.STRING,
       },
-      man_injury_medium: {
-        type: Sequelize.STRING,
-      },
-      man_death: {
+      man_injury: {
         type: Sequelize.STRING,
       },
       mag_rakam: {

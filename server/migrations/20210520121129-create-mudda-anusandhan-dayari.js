@@ -8,11 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id:{
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      office_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       jaheri_partibedan_miti: {
         type: Sequelize.STRING,
       },
       kasurko_kisim: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       bigo_pariman: {
         type: Sequelize.STRING,
@@ -36,7 +44,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       bojbahak_jafat_maagdabi: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       pratibadi_sankhya: {
         type: Sequelize.STRING,
@@ -53,6 +61,9 @@ module.exports = {
       faisala_miti: {
         type: Sequelize.STRING,
       },
+      faisala_status:{
+        type: Sequelize.STRING,
+      },
       faisala_jariwana: {
         type: Sequelize.STRING,
       },
@@ -60,7 +71,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       bojbahak_jafat: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       created_by: {
         type: Sequelize.STRING,

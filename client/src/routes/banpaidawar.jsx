@@ -1,5 +1,6 @@
 import Lilam from "../views/Banpaidawar/Lilam";
 import Osarpasar from "../views/Banpaidawar/Osarpasar";
+import Bikribitaran from "../views/Banpaidawar/Bikribitaran";
 
 const banpaidawarRoutes = [
   {
@@ -33,13 +34,45 @@ const banpaidawarRoutes = [
     auth: true,
     component: Osarpasar,
   },
+
   {
-    redirect: true,
-    path: "/banpaidawar",
-    to: "/banpaidawar/banpaidawarlilamlist",
-    name: "Lilam",
-    component: Lilam,
+    path: "/banpaidawar/osarpasaradd/new",
+    title: "Osarpasar",
+    name: "Osarpasar",
+    auth: true,
+    component: Osarpasar,
   },
+
+  {
+    path: "/banpaidawar/osarpasaredit/:id",
+    title: "Osarpasar",
+    name: "Osarpasar",
+    auth: true,
+    component: Osarpasar,
+  },
+
+  {
+    path: "/banpaidawar/bikribitaranlist",
+    title: "Bikribitaran",
+    name: "bikribitaran",
+    auth: true,
+    component: Bikribitaran,
+  },
+  {
+    path: "/banpaidawar/bikribitaranadd/new",
+    title: "Bikribitaran",
+    name: "bikribitaran",
+    auth: true,
+    component: Bikribitaran,
+  },
+  {
+    path: "/banpaidawar/bikribitaranedit/:id",
+    title: "Bikribitaran",
+    name: "bikribitaran",
+    auth: true,
+    component: Bikribitaran,
+  },
+ 
 ];
 
 export default banpaidawarRoutes;

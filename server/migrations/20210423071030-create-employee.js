@@ -8,12 +8,21 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id:{
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       emp_fname_eng: {
         type: Sequelize.STRING,
       },
       emp_lname_eng: {
         type: Sequelize.STRING,
       },
+  
       emp_fname_nep: {
         type: Sequelize.STRING,
       },
@@ -33,7 +42,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       emp_add_perm_tole: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       emp_add_temp_prov: {
         type: Sequelize.INTEGER,
@@ -48,7 +57,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       emp_add_temp_tole: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       emp_phone1: {
         type: Sequelize.STRING,
@@ -75,7 +84,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       emp_appoint_date: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
       },
       emp_status: {
         type: Sequelize.STRING,

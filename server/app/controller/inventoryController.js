@@ -2,28 +2,51 @@ const pool = require("../db");
 
 //Controller for Listing all Inventories
 async function getAllInventory(req, res) {
-  const getAllInventoryQuery = `select * from inventories`;
-  pool.query(getAllInventoryQuery, [], (error, results, fields) => {
+  const getTotalQuery = "SELECT count(*) as total from inventories";
+  const getAllInventoryQuery = `select * from inventories ORDER BY ? ASC LIMIT ?, ?`;
+  pool.query(getTotalQuery, [], (error, countresults, fields) => {
     if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    pool.query(
+      getAllInventoryQuery,
+      [req.body.name, req.body.page, req.body.perPage],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(
+          JSON.stringify({
+            status: 200,
+            error: null,
+            data: {
+              total: countresults[0].total,
+              list: results,
+            },
+          })
+        );
+      }
+    );
   });
 }
 
 //Controller for Listing a Inventory
 async function getInventory(req, res) {
   const getInventoryQuery = `select * from inventories where invent_id=?`;
-  pool.query(getInventoryQuery, [req.params.inventId], (error, results, fields) => {
-    if (error) throw error;
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  pool.query(
+    getInventoryQuery,
+    [req.params.inventId],
+    (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
 }
 
 //Controller for adding a Inventory
 async function addInventory(req, res) {
-  const addInventoryQuery = `INSERT INTO inventories (item_name,entry_id,exit_id,invent_date,remaining_qty,remaining_rate,remaining_amt,created_by,updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addInventoryQuery = `INSERT INTO inventories (dist_id,office_id,item_name,entry_id,exit_id,invent_date,remaining_qty,remaining_rate,remaining_amt,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addInventoryQuery,
     [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.item_name,
       req.body.entry_id,
       req.body.exit_id,
@@ -45,10 +68,12 @@ async function addInventory(req, res) {
 
 //Controller for updating a Inventory
 async function updateInventory(req, res) {
-  const updateInventoryQuery = `UPDATE inventories SET item_name=?,entry_id=?,exit_id=?,invent_date=?,remaining_qty=?,remaining_rate=?,remaining_amt=?,created_by=?,updated_by=? WHERE invent_id=?`;
+  const updateInventoryQuery = `UPDATE inventories SET dist_id=?, dist_id=?, item_name=?,entry_id=?,exit_id=?,invent_date=?,remaining_qty=?,remaining_rate=?,remaining_amt=?,created_by=?,updated_by=? WHERE invent_id=?`;
   pool.query(
     updateInventoryQuery,
     [
+      req.body.dist_id,
+      req.body.office_id,
       req.body.item_name,
       req.body.entry_id,
       req.body.exit_id,

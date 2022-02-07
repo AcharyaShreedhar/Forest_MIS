@@ -1,0 +1,126 @@
+const pool = require("../db");
+//Controller for Listing all NadikinarSamrakshyan
+async function getAllNadikinarSamrakshyan(req, res) {
+  const getTotalQuery =
+    "SELECT count(*) as total from nadikinarsamrakshyan_bibarans as n where n.karyakram_miti BETWEEN ? and ? and n.dist_id like ? and n.office_id like ?";
+  const getAllNadikinarSamrakshyanQuery = `select * from nadikinarsamrakshyan_bibarans as n where n.karyakram_miti BETWEEN ? and ? and n.dist_id like ? and n.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  pool.query(
+    getTotalQuery,
+    [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
+    (error, countresults, fields) => {
+      if (error) throw error;
+      pool.query(
+        getAllNadikinarSamrakshyanQuery,
+        [
+          req.body.fromDate,
+          req.body.toDate,
+          req.body.distId,
+          req.body.officeId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error;
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          );
+        }
+      );
+    }
+  );
+}
+
+//Controller for Listing a NadikinarSamrakshyan
+async function getNadikinarSamrakshyan(req, res) {
+  const getNadikinarSamrakshyanQuery = `select * from nadikinarsamrakshyan_bibarans where nadikinarsamrakshyan_id=?`;
+  pool.query(
+    getNadikinarSamrakshyanQuery,
+    [req.params.nadikinarSamrakshyanId],
+    (error, results, fields) => {
+      if (error) throw error;
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
+}
+
+//Controller for adding a NadikinarSamrakshyan
+async function addNadikinarSamrakshyan(req, res) {
+  const addNadikinarSamrakshyanQuery = `INSERT INTO nadikinarsamrakshyan_bibarans (dist_id, dist_id, sthan, qty, karyakram_miti, conservation_area, affected_area, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  pool.query(
+    addNadikinarSamrakshyanQuery,
+    [
+      req.body.dist_id, 
+      req.body.office_id, 
+      req.body.sthan, 
+      req.body.qty, 
+      req.body.karyakram_miti, 
+      req.body.conservation_area, 
+      req.body.affected_area, 
+      req.body.created_by, 
+      req.body.updated_by,
+    ],
+    (error, results, fields) => {
+      if (error) {
+        throw error;
+      }
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
+}
+
+//Controller for updating a NadikinarSamrakshyan
+async function updateNadikinarSamrakshyan(req, res) {
+  const updateNadikinarSamrakshyanQuery = `UPDATE nadikinarsamrakshyan_bibarans SET dist_id=?, office_id=?, sthan=?, qty=?, karyakram_miti=?, conservation_area=?, affected_area=?, created_by=?, updated_by=? WHERE nadikinarsamrakshyan_id=?`;
+  pool.query(
+    updateNadikinarSamrakshyanQuery,
+    [
+        req.body.dist_id,
+        req.body.office_id,
+        req.body.sthan, 
+        req.body.qty, 
+        req.body.karyakram_miti, 
+        req.body.conservation_area, 
+        req.body.affected_area, 
+        req.body.created_by, 
+        req.body.updated_by,
+        req.params.nadikinarSamrakshyanId,
+    ],
+    (error, results, fields) => {
+      if (error) {
+        throw error;
+      }
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
+}
+
+//Controller for deleting a NadikinarSamrakshyan
+async function deleteNadikinarSamrakshyan(req, res) {
+  const deleteNadikinarSamrakshyanQuery = `DELETE  FROM nadikinarsamrakshyan_bibarans where nadikinarsamrakshyan_id=?`;
+  pool.query(
+    deleteNadikinarSamrakshyanQuery,
+    [req.params.nadikinarSamrakshyanId],
+    (error, results, fields) => {
+      if (error) {
+        throw error;
+      }
+      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+    }
+  );
+}
+
+module.exports = {
+  getAllNadikinarSamrakshyan,
+  getNadikinarSamrakshyan,
+  addNadikinarSamrakshyan,
+  updateNadikinarSamrakshyan,
+  deleteNadikinarSamrakshyan,
+};

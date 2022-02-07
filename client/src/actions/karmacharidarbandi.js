@@ -20,6 +20,18 @@
    fetchkarmacharidarbandiSuccess: ["response"],
    fetchkarmacharidarbandiFailure: null,
 
+   addkarmacharidarbandiRequest: ["payload"],
+   addkarmacharidarbandiSuccess: ["response"],
+   addkarmacharidarbandiFailure: null,
+
+   updatekarmacharidarbandiRequest: ["payload","karmacharidarbandiId"],
+   updatekarmacharidarbandiSuccess: ["response"],
+   updatekarmacharidarbandiFailure: null,
+
+   deletekarmacharidarbandiRequest: ["payload","karmacharidarbandiId"],
+   deletekarmacharidarbandiSuccess: ["response"],
+   deletekarmacharidarbandiFailure: null,
+
 
    locationsRequest: ["payload"],
    // Clear all caches

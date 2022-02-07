@@ -3,10 +3,25 @@ import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
-import { Button, EditDropdown } from "../../components";
+import { Button, EditDropdown, Pagination } from "../../components";
 
 function List(props) {
-  const { buttonName, headings, data, title, onAdd, onSelect } = props;
+  const {
+    buttonName,
+    headings,
+    data,
+    title,
+    pageCount,
+    onAdd,
+    onSelect,
+    onPageClick,
+    pers,
+    per,
+    onPer,
+    role,
+    forcePage,
+  } = props;
+
   return (
     <Fragment>
       <div className="card">
@@ -20,7 +35,7 @@ function List(props) {
           />
         </div>
         <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover>
+        <Table responsive striped bordered id="nijiban">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -35,21 +50,24 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((nban, index) => (
-                <tr>
+                <tr key={`${nban.nijiban_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={index}> {nban.darta_no}</td>
-                  <td key={index}> {nban.swikrit_miti}</td>
-                  <td key={index}> {nban.nijiban_dhaniko_naam}</td>
-                  <td key={index}> {nban.perm_addr}</td>
-                  <td key={index}> {nban.curr_addr}</td>
-                  <td key={index}> {nban.area}</td>
-                  <td key={index}> {nban.main_species}</td>
-                  <td key={index}> {nban.created_by}</td>
-                  <td key={index}> {nban.updated_by}</td>
+                  <td>{nban.darta_no}</td>
+                  <td>{nban.swikrit_miti}</td>
+                  <td>{nban.nijiban_dhaniko_naam}</td>
+                  <td>{nban.perm_addr}</td>
+                  <td>{nban.curr_addr}</td>
+                  <td> {englishToNepaliNumber(nban.area)}</td>
+                  <td>{englishToNepaliNumber(nban.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(nban.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(nban.anya_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(nban.female)}</td>
+                  <td>{englishToNepaliNumber(nban.male)}</td>
+                  <td>{nban.main_species}</td>
                   <td>
                     <div className="edit">
                       <EditDropdown
-                        options={["Edit", "Delete"]}
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, nban, "niji")}
                       />
                     </div>
@@ -59,6 +77,15 @@ function List(props) {
             )}
           </tbody>
         </Table>
+        <Pagination
+          per={per}
+          forcePage={forcePage}
+          pers={pers}
+          onPer={onPer}
+          onPageClick={onPageClick}
+          pageCount={pageCount}
+          type="nijiban"
+        />
       </div>
     </Fragment>
   );

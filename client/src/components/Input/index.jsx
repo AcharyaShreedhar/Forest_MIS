@@ -4,11 +4,7 @@ import { Form } from "react-bootstrap";
 import { equals, isEmpty } from "ramda";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircle,
-  faTimesCircle,
-  faTrashAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import "./Input.scss";
 
 class Input extends React.PureComponent {
@@ -86,7 +82,10 @@ class Input extends React.PureComponent {
 
     return (
       <div className={classname}>
+        <div className="title_span">
         {!isEmpty(title) && <span className="core-input-label">{title}</span>}
+        <span className="required">*</span>
+        </div>
         <div className="core-input-content">
           <Form.Control
             disabled={disabled}

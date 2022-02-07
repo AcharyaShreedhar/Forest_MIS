@@ -15,11 +15,11 @@ const { Types, Creators } = createActions({
   loginSuccess: ['response'],
   loginFailure: null,
 
-  logoutRequest: null,
+  logoutRequest: ['payload'],
   logoutSuccess: null,
   logoutFailure: null,
 
-// Municipalities 
+ // Municipalities 
 
   fetchallmunicipalitiesRequest: ["payload"],
   fetchallmunicipalitiesSuccess: ["response"],
@@ -29,7 +29,23 @@ const { Types, Creators } = createActions({
   fetchmunicipalitiesSuccess: ["response"],
   fetchmunicipalitiesFailure: null,
 
-  // PROVINCES
+
+  addmunicipalitiesRequest: ["payload"],
+  addmunicipalitiesSuccess: ["response"],
+  addmunicipalitiesFailure: null,
+
+  updatemunicipalitiesRequest: ["payload", "municipalitiesId"],
+  updatemunicipalitiesSuccess: ["response"],
+  updatemunicipalitiesFailure: null,
+
+  deletemunicipalitiesRequest: ["payload", "municipalitiesId"],
+  deletemunicipalitiesSuccess: ["response"],
+  deletemunicipalitiesFailure: null,
+
+  
+  
+
+//   // PROVINCES
 
   fetchallprovincesRequest: ["payload"],
   fetchallprovincesSuccess: ["response"],
@@ -39,7 +55,19 @@ const { Types, Creators } = createActions({
   fetchprovincesSuccess: ["response"],
   fetchprovincesFailure: null,
 
-  // Districts
+  addprovincesRequest: ["payload"],
+  addprovincesSuccess: ["response"],
+  addprovincesFailure: null,
+
+  updateprovincesRequest: ["payload", "municipalitiesId"],
+  updateprovincesSuccess: ["response"],
+  updateprovincesFailure: null,
+
+  deleteprovincesRequest: ["payload", "municipalitiesId"],
+  deleteprovincesSuccess: ["response"],
+  deleteprovincesFailure: null,
+
+//   // Districts
 
   fetchalldistrictsRequest: ["payload"],
   fetchalldistrictsSuccess: ["response"],
@@ -50,6 +78,18 @@ const { Types, Creators } = createActions({
   fetchdistrictsSuccess: ["response"],
   fetchdistrictsFailure: null,
 
+  adddistrictsRequest: ["payload"],
+  adddistrictsSuccess: ["response"],
+  adddistrictsFailure: null,
+
+  updatedistrictsRequest: ["payload", "districtsId"],
+  updatedistrictsSuccess: ["response"],
+  updatedistrictsFailure: null,
+
+  deletedistrictsRequest: ["payload", "districtsId"],
+  deletedistrictsSuccess: ["response"],
+  deletedistrictsFailure: null,
+
   //Users
   fetchallusersRequest: ["payload"],
   fetchallusersSuccess: ["response"],
@@ -59,10 +99,77 @@ const { Types, Creators } = createActions({
   fetchusersSuccess: ["response"],
   fetchusersFailure: null,
 
+  addusersRequest: ["payload"],
+  addusersSuccess: ["response"],
+  addusersFailure: null,
+
+  updateusersRequest: ["payload", "usersId"],
+  updateusersSuccess: ["response"],
+  updateusersFailure: null,
+
+  //change password
+  
+  updateuserspasswordRequest: ["payload", "usersId"],
+  updateuserspasswordSuccess: ["response"],
+  updateuserspasswordFailure: null,
+
+  deleteusersRequest: ["payload", "usersId"],
+  deleteusersSuccess: ["response"],
+  deleteusersFailure: null,
+
+  //offices
+  fetchallofficesRequest: ["payload"],
+  fetchallofficesSuccess: ["response"],
+  fetchallofficesFailure: null,
+
+  fetchofficesRequest: ["payload"],
+  fetchofficesSuccess: ["response"],
+  fetchofficesFailure: null,
+
+  //O-DDL
+  fetchofficesdropdownRequest: ["payload"],
+  fetchofficesdropdownSuccess: ["response"],
+  fetchofficesdropdownFailure: null,
+
+  addofficesRequest: ["payload"],
+  addofficesSuccess: ["response"],
+  addofficesFailure: null,
+
+  updateofficesRequest: ["payload", "officesId"],
+  updateofficesSuccess: ["response"],
+  updateofficesFailure: null,
+
+  deleteofficesRequest: ["payload", "officesId"],
+  deleteofficesSuccess: ["response"],
+  deleteofficesFailure: null,
+
+//   //Departments--------------//
+  fetchalldepartmentsRequest: ["payload"],
+  fetchalldepartmentsSuccess: ["response"],
+  fetchalldepartmentsFailure: null,
+
+  fetchdepartmentsRequest: ["payload"],
+  fetchdepartmentsSuccess: ["response"],
+  fetchdepartmentsFailure: null,
+
+  adddepartmentsRequest: ["payload"],
+  adddepartmentsSuccess: ["response"],
+  adddepartmentsFailure: null,
+
+  updatedepartmentsRequest: ["payload", "departmentsId"],
+  updatedepartmentsSuccess: ["response"],
+  updatedepartmentsFailure: null,
+
+  deletedepartmentsRequest: ["payload", "departmentsId"],
+  deletedepartmentsSuccess: ["response"],
+  deletedepartmentsFailure: null,
+
   locationsRequest: ['payload'],
+  menuRequest:['payload'],
   // Clear all caches
   clearRequest: null,
 })
 
 export const AppTypes = Types
 export default Creators
+//** */

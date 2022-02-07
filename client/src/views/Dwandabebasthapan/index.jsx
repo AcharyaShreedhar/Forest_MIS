@@ -4,11 +4,50 @@ import { connect } from "react-redux";
 import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
+import DwandabebasthapanActions from "../../actions/dwandabebasthapan";
 import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
 export class Dwandabebasthapan extends Component {
   componentDidMount() {
-    //function goes here
+    this.props.fetchallBanyajantuuddar({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBanyajantuxetirahat({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
+    this.props.fetchallBanyajantuuddar({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBanyajantuxetirahat({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "xeti_miti",
+      page: 0,
+      perPage: 10,
+    });
   }
 
   render() {
@@ -62,7 +101,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  //function
+  fetchallBanyajantuuddar: (payload) =>
+    dispatch(DwandabebasthapanActions.fetchallbanyajantuuddarRequest(payload)),
+  fetchallBanyajantuxetirahat: (payload) =>
+    dispatch(DwandabebasthapanActions.fetchallbanyajantuxetiRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dwandabebasthapan);

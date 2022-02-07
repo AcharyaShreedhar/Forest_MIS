@@ -8,6 +8,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      dist_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      office_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       darta_no: {
         allowNull: false,
         type: Sequelize.STRING,
@@ -26,6 +34,21 @@ module.exports = {
       },
       area: {
         type: Sequelize.STRING,
+      },
+      dalit_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      janjati_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      anya_ghardhuri: {
+        type: Sequelize.INTEGER,
+      },
+      female: {
+        type: Sequelize.INTEGER,
+      },
+      male: {
+        type: Sequelize.INTEGER,
       },
       main_species: {
         type: Sequelize.STRING,
