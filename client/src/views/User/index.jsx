@@ -25,6 +25,7 @@ export class User extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
   componentDidMount() {
     this.props.fetchallUser({
@@ -47,14 +48,18 @@ export class User extends Component {
       userList,
     };
   }
-  handlePer(e) {
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));;
+  }
+
+  handlePerCallback(e) {
     const { distId, officeId, page } = this.state;
     this.setState({ 
       perPage: e,
-      page:page-page,
    });
     this.fetchResults(distId, officeId, page, e);
   }
+
   handleDistrict(e) {
     const { officeId, page, perPage } = this.state;
     this.setState({ 

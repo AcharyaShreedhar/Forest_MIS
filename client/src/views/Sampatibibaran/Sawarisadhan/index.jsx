@@ -28,15 +28,16 @@ class Sawarisadhan extends Component {
       path: "sawarisadhan",
     };
     this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleToDate = this.handleToDate.bind(this);
-    this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePer = this.handlePer.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleToDate = this.handleToDate.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleFromDate = this.handleFromDate.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -50,13 +51,15 @@ class Sawarisadhan extends Component {
   }
 
   handlePer(e) {
-    const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
-      perPage: e,
-      page: page-page,
-     });
-    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
+    this.setState({ page: 0 },  () => this.handlePerCallback(e)); 
   }
+  
+  handlePerCallback(e) {
+    const { fromDate, toDate, distId, officeId, page, perPage } = this.state;
+    this.setState({ perPage: e,  })
+    this.fetchResults(fromDate, toDate, distId, officeId, 0, e)
+  }
+
   handleFromDate(e) {
     const { distId, officeId, perPage, page, toDate } = this.state;
     this.setState({ 

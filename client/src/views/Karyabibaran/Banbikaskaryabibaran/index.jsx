@@ -28,13 +28,14 @@ class Banbikaskaryabibaran extends Component {
       path: "banbikaskaryabibaran",
     };
     this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
     this.handlePer = this.handlePer.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -47,14 +48,18 @@ class Banbikaskaryabibaran extends Component {
     return { loc, banbikaskaryabibaranList };
   }
 
-  handlePer(e) {
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));;
+  }
+
+  handlePerCallback(e) {
     const { distId, officeId, page } = this.state;
     this.setState({ 
       perPage: e,
-      page:page-page,
    });
     this.fetchResults(distId, officeId, page, e);
   }
+
   handleDistrict(e, item) {
     const { officeId, page, perPage } = this.state;
     this.setState({ 

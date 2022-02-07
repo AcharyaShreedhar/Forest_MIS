@@ -24,6 +24,7 @@ export class Office extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback= this.handlePerCallback.bind(this);
   }
   componentDidMount() {
     this.props.fetchallOffice({
@@ -45,14 +46,18 @@ export class Office extends Component {
       officeList,
     };
   }
-  handlePer(e) {
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  }
+
+  handlePerCallback(e) {
     const { distId, page } = this.state;
     this.setState({ 
       perPage: e, 
-      page: page-page
     });
     this.fetchResults(distId, page, e);
   }
+
   handleDistrict(e) {
     const { page, perPage } = this.state;
     this.setState({ 

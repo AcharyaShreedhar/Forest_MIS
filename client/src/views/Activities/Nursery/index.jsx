@@ -31,6 +31,7 @@ class Nursery extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -41,7 +42,12 @@ class Nursery extends Component {
     }
     return { biruwautpadanList, loc };
   }
-  handlePer(e) {
+
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  }
+
+  handlePerCallback(e) {
     const { fromDate, toDate, distId, page } = this.state;
     this.setState({ 
       perPage: e,
@@ -49,6 +55,7 @@ class Nursery extends Component {
     });
     this.fetchResults(fromDate, toDate, distId, page, e);
   }
+
   handleFromDate(e) {
     const { distId, page, perPage, toDate } = this.state;
     this.setState({ 

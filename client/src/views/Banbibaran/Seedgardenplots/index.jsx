@@ -40,6 +40,7 @@ class Seedgardenplots extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback= this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -52,11 +53,13 @@ class Seedgardenplots extends Component {
     return { loc, seedgardenplotsList };
   }
 
-  handlePer(e) {
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  }
+  handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
     this.setState({ 
       perPage: e,
-      page: page-page,
      });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }

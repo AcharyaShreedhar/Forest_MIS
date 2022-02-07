@@ -38,6 +38,7 @@ class Yearlyactivities extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -49,7 +50,12 @@ class Yearlyactivities extends Component {
     }
     return { loc, yearlyactivitiesList };
   }
-  handlePer(e) {
+  
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  }
+
+  handlePerCallback(e) {
     const { fromDate, toDate, distId, page } = this.state;
     this.setState({ 
       perPage: e,
@@ -57,6 +63,7 @@ class Yearlyactivities extends Component {
     });
     this.fetchResults(fromDate, toDate, distId, page, e);
   }
+
   handleFromDate(e) {
     const { distId, page, perPage, toDate } = this.state;
     this.setState({ 

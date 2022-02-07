@@ -31,6 +31,7 @@ class Jadibuti extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -43,14 +44,18 @@ class Jadibuti extends Component {
     return { loc, jadibutiList };
   }
 
-  handlePer(e) {
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  }
+
+  handlePerCallback(e) {
     const { distId, page } = this.state;
     this.setState({ 
       perPage: e, 
-      page: page-page
     });
     this.fetchResults(distId, page, e);
   }
+
   handleDistrict(e, item) {
     const { perPage, page } = this.state;
     this.setState({ 
