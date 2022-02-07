@@ -24,6 +24,7 @@ export class Office extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback= this.handlePerCallback.bind(this);
   }
   componentDidMount() {
     this.props.fetchallOffice({
@@ -45,14 +46,24 @@ export class Office extends Component {
       officeList,
     };
   }
-  handlePer(e) {
-    const { distId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(distId, 0, e);
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
   }
+
+  handlePerCallback(e) {
+    const { distId, page } = this.state;
+    this.setState({ 
+      perPage: e, 
+    });
+    this.fetchResults(distId, page, e);
+  }
+
   handleDistrict(e) {
     const { perPage } = this.state;
-    this.setState({ distId: e });
+    this.setState({ 
+      distId: e,
+      page: 0,
+    });
     this.fetchResults(e, 0, perPage);
   }
 
@@ -95,10 +106,14 @@ export class Office extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteOffice(item.office_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: 0,
+      perPage: 10, 
+    });
   }
 
   handleAdd() {
@@ -144,6 +159,7 @@ export class Office extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

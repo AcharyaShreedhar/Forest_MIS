@@ -8,7 +8,49 @@ import SamrakshyanActions from "../../actions/samrakshyan";
 import samrakshyanRoutes from "../../routes/samrakshyan";
 
 export class Samrakshyan extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallJaladharsamrakshyan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallNadikinarsamrakshyan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallPokharisamrakshyan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallPanimuhansamrakshyan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "karyakram_miti",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
     this.props.fetchallJaladharsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

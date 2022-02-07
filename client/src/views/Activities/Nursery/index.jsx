@@ -31,6 +31,7 @@ class Nursery extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -41,24 +42,42 @@ class Nursery extends Component {
     }
     return { biruwautpadanList, loc };
   }
-  handlePer(e) {
-    const { fromDate, toDate, distId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, 0, e);
+
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
   }
+
+  handlePerCallback(e) {
+    const { fromDate, toDate, distId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, page, e);
+  }
+
   handleFromDate(e) {
     const { distId, perPage, toDate } = this.state;
-    this.setState({ fromDate: e });
+    this.setState({ 
+      fromDate: e,
+      page: 0,
+    });
     this.fetchResults(e, toDate, distId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, fromDate, perPage } = this.state;
-    this.setState({ toDate: e });
+     const { distId, fromDate, perPage } = this.state;
+    this.setState({ 
+      fromDate: e,
+      page: 0,
+    });
     this.fetchResults(fromDate, e, distId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, perPage, toDate } = this.state;
-    this.setState({ distId: e });
+    this.setState({ 
+      distId: e,
+      page: 0,
+    });
     this.fetchResults(fromDate, toDate, e, 0, perPage);
   }
 
@@ -109,12 +128,13 @@ class Nursery extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
-        this.props.deleteBiruwautpadan(item.biruwa_utpadan_id);    
-        
-  
-      
-    this.setState({ showDialog: !this.state.showDialog });
+    const { item, page } = this.state;
+    this.props.deleteBiruwautpadan(item.biruwa_utpadan_id);    
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: 0, 
+      perPage: 10,
+    });
   }
 
   handleAdd() {
@@ -169,6 +189,7 @@ class Nursery extends Component {
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

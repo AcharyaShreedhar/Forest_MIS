@@ -28,14 +28,15 @@ class Karmacharidarbandi extends Component {
       item: {},
       path: "karmacharidarbandi",
     };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
+    this.handleClose = this.handleClose.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
+    this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -50,14 +51,24 @@ class Karmacharidarbandi extends Component {
       karmacharidarbandiList,
     };
   }
-  handlePer(e) {
-    const { distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(distId, officeId, 0, e);
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));;
   }
+
+  handlePerCallback(e) {
+    const { distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+   });
+    this.fetchResults(distId, officeId, page, e);
+  }
+
   handleDistrict(e) {
     const { officeId, perPage } = this.state;
-    this.setState({ distId: e });
+    this.setState({ 
+    distId: e,
+    page: 0,
+  });
     this.fetchResults(e, officeId, 0, perPage);
   }
 
@@ -101,10 +112,14 @@ class Karmacharidarbandi extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteKarmacharidarbandi(item.karmachari_darbandi_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: 0, 
+      perPage: 10,
+    });
   }
 
   handleAdd(item) {
@@ -159,6 +174,7 @@ class Karmacharidarbandi extends Component {
               onAdd={() => this.handleAdd("karmacharidarbandi")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

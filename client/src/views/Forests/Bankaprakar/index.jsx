@@ -56,6 +56,7 @@ class Bankaprakar extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -97,29 +98,44 @@ class Bankaprakar extends Component {
   }
 
   handlePer(e, item) {
-    const { fromDate, toDate, distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e, item);
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e, item))
+  }
+
+  handlePerCallback(e, item) {
+    const { fromDate, toDate, distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e, 
+    });
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e, item);
   }
   handleFromDate(e, item) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ fromDate: e });
+    this.setState({ 
+      fromDate: e,
+      page: 0,
+    });
     this.fetchResults(e, toDate, distId, officeId, 0, perPage, item);
   }
 
   handleToDate(e, item) {
-    const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ toDate: e });
+    const { distId, officeId, perPage, fromDate } = this.state;
+    this.setState({ 
+      toDate: e,
+      page: 0,
+    });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage, item);
   }
 
   handleDistrict(e, item) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ distId: e });
+    this.setState({ 
+      distId: e,
+      page: 0,
+    });
     this.fetchResults(fromDate, toDate, e, officeId, 0, perPage, item);
   }
 
-  fetchResults(fromDate, toDate, distId, officeId, page, perPage, item) {
+  fetchResults(fromDate, toDate, distId, officeId, perPage, item) {
     switch (item) {
       case "samudayikban": {
         this.props.fetchallSamudayikbanbibaran({
@@ -253,6 +269,7 @@ class Bankaprakar extends Component {
   handleSelectMenu(event, item, path) {
     this.setState({ item: item });
     this.setState({ path: path });
+    const { page } = this.state
     switch (event) {
       case "edit": {
         switch (path) {
@@ -365,7 +382,9 @@ class Bankaprakar extends Component {
           }
           default:
         }
-        this.setState({ showDialog: !this.state.showDialog });
+        this.setState({ 
+          showDialog: !this.state.showDialog,
+        });
         break;
       }
       default:
@@ -376,7 +395,7 @@ class Bankaprakar extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path } = this.state;
+    const { item, path, page } = this.state;
     switch (path) {
       case "samudayik": {
         this.props.deleteSamudayikbanbibaran(item.darta_no);
@@ -417,7 +436,11 @@ class Bankaprakar extends Component {
       default:
         break;
     }
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: 0, 
+      perPage: 10,
+    });
   }
 
   handleAdd(item) {
@@ -529,6 +552,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("samudayikban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "samudayikban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -584,6 +608,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("upabhoktasamuha")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "upabhoktasamuha")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -639,6 +664,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("dharmikban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "dharmikban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -694,6 +720,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("kabuliyatiban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "kabuliyatiban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -749,6 +776,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("nijiban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "nijiban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -804,6 +832,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("sajhedariban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "sajhedariban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -859,6 +888,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("chaklaban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "chaklaban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -914,6 +944,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("rastriyaban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "rastriyaban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}
@@ -969,6 +1000,7 @@ class Bankaprakar extends Component {
               onAdd={() => this.handleAdd("commercialban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "commercialban")}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

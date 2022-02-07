@@ -8,7 +8,91 @@ import forestRoutes from "../../routes/forests";
 import BankaprakarActions from "../../actions/bankaprakar";
 
 export class Forests extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallSamudayikbanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "handover_date",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallDharmikbanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "handover_date",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallKabuliyatibanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "entry_date",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallNijibanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "swikrit_miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallSajhedaribanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallChaklabanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallRastriyabanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallUpabhoktasamuhabibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "registration_date",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallCommercialbanbibaran({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "darta_miti",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
     this.props.fetchallSamudayikbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

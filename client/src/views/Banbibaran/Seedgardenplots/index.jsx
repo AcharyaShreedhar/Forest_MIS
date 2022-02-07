@@ -40,6 +40,7 @@ class Seedgardenplots extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback= this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -52,24 +53,38 @@ class Seedgardenplots extends Component {
     return { loc, seedgardenplotsList };
   }
 
-  handlePer(e) {
-    const { fromDate, toDate, distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  }
+  handlePerCallback(e) {
+    const { fromDate, toDate, distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+     });
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ fromDate: e });
+    this.setState({ 
+      fromDate: e,
+      page: 0, 
+    });
     this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
     const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ toDate: e });
+    this.setState({ 
+      toDate: e, 
+      page: 0,
+    });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ distId: e });
+    this.setState({ 
+      distId: e, 
+      page: 0,
+    });
     this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
   }
 
@@ -122,10 +137,14 @@ class Seedgardenplots extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteSeedgardenplots(item.plot_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog, 
+      page: 0,
+      perPage: 10,
+    });
   }
 
   handleAdd() {
@@ -179,7 +198,9 @@ class Seedgardenplots extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page} 
             />
+     
           </Fragment>
         )}
         {equals(loc, "seedgardenplotsadd") && (

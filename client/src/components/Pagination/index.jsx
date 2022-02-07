@@ -7,7 +7,7 @@ import "./Pagination.scss";
 
 export class Pagination extends Component {
   render() {
-    const { onPageClick, pageCount, pers, per, onPer, type } = this.props;
+    const { onPageClick, pageCount, pers, per, onPer, type, forcePage } = this.props;
     return (
       <div className="paginationStyle">
         <ReactPaginate
@@ -21,6 +21,7 @@ export class Pagination extends Component {
           onPageChange={onPageClick}
           containerClassName={"pagination"}
           activeClassName={"active"}
+          forcePage={forcePage}
         />
         <div>
           {length(pers) > 0 && (

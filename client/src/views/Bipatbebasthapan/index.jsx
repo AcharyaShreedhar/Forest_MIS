@@ -8,7 +8,28 @@ import bipatbebasthapanRoutes from "../../routes/bipatbebasthapan";
 import BipatbibaranActions from "../../actions/bipatbibaran";
 
 export class Bipatbebasthapan extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallPahirobebasthapan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "pahiro_gayeko_miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBandadelo({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "bandadelo_miti",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
     this.props.fetchallPahirobebasthapan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

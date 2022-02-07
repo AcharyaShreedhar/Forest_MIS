@@ -8,7 +8,46 @@ import banbibaranRoutes from "../../routes/banbibaran";
 import BanbibaranActions from "../../actions/banbibaran";
 
 class Banbibaran extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallBanxetraatikraman({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "atikraman_miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallSeedgardenplots({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "established_date",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBanxetraanyaprayojan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallMuddaanusandhandayari({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "jaheri_partibedan_miti",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",

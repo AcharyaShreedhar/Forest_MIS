@@ -39,6 +39,7 @@ class Osarpasar extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback= this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -50,25 +51,39 @@ class Osarpasar extends Component {
     return { banpaidawarosarpasarList, loc };
   }
 
-  handlePer(e) {
-    const { fromDate, toDate, distId, officeId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(fromDate, toDate, distId, officeId, 0, e);
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  }
+  handlePerCallback(e) {
+    const { fromDate, toDate, distId, officeId, page } = this.state;
+    this.setState({ 
+      perPage: e,
+     });
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ fromDate: e });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    this.setState({ 
+      fromDate: e,
+      page: 0, 
+  });
+    this.fetchResults(e, toDate, distId, officeId, perPage);
   }
   handleToDate(e) {
     const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ toDate: e });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    this.setState({ 
+      toDate: e,
+      page: 0, 
+  });
+    this.fetchResults(fromDate, e, distId, officeId, perPage);
   }
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ distId: e });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.setState({ 
+      distId: e,
+      page: 0, 
+  });
+    this.fetchResults(fromDate, toDate, e, officeId, perPage);
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -121,10 +136,14 @@ class Osarpasar extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteBanpaidawarosarpasar(item.paidawar_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog, 
+      page: 0,
+      perPage: 10,
+     });
   }
 
   handleAdd() {
@@ -180,7 +199,9 @@ class Osarpasar extends Component {
               onAdd={() => this.handleAdd("banpaidawarosarpasar")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page} 
             />
+     
           </Fragment>
         )}
         {equals(loc, "osarpasaradd") && (

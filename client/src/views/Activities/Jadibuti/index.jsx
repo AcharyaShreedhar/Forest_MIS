@@ -31,6 +31,7 @@ class Jadibuti extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -43,14 +44,24 @@ class Jadibuti extends Component {
     return { loc, jadibutiList };
   }
 
-  handlePer(e) {
-    const { distId } = this.state;
-    this.setState({ perPage: e });
-    this.fetchResults(distId, 0, e);
+  handlePer(e){
+    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
   }
+
+  handlePerCallback(e) {
+    const { distId, page } = this.state;
+    this.setState({ 
+      perPage: e, 
+    });
+    this.fetchResults(distId, page, e);
+  }
+
   handleDistrict(e, item) {
-    const { perPage } = this.state;
-    this.setState({ distId: e });
+    const { perPage, page } = this.state;
+    this.setState({ 
+      distId: e,
+      page: 0,
+    });
     this.fetchResults(e, 0, perPage);
   }
 
@@ -93,10 +104,14 @@ class Jadibuti extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item, page } = this.state;
 
     this.props.deleteJadibuti(item.jadibuti_id);
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ 
+      showDialog: !this.state.showDialog,
+      page: 0, 
+      perPage: 10,
+    });
   }
 
   handleAdd() {
@@ -146,6 +161,7 @@ class Jadibuti extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
+              forcePage={this.state.page}
             />
           </Fragment>
         )}

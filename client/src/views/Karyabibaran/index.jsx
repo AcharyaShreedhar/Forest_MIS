@@ -8,7 +8,17 @@ import karyabibaranRoutes from "../../routes/karyabibaran";
 import KaryabibaranActions from "../../actions/karyabibaran";
 
 export class Karyabibaran extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallSamajikkaryabibaran({
+      distId: "%",
+      officeId: "%",
+      name: "banbikas_karyabibaran",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
     // this.props.fetchallBanbikaskaryabibaran({
     //   distId: "%",
     //   name: "ban_type",

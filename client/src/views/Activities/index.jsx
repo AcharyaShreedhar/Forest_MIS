@@ -8,7 +8,44 @@ import activitiesRoutes from "../../routes/activities";
 import BiruwautpadanActions from "../../actions/biruwautpadan";
 
 export class Activities extends Component {
-  componentDidUpdate() {
+  componentDidMount() {
+    this.props.fetchallBrixyaropan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "brixyaropan_miti",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallBiruwautpadan({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallYearlyactivities({
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "fiscal_year",
+      page: 0,
+      perPage: 10,
+    });
+    this.props.fetchallJadibuti({
+      distId: "%",
+      officeId: "%",
+      name: "jadibuti_thegana",
+      page: 0,
+      perPage: 10,
+    });
+  }
+
+componentDidUpdate() {
     this.props.fetchallBrixyaropan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
