@@ -3,7 +3,7 @@ import { equals, isEmpty } from "ramda";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList, usertypeList } from "../../services/config";
+import { districtList, officeType, usertypeList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 import AppActions from "../../actions/app";
 
@@ -17,6 +17,7 @@ class Add extends Component {
       dist_id: "",
       office_id: "",
       user_office: "",
+      office_type: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -28,6 +29,7 @@ class Add extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUserOfficeType = this.handleUserOfficeType.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -54,6 +56,9 @@ class Add extends Component {
   handleUserType(e) {
     this.setState({ user_type: e[0] });
   }
+  handleUserOfficeType(e) {
+    this.setState({ office_type: e[0] });
+  }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
@@ -68,7 +73,7 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { user_name, user_pass, user_type, user_office, dist_id, office_id } =
+    const { user_name, user_pass, user_type, user_office, office_type, dist_id, office_id } =
       this.state;
     const payload = {
       user: {
@@ -79,6 +84,7 @@ class Add extends Component {
           user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
           office_id: equals(office_id, "%") ? 0 : office_id,
+          office_type: equals(office_type, "%") ? 0 : office_type,
           created_by: this.props.user.user_name,
         },
       },
@@ -104,6 +110,7 @@ class Add extends Component {
       user_office,
       dist_id,
       office_id,
+      office_type,
       officeList,
       showDialog,
       officeDisabled,
@@ -197,7 +204,18 @@ class Add extends Component {
                   value={office_id}
                 />
               </div>
-              <div className="w-30" />
+              <div className="w-30">
+                <Dropdown
+                    className="dropdownlabel"
+                    title="युजरको कार्यालय प्रकार:"
+                    direction="vertical"
+                    defaultIds={[office_type]}
+                    data={officeType}
+                    getValue={(officeType) => officeType["value"]}
+                    onChange={(e) => this.handleUserOfficeType(e)}
+                    value={office_type}
+                  />
+              </div>
             </div>
           </div>
           <div className="section mb-4" />

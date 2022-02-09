@@ -17,6 +17,9 @@ module.exports = {
       dist_id: {
         type: Sequelize.INTEGER
       },
+      office_type: {
+        type: Sequelize.INTEGER
+      },
       created_by: {
         type: Sequelize.STRING
       },

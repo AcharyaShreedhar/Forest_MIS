@@ -330,6 +330,14 @@ const officeList = [
   { id: 1, value: "कास्की" },
 ];
 
+const officeType = [
+  { id: "%", value: "सबै" },
+  { id: 1, value: "मन्त्रालय" },
+  { id: 2, value: "निर्देशनालय" },
+  { id: 3, value: "कार्यलय" },
+  { id: 4, value: "सब डिभिजन" },
+];
+
 const banxetraatikramanHeadings = [
   "अतिक्रमित वनको क्षेत्रफल",
   "ठेगाना",
@@ -552,6 +560,7 @@ const userHeadings = [
   "युजरको किसिम ",
   "जिल्ला ",
   "कार्यालय",
+  "कार्यालयको प्रकार",
   "दर्ता मिती ",
   "दर्ता कर्ता ",
 ];
@@ -560,6 +569,7 @@ const officeHeadings = [
   "कार्यालयको नाम ",
   "कार्यालयको ठेगाना ",
   "जिल्ला ",
+  "कार्यलयको प्रकार",
   // "दर्ता मिती ",
   "दर्ता कर्ता ",
 ];
@@ -584,6 +594,7 @@ export {
   sawarisadhanHeadings,
   anyasampatiHeadings,
   officeList,
+  officeType,
   banxetraatikramanHeadings,
   seedgardenplotsHeadings,
   banxetraanyaprayojanHeadings,

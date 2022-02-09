@@ -81,6 +81,19 @@ function List(props) {
                       : "स्याङजा"}
                   </td>
                   <td> {user.user_office}</td>
+                  <td>
+                  {" "}
+                    {equals(user.office_type, 0)
+                      ? "सबै"
+                      : equals(user.office_type, 1)
+                      ? "मन्त्रालय"
+                      : equals(user.office_type, 2)
+                      ? "निर्देशनालय"
+                      : equals(user.office_type, 3)
+                      ? "कार्यलय"
+                      : "सब डिभिजन"
+                    }
+                  </td>
                   <td> {moment(user.createdAt).format("MM/DD/YYYY")}</td>
                   <td> {user.created_by}</td>
                   <td>

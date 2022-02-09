@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList, usertypeList } from "../../services/config";
+import { districtList, usertypeList, officeType } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
@@ -17,6 +17,7 @@ class Edit extends Component {
       user_type: props.history.location.item.user_type,
       user_office: props.history.location.item.user_office,
       dist_id: props.history.location.item.dist_id,
+      office_type: props.history.location.item.office_type,
       office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
@@ -30,6 +31,7 @@ class Edit extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchOffice(props.history.location.item.dist_id);
+    this.handleUserOfficeType = this.handleUserOfficeType.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -57,6 +59,9 @@ class Edit extends Component {
   handleUserType(e) {
     this.setState({ user_type: e[0] });
   }
+  handleUserOfficeType(e) {
+    this.setState({ office_type: e[0] });
+  }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
@@ -79,6 +84,7 @@ class Edit extends Component {
       user_office,
       dist_id,
       office_id,
+      office_type,
       created_by,
       updated_by,
     } = this.state;
@@ -91,6 +97,7 @@ class Edit extends Component {
           user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
           office_id: equals(office_id, "%") ? 0 : office_id,
+          office_type: equals(office_type, "%") ? 0 : office_type,
           created_by: created_by,
           updated_by: this.props.user.user_name,
         },
@@ -117,6 +124,7 @@ class Edit extends Component {
       user_office,
       dist_id,
       office_id,
+      office_type,
       officeList,
       showDialog,
       officeDisabled,
@@ -208,6 +216,18 @@ class Edit extends Component {
                       getValue={(officeList) => officeList["value"]}
                       onChange={(e) => this.handleOffice(e)}
                       value={office_id}
+                    />
+                  </div>
+                  <div className="w-30">
+                    <Dropdown
+                      className="dropdownlabel"
+                      title="युजरको कार्यालय प्रकार:"
+                      direction="vertical"
+                      defaultIds={[equals(office_type, 0) ? "%" : office_type]}
+                      data={officeType}
+                      getValue={(officeType) => officeType["value"]}
+                      onChange={(e) => this.handleUserOfficeType(e)}
+                      value={office_type}
                     />
                   </div>
                   <div className="w-30" />

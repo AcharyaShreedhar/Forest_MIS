@@ -74,6 +74,19 @@ function List(props) {
                       ? "लमजुङ"
                       : "स्याङजा"}
                   </td>
+                  <td>
+                    {" "}
+                    {equals(office.office_type, 0)
+                      ? "सबै"
+                      : equals(office.office_type, 1)
+                      ? "मन्त्रालय"
+                      : equals(office.office_type, 2)
+                      ? "निर्देशनालय"
+                      : equals(office.office_type, 3)
+                      ? "कार्यलय"
+                      : "सब डिभिजन"
+                    }
+                  </td>
                   {/* <td> {moment(office.createdAt).format("MM/DD/YYYY")}</td> */}
                   <td> {office.created_by}</td>
                   <td>
