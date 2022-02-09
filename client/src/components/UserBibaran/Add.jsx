@@ -29,7 +29,6 @@ class Add extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleUserOfficeType = this.handleUserOfficeType.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -56,9 +55,6 @@ class Add extends Component {
   handleUserType(e) {
     this.setState({ user_type: e[0] });
   }
-  handleUserOfficeType(e) {
-    this.setState({ office_type: e[0] });
-  }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
@@ -68,8 +64,11 @@ class Add extends Component {
   handleOffice(e) {
     const id = e[0].id;
     const value = e[0].value;
+    const type = e[0].office_type;
     this.setState({ office_id: id });
     this.setState({ user_office: value });
+    this.setState({ office_type: type });
+    console.log(e)
   }
 
   handleSubmit() {
@@ -200,22 +199,13 @@ class Add extends Component {
                   data={officeList}
                   disabled={officeDisabled}
                   getValue={(officeList) => officeList["value"]}
+                  getType={(officeList) => officeList["type"]}
                   onChange={(e) => this.handleOffice(e)}
                   value={office_id}
+                  
                 />
               </div>
-              <div className="w-30">
-                <Dropdown
-                    className="dropdownlabel"
-                    title="युजरको कार्यालय प्रकार:"
-                    direction="vertical"
-                    defaultIds={[office_type]}
-                    data={officeType}
-                    getValue={(officeType) => officeType["value"]}
-                    onChange={(e) => this.handleUserOfficeType(e)}
-                    value={office_type}
-                  />
-              </div>
+              <div className="w-30" />
             </div>
           </div>
           <div className="section mb-4" />

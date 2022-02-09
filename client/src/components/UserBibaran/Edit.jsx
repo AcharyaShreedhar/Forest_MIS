@@ -31,7 +31,6 @@ class Edit extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.fetchOffice(props.history.location.item.dist_id);
-    this.handleUserOfficeType = this.handleUserOfficeType.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -71,8 +70,10 @@ class Edit extends Component {
   handleOffice(e) {
     const id = e[0].id;
     const value = e[0].value;
+    const type = e[0].office_type;
     this.setState({ office_id: id });
     this.setState({ user_office: value });
+    this.setState({ office_type: type});
   }
 
   handleSubmit() {
@@ -218,18 +219,7 @@ class Edit extends Component {
                       value={office_id}
                     />
                   </div>
-                  <div className="w-30">
-                    <Dropdown
-                      className="dropdownlabel"
-                      title="युजरको कार्यालय प्रकार:"
-                      direction="vertical"
-                      defaultIds={[equals(office_type, 0) ? "%" : office_type]}
-                      data={officeType}
-                      getValue={(officeType) => officeType["value"]}
-                      onChange={(e) => this.handleUserOfficeType(e)}
-                      value={office_type}
-                    />
-                  </div>
+                  <div className="w-30" />
                   <div className="w-30" />
                 </div>
               </React.Fragment>
