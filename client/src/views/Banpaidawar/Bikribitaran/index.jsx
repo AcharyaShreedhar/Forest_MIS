@@ -154,7 +154,7 @@ class Bikribitaran extends Component {
   render() {
     const { banpaidawarbikribitaranList, loc, perPage, showDialog } =
       this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
     return (
       <div>
         <ConfirmationDialoge
@@ -199,6 +199,7 @@ class Bikribitaran extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={banpaidawarbikribitaranHeadings}
               onAdd={() => this.handleAdd("banpaidawarbikribitaran")}
               onSelect={this.handleSelectMenu}
@@ -243,6 +244,7 @@ Bikribitaran.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   banpaidawarbikribitaranDataList:
     state.banpaidawar.allbanpaidawarbikribitaranData,
 });

@@ -3,7 +3,7 @@ import { equals, isEmpty } from "ramda";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList, officeType, usertypeList } from "../../services/config";
+import { districtList, usertypeList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 import AppActions from "../../actions/app";
 
@@ -83,7 +83,7 @@ class Add extends Component {
           user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
           office_id: equals(office_id, "%") ? 0 : office_id,
-          office_type: equals(office_type, "%") ? 0 : office_type,
+          office_type: office_type,
           created_by: this.props.user.user_name,
         },
       },

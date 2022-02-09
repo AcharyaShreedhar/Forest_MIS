@@ -20,6 +20,7 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
@@ -76,9 +77,7 @@ function List(props) {
                   </td>
                   <td>
                     {" "}
-                    {equals(office.office_type, 0)
-                      ? "सबै"
-                      : equals(office.office_type, 1)
+                    {equals(office.office_type, 1)
                       ? "मन्त्रालय"
                       : equals(office.office_type, 2)
                       ? "निर्देशनालय"
@@ -89,14 +88,16 @@ function List(props) {
                   </td>
                   {/* <td> {moment(office.createdAt).format("MM/DD/YYYY")}</td> */}
                   <td> {office.created_by}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, office, "office")}
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, office, "office")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

@@ -44,7 +44,7 @@ class Add extends Component {
           office_name: office_name,
           office_location: office_location,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
-          office_type: equals(office_type, "%") ? 0 : office_type,
+          office_type: office_type,
           created_by: this.props.user.user_name,
         },
       },

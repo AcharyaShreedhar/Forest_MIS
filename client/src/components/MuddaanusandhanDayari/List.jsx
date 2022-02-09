@@ -19,6 +19,7 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
 
@@ -82,16 +83,18 @@ function List(props) {
                   <td>{mudda.faisala_kaid}</td>
                   <td>{equals(mudda.bojbahak_jafat, 1) ? "भएको" : "नभएको"}</td>
                   <td>{equals(mudda.faisala_status, 1) ? "भएको" : "नभएको"}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) =>
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) =>
                           onSelect(e, mudda, "muddaanusandhandayari")
                         }
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

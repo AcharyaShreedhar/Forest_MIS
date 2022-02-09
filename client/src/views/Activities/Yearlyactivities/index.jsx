@@ -149,7 +149,7 @@ class Yearlyactivities extends Component {
   }
   render() {
     const { loc, perPage, yearlyactivitiesList, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -191,6 +191,7 @@ class Yearlyactivities extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={yearlyactivitiesHeadings}
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}

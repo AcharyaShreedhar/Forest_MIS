@@ -143,7 +143,7 @@ class Nursery extends Component {
 
   render() {
     const { biruwautpadanList, loc, perPage, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -184,6 +184,7 @@ class Nursery extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               role={role}
+              officeRole={officeRole}
               user={user}
               headings={biruwautpadanHeadings}
               onAdd={() => this.handleAdd()}

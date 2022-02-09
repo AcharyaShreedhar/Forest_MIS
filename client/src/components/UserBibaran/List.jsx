@@ -20,6 +20,7 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
@@ -83,9 +84,7 @@ function List(props) {
                   <td> {user.user_office}</td>
                   <td>
                   {" "}
-                    {equals(user.office_type, 0)
-                      ? "सबै"
-                      : equals(user.office_type, 1)
+                    {equals(user.office_type, 1)
                       ? "मन्त्रालय"
                       : equals(user.office_type, 2)
                       ? "निर्देशनालय"
@@ -106,8 +105,9 @@ function List(props) {
                         }
                         onChange={(e) => onSelect(e, user, "user")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

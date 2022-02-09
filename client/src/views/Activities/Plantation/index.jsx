@@ -141,7 +141,7 @@ class Plantation extends Component {
 
   render() {
     const { brixyaropanList, loc, perPage, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -183,6 +183,7 @@ class Plantation extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={brixyaropanHeadings}
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}

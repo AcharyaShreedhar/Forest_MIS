@@ -331,7 +331,6 @@ const officeList = [
 ];
 
 const officeType = [
-  { id: "%", value: "सबै" },
   { id: 1, value: "मन्त्रालय" },
   { id: 2, value: "निर्देशनालय" },
   { id: 3, value: "कार्यलय" },

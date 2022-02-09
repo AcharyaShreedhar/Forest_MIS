@@ -19,6 +19,7 @@ function List(props) {
     onAdd,
     onSelect,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
@@ -64,14 +65,16 @@ function List(props) {
                   <td> {uddar.banxetra_duri}</td>
                   <td> {uddar.anya_bibaran}</td>
                   <td> {uddar.remarks}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, uddar, "banyajantuuddar")}
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, uddar, "banyajantuuddar")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}
