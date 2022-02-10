@@ -26,8 +26,13 @@ function List(props) {
     <Fragment>
       <div className="card">
         <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
-        </div>
+          <Button
+            type="low"
+            size="small"
+            name={buttonName}
+            onClick={onAdd}
+          />
+          </div>
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="office">
           <thead>

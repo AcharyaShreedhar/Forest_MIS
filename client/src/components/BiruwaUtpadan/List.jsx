@@ -25,15 +25,16 @@ function List(props) {
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            //className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="nursery">
           <thead>
@@ -75,7 +76,6 @@ function List(props) {
                   <td> {biruwa.laxya} </td>
                   <td> {biruwa.pragati} </td>
                   <td> {biruwa.remarks} </td>
-                  {console.log("off", officeRole)}
                   {officeRole > 2 && 
                     <td>
                       <div className="edit">
