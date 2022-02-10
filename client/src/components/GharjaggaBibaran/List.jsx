@@ -42,7 +42,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -59,6 +59,7 @@ function List(props) {
                   <td> {asset.land_area}</td>
                   <td> {asset.unit}</td>
                   <td> {asset.remarks}</td>
+                  {officeRole > 2 && 
                   <td>
                     <div className="edit">
                       <EditDropdown

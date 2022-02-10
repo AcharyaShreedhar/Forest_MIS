@@ -42,7 +42,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -75,6 +75,7 @@ function List(props) {
                   <td> {biruwa.laxya} </td>
                   <td> {biruwa.pragati} </td>
                   <td> {biruwa.remarks} </td>
+                  {console.log("off", officeRole)}
                   {officeRole > 2 && 
                     <td>
                       <div className="edit">

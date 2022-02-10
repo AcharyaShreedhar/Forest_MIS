@@ -239,7 +239,6 @@ const banpaidawarlilamHeadings = [
 
 const banpaidawarosarpasarHeadings = [
   "आर्थिक वर्ष",
-  "महिना",
   "वन पैदावार काठ (क्यू. फि.)",
   "वन पैदावार दाउरा (चट्टा)",
   "लाभग्राही संख्या",

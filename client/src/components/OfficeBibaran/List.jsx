@@ -20,7 +20,6 @@ function List(props) {
     per,
     onPer,
     role,
-    officeRole,
     forcePage,
   } = props;
   return (
@@ -88,7 +87,6 @@ function List(props) {
                   </td>
                   {/* <td> {moment(office.createdAt).format("MM/DD/YYYY")}</td> */}
                   <td> {office.created_by}</td>
-                  {officeRole > 2 && 
                     <td>
                       <div className="edit">
                         <EditDropdown
@@ -97,7 +95,6 @@ function List(props) {
                       />
                       </div>
                     </td>
-                  }
                 </tr>
               ))
             )}

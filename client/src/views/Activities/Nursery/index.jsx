@@ -226,7 +226,8 @@ Nursery.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
+  officeRole:state.app.user.office_type,
   biruwautpadanDataList: state.biruwautpadan.allbiruwautpadanData,
 });
 

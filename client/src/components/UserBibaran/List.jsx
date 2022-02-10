@@ -5,6 +5,7 @@ import { PropTypes } from "prop-types";
 import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
+import { officeType } from "../../services/config";
 
 function List(props) {
   const {
@@ -20,7 +21,6 @@ function List(props) {
     per,
     onPer,
     role,
-    officeRole,
     forcePage,
   } = props;
   return (
@@ -107,7 +107,6 @@ function List(props) {
                       />
                       </div>
                     </td>
-                  }
                 </tr>
               ))
             )}
