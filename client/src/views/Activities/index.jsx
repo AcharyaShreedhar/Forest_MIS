@@ -9,10 +9,11 @@ import BiruwautpadanActions from "../../actions/biruwautpadan";
 
 export class Activities extends Component {
   componentDidMount() {
+    const { districtId, officeRole} = this.props;
     this.props.fetchallBrixyaropan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "brixyaropan_miti",
       page: 0,
@@ -21,7 +22,7 @@ export class Activities extends Component {
     this.props.fetchallBiruwautpadan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "arthik_barsa",
       page: 0,
@@ -30,14 +31,14 @@ export class Activities extends Component {
     this.props.fetchallYearlyactivities({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "fiscal_year",
       page: 0,
       perPage: 10,
     });
     this.props.fetchallJadibuti({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "jadibuti_thegana",
       page: 0,
@@ -46,10 +47,11 @@ export class Activities extends Component {
   }
 
 componentDidUpdate() {
+  const { districtId, officeRole} = this.props;
     this.props.fetchallBrixyaropan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "brixyaropan_miti",
       page: 0,
@@ -58,7 +60,7 @@ componentDidUpdate() {
     this.props.fetchallBiruwautpadan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "arthik_barsa",
       page: 0,
@@ -67,14 +69,14 @@ componentDidUpdate() {
     this.props.fetchallYearlyactivities({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "fiscal_year",
       page: 0,
       perPage: 10,
     });
     this.props.fetchallJadibuti({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "jadibuti_thegana",
       page: 0,
@@ -131,6 +133,8 @@ Activities.defaultProps = {
 const mapStateToProps = (state) => ({
   role: state.app.app_role_id,
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

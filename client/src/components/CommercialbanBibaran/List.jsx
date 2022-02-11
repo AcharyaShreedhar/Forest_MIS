@@ -19,20 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="commercialban">
           <thead>
@@ -41,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -62,14 +64,16 @@ function List(props) {
                   <td>{englishToNepaliNumber(cban.anya_ghardhuri)}</td>
                   <td>{englishToNepaliNumber(cban.female)}</td>
                   <td>{englishToNepaliNumber(cban.male)}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, cban, "commercial")}
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, cban, "commercial")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

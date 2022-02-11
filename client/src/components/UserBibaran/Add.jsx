@@ -17,6 +17,7 @@ class Add extends Component {
       dist_id: "",
       office_id: "",
       user_office: "",
+      office_type: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -63,12 +64,14 @@ class Add extends Component {
   handleOffice(e) {
     const id = e[0].id;
     const value = e[0].value;
+    const type = e[0].office_type;
     this.setState({ office_id: id });
     this.setState({ user_office: value });
+    this.setState({ office_type: type });
   }
 
   handleSubmit() {
-    const { user_name, user_pass, user_type, user_office, dist_id, office_id } =
+    const { user_name, user_pass, user_type, user_office, office_type, dist_id, office_id } =
       this.state;
     const payload = {
       user: {
@@ -79,6 +82,7 @@ class Add extends Component {
           user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
           office_id: equals(office_id, "%") ? 0 : office_id,
+          office_type: office_type,
           created_by: this.props.user.user_name,
         },
       },
@@ -104,6 +108,7 @@ class Add extends Component {
       user_office,
       dist_id,
       office_id,
+      office_type,
       officeList,
       showDialog,
       officeDisabled,
@@ -193,8 +198,10 @@ class Add extends Component {
                   data={officeList}
                   disabled={officeDisabled}
                   getValue={(officeList) => officeList["value"]}
+                  getType={(officeList) => officeList["type"]}
                   onChange={(e) => this.handleOffice(e)}
                   value={office_id}
+                  
                 />
               </div>
               <div className="w-30" />

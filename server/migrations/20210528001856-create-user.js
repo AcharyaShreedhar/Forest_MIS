@@ -31,6 +31,9 @@ module.exports = {
       user_office:{
         type:Sequelize.STRING
       },
+      office_type: {
+        type: Sequelize.INTEGER
+      },
       created_by: {
         type: Sequelize.STRING,
       },

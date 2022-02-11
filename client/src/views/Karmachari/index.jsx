@@ -10,8 +10,9 @@ import KarmacharibibaranActions from "../../actions/karmacharibibaran";
 
 export class Karmachari extends Component {
   componentDidMount() {
+    const { districtId, officeRole} = this.props;
     this.props.fetchallKarmacharidarbandi({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "post",
       page: 0,
@@ -21,7 +22,7 @@ export class Karmachari extends Component {
     this.props.fetchallKarmacharibibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "emp_appoint_date",
       page: 0,
@@ -30,8 +31,9 @@ export class Karmachari extends Component {
   }
 
 componentDidUpdate() {
+  const { districtId, officeRole} = this.props;
     this.props.fetchallKarmacharidarbandi({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "post",
       page: 0,
@@ -41,7 +43,7 @@ componentDidUpdate() {
     this.props.fetchallKarmacharibibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "emp_appoint_date",
       page: 0,
@@ -97,6 +99,8 @@ Karmachari.defaultProps = {
 
 const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

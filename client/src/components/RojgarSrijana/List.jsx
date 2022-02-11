@@ -19,14 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="rojgarsrijana">
           <thead>
@@ -35,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -78,14 +86,16 @@ function List(props) {
                   <td> {rojgar.purus}</td>
                   <td> {rojgar.mahila + rojgar.purus}</td>
                   <td> {rojgar.kaifiyat}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, rojgar, "rojgarsrijana")}
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, rojgar, "rojgarsrijana")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

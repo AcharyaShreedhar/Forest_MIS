@@ -19,20 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            //className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="brixyaropan">
           <thead>
@@ -41,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -68,16 +70,18 @@ function List(props) {
                   <td>{brixyaropan.brixyaropan_prajati} </td>
                   <td>{brixyaropan.brixyaropan_pragati} </td>
                   <td>{brixyaropan.brixyaropan_sankhya} </td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) =>
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) =>
                           onSelect(e, brixyaropan, "brixyaropan")
                         }
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

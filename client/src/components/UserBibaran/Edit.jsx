@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList, usertypeList } from "../../services/config";
+import { districtList, usertypeList, officeType } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
@@ -17,6 +17,7 @@ class Edit extends Component {
       user_type: props.history.location.item.user_type,
       user_office: props.history.location.item.user_office,
       dist_id: props.history.location.item.dist_id,
+      office_type: props.history.location.item.office_type,
       office_id: props.history.location.item.office_id,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
@@ -57,6 +58,9 @@ class Edit extends Component {
   handleUserType(e) {
     this.setState({ user_type: e[0] });
   }
+  handleUserOfficeType(e) {
+    this.setState({ office_type: e[0] });
+  }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
@@ -66,8 +70,10 @@ class Edit extends Component {
   handleOffice(e) {
     const id = e[0].id;
     const value = e[0].value;
+    const type = e[0].office_type;
     this.setState({ office_id: id });
     this.setState({ user_office: value });
+    this.setState({ office_type: type});
   }
 
   handleSubmit() {
@@ -79,6 +85,7 @@ class Edit extends Component {
       user_office,
       dist_id,
       office_id,
+      office_type,
       created_by,
       updated_by,
     } = this.state;
@@ -91,6 +98,7 @@ class Edit extends Component {
           user_office: user_office,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
           office_id: equals(office_id, "%") ? 0 : office_id,
+          office_type: office_type,
           created_by: created_by,
           updated_by: this.props.user.user_name,
         },
@@ -117,6 +125,7 @@ class Edit extends Component {
       user_office,
       dist_id,
       office_id,
+      office_type,
       officeList,
       showDialog,
       officeDisabled,
@@ -210,6 +219,7 @@ class Edit extends Component {
                       value={office_id}
                     />
                   </div>
+                  <div className="w-30" />
                   <div className="w-30" />
                 </div>
               </React.Fragment>

@@ -119,7 +119,7 @@ class Jadibuti extends Component {
   }
   render() {
     const { loc, perPage, jadibutiList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -140,6 +140,7 @@ class Jadibuti extends Component {
                 districtsList={districtList}
                 onSelect={this.handleDistrict}
                 yesDate={false}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="jadibuti" />
             </div>
@@ -157,6 +158,7 @@ class Jadibuti extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={jadibutiHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -198,6 +200,7 @@ Jadibuti.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   jadibutiDataList: state.biruwautpadan.alljadibutiData,
 });
 

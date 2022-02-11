@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList } from "../../services/config";
+import { districtList, officeType } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 
 class Add extends Component {
@@ -11,6 +11,7 @@ class Add extends Component {
       office_name: "",
       office_location: "",
       dist_id: "",
+      office_type: "",
       created_by: "",
       updated_by: "",
       showDialog: false,
@@ -19,9 +20,14 @@ class Add extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOfficeType = this.handleOfficeType.bind(this);
   }
+
   handleDistrict(e) {
     this.setState({ dist_id: e[0] });
+  }
+  handleOfficeType(e) {
+    this.setState({ office_type: e[0] });
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -31,13 +37,14 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { office_name, office_location, dist_id } = this.state;
+    const { office_name, office_location, dist_id, office_type } = this.state;
     const payload = {
       office: {
         data: {
           office_name: office_name,
           office_location: office_location,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
+          office_type: office_type,
           created_by: this.props.user.user_name,
         },
       },
@@ -47,7 +54,7 @@ class Add extends Component {
 
   render() {
     const { title } = this.props;
-    const { office_name, office_location, dist_id, showDialog } = this.state;
+    const { office_name, office_location, dist_id, office_type, showDialog } = this.state;
 
     let disabled =
       isEmpty(office_name) || isEmpty(office_location) || isEmpty(dist_id)
@@ -99,7 +106,18 @@ class Add extends Component {
                   value={dist_id}
                 />
               </div>
-              <div className="w-30" />
+              <div className="w-30" >
+                <Dropdown
+                    className="dropdownlabel"
+                    title="कार्यालयको प्रकार :"
+                    direction="vertical"
+                    defaultIds={[office_type]}
+                    data={officeType}
+                    getValue={(officeType) => officeType["value"]}
+                    onChange={(e) => this.handleOfficeType(e)}
+                    value={office_type}
+                  />
+              </div>
             </div>
           </div>
           <div className="section mb-4" />

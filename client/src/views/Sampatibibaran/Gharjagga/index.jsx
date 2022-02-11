@@ -148,7 +148,7 @@ class Gharjagga extends Component {
   }
   render() {
     const { loc, perPage, gharjaggaList, officeList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -169,8 +169,10 @@ class Gharjagga extends Component {
                 districtsList={districtList}
                 officesList={officeList}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
                 yesDate={false}
-                yesOffice="true"
+                yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="gharjagga" />
             </div>
@@ -188,6 +190,7 @@ class Gharjagga extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={gharjaggaHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -232,6 +235,7 @@ Gharjagga.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   officeDataList: state.app.officesDropdownData,
   gharjaggaDataList: state.sampatibibaran.allassetsData,
 });
