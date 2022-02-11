@@ -168,6 +168,7 @@ class Nursery extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="nursery" />
             </div>

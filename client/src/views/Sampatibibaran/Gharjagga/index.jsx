@@ -169,8 +169,10 @@ class Gharjagga extends Component {
                 districtsList={districtList}
                 officesList={officeList}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
                 yesDate={false}
-                yesOffice="true"
+                yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="gharjagga" />
             </div>

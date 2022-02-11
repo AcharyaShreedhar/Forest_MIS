@@ -146,6 +146,7 @@ class Jaladharsamrakshyan extends Component {
                 districtsList={districtList}
                 onSelect={this.handleDistrict}
                 yesDate={false}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="jaladharsamrakshyan" />
             </div>

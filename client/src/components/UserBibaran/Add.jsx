@@ -68,7 +68,6 @@ class Add extends Component {
     this.setState({ office_id: id });
     this.setState({ user_office: value });
     this.setState({ office_type: type });
-    console.log(e)
   }
 
   handleSubmit() {

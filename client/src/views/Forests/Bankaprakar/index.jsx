@@ -526,6 +526,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="samudayikban"
@@ -584,6 +585,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="upabhoktasamuha"
@@ -641,6 +643,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="dharmikban"
@@ -698,6 +701,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="kabuliyatiban"
@@ -755,6 +759,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="nijiban"
@@ -812,6 +817,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="sajhedariban"
@@ -869,6 +875,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="chaklaban"
@@ -926,6 +933,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="rastriyaban"
@@ -983,6 +991,7 @@ class Bankaprakar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="commercialban"

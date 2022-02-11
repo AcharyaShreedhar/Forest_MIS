@@ -9,10 +9,11 @@ import BanbibaranActions from "../../actions/banbibaran";
 
 class Banbibaran extends Component {
   componentDidMount() {
+    const { districtId, officeRole} = this.props;
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "atikraman_miti",
       page: 0,
@@ -21,7 +22,7 @@ class Banbibaran extends Component {
     this.props.fetchallSeedgardenplots({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "established_date",
       page: 0,
@@ -30,7 +31,7 @@ class Banbibaran extends Component {
     this.props.fetchallBanxetraanyaprayojan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "arthik_barsa",
       page: 0,
@@ -39,7 +40,7 @@ class Banbibaran extends Component {
     this.props.fetchallMuddaanusandhandayari({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "jaheri_partibedan_miti",
       page: 0,
@@ -48,10 +49,11 @@ class Banbibaran extends Component {
   }
 
 componentDidUpdate() {
+  const { districtId, officeRole} = this.props;
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "atikraman_miti",
       page: 0,
@@ -60,7 +62,7 @@ componentDidUpdate() {
     this.props.fetchallSeedgardenplots({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "established_date",
       page: 0,
@@ -69,7 +71,7 @@ componentDidUpdate() {
     this.props.fetchallBanxetraanyaprayojan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "arthik_barsa",
       page: 0,
@@ -78,7 +80,7 @@ componentDidUpdate() {
     this.props.fetchallMuddaanusandhandayari({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "jaheri_partibedan_miti",
       page: 0,
@@ -134,6 +136,8 @@ Banbibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({
