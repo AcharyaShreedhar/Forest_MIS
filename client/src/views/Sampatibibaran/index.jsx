@@ -10,8 +10,9 @@ import sampatibibaranRoutes from "../../routes/sampatibibaran";
 
 export class Sampatibibaran extends Component {
   componentDidMount() {
+    const { districtId, officeRole} = this.props;
     this.props.fetchallGharjagga({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "asset_type",
       page: 0,
@@ -20,7 +21,7 @@ export class Sampatibibaran extends Component {
     this.props.fetchallSawarisadhan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "asset_type",
       page: 0,
@@ -29,21 +30,22 @@ export class Sampatibibaran extends Component {
     this.props.fetchallanyasampati({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
     });
     this.props.fetchOfficedropdown({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       name: "value", //"office_name"
     });
   }
 
 componentDidUpdate() {
+  const { districtId, officeRole} = this.props;
     this.props.fetchallGharjagga({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "asset_type",
       page: 0,
@@ -52,7 +54,7 @@ componentDidUpdate() {
     this.props.fetchallSawarisadhan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "asset_type",
       page: 0,
@@ -61,14 +63,14 @@ componentDidUpdate() {
     this.props.fetchallanyasampati({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "asset_type",
       page: 0,
       perPage: 10,
     });
     this.props.fetchOfficedropdown({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       name: "value", //"office_name"
     });
   }
@@ -121,6 +123,8 @@ Sampatibibaran.defaultProps = {
 
 const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

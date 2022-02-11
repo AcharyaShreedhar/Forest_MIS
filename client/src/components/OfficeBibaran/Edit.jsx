@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList } from "../../services/config";
+import { districtList, officeType } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 
 class Edit extends Component {
@@ -12,6 +12,7 @@ class Edit extends Component {
       office_name: props.history.location.item.office_name,
       office_location: props.history.location.item.office_location,
       dist_id: props.history.location.item.dist_id,
+      office_type: props.history.location.item.office_type,
       created_by: props.history.location.item.created_by,
       updated_by: props.history.location.item.updated_by,
       showDialog: false,
@@ -20,9 +21,13 @@ class Edit extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleOfficeType = this.handleOfficeType.bind(this);
   }
   handleDistrict(e) {
     this.setState({ dist_id: e[0] });
+  }
+  handleOfficeType(e) {
+    this.setState({ office_type: e[0] });
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -37,6 +42,7 @@ class Edit extends Component {
       office_name,
       office_location,
       dist_id,
+      office_type,
       created_by,
       updated_by,
     } = this.state;
@@ -46,6 +52,7 @@ class Edit extends Component {
           office_name: office_name,
           office_location: office_location,
           dist_id: equals(dist_id, "%") ? 0 : dist_id,
+          office_type: office_type,
           created_by: created_by,
           updated_by: this.props.user.user_name,
         },
@@ -56,7 +63,7 @@ class Edit extends Component {
 
   render() {
     const { title } = this.props;
-    const { office_name, office_location, dist_id, showDialog } = this.state;
+    const { office_name, office_location, dist_id, office_type, showDialog } = this.state;
 
     let disabled =
       isEmpty(office_name) || isEmpty(office_location) || isEmpty(dist_id)
@@ -127,7 +134,18 @@ class Edit extends Component {
                   value={dist_id}
                 />
               </div>
-              <div className="w-30" />
+              <div className="w-30" >
+                <Dropdown
+                    className="dropdownlabel"
+                    title="कार्यालयको प्रकार :"
+                    direction="vertical"
+                    defaultIds={[equals(office_type, 0) ? "%" : office_type]}
+                    data={officeType}
+                    getValue={(officeType) => officeType["value"]}
+                    onChange={(e) => this.handleOfficeType(e)}
+                    value={office_type}
+                  />
+              </div>
             </div>
           </div>
           <div className="section mb-4" />

@@ -149,7 +149,7 @@ class Karmacharibibaran extends Component {
 
   render() {
     const { loc, perPage, karmacharibibaranList, showDialog } = this.state;
-    const { user, districtData, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -172,6 +172,7 @@ class Karmacharibibaran extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="karmacharibibaran" />
             </div>
@@ -191,6 +192,7 @@ class Karmacharibibaran extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={karmacharibibaranHeadings}
               onAdd={() => this.handleAdd("karmacharibibaran")}
               onSelect={this.handleSelectMenu}
@@ -232,6 +234,7 @@ Karmacharibibaran.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   districtData: state.app,
   karmacharibibaranDataList: state.karmacharibibaran.allemployeesData,
 });

@@ -239,7 +239,6 @@ const banpaidawarlilamHeadings = [
 
 const banpaidawarosarpasarHeadings = [
   "आर्थिक वर्ष",
-  "महिना",
   "वन पैदावार काठ (क्यू. फि.)",
   "वन पैदावार दाउरा (चट्टा)",
   "लाभग्राही संख्या",
@@ -328,6 +327,13 @@ const anyasampatiHeadings = [
 const officeList = [
   { id: "%", value: "सबै" },
   { id: 1, value: "कास्की" },
+];
+
+const officeType = [
+  { id: 1, value: "मन्त्रालय" },
+  { id: 2, value: "निर्देशनालय" },
+  { id: 3, value: "कार्यलय" },
+  { id: 4, value: "सब डिभिजन" },
 ];
 
 const banxetraatikramanHeadings = [
@@ -552,6 +558,7 @@ const userHeadings = [
   "युजरको किसिम ",
   "जिल्ला ",
   "कार्यालय",
+  "कार्यालयको प्रकार",
   "दर्ता मिती ",
   "दर्ता कर्ता ",
 ];
@@ -560,6 +567,7 @@ const officeHeadings = [
   "कार्यालयको नाम ",
   "कार्यालयको ठेगाना ",
   "जिल्ला ",
+  "कार्यलयको प्रकार",
   // "दर्ता मिती ",
   "दर्ता कर्ता ",
 ];
@@ -584,6 +592,7 @@ export {
   sawarisadhanHeadings,
   anyasampatiHeadings,
   officeList,
+  officeType,
   banxetraatikramanHeadings,
   seedgardenplotsHeadings,
   banxetraanyaprayojanHeadings,

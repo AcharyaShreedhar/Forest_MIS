@@ -152,7 +152,7 @@ export class BanyajantuUddar extends Component {
   }
   render() {
     const { loc, perPage, banyajantuuddarList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -175,6 +175,7 @@ export class BanyajantuUddar extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="banyajantuuddar" />
             </div>
@@ -193,6 +194,7 @@ export class BanyajantuUddar extends Component {
               headings={banyajantuuddarHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("banyajantuuddar")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "banyajantuuddar")}
@@ -233,6 +235,7 @@ BanyajantuUddar.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   banyajantuuddarDataList: state.dwandabebasthapan.allbanyajantuuddarData,
 });
 

@@ -154,7 +154,7 @@ class Muddaanusandhandayari extends Component {
 
   render() {
     const { loc, perPage, muddaanusandhandayariList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -179,6 +179,7 @@ class Muddaanusandhandayari extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="muddaanusandhandayaris" />
             </div>
@@ -201,6 +202,7 @@ class Muddaanusandhandayari extends Component {
               headings={muddaanusandhandayariHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("muddaanusandhandayari")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -242,6 +244,7 @@ Muddaanusandhandayari.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   muddaanusandhandayariDataList: state.banbibaran.allmuddaanusandhandayariData,
 });
 

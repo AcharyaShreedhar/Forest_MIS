@@ -151,7 +151,7 @@ class Nadikinarsamrakshyan extends Component {
   }
   render() {
     const { loc, perPage, nadikinarsamrakshyanList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -174,6 +174,7 @@ class Nadikinarsamrakshyan extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="nadikinarsamrakshyan" />
             </div>
@@ -195,6 +196,7 @@ class Nadikinarsamrakshyan extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={nadikinarsamrakshyanHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -236,6 +238,7 @@ Nadikinarsamrakshyan.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   nadikinarsamrakshyanDataList: state.samrakshyan.allnadikinarsamrakshyanData,
 });
 

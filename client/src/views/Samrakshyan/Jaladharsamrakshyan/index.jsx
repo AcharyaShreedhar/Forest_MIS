@@ -125,7 +125,7 @@ class Jaladharsamrakshyan extends Component {
   }
   render() {
     const { loc, perPage, jaladharsamrakshyanList, showDialog } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -146,6 +146,7 @@ class Jaladharsamrakshyan extends Component {
                 districtsList={districtList}
                 onSelect={this.handleDistrict}
                 yesDate={false}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="jaladharsamrakshyan" />
             </div>
@@ -167,6 +168,7 @@ class Jaladharsamrakshyan extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={jaladharsamrakshyanHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -208,6 +210,7 @@ Jaladharsamrakshyan.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   jaladharsamrakshyanDataList: state.samrakshyan.alljaladharsamrakshyanData,
 });
 

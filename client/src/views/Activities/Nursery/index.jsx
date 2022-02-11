@@ -143,7 +143,7 @@ class Nursery extends Component {
 
   render() {
     const { biruwautpadanList, loc, perPage, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -168,6 +168,7 @@ class Nursery extends Component {
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="nursery" />
             </div>
@@ -184,6 +185,7 @@ class Nursery extends Component {
               pers={[10, 25, 50, "all"]}
               onPer={this.handlePer}
               role={role}
+              officeRole={officeRole}
               user={user}
               headings={biruwautpadanHeadings}
               onAdd={() => this.handleAdd()}
@@ -225,7 +227,8 @@ Nursery.defaultProps = {
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
+  officeRole:state.app.user.office_type,
   biruwautpadanDataList: state.biruwautpadan.allbiruwautpadanData,
 });
 
