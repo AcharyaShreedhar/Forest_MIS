@@ -11,8 +11,8 @@ export class Filter extends Component {
     this.state = {
       fromdate: "2075-01-01",
       todate: "2090-12-30",
-      district: "%",
-      office: "%",
+      district: ["%"],
+      office: ["%"],
     };
     this.handletoDate = this.handletoDate.bind(this);
     this.handlefromDate = this.handlefromDate.bind(this);
@@ -29,14 +29,14 @@ export class Filter extends Component {
     this.props.onFromDate(e, this.props.id);
   }
   handleDistrict(e) {
-    this.setState({ district: e[0] });
-    this.props.onSelect(e[0], this.props.id);
-    this.props.yesOffice && this.setState({ office: "%" });
+    this.setState({ district: e });
+    this.props.onSelect(e, this.props.id);
+    this.props.yesOffice && this.setState({ office: ["%"] });
   }
 
   handleOffice(e) {
-    this.setState({ office: e[0] });
-    this.props.onSelectOffice(e[0], this.props.id);
+    this.setState({ office: e });
+    this.props.onSelectOffice(e, this.props.id);
   }
 
   render() {
@@ -69,23 +69,24 @@ export class Filter extends Component {
           className="dropdownlabel ml-2"
           title="जिल्ला :"
           width="fit-content"
-          defaultIds={[district]}
+          defaultIds={district}
           data={districtsList}
           getValue={(districtsList) => districtsList["value"]}
           onChange={(e) => this.handleDistrict(e)}
           value={district}
+          // multi={true}
         />
         {yesOffice && (
           <Dropdown
             className="dropdownlabel ml-2"
             title="कार्यालय :"
             width="fit-content"
-            defaultIds={[office]}
+            defaultIds={office}
             data={officesList}
             getValue={(officesList) => officesList["value"]}
             onChange={(e) => this.handleOffice(e)}
             value={office}
-            // multi="true"
+            // multi={true}
           />
         )}
       </div>

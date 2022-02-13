@@ -8,10 +8,12 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
+import AppActions from "../../../actions/app";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import {
   yearlyactivitiesHeadings,
   districtList,
+  officeList,
 } from "../../../services/config";
 
 class Yearlyactivities extends Component {
@@ -22,6 +24,7 @@ class Yearlyactivities extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -31,6 +34,7 @@ class Yearlyactivities extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -48,64 +52,92 @@ class Yearlyactivities extends Component {
     if (nextProps !== prevState) {
       yearlyactivitiesList = nextProps.activitiesinfoDataList.data;
     }
-    return { loc, yearlyactivitiesList };
+
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+
+    return { loc, officeList, yearlyactivitiesList };
   }
-  
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
 
   handlePerCallback(e) {
-    const { fromDate, toDate, distId, page } = this.state;
-    this.setState({ 
+    const { fromDate, toDate, distId, officeId, page } = this.state;
+    this.setState({
       perPage: e,
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, distId, page, e);
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
 
   handleFromDate(e) {
-    const { distId, perPage, toDate } = this.state;
-    this.setState({ 
+    const { distId, officeId, perPage, toDate } = this.state;
+    this.setState({
       fromDate: e,
       page: 0,
     });
-    this.fetchResults(e, toDate, distId, 0, perPage);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
-     const { distId, fromDate, perPage } = this.state;
-    this.setState({ 
-      fromDate: e,
+    const { distId, officeId, fromDate, perPage } = this.state;
+    this.setState({
+      toDate: e,
       page: 0,
     });
-    this.fetchResults(fromDate, e, distId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
   }
-  fetchResults(fromDate, toDate, distId, page, perPage) {
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
+  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallYearlyactivities({
       fromDate,
       toDate,
       distId,
+      officeId,
       name: "fiscal_year",
       page: page,
       perPage,
     });
   }
 
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
+
   handlePageChange(data) {
-    const { fromDate, toDate, distId, perPage } = this.state;
+    const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
       distId,
+      officeId,
       data.selected * perPage,
       perPage
     );
@@ -137,9 +169,9 @@ class Yearlyactivities extends Component {
     const { item, page } = this.state;
 
     this.props.deleteYearlyactivities(item.activities_info_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
-      page: 0, 
+      page: 0,
       perPage: 10,
     });
   }
@@ -148,8 +180,9 @@ class Yearlyactivities extends Component {
     this.props.history.push("/activities/yearlyactivitiesadd/new");
   }
   render() {
-    const { loc, perPage, yearlyactivitiesList, showDialog } = this.state;
-    const { user,role } = this.props;
+    const { loc, perPage, yearlyactivitiesList, officeList, showDialog } =
+      this.state;
+    const { user, role } = this.props;
 
     return (
       <div>
@@ -169,9 +202,12 @@ class Yearlyactivities extends Component {
                 id="yearlyactivities"
                 title="आर्थिक वर्ष"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="yearlyactivities" />
             </div>
@@ -224,15 +260,18 @@ class Yearlyactivities extends Component {
 
 Yearlyactivities.propTypes = {
   activitiesinfoDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Yearlyactivities.defaultProps = {
   activitiesinfoDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
-  role:state.app.user.user_type,
+  role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   activitiesinfoDataList: state.biruwautpadan.allactivitiesinfoData,
 });
 
@@ -254,6 +293,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BiruwautpadanActions.deleteactivitiesinfoRequest(activitiesinfoId)
     ),
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Yearlyactivities);

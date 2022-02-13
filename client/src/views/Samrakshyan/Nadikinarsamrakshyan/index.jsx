@@ -40,7 +40,7 @@ class Nadikinarsamrakshyan extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback= this.handlePerCallback.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -53,19 +53,19 @@ class Nadikinarsamrakshyan extends Component {
     return { loc, nadikinarsamrakshyanList };
   }
 
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-     });
+    });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       fromDate: e,
       page: 0,
     });
@@ -73,15 +73,15 @@ class Nadikinarsamrakshyan extends Component {
   }
   handleToDate(e) {
     const { distId, officeId, perPage, fromDate } = this.state;
-    this.setState({ 
-      fromDate: e,
+    this.setState({
+      toDate: e,
       page: 0,
     });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       distId: e,
       page: 0,
     });
@@ -139,10 +139,10 @@ class Nadikinarsamrakshyan extends Component {
     const { item, page } = this.state;
 
     this.props.deleteNadikinarsamrakshyan(item.nadikinarsamrakshyan_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
-      perPage: 10, 
+      perPage: 10,
     });
   }
 
