@@ -8,6 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
+import AppActions from "../../../actions/app";
 import BipatbibaranActions from "../../../actions/bipatbibaran";
 import {
   badibebasthapanHeadings,
@@ -32,6 +33,7 @@ class Badibebasthapan extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -48,9 +50,13 @@ class Badibebasthapan extends Component {
     if (nextProps !== prevState) {
       badibebasthapanList = nextProps.badibebasthapanDataList.data;
     }
-
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
     return {
       loc,
+      officeList,
       badibebasthapanList,
     };
   }
@@ -84,11 +90,22 @@ class Badibebasthapan extends Component {
     const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
-  }
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
 
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBadibebasthapan({
       fromDate,
@@ -100,7 +117,13 @@ class Badibebasthapan extends Component {
       perPage,
     });
   }
-
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
   handlePageChange(data) {
     const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
@@ -153,7 +176,8 @@ class Badibebasthapan extends Component {
   }
 
   render() {
-    const { loc, perPage, badibebasthapanList, showDialog } = this.state;
+    const { loc, perPage, badibebasthapanList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -174,9 +198,12 @@ class Badibebasthapan extends Component {
                 id="badibebasthapan"
                 title="बाढी आएको मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="badibebasthapan" />
             </div>
@@ -226,15 +253,18 @@ class Badibebasthapan extends Component {
 
 Badibebasthapan.propsTypes = {
   badibeasthapanDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Badibebasthapan.defaultProps = {
   badibebasthapanDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   badibebasthapanDataList: state.bipatbibaran.allbadhibibaranData,
 });
 
@@ -252,6 +282,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBadibebasthapan: (badhibibaranId) =>
     dispatch(BipatbibaranActions.deletebadhibibaranRequest(badhibibaranId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Badibebasthapan);

@@ -1,19 +1,23 @@
 const pool = require("../db");
 //Controller for Listing all JaladharSamrakshyan
 async function getAllJaladharSamrakshyan(req, res) {
+  // const getTotalQuery =
+  //   "SELECT count(*) as total from jaladhar_samrakshyans as j where j.karyakram_miti BETWEEN ? and ? and j.dist_id like ? and j.office_id like ?";
   const getTotalQuery =
-    "SELECT count(*) as total from jaladhar_samrakshyans as j where j.karyakram_miti BETWEEN ? and ? and j.dist_id like ? and j.office_id like ?";
-  const getAllJaladharSamrakshyanQuery = `select * from jaladhar_samrakshyans as j where j.karyakram_miti BETWEEN ? and ? and j.dist_id like ? and j.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  "SELECT count(*) as total from jaladhar_samrakshyans as j where j.dist_id like ? and j.office_id like ?";
+  // const getAllJaladharSamrakshyanQuery = `select * from jaladhar_samrakshyans as j where j.karyakram_miti BETWEEN ? and ? and j.dist_id like ? and j.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+  const getAllJaladharSamrakshyanQuery = `select * from jaladhar_samrakshyans as j where j.dist_id like ? and j.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
-    [req.body.fromDate, req.body.toDate, req.body.distId, , req.body.officeId],
+    // [req.body.fromDate, req.body.toDate, req.body.distId, , req.body.officeId],
+    [req.body.distId, , req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error;
       pool.query(
         getAllJaladharSamrakshyanQuery,
         [
-          req.body.fromDate,
-          req.body.toDate,
+          // req.body.fromDate,
+          // req.body.toDate,
           req.body.distId,
           req.body.officeId,
           req.body.name,

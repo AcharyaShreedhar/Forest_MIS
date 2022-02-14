@@ -8,6 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
+import AppActions from "../../../actions/app";
 import BipatbibaranActions from "../../../actions/bipatbibaran";
 import { bandadeloHeadings, districtList } from "../../../services/config";
 
@@ -29,6 +30,7 @@ class Bandadelo extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -45,9 +47,13 @@ class Bandadelo extends Component {
     if (nextProps !== prevState) {
       bandadelobibaranList = nextProps.bandadelobibaranDataList.data;
     }
-
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
     return {
       loc,
+      officeList,
       bandadelobibaranList,
     };
   }
@@ -81,11 +87,22 @@ class Bandadelo extends Component {
     const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
-  }
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
 
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBandadelo({
       fromDate,
@@ -97,7 +114,13 @@ class Bandadelo extends Component {
       perPage,
     });
   }
-
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
   handlePageChange(data) {
     const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
@@ -151,7 +174,8 @@ class Bandadelo extends Component {
   }
 
   render() {
-    const { loc, perPage, bandadelobibaranList, showDialog } = this.state;
+    const { loc, perPage, bandadelobibaranList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -172,9 +196,12 @@ class Bandadelo extends Component {
                 id="bandadelo"
                 title="डढेलो लागेको मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="bandadelo" />
             </div>
@@ -226,15 +253,18 @@ class Bandadelo extends Component {
 
 Bandadelo.propsTypes = {
   bandadelobibaranDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Bandadelo.defaultProps = {
   bandadelobibaranDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   bandadelobibaranDataList: state.bipatbibaran.allbandadelobibaranData,
 });
 
@@ -257,6 +287,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BipatbibaranActions.deletebandadelobibaranRequest(bandadelobibaranId)
     ),
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bandadelo);

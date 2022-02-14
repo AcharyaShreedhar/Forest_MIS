@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import BanbibaranActions from "../../../actions/banbibaran";
+import AppActions from "../../../actions/app";
 import {
   seedgardenplotsHeadings,
   districtList,
@@ -33,6 +34,7 @@ class Seedgardenplots extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -40,7 +42,7 @@ class Seedgardenplots extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback= this.handlePerCallback.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -50,44 +52,60 @@ class Seedgardenplots extends Component {
     if (nextProps !== prevState) {
       seedgardenplotsList = nextProps.seedgardenplotsDataList.data;
     }
-    return { loc, seedgardenplotsList };
+
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+    return { loc, officeList, seedgardenplotsList };
   }
 
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-     });
+    });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       fromDate: e,
-      page: 0, 
+      page: 0,
     });
     this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
     const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ 
-      toDate: e, 
+    this.setState({
+      toDate: e,
       page: 0,
     });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
-      distId: e, 
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({
+      distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
-  }
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
 
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallSeedgardenplots({
       fromDate,
@@ -97,6 +115,14 @@ class Seedgardenplots extends Component {
       name: "established_date",
       page: page,
       perPage,
+    });
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
     });
   }
 
@@ -140,8 +166,8 @@ class Seedgardenplots extends Component {
     const { item, page } = this.state;
 
     this.props.deleteSeedgardenplots(item.plot_id);
-    this.setState({ 
-      showDialog: !this.state.showDialog, 
+    this.setState({
+      showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
     });
@@ -151,7 +177,8 @@ class Seedgardenplots extends Component {
     this.props.history.push("/banbibaran/seedgardenplotsadd/new");
   }
   render() {
-    const { loc, perPage, seedgardenplotsList, showDialog } = this.state;
+    const { loc, perPage, seedgardenplotsList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -174,9 +201,12 @@ class Seedgardenplots extends Component {
                 id="seedgardenplots"
                 title="स्थापना मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="seedgardenplots" />
             </div>
@@ -198,9 +228,8 @@ class Seedgardenplots extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
-              forcePage={this.state.page} 
+              forcePage={this.state.page}
             />
-     
           </Fragment>
         )}
         {equals(loc, "seedgardenplotsadd") && (
@@ -227,15 +256,18 @@ class Seedgardenplots extends Component {
 
 Seedgardenplots.propTypes = {
   seedgardenplotsDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Seedgardenplots.defaultProps = {
   seedgardenplotsDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   seedgardenplotsDataList: state.banbibaran.allplotbibaranData,
 });
 
@@ -250,6 +282,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteSeedgardenplots: (assetId) =>
     dispatch(BanbibaranActions.deleteplotbibaranRequest(assetId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Seedgardenplots);

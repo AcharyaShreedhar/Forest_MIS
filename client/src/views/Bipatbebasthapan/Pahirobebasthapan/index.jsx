@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import BipatbibaranActions from "../../../actions/bipatbibaran";
+import AppActions from "../../../actions/app";
 import {
   pahirobebasthapanHeadings,
   districtList,
@@ -32,6 +33,7 @@ class Pahirobebasthapan extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -48,9 +50,13 @@ class Pahirobebasthapan extends Component {
     if (nextProps !== prevState) {
       pahirobebasthapanList = nextProps.pahirobebasthapanDataList.data;
     }
-
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
     return {
       loc,
+      officeList,
       pahirobebasthapanList,
     };
   }
@@ -84,9 +90,21 @@ class Pahirobebasthapan extends Component {
     const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -98,6 +116,14 @@ class Pahirobebasthapan extends Component {
       name: "pahiro_gayeko_miti",
       page: page,
       perPage,
+    });
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
     });
   }
 
@@ -153,7 +179,8 @@ class Pahirobebasthapan extends Component {
   }
 
   render() {
-    const { loc, perPage, pahirobebasthapanList, showDialog } = this.state;
+    const { loc, perPage, pahirobebasthapanList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -174,9 +201,12 @@ class Pahirobebasthapan extends Component {
                 id="pahirobebasthapan"
                 title="पहिरो गएको मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="pahirobebasthapan" />
             </div>
@@ -228,15 +258,18 @@ class Pahirobebasthapan extends Component {
 
 Pahirobebasthapan.propsTypes = {
   pahirobeasthapanDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Pahirobebasthapan.defaultProps = {
   pahirobebasthapanDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   pahirobebasthapanDataList: state.bipatbibaran.allpahirobibaranData,
 });
 
@@ -254,6 +287,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deletePahirobebasthapan: (pahirobibaranId) =>
     dispatch(BipatbibaranActions.deletepahirobibaranRequest(pahirobibaranId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pahirobebasthapan);

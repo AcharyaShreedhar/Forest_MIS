@@ -8,6 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
+import AppActions from "../../../actions/app";
 import BanbibaranActions from "../../../actions/banbibaran";
 import {
   banxetraatikramanHeadings,
@@ -33,6 +34,7 @@ class Banxetraatikraman extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -40,7 +42,7 @@ class Banxetraatikraman extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback= this.handlePerCallback.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -49,45 +51,62 @@ class Banxetraatikraman extends Component {
     if (nextProps !== prevState) {
       banxetraatikramanList = nextProps.banxetraatikramanDataList.data;
     }
-
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
     return {
       loc,
+      officeList,
       banxetraatikramanList,
     };
   }
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-     });
+    });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
-      fromDate: e, 
+    this.setState({
+      fromDate: e,
       page: 0,
     });
     this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
     const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ 
+    this.setState({
       toDate: e,
-      page: 0, 
+      page: 0,
     });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({
       distId: e,
-      page: 0, 
+      officeId: "%", //office reset
+      page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -99,6 +118,14 @@ class Banxetraatikraman extends Component {
       name: "atikraman_miti",
       page: page,
       perPage,
+    });
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
     });
   }
 
@@ -143,8 +170,8 @@ class Banxetraatikraman extends Component {
     const { item, page } = this.state;
 
     this.props.deleteBanxetraatikraman(item.banxetra_atikraman_id);
-    this.setState({ 
-      showDialog: !this.state.showDialog, 
+    this.setState({
+      showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
     });
@@ -155,7 +182,8 @@ class Banxetraatikraman extends Component {
   }
 
   render() {
-    const { loc, perPage, banxetraatikramanList, showDialog } = this.state;
+    const { loc, perPage, banxetraatikramanList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -176,9 +204,12 @@ class Banxetraatikraman extends Component {
                 id="banxetraatikraman"
                 title="अतिक्रमण मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="banxetraatikraman" />
             </div>
@@ -202,9 +233,8 @@ class Banxetraatikraman extends Component {
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
-              forcePage={this.state.page} 
+              forcePage={this.state.page}
             />
-     
           </Fragment>
         )}
         {equals(loc, "banxetraatikramanadd") && (
@@ -231,15 +261,18 @@ class Banxetraatikraman extends Component {
 
 Banxetraatikraman.propsTypes = {
   banxetraatikramanDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Banxetraatikraman.defaultProps = {
   banxetraatikramanDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   banxetraatikramanDataList: state.banbibaran.allbanxetraatikramanData,
 });
 
@@ -262,6 +295,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BanbibaranActions.deletebanxetraatikramanRequest(banxetraatikramanId)
     ),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banxetraatikraman);

@@ -46,14 +46,13 @@ class AnyaSampati extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var anyasampatiList = [];
+    var officeList = [];
+
     if (nextProps !== prevState) {
       anyasampatiList = nextProps.anyasampatiDataList.data;
-    }
-
-    var officeList = [];
-    if (nextProps !== prevState) {
       officeList = nextProps.officeDataList.data;
     }
+
     return { loc, anyasampatiList, officeList };
   }
 
@@ -64,7 +63,6 @@ class AnyaSampati extends Component {
     const { fromDate, toDate, distId, officeId, page } = this.state;
     this.setState({
       perPage: e,
-      page: 0,
     });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
@@ -104,6 +102,15 @@ class AnyaSampati extends Component {
     });
     this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
   }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
+
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallanyasampati({
       fromDate,
@@ -113,14 +120,6 @@ class AnyaSampati extends Component {
       name: "sampati_name",
       page: page,
       perPage,
-    });
-  }
-
-  // O-DDL
-  fetchOffice(distId) {
-    this.props.fetchOfficedropdown({
-      distId,
-      // name: "value", //"office_name"
     });
   }
 

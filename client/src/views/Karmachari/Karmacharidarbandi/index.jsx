@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import KarmacharidarbandiActions from "../../../actions/karmacharidarbandi";
+import AppActions from "../../../actions/app";
 import {
   karmacharidarbandiHeadings,
   districtList,
@@ -34,6 +35,7 @@ class Karmacharidarbandi extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePerCallback = this.handlePerCallback.bind(this);
@@ -42,34 +44,58 @@ class Karmacharidarbandi extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
     var karmacharidarbandiList = [];
+    var officeList = [];
+
     if (nextProps !== prevState) {
       karmacharidarbandiList = nextProps.karmacharidarbandiDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
 
     return {
       loc,
+      officeList,
       karmacharidarbandiList,
     };
   }
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));;
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
 
   handlePerCallback(e) {
     const { distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-   });
+    });
     this.fetchResults(distId, officeId, page, e);
   }
 
   handleDistrict(e) {
     const { officeId, perPage } = this.state;
-    this.setState({ 
-    distId: e,
-    page: 0,
-  });
-    this.fetchResults(e, officeId, 0, perPage);
+    this.setState({
+      distId: e,
+      officeId: "%", // office reset
+      page: 0,
+    });
+    this.fetchResults(e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { perPage, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(distId, e, 0, perPage);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
   }
 
   fetchResults(distId, officeId, page, perPage) {
@@ -115,9 +141,9 @@ class Karmacharidarbandi extends Component {
     const { item, page } = this.state;
 
     this.props.deleteKarmacharidarbandi(item.karmachari_darbandi_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
-      page: 0, 
+      page: 0,
       perPage: 10,
     });
   }
@@ -127,7 +153,8 @@ class Karmacharidarbandi extends Component {
   }
 
   render() {
-    const { loc, perPage, karmacharidarbandiList, showDialog } = this.state;
+    const { loc, perPage, karmacharidarbandiList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -147,7 +174,10 @@ class Karmacharidarbandi extends Component {
               <Filter
                 id="karmacharidarbandi"
                 districtsList={districtList}
+                officesList={officeList}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDate={false}
               />
               <ReportGenerator id="karmacharidarbandi" />
@@ -202,15 +232,18 @@ class Karmacharidarbandi extends Component {
 
 Karmacharidarbandi.propsTypes = {
   karmacharidarbandiDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Karmacharidarbandi.defaultProps = {
   karmacharidarbandiDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   karmacharidarbandiDataList:
     state.karmacharidarbandi.allkarmacharidarbandiData,
 });
@@ -238,6 +271,10 @@ const mapDispatchToProps = (dispatch) => ({
         karmacharidarbandiId
       )
     ),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karmacharidarbandi);

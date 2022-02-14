@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import forestRoutes from "../../routes/forests";
+import AppActions from "../../actions/app";
 import BankaprakarActions from "../../actions/bankaprakar";
 
 export class Forests extends Component {
@@ -90,9 +91,13 @@ export class Forests extends Component {
       page: 0,
       perPage: 10,
     });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
+    });
   }
 
-componentDidUpdate() {
+  componentDidUpdate() {
     this.props.fetchallSamudayikbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -174,6 +179,10 @@ componentDidUpdate() {
       page: 0,
       perPage: 10,
     });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
+    });
   }
 
   render() {
@@ -249,6 +258,10 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   fetchallUpabhoktasamuhabibaran: (payload) =>
     dispatch(BankaprakarActions.fetchallconsumergroupdetailsRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Forests);

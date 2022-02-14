@@ -8,6 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
+import AppActions from "../../../actions/app";
 import BanpaidawarActions from "../../../actions/banpaidawar";
 import {
   banpaidawarosarpasarHeadings,
@@ -32,6 +33,7 @@ class Osarpasar extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -39,7 +41,7 @@ class Osarpasar extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback= this.handlePerCallback.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -48,44 +50,61 @@ class Osarpasar extends Component {
     if (nextProps !== prevState) {
       banpaidawarosarpasarList = nextProps.banpaidawarDataList.data;
     }
-    return { banpaidawarosarpasarList, loc };
+
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+
+    return { officeList, banpaidawarosarpasarList, loc };
   }
 
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-     });
+    });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       fromDate: e,
-      page: 0, 
-  });
+      page: 0,
+    });
     this.fetchResults(e, toDate, distId, officeId, perPage);
   }
   handleToDate(e) {
     const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ 
+    this.setState({
       toDate: e,
-      page: 0, 
-  });
+      page: 0,
+    });
     this.fetchResults(fromDate, e, distId, officeId, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({
       distId: e,
-      page: 0, 
-  });
-    this.fetchResults(fromDate, toDate, e, officeId, perPage);
-  }
+      officeId: "%", // office reset
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
 
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBanpaidawarosarpasar({
       fromDate,
@@ -97,7 +116,13 @@ class Osarpasar extends Component {
       perPage,
     });
   }
-
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
   handlePageChange(data) {
     const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
@@ -139,11 +164,11 @@ class Osarpasar extends Component {
     const { item, page } = this.state;
 
     this.props.deleteBanpaidawarosarpasar(item.paidawar_id);
-    this.setState({ 
-      showDialog: !this.state.showDialog, 
+    this.setState({
+      showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-     });
+    });
   }
 
   handleAdd() {
@@ -151,7 +176,8 @@ class Osarpasar extends Component {
   }
 
   render() {
-    const { banpaidawarosarpasarList, loc, perPage, showDialog } = this.state;
+    const { banpaidawarosarpasarList, loc, perPage, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
     return (
       <div>
@@ -171,9 +197,12 @@ class Osarpasar extends Component {
                 id="banpaidawar"
                 title="आर्थिक वर्ष"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="banpaidawar" />
             </div>
@@ -199,9 +228,8 @@ class Osarpasar extends Component {
               onAdd={() => this.handleAdd("banpaidawarosarpasar")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
-              forcePage={this.state.page} 
+              forcePage={this.state.page}
             />
-     
           </Fragment>
         )}
         {equals(loc, "osarpasaradd") && (
@@ -228,15 +256,18 @@ class Osarpasar extends Component {
 
 Osarpasar.propsTypes = {
   banpaidawarDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Osarpasar.defaultProps = {
   banpaidawarDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   banpaidawarDataList: state.banpaidawar.allbanpaidawarData,
 });
 
@@ -251,6 +282,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBanpaidawarosarpasar: (paidawarId) =>
     dispatch(BanpaidawarActions.deletebanpaidawarRequest(paidawarId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Osarpasar);

@@ -8,6 +8,7 @@ import {
   ReportGenerator,
   ConfirmationDialoge,
 } from "../../../components";
+import AppActions from "../../../actions/app";
 import SamrakshyanActions from "../../../actions/samrakshyan";
 import {
   pokharisamrakshyanHeadings,
@@ -32,6 +33,7 @@ class Pokharisamrakshyan extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -45,12 +47,16 @@ class Pokharisamrakshyan extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
     var pokharisamrakshyanList = [];
+    var officeList = [];
+
     if (nextProps !== prevState) {
       pokharisamrakshyanList = nextProps.pokharisamrakshyanDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
 
     return {
       loc,
+      officeList,
       pokharisamrakshyanList,
     };
   }
@@ -84,9 +90,29 @@ class Pokharisamrakshyan extends Component {
     const { fromDate, officeId, perPage, toDate } = this.state;
     this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -154,7 +180,8 @@ class Pokharisamrakshyan extends Component {
   }
 
   render() {
-    const { loc, perPage, pokharisamrakshyanList, showDialog } = this.state;
+    const { loc, perPage, pokharisamrakshyanList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -175,9 +202,12 @@ class Pokharisamrakshyan extends Component {
                 id="pokharisamrakshyan"
                 title="कार्यक्रम मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="pokharisamrakshyan" />
             </div>
@@ -231,15 +261,18 @@ class Pokharisamrakshyan extends Component {
 
 Pokharisamrakshyan.propsTypes = {
   pokharisamrakshyanDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Pokharisamrakshyan.defaultProps = {
   pokharisamrakshyanDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   pokharisamrakshyanDataList: state.samrakshyan.allsamrakshyanpokharinirmanData,
 });
 
@@ -266,6 +299,10 @@ const mapDispatchToProps = (dispatch) => ({
         pokharisamrakshyanId
       )
     ),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Pokharisamrakshyan);

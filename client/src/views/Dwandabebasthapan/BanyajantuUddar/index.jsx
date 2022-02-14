@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
+import AppActions from "../../../actions/app";
 import {
   banyajantuuddarHeadings,
   districtList,
@@ -32,6 +33,7 @@ export class BanyajantuUddar extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -39,7 +41,7 @@ export class BanyajantuUddar extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback= this.handlePerCallback.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -47,48 +49,63 @@ export class BanyajantuUddar extends Component {
     var banyajantuuddarList = [];
     if (nextProps !== prevState) {
       banyajantuuddarList = nextProps.banyajantuuddarDataList.data;
-
-      return {
-        loc,
-        banyajantuuddarList,
-      };
     }
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+    return {
+      loc,
+      officeList,
+      banyajantuuddarList,
+    };
   }
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-     });
+    });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
-      fromDate: e, 
+    this.setState({
+      fromDate: e,
       page: 0,
-  });
+    });
     this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
     const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ 
-      toDate: e, 
+    this.setState({
+      toDate: e,
       page: 0,
-  });
+    });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
-      distId: e, 
+    this.setState({
+      distId: e,
+      officeId: "%", // office reset
       page: 0,
-  });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
-  }
+    });
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
 
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBanyajantuuddar({
       fromDate,
@@ -100,7 +117,13 @@ export class BanyajantuUddar extends Component {
       perPage,
     });
   }
-
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
   handlePageChange(data) {
     const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
@@ -140,8 +163,8 @@ export class BanyajantuUddar extends Component {
     const { item, page } = this.state;
 
     this.props.deleteBanyajantuuddar(item.banyajantu_uddar_id);
-    this.setState({ 
-      showDialog: !this.state.showDialog, 
+    this.setState({
+      showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
     });
@@ -151,7 +174,8 @@ export class BanyajantuUddar extends Component {
     this.props.history.push("/dwandabebasthapan/banyajantuuddaradd/new");
   }
   render() {
-    const { loc, perPage, banyajantuuddarList, showDialog } = this.state;
+    const { loc, perPage, banyajantuuddarList, officeList, showDialog } =
+      this.state;
     const { user, role } = this.props;
 
     return (
@@ -172,9 +196,12 @@ export class BanyajantuUddar extends Component {
                 id="banyajantuuddar"
                 title="उद्दार मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
               />
               <ReportGenerator id="banyajantuuddar" />
             </div>
@@ -224,15 +251,18 @@ export class BanyajantuUddar extends Component {
 
 BanyajantuUddar.propsTypes = {
   banyajantuuddarDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 BanyajantuUddar.defaultProps = {
   banyajantuuddarDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   banyajantuuddarDataList: state.dwandabebasthapan.allbanyajantuuddarData,
 });
 
@@ -253,6 +283,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       DwandabebasthapanActions.deletebanyajantuuddarRequest(banyajantuuddarId)
     ),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BanyajantuUddar);

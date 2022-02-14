@@ -65,7 +65,6 @@ class Nursery extends Component {
     const { fromDate, toDate, distId, officeId, page } = this.state;
     this.setState({
       perPage: e,
-      page: 0,
     });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
