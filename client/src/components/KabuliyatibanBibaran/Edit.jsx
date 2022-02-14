@@ -16,40 +16,40 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.darta_no,
-      regno: props.history.location.item.darta_no,
-      name: props.history.location.item.kabuliyati_ban_samiti_name,
-      darta_miti: props.history.location.item.darta_miti,
-      perm_addr: props.history.location.item.perm_addr,
-      curr_addr: props.history.location.item.curr_addr,
-      area: englishToNepaliNumber(props.history.location.item.area),
+      id: props.history.location.item?.darta_no,
+      regno: englishToNepaliNumber(props.history.location.item?.darta_no),
+      name: props.history.location.item?.kabuliyati_ban_samiti_name,
+      darta_miti: props.history.location.item?.darta_miti,
+      perm_addr: props.history.location.item?.perm_addr,
+      curr_addr: props.history.location.item?.curr_addr,
+      area: englishToNepaliNumber(props.history.location.item?.area),
       dalit_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.dalit_ghardhuri
+        props.history.location.item?.dalit_ghardhuri
       ),
       janjati_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.janjati_ghardhuri
+        props.history.location.item?.janjati_ghardhuri
       ),
       anya_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.anya_ghardhuri
+        props.history.location.item?.anya_ghardhuri
       ),
-      female: englishToNepaliNumber(props.history.location.item.female),
-      male: englishToNepaliNumber(props.history.location.item.male),
-      sampanna: englishToNepaliNumber(props.history.location.item.sampanna),
-      madhyam: englishToNepaliNumber(props.history.location.item.madhyam),
-      bipanna: englishToNepaliNumber(props.history.location.item.bipanna),
-      dalit_rep: englishToNepaliNumber(props.history.location.item.dalit_rep),
+      female: englishToNepaliNumber(props.history.location.item?.female),
+      male: englishToNepaliNumber(props.history.location.item?.male),
+      sampanna: englishToNepaliNumber(props.history.location.item?.sampanna),
+      madhyam: englishToNepaliNumber(props.history.location.item?.madhyam),
+      bipanna: englishToNepaliNumber(props.history.location.item?.bipanna),
+      dalit_rep: englishToNepaliNumber(props.history.location.item?.dalit_rep),
       janjati_rep: englishToNepaliNumber(
-        props.history.location.item.janjati_rep
+        props.history.location.item?.janjati_rep
       ),
-      anya_rep: englishToNepaliNumber(props.history.location.item.anya_rep),
-      adhyakshya: props.history.location.item.adhyakshya,
-      adhyakshya_gender: props.history.location.item.adhyakshya_gender,
-      sachib: props.history.location.item.sachib,
-      sachib_gender: props.history.location.item.sachib_gender,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      anya_rep: englishToNepaliNumber(props.history.location.item?.anya_rep),
+      adhyakshya: props.history.location.item?.adhyakshya,
+      adhyakshya_gender: props.history.location.item?.adhyakshya_gender,
+      sachib: props.history.location.item?.sachib,
+      sachib_gender: props.history.location.item?.sachib_gender,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -58,10 +58,16 @@ class Edit extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleGender = this.handleGender.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -113,7 +119,7 @@ class Edit extends Component {
     const payload = {
       kabuliyatiban: {
         data: {
-          darta_no: regno,
+          darta_no: nepaliToEnglishNumber(regno),
           kabuliyati_ban_samiti_name: name,
           darta_miti: darta_miti,
           perm_addr: perm_addr,
@@ -268,7 +274,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={dalit_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
@@ -276,7 +282,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={janjati_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
@@ -284,7 +290,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={anya_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}
@@ -295,7 +301,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="सम्पन्न :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={sampanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ sampanna: e })}
@@ -303,7 +309,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="मध्यम :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={madhyam}
                 direction="vertical"
                 onChange={(e) => this.setState({ madhyam: e })}
@@ -311,7 +317,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="विपन्न :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={bipanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ bipanna: e })}
@@ -323,7 +329,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={dalit_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_rep: e })}
@@ -331,7 +337,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={janjati_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_rep: e })}
@@ -339,7 +345,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={anya_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_rep: e })}
@@ -351,7 +357,7 @@ class Edit extends Component {
               <Input
                 className="w-45"
                 title="महिला :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={female}
                 direction="vertical"
                 onChange={(e) => this.setState({ female: e })}
@@ -359,7 +365,7 @@ class Edit extends Component {
               <Input
                 className="w-45"
                 title="पुरुष :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={male}
                 direction="vertical"
                 onChange={(e) => this.setState({ male: e })}

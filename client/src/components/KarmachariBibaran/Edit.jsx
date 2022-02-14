@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input, ConfirmationDialoge } from "../../components";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 
@@ -8,34 +9,34 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.emp_id,  
-      emp_fname_eng: props.history.location.item.emp_fname_eng,
-      emp_lname_eng: props.history.location.item.emp_lname_eng,
-      emp_fname_nep: props.history.location.item.emp_fname_nep,
-      emp_lname_nep: props.history.location.item.emp_lname_nep,
-      emp_add_perm_prov: props.history.location.item.emp_add_perm_prov,
-      emp_add_perm_dist: props.history.location.item.emp_add_perm_dist,
-      emp_add_perm_mun: props.history.location.item.emp_add_perm_mun,
-      emp_add_perm_ward: props.history.location.item.emp_add_perm_ward,
-      emp_add_perm_tole: props.history.location.item.emp_add_temp_tole,
-      emp_add_temp_prov: props.history.location.item.emp_add_perm_prov,
-      emp_add_temp_dist: props.history.location.item.emp_add_perm_dist,
-      emp_add_temp_mun: props.history.location.item.emp_add_perm_mun,
-      emp_add_temp_ward: props.history.location.item.emp_add_perm_ward,
-      emp_add_temp_tole: props.history.location.item.emp_add_perm_tole,
-      emp_phone1: props.history.location.item.emp_phone1,
-      emp_phone2: props.history.location.item.emp_phone2,
-      emp_email: props.history.location.item.emp_email,
-      emp_office_id: props.history.location.item.emp_office_id,
-      emp_dept_id: props.history.location.item.emp_dept_id,
-      emp_level_id: props.history.location.item.emp_level_id,
-      emp_post: props.history.location.item.emp_post,
-      emp_rank: props.history.location.item.emp_rank,
-      emp_appoint_date: props.history.location.item.emp_appoint_date,
-      emp_status: props.history.location.item.emp_status,
-      dist_id: props.history.location.item.dist_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.emp_id,  
+      emp_fname_eng: props.history.location.item?.emp_fname_eng,
+      emp_lname_eng: props.history.location.item?.emp_lname_eng,
+      emp_fname_nep: props.history.location.item?.emp_fname_nep,
+      emp_lname_nep: props.history.location.item?.emp_lname_nep,
+      emp_add_perm_prov: englishToNepaliNumber(props.history.location.item?.emp_add_perm_prov),
+      emp_add_perm_dist: englishToNepaliNumber(props.history.location.item?.emp_add_perm_dist),
+      emp_add_perm_mun: englishToNepaliNumber(props.history.location.item?.emp_add_perm_mun),
+      emp_add_perm_ward: englishToNepaliNumber(props.history.location.item?.emp_add_perm_ward),
+      emp_add_perm_tole: englishToNepaliNumber(props.history.location.item?.emp_add_temp_tole),
+      emp_add_temp_prov: englishToNepaliNumber(props.history.location.item?.emp_add_perm_prov),
+      emp_add_temp_dist: englishToNepaliNumber(props.history.location.item?.emp_add_perm_dist),
+      emp_add_temp_mun: englishToNepaliNumber(props.history.location.item?.emp_add_perm_mun),
+      emp_add_temp_ward: englishToNepaliNumber(props.history.location.item?.emp_add_perm_ward),
+      emp_add_temp_tole: englishToNepaliNumber(props.history.location.item?.emp_add_perm_tole),
+      emp_phone1: props.history.location.item?.emp_phone1,
+      emp_phone2: props.history.location.item?.emp_phone2,
+      emp_email: props.history.location.item?.emp_email,
+      emp_office_id: englishToNepaliNumber(props.history.location.item?.emp_office_id),
+      emp_dept_id: englishToNepaliNumber(props.history.location.item?.emp_dept_id),
+      emp_level_id: englishToNepaliNumber(props.history.location.item?.emp_level_id),
+      emp_post: props.history.location.item?.emp_post,
+      emp_rank: englishToNepaliNumber(props.history.location.item?.emp_rank),
+      emp_appoint_date: englishToNepaliNumber(props.history.location.item?.emp_appoint_date),
+      emp_status: props.history.location.item?.emp_status,
+      dist_id: props.history.location.item?.dist_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -43,6 +44,7 @@ class Edit extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleConfirm() {
@@ -50,6 +52,11 @@ class Edit extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
 
 
@@ -89,25 +96,25 @@ class Edit extends Component {
           emp_lname_eng:emp_lname_eng,
           emp_fname_nep:emp_fname_nep,
           emp_lname_nep:emp_lname_nep,
-          emp_add_perm_prov:emp_add_perm_prov,
-          emp_add_perm_dist:emp_add_perm_dist,
-          emp_add_perm_mun:emp_add_perm_mun,
-          emp_add_perm_ward:emp_add_perm_ward,
-          emp_add_perm_tole:emp_add_perm_tole,
-          emp_add_temp_prov:emp_add_temp_prov,
-          emp_add_temp_dist:emp_add_temp_dist,
-          emp_add_temp_mun:emp_add_temp_mun,
-          emp_add_temp_ward:emp_add_temp_ward,
-          emp_add_temp_tole:emp_add_temp_tole,
+          emp_add_perm_prov:nepaliToEnglishNumber(emp_add_perm_prov),
+          emp_add_perm_dist:nepaliToEnglishNumber(emp_add_perm_dist),
+          emp_add_perm_mun:nepaliToEnglishNumber(emp_add_perm_mun),
+          emp_add_perm_ward:nepaliToEnglishNumber(emp_add_perm_ward),
+          emp_add_perm_tole:nepaliToEnglishNumber(emp_add_perm_tole),
+          emp_add_temp_prov:nepaliToEnglishNumber(emp_add_temp_prov),
+          emp_add_temp_dist:nepaliToEnglishNumber(emp_add_temp_dist),
+          emp_add_temp_mun:nepaliToEnglishNumber(emp_add_temp_mun),
+          emp_add_temp_ward:nepaliToEnglishNumber(emp_add_temp_ward),
+          emp_add_temp_tole:nepaliToEnglishNumber(emp_add_temp_tole),
           emp_phone1:emp_phone1,
           emp_phone2:emp_phone2,
           emp_email:emp_email,
-          emp_office_id:emp_office_id,
-          emp_dept_id:emp_dept_id,
-          emp_level_id:emp_level_id,
+          emp_office_id:nepaliToEnglishNumber(emp_office_id),
+          emp_dept_id:nepaliToEnglishNumber(emp_dept_id),
+          emp_level_id:nepaliToEnglishNumber(emp_level_id),
           emp_post:emp_post,
-          emp_rank:emp_rank,
-          emp_appoint_date:emp_appoint_date,
+          emp_rank:nepaliToEnglishNumber(emp_rank),
+          emp_appoint_date:nepaliToEnglishNumber(emp_appoint_date),
           emp_status: emp_status,
           dist_id: this.props.user.dist_id,
           created_by: created_by || this.props.user.user_name,
@@ -202,7 +209,7 @@ class Edit extends Component {
             <Input
               className="mb-4"
               title="स्थायी प्रदेश"
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               direction="vertical"
               value={emp_add_perm_prov}
               onChange={(e) => this.setState({ emp_add_perm_prov: e })}
@@ -211,7 +218,7 @@ class Edit extends Component {
             <Input
               className="mb-4"
               title="स्थायी जिल्ला"
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               value={emp_add_perm_dist}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_perm_dist: e })}
@@ -219,7 +226,7 @@ class Edit extends Component {
              <Input
               className="mb-4"
               title="स्थायी नगरपालिका"
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               value={emp_add_perm_mun}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_perm_mun: e })}
@@ -228,7 +235,7 @@ class Edit extends Component {
             <Input
               className="mb-4"
               title="स्थायी वडा न."
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               direction="vertical"
               value={emp_add_perm_ward}
               onChange={(e) => this.setState({ emp_add_perm_ward: e })}
@@ -243,7 +250,7 @@ class Edit extends Component {
             <Input
               className="mb-4"
               title="अस्थायी प्रदेश"
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               value={emp_add_temp_prov}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_temp_prov: e })}
@@ -252,7 +259,7 @@ class Edit extends Component {
             <Input
               className="mb-4"
               title="अस्थायी जिल्ला"
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               direction="vertical"
               value={emp_add_temp_dist}
               onChange={(e) => this.setState({ emp_add_temp_dist: e })}
@@ -261,7 +268,7 @@ class Edit extends Component {
             <Input
               className="mb-4"
               title="अस्थायी नगरपालिका"
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               value={emp_add_temp_mun}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_temp_mun: e })}
@@ -269,7 +276,7 @@ class Edit extends Component {
              <Input
               className="mb-4"
               title="अस्थायी वडा न."
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               value={emp_add_temp_ward}
               direction="vertical"
               onChange={(e) => this.setState({ emp_add_temp_ward: e })}
@@ -338,7 +345,7 @@ class Edit extends Component {
             <Input
               className="mb-4"
               title="श्रेणी"
-              type="number"
+              onKeyPressInput={(e) => this.handleInputKeyPress(e)}
               value={emp_rank}
               direction="vertical"
               onChange={(e) => this.setState({ emp_rank: e })}

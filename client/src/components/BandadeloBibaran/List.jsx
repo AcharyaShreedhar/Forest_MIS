@@ -77,17 +77,17 @@ function List(props) {
                   <td> {bandadelo.xeti_area}</td>
                   <td> {bandadelo.niyantran_prayas}</td>
                   <td> {bandadelo.niyantran_karta}</td>
-                  <td> {bandadelo.sahabhagi_mahila}</td>
-                  <td> {bandadelo.sahabhagi_purus}</td>
+                  <td> {englishToNepaliNumber(bandadelo.sahabhagi_mahila)}</td>
+                  <td> {englishToNepaliNumber(bandadelo.sahabhagi_purus)}</td>
                   <td> {englishToNepaliNumber(bandadelo.bandadelo_miti)}</td>
-                  <td> {bandadelo.man_injured}</td>
-                  <td> {bandadelo.man_dead}</td>
+                  <td> {englishToNepaliNumber(bandadelo.man_injured)}</td>
+                  <td> {englishToNepaliNumber(bandadelo.man_dead)}</td>
                   {officeRole > 2 && 
-                    <td>
-                      <div className="edit">
-                        <EditDropdown
-                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
-                          onChange={(e) => onSelect(e, bandadelo, "bandadelo")}
+                  <td>
+                    <div className="edit">
+                      <EditDropdown
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
+                        onChange={(e) => onSelect(e, bandadelo, "bandadelo")}
                       />
                       </div>
                     </td>

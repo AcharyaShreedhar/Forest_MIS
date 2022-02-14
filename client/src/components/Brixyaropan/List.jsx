@@ -53,7 +53,7 @@ function List(props) {
               data.map((brixyaropan, index) => (
                 <tr key={`${brixyaropan.birxyaropan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{brixyaropan.brixyaropan_miti} </td>
+                  <td>{englishToNepaliNumber(brixyaropan.brixyaropan_miti)} </td>
                   <td>
                     {equals(brixyaropan.xetra, 1)
                       ? "सामुदायिक बन"

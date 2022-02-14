@@ -16,35 +16,35 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.darta_no,
-      regno: props.history.location.item.darta_no,
-      name: props.history.location.item.dharmikban_name,
-      community_name: props.history.location.item.community_name,
-      area: englishToNepaliNumber(props.history.location.item.area),
+      id: props.history.location.item?.darta_no,
+      regno: englishToNepaliNumber(props.history.location.item?.darta_no),
+      name: props.history.location.item?.dharmikban_name,
+      community_name: props.history.location.item?.community_name,
+      area: englishToNepaliNumber(props.history.location.item?.area),
       dalit_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.dalit_ghardhuri
+        props.history.location.item?.dalit_ghardhuri
       ),
       janjati_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.janjati_ghardhuri
+        props.history.location.item?.janjati_ghardhuri
       ),
       anya_ghardhuri: englishToNepaliNumber(
-        props.history.location.item.anya_ghardhuri
+        props.history.location.item?.anya_ghardhuri
       ),
-      female: englishToNepaliNumber(props.history.location.item.female),
-      male: englishToNepaliNumber(props.history.location.item.male),
-      main_species: props.history.location.item.main_species,
-      forest_type: equals(props.history.location.item.forest_type, "प्राकृतिक्")
+      female: englishToNepaliNumber(props.history.location.item?.female),
+      male: englishToNepaliNumber(props.history.location.item?.male),
+      main_species: props.history.location.item?.main_species,
+      forest_type: equals(props.history.location.item?.forest_type, "प्राकृतिक्")
         ? 1
         : 2,
-      handover_date: props.history.location.item.handover_date,
-      renewed_date: props.history.location.item.renewed_date,
-      nabikaran_abadhi: props.history.location.item.nabikaran_abadhi,
-      forest_maujdat: props.history.location.item.forest_maujdat,
-      renewal_date: props.history.location.item.renewal_date,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      handover_date: props.history.location.item?.handover_date,
+      renewed_date: props.history.location.item?.renewed_date,
+      nabikaran_abadhi: props.history.location.item?.nabikaran_abadhi,
+      forest_maujdat: props.history.location.item?.forest_maujdat,
+      renewal_date: props.history.location.item?.renewal_date,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -53,10 +53,16 @@ class Edit extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleForestType = this.handleForestType.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -109,7 +115,7 @@ class Edit extends Component {
       dharmikban: {
         data: {
           dharmikban_name: name,
-          darta_no: regno,
+          darta_no: nepaliToEnglishNumber(regno),
           community_name: community_name,
           area: nepaliToEnglishNumber(area),
           dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
@@ -221,7 +227,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="महिला :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={female}
                 direction="vertical"
                 onChange={(e) => this.setState({ female: e })}
@@ -229,7 +235,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="पुरुष :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={male}
                 direction="vertical"
                 onChange={(e) => this.setState({ male: e })}
@@ -242,7 +248,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={dalit_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
@@ -250,7 +256,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={janjati_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
@@ -258,7 +264,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={anya_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}

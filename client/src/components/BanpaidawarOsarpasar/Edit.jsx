@@ -2,21 +2,22 @@ import React, { Component } from "react";
 import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.paidawar_id,
-      arthik_barsa: props.history.location.item.arthik_barsa,
-      kaath: props.history.location.item.kaath,
-      daura: props.history.location.item.daura,
-      lavgrahi_sankhya: props.history.location.item.lavgrahi_sankhya,
-      mulyaabhibridi_kar: props.history.location.item.mulyaabhibridi_kar,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.paidawar_id,
+      arthik_barsa: englishToNepaliNumber(props.history.location.item?.arthik_barsa),
+      kaath: props.history.location.item?.kaath,
+      daura: props.history.location.item?.daura,
+      lavgrahi_sankhya: props.history.location.item?.lavgrahi_sankhya,
+      mulyaabhibridi_kar: props.history.location.item?.mulyaabhibridi_kar,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -45,7 +46,7 @@ class Edit extends Component {
     const payload = {
       banpaidawar: {
         data: {
-          arthik_barsa: arthik_barsa,
+          arthik_barsa: nepaliToEnglishNumber(arthik_barsa),
           kaath: kaath,
           daura: daura,
           lavgrahi_sankhya: lavgrahi_sankhya,

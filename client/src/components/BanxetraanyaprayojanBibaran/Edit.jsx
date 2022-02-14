@@ -14,36 +14,36 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.banxetra_anyaprayojan_id,
-      arthik_barsa: props.history.location.item.arthik_barsa,
-      uplabdakarta_naam: props.history.location.item.uplabdakarta_naam,
-      upalabdha_address: props.history.location.item.upalabdha_address,
-      xetrafal_temp: props.history.location.item.xetrafal_temp,
-      xetrafal_perm: props.history.location.item.xetrafal_perm,
-      samaya_abadhi: props.history.location.item.samaya_abadhi,
-      rukh_hataunuparne: props.history.location.item.rukh_hataunuparne,
-      rukh_hatayeko: props.history.location.item.rukh_hatayeko,
-      sattajagga_area: props.history.location.item.sattajagga_area,
-      xetipurti_brixyaropan: props.history.location.item.xetipurti_brixyaropan,
+      id: props.history.location.item?.banxetra_anyaprayojan_id,
+      arthik_barsa: props.history.location.item?.arthik_barsa,
+      uplabdakarta_naam: props.history.location.item?.uplabdakarta_naam,
+      upalabdha_address: props.history.location.item?.upalabdha_address,
+      xetrafal_temp: props.history.location.item?.xetrafal_temp,
+      xetrafal_perm: props.history.location.item?.xetrafal_perm,
+      samaya_abadhi: props.history.location.item?.samaya_abadhi,
+      rukh_hataunuparne: props.history.location.item?.rukh_hataunuparne,
+      rukh_hatayeko: props.history.location.item?.rukh_hatayeko,
+      sattajagga_area: props.history.location.item?.sattajagga_area,
+      xetipurti_brixyaropan: props.history.location.item?.xetipurti_brixyaropan,
       sattajagga_brixyaropan:
-        props.history.location.item.sattajagga_brixyaropan,
+        props.history.location.item?.sattajagga_brixyaropan,
       leejrakam_adhyaadhik: equals(
-        props.history.location.item.leejrakam_adhyaadhik,
+        props.history.location.item?.leejrakam_adhyaadhik,
         "गरेको"
       )
         ? 1
         : 2,
       barsik_pratibedan: equals(
-        props.history.location.item.barsik_pratibedan,
+        props.history.location.item?.barsik_pratibedan,
         "गरेको"
       )
         ? 1
         : 2,
-      prapta_rajaswo: props.history.location.item.prapta_rajaswo,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      prapta_rajaswo: props.history.location.item?.prapta_rajaswo,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 

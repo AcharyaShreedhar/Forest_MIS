@@ -82,9 +82,9 @@ function List(props) {
                       ? "निजी बन"
                       : "राष्ट्रिय बन"}
                   </td>
-                  <td> {rojgar.mahila}</td>
-                  <td> {rojgar.purus}</td>
-                  <td> {rojgar.mahila + rojgar.purus}</td>
+                  <td> {englishToNepaliNumber(rojgar.mahila)}</td>
+                  <td> {englishToNepaliNumber(rojgar.purus)}</td>
+                  <td> {englishToNepaliNumber(rojgar.mahila + rojgar.purus)}</td>
                   <td> {rojgar.kaifiyat}</td>
                   {officeRole > 2 && 
                     <td>

@@ -11,16 +11,16 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: props.history.location.item.user_id,
-      user_name: props.history.location.item.user_name,
+      user_id: props.history.location.item?.user_id,
+      user_name: props.history.location.item?.user_name,
       user_pass: "",
-      user_type: props.history.location.item.user_type,
-      user_office: props.history.location.item.user_office,
-      dist_id: props.history.location.item.dist_id,
-      office_type: props.history.location.item.office_type,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      user_type: props.history.location.item?.user_type,
+      user_office: props.history.location.item?.user_office,
+      dist_id: props.history.location.item?.dist_id,
+      office_type: props.history.location.item?.office_type,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
       officeDisabled: false,
     };
@@ -30,7 +30,7 @@ class Edit extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.fetchOffice(props.history.location.item.dist_id);
+    this.fetchOffice(props.history.location.item?.dist_id);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {

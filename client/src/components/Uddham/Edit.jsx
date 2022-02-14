@@ -9,16 +9,16 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.uddham_id,
-      darta_miti: props.history.location.item.darta_miti,
-      name: props.history.location.item.name,
-      address: props.history.location.item.address,
-      uddham_type: props.history.location.item.uddham_type,
-      rojgar_sankhya: props.history.location.item.rojgar_sankhya,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.uddham_id,
+      darta_miti: props.history.location.item?.darta_miti,
+      name: props.history.location.item?.name,
+      address: props.history.location.item?.address,
+      uddham_type: props.history.location.item?.uddham_type,
+      rojgar_sankhya: props.history.location.item?.rojgar_sankhya,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
     this.handleUddhamType = this.handleUddhamType.bind(this);
@@ -26,6 +26,7 @@ class Edit extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleUddhamType(e) {
@@ -36,6 +37,11 @@ class Edit extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleDate(e) {
     this.setState({ darta_miti: e });
@@ -146,7 +152,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="रोजगार संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 value={rojgar_sankhya}
                 onChange={(e) => this.setState({ rojgar_sankhya: e })}

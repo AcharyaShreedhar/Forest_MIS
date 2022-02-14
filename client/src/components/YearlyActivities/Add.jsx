@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import { equals, isEmpty } from "ramda";
+import { nepaliToEnglishNumber } from "nepali-number";
 
 const AnnualBibaran = [
   { id: 1, value: "बुझाएको" },
@@ -82,7 +83,7 @@ class Add extends Component {
       yearlyactivities: {
         data: {
           samudayikban_naam: samudayikban_name,
-          fiscal_year: fiscal_year,
+          fiscal_year: nepaliToEnglishNumber(fiscal_year),
           area: area,
           conservation_timber: conservation_timber,
           conservation_wood: conservation_wood,

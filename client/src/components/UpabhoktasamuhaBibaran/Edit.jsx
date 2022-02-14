@@ -4,6 +4,7 @@ import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 const GenderTypes = [
   { id: 1, value: "पुरुष" },
@@ -14,30 +15,30 @@ export class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.darta_no,
-      darta_no: props.history.location.item.darta_no,
-      darta_miti: props.history.location.item.darta_miti,
-      dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
-      perm_addr: props.history.location.item.perm_addr,
-      curr_addr: props.history.location.item.curr_addr,
-      janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
-      anya_ghardhuri: props.history.location.item.anya_ghardhuri,
-      female: props.history.location.item.female,
-      male: props.history.location.item.male,
+      id: props.history.location.item?.darta_no,
+      darta_no: englishToNepaliNumber(props.history.location.item?.darta_no),
+      darta_miti: props.history.location.item?.darta_miti,
+      dalit_ghardhuri: englishToNepaliNumber(props.history.location.item?.dalit_ghardhuri),
+      perm_addr: props.history.location.item?.perm_addr,
+      curr_addr: props.history.location.item?.curr_addr,
+      janjati_ghardhuri: englishToNepaliNumber(props.history.location.item?.janjati_ghardhuri),
+      anya_ghardhuri: englishToNepaliNumber(props.history.location.item?.anya_ghardhuri),
+      female: englishToNepaliNumber(props.history.location.item?.female),
+      male: englishToNepaliNumber(props.history.location.item?.male),
       samudayik_upavokta_samiti_name:
-        props.history.location.item.samudayik_upavokta_samiti_name,
-      sampanna: props.history.location.item.sampanna,
-      madhyam: props.history.location.item.madhyam,
-      bipanna: props.history.location.item.bipanna,
-      dalit_rep: props.history.location.item.dalit_rep,
-      janjati_rep: props.history.location.item.janjati_rep,
-      anya_rep: props.history.location.item.anya_rep,
-      adhyakshya_gender: props.history.location.item.adhyakshya_gender,
-      adhyakshya: props.history.location.item.adhyakshya,
-      sachib_gender: props.history.location.item.sachib_gender,
-      sachib: props.history.location.item.sachib,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+        props.history.location.item?.samudayik_upavokta_samiti_name,
+      sampanna: englishToNepaliNumber(props.history.location.item?.sampanna),
+      madhyam: englishToNepaliNumber(props.history.location.item?.madhyam),
+      bipanna: englishToNepaliNumber(props.history.location.item?.bipanna),
+      dalit_rep: englishToNepaliNumber(props.history.location.item?.dalit_rep),
+      janjati_rep: englishToNepaliNumber(props.history.location.item?.janjati_rep),
+      anya_rep: englishToNepaliNumber(props.history.location.item?.anya_rep),
+      adhyakshya_gender: props.history.location.item?.adhyakshya_gender,
+      adhyakshya: props.history.location.item?.adhyakshya,
+      sachib_gender: props.history.location.item?.sachib_gender,
+      sachib: props.history.location.item?.sachib,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
     this.handleClose = this.handleClose.bind(this);
@@ -45,9 +46,15 @@ export class Edit extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleGender = this.handleGender.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -101,20 +108,20 @@ export class Edit extends Component {
         data: {
           samudayik_upavokta_samiti_name: samudayik_upavokta_samiti_name,
           darta_no: darta_no,
-          darta_miti: darta_miti,
+          darta_miti: nepaliToEnglishNumber(darta_miti),
           perm_addr: perm_addr,
           curr_addr: curr_addr,
-          janjati_ghardhuri: janjati_ghardhuri,
-          dalit_ghardhuri: dalit_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          female: female,
-          male: male,
-          sampanna: sampanna,
-          madhyam: madhyam,
-          bipanna: bipanna,
-          dalit_rep: dalit_rep,
-          janjati_rep: janjati_rep,
-          anya_rep: anya_rep,
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          female: nepaliToEnglishNumber(female),
+          male: nepaliToEnglishNumber(male),
+          sampanna: nepaliToEnglishNumber(sampanna),
+          madhyam: nepaliToEnglishNumber(madhyam),
+          bipanna: nepaliToEnglishNumber(bipanna),
+          dalit_rep: nepaliToEnglishNumber(dalit_rep),
+          janjati_rep: nepaliToEnglishNumber(janjati_rep),
+          anya_rep: nepaliToEnglishNumber(anya_rep),
           adhyakshya_gender: adhyakshya_gender,
           adhyakshya: adhyakshya,
           sachib_gender: sachib_gender,
@@ -239,7 +246,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={dalit_ghardhuri}
@@ -248,7 +255,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाती :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={janjati_ghardhuri}
@@ -257,7 +264,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={anya_ghardhuri}
@@ -270,7 +277,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="सम्पन्न : "
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={sampanna}
@@ -279,7 +286,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="मध्यम : "
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={madhyam}
@@ -288,7 +295,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="विपन्न : "
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={bipanna}
@@ -300,7 +307,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={dalit_rep}
@@ -309,7 +316,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाती :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={janjati_rep}
@@ -319,7 +326,7 @@ export class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={anya_rep}
@@ -332,7 +339,7 @@ export class Edit extends Component {
               <Input
                 className="w-45"
                 title="महिला :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={female}
@@ -341,7 +348,7 @@ export class Edit extends Component {
               <Input
                 className="w-45"
                 title="पुरुष : "
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 as="textarea"
                 value={male}

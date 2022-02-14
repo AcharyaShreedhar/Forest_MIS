@@ -4,6 +4,7 @@ import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList, karyaList } from "../../services/config";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { nepaliToEnglishNumber } from "nepali-number";
 
 class Add extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class Add extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
   handleBanType(e) {
     this.setState({ banka_prakar: e[0] });
@@ -37,6 +39,11 @@ class Add extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleDate(e) {
     this.setState({ miti: e });
@@ -55,8 +62,8 @@ class Add extends Component {
           miti: miti,
           ekai: ekai,
           banka_prakar: banka_prakar,
-          mahila: mahila,
-          purus: purus,
+          mahila: nepaliToEnglishNumber(mahila),
+          purus: nepaliToEnglishNumber(purus),
           kaifiyat: kaifiyat,
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
@@ -153,7 +160,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="महिला :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={mahila}
                 direction="vertical"
                 onChange={(e) => this.setState({ mahila: e })}
@@ -161,7 +168,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="पुरुष :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 value={purus}
                 onChange={(e) => this.setState({ purus: e })}

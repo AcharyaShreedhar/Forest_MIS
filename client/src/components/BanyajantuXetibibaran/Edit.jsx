@@ -3,34 +3,35 @@ import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.banyajantuxeti_bibaran_id,
-      pidit_name: props.history.location.item.pidit_name,
-      pidit_address: props.history.location.item.pidit_address,
-      jagga_bibaran: props.history.location.item.jagga_bibaran,
-      nagarikta_no: props.history.location.item.nagarikta_no,
-      upabhoktasamiti_name: props.history.location.item.upabhoktasamiti_name,
-      xetigarne_animal: props.history.location.item.xetigarne_animal,
-      xeti_miti: props.history.location.item.xeti_miti,
-      ghatana_address: props.history.location.item.ghatana_address,
-      balinali_noksani: props.history.location.item.balinali_noksani,
-      anna_bhandaran: props.history.location.item.anna_bhandaran,
-      pasudhan_xeti: props.history.location.item.pasudhan_xeti,
-      ghargoth_xeti: props.history.location.item.ghargoth_xeti,
-      man_injury: props.history.location.item.man_injury,
-      mag_rakam: props.history.location.item.mag_rakam,
+      id: props.history.location.item?.banyajantuxeti_bibaran_id,
+      pidit_name: props.history.location.item?.pidit_name,
+      pidit_address: props.history.location.item?.pidit_address,
+      jagga_bibaran: props.history.location.item?.jagga_bibaran,
+      nagarikta_no: englishToNepaliNumber(props.history.location.item?.nagarikta_no),
+      upabhoktasamiti_name: props.history.location.item?.upabhoktasamiti_name,
+      xetigarne_animal: props.history.location.item?.xetigarne_animal,
+      xeti_miti: props.history.location.item?.xeti_miti,
+      ghatana_address: props.history.location.item?.ghatana_address,
+      balinali_noksani: props.history.location.item?.balinali_noksani,
+      anna_bhandaran: props.history.location.item?.anna_bhandaran,
+      pasudhan_xeti: props.history.location.item?.pasudhan_xeti,
+      ghargoth_xeti: props.history.location.item?.ghargoth_xeti,
+      man_injury: props.history.location.item?.man_injury,
+      mag_rakam: props.history.location.item?.mag_rakam,
       samitiko_mulyankan_rakam:
-        props.history.location.item.samitiko_mulyankan_rakam,
-      vuktani_rakam: props.history.location.item.vuktani_rakam,
-      remarks: props.history.location.item.remarks,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+        props.history.location.item?.samitiko_mulyankan_rakam,
+      vuktani_rakam: props.history.location.item?.vuktani_rakam,
+      remarks: props.history.location.item?.remarks,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -75,7 +76,7 @@ class Edit extends Component {
           pidit_name: pidit_name,
           pidit_address: pidit_address,
           jagga_bibaran: jagga_bibaran,
-          nagarikta_no: nagarikta_no,
+          nagarikta_no: nepaliToEnglishNumber(nagarikta_no),
           upabhoktasamiti_name: upabhoktasamiti_name,
           xetigarne_animal: xetigarne_animal,
           xeti_miti: xeti_miti,

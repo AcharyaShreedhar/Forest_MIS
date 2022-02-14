@@ -57,7 +57,7 @@ class Jadibuti extends Component {
   }
 
   handleDistrict(e, item) {
-    const { perPage, page } = this.state;
+    const { perPage } = this.state;
     this.setState({ 
       distId: e,
       page: 0,

@@ -98,7 +98,7 @@ function List(props) {
                       : "सब डिभिजन"
                     }
                   </td>
-                  <td> {moment(user.createdAt).format("MM/DD/YYYY")}</td>
+                  <td> {englishToNepaliNumber(moment(user.createdAt).format("MM/DD/YYYY"))}</td>
                   <td> {user.created_by}</td>
                   <td>
                     <div className="edit">

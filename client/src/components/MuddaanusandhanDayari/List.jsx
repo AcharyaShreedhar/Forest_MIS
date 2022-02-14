@@ -61,7 +61,7 @@ function List(props) {
               data.map((mudda, index) => (
                 <tr key={`${mudda.mudda_anusandhan_dayari_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{mudda.jaheri_partibedan_miti}</td>
+                  <td>{englishToNepaliNumber(mudda.jaheri_partibedan_miti)}</td>
                   <td>
                     {equals(mudda.kasurko_kisim, 1)
                       ? "बन पैदावार चोरिनिकासी"

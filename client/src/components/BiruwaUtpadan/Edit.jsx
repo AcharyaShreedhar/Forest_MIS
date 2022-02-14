@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 const BiruwaTypes = [
   { id: 1, value: "बहुउदेशिय " },
@@ -17,20 +18,20 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.biruwa_utpadan_id,
-      arthik_barsa: props.history.location.item.arthik_barsa,
-      biruwa_type: props.history.location.item.biruwa_type,
-      utpadan_medium: props.history.location.item.utpadan_medium,
-      biruwa_sankhya: props.history.location.item.biruwa_sankhya,
-      narsari_sankhya: props.history.location.item.narsari_sankhya,
-      barga: props.history.location.item.barga,
-      laxya: props.history.location.item.laxya,
-      pragati: props.history.location.item.pragati,
-      remarks: props.history.location.item.remarks,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.biruwa_utpadan_id,
+      arthik_barsa: englishToNepaliNumber(props.history.location.item?.arthik_barsa),
+      biruwa_type: props.history.location.item?.biruwa_type,
+      utpadan_medium: props.history.location.item?.utpadan_medium,
+      biruwa_sankhya: englishToNepaliNumber(props.history.location.item?.biruwa_sankhya),
+      narsari_sankhya: englishToNepaliNumber(props.history.location.item?.narsari_sankhya),
+      barga: props.history.location.item?.barga,
+      laxya: props.history.location.item?.laxya,
+      pragati: props.history.location.item?.pragati,
+      remarks: props.history.location.item?.remarks,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -39,6 +40,7 @@ class Edit extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUtpadanMedium = this.handleUtpadanMedium.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleBiruwaTypes(e) {
@@ -46,6 +48,11 @@ class Edit extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -68,11 +75,11 @@ class Edit extends Component {
     const payload = {
       biruwautpadan: {
         data: {
-          arthik_barsa: arthik_barsa,
+          arthik_barsa: nepaliToEnglishNumber(arthik_barsa),
           biruwa_type: biruwa_type,
           utpadan_medium: utpadan_medium,
-          biruwa_sankhya: biruwa_sankhya,
-          narsari_sankhya: narsari_sankhya,
+          biruwa_sankhya: nepaliToEnglishNumber(biruwa_sankhya),
+          narsari_sankhya: nepaliToEnglishNumber(narsari_sankhya),
           barga: barga,
           laxya: laxya,
           pragati: pragati,
@@ -173,7 +180,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="बिरुवा संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={biruwa_sankhya}
                 direction="vertical"
                 onChange={(e) => this.setState({ biruwa_type: e })}
@@ -181,7 +188,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="नर्सरी संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={narsari_sankhya}
                 direction="vertical"
                 onChange={(e) => this.setState({ narsari_sankhya: e })}

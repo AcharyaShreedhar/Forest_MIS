@@ -57,17 +57,17 @@ function List(props) {
                   <td>
                     {emp.emp_fname_nep} {emp.emp_lname_nep}
                   </td>
-                  <td>{emp.emp_add_perm_prov} प्रदेश, {emp.emp_add_perm_dist} जिल्ला, {emp.emp_add_perm_mun}, {emp.emp_add_perm_ward},{emp.emp_add_perm_tole}  </td>
-                  <td>{emp.emp_add_temp_prov} प्रदेश, {emp.emp_add_temp_dist} जिल्ला, {emp.emp_add_temp_mun}, {emp.emp_add_temp_ward},{emp.emp_add_temp_tole}  </td>
+                  <td>{englishToNepaliNumber(emp.emp_add_perm_prov)} प्रदेश, {englishToNepaliNumber(emp.emp_add_perm_dist)} जिल्ला, {englishToNepaliNumber(emp.emp_add_perm_mun)}, {englishToNepaliNumber(emp.emp_add_perm_ward)},{englishToNepaliNumber(emp.emp_add_perm_tole)}  </td>
+                  <td>{englishToNepaliNumber(emp.emp_add_temp_prov)} प्रदेश, {englishToNepaliNumber(emp.emp_add_temp_dist)} जिल्ला, {englishToNepaliNumber(emp.emp_add_temp_mun)}, {englishToNepaliNumber(emp.emp_add_temp_ward)},{englishToNepaliNumber(emp.emp_add_temp_tole)}  </td>
                   <td>
                     {emp.emp_phone1}  {emp.emp_phone2}
                   </td>
                   <td>{emp.emp_email} </td>
-                  <td>{emp.emp_office_id} </td>
-                  <td>{emp.emp_dept_id} </td>
-                  <td>{emp.emp_level_id} </td>
+                  <td>{englishToNepaliNumber(emp.emp_office_id)} </td>
+                  <td>{englishToNepaliNumber(emp.emp_dept_id)} </td>
+                  <td>{englishToNepaliNumber(emp.emp_level_id)} </td>
                   <td>{emp.emp_post} </td>
-                  <td>{emp.emp_rank} </td>
+                  <td>{englishToNepaliNumber(emp.emp_rank)} </td>
                   <td>{englishToNepaliNumber(emp.emp_appoint_date)}</td>
                   <td> {emp.emp_status} </td>
                   {officeRole > 2 && 

@@ -47,9 +47,15 @@ class Add extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleGender = this.handleGender.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -99,7 +105,7 @@ class Add extends Component {
     const payload = {
       kabuliyatiban: {
         data: {
-          darta_no: regno,
+          darta_no: nepaliToEnglishNumber(regno),
           kabuliyati_ban_samiti_name: name,
           darta_miti: darta_miti,
           area: nepaliToEnglishNumber(area),
@@ -252,7 +258,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={dalit_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
@@ -260,7 +266,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={janjati_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
@@ -268,7 +274,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={anya_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}
@@ -279,7 +285,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="सम्पन्न :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={sampanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ sampanna: e })}
@@ -287,7 +293,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="मध्यम :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={madhyam}
                 direction="vertical"
                 onChange={(e) => this.setState({ madhyam: e })}
@@ -295,7 +301,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="विपन्न :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={bipanna}
                 direction="vertical"
                 onChange={(e) => this.setState({ bipanna: e })}
@@ -307,7 +313,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={dalit_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_rep: e })}
@@ -315,7 +321,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={janjati_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_rep: e })}
@@ -323,7 +329,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={anya_rep}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_rep: e })}
@@ -335,7 +341,7 @@ class Add extends Component {
               <Input
                 className="w-45"
                 title="महिला :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={female}
                 direction="vertical"
                 onChange={(e) => this.setState({ female: e })}
@@ -343,7 +349,7 @@ class Add extends Component {
               <Input
                 className="w-45"
                 title="पुरुष :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={male}
                 direction="vertical"
                 onChange={(e) => this.setState({ male: e })}
