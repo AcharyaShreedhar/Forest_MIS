@@ -6,18 +6,18 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.karmachari_darbandi_id,
-      post: props.history.location.item.post,
-      karyalaya: props.history.location.item.karyalaya,
-      thegana: props.history.location.item.thegana,
+      id: props.history.location.item?.karmachari_darbandi_id,
+      post: props.history.location.item?.post,
+      karyalaya: props.history.location.item?.karyalaya,
+      thegana: props.history.location.item?.thegana,
       kayam_darbandi_sankhya:
-        props.history.location.item.kayam_darbandi_sankhya,
-      padpurti_sankhya: props.history.location.item.padpurti_sankhya,
-      khali_sankhya: props.history.location.item.khali_sankhya,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+        props.history.location.item?.kayam_darbandi_sankhya,
+      padpurti_sankhya: props.history.location.item?.padpurti_sankhya,
+      khali_sankhya: props.history.location.item?.khali_sankhya,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 

@@ -55,21 +55,21 @@ function List(props) {
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {englishToNepaliNumber(badi.badhi_aayeko_miti)}</td>
                   <td> {badi.badhi_aayeko_sthan}</td>
-                  <td> {badi.uddar_sankhya}</td>
-                  <td> {badi.manab_ghaite}</td>
-                  <td> {badi.manab_mareko}</td>
+                  <td> {englishToNepaliNumber(badi.uddar_sankhya)}</td>
+                  <td> {englishToNepaliNumber(badi.manab_ghaite)}</td>
+                  <td> {englishToNepaliNumber(badi.manab_mareko)}</td>
                   <td> {badi.xeti_bibaran}</td>
-                  <td> {badi.banyajantu_mareko}</td>
-                  <td> {badi.botbiruwa_xeti}</td>
+                  <td> {englishToNepaliNumber(badi.banyajantu_mareko)}</td>
+                  <td> {englishToNepaliNumber(badi.botbiruwa_xeti)}</td>
                   {officeRole > 2 && 
-                    <td>
-                      <div className="edit">
-                        <EditDropdown
-                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
-                          onChange={(e) => onSelect(e, badi, "badibebasthapan")}
+                  <td>
+                    <div className="edit">
+                      <EditDropdown
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
+                        onChange={(e) => onSelect(e, badi, "badibebasthapan")}
                       />
-                      </div>
-                    </td>
+                    </div>
+                  </td>
                   }
                 </tr>
               ))

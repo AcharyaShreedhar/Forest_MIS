@@ -54,19 +54,19 @@ function List(props) {
                 <tr key={`${pahiro.pahiro_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {englishToNepaliNumber(pahiro.pahiro_gayeko_miti)}</td>
-                  <td> {pahiro.pahiro_gayeko_sthan}</td>
-                  <td> {pahiro.uddar_sankhya}</td>
-                  <td> {pahiro.manab_ghaite}</td>
-                  <td> {pahiro.manab_mareko}</td>
+                  <td> {englishToNepaliNumber(pahiro.pahiro_gayeko_sthan)}</td>
+                  <td> {englishToNepaliNumber(pahiro.uddar_sankhya)}</td>
+                  <td> {englishToNepaliNumber(pahiro.manab_ghaite)}</td>
+                  <td> {englishToNepaliNumber(pahiro.manab_mareko)}</td>
                   <td> {pahiro.xeti_bibaran}</td>
-                  <td> {pahiro.banyajantu_mareko}</td>
-                  <td> {pahiro.botbiruwa_xeti}</td>
+                  <td> {englishToNepaliNumber(pahiro.banyajantu_mareko)}</td>
+                  <td> {englishToNepaliNumber(pahiro.botbiruwa_xeti)}</td>
                   {officeRole > 2 && 
-                    <td>
-                      <div className="edit">
-                        <EditDropdown
-                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
-                          onChange={(e) => onSelect(e, pahiro, "pahirobebasthapan")}
+                  <td>
+                    <div className="edit">
+                      <EditDropdown
+                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
+                        onChange={(e) => onSelect(e, pahiro, "pahirobebasthapan")}
                       />
                       </div>
                     </td>

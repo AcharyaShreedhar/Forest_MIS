@@ -7,15 +7,15 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.id,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      paalika: props.history.location.item.paalika,
-      qty: props.history.location.item.qty,
-      karyakram_miti: props.history.location.item.karyakram_miti,
-      laagat: props.history.location.item.laagat,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.id,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      paalika: props.history.location.item?.paalika,
+      qty: props.history.location.item?.qty,
+      karyakram_miti: props.history.location.item?.karyakram_miti,
+      laagat: props.history.location.item?.laagat,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 

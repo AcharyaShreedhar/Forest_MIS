@@ -4,23 +4,24 @@ import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList, karyaList } from "../../services/config";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.rojgar_srijana_id,
-      miti: props.history.location.item.miti,
-      karya: props.history.location.item.karya,
-      ekai: props.history.location.item.ekai,
-      banka_prakar: props.history.location.item.banka_prakar,
-      mahila: props.history.location.item.mahila,
-      purus: props.history.location.item.purus,
-      kaifiyat: props.history.location.item.kaifiyat,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.rojgar_srijana_id,
+      miti: props.history.location.item?.miti,
+      karya: props.history.location.item?.karya,
+      ekai: props.history.location.item?.ekai,
+      banka_prakar: props.history.location.item?.banka_prakar,
+      mahila: englishToNepaliNumber(props.history.location.item?.mahila),
+      purus: englishToNepaliNumber(props.history.location.item?.purus),
+      kaifiyat: props.history.location.item?.kaifiyat,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
     this.handleBanType = this.handleBanType.bind(this);
@@ -29,6 +30,7 @@ class Edit extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleKarya = this.handleKarya.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleBanType(e) {
@@ -39,6 +41,11 @@ class Edit extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleDate(e) {
     this.setState({ miti: e });
@@ -67,8 +74,8 @@ class Edit extends Component {
           miti: miti,
           ekai: ekai,
           banka_prakar: banka_prakar,
-          mahila: mahila,
-          purus: purus,
+          mahila: nepaliToEnglishNumber(mahila),
+          purus: nepaliToEnglishNumber(purus),
           jamma: jamma,
           kaifiyat: kaifiyat,
           dist_id: this.props.user.dist_id,
@@ -167,7 +174,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="महिला :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={mahila}
                 direction="vertical"
                 onChange={(e) => this.setState({ mahila: e })}
@@ -175,7 +182,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="पुरुष :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 value={purus}
                 onChange={(e) => this.setState({ purus: e })}

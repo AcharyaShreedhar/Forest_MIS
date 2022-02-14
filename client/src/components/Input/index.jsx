@@ -51,9 +51,15 @@ class Input extends React.PureComponent {
   }
 
   handleKeyPress(e) {
+    const { onKeyPressInput } = this.props
     if (equals(13, e.charCode)) {
       this.props.onEnter();
     }
+    if(onKeyPressInput){
+      onKeyPressInput(e);
+      return true; 
+    }
+   
   }
 
   render() {
@@ -140,6 +146,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   onEnter: PropTypes.func,
   onFocus: PropTypes.func,
+  onKeyPressInput: PropTypes.func,
 };
 
 Input.defaultProps = {

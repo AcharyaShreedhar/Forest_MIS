@@ -58,9 +58,9 @@ function List(props) {
                   <td> {equals(banxetraatikraman.atikraman_kisim, 1)
             ? "संस्थागत"
             : "व्यक्तिगत"}</td>
-                  <td>{banxetraatikraman.dalit_ghardhuri}</td>
-                  <td>{banxetraatikraman.janjati_ghardhuri}</td>
-                  <td>{banxetraatikraman.anya_ghardhuri}</td>
+                  <td>{englishToNepaliNumber(banxetraatikraman.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(banxetraatikraman.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(banxetraatikraman.anya_ghardhuri)}</td>
                   <td>
                     {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}
                   </td>

@@ -6,17 +6,17 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.jadibuti_id,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      jadibuti_thegana: props.history.location.item.jadibuti_thegana,
-      jadibuti_kisim: props.history.location.item.jadibuti_kisim,
-      jadibuti_prajati: props.history.location.item.jadibuti_prajati,
-      jadibuti_laxya: props.history.location.item.jadibuti_laxya,
-      jadibuti_pragati: props.history.location.item.jadibuti_pragati,
-      jadibuti_sankhya: props.history.location.item.jadibuti_sankhya,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.jadibuti_id,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      jadibuti_thegana: props.history.location.item?.jadibuti_thegana,
+      jadibuti_kisim: props.history.location.item?.jadibuti_kisim,
+      jadibuti_prajati: props.history.location.item?.jadibuti_prajati,
+      jadibuti_laxya: props.history.location.item?.jadibuti_laxya,
+      jadibuti_pragati: props.history.location.item?.jadibuti_pragati,
+      jadibuti_sankhya: props.history.location.item?.jadibuti_sankhya,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 

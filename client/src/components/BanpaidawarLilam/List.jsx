@@ -51,9 +51,9 @@ function List(props) {
               <p>No data Available !!!</p>
             ) : (
               data.map((lilam, index) => (
-                <tr>
+                <tr key={`${lilam.lilam_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td key={`${lilam.lilam_id}-${index}`}>
+                  <td>
                     {englishToNepaliNumber(lilam.lilam_date)}
                   </td>
                   <td> {lilam.banpaidawar_type}</td>

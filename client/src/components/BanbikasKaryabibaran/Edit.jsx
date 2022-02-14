@@ -7,16 +7,16 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.banbikas_karyabibaran_id,
-      banbikas_karyabibaran: props.history.location.item.banbikas_karyabibaran,
-      banbikas_ikai: props.history.location.item.banbikas_ikai,
-      banbikas_parinam: props.history.location.item.banbikas_parinam,
-      banbikas_bajetkharcha: props.history.location.item.banbikas_bajetkharcha,
-      ban_type: props.history.location.item.ban_type,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.banbikas_karyabibaran_id,
+      banbikas_karyabibaran: props.history.location.item?.banbikas_karyabibaran,
+      banbikas_ikai: props.history.location.item?.banbikas_ikai,
+      banbikas_parinam: props.history.location.item?.banbikas_parinam,
+      banbikas_bajetkharcha: props.history.location.item?.banbikas_bajetkharcha,
+      ban_type: props.history.location.item?.ban_type,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 

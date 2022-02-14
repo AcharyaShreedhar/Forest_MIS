@@ -53,7 +53,7 @@ function List(props) {
               data.map((biruwa, index) => (
                 <tr key={`${biruwa.biruwa_utpadan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td> {biruwa.arthik_barsa} </td>
+                  <td> {englishToNepaliNumber(biruwa.arthik_barsa)} </td>
                   <td>
                     {equals(biruwa.biruwa_type, 1)
                       ? "बहुउदेशिय"
@@ -70,8 +70,8 @@ function List(props) {
                       ? "निजी"
                       : "खरिद"}
                   </td>
-                  <td> {biruwa.biruwa_sankhya} </td>
-                  <td> {biruwa.narsari_sankhya} </td>
+                  <td> {englishToNepaliNumber(biruwa.biruwa_sankhya)} </td>
+                  <td> {englishToNepaliNumber(biruwa.narsari_sankhya)} </td>
                   <td> {biruwa.barga} </td>
                   <td> {biruwa.laxya} </td>
                   <td> {biruwa.pragati} </td>

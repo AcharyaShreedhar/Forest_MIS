@@ -8,13 +8,13 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      office_id: props.history.location.item.office_id,
-      office_name: props.history.location.item.office_name,
-      office_location: props.history.location.item.office_location,
-      dist_id: props.history.location.item.dist_id,
-      office_type: props.history.location.item.office_type,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      office_id: props.history.location.item?.office_id,
+      office_name: props.history.location.item?.office_name,
+      office_location: props.history.location.item?.office_location,
+      dist_id: props.history.location.item?.dist_id,
+      office_type: props.history.location.item?.office_type,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
     this.handleDistrict = this.handleDistrict.bind(this);

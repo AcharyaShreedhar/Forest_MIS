@@ -11,18 +11,18 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.asset_id,
-      asset_type: equals(props.history.location.item.asset_type, "घर") ? 1 : 2,
-      asset_loc: props.history.location.item.asset_loc,
-      kitta_no: props.history.location.item.kitta_no,
-      home_area: props.history.location.item.home_area,
-      land_area: props.history.location.item.land_area,
-      unit: props.history.location.item.unit,
-      remarks: props.history.location.item.remarks,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.asset_id,
+      asset_type: equals(props.history.location.item?.asset_type, "घर") ? 1 : 2,
+      asset_loc: props.history.location.item?.asset_loc,
+      kitta_no: props.history.location.item?.kitta_no,
+      home_area: props.history.location.item?.home_area,
+      land_area: props.history.location.item?.land_area,
+      unit: props.history.location.item?.unit,
+      remarks: props.history.location.item?.remarks,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 

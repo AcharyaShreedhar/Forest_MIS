@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import { equals, isEmpty } from "ramda";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 const AnnualBibaran = [
   { id: 1, value: "बुझाएको" },
@@ -16,42 +17,42 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.activities_info_id,
-      samudayikban_name: props.history.location.item.samudayikban_naam,
-      fiscal_year: props.history.location.item.fiscal_year,
-      area: props.history.location.item.area,
+      id: props.history.location.item?.activities_info_id,
+      samudayikban_name: props.history.location.item?.samudayikban_naam,
+      fiscal_year: englishToNepaliNumber(props.history.location.item?.fiscal_year),
+      area: props.history.location.item?.area,
       conservation_timber:
-        props.history.location.item.production_from_conservation_timber,
+        props.history.location.item?.production_from_conservation_timber,
       conservation_wood:
-        props.history.location.item.production_from_conservation_wood,
-      employment: props.history.location.item.employment_generated_workingday,
-      withingroup_timber: props.history.location.item.withingroup_timber,
-      withingroup_wood: props.history.location.item.withingroup_wood,
-      outsidegroup_timber: props.history.location.item.outsidegroup_timber,
-      outsidegroup_wood: props.history.location.item.outsidegroup_wood,
-      maujdat_timber: props.history.location.item.maujdat_timber,
-      maujdat_wood: props.history.location.item.maujdat_wood,
-      annual_income: props.history.location.item.annual_income,
-      annual_expenditure: props.history.location.item.annual_expenditure,
-      netannual_saving: props.history.location.item.netannual_saving,
-      rojgar: props.history.location.item.niyamit_rojgar_count,
-      udhyam: props.history.location.item.community_udhyam_bibaran,
+        props.history.location.item?.production_from_conservation_wood,
+      employment: props.history.location.item?.employment_generated_workingday,
+      withingroup_timber: props.history.location.item?.withingroup_timber,
+      withingroup_wood: props.history.location.item?.withingroup_wood,
+      outsidegroup_timber: props.history.location.item?.outsidegroup_timber,
+      outsidegroup_wood: props.history.location.item?.outsidegroup_wood,
+      maujdat_timber: props.history.location.item?.maujdat_timber,
+      maujdat_wood: props.history.location.item?.maujdat_wood,
+      annual_income: props.history.location.item?.annual_income,
+      annual_expenditure: props.history.location.item?.annual_expenditure,
+      netannual_saving: props.history.location.item?.netannual_saving,
+      rojgar: props.history.location.item?.niyamit_rojgar_count,
+      udhyam: props.history.location.item?.community_udhyam_bibaran,
       annual_bibaran: equals(
-        props.history.location.item.annual_bibaran,
+        props.history.location.item?.annual_bibaran,
         "बुझाएको"
       )
         ? 1
         : 2,
       lekha_parikshyan: equals(
-        props.history.location.item.lekha_parikshyan,
+        props.history.location.item?.lekha_parikshyan,
         "गरेको"
       )
         ? 1
         : 2,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -97,7 +98,7 @@ class Edit extends Component {
       yearlyactivities: {
         data: {
           samudayikban_naam: samudayikban_name,
-          fiscal_year: fiscal_year,
+          fiscal_year: nepaliToEnglishNumber(fiscal_year),
           area: area,
           production_from_conservation_timber: conservation_timber,
           production_from_conservation_wood: conservation_wood,

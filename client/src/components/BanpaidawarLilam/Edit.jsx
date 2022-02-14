@@ -8,18 +8,18 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.lilam_id,
-      lilam_date: props.history.location.item.lilam_date,
-      banpaidawar_type: props.history.location.item.banpaidawar_type,
-      unit: props.history.location.item.unit,
-      quantity: props.history.location.item.quantity,
-      minimum_price: props.history.location.item.minimum_price,
-      sakaar_price: props.history.location.item.sakaar_price,
-      remarks: props.history.location.item.remarks,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.lilam_id,
+      lilam_date: props.history.location.item?.lilam_date,
+      banpaidawar_type: props.history.location.item?.banpaidawar_type,
+      unit: props.history.location.item?.unit,
+      quantity: props.history.location.item?.quantity,
+      minimum_price: props.history.location.item?.minimum_price,
+      sakaar_price: props.history.location.item?.sakaar_price,
+      remarks: props.history.location.item?.remarks,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 

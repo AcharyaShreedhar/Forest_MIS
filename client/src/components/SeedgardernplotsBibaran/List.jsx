@@ -58,7 +58,7 @@ function List(props) {
                   <td>{plot.prajati}</td>
                   <td>{plot.area}</td>
                   <td>{plot.location}</td>
-                  <td>{plot.established_date}</td>
+                  <td>{englishToNepaliNumber(plot.established_date)}</td>
                   <td>{plot.status}</td>
                   {officeRole > 2 && 
                     <td>

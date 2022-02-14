@@ -54,7 +54,7 @@ function List(props) {
                 <tr key={`${xeti.banyajantuxeti_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{xeti.pidit_name}</td>
-                  <td>{xeti.nagarikta_no}</td>
+                  <td>{englishToNepaliNumber(xeti.nagarikta_no)}</td>
                   <td>{xeti.pidit_address}</td>
                   <td>{xeti.upabhoktasamiti_name}</td>
                   <td>{xeti.xetigarne_animal}</td>

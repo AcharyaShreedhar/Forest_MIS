@@ -3,6 +3,7 @@ import { isEmpty } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { Button, Input, ConfirmationDialoge } from "../../components";
+import { nepaliToEnglishNumber } from "nepali-number";
 
 class Add extends Component {
   constructor(props) {
@@ -27,12 +28,18 @@ class Add extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
 
   handleSubmit() {
@@ -50,13 +57,13 @@ class Add extends Component {
       badhibibaran: {
         data: {
           badhi_aayeko_sthan: badhi_aayeko_sthan,
-          manab_ghaite: manab_ghaite,
-          manab_mareko: manab_mareko,
-          uddar_sankhya: uddar_sankhya,
+          manab_ghaite: nepaliToEnglishNumber(manab_ghaite),
+          manab_mareko: nepaliToEnglishNumber(manab_mareko),
+          uddar_sankhya: nepaliToEnglishNumber(uddar_sankhya),
           badhi_aayeko_miti: badhi_aayeko_miti,
           xeti_bibaran: xeti_bibaran,
-          banyajantu_mareko: banyajantu_mareko,
-          botbiruwa_xeti: botbiruwa_xeti,
+          banyajantu_mareko: nepaliToEnglishNumber(banyajantu_mareko),
+          botbiruwa_xeti: nepaliToEnglishNumber(botbiruwa_xeti),
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
@@ -129,7 +136,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="उद्दार संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 value={uddar_sankhya}
                 onChange={(e) => this.setState({ uddar_sankhya: e })}
@@ -139,7 +146,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="घाइते मानव संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={manab_ghaite}
                 direction="vertical"
                 onChange={(e) => this.setState({ manab_ghaite: e })}
@@ -147,7 +154,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="मृत मानव संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 value={manab_mareko}
                 onChange={(e) => this.setState({ manab_mareko: e })}
@@ -164,7 +171,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="मर्ने वन्यजन्तु संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={banyajantu_mareko}
                 direction="vertical"
                 onChange={(e) => this.setState({ banyajantu_mareko: e })}
@@ -172,7 +179,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="बोटविरुवा क्षेति संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={botbiruwa_xeti}
                 direction="vertical"
                 onChange={(e) => this.setState({ botbiruwa_xeti: e })}

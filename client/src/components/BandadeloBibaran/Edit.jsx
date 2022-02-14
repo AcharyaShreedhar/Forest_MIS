@@ -4,27 +4,28 @@ import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.bandadelo_bibaran_id,
-      bandadelo_address: props.history.location.item.bandadelo_address,
-      ban_type: props.history.location.item.ban_type,
-      ban_prajati: props.history.location.item.ban_prajati,
-      xeti_area: props.history.location.item.xeti_area,
-      niyantran_prayas: props.history.location.item.niyantran_prayas,
-      niyantran_karta: props.history.location.item.niyantran_karta,
-      sahabhagi_mahila: props.history.location.item.sahabhagi_mahila,
-      sahabhagi_purus: props.history.location.item.sahabhagi_purus,
-      bandadelo_miti: props.history.location.item.bandadelo_miti,
-      man_injured: props.history.location.item.man_injured,
-      man_dead: props.history.location.item.man_dead,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.bandadelo_bibaran_id,
+      bandadelo_address: props.history.location.item?.bandadelo_address,
+      ban_type: props.history.location.item?.ban_type,
+      ban_prajati: props.history.location.item?.ban_prajati,
+      xeti_area: props.history.location.item?.xeti_area,
+      niyantran_prayas: props.history.location.item?.niyantran_prayas,
+      niyantran_karta: props.history.location.item?.niyantran_karta,
+      sahabhagi_mahila: englishToNepaliNumber(props.history.location.item?.sahabhagi_mahila),
+      sahabhagi_purus: englishToNepaliNumber(props.history.location.item?.sahabhagi_purus),
+      bandadelo_miti: props.history.location.item?.bandadelo_miti,
+      man_injured: englishToNepaliNumber(props.history.location.item?.man_injured),
+      man_dead: englishToNepaliNumber(props.history.location.item?.man_dead),
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -33,6 +34,7 @@ class Edit extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleBanType(e) {
@@ -40,6 +42,11 @@ class Edit extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -73,11 +80,11 @@ class Edit extends Component {
           xeti_area: xeti_area,
           niyantran_prayas: niyantran_prayas,
           niyantran_karta: niyantran_karta,
-          sahabhagi_mahila: sahabhagi_mahila,
-          sahabhagi_purus: sahabhagi_purus,
+          sahabhagi_mahila: nepaliToEnglishNumber(sahabhagi_mahila),
+          sahabhagi_purus: nepaliToEnglishNumber(sahabhagi_purus),
           bandadelo_miti: bandadelo_miti,
-          man_injured: man_injured,
-          man_dead: man_dead,
+          man_injured: nepaliToEnglishNumber(man_injured),
+          man_dead: nepaliToEnglishNumber(man_dead),
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.user_name,
@@ -191,7 +198,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="नियन्त्रणमा सहभागि महिला संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={sahabhagi_mahila}
                 direction="vertical"
                 onChange={(e) => this.setState({ sahabhagi_mahila: e })}
@@ -199,7 +206,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="नियन्त्रणमा सहभागि पुरुष संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={sahabhagi_purus}
                 direction="vertical"
                 onChange={(e) => this.setState({ sahabhagi_purus: e })}
@@ -218,7 +225,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="घाईते भएका मानिसको संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={man_injured}
                 direction="vertical"
                 onChange={(e) => this.setState({ man_injured: e })}
@@ -226,7 +233,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="मृत्यु भएका मानिसको संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={man_dead}
                 direction="vertical"
                 onChange={(e) => this.setState({ man_dead: e })}

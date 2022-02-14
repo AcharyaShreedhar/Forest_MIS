@@ -63,7 +63,7 @@ function List(props) {
                       ? "सामुदायिक"
                       : "सहकारी मार्फत"}
                   </td>
-                  <td> {uddham.darta_miti}</td>
+                  <td> {englishToNepaliNumber(uddham.darta_miti)}</td>
                   <td> {uddham.rojgar_sankhya}</td>
                   {officeRole > 2 && 
                     <td>
