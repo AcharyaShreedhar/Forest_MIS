@@ -1,9 +1,22 @@
 const pool = require("../db");
 //Controller for Listing all NijibanBibaran
 async function getAllNijibanBibaran(req, res) {
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "n.office_id like ?"
+  if(office_length > 1){
+    office_cond = "n.office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "n.dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "n.dist_id in (?)"
+  }
+
   const getTotalQuery =
-    "SELECT count(*) as total from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ? and n.office_id like ?";
-  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and n.dist_id like ? and n.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    `SELECT count(*) as total from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
+  const getAllNijibanBibaranQuery = `select * from nijiban_bibarans as n where n.swikrit_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId , req.body.officeId],

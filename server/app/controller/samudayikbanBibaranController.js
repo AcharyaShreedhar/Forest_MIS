@@ -1,10 +1,23 @@
 const pool = require("../db");
 //Controller for Listing all SamudayikbanBibaran
 async function getAllSamudayikbanBibaran(req, res) {
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "s.office_id like ?"
+  if(office_length > 1){
+    office_cond = "s.office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "s.dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "s.dist_id in (?)"
+  }
+
   const getTotalQuery =
-    "SELECT count(*) as total from samudayikban_bibarans as s where s.handover_date BETWEEN ? and ? and s.dist_id like ? and s.office_id like ?";
+    `SELECT count(*) as total from samudayikban_bibarans as s where s.handover_date BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
   const getAllSamudayikbanBibaranQuery =
-    "SELECT s.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM `samudayikban_bibarans` as s left JOIN nabikaran_karyayojanas as n on s.darta_no=n.darta_id HAVING s.handover_date BETWEEN ? and ? and s.dist_id like ? and s.office_id like ? ORDER BY ? DESC LIMIT ?,?";
+    `SELECT s.*,n.renewal_date,n.renewed_date,n.nabikaran_abadhi FROM samudayikban_bibarans as s left JOIN nabikaran_karyayojanas as n on s.darta_no=n.darta_id HAVING s.handover_date BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?,?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],

@@ -1,9 +1,22 @@
 const pool = require("../db");
 //Controller for Listing all Jadibutis
 async function getAllJadibuti(req, res) {
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "j.office_id like ?"
+  if(office_length > 1){
+    office_cond = "j.office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "j.dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "j.dist_id in (?)"
+  }
+
   const getTotalQuery =
-    "SELECT count(*) as total from jadibutis as j where j.dist_id like ? and j.office_id like ?";
-  const getAllJadibutiQuery = `select * from jadibutis as j where j.dist_id like ? and j.office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+    `SELECT count(*) as total from jadibutis as j where ${dist_cond} and ${office_cond}`;
+  const getAllJadibutiQuery = `select * from jadibutis as j where ${dist_cond} and ${office_cond} ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.distId, req.body.officeId],

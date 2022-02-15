@@ -74,7 +74,7 @@ export class Filter extends Component {
           getValue={(districtsList) => districtsList["value"]}
           onChange={(e) => this.handleDistrict(e)}
           value={district}
-          // multi={true}
+          multi={true}
         />
         {yesOffice && (
           <Dropdown
@@ -86,7 +86,7 @@ export class Filter extends Component {
             getValue={(officesList) => officesList["value"]}
             onChange={(e) => this.handleOffice(e)}
             value={office}
-            // multi={true}
+            multi={true}
           />
         )}
       </div>

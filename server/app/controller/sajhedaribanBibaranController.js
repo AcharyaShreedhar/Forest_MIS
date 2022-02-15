@@ -1,9 +1,22 @@
 const pool = require("../db");
 //Controller for Listing all SajhedaribanBibaran
 async function getAllSajhedaribanBibaran(req, res) {
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "s.office_id like ?"
+  if(office_length > 1){
+    office_cond = "s.office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "s.dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "s.dist_id in (?)"
+  }
+
   const getTotalQuery =
-    "SELECT count(*) as total from sajhedariban_bibarans as s where s.darta_miti BETWEEN ? and ? and s.dist_id like ? and s.office_id like ?";
-  const getAllSajhedaribanBibaranQuery = `select * from sajhedariban_bibarans as s where s.darta_miti BETWEEN ? and ? and s.dist_id like ? and s.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    `SELECT count(*) as total from sajhedariban_bibarans as s where s.darta_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
+  const getAllSajhedaribanBibaranQuery = `select * from sajhedariban_bibarans as s where s.darta_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],

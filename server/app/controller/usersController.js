@@ -4,9 +4,22 @@ const util = require("../db/utility");
 
 //Controller for Listing all Users
 async function getAllUsers(req, res) {
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "office_id like ?"
+  if(office_length > 1){
+    office_cond = "office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "dist_id in (?)"
+  }
+
   const getTotalQuery =
-    "SELECT count(*) as total from users where dist_id like ? and office_id like ?";
-  const getAllUsersQuery = `select * from users where dist_id like ? and office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+    `SELECT count(*) as total from users where ${dist_cond} and ${office_cond}`;
+  const getAllUsersQuery = `select * from users where ${dist_cond} and ${office_cond} ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.distId, req.body.officeId],

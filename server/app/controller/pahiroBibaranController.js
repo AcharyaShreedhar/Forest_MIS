@@ -1,9 +1,22 @@
 const pool = require("../db");
 //Controller for Listing all pahiroBibaran
 async function getAllPahiroBibaran(req, res) {
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "p.office_id like ?"
+  if(office_length > 1){
+    office_cond = "p.office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "p.dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "p.dist_id in (?)"
+  }
+
   const getTotalQuery =
-    "SELECT count(*) as total from pahiro_bibarans as p where p.pahiro_gayeko_miti BETWEEN ? and ? and p.dist_id like ? and p.office_id like ?";
-  const getAllPahiroBibaranQuery = `select * from pahiro_bibarans as p where p.pahiro_gayeko_miti BETWEEN ? and ? and p.dist_id like ? and p.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    `SELECT count(*) as total from pahiro_bibarans as p where p.pahiro_gayeko_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
+  const getAllPahiroBibaranQuery = `select * from pahiro_bibarans as p where p.pahiro_gayeko_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
