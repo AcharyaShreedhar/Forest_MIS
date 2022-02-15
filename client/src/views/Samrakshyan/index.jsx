@@ -5,11 +5,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import SamrakshyanActions from "../../actions/samrakshyan";
+import AppActions from "../../actions/app";
 import samrakshyanRoutes from "../../routes/samrakshyan";
 
 export class Samrakshyan extends Component {
   componentDidMount() {
-    const { districtId, officeRole} = this.props;
+    const { districtId, officeRole } = this.props;
     this.props.fetchallJaladharsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -48,11 +49,16 @@ export class Samrakshyan extends Component {
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
+    });
+
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
-componentDidUpdate() {
-  const { districtId, officeRole} = this.props;
+  componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallJaladharsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -91,6 +97,11 @@ componentDidUpdate() {
       name: "karyakram_miti",
       page: 0,
       perPage: 10,
+    });
+
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
@@ -160,6 +171,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchallPanimuhansamrakshyan: (payload) =>
     dispatch(SamrakshyanActions.fetchallpanimuhansamrakshyanRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Samrakshyan);

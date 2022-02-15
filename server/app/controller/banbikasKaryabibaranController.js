@@ -1,8 +1,21 @@
 const pool = require("../db");
 //Controller for Listing all Banbikas karyabibaran
 async function getAllBanbikasKaryabibaran(req, res) {
-  const getTotalQuery = "SELECT count(*) as total from banbikas_karyabibarans as b where b.dist_id like ? and b.office_id like ?";
-  const getAllBanbikasKaryabibaranQuery = `select * from banbikas_karyabibarans as b where  b.dist_id like ? and b.office_id like ? ORDER BY ? ASC LIMIT ?, ?`;
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "b.office_id like ?"
+  if(office_length > 1){
+    office_cond = "b.office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "b.dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "b.dist_id in (?)"
+  }
+
+  const getTotalQuery = `SELECT count(*) as total from banbikas_karyabibarans as b where ${dist_cond} and ${office_cond}`;
+  const getAllBanbikasKaryabibaranQuery = `select * from banbikas_karyabibarans as b where  ${dist_cond} and ${office_cond} ORDER BY ? ASC LIMIT ?, ?`;
   pool.query(getTotalQuery, [req.body.distId, req.body.officeId], (error, countresults, fields) => {
     if (error) throw error;
     pool.query(

@@ -16,6 +16,7 @@ import {
   UpabhoktasamuhaBibaran,
   ReportGenerator,
 } from "../../../components";
+import AppActions from "../../../actions/app";
 import BankaprakarActions from "../../../actions/bankaprakar";
 import {
   samudayikbanHeadings,
@@ -49,6 +50,7 @@ class Bankaprakar extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -70,6 +72,7 @@ class Bankaprakar extends Component {
     var rastriyabanList = [];
     var commercialbanList = [];
     var upabhoktasamuhaList = [];
+    var officeList = [];
 
     if (nextProps !== prevState) {
       samudayikbanList = nextProps.samudayikbanbibaranDataList.data;
@@ -81,6 +84,7 @@ class Bankaprakar extends Component {
       rastriyabanList = nextProps.rastriyabanbibaranDataList.data;
       commercialbanList = nextProps.commercialbanbibaranDataList.data;
       upabhoktasamuhaList = nextProps.upabhoktasamuhabibaranDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
 
     return {
@@ -94,23 +98,24 @@ class Bankaprakar extends Component {
       rastriyabanList,
       commercialbanList,
       upabhoktasamuhaList,
+      officeList,
     };
   }
 
   handlePer(e, item) {
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e, item))
+    this.setState({ page: 0 }, () => this.handlePerCallback(e, item));
   }
 
   handlePerCallback(e, item) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
-      perPage: e, 
+    this.setState({
+      perPage: e,
     });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e, item);
   }
   handleFromDate(e, item) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       fromDate: e,
       page: 0,
     });
@@ -119,7 +124,7 @@ class Bankaprakar extends Component {
 
   handleToDate(e, item) {
     const { distId, officeId, perPage, fromDate } = this.state;
-    this.setState({ 
+    this.setState({
       toDate: e,
       page: 0,
     });
@@ -127,14 +132,32 @@ class Bankaprakar extends Component {
   }
 
   handleDistrict(e, item) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    const { fromDate, perPage, toDate } = this.state;
+    this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage, item);
-  }
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage, item);
 
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e, item) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage, item);
+  }
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage, item) {
     switch (item) {
       case "samudayikban": {
@@ -269,7 +292,7 @@ class Bankaprakar extends Component {
   handleSelectMenu(event, item, path) {
     this.setState({ item: item });
     this.setState({ path: path });
-    const { page } = this.state
+    const { page } = this.state;
     switch (event) {
       case "edit": {
         switch (path) {
@@ -382,7 +405,7 @@ class Bankaprakar extends Component {
           }
           default:
         }
-        this.setState({ 
+        this.setState({
           showDialog: !this.state.showDialog,
         });
         break;
@@ -436,9 +459,9 @@ class Bankaprakar extends Component {
       default:
         break;
     }
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
-      page: 0, 
+      page: 0,
       perPage: 10,
     });
   }
@@ -499,6 +522,7 @@ class Bankaprakar extends Component {
       rastriyabanList,
       commercialbanList,
       upabhoktasamuhaList,
+      officeList,
       showDialog,
       messagebody,
     } = this.state;
@@ -523,9 +547,12 @@ class Bankaprakar extends Component {
                 id="samudayikban"
                 title="हस्तान्तरण मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -582,9 +609,12 @@ class Bankaprakar extends Component {
                 id="upabhoktasamuha"
                 title="दर्ता मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -640,9 +670,12 @@ class Bankaprakar extends Component {
                 id="dharmikban"
                 title="हस्तान्तरण मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -698,9 +731,12 @@ class Bankaprakar extends Component {
                 id="kabuliyatiban"
                 title="दर्ता मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -756,9 +792,12 @@ class Bankaprakar extends Component {
                 id="nijiban"
                 title="स्विकृत मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -814,9 +853,12 @@ class Bankaprakar extends Component {
                 id="sajhedariban"
                 title="दर्ता मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -872,9 +914,12 @@ class Bankaprakar extends Component {
                 id="chaklaban"
                 title="दर्ता मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -930,9 +975,12 @@ class Bankaprakar extends Component {
                 id="rastriyaban"
                 title="दर्ता मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -988,9 +1036,12 @@ class Bankaprakar extends Component {
                 id="commercialban"
                 title="दर्ता मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
@@ -1054,6 +1105,7 @@ Bankaprakar.propTypes = {
   rastriyabanbibaranDataList: PropTypes.any,
   commercialbanbibaranDataList: PropTypes.any,
   upabhoktasamuhabibaranDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Bankaprakar.defaultProps = {
@@ -1066,12 +1118,14 @@ Bankaprakar.defaultProps = {
   rastriyabanbibaranDataList: {},
   commercialbanbibaranDataList: {},
   upabhoktasamuhabibaranDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   districts: state.app.alldistrictsData,
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
@@ -1245,6 +1299,10 @@ const mapDispatchToProps = (dispatch) => ({
         consumergroupdetailsId
       )
     ),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Bankaprakar);

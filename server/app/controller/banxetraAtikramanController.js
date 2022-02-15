@@ -2,9 +2,22 @@ const pool = require("../db");
 
 //Controller for Listing all Banxetra Atikramans
 async function getAllBanxetraAtikramans(req, res) {
+
+  const office_length = await req.body.officeId.length;
+  let office_cond = "b.office_id like ?"
+  if(office_length > 1){
+    office_cond = "b.office_id in (?)"
+  }
+
+  const dist_length = await req.body.distId.length;
+  let dist_cond = "b.dist_id like ?"
+  if(dist_length > 1){
+    dist_cond = "b.dist_id in (?)"
+  }
+
   const getTotalQuery =
-    "SELECT count(*) as total from banxetra_atikramans as b where b.atikraman_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ?";
-  const getAllBanxetraAtikramansQuery = `select * from banxetra_atikramans as b where b.atikraman_miti BETWEEN ? and ? and b.dist_id like ? and b.office_id like ? ORDER BY ? DESC LIMIT ?, ?`;
+    `SELECT count(*) as total from banxetra_atikramans as b where b.atikraman_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
+  const getAllBanxetraAtikramansQuery = `select * from banxetra_atikramans as b where b.atikraman_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],

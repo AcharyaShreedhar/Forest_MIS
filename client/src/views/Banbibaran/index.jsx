@@ -5,11 +5,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import banbibaranRoutes from "../../routes/banbibaran";
+import AppActions from "../../actions/app";
 import BanbibaranActions from "../../actions/banbibaran";
 
 class Banbibaran extends Component {
   componentDidMount() {
-    const { districtId, officeRole} = this.props;
+    const { districtId, officeRole } = this.props;
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -45,11 +46,15 @@ class Banbibaran extends Component {
       name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
-componentDidUpdate() {
-  const { districtId, officeRole} = this.props;
+  componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallBanxetraatikraman({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -85,6 +90,10 @@ componentDidUpdate() {
       name: "jaheri_partibedan_miti",
       page: 0,
       perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
@@ -151,6 +160,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BanbibaranActions.fetchallplotbibaranRequest(payload)),
   fetchallBanxetraanyaprayojan: (payload) =>
     dispatch(BanbibaranActions.fetchallbanxetraanyaprayojanRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banbibaran);

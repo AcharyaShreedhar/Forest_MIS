@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
+import AppActions from "../../../actions/app";
 import { jadibutiHeadings, districtList } from "../../../services/config";
 
 class Jadibuti extends Component {
@@ -17,6 +18,7 @@ class Jadibuti extends Component {
     this.state = {
       loc: "jadibutilist",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -25,6 +27,7 @@ class Jadibuti extends Component {
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
@@ -41,43 +44,71 @@ class Jadibuti extends Component {
     if (nextProps !== prevState) {
       jadibutiList = nextProps.jadibutiDataList.data;
     }
-    return { loc, jadibutiList };
+
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+
+    return { loc, jadibutiList, officeList };
   }
 
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
 
   handlePerCallback(e) {
-    const { distId, page } = this.state;
-    this.setState({ 
-      perPage: e, 
+    const { distId, officeId, page } = this.state;
+    this.setState({
+      perPage: e,
     });
-    this.fetchResults(distId, page, e);
+    this.fetchResults(distId, officeId, page, e);
   }
 
   handleDistrict(e, item) {
     const { perPage } = this.state;
-    this.setState({ 
+    this.setState({
       distId: e,
+      officeId: "%",
       page: 0,
     });
-    this.fetchResults(e, 0, perPage);
+    this.fetchResults(e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
   }
 
-  fetchResults(distId, page, perPage) {
+  handleOffice(e) {
+    const { perPage, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(distId, e, 0, perPage);
+  }
+
+  fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallJadibuti({
       distId,
+      officeId,
       name: "jadibuti_thegana",
       page: page,
       perPage,
     });
   }
 
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
+
   handlePageChange(data) {
-    const { distId, perPage } = this.state;
+    const { distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
-    this.fetchResults(distId, data.selected * perPage, perPage);
+    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
   }
 
   handleSelectMenu(event, item, path) {
@@ -107,9 +138,9 @@ class Jadibuti extends Component {
     const { item, page } = this.state;
 
     this.props.deleteJadibuti(item.jadibuti_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
-      page: 0, 
+      page: 0,
       perPage: 10,
     });
   }
@@ -118,7 +149,7 @@ class Jadibuti extends Component {
     this.props.history.push("/activities/jadibutiadd/new");
   }
   render() {
-    const { loc, perPage, jadibutiList, showDialog } = this.state;
+    const { loc, perPage, jadibutiList, officeList, showDialog } = this.state;
     const { user, role, officeRole } = this.props;
 
     return (
@@ -138,7 +169,10 @@ class Jadibuti extends Component {
               <Filter
                 id="jadibuti"
                 districtsList={districtList}
+                officesList={officeList}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDate={false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
@@ -200,6 +234,7 @@ Jadibuti.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   jadibutiDataList: state.biruwautpadan.alljadibutiData,
 });
@@ -215,6 +250,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteJadibuti: (jadibutiId) =>
     dispatch(BiruwautpadanActions.deletejadibutiRequest(jadibutiId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Jadibuti);

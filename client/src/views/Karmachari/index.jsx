@@ -5,12 +5,13 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import karmachariRoutes from "../../routes/karmachari";
+import AppActions from "../../actions/app";
 import KarmacharidarbandiActions from "../../actions/karmacharidarbandi";
 import KarmacharibibaranActions from "../../actions/karmacharibibaran";
 
 export class Karmachari extends Component {
   componentDidMount() {
-    const { districtId, officeRole} = this.props;
+    const { districtId, officeRole } = this.props;
     this.props.fetchallKarmacharidarbandi({
       distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
@@ -27,11 +28,16 @@ export class Karmachari extends Component {
       name: "emp_appoint_date",
       page: 0,
       perPage: 10,
+    });
+
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
-componentDidUpdate() {
-  const { districtId, officeRole} = this.props;
+  componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallKarmacharidarbandi({
       distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
@@ -48,6 +54,11 @@ componentDidUpdate() {
       name: "emp_appoint_date",
       page: 0,
       perPage: 10,
+    });
+
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
@@ -111,6 +122,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchallKarmacharibibaran: (payload) =>
     dispatch(KarmacharibibaranActions.fetchallemployeesRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karmachari);

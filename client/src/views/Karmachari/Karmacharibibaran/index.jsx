@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import KarmacharibibaranActions from "../../../actions/karmacharibibaran";
+import AppActions from "../../../actions/app";
 import {
   karmacharibibaranHeadings,
   districtList,
@@ -32,6 +33,7 @@ class Karmacharibibaran extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -39,30 +41,32 @@ class Karmacharibibaran extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback= this.handlePerCallback.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
     var karmacharibibaranList = [];
+    var officeList = [];
     if (nextProps !== prevState) {
       karmacharibibaranList = nextProps.karmacharibibaranDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
-    return { loc, karmacharibibaranList };
+    return { loc, officeList, karmacharibibaranList };
   }
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-     });
+    });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       fromDate: e,
       page: 0,
     });
@@ -70,19 +74,39 @@ class Karmacharibibaran extends Component {
   }
   handleToDate(e) {
     const { distId, officeId, perPage, fromDate } = this.state;
-    this.setState({ 
-      fromDate: e,
+    this.setState({
+      toDate: e,
       page: 0,
     });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -136,9 +160,9 @@ class Karmacharibibaran extends Component {
     const { item, page } = this.state;
 
     this.props.deleteKarmacharibibaran(item.emp_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
-      page: 0, 
+      page: 0,
       perPage: 10,
     });
   }
@@ -148,7 +172,8 @@ class Karmacharibibaran extends Component {
   }
 
   render() {
-    const { loc, perPage, karmacharibibaranList, showDialog } = this.state;
+    const { loc, perPage, karmacharibibaranList, officeList, showDialog } =
+      this.state;
     const { user, role, officeRole } = this.props;
 
     return (
@@ -169,9 +194,12 @@ class Karmacharibibaran extends Component {
                 id="karmacharibibaran"
                 title="अपोइन्ट मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="karmacharibibaran" />
@@ -225,10 +253,12 @@ class Karmacharibibaran extends Component {
 
 Karmacharibibaran.propsTypes = {
   karmacharibibaranDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Karmacharibibaran.defaultProps = {
   karmacharibibaranDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
@@ -236,6 +266,7 @@ const mapStateToProps = (state) => ({
   role: state.app.user.user_type,
   officeRole: state.app.user.office_type,
   districtData: state.app,
+  officeDataList: state.app.officesDropdownData,
   karmacharibibaranDataList: state.karmacharibibaran.allemployeesData,
 });
 
@@ -250,6 +281,10 @@ const mapDispatchToProps = (dispatch) => ({
     ),
   deleteKarmacharibibaran: (employeeId) =>
     dispatch(KarmacharibibaranActions.deleteemployeesRequest(employeeId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karmacharibibaran);

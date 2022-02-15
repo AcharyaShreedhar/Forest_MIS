@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import SamrakshyanActions from "../../../actions/samrakshyan";
+import AppActions from "../../../actions/app";
 import {
   nadikinarsamrakshyanHeadings,
   districtList,
@@ -32,6 +33,7 @@ class Nadikinarsamrakshyan extends Component {
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePer = this.handlePer.bind(this);
@@ -40,32 +42,35 @@ class Nadikinarsamrakshyan extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback= this.handlePerCallback.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var nadikinarsamrakshyanList = [];
+    var officeList = [];
+
     if (nextProps !== prevState) {
       nadikinarsamrakshyanList = nextProps.nadikinarsamrakshyanDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
-    return { loc, nadikinarsamrakshyanList };
+    return { loc, officeList, nadikinarsamrakshyanList };
   }
 
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-     });
+    });
     this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       fromDate: e,
       page: 0,
     });
@@ -73,19 +78,39 @@ class Nadikinarsamrakshyan extends Component {
   }
   handleToDate(e) {
     const { distId, officeId, perPage, fromDate } = this.state;
-    this.setState({ 
-      fromDate: e,
+    this.setState({
+      toDate: e,
       page: 0,
     });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
   }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallNadikinarsamrakshyan({
@@ -139,10 +164,10 @@ class Nadikinarsamrakshyan extends Component {
     const { item, page } = this.state;
 
     this.props.deleteNadikinarsamrakshyan(item.nadikinarsamrakshyan_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
-      perPage: 10, 
+      perPage: 10,
     });
   }
 
@@ -150,7 +175,8 @@ class Nadikinarsamrakshyan extends Component {
     this.props.history.push("/samrakshyan/nadikinarsamrakshyanadd/new");
   }
   render() {
-    const { loc, perPage, nadikinarsamrakshyanList, showDialog } = this.state;
+    const { loc, perPage, nadikinarsamrakshyanList, officeList, showDialog } =
+      this.state;
     const { user, role, officeRole } = this.props;
 
     return (
@@ -171,9 +197,12 @@ class Nadikinarsamrakshyan extends Component {
                 id="nadikinarsamrakshyan"
                 title="कार्यक्रम मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="nadikinarsamrakshyan" />
@@ -229,15 +258,18 @@ class Nadikinarsamrakshyan extends Component {
 
 Nadikinarsamrakshyan.propTypes = {
   nadikinarsamrakshyanList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Nadikinarsamrakshyan.defaultProps = {
   nadikinarsamrakshyanList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   nadikinarsamrakshyanDataList: state.samrakshyan.allnadikinarsamrakshyanData,
 });
@@ -262,6 +294,10 @@ const mapDispatchToProps = (dispatch) => ({
         nadikinarSamrakshyanId
       )
     ),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(

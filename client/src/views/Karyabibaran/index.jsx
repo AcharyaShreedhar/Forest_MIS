@@ -5,11 +5,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import karyabibaranRoutes from "../../routes/karyabibaran";
+import AppActions from "../../actions/app";
 import KaryabibaranActions from "../../actions/karyabibaran";
 
 export class Karyabibaran extends Component {
   componentDidMount() {
-    const { districtId, officeRole} = this.props;
+    const { districtId, officeRole } = this.props;
     this.props.fetchallSamajikkaryabibaran({
       distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
@@ -17,10 +18,15 @@ export class Karyabibaran extends Component {
       page: 0,
       perPage: 10,
     });
+
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
+    });
   }
 
-componentDidUpdate() {
-  const { districtId, officeRole} = this.props;
+  componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     // this.props.fetchallBanbikaskaryabibaran({
     //   distId: "%",
     //   name: "ban_type",
@@ -33,6 +39,11 @@ componentDidUpdate() {
       name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
+    });
+
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
@@ -93,6 +104,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(KaryabibaranActions.fetchallbanbikaskaryabibaranRequest(payload)),
   fetchallSamajikkaryabibaran: (payload) =>
     dispatch(KaryabibaranActions.fetchallsamajikkaryabibaranRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Karyabibaran);

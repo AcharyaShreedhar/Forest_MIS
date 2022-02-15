@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import KaryabibaranActions from "../../../actions/karyabibaran";
+import AppActions from "../../../actions/app";
 import {
   samajikkaryabibaranHeadings,
   districtList,
@@ -34,6 +35,7 @@ class Samajikkaryabibaran extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handlePerCallback = this.handlePerCallback.bind(this);
@@ -41,35 +43,58 @@ class Samajikkaryabibaran extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
+    var officeList = [];
     var samajikkaryabibaranList = [];
     if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
       samajikkaryabibaranList = nextProps.samajikkaryabibaranDataList.data;
     }
 
     return {
       loc,
+      officeList,
       samajikkaryabibaranList,
     };
   }
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));;
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
 
   handlePerCallback(e) {
     const { distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-   });
+    });
     this.fetchResults(distId, officeId, page, e);
   }
 
   handleDistrict(e) {
-    const { officeId, perPage } = this.state;
-    this.setState({ 
+    const { perPage } = this.state;
+    this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(e, officeId, 0, perPage);
+    this.fetchResults(e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { perPage, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(distId, e, 0, perPage);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
   }
 
   fetchResults(distId, officeId, page, perPage) {
@@ -116,10 +141,10 @@ class Samajikkaryabibaran extends Component {
     const { item, page } = this.state;
 
     this.props.deleteSamajikkaryabibaran(item.samajik_karyabibaran_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
-      perPage: 10, 
+      perPage: 10,
     });
   }
 
@@ -128,7 +153,8 @@ class Samajikkaryabibaran extends Component {
   }
 
   render() {
-    const { loc, perPage, samajikkaryabibaranList, showDialog } = this.state;
+    const { loc, perPage, samajikkaryabibaranList, officeList, showDialog } =
+      this.state;
     const { user, role, officeRole } = this.props;
 
     return (
@@ -148,7 +174,10 @@ class Samajikkaryabibaran extends Component {
               <Filter
                 id="samajikkaryabibaran"
                 districtsList={districtList}
+                officesList={officeList}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDate={false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
@@ -205,15 +234,18 @@ class Samajikkaryabibaran extends Component {
 
 Samajikkaryabibaran.propsTypes = {
   samajikkaryabibaranDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Samajikkaryabibaran.defaultProps = {
   samajikkaryabibaranDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   samajikkaryabibaranDataList: state.karyabibaran.allsamajikkaryabibaranData,
 });
@@ -239,6 +271,10 @@ const mapDispatchToProps = (dispatch) => ({
         samajikkaryabibaranId
       )
     ),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(

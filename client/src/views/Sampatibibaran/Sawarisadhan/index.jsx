@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import SampatibibaranActions from "../../../actions/sampatibibaran";
+import AppActions from "../../../actions/app";
 import { sawarisadhanHeadings, districtList } from "../../../services/config";
 import { Fragment } from "react";
 
@@ -34,6 +35,7 @@ class Sawarisadhan extends Component {
     this.fetchResults = this.fetchResults.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
@@ -44,25 +46,28 @@ class Sawarisadhan extends Component {
     const loc = nextProps.location.pathname.split("/")[2];
 
     var sawarisadhanList = [];
+    var officeList = [];
+
     if (nextProps !== prevState) {
       sawarisadhanList = nextProps.sawarisadhanDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
-    return { loc, sawarisadhanList };
+    return { loc, sawarisadhanList, officeList };
   }
 
   handlePer(e) {
-    this.setState({ page: 0 },  () => this.handlePerCallback(e)); 
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
-  
+
   handlePerCallback(e) {
     const { fromDate, toDate, distId, officeId, page } = this.state;
-    this.setState({ perPage: e,  })
-    this.fetchResults(fromDate, toDate, distId, officeId, page, e)
+    this.setState({ perPage: e });
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
 
   handleFromDate(e) {
     const { distId, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       fromDate: e,
       page: 0,
     });
@@ -70,20 +75,41 @@ class Sawarisadhan extends Component {
   }
   handleToDate(e) {
     const { distId, officeId, fromDate, perPage } = this.state;
-    this.setState({ 
+    this.setState({
       toDate: e,
       page: 0,
-     });
+    });
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
     const { fromDate, officeId, perPage, toDate } = this.state;
-    this.setState({ 
+    this.setState({
       distId: e,
-      page: 0, 
+      officeId: "%", // office reset
+      page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, officeId, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
   }
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
+
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallSawarisadhan({
       fromDate,
@@ -136,8 +162,8 @@ class Sawarisadhan extends Component {
     const { item, page } = this.state;
 
     this.props.deleteSawarisadhan(item.vehicle_id);
-    this.setState({ 
-      showDialog: !this.state.showDialog, 
+    this.setState({
+      showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
     });
@@ -147,7 +173,8 @@ class Sawarisadhan extends Component {
     this.props.history.push("/sampatibibaran/sawarisadhanadd/new");
   }
   render() {
-    const { loc, perPage, sawarisadhanList, showDialog } = this.state;
+    const { loc, perPage, sawarisadhanList, officeList, showDialog } =
+      this.state;
     const { user, role, officeRole } = this.props;
 
     return (
@@ -168,9 +195,12 @@ class Sawarisadhan extends Component {
                 id="vehicle"
                 title="प्राप्ति मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="vehicle" />
@@ -194,9 +224,8 @@ class Sawarisadhan extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
-              forcePage={this.state.page} 
+              forcePage={this.state.page}
             />
-     
           </Fragment>
         )}
         {equals(loc, "sawarisadhanadd") && (
@@ -223,15 +252,18 @@ class Sawarisadhan extends Component {
 
 Sawarisadhan.propTypes = {
   sawarisadhanDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Sawarisadhan.defaultProps = {
   sawarisadhanDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   sawarisadhanDataList: state.sampatibibaran.allvehiclesData,
 });
@@ -247,6 +279,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteSawarisadhan: (assetId) =>
     dispatch(SampatibibaranActions.deletevehiclesRequest(assetId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sawarisadhan);

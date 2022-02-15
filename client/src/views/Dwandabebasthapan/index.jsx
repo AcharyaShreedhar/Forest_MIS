@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { isEmpty } from "ramda";
 import { NotFound } from "../../components";
 import DwandabebasthapanActions from "../../actions/dwandabebasthapan";
+import AppActions from "../../actions/app";
 import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
 export class Dwandabebasthapan extends Component {
@@ -28,6 +29,10 @@ export class Dwandabebasthapan extends Component {
       page: 0,
       perPage: 10,
     });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
+    });
   }
 
 componentDidUpdate() {
@@ -49,6 +54,10 @@ componentDidUpdate() {
       name: "xeti_miti",
       page: 0,
       perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
@@ -109,6 +118,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(DwandabebasthapanActions.fetchallbanyajantuuddarRequest(payload)),
   fetchallBanyajantuxetirahat: (payload) =>
     dispatch(DwandabebasthapanActions.fetchallbanyajantuxetiRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dwandabebasthapan);

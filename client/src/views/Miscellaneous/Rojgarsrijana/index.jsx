@@ -9,6 +9,7 @@ import {
   ConfirmationDialoge,
 } from "../../../components";
 import MiscellaneousActions from "../../../actions/miscellaneous";
+import AppActions from "../../../actions/app";
 import { rojgarsrijanaHeadings, districtList } from "../../../services/config";
 
 class Rojgarsrijana extends Component {
@@ -27,6 +28,7 @@ class Rojgarsrijana extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
     this.handlePer = this.handlePer.bind(this);
     this.fetchResults = this.fetchResults.bind(this);
@@ -38,34 +40,57 @@ class Rojgarsrijana extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split("/")[2];
     var rojgarsrijanaList = [];
+    var officeList = [];
     if (nextProps !== prevState) {
       rojgarsrijanaList = nextProps.rojgarsrijanaDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
 
     return {
       loc,
+      officeList,
       rojgarsrijanaList,
     };
   }
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));;
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
 
   handlePerCallback(e) {
     const { distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-   });
+    });
     this.fetchResults(distId, officeId, page, e);
   }
 
   handleDistrict(e) {
-    const { officeId, perPage } = this.state;
-    this.setState({ 
+    const { perPage } = this.state;
+    this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(e, officeId, 0, perPage);
+    this.fetchResults(e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
+  }
+  handleOffice(e) {
+    const { perPage, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(distId, e, 0, perPage);
+  }
+
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
   }
 
   fetchResults(distId, officeId, page, perPage) {
@@ -111,9 +136,9 @@ class Rojgarsrijana extends Component {
     const { item, page } = this.state;
 
     this.props.deleteRojgarsrijana(item.rojgar_srijana_id);
-    this.setState({ 
+    this.setState({
       showDialog: !this.state.showDialog,
-      page: 0, 
+      page: 0,
       perPage: 10,
     });
   }
@@ -123,7 +148,8 @@ class Rojgarsrijana extends Component {
   }
 
   render() {
-    const { loc, perPage, rojgarsrijanaList, showDialog } = this.state;
+    const { loc, perPage, rojgarsrijanaList, officeList, showDialog } =
+      this.state;
     const { user, role, officeRole } = this.props;
 
     return (
@@ -143,7 +169,10 @@ class Rojgarsrijana extends Component {
               <Filter
                 id="rojgarsrijana"
                 districtsList={districtList}
+                officesList={officeList}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDate={false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
@@ -196,15 +225,18 @@ class Rojgarsrijana extends Component {
 
 Rojgarsrijana.propsTypes = {
   rojgarsrijanaDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Rojgarsrijana.defaultProps = {
   rojgarsrijanaDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   rojgarsrijanaDataList: state.miscellaneous.allrojgarsrijanaData,
 });
@@ -223,6 +255,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteRojgarsrijana: (rojgarsrijanaId) =>
     dispatch(MiscellaneousActions.deleterojgarsrijanaRequest(rojgarsrijanaId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rojgarsrijana);

@@ -5,11 +5,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { NotFound } from "../../components";
 import { isEmpty } from "ramda";
 import banpaidawarRoutes from "../../routes/banpaidawar";
+import AppActions from "../../actions/app";
 import BanpaidawarActions from "../../actions/banpaidawar";
 
 export class Banpaidawar extends Component {
   componentDidMount() {
-    const { districtId, officeRole} = this.props;
+    const { districtId, officeRole } = this.props;
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -36,11 +37,15 @@ export class Banpaidawar extends Component {
       name: "bikri_miti",
       page: 0,
       perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
-componentDidUpdate() {
-  const { districtId, officeRole} = this.props;
+  componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
@@ -67,6 +72,10 @@ componentDidUpdate() {
       name: "bikri_miti",
       page: 0,
       perPage: 10,
+    });
+    this.props.fetchOfficedropdown({
+      distId: "%",
+      name: "value", //"office_name"
     });
   }
 
@@ -134,6 +143,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BanpaidawarActions.fetchallbanpaidawarbikribitaranRequest(payload)
     ),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banpaidawar);

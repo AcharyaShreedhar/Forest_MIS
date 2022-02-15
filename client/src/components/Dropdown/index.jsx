@@ -36,7 +36,7 @@ class Dropdown extends React.PureComponent {
     this.handleClose = this.handleClose.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
     this.handleSpecial = this.handleSpecial.bind(this);
-    this.setSelected = this.setSelected.bind(this);
+    // this.setSelected = this.setSelected.bind(this);
     this.handleDefaultValues = this.handleDefaultValues.bind(this);
   }
 
@@ -212,9 +212,9 @@ class Dropdown extends React.PureComponent {
     this.setState({ selected: newSelected });
   }
 
-  setSelected(e) {
-    this.setState({ selected: e });
-  }
+  // setSelected(e) {
+  //   this.setState({ selected: e });
+  // }
 
   renderItem(data, idx) {
     const { type, selectable, splitted } = this.props;

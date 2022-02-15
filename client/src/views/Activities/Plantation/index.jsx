@@ -2,9 +2,15 @@ import React, { Component, Fragment } from "react";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
 import { equals, isNil } from "ramda";
-import { Brixyaropan, Filter, ReportGenerator, ConfirmationDialoge } from "../../../components";
+import {
+  Brixyaropan,
+  Filter,
+  ReportGenerator,
+  ConfirmationDialoge,
+} from "../../../components";
 import BiruwautpadanActions from "../../../actions/biruwautpadan";
-import { brixyaropanHeadings,districtList } from "../../../services/config";
+import AppActions from "../../../actions/app";
+import { brixyaropanHeadings, districtList } from "../../../services/config";
 
 class Plantation extends Component {
   constructor(props) {
@@ -14,6 +20,7 @@ class Plantation extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -23,6 +30,7 @@ class Plantation extends Component {
     this.handleSelectMenu = this.handleSelectMenu.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
     this.handleDistrict = this.handleDistrict.bind(this);
+    this.handleOffice = this.handleOffice.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
@@ -39,64 +47,90 @@ class Plantation extends Component {
     if (nextProps !== prevState) {
       brixyaropanList = nextProps.brixyaropanDataList.data;
     }
-    return { brixyaropanList, loc };
+    var officeList = [];
+    if (nextProps !== prevState) {
+      officeList = nextProps.officeDataList.data;
+    }
+    return { officeList, brixyaropanList, loc };
   }
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
 
   handlePerCallback(e) {
-    const { fromDate, toDate, distId, page } = this.state;
-    this.setState({ 
+    const { fromDate, toDate, distId, officeId, page } = this.state;
+    this.setState({
       perPage: e,
-      page: 0,
     });
-    this.fetchResults(fromDate, toDate, distId, page, e);
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
 
   handleFromDate(e) {
-    const { distId, perPage, toDate } = this.state;
-    this.setState({ 
+    const { distId, officeId, perPage, toDate } = this.state;
+    this.setState({
       fromDate: e,
       page: 0,
     });
-    this.fetchResults(e, toDate, distId, 0, perPage);
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
-     const { distId, fromDate, perPage } = this.state;
-    this.setState({ 
-      fromDate: e,
+    const { distId, officeId, fromDate, perPage } = this.state;
+    this.setState({
+      toDate: e,
       page: 0,
     });
-    this.fetchResults(fromDate, e, distId, 0, perPage);
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
-    this.setState({ 
+    const { fromDate, perPage, officeId, toDate } = this.state;
+    this.setState({
       distId: e,
+      officeId: "%", // office reset
       page: 0,
     });
-    this.fetchResults(fromDate, toDate, e, 0, perPage);
+    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+
+    //O-DDL
+    this.fetchOffice(e);
   }
 
-  fetchResults(fromDate, toDate, distId, page, perPage) {
+  fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBrixyaropan({
       fromDate,
       toDate,
       distId,
+      officeId,
       name: "brixyaropan_miti",
       page: page,
       perPage,
     });
   }
 
+  // O-DDL
+  fetchOffice(distId) {
+    this.props.fetchOfficedropdown({
+      distId,
+      // name: "value", //"office_name"
+    });
+  }
+
+  handleOffice(e) {
+    const { fromDate, perPage, toDate, distId } = this.state;
+    this.setState({
+      officeId: e,
+      page: 0,
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+  }
+
   handlePageChange(data) {
-    const { fromDate, toDate, distId, perPage } = this.state;
+    const { fromDate, toDate, distId, officeId, perPage } = this.state;
     this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
       distId,
+      officeId,
       data.selected * perPage,
       perPage
     );
@@ -126,13 +160,13 @@ class Plantation extends Component {
   }
   handleDelete() {
     const { item, page } = this.state;
-     
-        this.props.deleteBrixyaropan(item.brixyaropan_id);
-        this.setState({ 
-          showDialog: !this.state.showDialog,
-          page: 0,
-          perPage: 10, 
-        });
+
+    this.props.deleteBrixyaropan(item.brixyaropan_id);
+    this.setState({
+      showDialog: !this.state.showDialog,
+      page: 0,
+      perPage: 10,
+    });
   }
 
   handleAdd() {
@@ -140,17 +174,16 @@ class Plantation extends Component {
   }
 
   render() {
-    const { brixyaropanList, loc, perPage, showDialog } = this.state;
+    const { brixyaropanList, officeList, loc, perPage, showDialog } =
+      this.state;
     const { user, role, officeRole } = this.props;
 
     return (
       <div>
-      <ConfirmationDialoge
+        <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={
-            "के तपाईँ वृक्षरोपण सम्बन्धी विवरण  हटाउन चाहनुहुन्छ ?"
-          }
+          body={"के तपाईँ वृक्षरोपण सम्बन्धी विवरण  हटाउन चाहनुहुन्छ ?"}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
@@ -163,9 +196,12 @@ class Plantation extends Component {
                 id="brixyaropan"
                 title="वृक्षरोपण मिति"
                 districtsList={districtList}
+                officesList={officeList}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
+                onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="brixyaropan" />
@@ -217,15 +253,18 @@ class Plantation extends Component {
 
 Plantation.propsTypes = {
   brixyaropanDataList: PropTypes.any,
+  officeDataList: PropTypes.any,
 };
 
 Plantation.defaultProps = {
   brixyaropanDataList: {},
+  officeDataList: {},
 };
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   brixyaropanDataList: state.biruwautpadan.allbrixyaropanData,
 });
@@ -244,6 +283,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBrixyaropan: (brixyaropanId) =>
     dispatch(BiruwautpadanActions.deletebrixyaropanRequest(brixyaropanId)),
+
+  // O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Plantation);

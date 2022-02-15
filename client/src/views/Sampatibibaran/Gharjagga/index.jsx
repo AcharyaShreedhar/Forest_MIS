@@ -53,36 +53,37 @@ class Gharjagga extends Component {
     return { loc, gharjaggaList, officeList };
   }
 
-  handlePer(e){
-    this.setState({ page: 0 }, ()=> this.handlePerCallback(e));;
+  handlePer(e) {
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
 
   handlePerCallback(e) {
     const { distId, officeId, page } = this.state;
-    this.setState({ 
+    this.setState({
       perPage: e,
-   });
+    });
     this.fetchResults(distId, officeId, page, e);
   }
-  
+
   handleDistrict(e, item) {
-    const { officeId, perPage } = this.state;
-    this.setState({ 
+    const { perPage } = this.state;
+    this.setState({
       distId: e,
-      page: 0, 
+      officeId: "%", // office reset
+      page: 0,
     });
-    this.fetchResults(e, officeId, 0, perPage);
+    this.fetchResults(e, "%", 0, perPage);
 
     //O-DDL
     this.fetchOffice(e);
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId, officeId } = this.state;
-    this.setState({ 
+    const { perPage, distId } = this.state;
+    this.setState({
       officeId: e,
-      page: 0, 
+      page: 0,
     });
-    this.fetchResults(fromDate, toDate, distId, officeId, e, 0, perPage);
+    this.fetchResults(distId, e, 0, perPage);
   }
   fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallGharjagga({
@@ -136,9 +137,9 @@ class Gharjagga extends Component {
     const { item, page } = this.state;
 
     this.props.deleteGharjagga(item.asset_id);
-    this.setState({ 
-      showDialog: !this.state.showDialog, 
-      page: 0, 
+    this.setState({
+      showDialog: !this.state.showDialog,
+      page: 0,
       perPage: 10,
     });
   }
@@ -170,8 +171,8 @@ class Gharjagga extends Component {
                 officesList={officeList}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
+                yesOffice={true}
                 yesDate={false}
-                yesOffice={false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="gharjagga" />
@@ -195,9 +196,8 @@ class Gharjagga extends Component {
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
-              forcePage={this.state.page} 
+              forcePage={this.state.page}
             />
-     
           </Fragment>
         )}
         {equals(loc, "gharjaggaadd") && (
