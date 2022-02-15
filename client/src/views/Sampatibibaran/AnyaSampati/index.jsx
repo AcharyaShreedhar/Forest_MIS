@@ -177,7 +177,7 @@ class AnyaSampati extends Component {
     const { loc, perPage, anyasampatiList, officeList, showDialog } =
       this.state;
     // const { user, role, officesList } = this.props;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -203,6 +203,7 @@ class AnyaSampati extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="sampati" />
             </div>
@@ -220,6 +221,7 @@ class AnyaSampati extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={anyasampatiHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -264,6 +266,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   // officesList: state.app.officeList,
   role: state.app.user.user_type,
+  officeRole: state.app.user.office_type,
   officeDataList: state.app.officesDropdownData,
   anyasampatiDataList: state.sampatibibaran.allanyasampatiData,
 });

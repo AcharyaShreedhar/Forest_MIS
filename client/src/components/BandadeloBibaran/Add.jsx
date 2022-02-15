@@ -4,6 +4,7 @@ import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { banList } from "../../services/config";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { nepaliToEnglishNumber } from "nepali-number";
 
 class Add extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class Add extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleBanType(e) {
@@ -39,6 +41,11 @@ class Add extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -70,11 +77,11 @@ class Add extends Component {
           xeti_area: xeti_area,
           niyantran_prayas: niyantran_prayas,
           niyantran_karta: niyantran_karta,
-          sahabhagi_mahila: sahabhagi_mahila,
-          sahabhagi_purus: sahabhagi_purus,
+          sahabhagi_mahila: nepaliToEnglishNumber(sahabhagi_mahila),
+          sahabhagi_purus: nepaliToEnglishNumber(sahabhagi_purus),
           bandadelo_miti: bandadelo_miti,
-          man_injured: man_injured,
-          man_dead: man_dead,
+          man_injured: nepaliToEnglishNumber(man_injured),
+          man_dead: nepaliToEnglishNumber(man_dead),
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
           created_by: this.props.user.user_name,
@@ -186,7 +193,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="नियन्त्रणमा सहभागि महिला संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={sahabhagi_mahila}
                 direction="vertical"
                 onChange={(e) => this.setState({ sahabhagi_mahila: e })}
@@ -194,7 +201,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="नियन्त्रणमा सहभागि पुरुष संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={sahabhagi_purus}
                 direction="vertical"
                 onChange={(e) => this.setState({ sahabhagi_purus: e })}
@@ -213,7 +220,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="घाईते भएका मानिसको संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={man_injured}
                 direction="vertical"
                 onChange={(e) => this.setState({ man_injured: e })}
@@ -221,7 +228,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="मृत्यु भएका मानिसको संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={man_dead}
                 direction="vertical"
                 onChange={(e) => this.setState({ man_dead: e })}

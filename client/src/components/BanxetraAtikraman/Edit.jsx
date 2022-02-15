@@ -3,6 +3,7 @@ import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { equals, isEmpty } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 const AtikramanKisim = [
   { id: 1, value: "संस्थागत" },
@@ -18,21 +19,21 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.banxetra_atikraman_id,
-      atikramit_area: props.history.location.item.atikramit_area,
-      address: props.history.location.item.address,
-      atikraman_kisim: props.history.location.item.atikraman_kisim,
-      dalit_ghardhuri: props.history.location.item.dalit_ghardhuri,
-      janjati_ghardhuri: props.history.location.item.janjati_ghardhuri,
-      anya_ghardhuri: props.history.location.item.anya_ghardhuri,
-      atikraman_miti: props.history.location.item.atikraman_miti,
-      atikraman_prayojan: props.history.location.item.atikraman_prayojan,
-      samrachana_bibaran: props.history.location.item.samrachana_bibaran,
-      atikraman_abastha: props.history.location.item.atikraman_abastha,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.banxetra_atikraman_id,
+      atikramit_area: props.history.location.item?.atikramit_area,
+      address: props.history.location.item?.address,
+      atikraman_kisim: props.history.location.item?.atikraman_kisim,
+      dalit_ghardhuri: englishToNepaliNumber(props.history.location.item?.dalit_ghardhuri),
+      janjati_ghardhuri: englishToNepaliNumber(props.history.location.item?.janjati_ghardhuri),
+      anya_ghardhuri: englishToNepaliNumber(props.history.location.item?.anya_ghardhuri),
+      atikraman_miti: englishToNepaliNumber(props.history.location.item?.atikraman_miti),
+      atikraman_prayojan: props.history.location.item?.atikraman_prayojan,
+      samrachana_bibaran: props.history.location.item?.samrachana_bibaran,
+      atikraman_abastha: props.history.location.item?.atikraman_abastha,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -42,6 +43,7 @@ class Edit extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleConfirm() {
@@ -49,6 +51,11 @@ class Edit extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
 
   handleSubmit() {
@@ -72,10 +79,10 @@ class Edit extends Component {
           atikramit_area: atikramit_area,
           address: address,
           atikraman_kisim: atikraman_kisim,
-          dalit_ghardhuri: dalit_ghardhuri,
-          janjati_ghardhuri: janjati_ghardhuri,
-          anya_ghardhuri: anya_ghardhuri,
-          atikraman_miti: atikraman_miti,
+          dalit_ghardhuri: nepaliToEnglishNumber(dalit_ghardhuri),
+          janjati_ghardhuri: nepaliToEnglishNumber(janjati_ghardhuri),
+          anya_ghardhuri: nepaliToEnglishNumber(anya_ghardhuri),
+          atikraman_miti: nepaliToEnglishNumber(atikraman_miti),
           atikraman_prayojan: atikraman_prayojan,
           samrachana_bibaran: samrachana_bibaran,
           atikraman_abastha: atikraman_abastha,
@@ -179,7 +186,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="दलित :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={dalit_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
@@ -187,7 +194,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="जनजाति :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={janjati_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
@@ -195,7 +202,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="अन्य :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={anya_ghardhuri}
                 direction="vertical"
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}

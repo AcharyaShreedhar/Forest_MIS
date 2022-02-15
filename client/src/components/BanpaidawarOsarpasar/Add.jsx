@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
+import { nepaliToEnglishNumber } from "nepali-number";
 
 class Add extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Add extends Component {
     const payload = {
       banpaidawar: {
         data: {
-          arthik_barsa: arthik_barsa,
+          arthik_barsa: nepaliToEnglishNumber(arthik_barsa),
           kaath: kaath,
           daura: daura,
           lavgrahi_sankhya: lavgrahi_sankhya,

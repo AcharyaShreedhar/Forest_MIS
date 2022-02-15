@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { nepaliToEnglishNumber } from "nepali-number";
 
 const BiruwaTypes = [
   { id: 1, value: "बहुउदेशिय " },
@@ -40,12 +41,18 @@ class Add extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUtpadanMedium = this.handleUtpadanMedium.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
   handleBiruwaTypes(e) {
     this.setState({ biruwa_type: e[0] });
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
   handleConfirm() {
     this.setState({ showDialog: !this.state.showDialog });
@@ -68,11 +75,11 @@ class Add extends Component {
     const payload = {
       biruwautpadan: {
         data: {
-          arthik_barsa: arthik_barsa,
+          arthik_barsa: nepaliToEnglishNumber(arthik_barsa),
           biruwa_type: biruwa_type,
           utpadan_medium: utpadan_medium,
-          biruwa_sankhya: biruwa_sankhya,
-          narsari_sankhya: narsari_sankhya,
+          biruwa_sankhya: nepaliToEnglishNumber(biruwa_sankhya),
+          narsari_sankhya: nepaliToEnglishNumber(narsari_sankhya),
           barga: barga,
           laxya: laxya,
           pragati: pragati,
@@ -173,7 +180,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="बिरुवा संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={biruwa_sankhya}
                 direction="vertical"
                 onChange={(e) => this.setState({ biruwa_sankhya: e })}
@@ -181,7 +188,7 @@ class Add extends Component {
               <Input
                 className="w-30"
                 title="नर्सरी संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={narsari_sankhya}
                 direction="vertical"
                 onChange={(e) => this.setState({ narsari_sankhya: e })}

@@ -19,20 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="yearlyactivities">
           <thead>
@@ -41,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -52,7 +54,7 @@ function List(props) {
                 <tr key={`${activities.activities_info_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{activities.samudayikban_naam}</td>
-                  <td>{activities.fiscal_year}</td>
+                  <td>{englishToNepaliNumber(activities.fiscal_year)}</td>
                   <td>{activities.area}</td>
                   <td>{activities.production_from_conservation_timber}</td>
                   <td>{activities.production_from_conservation_wood}</td>
@@ -70,16 +72,18 @@ function List(props) {
                   <td>{activities.community_udhyam_bibaran}</td>
                   <td>{activities.annual_bibaran}</td>
                   <td>{activities.lekha_parikshyan}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) =>
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) =>
                           onSelect(e, activities, "yearlyactivities")
                         }
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

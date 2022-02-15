@@ -3,24 +3,25 @@ import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
+import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
 
 class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.pahiro_bibaran_id,
-      pahiro_gayeko_sthan: props.history.location.item.pahiro_gayeko_sthan,
-      manab_ghaite: props.history.location.item.manab_ghaite,
-      manab_mareko: props.history.location.item.manab_mareko,
-      uddar_sankhya: props.history.location.item.uddar_sankhya,
-      pahiro_gayeko_miti: props.history.location.item.pahiro_gayeko_miti,
-      xeti_bibaran: props.history.location.item.xeti_bibaran,
-      banyajantu_mareko: props.history.location.item.banyajantu_mareko,
-      botbiruwa_xeti: props.history.location.item.botbiruwa_xeti,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.pahiro_bibaran_id,
+      pahiro_gayeko_sthan: props.history.location.item?.pahiro_gayeko_sthan,
+      manab_ghaite: englishToNepaliNumber(props.history.location.item?.manab_ghaite),
+      manab_mareko: englishToNepaliNumber(props.history.location.item?.manab_mareko),
+      uddar_sankhya: englishToNepaliNumber(props.history.location.item?.uddar_sankhya),
+      pahiro_gayeko_miti: props.history.location.item?.pahiro_gayeko_miti,
+      xeti_bibaran: englishToNepaliNumber(props.history.location.item?.xeti_bibaran),
+      banyajantu_mareko: englishToNepaliNumber(props.history.location.item?.banyajantu_mareko),
+      botbiruwa_xeti: englishToNepaliNumber(props.history.location.item?.botbiruwa_xeti),
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
 
@@ -28,6 +29,7 @@ class Edit extends Component {
     this.handleDate = this.handleDate.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
   }
 
   handleConfirm() {
@@ -35,6 +37,11 @@ class Edit extends Component {
   }
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog });
+  }
+  handleInputKeyPress(e) {
+    if (!/[0-9०-९]/.test(e.key)) {
+      e.preventDefault();
+    }
   }
 
   handleSubmit() {
@@ -54,13 +61,13 @@ class Edit extends Component {
       pahiro: {
         data: {
           pahiro_gayeko_sthan: pahiro_gayeko_sthan,
-          manab_ghaite: manab_ghaite,
-          manab_mareko: manab_mareko,
-          uddar_sankhya: uddar_sankhya,
+          manab_ghaite: nepaliToEnglishNumber(manab_ghaite),
+          manab_mareko: nepaliToEnglishNumber(manab_mareko),
+          uddar_sankhya: nepaliToEnglishNumber(uddar_sankhya),
           pahiro_gayeko_miti: pahiro_gayeko_miti,
-          xeti_bibaran: xeti_bibaran,
-          banyajantu_mareko: banyajantu_mareko,
-          botbiruwa_xeti: botbiruwa_xeti,
+          xeti_bibaran: nepaliToEnglishNumber(xeti_bibaran),
+          banyajantu_mareko: nepaliToEnglishNumber(banyajantu_mareko),
+          botbiruwa_xeti: nepaliToEnglishNumber(botbiruwa_xeti),
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.user_name,
@@ -136,7 +143,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="उद्दार संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 value={uddar_sankhya}
                 onChange={(e) => this.setState({ uddar_sankhya: e })}
@@ -146,7 +153,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="घाइते मानव संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={manab_ghaite}
                 direction="vertical"
                 onChange={(e) => this.setState({ manab_ghaite: e })}
@@ -154,7 +161,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="मृत मानव संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 direction="vertical"
                 value={manab_mareko}
                 onChange={(e) => this.setState({ manab_mareko: e })}
@@ -171,7 +178,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="मर्ने वन्यजन्तु संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={banyajantu_mareko}
                 direction="vertical"
                 onChange={(e) => this.setState({ banyajantu_mareko: e })}
@@ -179,7 +186,7 @@ class Edit extends Component {
               <Input
                 className="w-30"
                 title="बोटविरुवा क्षेति संख्या :"
-                type="number"
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={botbiruwa_xeti}
                 direction="vertical"
                 onChange={(e) => this.setState({ botbiruwa_xeti: e })}

@@ -19,20 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="banxetraatikraman">
           <thead>
@@ -41,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -56,9 +58,9 @@ function List(props) {
                   <td> {equals(banxetraatikraman.atikraman_kisim, 1)
             ? "संस्थागत"
             : "व्यक्तिगत"}</td>
-                  <td>{banxetraatikraman.dalit_ghardhuri}</td>
-                  <td>{banxetraatikraman.janjati_ghardhuri}</td>
-                  <td>{banxetraatikraman.anya_ghardhuri}</td>
+                  <td>{englishToNepaliNumber(banxetraatikraman.dalit_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(banxetraatikraman.janjati_ghardhuri)}</td>
+                  <td>{englishToNepaliNumber(banxetraatikraman.anya_ghardhuri)}</td>
                   <td>
                     {englishToNepaliNumber(banxetraatikraman.atikraman_miti)}
                   </td>
@@ -69,16 +71,18 @@ function List(props) {
                       ? "नयाँ"
                       : "पुरानो"}
                   </td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) =>
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) =>
                           onSelect(e, banxetraatikraman, "banxetraatikraman")
                         }
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

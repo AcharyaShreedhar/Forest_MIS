@@ -176,7 +176,7 @@ class Bandadelo extends Component {
   render() {
     const { loc, perPage, bandadelobibaranList, officeList, showDialog } =
       this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -202,6 +202,7 @@ class Bandadelo extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="bandadelo" />
             </div>
@@ -222,6 +223,7 @@ class Bandadelo extends Component {
               headings={bandadeloHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("bandadelo")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -265,6 +267,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeDataList: state.app.officesDropdownData,
+  officeRole: state.app.user.office_type,
   bandadelobibaranDataList: state.bipatbibaran.allbandadelobibaranData,
 });
 

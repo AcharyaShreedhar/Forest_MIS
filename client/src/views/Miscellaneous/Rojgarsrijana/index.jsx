@@ -150,7 +150,7 @@ class Rojgarsrijana extends Component {
   render() {
     const { loc, perPage, rojgarsrijanaList, officeList, showDialog } =
       this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -174,6 +174,7 @@ class Rojgarsrijana extends Component {
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
                 yesDate={false}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="rojgarsrijana" />
             </div>
@@ -192,6 +193,7 @@ class Rojgarsrijana extends Component {
               headings={rojgarsrijanaHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("rojgarsrijana")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -235,6 +237,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeDataList: state.app.officesDropdownData,
+  officeRole: state.app.user.office_type,
   rojgarsrijanaDataList: state.miscellaneous.allrojgarsrijanaData,
 });
 

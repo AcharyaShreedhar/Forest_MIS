@@ -3,6 +3,7 @@ import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import "nepali-datepicker-reactjs/dist/index.css";
+import { nepaliToEnglishNumber } from "nepali-number";
 
 class Add extends Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class Add extends Component {
           pasudhan_xeti: pasudhan_xeti,
           ghargoth_xeti: ghargoth_xeti,
           jagga_bibaran: jagga_bibaran,
-          nagarikta_no: nagarikta_no,
+          nagarikta_no: nepaliToEnglishNumber(nagarikta_no),
           upabhoktasamiti_name: upabhoktasamiti_name,
           xetigarne_animal: xetigarne_animal,
           xeti_miti: xeti_miti,

@@ -181,7 +181,7 @@ class Yearlyactivities extends Component {
   render() {
     const { loc, perPage, yearlyactivitiesList, officeList, showDialog } =
       this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -207,6 +207,7 @@ class Yearlyactivities extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="yearlyactivities" />
             </div>
@@ -226,6 +227,7 @@ class Yearlyactivities extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={yearlyactivitiesHeadings}
               onAdd={() => this.handleAdd()}
               onSelect={this.handleSelectMenu}
@@ -271,6 +273,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeDataList: state.app.officesDropdownData,
+  officeRole: state.app.user.office_type,
   activitiesinfoDataList: state.biruwautpadan.allactivitiesinfoData,
 });
 

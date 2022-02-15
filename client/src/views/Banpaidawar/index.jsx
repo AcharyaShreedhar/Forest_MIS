@@ -10,10 +10,11 @@ import BanpaidawarActions from "../../actions/banpaidawar";
 
 export class Banpaidawar extends Component {
   componentDidMount() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "lilam_date",
       page: 0,
@@ -22,7 +23,7 @@ export class Banpaidawar extends Component {
     this.props.fetchallBanpaidawarosarpasar({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "arthik_barsa",
       page: 0,
@@ -31,7 +32,7 @@ export class Banpaidawar extends Component {
     this.props.fetchallBanpaidawarbikribitaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "bikri_miti",
       page: 0,
@@ -44,10 +45,11 @@ export class Banpaidawar extends Component {
   }
 
   componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "lilam_date",
       page: 0,
@@ -56,7 +58,7 @@ export class Banpaidawar extends Component {
     this.props.fetchallBanpaidawarosarpasar({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "arthik_barsa",
       page: 0,
@@ -65,7 +67,7 @@ export class Banpaidawar extends Component {
     this.props.fetchallBanpaidawarbikribitaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "bikri_miti",
       page: 0,
@@ -126,6 +128,8 @@ Banpaidawar.defaultProps = {
 const mapStateToProps = (state) => ({
   role: state.app.app_role_id,
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

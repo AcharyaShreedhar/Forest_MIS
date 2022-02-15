@@ -26,8 +26,13 @@ function List(props) {
     <Fragment>
       <div className="card">
         <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
-        </div>
+          <Button
+            type="low"
+            size="small"
+            name={buttonName}
+            onClick={onAdd}
+          />
+          </div>
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="office">
           <thead>
@@ -74,16 +79,27 @@ function List(props) {
                       ? "लमजुङ"
                       : "स्याङजा"}
                   </td>
+                  <td>
+                    {" "}
+                    {equals(office.office_type, 1)
+                      ? "मन्त्रालय"
+                      : equals(office.office_type, 2)
+                      ? "निर्देशनालय"
+                      : equals(office.office_type, 3)
+                      ? "कार्यलय"
+                      : "सब डिभिजन"
+                    }
+                  </td>
                   {/* <td> {moment(office.createdAt).format("MM/DD/YYYY")}</td> */}
                   <td> {office.created_by}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, office, "office")}
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, office, "office")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
                 </tr>
               ))
             )}

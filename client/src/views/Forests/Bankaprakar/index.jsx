@@ -526,7 +526,7 @@ class Bankaprakar extends Component {
       showDialog,
       messagebody,
     } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
     return (
       <div>
         <ConfirmationDialoge
@@ -553,6 +553,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="samudayikban"
@@ -576,6 +577,7 @@ class Bankaprakar extends Component {
               headings={samudayikbanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("samudayikban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "samudayikban")}
@@ -613,6 +615,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="upabhoktasamuha"
@@ -635,6 +638,7 @@ class Bankaprakar extends Component {
               headings={upabhoktasamuhaHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("upabhoktasamuha")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "upabhoktasamuha")}
@@ -672,6 +676,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="dharmikban"
@@ -694,6 +699,7 @@ class Bankaprakar extends Component {
               headings={dharmikbanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("dharmikban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "dharmikban")}
@@ -731,6 +737,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="kabuliyatiban"
@@ -753,6 +760,7 @@ class Bankaprakar extends Component {
               headings={kabuliyatibanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("kabuliyatiban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "kabuliyatiban")}
@@ -790,6 +798,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="nijiban"
@@ -812,6 +821,7 @@ class Bankaprakar extends Component {
               headings={nijibanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("nijiban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "nijiban")}
@@ -849,6 +859,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="sajhedariban"
@@ -871,6 +882,7 @@ class Bankaprakar extends Component {
               headings={sajhedaribanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("sajhedariban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "sajhedariban")}
@@ -908,6 +920,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="chaklaban"
@@ -930,6 +943,7 @@ class Bankaprakar extends Component {
               headings={chaklabanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("chaklaban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "chaklaban")}
@@ -967,6 +981,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="rastriyaban"
@@ -989,6 +1004,7 @@ class Bankaprakar extends Component {
               headings={rastriyabanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("rastriyaban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "rastriyaban")}
@@ -1026,6 +1042,7 @@ class Bankaprakar extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator
                 id="commercialban"
@@ -1048,6 +1065,7 @@ class Bankaprakar extends Component {
               headings={commercialbanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("commercialban")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e, "commercialban")}
@@ -1108,6 +1126,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeDataList: state.app.officesDropdownData,
+  officeRole: state.app.user.office_type,
   samudayikbanbibaranDataList: state.bankaprakar.allsamudayikbanbibaranData,
   dharmikbanbibaranDataList: state.bankaprakar.alldharmikbanbibaranData,
   kabuliyatibanbibaranDataList: state.bankaprakar.allkabuliyatibanbibaranData,

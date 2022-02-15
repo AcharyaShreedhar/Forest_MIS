@@ -10,10 +10,11 @@ import samrakshyanRoutes from "../../routes/samrakshyan";
 
 export class Samrakshyan extends Component {
   componentDidMount() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallJaladharsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -23,7 +24,7 @@ export class Samrakshyan extends Component {
     this.props.fetchallNadikinarsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -33,7 +34,7 @@ export class Samrakshyan extends Component {
     this.props.fetchallPokharisamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -43,7 +44,7 @@ export class Samrakshyan extends Component {
     this.props.fetchallPanimuhansamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -57,10 +58,11 @@ export class Samrakshyan extends Component {
   }
 
   componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallJaladharsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -70,7 +72,7 @@ export class Samrakshyan extends Component {
     this.props.fetchallNadikinarsamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -80,7 +82,7 @@ export class Samrakshyan extends Component {
     this.props.fetchallPokharisamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -90,7 +92,7 @@ export class Samrakshyan extends Component {
     this.props.fetchallPanimuhansamrakshyan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "karyakram_miti",
       page: 0,
@@ -151,6 +153,8 @@ Samrakshyan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

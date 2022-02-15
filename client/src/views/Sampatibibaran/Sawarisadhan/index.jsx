@@ -175,7 +175,7 @@ class Sawarisadhan extends Component {
   render() {
     const { loc, perPage, sawarisadhanList, officeList, showDialog } =
       this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -201,6 +201,7 @@ class Sawarisadhan extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="vehicle" />
             </div>
@@ -218,6 +219,7 @@ class Sawarisadhan extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={sawarisadhanHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
@@ -262,6 +264,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeDataList: state.app.officesDropdownData,
+  officeRole: state.app.user.office_type,
   sawarisadhanDataList: state.sampatibibaran.allvehiclesData,
 });
 

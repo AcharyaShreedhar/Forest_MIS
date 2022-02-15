@@ -19,20 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            //className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="nursery">
           <thead>
@@ -41,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -51,7 +53,7 @@ function List(props) {
               data.map((biruwa, index) => (
                 <tr key={`${biruwa.biruwa_utpadan_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td> {biruwa.arthik_barsa} </td>
+                  <td> {englishToNepaliNumber(biruwa.arthik_barsa)} </td>
                   <td>
                     {equals(biruwa.biruwa_type, 1)
                       ? "बहुउदेशिय"
@@ -68,20 +70,22 @@ function List(props) {
                       ? "निजी"
                       : "खरिद"}
                   </td>
-                  <td> {biruwa.biruwa_sankhya} </td>
-                  <td> {biruwa.narsari_sankhya} </td>
+                  <td> {englishToNepaliNumber(biruwa.biruwa_sankhya)} </td>
+                  <td> {englishToNepaliNumber(biruwa.narsari_sankhya)} </td>
                   <td> {biruwa.barga} </td>
                   <td> {biruwa.laxya} </td>
                   <td> {biruwa.pragati} </td>
                   <td> {biruwa.remarks} </td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, biruwa, "biruwautpadan")}
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, biruwa, "biruwautpadan")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

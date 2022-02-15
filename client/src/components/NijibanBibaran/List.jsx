@@ -19,21 +19,23 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
 
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            // className="text-capitalize"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered id="nijiban">
           <thead>
@@ -42,7 +44,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -52,8 +54,8 @@ function List(props) {
               data.map((nban, index) => (
                 <tr key={`${nban.nijiban_bibaran_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{nban.darta_no}</td>
-                  <td>{nban.swikrit_miti}</td>
+                  <td>{englishToNepaliNumber(nban.darta_no)}</td>
+                  <td>{englishToNepaliNumber(nban.swikrit_miti)}</td>
                   <td>{nban.nijiban_dhaniko_naam}</td>
                   <td>{nban.perm_addr}</td>
                   <td>{nban.curr_addr}</td>
@@ -64,14 +66,16 @@ function List(props) {
                   <td>{englishToNepaliNumber(nban.female)}</td>
                   <td>{englishToNepaliNumber(nban.male)}</td>
                   <td>{nban.main_species}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, nban, "niji")}
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, nban, "niji")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

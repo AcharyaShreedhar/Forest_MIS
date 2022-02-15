@@ -10,10 +10,11 @@ import BankaprakarActions from "../../actions/bankaprakar";
 
 export class Forests extends Component {
   componentDidMount() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallSamudayikbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "handover_date",
       page: 0,
@@ -22,7 +23,7 @@ export class Forests extends Component {
     this.props.fetchallDharmikbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "handover_date",
       page: 0,
@@ -31,7 +32,7 @@ export class Forests extends Component {
     this.props.fetchallKabuliyatibanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "entry_date",
       page: 0,
@@ -40,7 +41,7 @@ export class Forests extends Component {
     this.props.fetchallNijibanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "swikrit_miti",
       page: 0,
@@ -49,7 +50,7 @@ export class Forests extends Component {
     this.props.fetchallSajhedaribanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -58,7 +59,7 @@ export class Forests extends Component {
     this.props.fetchallChaklabanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -67,7 +68,7 @@ export class Forests extends Component {
     this.props.fetchallRastriyabanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -76,7 +77,7 @@ export class Forests extends Component {
     this.props.fetchallUpabhoktasamuhabibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "registration_date",
       page: 0,
@@ -85,7 +86,7 @@ export class Forests extends Component {
     this.props.fetchallCommercialbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -98,10 +99,11 @@ export class Forests extends Component {
   }
 
   componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallSamudayikbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "handover_date",
       page: 0,
@@ -110,7 +112,7 @@ export class Forests extends Component {
     this.props.fetchallDharmikbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "handover_date",
       page: 0,
@@ -119,7 +121,7 @@ export class Forests extends Component {
     this.props.fetchallKabuliyatibanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "entry_date",
       page: 0,
@@ -128,7 +130,7 @@ export class Forests extends Component {
     this.props.fetchallNijibanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "swikrit_miti",
       page: 0,
@@ -137,7 +139,7 @@ export class Forests extends Component {
     this.props.fetchallSajhedaribanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -146,7 +148,7 @@ export class Forests extends Component {
     this.props.fetchallChaklabanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -155,7 +157,7 @@ export class Forests extends Component {
     this.props.fetchallRastriyabanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -164,7 +166,7 @@ export class Forests extends Component {
     this.props.fetchallUpabhoktasamuhabibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "registration_date",
       page: 0,
@@ -173,7 +175,7 @@ export class Forests extends Component {
     this.props.fetchallCommercialbanbibaran({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -235,6 +237,8 @@ Forests.defaultProps = {
 const mapStateToProps = (state) => ({
   role: state.app.app_role_id,
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

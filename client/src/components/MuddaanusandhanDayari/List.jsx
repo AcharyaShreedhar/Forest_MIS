@@ -19,15 +19,23 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
 
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table
           responsive
@@ -43,7 +51,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -53,7 +61,7 @@ function List(props) {
               data.map((mudda, index) => (
                 <tr key={`${mudda.mudda_anusandhan_dayari_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{mudda.jaheri_partibedan_miti}</td>
+                  <td>{englishToNepaliNumber(mudda.jaheri_partibedan_miti)}</td>
                   <td>
                     {equals(mudda.kasurko_kisim, 1)
                       ? "बन पैदावार चोरिनिकासी"
@@ -82,16 +90,18 @@ function List(props) {
                   <td>{mudda.faisala_kaid}</td>
                   <td>{equals(mudda.bojbahak_jafat, 1) ? "भएको" : "नभएको"}</td>
                   <td>{equals(mudda.faisala_status, 1) ? "भएको" : "नभएको"}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) =>
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) =>
                           onSelect(e, mudda, "muddaanusandhandayari")
                         }
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

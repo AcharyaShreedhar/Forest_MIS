@@ -5,6 +5,7 @@ import { PropTypes } from "prop-types";
 import { equals, isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
+import { officeType } from "../../services/config";
 
 function List(props) {
   const {
@@ -26,8 +27,13 @@ function List(props) {
     <Fragment>
       <div className="card">
         <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
-        </div>
+          <Button
+            type="low"
+            size="small"
+            name={buttonName}
+            onClick={onAdd}
+          />
+          </div>
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="user">
           <thead>
@@ -81,7 +87,18 @@ function List(props) {
                       : "स्याङजा"}
                   </td>
                   <td> {user.user_office}</td>
-                  <td> {moment(user.createdAt).format("MM/DD/YYYY")}</td>
+                  <td>
+                  {" "}
+                    {equals(user.office_type, 1)
+                      ? "मन्त्रालय"
+                      : equals(user.office_type, 2)
+                      ? "निर्देशनालय"
+                      : equals(user.office_type, 3)
+                      ? "कार्यलय"
+                      : "सब डिभिजन"
+                    }
+                  </td>
+                  <td> {englishToNepaliNumber(moment(user.createdAt).format("MM/DD/YYYY"))}</td>
                   <td> {user.created_by}</td>
                   <td>
                     <div className="edit">
@@ -93,8 +110,8 @@ function List(props) {
                         }
                         onChange={(e) => onSelect(e, user, "user")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
                 </tr>
               ))
             )}

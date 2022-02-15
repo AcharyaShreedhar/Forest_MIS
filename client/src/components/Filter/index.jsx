@@ -41,8 +41,14 @@ export class Filter extends Component {
 
   render() {
     const { district, office, fromdate, todate } = this.state;
-    const { districtsList, officesList, title, yesDate, yesOffice } =
-      this.props;
+    const {
+      districtsList,
+      officesList,
+      title,
+      yesDate,
+      yesOffice,
+      yesDistrict,
+    } = this.props;
     return (
       <div className="filter">
         {yesDate && (
@@ -65,17 +71,19 @@ export class Filter extends Component {
             />
           </Fragment>
         )}
-        <Dropdown
-          className="dropdownlabel ml-2"
-          title="जिल्ला :"
-          width="fit-content"
-          defaultIds={district}
-          data={districtsList}
-          getValue={(districtsList) => districtsList["value"]}
-          onChange={(e) => this.handleDistrict(e)}
-          value={district}
-          multi={true}
-        />
+        {yesDistrict && (
+          <Dropdown
+            className="dropdownlabel ml-2"
+            title="जिल्ला :"
+            width="fit-content"
+            defaultIds={district}
+            data={districtsList}
+            getValue={(districtsList) => districtsList["value"]}
+            onChange={(e) => this.handleDistrict(e)}
+            multi={true}
+            value={district}
+          />
+        )}
         {yesOffice && (
           <Dropdown
             className="dropdownlabel ml-2"
@@ -98,6 +106,7 @@ Filter.propTypes = {
   title: PropTypes.string,
   yesDate: PropTypes.any,
   yesOffice: PropTypes.any,
+  yesDistrict: PropTypes.any,
   fromdate: PropTypes.string,
   todate: PropTypes.string,
   district: PropTypes.string,
@@ -119,6 +128,7 @@ Filter.defaultProps = {
   office: "",
   yesDate: true,
   yesOffice: false,
+  yesDistrict: false,
   onToDate: () => {},
   onFromDate: () => {},
   onSelect: () => {},

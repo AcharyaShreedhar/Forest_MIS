@@ -7,16 +7,16 @@ class Edit extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: props.history.location.item.samajik_karyabibaran_id,
-      samajik_karyabibaran: props.history.location.item.samajik_karyabibaran,
-      samajik_ekai: props.history.location.item.samajik_ekai,
-      samajik_parinam: props.history.location.item.samajik_parinam,
-      samajik_bajetkharcha: props.history.location.item.samajik_bajetkharcha,
-      ban_type: props.history.location.item.ban_type,
-      dist_id: props.history.location.item.dist_id,
-      office_id: props.history.location.item.office_id,
-      created_by: props.history.location.item.created_by,
-      updated_by: props.history.location.item.updated_by,
+      id: props.history.location.item?.samajik_karyabibaran_id,
+      samajik_karyabibaran: props.history.location.item?.samajik_karyabibaran,
+      samajik_ekai: props.history.location.item?.samajik_ekai,
+      samajik_parinam: props.history.location.item?.samajik_parinam,
+      samajik_bajetkharcha: props.history.location.item?.samajik_bajetkharcha,
+      ban_type: props.history.location.item?.ban_type,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     };
     this.handleBanType = this.handleBanType.bind(this);

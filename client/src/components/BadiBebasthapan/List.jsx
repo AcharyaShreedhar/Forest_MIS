@@ -19,19 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="badibebasthapan">
           <thead>
@@ -40,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -52,12 +55,13 @@ function List(props) {
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td> {englishToNepaliNumber(badi.badhi_aayeko_miti)}</td>
                   <td> {badi.badhi_aayeko_sthan}</td>
-                  <td> {badi.uddar_sankhya}</td>
-                  <td> {badi.manab_ghaite}</td>
-                  <td> {badi.manab_mareko}</td>
+                  <td> {englishToNepaliNumber(badi.uddar_sankhya)}</td>
+                  <td> {englishToNepaliNumber(badi.manab_ghaite)}</td>
+                  <td> {englishToNepaliNumber(badi.manab_mareko)}</td>
                   <td> {badi.xeti_bibaran}</td>
-                  <td> {badi.banyajantu_mareko}</td>
-                  <td> {badi.botbiruwa_xeti}</td>
+                  <td> {englishToNepaliNumber(badi.banyajantu_mareko)}</td>
+                  <td> {englishToNepaliNumber(badi.botbiruwa_xeti)}</td>
+                  {officeRole > 2 && 
                   <td>
                     <div className="edit">
                       <EditDropdown
@@ -66,6 +70,7 @@ function List(props) {
                       />
                     </div>
                   </td>
+                  }
                 </tr>
               ))
             )}

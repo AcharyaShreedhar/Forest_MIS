@@ -10,8 +10,9 @@ import MiscellaneousActions from "../../actions/miscellaneous";
 
 export class Miscellaneous extends Component {
   componentDidMount() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallRojgarsrijana({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "banka_prakar",
       page: 0,
@@ -21,7 +22,7 @@ export class Miscellaneous extends Component {
     this.props.fetchallUddham({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -34,8 +35,9 @@ export class Miscellaneous extends Component {
   }
 
   componentDidUpdate() {
+    const { districtId, officeRole } = this.props;
     this.props.fetchallRojgarsrijana({
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "banka_prakar",
       page: 0,
@@ -45,7 +47,7 @@ export class Miscellaneous extends Component {
     this.props.fetchallUddham({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "darta_miti",
       page: 0,
@@ -105,6 +107,8 @@ Miscellaneous.defaultProps = {
 
 const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

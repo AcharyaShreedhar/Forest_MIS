@@ -19,14 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="dharmikban" size="md">
           <thead>
@@ -35,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -45,7 +53,7 @@ function List(props) {
               data.map((dban, index) => (
                 <tr key={`${dban.dharmikban_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{dban.darta_no}</td>
+                  <td>{englishToNepaliNumber(dban.darta_no)}</td>
                   <td>{dban.dharmikban_name}</td>
                   <td>{dban.community_name}</td>
                   <td> {englishToNepaliNumber(dban.area)}</td>
@@ -63,14 +71,16 @@ function List(props) {
                   <td>{dban.nabikaran_abadhi}</td>
                   <td>{dban.forest_maujdat}</td>
                   <td>{englishToNepaliNumber(dban.renewal_date)}</td>
-                  <td>
-                    <div className="edit">
-                      <EditDropdown
-                        options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
-                        onChange={(e) => onSelect(e, dban, "dharmik")}
+                  {officeRole > 2 && 
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          onChange={(e) => onSelect(e, dban, "dharmik")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

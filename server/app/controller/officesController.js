@@ -50,7 +50,7 @@ async function getOfficesDropdownList(req, res) {
     dist_cond = "dist_id in (?)"
   }
   // console.log("length", dist_length);
-  const getOfficesList = `SELECT '%' AS id, 'सबै' AS value, '' as office_location, '%' As dist_id UNION ALL select office_id as id, office_name as value, office_location, dist_id from offices where ${dist_cond}`;
+  const getOfficesList = `SELECT '%' AS id, 'सबै' AS value, '' as office_location, '%' As dist_id UNION ALL select office_id as id, office_name as value, office_location, dist_id, office_type from offices where ${dist_cond}`;
   pool.query(getOfficesList,[req.body.distId, req.body.name], (error, results, fields) => {
     if (error) throw error;
     // console.log("getOfficeList", getOfficesList);
@@ -60,13 +60,14 @@ async function getOfficesDropdownList(req, res) {
 
 //Controller for adding a office
 async function addOffices(req, res) {
-  const addOfficesQuery = `INSERT INTO offices (dist_id,office_name,office_location,created_by,updated_by) values (?,?,?,?,?)`;
+  const addOfficesQuery = `INSERT INTO offices (dist_id,office_name,office_location,office_type,created_by,updated_by) values (?,?,?,?,?,?)`;
   pool.query(
     addOfficesQuery,
     [
       req.body.dist_id,
       req.body.office_name,
       req.body.office_location,
+      req.body.office_type,
       req.body.created_by,
       req.body.updated_by,
     ],
@@ -81,11 +82,12 @@ async function addOffices(req, res) {
 
 //Controller for updating a office
 async function updateOffices(req, res) {
-  const updateOfficesQuery = `UPDATE Offices SET dist_id=?, office_name=?, office_location=?,created_by=?,updated_by=? WHERE office_id=?`;
+  const updateOfficesQuery = `UPDATE Offices SET dist_id=?, office_type=?, office_name=?, office_location=?,created_by=?,updated_by=? WHERE office_id=?`;
     pool.query(
     updateOfficesQuery,
     [
       req.body.dist_id,
+      req.body.office_type,
       req.body.office_name,
       req.body.office_location,
       req.body.created_by,

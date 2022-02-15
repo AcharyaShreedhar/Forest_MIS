@@ -19,19 +19,22 @@ function List(props) {
     per,
     onPer,
     role,
+    officeRole,
     forcePage,
   } = props;
   return (
     <Fragment>
       <div className="card">
-        <div className="button">
-          <Button
-            type="low"
-            size="small"
-            name={buttonName}
-            onClick={onAdd}
-          />
-        </div>
+        {officeRole > 2 && 
+          <div className="button">
+            <Button
+              type="low"
+              size="small"
+              name={buttonName}
+              onClick={onAdd}
+            />
+          </div>
+        }
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="bandadelo">
           <thead>
@@ -40,7 +43,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              <th />
+              {officeRole > 2 &&  <th />}
             </tr>
           </thead>
           <tbody>
@@ -74,19 +77,21 @@ function List(props) {
                   <td> {bandadelo.xeti_area}</td>
                   <td> {bandadelo.niyantran_prayas}</td>
                   <td> {bandadelo.niyantran_karta}</td>
-                  <td> {bandadelo.sahabhagi_mahila}</td>
-                  <td> {bandadelo.sahabhagi_purus}</td>
+                  <td> {englishToNepaliNumber(bandadelo.sahabhagi_mahila)}</td>
+                  <td> {englishToNepaliNumber(bandadelo.sahabhagi_purus)}</td>
                   <td> {englishToNepaliNumber(bandadelo.bandadelo_miti)}</td>
-                  <td> {bandadelo.man_injured}</td>
-                  <td> {bandadelo.man_dead}</td>
+                  <td> {englishToNepaliNumber(bandadelo.man_injured)}</td>
+                  <td> {englishToNepaliNumber(bandadelo.man_dead)}</td>
+                  {officeRole > 2 && 
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={role < 3 ? ["Edit"] : ["Edit", "Delete"]}
                         onChange={(e) => onSelect(e, bandadelo, "bandadelo")}
                       />
-                    </div>
-                  </td>
+                      </div>
+                    </td>
+                  }
                 </tr>
               ))
             )}

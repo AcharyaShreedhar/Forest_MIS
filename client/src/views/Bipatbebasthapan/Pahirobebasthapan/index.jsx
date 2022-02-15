@@ -181,7 +181,7 @@ class Pahirobebasthapan extends Component {
   render() {
     const { loc, perPage, pahirobebasthapanList, officeList, showDialog } =
       this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
 
     return (
       <div>
@@ -207,6 +207,7 @@ class Pahirobebasthapan extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="pahirobebasthapan" />
             </div>
@@ -227,6 +228,7 @@ class Pahirobebasthapan extends Component {
               headings={pahirobebasthapanHeadings}
               user={user}
               role={role}
+              officeRole={officeRole}
               onAdd={() => this.handleAdd("pahirobebasthapan")}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -270,6 +272,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeDataList: state.app.officesDropdownData,
+  officeRole: state.app.user.office_type,
   pahirobebasthapanDataList: state.bipatbibaran.allpahirobibaranData,
 });
 

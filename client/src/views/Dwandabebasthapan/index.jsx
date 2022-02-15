@@ -10,10 +10,11 @@ import dwandabebasthapanRoutes from "../../routes/dwandabebasthapan";
 
 export class Dwandabebasthapan extends Component {
   componentDidMount() {
+    const { districtId, officeRole} = this.props;
     this.props.fetchallBanyajantuuddar({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "miti",
       page: 0,
@@ -22,7 +23,7 @@ export class Dwandabebasthapan extends Component {
     this.props.fetchallBanyajantuxetirahat({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "xeti_miti",
       page: 0,
@@ -34,11 +35,12 @@ export class Dwandabebasthapan extends Component {
     });
   }
 
-  componentDidUpdate() {
+componentDidUpdate() {
+  const { districtId, officeRole} = this.props;
     this.props.fetchallBanyajantuuddar({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "miti",
       page: 0,
@@ -47,7 +49,7 @@ export class Dwandabebasthapan extends Component {
     this.props.fetchallBanyajantuxetirahat({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
       officeId: "%",
       name: "xeti_miti",
       page: 0,
@@ -107,6 +109,8 @@ Dwandabebasthapan.defaultProps = {
 
 const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -181,7 +181,7 @@ class Bikribitaran extends Component {
       perPage,
       showDialog,
     } = this.state;
-    const { user, role } = this.props;
+    const { user, role, officeRole } = this.props;
     return (
       <div>
         <ConfirmationDialoge
@@ -208,6 +208,7 @@ class Bikribitaran extends Component {
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={true}
+                yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="banpaidawarbikribitaran" />
             </div>
@@ -229,6 +230,7 @@ class Bikribitaran extends Component {
               onPer={this.handlePer}
               user={user}
               role={role}
+              officeRole={officeRole}
               headings={banpaidawarbikribitaranHeadings}
               onAdd={() => this.handleAdd("banpaidawarbikribitaran")}
               onSelect={this.handleSelectMenu}
@@ -275,6 +277,7 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeDataList: state.app.officesDropdownData,
+  officeRole: state.app.user.office_type,
   banpaidawarbikribitaranDataList:
     state.banpaidawar.allbanpaidawarbikribitaranData,
 });
