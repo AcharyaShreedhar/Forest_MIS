@@ -15,10 +15,11 @@ import { gharjaggaHeadings, districtList } from "../../../services/config";
 class Gharjagga extends Component {
   constructor(props) {
     super(props);
+    const { officeRole, districtId, officeId } = this.props;
     this.state = {
       loc: "gharjaggalist",
-      distId: "%",
-      officeId: "%",
+      distId: `${ officeRole < 3 ? "%" : districtId }`,
+      officeId: `${ officeRole < 3 ? "%" : officeId }`,
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -235,6 +236,8 @@ Gharjagga.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
   officeRole: state.app.user.office_type,
   officeDataList: state.app.officesDropdownData,
   gharjaggaDataList: state.sampatibibaran.allassetsData,

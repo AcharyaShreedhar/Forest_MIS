@@ -18,12 +18,13 @@ import {
 class Karmacharibibaran extends Component {
   constructor(props) {
     super(props);
+    const { officeRole, districtId, officeId } = this.props;
     this.state = {
       loc: "karmacharibibaranlist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
+      distId: `${ officeRole < 3 ? "%" : districtId }`,
+      officeId: `${ officeRole < 3 ? "%" : officeId }`,
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -264,6 +265,8 @@ Karmacharibibaran.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
   officeRole: state.app.user.office_type,
   districtData: state.app,
   officeDataList: state.app.officesDropdownData,
