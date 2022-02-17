@@ -18,12 +18,13 @@ import {
 class Bikribitaran extends Component {
   constructor(props) {
     super(props);
+    const { officeRole, districtId, officeId } = this.props;
     this.state = {
       loc: "bikribitaranlist",
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
+      distId: `${ officeRole < 3 ? "%" : districtId }`,
+      officeId: `${ officeRole < 3 ? "%" : officeId }`,
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -207,7 +208,7 @@ class Bikribitaran extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
-                yesOffice={true}
+                yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="banpaidawarbikribitaran" />
@@ -276,6 +277,8 @@ Bikribitaran.defaultProps = {
 const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
+  districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
   officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   banpaidawarbikribitaranDataList:

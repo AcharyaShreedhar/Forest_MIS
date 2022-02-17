@@ -10,12 +10,12 @@ import BipatbibaranActions from "../../actions/bipatbibaran";
 
 export class Bipatbebasthapan extends Component {
   componentDidMount() {
-    const { districtId, officeRole } = this.props;
+    const { districtId, officeRole, officeId } = this.props;
     this.props.fetchallPahirobebasthapan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
@@ -24,7 +24,7 @@ export class Bipatbebasthapan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "bandadelo_miti",
       page: 0,
       perPage: 10,
@@ -36,12 +36,12 @@ export class Bipatbebasthapan extends Component {
   }
 
   componentDidUpdate() {
-    const { districtId, officeRole } = this.props;
+    const { districtId, officeRole, officeId } = this.props;
     this.props.fetchallPahirobebasthapan({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "pahiro_gayeko_miti",
       page: 0,
       perPage: 10,
@@ -50,7 +50,7 @@ export class Bipatbebasthapan extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "bandadelo_miti",
       page: 0,
       perPage: 10,
@@ -111,6 +111,7 @@ const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
   officeRole: state.app.user.office_type,
   districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

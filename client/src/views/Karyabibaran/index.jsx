@@ -10,10 +10,10 @@ import KaryabibaranActions from "../../actions/karyabibaran";
 
 export class Karyabibaran extends Component {
   componentDidMount() {
-    const { districtId, officeRole } = this.props;
+    const { districtId, officeRole, officeId } = this.props;
     this.props.fetchallSamajikkaryabibaran({
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
@@ -26,7 +26,7 @@ export class Karyabibaran extends Component {
   }
 
   componentDidUpdate() {
-    const { districtId, officeRole } = this.props;
+    const { districtId, officeRole, officeId } = this.props;
     // this.props.fetchallBanbikaskaryabibaran({
     //   distId: "%",
     //   name: "ban_type",
@@ -35,7 +35,7 @@ export class Karyabibaran extends Component {
     // });
     this.props.fetchallSamajikkaryabibaran({
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "banbikas_karyabibaran",
       page: 0,
       perPage: 10,
@@ -97,6 +97,7 @@ const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
   officeRole: state.app.user.office_type,
   districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({
