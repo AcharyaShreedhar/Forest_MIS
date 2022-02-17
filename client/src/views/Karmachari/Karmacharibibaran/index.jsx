@@ -199,7 +199,7 @@ class Karmacharibibaran extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
-                yesOffice={true}
+                yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="karmacharibibaran" />

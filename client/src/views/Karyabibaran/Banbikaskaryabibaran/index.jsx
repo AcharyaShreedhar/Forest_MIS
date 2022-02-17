@@ -145,6 +145,7 @@ class Banbikaskaryabibaran extends Component {
                 districtsList={districtList}
                 onSelect={this.handleDistrict}
                 yesDate={false}
+                yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
               <ReportGenerator id="banbikaskaryabibaran" />

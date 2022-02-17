@@ -172,7 +172,7 @@ class Rojgarsrijana extends Component {
                 officesList={officeList}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
-                yesOffice={true}
+                yesOffice={officeRole < 3 ? true : false}
                 yesDate={false}
                 yesDistrict={officeRole < 3 ? true : false}
               />

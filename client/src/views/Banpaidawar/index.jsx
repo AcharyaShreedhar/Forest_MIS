@@ -10,12 +10,12 @@ import BanpaidawarActions from "../../actions/banpaidawar";
 
 export class Banpaidawar extends Component {
   componentDidMount() {
-    const { districtId, officeRole } = this.props;
+    const { districtId, officeRole, officeId } = this.props;
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -24,7 +24,7 @@ export class Banpaidawar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -33,7 +33,7 @@ export class Banpaidawar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "bikri_miti",
       page: 0,
       perPage: 10,
@@ -45,12 +45,12 @@ export class Banpaidawar extends Component {
   }
 
   componentDidUpdate() {
-    const { districtId, officeRole } = this.props;
+    const { districtId, officeRole, officeId } = this.props;
     this.props.fetchallBanpaidawarlilam({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "lilam_date",
       page: 0,
       perPage: 10,
@@ -59,7 +59,7 @@ export class Banpaidawar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "arthik_barsa",
       page: 0,
       perPage: 10,
@@ -68,7 +68,7 @@ export class Banpaidawar extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: "%",
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "bikri_miti",
       page: 0,
       perPage: 10,
@@ -130,6 +130,7 @@ const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
   officeRole: state.app.user.office_type,
   districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({
