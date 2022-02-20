@@ -65,7 +65,7 @@ async function getBadhiBibaran(req, res) {
 }
 
 //Controller for adding a BadhiBibaran
-async function addBadhiBibaran(req, res) {
+async function addBadhiBibaran(req, res, next) {
   const addBadhiBibaranQuery = `INSERT INTO badhi_bibarans (badhi_aayeko_sthan, dist_id, office_id, manab_ghaite, manab_mareko, uddar_sankhya, badhi_aayeko_miti, xeti_bibaran, banyajantu_mareko, botbiruwa_xeti, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBadhiBibaranQuery,
@@ -85,15 +85,16 @@ async function addBadhiBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a BadhiBibaran
-async function updateBadhiBibaran(req, res) {
+async function updateBadhiBibaran(req, res, next) {
   const updateBadhiBibaranQuery = `UPDATE badhi_bibarans SET badhi_aayeko_sthan=?, dist_id=?, office_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, badhi_aayeko_miti=?,  xeti_bibaran=?, banyajantu_mareko=?, botbiruwa_xeti=?, created_by=?, updated_by=? WHERE badhi_bibaran_id=?`;
   pool.query(
     updateBadhiBibaranQuery,
@@ -114,24 +115,26 @@ async function updateBadhiBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a BadhiBibaran
-async function deleteBadhiBibaran(req, res) {
+async function deleteBadhiBibaran(req, res, next) {
   const deleteBadhiBibaranQuery = `DELETE  FROM badhi_bibarans where badhi_bibaran_id=?`;
   pool.query(
     deleteBadhiBibaranQuery,
     [req.params.badhiBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

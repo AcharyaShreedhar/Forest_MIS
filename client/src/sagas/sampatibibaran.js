@@ -8,7 +8,14 @@ export function* fetchallassetsRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getAssetsList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(SampatibibaranActions.fetchallassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.fetchallassetsFailure());
@@ -20,7 +27,14 @@ export function* fetchassetsRequest(api, action) {
 
   const response = yield api.getAssets(assetId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(SampatibibaranActions.fetchassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.fetchassetsFailure());
@@ -35,7 +49,14 @@ export function* addassetsRequest(api, action) {
     payload.assets.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सम्पत्ति प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -68,7 +89,14 @@ export function* updateassetsRequest(api, action) {
     assetId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सम्पत्ति शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -98,7 +126,14 @@ export function* deleteassetsRequest(api, action) {
 
   const response = yield api.postSampatibibaranAssetsDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सम्पत्ति हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -126,7 +161,14 @@ export function* fetchallvehiclesRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getVehiclesList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(SampatibibaranActions.fetchallvehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.fetchallvehiclesFailure());
@@ -138,7 +180,14 @@ export function* fetchvehiclesRequest(api, action) {
 
   const response = yield api.getVehicles(vehicleId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(SampatibibaranActions.fetchvehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.fetchvehiclesFailure());
@@ -153,7 +202,14 @@ export function* addvehiclesRequest(api, action) {
     payload.vehicles.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक गाडी विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -188,7 +244,14 @@ export function* updatevehiclesRequest(api, action) {
     vehicleId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक गाडी विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -220,7 +283,14 @@ export function* deletevehiclesRequest(api, action) {
 
   const response = yield api.postSampatibibaranVehiclesDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक गाडी विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -251,7 +321,14 @@ export function* fetchallanyasampatiRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getAnyaSampatiList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(SampatibibaranActions.fetchallanyasampatiSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.fetchallanyasampatiFailure());
@@ -263,7 +340,14 @@ export function* fetchanyasampatiRequest(api, action) {
 
   const response = yield api.getAnyaSampati(sampatiId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(SampatibibaranActions.fetchanyasampatiSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.fetchanyasampatiFailure());
@@ -278,7 +362,14 @@ export function* addanyasampatiRequest(api, action) {
     payload.anyasampati.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सम्पती विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -314,7 +405,14 @@ export function* updateanyasampatiRequest(api, action) {
     sampatiId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सम्पती विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -347,7 +445,14 @@ export function* deleteanyasampatiRequest(api, action) {
 
   const response = yield api.postSampatibibaranAnyaSampatiDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सम्पती विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

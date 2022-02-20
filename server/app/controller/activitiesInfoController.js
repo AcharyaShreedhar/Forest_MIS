@@ -65,7 +65,7 @@ async function getActivitiesInfo(req, res) {
 }
 
 //Controller for adding a ActivitiesInfo
-async function addActivitiesInfo(req, res) {
+async function addActivitiesInfo(req, res, next) {
   const addActivitiesInfoQuery = `INSERT INTO activities_infos (dist_id, office_id, samudayikban_naam, fiscal_year, area, production_from_conservation_timber, production_from_conservation_wood, employment_generated_workingday, withingroup_timber, withingroup_wood, outsidegroup_timber, outsidegroup_wood, maujdat_timber, maujdat_wood, annual_income, annual_expenditure, netannual_saving, niyamit_rojgar_count, community_udhyam_bibaran, annual_bibaran, lekha_parikshyan,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addActivitiesInfoQuery,
@@ -96,15 +96,16 @@ async function addActivitiesInfo(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a ActivitiesInfo
-async function updateActivitiesInfo(req, res) {
+async function updateActivitiesInfo(req, res, next) {
   const updateActivitiesInfoQuery = `UPDATE activities_infos SET dist_id=?, office_id=? samudayikban_naam=?, fiscal_year=?, area=?, production_from_conservation_timber=?, production_from_conservation_wood=?, employment_generated_workingday=?, withingroup_timber=?, withingroup_wood=?, outsidegroup_timber=?, outsidegroup_wood=?, maujdat_timber=?, maujdat_wood=?, annual_income=?, annual_expenditure=?, netannual_saving=?, niyamit_rojgar_count=?, community_udhyam_bibaran=?, annual_bibaran=?, lekha_parikshyan=?,created_by=?, updated_by=? WHERE activities_info_id=?`;
   pool.query(
     updateActivitiesInfoQuery,
@@ -136,24 +137,26 @@ async function updateActivitiesInfo(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a ActivitiesInfo
-async function deleteActivitiesInfo(req, res) {
+async function deleteActivitiesInfo(req, res, next) {
   const deleteActivitiesInfoQuery = `DELETE  FROM activities_infos where activities_info_id=?`;
   pool.query(
     deleteActivitiesInfoQuery,
     [req.params.activitiesInfoId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -9,7 +9,14 @@ export function* fetchallbantypesRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBantypesList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BankaprakarActions.fetchallbantypesSuccess(response.data));
   } else {
     yield put(BankaprakarActions.fetchallbantypesFailure());
@@ -20,7 +27,14 @@ export function* fetchallsamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getSamudayikbanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallsamudayikbanbibaranSuccess(response.data)
     );
@@ -34,7 +48,14 @@ export function* fetchsamudayikbanbibaranRequest(api, action) {
 
   const response = yield api.getSamudayikbanBibaran(samudayikbanBibaranId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchsamudayikbanbibaranSuccess(response.data)
     );
@@ -51,7 +72,14 @@ export function* addsamudayikbanbibaranRequest(api, action) {
     payload.samudayikban.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield addnabikarankaryayojanaRequest(api, [payload, "samudayikban"]);
     yield put(BankaprakarActions.addsamudayikbanbibaranSuccess(response.data));
   } else {
@@ -74,7 +102,14 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
     samudayikbanbibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield updatenabikarankaryayojanaRequest(api, [payload, "samudayikban"]);
     yield put(
       BankaprakarActions.updatesamudayikbanbibaranSuccess(response.data)
@@ -95,7 +130,14 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
   const { payload } = action;
   const response = yield api.postBankaprakarSamudayikbanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield deletenabikarankaryayojanaRequest(api, [payload, "samudayikban"]);
     yield put(
       BankaprakarActions.deletesamudayikbanbibaranSuccess(response.data)
@@ -115,7 +157,14 @@ export function* fetchalldharmikbanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getDharmikbanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchalldharmikbanbibaranSuccess(response.data)
     );
@@ -129,7 +178,14 @@ export function* fetchdharmikbanbibaranRequest(api, action) {
 
   const response = yield api.getDharmikbanBibaran(dharmikbanBibaranId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BankaprakarActions.fetchdharmikbanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.fetchdharmikbanbibaranFailure());
@@ -144,7 +200,14 @@ export function* adddharmikbanbibaranRequest(api, action) {
     payload.dharmikban.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield addnabikarankaryayojanaRequest(api, [payload, "dharmikban"]);
     yield put(BankaprakarActions.adddharmikbanbibaranSuccess(response.data));
   } else {
@@ -166,7 +229,14 @@ export function* updatedharmikbanbibaranRequest(api, action) {
     payload.dharmikban.data,
     dharmikbanbibaranId
   );
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield updatenabikarankaryayojanaRequest(api, [payload, "dharmikban"]);
     yield put(BankaprakarActions.updatedharmikbanbibaranSuccess(response.data));
   } else {
@@ -186,7 +256,14 @@ export function* deletedharmikbanbibaranRequest(api, action) {
 
   const response = yield api.postBankaprakarDharmikbanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield deletenabikarankaryayojanaRequest(api, [payload, "dharmikban"]);
     yield put(BankaprakarActions.deletedharmikbanbibaranSuccess(response.data));
   } else {
@@ -204,7 +281,14 @@ export function* fetchallnijibanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getNijibanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BankaprakarActions.fetchallnijibanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.fetchallnijibanbibaranFailure());
@@ -215,7 +299,14 @@ export function* fetchnijibanbibaranRequest(api, action) {
   const nijibanBibaranId = action.payload;
 
   const response = yield api.getNijibanBibaran(nijibanBibaranId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BankaprakarActions.fetchnijibanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.fetchnijibanbibaranFailure());
@@ -228,7 +319,14 @@ export function* addnijibanbibaranRequest(api, action) {
 
   const response = yield api.postBankaprakarNijibanAddNew(payload.nijiban.data);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक निजी वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -263,7 +361,14 @@ export function* updatenijibanbibaranRequest(api, action) {
     nijibanbibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक निजी वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -295,7 +400,14 @@ export function* deletenijibanbibaranRequest(api, action) {
 
   const response = yield api.postBankaprakarNijibanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक निजी वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -324,7 +436,14 @@ export function* fetchallkabuliyatibanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getKabuliyatibanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallkabuliyatibanbibaranSuccess(response.data)
     );
@@ -337,7 +456,14 @@ export function* fetchkabuliyatibanbibaranRequest(api, action) {
   const kabuliyatibanBibaranId = action.payload;
 
   const response = yield api.getKabuliyatibanBibaran(kabuliyatibanBibaranId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchkabuliyatibanbibaranSuccess(response.data)
     );
@@ -354,7 +480,14 @@ export function* addkabuliyatibanbibaranRequest(api, action) {
     payload.kabuliyatiban.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कबुलियती वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -389,7 +522,14 @@ export function* updatekabuliyatibanbibaranRequest(api, action) {
     kabuliyatibanbibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कबुलियाती वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -423,7 +563,14 @@ export function* deletekabuliyatibanbibaranRequest(api, action) {
 
   const response = yield api.postBankaprakarKabuliyatibanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कबुलियती वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -453,7 +600,14 @@ export function* deletekabuliyatibanbibaranRequest(api, action) {
 export function* fetchallnabikarankaryayojanaRequest(api, action) {
   const response = yield api.getNabikaranKaryayojanaList();
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallnabikarankaryayojanaSuccess(response.data)
     );
@@ -466,7 +620,14 @@ export function* fetchnabikarankaryayojanaRequest(api, action) {
   const nabikaranKaryayojanaId = action.payload;
 
   const response = yield api.getNabikaranKaryayojana(nabikaranKaryayojanaId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchnabikarankaryayojanaSuccess(response.data)
     );
@@ -483,7 +644,14 @@ export function* addnabikarankaryayojanaRequest(api, action) {
   const response = yield api.postBankaprakarNabikarankaryayojanaAddNew(
     payloaddata.nabikarankaryayojana.data
   );
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     switch (type) {
       case "samudayikban": {
         toast.success("सफलतापुर्वक सामुदायिक वन प्रविष्ट भयो !!!!", {
@@ -543,7 +711,14 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
     payloaddata.nabikarankaryayojana.data.darta_id
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     switch (type) {
       case "samudayikban": {
         toast.success("सफलतापुर्वक सामुदायिक वन शंसोधन भयो !!!!", {
@@ -606,7 +781,14 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
     payloaddata
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     switch (type) {
       case "samudayikban": {
         toast.success("सफलतापुर्वक सामुदायिक वन हटाईयो !!!!", {
@@ -662,7 +844,14 @@ export function* fetchallchaklabanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getChaklabanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallchaklabanbibaranSuccess(response.data)
     );
@@ -675,7 +864,14 @@ export function* fetchchaklabanbibaranRequest(api, action) {
   const chaklabanBibaranId = action.payload;
 
   const response = yield api.getChaklabanBibaran(chaklabanBibaranId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BankaprakarActions.fetchchaklabanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.fetchchaklabanbibaranFailure());
@@ -690,7 +886,14 @@ export function* addchaklabanbibaranRequest(api, action) {
     payload.chaklaban.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक चक्ला वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -725,7 +928,14 @@ export function* updatechaklabanbibaranRequest(api, action) {
     chaklabanbibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक चक्ला वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -757,7 +967,14 @@ export function* deletechaklabanbibaranRequest(api, action) {
 
   const response = yield api.postBankaprakarChaklabanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक चक्ला वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -788,7 +1005,14 @@ export function* fetchallconsumergroupdetailsRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getConsumergroupDetailsList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallconsumergroupdetailsSuccess(response.data)
     );
@@ -802,7 +1026,14 @@ export function* fetchconsumergroupdetailsRequest(api, action) {
 
   const response = yield api.getConsumergroupDetails(consumergroupDetailsId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchconsumergroupdetailsSuccess(response.data)
     );
@@ -819,7 +1050,14 @@ export function* addconsumergroupdetailsRequest(api, action) {
     payload.consumergroupdetails.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक उपभोक्ता समुह प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -853,7 +1091,14 @@ export function* updateconsumergroupdetailsRequest(api, action) {
     payload.consumergroupdetails.data,
     consumergroupdetailsId
   );
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक उपभोक्ता समुह शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -887,7 +1132,14 @@ export function* deleteconsumergroupdetailsRequest(api, action) {
 
   const response = yield api.postConsumergroupDetailsDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक उपभोक्ता समुह हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -919,7 +1171,14 @@ export function* fetchallrastriyabanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getRastriyabanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallrastriyabanbibaranSuccess(response.data)
     );
@@ -933,7 +1192,14 @@ export function* fetchrastriyabanbibaranRequest(api, action) {
 
   const response = yield api.getRastriyabanBibaran(rastriyabanBibaranId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BankaprakarActions.fetchrastriyabanbibaranSuccess(response.data));
   } else {
     yield put(BankaprakarActions.fetchrastriyabanbibaranFailure());
@@ -948,7 +1214,14 @@ export function* addrastriyabanbibaranRequest(api, action) {
     payload.rastriyaban.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक राष्ट्रिय वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -983,7 +1256,14 @@ export function* updaterastriyabanbibaranRequest(api, action) {
     rastriyabanbibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक राष्ट्रिय वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -1016,7 +1296,14 @@ export function* deleterastriyabanbibaranRequest(api, action) {
 
   const response = yield api.postRastriyabanBibaranDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक राष्ट्रिय वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -1048,7 +1335,14 @@ export function* fetchallcommercialkabuliyatibanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getCommercialkabuliyatibanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallcommercialkabuliyatibanbibaranSuccess(
         response.data
@@ -1068,7 +1362,14 @@ export function* fetchcommercialkabuliyatibanbibaranRequest(api, action) {
     rastriyabanBibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchcommercialkabuliyatibanbibaranSuccess(
         response.data
@@ -1086,7 +1387,14 @@ export function* addcommercialkabuliyatibanbibaranRequest(api, action) {
     payload.commercialban.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक व्यवसायिक कबुलियती वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -1122,7 +1430,14 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
     commercialkabuliyatibanbibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक व्यवसायिक कबुलियाती वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -1159,7 +1474,14 @@ export function* deletecommercialkabuliyatibanbibaranRequest(api, action) {
     payload
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक व्यवसायिक कबुलियती वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -1193,7 +1515,14 @@ export function* fetchallsajhedaribanbibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getSajhedaribanBibaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchallsajhedaribanbibaranSuccess(response.data)
     );
@@ -1207,7 +1536,14 @@ export function* fetchsajhedaribanbibaranRequest(api, action) {
 
   const response = yield api.getSajhedaribanBibaran(sajhedaribanBibaranId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BankaprakarActions.fetchsajhedaribanbibaranSuccess(response.data)
     );
@@ -1223,7 +1559,14 @@ export function* addsajhedaribanbibaranRequest(api, action) {
     payload.sajhedariban.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक साझेदारी वन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -1257,7 +1600,14 @@ export function* updatesajhedaribanbibaranRequest(api, action) {
     sajhedaribanbibaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक साझेदारी वन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -1290,7 +1640,14 @@ export function* deletesajhedaribanbibaranRequest(api, action) {
 
   const response = yield api.postBankaprakarSajhedaribanbibaranDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक साझेदारी वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

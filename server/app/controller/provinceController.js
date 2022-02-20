@@ -24,7 +24,7 @@ async function getProvince(req, res) {
 
 //Service for adding a Province
 
-async function addProvince(req, res) {
+async function addProvince(req, res, next) {
   const addProvinceQuery = `INSERT INTO provinces (prov_name_eng,prov_name_nep,created_by,updated_by) values (?,?,?,?)`;
   await pool.query(
     addProvinceQuery,
@@ -36,16 +36,17 @@ async function addProvince(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Province
 
-async function updateProvince(req, res) {
+async function updateProvince(req, res, next) {
   const updateProvinceQuery = `UPDATE provinces SET prov_name_eng=?, prov_name_nep=?, created_by=?,updated_by=? WHERE prov_id=?`;
   await pool.query(
     updateProvinceQuery,
@@ -58,25 +59,27 @@ async function updateProvince(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Province
 
-async function deleteProvince(req, res) {
+async function deleteProvince(req, res, next) {
   const deleteProvinceQuery = `DELETE  FROM provinces where prov_id=?`;
   pool.query(
     deleteProvinceQuery,
     [req.params.provinceId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -56,7 +56,7 @@ async function getMuddaAnusandhanDayaris(req, res) {
 }
 
 //Controller for adding a Mudda Anusandhan Dayari
-async function addMuddaAnusandhanDayaris(req, res) {
+async function addMuddaAnusandhanDayaris(req, res, next) {
   const addMuddaAnusandhanDayarisQuery = `INSERT INTO mudda_anusandhan_dayaris (dist_id,office_id,jaheri_partibedan_miti,kasurko_kisim,bigo_pariman,jaggako_area,jaggako_thegana,abhiyog_miti,abhiyog_nikaya,abhiyog_jariwana,kaid,bojbahak_jafat_maagdabi,pratibadi_sankhya,thunchek_dharauti,sadharan_tarekh,thuna_aadhes,faisala_miti,faisala_jariwana,faisala_kaid,faisala_status,bojbahak_jafat,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addMuddaAnusandhanDayarisQuery,
@@ -87,15 +87,16 @@ async function addMuddaAnusandhanDayaris(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Mudda Anusandhan Dayari
-async function updateMuddaAnusandhanDayaris(req, res) {
+async function updateMuddaAnusandhanDayaris(req, res, next) {
   const updateMuddaAnusandhanDayarisQuery = `UPDATE mudda_anusandhan_dayaris SET dist_id=?,office_id=?,jaheri_partibedan_miti=?,kasurko_kisim=?,bigo_pariman=?,jaggako_area=?,jaggako_thegana=?,abhiyog_miti=?,abhiyog_nikaya=?,abhiyog_jariwana=?,kaid=?,bojbahak_jafat_maagdabi=?,pratibadi_sankhya=?,thunchek_dharauti=?,sadharan_tarekh=?,thuna_aadhes=?,faisala_miti=?,faisala_jariwana=?,faisala_kaid=?,faisala_status=?, bojbahak_jafat=?,created_by=?,updated_by=? WHERE mudda_anusandhan_dayari_id=?`;
   pool.query(
     updateMuddaAnusandhanDayarisQuery,
@@ -127,24 +128,26 @@ async function updateMuddaAnusandhanDayaris(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Department
-async function deleteMuddaAnusandhanDayaris(req, res) {
+async function deleteMuddaAnusandhanDayaris(req, res, next) {
   const deleteMuddaAnusandhanDayarisQuery = `DELETE  FROM mudda_anusandhan_dayaris WHERE mudda_anusandhan_dayari_id=?`;
   pool.query(
     deleteMuddaAnusandhanDayarisQuery,
     [req.params.muddaAnusandhanDayariId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -10,7 +10,14 @@ export function* fetchallrojgarsrijanaRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getRojgarSrijanaList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(MiscellaneousActions.fetchallrojgarsrijanaSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchallrojgarsrijanaFailure());
@@ -22,7 +29,14 @@ export function* fetchrojgarsrijanaRequest(api, action) {
 
   const response = yield api.getRojgarSrijana(rojgarsrijanaId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(MiscellaneousActions.fetchrojgarsrijanaSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchrojgarsrijanaFailure());
@@ -36,7 +50,14 @@ export function* addrojgarsrijanaRequest(api, action) {
     payload.rojgarsrijana.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक रोजगार सृजना प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -69,7 +90,14 @@ export function* updaterojgarsrijanaRequest(api, action) {
     rojgarsrijanaId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक रोजगार सृजना शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -99,7 +127,14 @@ export function* deleterojgarsrijanaRequest(api, action) {
 
   const response = yield api.postRojgarSrijanaDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक रोजगार सृजना हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -127,7 +162,14 @@ export function* fetchalluddhamRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getUddhamList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(MiscellaneousActions.fetchalluddhamSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchalluddhamFailure());
@@ -139,7 +181,14 @@ export function* fetchuddhamRequest(api, action) {
 
   const response = yield api.getUddham(uddhamId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(MiscellaneousActions.fetchuddhamSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchuddhamFailure());
@@ -151,7 +200,14 @@ export function* adduddhamRequest(api, action) {
 
   const response = yield api.postUddhamAddNew(payload.uddham.data);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक रोजगार सृजना प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -183,7 +239,14 @@ export function* updateuddhamRequest(api, action) {
 
   const response = yield api.postUddhamUpdate(payload.uddham.data, uddhamId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक उद्धम विवरण  शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -215,7 +278,14 @@ export function* deleteuddhamRequest(api, action) {
 
   const response = yield api.postUddhamDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक उद्धम विवरण  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

@@ -10,7 +10,14 @@ export function* fetchallemployeesRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getEmployeesList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(KarmacharibibaranActions.fetchallemployeesSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchallemployeesFailure());
@@ -22,7 +29,14 @@ export function* fetchemployeesRequest(api, action) {
 
   const response = yield api.getEmployees(employeesId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(KarmacharibibaranActions.fetchemployeesSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchemployeesFailure());
@@ -37,7 +51,14 @@ export function* addemployeesRequest(api, action) {
     payload.employees.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कर्मचारी प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -72,7 +93,14 @@ export function* updateemployeesRequest(api, action) {
     employeeId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कर्मचारी  शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -104,7 +132,14 @@ export function* deleteemployeesRequest(api, action) {
 
   const response = yield api.postKarmacharibibaranEmployeesDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कर्मचारी  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -134,7 +169,14 @@ export function* fetchallemployeeshistoryRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getEmployeeshistoryList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       KarmacharibibaranActions.fetchallemployeeshistorySuccess(response.data)
     );
@@ -148,7 +190,14 @@ export function* fetchemployeeshistoryRequest(api, action) {
 
   const response = yield api.getEmployeeshistory(histId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       KarmacharibibaranActions.fetchemployeeshistorySuccess(response.data)
     );
@@ -165,7 +214,14 @@ export function* addemployeeshistoryRequest(api, action) {
     payload.employeeshistory.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कर्मचारी विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -198,7 +254,14 @@ export function* updateemployeeshistoryRequest(api, action) {
     employeehistoryId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कर्मचारी विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -233,7 +296,14 @@ export function* deleteemployeeshistoryRequest(api, action) {
     payload
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कर्मचारी विवरण  वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -262,7 +332,14 @@ export function* fetchalllevelRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getLevelList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(KarmacharibibaranActions.fetchalllevelSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchalllevelFailure());
@@ -274,7 +351,14 @@ export function* fetchlevelRequest(api, action) {
 
   const response = yield api.getLevel(levelId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(KarmacharibibaranActions.fetchlevelSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchlevelFailure());
@@ -289,7 +373,14 @@ export function* addlevelRequest(api, action) {
     payload.level.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक तह प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -320,7 +411,14 @@ export function* updatelevelRequest(api, action) {
     levelId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक तह शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -348,7 +446,14 @@ export function* deletelevelRequest(api, action) {
 
   const response = yield api.postKarmacharibibaranLevelDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक तह  वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -374,7 +479,14 @@ export function* fetchallpostRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getPostList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(KarmacharibibaranActions.fetchallpostSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchallpostFailure());
@@ -386,7 +498,14 @@ export function* fetchpostRequest(api, action) {
 
   const response = yield api.getPost(postId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(KarmacharibibaranActions.fetchpostSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchpostFailure());
@@ -399,7 +518,14 @@ export function* addpostRequest(api, action) {
 
   const response = yield api.postKarmacharibibaranPostAddNew(payload.post.data);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक पद प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -430,7 +556,14 @@ export function* updatepostRequest(api, action) {
     postId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक  पद शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -458,7 +591,14 @@ export function* deletepostRequest(api, action) {
 
   const response = yield api.postKarmacharibibaranPostDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक पद वन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

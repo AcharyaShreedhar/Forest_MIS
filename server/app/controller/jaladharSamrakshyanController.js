@@ -69,7 +69,7 @@ async function getJaladharSamrakshyan(req, res) {
 }
 
 //Controller for adding a jaladharsamrakshyan
-async function addJaladharSamrakshyan(req, res) {
+async function addJaladharSamrakshyan(req, res, next) {
   const addJaladharSamrakshyanQuery = `INSERT INTO jaladhar_samrakshyans (dist_id, office_id, sthan, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?,?)`;
   pool.query(
     addJaladharSamrakshyanQuery,
@@ -85,15 +85,16 @@ async function addJaladharSamrakshyan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a jaladharamrakshyan
-async function updateJaladharSamrakshyan(req, res) {
+async function updateJaladharSamrakshyan(req, res, next) {
   const updateJaladharSamrakshyanQuery = `UPDATE jaladhar_samrakshyans SET dist_id=?, office_id=?, sthan=?, qty=?, karyakram_miti=?, laagat=?, created_by=?, updated_by=? WHERE jaladhar_samrakshyan_id=?`;
   pool.query(
     updateJaladharSamrakshyanQuery,
@@ -110,24 +111,26 @@ async function updateJaladharSamrakshyan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a jaladharamrakshyan
-async function deleteJaladharSamrakshyan(req, res) {
+async function deleteJaladharSamrakshyan(req, res, next) {
   const deleteJaladharSamrakshyanQuery = `DELETE  FROM jaladhar_samrakshyans where jaladhar_samrakshyan_id=?`;
   pool.query(
     deleteJaladharSamrakshyanQuery,
     [req.params.jaladharsamrakshyanId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

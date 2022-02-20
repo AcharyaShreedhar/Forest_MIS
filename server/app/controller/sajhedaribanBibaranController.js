@@ -65,7 +65,7 @@ async function getSajhedaribanBibaran(req, res) {
 }
 
 //Controller for adding a SajhedaribanBibaran
-async function addSajhedaribanBibaran(req, res) {
+async function addSajhedaribanBibaran(req, res, next) {
   const addSajhedaribanBibaranQuery = `INSERT INTO sajhedariban_bibarans (darta_no, darta_miti, dist_id, office_id, sajhedariban_naam, address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSajhedaribanBibaranQuery,
@@ -88,15 +88,16 @@ async function addSajhedaribanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a SajhedaribanBibaran
-async function updateSajhedaribanBibaran(req, res) {
+async function updateSajhedaribanBibaran(req, res, next) {
   const updateSajhedaribanBibaranQuery = `UPDATE sajhedariban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, office_id=?, sajhedariban_naam=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSajhedaribanBibaranQuery,
@@ -120,24 +121,26 @@ async function updateSajhedaribanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a SajhedaribanBibaran
-async function deleteSajhedaribanBibaran(req, res) {
+async function deleteSajhedaribanBibaran(req, res, next) {
   const deleteSajhedaribanBibaranQuery = `DELETE  FROM sajhedariban_bibarans where darta_no=?`;
   pool.query(
     deleteSajhedaribanBibaranQuery,
     [req.params.sajhedaribanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

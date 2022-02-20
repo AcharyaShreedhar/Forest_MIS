@@ -66,7 +66,7 @@ async function getBanxetraAtikramans(req, res) {
 }
 
 //Controller for adding a Banxetra Atikraman
-async function addBanxetraAtikramans(req, res) {
+async function addBanxetraAtikramans(req, res, next) {
   const addBanxetraAtikramansQuery = `INSERT INTO banxetra_atikramans (dist_id, office_id, atikramit_area,address,atikraman_kisim,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,atikraman_miti,atikraman_prayojan,samrachana_bibaran,atikraman_abastha,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanxetraAtikramansQuery,
@@ -88,15 +88,16 @@ async function addBanxetraAtikramans(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Banxetra Atikraman
-async function updateBanxetraAtikramans(req, res) {
+async function updateBanxetraAtikramans(req, res, next) {
   const updateBanxetraAtikramansQuery = `UPDATE banxetra_atikramans SET dist_id=?, office_id=?, atikramit_area=?,address=?,atikraman_kisim=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,atikraman_miti=?,atikraman_prayojan=?,samrachana_bibaran=?,atikraman_abastha=?,created_by=?,updated_by=? WHERE banxetra_atikraman_id=?`;
   pool.query(
     updateBanxetraAtikramansQuery,
@@ -119,24 +120,26 @@ async function updateBanxetraAtikramans(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Banxetra Atikraman
-async function deleteBanxetraAtikramans(req, res) {
+async function deleteBanxetraAtikramans(req, res, next) {
   const deleteBanxetraAtikramansQuery = `DELETE  FROM banxetra_atikramans WHERE banxetra_atikraman_id=?`;
   pool.query(
     deleteBanxetraAtikramansQuery,
     [req.params.banxetraAtikramanId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

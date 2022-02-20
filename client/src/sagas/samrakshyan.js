@@ -9,7 +9,14 @@ export function* fetchallsamrakshyanpokharinirmanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getSamrakshyanPokhariNirmanList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchallsamrakshyanpokharinirmanSuccess(response.data)
     );
@@ -25,7 +32,14 @@ export function* fetchsamrakshyanpokharinirmanRequest(api, action) {
     samrakshyanpokhariNirmanId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchsamrakshyanpokharinirmanSuccess(response.data)
     );
@@ -42,7 +56,14 @@ export function* addsamrakshyanpokharinirmanRequest(api, action) {
     payload.samrakshyanpokharinirman.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success(
       "सफलतापुर्वक संरक्षण पोखरी निंमाण कार्यक्रम प्रविष्ट भयो !!!!!",
       {
@@ -82,7 +103,14 @@ export function* updatesamrakshyanpokharinirmanRequest(api, action) {
     samrakshyanpokhariNirmanId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success(
       "सफलतापुर्वक संरक्षण पोखरी निंमाण कार्यक्रम शंसोधन भयो !!!!!",
       {
@@ -119,7 +147,14 @@ export function* deletesamrakshyanpokharinirmanRequest(api, action) {
 
   const response = yield api.postSamrakshyanPokhariNirmanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक संरक्षण पोखरी निंमाण कार्यक्रम हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -151,7 +186,14 @@ export function* fetchalljaladharsamrakshyanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getJaladharSamrakshyanList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchalljaladharsamrakshyanSuccess(response.data)
     );
@@ -165,7 +207,14 @@ export function* fetchjaladharsamrakshyanRequest(api, action) {
 
   const response = yield api.getJaladharSamrakshyan(jaladharSamrakshyanId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchjaladharsamrakshyanSuccess(response.data)
     );
@@ -182,7 +231,14 @@ export function* addjaladharsamrakshyanRequest(api, action) {
     payload.jaladharsamrakshyan.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक जलाधर संरक्षण कार्यक्रम प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -217,7 +273,14 @@ export function* updatejaladharsamrakshyanRequest(api, action) {
     jaladharsamrakshyanId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक जलाधर संरक्षण कार्यक्रम शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -251,7 +314,14 @@ export function* deletejaladharsamrakshyanRequest(api, action) {
 
   const response = yield api.postJaladharSamrakshyanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक जलाधर संरक्षण कार्यक्रम हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -283,7 +353,14 @@ export function* fetchallnadikinarsamrakshyanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getNadikinarSamrakshyanList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchallnadikinarsamrakshyanSuccess(response.data)
     );
@@ -297,7 +374,14 @@ export function* fetchnadikinarsamrakshyanRequest(api, action) {
 
   const response = yield api.getNadikinarSamrakshyan(nadikinarSamrakshyanId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchnadikinarsamrakshyanSuccess(response.data)
     );
@@ -314,7 +398,14 @@ export function* addnadikinarsamrakshyanRequest(api, action) {
     payload.nadikinarsamrakshyan.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success(
       "सफलतापुर्वक नदि किनार संरक्षण कार्यक्रम प्रविष्ट भयो !!!!!",
       {
@@ -352,7 +443,14 @@ export function* updatenadikinarsamrakshyanRequest(api, action) {
     nadikinarSamrakshyanId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक नदि किनार संरक्षण कार्यक्रम शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -386,7 +484,14 @@ export function* deletenadikinarsamrakshyanRequest(api, action) {
 
   const response = yield api.postNadikinarSamrakshyanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक नदि किनार संरक्षण कार्यक्रम हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -418,7 +523,14 @@ export function* fetchallpanimuhansamrakshyanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getPanimuhanSamrakshyanList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchallpanimuhansamrakshyanSuccess(response.data)
     );
@@ -432,7 +544,14 @@ export function* fetchpanimuhansamrakshyanRequest(api, action) {
 
   const response = yield api.getPanimuhanSamrakshyan(panimuhanSamrakshyanId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       SamrakshyanActions.fetchpanimuhansamrakshyanSuccess(response.data)
     );
@@ -449,7 +568,14 @@ export function* addpanimuhansamrakshyanRequest(api, action) {
     payload.panimuhansamrakshyan.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success(
       "सफलतापुर्वक पानीमुहान संरक्षण कार्यक्रम प्रविष्ट भयो !!!!!",
       {
@@ -487,7 +613,14 @@ export function* updatepanimuhansamrakshyanRequest(api, action) {
     panimuhanSamrakshyanId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक पानीमुहान संरक्षण कार्यक्रम शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -521,7 +654,14 @@ export function* deletepanimuhansamrakshyanRequest(api, action) {
 
   const response = yield api.postPanimuhanSamrakshyanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक पानीमुहान संरक्षण कार्यक्रम हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

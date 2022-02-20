@@ -40,7 +40,7 @@ async function getDepartment(req, res) {
 }
 
 //Controller for adding a Department
-async function addDepartment(req, res) {
+async function addDepartment(req, res, next) {
   const addDepartmentQuery = `INSERT INTO departments (dept_name_nep, office_id, dist_id, dept_name_eng,created_by,updated_by) values (?,?,?,?,?)`;
   pool.query(
     addDepartmentQuery,
@@ -54,15 +54,16 @@ async function addDepartment(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Department
-async function updateDepartment(req, res) {
+async function updateDepartment(req, res, next) {
   const updateDepartmentQuery = `UPDATE departments SET  dept_name_nep=?, dist_id=?,office_id=?,dept_name_nep=?,created_by=?,updated_by=? WHERE dept_id=?`;
   pool.query(
     updateDepartmentQuery,
@@ -77,24 +78,26 @@ async function updateDepartment(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Department
-async function deleteDepartment(req, res) {
+async function deleteDepartment(req, res, next) {
   const deleteDepartmentQuery = `DELETE  FROM departments WHERE dept_id=?`;
   pool.query(
     deleteDepartmentQuery,
     [req.params.deptId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

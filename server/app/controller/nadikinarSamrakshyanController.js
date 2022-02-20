@@ -65,7 +65,7 @@ async function getNadikinarSamrakshyan(req, res) {
 }
 
 //Controller for adding a NadikinarSamrakshyan
-async function addNadikinarSamrakshyan(req, res) {
+async function addNadikinarSamrakshyan(req, res, next) {
   const addNadikinarSamrakshyanQuery = `INSERT INTO nadikinarsamrakshyan_bibarans (dist_id, dist_id, sthan, qty, karyakram_miti, conservation_area, affected_area, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addNadikinarSamrakshyanQuery,
@@ -82,15 +82,16 @@ async function addNadikinarSamrakshyan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a NadikinarSamrakshyan
-async function updateNadikinarSamrakshyan(req, res) {
+async function updateNadikinarSamrakshyan(req, res, next) {
   const updateNadikinarSamrakshyanQuery = `UPDATE nadikinarsamrakshyan_bibarans SET dist_id=?, office_id=?, sthan=?, qty=?, karyakram_miti=?, conservation_area=?, affected_area=?, created_by=?, updated_by=? WHERE nadikinarsamrakshyan_id=?`;
   pool.query(
     updateNadikinarSamrakshyanQuery,
@@ -108,24 +109,26 @@ async function updateNadikinarSamrakshyan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a NadikinarSamrakshyan
-async function deleteNadikinarSamrakshyan(req, res) {
+async function deleteNadikinarSamrakshyan(req, res, next) {
   const deleteNadikinarSamrakshyanQuery = `DELETE  FROM nadikinarsamrakshyan_bibarans where nadikinarsamrakshyan_id=?`;
   pool.query(
     deleteNadikinarSamrakshyanQuery,
     [req.params.nadikinarSamrakshyanId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

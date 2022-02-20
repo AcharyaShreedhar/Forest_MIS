@@ -65,7 +65,7 @@ async function getPahiroBibaran(req, res) {
 }
 
 //Controller for adding a PaheroBibaran
-async function addPahiroBibaran(req, res) {
+async function addPahiroBibaran(req, res, next) {
   const addPahiroBibaranQuery = `INSERT INTO pahiro_bibarans (pahiro_gayeko_sthan, dist_id, office_id, manab_ghaite, manab_mareko, uddar_sankhya, pahiro_gayeko_miti, xeti_bibaran, banyajantu_mareko, botbiruwa_xeti, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addPahiroBibaranQuery,
@@ -85,15 +85,16 @@ async function addPahiroBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a PaheroBibaran
-async function updatePahiroBibaran(req, res) {
+async function updatePahiroBibaran(req, res, next) {
   const updatePahiroBibaranQuery = `UPDATE pahiro_bibarans SET pahiro_gayeko_sthan=?, dist_id=?, office_id=?,  manab_ghaite=?, manab_mareko=?, uddar_sankhya=?, pahiro_gayeko_miti=?, xeti_bibaran=?, banyajantu_mareko=?, botbiruwa_xeti=?, created_by=?, updated_by=? WHERE pahiro_bibaran_id=?`;
   pool.query(
     updatePahiroBibaranQuery,
@@ -114,24 +115,26 @@ async function updatePahiroBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a PaheroBibaran
-async function deletePahiroBibaran(req, res) {
+async function deletePahiroBibaran(req, res, next) {
   const deletePahiroBibaranQuery = `DELETE  FROM pahiro_bibarans where pahiro_bibaran_id=?`;
   pool.query(
     deletePahiroBibaranQuery,
     [req.params.pahiroBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

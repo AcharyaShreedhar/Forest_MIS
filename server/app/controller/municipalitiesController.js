@@ -23,7 +23,7 @@ async function getMunicipalities(req, res) {
 }
 
 //Controller for adding a Municipality
-async function addMunicipalities(req, res) {
+async function addMunicipalities(req, res, next) {
   const addMunicipalitiesQuery = `INSERT INTO municipalities (dist_id,office_id,mun_name_nep,mun_name_eng,dist_id,created_by,updated_by) values (?,?,?,?,?,?,?)`;
   pool.query(
     addMunicipalitiesQuery,
@@ -38,15 +38,16 @@ async function addMunicipalities(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Municapility
-async function updateMunicipalities(req, res) {
+async function updateMunicipalities(req, res, next) {
   const updateMunicipalitiesQuery = `UPDATE municipalities SET dist_id=?, office_id=?, mun_name_nep=?, mun_name_eng=?, dist_id=?, created_by=?,updated_by=? WHERE mun_id=?`;
   pool.query(
     updateMunicipalitiesQuery,
@@ -62,24 +63,26 @@ async function updateMunicipalities(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Municipality
-async function deleteMunicipalities(req, res) {
+async function deleteMunicipalities(req, res, next) {
   const deleteMunicipalitiesQuery = `DELETE  FROM municipalities where mun_id=?`;
   pool.query(
     deleteMunicipalitiesQuery,
     [req.params.munId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

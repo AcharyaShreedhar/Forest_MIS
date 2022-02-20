@@ -10,7 +10,14 @@ export function* fetchallinventoriesRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getInventoriesList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(InventoriesActions.fetchallinventoriesSuccess(response.data));
   } else {
     yield put(InventoriesActions.fetchallinventoriesFailure());
@@ -23,7 +30,14 @@ export function* fetchinventoriesRequest(api, action) {
 
   const response = yield api.getInventories(inventId);
   
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       InventoriesActions.fetchinventoriesSuccess(response.data)
     );
@@ -38,7 +52,14 @@ export function* addinventoriesRequest(api, action) {
 
   const response = yield api.postInventoriesInventoriesAddNew(payload.inventories.data);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक  सुचीमा थप गरियो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -69,7 +90,14 @@ export function* updateinventoriesRequest(api, action) {
     inventoryId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सुचीमा  शंसोधन गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -99,7 +127,14 @@ export function* deleteinventoriesRequest(api, action) {
 
   const response = yield api.postInventoriesInventoriesDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक सुची हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -128,7 +163,14 @@ export function* fetchallentryRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getEntryList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(InventoriesActions.fetchallentrySuccess(response.data));
   } else {
     yield put(InventoriesActions.fetchallentryFailure());
@@ -140,7 +182,14 @@ export function* fetchentryRequest(api, action) {
 
   const response = yield api.getEntry(entryId);
   
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       InventoriesActions.fetchentrySuccess(response.data)
     );
@@ -155,7 +204,14 @@ export function* addentryRequest(api, action) {
 
   const response = yield api.postInventoriesEntryAddNew(payload.entry.data);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक प्रवेश  गरियो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -186,7 +242,14 @@ export function* updateentryRequest(api, action) {
     entryId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक प्रवेश शंसोधन गरियो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -216,7 +279,14 @@ export function* deleteentryRequest(api, action) {
 
   const response = yield api.postInventoriesEntryDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक प्रवेश  हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -245,7 +315,14 @@ export function* fetchallexitRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getExitList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(InventoriesActions.fetchallexitSuccess(response.data));
   } else {
     yield put(InventoriesActions.fetchallexitFailure());
@@ -258,7 +335,14 @@ export function* fetchexitRequest(api, action) {
 
   const response = yield api.getExit(exitId);
   
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       InventoriesActions.fetchexitSuccess(response.data)
     );
@@ -275,7 +359,14 @@ export function* addexitRequest(api, action) {
     payload.exit.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक  बहिर्गमन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -306,7 +397,14 @@ export function* updateexitRequest(api, action) {
     exitId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक बहिर्गमन शंसोधन भयो  !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -336,7 +434,14 @@ export function* deleteexitRequest(api, action) {
 
   const response = yield api.postInventoriesExitDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक बहिर्गमन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

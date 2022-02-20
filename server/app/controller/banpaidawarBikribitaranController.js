@@ -65,7 +65,7 @@ async function getBanpaidawarBikribitaran(req, res) {
 }
 
 //Controller for adding a Banpaidawar_Bikribitaran
-async function addBanpaidawarBikribitaran(req, res) {
+async function addBanpaidawarBikribitaran(req, res, next) {
   const addBanpaidawarBikribitaranQuery = `INSERT INTO banpaidawar_bikribitarans (dist_id, office_id, bikri_miti, bandpaidawar_kisim, ekai, aantarik_dar, aantarik_parinam ,aantarik_rakam,aaapurti_dar,aapurti_parinam,aapurti_rakam, bahiya_dar,bahiya_parinam,bahiya_rakam,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanpaidawarBikribitaranQuery,
@@ -91,15 +91,16 @@ async function addBanpaidawarBikribitaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a BanpaidawarBikribitaran
-async function updateBanpaidawarBikribitaran(req, res) {
+async function updateBanpaidawarBikribitaran(req, res, next) {
   const updateBanpaidawarBikribitaranQuery = `UPDATE banpaidawar_bikribitarans SET dist_id=?, office_id=?, bikri_miti=?, bandpaidawar_kisim=?, ekai=?, aantarik_dar=?, aantarik_parinam=?, aantarik_rakam=?, aaapurti_dar=?, aapurti_parinam=?, aapurti_rakam=?, bahiya_dar=?, bahiya_parinam=?, bahiya_rakam=?, created_by=?, updated_by=? WHERE bikribitaran_id=?`;
   pool.query(
     updateBanpaidawarBikribitaranQuery,
@@ -124,24 +125,26 @@ async function updateBanpaidawarBikribitaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a BanpaidawarBikribitaran
-async function deleteBanpaidawarBikribitaran(req, res) {
+async function deleteBanpaidawarBikribitaran(req, res, next) {
   const deleteBanpaidawarBikribitaranQuery = `DELETE  FROM banpaidawar_bikribitarans where bikribitaran_id=?`;
   pool.query(
     deleteBanpaidawarBikribitaranQuery,
     [req.params.banpaidawarbikribitaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

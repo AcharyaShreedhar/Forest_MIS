@@ -68,7 +68,7 @@ async function getSamudayikbanBibaran(req, res) {
 }
 
 //Controller for adding a SamudayikbanBibaran
-async function addSamudayikbanBibaran(req, res) {
+async function addSamudayikbanBibaran(req, res, next) {
   const addSamudayikbanBibaranQuery = `INSERT INTO samudayikban_bibarans (dist_id, office_id, darta_no,  samudayikban_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, timber, wood, baiganik_ban, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addSamudayikbanBibaranQuery,
@@ -95,15 +95,16 @@ async function addSamudayikbanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a SamudayikbanBibaran
-async function updateSamudayikbanBibaran(req, res) {
+async function updateSamudayikbanBibaran(req, res, next) {
   const updateSamudayikbanBibaranQuery = `UPDATE samudayikban_bibarans SET dist_id=?,office_id=?, darta_no=?,samudayikban_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, timber=?, wood=?, baiganik_ban=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateSamudayikbanBibaranQuery,
@@ -131,24 +132,26 @@ async function updateSamudayikbanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a SamudayikbanBibaran
-async function deleteSamudayikbanBibaran(req, res) {
+async function deleteSamudayikbanBibaran(req, res, next) {
   const deleteSamudayikbanBibaranQuery = `DELETE  FROM samudayikban_bibarans where darta_no=?`;
   pool.query(
     deleteSamudayikbanBibaranQuery,
     [req.params.samudayikbanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

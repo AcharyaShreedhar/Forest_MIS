@@ -65,7 +65,7 @@ async function getNijibanBibaran(req, res) {
 }
 
 //Controller for adding a NijibanBibaran
-async function addNijibanBibaran(req, res) {
+async function addNijibanBibaran(req, res, next) {
   const addNijibanBibaranQuery = `INSERT INTO nijiban_bibarans (dist_id, office_id, darta_no,swikrit_miti, nijiban_dhaniko_naam, perm_addr, curr_addr, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addNijibanBibaranQuery,
@@ -89,15 +89,16 @@ async function addNijibanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a NijibanBibaran
-async function updateNijibanBibaran(req, res) {
+async function updateNijibanBibaran(req, res, next) {
   const updateNijibanBibaranQuery = `UPDATE nijiban_bibarans SET dist_id=?,office_id=?, darta_no=?, swikrit_miti=?, nijiban_dhaniko_naam=?, perm_addr=?, curr_addr=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateNijibanBibaranQuery,
@@ -122,24 +123,26 @@ async function updateNijibanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a NijibanBibaran
-async function deleteNijibanBibaran(req, res) {
+async function deleteNijibanBibaran(req, res, next) {
   const deleteNijibanBibaranQuery = `DELETE  FROM nijiban_bibarans where darta_no=?`;
   pool.query(
     deleteNijibanBibaranQuery,
     [req.params.nijibanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

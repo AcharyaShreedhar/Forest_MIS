@@ -8,7 +8,14 @@ export function* fetchallbanpaidawarRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanpaidawarList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BanpaidawarActions.fetchallbanpaidawarSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.fetchallbanpaidawarFailure());
@@ -19,7 +26,14 @@ export function* fetchbanpaidawarRequest(api, action) {
   const banpaidawarId = action.payload;
 
   const response = yield api.getBanpaidawar(banpaidawarId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BanpaidawarActions.fetchbanpaidawarSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.fetchbanpaidawarFailure());
@@ -34,7 +48,14 @@ export function* addbanpaidawarRequest(api, action) {
     payload.banpaidawar.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -69,7 +90,14 @@ export function* updatebanpaidawarRequest(api, action) {
     banpaidawarId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -101,7 +129,14 @@ export function* deletebanpaidawarRequest(api, action) {
 
   const response = yield api.postBanpaidawarBanpaidawarDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -130,7 +165,14 @@ export function* fetchallbanpaidawarlilamRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanpaidawarlilamList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BanpaidawarActions.fetchallbanpaidawarlilamSuccess(response.data)
     );
@@ -143,7 +185,14 @@ export function* fetchbanpaidawarlilamRequest(api, action) {
   const banpaidawarLilamId = action.payload;
 
   const response = yield api.getBanpaidawarlilam(banpaidawarLilamId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BanpaidawarActions.fetchbanpaidawarlilamSuccess(response.data));
   } else {
     yield put(BanpaidawarActions.fetchbanpaidawarlilamFailure());
@@ -158,7 +207,14 @@ export function* addbanpaidawarlilamRequest(api, action) {
     payload.banpaidawarlilam.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार लिलाम प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -193,7 +249,14 @@ export function* updatebanpaidawarlilamRequest(api, action) {
     banpaidawarlilamId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार लिलाम शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -225,7 +288,14 @@ export function* deletebanpaidawarlilamRequest(api, action) {
 
   const response = yield api.postBanpaidawarBanpaidawarlilamDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार लिलाम हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -255,7 +325,14 @@ export function* fetchallbanpaidawarbikribitaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanpaidawarbikribitaranList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BanpaidawarActions.fetchallbanpaidawarbikribitaranSuccess(response.data)
     );
@@ -270,7 +347,14 @@ export function* fetchbanpaidawarbikribitaranRequest(api, action) {
   const response = yield api.getBanpaidawarbikribitaran(
     banpaidawarBikribitaranId
   );
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BanpaidawarActions.fetchbanpaidawarbikribitaranSuccess(response.data)
     );
@@ -287,7 +371,14 @@ export function* addbanpaidawarbikribitaranRequest(api, action) {
     payload.banpaidawarbikribitaran.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार बिक्रिवितरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -324,7 +415,14 @@ export function* updatebanpaidawarbikribitaranRequest(api, action) {
     banpaidawarbikribitaranId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार बिक्रिवितरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -360,7 +458,14 @@ export function* deletebanpaidawarbikribitaranRequest(api, action) {
     payload
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन पैदावार बिक्रिवितरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

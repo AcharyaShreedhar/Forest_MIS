@@ -65,7 +65,7 @@ async function getCommercialkabuliyatibanBibaran(req, res) {
 }
 
 //Controller for adding a CommercialkabuliyatibanBibaran
-async function addCommercialkabuliyatibanBibaran(req, res) {
+async function addCommercialkabuliyatibanBibaran(req, res, next) {
   const addCommercialkabuliyatibanBibaranQuery = `INSERT INTO commercialkabuliyatiban_bibarans (darta_no, darta_miti, dist_id, office_id, commercialkabuliyatiban_naam, address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addCommercialkabuliyatibanBibaranQuery,
@@ -88,15 +88,16 @@ async function addCommercialkabuliyatibanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a CommercialkabuliyatibanBibaran
-async function updateCommercialkabuliyatibanBibaran(req, res) {
+async function updateCommercialkabuliyatibanBibaran(req, res, next) {
   const updateCommercialkabuliyatibanBibaranQuery = `UPDATE commercialkabuliyatiban_bibarans SET darta_no=?, darta_miti=?, dist_id=?, office_id=?,commercialkabuliyatiban_naam=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateCommercialkabuliyatibanBibaranQuery,
@@ -120,24 +121,26 @@ async function updateCommercialkabuliyatibanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a CommercialkabuliyatibanBibaran
-async function deleteCommercialkabuliyatibanBibaran(req, res) {
+async function deleteCommercialkabuliyatibanBibaran(req, res, next) {
   const deleteCommercialkabuliyatibanBibaranQuery = `DELETE  FROM commercialkabuliyatiban_bibarans where darta_no=?`;
   pool.query(
     deleteCommercialkabuliyatibanBibaranQuery,
     [req.params.commercialkabuliyatibanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

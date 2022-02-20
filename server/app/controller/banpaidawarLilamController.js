@@ -65,7 +65,7 @@ async function getBanpaidawarLilam(req, res) {
 }
 
 //Controller for adding a BanpaidawarLilam
-async function addBanpaidawarLilam(req, res) {
+async function addBanpaidawarLilam(req, res, next) {
   const addBanpaidawarLilamQuery = `INSERT INTO banpaidawar_lilams (dist_id, office_id, lilam_id, lilam_date, banpaidawar_type, unit, quantity, minimum_price, sakaar_price, remarks, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanpaidawarLilamQuery,
@@ -85,15 +85,16 @@ async function addBanpaidawarLilam(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a BanpaidawarLilam
-async function updateBanpaidawarLilam(req, res) {
+async function updateBanpaidawarLilam(req, res, next) {
   const updateBanpaidawarLilamQuery = `UPDATE banpaidawar_lilams SET dist_id=?, office_id=?, lilam_date=?, banpaidawar_type=?, unit=?, quantity=?, minimum_price=?, sakaar_price=?, remarks=?, created_by=?, updated_by=? WHERE lilam_id=?`;
   pool.query(
     updateBanpaidawarLilamQuery,
@@ -113,24 +114,26 @@ async function updateBanpaidawarLilam(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a BanpaidawarLilam
-async function deleteBanpaidawarLilam(req, res) {
+async function deleteBanpaidawarLilam(req, res, next) {
   const deleteBanpaidawarLilamQuery = `DELETE  FROM banpaidawar_lilams where lilam_id=?`;
   pool.query(
     deleteBanpaidawarLilamQuery,
     [req.params.banpaidawarLilamId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

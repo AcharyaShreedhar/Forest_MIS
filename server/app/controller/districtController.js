@@ -23,7 +23,7 @@ async function getDistrict(req, res) {
 }
 
 //Controller for adding a District
-async function addDistrict(req, res) {
+async function addDistrict(req, res, next) {
   const addDistrictQuery = `INSERT INTO districts (dist_name_eng,dist_name_nep,prov_id,created_by,updated_by) values (?,?,?,?,?)`;
   pool.query(
     addDistrictQuery,
@@ -35,14 +35,17 @@ async function addDistrict(req, res) {
       req.body.updated_by,
     ],
     (error, results, fields) => {
-      if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      if (error) {
+        console.log(error);
+        next(error);
+      }
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a District
-async function updateDistrict(req, res) {
+async function updateDistrict(req, res, next) {
   const updateDistrictQuery = `UPDATE districts SET dist_name_eng=?, dist_name_nep=?, prov_id=?,created_by=?,updated_by=? WHERE dist_id=? `;
   pool.query(
     updateDistrictQuery,
@@ -56,24 +59,26 @@ async function updateDistrict(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a District
-async function deleteDistrict(req, res) {
+async function deleteDistrict(req, res, next) {
   const deleteDistrictQuery = `DELETE  FROM districts where dist_id=?`;
   pool.query(
     deleteDistrictQuery,
     [req.params.districtId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -8,7 +8,14 @@ export function* fetchallbiruwautpadanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBiruwautpadanList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BiruwautpadanActions.fetchallbiruwautpadanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchallbiruwautpadanFailure());
@@ -20,7 +27,14 @@ export function* fetchbiruwautpadanRequest(api, action) {
 
   const response = yield api.getBiruwautpadan(biruwautpadanId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BiruwautpadanActions.fetchbiruwautpadanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchbiruwautpadanFailure());
@@ -35,7 +49,14 @@ export function* addbiruwautpadanRequest(api, action) {
     payload.biruwautpadan.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक विरुवा उत्पादन प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -70,7 +91,14 @@ export function* updatebiruwautpadanRequest(api, action) {
     biruwautpadanId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक विरुवा उत्पादन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -94,7 +122,14 @@ export function* deletebiruwautpadanRequest(api, action) {
 
   const response = yield api.postBiruwautpadanBiruwautpadanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक विरुवा उत्पादन हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -115,7 +150,14 @@ export function* fetchallactivitiesinfoRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getActivitiesinfoList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       BiruwautpadanActions.fetchallactivitiesinfoSuccess(response.data)
     );
@@ -129,7 +171,14 @@ export function* fetchactivitiesinfoRequest(api, action) {
 
   const response = yield api.getActivitiesinfo(activitiesInfoId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BiruwautpadanActions.fetchactivitiesinfoSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchactivitiesinfoFailure());
@@ -144,7 +193,14 @@ export function* addactivitiesinfoRequest(api, action) {
     payload.yearlyactivities.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कार्यक्रम विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -175,7 +231,14 @@ export function* updateactivitiesinfoRequest(api, action) {
     activitiesinfoId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कार्यक्रम विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -203,7 +266,14 @@ export function* deleteactivitiesinfoRequest(api, action) {
 
   const response = yield api.postBiruwautpadanActivitiesinfoDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक कार्यक्रम विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -229,7 +299,14 @@ export function* fetchallbrixyaropanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBrixyaropanList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BiruwautpadanActions.fetchallbrixyaropanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchallbrixyaropanFailure());
@@ -241,7 +318,14 @@ export function* fetchbrixyaropanRequest(api, action) {
 
   const response = yield api.getBrixyaropan(brixyaropanId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BiruwautpadanActions.fetchbrixyaropanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchbrixyaropanFailure());
@@ -255,7 +339,14 @@ export function* addbrixyaropanRequest(api, action) {
     payload.brixyaropan.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वृक्षरोपण विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -289,7 +380,14 @@ export function* updatebrixyaropanRequest(api, action) {
     brixyaropanId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वृक्षरोपण विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -320,7 +418,14 @@ export function* deletebrixyaropanRequest(api, action) {
 
   const response = yield api.postBiruwautpadanBrixyaropanDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वृक्षरोपण विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -346,7 +451,14 @@ export function* fetchalljadibutiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getJadibutiList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BiruwautpadanActions.fetchalljadibutiSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchalljadibutiFailure());
@@ -358,7 +470,14 @@ export function* fetchjadibutiRequest(api, action) {
 
   const response = yield api.getJadibuti(jadibutiId);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(BiruwautpadanActions.fetchjadibutiSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchjadibutiFailure());
@@ -372,7 +491,14 @@ export function* addjadibutiRequest(api, action) {
     payload.jadibuti.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण प्रविष्ट भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -404,7 +530,14 @@ export function* updatejadibutiRequest(api, action) {
     jadibutiId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -433,7 +566,14 @@ export function* deletejadibutiRequest(api, action) {
 
   const response = yield api.postBiruwautpadanJadibutiDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक जडिबुटी उत्पादन विवरण हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });

@@ -22,7 +22,7 @@ async function getNabikaranKaryayojana(req, res) {
 }
 
 //Controller for adding a NabikaranKaryayojana
-async function addNabikaranKaryayojana(req, res) {
+async function addNabikaranKaryayojana(req, res, next) {
   const addNabikaranKaryayojanaQuery = `INSERT INTO nabikaran_karyayojanas (renewal_date,renewed_date,nabikaran_abadhi,darta_id,created_by,updated_by) values (?,?,?,?,?,?)`;
   pool.query(
     addNabikaranKaryayojanaQuery,
@@ -36,15 +36,16 @@ async function addNabikaranKaryayojana(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a NabikaranKaryayojana
-async function updateNabikaranKaryayojana(req, res) {
+async function updateNabikaranKaryayojana(req, res, next) {
   const updateNabikaranKaryayojanaQuery = `UPDATE nabikaran_karyayojanas SET renewal_date=?, renewed_date=?, nabikaran_abadhi=?, darta_id=?, created_by=?, updated_by=? WHERE darta_id=?`;
   pool.query(
     updateNabikaranKaryayojanaQuery,
@@ -59,24 +60,26 @@ async function updateNabikaranKaryayojana(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a NabikaranKaryayojana
-async function deleteNabikaranKaryayojana(req, res) {
+async function deleteNabikaranKaryayojana(req, res, next) {
   const deleteNabikaranKaryayojanaQuery = `DELETE  FROM nabikaran_karyayojanas where darta_id=?`;
   pool.query(
     deleteNabikaranKaryayojanaQuery,
     [req.params.nabikaranKaryayojanaId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -66,7 +66,7 @@ async function getBiruwaUtpadans(req, res) {
 }
 
 //Controller for adding a Biruwa Utpadan
-async function addBiruwaUtpadans(req, res) {
+async function addBiruwaUtpadans(req, res, next) {
   const addBiruwaUtpadansQuery = `INSERT INTO biruwa_utpadans (dist_id, office_id, arthik_barsa,biruwa_type,utpadan_medium,biruwa_sankhya,narsari_sankhya,barga,laxya,pragati,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBiruwaUtpadansQuery,
@@ -87,15 +87,16 @@ async function addBiruwaUtpadans(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Biruwa utpadan
-async function updateBiruwaUtpadans(req, res) {
+async function updateBiruwaUtpadans(req, res, next) {
   const updateBiruwaUtpadansQuery = `UPDATE biruwa_utpadans SET dist_id=?,office_id=?,arthik_barsa=?,biruwa_type=?,utpadan_medium=?,biruwa_sankhya=?,narsari_sankhya=?,barga=?,laxya=?,pragati=?,remarks=?,created_by=?,updated_by=? WHERE biruwa_utpadan_id=?`;
   pool.query(
     updateBiruwaUtpadansQuery,
@@ -117,24 +118,26 @@ async function updateBiruwaUtpadans(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Biruwa Utpadan
-async function deleteBiruwaUtpadans(req, res) {
+async function deleteBiruwaUtpadans(req, res, next) {
   const deleteBiruwaUtpadansQuery = `DELETE  FROM biruwa_utpadans WHERE biruwa_utpadan_id=?`;
   pool.query(
     deleteBiruwaUtpadansQuery,
     [req.params.biruwaUtpadanId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

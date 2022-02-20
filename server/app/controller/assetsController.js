@@ -53,7 +53,7 @@ async function getAssets(req, res) {
 }
 
 //Controller for adding a Asset
-async function addAsets(req, res) {
+async function addAsets(req, res, next) {
   const addAssetsQuery = `INSERT INTO assets (dist_id, office_id, asset_type,asset_loc,kitta_no,home_area,land_area,unit,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addAssetsQuery,
@@ -72,15 +72,16 @@ async function addAsets(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Asset
-async function updateAssets(req, res) {
+async function updateAssets(req, res, next) {
   const updateAssetsQuery = `UPDATE assets SET dist_id=?, office_id=?, asset_type=?, asset_loc=?, kitta_no=?, home_area=?, land_area=?, unit=?, remarks=?, created_by=?,updated_by=? WHERE asset_id=?`;
   pool.query(
     updateAssetsQuery,
@@ -100,24 +101,26 @@ async function updateAssets(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Asset
-async function deleteAssets(req, res) {
+async function deleteAssets(req, res, next) {
   const deleteAssetsQuery = `DELETE  FROM assets where asset_id=?`;
   pool.query(
     deleteAssetsQuery,
     [req.params.assetId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
