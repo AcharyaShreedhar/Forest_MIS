@@ -36,7 +36,7 @@ async function getEntry(req, res) {
 }
 
 //Controller for adding a Entry
-async function addEntry(req, res) {
+async function addEntry(req, res, next) {
   const addEntryQuery = `INSERT INTO entries (entry_qty, entry_rate, entry_amt, created_by, updated_by) values (?,?,?,?,?)`;
   pool.query(
     addEntryQuery,
@@ -49,15 +49,16 @@ async function addEntry(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Entry
-async function updateEntry(req, res) {
+async function updateEntry(req, res, next) {
   const updateEntryQuery = `UPDATE entries SET entry_qty=?, entry_rate=?, entry_amt=?, created_by=?,updated_by=? WHERE entry_id=?`;
   pool.query(
     updateEntryQuery,
@@ -71,24 +72,26 @@ async function updateEntry(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Entry
-async function deleteEntry(req, res) {
+async function deleteEntry(req, res, next) {
   const deleteEntryQuery = `DELETE  FROM entries where entry_id=?`;
   pool.query(
     deleteEntryQuery,
     [req.params.entryId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -65,7 +65,7 @@ async function getKabuliyatibanBibaran(req, res) {
 }
 
 //Controller for adding a KabuliyatibanBibaran
-async function addKabuliyatibanBibaran(req, res) {
+async function addKabuliyatibanBibaran(req, res, next) {
   const addKabuliyatibanBibaranQuery = `INSERT INTO kabuliyatiban_bibarans (dist_id,office_id,darta_no,darta_miti,area, dalit_ghardhuri, perm_addr, curr_addr, janjati_ghardhuri, anya_ghardhuri, female, male, kabuliyati_ban_samiti_name, sampanna, madhyam, bipanna, dalit_rep, janjati_rep, anya_rep, adhyakshya, adhyakshya_gender, sachib, sachib_gender, created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addKabuliyatibanBibaranQuery,
@@ -98,15 +98,16 @@ async function addKabuliyatibanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a KabuliyatibanBibaran
-async function updateKabuliyatibanBibaran(req, res) {
+async function updateKabuliyatibanBibaran(req, res, next) {
   const updateKabuliyatibanBibaranQuery = `UPDATE kabuliyatiban_bibarans SET dist_id=?, office_id=?, darta_no=?, darta_miti=?,area=?, dalit_ghardhuri=?, perm_addr=?, curr_addr=?, janjati_ghardhuri=?, anya_ghardhuri=?, female=?, male=?, kabuliyati_ban_samiti_name=?, sampanna=?, madhyam=?, bipanna=?, dalit_rep=?, janjati_rep=?, anya_rep=?, adhyakshya=?, adhyakshya_gender=?, sachib=?, sachib_gender=?, created_by=?,updated_by=? WHERE darta_no=?`;
   pool.query(
     updateKabuliyatibanBibaranQuery,
@@ -140,24 +141,26 @@ async function updateKabuliyatibanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a KabuliyatibanBibaran
-async function deleteKabuliyatibanBibaran(req, res) {
+async function deleteKabuliyatibanBibaran(req, res, next) {
   const deleteKabuliyatibanBibaranQuery = `DELETE  FROM kabuliyatiban_bibarans where darta_no=?`;
   pool.query(
     deleteKabuliyatibanBibaranQuery,
     [req.params.kabuliyatibanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

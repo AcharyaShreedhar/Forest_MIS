@@ -51,7 +51,7 @@ async function getEmployees(req, res) {
 }
 
 //Controller for adding a Employees
-async function addEmployees(req, res) {
+async function addEmployees(req, res, next) {
   const addEmployeesQuery = `INSERT INTO employees (emp_fname_eng, emp_lname_eng, emp_fname_nep, emp_lname_nep, emp_add_perm_prov, emp_add_perm_dist, emp_add_perm_mun, emp_add_perm_ward, emp_add_perm_tole, emp_add_temp_prov, emp_add_temp_dist, emp_add_temp_mun, emp_add_temp_ward, emp_add_temp_tole, emp_phone1, emp_phone2, emp_email, emp_office_id, emp_dept_id, emp_level_id, emp_post, emp_rank, emp_appoint_date, emp_status, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addEmployeesQuery,
@@ -85,15 +85,16 @@ async function addEmployees(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Employees
-async function updateEmployees(req, res) {
+async function updateEmployees(req, res, next) {
   const updateEmployeesQuery = `UPDATE employees SET  emp_fname_eng=?, emp_lname_eng=?, emp_fname_nep=?, emp_lname_nep=?, emp_add_perm_prov=?, emp_add_perm_dist=?, emp_add_perm_mun=?, emp_add_perm_ward=?, emp_add_perm_tole=?, emp_add_temp_prov=?, emp_add_temp_dist=?, emp_add_temp_mun=?, emp_add_temp_ward=?, emp_add_temp_tole=?, emp_phone1=?, emp_phone2=?, emp_email=?, emp_office_id=?, emp_dept_id=?, emp_level_id=?, emp_post=?, emp_rank=?, emp_appoint_date=?, emp_status=?, created_by=?, updated_by=? WHERE emp_id=?`;
   pool.query(
     updateEmployeesQuery,
@@ -128,24 +129,26 @@ async function updateEmployees(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Employees
-async function deleteEmployees(req, res) {
+async function deleteEmployees(req, res, next) {
   const deleteEmployeesQuery = `DELETE  FROM employees where emp_id=?`;
   pool.query(
     deleteEmployeesQuery,
     [req.params.employeesId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

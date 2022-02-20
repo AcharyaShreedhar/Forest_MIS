@@ -65,7 +65,7 @@ async function getBabyajantuXetiBibarans(req, res) {
 }
 
 //Controller for adding a Banyajantu Xeti Bibaran
-async function addBanyajantuXetiBibarans(req, res) {
+async function addBanyajantuXetiBibarans(req, res, next) {
   const addBanyajantuXetiBibaransQuery = `INSERT INTO banyajantuxeti_bibarans (dist_id, office_id, pidit_name,pidit_address,jagga_bibaran,nagarikta_no,upabhoktasamiti_name,xetigarne_animal,xeti_miti,ghatana_address,balinali_noksani,anna_bhandaran,pasudhan_xeti,ghargoth_xeti,man_injury,mag_rakam,samitiko_mulyankan_rakam,vuktani_rakam,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuXetiBibaransQuery,
@@ -94,15 +94,16 @@ async function addBanyajantuXetiBibarans(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Banyajantu Xeti Bibaran
-async function updateBanyajantuXetiBibarans(req, res) {
+async function updateBanyajantuXetiBibarans(req, res, next) {
   const updateBanyajantuXetiBibaransQuery = `UPDATE banyajantuxeti_bibarans SET dist_id=?,office_id=?,pidit_name=?,pidit_address=?,jagga_bibaran=?,nagarikta_no=?,upabhoktasamiti_name=?,xetigarne_animal=?,xeti_miti=?,ghatana_address=?,balinali_noksani=?,anna_bhandaran=?,pasudhan_xeti=?,ghargoth_xeti=?,man_injury=?,mag_rakam=?,samitiko_mulyankan_rakam=?,vuktani_rakam=?,remarks=?,created_by=?,updated_by=? WHERE banyajantuxeti_bibaran_id=?`;
   pool.query(
     updateBanyajantuXetiBibaransQuery,
@@ -132,24 +133,26 @@ async function updateBanyajantuXetiBibarans(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Banuajantu Xeti Bibaran
-async function deleteBanyajantuXetiBibarans(req, res) {
+async function deleteBanyajantuXetiBibarans(req, res, next) {
   const deleteBanyajantuXetiBibaransQuery = `DELETE  FROM banyajantuxeti_bibarans WHERE banyajantuxeti_bibaran_id=?`;
   pool.query(
     deleteBanyajantuXetiBibaransQuery,
     [req.params.banyajantuxetiBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

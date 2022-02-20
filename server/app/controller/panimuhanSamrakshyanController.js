@@ -65,7 +65,7 @@ async function getPanimuhanSamrakshyan(req, res) {
 }
 
 //Controller for adding a PanimuhanSamrakshyan
-async function addPanimuhanSamrakshyan(req, res) {
+async function addPanimuhanSamrakshyan(req, res, next) {
   const addPanimuhanSamrakshyanQuery = `INSERT INTO panimuhansamrakshyan_bibarans (dist_id, office_id, sthan, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?,?)`;
   pool.query(
     addPanimuhanSamrakshyanQuery,
@@ -81,15 +81,16 @@ async function addPanimuhanSamrakshyan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a PanimuhanSamrakshyan
-async function updatePanimuhanSamrakshyan(req, res) {
+async function updatePanimuhanSamrakshyan(req, res, next) {
   const updatePanimuhanSamrakshyanQuery = `UPDATE panimuhansamrakshyan_bibarans SET dist_id=?, office_id=?, sthan=?, qty=?, karyakram_miti=?, laagat=?, created_by=?, updated_by=? WHERE panimuhansamrakshyan_id=?`;
   pool.query(
     updatePanimuhanSamrakshyanQuery,
@@ -106,24 +107,26 @@ async function updatePanimuhanSamrakshyan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a PanimuhanSamrakshyan
-async function deletePanimuhanSamrakshyan(req, res) {
+async function deletePanimuhanSamrakshyan(req, res, next) {
   const deletePanimuhanSamrakshyanQuery = `DELETE  FROM panimuhansamrakshyan_bibarans where panimuhansamrakshyan_id=?`;
   pool.query(
     deletePanimuhanSamrakshyanQuery,
     [req.params.panimuhanSamrakshyanId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -66,7 +66,7 @@ async function getBandadeloBibaran(req, res) {
 }
 
 //Controller for adding a BandadeloBibaran
-async function addBandadeloBibaran(req, res) {
+async function addBandadeloBibaran(req, res, next) {
   const addBandadeloBibaranQuery = `INSERT INTO bandadelo_bibarans (dist_id, office_id, bandadelo_address, ban_type, ban_prajati, xeti_area, niyantran_prayas, niyantran_karta, sahabhagi_mahila, sahabhagi_purus, bandadelo_miti,man_injured,man_dead, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBandadeloBibaranQuery,
@@ -89,15 +89,16 @@ async function addBandadeloBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a BandadeloBibaran
-async function updateBandadeloBibaran(req, res) {
+async function updateBandadeloBibaran(req, res, next) {
   const updateBandadeloBibaranQuery = `UPDATE bandadelo_bibarans SET dist_id=?, office_id=?, bandadelo_address=?, ban_type=?, ban_prajati=?, xeti_area=?, niyantran_prayas=?, niyantran_karta=?, sahabhagi_mahila=?, sahabhagi_purus=?, bandadelo_miti=?,man_injured=?,man_dead=?, created_by=?, updated_by=? WHERE bandadelo_bibaran_id=?`;
   pool.query(
     updateBandadeloBibaranQuery,
@@ -121,24 +122,26 @@ async function updateBandadeloBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a BandadeloBibaran
-async function deleteBandadeloBibaran(req, res) {
+async function deleteBandadeloBibaran(req, res, next) {
   const deleteBandadeloBibaranQuery = `DELETE  FROM bandadelo_bibarans where bandadelo_bibaran_id=?`;
   pool.query(
     deleteBandadeloBibaranQuery,
     [req.params.bandadeloBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

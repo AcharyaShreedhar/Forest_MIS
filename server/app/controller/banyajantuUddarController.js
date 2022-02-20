@@ -66,7 +66,7 @@ async function getBanyajantuUddars(req, res) {
 }
 
 //Controller for adding a Banyajantu Uddar
-async function addBanyajantuUddars(req, res) {
+async function addBanyajantuUddars(req, res, next) {
   const addBanyajantuUddarsQuery = `INSERT INTO banyajantu_uddars (dist_id, office_id, miti,sthaniya_taha,samaya,samraxit_xetra,banyajantuko_naam,banyajantuko_umer,banyajantuko_abastha,mareko_karan,banxetra_duri,anya_bibaran,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanyajantuUddarsQuery,
@@ -89,15 +89,16 @@ async function addBanyajantuUddars(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Banyajantu Uddar
-async function updateBanyajantuUddars(req, res) {
+async function updateBanyajantuUddars(req, res, next) {
   const updateBanyajantuUddarsQuery = `UPDATE banyajantu_uddars SET dist_id=?, office_id=?, miti=?,sthaniya_taha=?,samaya=?,samraxit_xetra=?,banyajantuko_naam=?,banyajantuko_umer=?,banyajantuko_abastha=?,mareko_karan=?,banxetra_duri=?,anya_bibaran=?,remarks=?,created_by=?,updated_by=? WHERE banyajantu_uddar_id=?`;
   pool.query(
     updateBanyajantuUddarsQuery,
@@ -121,24 +122,26 @@ async function updateBanyajantuUddars(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Banyajantu Uddar
-async function deleteBanyajantuUddars(req, res) {
+async function deleteBanyajantuUddars(req, res, next) {
   const deleteBanyajantuUddarsQuery = `DELETE  FROM banyajantu_uddars WHERE banyajantu_uddar_id=?`;
   pool.query(
     deleteBanyajantuUddarsQuery,
     [req.params.banyajantuUddarId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

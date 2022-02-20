@@ -8,7 +8,14 @@ export function* fetchtotalbanyajantuuddarRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getTotalBanyajantuUddarList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       DwandabebasthapanActions.fetchtotalbanyajantuuddarSuccess(response.data)
     );
@@ -21,7 +28,14 @@ export function* fetchallbanyajantuuddarRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanyajantuUddarList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       DwandabebasthapanActions.fetchallbanyajantuuddarSuccess(response.data)
     );
@@ -34,7 +48,14 @@ export function* fetchbanyajantuuddarRequest(api, action) {
   const banyajantuUddarId = action.payload;
 
   const response = yield api.getBanyajantuUddar(banyajantuUddarId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       DwandabebasthapanActions.fetchbanyajantuuddarSuccess(response.data)
     );
@@ -51,7 +72,14 @@ export function* addbanyajantuuddarRequest(api, action) {
     payload.banyajantuuddar.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -71,7 +99,7 @@ export function* addbanyajantuuddarRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuuddarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -88,7 +116,14 @@ export function* updatebanyajantuuddarRequest(api, action) {
     banyajantuuddarId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार शंसोधन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -108,7 +143,7 @@ export function* updatebanyajantuuddarRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.updatebanyajantuuddarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -124,7 +159,14 @@ export function* deletebanyajantuuddarRequest(api, action) {
     payload
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु उद्दार हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -143,7 +185,7 @@ export function* deletebanyajantuuddarRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.deletebanyajantuuddarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -156,7 +198,14 @@ export function* fetchtotalbanyajantuxetiRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getTotalBanyajantuXetiList(payloaddata);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       DwandabebasthapanActions.fetchtotalbanyajantuxetiSuccess(response.data)
     );
@@ -169,7 +218,14 @@ export function* fetchallbanyajantuxetiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanyajantuXetiList(payloaddata);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       DwandabebasthapanActions.fetchallbanyajantuxetiSuccess(response.data)
     );
@@ -182,7 +238,14 @@ export function* fetchbanyajantuxetiRequest(api, action) {
   const banyajantuXetiId = action.payload;
 
   const response = yield api.getBanyajantuXeti(banyajantuXetiId);
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     yield put(
       DwandabebasthapanActions.fetchbanyajantuxetiSuccess(response.data)
     );
@@ -199,7 +262,14 @@ export function* addbanyajantuxetiRequest(api, action) {
     payload.banyajantuxeti.data
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति प्रविष्ट भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -217,7 +287,7 @@ export function* addbanyajantuxetiRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuxetiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -234,7 +304,14 @@ export function* updatebanyajantuxetiRequest(api, action) {
     banyajantuxetiId
   );
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति शंसोधन भयो !!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -255,7 +332,7 @@ export function* updatebanyajantuxetiRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.updatebanyajantuxetiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -269,7 +346,14 @@ export function* deletebanyajantuxetiRequest(api, action) {
 
   const response = yield api.postDwandabebasthapanBanyajantuxetiDelete(payload);
 
-  if (response.ok) {
+  if (response.data.error != null) {
+    toast.error(
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     toast.success("सफलतापुर्वक वन्यजन्तु क्षति हटाईयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
@@ -288,7 +372,7 @@ export function* deletebanyajantuxetiRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.deletebanyajantuxetiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

@@ -66,7 +66,7 @@ async function getRastriyabanBibaran(req, res) {
 }
 
 //Controller for adding a RastriyabanBibaran
-async function addRastriyabanBibaran(req, res) {
+async function addRastriyabanBibaran(req, res, next) {
   const addRastriyabanBibaranQuery = `INSERT INTO rastriyabanbibarans (rastriyaban_naam, darta_no, darta_miti,  address,dist_id,office_id, main_species, area, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addRastriyabanBibaranQuery,
@@ -89,15 +89,16 @@ async function addRastriyabanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a RastriyabanBibaran
-async function updateRastriyabanBibaran(req, res) {
+async function updateRastriyabanBibaran(req, res, next) {
   const updateRastriyabanBibaranQuery = `UPDATE rastriyabanbibarans SET rastriyaban_naam=?, darta_no=?, darta_miti=?, address=?, dist_id=?, office_id=?, main_species=?, area=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateRastriyabanBibaranQuery,
@@ -121,24 +122,26 @@ async function updateRastriyabanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a RastriyabanBibaran
-async function deleteRastriyabanBibaran(req, res) {
+async function deleteRastriyabanBibaran(req, res, next) {
   const deleteRastriyabanBibaranQuery = `DELETE  FROM rastriyabanbibarans where darta_no=?`;
   pool.query(
     deleteRastriyabanBibaranQuery,
     [req.params.rastriyabanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

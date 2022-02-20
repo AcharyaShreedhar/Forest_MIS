@@ -59,7 +59,7 @@ async function getOfficesDropdownList(req, res) {
 }
 
 //Controller for adding a office
-async function addOffices(req, res) {
+async function addOffices(req, res, next) {
   const addOfficesQuery = `INSERT INTO offices (dist_id,office_name,office_location,office_type,created_by,updated_by) values (?,?,?,?,?,?)`;
   pool.query(
     addOfficesQuery,
@@ -73,15 +73,16 @@ async function addOffices(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a office
-async function updateOffices(req, res) {
+async function updateOffices(req, res, next) {
   const updateOfficesQuery = `UPDATE Offices SET dist_id=?, office_type=?, office_name=?, office_location=?,created_by=?,updated_by=? WHERE office_id=?`;
     pool.query(
     updateOfficesQuery,
@@ -96,24 +97,26 @@ async function updateOffices(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Office
-async function deleteOffices(req, res) {
+async function deleteOffices(req, res, next) {
   const deleteOfficesQuery = `DELETE  FROM Offices WHERE office_id=?`;
   pool.query(
     deleteOfficesQuery,
     [req.params.officeId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -65,7 +65,7 @@ async function getSamrakshyanpokhariNirman(req, res) {
 }
 
 //Controller for adding a SamrakshyanpokhariNirman
-async function addSamrakshyanpokhariNirman(req, res) {
+async function addSamrakshyanpokhariNirman(req, res, next) {
   const addSamrakshyanpokhariNirmanQuery = `INSERT INTO samrakshyanpokharinirman_bibarans (dist_id,office_id, paalika, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?)`;
   pool.query(
     addSamrakshyanpokhariNirmanQuery,
@@ -81,15 +81,16 @@ async function addSamrakshyanpokhariNirman(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a SamrakshyanpokhariNirman
-async function updateSamrakshyanpokhariNirman(req, res) {
+async function updateSamrakshyanpokhariNirman(req, res, next) {
   const updateSamrakshyanpokhariNirmanQuery = `UPDATE samrakshyanpokharinirman_bibarans SET dist_id=?,office_id=?, paalika=?, qty=?, karyakram_miti=?, laagat=?, created_by=?, updated_by=? WHERE id=?`;
   pool.query(
     updateSamrakshyanpokhariNirmanQuery,
@@ -106,24 +107,26 @@ async function updateSamrakshyanpokhariNirman(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a SamrakshyanpokhariNirman
-async function deleteSamrakshyanpokhariNirman(req, res) {
+async function deleteSamrakshyanpokhariNirman(req, res, next) {
   const deleteSamrakshyanpokhariNirmanQuery = `DELETE  FROM samrakshyanpokharinirman_bibarans where id=?`;
   pool.query(
     deleteSamrakshyanpokhariNirmanQuery,
     [req.params.samrakshyanpokhariNirmanId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

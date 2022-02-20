@@ -65,7 +65,7 @@ async function getConsumerGroupDetails(req, res) {
 }
 
 //Controller for adding a ConsumerGroupDetails
-async function addConsumerGroupDetails(req, res) {
+async function addConsumerGroupDetails(req, res, next) {
   const addConsumerGroupDetailsQuery = `INSERT INTO consumer_details (darta_no, dist_id,office_id,darta_miti, dalit_ghardhuri, perm_addr, curr_addr, janjati_ghardhuri, anya_ghardhuri, female, male, samudayik_upavokta_samiti_name, sampanna, madhyam, bipanna, dalit_rep, janjati_rep, anya_rep, adhyakshya, adhyakshya_gender, sachib_gender, sachib, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addConsumerGroupDetailsQuery,
@@ -97,15 +97,16 @@ async function addConsumerGroupDetails(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a ConsumerGroupDetails
-async function updateConsumerGroupDetails(req, res) {
+async function updateConsumerGroupDetails(req, res, next) {
   const updateConsumerGroupDetailsQuery = `UPDATE consumer_details SET darta_no=?, dist_id=?, office_id=?, darta_miti=?, dalit_ghardhuri=?, perm_addr=?, curr_addr=?, janjati_ghardhuri=?, anya_ghardhuri=?, female=?, male=?, samudayik_upavokta_samiti_name=?, sampanna=?, madhyam=?, bipanna=?, dalit_rep=?, janjati_rep=?, anya_rep=?, adhyakshya=?, adhyakshya_gender=?, sachib_gender=?, sachib=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateConsumerGroupDetailsQuery,
@@ -138,24 +139,26 @@ async function updateConsumerGroupDetails(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a ConsumerGroupDetails
-async function deleteConsumerGroupDetails(req, res) {
+async function deleteConsumerGroupDetails(req, res, next) {
   const deleteConsumerGroupDetailsQuery = `DELETE  FROM consumer_details where darta_no=?`;
   pool.query(
     deleteConsumerGroupDetailsQuery,
     [req.params.consumerGroupDetailsId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

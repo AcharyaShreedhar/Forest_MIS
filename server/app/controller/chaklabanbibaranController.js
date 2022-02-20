@@ -65,7 +65,7 @@ async function getChaklabanBibaran(req, res) {
 }
 
 //Controller for adding a ChaklabanBibaran
-async function addChaklabanBibaran(req, res) {
+async function addChaklabanBibaran(req, res, next) {
   const addChaklabanBibaranQuery = `INSERT INTO chaklaban_bibarans (chaklaban_naam, darta_no, darta_miti,  dist_id, office_id,  address, area, main_species, dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addChaklabanBibaranQuery,
@@ -88,15 +88,16 @@ async function addChaklabanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a ChaklabanBibaran
-async function updateChaklabanBibaran(req, res) {
+async function updateChaklabanBibaran(req, res, next) {
   const updateChaklabanBibaranQuery = `UPDATE chaklaban_bibarans SET  chaklaban_naam=?, darta_no=?, darta_miti=?, dist_id=?,office_id=?, address=?, area=?, main_species=?, dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateChaklabanBibaranQuery,
@@ -120,24 +121,26 @@ async function updateChaklabanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a ChaklabanBibaran
-async function deleteChaklabanBibaran(req, res) {
+async function deleteChaklabanBibaran(req, res, next) {
   const deleteChaklabanBibaranQuery = `DELETE  FROM chaklaban_bibarans where darta_no=?`;
   pool.query(
     deleteChaklabanBibaranQuery,
     [req.params.chaklabanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -64,7 +64,7 @@ async function getBanpaidawar(req, res) {
 }
 
 //Controller for adding a Banpaidawar
-async function addBanpaidawar(req, res) {
+async function addBanpaidawar(req, res, next) {
   const addBanpaidawarQuery = `INSERT INTO ban_paidawars (ban_id, dist_id, office_id, arthik_barsa, kaath, daura, lavgrahi_sankhya, mulyaabhibridi_kar, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanpaidawarQuery,
@@ -82,15 +82,16 @@ async function addBanpaidawar(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Banpaidawar
-async function updateBanpaidawar(req, res) {
+async function updateBanpaidawar(req, res, next) {
   const updateBanpaidawarQuery = `UPDATE ban_paidawars SET ban_id=?, dist_id=?, office_id=?, arthik_barsa=?, kaath=?, daura=?, lavgrahi_sankhya=?, mulyaabhibridi_kar=?, created_by=?, updated_by=? WHERE paidawar_id=?`;
   pool.query(
     updateBanpaidawarQuery,
@@ -109,24 +110,26 @@ async function updateBanpaidawar(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Banpaidawar
-async function deleteBanpaidawar(req, res) {
+async function deleteBanpaidawar(req, res, next) {
   const deleteBanpaidawarQuery = `DELETE  FROM ban_paidawars where paidawar_id=?`;
   pool.query(
     deleteBanpaidawarQuery,
     [req.params.banpaidawarId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

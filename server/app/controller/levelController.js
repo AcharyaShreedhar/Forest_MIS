@@ -19,7 +19,7 @@ async function getLevel(req, res) {
 }
 
 //Controller for adding a Level
-async function addLevel(req, res) {
+async function addLevel(req, res, next) {
   const addLevelQuery = `INSERT INTO levels (level_name_eng,level_name_nep,created_by,updated_by) values (?,?,?,?)`;
   pool.query(
     addLevelQuery,
@@ -31,15 +31,16 @@ async function addLevel(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Level
-async function updateLevel(req, res) {
+async function updateLevel(req, res, next) {
   const updateLevelQuery = `UPDATE levels SET level_name_eng=?, level_name_nep=?,created_by=?,updated_by=? WHERE level_id=?`;
   pool.query(
     updateLevelQuery,
@@ -52,24 +53,26 @@ async function updateLevel(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Level
-async function deleteLevel(req, res) {
+async function deleteLevel(req, res, next) {
   const deleteLevelQuery = `DELETE  FROM levels where level_id=?`;
   pool.query(
     deleteLevelQuery,
     [req.params.levelId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

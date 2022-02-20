@@ -35,7 +35,7 @@ async function getAllBaramaditChijbastu(req, res) {
   }
   
   //Controller for adding a BaramaditChijbastu
-  async function addBaramaditChijbastu(req, res) {
+  async function addBaramaditChijbastu(req, res, next) {
     const addBaramaditChijbastuQuery = `INSERT INTO baramadit_chijbastus (kath, daura, aankhetopahar, dhunga, bojbahak, mudda_anusandhan_dayari_id, created_by, updated_by) values (?,?,?,?,?,?,?,?)`;
     pool.query(
       addBaramaditChijbastuQuery,
@@ -51,15 +51,16 @@ async function getAllBaramaditChijbastu(req, res) {
       ],
       (error, results, fields) => {
         if (error) {
-          throw error;
+          console.log(error);
+          next(error);
         }
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+        res.send(JSON.stringify({ status: 200, error: error, data: results }));
       }
     );
   }
   
   //Controller for updating a BaramaditChijbastu
-  async function updateBaramaditChijbastu(req, res) {
+  async function updateBaramaditChijbastu(req, res, next) {
     const updateBaramaditChijbastuQuery = `UPDATE baramadit_chijbastus SET kath=?, daura=?, aankhetopahar=?, dhunga=?, bojbahak=?, mudda_anusandhan_dayari_id=?, created_by=?, updated_by=? WHERE baramadit_chijbastu_id=?`;
     pool.query(
       updateBaramaditChijbastuQuery,
@@ -76,24 +77,26 @@ async function getAllBaramaditChijbastu(req, res) {
       ],
       (error, results, fields) => {
         if (error) {
-          throw error;
+          console.log(error);
+          next(error);
         }
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+        res.send(JSON.stringify({ status: 200, error: error, data: results }));
       }
     );
   }
   
   //Controller for deleting a BaramaditChijbastu
-  async function deleteBaramaditChijbastu(req, res) {
+  async function deleteBaramaditChijbastu(req, res, next) {
     const deleteBaramaditChijbastuQuery = `DELETE  FROM baramadit_chijbastus where baramadit_chijbastu_id=?`;
     pool.query(
       deleteBaramaditChijbastuQuery,
       [req.params.baramaditChijbastuId],
       (error, results, fields) => {
         if (error) {
-          throw error;
+          console.log(error);
+          next(error);
         }
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+        res.send(JSON.stringify({ status: 200, error: error, data: results }));
       }
     );
   }

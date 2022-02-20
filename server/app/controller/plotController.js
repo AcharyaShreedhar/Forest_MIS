@@ -48,7 +48,7 @@ async function getPlot(req, res) {
 }
 
 //Controller for adding a Plot
-async function addPlot(req, res) {
+async function addPlot(req, res, next) {
   const addPlotQuery = `INSERT INTO forest_garden_plots (dist_id,office_id,plot_type, prajati, area, location, established_date, status, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addPlotQuery,
@@ -66,15 +66,16 @@ async function addPlot(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Plot
-async function updatePlot(req, res) {
+async function updatePlot(req, res, next) {
   const updatePlotQuery = `UPDATE forest_garden_plots SET dist_id=?, office_id=?, plot_type=?, prajati=?, area=?, location=?, established_date=?, status=?, created_by =?, updated_by=? WHERE plot_id=?`;
   pool.query(
     updatePlotQuery,
@@ -93,22 +94,28 @@ async function updatePlot(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Plot
-async function deletePlot(req, res) {
+async function deletePlot(req, res, next) {
   const deletePlotQuery = `DELETE  FROM forest_garden_plots where plot_id=?`;
-  pool.query(deletePlotQuery, [req.params.plotId], (error, results, fields) => {
-    if (error) {
-      throw error;
+  pool.query(
+    deletePlotQuery, 
+    [req.params.plotId], 
+    (error, results, fields) => {
+      if (error) {
+        console.log(error);
+        next(error);
+      }
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
-    res.send(JSON.stringify({ status: 200, error: null, data: results }));
-  });
+  );
 }
 
 module.exports = {

@@ -52,7 +52,7 @@ async function getBanbikasKaryabibaran(req, res) {
 }
 
 //Controller for adding a Banbikas karyabibaran
-async function addBanbikasKaryabibaran(req, res) {
+async function addBanbikasKaryabibaran(req, res, next) {
   const addBanbikasKaryabibaranQuery = `INSERT INTO banbikas_karyabibarans (dist_id, office_id, banbikas_karyabibaran, banbikas_ikai, banbikas_parinam, banbikas_bajetkharcha, ban_type, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBanbikasKaryabibaranQuery,
@@ -69,15 +69,16 @@ async function addBanbikasKaryabibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Banbikas karyabibaran
-async function updateBanbikasKaryabibaran(req, res) {
+async function updateBanbikasKaryabibaran(req, res, next) {
   const updateBanbikasKaryabibaranQuery = `UPDATE banbikas_karyabibarans SET dist_id=?, office_id=?, banbikas_karyabibaran=?, banbikas_ikai=?, banbikas_parinam=?, banbikas_bajetkharcha=?, ban_type=?, created_by=?, updated_by=? WHERE banbikas_karyabibaran_id=?`;
   pool.query(
     updateBanbikasKaryabibaranQuery,
@@ -95,24 +96,26 @@ async function updateBanbikasKaryabibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Banbikas Karyabibaran
-async function deleteBanbikasKaryabibaran(req, res) {
+async function deleteBanbikasKaryabibaran(req, res, next) {
   const deleteBanbikasKaryabibaranQuery = `DELETE  FROM banbikas_karyabibarans where banbikas_karyabibaran_id=?`;
   pool.query(
     deleteBanbikasKaryabibaranQuery,
     [req.params.banbikasKaryabibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

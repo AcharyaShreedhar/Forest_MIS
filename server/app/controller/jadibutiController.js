@@ -63,7 +63,7 @@ async function getJadibuti(req, res) {
 }
 
 //Controller for adding a Jadibuti
-async function addJadibuti(req, res) {
+async function addJadibuti(req, res, next) {
   const addJadibutiQuery = `INSERT INTO jadibutis (dist_id, office_id, jadibuti_thegana, jadibuti_kisim, jadibuti_prajati, jadibuti_laxya, jadibuti_pragati, jadibuti_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addJadibutiQuery,
@@ -81,15 +81,16 @@ async function addJadibuti(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Jadibuti
-async function updateJadibuti(req, res) {
+async function updateJadibuti(req, res, next) {
   const updateJadibutiQuery = `UPDATE jadibutis SET dist_id=?, office_id=?, jadibuti_thegana=?, jadibuti_kisim=?, jadibuti_prajati=?, jadibuti_laxya=?, jadibuti_pragati=?, jadibuti_sankhya=?, created_by=?, updated_by=? WHERE jadibuti_id=?`;
   pool.query(
     updateJadibutiQuery,
@@ -108,24 +109,26 @@ async function updateJadibuti(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Jadibuti
-async function deleteJadibuti(req, res) {
+async function deleteJadibuti(req, res, next) {
   const deleteJadibutiQuery = `DELETE  FROM jadibutis where jadibuti_id=?`;
   pool.query(
     deleteJadibutiQuery,
     [req.params.jadibutiId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

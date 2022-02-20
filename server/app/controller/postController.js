@@ -19,7 +19,7 @@ async function getPosts(req, res) {
 }
 
 //Controller for adding a Post
-async function addPosts(req, res) {
+async function addPosts(req, res, next) {
   const addPostsQuery = `INSERT INTO posts (post_name_nep,post_name_eng,created_by,updated_by) values (?,?,?,?)`;
   pool.query(
     addPostsQuery,
@@ -31,15 +31,16 @@ async function addPosts(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Post
-async function updatePosts(req, res) {
+async function updatePosts(req, res, next) {
   const updatePostsQuery = `UPDATE posts SET post_name_nep=?,post_name_eng=?,created_by=?,updated_by=? WHERE post_id=?`;
   pool.query(
     updatePostsQuery,
@@ -52,24 +53,26 @@ async function updatePosts(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Post
-async function deletePosts(req, res) {
+async function deletePosts(req, res, next) {
   const deletePostsQuery = `DELETE  FROM posts where post_id=?`;
   pool.query(
     deletePostsQuery,
     [req.params.postId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

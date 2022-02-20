@@ -36,7 +36,7 @@ async function getExit(req, res) {
 }
 
 //Controller for adding a Exit
-async function addExit(req, res) {
+async function addExit(req, res, next) {
   const addExitQuery = `INSERT INTO exits (exit_qty, exit_rate, exit_amt, created_by, updated_by) values (?,?,?,?,?)`;
   pool.query(
     addExitQuery,
@@ -49,15 +49,16 @@ async function addExit(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Exit
-async function updateExit(req, res) {
+async function updateExit(req, res, next) {
   const updateExitQuery = `UPDATE exits SET exit_qty=?, exit_rate=?, exit_amt=?, created_by=?,updated_by=? WHERE exit_id=?`;
   pool.query(
     updateExitQuery,
@@ -71,24 +72,26 @@ async function updateExit(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Exit
-async function deleteExit(req, res) {
+async function deleteExit(req, res, next) {
   const deleteExitQuery = `DELETE  FROM exits WHERE exit_id=?`;
   pool.query(
     deleteExitQuery,
     [req.params.exitId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

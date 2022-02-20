@@ -67,7 +67,7 @@ async function getDharmikbanBibaran(req, res) {
 }
 
 //Controller for adding a DharmikbanBibaran
-async function addDharmikbanBibaran(req, res) {
+async function addDharmikbanBibaran(req, res, next) {
   const addDharmikbanBibaranQuery = `INSERT INTO dharmikban_bibarans (dist_id, office_id, darta_no,dharmikban_name, community_name, area, main_species,dalit_ghardhuri,janjati_ghardhuri,anya_ghardhuri,female,male, forest_type, handover_date, forest_maujdat, renewaldate, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addDharmikbanBibaranQuery,
@@ -93,15 +93,16 @@ async function addDharmikbanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a DharmikbanBibaran
-async function updateDharmikbanBibaran(req, res) {
+async function updateDharmikbanBibaran(req, res, next) {
   const updateDharmikbanBibaranQuery = `UPDATE dharmikban_bibarans SET dist_id=?, office_id=?, darta_no=?,dharmikban_name=?, community_name=?, area=?, main_species=?,dalit_ghardhuri=?,janjati_ghardhuri=?,anya_ghardhuri=?,female=?,male=?, forest_type=?, handover_date=?, forest_maujdat=?, renewaldate=?, created_by=?, updated_by=? WHERE darta_no=?`;
   pool.query(
     updateDharmikbanBibaranQuery,
@@ -128,24 +129,26 @@ async function updateDharmikbanBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a DharmikbanBibaran
-async function deleteDharmikbanBibaran(req, res) {
+async function deleteDharmikbanBibaran(req, res, next) {
   const deleteDharmikbanBibaranQuery = `DELETE  FROM dharmikban_bibarans where darta_no=?`;
   pool.query(
     deleteDharmikbanBibaranQuery,
     [req.params.dharmikbanBibaranId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

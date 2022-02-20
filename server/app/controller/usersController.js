@@ -56,7 +56,7 @@ async function getUsers(req, res) {
 }
 
 //Controller for adding a User
-async function addUsers(req, res) {
+async function addUsers(req, res, next) {
   const saltRounds = 10;
   const token = util.generateAccessToken({ username: req.body.user_name });
   const addUsersQuery = `INSERT INTO users (dist_id,office_id,user_type,user_name,user_pass,user_token,user_office,office_type,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
@@ -75,16 +75,18 @@ async function addUsers(req, res) {
     ]; // query values
     // store hash in database
     pool.query(addUsersQuery, values, function (error, results) {
-      if (error) throw error;
-      else {
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      if (error) {
+        console.log(error);
+        next(error);
       }
-    });
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+    }
+  );
   });
 }
 
 //Controller for updating a User
-async function updateUsers(req, res) {
+async function updateUsers(req, res, next) {
   const token = util.generateAccessToken({ username: req.body.user_name });
   const updateUsersQuery = `UPDATE users SET dist_id=?, office_id=?, user_type=?, user_name=?, user_token=?, user_office=?,office_type=?,created_by=?,updated_by=? WHERE user_id=?`;
   pool.query(updateUsersQuery,  
@@ -102,16 +104,16 @@ async function updateUsers(req, res) {
     ],
     function (error, results) {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      else {
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
-      }
-    });
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+    }
+  );
 }
 
 //Controller for change password
-async function updateUsersPassword(req, res) {
+async function updateUsersPassword(req, res, next) {
   const saltRounds = 10;
   const token = util.generateAccessToken({ username: req.body.user_name });
   const updateUsersPasswordQuery = `UPDATE users SET user_pass=?,user_token=?,updated_by=? WHERE user_id=?`;
@@ -124,25 +126,27 @@ async function updateUsersPassword(req, res) {
     ];
     pool.query(updateUsersPasswordQuery, values, function (error, results) {
       if (error) {
-        throw error;
-      } else {
-        res.send(JSON.stringify({ status: 200, error: null, data: results }));
+        console.log(error);
+        next(error);
       }
-    });
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+    }
+  );
   });
 }
 
 //Controller for deleting a User
-async function deleteUsers(req, res) {
+async function deleteUsers(req, res, next) {
   const deleteUsersQuery = `DELETE  FROM users WHERE user_id=?`;
   pool.query(
     deleteUsersQuery,
     [req.params.userId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

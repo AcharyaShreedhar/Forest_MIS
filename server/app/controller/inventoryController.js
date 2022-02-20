@@ -40,7 +40,7 @@ async function getInventory(req, res) {
 }
 
 //Controller for adding a Inventory
-async function addInventory(req, res) {
+async function addInventory(req, res, next) {
   const addInventoryQuery = `INSERT INTO inventories (dist_id,office_id,item_name,entry_id,exit_id,invent_date,remaining_qty,remaining_rate,remaining_amt,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addInventoryQuery,
@@ -59,15 +59,16 @@ async function addInventory(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Inventory
-async function updateInventory(req, res) {
+async function updateInventory(req, res, next) {
   const updateInventoryQuery = `UPDATE inventories SET dist_id=?, dist_id=?, item_name=?,entry_id=?,exit_id=?,invent_date=?,remaining_qty=?,remaining_rate=?,remaining_amt=?,created_by=?,updated_by=? WHERE invent_id=?`;
   pool.query(
     updateInventoryQuery,
@@ -87,24 +88,26 @@ async function updateInventory(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Inventory
-async function deleteInventory(req, res) {
+async function deleteInventory(req, res, next) {
   const deleteInventoryQuery = `DELETE  FROM inventories WHERE invent_id=?`;
   pool.query(
     deleteInventoryQuery,
     [req.params.inventId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -40,7 +40,7 @@ async function getEmployeeHistory(req, res) {
 }
 
 //Controller for adding a Employee History
-async function addEmployeeHistory(req, res) {
+async function addEmployeeHistory(req, res, next) {
   const addEmployeeHistoryQuery = `INSERT INTO employee_histories (dist_id, office_id, hist_date, emp_id, emp_office_id, emp_dept_id, emp_level_id, emp_post_id, emp_rank_id, emp_status, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addEmployeeHistoryQuery,
@@ -60,15 +60,16 @@ async function addEmployeeHistory(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Employee History
-async function updateEmployeeHistory(req, res) {
+async function updateEmployeeHistory(req, res, next) {
   const updateEmployeeHistoryQuery = `UPDATE employee_histories SET dist_id=?, office_id=?, hist_date = ?, emp_id=?, emp_office_id=?, emp_dept_id=?, emp_level_id=?, emp_post_id=?, emp_rank_id=?, emp_status=?, created_by=?,updated_by=? WHERE hist_id=?`;
   pool.query(
     updateEmployeeHistoryQuery,
@@ -89,24 +90,26 @@ async function updateEmployeeHistory(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Employee History
-async function deleteEmployeeHistory(req, res) {
+async function deleteEmployeeHistory(req, res, next) {
   const deleteEmployeeHistoryQuery = `DELETE  FROM employee_histories WHERE hist_id=?`;
   pool.query(
     deleteEmployeeHistoryQuery,
     [req.params.histId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

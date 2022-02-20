@@ -60,7 +60,7 @@ async function getKarmachariDarbandi(req, res) {
 
 //Service for adding a KarmachariDarbandi
 
-async function addKarmachariDarbandi(req, res) {
+async function addKarmachariDarbandi(req, res, next) {
   const addKarmachariDarbandiQuery = `INSERT INTO karmachari_darbandis (dist_id,office_id,post,karyalaya,thegana,kayam_darbandi_sankhya,padpurti_sankhya, khali_sankhya, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
   await pool.query(
     addKarmachariDarbandiQuery,
@@ -78,16 +78,17 @@ async function addKarmachariDarbandi(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a KarmachariDarbandi
 
-async function updateKarmachariDarbandi(req, res) {
+async function updateKarmachariDarbandi(req, res, next) {
   const updateKarmachariDarbandiQuery = `UPDATE karmachari_darbandis SET dist_id=?,office_id=?, post=?,karyalaya=?,thegana=?,kayam_darbandi_sankhya=?,padpurti_sankhya=?, khali_sankhya=?, created_by=?, updated_by=? WHERE karmachari_darbandi_id=?`;
   await pool.query(
     updateKarmachariDarbandiQuery,
@@ -106,25 +107,27 @@ async function updateKarmachariDarbandi(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a KarmachariDarbandi
 
-async function deleteKarmachariDarbandi(req, res) {
+async function deleteKarmachariDarbandi(req, res, next) {
   const deleteKarmachariDarbandiQuery = `DELETE  FROM karmachari_darbandis where karmachari_darbandi_id=?`;
   pool.query(
     deleteKarmachariDarbandiQuery,
     [req.params.karmachariDarbandiId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

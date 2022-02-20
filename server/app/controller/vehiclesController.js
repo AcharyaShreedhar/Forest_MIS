@@ -66,7 +66,7 @@ async function getVehicles(req, res) {
 }
 
 //Controller for adding a Vehicled
-async function addVehicles(req, res) {
+async function addVehicles(req, res, next) {
   const addVehiclesQuery = `INSERT INTO vehicles (dist_id, office_id,vehicle_type,vehicle_no,engine_no,chasis_no,acquired_source,acquired_date,acquired_price,manufacturer_country,manufacturer_comp,model_name,manufactured_date,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addVehiclesQuery,
@@ -90,15 +90,16 @@ async function addVehicles(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Vehicle
-async function updateVehicles(req, res) {
+async function updateVehicles(req, res, next) {
   const updateVehiclesQuery = `UPDATE vehicles SET dist_id=?, office_id=?, vehicle_type=?, vehicle_no=?, engine_no=?, chasis_no=?, acquired_source=?, acquired_date=?, acquired_price=?, manufacturer_country=?, manufacturer_comp=?, model_name=?, manufactured_date=?, remarks=?, created_by=?,updated_by=? WHERE vehicle_id=?`;
   pool.query(
     updateVehiclesQuery,
@@ -123,24 +124,26 @@ async function updateVehicles(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Vehicle
-async function deleteVehicles(req, res) {
+async function deleteVehicles(req, res, next) {
   const deleteVehiclesQuery = `DELETE  FROM vehicles where vehicle_id=?`;
   pool.query(
     deleteVehiclesQuery,
     [req.params.vehicleId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

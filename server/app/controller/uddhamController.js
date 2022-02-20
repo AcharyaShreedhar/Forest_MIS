@@ -66,7 +66,7 @@ async function getUddhamBibaran(req, res) {
 }
 
 //Controller for adding a UddhamBibaran
-async function addUddhamBibaran(req, res) {
+async function addUddhamBibaran(req, res, next) {
   const addUddhamBibaranQuery = `INSERT INTO uddhams(dist_id,office_id,name,address,uddham_type,darta_miti,rojgar_sankhya,created_by,updated_by) values (?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addUddhamBibaranQuery,
@@ -83,15 +83,16 @@ async function addUddhamBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a UddhamBibaran
-async function updateUddhamBibaran(req, res) {
+async function updateUddhamBibaran(req, res, next) {
   const updateUddhamBibaranQuery = `UPDATE uddhams SET dist_id=?, office_id=?, name=?,address=?,uddham_type=?,darta_miti=?,rojgar_sankhya=?,created_by=?,updated_by=? WHERE uddham_id=?`;
   pool.query(
     updateUddhamBibaranQuery,
@@ -109,24 +110,26 @@ async function updateUddhamBibaran(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Post
-async function deleteUddhamBibaran(req, res) {
+async function deleteUddhamBibaran(req, res, next) {
   const deleteUddhamBibaranQuery = `DELETE  FROM uddhams where uddham_id=?`;
   pool.query(
     deleteUddhamBibaranQuery,
     [req.params.uddhamId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }

@@ -65,7 +65,7 @@ async function getBrixyaropan(req, res) {
 }
 
 //Controller for adding a Brixyaropan
-async function addBrixyaropan(req, res) {
+async function addBrixyaropan(req, res, next) {
   const addBrixyaropanQuery = `INSERT INTO brixyaropans (dist_id,office_id,brixyaropan_miti,xetra,area,brixyaropan_thegana,brixyaropan_kisim,brixyaropan_laxya,brixyaropan_prajati,brixyaropan_pragati,brixyaropan_sankhya,created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addBrixyaropanQuery,
@@ -86,15 +86,16 @@ async function addBrixyaropan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for updating a Brixyaropan
-async function updateBrixyaropan(req, res) {
+async function updateBrixyaropan(req, res, next) {
   const updateBrixyaropanQuery = `UPDATE brixyaropans SET dist_id=?,office_id=?,brixyaropan_miti=?,xetra=?,area=?,brixyaropan_thegana=?,brixyaropan_kisim=?,brixyaropan_laxya=?,brixyaropan_prajati=?,brixyaropan_pragati=?,brixyaropan_sankhya=?, created_by=?, updated_by=? WHERE brixyaropan_id=?`;
   pool.query(
     updateBrixyaropanQuery,
@@ -116,24 +117,26 @@ async function updateBrixyaropan(req, res) {
     ],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
 
 //Controller for deleting a Brixyaropan
-async function deleteBrixyaropan(req, res) {
+async function deleteBrixyaropan(req, res, next) {
   const deleteBrixyaropanQuery = `DELETE  FROM brixyaropans where brixyaropan_id=?`;
   pool.query(
     deleteBrixyaropanQuery,
     [req.params.brixyaropanId],
     (error, results, fields) => {
       if (error) {
-        throw error;
+        console.log(error);
+        next(error);
       }
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );
 }
