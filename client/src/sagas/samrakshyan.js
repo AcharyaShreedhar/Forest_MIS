@@ -65,7 +65,7 @@ export function* addsamrakshyanpokharinirmanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.addsamrakshyanpokharinirmanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -105,7 +105,7 @@ export function* updatesamrakshyanpokharinirmanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.updatesamrakshyanpokharinirmanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -138,7 +138,7 @@ export function* deletesamrakshyanpokharinirmanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.deletesamrakshyanpokharinirmanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -200,7 +200,7 @@ export function* addjaladharsamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.addjaladharsamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -237,7 +237,7 @@ export function* updatejaladharsamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.updatejaladharsamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -270,7 +270,7 @@ export function* deletejaladharsamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.deletejaladharsamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -335,7 +335,7 @@ export function* addnadikinarsamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.addnadikinarsamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -372,7 +372,7 @@ export function* updatenadikinarsamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.updatenadikinarsamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -405,7 +405,7 @@ export function* deletenadikinarsamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.deletenadikinarsamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -470,7 +470,7 @@ export function* addpanimuhansamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.panimuhansamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -507,7 +507,7 @@ export function* updatepanimuhansamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.updatepanimuhansamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -540,7 +540,7 @@ export function* deletepanimuhansamrakshyanRequest(api, action) {
   } else {
     yield put(SamrakshyanActions.deletepanimuhansamrakshyanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

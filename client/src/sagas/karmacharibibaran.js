@@ -55,7 +55,7 @@ export function* addemployeesRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.addemployeesFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -90,7 +90,7 @@ export function* updateemployeesRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.updateemployeesFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -121,7 +121,7 @@ export function* deleteemployeesRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.deleteemployeesFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -181,7 +181,7 @@ export function* addemployeeshistoryRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.addemployeeshistoryFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -217,7 +217,7 @@ export function* updateemployeeshistoryRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.updateemployeeshistoryFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -249,7 +249,7 @@ export function* deleteemployeeshistoryRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.deleteemployeeshistoryFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -303,7 +303,7 @@ export function* addlevelRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.addlevelFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -334,7 +334,7 @@ export function* updatelevelRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.updatelevelFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -361,7 +361,7 @@ export function* deletelevelRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.deletelevelFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -413,7 +413,7 @@ export function* addpostRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.addpostFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -444,7 +444,7 @@ export function* updatepostRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.updatepostFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -471,7 +471,7 @@ export function* deletepostRequest(api, action) {
   } else {
     yield put(KarmacharibibaranActions.deletepostFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

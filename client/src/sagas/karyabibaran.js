@@ -54,7 +54,7 @@ export function* addsamajikkaryabibaranRequest(api, action) {
   } else {
     yield put(KaryabibaranActions.addsamajikkaryabibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -89,7 +89,7 @@ export function* updatesamajikkaryabibaranRequest(api, action) {
   } else {
     yield put(KaryabibaranActions.updatesamajikkaryabibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -120,7 +120,7 @@ export function* deletesamajikkaryabibaranRequest(api, action) {
   } else {
     yield put(KaryabibaranActions.deletesamajikkaryabibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -181,7 +181,7 @@ export function* addbanbikaskaryabibaranRequest(api, action) {
   } else {
     yield put(KaryabibaranActions.addbanbikaskaryabibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -216,7 +216,7 @@ export function* updatebanbikaskaryabibaranRequest(api, action) {
   } else {
     yield put(KaryabibaranActions.updatebanbikaskaryabibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -247,7 +247,7 @@ export function* deletebanbikaskaryabibaranRequest(api, action) {
   } else {
     yield put(KaryabibaranActions.deletebanbikaskaryabibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

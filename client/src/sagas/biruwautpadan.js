@@ -53,7 +53,7 @@ export function* addbiruwautpadanRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.addbiruwautpadanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -80,7 +80,7 @@ export function* updatebiruwautpadanRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.updatebiruwautpadanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -103,7 +103,7 @@ export function* deletebiruwautpadanRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.deletebiruwautpadanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -158,7 +158,7 @@ export function* addactivitiesinfoRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.addactivitiesinfoFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -189,7 +189,7 @@ export function* updateactivitiesinfoRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.updateactivitiesinfoFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -216,7 +216,7 @@ export function* deleteactivitiesinfoRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.deleteactivitiesinfoFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -273,7 +273,7 @@ export function* addbrixyaropanRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.addbrixyaropanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -307,7 +307,7 @@ export function* updatebrixyaropanRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.updatebrixyaropanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -333,7 +333,7 @@ export function* deletebrixyaropanRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.deletebrixyaropanFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -388,7 +388,7 @@ export function* addjadibutiRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.addjadibutiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -420,7 +420,7 @@ export function* updatejadibutiRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.updatejadibutiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -448,7 +448,7 @@ export function* deletejadibutiRequest(api, action) {
   } else {
     yield put(BiruwautpadanActions.deletejadibutiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

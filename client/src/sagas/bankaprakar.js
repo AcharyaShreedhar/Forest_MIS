@@ -57,7 +57,7 @@ export function* addsamudayikbanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addsamudayikbanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -82,7 +82,7 @@ export function* updatesamudayikbanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatesamudayikbanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -103,7 +103,7 @@ export function* deletesamudayikbanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletesamudayikbanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -150,7 +150,7 @@ export function* adddharmikbanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.adddharmikbanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -172,7 +172,7 @@ export function* updatedharmikbanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatedharmikbanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -192,7 +192,7 @@ export function* deletedharmikbanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletedharmikbanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -246,7 +246,7 @@ export function* addnijibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addnijibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -281,7 +281,7 @@ export function* updatenijibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatenijibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -312,7 +312,7 @@ export function* deletenijibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletenijibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -372,7 +372,7 @@ export function* addkabuliyatibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addkabuliyatibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -409,7 +409,7 @@ export function* updatekabuliyatibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatekabuliyatibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -442,7 +442,7 @@ export function* deletekabuliyatibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletekabuliyatibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -525,7 +525,7 @@ export function* addnabikarankaryayojanaRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addnabikarankaryayojanaFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -589,7 +589,7 @@ export function* updatenabikarankaryayojanaRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatenabikarankaryayojanaFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -649,7 +649,7 @@ export function* deletenabikarankaryayojanaRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletenabikarankaryayojanaFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -708,7 +708,7 @@ export function* addchaklabanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addchaklabanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -743,7 +743,7 @@ export function* updatechaklabanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatechaklabanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -774,7 +774,7 @@ export function* deletechaklabanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletechaklabanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -837,7 +837,7 @@ export function* addconsumergroupdetailsRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addconsumergroupdetailsFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -873,7 +873,7 @@ export function* updateconsumergroupdetailsRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updateconsumergroupdetailsFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -906,7 +906,7 @@ export function* deleteconsumergroupdetailsRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deleteconsumergroupdetailsFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -966,7 +966,7 @@ export function* addrastriyabanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addrastriyabanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1003,7 +1003,7 @@ export function* updaterastriyabanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updaterastriyabanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1035,7 +1035,7 @@ export function* deleterastriyabanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deleterastriyabanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1106,7 +1106,7 @@ export function* addcommercialkabuliyatibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addcommercialkabuliyatibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1144,7 +1144,7 @@ export function* updatecommercialkabuliyatibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatecommercialkabuliyatibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1180,7 +1180,7 @@ export function* deletecommercialkabuliyatibanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletecommercialkabuliyatibanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1241,7 +1241,7 @@ export function* addsajhedaribanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.addsajhedaribanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1277,7 +1277,7 @@ export function* updatesajhedaribanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.updatesajhedaribanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -1309,7 +1309,7 @@ export function* deletesajhedaribanbibaranRequest(api, action) {
   } else {
     yield put(BankaprakarActions.deletesajhedaribanbibaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

@@ -71,7 +71,7 @@ export function* addbanyajantuuddarRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuuddarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -108,7 +108,7 @@ export function* updatebanyajantuuddarRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.updatebanyajantuuddarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -143,7 +143,7 @@ export function* deletebanyajantuuddarRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.deletebanyajantuuddarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -217,7 +217,7 @@ export function* addbanyajantuxetiRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.addbanyajantuxetiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -255,7 +255,7 @@ export function* updatebanyajantuxetiRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.updatebanyajantuxetiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -288,7 +288,7 @@ export function* deletebanyajantuxetiRequest(api, action) {
   } else {
     yield put(DwandabebasthapanActions.deletebanyajantuxetiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

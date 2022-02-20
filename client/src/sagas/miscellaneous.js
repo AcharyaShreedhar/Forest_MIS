@@ -52,7 +52,7 @@ export function* addrojgarsrijanaRequest(api, action) {
   } else {
     yield put(MiscellaneousActions.addrojgarsrijanaFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -85,7 +85,7 @@ export function* updaterojgarsrijanaRequest(api, action) {
   } else {
     yield put(MiscellaneousActions.updaterojgarsrijanaFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -114,7 +114,7 @@ export function* deleterojgarsrijanaRequest(api, action) {
   } else {
     yield put(MiscellaneousActions.deleterojgarsrijanaFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -169,7 +169,7 @@ export function* adduddhamRequest(api, action) {
   } else {
     yield put(MiscellaneousActions.adduddhamFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -201,7 +201,7 @@ export function* updateuddhamRequest(api, action) {
   } else {
     yield put(MiscellaneousActions.updateuddhamFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -232,7 +232,7 @@ export function* deleteuddhamRequest(api, action) {
   } else {
     yield put(MiscellaneousActions.deleteuddhamFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

@@ -58,7 +58,7 @@ export function* addkarmacharidarbandiRequest(api, action) {
   } else {
     yield put(KarmacharidarbandiActions.addkarmacharidarbandiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -93,7 +93,7 @@ export function* updatekarmacharidarbandiRequest(api, action) {
   } else {
     yield put(KarmacharidarbandiActions.updatekarmacharidarbandiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -124,7 +124,7 @@ export function* deletekarmacharidarbandiRequest(api, action) {
   } else {
     yield put(KarmacharidarbandiActions.deletekarmacharidarbandiFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }

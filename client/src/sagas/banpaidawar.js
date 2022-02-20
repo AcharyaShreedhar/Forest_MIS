@@ -52,7 +52,7 @@ export function* addbanpaidawarRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.addbanpaidawarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -87,7 +87,7 @@ export function* updatebanpaidawarRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.updatebanpaidawarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -118,7 +118,7 @@ export function* deletebanpaidawarRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.deletebanpaidawarFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -176,7 +176,7 @@ export function* addbanpaidawarlilamRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.addbanpaidawarlilamFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -211,7 +211,7 @@ export function* updatebanpaidawarlilamRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.updatebanpaidawarlilamFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -242,7 +242,7 @@ export function* deletebanpaidawarlilamRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.deletebanpaidawarlilamFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -307,7 +307,7 @@ export function* addbanpaidawarbikribitaranRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.addbanpaidawarbikribitaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -344,7 +344,7 @@ export function* updatebanpaidawarbikribitaranRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.updatebanpaidawarbikribitaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -379,7 +379,7 @@ export function* deletebanpaidawarbikribitaranRequest(api, action) {
   } else {
     yield put(BanpaidawarActions.deletebanpaidawarbikribitaranFailure());
     toast.error(
-      "तपाईको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {
         position: toast.POSITION.TOP_CENTER,
       }
