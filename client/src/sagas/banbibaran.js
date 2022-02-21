@@ -8,14 +8,7 @@ export function* fetchallbaramaditchijbastuRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBaramaditchijbastuList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BanbibaranActions.fetchallbaramaditchijbastuSuccess(response.data)
     );
@@ -28,14 +21,7 @@ export function* fetchbaramaditchijbastuRequest(api, action) {
   const baramaditchijbastuId = action.payload;
 
   const response = yield api.getBaramaditchijbastu(baramaditchijbastuId);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchbaramaditchijbastuSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchbaramaditchijbastuFailure());
@@ -156,14 +142,7 @@ export function* fetchallbanxetraanyaprayojanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanxetraanyaprayojanList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BanbibaranActions.fetchallbanxetraanyaprayojanSuccess(response.data)
     );
@@ -176,14 +155,7 @@ export function* fetchbanxetraanyaprayojanRequest(api, action) {
   const banxetraanyaprayojanId = action.payload;
 
   const response = yield api.getBanxetraanyaprayojan(banxetraanyaprayojanId);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BanbibaranActions.fetchbanxetraanyaprayojanSuccess(response.data)
     );
@@ -325,14 +297,7 @@ export function* fetchallplotbibaranRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getPlotbibaranList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchallplotbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchallplotbibaranFailure());
@@ -344,14 +309,7 @@ export function* fetchplotbibaranRequest(api, action) {
 
   const response = yield api.getPlotbibaran(plotId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchplotbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchplotbibaranFailure());
@@ -486,14 +444,7 @@ export function* fetchalluddhyambibaranRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getUddhyambibaranList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchalluddhyambibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchalluddhyambibaranFailure());
@@ -504,14 +455,7 @@ export function* fetchuddhyambibaranRequest(api, action) {
   const uddhyamId = action.payload;
 
   const response = yield api.getUddhyambibaran(uddhyamId);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchuddhyambibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchuddhyambibaranFailure());
@@ -633,14 +577,7 @@ export function* fetchallbachatbibaranRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBachatbibaranList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchallbachatbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchallbachatbibaranFailure());
@@ -652,14 +589,7 @@ export function* fetchbachatbibaranRequest(api, action) {
 
   const response = yield api.getBachatbibaran(bachatId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchbachatbibaranSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchbachatbibaranFailure());
@@ -778,14 +708,7 @@ export function* fetchallbanxetraatikramanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanxetraatikramanList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BanbibaranActions.fetchallbanxetraatikramanSuccess(response.data)
     );
@@ -798,14 +721,7 @@ export function* fetchbanxetraatikramanRequest(api, action) {
   const banxetraAtikramanId = action.payload;
 
   const response = yield api.getBanxetraatikraman(banxetraAtikramanId);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BanbibaranActions.fetchbanxetraatikramanSuccess(response.data));
   } else {
     yield put(BanbibaranActions.fetchbanxetraatikramanFailure());
@@ -941,14 +857,7 @@ export function* fetchallmuddaanusandhandayariRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getMuddaanusandhandayariList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BanbibaranActions.fetchallmuddaanusandhandayariSuccess(response.data)
     );
@@ -962,14 +871,7 @@ export function* fetchmuddaanusandhandayariRequest(api, action) {
 
   const response = yield api.getMuddaanusandhandayari(muddaAnusandhanDayariId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BanbibaranActions.fetchmuddaanusandhandayariSuccess(response.data)
     );

@@ -9,14 +9,7 @@ export function* fetchallkarmacharidarbandiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getKarmacharidarbandiList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KarmacharidarbandiActions.fetchallkarmacharidarbandiSuccess(response.data)
     );
@@ -30,14 +23,7 @@ export function* fetchkarmacharidarbandiRequest(api, action) {
 
   const response = yield api.getKarmacharidarbandi(karmacharidarbandiId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KarmacharidarbandiActions.fetchkarmacharidarbandiSuccess(response.data)
     );

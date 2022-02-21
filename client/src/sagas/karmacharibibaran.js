@@ -10,14 +10,7 @@ export function* fetchallemployeesRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getEmployeesList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(KarmacharibibaranActions.fetchallemployeesSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchallemployeesFailure());
@@ -29,14 +22,7 @@ export function* fetchemployeesRequest(api, action) {
 
   const response = yield api.getEmployees(employeesId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(KarmacharibibaranActions.fetchemployeesSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchemployeesFailure());
@@ -169,14 +155,7 @@ export function* fetchallemployeeshistoryRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getEmployeeshistoryList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KarmacharibibaranActions.fetchallemployeeshistorySuccess(response.data)
     );
@@ -190,14 +169,7 @@ export function* fetchemployeeshistoryRequest(api, action) {
 
   const response = yield api.getEmployeeshistory(histId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KarmacharibibaranActions.fetchemployeeshistorySuccess(response.data)
     );
@@ -332,14 +304,7 @@ export function* fetchalllevelRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getLevelList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(KarmacharibibaranActions.fetchalllevelSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchalllevelFailure());
@@ -351,14 +316,7 @@ export function* fetchlevelRequest(api, action) {
 
   const response = yield api.getLevel(levelId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(KarmacharibibaranActions.fetchlevelSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchlevelFailure());
@@ -479,14 +437,7 @@ export function* fetchallpostRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getPostList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(KarmacharibibaranActions.fetchallpostSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchallpostFailure());
@@ -498,14 +449,7 @@ export function* fetchpostRequest(api, action) {
 
   const response = yield api.getPost(postId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(KarmacharibibaranActions.fetchpostSuccess(response.data));
   } else {
     yield put(KarmacharibibaranActions.fetchpostFailure());

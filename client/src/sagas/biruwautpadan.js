@@ -8,14 +8,7 @@ export function* fetchallbiruwautpadanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBiruwautpadanList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BiruwautpadanActions.fetchallbiruwautpadanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchallbiruwautpadanFailure());
@@ -27,14 +20,7 @@ export function* fetchbiruwautpadanRequest(api, action) {
 
   const response = yield api.getBiruwautpadan(biruwautpadanId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BiruwautpadanActions.fetchbiruwautpadanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchbiruwautpadanFailure());
@@ -150,14 +136,7 @@ export function* fetchallactivitiesinfoRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getActivitiesinfoList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BiruwautpadanActions.fetchallactivitiesinfoSuccess(response.data)
     );
@@ -171,14 +150,7 @@ export function* fetchactivitiesinfoRequest(api, action) {
 
   const response = yield api.getActivitiesinfo(activitiesInfoId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BiruwautpadanActions.fetchactivitiesinfoSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchactivitiesinfoFailure());
@@ -299,14 +271,7 @@ export function* fetchallbrixyaropanRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBrixyaropanList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BiruwautpadanActions.fetchallbrixyaropanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchallbrixyaropanFailure());
@@ -318,14 +283,7 @@ export function* fetchbrixyaropanRequest(api, action) {
 
   const response = yield api.getBrixyaropan(brixyaropanId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BiruwautpadanActions.fetchbrixyaropanSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchbrixyaropanFailure());
@@ -451,14 +409,7 @@ export function* fetchalljadibutiRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getJadibutiList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BiruwautpadanActions.fetchalljadibutiSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchalljadibutiFailure());
@@ -470,14 +421,7 @@ export function* fetchjadibutiRequest(api, action) {
 
   const response = yield api.getJadibuti(jadibutiId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BiruwautpadanActions.fetchjadibutiSuccess(response.data));
   } else {
     yield put(BiruwautpadanActions.fetchjadibutiFailure());

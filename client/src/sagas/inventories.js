@@ -10,14 +10,7 @@ export function* fetchallinventoriesRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getInventoriesList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(InventoriesActions.fetchallinventoriesSuccess(response.data));
   } else {
     yield put(InventoriesActions.fetchallinventoriesFailure());
@@ -30,14 +23,7 @@ export function* fetchinventoriesRequest(api, action) {
 
   const response = yield api.getInventories(inventId);
   
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       InventoriesActions.fetchinventoriesSuccess(response.data)
     );
@@ -163,14 +149,7 @@ export function* fetchallentryRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getEntryList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(InventoriesActions.fetchallentrySuccess(response.data));
   } else {
     yield put(InventoriesActions.fetchallentryFailure());
@@ -182,14 +161,7 @@ export function* fetchentryRequest(api, action) {
 
   const response = yield api.getEntry(entryId);
   
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       InventoriesActions.fetchentrySuccess(response.data)
     );
@@ -315,14 +287,7 @@ export function* fetchallexitRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getExitList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(InventoriesActions.fetchallexitSuccess(response.data));
   } else {
     yield put(InventoriesActions.fetchallexitFailure());
@@ -335,14 +300,7 @@ export function* fetchexitRequest(api, action) {
 
   const response = yield api.getExit(exitId);
   
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       InventoriesActions.fetchexitSuccess(response.data)
     );
