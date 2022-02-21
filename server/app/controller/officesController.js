@@ -44,16 +44,15 @@ async function getOffices(req, res) {
 async function getOfficesDropdownList(req, res) {
   
   // multiselect
-  const dist_length = await req.body.distId.length;
   let dist_cond = "dist_id like ?"
-  if(dist_length > 1){
+  const len=(Array.isArray(req.body.distId)) ? req.body.distId.length : 0
+  if(len > 1){
     dist_cond = "dist_id in (?)"
   }
-  // console.log("length", dist_length);
+
   const getOfficesList = `SELECT '%' AS id, 'सबै' AS value, '' as office_location, '%' As dist_id, '%' As office_type UNION ALL select office_id as id, office_name as value, office_location, dist_id, office_type from offices where ${dist_cond}`;
   pool.query(getOfficesList,[req.body.distId, req.body.name], (error, results, fields) => {
     if (error) throw error;
-    // console.log("getOfficeList", getOfficesList);
     res.send(JSON.stringify({ status: 200, error: null, data: results }));
   });
 }

@@ -71,8 +71,15 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { user_name, user_pass, user_type, user_office, office_type, dist_id, office_id } =
-      this.state;
+    const {
+      user_name,
+      user_pass,
+      user_type,
+      user_office,
+      office_type,
+      dist_id,
+      office_id,
+    } = this.state;
     const payload = {
       user: {
         data: {
@@ -201,7 +208,6 @@ class Add extends Component {
                   getType={(officeList) => officeList["type"]}
                   onChange={(e) => this.handleOffice(e)}
                   value={office_id}
-                  
                 />
               </div>
               <div className="w-30" />
