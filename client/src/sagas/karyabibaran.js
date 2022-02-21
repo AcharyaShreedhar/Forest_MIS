@@ -8,14 +8,7 @@ export function* fetchallsamajikkaryabibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getSamajikkaryabibaranList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KaryabibaranActions.fetchallsamajikkaryabibaranSuccess(response.data)
     );
@@ -28,14 +21,7 @@ export function* fetchsamajikkaryabibaranRequest(api, action) {
   const samajikkaryabibaranId = action.payload;
 
   const response = yield api.getSamajikkaryabibaran(samajikkaryabibaranId);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KaryabibaranActions.fetchkarmacharidarbandiSuccess(response.data)
     );
@@ -168,14 +154,7 @@ export function* fetchallbanbikaskaryabibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBanbikasKaryaBibaranList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KaryabibaranActions.fetchallbanbikaskaryabibaranSuccess(response.data)
     );
@@ -188,14 +167,7 @@ export function* fetchbanbikaskaryabibaranRequest(api, action) {
   const banbikasKaryabibaranId = action.payload;
 
   const response = yield api.getBanbikasKaryabibaran(banbikasKaryabibaranId);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       KaryabibaranActions.fetchbanbikaskaryabibaranSuccess(response.data)
     );

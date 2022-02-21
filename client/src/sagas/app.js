@@ -9,14 +9,7 @@ export function* loginRequest(api, action) {
 
   const response = yield api.loginByUsername(payload);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     // const { user, officeList } = response.data;
     const { user } = response.data;
     const { user_token } = user;
@@ -35,14 +28,7 @@ export function* fetchallmunicipalitiesRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getMunicipalitiesList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchallmunicipalitiesSuccess(response.data));
   } else {
     yield put(AppActions.fetchallmunicipalitiesFailure());
@@ -54,14 +40,7 @@ export function* fetchmunicipalitiesRequest(api, action) {
 
   const response = yield api.getMunicipalities(municipalitiesId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchmunicipalitiesSuccess(response.data));
   } else {
     yield put(AppActions.fetchmunicipalitiesFailure());
@@ -179,14 +158,7 @@ export function* fetchallprovincesRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getProvincesList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchallprovincesSuccess(response.data));
   } else {
     yield put(AppActions.fetchallprovincesFailure());
@@ -197,14 +169,7 @@ export function* fetchprovincesRequest(api, action) {
 
   const response = yield api.getProvinces(provincesId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchprovincesSuccess(response.data));
   } else {
     yield put(AppActions.fetchprovincesFailure());
@@ -322,14 +287,7 @@ export function* fetchalldistrictsRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getDistrictsList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchalldistrictsSuccess(response.data));
   } else {
     yield put(AppActions.fetchalldistrictsFailure());
@@ -340,14 +298,7 @@ export function* fetchdistrictsRequest(api, action) {
 
   const response = yield api.getDistricts(districtsId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchdistrictsSuccess(response.data));
   } else {
     yield put(AppActions.fetchdistrictsFailure());
@@ -465,14 +416,7 @@ export function* fetchalldepartmentsRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getDepartmentsList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchalldepartmentsSuccess(response.data));
   } else {
     yield put(AppActions.fetchalldepartmentsFailure());
@@ -483,14 +427,7 @@ export function* fetchdepartmentsRequest(api, action) {
 
   const response = yield api.getDepartments(departmentsId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchdepartmentsSuccess(response.data));
   } else {
     yield put(AppActions.fetchdepartmentsFailure());
@@ -608,14 +545,7 @@ export function* fetchallusersRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getUsersList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchallusersSuccess(response.data));
   } else {
     yield put(AppActions.fetchallusersFailure());
@@ -627,14 +557,7 @@ export function* fetchusersRequest(api, action) {
 
   const response = yield api.getUsers(usersId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchusersSuccess(response.data));
   } else {
     yield put(AppActions.fetchusersFailure());
@@ -646,6 +569,7 @@ export function* addusersRequest(api, action) {
   const { payload } = action;
 
   const response = yield api.postUsersAddNew(payload.user.data);
+
   if (response.data.error != null) {
     toast.error(
       "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
@@ -786,14 +710,7 @@ export function* fetchallofficesRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getOfficesList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchallofficesSuccess(response.data));
   } else {
     yield put(AppActions.fetchallofficesFailure());
@@ -805,14 +722,7 @@ export function* fetchofficesRequest(api, action) {
 
   const response = yield api.getOffices(officesId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchofficesSuccess(response.data));
   } else {
     yield put(AppActions.fetchofficesFailure());
@@ -824,14 +734,7 @@ export function* fetchofficesdropdownRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getOfficesDropdownList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(AppActions.fetchofficesdropdownSuccess(response.data));
   } else {
     yield put(AppActions.fetchofficesdropdownFailure());

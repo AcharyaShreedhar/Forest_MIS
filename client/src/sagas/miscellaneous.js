@@ -10,14 +10,7 @@ export function* fetchallrojgarsrijanaRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getRojgarSrijanaList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(MiscellaneousActions.fetchallrojgarsrijanaSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchallrojgarsrijanaFailure());
@@ -29,14 +22,7 @@ export function* fetchrojgarsrijanaRequest(api, action) {
 
   const response = yield api.getRojgarSrijana(rojgarsrijanaId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(MiscellaneousActions.fetchrojgarsrijanaSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchrojgarsrijanaFailure());
@@ -162,14 +148,7 @@ export function* fetchalluddhamRequest(api, action) {
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getUddhamList(payloaddata);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(MiscellaneousActions.fetchalluddhamSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchalluddhamFailure());
@@ -181,14 +160,7 @@ export function* fetchuddhamRequest(api, action) {
 
   const response = yield api.getUddham(uddhamId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(MiscellaneousActions.fetchuddhamSuccess(response.data));
   } else {
     yield put(MiscellaneousActions.fetchuddhamFailure());

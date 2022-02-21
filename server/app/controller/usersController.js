@@ -78,7 +78,7 @@ async function addUsers(req, res, next) {
       if (error) {
         console.log(error);
         next(error);
-      }
+      } 
       res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );

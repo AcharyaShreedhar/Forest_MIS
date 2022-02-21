@@ -8,14 +8,7 @@ export function* fetchallpahirobibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getPahirobibaranList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BipatbibaranActions.fetchallpahirobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.fetchallpahirobibaranFailure());
@@ -27,14 +20,7 @@ export function* fetchpahirobibaranRequest(api, action) {
 
   const response = yield api.getPahirobibaran(pahirobibaranId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BipatbibaranActions.fetchpahirobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.fetchpahirobibaranFailure());
@@ -167,14 +153,7 @@ export function* fetchallbadhibibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBadhibibaranList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BipatbibaranActions.fetchallbadhibibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.fetchallbadhibibaranFailure());
@@ -186,14 +165,7 @@ export function* fetchbadhibibaranRequest(api, action) {
 
   const response = yield api.getBadhibibaran(badhibibaranId);
 
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BipatbibaranActions.fetchbadhibibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.fetchbadhibibaranFailure());
@@ -324,14 +296,7 @@ export function* fetchallbandadelobibaranRequest(api, action) {
   const { payload } = action;
   const payloaddata = isNil(payload) ? action : payload;
   const response = yield api.getBandadelobibaranList(payloaddata);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(
       BipatbibaranActions.fetchallbandadelobibaranSuccess(response.data)
     );
@@ -344,14 +309,7 @@ export function* fetchbandadelobibaranRequest(api, action) {
   const bandadeloBibaranId = action.payload;
 
   const response = yield api.getBandadelobibaran(bandadeloBibaranId);
-  if (response.data.error != null) {
-    toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
-      {
-        position: toast.POSITION.TOP_CENTER,
-      }
-    );
-  } else if (response.ok) {
+  if (response.ok) {
     yield put(BipatbibaranActions.fetchbandadelobibaranSuccess(response.data));
   } else {
     yield put(BipatbibaranActions.fetchbandadelobibaranFailure());
