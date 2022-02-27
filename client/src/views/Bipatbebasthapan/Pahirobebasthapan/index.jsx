@@ -88,7 +88,7 @@ class Pahirobebasthapan extends Component {
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({
       distId: e,
       officeId: "%", // office reset
@@ -165,7 +165,7 @@ class Pahirobebasthapan extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deletePahirobebasthapan(item.pahiro_bibaran_id);
     this.setState({

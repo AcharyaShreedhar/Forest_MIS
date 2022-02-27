@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { englishToNepaliNumber,nepaliToEnglishNumber } from "nepali-number";
+import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { isNil } from "ramda";
 import { Table } from "react-bootstrap";

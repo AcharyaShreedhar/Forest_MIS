@@ -83,7 +83,7 @@ class Plantation extends Component {
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, officeId, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({
       distId: e,
       officeId: "%", // office reset
@@ -160,7 +160,7 @@ class Plantation extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteBrixyaropan(item.brixyaropan_id);
     this.setState({

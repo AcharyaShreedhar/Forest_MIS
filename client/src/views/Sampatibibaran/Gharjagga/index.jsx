@@ -135,7 +135,7 @@ class Gharjagga extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteGharjagga(item.asset_id);
     this.setState({

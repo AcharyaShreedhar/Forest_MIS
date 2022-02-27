@@ -134,7 +134,7 @@ class Rojgarsrijana extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteRojgarsrijana(item.rojgar_srijana_id);
     this.setState({

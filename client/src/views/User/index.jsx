@@ -117,7 +117,7 @@ export class User extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteUser(item.user_id);
     this.setState({ 

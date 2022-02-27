@@ -110,7 +110,7 @@ class Banbikaskaryabibaran extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteBanbikaskaryabibaran(item.banbikas_karyabibaran_id);
     this.setState({ 

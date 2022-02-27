@@ -162,7 +162,7 @@ class Osarpasar extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteBanpaidawarosarpasar(item.paidawar_id);
     this.setState({

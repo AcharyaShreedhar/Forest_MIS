@@ -1,7 +1,4 @@
-import { call, put } from "redux-saga/effects";
-import { toast } from "react-toastify";
-
-import { history } from "../reducers";
+import { put } from "redux-saga/effects";
 import { isNil } from "ramda";
 import ReportActions from "../actions/report";
 

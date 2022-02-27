@@ -136,7 +136,7 @@ class Jadibuti extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteJadibuti(item.jadibuti_id);
     this.setState({

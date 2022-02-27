@@ -71,7 +71,7 @@ class Karmacharidarbandi extends Component {
   }
 
   handleDistrict(e) {
-    const { officeId, perPage } = this.state;
+    const { perPage } = this.state;
     this.setState({
       distId: e,
       officeId: "%", // office reset
@@ -139,7 +139,7 @@ class Karmacharidarbandi extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteKarmacharidarbandi(item.karmachari_darbandi_id);
     this.setState({

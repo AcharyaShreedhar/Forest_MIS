@@ -9,7 +9,7 @@ export function* loginRequest(api, action) {
 
   const response = yield api.loginByUsername(payload);
 
-  if (response.data.message == "Your username or password doesnot match please try again later") {
+  if (response.data.message === "Your username or password doesnot match please try again later") {
     toast.error(
       "तपाईँको नाम अथवा पासवोड.. कृपया पुनः प्रयास गर्नुहोला !!!!",
       {

@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import moment from "moment";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
 import { equals, isNil } from "ramda";

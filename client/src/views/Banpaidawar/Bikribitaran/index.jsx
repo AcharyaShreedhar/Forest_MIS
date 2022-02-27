@@ -160,7 +160,7 @@ class Bikribitaran extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteBanpaidawarbikribitaran(item.bikribitaran_id);
     this.setState({
