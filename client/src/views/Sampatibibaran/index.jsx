@@ -12,7 +12,7 @@ export class Sampatibibaran extends Component {
   componentDidMount() {
     const { districtId, officeRole, officeId } = this.props;
     this.props.fetchallGharjagga({
-      distId: `${officeRole < 3 ? "%" : districtId}`,
+      distId: "`${officeRole < 3 ? "%" : districtId}`",
       officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "asset_type",
       page: 0,

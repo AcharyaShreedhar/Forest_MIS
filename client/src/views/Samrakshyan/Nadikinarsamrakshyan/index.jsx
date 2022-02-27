@@ -86,7 +86,7 @@ class Nadikinarsamrakshyan extends Component {
     this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, officeId, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({
       distId: e,
       officeId: "%", // office reset
@@ -162,7 +162,7 @@ class Nadikinarsamrakshyan extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteNadikinarsamrakshyan(item.nadikinarsamrakshyan_id);
     this.setState({

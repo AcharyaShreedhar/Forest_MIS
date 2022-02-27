@@ -115,7 +115,6 @@ class Add extends Component {
       user_office,
       dist_id,
       office_id,
-      office_type,
       officeList,
       showDialog,
       officeDisabled,

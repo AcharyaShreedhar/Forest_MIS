@@ -167,7 +167,7 @@ class Banxetraanyaprayojan extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id);
     this.setState({

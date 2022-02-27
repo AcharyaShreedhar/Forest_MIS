@@ -6,7 +6,6 @@ import "./Sidenav.scss";
 import {
   ProSidebar,
   SidebarHeader,
-  SidebarFooter,
   SidebarContent,
   Menu,
   MenuItem,
@@ -225,7 +224,6 @@ export class SideNavbar extends Component {
   render() {
     const {
       showDialog,
-      expanded,
       bantype,
       banbibaran,
       karmachari,

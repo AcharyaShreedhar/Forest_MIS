@@ -99,7 +99,6 @@ class Input extends React.PureComponent {
             value={value || ""}
             type={type}
             as={as}
-            disabled={disabled}
             rows={rows}
             title={tooltip ? value : ""}
             onBlur={(e) => this.handleBlur(e.target.value)}

@@ -44,7 +44,6 @@ class Edit extends Component {
       dist_id,
       office_type,
       created_by,
-      updated_by,
     } = this.state;
     const payload = {
       office: {
