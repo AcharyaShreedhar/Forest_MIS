@@ -3,12 +3,25 @@ const pool = require("../../db");
 //Controller for Samuhabhitra Banpaidawar Bikri Bitaran
 
 async function getBanpaidawarbikriSamuhaBhitra(req, res) {
+
+  let office_cond = "office_id like ?"
+  const office_len=(Array.isArray(req.body.officeId)) ? req.body.officeId.length : 0
+  if(office_len > 1){
+    office_cond = "office_id in (?)"
+  }
+
+  let dist_cond = "dist_id like ?"
+  const dist_len=(Array.isArray(req.body.distId)) ? req.body.distId.length : 0
+  if(dist_len > 1){
+    dist_cond = "dist_id in (?)"
+  }
+
   const getBikriBibaranQuery =
-    "SELECT SUM(IF((banpaidawar_kisim='1' && bikri_medium='1'),rakam*ekai,0)) AS kathdaura, SUM(IF(banpaidawar_kisim!='1'&& bikri_medium='1',rakam*ekai,0)) AS gairkastha,SUM(IF( bikri_medium='1',rakam*ekai,0)) AS total FROM `banpaidawar_bikribitarans` where dist_id like ?";
+    `SELECT SUM(IF((banpaidawar_kisim='1' && bikri_medium='1'),rakam*ekai,0)) AS kathdaura, SUM(IF(banpaidawar_kisim!='1'&& bikri_medium='1',rakam*ekai,0)) AS gairkastha,SUM(IF( bikri_medium='1',rakam*ekai,0)) AS total FROM banpaidawar_bikribitarans where ${dist_cond} and ${office_cond}`;
 
   pool.query(
     getBikriBibaranQuery,
-    [req.body.distId],
+    [req.body.distId, req.body.officeId],
     (error, results, fields) => {
       if (error) throw error;
       res.send(

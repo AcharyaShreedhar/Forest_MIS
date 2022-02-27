@@ -1,0 +1,20 @@
+{
+    "shortid": "jnXUyi4AJy",
+    "name": "mitianusarbibaran",
+    "recipe": "docx",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "docx": {
+        "templateAssetShortid": "tnDdD_8"
+    },
+    "creationDate": {
+        "$$date": 1645774851562
+    },
+    "modificationDate": {
+        "$$date": 1645774851562
+    },
+    "_id": "FHu4AtXEVmM3gcZ4",
+    "$entitySet": "templates"
+}

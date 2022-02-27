@@ -2,15 +2,15 @@ const pool = require("../db");
 //Controller for Listing all SajhedaribanBibaran
 async function getAllSajhedaribanBibaran(req, res) {
 
-  const office_length = await req.body.officeId.length;
   let office_cond = "s.office_id like ?"
-  if(office_length > 1){
+  const office_len=(Array.isArray(req.body.officeId)) ? req.body.officeId.length : 0
+  if(office_len > 1){
     office_cond = "s.office_id in (?)"
   }
 
-  const dist_length = await req.body.distId.length;
   let dist_cond = "s.dist_id like ?"
-  if(dist_length > 1){
+  const dist_len=(Array.isArray(req.body.distId)) ? req.body.distId.length : 0
+  if(dist_len > 1){
     dist_cond = "s.dist_id in (?)"
   }
 

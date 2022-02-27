@@ -48,6 +48,7 @@ export class Filter extends Component {
       yesDate,
       yesOffice,
       yesDistrict,
+      multi,
     } = this.props;
     return (
       <div className="filter">
@@ -80,7 +81,7 @@ export class Filter extends Component {
             data={districtsList}
             getValue={(districtsList) => districtsList["value"]}
             onChange={(e) => this.handleDistrict(e)}
-            multi={true}
+            multi={multi}
             value={district}
           />
         )}
@@ -94,7 +95,7 @@ export class Filter extends Component {
             getValue={(officesList) => officesList["value"]}
             onChange={(e) => this.handleOffice(e)}
             value={office}
-            multi={true}
+            multi={multi}
           />
         )}
       </div>
@@ -115,6 +116,7 @@ Filter.propTypes = {
   onFromDate: PropTypes.func,
   onSelect: PropTypes.func,
   onSelectOffice: PropTypes.func,
+  multi: PropTypes.bool,
 };
 
 Filter.defaultProps = {
@@ -129,6 +131,7 @@ Filter.defaultProps = {
   yesDate: true,
   yesOffice: false,
   yesDistrict: false,
+  multi: true,
   onToDate: () => {},
   onFromDate: () => {},
   onSelect: () => {},

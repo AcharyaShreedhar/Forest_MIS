@@ -41,6 +41,7 @@ export class SideNavbar extends Component {
       karyakram: false,
       assets: false,
       karya: false,
+      report: false,
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
@@ -75,6 +76,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "bantype": {
@@ -89,6 +91,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "banbibaran": {
@@ -103,6 +106,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "dwanda": {
@@ -117,6 +121,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "banpaidawar": {
@@ -131,6 +136,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "karyakram": {
@@ -145,6 +151,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "assets": {
@@ -159,6 +166,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "karya": {
@@ -173,6 +181,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "bipat": {
@@ -187,6 +196,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: true });
         this.setState({ samraxan: false });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "samraxan": {
@@ -201,6 +211,7 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: true });
         this.setState({ misc: false });
+        this.setState({ report: false });
         break;
       }
       case "misc": {
@@ -215,6 +226,22 @@ export class SideNavbar extends Component {
         this.setState({ bipat: false });
         this.setState({ samraxan: false });
         this.setState({ misc: true });
+        this.setState({ report: false });
+        break;
+      }
+      case "report": {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        this.setState({ report: true });
         break;
       }
       default:
@@ -237,6 +264,7 @@ export class SideNavbar extends Component {
       bipat,
       samraxan,
       misc,
+      report,
     } = this.state;
     const { history, menuStatus, role } = this.props;
     return (
@@ -562,13 +590,20 @@ export class SideNavbar extends Component {
                 उद्धम विवरण
               </MenuItem>
             </SubMenu>
-            <MenuItem
-              icon={<FaFileWord />}
+            <SubMenu
+              title="रिपोर्ट"
               className="maintitle"
-              onClick={() => history.push("/report")}
+              icon={<FaFileWord />}
+              open={report}
+              onClick={(e) => this.handleSubmenu(e, "report")}
             >
-              रिपोर्ट
-            </MenuItem>
+              <MenuItem onClick={() => history.push("/report/annualreport")}>
+                आर्थिक वर्ष रिपोर्ट
+              </MenuItem>
+              <MenuItem onClick={() => history.push("/report/datereport")}>
+                मिति रिपोर्ट
+              </MenuItem>
+            </SubMenu>
             {equals(role, 3) && (
               <MenuItem
                 icon={<BiUserPlus />}

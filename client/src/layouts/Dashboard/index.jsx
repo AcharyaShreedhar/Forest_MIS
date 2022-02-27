@@ -57,75 +57,93 @@ class Dashboard extends Component {
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
       distId: "%",
+      officeId: "%",
       name: "handover_date",
       page: 0,
       perPage: 10,
     });
     this.props.fetchtotalBanyajantuuddar({
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchtotalBanyajantuxeti({
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchNabikaranBibaran({
       currentArthikbarsa,
       upcommingArthikbarsa,
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchSamuhaBhitraBanpaidawarBikri({
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchBanxetraAtikraman({
       previousArthikbarsa,
       currentArthikbarsa,
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchBanyajantuXetiRahat({
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchBanyajantuUddar({
       currentArthikbarsa,
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchBandadeloXeti({
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchBanxetraAnyaprayojan({
       distId: "%",
+      officeId: "%",
     });
 
     this.props.fetchMuddaanusandhandayari({
       previousArthikbarsa,
       distId: "%",
+      officeId: "%",
     });
 
     this.props.fetchGairakasthaBanpaidawarBikribitaran({
       currentArthikbarsa,
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchKathdauraBikribitaran({
       currentArthikbarsa,
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchBiruwaUtpadanKharid({
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchUddhamBibaran({
       distId: "%",
+      officeId: "%",
     });
     this.props.fetchSrijanaBhayekoRojgari({
       distId: "%",
+      officeId: "%",
       currentArthikbarsa,
     });
     this.props.fetchUpavoktaSusasan({
       currentArthikbarsa,
       arthikbarsa: "077/78",
       distId: "%",
+      officeId: "%",
     });
 
     this.props.fetchBanHastantaran({
       currentArthikbarsa,
       distId: "%",
+      officeId: "%",
     });
   }
 
