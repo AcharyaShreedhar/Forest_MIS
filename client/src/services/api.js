@@ -1350,6 +1350,7 @@ const create = (baseURL = Config.API_URL) => {
     postBanHastantaranBibaran,
   };
 };
-export default {
-  create,
-};
+
+const exportedObject = { create }
+
+export default exportedObject;

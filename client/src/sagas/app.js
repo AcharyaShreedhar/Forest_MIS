@@ -9,7 +9,14 @@ export function* loginRequest(api, action) {
 
   const response = yield api.loginByUsername(payload);
 
-  if (response.ok) {
+  if (response.data.message === "Your username or password doesnot match please try again later") {
+    toast.error(
+      "तपाईँको नाम अथवा पासवोड.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      {
+        position: toast.POSITION.TOP_CENTER,
+      }
+    );
+  } else if (response.ok) {
     // const { user, officeList } = response.data;
     const { user } = response.data;
     const { user_token } = user;

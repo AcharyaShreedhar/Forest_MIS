@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt"); // bcrypt
 const pool = require("../db");
 const util = require("../db/utility");
+const r = require("ramda")
 
 //Controller for Listing all Users
 async function getAllUsers(req, res) {
@@ -151,14 +152,14 @@ async function deleteUsers(req, res, next) {
   );
 }
 
-async function verifyUsers(req, res) {
+async function verifyUsers(req, res, next) {
   const getUsersPasswordQuery = `select user_id,user_name, user_pass,user_token,dist_id,office_id,user_type,user_office, office_type from users where user_name=?`;
   pool.query(
     getUsersPasswordQuery,
     [req.body.user_name],
     (error, results, fields) => {
       if (error) throw error;
-      else {
+      else if(!r.isEmpty(results)){
         var hash = results[0].user_pass;
         const user = {
           user_id: results[0].user_id,
@@ -172,12 +173,11 @@ async function verifyUsers(req, res) {
         };
 
         //compare hash and password
-        bcrypt.compare(req.body.user_pass, hash, function (error, result) {
-          // execute code to test for access and login
-          if (result) {
+        bcrypt.compare(req.body.user_pass, hash, function (error, result) {    
+          if (result && req.body.user_name == user.user_name) {
             res.send(
               JSON.stringify({
-                status: 200,
+                status: 200, 
                 error: null,
                 user: user,
                 // officeList: officeList, //officeList
@@ -185,17 +185,29 @@ async function verifyUsers(req, res) {
               })
             );
           } else {
+            console.log(error);
             res.send(
               JSON.stringify({
                 status: 200,
-                error: null,
-                data: user,
+                error: error,
+                data: null,
                 message:
                   "Your username or password doesnot match please try again later",
               })
             );
           }
         });
+      }
+      else{
+        res.send(
+               JSON.stringify({
+                  status: 200,
+                  error: error,
+                  data: null,
+                  message:
+                    "Your username or password doesnot match please try again later",
+                })
+              );
       }
     }
   );

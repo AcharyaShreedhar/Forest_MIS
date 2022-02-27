@@ -13,7 +13,6 @@ import BiruwautpadanActions from "../../../actions/biruwautpadan";
 import {
   yearlyactivitiesHeadings,
   districtList,
-  officeList,
 } from "../../../services/config";
 
 class Yearlyactivities extends Component {
@@ -166,7 +165,7 @@ class Yearlyactivities extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteYearlyactivities(item.activities_info_id);
     this.setState({

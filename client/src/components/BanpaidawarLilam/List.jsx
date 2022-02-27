@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { englishToNepaliNumber } from "nepali-number";
 import { PropTypes } from "prop-types";
-import { F, isNil } from "ramda";
+import { isNil } from "ramda";
 import { Table } from "react-bootstrap";
 import { Button, EditDropdown, Pagination } from "../../components";
 

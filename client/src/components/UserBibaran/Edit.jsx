@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { equals, isEmpty } from "ramda";
 import { Button, ConfirmationDialoge, Dropdown, Input } from "../../components";
-import { districtList, usertypeList, officeType } from "../../services/config";
+import { districtList, usertypeList } from "../../services/config";
 import "nepali-datepicker-reactjs/dist/index.css";
 import { PropTypes } from "prop-types";
 import { connect } from "react-redux";
@@ -87,7 +87,6 @@ class Edit extends Component {
       office_id,
       office_type,
       created_by,
-      updated_by,
     } = this.state;
     const payload = {
       user: {
@@ -125,7 +124,6 @@ class Edit extends Component {
       user_office,
       dist_id,
       office_id,
-      office_type,
       officeList,
       showDialog,
       officeDisabled,

@@ -13,7 +13,6 @@ import AppActions from "../../../actions/app";
 import {
   samajikkaryabibaranHeadings,
   districtList,
-  officeList,
 } from "../../../services/config";
 
 class Samajikkaryabibaran extends Component {
@@ -139,7 +138,7 @@ class Samajikkaryabibaran extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteSamajikkaryabibaran(item.samajik_karyabibaran_id);
     this.setState({

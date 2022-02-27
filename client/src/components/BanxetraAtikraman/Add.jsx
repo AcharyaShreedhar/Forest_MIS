@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import "nepali-datepicker-reactjs/dist/index.css";
-import { equals, isEmpty } from "ramda";
+import { isEmpty } from "ramda";
 import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 import { nepaliToEnglishNumber } from "nepali-number";
 

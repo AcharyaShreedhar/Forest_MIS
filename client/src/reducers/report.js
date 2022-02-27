@@ -190,7 +190,7 @@ const fetchkathdaurabikribitaranSuccess = (state, action) => {
     aapurti_kath: 0,
     aapurti_daura: 0,
   };
-  action.response.kathdaura_bikri.map((item, index) => {
+  action.response.kathdaura_bikri.forEach((item, index) => {
     total = {
       samuhabhitra_kath: total.samuhabhitra_kath + item.samuhabhitra_kath,
       samuhabhitra_daura: total.samuhabhitra_daura + item.samuhabhitra_daura,
@@ -273,7 +273,7 @@ const fetchbiruwautpadankharidSuccess = (state, action) => {
   };
   let kharid = {};
   const brixyaropan = action.response.biruwautpadan_kharid.brixyaropan;
-  action.response.biruwautpadan_kharid.utpadan.map((item, index) => {
+  action.response.biruwautpadan_kharid.utpadan.forEach((item, index) => {
     if (equals(item.utpadan_medium, 1)) {
       utpadan.division_ban = item;
     } else if (equals(item.utpadan_medium, 2)) {
@@ -309,7 +309,7 @@ const fetchuddhambibaranSuccess = (state, action) => {
     samudayik: {},
     sahakari: {},
   };
-  action.response.banpaidawar_uddham.map((item, index) => {
+  action.response.banpaidawar_uddham.forEach((item, index) => {
     if (equals(item.uddham_type, 1)) {
       uddham.niji = item;
     } else if (equals(item.uddham_type, 2)) {
@@ -429,7 +429,7 @@ const fetchbanhastantaranbibaranSuccess = (state, action) => {
   };
   const pre = action.response.data.previous;
   const cur = action.response.data.current;
-  pre.map((item, index) => {
+  pre.forEach((item, index) => {
     if (equals(index, 0)) {
       previous.baiganik_ban = item;
     } else if (equals(index, 1)) {
@@ -451,7 +451,7 @@ const fetchbanhastantaranbibaranSuccess = (state, action) => {
     }
   });
 
-  cur.map((item, index) => {
+  cur.forEach((item, index) => {
     if (equals(index, 0)) {
       current.baiganik_ban = item;
     } else if (equals(index, 1)) {

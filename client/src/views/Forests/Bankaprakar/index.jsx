@@ -293,7 +293,6 @@ class Bankaprakar extends Component {
   handleSelectMenu(event, item, path) {
     this.setState({ item: item });
     this.setState({ path: path });
-    const { page } = this.state;
     switch (event) {
       case "edit": {
         switch (path) {
@@ -419,7 +418,7 @@ class Bankaprakar extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, path, page } = this.state;
+    const { item, path } = this.state;
     switch (path) {
       case "samudayik": {
         this.props.deleteSamudayikbanbibaran(item.darta_no);
@@ -534,7 +533,7 @@ class Bankaprakar extends Component {
           showDialog={showDialog}
           title="Delete"
           body={
-            "के तपाईँ " + `${messagebody}` + " वनको विवरण हटाउन चाहनुहुन्छ ?"
+            `के तपाईँ ${messagebody} वनको विवरण हटाउन चाहनुहुन्छ ?`
           }
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "

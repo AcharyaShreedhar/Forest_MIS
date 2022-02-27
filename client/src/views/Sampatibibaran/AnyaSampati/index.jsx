@@ -161,7 +161,7 @@ class AnyaSampati extends Component {
     this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item, page } = this.state;
+    const { item } = this.state;
 
     this.props.deleteanyasampati(item.sampati_id);
     this.setState({

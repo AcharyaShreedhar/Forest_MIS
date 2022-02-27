@@ -68,7 +68,7 @@ export class Home extends Component {
         bantypesList.commercialban,
       ];
       if (!isNil(uddarList) && !isEmpty(uddarList)) {
-        uddarList.map((uddar) => {
+        uddarList.forEach((uddar) => {
           uddarmitis.push(uddar.miti);
           uddarsankhya.push(uddar.sankhya);
         });
@@ -82,7 +82,7 @@ export class Home extends Component {
         ];
       }
       if (!isNil(xetiList) && !isEmpty(xetiList)) {
-        xetiList.map((xeti) => {
+        xetiList.forEach((xeti) => {
           xetimitis.push(xeti.miti);
           xetisankhya.push(xeti.sankhya);
         });

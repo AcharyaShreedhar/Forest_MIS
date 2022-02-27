@@ -14,7 +14,7 @@ const fromImmutable = when(isImmutable, convertToJs);
 const toImmutable = (raw) => Immutable(raw);
 
 // the transform interface that redux-persist is expecting
-export default {
+const exportedObject = { 
   out: (state) => {
     // console.log({ retrieving: state })
     return toImmutable(state);
@@ -23,4 +23,6 @@ export default {
     // console.log({ storing: raw })
     return fromImmutable(raw);
   },
-};
+ };
+
+export default exportedObject;
