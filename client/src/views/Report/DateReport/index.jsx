@@ -1,43 +1,47 @@
-import React, { Component } from "react";
-import { Button } from "../../../components";
-import { connect } from "react-redux";
-import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
-import jsreport from "jsreport-browser-client-dist";
-import NepaliDate from "nepali-date-converter";
-import AppActions from "../../../actions/app";
-import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
-import ReportActions from "../../../actions/report";
-import { districtList } from "../../../services/config";
-import { Fragment } from "react";
-import "../Report.scss";
-import Filter from "../../../components/Filter";
+import React, { Component } from 'react'
+import { Button } from '../../../components'
+import { connect } from 'react-redux'
+import { englishToNepaliNumber, nepaliToEnglishNumber } from 'nepali-number'
+import jsreport from 'jsreport-browser-client-dist'
+import NepaliDate from 'nepali-date-converter'
+import AppActions from '../../../actions/app'
+import DwandabebasthapanActions from '../../../actions/dwandabebasthapan'
+import ReportActions from '../../../actions/report'
+import { districtList } from '../../../services/config'
+import { Fragment } from 'react'
+import '../Report.scss'
+import Filter from '../../../components/Filter'
 
 export class DateReport extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      report: "",
-      reportScript: "",
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: `${officeRole < 3 ? "%" : officeId}`,
-    };
-    this.handleReport = this.handleReport.bind(this);
-    this.handlePreview = this.handlePreview.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
+      report: '',
+      reportScript: '',
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+    }
+    this.handleReport = this.handleReport.bind(this)
+    this.handlePreview = this.handlePreview.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
+    this.handleToDate = this.handleToDate.bind(this)
+    this.handleFromDate = this.handleFromDate.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    var officeList = [];
+    var officeList = []
 
-    var report_data = {};
+    var report_data = {}
     if (nextProps !== prevState) {
-      officeList = nextProps.officeDataList.data;
+      officeList = nextProps.officeDataList.data
       report_data = {
         name: nextProps.user_office,
+        fromDate: englishToNepaliNumber(prevState.fromDate),
+        toDate: englishToNepaliNumber(prevState.toDate),
         nabikaran_yojana: nextProps.nabikaranData.data,
         banpaidawar_bikri:
           nextProps.samuhabhitraBanpaidawar.data.banpaidawar_bikri,
@@ -55,46 +59,46 @@ export class DateReport extends Component {
         rojgari_srijana: nextProps.rojgarData,
         susasanko_abastha: nextProps.susasanData.susasanko_abastha,
         ban: nextProps.banhastantaranData,
-      };
+      }
     }
     return {
       report_data,
       officeList,
-    };
+    }
   }
 
   handleFromDate(e) {
-    const { toDate, distId, officeId } = this.state;
+    const { toDate, distId, officeId } = this.state
     this.setState({
       fromDate: e,
-    });
-    this.fetchReportResults(e, toDate, distId, officeId);
+    })
+    this.fetchReportResults(e, toDate, distId, officeId)
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate } = this.state;
+    const { distId, officeId, fromDate } = this.state
     this.setState({
       toDate: e,
-    });
-    this.fetchReportResults(fromDate, e, distId, officeId);
+    })
+    this.fetchReportResults(fromDate, e, distId, officeId)
   }
 
   handleDistrict(e) {
-    const { fromDate, toDate } = this.state;
+    const { fromDate, toDate } = this.state
     this.setState({
       distId: e,
-      officeId: "%", // office reset
-    });
-    this.fetchReportResults(fromDate, toDate, e, "%");
+      officeId: '%', // office reset
+    })
+    this.fetchReportResults(fromDate, toDate, e, '%')
 
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
-    const { fromDate, toDate, distId } = this.state;
+    const { fromDate, toDate, distId } = this.state
     this.setState({
       officeId: e,
-    });
-    this.fetchReportResults(fromDate, toDate, distId, e);
+    })
+    this.fetchReportResults(fromDate, toDate, distId, e)
   }
 
   // O-DDL
@@ -102,39 +106,42 @@ export class DateReport extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
 
   handleReport() {
     // jsreport.serverUrl = "https://forest-mis-report.herokuapp.com";
-    jsreport.serverUrl = "http://localhost:5488";
+    const { fromDate, toDate, distId, officeId } = this.state
+    this.fetchReportResults(fromDate, toDate, distId, officeId)
+    jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
-      template: { name: "mitianusarbibaran" },
+      template: { name: 'mitianusarbibaran' },
       data: this.state.report_data,
-    };
-    jsreport.render(null, reportRequest);
+    }
+    jsreport.render(null, reportRequest)
   }
 
   handlePreview() {
-    console.log("report_data: ", this.state.report_data);
-    jsreport.serverUrl = "http://localhost:5488";
+    const { fromDate, toDate, distId, officeId } = this.state
+    console.log('report_data: ', this.state.report_data)
+    jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
-      template: { name: "mitianusarbibaran" },
+      template: { name: 'mitianusarbibaran' },
       data: this.state.report_data,
       options: {
         office: {
           preview: true,
         },
       },
-    };
-    jsreport.render(this.reportPreview, reportRequest);
+    }
+    jsreport.render(this.reportPreview, reportRequest)
   }
 
   componentDidMount() {
     this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
-    });
+      distId: '%',
+      name: 'value', //"office_name"
+    })
     // jsreport.serverUrl = "https://forest-mis-report.herokuapp.com";
     // jsreport.serverUrl = "http://localhost:5488";
     // let reportRequest = {
@@ -151,105 +158,114 @@ export class DateReport extends Component {
 
   fetchReportResults(fromDate, toDate, distId, officeId) {
     this.props.fetchtotalBanyajantuuddar({
+      fromDate,
+      toDate,
       distId, //9
       officeId,
-    });
+    })
     this.props.fetchtotalBanyajantuxeti({
+      fromDate,
+      toDate,
       distId, //8
       officeId,
-    });
+    })
     this.props.fetchNabikaranBibaran({
-      fromDate,
-      toDate, //2
+      //2
       distId,
       officeId,
-    });
+    })
     this.props.fetchSamuhaBhitraBanpaidawarBikri({
+      fromDate,
+      toDate,
       distId, //3
       officeId,
-    });
+    })
     this.props.fetchBanxetraAtikraman({
       fromDate,
       toDate, //7
       distId,
       officeId,
-    });
-    this.props.fetchBanyajantuXetiRahat({
-      distId, //8
-      officeId,
-    });
-    this.props.fetchBanyajantuUddar({
-      fromDate,
-      toDate, //9
-      distId,
-      officeId,
-    });
+    })
+    // this.props.fetchBanyajantuXetiRahat({
+    //   distId, //8
+    //   officeId,
+    // });
+    // this.props.fetchBanyajantuUddar({
+    //   fromDate,
+    //   toDate, //9
+    //   distId,
+    //   officeId,
+    // });
     this.props.fetchBandadeloXeti({
+      fromDate,
+      toDate,
       distId, //13
       officeId,
-    });
+    })
     this.props.fetchBanxetraAnyaprayojan({
+      fromDate,
+      toDate,
       distId, //15
       officeId,
-    });
+    })
 
-    this.props.fetchMuddaanusandhandayari({
-      fromDate,
-      toDate,
-      distId, //4
-      officeId,
-    });
+    // this.props.fetchMuddaanusandhandayari({
+    //   fromDate,
+    //   toDate,
+    //   distId, //4
+    //   officeId,
+    // });
 
-    this.props.fetchGairakasthaBanpaidawarBikribitaran({
-      fromDate,
-      toDate,
-      distId, //6
-      officeId,
-    });
-    this.props.fetchKathdauraBikribitaran({
-      fromDate,
-      toDate,
-      distId, //5
-      officeId,
-    });
-    this.props.fetchBiruwaUtpadanKharid({
-      distId, //11
-      officeId,
-    });
-    this.props.fetchUddhamBibaran({
-      distId, //14
-      officeId,
-    });
-    this.props.fetchSrijanaBhayekoRojgari({
-      distId,
-      officeId,
-      fromDate,
-      toDate, //10
-    });
-    this.props.fetchUpavoktaSusasan({
-      fromDate,
-      toDate, //12
-      distId,
-      officeId,
-    });
+    // this.props.fetchGairakasthaBanpaidawarBikribitaran({
+    //   fromDate,
+    //   toDate,
+    //   distId, //6
+    //   officeId,
+    // });
+    // this.props.fetchKathdauraBikribitaran({
+    //   fromDate,
+    //   toDate,
+    //   distId, //5
+    //   officeId,
+    // });
+    // this.props.fetchBiruwaUtpadanKharid({
+    //   distId, //11
+    //   officeId,
+    // });
+    // this.props.fetchUddhamBibaran({
+    //   distId, //14
+    //   officeId,
+    // });
+    // this.props.fetchSrijanaBhayekoRojgari({
+    //   distId,
+    //   officeId,
+    //   fromDate,
+    //   toDate, //10
+    // });
+    // this.props.fetchUpavoktaSusasan({
+    //   fromDate,
+    //   toDate, //12
+    //   distId,
+    //   officeId,
+    // });
 
     this.props.fetchBanHastantaran({
       fromDate,
       toDate,
       distId, //1
       officeId,
-    });
+    })
   }
 
   render() {
-    const { officeList } = this.state;
-    const { officeRole } = this.props;
+    const { officeList } = this.state
+    const { officeRole } = this.props
     return (
       <Fragment>
-        <div className="report-filter">
+        <div className='report-filter'>
           <Filter
-            id="sampati"
-            title="मिति"
+            id='sampati'
+            title='मिति'
             districtsList={districtList}
             officesList={officeList}
             onToDate={this.handleToDate}
@@ -261,25 +277,25 @@ export class DateReport extends Component {
             yesDate={true}
             multi={true}
           />
-          <div className="w-40 button_style">
+          <div className='w-40 button_style'>
             <Button
-              className="mr-3 preview"
-              name="पूर्वावलोकन गर्नुहोस ।"
+              className='mr-3 preview'
+              name='पूर्वावलोकन गर्नुहोस ।'
               onClick={this.handlePreview.bind(this)}
             />
             <Button
-              className="mr-3 save"
-              name="शेभ गर्नुहोस ।"
+              className='mr-3 save'
+              name='शेभ गर्नुहोस ।'
               onClick={this.handleReport.bind(this)}
             />
           </div>
         </div>
         <div
-          style={{ height: "100vh" }}
+          style={{ height: '100vh' }}
           ref={(el) => (this.reportPreview = el)}
         />
       </Fragment>
-    );
+    )
   }
 }
 
@@ -301,7 +317,7 @@ const mapStateToProps = (state) => ({
   banhastantaranData: state.report.ban_bibaran,
   officeDataList: state.app.officesDropdownData,
   user_office: state.app.user.user_office,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchtotalBanyajantuuddar: (payload) =>
@@ -349,6 +365,6 @@ const mapDispatchToProps = (dispatch) => ({
   //O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(DateReport);
+export default connect(mapStateToProps, mapDispatchToProps)(DateReport)
