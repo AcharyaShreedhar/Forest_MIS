@@ -169,11 +169,11 @@ export class DateReport extends Component {
       distId, //8
       officeId,
     })
-    this.props.fetchNabikaranBibaran({
-      //2
-      distId,
-      officeId,
-    })
+    // this.props.fetchNabikaranBibaran({
+    //   //2
+    //   distId,
+    //   officeId,
+    // })
     this.props.fetchSamuhaBhitraBanpaidawarBikri({
       fromDate,
       toDate,
@@ -186,16 +186,18 @@ export class DateReport extends Component {
       distId,
       officeId,
     })
-    // this.props.fetchBanyajantuXetiRahat({
-    //   distId, //8
-    //   officeId,
-    // });
-    // this.props.fetchBanyajantuUddar({
-    //   fromDate,
-    //   toDate, //9
-    //   distId,
-    //   officeId,
-    // });
+    this.props.fetchBanyajantuXetiRahat({
+      fromDate,
+      toDate,
+      distId, //8
+      officeId,
+    })
+    this.props.fetchBanyajantuUddar({
+      fromDate,
+      toDate, //9
+      distId,
+      officeId,
+    })
     this.props.fetchBandadeloXeti({
       fromDate,
       toDate,
@@ -209,39 +211,43 @@ export class DateReport extends Component {
       officeId,
     })
 
-    // this.props.fetchMuddaanusandhandayari({
-    //   fromDate,
-    //   toDate,
-    //   distId, //4
-    //   officeId,
-    // });
+    this.props.fetchMuddaanusandhandayari({
+      fromDate,
+      toDate,
+      distId, //4
+      officeId,
+    })
 
-    // this.props.fetchGairakasthaBanpaidawarBikribitaran({
-    //   fromDate,
-    //   toDate,
-    //   distId, //6
-    //   officeId,
-    // });
-    // this.props.fetchKathdauraBikribitaran({
-    //   fromDate,
-    //   toDate,
-    //   distId, //5
-    //   officeId,
-    // });
-    // this.props.fetchBiruwaUtpadanKharid({
-    //   distId, //11
-    //   officeId,
-    // });
-    // this.props.fetchUddhamBibaran({
-    //   distId, //14
-    //   officeId,
-    // });
-    // this.props.fetchSrijanaBhayekoRojgari({
-    //   distId,
-    //   officeId,
-    //   fromDate,
-    //   toDate, //10
-    // });
+    this.props.fetchGairakasthaBanpaidawarBikribitaran({
+      fromDate,
+      toDate,
+      distId, //6
+      officeId,
+    })
+    this.props.fetchKathdauraBikribitaran({
+      fromDate,
+      toDate,
+      distId, //5
+      officeId,
+    })
+    this.props.fetchBiruwaUtpadanKharid({
+      fromDate,
+      toDate,
+      distId, //11
+      officeId,
+    })
+    this.props.fetchUddhamBibaran({
+      fromDate,
+      toDate,
+      distId, //14
+      officeId,
+    })
+    this.props.fetchSrijanaBhayekoRojgari({
+      distId,
+      officeId,
+      fromDate,
+      toDate, //10
+    })
     // this.props.fetchUpavoktaSusasan({
     //   fromDate,
     //   toDate, //12
@@ -317,6 +323,9 @@ const mapStateToProps = (state) => ({
   banhastantaranData: state.report.ban_bibaran,
   officeDataList: state.app.officesDropdownData,
   user_office: state.app.user.user_office,
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
 })
 
 const mapDispatchToProps = (dispatch) => ({

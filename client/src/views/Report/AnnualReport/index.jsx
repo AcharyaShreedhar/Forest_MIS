@@ -1,83 +1,83 @@
-import React, { Component } from "react";
-import { Button } from "../../../components";
-import { connect } from "react-redux";
-import { englishToNepaliNumber, nepaliToEnglishNumber } from "nepali-number";
-import jsreport from "jsreport-browser-client-dist";
-import NepaliDate from "nepali-date-converter";
-import AppActions from "../../../actions/app";
-import DwandabebasthapanActions from "../../../actions/dwandabebasthapan";
-import ReportActions from "../../../actions/report";
-import { districtList } from "../../../services/config";
-import { Fragment } from "react";
-import "../Report.scss";
-import Filter from "../../../components/Filter";
+import React, { Component } from 'react'
+import { Button } from '../../../components'
+import { connect } from 'react-redux'
+import { englishToNepaliNumber, nepaliToEnglishNumber } from 'nepali-number'
+import jsreport from 'jsreport-browser-client-dist'
+import NepaliDate from 'nepali-date-converter'
+import AppActions from '../../../actions/app'
+import DwandabebasthapanActions from '../../../actions/dwandabebasthapan'
+import ReportActions from '../../../actions/report'
+import { districtList } from '../../../services/config'
+import { Fragment } from 'react'
+import '../Report.scss'
+import Filter from '../../../components/Filter'
 
 export class AnnualReport extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      report: "",
-      reportScript: "",
-      arthikbarsa: "",
-      aghilloarthikbarsa: "",
-      distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: `${officeRole < 3 ? "%" : officeId}`,
-    };
-    this.handleReport = this.handleReport.bind(this);
-    this.handlePreview = this.handlePreview.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
+      report: '',
+      reportScript: '',
+      arthikbarsa: '',
+      aghilloarthikbarsa: '',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+    }
+    this.handleReport = this.handleReport.bind(this)
+    this.handlePreview = this.handlePreview.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    let currentYear = "";
-    let previousYear = "";
-    let upcommingYear = "";
-    let arthikbarsa = "";
-    let aghilloarthikbarsa = "";
-    let currentArthikbarsa = "";
-    let previousArthikbarsa = "";
-    let upcommingArthikbarsa = "";
-    NepaliDate.language = "np";
-    var officeList = [];
+    let currentYear = ''
+    let previousYear = ''
+    let upcommingYear = ''
+    let arthikbarsa = ''
+    let aghilloarthikbarsa = ''
+    let currentArthikbarsa = ''
+    let previousArthikbarsa = ''
+    let upcommingArthikbarsa = ''
+    NepaliDate.language = 'np'
+    var officeList = []
 
-    if (new NepaliDate().getMonth <= "03") {
-      upcommingYear = new NepaliDate().format("YYY");
-      upcommingArthikbarsa = upcommingYear + "-04-01";
-      currentYear = new NepaliDate().getYear();
-      currentYear -= 1;
-      currentYear = currentYear.toString();
-      currentArthikbarsa = currentYear + "-04-01";
-      currentYear = englishToNepaliNumber(currentYear);
-      previousYear = new NepaliDate().getYear();
-      previousYear -= 2;
-      previousYear = previousYear.toString();
-      previousArthikbarsa = previousYear + "-04-01";
-      previousYear = englishToNepaliNumber(previousYear);
-      arthikbarsa = currentYear + "|" + upcommingYear;
-      aghilloarthikbarsa = previousYear + "|" + new NepaliDate().format("YYY");
+    if (new NepaliDate().getMonth <= '03') {
+      upcommingYear = new NepaliDate().format('YYY')
+      upcommingArthikbarsa = upcommingYear + '-04-01'
+      currentYear = new NepaliDate().getYear()
+      currentYear -= 1
+      currentYear = currentYear.toString()
+      currentArthikbarsa = currentYear + '-04-01'
+      currentYear = englishToNepaliNumber(currentYear)
+      previousYear = new NepaliDate().getYear()
+      previousYear -= 2
+      previousYear = previousYear.toString()
+      previousArthikbarsa = previousYear + '-04-01'
+      previousYear = englishToNepaliNumber(previousYear)
+      arthikbarsa = currentYear + '|' + upcommingYear
+      aghilloarthikbarsa = previousYear + '|' + new NepaliDate().format('YYY')
     } else {
-      NepaliDate.language = "np";
-      upcommingYear = new NepaliDate().getYear();
-      upcommingYear += 1;
-      upcommingYear = upcommingYear.toString();
-      upcommingArthikbarsa = nepaliToEnglishNumber(upcommingYear) + "-04-01";
-      upcommingYear = englishToNepaliNumber(upcommingYear);
-      currentYear = new NepaliDate().format("YYYY");
-      currentArthikbarsa = nepaliToEnglishNumber(currentYear) + "-04-01";
-      previousYear = new NepaliDate().getYear();
-      previousYear -= 1;
-      previousYear = previousYear.toString();
-      previousArthikbarsa = previousYear + "-04-01";
-      previousYear = englishToNepaliNumber(previousYear);
-      arthikbarsa = currentYear + "|" + upcommingYear.substr(1, 3);
-      aghilloarthikbarsa = previousYear + "|" + new NepaliDate().format("YYY");
+      NepaliDate.language = 'np'
+      upcommingYear = new NepaliDate().getYear()
+      upcommingYear += 1
+      upcommingYear = upcommingYear.toString()
+      upcommingArthikbarsa = nepaliToEnglishNumber(upcommingYear) + '-04-01'
+      upcommingYear = englishToNepaliNumber(upcommingYear)
+      currentYear = new NepaliDate().format('YYYY')
+      currentArthikbarsa = nepaliToEnglishNumber(currentYear) + '-04-01'
+      previousYear = new NepaliDate().getYear()
+      previousYear -= 1
+      previousYear = previousYear.toString()
+      previousArthikbarsa = previousYear + '-04-01'
+      previousYear = englishToNepaliNumber(previousYear)
+      arthikbarsa = currentYear + '|' + upcommingYear.substr(1, 3)
+      aghilloarthikbarsa = previousYear + '|' + new NepaliDate().format('YYY')
     }
 
-    var report_data = {};
+    var report_data = {}
     if (nextProps !== prevState) {
-      officeList = nextProps.officeDataList.data;
+      officeList = nextProps.officeDataList.data
       report_data = {
         name: nextProps.user_office,
         arthikbarsa: arthikbarsa,
@@ -99,7 +99,7 @@ export class AnnualReport extends Component {
         rojgari_srijana: nextProps.rojgarData,
         susasanko_abastha: nextProps.susasanData.susasanko_abastha,
         ban: nextProps.banhastantaranData,
-      };
+      }
     }
     return {
       report_data,
@@ -112,7 +112,7 @@ export class AnnualReport extends Component {
       previousArthikbarsa,
       currentArthikbarsa,
       upcommingArthikbarsa,
-    };
+    }
   }
 
   handleDistrict(e) {
@@ -125,11 +125,11 @@ export class AnnualReport extends Component {
       previousArthikbarsa,
       currentArthikbarsa,
       upcommingArthikbarsa,
-    } = this.state;
+    } = this.state
     this.setState({
       distId: e,
-      officeId: "%", // office reset
-    });
+      officeId: '%', // office reset
+    })
     this.fetchReportResults(
       currentYear,
       previousYear,
@@ -140,11 +140,11 @@ export class AnnualReport extends Component {
       currentArthikbarsa,
       upcommingArthikbarsa,
       e,
-      "%"
-    );
+      '%'
+    )
 
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
     const {
@@ -156,11 +156,11 @@ export class AnnualReport extends Component {
       previousArthikbarsa,
       currentArthikbarsa,
       upcommingArthikbarsa,
-    } = this.state;
-    const { distId } = this.state;
+    } = this.state
+    const { distId } = this.state
     this.setState({
       officeId: e,
-    });
+    })
     this.fetchReportResults(
       currentYear,
       previousYear,
@@ -172,7 +172,7 @@ export class AnnualReport extends Component {
       upcommingArthikbarsa,
       distId,
       e
-    );
+    )
   }
 
   // O-DDL
@@ -180,39 +180,59 @@ export class AnnualReport extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
 
   handleReport() {
     // jsreport.serverUrl = "https://forest-mis-report.herokuapp.com";
-    jsreport.serverUrl = "http://localhost:5488";
+    jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
-      template: { name: "bansambhandhibibaran" },
+      template: { name: 'bansambhandhibibaran' },
       data: this.state.report_data,
-    };
-    jsreport.render(null, reportRequest);
+    }
+    jsreport.render(null, reportRequest)
   }
 
   handlePreview() {
-    console.log("report_data: ", this.state.report_data);
-    jsreport.serverUrl = "http://localhost:5488";
+    const {
+      currentYear,
+      previousYear,
+      arthikbarsa,
+      aghilloarthikbarsa,
+      upcommingYear,
+      previousArthikbarsa,
+      currentArthikbarsa,
+      upcommingArthikbarsa,
+    } = this.state
+    console.log(
+      nepaliToEnglishNumber(currentYear).substr(1, 3),
+      previousYear,
+      arthikbarsa,
+      aghilloarthikbarsa,
+      upcommingYear,
+      previousArthikbarsa,
+      currentArthikbarsa,
+      upcommingArthikbarsa
+    )
+    console.log('report_data: ', this.state.report_data)
+    jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
-      template: { name: "bansambhandhibibaran" },
+      template: { name: 'bansambhandhibibaran' },
       data: this.state.report_data,
       options: {
         office: {
           preview: true,
         },
       },
-    };
-    jsreport.render(this.reportPreview, reportRequest);
+    }
+    jsreport.render(this.reportPreview, reportRequest)
   }
 
   componentDidMount() {
     this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
-    });
+      distId: '%',
+      name: 'value', //"office_name"
+    })
     // jsreport.serverUrl = "https://forest-mis-report.herokuapp.com";
     // jsreport.serverUrl = "http://localhost:5488";
     // let reportRequest = {
@@ -239,111 +259,100 @@ export class AnnualReport extends Component {
     distId,
     officeId
   ) {
-    console.log(
-      nepaliToEnglishNumber(currentYear).substr(1, 3),
-      previousYear,
-      arthikbarsa,
-      aghilloarthikbarsa,
-      upcommingYear,
-      previousArthikbarsa,
-      currentArthikbarsa,
-      upcommingArthikbarsa
-    );
-
     this.props.fetchtotalBanyajantuuddar({
       distId: distId, //9
       officeId: officeId,
-    });
+    })
     this.props.fetchtotalBanyajantuxeti({
       distId: distId, //8
       officeId: officeId,
-    });
+    })
     this.props.fetchNabikaranBibaran({
       currentArthikbarsa,
       upcommingArthikbarsa, //2
       distId: distId,
       officeId: officeId,
-    });
+    })
     this.props.fetchSamuhaBhitraBanpaidawarBikri({
       distId: distId, //3
       officeId: officeId,
-    });
+    })
     this.props.fetchBanxetraAtikraman({
       previousArthikbarsa,
       currentArthikbarsa, //7
       distId: distId,
       officeId: officeId,
-    });
+    })
     this.props.fetchBanyajantuXetiRahat({
       distId: distId, //8
       officeId: officeId,
-    });
+    })
     this.props.fetchBanyajantuUddar({
       currentArthikbarsa, //9
       distId: distId,
       officeId: officeId,
-    });
+    })
     this.props.fetchBandadeloXeti({
       distId: distId, //13
       officeId: officeId,
-    });
+    })
     this.props.fetchBanxetraAnyaprayojan({
       distId: distId, //15
       officeId: officeId,
-    });
+    })
 
     this.props.fetchMuddaanusandhandayari({
       previousArthikbarsa,
       distId: distId, //4
       officeId: officeId,
-    });
+    })
 
     this.props.fetchGairakasthaBanpaidawarBikribitaran({
       currentArthikbarsa,
       distId: distId, //6
       officeId: officeId,
-    });
+    })
     this.props.fetchKathdauraBikribitaran({
       currentArthikbarsa,
       distId: distId, //5
       officeId: officeId,
-    });
+    })
     this.props.fetchBiruwaUtpadanKharid({
       distId: distId, //11
       officeId: officeId,
-    });
+    })
     this.props.fetchUddhamBibaran({
       distId: distId, //14
       officeId: officeId,
-    });
+    })
     this.props.fetchSrijanaBhayekoRojgari({
       distId: distId,
       officeId: officeId,
       currentArthikbarsa, //10
-    });
+    })
     this.props.fetchUpavoktaSusasan({
       currentArthikbarsa,
-      arthikbarsa: "077/78", //12
+      arthikbarsa: '077/78', //12
       distId: distId,
       officeId: officeId,
-    });
+    })
 
     this.props.fetchBanHastantaran({
       currentArthikbarsa,
       distId: distId, //1
       officeId: officeId,
-    });
+    })
   }
 
   render() {
-    const { officeList } = this.state;
-    const { officeRole } = this.props;
+    const { officeList } = this.state
+    const { officeRole } = this.props
     return (
       <Fragment>
-        <div className="report-filter">
+        <div className='report-filter'>
           <Filter
-            id="sampati"
-            title="प्राप्ति मिति"
+            id='sampati'
+            title='प्राप्ति मिति'
             districtsList={districtList}
             officesList={officeList}
             onSelect={this.handleDistrict}
@@ -353,25 +362,25 @@ export class AnnualReport extends Component {
             yesDate={false}
             multi={true}
           />
-          <div className="w-40 button_style">
+          <div className='w-40 button_style'>
             <Button
-              className="mr-3 preview"
-              name="पूर्वावलोकन गर्नुहोस ।"
+              className='mr-3 preview'
+              name='पूर्वावलोकन गर्नुहोस ।'
               onClick={this.handlePreview.bind(this)}
             />
             <Button
-              className="mr-3 save"
-              name="शेभ गर्नुहोस ।"
+              className='mr-3 save'
+              name='शेभ गर्नुहोस ।'
               onClick={this.handleReport.bind(this)}
             />
           </div>
         </div>
         <div
-          style={{ height: "100vh" }}
+          style={{ height: '100vh' }}
           ref={(el) => (this.reportPreview = el)}
         />
       </Fragment>
-    );
+    )
   }
 }
 
@@ -393,7 +402,9 @@ const mapStateToProps = (state) => ({
   banhastantaranData: state.report.ban_bibaran,
   officeDataList: state.app.officesDropdownData,
   user_office: state.app.user.user_office,
-});
+  districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchtotalBanyajantuuddar: (payload) =>
@@ -441,6 +452,6 @@ const mapDispatchToProps = (dispatch) => ({
   //O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnnualReport);
+export default connect(mapStateToProps, mapDispatchToProps)(AnnualReport)

@@ -1,107 +1,107 @@
-import React, { Component } from "react";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { equals, isNil } from "ramda";
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { equals, isNil } from 'ramda'
 import {
   AnyaSampatiBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
-} from "../../../components";
-import SampatibibaranActions from "../../../actions/sampatibibaran";
-import AppActions from "../../../actions/app";
-import { anyasampatiHeadings, districtList } from "../../../services/config";
-import { Fragment } from "react";
+} from '../../../components'
+import SampatibibaranActions from '../../../actions/sampatibibaran'
+import AppActions from '../../../actions/app'
+import { anyasampatiHeadings, districtList } from '../../../services/config'
+import { Fragment } from 'react'
 
 class AnyaSampati extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      loc: "anyasampatilist",
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: `${officeRole < 3 ? "%" : officeId}`,
+      loc: 'anyasampatilist',
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
-      path: "anyasampati",
-    };
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
-    this.handleToDate = this.handleToDate.bind(this);
-    this.handleFromDate = this.handleFromDate.bind(this);
-    this.handlePer = this.handlePer.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback = this.handlePerCallback.bind(this);
+      path: 'anyasampati',
+    }
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
+    this.handleToDate = this.handleToDate.bind(this)
+    this.handleFromDate = this.handleFromDate.bind(this)
+    this.handlePer = this.handlePer.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
+    this.handleSelectMenu = this.handleSelectMenu.bind(this)
+    this.fetchResults = this.fetchResults.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handlePerCallback = this.handlePerCallback.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split("/")[2];
+    const loc = nextProps.location.pathname.split('/')[2]
 
-    var anyasampatiList = [];
-    var officeList = [];
+    var anyasampatiList = []
+    var officeList = []
 
     if (nextProps !== prevState) {
-      anyasampatiList = nextProps.anyasampatiDataList.data;
-      officeList = nextProps.officeDataList.data;
+      anyasampatiList = nextProps.anyasampatiDataList.data
+      officeList = nextProps.officeDataList.data
     }
 
-    return { loc, anyasampatiList, officeList };
+    return { loc, anyasampatiList, officeList }
   }
 
   handlePer(e) {
-    this.setState({ page: 0 }, () => this.handlePerCallback(e));
+    this.setState({ page: 0 }, () => this.handlePerCallback(e))
   }
   handlePerCallback(e) {
-    const { fromDate, toDate, distId, officeId, page } = this.state;
+    const { fromDate, toDate, distId, officeId, page } = this.state
     this.setState({
       perPage: e,
-    });
-    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
+    })
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e)
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state
     this.setState({
       fromDate: e,
       page: 0,
-    });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage)
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state
     this.setState({
       toDate: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage)
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state
     this.setState({
       distId: e,
-      officeId: "%", // office reset
+      officeId: '%', // office reset
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, e, '%', 0, perPage)
 
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId } = this.state;
+    const { fromDate, perPage, toDate, distId } = this.state
     this.setState({
       officeId: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage)
   }
 
   // O-DDL
@@ -109,7 +109,7 @@ class AnyaSampati extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -118,15 +118,15 @@ class AnyaSampati extends Component {
       toDate,
       distId,
       officeId,
-      name: "sampati_name",
+      name: 'sampati_name',
       page: page,
       perPage,
-    });
+    })
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state;
-    this.setState({ page: data.selected });
+    const { fromDate, toDate, distId, officeId, perPage } = this.state
+    this.setState({ page: data.selected })
     this.fetchResults(
       fromDate,
       toDate,
@@ -134,69 +134,68 @@ class AnyaSampati extends Component {
       officeId,
       data.selected * perPage,
       perPage
-    );
+    )
   }
 
   handleSelectMenu(event, item, path) {
-    this.setState({ item: item });
-    this.setState({ path: path });
+    this.setState({ item: item })
+    this.setState({ path: path })
     switch (event) {
-      case "edit": {
+      case 'edit': {
         this.props.history.push({
           pathname: `/sampatibibaran/anyasampatiedit/${item.sampati_id}`,
           item,
-        });
-        break;
+        })
+        break
       }
 
-      case "delete": {
-        this.setState({ showDialog: !this.state.showDialog });
-        break;
+      case 'delete': {
+        this.setState({ showDialog: !this.state.showDialog })
+        break
       }
       default:
-        break;
+        break
     }
   }
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item } = this.state
 
-    this.props.deleteanyasampati(item.sampati_id);
+    this.props.deleteanyasampati(item.sampati_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-    });
+    })
   }
 
   handleAdd() {
-    this.props.history.push("/sampatibibaran/anyasampatiadd/new");
+    this.props.history.push('/sampatibibaran/anyasampatiadd/new')
   }
   render() {
-    const { loc, perPage, anyasampatiList, officeList, showDialog } =
-      this.state;
+    const { loc, perPage, anyasampatiList, officeList, showDialog } = this.state
     // const { user, role, officesList } = this.props;
-    const { user, role, officeRole } = this.props;
-
+    const { user, role, officeRole } = this.props
+    console.log('officeRole', officeRole)
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title="Delete"
-          body={"के तपाईँ सम्पती सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
-          confirmLabel="चाहन्छु "
-          cancelLabel="चाहंदिन "
+          title='Delete'
+          body={'के तपाईँ सम्पती सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
+          confirmLabel='चाहन्छु '
+          cancelLabel='चाहंदिन '
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "anyasampatilist") && (
+        {equals(loc, 'anyasampatilist') && (
           <Fragment>
-            <div className="report-filter">
+            <div className='report-filter'>
               <Filter
-                id="sampati"
-                title="प्राप्ति मिति"
+                id='sampati'
+                title='प्राप्ति मिति'
                 districtsList={districtList}
                 officesList={officeList}
                 onToDate={this.handleToDate}
@@ -206,11 +205,11 @@ class AnyaSampati extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id="sampati" />
+              <ReportGenerator id='sampati' />
             </div>
             <AnyaSampatiBibaran.List
-              buttonName="+ आन्य सम्पती"
-              title="आन्य सम्पती सम्बन्धी विवरण"
+              buttonName='+ आन्य सम्पती'
+              title='आन्य सम्पती सम्बन्धी विवरण'
               pageCount={
                 !isNil(anyasampatiList)
                   ? Math.ceil(anyasampatiList.total / perPage)
@@ -218,7 +217,7 @@ class AnyaSampati extends Component {
               }
               data={!isNil(anyasampatiList) ? anyasampatiList.list : []}
               per={perPage}
-              pers={[10, 25, 50, "all"]}
+              pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
@@ -231,17 +230,17 @@ class AnyaSampati extends Component {
             />
           </Fragment>
         )}
-        {equals(loc, "anyasampatiadd") && (
+        {equals(loc, 'anyasampatiadd') && (
           <AnyaSampatiBibaran.Add
-            title="+ आन्य सम्पती विवरण"
+            title='+ आन्य सम्पती विवरण'
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addanyasampati(e)}
           />
         )}
-        {equals(loc, "anyasampatiedit") && (
+        {equals(loc, 'anyasampatiedit') && (
           <AnyaSampatiBibaran.Edit
-            title="आन्य सम्पती सम्बन्धी विवरण शंसोधन"
+            title='आन्य सम्पती सम्बन्धी विवरण शंसोधन'
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -249,19 +248,19 @@ class AnyaSampati extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
 AnyaSampati.propTypes = {
   anyasampatiDataList: PropTypes.any,
   officeDataList: PropTypes.any,
-};
+}
 
 AnyaSampati.defaultProps = {
   anyasampatiDataList: {},
   officeDataList: {},
-};
+}
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
@@ -270,7 +269,7 @@ const mapStateToProps = (state) => ({
   officeRole: state.app.user.office_type,
   officeDataList: state.app.officesDropdownData,
   anyasampatiDataList: state.sampatibibaran.allanyasampatiData,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallanyasampati: (payload) =>
@@ -287,6 +286,6 @@ const mapDispatchToProps = (dispatch) => ({
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnyaSampati);
+export default connect(mapStateToProps, mapDispatchToProps)(AnyaSampati)
