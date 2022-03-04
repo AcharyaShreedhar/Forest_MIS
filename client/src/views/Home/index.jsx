@@ -111,9 +111,7 @@ export class Home extends Component {
       <div className="home bg-white rounded card">
         <Row>
           <Col className="p-5">
-            <span>
-            बिभिन्न आर्थिक बर्षको बन्यजन्तु उद्दार विवरण
-            </span>
+            <span>बिभिन्न आर्थिक बर्षको बन्यजन्तु उद्दार विवरण</span>
             <Chart
               className=" chart pt-5"
               options={this.state.uddaroptions}
@@ -124,10 +122,7 @@ export class Home extends Component {
             />
           </Col>
           <Col className="pt-5">
-            <span>
-              {" "}
-              बिभिन्न आर्थिक बर्षको बन्यजन्तु क्षति विवरण{" "}
-            </span>
+            <span> बिभिन्न आर्थिक बर्षको बन्यजन्तु क्षति विवरण </span>
             <Chart
               className=" chart pt-5"
               options={this.state.xetioptions}
@@ -161,10 +156,7 @@ export class Home extends Component {
             />
           </Col>
           <Col className="p-5">
-            <span>
-              {" "}
-              बिभिन्न आर्थिक बर्षको  बन्यजन्तु उद्दार विवरण
-            </span>
+            <span> बिभिन्न आर्थिक बर्षको बन्यजन्तु उद्दार विवरण</span>
             <Chart
               className=" chart pt-5"
               options={this.state.uddaroptions}
@@ -175,10 +167,7 @@ export class Home extends Component {
             />
           </Col>
           <Col className="p-5">
-            <span>
-              {" "}
-              बिभिन्न आर्थिक बर्षको  बन्यजन्तु उद्दार विवरण
-            </span>
+            <span> बिभिन्न आर्थिक बर्षको बन्यजन्तु उद्दार विवरण</span>
             <Chart
               className=" chart pt-5"
               options={this.state.uddaroptions}

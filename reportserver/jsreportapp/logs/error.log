@@ -39,3 +39,19 @@
     at trim_prefix (/Users/mac/Desktop/Government/Forest_MIS/reportserver/jsreportapp/node_modules/express/lib/router/index.js:317:13)
     at /Users/mac/Desktop/Government/Forest_MIS/reportserver/jsreportapp/node_modules/express/lib/router/index.js:284:7
     at Function.process_params (/Users/mac/Desktop/Government/Forest_MIS/reportserver/jsreportapp/node_modules/express/lib/router/index.js:335:12)
+2022-02-23T08:00:48.036Z - error: Rendering request 1 finished with error in 3684 ms
+2022-02-23T08:00:48.039Z - error: Error when processing render request 1 docx file upload to http://jsreport.net/temp failed. getaddrinfo ENOTFOUND jsreport.net Error: getaddrinfo ENOTFOUND jsreport.net
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:71:26)
+2022-02-23T08:00:48.042Z - error: Error during processing request at http://localhost:5488/api/report
+2022-02-23T08:01:09.795Z - error: Rendering request 3 finished with error in 1945 ms
+2022-02-23T08:01:09.797Z - error: Error when processing render request 3 docx file upload to http://jsreport.net/temp failed. getaddrinfo ENOTFOUND jsreport.net Error: getaddrinfo ENOTFOUND jsreport.net
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:71:26)
+2022-02-23T08:01:09.799Z - error: Error during processing request at http://localhost:5488/api/report
+2022-02-23T08:02:11.255Z - error: Rendering request 5 finished with error in 1841 ms
+2022-02-23T08:02:11.257Z - error: Error when processing render request 5 docx file upload to http://jsreport.net/temp failed. getaddrinfo ENOTFOUND jsreport.net Error: getaddrinfo ENOTFOUND jsreport.net
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:71:26)
+2022-02-23T08:02:11.258Z - error: Error during processing request at http://localhost:5488/api/report
+2022-02-23T08:11:07.113Z - error: Rendering request 1 finished with error in 2344 ms
+2022-02-23T08:11:07.115Z - error: Error when processing render request 1 docx file upload to http://jsreport.net/temp failed. getaddrinfo ENOTFOUND jsreport.net Error: getaddrinfo ENOTFOUND jsreport.net
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:71:26)
+2022-02-23T08:11:07.118Z - error: Error during processing request at http://localhost:5488/api/report

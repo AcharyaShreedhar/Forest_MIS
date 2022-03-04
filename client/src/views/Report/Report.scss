@@ -8,6 +8,20 @@
 }
 .save {
   margin-top: 10px;
+  align-items: center;
   width: fit-content;
-  align-self: flex-end;
+  // align-self: flex-end;
+}
+.preview {
+  margin-top: 10px;
+  align-items: right;
+  padding-right: 5px;
+  justify-content: right !important;
+  // width: fit-content;
+  // align-self: flex-end;
+}
+.button_style {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
