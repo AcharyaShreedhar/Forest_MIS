@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { isEmpty } from "ramda";
 import { Button, Input, ConfirmationDialoge } from "../../components";
 import { nepaliToEnglishNumber } from "nepali-number";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 class Add extends Component {
   constructor(props) {
@@ -88,13 +89,15 @@ class Add extends Component {
               <span className="dsl-b22">{title}</span>
             </div>
             <div className="panel space mb-4">
-              <Input
-                className="w-30"
-                title="आर्थिक वर्ष"
-                value={arthik_barsa}
-                direction="vertical"
-                onChange={(e) => this.setState({ arthik_barsa: e })}
-              />
+              <div className="w-30">
+                <span className="dsl-b18">आर्थिक वर्ष :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={arthik_barsa}
+                  onChange={(e) => this.setState({ arthik_barsa: e })}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
               <Input
                 className="w-30"
                 title="काठ (क्यू. फि.)"

@@ -89,6 +89,7 @@ class Edit extends Component {
           male: nepaliToEnglishNumber(male),
           main_species: main_species,
           dist_id: this.props.user.dist_id,
+          office_id: this.props.user.office_id,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },

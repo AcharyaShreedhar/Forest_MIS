@@ -54,7 +54,7 @@ async function getAssets(req, res) {
 
 //Controller for adding a Asset
 async function addAsets(req, res, next) {
-  const addAssetsQuery = `INSERT INTO assets (dist_id, office_id, asset_type,asset_loc,kitta_no,home_area,land_area,unit,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?)`;
+  const addAssetsQuery = `INSERT INTO assets (dist_id, office_id, asset_type,asset_loc,kitta_no,home_area,land_area,unit,remarks,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addAssetsQuery,
     [

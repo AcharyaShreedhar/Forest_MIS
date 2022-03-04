@@ -88,7 +88,15 @@ export function* updatebiruwautpadanRequest(api, action) {
     toast.success("सफलतापुर्वक विरुवा उत्पादन शंसोधन भयो !!!!!", {
       position: toast.POSITION.TOP_CENTER,
     });
-    yield fetchallbiruwautpadanRequest(api);
+    yield fetchallbiruwautpadanRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
+      name: "arthik_barsa",
+      page: 0,
+      perPage: 10,
+    });
     yield call(history.push, "/activities/nurserylist");
     yield put(BiruwautpadanActions.updatebiruwautpadanSuccess(response.data));
   } else {
@@ -177,6 +185,8 @@ export function* addactivitiesinfoRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallactivitiesinfoRequest(api, {
+      distId: "%",
+      officeId: "%",
       name: "fiscal_year",
       page: 0,
       perPage: 10,
@@ -202,7 +212,7 @@ export function* updateactivitiesinfoRequest(api, action) {
     payload.yearlyactivities.data,
     activitiesinfoId
   );
-
+  
   if (response.data.error != null) {
     toast.error(
       "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
@@ -215,6 +225,10 @@ export function* updateactivitiesinfoRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallactivitiesinfoRequest(api, {
+      fromDate: "2075-01-01",
+      toDate: "2090-12-30",
+      distId: "%",
+      officeId: "%",
       name: "fiscal_year",
       page: 0,
       perPage: 10,

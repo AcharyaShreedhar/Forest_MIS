@@ -55,6 +55,7 @@ function List(props) {
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{englishToNepaliNumber(banxetra.arthik_barsa)}</td>
                   <td>{banxetra.uplabdakarta_naam}</td>
+                  <td>{banxetra.prayojan}</td>
                   <td>{banxetra.upalabdha_address}</td>
                   <td>{banxetra.xetrafal_temp}</td>
                   <td>{banxetra.xetrafal_perm}</td>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
 import { equals, isEmpty } from "ramda";
 import { nepaliToEnglishNumber } from "nepali-number";
+import { NepaliDatePicker } from "nepali-datepicker-reactjs";
 
 const AnnualBibaran = [
   { id: 1, value: "बुझाएको" },
@@ -85,8 +86,8 @@ class Add extends Component {
           samudayikban_naam: samudayikban_name,
           fiscal_year: nepaliToEnglishNumber(fiscal_year),
           area: area,
-          conservation_timber: conservation_timber,
-          conservation_wood: conservation_wood,
+          production_from_conservation_timber: conservation_timber,
+          production_from_conservation_wood: conservation_wood,
           employment_generated_workingday: employment,
           withingroup_timber: withingroup_timber,
           withingroup_wood: withingroup_wood,
@@ -140,7 +141,7 @@ class Add extends Component {
       lekha_parikshyan,
       showDialog,
     } = this.state;
-
+    
     let disabled =
       isEmpty(samudayikban_name) ||
       isEmpty(fiscal_year) ||
@@ -189,13 +190,15 @@ class Add extends Component {
                 onChange={(e) => this.setState({ samudayikban_name: e })}
               />
 
-              <Input
-                className="w-30"
-                title="आर्थिक वर्ष :"
-                direction="vertical"
-                value={fiscal_year}
-                onChange={(e) => this.setState({ fiscal_year: e })}
-              />
+              <div className="w-30">
+                <span className="dsl-b18">आर्थिक वर्ष :</span>
+                <NepaliDatePicker
+                  inputClassName="form-control"
+                  value={fiscal_year}
+                  onChange={(e) => this.setState({ fiscal_year: e })}
+                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                />
+              </div>
             </div>
             <span className="dsl-b18">सम्बर्धन विवरण :</span>
             <div className="panel space mb-4">
