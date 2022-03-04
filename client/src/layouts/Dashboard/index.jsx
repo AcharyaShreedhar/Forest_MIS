@@ -20,6 +20,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
+    const { districtId, officeRole, officeId } = this.props;
     this.props.history.listen((location, action) => {
       const payload = {
         route: location.pathname,
@@ -52,98 +53,98 @@ class Dashboard extends Component {
       currentArthikbarsa = currentYear + "-04-01";
       previousArthikbarsa = previousYear + "-04-01";
     }
-    this.props.fetchDistricts(4);
+    // this.props.fetchDistricts(4);
     this.props.fetchallBanTypes({
       fromDate: "2075-01-01",
       toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       name: "handover_date",
       page: 0,
       perPage: 10,
     });
     this.props.fetchtotalBanyajantuuddar({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchtotalBanyajantuxeti({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchNabikaranBibaran({
       currentArthikbarsa,
       upcommingArthikbarsa,
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchSamuhaBhitraBanpaidawarBikri({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchBanxetraAtikraman({
       previousArthikbarsa,
       currentArthikbarsa,
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchBanyajantuXetiRahat({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchBanyajantuUddar({
       currentArthikbarsa,
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchBandadeloXeti({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchBanxetraAnyaprayojan({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
 
     this.props.fetchMuddaanusandhandayari({
       previousArthikbarsa,
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
 
     this.props.fetchGairakasthaBanpaidawarBikribitaran({
       currentArthikbarsa,
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchKathdauraBikribitaran({
       currentArthikbarsa,
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchBiruwaUtpadanKharid({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchUddhamBibaran({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
     this.props.fetchSrijanaBhayekoRojgari({
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
       currentArthikbarsa,
     });
     this.props.fetchUpavoktaSusasan({
       currentArthikbarsa,
       arthikbarsa: "077/78",
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
 
     this.props.fetchBanHastantaran({
       currentArthikbarsa,
-      distId: "%",
-      officeId: "%",
+      distId: `${officeRole < 3 ? "%" : districtId}`,
+      officeId: `${officeRole < 3 ? "%" : officeId}`,
     });
   }
 
@@ -193,6 +194,9 @@ const mapStateToProps = (state) => ({
   token: state.app.token,
   role: state.app.user.user_type,
   menuStatus: state.app.menuStatus,
+  officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

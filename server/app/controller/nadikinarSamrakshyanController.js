@@ -66,7 +66,7 @@ async function getNadikinarSamrakshyan(req, res) {
 
 //Controller for adding a NadikinarSamrakshyan
 async function addNadikinarSamrakshyan(req, res, next) {
-  const addNadikinarSamrakshyanQuery = `INSERT INTO nadikinarsamrakshyan_bibarans (dist_id, dist_id, sthan, qty, karyakram_miti, conservation_area, affected_area, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
+  const addNadikinarSamrakshyanQuery = `INSERT INTO nadikinarsamrakshyan_bibarans (dist_id, office_id, sthan, qty, karyakram_miti, conservation_area, affected_area, created_by, updated_by) values (?,?,?,?,?,?,?,?,?)`;
   pool.query(
     addNadikinarSamrakshyanQuery,
     [

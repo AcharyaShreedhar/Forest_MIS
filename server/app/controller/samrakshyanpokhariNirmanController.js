@@ -66,7 +66,7 @@ async function getSamrakshyanpokhariNirman(req, res) {
 
 //Controller for adding a SamrakshyanpokhariNirman
 async function addSamrakshyanpokhariNirman(req, res, next) {
-  const addSamrakshyanpokhariNirmanQuery = `INSERT INTO samrakshyanpokharinirman_bibarans (dist_id,office_id, paalika, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?)`;
+  const addSamrakshyanpokhariNirmanQuery = `INSERT INTO samrakshyanpokharinirman_bibarans (dist_id,office_id, paalika, qty, karyakram_miti, laagat, created_by, updated_by) values (?,?,?,?,?,?,?,?)`;
   pool.query(
     addSamrakshyanpokhariNirmanQuery,
     [

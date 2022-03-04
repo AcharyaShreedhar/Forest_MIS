@@ -23,7 +23,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       ekai: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       banka_prakar: {
         type: Sequelize.STRING,

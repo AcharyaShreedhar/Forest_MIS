@@ -16,6 +16,7 @@ class Add extends Component {
     this.state = {
       arthik_barsa: "",
       uplabdakarta_naam: "",
+      prayojan: "",
       upalabdha_address: "",
       xetrafal_temp: "",
       xetrafal_perm: "",
@@ -54,6 +55,7 @@ class Add extends Component {
     const {
       arthik_barsa,
       uplabdakarta_naam,
+      prayojan,
       upalabdha_address,
       xetrafal_temp,
       xetrafal_perm,
@@ -72,6 +74,8 @@ class Add extends Component {
         data: {
           arthik_barsa: arthik_barsa,
           uplabdakarta_naam: uplabdakarta_naam,
+          sanstha_name: uplabdakarta_naam,
+          prayojan: prayojan,
           upalabdha_address: upalabdha_address,
           xetrafal_temp: xetrafal_temp,
           xetrafal_perm: xetrafal_perm,
@@ -109,6 +113,7 @@ class Add extends Component {
     const {
       arthik_barsa,
       uplabdakarta_naam,
+      prayojan,
       upalabdha_address,
       xetrafal_temp,
       xetrafal_perm,
@@ -127,6 +132,7 @@ class Add extends Component {
     let disabled =
       isEmpty(arthik_barsa) ||
       isEmpty(uplabdakarta_naam) ||
+      isEmpty(prayojan) ||
       isEmpty(upalabdha_address) ||
       isEmpty(xetrafal_temp) ||
       isEmpty(xetrafal_perm) ||
@@ -169,11 +175,18 @@ class Add extends Component {
                 />
               </div>
               <Input
-                className="w-65"
+                className="w-30"
                 title="वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम :"
                 direction="vertical"
                 value={uplabdakarta_naam}
                 onChange={(e) => this.setState({ uplabdakarta_naam: e })}
+              />
+              <Input
+                className="w-30"
+                title="प्रयोजन :"
+                direction="vertical"
+                value={prayojan}
+                onChange={(e) => this.setState({ prayojan: e })}
               />
             </div>
             <div className="section mb-4" />

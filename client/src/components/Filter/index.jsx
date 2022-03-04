@@ -30,13 +30,13 @@ export class Filter extends Component {
   }
   handleDistrict(e) {
     this.setState({ district: e });
-    this.props.onSelect(e, this.props.id);
+    this.props.onSelect(e.length === 0 ? "%" : e, this.props.id);
     this.props.yesOffice && this.setState({ office: ["%"] });
   }
 
   handleOffice(e) {
     this.setState({ office: e });
-    this.props.onSelectOffice(e, this.props.id);
+    this.props.onSelectOffice(e.length === 0 ? "%" : e, this.props.id);
   }
 
   render() {
