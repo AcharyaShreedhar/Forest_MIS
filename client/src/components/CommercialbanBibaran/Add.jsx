@@ -1,47 +1,49 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { isEmpty } from "ramda";
-import { nepaliToEnglishNumber } from "nepali-number";
-import { Button, Input, ConfirmationDialoge } from "../../components";
-import { NepaliDatePicker } from "nepali-datepicker-reactjs";
-import "nepali-datepicker-reactjs/dist/index.css";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { isEmpty } from 'ramda'
+import { nepaliToEnglishNumber } from 'nepali-number'
+import { Button, Input, ConfirmationDialoge } from '../../components'
+import { NepaliDatePicker } from 'nepali-datepicker-reactjs'
+import 'nepali-datepicker-reactjs/dist/index.css'
 
 class Add extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      darta_no: "",
-      darta_miti: "",
-      commercialkabuliyatiban_naam: "",
-      address: "",
-      area: "",
-      main_species: "",
-      dalit_ghardhuri: "",
-      janjati_ghardhuri: "",
-      anya_ghardhuri: "",
-      female: "",
-      male: "",
-      created_by: "",
-      updated_by: "",
+      darta_no: '',
+      darta_miti: '',
+      commercialkabuliyatiban_naam: '',
+      address: '',
+      area: '',
+      main_species: '',
+      dalit_ghardhuri: '',
+      janjati_ghardhuri: '',
+      anya_ghardhuri: '',
+      female: '',
+      male: '',
+      dist_id: '',
+      office_id: '',
+      created_by: '',
+      updated_by: '',
       showDialog: false,
-    };
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleDate = this.handleDate.bind(this);
-    this.handleInputKeyPress = this.handleInputKeyPress.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleConfirm = this.handleConfirm.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handleDate = this.handleDate.bind(this)
+    this.handleInputKeyPress = this.handleInputKeyPress.bind(this)
   }
 
   handleConfirm() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleInputKeyPress(e) {
     if (!/[0-9०-९]/.test(e.key)) {
-      e.preventDefault();
+      e.preventDefault()
     }
   }
 
@@ -58,7 +60,7 @@ class Add extends Component {
       anya_ghardhuri,
       female,
       male,
-    } = this.state;
+    } = this.state
     const payload = {
       commercialban: {
         data: {
@@ -78,16 +80,16 @@ class Add extends Component {
           created_by: this.props.user.user_name,
         },
       },
-    };
-    this.props.onSubmit(payload);
+    }
+    this.props.onSubmit(payload)
   }
 
   handleDate(e, type) {
-    this.setState({ darta_miti: e });
+    this.setState({ darta_miti: e })
   }
 
   render() {
-    const { title } = this.props;
+    const { title } = this.props
     const {
       darta_no,
       darta_miti,
@@ -101,7 +103,7 @@ class Add extends Component {
       female,
       male,
       showDialog,
-    } = this.state;
+    } = this.state
 
     let disabled =
       isEmpty(darta_no) ||
@@ -116,132 +118,132 @@ class Add extends Component {
       isEmpty(male) ||
       isEmpty(main_species)
         ? true
-        : false;
+        : false
 
     return (
       <React.Fragment>
-        <div className=" card p-5 border-5">
+        <div className=' card p-5 border-5'>
           <ConfirmationDialoge
             showDialog={showDialog}
-            title="थप"
-            body="के तपाईँ व्यवसायीक कबुलियति वन थप गर्न चाहनुहुन्छ ?"
-            confirmLabel="चाहन्छु "
-            cancelLabel="चाहंदिन "
+            title='थप'
+            body='के तपाईँ व्यवसायीक कबुलियति वन थप गर्न चाहनुहुन्छ ?'
+            confirmLabel='चाहन्छु '
+            cancelLabel='चाहंदिन '
             onYes={this.handleSubmit}
             onClose={this.handleClose}
           />
-          <div className="detail-content">
-            <div className="title">
-              <span className="dsl-b22">{title}</span>
+          <div className='detail-content'>
+            <div className='title'>
+              <span className='dsl-b22'>{title}</span>
             </div>
-            <div className="panel space">
+            <div className='panel space'>
               <Input
-                className="w-30"
-                title="दर्ता नं :"
+                className='w-30'
+                title='दर्ता नं :'
                 value={darta_no}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ darta_no: e })}
               />
               <Input
-                className="w-65"
-                title="व्यवसायीक कबुलियति वनको नाम :"
-                direction="vertical"
+                className='w-65'
+                title='व्यवसायीक कबुलियति वनको नाम :'
+                direction='vertical'
                 value={commercialkabuliyatiban_naam}
                 onChange={(e) =>
                   this.setState({ commercialkabuliyatiban_naam: e })
                 }
               />
             </div>
-            <div className="section mb-4" />
+            <div className='section mb-4' />
 
-            <div className="panel space mb-4">
-              <div className="w-30">
-                <span className="dsl-b18">दर्ता मिति :</span>
+            <div className='panel space mb-4'>
+              <div className='w-30'>
+                <span className='dsl-b18'>दर्ता मिति :</span>
                 <NepaliDatePicker
-                  inputClassName="form-control"
+                  inputClassName='form-control'
                   value={darta_miti}
-                  onChange={(e) => this.handleDate(e, "darta")}
-                  options={{ calenderLocale: "ne", valueLocale: "en" }}
+                  onChange={(e) => this.handleDate(e, 'darta')}
+                  options={{ calenderLocale: 'ne', valueLocale: 'en' }}
                 />
               </div>
               <Input
-                className="w-30"
-                title="ठेगाना :"
-                direction="vertical"
+                className='w-30'
+                title='ठेगाना :'
+                direction='vertical'
                 value={address}
                 onChange={(e) => this.setState({ address: e })}
               />
               <Input
-                className="w-30"
-                title="क्षेत्रफल(हे.):"
+                className='w-30'
+                title='क्षेत्रफल(हे.):'
                 value={area}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ area: e })}
               />
             </div>
-            <span className="dsl-b18">घरधुरी विवरण :</span>
-            <div className="panel space mt-2">
+            <span className='dsl-b18'>घरधुरी विवरण :</span>
+            <div className='panel space mt-2'>
               <Input
-                className="w-30"
-                title="दलित :"
+                className='w-30'
+                title='दलित :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={dalit_ghardhuri}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ dalit_ghardhuri: e })}
               />
               <Input
-                className="w-30"
-                title="जनजाति :"
+                className='w-30'
+                title='जनजाति :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={janjati_ghardhuri}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ janjati_ghardhuri: e })}
               />
               <Input
-                className="w-30"
-                title="अन्य :"
+                className='w-30'
+                title='अन्य :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={anya_ghardhuri}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ anya_ghardhuri: e })}
               />
             </div>
-            <div className="section mb-4" />
-            <div className="panel space mt-2 mb-4">
+            <div className='section mb-4' />
+            <div className='panel space mt-2 mb-4'>
               <Input
-                className="w-45"
-                title="महिला :"
+                className='w-45'
+                title='महिला :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={female}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ female: e })}
               />
               <Input
-                className="w-45"
-                title="पुरुष :"
+                className='w-45'
+                title='पुरुष :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={male}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ male: e })}
               />
             </div>
-            <div className="panel space">
+            <div className='panel space'>
               <Input
-                className="w-100"
-                title="मुख्य प्रजाति :"
-                direction="vertical"
-                as="textarea"
+                className='w-100'
+                title='मुख्य प्रजाति :'
+                direction='vertical'
+                as='textarea'
                 value={main_species}
                 onChange={(e) => this.setState({ main_species: e })}
               />
             </div>
           </div>
-          <div className="section mb-4" />
-          <div className="mt-2 border-5">
-            <div className="d-flex justify-content-end align-items-center">
+          <div className='section mb-4' />
+          <div className='mt-2 border-5'>
+            <div className='d-flex justify-content-end align-items-center'>
               <Button
-                className="mr-3"
-                name="शेभ गर्नुहोस ।"
+                className='mr-3'
+                name='शेभ गर्नुहोस ।'
                 disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
@@ -249,18 +251,18 @@ class Add extends Component {
           </div>
         </div>
       </React.Fragment>
-    );
+    )
   }
 }
 
 Add.propTypes = {
   darta_no: PropTypes.number,
   onClose: PropTypes.func,
-};
+}
 
 Add.defaultProps = {
   darta_no: 1,
   onClose: () => {},
-};
+}
 
-export default Add;
+export default Add
