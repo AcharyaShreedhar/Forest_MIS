@@ -7,7 +7,7 @@ async function getRojgariSrijana(req, res) {
   let date_cond = '>=?'
   const isDate = r.isNil(req.body.fromDate) ? false : true
   if (isDate) {
-    date_cond = `miti between ? and ?`
+    date_cond = `between ? and ?`
   }
 
   let office_cond = 'office_id like ?'
