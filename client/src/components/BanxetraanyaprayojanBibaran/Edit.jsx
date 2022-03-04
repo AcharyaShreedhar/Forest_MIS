@@ -17,6 +17,7 @@ class Edit extends Component {
       id: props.history.location.item?.banxetra_anyaprayojan_id,
       arthik_barsa: props.history.location.item?.arthik_barsa,
       uplabdakarta_naam: props.history.location.item?.uplabdakarta_naam,
+      prayojan: props.history.location.item?.prayojan,
       upalabdha_address: props.history.location.item?.upalabdha_address,
       xetrafal_temp: props.history.location.item?.xetrafal_temp,
       xetrafal_perm: props.history.location.item?.xetrafal_perm,
@@ -67,6 +68,7 @@ class Edit extends Component {
       id,
       arthik_barsa,
       uplabdakarta_naam,
+      prayojan,
       upalabdha_address,
       xetrafal_temp,
       xetrafal_perm,
@@ -86,6 +88,8 @@ class Edit extends Component {
         data: {
           arthik_barsa: arthik_barsa,
           uplabdakarta_naam: uplabdakarta_naam,
+          sanstha_name: uplabdakarta_naam,
+          prayojan: prayojan,
           upalabdha_address: upalabdha_address,
           xetrafal_temp: xetrafal_temp,
           xetrafal_perm: xetrafal_perm,
@@ -124,6 +128,7 @@ class Edit extends Component {
     const {
       arthik_barsa,
       uplabdakarta_naam,
+      prayojan,
       upalabdha_address,
       xetrafal_temp,
       xetrafal_perm,
@@ -142,6 +147,7 @@ class Edit extends Component {
     let disabled =
       isEmpty(arthik_barsa) ||
       isEmpty(uplabdakarta_naam) ||
+      isEmpty(prayojan) ||
       isEmpty(upalabdha_address) ||
       isEmpty(xetrafal_temp) ||
       isEmpty(xetrafal_perm) ||
@@ -185,11 +191,18 @@ class Edit extends Component {
                 />
               </div>
               <Input
-                className="w-65"
+                className="w-30"
                 title="वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम :"
                 direction="vertical"
                 value={uplabdakarta_naam}
                 onChange={(e) => this.setState({ uplabdakarta_naam: e })}
+              />
+              <Input
+                className="w-30"
+                title="वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम :"
+                direction="vertical"
+                value={prayojan}
+                onChange={(e) => this.setState({ prayojan: e })}
               />
             </div>
             <div className="section mb-4" />

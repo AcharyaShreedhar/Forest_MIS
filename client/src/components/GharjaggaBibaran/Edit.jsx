@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Input, Dropdown, ConfirmationDialoge } from "../../components";
-import { equals, isEmpty } from "ramda";
+import { isEmpty } from "ramda";
 
 const assetsType = [
   { id: 1, value: "घर" },
@@ -12,7 +12,7 @@ class Edit extends Component {
     super(props);
     this.state = {
       id: props.history.location.item?.asset_id,
-      asset_type: equals(props.history.location.item?.asset_type, "घर") ? 1 : 2,
+      asset_type: props.history.location.item?.asset_type,
       asset_loc: props.history.location.item?.asset_loc,
       kitta_no: props.history.location.item?.kitta_no,
       home_area: props.history.location.item?.home_area,
@@ -54,7 +54,7 @@ class Edit extends Component {
     const payload = {
       assets: {
         data: {
-          asset_type: equals(asset_type, 1) ? "घर" : "जग्गा",
+          asset_type: asset_type,
           asset_loc: asset_loc,
           kitta_no: kitta_no,
           home_area: home_area,

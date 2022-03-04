@@ -128,6 +128,9 @@ class Add extends Component {
   handleStatus(e) {
     this.setState({ bojbahak_jafat: e[0] });
   }
+  handleFaisalaStatus(e) {
+    this.setState({ faisala_status: e[0] });
+  }
   handleDate(e, type) {
     switch (type) {
       case "partibedan": {
@@ -194,6 +197,7 @@ class Add extends Component {
       isEmpty(bojbahak_jafat)
         ? true
         : false;
+    console.log("disabled:", isEmpty(faisala_status) ? true : false)
 
     return (
       <React.Fragment>
@@ -387,7 +391,7 @@ class Add extends Component {
                   defaultIds={[faisala_status]}
                   data={Status}
                   getValue={(Status) => Status["value"]}
-                  onChange={(e) => this.handleStatus(e)}
+                  onChange={(e) => this.handleFaisalaStatus(e)}
                   value={faisala_status}
                 />
               </div>
