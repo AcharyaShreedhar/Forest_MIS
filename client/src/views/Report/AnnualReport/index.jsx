@@ -11,6 +11,7 @@ import { districtList } from '../../../services/config'
 import { Fragment } from 'react'
 import '../Report.scss'
 import Filter from '../../../components/Filter'
+import { isNil } from 'ramda'
 
 export class AnnualReport extends Component {
   constructor(props) {
@@ -204,17 +205,6 @@ export class AnnualReport extends Component {
       currentArthikbarsa,
       upcommingArthikbarsa,
     } = this.state
-    console.log(
-      nepaliToEnglishNumber(currentYear).substr(1, 3),
-      previousYear,
-      arthikbarsa,
-      aghilloarthikbarsa,
-      upcommingYear,
-      previousArthikbarsa,
-      currentArthikbarsa,
-      upcommingArthikbarsa
-    )
-    console.log('report_data: ', this.state.report_data)
     jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'bansambhandhibibaran' },
@@ -354,7 +344,7 @@ export class AnnualReport extends Component {
             id='sampati'
             title='प्राप्ति मिति'
             districtsList={districtList}
-            officesList={officeList}
+            officesList={!isNil(officeList) ? officeList : []}
             onSelect={this.handleDistrict}
             onSelectOffice={this.handleOffice}
             yesOffice={officeRole < 3 ? true : false}

@@ -1,90 +1,90 @@
-import React, { Component, Fragment } from "react";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { equals, isNil } from "ramda";
+import React, { Component, Fragment } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { equals, isNil } from 'ramda'
 import {
   JaladharSamrakshyan,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
-} from "../../../components";
-import AppActions from "../../../actions/app";
-import SamrakshyanActions from "../../../actions/samrakshyan";
+} from '../../../components'
+import AppActions from '../../../actions/app'
+import SamrakshyanActions from '../../../actions/samrakshyan'
 import {
   jaladharsamrakshyanHeadings,
   districtList,
-} from "../../../services/config";
+} from '../../../services/config'
 
 class Jaladharsamrakshyan extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      loc: "jaladharsamrakshyanlist",
-      distId: `${ officeRole < 3 ? "%" : districtId }`,
-      officeId: `${ officeRole < 3 ? "%" : officeId }`,
+      loc: 'jaladharsamrakshyanlist',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
-      path: "jaladharsamrakshyan",
-    };
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
-    this.handlePer = this.handlePer.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback = this.handlePerCallback.bind(this);
+      path: 'jaladharsamrakshyan',
+    }
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
+    this.handlePer = this.handlePer.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
+    this.handleSelectMenu = this.handleSelectMenu.bind(this)
+    this.fetchResults = this.fetchResults.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handlePerCallback = this.handlePerCallback.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split("/")[2];
+    const loc = nextProps.location.pathname.split('/')[2]
 
-    var jaladharsamrakshyanList = [];
-    var officeList = [];
+    var jaladharsamrakshyanList = []
+    var officeList = []
 
     if (nextProps !== prevState) {
-      jaladharsamrakshyanList = nextProps.jaladharsamrakshyanDataList.data;
-      officeList = nextProps.officeDataList.data;
+      jaladharsamrakshyanList = nextProps.jaladharsamrakshyanDataList.data
+      officeList = nextProps.officeDataList.data
     }
-    return { loc, officeList, jaladharsamrakshyanList };
+    return { loc, officeList, jaladharsamrakshyanList }
   }
 
   handlePer(e) {
-    this.setState({ page: 0 }, () => this.handlePerCallback(e));
+    this.setState({ page: 0 }, () => this.handlePerCallback(e))
   }
 
   handlePerCallback(e) {
-    const { distId, officeId, page } = this.state;
+    const { distId, officeId, page } = this.state
     this.setState({
       perPage: e,
-    });
-    this.fetchResults(distId, officeId, page, e);
+    })
+    this.fetchResults(distId, officeId, page, e)
   }
 
   handleDistrict(e, item) {
-    const { perPage } = this.state;
+    const { perPage } = this.state
     this.setState({
       distId: e,
-      officeId: "%", // office reset
+      officeId: '%', // office reset
       page: 0,
-    });
-    this.fetchResults(e, "%", 0, perPage);
+    })
+    this.fetchResults(e, '%', 0, perPage)
 
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
-    const { perPage, distId } = this.state;
+    const { perPage, distId } = this.state
     this.setState({
       officeId: e,
       page: 0,
-    });
-    this.fetchResults(distId, e, 0, perPage);
+    })
+    this.fetchResults(distId, e, 0, perPage)
   }
 
   // O-DDL
@@ -92,97 +92,97 @@ class Jaladharsamrakshyan extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
 
   fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallJaladharsamrakshyan({
       distId,
       officeId,
-      name: "karyakram_miti",
+      name: 'karyakram_miti',
       page: page,
       perPage,
-    });
+    })
   }
 
   handlePageChange(data) {
-    const { distId, officeId, perPage } = this.state;
-    this.setState({ page: data.selected });
-    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
+    const { distId, officeId, perPage } = this.state
+    this.setState({ page: data.selected })
+    this.fetchResults(distId, officeId, data.selected * perPage, perPage)
   }
 
   handleSelectMenu(event, item, path) {
-    this.setState({ item: item });
-    this.setState({ path: path });
+    this.setState({ item: item })
+    this.setState({ path: path })
     switch (event) {
-      case "edit": {
+      case 'edit': {
         this.props.history.push({
           pathname: `/samrakshyan/jaladharsamrakshyanedit/${item.jaladhar_samrakshyan_id}`,
           item,
-        });
-        break;
+        })
+        break
       }
 
-      case "delete": {
-        this.setState({ showDialog: !this.state.showDialog });
-        break;
+      case 'delete': {
+        this.setState({ showDialog: !this.state.showDialog })
+        break
       }
       default:
-        break;
+        break
     }
   }
 
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item } = this.state
 
-    this.props.deleteJaladharsamrakshyan(item.jaladhar_samrakshyan_id);
+    this.props.deleteJaladharsamrakshyan(item.jaladhar_samrakshyan_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-    });
+    })
   }
 
   handleAdd() {
-    this.props.history.push("/samrakshyan/jaladharsamrakshyanadd/new");
+    this.props.history.push('/samrakshyan/jaladharsamrakshyanadd/new')
   }
   render() {
     const { loc, perPage, jaladharsamrakshyanList, officeList, showDialog } =
-      this.state;
-    const { user, role, officeRole } = this.props;
+      this.state
+    const { user, role, officeRole } = this.props
 
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title="Delete"
-          body={"के तपाईँ जलाधार संरक्षण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
-          confirmLabel="चाहन्छु "
-          cancelLabel="चाहंदिन "
+          title='Delete'
+          body={'के तपाईँ जलाधार संरक्षण सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
+          confirmLabel='चाहन्छु '
+          cancelLabel='चाहंदिन '
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "jaladharsamrakshyanlist") && (
+        {equals(loc, 'jaladharsamrakshyanlist') && (
           <Fragment>
-            <div className="report-filter">
+            <div className='report-filter'>
               <Filter
-                id="jaladharsamrakshyan"
+                id='jaladharsamrakshyan'
                 districtsList={districtList}
-                officesList={officeList}
+                officesList={!isNil(officeList) ? officeList : []}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={officeRole < 3 ? true : false}
                 yesDate={false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id="jaladharsamrakshyan" />
+              <ReportGenerator id='jaladharsamrakshyan' />
             </div>
             <JaladharSamrakshyan.List
-              buttonName="+ जलाधार संरक्षण"
-              title="जलाधार संरक्षण सम्बन्धी विवरण"
+              buttonName='+ जलाधार संरक्षण'
+              title='जलाधार संरक्षण सम्बन्धी विवरण'
               pageCount={
                 !isNil(jaladharsamrakshyanList)
                   ? Math.ceil(jaladharsamrakshyanList.total / perPage)
@@ -194,7 +194,7 @@ class Jaladharsamrakshyan extends Component {
                   : []
               }
               per={perPage}
-              pers={[10, 25, 50, "all"]}
+              pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
@@ -207,17 +207,17 @@ class Jaladharsamrakshyan extends Component {
             />
           </Fragment>
         )}
-        {equals(loc, "jaladharsamrakshyanadd") && (
+        {equals(loc, 'jaladharsamrakshyanadd') && (
           <JaladharSamrakshyan.Add
-            title="+ जलाधार संरक्षण विवरण"
+            title='+ जलाधार संरक्षण विवरण'
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addJaladharsamrakshyan(e)}
           />
         )}
-        {equals(loc, "jaladharsamrakshyanedit") && (
+        {equals(loc, 'jaladharsamrakshyanedit') && (
           <JaladharSamrakshyan.Edit
-            title="जलाधार संरक्षण सम्बन्धी विवरण शंसोधन"
+            title='जलाधार संरक्षण सम्बन्धी विवरण शंसोधन'
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -225,19 +225,19 @@ class Jaladharsamrakshyan extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
 Jaladharsamrakshyan.propTypes = {
   jaladharsamrakshyanDataList: PropTypes.any,
   officeDataList: PropTypes.any,
-};
+}
 
 Jaladharsamrakshyan.defaultProps = {
   jaladharsamrakshyanDataList: {},
   officeDataList: {},
-};
+}
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
@@ -247,7 +247,7 @@ const mapStateToProps = (state) => ({
   officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   jaladharsamrakshyanDataList: state.samrakshyan.alljaladharsamrakshyanData,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallJaladharsamrakshyan: (payload) =>
@@ -271,9 +271,6 @@ const mapDispatchToProps = (dispatch) => ({
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Jaladharsamrakshyan);
+export default connect(mapStateToProps, mapDispatchToProps)(Jaladharsamrakshyan)

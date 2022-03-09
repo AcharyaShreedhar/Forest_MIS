@@ -1,20 +1,20 @@
-"use strict";
+'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("mudda_anusandhan_dayaris", {
+    await queryInterface.createTable('mudda_anusandhan_dayaris', {
       mudda_anusandhan_dayari_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      dist_id:{
+      dist_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
       office_id: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       jaheri_partibedan_miti: {
         type: Sequelize.STRING,
@@ -61,8 +61,8 @@ module.exports = {
       faisala_miti: {
         type: Sequelize.STRING,
       },
-      faisala_status:{
-        type: Sequelize.STRING,
+      faisala_status: {
+        type: Sequelize.INTEGER,
       },
       faisala_jariwana: {
         type: Sequelize.STRING,
@@ -82,16 +82,16 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-    });
+    })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("mudda_anusandhan_dayaris");
+    await queryInterface.dropTable('mudda_anusandhan_dayaris')
   },
-};
+}

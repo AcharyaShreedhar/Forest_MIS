@@ -1,99 +1,99 @@
-import React, { Component, Fragment } from "react";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { equals, isNil } from "ramda";
+import React, { Component, Fragment } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { equals, isNil } from 'ramda'
 import {
   GharjaggaBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
-} from "../../../components";
-import SampatibibaranActions from "../../../actions/sampatibibaran";
-import AppActions from "../../../actions/app";
-import { gharjaggaHeadings, districtList } from "../../../services/config";
+} from '../../../components'
+import SampatibibaranActions from '../../../actions/sampatibibaran'
+import AppActions from '../../../actions/app'
+import { gharjaggaHeadings, districtList } from '../../../services/config'
 
 class Gharjagga extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      loc: "gharjaggalist",
-      distId: `${ officeRole < 3 ? "%" : districtId }`,
-      officeId: `${ officeRole < 3 ? "%" : officeId }`,
+      loc: 'gharjaggalist',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
-      path: "gharjagga",
-    };
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handlePer = this.handlePer.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handlePerCallback = this.handlePerCallback.bind(this);
+      path: 'gharjagga',
+    }
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handlePer = this.handlePer.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.fetchResults = this.fetchResults.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
+    this.handleSelectMenu = this.handleSelectMenu.bind(this)
+    this.handlePerCallback = this.handlePerCallback.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split("/")[2];
+    const loc = nextProps.location.pathname.split('/')[2]
 
-    var gharjaggaList = [];
+    var gharjaggaList = []
     if (nextProps !== prevState) {
-      gharjaggaList = nextProps.gharjaggaDataList.data;
+      gharjaggaList = nextProps.gharjaggaDataList.data
     }
 
-    var officeList = [];
+    var officeList = []
     if (nextProps !== prevState) {
-      officeList = nextProps.officeDataList.data;
+      officeList = nextProps.officeDataList.data
     }
 
-    return { loc, gharjaggaList, officeList };
+    return { loc, gharjaggaList, officeList }
   }
 
   handlePer(e) {
-    this.setState({ page: 0 }, () => this.handlePerCallback(e));
+    this.setState({ page: 0 }, () => this.handlePerCallback(e))
   }
 
   handlePerCallback(e) {
-    const { distId, officeId, page } = this.state;
+    const { distId, officeId, page } = this.state
     this.setState({
       perPage: e,
-    });
-    this.fetchResults(distId, officeId, page, e);
+    })
+    this.fetchResults(distId, officeId, page, e)
   }
 
   handleDistrict(e, item) {
-    const { perPage } = this.state;
+    const { perPage } = this.state
     this.setState({
       distId: e,
-      officeId: "%", // office reset
+      officeId: '%', // office reset
       page: 0,
-    });
-    this.fetchResults(e, "%", 0, perPage);
+    })
+    this.fetchResults(e, '%', 0, perPage)
 
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
-    const { perPage, distId } = this.state;
+    const { perPage, distId } = this.state
     this.setState({
       officeId: e,
       page: 0,
-    });
-    this.fetchResults(distId, e, 0, perPage);
+    })
+    this.fetchResults(distId, e, 0, perPage)
   }
   fetchResults(distId, officeId, page, perPage) {
     this.props.fetchallGharjagga({
       distId,
       officeId,
-      name: "asset_type",
+      name: 'asset_type',
       page: page,
       perPage,
-    });
+    })
   }
 
   // O-DDL
@@ -101,86 +101,86 @@ class Gharjagga extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
 
   handlePageChange(data) {
-    const { distId, officeId, perPage } = this.state;
-    this.setState({ page: data.selected });
-    this.fetchResults(distId, officeId, data.selected * perPage, perPage);
+    const { distId, officeId, perPage } = this.state
+    this.setState({ page: data.selected })
+    this.fetchResults(distId, officeId, data.selected * perPage, perPage)
   }
 
   handleSelectMenu(event, item, path) {
-    this.setState({ item: item });
-    this.setState({ path: path });
+    this.setState({ item: item })
+    this.setState({ path: path })
     switch (event) {
-      case "edit": {
+      case 'edit': {
         this.props.history.push({
           pathname: `/sampatibibaran/gharjaggaedit/${item.asset_id}`,
           item,
-        });
-        break;
+        })
+        break
       }
 
-      case "delete": {
-        this.setState({ showDialog: !this.state.showDialog });
-        break;
+      case 'delete': {
+        this.setState({ showDialog: !this.state.showDialog })
+        break
       }
       default:
-        break;
+        break
     }
   }
 
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item } = this.state
 
-    this.props.deleteGharjagga(item.asset_id);
+    this.props.deleteGharjagga(item.asset_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-    });
+    })
   }
 
   handleAdd() {
-    this.props.history.push("/sampatibibaran/gharjaggaadd/new");
+    this.props.history.push('/sampatibibaran/gharjaggaadd/new')
   }
   render() {
-    const { loc, perPage, gharjaggaList, officeList, showDialog } = this.state;
-    const { user, role, officeRole } = this.props;
+    const { loc, perPage, gharjaggaList, officeList, showDialog } = this.state
+    const { user, role, officeRole } = this.props
 
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title="Delete"
-          body={"के तपाईँ घर जग्गा सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?"}
-          confirmLabel="चाहन्छु "
-          cancelLabel="चाहंदिन "
+          title='Delete'
+          body={'के तपाईँ घर जग्गा सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
+          confirmLabel='चाहन्छु '
+          cancelLabel='चाहंदिन '
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "gharjaggalist") && (
+        {equals(loc, 'gharjaggalist') && (
           <Fragment>
-            <div className="report-filter">
+            <div className='report-filter'>
               <Filter
-                id="gharjagga"
+                id='gharjagga'
                 districtsList={districtList}
-                officesList={officeList}
+                officesList={!isNil(officeList) ? officeList : []}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={officeRole < 3 ? true : false}
                 yesDate={false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id="gharjagga" />
+              <ReportGenerator id='gharjagga' />
             </div>
             <GharjaggaBibaran.List
-              buttonName="+ घर जग्गा"
-              title="घर जग्गा सम्बन्धी विवरण"
+              buttonName='+ घर जग्गा'
+              title='घर जग्गा सम्बन्धी विवरण'
               pageCount={
                 !isNil(gharjaggaList)
                   ? Math.ceil(gharjaggaList.total / perPage)
@@ -188,7 +188,7 @@ class Gharjagga extends Component {
               }
               data={!isNil(gharjaggaList) ? gharjaggaList.list : []}
               per={perPage}
-              pers={[10, 25, 50, "all"]}
+              pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
@@ -201,17 +201,17 @@ class Gharjagga extends Component {
             />
           </Fragment>
         )}
-        {equals(loc, "gharjaggaadd") && (
+        {equals(loc, 'gharjaggaadd') && (
           <GharjaggaBibaran.Add
-            title="+ घर जग्गा विवरण"
+            title='+ घर जग्गा विवरण'
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addGharjagga(e)}
           />
         )}
-        {equals(loc, "gharjaggaedit") && (
+        {equals(loc, 'gharjaggaedit') && (
           <GharjaggaBibaran.Edit
-            title="घर जग्गा सम्बन्धी विवरण शंसोधन"
+            title='घर जग्गा सम्बन्धी विवरण शंसोधन'
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -219,19 +219,19 @@ class Gharjagga extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
 Gharjagga.propTypes = {
   gharjaggaDataList: PropTypes.any,
   officeDataList: PropTypes.any,
-};
+}
 
 Gharjagga.defaultProps = {
   gharjaggaDataList: {},
   officeDataList: {},
-};
+}
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
@@ -241,7 +241,7 @@ const mapStateToProps = (state) => ({
   officeRole: state.app.user.office_type,
   officeDataList: state.app.officesDropdownData,
   gharjaggaDataList: state.sampatibibaran.allassetsData,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallGharjagga: (payload) =>
@@ -258,6 +258,6 @@ const mapDispatchToProps = (dispatch) => ({
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gharjagga);
+export default connect(mapStateToProps, mapDispatchToProps)(Gharjagga)

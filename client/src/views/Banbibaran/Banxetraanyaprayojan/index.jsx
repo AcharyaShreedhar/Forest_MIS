@@ -1,113 +1,113 @@
-import React, { Component, Fragment } from "react";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { equals, isNil } from "ramda";
+import React, { Component, Fragment } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { equals, isNil } from 'ramda'
 import {
   BanxetraanyaprayojanBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
-} from "../../../components";
-import AppActions from "../../../actions/app";
-import BanbibaranActions from "../../../actions/banbibaran";
+} from '../../../components'
+import AppActions from '../../../actions/app'
+import BanbibaranActions from '../../../actions/banbibaran'
 import {
   banxetraanyaprayojanHeadings,
   districtList,
-} from "../../../services/config";
+} from '../../../services/config'
 
 class Banxetraanyaprayojan extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      loc: "banxetraanyaprayojanlist",
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: `${ officeRole < 3 ? "%" : districtId }`,
-      officeId: `${ officeRole < 3 ? "%" : officeId }`,
+      loc: 'banxetraanyaprayojanlist',
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
-      path: "banxetraanyaprayojan",
-    };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
-    this.handleToDate = this.handleToDate.bind(this);
-    this.handleFromDate = this.handleFromDate.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handlePer = this.handlePer.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback = this.handlePerCallback.bind(this);
+      path: 'banxetraanyaprayojan',
+    }
+    this.handleSelectMenu = this.handleSelectMenu.bind(this)
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
+    this.handleToDate = this.handleToDate.bind(this)
+    this.handleFromDate = this.handleFromDate.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
+    this.handlePer = this.handlePer.bind(this)
+    this.fetchResults = this.fetchResults.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handlePerCallback = this.handlePerCallback.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split("/")[2];
-    var banxetraanyaprayojanList = [];
+    const loc = nextProps.location.pathname.split('/')[2]
+    var banxetraanyaprayojanList = []
     if (nextProps !== prevState) {
-      banxetraanyaprayojanList = nextProps.banxetraanyaprayojanDataList.data;
+      banxetraanyaprayojanList = nextProps.banxetraanyaprayojanDataList.data
     }
 
-    var officeList = [];
+    var officeList = []
     if (nextProps !== prevState) {
-      officeList = nextProps.officeDataList.data;
+      officeList = nextProps.officeDataList.data
     }
 
     return {
       loc,
       officeList,
       banxetraanyaprayojanList,
-    };
+    }
   }
   handlePer(e) {
-    this.setState({ page: 0 }, () => this.handlePerCallback(e));
+    this.setState({ page: 0 }, () => this.handlePerCallback(e))
   }
   handlePerCallback(e) {
-    const { fromDate, toDate, distId, officeId, page } = this.state;
+    const { fromDate, toDate, distId, officeId, page } = this.state
     this.setState({
       perPage: e,
-    });
-    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
+    })
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e)
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state
     this.setState({
       fromDate: e,
       page: 0,
-    });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage)
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state
     this.setState({
       toDate: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage)
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state
     this.setState({
       distId: e,
-      officeId: "%", // office reset
+      officeId: '%', // office reset
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, e, '%', 0, perPage)
 
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId } = this.state;
+    const { fromDate, perPage, toDate, distId } = this.state
     this.setState({
       officeId: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage)
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -116,10 +116,10 @@ class Banxetraanyaprayojan extends Component {
       toDate,
       distId,
       officeId,
-      name: "arthik_barsa",
+      name: 'arthik_barsa',
       page: page,
       perPage,
-    });
+    })
   }
 
   // O-DDL
@@ -127,12 +127,12 @@ class Banxetraanyaprayojan extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state;
-    this.setState({ page: data.selected });
+    const { fromDate, toDate, distId, officeId, perPage } = this.state
+    this.setState({ page: data.selected })
     this.fetchResults(
       fromDate,
       toDate,
@@ -140,72 +140,72 @@ class Banxetraanyaprayojan extends Component {
       officeId,
       data.selected * perPage,
       perPage
-    );
+    )
   }
 
   handleSelectMenu(event, item, path) {
-    this.setState({ item: item });
-    this.setState({ path: path });
+    this.setState({ item: item })
+    this.setState({ path: path })
     switch (event) {
-      case "edit": {
+      case 'edit': {
         this.props.history.push({
           pathname: `/banbibaran/banxetraanyaprayojanedit/${item.banxetra_anyaprayojan_id}`,
           item,
-        });
-        break;
+        })
+        break
       }
 
-      case "delete": {
-        this.setState({ showDialog: !this.state.showDialog });
-        break;
+      case 'delete': {
+        this.setState({ showDialog: !this.state.showDialog })
+        break
       }
       default:
-        break;
+        break
     }
   }
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item } = this.state
 
-    this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id);
+    this.props.deleteBanxetraanyaprayojan(item.banxetra_anyaprayojan_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-    });
+    })
   }
 
   handleAdd() {
-    this.props.history.push("/banbibaran/banxetraanyaprayojanadd/new");
+    this.props.history.push('/banbibaran/banxetraanyaprayojanadd/new')
   }
   render() {
     const { loc, perPage, banxetraanyaprayojanList, officeList, showDialog } =
-      this.state;
-    const { user, role, officeRole } = this.props;
+      this.state
+    const { user, role, officeRole } = this.props
 
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title="Delete"
+          title='Delete'
           body={
-            "के तपाईँ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण हटाउन चाहनुहुन्छ ?"
+            'के तपाईँ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण हटाउन चाहनुहुन्छ ?'
           }
-          confirmLabel="चाहन्छु "
-          cancelLabel="चाहंदिन "
+          confirmLabel='चाहन्छु '
+          cancelLabel='चाहंदिन '
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "banxetraanyaprayojanlist") && (
+        {equals(loc, 'banxetraanyaprayojanlist') && (
           <Fragment>
-            <div className="report-filter">
+            <div className='report-filter'>
               <Filter
-                id="banxetraanyaprayojan"
-                title="आर्थिक वर्ष"
+                id='banxetraanyaprayojan'
+                title='आर्थिक वर्ष'
                 districtsList={districtList}
-                officesList={officeList}
+                officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
@@ -213,11 +213,11 @@ class Banxetraanyaprayojan extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id="banxetraanyaprayojan" />
+              <ReportGenerator id='banxetraanyaprayojan' />
             </div>
             <BanxetraanyaprayojanBibaran.List
-              buttonName="+ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि"
-              title="बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण"
+              buttonName='+ बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि'
+              title='बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि विवरण'
               pageCount={
                 !isNil(banxetraanyaprayojanList)
                   ? Math.ceil(banxetraanyaprayojanList.total / perPage)
@@ -229,30 +229,30 @@ class Banxetraanyaprayojan extends Component {
                   : []
               }
               per={perPage}
-              pers={[10, 25, 50, "all"]}
+              pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
               officeRole={officeRole}
               headings={banxetraanyaprayojanHeadings}
-              onAdd={() => this.handleAdd("bbanxetraanyaprayojanan")}
+              onAdd={() => this.handleAdd('bbanxetraanyaprayojanan')}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
               forcePage={this.state.page}
             />
           </Fragment>
         )}
-        {equals(loc, "banxetraanyaprayojanadd") && (
+        {equals(loc, 'banxetraanyaprayojanadd') && (
           <BanxetraanyaprayojanBibaran.Add
-            title="+ वनक्षेत्र अन्य प्रयोजन"
+            title='+ वनक्षेत्र अन्य प्रयोजन'
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBanxetraanyaprayojan(e)}
           />
         )}
-        {equals(loc, "banxetraanyaprayojanedit") && (
+        {equals(loc, 'banxetraanyaprayojanedit') && (
           <BanxetraanyaprayojanBibaran.Edit
-            title="वनक्षेत्र अन्य प्रयोजन सम्बन्धी विवरण शंसोधन"
+            title='वनक्षेत्र अन्य प्रयोजन सम्बन्धी विवरण शंसोधन'
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
@@ -260,19 +260,19 @@ class Banxetraanyaprayojan extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
 Banxetraanyaprayojan.propTypes = {
   banxetraanyaprayojanDataList: PropTypes.any,
   officeDataList: PropTypes.any,
-};
+}
 
 Banxetraanyaprayojan.defaultProps = {
   banxetraanyaprayojanDataList: {},
   officeDataList: {},
-};
+}
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
@@ -282,7 +282,7 @@ const mapStateToProps = (state) => ({
   officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   banxetraanyaprayojanDataList: state.banbibaran.allbanxetraanyaprayojanData,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanxetraanyaprayojan: (payload) =>
@@ -308,9 +308,9 @@ const mapDispatchToProps = (dispatch) => ({
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Banxetraanyaprayojan);
+)(Banxetraanyaprayojan)

@@ -1,113 +1,113 @@
-import React, { Component } from "react";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { equals, isNil } from "ramda";
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { equals, isNil } from 'ramda'
 import {
   MuddaanusandhanDayari,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
-} from "../../../components";
-import AppActions from "../../../actions/app";
-import BanbibaranActions from "../../../actions/banbibaran";
+} from '../../../components'
+import AppActions from '../../../actions/app'
+import BanbibaranActions from '../../../actions/banbibaran'
 import {
   muddaanusandhandayariHeadings,
   districtList,
-} from "../../../services/config";
-import { Fragment } from "react";
+} from '../../../services/config'
+import { Fragment } from 'react'
 
 class Muddaanusandhandayari extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      loc: "muddaanusandhandayarilist",
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: `${ officeRole < 3 ? "%" : districtId }`,
-      officeId: `${ officeRole < 3 ? "%" : officeId }`,
+      loc: 'muddaanusandhandayarilist',
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
-      path: "muddaanusandhandayari",
-    };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
-    this.handleToDate = this.handleToDate.bind(this);
-    this.handleFromDate = this.handleFromDate.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handlePer = this.handlePer.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback = this.handlePerCallback.bind(this);
+      path: 'muddaanusandhandayari',
+    }
+    this.handleSelectMenu = this.handleSelectMenu.bind(this)
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
+    this.handleToDate = this.handleToDate.bind(this)
+    this.handleFromDate = this.handleFromDate.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
+    this.handlePer = this.handlePer.bind(this)
+    this.fetchResults = this.fetchResults.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handlePerCallback = this.handlePerCallback.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split("/")[2];
-    var muddaanusandhandayariList = [];
+    const loc = nextProps.location.pathname.split('/')[2]
+    var muddaanusandhandayariList = []
     if (nextProps !== prevState) {
-      muddaanusandhandayariList = nextProps.muddaanusandhandayariDataList.data;
+      muddaanusandhandayariList = nextProps.muddaanusandhandayariDataList.data
     }
-    var officeList = [];
+    var officeList = []
     if (nextProps !== prevState) {
-      officeList = nextProps.officeDataList.data;
+      officeList = nextProps.officeDataList.data
     }
 
     return {
       loc,
       officeList,
       muddaanusandhandayariList,
-    };
+    }
   }
   handlePer(e) {
-    this.setState({ page: 0 }, () => this.handlePerCallback(e));
+    this.setState({ page: 0 }, () => this.handlePerCallback(e))
   }
   handlePerCallback(e) {
-    const { fromDate, toDate, distId, officeId, page } = this.state;
+    const { fromDate, toDate, distId, officeId, page } = this.state
     this.setState({
       perPage: e,
-    });
-    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
+    })
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e)
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state
     this.setState({
       fromDate: e,
       page: 0,
-    });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage)
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state
     this.setState({
       toDate: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage)
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state
     this.setState({
       distId: e,
-      officeId: "%", // office reset
+      officeId: '%', // office reset
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, e, '%', 0, perPage)
 
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId } = this.state;
+    const { fromDate, perPage, toDate, distId } = this.state
     this.setState({
       officeId: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage)
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -116,10 +116,10 @@ class Muddaanusandhandayari extends Component {
       toDate,
       distId,
       officeId,
-      name: "jaheri_partibedan_miti",
+      name: 'jaheri_partibedan_miti',
       page: page,
       perPage,
-    });
+    })
   }
 
   // O-DDL
@@ -127,12 +127,12 @@ class Muddaanusandhandayari extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state;
-    this.setState({ page: data.selected });
+    const { fromDate, toDate, distId, officeId, perPage } = this.state
+    this.setState({ page: data.selected })
     this.fetchResults(
       fromDate,
       toDate,
@@ -140,72 +140,73 @@ class Muddaanusandhandayari extends Component {
       officeId,
       data.selected * perPage,
       perPage
-    );
+    )
   }
 
   handleSelectMenu(event, item, path) {
-    this.setState({ item: item });
-    this.setState({ path: path });
+    this.setState({ item: item })
+    this.setState({ path: path })
     switch (event) {
-      case "edit": {
+      case 'edit': {
         this.props.history.push({
           pathname: `/banbibaran/muddaanusandhandayariedit/${item.mudda_anusandhan_dayari_id}`,
           item,
-        });
-        break;
+        })
+        break
       }
-      case "delete": {
-        this.setState({ showDialog: !this.state.showDialog });
-        break;
+      case 'delete': {
+        this.setState({ showDialog: !this.state.showDialog })
+        break
       }
       default:
-        break;
+        break
     }
   }
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item } = this.state
 
-    this.props.deleteMuddaanusandhandayari(item.mudda_anusandhan_dayari_id);
+    this.props.deleteMuddaanusandhandayari(item.mudda_anusandhan_dayari_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-    });
+    })
   }
 
   handleAdd() {
-    this.props.history.push("/banbibaran/muddaanusandhandayariadd/new");
+    this.props.history.push('/banbibaran/muddaanusandhandayariadd/new')
   }
 
   render() {
     const { loc, perPage, muddaanusandhandayariList, officeList, showDialog } =
-      this.state;
-    const { user, role, officeRole } = this.props;
+      this.state
+
+    const { user, role, officeRole } = this.props
 
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title="Delete"
+          title='Delete'
           body={
-            "के तपाईँ मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण  हटाउन चाहनुहुन्छ ?"
+            'के तपाईँ मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण  हटाउन चाहनुहुन्छ ?'
           }
-          confirmLabel="चाहन्छु "
-          cancelLabel="चाहंदिन "
+          confirmLabel='चाहन्छु '
+          cancelLabel='चाहंदिन '
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "muddaanusandhandayarilist") && (
+        {equals(loc, 'muddaanusandhandayarilist') && (
           <Fragment>
-            <div className="report-filter">
+            <div className='report-filter'>
               <Filter
-                id="muddaanusandhandayaris"
-                title="जाहेरी प्रतिवेदन मिति"
+                id='muddaanusandhandayaris'
+                title='जाहेरी प्रतिवेदन मिति'
                 districtsList={districtList}
-                officesList={officeList}
+                officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
@@ -213,11 +214,11 @@ class Muddaanusandhandayari extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id="muddaanusandhandayaris" />
+              <ReportGenerator id='muddaanusandhandayaris' />
             </div>
             <MuddaanusandhanDayari.List
-              buttonName="+ मुद्दा अनुसन्धान दायरी"
-              title="मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण"
+              buttonName='+ मुद्दा अनुसन्धान दायरी'
+              title='मुद्दा अनुसन्धान दायरी सम्बन्धि विवरण'
               pageCount={
                 !isNil(muddaanusandhandayariList)
                   ? Math.ceil(muddaanusandhandayariList.total / perPage)
@@ -229,30 +230,30 @@ class Muddaanusandhandayari extends Component {
                   : []
               }
               per={perPage}
-              pers={[10, 25, 50, "all"]}
+              pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               headings={muddaanusandhandayariHeadings}
               user={user}
               role={role}
               officeRole={officeRole}
-              onAdd={() => this.handleAdd("muddaanusandhandayari")}
+              onAdd={() => this.handleAdd('muddaanusandhandayari')}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
               forcePage={this.state.page}
             />
           </Fragment>
         )}
-        {equals(loc, "muddaanusandhandayariadd") && (
+        {equals(loc, 'muddaanusandhandayariadd') && (
           <MuddaanusandhanDayari.Add
-            title="+ मुद्दा अनुसन्धान दायरी"
+            title='+ मुद्दा अनुसन्धान दायरी'
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addMuddaanusandhandayari(e)}
           />
         )}
-        {equals(loc, "muddaanusandhandayariedit") && (
+        {equals(loc, 'muddaanusandhandayariedit') && (
           <MuddaanusandhanDayari.Edit
-            title="मुद्दा अनुसन्धान दायरी सम्बन्धी विवरण शंसोधन"
+            title='मुद्दा अनुसन्धान दायरी सम्बन्धी विवरण शंसोधन'
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
@@ -260,19 +261,19 @@ class Muddaanusandhandayari extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
 Muddaanusandhandayari.propsTypes = {
   muddaanusandhandayariDataList: PropTypes.any,
   officeDataList: PropTypes.any,
-};
+}
 
 Muddaanusandhandayari.defaultProps = {
   muddaanusandhandayariDataList: {},
   officeDataList: {},
-};
+}
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
@@ -282,7 +283,7 @@ const mapStateToProps = (state) => ({
   officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
   muddaanusandhandayariDataList: state.banbibaran.allmuddaanusandhandayariData,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallMuddaanusandhandayari: (payload) =>
@@ -308,9 +309,9 @@ const mapDispatchToProps = (dispatch) => ({
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Muddaanusandhandayari);
+)(Muddaanusandhandayari)

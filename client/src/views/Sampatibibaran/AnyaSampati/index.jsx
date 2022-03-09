@@ -178,7 +178,6 @@ class AnyaSampati extends Component {
     const { loc, perPage, anyasampatiList, officeList, showDialog } = this.state
     // const { user, role, officesList } = this.props;
     const { user, role, officeRole } = this.props
-    console.log('officeRole', officeRole)
     return (
       <div>
         <ConfirmationDialoge
@@ -197,7 +196,7 @@ class AnyaSampati extends Component {
                 id='sampati'
                 title='प्राप्ति मिति'
                 districtsList={districtList}
-                officesList={officeList}
+                officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}

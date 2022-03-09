@@ -1,9 +1,9 @@
-import React, { Fragment } from "react";
-import { englishToNepaliNumber } from "nepali-number";
-import { PropTypes } from "prop-types";
-import { equals, isNil } from "ramda";
-import { Table } from "react-bootstrap";
-import { Button, EditDropdown, Pagination } from "../../components";
+import React, { Fragment } from 'react'
+import { englishToNepaliNumber } from 'nepali-number'
+import { PropTypes } from 'prop-types'
+import { equals, isNil } from 'ramda'
+import { Table } from 'react-bootstrap'
+import { Button, EditDropdown, Pagination } from '../../components'
 
 function List(props) {
   const {
@@ -21,29 +21,24 @@ function List(props) {
     role,
     officeRole,
     forcePage,
-  } = props;
+  } = props
 
   return (
     <Fragment>
-      <div className="card">
-        {officeRole > 2 && 
-          <div className="button">
-            <Button
-              type="low"
-              size="small"
-              name={buttonName}
-              onClick={onAdd}
-            />
+      <div className='card'>
+        {officeRole > 2 && (
+          <div className='button'>
+            <Button type='low' size='small' name={buttonName} onClick={onAdd} />
           </div>
-        }
-        <div className="titlebar">{title} </div>
+        )}
+        <div className='titlebar'>{title} </div>
         <Table
           responsive
           striped
           bordered
           hover
-          id="muddaanusandhandayaris"
-          size="md"
+          id='muddaanusandhandayaris'
+          size='md'
         >
           <thead>
             <tr>
@@ -51,7 +46,7 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              {officeRole > 2 &&  <th />}
+              {officeRole > 2 && <th />}
             </tr>
           </thead>
           <tbody>
@@ -64,10 +59,10 @@ function List(props) {
                   <td>{englishToNepaliNumber(mudda.jaheri_partibedan_miti)}</td>
                   <td>
                     {equals(mudda.kasurko_kisim, 1)
-                      ? "बन पैदावार चोरिनिकासी"
+                      ? 'बन पैदावार चोरिनिकासी'
                       : equals(mudda.kasurko_kisim, 2)
-                      ? "बन्यजन्तु अपराध"
-                      : "बन अतिक्रमण"}
+                      ? 'बन्यजन्तु अपराध'
+                      : 'बन अतिक्रमण'}
                   </td>
                   <td>{mudda.bigo_pariman}</td>
                   <td>{mudda.jaggako_area}</td>
@@ -78,8 +73,8 @@ function List(props) {
                   <td>{mudda.kaid}</td>
                   <td>
                     {equals(mudda.bojbahak_jafat_maagdabi, 1)
-                      ? "लिएको"
-                      : "नलिएको"}
+                      ? 'लिएको'
+                      : 'नलिएको'}
                   </td>
                   <td>{mudda.pratibadi_sankhya}</td>
                   <td>{mudda.thunchek_dharauti}</td>
@@ -88,20 +83,20 @@ function List(props) {
                   <td>{mudda.faisala_miti}</td>
                   <td>{mudda.faisala_jariwana}</td>
                   <td>{mudda.faisala_kaid}</td>
-                  <td>{equals(mudda.bojbahak_jafat, 1) ? "भएको" : "नभएको"}</td>
-                  <td>{equals(mudda.faisala_status, 1) ? "भएको" : "नभएको"}</td>
-                  {officeRole > 2 && 
+                  <td>{equals(mudda.bojbahak_jafat, 1) ? 'भएको' : 'नभएको'}</td>
+                  <td>{equals(mudda.faisala_status, 1) ? 'भएको' : 'नभएको'}</td>
+                  {officeRole > 2 && (
                     <td>
-                      <div className="edit">
+                      <div className='edit'>
                         <EditDropdown
-                          options={ role < 3 ? ["Edit"] : ["Edit", "Delete"] }
+                          options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
                           onChange={(e) =>
-                          onSelect(e, mudda, "muddaanusandhandayari")
-                        }
-                      />
+                            onSelect(e, mudda, 'muddaanusandhandayari')
+                          }
+                        />
                       </div>
                     </td>
-                  }
+                  )}
                 </tr>
               ))
             )}
@@ -114,21 +109,21 @@ function List(props) {
           onPer={onPer}
           pageCount={pageCount}
           onPageClick={onPageClick}
-          type="muddaanusandhandayaris"
+          type='muddaanusandhandayaris'
         />
       </div>
     </Fragment>
-  );
+  )
 }
 
 List.propTypes = {
   data: PropTypes.array,
   onSelect: PropTypes.func,
-};
+}
 
 List.defaultProps = {
   data: [],
   onSelect: () => {},
-};
+}
 
-export default List;
+export default List

@@ -1,108 +1,108 @@
-import React, { Component, Fragment } from "react";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { equals, isNil } from "ramda";
+import React, { Component, Fragment } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { equals, isNil } from 'ramda'
 import {
   BanpaidawarBikribitaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
-} from "../../../components";
-import AppActions from "../../../actions/app";
-import BanpaidawarActions from "../../../actions/banpaidawar";
+} from '../../../components'
+import AppActions from '../../../actions/app'
+import BanpaidawarActions from '../../../actions/banpaidawar'
 import {
   banpaidawarbikribitaranHeadings,
   districtList,
-} from "../../../services/config";
+} from '../../../services/config'
 
 class Bikribitaran extends Component {
   constructor(props) {
-    super(props);
-    const { officeRole, districtId, officeId } = this.props;
+    super(props)
+    const { officeRole, districtId, officeId } = this.props
     this.state = {
-      loc: "bikribitaranlist",
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: `${ officeRole < 3 ? "%" : districtId }`,
-      officeId: `${ officeRole < 3 ? "%" : officeId }`,
+      loc: 'bikribitaranlist',
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
       showDialog: false,
       item: {},
-      path: "bikribitaran",
-    };
-    this.handleSelectMenu = this.handleSelectMenu.bind(this);
-    this.handleAdd = this.handleAdd.bind(this);
-    this.handleDistrict = this.handleDistrict.bind(this);
-    this.handleOffice = this.handleOffice.bind(this);
-    this.handleToDate = this.handleToDate.bind(this);
-    this.handleFromDate = this.handleFromDate.bind(this);
-    this.handlePageChange = this.handlePageChange.bind(this);
-    this.handlePer = this.handlePer.bind(this);
-    this.fetchResults = this.fetchResults.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handlePerCallback = this.handlePerCallback.bind(this);
+      path: 'bikribitaran',
+    }
+    this.handleSelectMenu = this.handleSelectMenu.bind(this)
+    this.handleAdd = this.handleAdd.bind(this)
+    this.handleDistrict = this.handleDistrict.bind(this)
+    this.handleOffice = this.handleOffice.bind(this)
+    this.handleToDate = this.handleToDate.bind(this)
+    this.handleFromDate = this.handleFromDate.bind(this)
+    this.handlePageChange = this.handlePageChange.bind(this)
+    this.handlePer = this.handlePer.bind(this)
+    this.fetchResults = this.fetchResults.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handlePerCallback = this.handlePerCallback.bind(this)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split("/")[2];
-    var banpaidawarbikribitaranList = [];
+    const loc = nextProps.location.pathname.split('/')[2]
+    var banpaidawarbikribitaranList = []
     if (nextProps !== prevState) {
       banpaidawarbikribitaranList =
-        nextProps.banpaidawarbikribitaranDataList.data;
+        nextProps.banpaidawarbikribitaranDataList.data
     }
-    var officeList = [];
+    var officeList = []
     if (nextProps !== prevState) {
-      officeList = nextProps.officeDataList.data;
+      officeList = nextProps.officeDataList.data
     }
-    return { banpaidawarbikribitaranList, officeList, loc };
+    return { banpaidawarbikribitaranList, officeList, loc }
   }
 
   handlePer(e) {
-    this.setState({ page: 0 }, () => this.handlePerCallback(e));
+    this.setState({ page: 0 }, () => this.handlePerCallback(e))
   }
   handlePerCallback(e) {
-    const { fromDate, toDate, distId, officeId, page } = this.state;
+    const { fromDate, toDate, distId, officeId, page } = this.state
     this.setState({
       perPage: e,
-    });
-    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
+    })
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e)
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state;
+    const { distId, officeId, perPage, toDate } = this.state
     this.setState({
       fromDate: e,
       page: 0,
-    });
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage)
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state;
+    const { distId, officeId, fromDate, perPage } = this.state
     this.setState({
       toDate: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
+    })
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage)
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state;
+    const { fromDate, perPage, toDate } = this.state
     this.setState({
       distId: e,
-      officeId: "%",
+      officeId: '%',
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, e, "%", 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, e, '%', 0, perPage)
     //O-DDL
-    this.fetchOffice(e);
+    this.fetchOffice(e)
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId } = this.state;
+    const { fromDate, perPage, toDate, distId } = this.state
     this.setState({
       officeId: e,
       page: 0,
-    });
-    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
+    })
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage)
   }
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
     this.props.fetchallBanpaidawarbikribitaran({
@@ -110,21 +110,21 @@ class Bikribitaran extends Component {
       toDate,
       distId,
       officeId,
-      name: "bikri_miti",
+      name: 'bikri_miti',
       page: page,
       perPage,
-    });
+    })
   }
   // O-DDL
   fetchOffice(distId) {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    });
+    })
   }
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state;
-    this.setState({ page: data.selected });
+    const { fromDate, toDate, distId, officeId, perPage } = this.state
+    this.setState({ page: data.selected })
 
     this.fetchResults(
       fromDate,
@@ -133,45 +133,45 @@ class Bikribitaran extends Component {
       officeId,
       data.selected * perPage,
       perPage
-    );
+    )
   }
 
   handleSelectMenu(event, item, path) {
-    this.setState({ item: item });
-    this.setState({ path: path });
+    this.setState({ item: item })
+    this.setState({ path: path })
     switch (event) {
-      case "edit": {
+      case 'edit': {
         this.props.history.push({
           pathname: `/banpaidawar/bikribitaranedit/${item.bikribitaran_id}`,
           item,
-        });
+        })
 
-        break;
+        break
       }
-      case "delete": {
-        this.setState({ showDialog: !this.state.showDialog });
-        break;
+      case 'delete': {
+        this.setState({ showDialog: !this.state.showDialog })
+        break
       }
       default:
-        break;
+        break
     }
   }
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
   handleDelete() {
-    const { item } = this.state;
+    const { item } = this.state
 
-    this.props.deleteBanpaidawarbikribitaran(item.bikribitaran_id);
+    this.props.deleteBanpaidawarbikribitaran(item.bikribitaran_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-    });
+    })
   }
 
   handleAdd() {
-    this.props.history.push("/banpaidawar/bikribitaranadd/new");
+    this.props.history.push('/banpaidawar/bikribitaranadd/new')
   }
 
   render() {
@@ -181,29 +181,29 @@ class Bikribitaran extends Component {
       loc,
       perPage,
       showDialog,
-    } = this.state;
-    const { user, role, officeRole } = this.props;
+    } = this.state
+    const { user, role, officeRole } = this.props
     return (
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title="Delete"
+          title='Delete'
           body={
-            "के तपाईँ वनपैदावार बिक्रिवितरण सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?"
+            'के तपाईँ वनपैदावार बिक्रिवितरण सम्बन्धि विवरण हटाउन चाहनुहुन्छ ?'
           }
-          confirmLabel="चाहन्छु "
-          cancelLabel="चाहंदिन "
+          confirmLabel='चाहन्छु '
+          cancelLabel='चाहंदिन '
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, "bikribitaranlist") && (
+        {equals(loc, 'bikribitaranlist') && (
           <Fragment>
-            <div className="report-filter">
+            <div className='report-filter'>
               <Filter
-                id="banpaidawar"
-                title="बिक्रि मिति"
+                id='banpaidawar'
+                title='बिक्रि मिति'
                 districtsList={districtList}
-                officesList={officeList}
+                officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
@@ -211,11 +211,11 @@ class Bikribitaran extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id="banpaidawarbikribitaran" />
+              <ReportGenerator id='banpaidawarbikribitaran' />
             </div>
             <BanpaidawarBikribitaran.List
-              buttonName="+ वनपैदावार बिक्रिवितरण"
-              title="वनपैदावार बिक्रिवितरण सम्बन्धि विवरण"
+              buttonName='+ वनपैदावार बिक्रिवितरण'
+              title='वनपैदावार बिक्रिवितरण सम्बन्धि विवरण'
               pageCount={
                 !isNil(banpaidawarbikribitaranList)
                   ? Math.ceil(banpaidawarbikribitaranList.total / perPage)
@@ -227,30 +227,30 @@ class Bikribitaran extends Component {
                   : []
               }
               per={perPage}
-              pers={[10, 25, 50, "all"]}
+              pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
               officeRole={officeRole}
               headings={banpaidawarbikribitaranHeadings}
-              onAdd={() => this.handleAdd("banpaidawarbikribitaran")}
+              onAdd={() => this.handleAdd('banpaidawarbikribitaran')}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
               forcePage={this.state.page}
             />
           </Fragment>
         )}
-        {equals(loc, "bikribitaranadd") && (
+        {equals(loc, 'bikribitaranadd') && (
           <BanpaidawarBikribitaran.Add
-            title="+ वनपैदावार बिक्रिवितरण"
+            title='+ वनपैदावार बिक्रिवितरण'
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBanpaidawarbikribitaran(e)}
           />
         )}
-        {equals(loc, "bikribitaranedit") && (
+        {equals(loc, 'bikribitaranedit') && (
           <BanpaidawarBikribitaran.Edit
-            title="वनपैदावार बिक्रिवितरण सम्बन्धी विवरण शंसोधन"
+            title='वनपैदावार बिक्रिवितरण सम्बन्धी विवरण शंसोधन'
             history={this.props.history}
             user={user}
             onSelect={this.handleSelectMenu}
@@ -260,19 +260,19 @@ class Bikribitaran extends Component {
           />
         )}
       </div>
-    );
+    )
   }
 }
 
 Bikribitaran.propsTypes = {
   banpaidawarbikribitaranDataList: PropTypes.any,
   officeDataList: PropTypes.any,
-};
+}
 
 Bikribitaran.defaultProps = {
   banpaidawarbikribitaranDataList: {},
   officeDataList: {},
-};
+}
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
@@ -283,7 +283,7 @@ const mapStateToProps = (state) => ({
   officeRole: state.app.user.office_type,
   banpaidawarbikribitaranDataList:
     state.banpaidawar.allbanpaidawarbikribitaranData,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanpaidawarbikribitaran: (payload) =>
@@ -308,6 +308,6 @@ const mapDispatchToProps = (dispatch) => ({
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Bikribitaran);
+export default connect(mapStateToProps, mapDispatchToProps)(Bikribitaran)

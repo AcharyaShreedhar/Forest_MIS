@@ -1,7 +1,7 @@
-"use strict";
+'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("samudayikban_bibarans", {
+    await queryInterface.createTable('samudayikban_bibarans', {
       samudayikban_id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,6 +19,7 @@ module.exports = {
       darta_no: {
         allowNull: false,
         type: Sequelize.STRING,
+        unique: true,
       },
       samudayikban_name: {
         type: Sequelize.STRING,
@@ -71,16 +72,16 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
-    });
+    })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("samudayikban_bibarans");
+    await queryInterface.dropTable('samudayikban_bibarans')
   },
-};
+}

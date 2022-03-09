@@ -11,6 +11,7 @@ import { districtList } from '../../../services/config'
 import { Fragment } from 'react'
 import '../Report.scss'
 import Filter from '../../../components/Filter'
+import { isNil } from 'ramda'
 
 export class DateReport extends Component {
   constructor(props) {
@@ -123,7 +124,6 @@ export class DateReport extends Component {
 
   handlePreview() {
     const { fromDate, toDate, distId, officeId } = this.state
-    console.log('report_data: ', this.state.report_data)
     jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'mitianusarbibaran' },
@@ -273,7 +273,7 @@ export class DateReport extends Component {
             id='sampati'
             title='मिति'
             districtsList={districtList}
-            officesList={officeList}
+            officesList={!isNil(officeList) ? officeList : []}
             onToDate={this.handleToDate}
             onFromDate={this.handleFromDate}
             onSelect={this.handleDistrict}

@@ -169,7 +169,7 @@ class Banbikaskaryabibaran extends Component {
               <Filter
                 id='banbikaskaryabibaran'
                 districtsList={districtList}
-                officesList={officeList}
+                officesList={!isNil(officeList) ? officeList : []}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
                 yesOffice={officeRole < 3 ? true : false}
