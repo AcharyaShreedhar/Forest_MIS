@@ -195,16 +195,6 @@ export class AnnualReport extends Component {
   }
 
   handlePreview() {
-    const {
-      currentYear,
-      previousYear,
-      arthikbarsa,
-      aghilloarthikbarsa,
-      upcommingYear,
-      previousArthikbarsa,
-      currentArthikbarsa,
-      upcommingArthikbarsa,
-    } = this.state
     jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'bansambhandhibibaran' },

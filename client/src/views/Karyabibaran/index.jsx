@@ -1,59 +1,70 @@
-import React, { Component } from "react";
-import { PropTypes } from "prop-types";
-import { connect } from "react-redux";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { isEmpty } from "ramda";
-import { NotFound } from "../../components";
-import karyabibaranRoutes from "../../routes/karyabibaran";
-import AppActions from "../../actions/app";
-import KaryabibaranActions from "../../actions/karyabibaran";
+import React, { Component } from 'react'
+import { PropTypes } from 'prop-types'
+import { connect } from 'react-redux'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import { isEmpty } from 'ramda'
+import { NotFound } from '../../components'
+import karyabibaranRoutes from '../../routes/karyabibaran'
+import AppActions from '../../actions/app'
+import KaryabibaranActions from '../../actions/karyabibaran'
 
 export class Karyabibaran extends Component {
   componentDidMount() {
-    const { districtId, officeRole, officeId } = this.props;
-    this.props.fetchallSamajikkaryabibaran({
-      distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: `${officeRole < 3 ? "%" : officeId}`,
-      name: "banbikas_karyabibaran",
+    const { districtId, officeRole, officeId } = this.props
+
+    this.props.fetchallBanbikaskaryabibaran({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'banbikas_karyabibaran',
       page: 0,
       perPage: 10,
-    });
+    })
+
+    this.props.fetchallSamajikkaryabibaran({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'banbikas_karyabibaran',
+      page: 0,
+      perPage: 10,
+    })
 
     this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
-    });
+      distId: '%',
+      name: 'value', //"office_name"
+    })
   }
 
   componentDidUpdate() {
-    const { districtId, officeRole, officeId } = this.props;
-    // this.props.fetchallBanbikaskaryabibaran({
-    //   distId: "%",
-    //   name: "ban_type",
-    //   page: 0,
-    //   perPage: 10,
-    // });
-    this.props.fetchallSamajikkaryabibaran({
-      distId: `${officeRole < 3 ? "%" : districtId}`,
-      officeId: `${officeRole < 3 ? "%" : officeId}`,
-      name: "banbikas_karyabibaran",
+    const { districtId, officeRole, officeId } = this.props
+
+    this.props.fetchallBanbikaskaryabibaran({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'banbikas_karyabibaran',
       page: 0,
       perPage: 10,
-    });
+    })
+    this.props.fetchallSamajikkaryabibaran({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'samajik_karyabibaran',
+      page: 0,
+      perPage: 10,
+    })
 
     this.props.fetchOfficedropdown({
-      distId: "%",
-      name: "value", //"office_name"
-    });
+      distId: '%',
+      name: 'value', //"office_name"
+    })
   }
 
   render() {
-    const { authenticated } = this.props;
+    const { authenticated } = this.props
     return (
       <Switch>
         {karyabibaranRoutes.map((prop, key) => {
           if (prop.redirect && authenticated) {
-            return <Redirect exact from={prop.path} to={prop.to} key={key} />;
+            return <Redirect exact from={prop.path} to={prop.to} key={key} />
           }
           if (prop.redirect && !authenticated) {
             return (
@@ -63,10 +74,10 @@ export class Karyabibaran extends Component {
                 component={prop.component}
                 key={key}
               />
-            );
+            )
           }
           if (!prop.redirect && prop.auth && !authenticated) {
-            return <Redirect exact from={prop.path} to="/" key={key} />;
+            return <Redirect exact from={prop.path} to='/' key={key} />
           }
           return (
             <Route
@@ -75,30 +86,30 @@ export class Karyabibaran extends Component {
               component={prop.component}
               key={key}
             />
-          );
+          )
         })}
-        <Route path="*" exact component={NotFound} />
+        <Route path='*' exact component={NotFound} />
       </Switch>
-    );
+    )
   }
 }
 
 Karyabibaran.propTypes = {
   authenticated: PropTypes.bool.isRequired,
   history: PropTypes.any,
-};
+}
 
 Karyabibaran.defaultProps = {
   authenticated: false,
   history: () => {},
-};
+}
 
 const mapStateToProps = (state) => ({
   authenticated: !isEmpty(state.app.token),
   officeRole: state.app.user.office_type,
   districtId: state.app.user.dist_id,
   officeId: state.app.user.office_id,
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallBanbikaskaryabibaran: (payload) =>
@@ -109,6 +120,6 @@ const mapDispatchToProps = (dispatch) => ({
   //O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-});
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Karyabibaran);
+export default connect(mapStateToProps, mapDispatchToProps)(Karyabibaran)

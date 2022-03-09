@@ -66,7 +66,7 @@ class Banbikaskaryabibaran extends Component {
   }
 
   handleDistrict(e, item) {
-    const { officeId, perPage } = this.state
+    const { perPage } = this.state
     this.setState({
       distId: e,
       officeId: '%', // office reset

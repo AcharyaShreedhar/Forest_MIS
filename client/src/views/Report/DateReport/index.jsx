@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Button } from '../../../components'
 import { connect } from 'react-redux'
-import { englishToNepaliNumber, nepaliToEnglishNumber } from 'nepali-number'
+import { englishToNepaliNumber } from 'nepali-number' //nepaliToEnglishNumber
 import jsreport from 'jsreport-browser-client-dist'
-import NepaliDate from 'nepali-date-converter'
+// import NepaliDate from 'nepali-date-converter'
 import AppActions from '../../../actions/app'
 import DwandabebasthapanActions from '../../../actions/dwandabebasthapan'
 import ReportActions from '../../../actions/report'
@@ -123,7 +123,6 @@ export class DateReport extends Component {
   }
 
   handlePreview() {
-    const { fromDate, toDate, distId, officeId } = this.state
     jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'mitianusarbibaran' },
