@@ -327,6 +327,7 @@ export class AnnualReport extends Component {
   render() {
     const { officeList } = this.state
     const { officeRole } = this.props
+    console.log('officerole', officeRole)
     return (
       <Fragment>
         <div className='report-filter'>
@@ -345,7 +346,7 @@ export class AnnualReport extends Component {
           <div className='w-40 button_style'>
             <Button
               className='mr-3 preview'
-              name='पूर्वावलोकन गर्नुहोस ।'
+              name='पुर्वालोकन गर्नुहोस ।'
               onClick={this.handlePreview.bind(this)}
             />
             <Button
@@ -382,6 +383,7 @@ const mapStateToProps = (state) => ({
   banhastantaranData: state.report.ban_bibaran,
   officeDataList: state.app.officesDropdownData,
   user_office: state.app.user.user_office,
+  officeRole: state.app.user.office_type,
   districtId: state.app.user.dist_id,
   officeId: state.app.user.office_id,
 })

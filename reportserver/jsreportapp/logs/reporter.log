@@ -6093,3 +6093,151 @@ caused by: Error: Error while executing templating engine. Missing helper: "kath
 2022-03-09T11:01:39.718Z - info: Rendering request 6 finished in 57 ms
 2022-03-09T11:01:39.850Z - info: docx generation was finished
 2022-03-09T11:01:39.853Z - info: Rendering request 5 finished in 851 ms
+2022-03-09T11:50:38.617Z - info: Starting rendering request 7 (user: null)
+2022-03-09T11:50:38.622Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-09T11:50:38.791Z - info: docx generation is starting
+2022-03-09T11:50:39.415Z - info: Starting rendering request 8 (user: null)
+2022-03-09T11:50:39.416Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-09T11:50:39.556Z - info: Rendering request 8 finished in 142 ms
+2022-03-09T11:50:39.711Z - info: docx generation was finished
+2022-03-09T11:50:39.715Z - info: Rendering request 7 finished in 1098 ms
+2022-03-09T11:50:55.961Z - info: Starting rendering request 9 (user: null)
+2022-03-09T11:50:55.963Z - info: Rendering template { name: mitianusarbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-09T11:50:55.988Z - info: docx generation is starting
+2022-03-09T11:50:56.584Z - info: Starting rendering request 10 (user: null)
+2022-03-09T11:50:56.585Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-09T11:50:56.647Z - info: Rendering request 10 finished in 62 ms
+2022-03-09T11:50:56.785Z - info: docx generation was finished
+2022-03-09T11:50:56.789Z - info: Rendering request 9 finished in 828 ms
+2022-03-09T11:52:50.051Z - info: Starting rendering request 11 (user: null)
+2022-03-09T11:52:50.053Z - info: Rendering template { name: mitianusarbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-09T11:52:50.082Z - info: docx generation is starting
+2022-03-09T11:52:50.778Z - info: Starting rendering request 12 (user: null)
+2022-03-09T11:52:50.778Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-09T11:52:50.855Z - info: Rendering request 12 finished in 78 ms
+2022-03-09T11:52:51.038Z - info: docx generation was finished
+2022-03-09T11:52:51.040Z - info: Rendering request 11 finished in 990 ms
+2022-03-10T05:37:10.546Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-03-10T05:37:10.551Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-03-10T05:37:10.808Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-03-10T05:37:10.895Z - info: Found 35 extensions
+2022-03-10T05:37:12.951Z - info: Setting http-server strategy for rendering
+2022-03-10T05:37:13.336Z - info: Using extension cli@2.2.5
+2022-03-10T05:37:13.371Z - info: Using extension debug@2.1.3
+2022-03-10T05:37:13.392Z - info: Using extension express@2.8.1
+2022-03-10T05:37:15.415Z - info: Using extension freeze@2.0.0
+2022-03-10T05:37:15.430Z - info: Using extension handlebars@2.1.0
+2022-03-10T05:37:15.477Z - info: Using extension import-export@2.1.1
+2022-03-10T05:37:15.971Z - info: Using extension jsrender@2.1.1
+2022-03-10T05:37:15.974Z - info: Using extension tags@2.5.0
+2022-03-10T05:37:15.993Z - info: Using extension templates@2.4.0
+2022-03-10T05:37:16.008Z - info: Using extension authorization@2.4.0
+2022-03-10T05:37:16.039Z - info: Using extension base@2.0.2
+2022-03-10T05:37:16.047Z - info: Using extension browser-client@2.2.2
+2022-03-10T05:37:16.083Z - info: Using extension child-templates@1.4.0
+2022-03-10T05:37:16.154Z - info: Using extension chrome-pdf@1.10.0
+2022-03-10T05:37:16.906Z - info: Using extension data@2.4.0
+2022-03-10T05:37:16.911Z - info: Using extension docx@2.9.0
+2022-03-10T05:37:16.937Z - info: Using extension fs-store@2.9.1
+2022-03-10T05:37:18.372Z - info: Using extension licensing@2.2.3
+2022-03-10T05:37:18.403Z - info: Using extension pdf-utils@1.10.1
+2022-03-10T05:37:19.248Z - info: Using extension pptx@0.7.0
+2022-03-10T05:37:19.286Z - info: Using extension reports@2.5.1
+2022-03-10T05:37:19.340Z - info: Using extension static-pdf@0.4.0
+2022-03-10T05:37:19.404Z - info: Using extension studio@2.10.1
+2022-03-10T05:37:19.829Z - info: Using extension text@2.0.0
+2022-03-10T05:37:19.851Z - info: Using extension version-control@1.6.0
+2022-03-10T05:37:20.904Z - info: Using extension assets@1.7.0
+2022-03-10T05:37:21.010Z - info: Using extension html-to-xlsx@2.8.3
+2022-03-10T05:37:25.092Z - info: html-to-xlsx detected chrome as available html engine
+2022-03-10T05:37:25.094Z - info: Using extension scheduling@2.5.0
+2022-03-10T05:37:25.555Z - info: Using extension scripts@2.6.0
+2022-03-10T05:37:25.656Z - info: Using extension studio-theme-dark@0.3.0
+2022-03-10T05:37:25.673Z - info: Using extension xlsx@2.5.0
+2022-03-10T05:37:27.248Z - info: Using extension public-templates@2.2.0
+2022-03-10T05:37:27.260Z - info: Using extension resources@2.1.0
+2022-03-10T05:37:27.284Z - info: Using extension sample-template@2.6.1
+2022-03-10T05:37:27.301Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-03-10T05:37:27.302Z - info: Using fs provider for template store.
+2022-03-10T05:37:27.312Z - info: fs store is persisting using fs
+2022-03-10T05:37:27.317Z - info: fs store is synchronizing using fs
+2022-03-10T05:37:27.333Z - info: fs store is loading data
+2022-03-10T05:37:27.498Z - info: fs store is initialized successfully
+2022-03-10T05:37:27.522Z - info: Creating default express app.
+2022-03-10T05:37:27.846Z - info: jsreport server successfully started on http port: 5488
+2022-03-10T05:37:27.848Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-03-10T05:37:27.963Z - info: Verifying license key free
+2022-03-10T05:37:27.967Z - info: Using free license
+2022-03-10T05:37:27.976Z - info: reporter initialized
+2022-03-10T05:37:42.434Z - info: Starting rendering request 1 (user: null)
+2022-03-10T05:37:42.443Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T05:37:43.387Z - info: docx generation is starting
+2022-03-10T05:37:46.231Z - info: Starting rendering request 2 (user: null)
+2022-03-10T05:37:46.233Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T05:37:46.669Z - info: Rendering request 2 finished in 438 ms
+2022-03-10T05:37:47.200Z - info: docx generation was finished
+2022-03-10T05:37:48.927Z - info: Rendering request 1 finished in 6493 ms
+2022-03-10T06:00:25.879Z - info: Starting rendering request 3 (user: null)
+2022-03-10T06:00:25.880Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:00:25.951Z - info: docx generation is starting
+2022-03-10T06:00:26.992Z - info: Starting rendering request 4 (user: null)
+2022-03-10T06:00:26.993Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:00:27.110Z - info: Rendering request 4 finished in 117 ms
+2022-03-10T06:00:27.380Z - info: docx generation was finished
+2022-03-10T06:00:29.078Z - info: Rendering request 3 finished in 3202 ms
+2022-03-10T06:04:36.988Z - info: Starting rendering request 5 (user: null)
+2022-03-10T06:04:36.990Z - info: Rendering template { name: mitianusarbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:04:37.008Z - info: docx generation is starting
+2022-03-10T06:04:37.664Z - info: Starting rendering request 6 (user: null)
+2022-03-10T06:04:37.665Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:04:37.806Z - info: Rendering request 6 finished in 143 ms
+2022-03-10T06:04:37.952Z - info: docx generation was finished
+2022-03-10T06:04:43.229Z - info: Rendering request 5 finished in 6241 ms
+2022-03-10T06:11:30.888Z - info: Starting rendering request 7 (user: null)
+2022-03-10T06:11:30.889Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:11:30.966Z - info: docx generation is starting
+2022-03-10T06:11:31.543Z - info: Starting rendering request 8 (user: null)
+2022-03-10T06:11:31.544Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:11:31.614Z - info: Rendering request 8 finished in 72 ms
+2022-03-10T06:11:31.776Z - info: docx generation was finished
+2022-03-10T06:11:33.560Z - info: Rendering request 7 finished in 2671 ms
+2022-03-10T06:11:51.868Z - info: Starting rendering request 9 (user: null)
+2022-03-10T06:11:51.869Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:11:51.895Z - info: docx generation is starting
+2022-03-10T06:11:52.511Z - info: Starting rendering request 10 (user: null)
+2022-03-10T06:11:52.512Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:11:52.576Z - info: Rendering request 10 finished in 66 ms
+2022-03-10T06:11:52.716Z - info: docx generation was finished
+2022-03-10T06:11:54.496Z - info: Rendering request 9 finished in 2627 ms
+2022-03-10T06:12:12.648Z - info: Starting rendering request 11 (user: null)
+2022-03-10T06:12:12.649Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:12:12.671Z - info: docx generation is starting
+2022-03-10T06:12:13.281Z - info: Starting rendering request 12 (user: null)
+2022-03-10T06:12:13.283Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:12:13.349Z - info: Rendering request 12 finished in 68 ms
+2022-03-10T06:12:13.496Z - info: docx generation was finished
+2022-03-10T06:12:15.141Z - info: Rendering request 11 finished in 2493 ms
+2022-03-10T06:12:26.679Z - info: Starting rendering request 13 (user: null)
+2022-03-10T06:12:26.682Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:12:26.716Z - info: docx generation is starting
+2022-03-10T06:12:27.326Z - info: Starting rendering request 14 (user: null)
+2022-03-10T06:12:27.327Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:12:27.388Z - info: Rendering request 14 finished in 62 ms
+2022-03-10T06:12:27.522Z - info: docx generation was finished
+2022-03-10T06:12:29.161Z - info: Rendering request 13 finished in 2481 ms
+2022-03-10T06:12:46.257Z - info: Starting rendering request 15 (user: null)
+2022-03-10T06:12:46.258Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:12:46.272Z - info: docx generation is starting
+2022-03-10T06:12:47.240Z - info: Starting rendering request 16 (user: null)
+2022-03-10T06:12:47.242Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:12:47.312Z - info: Rendering request 16 finished in 72 ms
+2022-03-10T06:12:47.569Z - info: docx generation was finished
+2022-03-10T06:12:49.170Z - info: Rendering request 15 finished in 2912 ms
+2022-03-10T06:16:29.165Z - info: Starting rendering request 17 (user: null)
+2022-03-10T06:16:29.167Z - info: Rendering template { name: mitianusarbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-03-10T06:16:29.186Z - info: docx generation is starting
+2022-03-10T06:16:30.049Z - info: Starting rendering request 18 (user: null)
+2022-03-10T06:16:30.050Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-10T06:16:30.127Z - info: Rendering request 18 finished in 77 ms
+2022-03-10T06:16:30.329Z - info: docx generation was finished
+2022-03-10T06:16:31.977Z - info: Rendering request 17 finished in 2811 ms

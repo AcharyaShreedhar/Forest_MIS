@@ -265,6 +265,8 @@ export class DateReport extends Component {
   render() {
     const { officeList } = this.state
     const { officeRole } = this.props
+    console.log('officerole', officeRole)
+
     return (
       <Fragment>
         <div className='report-filter'>
@@ -285,7 +287,7 @@ export class DateReport extends Component {
           <div className='w-40 button_style'>
             <Button
               className='mr-3 preview'
-              name='पूर्वावलोकन गर्नुहोस ।'
+              name='पुर्वालोकन गर्नुहोस ।'
               onClick={this.handlePreview.bind(this)}
             />
             <Button
