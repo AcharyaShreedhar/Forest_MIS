@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       office_id: DataTypes.INTEGER,
       user_id: DataTypes.INTEGER,
       karyakram_name: DataTypes.STRING,
-      sirshak_no: DataTypes.STRING,
+      karyakram_karyakram_sirshak_no: DataTypes.STRING,
     },
     {
       sequelize,

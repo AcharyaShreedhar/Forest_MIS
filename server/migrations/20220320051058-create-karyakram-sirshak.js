@@ -29,7 +29,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sirshak_no: {
+      karyakram_sirshak_no: {
         type: Sequelize.STRING,
         allowNull: false,
       },
