@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { equals } from "ramda";
-import { HeaderComponent, ConfirmationDialoge } from "../../components";
-import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import "./Sidenav.scss";
+import React, { Component } from 'react';
+import { equals } from 'ramda';
+import { HeaderComponent, ConfirmationDialoge } from '../../components';
+import '@trendmicro/react-sidenav/dist/react-sidenav.css';
+import './Sidenav.scss';
 import {
   ProSidebar,
   SidebarHeader,
@@ -10,7 +10,7 @@ import {
   Menu,
   MenuItem,
   SubMenu,
-} from "react-pro-sidebar";
+} from 'react-pro-sidebar';
 import {
   FaBuilding,
   FaFileWord,
@@ -19,12 +19,17 @@ import {
   FaTasks,
   FaUsers,
   FaWater,
-} from "react-icons/fa";
-import { GiBurningForest, GiForest, GiWoodPile } from "react-icons/gi";
-import { MdGavel, MdWork } from "react-icons/md";
-import { BiLogOut, BiTask, BiUserPlus } from "react-icons/bi";
-import { ImOffice } from "react-icons/im";
-import "react-pro-sidebar/dist/css/styles.css";
+} from 'react-icons/fa';
+import {
+  GiBurningForest,
+  GiForest,
+  GiReceiveMoney,
+  GiWoodPile,
+} from 'react-icons/gi';
+import { MdGavel, MdWork } from 'react-icons/md';
+import { BiLogOut, BiTask, BiUserPlus } from 'react-icons/bi';
+import { ImOffice } from 'react-icons/im';
+import 'react-pro-sidebar/dist/css/styles.css';
 
 export class SideNavbar extends Component {
   constructor(props) {
@@ -41,6 +46,7 @@ export class SideNavbar extends Component {
       assets: false,
       karya: false,
       report: false,
+      budget: false,
     };
     this.handleToggle = this.handleToggle.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
@@ -63,7 +69,7 @@ export class SideNavbar extends Component {
   }
   handleSubmenu(e, item) {
     switch (item) {
-      case "karmachari": {
+      case 'karmachari': {
         this.setState({ karmachari: true });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -76,9 +82,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "bantype": {
+      case 'bantype': {
         this.setState({ karmachari: false });
         this.setState({ bantype: true });
         this.setState({ banbibaran: false });
@@ -91,9 +98,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "banbibaran": {
+      case 'banbibaran': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: true });
@@ -106,9 +114,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "dwanda": {
+      case 'dwanda': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -121,9 +130,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "banpaidawar": {
+      case 'banpaidawar': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -136,9 +146,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "karyakram": {
+      case 'karyakram': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -151,9 +162,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "assets": {
+      case 'assets': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -166,9 +178,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "karya": {
+      case 'karya': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -181,9 +194,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "bipat": {
+      case 'bipat': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -196,9 +210,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "samraxan": {
+      case 'samraxan': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -211,9 +226,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: true });
         this.setState({ misc: false });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "misc": {
+      case 'misc': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -226,9 +242,10 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: true });
         this.setState({ report: false });
+        this.setState({ budget: false });
         break;
       }
-      case "report": {
+      case 'report': {
         this.setState({ karmachari: false });
         this.setState({ bantype: false });
         this.setState({ banbibaran: false });
@@ -241,6 +258,23 @@ export class SideNavbar extends Component {
         this.setState({ samraxan: false });
         this.setState({ misc: false });
         this.setState({ report: true });
+        this.setState({ budget: false });
+        break;
+      }
+      case 'budget': {
+        this.setState({ karmachari: false });
+        this.setState({ bantype: false });
+        this.setState({ banbibaran: false });
+        this.setState({ dwanda: false });
+        this.setState({ banpaidawar: false });
+        this.setState({ karyakram: false });
+        this.setState({ assets: false });
+        this.setState({ karya: false });
+        this.setState({ bipat: false });
+        this.setState({ samraxan: false });
+        this.setState({ misc: false });
+        this.setState({ report: false });
+        this.setState({ budget: true });
         break;
       }
       default:
@@ -263,8 +297,9 @@ export class SideNavbar extends Component {
       samraxan,
       misc,
       report,
+      budget,
     } = this.state;
-    const { history, menuStatus, role } = this.props;
+    const { history, menuStatus, role, officeRole } = this.props;
     return (
       <ProSidebar collapsed={!menuStatus}>
         <ConfirmationDialoge
@@ -288,7 +323,7 @@ export class SideNavbar extends Component {
             <MenuItem
               className="maintitle"
               icon={<FaHome />}
-              onClick={() => history.push("/home")}
+              onClick={() => history.push('/home')}
             >
               गृह पृष्ठ
             </MenuItem>
@@ -296,19 +331,19 @@ export class SideNavbar extends Component {
               title="कर्मचारी"
               className="maintitle"
               icon={<FaUsers />}
-              onClick={(e) => this.handleSubmenu(e, "karmachari")}
+              onClick={(e) => this.handleSubmenu(e, 'karmachari')}
               open={karmachari}
             >
               <MenuItem
                 onClick={() =>
-                  history.push("/karmachari/karmacharibibaranlist")
+                  history.push('/karmachari/karmacharibibaranlist')
                 }
               >
                 कर्मचारी विवरण
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/karmachari/karmacharidarbandilist")
+                  history.push('/karmachari/karmacharidarbandilist')
                 }
               >
                 कर्मचारी दरबन्दी
@@ -319,46 +354,46 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<GiForest />}
               open={bantype}
-              onClick={(e) => this.handleSubmenu(e, "bantype")}
+              onClick={(e) => this.handleSubmenu(e, 'bantype')}
             >
               <SubMenu title="सामुदायिक">
                 <MenuItem
-                  onClick={() => history.push("/forests/samudayikbanlist")}
+                  onClick={() => history.push('/forests/samudayikbanlist')}
                 >
                   सामुदायिक वन
                 </MenuItem>
                 <MenuItem
-                  onClick={() => history.push("/forests/upabhoktasamuhalist")}
+                  onClick={() => history.push('/forests/upabhoktasamuhalist')}
                 >
                   उपभोक्ता समुहको बिबरण
                 </MenuItem>
               </SubMenu>
-              <MenuItem onClick={() => history.push("/forests/dharmikbanlist")}>
+              <MenuItem onClick={() => history.push('/forests/dharmikbanlist')}>
                 धार्मिक बन
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/forests/kabuliyatibanlist")}
+                onClick={() => history.push('/forests/kabuliyatibanlist')}
               >
                 कबुलियती बन
               </MenuItem>
-              <MenuItem onClick={() => history.push("/forests/nijibanlist")}>
+              <MenuItem onClick={() => history.push('/forests/nijibanlist')}>
                 निजी बन
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/forests/sajhedaribanlist")}
+                onClick={() => history.push('/forests/sajhedaribanlist')}
               >
                 साझेदारी बन
               </MenuItem>
-              <MenuItem onClick={() => history.push("/forests/chaklabanlist")}>
+              <MenuItem onClick={() => history.push('/forests/chaklabanlist')}>
                 चक्ला बन
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/forests/rastriyabanlist")}
+                onClick={() => history.push('/forests/rastriyabanlist')}
               >
                 राष्ट्रिय बन
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/forests/commercialbanlist")}
+                onClick={() => history.push('/forests/commercialbanlist')}
               >
                 व्यबसायीक कबुलियती बन
               </MenuItem>
@@ -367,32 +402,32 @@ export class SideNavbar extends Component {
               title="बन बिबरण"
               className="maintitle"
               icon={<FaListAlt />}
-              onClick={(e) => this.handleSubmenu(e, "banbibaran")}
+              onClick={(e) => this.handleSubmenu(e, 'banbibaran')}
               open={banbibaran}
             >
               <MenuItem
                 onClick={() =>
-                  history.push("/banbibaran/banxetraatikramanlist")
+                  history.push('/banbibaran/banxetraatikramanlist')
                 }
               >
                 बन क्षेत्र अतिक्रमण
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/banbibaran/muddaanusandhandayarilist")
+                  history.push('/banbibaran/muddaanusandhandayarilist')
                 }
               >
                 मुद्दा अनुसन्धान तथा दायरी
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/banbibaran/banxetraanyaprayojanlist")
+                  history.push('/banbibaran/banxetraanyaprayojanlist')
                 }
               >
                 बनक्षेत्रको जग्गा अन्यप्रयोजन्को लागि
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/banbibaran/seedgardenplotslist")}
+                onClick={() => history.push('/banbibaran/seedgardenplotslist')}
               >
                 बन बीउ बगैच/समबर्धन प्लटहरु
               </MenuItem>
@@ -402,18 +437,18 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<MdGavel />}
               open={dwanda}
-              onClick={(e) => this.handleSubmenu(e, "dwanda")}
+              onClick={(e) => this.handleSubmenu(e, 'dwanda')}
             >
               <MenuItem
                 onClick={() =>
-                  history.push("/dwandabebasthapan/banyajantuuddarlist")
+                  history.push('/dwandabebasthapan/banyajantuuddarlist')
                 }
               >
                 बन्यजन्तु उद्दार तथा ब्यबस्थापन बिबरण
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/dwandabebasthapan/banyajantuxetirahatlist")
+                  history.push('/dwandabebasthapan/banyajantuxetirahatlist')
                 }
               >
                 बन्यजन्तु क्षति राहत बिबरण
@@ -425,13 +460,13 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<GiWoodPile />}
               open={banpaidawar}
-              onClick={(e) => this.handleSubmenu(e, "banpaidawar")}
+              onClick={(e) => this.handleSubmenu(e, 'banpaidawar')}
             >
-              <MenuItem onClick={() => history.push("/banpaidawar/lilamlist")}>
+              <MenuItem onClick={() => history.push('/banpaidawar/lilamlist')}>
                 लीलाम बिबरण
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/banpaidawar/osarpasarlist")}
+                onClick={() => history.push('/banpaidawar/osarpasarlist')}
               >
                 ओसारपसार बिबरण
               </MenuItem>
@@ -441,23 +476,23 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<FaTasks />}
               open={karyakram}
-              onClick={(e) => this.handleSubmenu(e, "karyakram")}
+              onClick={(e) => this.handleSubmenu(e, 'karyakram')}
             >
               <MenuItem
-                onClick={() => history.push("/activities/yearlyactivitieslist")}
+                onClick={() => history.push('/activities/yearlyactivitieslist')}
               >
                 वार्षिक कार्यक्रम
               </MenuItem>
-              <MenuItem onClick={() => history.push("/activities/nurserylist")}>
+              <MenuItem onClick={() => history.push('/activities/nurserylist')}>
                 विरुवा उत्पादन
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/activities/plantationlist")}
+                onClick={() => history.push('/activities/plantationlist')}
               >
                 बृक्षरोपन
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/activities/jadibutilist")}
+                onClick={() => history.push('/activities/jadibutilist')}
               >
                 जडिबुटी उत्पादन
               </MenuItem>
@@ -467,20 +502,20 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<FaBuilding />}
               open={assets}
-              onClick={(e) => this.handleSubmenu(e, "assets")}
+              onClick={(e) => this.handleSubmenu(e, 'assets')}
             >
               <MenuItem
-                onClick={() => history.push("/sampatibibaran/gharjaggalist")}
+                onClick={() => history.push('/sampatibibaran/gharjaggalist')}
               >
                 घर जग्गा
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/sampatibibaran/sawarisadhanlist")}
+                onClick={() => history.push('/sampatibibaran/sawarisadhanlist')}
               >
                 सवारी साधनहरु
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/sampatibibaran/anyasampatilist")}
+                onClick={() => history.push('/sampatibibaran/anyasampatilist')}
               >
                 अन्य सम्पति
               </MenuItem>
@@ -490,18 +525,18 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<BiTask />}
               open={karya}
-              onClick={(e) => this.handleSubmenu(e, "karya")}
+              onClick={(e) => this.handleSubmenu(e, 'karya')}
             >
               <MenuItem
                 onClick={() =>
-                  history.push("/karyabibaran/samajikkaryabibaranlist")
+                  history.push('/karyabibaran/samajikkaryabibaranlist')
                 }
               >
                 सामाजिक कार्य विवरण
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/karyabibaran/banbikaskaryabibaranlist")
+                  history.push('/karyabibaran/banbikaskaryabibaranlist')
                 }
               >
                 वन विकास कार्य विवरण
@@ -512,24 +547,24 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<GiBurningForest />}
               open={bipat}
-              onClick={(e) => this.handleSubmenu(e, "bipat")}
+              onClick={(e) => this.handleSubmenu(e, 'bipat')}
             >
               <MenuItem
                 onClick={() =>
-                  history.push("/bipatbebasthapan/badibebasthapanlist")
+                  history.push('/bipatbebasthapan/badibebasthapanlist')
                 }
               >
                 बाढी व्यवस्थापन
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/bipatbebasthapan/pahirobebasthapanlist")
+                  history.push('/bipatbebasthapan/pahirobebasthapanlist')
                 }
               >
                 पहिरो व्यवस्थापन
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/bipatbebasthapan/bandadelolist")}
+                onClick={() => history.push('/bipatbebasthapan/bandadelolist')}
               >
                 बन डडेलो
               </MenuItem>
@@ -539,32 +574,32 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<FaWater />}
               open={samraxan}
-              onClick={(e) => this.handleSubmenu(e, "samraxan")}
+              onClick={(e) => this.handleSubmenu(e, 'samraxan')}
             >
               <MenuItem
                 onClick={() =>
-                  history.push("/samrakshyan/pokharisamrakshyanlist")
+                  history.push('/samrakshyan/pokharisamrakshyanlist')
                 }
               >
                 पोखरी
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/samrakshyan/panimuhansamrakshyanlist")
+                  history.push('/samrakshyan/panimuhansamrakshyanlist')
                 }
               >
                 पानीमुहान
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/samrakshyan/jaladharsamrakshyanlist")
+                  history.push('/samrakshyan/jaladharsamrakshyanlist')
                 }
               >
                 जलाधार
               </MenuItem>
               <MenuItem
                 onClick={() =>
-                  history.push("/samrakshyan/nadikinarsamrakshyanlist")
+                  history.push('/samrakshyan/nadikinarsamrakshyanlist')
                 }
               >
                 नदी किनार
@@ -575,15 +610,15 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<MdWork />}
               open={misc}
-              onClick={(e) => this.handleSubmenu(e, "misc")}
+              onClick={(e) => this.handleSubmenu(e, 'misc')}
             >
               <MenuItem
-                onClick={() => history.push("/miscellaneous/rojgarsrijanalist")}
+                onClick={() => history.push('/miscellaneous/rojgarsrijanalist')}
               >
                 रोजगार सिर्जना
               </MenuItem>
               <MenuItem
-                onClick={() => history.push("/miscellaneous/uddhamlist")}
+                onClick={() => history.push('/miscellaneous/uddhamlist')}
               >
                 उद्धम विवरण
               </MenuItem>
@@ -593,20 +628,53 @@ export class SideNavbar extends Component {
               className="maintitle"
               icon={<FaFileWord />}
               open={report}
-              onClick={(e) => this.handleSubmenu(e, "report")}
+              onClick={(e) => this.handleSubmenu(e, 'report')}
             >
-              <MenuItem onClick={() => history.push("/report/annualreport")}>
+              <MenuItem onClick={() => history.push('/report/annualreport')}>
                 आर्थिक वर्ष रिपोर्ट
               </MenuItem>
-              <MenuItem onClick={() => history.push("/report/datereport")}>
+              <MenuItem onClick={() => history.push('/report/datereport')}>
                 मिति रिपोर्ट
               </MenuItem>
             </SubMenu>
+
+            {officeRole < 3 && equals(role, 3) && (
+              <SubMenu
+                title="बजेट बिबरण"
+                className="maintitle"
+                icon={<GiReceiveMoney />}
+                open={budget}
+                onClick={(e) => this.handleSubmenu(e, 'budget')}
+              >
+                <MenuItem onClick={() => history.push('/budget/budgetsirshak')}>
+                  बजेट शिर्षक
+                </MenuItem>
+                <MenuItem
+                  onClick={() => history.push('/budget/karykramsirshak')}
+                >
+                  कार्यक्रम शिर्षक
+                </MenuItem>
+                <MenuItem onClick={() => history.push('/budget/budgetbarshik')}>
+                  बजेट बार्षिक
+                </MenuItem>
+              </SubMenu>
+            )}
+
+            {officeRole > 2 && equals(role, 3) && (
+              <MenuItem
+                icon={<GiReceiveMoney />}
+                className="maintitle"
+                onClick={() => history.push('/budgetentry')}
+              >
+                बजेट बिबरण
+              </MenuItem>
+            )}
+
             {equals(role, 3) && (
               <MenuItem
                 icon={<BiUserPlus />}
                 className="maintitle"
-                onClick={() => history.push("/userlist")}
+                onClick={() => history.push('/userlist')}
               >
                 नयाँ प्रयोगकर्ता
               </MenuItem>
@@ -615,7 +683,7 @@ export class SideNavbar extends Component {
               <MenuItem
                 icon={<ImOffice />}
                 className="maintitle"
-                onClick={() => history.push("/officelist")}
+                onClick={() => history.push('/officelist')}
               >
                 कार्यालय
               </MenuItem>
