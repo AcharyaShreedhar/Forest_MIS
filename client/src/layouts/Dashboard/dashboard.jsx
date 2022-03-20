@@ -1,14 +1,14 @@
-import React from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import { NotFound, SideNavbar } from "../../components";
-import dashboardRoutes from "../../routes/dashboard";
-import "./Dashboard.scss";
+import React from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { NotFound, SideNavbar } from '../../components';
+import dashboardRoutes from '../../routes/dashboard';
+import './Dashboard.scss';
 
 export const Content = (props) => {
   return (
     <div
       id="ds-content"
-      className={`content${props.loggedIn ? " logged" : ""}`}
+      className={`content${props.loggedIn ? ' logged' : ''}`}
     >
       {props.loggedIn && (
         <SideNavbar
@@ -19,6 +19,7 @@ export const Content = (props) => {
           menuRequest={props.menuRequest}
           menuStatus={props.menuStatus}
           role={props.role}
+          officeRole={props.officeRole}
         />
       )}
       <div className="main">
