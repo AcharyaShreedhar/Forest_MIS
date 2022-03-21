@@ -1,29 +1,29 @@
-const pool = require("../db");
+const pool = require('../db')
 
 //Controller for Listing all Anya_Sampati
 async function getAllAnyaSampati(req, res) {
-
-let office_cond = "a.office_id like ?"
-  const office_len=(Array.isArray(req.body.officeId)) ? req.body.officeId.length : 0
-  if(office_len > 1){
-    office_cond = "a.office_id in (?)"
+  let office_cond = 'a.office_id like ?'
+  const office_len = Array.isArray(req.body.officeId)
+    ? req.body.officeId.length
+    : 0
+  if (office_len > 1) {
+    office_cond = 'a.office_id in (?)'
   }
 
-  let dist_cond = "a.dist_id like ?"
-  const dist_len=(Array.isArray(req.body.distId)) ? req.body.distId.length : 0
-  if(dist_len > 1){
-    dist_cond = "a.dist_id in (?)"
+  let dist_cond = 'a.dist_id like ?'
+  const dist_len = Array.isArray(req.body.distId) ? req.body.distId.length : 0
+  if (dist_len > 1) {
+    dist_cond = 'a.dist_id in (?)'
   }
-  
-  const getTotalQuery =
-    `SELECT count(*) as total from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
-  const getAllAnyaSampatiQuery = `select * from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? ASC LIMIT ?, ?`;
+
+  const getTotalQuery = `SELECT count(*) as total from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and ${dist_cond} and ${office_cond}`
+  const getAllAnyaSampatiQuery = `select * from anya_sampatis as a where a.acquired_date BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? ASC LIMIT ?, ?`
 
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
-      if (error) throw error;
+      if (error) throw error
       pool.query(
         getAllAnyaSampatiQuery,
         [
@@ -36,7 +36,7 @@ let office_cond = "a.office_id like ?"
           req.body.perPage,
         ],
         (error, results, fields) => {
-          if (error) throw error;
+          if (error) throw error
           res.send(
             JSON.stringify({
               status: 200,
@@ -46,29 +46,29 @@ let office_cond = "a.office_id like ?"
                 list: results,
               },
             })
-          );
+          )
         }
-      );
+      )
     }
-  );
+  )
 }
 
 //Controller for Listing a Anya_Sampati
 async function getAnyaSampati(req, res) {
-  const getAnyaSampatiQuery = `select * from anya_sampatis where sampati_id = ?`;
+  const getAnyaSampatiQuery = `select * from anya_sampatis where sampati_id = ?`
   pool.query(
     getAnyaSampatiQuery,
     [req.params.sampatiId],
     (error, results, fields) => {
-      if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
     }
-  );
+  )
 }
 
 //Controller for adding a Anya_Samapti
 async function addAnyaSampati(req, res, next) {
-  const addAnyaSampatiQuery = `INSERT INTO anya_sampatis (dist_id,office_id,sampati_name,sampati_location,acquired_date,created_by,updated_by) values (?,?,?,?,?,?,?)`;
+  const addAnyaSampatiQuery = `INSERT INTO anya_sampatis (dist_id,office_id,sampati_name,sampati_location,acquired_date,created_by,updated_by) values (?,?,?,?,?,?,?)`
   pool.query(
     addAnyaSampatiQuery,
     [
@@ -82,17 +82,17 @@ async function addAnyaSampati(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for updating a Anya_Sampati
 async function updateAnyaSampati(req, res, next) {
-  const updateAnyaSampatiQuery = `UPDATE anya_sampatis SET dist_id=?, office_id=?, sampati_name=?, sampati_location=?, acquired_date=?, created_by=?,updated_by=? WHERE sampati_id=?`;
+  const updateAnyaSampatiQuery = `UPDATE anya_sampatis SET dist_id=?, office_id=?, sampati_name=?, sampati_location=?, acquired_date=?, created_by=?,updated_by=? WHERE sampati_id=?`
   pool.query(
     updateAnyaSampatiQuery,
     [
@@ -107,28 +107,28 @@ async function updateAnyaSampati(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for deleting a AnyaSampati
 async function deleteAnyaSampati(req, res, next) {
-  const deleteAnyaSampatiQuery = `DELETE  FROM anya_sampatis where sampati_id=?`;
+  const deleteAnyaSampatiQuery = `DELETE  FROM anya_sampatis where sampati_id=?`
   pool.query(
     deleteAnyaSampatiQuery,
     [req.params.sampatiId],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 module.exports = {
@@ -137,4 +137,4 @@ module.exports = {
   addAnyaSampati,
   updateAnyaSampati,
   deleteAnyaSampati,
-};
+}
