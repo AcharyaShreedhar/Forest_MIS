@@ -1,25 +1,25 @@
-import React, { Component } from 'react'
-import { PropTypes } from 'prop-types'
-import { connect } from 'react-redux'
-import { equals, isNil } from 'ramda'
+import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
+import { equals, isNil } from 'ramda';
 import {
   BudgetBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
-} from '../../../components'
-import BudgetActions from '../../../actions/budget'
-import AppActions from '../../../actions/app'
+} from '../../../components';
+import BudgetbibaranActions from '../../../actions/budgetbibaran';
+import AppActions from '../../../actions/app';
 import {
   karyakramsirshakHeadings,
   districtList,
-} from '../../../services/config'
-import { Fragment } from 'react'
+} from '../../../services/config';
+import { Fragment } from 'react';
 
-class Karyakramsirshak extends Component {
+class KaryakramSirshak extends Component {
   constructor(props) {
-    super(props)
-    const { districtId, officeId } = this.props
+    super(props);
+    const { districtId, officeId } = this.props;
     this.state = {
       loc: 'karyakramsirshaklist',
       fromDate: '2075-01-01',
@@ -31,76 +31,76 @@ class Karyakramsirshak extends Component {
       showDialog: false,
       item: {},
       path: 'karyakramsirshak',
-    }
-    this.handleAdd = this.handleAdd.bind(this)
-    this.handlePer = this.handlePer.bind(this)
-    this.handlePageChange = this.handlePageChange.bind(this)
-    this.handleSelectMenu = this.handleSelectMenu.bind(this)
-    this.fetchResults = this.fetchResults.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
-    this.handleClose = this.handleClose.bind(this)
-    this.handlePerCallback = this.handlePerCallback.bind(this)
+    };
+    this.handleAdd = this.handleAdd.bind(this);
+    this.handlePer = this.handlePer.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSelectMenu = this.handleSelectMenu.bind(this);
+    this.fetchResults = this.fetchResults.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handlePerCallback = this.handlePerCallback.bind(this);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const loc = nextProps.location.pathname.split('/')[2]
+    const loc = nextProps.location.pathname.split('/')[2];
 
-    var karyakramsirshakList = []
-    var officeList = []
+    var karyakramsirshakList = [];
+    var officeList = [];
 
     if (nextProps !== prevState) {
-      karyakramsirshakList = nextProps.karyakramsirshakDataList.data
-      officeList = nextProps.officeDataList.data
+      karyakramsirshakList = nextProps.karyakramsirshakDataList.data;
+      officeList = nextProps.officeDataList.data;
     }
 
-    return { loc, karyakramsirshakList, officeList }
+    return { loc, karyakramsirshakList, officeList };
   }
 
   handlePer(e) {
-    this.setState({ page: 0 }, () => this.handlePerCallback(e))
+    this.setState({ page: 0 }, () => this.handlePerCallback(e));
   }
   handlePerCallback(e) {
-    const { fromDate, toDate, distId, officeId, page } = this.state
+    const { fromDate, toDate, distId, officeId, page } = this.state;
     this.setState({
       perPage: e,
-    })
-    this.fetchResults(fromDate, toDate, distId, officeId, page, e)
+    });
+    this.fetchResults(fromDate, toDate, distId, officeId, page, e);
   }
   handleFromDate(e) {
-    const { distId, officeId, perPage, toDate } = this.state
+    const { distId, officeId, perPage, toDate } = this.state;
     this.setState({
       fromDate: e,
       page: 0,
-    })
-    this.fetchResults(e, toDate, distId, officeId, 0, perPage)
+    });
+    this.fetchResults(e, toDate, distId, officeId, 0, perPage);
   }
   handleToDate(e) {
-    const { distId, officeId, fromDate, perPage } = this.state
+    const { distId, officeId, fromDate, perPage } = this.state;
     this.setState({
       toDate: e,
       page: 0,
-    })
-    this.fetchResults(fromDate, e, distId, officeId, 0, perPage)
+    });
+    this.fetchResults(fromDate, e, distId, officeId, 0, perPage);
   }
   handleDistrict(e) {
-    const { fromDate, perPage, toDate } = this.state
+    const { fromDate, perPage, toDate } = this.state;
     this.setState({
       distId: e,
       officeId: '%', // office reset
       page: 0,
-    })
-    this.fetchResults(fromDate, toDate, e, '%', 0, perPage)
+    });
+    this.fetchResults(fromDate, toDate, e, '%', 0, perPage);
 
     //O-DDL
-    this.fetchOffice(e)
+    this.fetchOffice(e);
   }
   handleOffice(e) {
-    const { fromDate, perPage, toDate, distId } = this.state
+    const { fromDate, perPage, toDate, distId } = this.state;
     this.setState({
       officeId: e,
       page: 0,
-    })
-    this.fetchResults(fromDate, toDate, distId, e, 0, perPage)
+    });
+    this.fetchResults(fromDate, toDate, distId, e, 0, perPage);
   }
 
   // O-DDL
@@ -108,7 +108,7 @@ class Karyakramsirshak extends Component {
     this.props.fetchOfficedropdown({
       distId,
       // name: "value", //"office_name"
-    })
+    });
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
@@ -120,12 +120,12 @@ class Karyakramsirshak extends Component {
       name: 'karyakramsirshak_name',
       page: page,
       perPage,
-    })
+    });
   }
 
   handlePageChange(data) {
-    const { fromDate, toDate, distId, officeId, perPage } = this.state
-    this.setState({ page: data.selected })
+    const { fromDate, toDate, distId, officeId, perPage } = this.state;
+    this.setState({ page: data.selected });
     this.fetchResults(
       fromDate,
       toDate,
@@ -133,68 +133,70 @@ class Karyakramsirshak extends Component {
       officeId,
       data.selected * perPage,
       perPage
-    )
+    );
   }
 
   handleSelectMenu(event, item, path) {
-    this.setState({ item: item })
-    this.setState({ path: path })
+    this.setState({ item: item });
+    this.setState({ path: path });
     switch (event) {
       case 'edit': {
         this.props.history.push({
           pathname: `/budget/karyakramsirshakedit/${item.karyakramsirshak_id}`,
           item,
-        })
-        break
+        });
+        break;
       }
 
       case 'delete': {
-        this.setState({ showDialog: !this.state.showDialog })
-        break
+        this.setState({ showDialog: !this.state.showDialog });
+        break;
       }
       default:
-        break
+        break;
     }
   }
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog })
+    this.setState({ showDialog: !this.state.showDialog });
   }
   handleDelete() {
-    const { item } = this.state
+    const { item } = this.state;
 
-    this.props.deletekaryakramsirshak(item.karyakramsirshak_id)
+    this.props.deletekaryakramsirshak(item.karyakramsirshak_id);
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
       perPage: 10,
-    })
+    });
   }
 
   handleAdd() {
-    this.props.history.push('/budget/karyakramsirshakadd/new')
+    this.props.history.push('/budget/karyakramsirshakadd/new');
   }
   render() {
     const { loc, perPage, karyakramsirshakList, officeList, showDialog } =
-      this.state
+      this.state;
     // const { user, role, officesList } = this.props;
-    const { user, role, officeRole } = this.props
+    const { user, role, officeRole } = this.props;
+    console.log('hey');
     return (
       <div>
+        <h1>Budgwt</h1>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title='Delete'
+          title="Delete"
           body={'के तपाईँ सम्पती सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
-          confirmLabel='चाहन्छु '
-          cancelLabel='चाहंदिन '
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
         {equals(loc, 'karyakramsirshaklist') && (
           <Fragment>
-            <div className='report-filter'>
+            <div className="report-filter">
               <Filter
-                id='karyakramsirshak'
-                title='प्राप्ति मिति'
+                id="karyakramsirshak"
+                title="प्राप्ति मिति"
                 districtsList={districtList}
                 officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
@@ -204,11 +206,11 @@ class Karyakramsirshak extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id='karyakramsirshak' />
+              <ReportGenerator id="karyakramsirshak" />
             </div>
             <BudgetBibaran.List
-              buttonName='+ आन्य सम्पती'
-              title='आन्य सम्पती सम्बन्धी विवरण'
+              buttonName="+ आन्य सम्पती"
+              title="आन्य सम्पती सम्बन्धी विवरण"
               pageCount={
                 !isNil(karyakramsirshakList)
                   ? Math.ceil(karyakramsirshakList.total / perPage)
@@ -233,7 +235,7 @@ class Karyakramsirshak extends Component {
         )}
         {equals(loc, 'karyakramsirshakadd') && (
           <BudgetBibaran.Add
-            title='+ आन्य सम्पती विवरण'
+            title="+ आन्य सम्पती विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addkaryakramsirshak(e)}
@@ -241,7 +243,7 @@ class Karyakramsirshak extends Component {
         )}
         {equals(loc, 'karyakramsirshakedit') && (
           <BudgetBibaran.Edit
-            title='आन्य सम्पती सम्बन्धी विवरण शंसोधन'
+            title="आन्य सम्पती सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -249,19 +251,19 @@ class Karyakramsirshak extends Component {
           />
         )}
       </div>
-    )
+    );
   }
 }
 
-karyakramsirshak.propTypes = {
+KaryakramSirshak.propTypes = {
   karyakramsirshakDataList: PropTypes.any,
   officeDataList: PropTypes.any,
-}
+};
 
-karyakramsirshak.defaultProps = {
+KaryakramSirshak.defaultProps = {
   karyakramsirshakDataList: {},
   officeDataList: {},
-}
+};
 
 const mapStateToProps = (state) => ({
   user: state.app.user,
@@ -270,23 +272,25 @@ const mapStateToProps = (state) => ({
   officeRole: state.app.user.office_type,
   officeDataList: state.app.officesDropdownData,
   karyakramsirshakDataList: state.budget.allkaryakramsirshakData,
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
   fetchallkaryakramsirshak: (payload) =>
-    dispatch(BudgetActions.fetchallkaryakramsirshakRequest(payload)),
+    dispatch(BudgetbibaranActions.fetchallkaryakramsirshakRequest(payload)),
   addkaryakramsirshak: (payload) =>
-    dispatch(BudgetActions.addkaryakramsirshakRequest(payload)),
+    dispatch(BudgetbibaranActions.addkaryakramsirshakRequest(payload)),
 
   updatekaryakramsirshak: (payload, assetId) =>
-    dispatch(BudgetActions.updatekaryakramsirshakRequest(payload, assetId)),
+    dispatch(
+      BudgetbibaranActions.updatekaryakramsirshakRequest(payload, assetId)
+    ),
 
   deletekaryakramsirshak: (assetId) =>
-    dispatch(BudgetActions.deletekaryakramsirshakRequest(assetId)),
+    dispatch(BudgetbibaranActions.deletekaryakramsirshakRequest(assetId)),
 
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Karyakramsirshak)
+export default connect(mapStateToProps, mapDispatchToProps)(KaryakramSirshak);
