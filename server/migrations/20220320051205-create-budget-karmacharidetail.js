@@ -47,11 +47,9 @@ module.exports = {
       },
       created_by: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       updated_by: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,

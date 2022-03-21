@@ -1,17 +1,17 @@
-const pool = require('../db');
+const pool = require('../db')
 
 //Controller for Listing all karyakram_sirshak
 async function getAllKaryakramSirshak(req, res) {
-  const getTotalQuery = `SELECT count(*) as total from karyakram_sirshaks`;
-  const getAllKaryakramSirshakQuery = `select * from karyakram_sirshaks ORDER BY ? ASC LIMIT ?, ?`;
+  const getTotalQuery = `SELECT count(*) as total from karyakram_sirshaks`
+  const getAllKaryakramSirshakQuery = `select * from karyakram_sirshaks ORDER BY ? ASC LIMIT ?, ?`
 
   pool.query(getTotalQuery, (error, countresults, fields) => {
-    if (error) throw error;
+    if (error) throw error
     pool.query(
       getAllKaryakramSirshakQuery,
       [req.body.karyakram_name, req.body.page, req.body.perPage],
       (error, results, fields) => {
-        if (error) throw error;
+        if (error) throw error
         res.send(
           JSON.stringify({
             status: 200,
@@ -21,23 +21,23 @@ async function getAllKaryakramSirshak(req, res) {
               list: results,
             },
           })
-        );
+        )
       }
-    );
-  });
+    )
+  })
 }
 
 //Controller for Listing a karyakram_sirshak
 async function getKaryakramSirshak(req, res) {
-  const getKaryakramSirshakQuery = `select * from karyakram_sirshaks where karyakram_shirshak_id = ?`;
+  const getKaryakramSirshakQuery = `select * from karyakram_sirshaks where karyakram_shirshak_id = ?`
   pool.query(
     getKaryakramSirshakQuery,
     [req.params.karyakramShirshakId],
     (error, results, fields) => {
-      if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
     }
-  );
+  )
 }
 
 //Controller for adding a karyakram_sirshak
@@ -57,12 +57,12 @@ async function addKaryakramSirshak(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for updating a karyakram_sirshak
@@ -83,28 +83,28 @@ async function updateKaryakramSirshak(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for deleting a KaryakramSirshak
 async function deleteKaryakramSirshak(req, res, next) {
-  const deleteKaryakramSirshakQuery = `DELETE  FROM karyakram_sirshaks where karyakram_sirshak_id=?`;
+  const deleteKaryakramSirshakQuery = `DELETE  FROM karyakram_sirshaks where karyakram_sirshak_id=?`
   pool.query(
     deleteKaryakramSirshakQuery,
     [req.params.karyakramSirshakId],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 module.exports = {
@@ -113,4 +113,4 @@ module.exports = {
   addKaryakramSirshak,
   updateKaryakramSirshak,
   deleteKaryakramSirshak,
-};
+}

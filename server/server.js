@@ -116,7 +116,9 @@ const totalBanyajantuxetiRoutes = require('./app/routes/totalbanyajantuxetiRoute
 
 //....................................................budgetBibaran
 const karyakramShirshakRoutes = require('./app/routes/karyakramSirshakRoutes')
-
+const budgetShirshakRoutes = require('./app/routes/budgetSirshakRoutes')
+const budgetKarmachariDetailRoutes = require('./app/routes/budgetKarmachariDetailRoutes')
+const budgetBarsikRoutes = require('./app/routes/budgetBarsikRoutes')
 //.....................................................report
 const nabikaranBibaranRoutes = require('./app/routes/report/nabikaranbibaranRoutes')
 const banpaidawarBikriSamuhaRoutes = require('./app/routes/report/banpaidawarBikriSamuhaRoutes')
@@ -194,6 +196,9 @@ app.use('/api/v1', totalBanyajantuxetiRoutes)
 
 //.............................................budgetBibaran
 app.use('/api/v1', karyakramShirshakRoutes)
+app.use('/api/v1', budgetShirshakRoutes)
+app.use('/api/v1', budgetKarmachariDetailRoutes)
+app.use('/api/v1', budgetBarsikRoutes)
 
 //.............................................report
 app.use('/api/v1', nabikaranBibaranRoutes)

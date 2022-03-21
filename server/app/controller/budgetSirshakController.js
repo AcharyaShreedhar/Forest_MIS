@@ -1,52 +1,74 @@
-const pool = require('../db');
+const pool = require('../db')
 
 //Controller for Listing all budget_sirshak
 async function getAllBudgetSirshak(req, res) {
-  const getTotalQuery = `SELECT count(*) as total from budget_sirshaks`;
-  const getAllBudgetSirshakQuery = `select * from budget_sirshaks ORDER BY ? ASC LIMIT ?, ?`;
+  const getTotalQuery = `SELECT count(*) as total from budget_sirshaks where dist_id like ? and office_id like ?`
+  const getAllBudgetSirshakQuery = `select * from budget_sirshaks where dist_id like ? and office_id like ? ORDER BY ? ASC LIMIT ?, ?`
 
-  pool.query(getTotalQuery, (error, countresults, fields) => {
-    if (error) throw error;
-    pool.query(
-      getAllBudgetSirshakQuery,
-      [req.body.budget, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error;
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        );
-      }
-    );
-  });
+  pool.query(
+    getTotalQuery,
+    [req.body.dist_id, req.body.office_id],
+    (error, countresults, fields) => {
+      if (error) throw error
+      pool.query(
+        getAllBudgetSirshakQuery,
+        [
+          req.body.dist_id,
+          req.body.office_id,
+          req.body.sirshak_name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          )
+        }
+      )
+    }
+  )
 }
 
 //Controller for Listing a budget_sirshak
 async function getBudgetSirshak(req, res) {
-  const getBudgetSirshakQuery = `select * from budget_sirshaks where sirshak_id = ?`;
+  const getBudgetSirshakQuery = `select * from budget_sirshaks where sirshak_id = ?`
   pool.query(
     getBudgetSirshakQuery,
     [req.params.budgetShirshakId],
     (error, results, fields) => {
-      if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
     }
-  );
+  )
+}
+
+//Controller for budget_sirshak dropdown
+async function getBudgetSirshakDropdown(req, res) {
+  const getBudgetSirshakDropdownQuery = `select sirshak_id, sirshak_no, sirshak_name from budget_sirshaks where dist_id = ? and office_id = ?`
+  pool.query(
+    getBudgetSirshakDropdownQuery,
+    [req.body.dist_id, req.body.office_id],
+    (error, results, fields) => {
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
+    }
+  )
 }
 
 //Controller for adding a budget_sirshak
 async function addBudgetSirshak(req, res, next) {
-  const addBudgetSirshakQuery = `INSERT INTO budget_sirshaks (sirshak_id, dist_id, office_id, user_id, sirshak_name, sirshak_no, created_by,updated_by) values (?,?,?,?,?,?,?,?)`;
+  const addBudgetSirshakQuery = `INSERT INTO budget_sirshaks ( dist_id, office_id, user_id, sirshak_name, sirshak_no, created_by,updated_by) values (?,?,?,?,?,?,?)`
   pool.query(
     addBudgetSirshakQuery,
     [
-      req.body.sirshak_id,
       req.body.dist_id,
       req.body.office_id,
       req.body.user_id,
@@ -57,21 +79,20 @@ async function addBudgetSirshak(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for updating a budget_sirshak
 async function updateBudgetSirshak(req, res, next) {
-  const updateBudgetSirshakQuery = `UPDATE budget_sirshaks SET sirshak_id = ?, dist_id=?, office_id=?, user_id=?, sirshak_name=?, sirshak_no=?, created_by=?,updated_by=? WHERE sirshak_id=?`;
+  const updateBudgetSirshakQuery = `UPDATE budget_sirshaks SET dist_id=?, office_id=?, user_id=?, sirshak_name=?, sirshak_no=?, created_by=?,updated_by=? WHERE sirshak_id=?`
   pool.query(
     updateBudgetSirshakQuery,
     [
-      req.body.sirshak_id,
       req.body.dist_id,
       req.body.office_id,
       req.body.user_id,
@@ -83,28 +104,28 @@ async function updateBudgetSirshak(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for deleting a BudgetSirshak
 async function deleteBudgetSirshak(req, res, next) {
-  const deleteBudgetSirshakQuery = `DELETE  FROM budget_sirshaks where sirshak_id=?`;
+  const deleteBudgetSirshakQuery = `DELETE  FROM budget_sirshaks where sirshak_id=?`
   pool.query(
     deleteBudgetSirshakQuery,
     [req.params.sirshakId],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 module.exports = {
@@ -113,4 +134,5 @@ module.exports = {
   addBudgetSirshak,
   updateBudgetSirshak,
   deleteBudgetSirshak,
-};
+  getBudgetSirshakDropdown,
+}
