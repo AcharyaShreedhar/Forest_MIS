@@ -14,6 +14,7 @@ import Sampatibibaran from '../views/Sampatibibaran';
 import Samrakshyan from '../views/Samrakshyan';
 import User from '../views/User';
 import Offices from '../views/Offices';
+import Budget from '../views/Budget';
 
 const dashboardRoutes = [
   {
@@ -144,6 +145,14 @@ const dashboardRoutes = [
     path: '/',
     to: '/login',
     name: 'Dashboard',
+  },
+
+  {
+    path: '/budget',
+    title: 'Budget',
+    name: 'budget',
+    auth: true,
+    component: Budget,
   },
 ];
 

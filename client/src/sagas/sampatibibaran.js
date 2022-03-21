@@ -1,8 +1,8 @@
-import { call, put } from "redux-saga/effects";
-import { toast } from "react-toastify";
-import { history } from "../reducers";
-import { isNil } from "ramda";
-import SampatibibaranActions from "../actions/sampatibibaran";
+import { call, put } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
+import { history } from '../reducers';
+import { isNil } from 'ramda';
+import SampatibibaranActions from '../actions/sampatibibaran';
 
 export function* fetchallassetsRequest(api, action) {
   const { payload } = action;
@@ -37,28 +37,28 @@ export function* addassetsRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक सम्पत्ति प्रविष्ट भयो !!!!!", {
+    toast.success('सफलतापुर्वक सम्पत्ति प्रविष्ट भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallassetsRequest(api, {
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/sampatibibaran/gharjaggalist");
+    yield call(history.push, '/sampatibibaran/gharjaggalist');
     yield put(SampatibibaranActions.addassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.addassetsFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -77,28 +77,28 @@ export function* updateassetsRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक सम्पत्ति शंसोधन भयो !!!!!", {
+    toast.success('सफलतापुर्वक सम्पत्ति शंसोधन भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallassetsRequest(api, {
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/sampatibibaran/gharjaggalist");
+    yield call(history.push, '/sampatibibaran/gharjaggalist');
     yield put(SampatibibaranActions.updateassetsSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.updateassetsFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -114,19 +114,19 @@ export function* deleteassetsRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक सम्पत्ति हटाईयो !!!!!", {
+    toast.success('सफलतापुर्वक सम्पत्ति हटाईयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallassetsRequest(api, {
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
@@ -134,7 +134,7 @@ export function* deleteassetsRequest(api, action) {
   } else {
     yield put(SampatibibaranActions.deleteassetsFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -176,30 +176,30 @@ export function* addvehiclesRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक गाडी विवरण प्रविष्ट भयो !!!!!", {
+    toast.success('सफलतापुर्वक गाडी विवरण प्रविष्ट भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api, {
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/sampatibibaran/sawarisadhanlist");
+    yield call(history.push, '/sampatibibaran/sawarisadhanlist');
     yield put(SampatibibaranActions.addvehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.addvehiclesFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -218,30 +218,30 @@ export function* updatevehiclesRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक गाडी विवरण शंसोधन भयो !!!!!", {
+    toast.success('सफलतापुर्वक गाडी विवरण शंसोधन भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api, {
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/sampatibibaran/sawarisadhanlist");
+    yield call(history.push, '/sampatibibaran/sawarisadhanlist');
     yield put(SampatibibaranActions.updatevehiclesSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.updatevehiclesFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -257,21 +257,21 @@ export function* deletevehiclesRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक गाडी विवरण हटाईयो !!!!!", {
+    toast.success('सफलतापुर्वक गाडी विवरण हटाईयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallvehiclesRequest(api, {
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
@@ -279,7 +279,7 @@ export function* deletevehiclesRequest(api, action) {
   } else {
     yield put(SampatibibaranActions.deletevehiclesFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -322,30 +322,30 @@ export function* addanyasampatiRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक सम्पती विवरण प्रविष्ट भयो !!!!!", {
+    toast.success('सफलतापुर्वक सम्पती विवरण प्रविष्ट भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallanyasampatiRequest(api, {
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/sampatibibaran/anyasampatilist");
+    yield call(history.push, '/sampatibibaran/anyasampatilist');
     yield put(SampatibibaranActions.addanyasampatiSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.addanyasampatiFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -364,30 +364,30 @@ export function* updateanyasampatiRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक सम्पती विवरण शंसोधन भयो !!!!!", {
+    toast.success('सफलतापुर्वक सम्पती विवरण शंसोधन भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallanyasampatiRequest(api, {
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
-    yield call(history.push, "/sampatibibaran/anyasampatilist");
+    yield call(history.push, '/sampatibibaran/anyasampatilist');
     yield put(SampatibibaranActions.updateanyasampatiSuccess(response.data));
   } else {
     yield put(SampatibibaranActions.updateanyasampatiFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
@@ -403,21 +403,21 @@ export function* deleteanyasampatiRequest(api, action) {
 
   if (response.data.error != null) {
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }
     );
   } else if (response.ok) {
-    toast.success("सफलतापुर्वक सम्पती विवरण हटाईयो !!!!!", {
+    toast.success('सफलतापुर्वक सम्पती विवरण हटाईयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     });
     yield fetchallanyasampatiRequest(api, {
-      fromDate: "2075-01-01",
-      toDate: "2090-12-30",
-      distId: "%",
-      officeId: "%",
-      name: "asset_type",
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
+      distId: '%',
+      officeId: '%',
+      name: 'asset_type',
       page: 0,
       perPage: 10,
     });
@@ -425,7 +425,7 @@ export function* deleteanyasampatiRequest(api, action) {
   } else {
     yield put(SampatibibaranActions.deleteanyasampatiFailure());
     toast.error(
-      "तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!",
+      'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
         position: toast.POSITION.TOP_CENTER,
       }

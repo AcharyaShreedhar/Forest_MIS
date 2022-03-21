@@ -3,22 +3,22 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { equals, isNil } from 'ramda';
 import {
-  SawarisadhanBibaran,
+  BudgetBarshikBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
 } from '../../../components';
 import SampatibibaranActions from '../../../actions/sampatibibaran';
 import AppActions from '../../../actions/app';
-import { sawarisadhanHeadings, districtList } from '../../../services/config';
+import { budgetbarshikHeadings, districtList } from '../../../services/config';
 import { Fragment } from 'react';
 
-class Sawarisadhan extends Component {
+export class BudgetBarshik extends Component {
   constructor(props) {
     super(props);
     const { officeRole, districtId, officeId } = this.props;
     this.state = {
-      loc: 'sawarisadhanlist',
+      loc: 'budgetbarshiklist',
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
       distId: `${officeRole < 3 ? '%' : districtId}`,
@@ -27,7 +27,7 @@ class Sawarisadhan extends Component {
       page: 0,
       showDialog: false,
       item: {},
-      path: 'sawarisadhan',
+      path: 'budgetbarshik',
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handlePer = this.handlePer.bind(this);
@@ -46,14 +46,14 @@ class Sawarisadhan extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split('/')[2];
 
-    var sawarisadhanList = [];
+    var budgetbarshikList = [];
     var officeList = [];
 
     if (nextProps !== prevState) {
-      sawarisadhanList = nextProps.sawarisadhanDataList.data;
+      budgetbarshikList = nextProps.sawarisadhanDataList.data;
       officeList = nextProps.officeDataList.data;
     }
-    return { loc, sawarisadhanList, officeList };
+    return { loc, budgetbarshikList, officeList };
   }
 
   handlePer(e) {
@@ -142,7 +142,7 @@ class Sawarisadhan extends Component {
     switch (event) {
       case 'edit': {
         this.props.history.push({
-          pathname: `/sampatibibaran/sawarisadhanedit/${item.vehicle_id}`,
+          pathname: `/budget/budgetbarshikedit/${item.vehicle_id}`,
           item,
         });
         break;
@@ -171,10 +171,10 @@ class Sawarisadhan extends Component {
   }
 
   handleAdd() {
-    this.props.history.push('/sampatibibaran/sawarisadhanadd/new');
+    this.props.history.push('/budget/budgetbarshikadd/new');
   }
   render() {
-    const { loc, perPage, sawarisadhanList, officeList, showDialog } =
+    const { loc, perPage, budgetbarshikList, officeList, showDialog } =
       this.state;
     const { user, role, officeRole } = this.props;
 
@@ -206,22 +206,22 @@ class Sawarisadhan extends Component {
               />
               <ReportGenerator id="vehicle" />
             </div>
-            <SawarisadhanBibaran.List
+            <BudgetBarshikBibaran.List
               buttonName="+ सवारी साधन"
               title="सवारी साधन सम्बन्धी विवरण"
               pageCount={
-                !isNil(sawarisadhanList)
-                  ? Math.ceil(sawarisadhanList.total / perPage)
+                !isNil(budgetbarshikList)
+                  ? Math.ceil(budgetbarshikList.total / perPage)
                   : 10
               }
-              data={!isNil(sawarisadhanList) ? sawarisadhanList.list : []}
+              data={!isNil(budgetbarshikList) ? budgetbarshikList.list : []}
               per={perPage}
               pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
               officeRole={officeRole}
-              headings={sawarisadhanHeadings}
+              headings={budgetbarshikHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -229,8 +229,8 @@ class Sawarisadhan extends Component {
             />
           </Fragment>
         )}
-        {equals(loc, 'sawarisadhanadd') && (
-          <SawarisadhanBibaran.Add
+        {equals(loc, 'budgetbarshikadd') && (
+          <BudgetBarshikBibaran.Add
             title="+ सवारी साधन विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
@@ -238,7 +238,7 @@ class Sawarisadhan extends Component {
           />
         )}
         {equals(loc, 'sawarisadhanedit') && (
-          <SawarisadhanBibaran.Edit
+          <BudgetBarshikBibaran.Edit
             title="सवारी साधन सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
@@ -251,12 +251,12 @@ class Sawarisadhan extends Component {
   }
 }
 
-Sawarisadhan.propTypes = {
+BudgetBarshik.propTypes = {
   sawarisadhanDataList: PropTypes.any,
   officeDataList: PropTypes.any,
 };
 
-Sawarisadhan.defaultProps = {
+BudgetBarshik.defaultProps = {
   sawarisadhanDataList: {},
   officeDataList: {},
 };
@@ -288,4 +288,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Sawarisadhan);
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetBarshik);

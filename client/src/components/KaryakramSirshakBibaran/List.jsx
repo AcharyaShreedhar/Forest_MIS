@@ -1,0 +1,5 @@
+function List(props) {
+  return <>List</>;
+}
+
+export default List;
