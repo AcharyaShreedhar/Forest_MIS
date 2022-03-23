@@ -15,6 +15,7 @@ import { MiscellaneousTypes } from '../actions/miscellaneous'
 import { BipatbibaranTypes } from '../actions/bipatbibaran'
 import { SamrakshyanTypes } from '../actions/samrakshyan'
 import { ReportTypes } from '../actions/report'
+import { BudgetbibaranTypes } from '../actions/budgetbibaran'
 
 //------------------app
 import {
@@ -398,7 +399,6 @@ import {
   updatebudgetentryRequest,
   deletebudgetentryRequest,
 } from './budgetbibaran'
-import { BudgetbibaranTypes } from '../actions/budgetbibaran'
 
 const api = API.create()
 
@@ -2090,35 +2090,35 @@ export default function* root() {
       api
     ),
 
-    //------------------------------budgetentry
-    takeLatest(
-      BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST,
-      fetchallbudgetentryRequest,
-      api
-    ),
+    // //------------------------------budgetentry
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST,
+    //   fetchallbudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST,
-      fetchbudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST,
+    //   fetchbudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST,
-      addbudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST,
+    //   addbudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST,
-      updatebudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST,
+    //   updatebudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST,
-      deletebudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST,
+    //   deletebudgetentryRequest,
+    //   api
+    // ),
   ])
 }

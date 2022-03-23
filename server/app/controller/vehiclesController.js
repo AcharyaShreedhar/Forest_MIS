@@ -1,22 +1,22 @@
-const pool = require("../db");
+const pool = require('../db');
 
 //Controller for Listing all Vehicles
 async function getAllVehicles(req, res) {
-
-  let office_cond = "v.office_id like ?"
-  const office_len=(Array.isArray(req.body.officeId)) ? req.body.officeId.length : 0
-  if(office_len > 1){
-    office_cond = "v.office_id in (?)"
+  let office_cond = 'v.office_id like ?';
+  const office_len = Array.isArray(req.body.officeId)
+    ? req.body.officeId.length
+    : 0;
+  if (office_len > 1) {
+    office_cond = 'v.office_id in (?)';
   }
 
-  let dist_cond = "v.dist_id like ?"
-  const dist_len=(Array.isArray(req.body.distId)) ? req.body.distId.length : 0
-  if(dist_len > 1){
-    dist_cond = "v.dist_id in (?)"
+  let dist_cond = 'v.dist_id like ?';
+  const dist_len = Array.isArray(req.body.distId) ? req.body.distId.length : 0;
+  if (dist_len > 1) {
+    dist_cond = 'v.dist_id in (?)';
   }
 
-  const getTotalQuery =
-    `SELECT count(*) as total from vehicles as v where v.acquired_date BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
+  const getTotalQuery = `SELECT count(*) as total from vehicles as v where v.acquired_date BETWEEN ? and ? and ${dist_cond} and ${office_cond}`;
   const getAllVehiclesQuery = `select * from vehicles as v where v.acquired_date BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?, ?`;
   pool.query(
     getTotalQuery,
@@ -36,6 +36,7 @@ async function getAllVehicles(req, res) {
         ],
         (error, results, fields) => {
           if (error) throw error;
+          console.log(results);
           res.send(
             JSON.stringify({
               status: 200,
@@ -143,6 +144,7 @@ async function deleteVehicles(req, res, next) {
         console.log(error);
         next(error);
       }
+      console.log(results);
       res.send(JSON.stringify({ status: 200, error: error, data: results }));
     }
   );

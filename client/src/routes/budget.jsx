@@ -27,13 +27,6 @@ const budgetRoutes = [
   },
 
   {
-    path: '/budget/budgetentrylist',
-    title: 'BudgetEntry',
-    name: 'budgetentry',
-    auth: true,
-    component: BudgetEntry,
-  },
-  {
     path: '/budget/budgetsirshaklist',
     title: 'BudgetSirshak',
     name: 'budgetsirshak',
@@ -78,9 +71,17 @@ const budgetRoutes = [
   },
 
   {
+    path: '/budget/budgetentrylist',
+    title: 'BudgetEntry',
+    name: 'budgetentry',
+    auth: true,
+    component: BudgetEntry,
+  },
+
+  {
     redirect: true,
     path: '/budget',
-    to: '/budget/budgetentry',
+    to: '/budget/budgetentrylist',
     name: 'budgetenty',
     component: BudgetEntry,
   },

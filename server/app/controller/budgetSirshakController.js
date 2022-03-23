@@ -123,6 +123,7 @@ async function deleteBudgetSirshak(req, res, next) {
         console.log(error)
         next(error)
       }
+      console.log(results)
       res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
   )

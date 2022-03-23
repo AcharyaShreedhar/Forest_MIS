@@ -1025,6 +1025,23 @@ const create = (baseURL = Config.API_URL) => {
   const getBudgetSirshakDropdownList = (payload) =>
     api.post('budgetsirshakDropdownList', payload)
 
+  //budgetsirshak
+  const getBudgetsirshakList = (payload) =>
+    api.post('budgetsirshakList', payload)
+
+  const getBudgetsirshak = (budgetsirshakId) =>
+    api.get(`budgetsirshak/${budgetsirshakId}`)
+
+  //Add
+  const postBudgetbibaranBudgetsirshakAddNew = (payload) =>
+    api.post(`budgetsirshak`, payload)
+  //update
+  const postBudgetbibaranBudgetsirshakUpdate = (payload, budgetsirshakId) =>
+    api.put(`budgetsirshak/${budgetsirshakId}`, payload)
+  //Delete
+  const postBudgetbibaranBudgetsirshakDelete = (budgetsirshakId) =>
+    api.delete(`budgetsirshak/${budgetsirshakId}`)
+
   return {
     loginByUsername,
     getBantypesList,
@@ -1372,6 +1389,14 @@ const create = (baseURL = Config.API_URL) => {
     postSrijanBhayekoRojgari,
     postUpavoktaSusasan,
     postBanHastantaranBibaran,
+
+    //...............budgetbibaran
+
+    getBudgetsirshakList,
+    getBudgetsirshak,
+    postBudgetbibaranBudgetsirshakAddNew,
+    postBudgetbibaranBudgetsirshakUpdate,
+    postBudgetbibaranBudgetsirshakDelete,
   }
 }
 

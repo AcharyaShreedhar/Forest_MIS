@@ -13,7 +13,15 @@ export class Budget extends Component {
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'karyakram_name',
+      name: 'budget_type',
+      page: 0,
+      perPage: 10,
+    })
+
+    this.props.fetchallBudgetsirshak({
+      distId: districtId,
+      officeId: officeId,
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -28,9 +36,22 @@ export class Budget extends Component {
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'karyakram_name',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
+    })
+
+    this.props.fetchallBudgetsirshak({
+      distId: districtId,
+      officeId: officeId,
+      name: 'budget_type',
+      page: 0,
+      perPage: 10,
+    })
+
+    this.props.fetchBudgetsirshakdropdown({
+      dist_id: districtId,
+      office_id: officeId,
     })
   }
 
@@ -90,7 +111,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallKaryakramsirshak: (payload) =>
     dispatch(BudgetbibaranActions.fetchallkaryakramsirshakRequest(payload)),
-
+  fetchallBudgetsirshak: (payload) =>
+    dispatch(BudgetbibaranActions.fetchallbudgetsirshakRequest(payload)),
   fetchBudgetsirshakdropdown: (payload) =>
     dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
 })

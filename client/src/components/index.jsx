@@ -60,6 +60,7 @@ import * as OfficeBibaran from './OfficeBibaran'
 import * as AnyaSampatiBibaran from './AnyaSampatiBibaran'
 import * as KaryakramSirshakBibaran from './KaryakramSirshakBibaran'
 import * as BudgetBarshikBibaran from './BudgetBarshikBibaran'
+import * as BudgetSirshakBibaran from './BudgetSirshakBibaran'
 
 export {
   HeaderComponent,
@@ -123,4 +124,5 @@ export {
   AnyaSampatiBibaran,
   KaryakramSirshakBibaran,
   BudgetBarshikBibaran,
+  BudgetSirshakBibaran,
 }

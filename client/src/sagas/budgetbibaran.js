@@ -16,9 +16,9 @@ export function* fetchallbudgetsirshakRequest(api, action) {
 }
 
 export function* fetchbudgetsirshakRequest(api, action) {
-  const assetId = action.payload
+  const budgetsirshakId = action.payload
 
-  const response = yield api.getBudgetsirshak(assetId)
+  const response = yield api.getBudgetsirshak(budgetsirshakId)
 
   if (response.ok) {
     yield put(BudgetbibaranActions.fetchbudgetsirshakSuccess(response.data))
@@ -63,11 +63,11 @@ export function* addbudgetsirshakRequest(api, action) {
     yield fetchallbudgetsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/gharjaggalist')
+    yield call(history.push, '/budget/budgetsirshaklist')
     yield put(BudgetbibaranActions.addbudgetsirshakSuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.addbudgetsirshakFailure())
@@ -82,11 +82,11 @@ export function* addbudgetsirshakRequest(api, action) {
 
 // Update budgetsirshak
 export function* updatebudgetsirshakRequest(api, action) {
-  const { payload, assetId } = action
+  const { payload, budgetsirshakId } = action
 
   const response = yield api.postBudgetbibaranBudgetsirshakUpdate(
     payload.budgetsirshak.data,
-    assetId
+    budgetsirshakId
   )
 
   if (response.data.error != null) {
@@ -103,11 +103,11 @@ export function* updatebudgetsirshakRequest(api, action) {
     yield fetchallbudgetsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/gharjaggalist')
+    yield call(history.push, '/budget/budgetsirshaklist')
     yield put(BudgetbibaranActions.updatebudgetsirshakSuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.updatebudgetsirshakFailure())
@@ -140,7 +140,7 @@ export function* deletebudgetsirshakRequest(api, action) {
     yield fetchallbudgetsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -205,7 +205,7 @@ export function* addkaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -245,7 +245,7 @@ export function* updatekaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -282,7 +282,7 @@ export function* deletekaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -345,7 +345,7 @@ export function* addbudgetbarshikRequest(api, action) {
     yield fetchallbudgetbarshikRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -385,7 +385,7 @@ export function* updatebudgetbarshikRequest(api, action) {
     yield fetchallbudgetbarshikRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -422,7 +422,7 @@ export function* deletebudgetbarshikRequest(api, action) {
     yield fetchallbudgetbarshikRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -487,7 +487,7 @@ export function* addbudgetentryRequest(api, action) {
       toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -529,7 +529,7 @@ export function* updatebudgetentryRequest(api, action) {
       toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
@@ -568,7 +568,7 @@ export function* deletebudgetentryRequest(api, action) {
       toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'asset_type',
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     })
