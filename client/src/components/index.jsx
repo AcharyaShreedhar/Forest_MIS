@@ -58,9 +58,9 @@ import * as UserBibaran from './UserBibaran';
 import * as OfficeBibaran from './OfficeBibaran';
 
 import * as AnyaSampatiBibaran from './AnyaSampatiBibaran';
-import * as BudgetBibaran from './BudgetBibaran';
 import * as KaryakramSirshakBibaran from './KaryakramSirshakBibaran';
 import * as BudgetBarshikBibaran from './BudgetBarshikBibaran';
+import * as BudgetSirshakBibaran from './BudgetSirshakBibaran';
 
 export {
   HeaderComponent,
@@ -122,7 +122,7 @@ export {
   UserBibaran,
   OfficeBibaran,
   AnyaSampatiBibaran,
-  BudgetBibaran,
   KaryakramSirshakBibaran,
   BudgetBarshikBibaran,
+  BudgetSirshakBibaran,
 };
