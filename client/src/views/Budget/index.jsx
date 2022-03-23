@@ -26,6 +26,14 @@ export class Budget extends Component {
       page: 0,
       perPage: 10,
     });
+
+    this.props.fetchallBudgetbarsik({
+      dist_id: districtId,
+      office_id: officeId,
+      name: 'budget_type',
+      page: 0,
+      perPage: 10,
+    });
   }
 
   componentDidUpdate() {
@@ -39,6 +47,14 @@ export class Budget extends Component {
     });
 
     this.props.fetchallBudgetsirshak({
+      dist_id: districtId,
+      office_id: officeId,
+      name: 'budget_type',
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallBudgetbarsik({
       dist_id: districtId,
       office_id: officeId,
       name: 'budget_type',
@@ -105,6 +121,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BudgetbibaranActions.fetchallkaryakramsirshakRequest(payload)),
   fetchallBudgetsirshak: (payload) =>
     dispatch(BudgetbibaranActions.fetchallbudgetsirshakRequest(payload)),
+
+  fetchallBudgetbarsik: (payload) =>
+    dispatch(BudgetbibaranActions.fetchallbudgetbarsikRequest(payload)),
   //O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),

@@ -55,26 +55,26 @@ const { Types, Creators } = createActions({
   deletekaryakramsirshakSuccess: ['response'],
   deletekaryakramsirshakFailure: null,
 
-  // Budget barshik
-  fetchallbudgetbarshikRequest: ['payload'],
-  fetchallbudgetbarshikSuccess: ['response'],
-  fetchallbudgetbarshikFailure: null,
+  // Budget barsik
+  fetchallbudgetbarsikRequest: ['payload'],
+  fetchallbudgetbarsikSuccess: ['response'],
+  fetchallbudgetbarsikFailure: null,
 
-  fetchbudgetbarshikRequest: ['payload'],
-  fetchbudgetbarshikSuccess: ['response'],
-  fetchbudgetbarshikFailure: null,
+  fetchbudgetbarsikRequest: ['payload'],
+  fetchbudgetbarsikSuccess: ['response'],
+  fetchbudgetbarsikFailure: null,
 
-  addbudgetbarshikRequest: ['payload'],
-  addbudgetbarshikSuccess: ['response'],
-  addbudgetbarshikFailure: null,
+  addbudgetbarsikRequest: ['payload'],
+  addbudgetbarsikSuccess: ['response'],
+  addbudgetbarsikFailure: null,
 
-  updatebudgetbarshikRequest: ['payload', 'budgetbarshikId'],
-  updatebudgetbarshikSuccess: ['response'],
-  updatebudgetbarshikFailure: null,
+  updatebudgetbarsikRequest: ['payload', 'budgetbarsikId'],
+  updatebudgetbarsikSuccess: ['response'],
+  updatebudgetbarsikFailure: null,
 
-  deletebudgetbarshikRequest: ['payload', 'budgetbarshikId'],
-  deletebudgetbarshikSuccess: ['response'],
-  deletebudgetbarshikFailure: null,
+  deletebudgetbarsikRequest: ['payload', 'budgetbarsikId'],
+  deletebudgetbarsikSuccess: ['response'],
+  deletebudgetbarsikFailure: null,
 
   // Budget entry
   fetchallbudgetentryRequest: ['payload'],

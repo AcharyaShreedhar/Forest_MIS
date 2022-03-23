@@ -1,4 +1,4 @@
-import BudgetBarshik from '../views/Budget/BudgetBarshik';
+import BudgetBarsik from '../views/Budget/BudgetBarsik';
 import BudgetEntry from '../views/Budget/BudgetEntry';
 import BudgetSirshak from '../views/Budget/BudgetSirshak';
 import KaryakramSirshak from '../views/Budget/KaryakramSirshak';
@@ -49,25 +49,25 @@ const budgetRoutes = [
   },
 
   {
-    path: '/budget/budgetbarshiklist',
-    title: 'BudgetBarshik',
-    name: 'budgetbarshik',
+    path: '/budget/budgetbarsiklist',
+    title: 'BudgetBarsik',
+    name: 'budgetbarsik',
     auth: true,
-    component: BudgetBarshik,
+    component: BudgetBarsik,
   },
   {
-    path: '/budget/budgetbarshikadd/new',
-    title: 'BudgetBarshik',
-    name: 'budgetbarshik',
+    path: '/budget/budgetbarsikadd/new',
+    title: 'BudgetBarsik',
+    name: 'budgetbarsik',
     auth: true,
-    component: BudgetBarshik,
+    component: BudgetBarsik,
   },
   {
-    path: '/budget/budgetbarshikedit/:id',
-    title: 'BudgetBarshik',
-    name: 'budgetbarshik',
+    path: '/budget/budgetbarsikedit/:id',
+    title: 'BudgetBarsik',
+    name: 'budgetbarsik',
     auth: true,
-    component: BudgetBarshik,
+    component: BudgetBarsik,
   },
 
   {

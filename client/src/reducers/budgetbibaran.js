@@ -8,6 +8,8 @@ const initialState = Immutable({
   token: '',
 });
 
+/* ----- budgetsirshak ----- */
+
 const fetchallbudgetsirshakRequest = (state, action) =>
   state.merge({ ...state, token: '', status: 'pending' });
 const fetchallbudgetsirshakSuccess = (state, action) => {
@@ -67,6 +69,67 @@ const deletebudgetsirshakSuccess = (state, action) =>
 const deletebudgetsirshakFailure = (state, action) =>
   state.merge({ ...state, status: 'error' });
 
+/* ----- budgetbarsik ----- */
+
+const fetchallbudgetbarsikRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' });
+const fetchallbudgetbarsikSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    allbudgetbarsikData: action.response,
+  });
+};
+const fetchallbudgetbarsikFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' });
+};
+
+const fetchbudgetbarsikRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' });
+const fetchbudgetbarsikSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    budgetbarsikData: action.response,
+  });
+};
+const fetchbudgetbarsikFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' });
+};
+
+//Add budgetbarsik
+const addbudgetbarsikRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' });
+const addbudgetbarsikSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  });
+const addbudgetbarsikFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' });
+
+//Update budgetbarsik
+const updatebudgetbarsikRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' });
+const updatebudgetbarsikSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  });
+const updatebudgetbarsikFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' });
+
+//Delete budgetbarsik
+const deletebudgetbarsikRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' });
+const deletebudgetbarsikSuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  });
+const deletebudgetbarsikFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' });
+
 const locationsRequest = (state, action) => {
   let locations = state.locations;
 
@@ -101,6 +164,30 @@ export const reducer = createReducer(initialState, {
   [BudgetbibaranTypes.DELETEBUDGETSIRSHAK_REQUEST]: deletebudgetsirshakRequest,
   [BudgetbibaranTypes.DELETEBUDGETSIRSHAK_SUCCESS]: deletebudgetsirshakSuccess,
   [BudgetbibaranTypes.DELETEBUDGETSIRSHAK_FAILURE]: deletebudgetsirshakFailure,
+
+  //budgetbarsik
+  [BudgetbibaranTypes.FETCHALLBUDGETBARSIK_REQUEST]:
+    fetchallbudgetbarsikRequest,
+  [BudgetbibaranTypes.FETCHALLBUDGETBARSIK_SUCCESS]:
+    fetchallbudgetbarsikSuccess,
+  [BudgetbibaranTypes.FETCHALLBUDGETBARSIK_FAILURE]:
+    fetchallbudgetbarsikFailure,
+
+  [BudgetbibaranTypes.FETCHBUDGETBARSIK_REQUEST]: fetchbudgetbarsikRequest,
+  [BudgetbibaranTypes.FETCHBUDGETBARSIK_SUCCESS]: fetchbudgetbarsikSuccess,
+  [BudgetbibaranTypes.FETCHBUDGETBARSIK_FAILURE]: fetchbudgetbarsikFailure,
+
+  [BudgetbibaranTypes.ADDBUDGETBARSIK_REQUEST]: addbudgetbarsikRequest,
+  [BudgetbibaranTypes.ADDBUDGETBARSIK_SUCCESS]: addbudgetbarsikSuccess,
+  [BudgetbibaranTypes.ADDBUDGETBARSIK_FAILURE]: addbudgetbarsikFailure,
+
+  [BudgetbibaranTypes.UPDATEBUDGETBARSIK_REQUEST]: updatebudgetbarsikRequest,
+  [BudgetbibaranTypes.UPDATEBUDGETBARSIK_SUCCESS]: updatebudgetbarsikSuccess,
+  [BudgetbibaranTypes.UPDATEBUDGETBARSIK_FAILURE]: updatebudgetbarsikFailure,
+
+  [BudgetbibaranTypes.DELETEBUDGETBARSIK_REQUEST]: deletebudgetbarsikRequest,
+  [BudgetbibaranTypes.DELETEBUDGETBARSIK_SUCCESS]: deletebudgetbarsikSuccess,
+  [BudgetbibaranTypes.DELETEBUDGETBARSIK_FAILURE]: deletebudgetbarsikFailure,
 
   [BudgetbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BudgetbibaranTypes.CLEAR_REQUEST]: clearRequest,

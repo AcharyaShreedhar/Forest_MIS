@@ -3,22 +3,22 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { equals, isNil } from 'ramda';
 import {
-  BudgetBarshikBibaran,
+  BudgetBarsikBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
 } from '../../../components';
 import SampatibibaranActions from '../../../actions/sampatibibaran';
 import AppActions from '../../../actions/app';
-import { budgetbarshikHeadings, districtList } from '../../../services/config';
+import { budgetbarsikHeadings, districtList } from '../../../services/config';
 import { Fragment } from 'react';
 
-export class BudgetBarshik extends Component {
+export class BudgetBarsik extends Component {
   constructor(props) {
     super(props);
     const { officeRole, districtId, officeId } = this.props;
     this.state = {
-      loc: 'budgetbarshiklist',
+      loc: 'budgetbarsiklist',
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
       distId: `${officeRole < 3 ? '%' : districtId}`,
@@ -27,7 +27,7 @@ export class BudgetBarshik extends Component {
       page: 0,
       showDialog: false,
       item: {},
-      path: 'budgetbarshik',
+      path: 'budgetbarsik',
     };
     this.handleAdd = this.handleAdd.bind(this);
     this.handlePer = this.handlePer.bind(this);
@@ -46,14 +46,14 @@ export class BudgetBarshik extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split('/')[2];
 
-    var budgetbarshikList = [];
+    var budgetbarsikList = [];
     var officeList = [];
 
     if (nextProps !== prevState) {
-      budgetbarshikList = nextProps.sawarisadhanDataList.data;
+      budgetbarsikList = nextProps.sawarisadhanDataList.data;
       officeList = nextProps.officeDataList.data;
     }
-    return { loc, budgetbarshikList, officeList };
+    return { loc, budgetbarsikList, officeList };
   }
 
   handlePer(e) {
@@ -112,7 +112,7 @@ export class BudgetBarshik extends Component {
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
-    this.props.fetchallSawarisadhan({
+    this.props.fetchallBudgetbarsik({
       fromDate,
       toDate,
       distId,
@@ -142,7 +142,7 @@ export class BudgetBarshik extends Component {
     switch (event) {
       case 'edit': {
         this.props.history.push({
-          pathname: `/budget/budgetbarshikedit/${item.vehicle_id}`,
+          pathname: `/budget/budgetbarsikedit/${item.vehicle_id}`,
           item,
         });
         break;
@@ -162,7 +162,7 @@ export class BudgetBarshik extends Component {
   handleDelete() {
     const { item } = this.state;
 
-    this.props.deleteSawarisadhan(item.vehicle_id);
+    this.props.deleteBudgetbarsik(item.vehicle_id);
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
@@ -171,25 +171,27 @@ export class BudgetBarshik extends Component {
   }
 
   handleAdd() {
-    this.props.history.push('/budget/budgetbarshikadd/new');
+    this.props.history.push('/budget/budgetbarsikadd/new');
   }
   render() {
-    const { loc, perPage, budgetbarshikList, officeList, showDialog } =
+    const { loc, perPage, budgetbarsikList, officeList, showDialog } =
       this.state;
     const { user, role, officeRole } = this.props;
 
     return (
       <div>
+        {console.log(budgetbarsikList)}
+        <h1>budgetbarsik</h1>
         <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"
-          body={'के तपाईँ सवारी साधन सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
+          body={'के तपाईँ बजेट वार्षिक सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
           confirmLabel="चाहन्छु "
           cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, 'sawarisadhanlist') && (
+        {equals(loc, 'budgetbarsiklist') && (
           <Fragment>
             <div className="report-filter">
               <Filter
@@ -206,22 +208,22 @@ export class BudgetBarshik extends Component {
               />
               <ReportGenerator id="vehicle" />
             </div>
-            <BudgetBarshikBibaran.List
-              buttonName="+ सवारी साधन"
-              title="सवारी साधन सम्बन्धी विवरण"
+            <BudgetBarsikBibaran.List
+              buttonName="+ बजेट वार्षिक"
+              title="बजेट वार्षिक सम्बन्धी विवरण"
               pageCount={
-                !isNil(budgetbarshikList)
-                  ? Math.ceil(budgetbarshikList.total / perPage)
+                !isNil(budgetbarsikList)
+                  ? Math.ceil(budgetbarsikList.total / perPage)
                   : 10
               }
-              data={!isNil(budgetbarshikList) ? budgetbarshikList.list : []}
+              data={!isNil(budgetbarsikList) ? budgetbarsikList.list : []}
               per={perPage}
               pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
               officeRole={officeRole}
-              headings={budgetbarshikHeadings}
+              headings={budgetbarsikHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -229,21 +231,21 @@ export class BudgetBarshik extends Component {
             />
           </Fragment>
         )}
-        {equals(loc, 'budgetbarshikadd') && (
-          <BudgetBarshikBibaran.Add
-            title="+ सवारी साधन विवरण"
+        {equals(loc, 'budgetbarsikadd') && (
+          <BudgetBarsikBibaran.Add
+            title="+ बजेट वार्षिक विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
-            onSubmit={(e) => this.props.addSawarisadhan(e)}
+            onSubmit={(e) => this.props.addBudgetbarsik(e)}
           />
         )}
-        {equals(loc, 'sawarisadhanedit') && (
-          <BudgetBarshikBibaran.Edit
-            title="सवारी साधन सम्बन्धी विवरण शंसोधन"
+        {equals(loc, 'budgetbarsikedit') && (
+          <BudgetBarsikBibaran.Edit
+            title="बजेट वार्षिक सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
-            onUpdate={(e, id) => this.props.updateSawarisadhan(e, id)}
+            onUpdate={(e, id) => this.props.updateBudgetbarsik(e, id)}
           />
         )}
       </div>
@@ -251,12 +253,12 @@ export class BudgetBarshik extends Component {
   }
 }
 
-BudgetBarshik.propTypes = {
+BudgetBarsik.propTypes = {
   sawarisadhanDataList: PropTypes.any,
   officeDataList: PropTypes.any,
 };
 
-BudgetBarshik.defaultProps = {
+BudgetBarsik.defaultProps = {
   sawarisadhanDataList: {},
   officeDataList: {},
 };
@@ -268,24 +270,24 @@ const mapStateToProps = (state) => ({
   officeId: state.app.user.office_id,
   officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
-  sawarisadhanDataList: state.sampatibibaran.allvehiclesData,
+  sawarisadhanDataList: state.sampatibibaran.allbudgetbarsikData,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallSawarisadhan: (payload) =>
-    dispatch(SampatibibaranActions.fetchallvehiclesRequest(payload)),
-  addSawarisadhan: (payload) =>
-    dispatch(SampatibibaranActions.addvehiclesRequest(payload)),
+  fetchallBudgetbarsik: (payload) =>
+    dispatch(SampatibibaranActions.fetchallbudgetbarsikRequest(payload)),
+  addBudgetbarsik: (payload) =>
+    dispatch(SampatibibaranActions.addbudgetbarsikRequest(payload)),
 
-  updateSawarisadhan: (payload, assetId) =>
-    dispatch(SampatibibaranActions.updatevehiclesRequest(payload, assetId)),
+  updateBudgetbarsik: (payload, assetId) =>
+    dispatch(SampatibibaranActions.updatebudgetbarsikRequest(payload, assetId)),
 
-  deleteSawarisadhan: (assetId) =>
-    dispatch(SampatibibaranActions.deletevehiclesRequest(assetId)),
+  deleteBudgetbarsik: (assetId) =>
+    dispatch(SampatibibaranActions.deletebudgetbarsikRequest(assetId)),
 
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BudgetBarshik);
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetBarsik);

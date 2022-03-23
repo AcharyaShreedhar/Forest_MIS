@@ -59,7 +59,7 @@ import * as OfficeBibaran from './OfficeBibaran';
 
 import * as AnyaSampatiBibaran from './AnyaSampatiBibaran';
 import * as KaryakramSirshakBibaran from './KaryakramSirshakBibaran';
-import * as BudgetBarshikBibaran from './BudgetBarshikBibaran';
+import * as BudgetBarsikBibaran from './BudgetBarsikBibaran';
 import * as BudgetSirshakBibaran from './BudgetSirshakBibaran';
 
 export {
@@ -123,6 +123,6 @@ export {
   OfficeBibaran,
   AnyaSampatiBibaran,
   KaryakramSirshakBibaran,
-  BudgetBarshikBibaran,
+  BudgetBarsikBibaran,
   BudgetSirshakBibaran,
 };

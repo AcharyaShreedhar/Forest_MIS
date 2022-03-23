@@ -21,6 +21,8 @@ async function getAllBudgetSirshak(req, res) {
         ],
         (error, results, fields) => {
           if (error) throw error;
+
+          console.log(results);
           res.send(
             JSON.stringify({
               status: 200,

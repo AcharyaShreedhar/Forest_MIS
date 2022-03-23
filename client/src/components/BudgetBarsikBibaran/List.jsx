@@ -25,11 +25,9 @@ function List(props) {
   return (
     <Fragment>
       <div className="card">
-        {officeRole > 2 && (
-          <div className="button">
-            <Button type="low" size="small" name={buttonName} onClick={onAdd} />
-          </div>
-        )}
+        <div className="button">
+          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
+        </div>
         <div className="titlebar">{title} </div>
         <Table responsive striped bordered hover id="vehicle">
           <thead>
@@ -38,40 +36,29 @@ function List(props) {
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              {officeRole > 2 && <th />}
+              <th />
             </tr>
           </thead>
           <tbody>
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((sawarisadhan, index) => (
-                <tr key={`${sawarisadhan.vehicle_id}-${index}`}>
+              data.map((budgetsirshak, index) => (
+                <tr key={`${budgetsirshak.sirshak_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{sawarisadhan.vehicle_type}</td>
-                  <td>{sawarisadhan.vehicle_no}</td>
-                  <td>{sawarisadhan.engine_no}</td>
-                  <td>{sawarisadhan.chasis_no}</td>
-                  <td>{sawarisadhan.acquired_source}</td>
-                  <td>{sawarisadhan.acquired_date}</td>
-                  <td>{sawarisadhan.acquired_price}</td>
-                  <td>{sawarisadhan.manufacturer_country}</td>
-                  <td>{sawarisadhan.manufacturer_comp}</td>
-                  <td>{sawarisadhan.model_name}</td>
-                  <td>{sawarisadhan.manufactured_date}</td>
-                  <td>{sawarisadhan.remarks}</td>
-                  {officeRole > 2 && (
-                    <td>
-                      <div className="edit">
-                        <EditDropdown
-                          options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
-                          onChange={(e) =>
-                            onSelect(e, sawarisadhan, 'yearlysawarisadhan')
-                          }
-                        />
-                      </div>
-                    </td>
-                  )}
+                  <td>{budgetsirshak.sirshak_no}</td>
+                  <td>{budgetsirshak.sirshak_name}</td>
+                  <td>{budgetsirshak.created_by}</td>
+                  <td>
+                    <div className="edit">
+                      <EditDropdown
+                        options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
+                        onChange={(e) =>
+                          onSelect(e, budgetsirshak, 'yearlysawarisadhan')
+                        }
+                      />
+                    </div>
+                  </td>
                 </tr>
               ))
             )}
