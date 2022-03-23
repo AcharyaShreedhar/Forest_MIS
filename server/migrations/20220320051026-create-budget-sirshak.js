@@ -26,6 +26,7 @@ module.exports = {
       },
       sirshak_no: {
         type: Sequelize.STRING,
+        unique: true,
         allowNull: false,
       },
       created_by: {

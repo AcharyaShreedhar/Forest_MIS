@@ -8,7 +8,7 @@
  * select: When setting reducers, not handling with database, just handling only reducers.
  */
 
-import { createActions } from 'reduxsauce';
+import { createActions } from 'reduxsauce'
 
 const { Types, Creators } = createActions({
   // budgetsirshak
@@ -64,6 +64,10 @@ const { Types, Creators } = createActions({
   fetchbudgetbarshikSuccess: ['response'],
   fetchbudgetbarshikFailure: null,
 
+  fetchbudgetsirshakdropdownRequest: ['payload'],
+  fetchbudgetsirshakdropdownSuccess: ['response'],
+  fetchbudgetsirshakdropdownFailure: null,
+
   addbudgetbarshikRequest: ['payload'],
   addbudgetbarshikSuccess: ['response'],
   addbudgetbarshikFailure: null,
@@ -100,7 +104,7 @@ const { Types, Creators } = createActions({
   locationsRequest: ['payload'],
   // Clear all caches
   clearRequest: null,
-});
+})
 
-export const BudgetbibaranTypes = Types;
-export default Creators;
+export const BudgetbibaranTypes = Types
+export default Creators

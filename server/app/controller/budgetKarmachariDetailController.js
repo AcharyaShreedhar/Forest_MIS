@@ -22,15 +22,15 @@ async function getAllBudgetKarmacharidetail(req, res) {
 
   pool.query(
     getTotalQuery,
-    [req.body.dist_id, req.body.office_id],
+    [req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error
       pool.query(
         getAllBudgetKarmacharidetailQuery,
         [
-          req.body.dist_id,
-          req.body.office_id,
-          req.body.budget_karmacharidetail_id,
+          req.body.distId,
+          req.body.officeId,
+          req.body.name,
           req.body.page,
           req.body.perPage,
         ],
