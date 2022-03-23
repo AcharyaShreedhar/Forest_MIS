@@ -7,15 +7,15 @@ async function getAllBudgetSirshak(req, res) {
 
   pool.query(
     getTotalQuery,
-    [req.body.dist_id, req.body.office_id],
+    [req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
       if (error) throw error
       pool.query(
         getAllBudgetSirshakQuery,
         [
-          req.body.dist_id,
-          req.body.office_id,
-          req.body.sirshak_name,
+          req.body.distId,
+          req.body.officeId,
+          req.body.name,
           req.body.page,
           req.body.perPage,
         ],
@@ -52,7 +52,7 @@ async function getBudgetSirshak(req, res) {
 
 //Controller for budget_sirshak dropdown
 async function getBudgetSirshakDropdown(req, res) {
-  const getBudgetSirshakDropdownQuery = `select sirshak_id, sirshak_no, sirshak_name from budget_sirshaks where dist_id = ? and office_id = ?`
+  const getBudgetSirshakDropdownQuery = `select sirshak_id as id, sirshak_no, sirshak_name as value from budget_sirshaks where dist_id = ? and office_id = ?`
   pool.query(
     getBudgetSirshakDropdownQuery,
     [req.body.dist_id, req.body.office_id],

@@ -2,29 +2,38 @@ const pool = require('../db')
 
 //Controller for Listing all karyakram_sirshak
 async function getAllKaryakramSirshak(req, res) {
-  const getTotalQuery = `SELECT count(*) as total from karyakram_sirshaks`
-  const getAllKaryakramSirshakQuery = `select * from karyakram_sirshaks ORDER BY ? ASC LIMIT ?, ?`
-
-  pool.query(getTotalQuery, (error, countresults, fields) => {
-    if (error) throw error
-    pool.query(
-      getAllKaryakramSirshakQuery,
-      [req.body.karyakram_name, req.body.page, req.body.perPage],
-      (error, results, fields) => {
-        if (error) throw error
-        res.send(
-          JSON.stringify({
-            status: 200,
-            error: null,
-            data: {
-              total: countresults[0].total,
-              list: results,
-            },
-          })
-        )
-      }
-    )
-  })
+  const getTotalQuery = `SELECT count(*) as total from karyakram_sirshaks where dist_id like ? and office_id like ?`
+  const getAllKaryakramSirshakQuery = `select * from karyakram_sirshaks where dist_id like ? and office_id like ? ORDER BY ? ASC LIMIT ?, ?`
+  pool.query(
+    getTotalQuery,
+    [req.body.distId, req.body.officeId],
+    (error, countresults, fields) => {
+      if (error) throw error
+      pool.query(
+        getAllKaryakramSirshakQuery,
+        [
+          req.body.distId,
+          req.body.officeId,
+          req.body.name,
+          req.body.page,
+          req.body.perPage,
+        ],
+        (error, results, fields) => {
+          if (error) throw error
+          res.send(
+            JSON.stringify({
+              status: 200,
+              error: null,
+              data: {
+                total: countresults[0].total,
+                list: results,
+              },
+            })
+          )
+        }
+      )
+    }
+  )
 }
 
 //Controller for Listing a karyakram_sirshak
@@ -32,7 +41,7 @@ async function getKaryakramSirshak(req, res) {
   const getKaryakramSirshakQuery = `select * from karyakram_sirshaks where karyakram_shirshak_id = ?`
   pool.query(
     getKaryakramSirshakQuery,
-    [req.params.karyakramShirshakId],
+    [req.params.karyakramSirshakId],
     (error, results, fields) => {
       if (error) throw error
       res.send(JSON.stringify({ status: 200, error: null, data: results }))

@@ -1,20 +1,20 @@
-import { takeLatest, all } from 'redux-saga/effects';
-import API from '../services/api';
-import { AppTypes } from '../actions/app';
-import { BankaprakarTypes } from '../actions/bankaprakar';
-import { BanbibaranTypes } from '../actions/banbibaran';
-import { BiruwautpadanTypes } from '../actions/biruwautpadan';
-import { DwandabebasthapanTypes } from '../actions/dwandabebasthapan';
-import { SampatibibaranTypes } from '../actions/sampatibibaran';
-import { BanpaidawarTypes } from '../actions/banpaidawar';
-import { KarmacharidarbandiTypes } from '../actions/karmacharidarbandi';
-import { InventoriesTypes } from '../actions/inventories';
-import { KarmacharibibaranTypes } from '../actions/karmacharibibaran';
-import { KaryabibaranTypes } from '../actions/karyabibaran';
-import { MiscellaneousTypes } from '../actions/miscellaneous';
-import { BipatbibaranTypes } from '../actions/bipatbibaran';
-import { SamrakshyanTypes } from '../actions/samrakshyan';
-import { ReportTypes } from '../actions/report';
+import { takeLatest, all } from 'redux-saga/effects'
+import API from '../services/api'
+import { AppTypes } from '../actions/app'
+import { BankaprakarTypes } from '../actions/bankaprakar'
+import { BanbibaranTypes } from '../actions/banbibaran'
+import { BiruwautpadanTypes } from '../actions/biruwautpadan'
+import { DwandabebasthapanTypes } from '../actions/dwandabebasthapan'
+import { SampatibibaranTypes } from '../actions/sampatibibaran'
+import { BanpaidawarTypes } from '../actions/banpaidawar'
+import { KarmacharidarbandiTypes } from '../actions/karmacharidarbandi'
+import { InventoriesTypes } from '../actions/inventories'
+import { KarmacharibibaranTypes } from '../actions/karmacharibibaran'
+import { KaryabibaranTypes } from '../actions/karyabibaran'
+import { MiscellaneousTypes } from '../actions/miscellaneous'
+import { BipatbibaranTypes } from '../actions/bipatbibaran'
+import { SamrakshyanTypes } from '../actions/samrakshyan'
+import { ReportTypes } from '../actions/report'
 
 //------------------app
 import {
@@ -52,7 +52,7 @@ import {
   deleteofficesRequest,
   loginRequest,
   logoutRequest,
-} from './app';
+} from './app'
 
 //karmacharidarbandi---------------------
 import {
@@ -61,7 +61,7 @@ import {
   addkarmacharidarbandiRequest,
   updatekarmacharidarbandiRequest,
   deletekarmacharidarbandiRequest,
-} from './karmacharidarbandi';
+} from './karmacharidarbandi'
 
 import {
   fetchallbaramaditchijbastuRequest,
@@ -99,7 +99,7 @@ import {
   addmuddaanusandhandayariRequest,
   updatemuddaanusandhandayariRequest,
   deletemuddaanusandhandayariRequest,
-} from './banbibaran';
+} from './banbibaran'
 
 //------------------------bankaprakar
 import {
@@ -154,7 +154,7 @@ import {
   addsajhedaribanbibaranRequest,
   updatesajhedaribanbibaranRequest,
   deletesajhedaribanbibaranRequest,
-} from './bankaprakar';
+} from './bankaprakar'
 
 //------------------------biruwautpadan
 import {
@@ -178,7 +178,7 @@ import {
   addjadibutiRequest,
   updatejadibutiRequest,
   deletejadibutiRequest,
-} from './biruwautpadan';
+} from './biruwautpadan'
 
 //-----------------dwandabebasthapan
 import {
@@ -194,7 +194,7 @@ import {
   addbanyajantuxetiRequest,
   updatebanyajantuxetiRequest,
   deletebanyajantuxetiRequest,
-} from './dwandabebasthapan';
+} from './dwandabebasthapan'
 
 //-------------------sampatibibaran
 import {
@@ -213,7 +213,7 @@ import {
   addanyasampatiRequest,
   updateanyasampatiRequest,
   deleteanyasampatiRequest,
-} from './sampatibibaran';
+} from './sampatibibaran'
 
 //-------banpaidawar
 import {
@@ -232,7 +232,7 @@ import {
   addbanpaidawarbikribitaranRequest,
   updatebanpaidawarbikribitaranRequest,
   deletebanpaidawarbikribitaranRequest,
-} from './banpaidawar';
+} from './banpaidawar'
 
 //--------------------bandadelobibaran
 
@@ -242,7 +242,7 @@ import {
   addbandadelobibaranRequest,
   updatebandadelobibaranRequest,
   deletebandadelobibaranRequest,
-} from './bipatbibaran';
+} from './bipatbibaran'
 
 //---------inventories
 
@@ -262,7 +262,7 @@ import {
   addexitRequest,
   updateexitRequest,
   deleteexitRequest,
-} from './inventories';
+} from './inventories'
 
 //--------karmacharibibaran
 
@@ -287,7 +287,7 @@ import {
   addpostRequest,
   updatepostRequest,
   deletepostRequest,
-} from './karmacharibibaran';
+} from './karmacharibibaran'
 
 //-------karyabibaran
 import {
@@ -301,7 +301,7 @@ import {
   addbanbikaskaryabibaranRequest,
   updatebanbikaskaryabibaranRequest,
   deletebanbikaskaryabibaranRequest,
-} from './karyabibaran';
+} from './karyabibaran'
 
 //miscellaneous
 import {
@@ -315,7 +315,7 @@ import {
   adduddhamRequest,
   updateuddhamRequest,
   deleteuddhamRequest,
-} from './miscellaneous';
+} from './miscellaneous'
 
 //bipatbibaran
 import {
@@ -329,7 +329,7 @@ import {
   addbadhibibaranRequest,
   updatebadhibibaranRequest,
   deletebadhibibaranRequest,
-} from './bipatbibaran';
+} from './bipatbibaran'
 
 // ---------------- samraxan bibaran
 import {
@@ -353,7 +353,7 @@ import {
   addpanimuhansamrakshyanRequest,
   updatepanimuhansamrakshyanRequest,
   deletepanimuhansamrakshyanRequest,
-} from './samrakshyan';
+} from './samrakshyan'
 
 //..........................report
 import {
@@ -372,12 +372,13 @@ import {
   fetchsrijanabhayekorojgariRequest,
   fetchupavoktasusasanRequest,
   fetchbanhastantaranbibaranRequest,
-} from './report';
+} from './report'
 
 //-------------------budgetbibaran
 import {
   fetchallbudgetsirshakRequest,
   fetchbudgetsirshakRequest,
+  fetchbudgetsirshakdropdownRequest, // budgetsirshak drop down
   addbudgetsirshakRequest,
   updatebudgetsirshakRequest,
   deletebudgetsirshakRequest,
@@ -396,10 +397,10 @@ import {
   addbudgetentryRequest,
   updatebudgetentryRequest,
   deletebudgetentryRequest,
-} from './budgetbibaran';
-import { BudgetbibaranTypes } from '../actions/budgetbibaran';
+} from './budgetbibaran'
+import { BudgetbibaranTypes } from '../actions/budgetbibaran'
 
-const api = API.create();
+const api = API.create()
 
 export default function* root() {
   yield all([
@@ -2003,6 +2004,12 @@ export default function* root() {
     ),
 
     takeLatest(
+      BudgetbibaranTypes.FETCHBUDGETSIRSHAKDROPDOWN_REQUEST,
+      fetchbudgetsirshakdropdownRequest,
+      api
+    ),
+
+    takeLatest(
       BudgetbibaranTypes.ADDBUDGETSIRSHAK_REQUEST,
       addbudgetsirshakRequest,
       api
@@ -2113,5 +2120,5 @@ export default function* root() {
       deletebudgetentryRequest,
       api
     ),
-  ]);
+  ])
 }

@@ -1,15 +1,15 @@
-import { equals } from 'ramda';
+import { equals } from 'ramda'
 
 const AssetsURL = equals(process.env.NODE_ENV, 'production')
   ? 'https://www.forestmis.com/assets'
-  : 'https://www.forestmis.com/assets';
+  : 'https://www.forestmis.com/assets'
 
 const SPECIALOPTIONS = {
   ALL: -1, // Select All
   NONE: -2, // Select None
   SELFASSIGNED: -3,
   LIST: -4, // List
-};
+}
 
 const banList = [
   { id: 1, value: 'बैज्ञानीक सामुदायिक वन' },
@@ -21,24 +21,24 @@ const banList = [
   { id: 7, value: 'व्यबसायीक कबुलियती बन' },
   { id: 8, value: 'निजी बन' },
   { id: 9, value: 'राष्ट्रिय बन' },
-];
+]
 
 const karyaList = [
   { id: 1, value: 'वन संबर्धन ' },
   { id: 2, value: 'वन संरक्षण ' },
   { id: 3, value: 'वन पैदावार संकलन ' },
   { id: 4, value: 'वन उद्धम' },
-];
+]
 const uddhamList = [
   { id: 1, value: 'निजी' },
   { id: 2, value: 'सामुदायिक' },
   { id: 3, value: 'सहकारी मार्फत' },
-];
+]
 const usertypeList = [
   { id: 1, value: 'युजर' },
   { id: 2, value: 'एडमिन' },
   { id: 3, value: 'सुपर एडमिन ' },
-];
+]
 
 const samudayikbanHeadings = [
   'दर्ता नं',
@@ -59,7 +59,7 @@ const samudayikbanHeadings = [
   'वार्षिक निकासी परिमाण (घ. मी)दाउरा',
   'वैज्ञानीक वन व्यबस्थापन (स्विकृती अवस्था)',
   'नविकरण गर्नुपर्ने आर्थिक बर्ष',
-];
+]
 const dharmikbanHeadings = [
   'दर्ता नं',
   'धर्मिक वनको नाम',
@@ -77,7 +77,7 @@ const dharmikbanHeadings = [
   'नविकरण अबधि ',
   'वनको मौज्दात(घ.मी.)',
   'नविकरण गर्नुपर्ने आर्थिक वर्ष',
-];
+]
 const kabuliyatibanHeadings = [
   'दर्ता नं',
   'दर्ता मिति',
@@ -100,7 +100,7 @@ const kabuliyatibanHeadings = [
   'अध्यक्ष (लिङ्ग)',
   'मुख्य  पदाधिकारीमा प्रतिनिधित्व  सचिव',
   'सचिव (लिङ्ग)',
-];
+]
 const nijibanHeadings = [
   'दर्ता नं',
   'स्विकृत मिति',
@@ -114,7 +114,7 @@ const nijibanHeadings = [
   'महिला जनसंख्या',
   'पुरुष जनसंख्या',
   'वनका मुख्य तथा सहायक प्रजातिहरु',
-];
+]
 const sajhedaribanHeadings = [
   'दर्ता नं',
   'दर्ता मिति',
@@ -127,7 +127,7 @@ const sajhedaribanHeadings = [
   'अन्य घरधुरी',
   'महिला जनसंख्या',
   'पुरुष जनसंख्या',
-];
+]
 
 const chaklabanHeadings = [
   'दर्ता नं',
@@ -141,7 +141,7 @@ const chaklabanHeadings = [
   'अन्य घरधुरी',
   'महिला जनसंख्या',
   'पुरुष जनसंख्या',
-];
+]
 
 const rastriyabanHeadings = [
   'दर्ता नं',
@@ -155,7 +155,7 @@ const rastriyabanHeadings = [
   'अन्य घरधुरी',
   'महिला जनसंख्या',
   'पुरुष जनसंख्या',
-];
+]
 const upabhoktasamuhaHeadings = [
   'दर्ता नं',
   'दर्ता मिति',
@@ -177,7 +177,7 @@ const upabhoktasamuhaHeadings = [
   'अध्यक्ष (लिङ्ग)',
   'मुख्य  पदाधिकारीमा प्रतिनिधित्व  सचिव',
   'सचिव (लिङ्ग)',
-];
+]
 
 const commercialbanHeadings = [
   'दर्ता नं',
@@ -191,7 +191,7 @@ const commercialbanHeadings = [
   'अन्य घरधुरी',
   'महिला जनसंख्या',
   'पुरुष जनसंख्या',
-];
+]
 
 const biruwautpadanHeadings = [
   'आर्थिक वर्ष',
@@ -203,7 +203,7 @@ const biruwautpadanHeadings = [
   'लक्ष',
   'प्रगति',
   'कैफियत',
-];
+]
 
 const yearlyactivitiesHeadings = [
   'सामुदायिक वन नाम',
@@ -225,7 +225,7 @@ const yearlyactivitiesHeadings = [
   'समूहले संचालन गरेको उद्यमको विवरण',
   'वार्षिक प्रतिवेदन (बुझाएको/नबुझाएको)',
   'लेखा परिक्षण (गरेको/नगरेको)',
-];
+]
 
 const banpaidawarlilamHeadings = [
   'लिलाम मिति',
@@ -235,7 +235,7 @@ const banpaidawarlilamHeadings = [
   'न्युनतम मूल्य (रु)',
   'सकार रकम (रु)',
   'कैफियत',
-];
+]
 
 const banpaidawarosarpasarHeadings = [
   'आर्थिक वर्ष',
@@ -243,7 +243,7 @@ const banpaidawarosarpasarHeadings = [
   'वन पैदावार दाउरा (चट्टा)',
   'लाभग्राही संख्या',
   'प्राप्त मूल्य अभिवृध्दि कर (रु)',
-];
+]
 
 const bandadeloHeadings = [
   'वन डढेलो लागेको ठेगाना',
@@ -257,7 +257,7 @@ const bandadeloHeadings = [
   'डढेलो लागेको मिति',
   'घाईते भएका मानिसको संख्या',
   'मृत्यु भएका मानिसको संख्या',
-];
+]
 
 const banyajantuuddarHeadings = [
   'मिति',
@@ -271,7 +271,7 @@ const banyajantuuddarHeadings = [
   'नजिकको वन क्षेत्रबाट दुरी(मि.)',
   'अन्य विवरण',
   'कैफियत',
-];
+]
 
 const banyajantuxetirahatHeadings = [
   'पिडितको नाम',
@@ -291,7 +291,7 @@ const banyajantuxetirahatHeadings = [
   'समितिको मूल्यांकन रकम(रु)',
   'भुक्तानि रकम(रु)',
   'कैफियत',
-];
+]
 const gharjaggaHeadings = [
   'किसिम (घर, जग्गा, सवारी साधानहरु)',
   'घर/जग्गा रहेको स्थान',
@@ -300,7 +300,7 @@ const gharjaggaHeadings = [
   'जग्गाको क्षेत्रफल',
   'इकाई',
   'कैफियत',
-];
+]
 
 const sawarisadhanHeadings = [
   'सवारी साधनको प्रकार',
@@ -315,26 +315,26 @@ const sawarisadhanHeadings = [
   'मोडेलको नाम',
   'निर्माण वर्ष',
   'कैफियत (अवस्था)',
-];
+]
 
 const anyasampatiHeadings = [
   'सम्पतीको नाम',
   'सम्पती रहेको स्थान',
   'प्राप्ति मिती',
   'दर्ता कर्ता',
-];
+]
 
 const officeList = [
   { id: '%', value: 'सबै' },
   { id: 1, value: 'कास्की' },
-];
+]
 
 const officeType = [
   { id: 1, value: 'मन्त्रालय' },
   { id: 2, value: 'निर्देशनालय' },
   { id: 3, value: 'कार्यलय' },
   { id: 4, value: 'सब डिभिजन' },
-];
+]
 
 const banxetraatikramanHeadings = [
   'अतिक्रमित वनको क्षेत्रफल',
@@ -347,7 +347,7 @@ const banxetraatikramanHeadings = [
   'अतिक्रमण प्रयोजन (घरछाप्रो, खेती, पूर्वाधार निर्माण)',
   'संरचना वनेको भए संरचना विवरण',
   'अतिक्रमित अवस्था (नयाँ वा पुरानो)',
-];
+]
 const seedgardenplotsHeadings = [
   'प्लटको किसिम',
   'प्रजातिहरु',
@@ -355,7 +355,7 @@ const seedgardenplotsHeadings = [
   'ठेगाना',
   'स्थापना मिति',
   'अवस्था',
-];
+]
 const banxetraanyaprayojanHeadings = [
   'आर्थिक वर्ष',
   'वन क्षेत्र उपलब्ध गराएको संस्था/आयोजनाको नाम',
@@ -371,7 +371,7 @@ const banxetraanyaprayojanHeadings = [
   'लिज रकम अध्यावधिक गरेको नगरेको',
   'वार्षिक प्रतिवेदन पेश गरेको नगरेको',
   'प्राप्त राजश्व (रु)',
-];
+]
 
 const muddaanusandhandayariHeadings = [
   'जाहेरी प्रतिवेदन मिति',
@@ -393,7 +393,7 @@ const muddaanusandhandayariHeadings = [
   'फैसला कैद',
   'वोझ वाहक जफत (भएको वा नभएको)',
   'फैसला अवस्था',
-];
+]
 
 const brixyaropanHeadings = [
   'वृक्षरोपण मिति',
@@ -405,7 +405,7 @@ const brixyaropanHeadings = [
   'वृक्षरोपण प्रजाति',
   'प्रगति',
   'वृक्षरोपण संख्या',
-];
+]
 const districtList = [
   { id: '%', value: 'सबै' },
   { id: 1, value: 'कास्की' },
@@ -419,7 +419,7 @@ const districtList = [
   { id: 9, value: 'म्याग्दी' },
   { id: 10, value: 'लमजुङ' },
   { id: 11, value: 'स्याङजा' },
-];
+]
 
 const karmacharidarbandiHeadings = [
   'पद',
@@ -428,7 +428,7 @@ const karmacharidarbandiHeadings = [
   'कायम दरबन्दी संख्या',
   'पदपुर्ति संख्या',
   'खाली संख्या',
-];
+]
 
 const karmacharibibaranHeadings = [
   'नाम',
@@ -443,7 +443,7 @@ const karmacharibibaranHeadings = [
   'श्रेणी',
   'अपोइन्ट मिति',
   'स्थिति',
-];
+]
 
 const jadibutiHeadings = [
   'जडिबुटी उत्पादन ठेगाना',
@@ -452,7 +452,7 @@ const jadibutiHeadings = [
   'लक्ष',
   'प्रगति',
   'जडिबुटी संख्या',
-];
+]
 
 const banbikaskaryabibaranHeadings = [
   'वनविकास कार्यविवरण',
@@ -460,7 +460,7 @@ const banbikaskaryabibaranHeadings = [
   'परिणाम',
   'बजेट खर्च',
   'वनको किसिम',
-];
+]
 
 const samajikkaryabibaranHeadings = [
   'सामाजिक कार्यविवरण',
@@ -468,7 +468,7 @@ const samajikkaryabibaranHeadings = [
   'परिणाम',
   'बजेट खर्च',
   'वनको किसिम',
-];
+]
 
 const rojgarsrijanaHeadings = [
   'कार्यहरु',
@@ -478,7 +478,7 @@ const rojgarsrijanaHeadings = [
   'पुरुष',
   'जम्मा',
   'कैफियत',
-];
+]
 
 const pahirobebasthapanHeadings = [
   'पहिरो गएको मिति',
@@ -489,7 +489,7 @@ const pahirobebasthapanHeadings = [
   'क्षेति विवरण',
   'मर्ने वन्यजन्तु संख्या',
   'बोटविरुवा क्षेति संख्या',
-];
+]
 
 const badibebasthapanHeadings = [
   'बाढी आएको मिति',
@@ -500,7 +500,7 @@ const badibebasthapanHeadings = [
   'क्षेति विवरण',
   'मर्ने वन्यजन्तु संख्या',
   'बोटविरुवा क्षेति संख्या',
-];
+]
 
 const nadikinarsamrakshyanHeadings = [
   'स्थान',
@@ -508,27 +508,27 @@ const nadikinarsamrakshyanHeadings = [
   'कार्यक्रम मिति',
   'संरक्षण क्षेत्र',
   'प्रभावित क्षेत्र',
-];
+]
 
 const pokharisamrakshyanHeadings = [
   'पालिका',
   'परिमाण',
   'कार्यक्रम मिति',
   'लागत',
-];
+]
 const panimuhansamrakshyanHeadings = [
   'स्थान',
   'परिमाण',
   'कार्यक्रम मिति',
   'लागात',
-];
+]
 
 const jaladharsamrakshyanHeadings = [
   'स्थान',
   'परिमाण',
   'कार्यक्रम मिति',
   'लागत',
-];
+]
 
 const banpaidawarbikribitaranHeadings = [
   'बिक्रि मिति',
@@ -543,7 +543,7 @@ const banpaidawarbikribitaranHeadings = [
   'वाह्य दर',
   'वाह्य परिमाण',
   'वाह्य रकम',
-];
+]
 const uddhamHeadings = [
   'उद्धम',
   'जिल्ला ',
@@ -551,7 +551,7 @@ const uddhamHeadings = [
   'उद्धमको प्रकार',
   'दर्ता मिती ',
   'रोजगार संख्या ',
-];
+]
 
 const userHeadings = [
   'युजरको नाम ',
@@ -561,7 +561,7 @@ const userHeadings = [
   'कार्यालयको प्रकार',
   'दर्ता मिती ',
   'दर्ता कर्ता ',
-];
+]
 
 const officeHeadings = [
   'कार्यालयको नाम ',
@@ -570,13 +570,13 @@ const officeHeadings = [
   'कार्यलयको प्रकार',
   // "दर्ता मिती ",
   'दर्ता कर्ता ',
-];
+]
 
 const karyakramsirshakHeadings = [
-  'कार्यक्रम शिर्षक',
   'कार्यक्रम शिर्षक नं.',
+  'कार्यक्रम शिर्षक',
   'दर्ता कर्ता',
-];
+]
 
 const budgetbarshikHeadings = [
   'आर्थिक वर्ष',
@@ -585,9 +585,9 @@ const budgetbarshikHeadings = [
   'दोस्रो चौमासिक',
   'तेस्रो चौमासिक',
   'बार्सिक लक्क्ष',
-];
+]
 
-const budgetsirshakHeadings = ['शिर्षक नम्बर', 'शिर्षक नाम', 'दर्ता कर्ता'];
+const budgetsirshakHeadings = ['बजेट शिर्षक नं.', 'बजेट शिर्षक', 'दर्ता कर्ता']
 
 const budgetentryHeadings = [
   'आर्थिक वर्ष',
@@ -595,7 +595,7 @@ const budgetentryHeadings = [
   'खर्च भएको वर्ष',
   'खर्च भएको महिना',
   'खर्च भएको रकम',
-];
+]
 
 export {
   AssetsURL,
@@ -651,4 +651,4 @@ export {
   budgetbarshikHeadings,
   budgetsirshakHeadings,
   budgetentryHeadings,
-};
+}
