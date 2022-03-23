@@ -14,7 +14,15 @@ export class Budget extends Component {
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'karyakram_name',
+      name: 'budget_type',
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallBudgetsirshak({
+      dist_id: districtId,
+      office_id: officeId,
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     });
@@ -25,7 +33,15 @@ export class Budget extends Component {
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'karyakram_name',
+      name: 'budget_type',
+      page: 0,
+      perPage: 10,
+    });
+
+    this.props.fetchallBudgetsirshak({
+      dist_id: districtId,
+      office_id: officeId,
+      name: 'budget_type',
       page: 0,
       perPage: 10,
     });
@@ -87,6 +103,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchallKaryakramsirshak: (payload) =>
     dispatch(BudgetbibaranActions.fetchallkaryakramsirshakRequest(payload)),
+  fetchallBudgetsirshak: (payload) =>
+    dispatch(BudgetbibaranActions.fetchallbudgetsirshakRequest(payload)),
   //O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),

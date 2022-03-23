@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { equals, isNil } from 'ramda';
 import {
-  BudgetBibaran,
+  KaryakramSirshakBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
@@ -208,7 +208,7 @@ class KaryakramSirshak extends Component {
               />
               <ReportGenerator id="karyakramsirshak" />
             </div>
-            <BudgetBibaran.List
+            <KaryakramSirshakBibaran.List
               buttonName="+ आन्य सम्पती"
               title="आन्य सम्पती सम्बन्धी विवरण"
               pageCount={
@@ -234,7 +234,7 @@ class KaryakramSirshak extends Component {
           </Fragment>
         )}
         {equals(loc, 'karyakramsirshakadd') && (
-          <BudgetBibaran.Add
+          <KaryakramSirshakBibaran.Add
             title="+ आन्य सम्पती विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
@@ -242,7 +242,7 @@ class KaryakramSirshak extends Component {
           />
         )}
         {equals(loc, 'karyakramsirshakedit') && (
-          <BudgetBibaran.Edit
+          <KaryakramSirshakBibaran.Edit
             title="आन्य सम्पती सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}

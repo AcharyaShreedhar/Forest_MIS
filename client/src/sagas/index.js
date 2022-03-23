@@ -381,21 +381,21 @@ import {
   addbudgetsirshakRequest,
   updatebudgetsirshakRequest,
   deletebudgetsirshakRequest,
-  fetchallkaryakramsirshakRequest,
-  fetchkaryakramsirshakRequest,
-  addkaryakramsirshakRequest,
-  updatekaryakramsirshakRequest,
-  deletekaryakramsirshakRequest,
-  fetchallbudgetbarshikRequest,
-  fetchbudgetbarshikRequest,
-  addbudgetbarshikRequest,
-  updatebudgetbarshikRequest,
-  deletebudgetbarshikRequest,
-  fetchallbudgetentryRequest,
-  fetchbudgetentryRequest,
-  addbudgetentryRequest,
-  updatebudgetentryRequest,
-  deletebudgetentryRequest,
+  // fetchallkaryakramsirshakRequest,
+  // fetchkaryakramsirshakRequest,
+  // addkaryakramsirshakRequest,
+  // updatekaryakramsirshakRequest,
+  // deletekaryakramsirshakRequest,
+  // fetchallbudgetbarshikRequest,
+  // fetchbudgetbarshikRequest,
+  // addbudgetbarshikRequest,
+  // updatebudgetbarshikRequest,
+  // deletebudgetbarshikRequest,
+  // fetchallbudgetentryRequest,
+  // fetchbudgetentryRequest,
+  // addbudgetentryRequest,
+  // updatebudgetentryRequest,
+  // deletebudgetentryRequest,
 } from './budgetbibaran';
 import { BudgetbibaranTypes } from '../actions/budgetbibaran';
 
@@ -2022,96 +2022,96 @@ export default function* root() {
 
     //------------------------------karyakramsirshak
 
-    takeLatest(
-      BudgetbibaranTypes.FETCHALLKARYAKRAMSIRSHAK_REQUEST,
-      fetchallkaryakramsirshakRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHALLKARYAKRAMSIRSHAK_REQUEST,
+    //   fetchallkaryakramsirshakRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.FETCHKARYAKRAMSIRSHAK_REQUEST,
-      fetchkaryakramsirshakRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHKARYAKRAMSIRSHAK_REQUEST,
+    //   fetchkaryakramsirshakRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.ADDKARYAKRAMSIRSHAK_REQUEST,
-      addkaryakramsirshakRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.ADDKARYAKRAMSIRSHAK_REQUEST,
+    //   addkaryakramsirshakRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.UPDATEKARYAKRAMSIRSHAK_REQUEST,
-      updatekaryakramsirshakRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.UPDATEKARYAKRAMSIRSHAK_REQUEST,
+    //   updatekaryakramsirshakRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.DELETEKARYAKRAMSIRSHAK_REQUEST,
-      deletekaryakramsirshakRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.DELETEKARYAKRAMSIRSHAK_REQUEST,
+    //   deletekaryakramsirshakRequest,
+    //   api
+    // ),
 
-    //------------------------------budgetbarshik
-    takeLatest(
-      BudgetbibaranTypes.FETCHALLBUDGETBARSHIK_REQUEST,
-      fetchallbudgetbarshikRequest,
-      api
-    ),
+    // //------------------------------budgetbarshik
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHALLBUDGETBARSHIK_REQUEST,
+    //   fetchallbudgetbarshikRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.FETCHBUDGETBARSHIK_REQUEST,
-      fetchbudgetbarshikRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHBUDGETBARSHIK_REQUEST,
+    //   fetchbudgetbarshikRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.ADDBUDGETBARSHIK_REQUEST,
-      addbudgetbarshikRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.ADDBUDGETBARSHIK_REQUEST,
+    //   addbudgetbarshikRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.UPDATEBUDGETBARSHIK_REQUEST,
-      updatebudgetbarshikRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.UPDATEBUDGETBARSHIK_REQUEST,
+    //   updatebudgetbarshikRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.DELETEBUDGETBARSHIK_REQUEST,
-      deletebudgetbarshikRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.DELETEBUDGETBARSHIK_REQUEST,
+    //   deletebudgetbarshikRequest,
+    //   api
+    // ),
 
-    //------------------------------budgetentry
-    takeLatest(
-      BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST,
-      fetchallbudgetentryRequest,
-      api
-    ),
+    // //------------------------------budgetentry
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST,
+    //   fetchallbudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST,
-      fetchbudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST,
+    //   fetchbudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST,
-      addbudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST,
+    //   addbudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST,
-      updatebudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST,
+    //   updatebudgetentryRequest,
+    //   api
+    // ),
 
-    takeLatest(
-      BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST,
-      deletebudgetentryRequest,
-      api
-    ),
+    // takeLatest(
+    //   BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST,
+    //   deletebudgetentryRequest,
+    //   api
+    // ),
   ]);
 }
