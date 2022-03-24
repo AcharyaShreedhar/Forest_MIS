@@ -1,18 +1,18 @@
-import { combineReducers } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { createBrowserHistory } from 'history';
-import configureStore from '../configureStore';
-import immutablePersistenceTransform from '../services/transform';
+import { combineReducers } from 'redux'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { createBrowserHistory } from 'history'
+import configureStore from '../configureStore'
+import immutablePersistenceTransform from '../services/transform'
 
-const history = createBrowserHistory();
+const history = createBrowserHistory()
 
 const persistConfig = {
   key: 'root',
   storage,
   blacklist: [],
   transforms: [immutablePersistenceTransform],
-};
+}
 
 /* ------------- Assemble The Reducers ------------- */
 const reducers = combineReducers({
@@ -21,6 +21,7 @@ const reducers = combineReducers({
   dwandabebasthapan: require('./dwandabebasthapan').reducer,
   biruwautpadan: require('./biruwautpadan').reducer,
   sampatibibaran: require('./sampatibibaran').reducer,
+  budgetbibaran: require('./budgetbibaran').reducer,
   banpaidawar: require('./banpaidawar').reducer,
   karmacharidarbandi: require('./karmacharidarbandi').reducer,
   inventories: require('./inventories').reducer,
@@ -31,15 +32,14 @@ const reducers = combineReducers({
   bipatbibaran: require('./bipatbibaran').reducer,
   samrakshyan: require('./samrakshyan').reducer,
   report: require('./report').reducer,
-  budgetbibaran: require('./budgetbibaran').reducer,
-});
+})
 
-const persistedReducer = persistReducer(persistConfig, reducers);
+const persistedReducer = persistReducer(persistConfig, reducers)
 
-const initialState = {};
+const initialState = {}
 
-const store = configureStore(initialState, persistedReducer, history);
+const store = configureStore(initialState, persistedReducer, history)
 
-const persistor = persistStore(store);
+const persistor = persistStore(store)
 
-export { store, persistor, history };
+export { store, persistor, history }

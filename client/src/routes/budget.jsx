@@ -1,27 +1,27 @@
-import BudgetBarsik from '../views/Budget/BudgetBarsik';
-import BudgetEntry from '../views/Budget/BudgetEntry';
-import BudgetSirshak from '../views/Budget/BudgetSirshak';
-import KaryakramSirshak from '../views/Budget/KaryakramSirshak';
+import BudgetBarsik from '../views/Budget/BudgetBarsik'
+import BudgetEntry from '../views/Budget/BudgetEntry'
+import BudgetSirshak from '../views/Budget/BudgetSirshak'
+import KaryakramSirshak from '../views/Budget/KaryakramSirshak'
 
 const budgetRoutes = [
   {
     path: '/budget/karyakramsirshaklist',
     title: 'KaryakramSirshak',
-    name: 'gharjagga',
+    name: 'karyakramsirshak',
     auth: true,
     component: KaryakramSirshak,
   },
   {
     path: '/budget/karyakramsirshakadd/new',
     title: 'KaryakramSirshak',
-    name: 'gharjagga',
+    name: 'karyakramsirshak',
     auth: true,
     component: KaryakramSirshak,
   },
   {
     path: '/budget/karyakramsirshakedit/:id',
     title: 'KaryakramSirshak',
-    name: 'gharjagga',
+    name: 'karyakramsirshak',
     auth: true,
     component: KaryakramSirshak,
   },
@@ -77,6 +77,14 @@ const budgetRoutes = [
     auth: true,
     component: BudgetEntry,
   },
-];
 
-export default budgetRoutes;
+  {
+    redirect: true,
+    path: '/budget',
+    to: '/budget/budgetentrylist',
+    name: 'budgetenty',
+    component: BudgetEntry,
+  },
+]
+
+export default budgetRoutes

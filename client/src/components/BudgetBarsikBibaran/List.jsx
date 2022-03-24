@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react';
-import { englishToNepaliNumber } from 'nepali-number';
-import { PropTypes } from 'prop-types';
-import { isNil } from 'ramda';
-import { Table } from 'react-bootstrap';
-import { Button, EditDropdown, Pagination } from '../../components';
+import React, { Fragment } from 'react'
+import { englishToNepaliNumber } from 'nepali-number'
+import { PropTypes } from 'prop-types'
+import { isNil } from 'ramda'
+import { Table } from 'react-bootstrap'
+import { Button, EditDropdown, Pagination } from '../../components'
 
 function List(props) {
   const {
@@ -19,9 +19,8 @@ function List(props) {
     per,
     onPer,
     role,
-    officeRole,
     forcePage,
-  } = props;
+  } = props
   return (
     <Fragment>
       <div className="card">
@@ -75,17 +74,17 @@ function List(props) {
         />
       </div>
     </Fragment>
-  );
+  )
 }
 
 List.propTypes = {
   data: PropTypes.array,
   onSelect: PropTypes.func,
-};
+}
 
 List.defaultProps = {
   data: [],
   onSelect: () => {},
-};
+}
 
-export default List;
+export default List
