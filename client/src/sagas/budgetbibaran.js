@@ -224,11 +224,10 @@ export function* addkaryakramsirshakRequest(api, action) {
 
 // Update karyakramsirshak
 export function* updatekaryakramsirshakRequest(api, action) {
-  const { payload, vehicleId } = action
-
+  const { payload, karyakramSirshakId } = action
   const response = yield api.postBudgetbibaranKaryakramsirshakUpdate(
     payload.karyakramsirshak.data,
-    vehicleId
+    karyakramSirshakId
   )
 
   if (response.data.error != null) {
@@ -245,7 +244,7 @@ export function* updatekaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'karyakram_sirshak_id',
       page: 0,
       perPage: 10,
     })

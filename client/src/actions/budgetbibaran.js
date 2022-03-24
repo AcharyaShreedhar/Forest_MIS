@@ -47,11 +47,11 @@ const { Types, Creators } = createActions({
   addkaryakramsirshakSuccess: ['response'],
   addkaryakramsirshakFailure: null,
 
-  updatekaryakramsirshakRequest: ['payload', 'karyakramsirshakId'],
+  updatekaryakramsirshakRequest: ['payload', 'karyakramSirshakId'],
   updatekaryakramsirshakSuccess: ['response'],
   updatekaryakramsirshakFailure: null,
 
-  deletekaryakramsirshakRequest: ['payload', 'karyakramsirshakId'],
+  deletekaryakramsirshakRequest: ['payload', 'karyakramSirshakId'],
   deletekaryakramsirshakSuccess: ['response'],
   deletekaryakramsirshakFailure: null,
 

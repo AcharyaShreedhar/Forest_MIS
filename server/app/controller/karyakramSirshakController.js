@@ -77,6 +77,7 @@ async function addKaryakramSirshak(req, res, next) {
 //Controller for updating a karyakram_sirshak
 async function updateKaryakramSirshak(req, res, next) {
   const updateKaryakramSirshakQuery = `UPDATE karyakram_sirshaks SET sirshak_id = ?, dist_id=?, office_id=?, user_id=?, karyakram_name=?, karyakram_sirshak_no=?, created_by=?,updated_by=? WHERE karyakram_sirshak_id=?`
+
   pool.query(
     updateKaryakramSirshakQuery,
     [
@@ -85,7 +86,7 @@ async function updateKaryakramSirshak(req, res, next) {
       req.body.office_id,
       req.body.user_id,
       req.body.karyakram_name,
-      req.body.karyakram_karyakram_sirshak_no,
+      req.body.karyakram_sirshak_no,
       req.body.created_by,
       req.body.updated_by,
       req.params.karyakramSirshakId,

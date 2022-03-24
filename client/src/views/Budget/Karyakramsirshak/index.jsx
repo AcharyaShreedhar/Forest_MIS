@@ -205,13 +205,18 @@ const mapDispatchToProps = (dispatch) => ({
   addkaryakramsirshak: (payload) =>
     dispatch(BudgetbibaranActions.addkaryakramsirshakRequest(payload)),
 
-  updatekaryakramsirshak: (payload, assetId) =>
+  updatekaryakramsirshak: (payload, karyakramSirshakId) =>
     dispatch(
-      BudgetbibaranActions.updatekaryakramsirshakRequest(payload, assetId)
+      BudgetbibaranActions.updatekaryakramsirshakRequest(
+        payload,
+        karyakramSirshakId
+      )
     ),
 
-  deletekaryakramsirshak: (assetId) =>
-    dispatch(BudgetbibaranActions.deletekaryakramsirshakRequest(assetId)),
+  deletekaryakramsirshak: (karyakramSirshakId) =>
+    dispatch(
+      BudgetbibaranActions.deletekaryakramsirshakRequest(karyakramSirshakId)
+    ),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(KaryakramSirshak)
