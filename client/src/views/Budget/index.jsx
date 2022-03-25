@@ -28,8 +28,8 @@ export class Budget extends Component {
     })
 
     this.props.fetchallBudgetbarsik({
-      dist_id: districtId,
-      office_id: officeId,
+      distId: districtId,
+      officeId: officeId,
       name: 'budget_type',
       page: 0,
       perPage: 10,
@@ -60,8 +60,8 @@ export class Budget extends Component {
     })
 
     this.props.fetchallBudgetbarsik({
-      dist_id: districtId,
-      office_id: officeId,
+      distId: districtId,
+      officeId: officeId,
       name: 'budget_type',
       page: 0,
       perPage: 10,

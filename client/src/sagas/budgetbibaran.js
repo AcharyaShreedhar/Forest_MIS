@@ -302,8 +302,8 @@ export function* deletekaryakramsirshakRequest(api, action) {
 export function* fetchallbudgetbarsikRequest(api, action) {
   const { payload } = action
   const payloaddata = isNil(payload) ? action : payload
-  console.log('payload', payloaddata)
   const response = yield api.getBudgetbarsikList(payloaddata)
+  console.log('response', response)
 
   if (response.ok) {
     yield put(BudgetbibaranActions.fetchallbudgetbarsikSuccess(response.data))
