@@ -139,10 +139,11 @@ export class BudgetBarsik extends Component {
   handleSelectMenu(event, item, path) {
     this.setState({ item: item })
     this.setState({ path: path })
+
     switch (event) {
       case 'edit': {
         this.props.history.push({
-          pathname: `/budget/budgetbarsikedit/${item.vehicle_id}`,
+          pathname: `/budget/budgetbarsikedit/${item.budget_barsik_id}`,
           item,
         })
         break
@@ -162,7 +163,7 @@ export class BudgetBarsik extends Component {
   handleDelete() {
     const { item } = this.state
 
-    this.props.deleteBudgetbarsik(item.vehicle_id)
+    this.props.deleteBudgetbarsik(item.budget_barsik_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
@@ -180,8 +181,6 @@ export class BudgetBarsik extends Component {
 
     return (
       <div>
-        {console.log('from view', budgetbarsikList)}
-        <h1>budgetbarsik</h1>
         <ConfirmationDialoge
           showDialog={showDialog}
           title="Delete"

@@ -303,7 +303,6 @@ export function* fetchallbudgetbarsikRequest(api, action) {
   const { payload } = action
   const payloaddata = isNil(payload) ? action : payload
   const response = yield api.getBudgetbarsikList(payloaddata)
-  console.log('response', response)
 
   if (response.ok) {
     yield put(BudgetbibaranActions.fetchallbudgetbarsikSuccess(response.data))
@@ -313,9 +312,8 @@ export function* fetchallbudgetbarsikRequest(api, action) {
 }
 
 export function* fetchbudgetbarsikRequest(api, action) {
-  const sampatiId = action.payload
-
-  const response = yield api.getBudgetbarsik(sampatiId)
+  const budgetbarsikId = action.payload
+  const response = yield api.getBudgetbarsik(budgetbarsikId)
 
   if (response.ok) {
     yield put(BudgetbibaranActions.fetchbudgetbarsikSuccess(response.data))
@@ -352,7 +350,7 @@ export function* addbudgetbarsikRequest(api, action) {
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/budgetbarsiklist')
+    yield call(history.push, '/budget/budgetbarsiklist')
     yield put(BudgetbibaranActions.addbudgetbarsikSuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.addbudgetbarsikFailure())
@@ -367,11 +365,11 @@ export function* addbudgetbarsikRequest(api, action) {
 
 // Update budgetbarsik
 export function* updatebudgetbarsikRequest(api, action) {
-  const { payload, sampatiId } = action
+  const { payload, budgetbarsikId } = action
 
   const response = yield api.postBudgetbibaranBudgetbarsikUpdate(
     payload.budgetbarsik.data,
-    sampatiId
+    budgetbarsikId
   )
 
   if (response.data.error != null) {

@@ -47,10 +47,25 @@ function List(props) {
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{budgetbarsik.fiscal_year}</td>
                   <td>{budgetbarsik.sirshak_id}</td>
-                  <td>{budgetbarsik.pratham_chaumasik_amount}</td>
-                  <td>{budgetbarsik.doshro_chaumasik_amount}</td>
-                  <td>{budgetbarsik.teshro_chaumasik_amount}</td>
-                  <td>{budgetbarsik.barsik_lakshay_amount}</td>
+                  <td>{budgetbarsik.karyakram_sirshak_id}</td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.pratham_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.doshro_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.teshro_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(budgetbarsik.barsik_lakshay_amount)}
+                  </td>
                   <td>
                     <div className="edit">
                       <EditDropdown
