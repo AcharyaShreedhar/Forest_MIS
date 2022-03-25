@@ -20,6 +20,7 @@ const fetchallkaryakramsirshakFailure = (state, action) => {
   state.merge({ ...state, status: 'error' })
 }
 
+
 const fetchkaryakramsirshakRequest = (state, action) =>
   state.merge({ ...state, token: '', status: 'pending' })
 const fetchkaryakramsirshakSuccess = (state, action) => {
@@ -201,6 +202,7 @@ const deletebudgetbarsikSuccess = (state, action) =>
 const deletebudgetbarsikFailure = (state, action) =>
   state.merge({ ...state, status: 'error' })
 
+
 const locationsRequest = (state, action) => {
   let locations = state.locations
 
@@ -251,6 +253,7 @@ export const reducer = createReducer(initialState, {
     fetchbudgetsirshakdropdownSuccess,
   [BudgetbibaranTypes.FETCHBUDGETSIRSHAKDROPDOWN_FAILURE]:
     fetchbudgetsirshakdropdownFailure,
+
 
   [BudgetbibaranTypes.FETCHALLBUDGETSIRSHAK_REQUEST]:
     fetchallbudgetsirshakRequest,

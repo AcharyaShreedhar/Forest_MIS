@@ -1058,6 +1058,7 @@ const create = (baseURL = Config.API_URL) => {
   const postBudgetbibaranBudgetbarsikDelete = (budgetbarsikId) =>
     api.delete(`budgetbarsik/${budgetbarsikId}`)
 
+
   return {
     loginByUsername,
     getBantypesList,
@@ -1418,6 +1419,7 @@ const create = (baseURL = Config.API_URL) => {
     postBudgetbibaranBudgetbarsikAddNew,
     postBudgetbibaranBudgetbarsikUpdate,
     postBudgetbibaranBudgetbarsikDelete,
+
   }
 }
 

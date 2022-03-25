@@ -298,6 +298,7 @@ export function* deletekaryakramsirshakRequest(api, action) {
   }
 }
 
+
 /* ----- budgetbarsik ----- */
 export function* fetchallbudgetbarsikRequest(api, action) {
   const { payload } = action
@@ -328,6 +329,7 @@ export function* addbudgetbarsikRequest(api, action) {
 
   const response = yield api.postBudgetbibaranBudgetbarsikAddNew(
     payload.budgetbarsik.data
+
   )
 
   if (response.data.error != null) {
@@ -341,6 +343,7 @@ export function* addbudgetbarsikRequest(api, action) {
     toast.success('सफलतापुर्वक सम्पती विवरण प्रविष्ट भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     })
+
     yield fetchallbudgetbarsikRequest(api, {
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
@@ -350,10 +353,12 @@ export function* addbudgetbarsikRequest(api, action) {
       page: 0,
       perPage: 10,
     })
+
     yield call(history.push, '/budget/budgetbarsiklist')
     yield put(BudgetbibaranActions.addbudgetbarsikSuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.addbudgetbarsikFailure())
+
     toast.error(
       'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
@@ -370,6 +375,7 @@ export function* updatebudgetbarsikRequest(api, action) {
   const response = yield api.postBudgetbibaranBudgetbarsikUpdate(
     payload.budgetbarsik.data,
     budgetbarsikId
+
   )
 
   if (response.data.error != null) {
@@ -383,6 +389,7 @@ export function* updatebudgetbarsikRequest(api, action) {
     toast.success('सफलतापुर्वक सम्पती विवरण शंसोधन भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     })
+
     yield fetchallbudgetbarsikRequest(api, {
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
@@ -392,10 +399,12 @@ export function* updatebudgetbarsikRequest(api, action) {
       page: 0,
       perPage: 10,
     })
+
     yield call(history.push, '/budget/budgetbarsiklist')
     yield put(BudgetbibaranActions.updatebudgetbarsikSuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.updatebudgetbarsikFailure())
+
     toast.error(
       'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
@@ -405,11 +414,13 @@ export function* updatebudgetbarsikRequest(api, action) {
   }
 }
 
+
 // Delete budgetbarsik
 export function* deletebudgetbarsikRequest(api, action) {
   const { payload } = action
 
   const response = yield api.postBudgetbibaranBudgetbarsikDelete(payload)
+
 
   if (response.data.error != null) {
     toast.error(
@@ -422,6 +433,7 @@ export function* deletebudgetbarsikRequest(api, action) {
     toast.success('सफलतापुर्वक सम्पती विवरण हटाईयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     })
+
     yield fetchallbudgetbarsikRequest(api, {
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
@@ -431,9 +443,11 @@ export function* deletebudgetbarsikRequest(api, action) {
       page: 0,
       perPage: 10,
     })
+
     yield put(BudgetbibaranActions.deletebudgetbarsikSuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.deletebudgetbarsikFailure())
+
     toast.error(
       'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {

@@ -36,6 +36,12 @@ const { Types, Creators } = createActions({
   deletebudgetsirshakRequest: ['payload', 'budgetsirshakId'],
   deletebudgetsirshakSuccess: ['response'],
   deletebudgetsirshakFailure: null,
+  
+  
+  fetchbudgetsirshakdropdownRequest: ['payload'],
+  fetchbudgetsirshakdropdownSuccess: ['response'],
+  fetchbudgetsirshakdropdownFailure: null,
+  
 
   // karyakramsirshak
 
@@ -58,6 +64,8 @@ const { Types, Creators } = createActions({
   deletekaryakramsirshakRequest: ['payload', 'karyakramsirshakId'],
   deletekaryakramsirshakSuccess: ['response'],
   deletekaryakramsirshakFailure: null,
+  
+  
 
   // Budget barsik
   fetchallbudgetbarsikRequest: ['payload'],
@@ -67,7 +75,7 @@ const { Types, Creators } = createActions({
   fetchbudgetbarsikRequest: ['payload'],
   fetchbudgetbarsikSuccess: ['response'],
   fetchbudgetbarsikFailure: null,
-
+  
   addbudgetbarsikRequest: ['payload'],
   addbudgetbarsikSuccess: ['response'],
   addbudgetbarsikFailure: null,

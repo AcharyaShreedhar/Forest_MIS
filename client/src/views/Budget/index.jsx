@@ -103,7 +103,7 @@ export class Budget extends Component {
             />
           )
         })}
-        <Route path="*" exact component={NotFound} />
+        <Route path='*' exact component={NotFound} />
       </Switch>
     )
   }
@@ -141,5 +141,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchBudgetsirshakdropdown: (payload) =>
     dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
 })
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Budget)
