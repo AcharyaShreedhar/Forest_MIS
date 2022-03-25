@@ -1042,6 +1042,23 @@ const create = (baseURL = Config.API_URL) => {
   const postBudgetbibaranBudgetsirshakDelete = (budgetsirshakId) =>
     api.delete(`budgetsirshak/${budgetsirshakId}`)
 
+  //budgetbarsik
+  const getBudgetbarsikList = (payload) => api.post('budgetbarsikList', payload)
+
+  const getBudgetbarsik = (budgetbarsikId) =>
+    api.get(`budgetbarsik/${budgetbarsikId}`)
+
+  //Add
+  const postBudgetbibaranBudgetbarsikAddNew = (payload) =>
+    api.post(`budgetbarsik`, payload)
+  //update
+  const postBudgetbibaranBudgetbarsikUpdate = (payload, budgetbarsikId) =>
+    api.put(`budgetbarsik/${budgetbarsikId}`, payload)
+  //Delete
+  const postBudgetbibaranBudgetbarsikDelete = (budgetbarsikId) =>
+    api.delete(`budgetbarsik/${budgetbarsikId}`)
+
+
   return {
     loginByUsername,
     getBantypesList,
@@ -1397,6 +1414,12 @@ const create = (baseURL = Config.API_URL) => {
     postBudgetbibaranBudgetsirshakAddNew,
     postBudgetbibaranBudgetsirshakUpdate,
     postBudgetbibaranBudgetsirshakDelete,
+    getBudgetbarsikList,
+    getBudgetbarsik,
+    postBudgetbibaranBudgetbarsikAddNew,
+    postBudgetbibaranBudgetbarsikUpdate,
+    postBudgetbibaranBudgetbarsikDelete,
+
   }
 }
 

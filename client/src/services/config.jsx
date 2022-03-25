@@ -578,9 +578,10 @@ const karyakramsirshakHeadings = [
   'दर्ता कर्ता',
 ]
 
-const budgetbarshikHeadings = [
+const budgetbarsikHeadings = [
   'आर्थिक वर्ष',
-  'शिर्षक नम्बर',
+  'वजेट शिर्षक',
+  'कार्यक्रम शिर्षक',
   'प्रथम चौमासिक',
   'दोस्रो चौमासिक',
   'तेस्रो चौमासिक',
@@ -648,7 +649,7 @@ export {
   officeHeadings,
   usertypeList,
   karyakramsirshakHeadings,
-  budgetbarshikHeadings,
+  budgetbarsikHeadings,
   budgetsirshakHeadings,
   budgetentryHeadings,
 }

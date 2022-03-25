@@ -388,16 +388,18 @@ import {
   addkaryakramsirshakRequest,
   updatekaryakramsirshakRequest,
   deletekaryakramsirshakRequest,
-  fetchallbudgetbarshikRequest,
-  fetchbudgetbarshikRequest,
-  addbudgetbarshikRequest,
-  updatebudgetbarshikRequest,
-  deletebudgetbarshikRequest,
-  fetchallbudgetentryRequest,
-  fetchbudgetentryRequest,
-  addbudgetentryRequest,
-  updatebudgetentryRequest,
-  deletebudgetentryRequest,
+
+  fetchallbudgetbarsikRequest,
+  fetchbudgetbarsikRequest,
+  addbudgetbarsikRequest,
+  updatebudgetbarsikRequest,
+  deletebudgetbarsikRequest,
+  // fetchallbudgetentryRequest,
+  // fetchbudgetentryRequest,
+  // addbudgetentryRequest,
+  // updatebudgetentryRequest,
+  // deletebudgetentryRequest,
+
 } from './budgetbibaran'
 
 const api = API.create()
@@ -2059,34 +2061,35 @@ export default function* root() {
       api
     ),
 
-    //------------------------------budgetbarshik
+    //------------------------------budgetbarsik
     takeLatest(
-      BudgetbibaranTypes.FETCHALLBUDGETBARSHIK_REQUEST,
-      fetchallbudgetbarshikRequest,
+      BudgetbibaranTypes.FETCHALLBUDGETBARSIK_REQUEST,
+      fetchallbudgetbarsikRequest,
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.FETCHBUDGETBARSHIK_REQUEST,
-      fetchbudgetbarshikRequest,
+      BudgetbibaranTypes.FETCHBUDGETBARSIK_REQUEST,
+      fetchbudgetbarsikRequest,
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.ADDBUDGETBARSHIK_REQUEST,
-      addbudgetbarshikRequest,
+      BudgetbibaranTypes.ADDBUDGETBARSIK_REQUEST,
+      addbudgetbarsikRequest,
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.UPDATEBUDGETBARSHIK_REQUEST,
-      updatebudgetbarshikRequest,
+      BudgetbibaranTypes.UPDATEBUDGETBARSIK_REQUEST,
+      updatebudgetbarsikRequest,
+
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.DELETEBUDGETBARSHIK_REQUEST,
-      deletebudgetbarshikRequest,
+      BudgetbibaranTypes.DELETEBUDGETBARSIK_REQUEST,
+      deletebudgetbarsikRequest,
       api
     ),
 

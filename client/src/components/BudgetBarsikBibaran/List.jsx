@@ -42,18 +42,36 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((budgetsirshak, index) => (
-                <tr key={`${budgetsirshak.sirshak_id}-${index}`}>
+              data.map((budgetbarsik, index) => (
+                <tr key={`${budgetbarsik.budget_barsik_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{budgetsirshak.sirshak_no}</td>
-                  <td>{budgetsirshak.sirshak_name}</td>
-                  <td>{budgetsirshak.created_by}</td>
+                  <td>{budgetbarsik.fiscal_year}</td>
+                  <td>{budgetbarsik.sirshak_id}</td>
+                  <td>{budgetbarsik.karyakram_sirshak_id}</td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.pratham_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.doshro_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.teshro_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(budgetbarsik.barsik_lakshay_amount)}
+                  </td>
                   <td>
                     <div className="edit">
                       <EditDropdown
                         options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
                         onChange={(e) =>
-                          onSelect(e, budgetsirshak, 'yearlysawarisadhan')
+                          onSelect(e, budgetbarsik, 'yearlysawarisadhan')
                         }
                       />
                     </div>
