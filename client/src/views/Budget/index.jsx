@@ -5,11 +5,12 @@ import { Route, Switch, Redirect } from 'react-router-dom'
 import { isEmpty } from 'ramda'
 import { NotFound } from '../../components'
 import BudgetbibaranActions from '../../actions/budgetbibaran'
+import AppActions from '../../actions/app'
 import budgetRoutes from '../../routes/budget'
 
 export class Budget extends Component {
   componentDidMount() {
-    const { districtId, officeId } = this.props
+    const { districtId, officeId, officeRole } = this.props
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
@@ -25,14 +26,28 @@ export class Budget extends Component {
       page: 0,
       perPage: 10,
     })
+
     this.props.fetchBudgetsirshakdropdown({
       dist_id: districtId,
       office_id: officeId,
+    })
+
+    this.props.fetchallbudgetentry({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'createdAt',
+      page: 0,
+      perPage: 10,
+    })
+
+    this.props.fetchOfficedropdown({
+      distId: '%',
+      name: 'value',
     })
   }
 
   componentDidUpdate() {
-    const { districtId, officeId } = this.props
+    const { districtId, officeRole, officeId } = this.props
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
@@ -52,6 +67,19 @@ export class Budget extends Component {
     this.props.fetchBudgetsirshakdropdown({
       dist_id: districtId,
       office_id: officeId,
+    })
+
+    this.props.fetchallbudgetentry({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'createdAt',
+      page: 0,
+      perPage: 10,
+    })
+
+    this.props.fetchOfficedropdown({
+      distId: '%',
+      name: 'value',
     })
   }
 
@@ -115,6 +143,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BudgetbibaranActions.fetchallbudgetsirshakRequest(payload)),
   fetchBudgetsirshakdropdown: (payload) =>
     dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
+  fetchallbudgetentry: (payload) =>
+    dispatch(BudgetbibaranActions.fetchallbudgetentryRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Budget)

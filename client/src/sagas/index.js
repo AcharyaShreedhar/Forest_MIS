@@ -2091,34 +2091,34 @@ export default function* root() {
     ),
 
     // //------------------------------budgetentry
-    // takeLatest(
-    //   BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST,
-    //   fetchallbudgetentryRequest,
-    //   api
-    // ),
+    takeLatest(
+      BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST,
+      fetchallbudgetentryRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST,
-    //   fetchbudgetentryRequest,
-    //   api
-    // ),
+    takeLatest(
+      BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST,
+      fetchbudgetentryRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST,
-    //   addbudgetentryRequest,
-    //   api
-    // ),
+    takeLatest(
+      BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST,
+      addbudgetentryRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST,
-    //   updatebudgetentryRequest,
-    //   api
-    // ),
+    takeLatest(
+      BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST,
+      updatebudgetentryRequest,
+      api
+    ),
 
-    // takeLatest(
-    //   BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST,
-    //   deletebudgetentryRequest,
-    //   api
-    // ),
+    takeLatest(
+      BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST,
+      deletebudgetentryRequest,
+      api
+    ),
   ])
 }

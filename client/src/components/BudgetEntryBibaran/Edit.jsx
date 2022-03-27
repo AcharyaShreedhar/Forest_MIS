@@ -6,18 +6,19 @@ import { Button, ConfirmationDialoge, Dropdown, Input } from '../../components'
 import 'nepali-datepicker-reactjs/dist/index.css'
 import BudgetbibaranActions from '../../actions/budgetbibaran'
 
-class Add extends Component {
+class Edit extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      user_id: '',
-      dist_id: '',
-      office_id: '',
-      sirshak_id: '',
-      karyakram_name: '',
-      karyakram_sirshak_no: '',
-      created_by: '',
-      updated_by: '',
+      id: props.history.location.item?.karyakram_sirshak_id,
+      user_id: props.history.location.item?.user_id,
+      dist_id: props.history.location.item?.dist_id,
+      office_id: props.history.location.item?.office_id,
+      sirshak_id: props.history.location.item?.sirshak_id,
+      karyakram_name: props.history.location.item?.karyakram_name,
+      karyakram_sirshak_no: props.history.location.item?.karyakram_sirshak_no,
+      created_by: props.history.location.item?.created_by,
+      updated_by: props.history.location.item?.updated_by,
       showDialog: false,
     }
     this.handleBudgetSirshak = this.handleBudgetSirshak.bind(this)
@@ -46,7 +47,8 @@ class Add extends Component {
   }
 
   handleSubmit() {
-    const { sirshak_id, karyakram_name, karyakram_sirshak_no } = this.state
+    const { id, sirshak_id, karyakram_name, karyakram_sirshak_no, created_by } =
+      this.state
     const payload = {
       karyakramsirshak: {
         data: {
@@ -56,11 +58,12 @@ class Add extends Component {
           sirshak_id: sirshak_id,
           karyakram_name: karyakram_name,
           karyakram_sirshak_no: karyakram_sirshak_no,
-          created_by: this.props.user.user_name,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     }
-    this.props.onSubmit(payload)
+    this.props.onUpdate(payload, id)
   }
 
   render() {
@@ -120,7 +123,7 @@ class Add extends Component {
                   defaultIds={[sirshak_id]}
                   data={budgetSirshakList}
                   getValue={(budgetSirshakList) => budgetSirshakList['value']}
-                  // getType={(budgetSirshakList) => budgetSirshakList['type']}
+                  getType={(budgetSirshakList) => budgetSirshakList['type']}
                   onChange={(e) => this.handleBudgetSirshak(e)}
                   value={sirshak_id}
                 />
@@ -145,11 +148,11 @@ class Add extends Component {
   }
 }
 
-Add.propTypes = {
+Edit.propTypes = {
   budgetSirshakDataList: PropTypes.any,
 }
 
-Add.defaultProps = {
+Edit.defaultProps = {
   budgetSirshakDataList: {},
 }
 
@@ -162,4 +165,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Add)
+export default connect(mapStateToProps, mapDispatchToProps)(Edit)

@@ -93,11 +93,11 @@ const { Types, Creators } = createActions({
   addbudgetentrySuccess: ['response'],
   addbudgetentryFailure: null,
 
-  updatebudgetentryRequest: ['payload', 'budgetentryId'],
+  updatebudgetentryRequest: ['payload', 'budgetkarmacharidetailId'],
   updatebudgetentrySuccess: ['response'],
   updatebudgetentryFailure: null,
 
-  deletebudgetentryRequest: ['payload', 'budgetentryId'],
+  deletebudgetentryRequest: ['payload', 'budgetkarmacharidetailId'],
   deletebudgetentrySuccess: ['response'],
   deletebudgetentryFailure: null,
 

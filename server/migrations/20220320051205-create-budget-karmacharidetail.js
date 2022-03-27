@@ -33,7 +33,7 @@ module.exports = {
         allowNull: false,
       },
       expense_month: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       expense_year: {

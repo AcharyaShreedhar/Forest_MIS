@@ -451,9 +451,9 @@ export function* fetchallbudgetentryRequest(api, action) {
 }
 
 export function* fetchbudgetentryRequest(api, action) {
-  const sampatiId = action.payload
+  const budgetkarmacharidetailId = action.payload
 
-  const response = yield api.getBudgetentry(sampatiId)
+  const response = yield api.getBudgetentry(budgetkarmacharidetailId)
 
   if (response.ok) {
     yield put(BudgetbibaranActions.fetchbudgetentrySuccess(response.data))
@@ -482,15 +482,13 @@ export function* addbudgetentryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     })
     yield fetchallbudgetentryRequest(api, {
-      fromDate: '2075-01-01',
-      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'createdAt',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/budgetentrylist')
+    yield call(history.push, '/budget/budgetentrylist')
     yield put(BudgetbibaranActions.addbudgetentrySuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.addbudgetentryFailure())
@@ -505,11 +503,11 @@ export function* addbudgetentryRequest(api, action) {
 
 // Update budgetentry
 export function* updatebudgetentryRequest(api, action) {
-  const { payload, sampatiId } = action
+  const { payload, budgetkarmacharidetailId } = action
 
   const response = yield api.postBudgetbibaranBudgetentryUpdate(
     payload.budgetentry.data,
-    sampatiId
+    budgetkarmacharidetailId
   )
 
   if (response.data.error != null) {
@@ -524,15 +522,13 @@ export function* updatebudgetentryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     })
     yield fetchallbudgetentryRequest(api, {
-      fromDate: '2075-01-01',
-      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'createdAt',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/budgetentrylist')
+    yield call(history.push, '/budget/budgetentrylist')
     yield put(BudgetbibaranActions.updatebudgetentrySuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.updatebudgetentryFailure())
@@ -563,11 +559,9 @@ export function* deletebudgetentryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     })
     yield fetchallbudgetentryRequest(api, {
-      fromDate: '2075-01-01',
-      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'createdAt',
       page: 0,
       perPage: 10,
     })

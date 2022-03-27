@@ -140,6 +140,66 @@ const fetchbudgetsirshakdropdownFailure = (state, action) => {
   state.merge({ ...state, status: 'error' })
 }
 
+// budgetentry
+const fetchallbudgetentryRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' })
+const fetchallbudgetentrySuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    allbudgetentryData: action.response,
+  })
+}
+const fetchallbudgetentryFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' })
+}
+
+const fetchbudgetentryRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' })
+const fetchbudgetentrySuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    budgetentryData: action.response,
+  })
+}
+const fetchbudgetentryFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' })
+}
+
+//Add budgetentry
+const addbudgetentryRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' })
+const addbudgetentrySuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  })
+const addbudgetentryFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' })
+
+//Update budgetentry
+const updatebudgetentryRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' })
+const updatebudgetentrySuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  })
+const updatebudgetentryFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' })
+
+//Delete budgetentry
+const deletebudgetentryRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' })
+const deletebudgetentrySuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  })
+const deletebudgetentryFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' })
+
 const locationsRequest = (state, action) => {
   let locations = state.locations
 
@@ -216,6 +276,28 @@ export const reducer = createReducer(initialState, {
   [BudgetbibaranTypes.DELETEBUDGETSIRSHAK_REQUEST]: deletebudgetsirshakRequest,
   [BudgetbibaranTypes.DELETEBUDGETSIRSHAK_SUCCESS]: deletebudgetsirshakSuccess,
   [BudgetbibaranTypes.DELETEBUDGETSIRSHAK_FAILURE]: deletebudgetsirshakFailure,
+
+  //budgetentry
+
+  [BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST]: fetchallbudgetentryRequest,
+  [BudgetbibaranTypes.FETCHALLBUDGETENTRY_SUCCESS]: fetchallbudgetentrySuccess,
+  [BudgetbibaranTypes.FETCHALLBUDGETENTRY_FAILURE]: fetchallbudgetentryFailure,
+
+  [BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST]: fetchbudgetentryRequest,
+  [BudgetbibaranTypes.FETCHBUDGETENTRY_SUCCESS]: fetchbudgetentrySuccess,
+  [BudgetbibaranTypes.FETCHBUDGETENTRY_FAILURE]: fetchbudgetentryFailure,
+
+  [BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST]: addbudgetentryRequest,
+  [BudgetbibaranTypes.ADDBUDGETENTRY_SUCCESS]: addbudgetentrySuccess,
+  [BudgetbibaranTypes.ADDBUDGETENTRY_FAILURE]: addbudgetentryFailure,
+
+  [BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST]: updatebudgetentryRequest,
+  [BudgetbibaranTypes.UPDATEBUDGETENTRY_SUCCESS]: updatebudgetentrySuccess,
+  [BudgetbibaranTypes.UPDATEBUDGETENTRY_FAILURE]: updatebudgetentryFailure,
+
+  [BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST]: deletebudgetentryRequest,
+  [BudgetbibaranTypes.DELETEBUDGETENTRY_SUCCESS]: deletebudgetentrySuccess,
+  [BudgetbibaranTypes.DELETEBUDGETENTRY_FAILURE]: deletebudgetentryFailure,
 
   [BudgetbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BudgetbibaranTypes.CLEAR_REQUEST]: clearRequest,

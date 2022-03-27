@@ -1025,7 +1025,6 @@ const create = (baseURL = Config.API_URL) => {
   const getBudgetSirshakDropdownList = (payload) =>
     api.post('budgetsirshakDropdownList', payload)
 
-  //budgetsirshak
   const getBudgetsirshakList = (payload) =>
     api.post('budgetsirshakList', payload)
 
@@ -1042,6 +1041,24 @@ const create = (baseURL = Config.API_URL) => {
   const postBudgetbibaranBudgetsirshakDelete = (budgetsirshakId) =>
     api.delete(`budgetsirshak/${budgetsirshakId}`)
 
+  // budgetentry
+  const getBudgetentryList = (payload) =>
+    api.post('budgetkarmacharidetailList', payload)
+
+  const getBudgetentry = (budgetkarmacharidetailId) =>
+    api.get(`budgetkarmacharidetail/${budgetkarmacharidetailId}`)
+
+  //Add
+  const postBudgetbibaranBudgetentryAddNew = (payload) =>
+    api.post(`budgetkarmacharidetail`, payload)
+  //update
+  const postBudgetbibaranBudgetentryUpdate = (
+    payload,
+    budgetkarmacharidetailId
+  ) => api.put(`budgetkarmacharidetail/${budgetkarmacharidetailId}`, payload)
+  //Delete
+  const postBudgetbibaranBudgetentryDelete = (budgetkarmacharidetailId) =>
+    api.delete(`budgetkarmacharidetail/${budgetkarmacharidetailId}`)
   return {
     loginByUsername,
     getBantypesList,
@@ -1373,6 +1390,21 @@ const create = (baseURL = Config.API_URL) => {
     postBudgetbibaranKaryakramsirshakUpdate,
     postBudgetbibaranKaryakramsirshakDelete,
 
+    //...............budgetsirshak
+
+    getBudgetsirshakList,
+    getBudgetsirshak,
+    postBudgetbibaranBudgetsirshakAddNew,
+    postBudgetbibaranBudgetsirshakUpdate,
+    postBudgetbibaranBudgetsirshakDelete,
+
+    //budgetentry
+    getBudgetentryList,
+    getBudgetentry,
+    postBudgetbibaranBudgetentryAddNew,
+    postBudgetbibaranBudgetentryUpdate,
+    postBudgetbibaranBudgetentryDelete,
+
     //............................report
     postNabikaranBibaran,
     postBanpaidawarBikriSamuhaBhitra,
@@ -1389,14 +1421,6 @@ const create = (baseURL = Config.API_URL) => {
     postSrijanBhayekoRojgari,
     postUpavoktaSusasan,
     postBanHastantaranBibaran,
-
-    //...............budgetbibaran
-
-    getBudgetsirshakList,
-    getBudgetsirshak,
-    postBudgetbibaranBudgetsirshakAddNew,
-    postBudgetbibaranBudgetsirshakUpdate,
-    postBudgetbibaranBudgetsirshakDelete,
   }
 }
 
