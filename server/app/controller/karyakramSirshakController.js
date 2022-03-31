@@ -38,10 +38,23 @@ async function getAllKaryakramSirshak(req, res) {
 
 //Controller for Listing a karyakram_sirshak
 async function getKaryakramSirshak(req, res) {
-  const getKaryakramSirshakQuery = `select * from karyakram_sirshaks where karyakram_shirshak_id = ?`
+  const getKaryakramSirshakQuery = `select * from karyakram_sirshaks where karyakram_sirshak_id = ?`
   pool.query(
     getKaryakramSirshakQuery,
     [req.params.karyakramSirshakId],
+    (error, results, fields) => {
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
+    }
+  )
+}
+
+//Controller for karyakram_sirshak Dropdown
+async function getKaryakramSirshakDropdown(req, res) {
+  const getKaryakramSirshakDropdownQuery = `select karyakram_sirshak_id as id, karyakram_sirshak_no, karyakram_name as value from karyakram_sirshaks where dist_id like ? and sirshak_id like ?`
+  pool.query(
+    getKaryakramSirshakDropdownQuery,
+    [req.body.dist_id, req.body.sirshak_id],
     (error, results, fields) => {
       if (error) throw error
       res.send(JSON.stringify({ status: 200, error: null, data: results }))
@@ -123,4 +136,5 @@ module.exports = {
   addKaryakramSirshak,
   updateKaryakramSirshak,
   deleteKaryakramSirshak,
+  getKaryakramSirshakDropdown,
 }

@@ -32,8 +32,16 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      expense_month: {
+      chaumasik_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      expense_month_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      expense_month: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       expense_year: {

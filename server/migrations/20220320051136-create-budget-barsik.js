@@ -10,10 +10,12 @@ module.exports = {
       },
       sirshak_id: {
         allowNull: false,
+        unique: true,
         type: Sequelize.INTEGER,
       },
       karyakram_sirshak_id: {
         allowNull: false,
+        unique: true,
         type: Sequelize.INTEGER,
       },
       dist_id: {
@@ -30,6 +32,7 @@ module.exports = {
       },
       fiscal_year: {
         type: Sequelize.STRING,
+        unique: true,
         allowNull: false,
       },
       pratham_chaumasik_amount: {

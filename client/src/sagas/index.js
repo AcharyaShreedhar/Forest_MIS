@@ -383,16 +383,19 @@ import {
   addbudgetsirshakRequest,
   updatebudgetsirshakRequest,
   deletebudgetsirshakRequest,
+  fetchkaryakramsirshakdropdownRequest, // karyakramsirshak drop down
   fetchallkaryakramsirshakRequest,
   fetchkaryakramsirshakRequest,
   addkaryakramsirshakRequest,
   updatekaryakramsirshakRequest,
   deletekaryakramsirshakRequest,
-  fetchallbudgetbarshikRequest,
-  fetchbudgetbarshikRequest,
-  addbudgetbarshikRequest,
-  updatebudgetbarshikRequest,
-  deletebudgetbarshikRequest,
+  fetchallbudgetbarsikRequest,
+  fetchbudgetbarsikRequest,
+  addbudgetbarsikRequest,
+  updatebudgetbarsikRequest,
+  deletebudgetbarsikRequest,
+  fetchbudgetbarsiklakshaydataRequest,
+  fetchbudgetchaumasiklakshaydataRequest,
   fetchallbudgetentryRequest,
   fetchbudgetentryRequest,
   addbudgetentryRequest,
@@ -2028,6 +2031,11 @@ export default function* root() {
     ),
 
     //------------------------------karyakramsirshak
+    takeLatest(
+      BudgetbibaranTypes.FETCHKARYAKRAMSIRSHAKDROPDOWN_REQUEST,
+      fetchkaryakramsirshakdropdownRequest,
+      api
+    ),
 
     takeLatest(
       BudgetbibaranTypes.FETCHALLKARYAKRAMSIRSHAK_REQUEST,
@@ -2059,34 +2067,47 @@ export default function* root() {
       api
     ),
 
-    //------------------------------budgetbarshik
+    //------------------------------budgetbarsik
     takeLatest(
-      BudgetbibaranTypes.FETCHALLBUDGETBARSHIK_REQUEST,
-      fetchallbudgetbarshikRequest,
+      BudgetbibaranTypes.FETCHALLBUDGETBARSIK_REQUEST,
+      fetchallbudgetbarsikRequest,
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.FETCHBUDGETBARSHIK_REQUEST,
-      fetchbudgetbarshikRequest,
+      BudgetbibaranTypes.FETCHBUDGETBARSIK_REQUEST,
+      fetchbudgetbarsikRequest,
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.ADDBUDGETBARSHIK_REQUEST,
-      addbudgetbarshikRequest,
+      BudgetbibaranTypes.FETCHBUDGETBARSIKLAKSHAYDATA_REQUEST,
+      fetchbudgetbarsiklakshaydataRequest,
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.UPDATEBUDGETBARSHIK_REQUEST,
-      updatebudgetbarshikRequest,
+      BudgetbibaranTypes.FETCHBUDGETCHAUMASIKLAKSHAYDATA_REQUEST,
+      fetchbudgetchaumasiklakshaydataRequest,
       api
     ),
 
     takeLatest(
-      BudgetbibaranTypes.DELETEBUDGETBARSHIK_REQUEST,
-      deletebudgetbarshikRequest,
+      BudgetbibaranTypes.ADDBUDGETBARSIK_REQUEST,
+      addbudgetbarsikRequest,
+      api
+    ),
+
+    takeLatest(
+      BudgetbibaranTypes.UPDATEBUDGETBARSIK_REQUEST,
+      updatebudgetbarsikRequest,
+
+      api
+    ),
+
+    takeLatest(
+      BudgetbibaranTypes.DELETEBUDGETBARSIK_REQUEST,
+      deletebudgetbarsikRequest,
       api
     ),
 

@@ -265,7 +265,6 @@ export class DateReport extends Component {
   render() {
     const { officeList } = this.state
     const { officeRole } = this.props
-    console.log('officerole', officeRole)
 
     return (
       <Fragment>

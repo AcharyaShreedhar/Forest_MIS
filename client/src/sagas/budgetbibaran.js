@@ -158,6 +158,20 @@ export function* deletebudgetsirshakRequest(api, action) {
 
 /* ------ karyakramsirshak -------*/
 
+// Karyakramsirshak dropdown
+export function* fetchkaryakramsirshakdropdownRequest(api, action) {
+  const { payload } = action
+  const payloaddata = isNil(payload) ? action : payload
+  const response = yield api.getKaryakramSirshakDropdownList(payloaddata)
+  if (response.ok) {
+    yield put(
+      BudgetbibaranActions.fetchkaryakramsirshakdropdownSuccess(response.data)
+    )
+  } else {
+    yield put(BudgetbibaranActions.fetchkaryakramsirshakdropdownFailure())
+  }
+}
+
 export function* fetchallkaryakramsirshakRequest(api, action) {
   const { payload } = action
   const payloaddata = isNil(payload) ? action : payload
@@ -297,37 +311,66 @@ export function* deletekaryakramsirshakRequest(api, action) {
   }
 }
 
-/* ----- budgetbarshik ----- */
-export function* fetchallbudgetbarshikRequest(api, action) {
+/* ----- budgetbarsik ----- */
+export function* fetchallbudgetbarsikRequest(api, action) {
   const { payload } = action
   const payloaddata = isNil(payload) ? action : payload
-  const response = yield api.getBudgetbarshikList(payloaddata)
+  const response = yield api.getBudgetbarsikList(payloaddata)
 
   if (response.ok) {
-    yield put(BudgetbibaranActions.fetchallbudgetbarshikSuccess(response.data))
+    yield put(BudgetbibaranActions.fetchallbudgetbarsikSuccess(response.data))
   } else {
-    yield put(BudgetbibaranActions.fetchallbudgetbarshikFailure())
+    yield put(BudgetbibaranActions.fetchallbudgetbarsikFailure())
   }
 }
 
-export function* fetchbudgetbarshikRequest(api, action) {
-  const sampatiId = action.payload
-
-  const response = yield api.getBudgetbarshik(sampatiId)
+export function* fetchbudgetbarsikRequest(api, action) {
+  const budgetbarsikId = action.payload
+  const response = yield api.getBudgetbarsik(budgetbarsikId)
 
   if (response.ok) {
-    yield put(BudgetbibaranActions.fetchbudgetbarshikSuccess(response.data))
+    yield put(BudgetbibaranActions.fetchbudgetbarsikSuccess(response.data))
   } else {
-    yield put(BudgetbibaranActions.fetchbudgetbarshikFailure())
+    yield put(BudgetbibaranActions.fetchbudgetbarsikFailure())
   }
 }
 
-// Add budgetbarshik
-export function* addbudgetbarshikRequest(api, action) {
+// budgetbarsik lakshay
+export function* fetchbudgetbarsiklakshaydataRequest(api, action) {
+  const { payload } = action
+  const payloaddata = isNil(payload) ? action : payload
+  const response = yield api.getBudgetbarsiklakshaydata(payloaddata)
+
+  if (response.ok) {
+    yield put(
+      BudgetbibaranActions.fetchbudgetbarsiklakshaydataSuccess(response.data)
+    )
+  } else {
+    yield put(BudgetbibaranActions.fetchbudgetbarsiklakshaydataFailure())
+  }
+}
+
+// budgetchaumasik lakshay
+export function* fetchbudgetchaumasiklakshaydataRequest(api, action) {
+  const { payload } = action
+  const payloaddata = isNil(payload) ? action : payload
+  const response = yield api.getBudgetchaumasiklakshaydata(payloaddata)
+
+  if (response.ok) {
+    yield put(
+      BudgetbibaranActions.fetchbudgetchaumasiklakshaydataSuccess(response.data)
+    )
+  } else {
+    yield put(BudgetbibaranActions.fetchbudgetchaumasiklakshaydataFailure())
+  }
+}
+
+// Add budgetbarsik
+export function* addbudgetbarsikRequest(api, action) {
   const { payload } = action
 
-  const response = yield api.postBudgetbibaranBudgetbarshikAddNew(
-    payload.budgetbarshik.data
+  const response = yield api.postBudgetbibaranBudgetbarsikAddNew(
+    payload.budgetbarsik.data
   )
 
   if (response.data.error != null) {
@@ -341,17 +384,22 @@ export function* addbudgetbarshikRequest(api, action) {
     toast.success('सफलतापुर्वक सम्पती विवरण प्रविष्ट भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     })
-    yield fetchallbudgetbarshikRequest(api, {
+
+    yield fetchallbudgetbarsikRequest(api, {
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
       name: 'budget_type',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/budgetbarshiklist')
-    yield put(BudgetbibaranActions.addbudgetbarshikSuccess(response.data))
+
+    yield call(history.push, '/budget/budgetbarsiklist')
+    yield put(BudgetbibaranActions.addbudgetbarsikSuccess(response.data))
   } else {
-    yield put(BudgetbibaranActions.addbudgetbarshikFailure())
+    yield put(BudgetbibaranActions.addbudgetbarsikFailure())
+
     toast.error(
       'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
@@ -361,13 +409,13 @@ export function* addbudgetbarshikRequest(api, action) {
   }
 }
 
-// Update budgetbarshik
-export function* updatebudgetbarshikRequest(api, action) {
-  const { payload, sampatiId } = action
+// Update budgetbarsik
+export function* updatebudgetbarsikRequest(api, action) {
+  const { payload, budgetbarsikId } = action
 
-  const response = yield api.postBudgetbibaranBudgetbarshikUpdate(
-    payload.budgetbarshik.data,
-    sampatiId
+  const response = yield api.postBudgetbibaranBudgetbarsikUpdate(
+    payload.budgetbarsik.data,
+    budgetbarsikId
   )
 
   if (response.data.error != null) {
@@ -381,17 +429,22 @@ export function* updatebudgetbarshikRequest(api, action) {
     toast.success('सफलतापुर्वक सम्पती विवरण शंसोधन भयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     })
-    yield fetchallbudgetbarshikRequest(api, {
+
+    yield fetchallbudgetbarsikRequest(api, {
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
       name: 'budget_type',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/budgetbarshiklist')
-    yield put(BudgetbibaranActions.updatebudgetbarshikSuccess(response.data))
+
+    yield call(history.push, '/budget/budgetbarsiklist')
+    yield put(BudgetbibaranActions.updatebudgetbarsikSuccess(response.data))
   } else {
-    yield put(BudgetbibaranActions.updatebudgetbarshikFailure())
+    yield put(BudgetbibaranActions.updatebudgetbarsikFailure())
+
     toast.error(
       'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {
@@ -401,11 +454,11 @@ export function* updatebudgetbarshikRequest(api, action) {
   }
 }
 
-// Delete budgetbarshik
-export function* deletebudgetbarshikRequest(api, action) {
+// Delete budgetbarsik
+export function* deletebudgetbarsikRequest(api, action) {
   const { payload } = action
 
-  const response = yield api.postBudgetbibaranBudgetbarshikDelete(payload)
+  const response = yield api.postBudgetbibaranBudgetbarsikDelete(payload)
 
   if (response.data.error != null) {
     toast.error(
@@ -418,16 +471,21 @@ export function* deletebudgetbarshikRequest(api, action) {
     toast.success('सफलतापुर्वक सम्पती विवरण हटाईयो !!!!!', {
       position: toast.POSITION.TOP_CENTER,
     })
-    yield fetchallbudgetbarshikRequest(api, {
+
+    yield fetchallbudgetbarsikRequest(api, {
+      fromDate: '2075-01-01',
+      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
       name: 'budget_type',
       page: 0,
       perPage: 10,
     })
-    yield put(BudgetbibaranActions.deletebudgetbarshikSuccess(response.data))
+
+    yield put(BudgetbibaranActions.deletebudgetbarsikSuccess(response.data))
   } else {
-    yield put(BudgetbibaranActions.deletebudgetbarshikFailure())
+    yield put(BudgetbibaranActions.deletebudgetbarsikFailure())
+
     toast.error(
       'तपाईँको कार्य सफल हुन सकेन.. कृपया पुनः प्रयास गर्नुहोला !!!!',
       {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { isEmpty, equals } from 'ramda'
+import { isEmpty, equals, isNil } from 'ramda'
 import { PropTypes } from 'prop-types'
+import { toast } from 'react-toastify'
 import { connect } from 'react-redux'
 import { Button, ConfirmationDialoge, Dropdown, Input } from '../../components'
 import 'nepali-datepicker-reactjs/dist/index.css'
@@ -14,35 +15,38 @@ import {
   month_List,
   chaumasik_List,
 } from '../../services/config'
-import { GiConsoleController } from 'react-icons/gi'
 
 class Add extends Component {
   constructor(props) {
     super(props)
     this.state = {
       user_id: '',
-      dist_id: '',
+      dist_id: this.props.user.dist_id,
       office_id: '',
-      sirshak_id: '',
-      karyakram_sirshak_id: '',
       fiscal_year: f_year,
+      sirshak_id: '%',
+      karyakram_sirshak_id: '',
+      chaumasik_id: 0,
       expense_year: year,
       month_List: month_List,
       month_Filter: month_List,
-      chaumasik_id: 0,
-      expense_month: 0,
-      expense_amount: '',
+      expense_month_id: 0,
+      expense_month: '',
+      expense_amount: 0,
       created_by: '',
       updated_by: '',
       showDialog: false,
     }
-    // this.handleBudgetSirshak = this.handleBudgetSirshak.bind(this)
-    // this.handleKaryakramSirshak = this.handleKaryakramSirshak.bind(this)
     this.handleFiscalYear = this.handleFiscalYear.bind(this)
+    this.handleBudgetSirshak = this.handleBudgetSirshak.bind(this)
+    this.handleKaryakramSirshak = this.handleKaryakramSirshak.bind(this)
+    this.fetchBudgetbarsiklakshay = this.fetchBudgetbarsiklakshay.bind(this)
     this.handleChaumasik = this.handleChaumasik.bind(this)
+    this.fetchBudgetchaumasiklakshay =
+      this.fetchBudgetchaumasiklakshay.bind(this)
+    this.handleYear = this.handleYear.bind(this)
     this.handleMonthFilter = this.handleMonthFilter.bind(this)
     this.handleMonth = this.handleMonth.bind(this)
-    this.handleYear = this.handleYear.bind(this)
     this.handleClose = this.handleClose.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -50,21 +54,125 @@ class Add extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     var budgetSirshakList = []
+    var karyakramSirshakList = []
+    var budgetbarsiklakshay = ''
+    var budgetchaumasikremain = ''
+    var budgetchaumasikamount = ''
     if (nextProps !== prevState) {
       budgetSirshakList = nextProps.budgetSirshakDataList.data
+      karyakramSirshakList = nextProps.karyakramSirshakDataList.data
+      if (!isNil(nextProps.budgetbarsiklakshayData)) {
+        if (!isNil(nextProps.budgetbarsiklakshayData.data[0])) {
+          budgetbarsiklakshay =
+            nextProps.budgetbarsiklakshayData.data[0].barsiklakshay
+        }
+      }
+      if (!isNil(nextProps.budgetchaumasiklakshayData)) {
+        if (!isNil(nextProps.budgetchaumasiklakshayData.data[0])) {
+          budgetchaumasikamount =
+            nextProps.budgetchaumasiklakshayData.data[0].chaumasik_amount
+          budgetchaumasikremain =
+            nextProps.budgetchaumasiklakshayData.data[0].expense_remain
+        } else {
+          budgetchaumasikamount = 0
+          budgetchaumasikremain = 0
+        }
+      }
     }
-    return { budgetSirshakList }
+    return {
+      budgetSirshakList,
+      karyakramSirshakList,
+      budgetbarsiklakshay,
+      budgetchaumasikremain,
+      budgetchaumasikamount,
+    }
+  }
+
+  componentDidMount() {
+    this.props.fetchBudgetbarsiklakshayData({
+      sirshak_id: '',
+      karyakram_sirshak_id: '',
+      fiscal_year: '',
+    })
+    this.props.fetchBudgetchaumasiklakshayData({
+      chaumasik_id: '',
+      sirshak_id: '',
+      karyakram_sirshak_id: '',
+      fiscal_year: '',
+    })
   }
 
   handleFiscalYear(e) {
     const value = e[0].value
-    this.setState({ fiscal_year: value })
+    this.setState({
+      fiscal_year: value,
+      sirshak_id: 0,
+      karyakram_sirshak_id: 0,
+      chaumasik_id: 0,
+    })
+    this.fetchBudgetbarsiklakshay('', '', '')
+    this.fetchBudgetchaumasiklakshay('', '', '', '')
+  }
+  handleBudgetSirshak(e) {
+    const { dist_id } = this.state
+    const id = e[0].id
+    this.setState({
+      sirshak_id: id,
+      karyakram_sirshak_id: 0,
+      chaumasik_id: 0,
+    })
+    this.fetchKaryakramsirshak(id, dist_id)
+    this.fetchBudgetbarsiklakshay('', '', '')
+    this.fetchBudgetchaumasiklakshay('', '', '', '')
+  }
+
+  fetchKaryakramsirshak(sirshak_id, dist_id) {
+    this.props.fetchKaryakramsirshakdropdown({
+      dist_id,
+      sirshak_id,
+    })
+  }
+
+  handleKaryakramSirshak(e) {
+    const { sirshak_id, fiscal_year } = this.state
+    const id = e[0].id
+    this.setState({ karyakram_sirshak_id: id })
+    this.fetchBudgetbarsiklakshay(sirshak_id, id, fiscal_year)
+    this.fetchBudgetchaumasiklakshay('', '', '', '')
+  }
+
+  fetchBudgetbarsiklakshay(sirshak_id, karyakram_sirshak_id, fiscal_year) {
+    this.props.fetchBudgetbarsiklakshayData({
+      sirshak_id,
+      karyakram_sirshak_id,
+      fiscal_year,
+    })
   }
 
   handleChaumasik(e) {
+    const { sirshak_id, karyakram_sirshak_id, fiscal_year } = this.state
     this.setState({ chaumasik_id: e[0] })
-    this.setState({ expense_month: 0 })
+    this.setState({ expense_month_id: 0, expense_month: '' })
     this.handleMonthFilter(e[0])
+    this.fetchBudgetchaumasiklakshay(
+      sirshak_id,
+      karyakram_sirshak_id,
+      e[0],
+      fiscal_year
+    )
+  }
+  fetchBudgetchaumasiklakshay(
+    sirshak_id,
+    karyakram_sirshak_id,
+    chaumasik_id,
+    fiscal_year
+  ) {
+    this.props.fetchBudgetchaumasiklakshayData({
+      sirshak_id,
+      karyakram_sirshak_id,
+      chaumasik_id,
+      fiscal_year,
+    })
   }
 
   handleYear(e) {
@@ -74,12 +182,15 @@ class Add extends Component {
 
   handleMonthFilter(chaumasik_id) {
     let { month_List } = this.state
-    let month_new = month_List.filter((month) => month.quater == chaumasik_id)
+    let month_new = month_List.filter((month) => month.quater === chaumasik_id)
     this.setState({ month_Filter: month_new })
   }
 
   handleMonth(e) {
-    this.setState({ expense_month: e[0] })
+    const id = e[0].id
+    const value = e[0].value
+    this.setState({ expense_month_id: id })
+    this.setState({ expense_month: value })
   }
 
   handleConfirm() {
@@ -88,17 +199,16 @@ class Add extends Component {
   handleClose() {
     this.setState({ showDialog: !this.state.showDialog })
   }
-  handleBudgetSirshak(e) {
-    const id = e[0].id
-    this.setState({ sirshak_id: id })
-  }
 
   handleSubmit() {
     const {
       fiscal_year,
       sirshak_id,
       karyakram_sirshak_id,
+      chaumasik_id,
+      budgetchaumasikremain,
       expense_year,
+      expense_month_id,
       expense_month,
       expense_amount,
     } = this.state
@@ -111,28 +221,41 @@ class Add extends Component {
           fiscal_year: fiscal_year,
           sirshak_id: sirshak_id,
           karyakram_sirshak_id: karyakram_sirshak_id,
+          chaumasik_id: chaumasik_id,
           expense_year: expense_year,
+          expense_month_id: expense_month_id,
           expense_month: expense_month,
           expense_amount: expense_amount,
           created_by: this.props.user.user_name,
         },
       },
     }
-    console.log('payload', payload)
-    this.props.onSubmit(payload)
+    if (budgetchaumasikremain < expense_amount) {
+      toast.error('खर्च रकम चौमासिक लक्ष्य भन्दा बढी हुन भएन !!!!', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000,
+      })
+      this.handleClose()
+    } else {
+      this.props.onSubmit(payload)
+    }
   }
 
   render() {
     const { title } = this.props
     const {
-      month_Filter,
-      chaumasik_id,
       sirshak_id,
       karyakram_sirshak_id,
+      budgetbarsiklakshay,
+      chaumasik_id,
+      budgetchaumasikamount,
+      budgetchaumasikremain,
       expense_year,
-      expense_month,
+      month_Filter,
+      expense_month_id,
       expense_amount,
       budgetSirshakList,
+      karyakramSirshakList,
       showDialog,
     } = this.state
 
@@ -140,7 +263,8 @@ class Add extends Component {
       isEmpty(sirshak_id) ||
       isEmpty(karyakram_sirshak_id) ||
       isEmpty(expense_year) ||
-      equals(0, expense_month) ||
+      equals(0, expense_month_id) ||
+      equals(0, expense_amount) ||
       isEmpty(expense_amount)
         ? true
         : false
@@ -162,34 +286,21 @@ class Add extends Component {
               <span className='dsl-b22'>{title}</span>
             </div>
             <div className='panel space mb-4'>
-              <Dropdown
-                className='dropdownlabel'
-                title='आर्थिक वर्ष :'
-                direction='vertical'
-                returnBy='data'
-                defaultIds={[fiscal_year_id]}
-                data={fiscal_year_list}
-                getValue={(fiscal_year_list) => fiscal_year_list['value']}
-                onChange={(e) => this.handleFiscalYear(e)}
-                value={fiscal_year_id}
-              />
-              <Input
-                className='w-15'
-                title='बजेट शिर्षक :'
-                direction='vertical'
-                value={sirshak_id}
-                onChange={(e) => this.setState({ sirshak_id: e })}
-              />
-              <Input
-                className='w-60'
-                title='कार्यक्रम शिर्षक :'
-                direction='vertical'
-                value={karyakram_sirshak_id}
-                onChange={(e) => this.setState({ karyakram_sirshak_id: e })}
-              />
-            </div>
-            <div className='panel space'>
-              {/* <Dropdown
+              <div className='w-15'>
+                <Dropdown
+                  className='dropdownlabel'
+                  title='आर्थिक वर्ष :'
+                  direction='vertical'
+                  returnBy='data'
+                  defaultIds={[fiscal_year_id]}
+                  data={fiscal_year_list}
+                  getValue={(fiscal_year_list) => fiscal_year_list['value']}
+                  onChange={(e) => this.handleFiscalYear(e)}
+                  value={fiscal_year_id}
+                />
+              </div>
+              <div className='w-15'>
+                <Dropdown
                   className='dropdownlabel'
                   title='बजेट शिर्षक: '
                   direction='vertical'
@@ -197,62 +308,96 @@ class Add extends Component {
                   defaultIds={[sirshak_id]}
                   data={budgetSirshakList}
                   getValue={(budgetSirshakList) => budgetSirshakList['value']}
-                  getType={(budgetSirshakList) => budgetSirshakList['type']}
+                  // getType={(budgetSirshakList) => budgetSirshakList['type']}
                   onChange={(e) => this.handleBudgetSirshak(e)}
                   value={sirshak_id}
-                /> */}
+                />
+              </div>
+              <div className='w-60'>
+                <Dropdown
+                  className='dropdownlabel'
+                  title='कार्यक्रम शिर्षक: '
+                  direction='vertical'
+                  returnBy='data'
+                  defaultIds={[karyakram_sirshak_id]}
+                  data={karyakramSirshakList}
+                  getValue={(karyakramSirshakList) =>
+                    karyakramSirshakList['value']
+                  }
+                  // getType={(karyakramSirshakList) => karyakramSirshakList['type']}
+                  onChange={(e) => this.handleKaryakramSirshak(e)}
+                  value={karyakram_sirshak_id}
+                />
+              </div>
+            </div>
+            <div className='panel space'>
               <Input
                 className='w-30'
                 title='वार्षिक लक्ष्य :'
                 direction='vertical'
                 readOnly
-                value={10000}
+                value={budgetbarsiklakshay}
               />
-              <Dropdown
-                className='dropdownlabel'
-                title='चौमासिक :'
-                direction='vertical'
-                returnBy='id'
-                defaultIds={[chaumasik_id]}
-                data={chaumasik_List}
-                getValue={(chaumasik_List) => chaumasik_List['value']}
-                onChange={(e) => this.handleChaumasik(e)}
-                value={chaumasik_id}
-              />
+              <div className='w-30'>
+                <Dropdown
+                  className='dropdownlabel'
+                  title='चौमासिक :'
+                  direction='vertical'
+                  returnBy='id'
+                  defaultIds={[chaumasik_id]}
+                  data={chaumasik_List}
+                  getValue={(chaumasik_List) => chaumasik_List['value']}
+                  onChange={(e) => this.handleChaumasik(e)}
+                  value={chaumasik_id}
+                />
+              </div>
               <Input
                 className='w-30'
                 title='चौमासिक लक्ष्य :'
                 direction='vertical'
                 readOnly
-                value={3300}
+                value={budgetchaumasikamount}
+              />
+            </div>
+            <div className='panel space mt-4'>
+              <Input
+                className='w-30'
+                title='खर्च हुन बँकि रकम :'
+                direction='vertical'
+                readOnly
+                value={budgetchaumasikremain}
               />
             </div>
             <div className='section mb-4' />
           </div>
           <span className='dsl-b18'>प्रगति विवरण :</span>
           <div className='panel space mt-2 mb-4'>
-            <Dropdown
-              className='dropdownlabel'
-              title='खर्च भएको वर्ष :'
-              direction='vertical'
-              returnBy='data'
-              defaultIds={[2]} //current year
-              data={year_list}
-              getValue={(year_list) => year_list['value']}
-              onChange={(e) => this.handleYear(e)}
-              value={2}
-            />
-            <Dropdown
-              className='dropdownlabel'
-              title='खर्च भएको महिना :'
-              direction='vertical'
-              returnBy='id'
-              defaultIds={[expense_month]}
-              data={month_Filter}
-              getValue={(month_Filter) => month_Filter['value']}
-              onChange={(e) => this.handleMonth(e)}
-              value={expense_month}
-            />
+            <div className='w-15'>
+              <Dropdown
+                className='dropdownlabel'
+                title='खर्च भएको वर्ष :'
+                direction='vertical'
+                returnBy='data'
+                defaultIds={[2]} //current year
+                data={year_list}
+                getValue={(year_list) => year_list['value']}
+                onChange={(e) => this.handleYear(e)}
+                value={2}
+              />
+            </div>
+            <div className='w-30'>
+              <Dropdown
+                className='dropdownlabel'
+                title='खर्च भएको महिना :'
+                direction='vertical'
+                returnBy='data'
+                defaultIds={[expense_month_id]}
+                data={month_Filter}
+                getValue={(month_Filter) => month_Filter['value']}
+                onChange={(e) => this.handleMonth(e)}
+                value={expense_month_id}
+              />
+            </div>
             <Input
               type='number'
               className='w-30'
@@ -281,19 +426,34 @@ class Add extends Component {
 
 Add.propTypes = {
   budgetSirshakDataList: PropTypes.any,
+  karyakramSirshakDataList: PropTypes.any,
 }
 
 Add.defaultProps = {
   budgetSirshakDataList: {},
+  karyakramSirshakDataList: {},
 }
 
 const mapStateToProps = (state) => ({
   budgetSirshakDataList: state.budgetbibaran.budgetSirshakDropdownData,
+  karyakramSirshakDataList: state.budgetbibaran.karyakramSirshakDropdownData,
+  budgetbarsiklakshayData: state.budgetbibaran.budgetbarsiklakshayData,
+  budgetchaumasiklakshayData: state.budgetbibaran.budgetchaumasiklakshayData,
 })
 
 const mapDispatchToProps = (dispatch) => ({
   fetchBudgetsirshakdropdown: (payload) =>
     dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
+  fetchKaryakramsirshakdropdown: (payload) =>
+    dispatch(
+      BudgetbibaranActions.fetchkaryakramsirshakdropdownRequest(payload)
+    ),
+  fetchBudgetbarsiklakshayData: (payload) =>
+    dispatch(BudgetbibaranActions.fetchbudgetbarsiklakshaydataRequest(payload)),
+  fetchBudgetchaumasiklakshayData: (payload) =>
+    dispatch(
+      BudgetbibaranActions.fetchbudgetchaumasiklakshaydataRequest(payload)
+    ),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Add)

@@ -579,9 +579,10 @@ const karyakramsirshakHeadings = [
   'दर्ता कर्ता',
 ]
 
-const budgetbarshikHeadings = [
+const budgetbarsikHeadings = [
   'आर्थिक वर्ष',
-  'शिर्षक नं',
+  'वजेट शिर्षक',
+  'कार्यक्रम शिर्षक',
   'प्रथम चौमासिक',
   'दोस्रो चौमासिक',
   'तेस्रो चौमासिक',
@@ -601,17 +602,17 @@ const budgetentryHeadings = [
 ]
 
 const month_List = [
-  { id: 1, value: 'वैशाख', quater: 1 },
-  { id: 2, value: 'जेष्ठ', quater: 1 },
-  { id: 3, value: 'असार', quater: 1 },
+  { id: 1, value: 'वैशाख', quater: 3 },
+  { id: 2, value: 'जेष्ठ', quater: 3 },
+  { id: 3, value: 'असार', quater: 3 },
   { id: 4, value: 'साउन', quater: 1 },
-  { id: 5, value: 'भदौ', quater: 2 },
-  { id: 6, value: 'असोज', quater: 2 },
-  { id: 7, value: 'कार्तिक', quater: 2 },
+  { id: 5, value: 'भदौ', quater: 1 },
+  { id: 6, value: 'असोज', quater: 1 },
+  { id: 7, value: 'कार्तिक', quater: 1 },
   { id: 8, value: 'मङ्सीर', quater: 2 },
-  { id: 9, value: 'पुष', quater: 3 },
-  { id: 10, value: 'माघ', quater: 3 },
-  { id: 11, value: 'फागुन', quater: 3 },
+  { id: 9, value: 'पुष', quater: 2 },
+  { id: 10, value: 'माघ', quater: 2 },
+  { id: 11, value: 'फागुन', quater: 2 },
   { id: 12, value: 'चैत', quater: 3 },
 ]
 
@@ -718,7 +719,7 @@ export {
   officeHeadings,
   usertypeList,
   karyakramsirshakHeadings,
-  budgetbarshikHeadings,
+  budgetbarsikHeadings,
   budgetsirshakHeadings,
   budgetentryHeadings,
   year,

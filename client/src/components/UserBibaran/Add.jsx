@@ -195,7 +195,7 @@ class Add extends Component {
                   value={dist_id}
                 />
               </div>
-              <div className='w-30'>
+              <div className='w-45'>
                 <Dropdown
                   className='dropdownlabel'
                   title='युजरको कार्यालय :'

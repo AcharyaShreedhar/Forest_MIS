@@ -17,6 +17,10 @@ const { Types, Creators } = createActions({
   fetchallbudgetsirshakSuccess: ['response'],
   fetchallbudgetsirshakFailure: null,
 
+  fetchbudgetsirshakdropdownRequest: ['payload'],
+  fetchbudgetsirshakdropdownSuccess: ['response'],
+  fetchbudgetsirshakdropdownFailure: null,
+
   fetchbudgetsirshakRequest: ['payload'],
   fetchbudgetsirshakSuccess: ['response'],
   fetchbudgetsirshakFailure: null,
@@ -43,6 +47,10 @@ const { Types, Creators } = createActions({
   fetchkaryakramsirshakSuccess: ['response'],
   fetchkaryakramsirshakFailure: null,
 
+  fetchkaryakramsirshakdropdownRequest: ['payload'],
+  fetchkaryakramsirshakdropdownSuccess: ['response'],
+  fetchkaryakramsirshakdropdownFailure: null,
+
   addkaryakramsirshakRequest: ['payload'],
   addkaryakramsirshakSuccess: ['response'],
   addkaryakramsirshakFailure: null,
@@ -55,30 +63,34 @@ const { Types, Creators } = createActions({
   deletekaryakramsirshakSuccess: ['response'],
   deletekaryakramsirshakFailure: null,
 
-  // Budget barshik
-  fetchallbudgetbarshikRequest: ['payload'],
-  fetchallbudgetbarshikSuccess: ['response'],
-  fetchallbudgetbarshikFailure: null,
+  // Budget barsik
+  fetchallbudgetbarsikRequest: ['payload'],
+  fetchallbudgetbarsikSuccess: ['response'],
+  fetchallbudgetbarsikFailure: null,
 
-  fetchbudgetbarshikRequest: ['payload'],
-  fetchbudgetbarshikSuccess: ['response'],
-  fetchbudgetbarshikFailure: null,
+  fetchbudgetbarsikRequest: ['payload'],
+  fetchbudgetbarsikSuccess: ['response'],
+  fetchbudgetbarsikFailure: null,
 
-  fetchbudgetsirshakdropdownRequest: ['payload'],
-  fetchbudgetsirshakdropdownSuccess: ['response'],
-  fetchbudgetsirshakdropdownFailure: null,
+  fetchbudgetbarsiklakshaydataRequest: ['payload'],
+  fetchbudgetbarsiklakshaydataSuccess: ['response'],
+  fetchbudgetbarsiklakshaydataFailure: null,
 
-  addbudgetbarshikRequest: ['payload'],
-  addbudgetbarshikSuccess: ['response'],
-  addbudgetbarshikFailure: null,
+  fetchbudgetchaumasiklakshaydataRequest: ['payload'],
+  fetchbudgetchaumasiklakshaydataSuccess: ['response'],
+  fetchbudgetchaumasiklakshaydataFailure: null,
 
-  updatebudgetbarshikRequest: ['payload', 'budgetbarshikId'],
-  updatebudgetbarshikSuccess: ['response'],
-  updatebudgetbarshikFailure: null,
+  addbudgetbarsikRequest: ['payload'],
+  addbudgetbarsikSuccess: ['response'],
+  addbudgetbarsikFailure: null,
 
-  deletebudgetbarshikRequest: ['payload', 'budgetbarshikId'],
-  deletebudgetbarshikSuccess: ['response'],
-  deletebudgetbarshikFailure: null,
+  updatebudgetbarsikRequest: ['payload', 'budgetbarsikId'],
+  updatebudgetbarsikSuccess: ['response'],
+  updatebudgetbarsikFailure: null,
+
+  deletebudgetbarsikRequest: ['payload', 'budgetbarsikId'],
+  deletebudgetbarsikSuccess: ['response'],
+  deletebudgetbarsikFailure: null,
 
   // Budget entry
   fetchallbudgetentryRequest: ['payload'],

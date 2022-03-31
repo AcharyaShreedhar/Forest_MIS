@@ -177,7 +177,6 @@ class Badibebasthapan extends Component {
     const { loc, perPage, badibebasthapanList, officeList, showDialog } =
       this.state
     const { user, role, officeRole } = this.props
-    console.log('ehl')
     return (
       <div>
         <ConfirmationDialoge

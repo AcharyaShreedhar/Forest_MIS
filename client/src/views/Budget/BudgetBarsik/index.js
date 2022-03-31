@@ -3,22 +3,22 @@ import { PropTypes } from 'prop-types'
 import { connect } from 'react-redux'
 import { equals, isNil } from 'ramda'
 import {
-  BudgetSirshakBibaran,
+  BudgetBarsikBibaran,
   Filter,
   ReportGenerator,
   ConfirmationDialoge,
 } from '../../../components'
 import BudgetbibaranActions from '../../../actions/budgetbibaran'
 import AppActions from '../../../actions/app'
-import { budgetsirshakHeadings, districtList } from '../../../services/config'
+import { budgetbarsikHeadings, districtList } from '../../../services/config'
 import { Fragment } from 'react'
 
-class BudgetSirshak extends Component {
+export class BudgetBarsik extends Component {
   constructor(props) {
     super(props)
     const { officeRole, districtId, officeId } = this.props
     this.state = {
-      loc: 'budgetsirshaklist',
+      loc: 'budgetbarsiklist',
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
       distId: `${officeRole < 3 ? '%' : districtId}`,
@@ -27,7 +27,7 @@ class BudgetSirshak extends Component {
       page: 0,
       showDialog: false,
       item: {},
-      path: 'budgetsirshak',
+      path: 'budgetbarsik',
     }
     this.handleAdd = this.handleAdd.bind(this)
     this.handlePer = this.handlePer.bind(this)
@@ -46,14 +46,14 @@ class BudgetSirshak extends Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     const loc = nextProps.location.pathname.split('/')[2]
 
-    var budgetSirshakList = []
+    var budgetbarsikList = []
     var officeList = []
 
     if (nextProps !== prevState) {
-      budgetSirshakList = nextProps.budgetsirshakDataList.data
+      budgetbarsikList = nextProps.budgetbarsikDataList.data
       officeList = nextProps.officeDataList.data
     }
-    return { loc, budgetSirshakList, officeList }
+    return { loc, budgetbarsikList, officeList }
   }
 
   handlePer(e) {
@@ -112,12 +112,12 @@ class BudgetSirshak extends Component {
   }
 
   fetchResults(fromDate, toDate, distId, officeId, page, perPage) {
-    this.props.fetchallBudgetsirshak({
+    this.props.fetchallBudgetbarsik({
       fromDate,
       toDate,
       distId,
       officeId,
-      name: 'sirshak_id',
+      name: 'vehicle_type',
       page: page,
       perPage,
     })
@@ -139,10 +139,11 @@ class BudgetSirshak extends Component {
   handleSelectMenu(event, item, path) {
     this.setState({ item: item })
     this.setState({ path: path })
+
     switch (event) {
       case 'edit': {
         this.props.history.push({
-          pathname: `/budget/budgetsirshakedit/${item.sirshak_id}`,
+          pathname: `/budget/budgetbarsikedit/${item.budget_barsik_id}`,
           item,
         })
         break
@@ -162,7 +163,7 @@ class BudgetSirshak extends Component {
   handleDelete() {
     const { item } = this.state
 
-    this.props.deleteBudgetsirshak(item.sirshak_id)
+    this.props.deleteBudgetbarsik(item.budget_barsik_id)
     this.setState({
       showDialog: !this.state.showDialog,
       page: 0,
@@ -171,10 +172,10 @@ class BudgetSirshak extends Component {
   }
 
   handleAdd() {
-    this.props.history.push('/budget/budgetsirshakadd/new')
+    this.props.history.push('/budget/budgetbarsikadd/new')
   }
   render() {
-    const { loc, perPage, budgetSirshakList, officeList, showDialog } =
+    const { loc, perPage, budgetbarsikList, officeList, showDialog } =
       this.state
     const { user, role, officeRole } = this.props
 
@@ -182,19 +183,19 @@ class BudgetSirshak extends Component {
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title='Delete'
-          body={'के तपाईँ बजेट शिर्षक सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
-          confirmLabel='चाहन्छु '
-          cancelLabel='चाहंदिन '
+          title="Delete"
+          body={'के तपाईँ बजेट वार्षिक सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
-        {equals(loc, 'budgetsirshaklist') && (
+        {equals(loc, 'budgetbarsiklist') && (
           <Fragment>
-            <div className='report-filter'>
+            <div className="report-filter">
               <Filter
-                id='budgetsirshak'
-                title='प्राप्ति मिति'
+                id="vehicle"
+                title="प्राप्ति मिति"
                 districtsList={districtList}
                 officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
@@ -204,24 +205,24 @@ class BudgetSirshak extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id='budgetsirshak' />
+              <ReportGenerator id="vehicle" />
             </div>
-            <BudgetSirshakBibaran.List
-              buttonName='+ बजेट शिर्षक'
-              title='बजेट शिर्षक सम्बन्धी विवरण'
+            <BudgetBarsikBibaran.List
+              buttonName="+ बजेट वार्षिक"
+              title="बजेट वार्षिक सम्बन्धी विवरण"
               pageCount={
-                !isNil(budgetSirshakList)
-                  ? Math.ceil(budgetSirshakList.total / perPage)
+                !isNil(budgetbarsikList)
+                  ? Math.ceil(budgetbarsikList.total / perPage)
                   : 10
               }
-              data={!isNil(budgetSirshakList) ? budgetSirshakList.list : []}
+              data={!isNil(budgetbarsikList) ? budgetbarsikList.list : []}
               per={perPage}
               pers={[10, 25, 50, 'all']}
               onPer={this.handlePer}
               user={user}
               role={role}
               officeRole={officeRole}
-              headings={budgetsirshakHeadings}
+              headings={budgetbarsikHeadings}
               onAdd={this.handleAdd}
               onSelect={this.handleSelectMenu}
               onPageClick={(e) => this.handlePageChange(e)}
@@ -229,21 +230,21 @@ class BudgetSirshak extends Component {
             />
           </Fragment>
         )}
-        {equals(loc, 'budgetsirshakadd') && (
-          <BudgetSirshakBibaran.Add
-            title='+ बजेट शिर्षक विवरण'
+        {equals(loc, 'budgetbarsikadd') && (
+          <BudgetBarsikBibaran.Add
+            title="+ बजेट वार्षिक विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
-            onSubmit={(e) => this.props.addBudgetsirshak(e)}
+            onSubmit={(e) => this.props.addBudgetbarsik(e)}
           />
         )}
-        {equals(loc, 'budgetsirshakedit') && (
-          <BudgetSirshakBibaran.Edit
-            title='बजेट शिर्षक सम्बन्धी विवरण शंसोधन'
+        {equals(loc, 'budgetbarsikedit') && (
+          <BudgetBarsikBibaran.Edit
+            title="बजेट वार्षिक सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
-            onUpdate={(e, id) => this.props.updateBudgetsirshak(e, id)}
+            onUpdate={(e, id) => this.props.updateBudgetbarsik(e, id)}
           />
         )}
       </div>
@@ -251,13 +252,13 @@ class BudgetSirshak extends Component {
   }
 }
 
-BudgetSirshak.propTypes = {
-  budgetsirshakDataList: PropTypes.any,
+BudgetBarsik.propTypes = {
+  budgetbarsikDataList: PropTypes.any,
   officeDataList: PropTypes.any,
 }
 
-BudgetSirshak.defaultProps = {
-  budgetsirshakDataList: {},
+BudgetBarsik.defaultProps = {
+  budgetbarsikDataList: {},
   officeDataList: {},
 }
 
@@ -268,26 +269,26 @@ const mapStateToProps = (state) => ({
   officeId: state.app.user.office_id,
   officeDataList: state.app.officesDropdownData,
   officeRole: state.app.user.office_type,
-  budgetsirshakDataList: state.budgetbibaran.allbudgetsirshakData,
+  budgetbarsikDataList: state.budgetbibaran.allbudgetbarsikData,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchallBudgetsirshak: (payload) =>
-    dispatch(BudgetbibaranActions.fetchallbudgetsirshakRequest(payload)),
-  addBudgetsirshak: (payload) =>
-    dispatch(BudgetbibaranActions.addbudgetsirshakRequest(payload)),
+  fetchallBudgetbarsik: (payload) =>
+    dispatch(BudgetbibaranActions.fetchallbudgetbarsikRequest(payload)),
+  addBudgetbarsik: (payload) =>
+    dispatch(BudgetbibaranActions.addbudgetbarsikRequest(payload)),
 
-  updateBudgetsirshak: (payload, budgetsirshakId) =>
+  updateBudgetbarsik: (payload, budgetbarsikId) =>
     dispatch(
-      BudgetbibaranActions.updatebudgetsirshakRequest(payload, budgetsirshakId)
+      BudgetbibaranActions.updatebudgetbarsikRequest(payload, budgetbarsikId)
     ),
 
-  deleteBudgetsirshak: (budgetsirshakId) =>
-    dispatch(BudgetbibaranActions.deletebudgetsirshakRequest(budgetsirshakId)),
+  deleteBudgetbarsik: (budgetbarsikId) =>
+    dispatch(BudgetbibaranActions.deletebudgetbarsikRequest(budgetbarsikId)),
 
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(BudgetSirshak)
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetBarsik)

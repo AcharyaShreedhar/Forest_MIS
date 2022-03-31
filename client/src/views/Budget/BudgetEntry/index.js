@@ -154,7 +154,7 @@ class BudgetEntry extends Component {
         <ConfirmationDialoge
           showDialog={showDialog}
           title='Delete'
-          body={'के तपाईँ सम्पती सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
+          body={'के तपाईँ बजेट खर्च सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
           confirmLabel='चाहन्छु '
           cancelLabel='चाहंदिन '
           onYes={this.handleDelete}

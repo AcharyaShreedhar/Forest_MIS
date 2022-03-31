@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { isEmpty } from 'ramda';
-import { Button, Input, ConfirmationDialoge } from '../../components';
+import React, { Component } from 'react'
+import { isEmpty } from 'ramda'
+import { Button, Input, ConfirmationDialoge } from '../../components'
 
 class Edit extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       id: props.history.location.item?.sirshak_id,
       sirshak_no: props.history.location.item?.sirshak_no,
@@ -17,100 +17,99 @@ class Edit extends Component {
       created_by: props.history.location.item?.created_by,
       updated_by: props.history.location.item?.updated_by,
       showDialog: false,
-    };
-    console.log(props.history.location.item);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleConfirm = this.handleConfirm.bind(this);
-    this.handleDate = this.handleDate.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    this.handleClose = this.handleClose.bind(this)
+    this.handleConfirm = this.handleConfirm.bind(this)
+    this.handleDate = this.handleDate.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleClose() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
 
   handleConfirm() {
-    this.setState({ showDialog: !this.state.showDialog });
+    this.setState({ showDialog: !this.state.showDialog })
   }
 
   handleDate(e, type) {
     switch (type) {
       case 'prapti': {
-        this.setState({ acquired_date: e });
-        break;
+        this.setState({ acquired_date: e })
+        break
       }
       case 'nirman': {
-        this.setState({ manufactured_date: e });
-        break;
+        this.setState({ manufactured_date: e })
+        break
       }
       default:
-        break;
+        break
     }
   }
   handleSubmit() {
-    const { id, sirshak_no, sirshak_name } = this.state;
+    const { id, sirshak_no, sirshak_name, created_by } = this.state
     const payload = {
       budgetsirshak: {
         data: {
           sirshak_no: sirshak_no,
           sirshak_name: sirshak_name,
-          created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
           user_id: this.props.user.user_id,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
-    };
-    this.props.onUpdate(payload, id);
+    }
+    this.props.onUpdate(payload, id)
   }
 
   render() {
-    const { title } = this.props;
-    const { sirshak_no, sirshak_name, showDialog } = this.state;
+    const { title } = this.props
+    const { sirshak_no, sirshak_name, showDialog } = this.state
 
-    let disabled = isEmpty(sirshak_no) || isEmpty(sirshak_name) ? true : false;
+    let disabled = isEmpty(sirshak_no) || isEmpty(sirshak_name) ? true : false
 
     return (
       <React.Fragment>
-        <div className=" card p-5 border-5">
+        <div className=' card p-5 border-5'>
           <ConfirmationDialoge
             showDialog={showDialog}
-            title="शंसोधन"
-            body="के तपाईँ सवारी साधन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
-            confirmLabel="चाहन्छु "
-            cancelLabel="चाहंदिन "
+            title='शंसोधन'
+            body='के तपाईँ सवारी साधन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?'
+            confirmLabel='चाहन्छु '
+            cancelLabel='चाहंदिन '
             onYes={this.handleSubmit}
             onClose={this.handleClose}
           />
-          <div className="detail-content">
-            <div className="title">
-              <span className="dsl-b22">{title}</span>
+          <div className='detail-content'>
+            <div className='title'>
+              <span className='dsl-b22'>{title}</span>
             </div>
-            <div className="panel space mb-4">
+            <div className='panel space mb-4'>
               <Input
-                className="w-30"
-                title="शिर्षक नम्बर :"
+                className='w-30'
+                title='शिर्षक नम्बर :'
                 value={sirshak_no}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ sirshak_no: e })}
               />
               <Input
-                className="w-30"
-                title="शिर्षकको नाम :"
-                direction="vertical"
+                className='w-30'
+                title='शिर्षकको नाम :'
+                direction='vertical'
                 value={sirshak_name}
                 onChange={(e) => this.setState({ sirshak_name: e })}
               />
-              <div className="w-30"></div>
+              <div className='w-30'></div>
             </div>
           </div>
-          <div className="section mb-4" />
-          <div className="mt-2 border-5">
-            <div className="d-flex justify-content-end align-items-center">
+          <div className='section mb-4' />
+          <div className='mt-2 border-5'>
+            <div className='d-flex justify-content-end align-items-center'>
               <Button
-                className="mr-3"
-                name="शंशोधन गर्नुहोस ।"
+                className='mr-3'
+                name='शंशोधन गर्नुहोस ।'
                 disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />
@@ -118,8 +117,8 @@ class Edit extends Component {
           </div>
         </div>
       </React.Fragment>
-    );
+    )
   }
 }
 
-export default Edit;
+export default Edit

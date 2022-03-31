@@ -49,8 +49,8 @@ function List(props) {
                 <tr key={`${budgetentry.budget_karmacharidetail_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{budgetentry.fiscal_year}</td>
-                  <td>{budgetentry.budget_sirshak}</td>
-                  <td>{budgetentry.karyakram_sirshak}</td>
+                  <td>{budgetentry.sirshak_name}</td>
+                  <td>{budgetentry.karyakram_name}</td>
                   <td>{budgetentry.expense_year}</td>
                   <td>{budgetentry.expense_month}</td>
                   <td>{budgetentry.expense_amount}</td>

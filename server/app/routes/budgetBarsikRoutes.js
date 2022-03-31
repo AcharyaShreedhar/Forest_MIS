@@ -2,18 +2,26 @@ const express = require('express')
 const router = express.Router()
 
 const budgetBarsikController = require('../controller/budgetBarsikController')
-router.post('/budgetbarsikList', budgetBarsikController.getAllBudgetBarshik)
+router.post('/budgetbarsikList', budgetBarsikController.getAllBudgetBarsik)
 router.get(
   '/budgetbarsik/:budgetBarsikId',
-  budgetBarsikController.getBudgetBarshik
+  budgetBarsikController.getBudgetBarsik
 )
-router.post('/budgetbarsik', budgetBarsikController.addBudgetBarshik)
+router.post(
+  '/budgetBarsikLakshay',
+  budgetBarsikController.getBudgetBarsikLakshay
+)
+router.post(
+  '/budgetChaumasikLakshay',
+  budgetBarsikController.getBudgetChaumasikLakshay
+)
+router.post('/budgetbarsik', budgetBarsikController.addBudgetBarsik)
 router.put(
   '/budgetbarsik/:budgetBarsikId',
-  budgetBarsikController.updateBudgetBarshik
+  budgetBarsikController.updateBudgetBarsik
 )
 router.delete(
   '/budgetbarsik/:budgetBarsikId',
-  budgetBarsikController.deleteBudgetBarshik
+  budgetBarsikController.deleteBudgetBarsik
 )
 module.exports = router

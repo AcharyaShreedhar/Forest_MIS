@@ -23,12 +23,12 @@ function List(props) {
   } = props
   return (
     <Fragment>
-      <div className="card">
-        <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
+      <div className='card'>
+        <div className='button'>
+          <Button type='low' size='small' name={buttonName} onClick={onAdd} />
         </div>
-        <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="vehicle">
+        <div className='titlebar'>{title} </div>
+        <Table responsive striped bordered hover id='vehicle'>
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -42,18 +42,36 @@ function List(props) {
             {isNil(data) ? (
               <p>No data Available !!!</p>
             ) : (
-              data.map((budgetsirshak, index) => (
-                <tr key={`${budgetsirshak.sirshak_id}-${index}`}>
+              data.map((budgetbarsik, index) => (
+                <tr key={`${budgetbarsik.budget_barsik_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
-                  <td>{budgetsirshak.sirshak_no}</td>
-                  <td>{budgetsirshak.sirshak_name}</td>
-                  <td>{budgetsirshak.created_by}</td>
+                  <td>{budgetbarsik.fiscal_year}</td>
+                  <td>{budgetbarsik.sirshak_name}</td>
+                  <td>{budgetbarsik.karyakram_name}</td>
                   <td>
-                    <div className="edit">
+                    {englishToNepaliNumber(
+                      budgetbarsik.pratham_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.doshro_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(
+                      budgetbarsik.teshro_chaumasik_amount
+                    )}
+                  </td>
+                  <td>
+                    {englishToNepaliNumber(budgetbarsik.barsik_lakshay_amount)}
+                  </td>
+                  <td>
+                    <div className='edit'>
                       <EditDropdown
                         options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
                         onChange={(e) =>
-                          onSelect(e, budgetsirshak, 'yearlysawarisadhan')
+                          onSelect(e, budgetbarsik, 'yearlysawarisadhan')
                         }
                       />
                     </div>
@@ -70,7 +88,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type="vehicle"
+          type='vehicle'
         />
       </div>
     </Fragment>

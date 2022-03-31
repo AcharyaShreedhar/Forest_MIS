@@ -33,6 +33,20 @@ class Edit extends Component {
     this.fetchOffice(props.history.location.item?.dist_id)
   }
 
+  componentDidMount() {
+    const { dist_id } = this.state
+    this.props.fetchOfficedropdown({
+      distId: dist_id,
+    })
+  }
+
+  componentDidUpdate() {
+    const { dist_id } = this.state
+    this.props.fetchOfficedropdown({
+      distId: dist_id,
+    })
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     var officeList = []
     if (nextProps !== prevState) {
@@ -204,7 +218,7 @@ class Edit extends Component {
                   </div>
                 </div>
                 <div className='panel space mb-4'>
-                  <div className='w-30'>
+                  <div className='w-45'>
                     <Dropdown
                       className='dropdownlabel'
                       title='युजरको कार्यालय :'

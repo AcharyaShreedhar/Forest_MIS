@@ -1,9 +1,11 @@
 const pool = require('../db')
 
+const r = require('ramda')
+
 //Controller for Listing all budget_barsiks
-async function getAllBudgetBarshik(req, res) {
-  const getTotalQuery = `SELECT count(*) as total from budget_barsiks where dist_id like ? and office_id like ?`
-  const getAllBudgetBarshikQuery = `select * from budget_barsiks where dist_id like ? and office_id like ? ORDER BY ? ASC LIMIT ?, ?`
+async function getAllBudgetBarsik(req, res) {
+  const getTotalQuery = `SELECT count(*) as total from budget_barsiks bb where bb.dist_id like ? and bb.office_id like ?`
+  const getAllBudgetBarsikQuery = `SELECT bb.budget_barsik_id, bb.sirshak_id,bs.sirshak_name, bb.karyakram_sirshak_id, ks.karyakram_name, bb.fiscal_year, bb.pratham_chaumasik_amount, bb.doshro_chaumasik_amount, bb.teshro_chaumasik_amount, bb.barsik_lakshay_amount FROM budget_barsiks bb INNER JOIN budget_sirshaks bs ON bb.sirshak_id = bs.sirshak_id INNER JOIN karyakram_sirshaks ks ON bb.karyakram_sirshak_id = ks.karyakram_sirshak_id where bs.dist_id like ? and bs.office_id like ? ORDER BY ? ASC LIMIT ?, ?`
 
   pool.query(
     getTotalQuery,
@@ -11,7 +13,7 @@ async function getAllBudgetBarshik(req, res) {
     (error, countresults, fields) => {
       if (error) throw error
       pool.query(
-        getAllBudgetBarshikQuery,
+        getAllBudgetBarsikQuery,
         [
           req.body.distId,
           req.body.officeId,
@@ -38,10 +40,10 @@ async function getAllBudgetBarshik(req, res) {
 }
 
 //Controller for Listing a budget_barsiks
-async function getBudgetBarshik(req, res) {
-  const getBudgetBarshikQuery = `select * from budget_barsiks where budget_barsik_id = ?`
+async function getBudgetBarsik(req, res) {
+  const getBudgetBarsikQuery = `select * from budget_barsiks where budget_barsik_id = ?`
   pool.query(
-    getBudgetBarshikQuery,
+    getBudgetBarsikQuery,
     [req.params.budgetBarsikId],
     (error, results, fields) => {
       if (error) throw error
@@ -50,11 +52,53 @@ async function getBudgetBarshik(req, res) {
   )
 }
 
-//Controller for adding a budget_barsiks
-async function addBudgetBarshik(req, res, next) {
-  const addBudgetBarshikQuery = `INSERT INTO budget_barsiks (sirshak_id, karyakram_sirshak_id, dist_id, office_id, user_id, fiscal_year, pratham_chaumasik_amount, doshro_chaumasik_amount, teshro_chaumasik_amount,	barsik_lakshay_amount, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`
+//Controller for budget_barsik_lakshay
+async function getBudgetBarsikLakshay(req, res) {
+  const getBudgetBarsikQuery = `select if(count(barsik_lakshay_amount) = 0,0,barsik_lakshay_amount) barsiklakshay from budget_barsiks where sirshak_id like ? and karyakram_sirshak_id like ? and fiscal_year like ?`
+
   pool.query(
-    addBudgetBarshikQuery,
+    getBudgetBarsikQuery,
+    [req.body.sirshak_id, req.body.karyakram_sirshak_id, req.body.fiscal_year],
+    (error, results, fields) => {
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
+    }
+  )
+}
+
+//Controller for chaumasik_lakshay and chaumasik_remain
+async function getBudgetChaumasikLakshay(req, res) {
+  const chaumasik_id = await req.body.chaumasik_id
+  let chaumasik_amount = 'pratham_chaumasik_amount'
+  if (r.equals(2, chaumasik_id)) {
+    chaumasik_amount = 'doshro_chaumasik_amount'
+  } else if (r.equals(3, chaumasik_id)) {
+    chaumasik_amount = 'teshro_chaumasik_amount'
+  }
+
+  const getBudgetBarsikChaumasik = `select (${chaumasik_amount} - (select if(isNUll(sum(expense_amount)),0,sum(expense_amount)) as e from budget_karmacharidetails where chaumasik_id = ? and karyakram_sirshak_id = bb.karyakram_sirshak_id  and sirshak_id = bb.sirshak_id and fiscal_year = bb.fiscal_year)) as expense_remain,${chaumasik_amount} as chaumasik_amount , (select if(isNUll(sum(expense_amount)),0,sum(expense_amount)) as e from budget_karmacharidetails where chaumasik_id = ? and karyakram_sirshak_id = bb.karyakram_sirshak_id  and sirshak_id = bb.sirshak_id and fiscal_year = bb.fiscal_year) expense_amount from budget_barsiks bb where bb.sirshak_id like ? and bb.karyakram_sirshak_id like ? and bb.fiscal_year like ?`
+
+  pool.query(
+    getBudgetBarsikChaumasik,
+    [
+      chaumasik_id,
+      chaumasik_id,
+      req.body.sirshak_id,
+      req.body.karyakram_sirshak_id,
+      req.body.fiscal_year,
+    ],
+    (error, results, fields) => {
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
+    }
+  )
+}
+
+//Controller for adding a budget_barsiks
+async function addBudgetBarsik(req, res, next) {
+  const addBudgetBarsikQuery = `INSERT INTO budget_barsiks (sirshak_id, karyakram_sirshak_id, dist_id, office_id, user_id, fiscal_year, pratham_chaumasik_amount, doshro_chaumasik_amount, teshro_chaumasik_amount,	barsik_lakshay_amount, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`
+  pool.query(
+    addBudgetBarsikQuery,
     [
       req.body.sirshak_id,
       req.body.karyakram_sirshak_id,
@@ -80,10 +124,10 @@ async function addBudgetBarshik(req, res, next) {
 }
 
 //Controller for updating a budget_barsiks
-async function updateBudgetBarshik(req, res, next) {
-  const updateBudgetBarshikQuery = `UPDATE budget_barsiks SET sirshak_id=?, karyakram_sirshak_id=?, dist_id=?, office_id=?, user_id=?, fiscal_year=?, pratham_chaumasik_amount=?, doshro_chaumasik_amount=?, teshro_chaumasik_amount=?,	barsik_lakshay_amount=?, created_by=?, updated_by=? WHERE budget_barsik_id=?`
+async function updateBudgetBarsik(req, res, next) {
+  const updateBudgetBarsikQuery = `UPDATE budget_barsiks SET sirshak_id=?, karyakram_sirshak_id=?, dist_id=?, office_id=?, user_id=?, fiscal_year=?, pratham_chaumasik_amount=?, doshro_chaumasik_amount=?, teshro_chaumasik_amount=?,	barsik_lakshay_amount=?, created_by=?, updated_by=? WHERE budget_barsik_id=?`
   pool.query(
-    updateBudgetBarshikQuery,
+    updateBudgetBarsikQuery,
     [
       req.body.sirshak_id,
       req.body.karyakram_sirshak_id,
@@ -109,11 +153,11 @@ async function updateBudgetBarshik(req, res, next) {
   )
 }
 
-//Controller for deleting a BudgetBarshik
-async function deleteBudgetBarshik(req, res, next) {
-  const deleteBudgetBarshikQuery = `DELETE  FROM budget_barsiks where budget_barsik_id=?`
+//Controller for deleting a BudgetBarsik
+async function deleteBudgetBarsik(req, res, next) {
+  const deleteBudgetBarsikQuery = `DELETE  FROM budget_barsiks where budget_barsik_id=?`
   pool.query(
-    deleteBudgetBarshikQuery,
+    deleteBudgetBarsikQuery,
     [req.params.budgetBarsikId],
     (error, results, fields) => {
       if (error) {
@@ -126,9 +170,11 @@ async function deleteBudgetBarshik(req, res, next) {
 }
 
 module.exports = {
-  getAllBudgetBarshik,
-  getBudgetBarshik,
-  addBudgetBarshik,
-  updateBudgetBarshik,
-  deleteBudgetBarshik,
+  getAllBudgetBarsik,
+  getBudgetBarsik,
+  getBudgetBarsikLakshay,
+  getBudgetChaumasikLakshay,
+  addBudgetBarsik,
+  updateBudgetBarsik,
+  deleteBudgetBarsik,
 }

@@ -1003,6 +1003,9 @@ const create = (baseURL = Config.API_URL) => {
     api.post('banhastantaran_bibaran', payload)
 
   // karyakramsirshak
+  const getKaryakramSirshakDropdownList = (payload) =>
+    api.post('karyakramsirshakDropdownList', payload)
+
   const getKaryakramsirshakList = (payload) =>
     api.post('karyakramsirshakList', payload)
 
@@ -1059,6 +1062,28 @@ const create = (baseURL = Config.API_URL) => {
   //Delete
   const postBudgetbibaranBudgetentryDelete = (budgetkarmacharidetailId) =>
     api.delete(`budgetkarmacharidetail/${budgetkarmacharidetailId}`)
+  //budgetbarsik
+  const getBudgetbarsikList = (payload) => api.post('budgetbarsikList', payload)
+
+  const getBudgetbarsik = (budgetbarsikId) =>
+    api.get(`budgetbarsik/${budgetbarsikId}`)
+
+  //Add
+  const postBudgetbibaranBudgetbarsikAddNew = (payload) =>
+    api.post(`budgetbarsik`, payload)
+  //update
+  const postBudgetbibaranBudgetbarsikUpdate = (payload, budgetbarsikId) =>
+    api.put(`budgetbarsik/${budgetbarsikId}`, payload)
+  //Delete
+  const postBudgetbibaranBudgetbarsikDelete = (budgetbarsikId) =>
+    api.delete(`budgetbarsik/${budgetbarsikId}`)
+
+  const getBudgetbarsiklakshaydata = (payload) =>
+    api.post('budgetBarsikLakshay', payload)
+
+  const getBudgetchaumasiklakshaydata = (payload) =>
+    api.post('budgetChaumasikLakshay', payload)
+
   return {
     loginByUsername,
     getBantypesList,
@@ -1383,6 +1408,7 @@ const create = (baseURL = Config.API_URL) => {
     postPanimuhanSamrakshyanDelete,
 
     //Karyakramsirshak
+    getKaryakramSirshakDropdownList,
     getKaryakramsirshakList,
     getKaryakramsirshak,
     getBudgetSirshakDropdownList,
@@ -1397,6 +1423,16 @@ const create = (baseURL = Config.API_URL) => {
     postBudgetbibaranBudgetsirshakAddNew,
     postBudgetbibaranBudgetsirshakUpdate,
     postBudgetbibaranBudgetsirshakDelete,
+    getBudgetbarsiklakshaydata,
+    getBudgetchaumasiklakshaydata,
+
+    //...............budgetbarsik
+
+    getBudgetbarsikList,
+    getBudgetbarsik,
+    postBudgetbibaranBudgetbarsikAddNew,
+    postBudgetbibaranBudgetbarsikUpdate,
+    postBudgetbibaranBudgetbarsikDelete,
 
     //budgetentry
     getBudgetentryList,

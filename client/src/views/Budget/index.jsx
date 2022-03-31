@@ -14,7 +14,7 @@ export class Budget extends Component {
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
@@ -22,14 +22,26 @@ export class Budget extends Component {
     this.props.fetchallBudgetsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'budget_type',
+      name: 'sirshak_name',
+      page: 0,
+      perPage: 10,
+    })
+
+    this.props.fetchallBudgetbarsik({
+      distId: districtId,
+      officeId: officeId,
+      name: 'fiscal_year',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchBudgetsirshakdropdown({
       dist_id: districtId,
-      office_id: officeId,
+    })
+
+    this.props.fetchKaryakramsirshakdropdown({
+      dist_id: districtId,
+      sirshak_id: '%',
     })
 
     this.props.fetchallbudgetentry({
@@ -51,7 +63,7 @@ export class Budget extends Component {
     this.props.fetchallKaryakramsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
@@ -59,14 +71,17 @@ export class Budget extends Component {
     this.props.fetchallBudgetsirshak({
       distId: districtId,
       officeId: officeId,
-      name: 'budget_type',
+      name: 'sirshak_name',
       page: 0,
       perPage: 10,
     })
 
-    this.props.fetchBudgetsirshakdropdown({
-      dist_id: districtId,
-      office_id: officeId,
+    this.props.fetchallBudgetbarsik({
+      distId: districtId,
+      officeId: officeId,
+      name: 'fiscal_year',
+      page: 0,
+      perPage: 10,
     })
 
     this.props.fetchallbudgetentry({
@@ -75,11 +90,6 @@ export class Budget extends Component {
       name: 'createdAt',
       page: 0,
       perPage: 10,
-    })
-
-    this.props.fetchOfficedropdown({
-      distId: '%',
-      name: 'value',
     })
   }
 
@@ -141,8 +151,18 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(BudgetbibaranActions.fetchallkaryakramsirshakRequest(payload)),
   fetchallBudgetsirshak: (payload) =>
     dispatch(BudgetbibaranActions.fetchallbudgetsirshakRequest(payload)),
+
+  fetchallBudgetbarsik: (payload) =>
+    dispatch(BudgetbibaranActions.fetchallbudgetbarsikRequest(payload)),
+
   fetchBudgetsirshakdropdown: (payload) =>
     dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
+
+  fetchKaryakramsirshakdropdown: (payload) =>
+    dispatch(
+      BudgetbibaranActions.fetchkaryakramsirshakdropdownRequest(payload)
+    ),
+
   fetchallbudgetentry: (payload) =>
     dispatch(BudgetbibaranActions.fetchallbudgetentryRequest(payload)),
 

@@ -11,6 +11,10 @@ router.get(
   '/karyakramsirshak/:karyakramSirshakId',
   karyakramSirshakController.getKaryakramSirshak
 )
+router.post(
+  '/karyakramsirshakDropdownList',
+  karyakramSirshakController.getKaryakramSirshakDropdown
+)
 router.post('/karyakramsirshak', karyakramSirshakController.addKaryakramSirshak)
 router.put(
   '/karyakramsirshak/:karyakramSirshakId',

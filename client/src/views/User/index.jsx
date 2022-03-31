@@ -9,10 +9,11 @@ import { districtList, userHeadings } from '../../services/config'
 export class User extends Component {
   constructor(props) {
     super(props)
+    const { districtId, officeRole, officeId } = this.props
     this.state = {
       loc: 'userlist',
-      distId: '%',
-      officeId: '%',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
       path: 'user',

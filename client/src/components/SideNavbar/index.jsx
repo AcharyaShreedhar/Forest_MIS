@@ -658,7 +658,7 @@ export class SideNavbar extends Component {
                     कार्यक्रम शिर्षक
                   </MenuItem>
                   <MenuItem
-                    onClick={() => history.push('/budget/budgetbarshiklist')}
+                    onClick={() => history.push('/budget/budgetbarsiklist')}
                   >
                     बजेट बार्षिक
                   </MenuItem>
