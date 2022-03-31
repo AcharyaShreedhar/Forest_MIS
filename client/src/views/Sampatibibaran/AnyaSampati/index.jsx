@@ -204,7 +204,8 @@ class AnyaSampati extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id='sampati' />
+              <ReportGenerator id='anyasampati' />{' '}
+              {/* d must match with List-> Table id */}
             </div>
             <AnyaSampatiBibaran.List
               buttonName='+ आन्य सम्पती'

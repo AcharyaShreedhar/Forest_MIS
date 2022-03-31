@@ -657,7 +657,7 @@ const fiscal_year_id = nepaliyear.getMonth() <= 3 ? 1 : 2
 const y_list = (year) => {
   let year_list = []
   let predecade = year - 2
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     year_list[i] = {
       id: i,
       value: predecade.toString(),
