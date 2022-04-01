@@ -112,7 +112,7 @@ export class Budget extends Component {
             )
           }
           if (!prop.redirect && prop.auth && !authenticated) {
-            return <Redirect exact from={prop.path} to='/' key={key} />
+            return <Redirect exact from={prop.path} to="/" key={key} />
           }
           return (
             <Route
@@ -123,7 +123,7 @@ export class Budget extends Component {
             />
           )
         })}
-        <Route path='*' exact component={NotFound} />
+        <Route path="*" exact component={NotFound} />
       </Switch>
     )
   }

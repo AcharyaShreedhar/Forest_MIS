@@ -202,8 +202,9 @@ export class BudgetBarsik extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
-                yesOffice={officeRole < 3 ? true : false}
-                yesDistrict={officeRole < 3 ? true : false}
+                yesDate={false}
+                yesOffice={false}
+                yesDistrict={false}
               />
               <ReportGenerator id="vehicle" />
             </div>

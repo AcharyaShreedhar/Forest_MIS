@@ -24,14 +24,14 @@ function List(props) {
   } = props
   return (
     <Fragment>
-      <div className='card'>
+      <div className="card">
         {officeRole > 2 && (
-          <div className='button'>
-            <Button type='low' size='small' name={buttonName} onClick={onAdd} />
+          <div className="button">
+            <Button type="low" size="small" name={buttonName} onClick={onAdd} />
           </div>
         )}
-        <div className='titlebar'>{title} </div>
-        <Table responsive striped bordered hover id='budgetentry'>
+        <div className="titlebar">{title} </div>
+        <Table responsive striped bordered hover id="budgetentry">
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -55,16 +55,18 @@ function List(props) {
                   <td>{budgetentry.expense_month}</td>
                   <td>{budgetentry.expense_amount}</td>
                   <td>{budgetentry.created_by}</td>
-                  <td>
-                    <div className='edit'>
-                      <EditDropdown
-                        options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
-                        onChange={(e) =>
-                          onSelect(e, budgetentry, 'budgetentry')
-                        }
-                      />
-                    </div>
-                  </td>
+                  {officeRole > 2 && (
+                    <td>
+                      <div className="edit">
+                        <EditDropdown
+                          options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
+                          onChange={(e) =>
+                            onSelect(e, budgetentry, 'budgetentry')
+                          }
+                        />
+                      </div>
+                    </td>
+                  )}
                 </tr>
               ))
             )}
@@ -77,7 +79,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type='budgetentry'
+          type="budgetentry"
         />
       </div>
     </Fragment>
