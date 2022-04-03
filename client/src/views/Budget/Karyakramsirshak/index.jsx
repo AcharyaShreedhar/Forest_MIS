@@ -15,11 +15,10 @@ import { Fragment } from 'react'
 class KaryakramSirshak extends Component {
   constructor(props) {
     super(props)
-    const { districtId, officeId } = this.props
     this.state = {
       loc: 'karyakramsirshaklist',
-      distId: districtId,
-      officeId: officeId,
+      distId: '%',
+      officeId: '%',
       perPage: 10,
       page: 0,
       showDialog: false,

@@ -16,13 +16,12 @@ import { Fragment } from 'react'
 class BudgetSirshak extends Component {
   constructor(props) {
     super(props)
-    const { officeRole, districtId, officeId } = this.props
     this.state = {
       loc: 'budgetsirshaklist',
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
-      distId: `${officeRole < 3 ? '%' : districtId}`,
-      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      distId: '%',
+      officeId: '%',
       perPage: 10,
       page: 0,
       showDialog: false,

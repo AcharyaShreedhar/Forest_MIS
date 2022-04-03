@@ -200,7 +200,7 @@ class BudgetEntry extends Component {
         )}
         {equals(loc, 'budgetentryadd') && (
           <BudgetEntryBibaran.Add
-            title="+ कार्यक्रम शिर्षक विवरण"
+            title="+ बजेट खर्च विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addbudgetentry(e)}
@@ -208,7 +208,7 @@ class BudgetEntry extends Component {
         )}
         {equals(loc, 'budgetentryedit') && (
           <BudgetEntryBibaran.Edit
-            title="कार्यक्रम शिर्षक सम्बन्धी विवरण शंसोधन"
+            title="बजेट खर्च सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -232,6 +232,8 @@ const mapStateToProps = (state) => ({
   user: state.app.user,
   role: state.app.user.user_type,
   officeRole: state.app.user.office_type,
+  districtId: state.app.user.dist_id,
+  officeId: state.app.user.office_id,
   officeDataList: state.app.officesDropdownData,
   budgetentryDataList: state.budgetbibaran.allbudgetentryData,
 })
