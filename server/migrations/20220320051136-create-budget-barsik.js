@@ -35,6 +35,11 @@ module.exports = {
         unique: true,
         allowNull: false,
       },
+      budget_office_id: {
+        type: Sequelize.INTEGER,
+        unique: true,
+        allowNull: false,
+      },
       pratham_chaumasik_amount: {
         type: Sequelize.INTEGER,
         allowNull: false,
