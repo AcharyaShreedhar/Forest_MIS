@@ -218,7 +218,7 @@ class Edit extends Component {
                   </div>
                 </div>
                 <div className='panel space mb-4'>
-                  <div className='w-45'>
+                  <div className='w-30'>
                     <Dropdown
                       className='dropdownlabel'
                       title='युजरको कार्यालय :'
@@ -232,8 +232,6 @@ class Edit extends Component {
                       value={office_id}
                     />
                   </div>
-                  <div className='w-30' />
-                  <div className='w-30' />
                 </div>
               </React.Fragment>
             )}

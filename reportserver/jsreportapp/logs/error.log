@@ -55,3 +55,55 @@
 2022-02-23T08:11:07.115Z - error: Error when processing render request 1 docx file upload to http://jsreport.net/temp failed. getaddrinfo ENOTFOUND jsreport.net Error: getaddrinfo ENOTFOUND jsreport.net
     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:71:26)
 2022-02-23T08:11:07.118Z - error: Error during processing request at http://localhost:5488/api/report
+2022-03-31T10:00:47.383Z - error: Error when processing OData POST: /odata/assets Error: Entity name can not be empty
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\validateEntityName.js:26:11)
+    at Object.insert (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\store\collection.js:86:7)
+    at ODataServer.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\odata.js:34:69)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:201:14
+    at ODataServer.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\odata.js:29:7)
+    at ODataServer.executeInsert (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:196:12)
+    at processBody (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\insert.js:29:9)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\insert.js:59:12)
+    at Object.fn (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:90:5)
+    at Router.router.dispatch (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\router.js:63:12)
+    at ODataServer.handle (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:64:15)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\routes.js:24:47
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\routes.js:17:5
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\reporter.express.js:188:5
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at cors (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:188:7)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:224:17
+    at originCallback (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:214:15)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+2022-03-31T10:04:02.650Z - error: Error when processing OData POST: /odata/assets Error: Unable to find or read file F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx. ENOENT: no such file or directory, open 'F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at readFile (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-assets\lib\assets.js:115:20)
+    at async AsyncFunction.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-assets\lib\assets.js:447:9)
+caused by: Error: ENOENT: no such file or directory, open 'F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx'
+2022-03-31T10:56:30.149Z - error: Error when processing OData DELETE: /odata/assets(ZeeV8xQbF163CeNk) Error: EBUSY: resource busy or locked, unlink 'F:\aakar\Forest_MIS\reportserver\jsreportapp\data\progress report.xlsx\content.xlsx'
+2022-03-31T10:57:32.687Z - error: Error when processing OData POST: /odata/assets Error: Entity with name "progress report" already exists in the /budgetbibaran folder.
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at validateDuplicatedName (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\folders\validateDuplicatedName.js:87:20)

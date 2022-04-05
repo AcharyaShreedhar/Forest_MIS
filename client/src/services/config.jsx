@@ -602,18 +602,18 @@ const budgetentryHeadings = [
 ]
 
 const month_List = [
-  { id: 1, value: 'वैशाख', quater: 3 },
-  { id: 2, value: 'जेष्ठ', quater: 3 },
-  { id: 3, value: 'असार', quater: 3 },
-  { id: 4, value: 'साउन', quater: 1 },
-  { id: 5, value: 'भदौ', quater: 1 },
-  { id: 6, value: 'असोज', quater: 1 },
-  { id: 7, value: 'कार्तिक', quater: 1 },
-  { id: 8, value: 'मङ्सीर', quater: 2 },
-  { id: 9, value: 'पुष', quater: 2 },
-  { id: 10, value: 'माघ', quater: 2 },
-  { id: 11, value: 'फागुन', quater: 2 },
-  { id: 12, value: 'चैत', quater: 3 },
+  { id: 1, value: 'साउन', quater: 1 },
+  { id: 2, value: 'भदौ', quater: 1 },
+  { id: 3, value: 'असोज', quater: 1 },
+  { id: 4, value: 'कार्तिक', quater: 1 },
+  { id: 5, value: 'मङ्सीर', quater: 2 },
+  { id: 6, value: 'पुष', quater: 2 },
+  { id: 7, value: 'माघ', quater: 2 },
+  { id: 8, value: 'फागुन', quater: 2 },
+  { id: 9, value: 'चैत', quater: 3 },
+  { id: 10, value: 'वैशाख', quater: 3 },
+  { id: 11, value: 'जेष्ठ', quater: 3 },
+  { id: 12, value: 'असार', quater: 3 },
 ]
 
 const chaumasik_List = [

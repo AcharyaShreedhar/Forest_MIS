@@ -636,6 +636,11 @@ export class SideNavbar extends Component {
               <MenuItem onClick={() => history.push('/report/datereport')}>
                 मिति रिपोर्ट
               </MenuItem>
+              <MenuItem
+                onClick={() => history.push('/report/budgetmonthlyreport')}
+              >
+                मासिक प्रगति प्रतिवेदन
+              </MenuItem>
             </SubMenu>
 
             <SubMenu

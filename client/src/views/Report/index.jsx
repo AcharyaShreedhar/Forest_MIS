@@ -126,7 +126,7 @@ export class Report extends Component {
     })
 
     this.props.fetchOfficedropdown({
-      distId: '%',
+      distId: districtId,
       name: 'value', //"office_name"
     })
   }

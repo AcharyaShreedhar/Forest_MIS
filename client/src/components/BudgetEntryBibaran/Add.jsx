@@ -37,18 +37,18 @@ class Add extends Component {
       updated_by: '',
       showDialog: false,
     }
-    this.handleFiscalYear = this.handleFiscalYear.bind(this)
-    this.handleBudgetSirshak = this.handleBudgetSirshak.bind(this)
-    this.handleKaryakramSirshak = this.handleKaryakramSirshak.bind(this)
-    this.fetchBudgetbarsiklakshay = this.fetchBudgetbarsiklakshay.bind(this)
-    this.handleChaumasik = this.handleChaumasik.bind(this)
-    this.fetchBudgetchaumasiklakshay =
-      this.fetchBudgetchaumasiklakshay.bind(this)
-    this.handleYear = this.handleYear.bind(this)
-    this.handleMonthFilter = this.handleMonthFilter.bind(this)
-    this.handleMonth = this.handleMonth.bind(this)
-    this.handleClose = this.handleClose.bind(this)
-    this.handleConfirm = this.handleConfirm.bind(this)
+    // this.handleFiscalYear = this.handleFiscalYear.bind(this)
+    // this.handleBudgetSirshak = this.handleBudgetSirshak.bind(this)
+    // this.handleKaryakramSirshak = this.handleKaryakramSirshak.bind(this)
+    // this.fetchBudgetbarsiklakshay = this.fetchBudgetbarsiklakshay.bind(this)
+    // this.handleChaumasik = this.handleChaumasik.bind(this)
+    // this.fetchBudgetchaumasiklakshay =
+    //   this.fetchBudgetchaumasiklakshay.bind(this)
+    // // this.handleYear = this.handleYear.bind(this)
+    // this.handleMonthFilter = this.handleMonthFilter.bind(this)
+    // this.handleMonth = this.handleMonth.bind(this)
+    // this.handleClose = this.handleClose.bind(this)
+    // this.handleConfirm = this.handleConfirm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 

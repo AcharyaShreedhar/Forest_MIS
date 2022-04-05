@@ -1,0 +1,16 @@
+{
+    "_id": "624641925ee3bc43c2ae7d57",
+    "shortid": "cKkaONa1O",
+    "name": "data",
+    "creationDate": {
+        "$$date": 1648800081995
+    },
+    "modificationDate": {
+        "$$date": 1648800081995
+    },
+    "workspaceId": "624585665ee3bc7c06ae7652",
+    "entitySet": "data",
+    "key": "624641925ee3bc43c2ae7d57",
+    "type": "entity",
+    "$entitySet": "data"
+}

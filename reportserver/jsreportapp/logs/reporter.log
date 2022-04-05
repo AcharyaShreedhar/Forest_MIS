@@ -6241,3 +6241,376 @@ caused by: Error: Error while executing templating engine. Missing helper: "kath
 2022-03-10T06:16:30.127Z - info: Rendering request 18 finished in 77 ms
 2022-03-10T06:16:30.329Z - info: docx generation was finished
 2022-03-10T06:16:31.977Z - info: Rendering request 17 finished in 2811 ms
+2022-03-31T09:10:03.895Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-03-31T09:10:03.899Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-03-31T09:10:03.908Z - info: Extensions location cache not found, crawling directories
+2022-03-31T09:10:23.563Z - info: Found 35 extensions
+2022-03-31T09:10:25.069Z - info: Setting http-server strategy for rendering
+2022-03-31T09:10:25.241Z - info: Using extension cli@2.2.5
+2022-03-31T09:10:25.286Z - info: Using extension debug@2.1.3
+2022-03-31T09:10:25.300Z - info: Using extension express@2.8.1
+2022-03-31T09:10:28.105Z - info: Using extension freeze@2.0.0
+2022-03-31T09:10:28.156Z - info: Using extension handlebars@2.1.0
+2022-03-31T09:10:28.225Z - info: Using extension import-export@2.1.1
+2022-03-31T09:10:29.652Z - info: Using extension jsrender@2.1.1
+2022-03-31T09:10:29.654Z - info: Using extension tags@2.5.0
+2022-03-31T09:10:29.723Z - info: Using extension templates@2.4.0
+2022-03-31T09:10:29.785Z - info: Using extension authorization@2.4.0
+2022-03-31T09:10:29.866Z - info: Using extension base@2.0.2
+2022-03-31T09:10:29.936Z - info: Using extension browser-client@2.2.2
+2022-03-31T09:10:30.018Z - info: Using extension child-templates@1.4.0
+2022-03-31T09:10:30.201Z - info: Using extension chrome-pdf@1.10.0
+2022-03-31T09:10:32.337Z - info: Using extension data@2.4.0
+2022-03-31T09:10:32.465Z - info: Using extension docx@2.9.0
+2022-03-31T09:10:32.562Z - info: Using extension fs-store@2.9.1
+2022-03-31T09:10:37.717Z - info: Using extension licensing@2.2.3
+2022-03-31T09:10:37.787Z - info: Using extension pdf-utils@1.10.1
+2022-03-31T09:10:40.368Z - info: Using extension pptx@0.7.0
+2022-03-31T09:10:40.442Z - info: Using extension reports@2.5.1
+2022-03-31T09:10:40.617Z - info: Using extension static-pdf@0.4.0
+2022-03-31T09:10:40.865Z - info: Using extension studio@2.10.1
+2022-03-31T09:10:41.995Z - info: Using extension text@2.0.0
+2022-03-31T09:10:42.045Z - info: Using extension version-control@1.6.0
+2022-03-31T09:10:44.612Z - info: Using extension assets@1.7.0
+2022-03-31T09:10:44.810Z - info: Using extension html-to-xlsx@2.8.3
+2022-03-31T09:10:48.990Z - info: html-to-xlsx detected chrome as available html engine
+2022-03-31T09:10:48.991Z - info: Using extension scheduling@2.5.0
+2022-03-31T09:10:49.173Z - info: Using extension scripts@2.6.0
+2022-03-31T09:10:49.177Z - info: Using extension studio-theme-dark@0.3.0
+2022-03-31T09:10:49.185Z - info: Using extension xlsx@2.5.0
+2022-03-31T09:10:50.042Z - info: Using extension public-templates@2.2.0
+2022-03-31T09:10:50.045Z - info: Using extension resources@2.1.0
+2022-03-31T09:10:50.052Z - info: Using extension sample-template@2.6.1
+2022-03-31T09:10:50.061Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-03-31T09:10:50.062Z - info: Using fs provider for template store.
+2022-03-31T09:10:50.067Z - info: fs store is persisting using fs
+2022-03-31T09:10:50.069Z - info: fs store is synchronizing using fs
+2022-03-31T09:10:50.078Z - info: fs store is loading data
+2022-03-31T09:10:50.161Z - info: fs store is initialized successfully
+2022-03-31T09:10:50.175Z - info: Creating default express app.
+2022-03-31T09:10:50.390Z - info: jsreport server successfully started on http port: 5488
+2022-03-31T09:10:50.393Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-03-31T09:10:50.455Z - info: Verifying license key free
+2022-03-31T09:10:50.459Z - info: Using free license
+2022-03-31T09:10:50.466Z - info: reporter initialized
+2022-03-31T09:54:46.215Z - warn: Unable to get xlsxTemplate content Error: getaddrinfo ENOTFOUND jsreport.net
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:71:26)
+2022-03-31T10:00:47.383Z - error: Error when processing OData POST: /odata/assets Error: Entity name can not be empty
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\validateEntityName.js:26:11)
+    at Object.insert (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\store\collection.js:86:7)
+    at ODataServer.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\odata.js:34:69)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:201:14
+    at ODataServer.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\odata.js:29:7)
+    at ODataServer.executeInsert (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:196:12)
+    at processBody (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\insert.js:29:9)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\insert.js:59:12)
+    at Object.fn (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:90:5)
+    at Router.router.dispatch (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\router.js:63:12)
+    at ODataServer.handle (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:64:15)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\routes.js:24:47
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\routes.js:17:5
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\reporter.express.js:188:5
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at cors (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:188:7)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:224:17
+    at originCallback (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:214:15)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+2022-03-31T10:04:02.649Z - error: Error when processing OData POST: /odata/assets Error: Unable to find or read file F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx. ENOENT: no such file or directory, open 'F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at readFile (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-assets\lib\assets.js:115:20)
+    at async AsyncFunction.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-assets\lib\assets.js:447:9)
+caused by: Error: ENOENT: no such file or directory, open 'F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx'
+2022-03-31T10:17:20.969Z - info: Starting rendering request 1 (user: null)
+2022-03-31T10:17:20.971Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:17:21.983Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:17:21.997Z - warn: Rendering request 1 finished with error in 1028 ms
+2022-03-31T10:17:22.001Z - warn: Error when processing render request 1 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:17:22.002Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:18:09.683Z - info: Starting rendering request 2 (user: null)
+2022-03-31T10:18:09.684Z - info: Rendering template { name: mitianusarbibaran, recipe: docx, engine: handlebars, preview: true }
+2022-03-31T10:18:09.786Z - info: docx generation is starting
+2022-03-31T10:18:11.116Z - info: Starting rendering request 3 (user: null)
+2022-03-31T10:18:11.117Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-31T10:18:11.277Z - info: Rendering request 3 finished in 162 ms
+2022-03-31T10:18:11.470Z - info: docx generation was finished
+2022-03-31T10:18:12.911Z - info: Rendering request 2 finished in 3228 ms
+2022-03-31T10:40:05.799Z - info: fs store is loading data
+2022-03-31T10:40:06.058Z - info: Starting rendering request 4 (user: null)
+2022-03-31T10:40:06.059Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:40:06.142Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:40:06.150Z - warn: Rendering request 4 finished with error in 93 ms
+2022-03-31T10:40:06.152Z - warn: Error when processing render request 4 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:40:06.154Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:40:33.817Z - info: Starting rendering request 5 (user: null)
+2022-03-31T10:40:33.818Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:40:33.878Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:40:33.882Z - warn: Rendering request 5 finished with error in 65 ms
+2022-03-31T10:40:33.885Z - warn: Error when processing render request 5 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:40:33.886Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:41:04.589Z - info: fs store is loading data
+2022-03-31T10:41:04.806Z - info: Starting rendering request 6 (user: null)
+2022-03-31T10:41:04.808Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:41:04.864Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:41:04.867Z - warn: Rendering request 6 finished with error in 60 ms
+2022-03-31T10:41:04.869Z - warn: Error when processing render request 6 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:41:04.869Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:41:09.449Z - info: Starting rendering request 7 (user: null)
+2022-03-31T10:41:09.451Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:41:09.499Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:41:09.501Z - warn: Rendering request 7 finished with error in 53 ms
+2022-03-31T10:41:09.504Z - warn: Error when processing render request 7 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:41:09.504Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:41:24.567Z - info: Starting rendering request 8 (user: null)
+2022-03-31T10:41:24.568Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:41:24.627Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:41:24.630Z - warn: Rendering request 8 finished with error in 64 ms
+2022-03-31T10:41:24.633Z - warn: Error when processing render request 8 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:41:24.634Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:56:30.149Z - error: Error when processing OData DELETE: /odata/assets(ZeeV8xQbF163CeNk) Error: EBUSY: resource busy or locked, unlink 'F:\aakar\Forest_MIS\reportserver\jsreportapp\data\progress report.xlsx\content.xlsx'
+2022-03-31T10:56:41.990Z - info: fs store is loading data
+2022-03-31T10:57:32.687Z - error: Error when processing OData POST: /odata/assets Error: Entity with name "progress report" already exists in the /budgetbibaran folder.
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at validateDuplicatedName (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\folders\validateDuplicatedName.js:87:20)
+2022-03-31T10:58:49.734Z - info: Starting rendering request 9 (user: null)
+2022-03-31T10:58:49.736Z - info: Rendering template { name: progress report, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:58:49.770Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:58:49.774Z - warn: Rendering request 9 finished with error in 40 ms
+2022-03-31T10:58:49.778Z - warn: Error when processing render request 9 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:58:49.778Z - warn: Error during processing request at http://localhost:5488/api/report/progress%20report
+2022-04-01T07:56:15.764Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-01T07:56:15.765Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-01T07:56:15.911Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-01T07:56:15.967Z - info: Found 35 extensions
+2022-04-01T07:56:17.386Z - info: Setting http-server strategy for rendering
+2022-04-01T07:56:17.611Z - info: Using extension cli@2.2.5
+2022-04-01T07:56:17.620Z - info: Using extension debug@2.1.3
+2022-04-01T07:56:17.636Z - info: Using extension express@2.8.1
+2022-04-01T07:56:18.802Z - info: Using extension freeze@2.0.0
+2022-04-01T07:56:18.815Z - info: Using extension handlebars@2.1.0
+2022-04-01T07:56:18.827Z - info: Using extension import-export@2.1.1
+2022-04-01T07:56:19.106Z - info: Using extension jsrender@2.1.1
+2022-04-01T07:56:19.108Z - info: Using extension tags@2.5.0
+2022-04-01T07:56:19.142Z - info: Using extension templates@2.4.0
+2022-04-01T07:56:19.147Z - info: Using extension authorization@2.4.0
+2022-04-01T07:56:19.159Z - info: Using extension base@2.0.2
+2022-04-01T07:56:19.171Z - info: Using extension browser-client@2.2.2
+2022-04-01T07:56:19.186Z - info: Using extension child-templates@1.4.0
+2022-04-01T07:56:19.218Z - info: Using extension chrome-pdf@1.10.0
+2022-04-01T07:56:19.784Z - info: Using extension data@2.4.0
+2022-04-01T07:56:19.787Z - info: Using extension docx@2.9.0
+2022-04-01T07:56:19.800Z - info: Using extension fs-store@2.9.1
+2022-04-01T07:56:20.649Z - info: Using extension licensing@2.2.3
+2022-04-01T07:56:20.820Z - info: Using extension pdf-utils@1.10.1
+2022-04-01T07:56:22.369Z - info: Using extension pptx@0.7.0
+2022-04-01T07:56:22.404Z - info: Using extension reports@2.5.1
+2022-04-01T07:56:22.472Z - info: Using extension static-pdf@0.4.0
+2022-04-01T07:56:22.523Z - info: Using extension studio@2.10.1
+2022-04-01T07:56:23.001Z - info: Using extension text@2.0.0
+2022-04-01T07:56:23.015Z - info: Using extension version-control@1.6.0
+2022-04-01T07:56:23.997Z - info: Using extension assets@1.7.0
+2022-04-01T07:56:24.111Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-01T07:56:28.495Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-01T07:56:28.496Z - info: Using extension scheduling@2.5.0
+2022-04-01T07:56:28.969Z - info: Using extension scripts@2.6.0
+2022-04-01T07:56:28.982Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-01T07:56:28.994Z - info: Using extension xlsx@2.5.0
+2022-04-01T07:56:30.561Z - info: Using extension public-templates@2.2.0
+2022-04-01T07:56:30.572Z - info: Using extension resources@2.1.0
+2022-04-01T07:56:30.588Z - info: Using extension sample-template@2.6.1
+2022-04-01T07:56:30.614Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-01T07:56:30.614Z - info: Using fs provider for template store.
+2022-04-01T07:56:30.621Z - info: fs store is persisting using fs
+2022-04-01T07:56:30.625Z - info: fs store is synchronizing using fs
+2022-04-01T07:56:30.652Z - info: fs store is loading data
+2022-04-01T07:56:30.763Z - info: fs store is initialized successfully
+2022-04-01T07:56:30.778Z - info: Creating default express app.
+2022-04-01T07:56:31.170Z - info: jsreport server successfully started on http port: 5488
+2022-04-01T07:56:31.172Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-01T07:56:31.371Z - info: Verifying license key free
+2022-04-01T07:56:31.374Z - info: Using free license
+2022-04-01T07:56:31.385Z - info: reporter initialized
+2022-04-01T08:01:28.641Z - info: Starting rendering request 1 (user: null)
+2022-04-01T08:01:28.645Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-01T08:01:29.362Z - info: docx generation is starting
+2022-04-01T08:01:29.926Z - info: Starting rendering request 2 (user: null)
+2022-04-01T08:01:29.926Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-01T08:01:29.962Z - info: Rendering request 2 finished in 37 ms
+2022-04-01T08:01:30.074Z - info: docx generation was finished
+2022-04-01T08:01:30.590Z - info: Rendering request 1 finished in 1949 ms

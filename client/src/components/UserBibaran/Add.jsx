@@ -176,13 +176,6 @@ class Add extends Component {
               </div>
             </div>
             <div className='panel space mb-4'>
-              {/* <Input
-                className="w-30"
-                title="युजरको कार्यालय :"
-                direction="vertical"
-                value={user_office}
-                onChange={(e) => this.setState({ user_office: e })}
-              /> */}
               <div className='w-30'>
                 <Dropdown
                   className='dropdownlabel'
@@ -195,7 +188,7 @@ class Add extends Component {
                   value={dist_id}
                 />
               </div>
-              <div className='w-45'>
+              <div className='w-30'>
                 <Dropdown
                   className='dropdownlabel'
                   title='युजरको कार्यालय :'
