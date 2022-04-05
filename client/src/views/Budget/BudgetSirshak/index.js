@@ -16,13 +16,12 @@ import { Fragment } from 'react'
 class BudgetSirshak extends Component {
   constructor(props) {
     super(props)
-    const { officeRole, districtId, officeId } = this.props
     this.state = {
       loc: 'budgetsirshaklist',
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
-      distId: `${officeRole < 3 ? '%' : districtId}`,
-      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      distId: '%',
+      officeId: '%',
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -182,33 +181,34 @@ class BudgetSirshak extends Component {
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title='Delete'
+          title="Delete"
           body={'के तपाईँ बजेट शिर्षक सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
-          confirmLabel='चाहन्छु '
-          cancelLabel='चाहंदिन '
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
         {equals(loc, 'budgetsirshaklist') && (
           <Fragment>
-            <div className='report-filter'>
+            <div className="report-filter">
               <Filter
-                id='budgetsirshak'
-                title='प्राप्ति मिति'
+                id="budgetsirshak"
+                title="प्राप्ति मिति"
                 districtsList={districtList}
                 officesList={!isNil(officeList) ? officeList : []}
-                onToDate={this.handleToDate}
-                onFromDate={this.handleFromDate}
-                onSelect={this.handleDistrict}
-                onSelectOffice={this.handleOffice}
-                yesOffice={officeRole < 3 ? true : false}
-                yesDistrict={officeRole < 3 ? true : false}
+                // onToDate={this.handleToDate}
+                // onFromDate={this.handleFromDate}
+                // onSelect={this.handleDistrict}
+                // onSelectOffice={this.handleOffice}
+                yesDate={false}
+                yesOffice={false}
+                yesDistrict={false}
               />
-              <ReportGenerator id='budgetsirshak' />
+              <ReportGenerator id="budgetsirshak" />
             </div>
             <BudgetSirshakBibaran.List
-              buttonName='+ बजेट शिर्षक'
-              title='बजेट शिर्षक सम्बन्धी विवरण'
+              buttonName="+ बजेट शिर्षक"
+              title="बजेट शिर्षक सम्बन्धी विवरण"
               pageCount={
                 !isNil(budgetSirshakList)
                   ? Math.ceil(budgetSirshakList.total / perPage)
@@ -231,7 +231,7 @@ class BudgetSirshak extends Component {
         )}
         {equals(loc, 'budgetsirshakadd') && (
           <BudgetSirshakBibaran.Add
-            title='+ बजेट शिर्षक विवरण'
+            title="+ बजेट शिर्षक विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBudgetsirshak(e)}
@@ -239,7 +239,7 @@ class BudgetSirshak extends Component {
         )}
         {equals(loc, 'budgetsirshakedit') && (
           <BudgetSirshakBibaran.Edit
-            title='बजेट शिर्षक सम्बन्धी विवरण शंसोधन'
+            title="बजेट शिर्षक सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

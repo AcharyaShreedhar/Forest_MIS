@@ -18,7 +18,7 @@ async function getAllBudgetKarmacharidetail(req, res) {
   }
 
   const getTotalQuery = `SELECT count(*) as total from budget_karmacharidetails bk where ${dist_cond} and ${office_cond}`
-  const getAllBudgetKarmacharidetailQuery = `select bk.budget_karmacharidetail_id, bk.sirshak_id, bs.sirshak_name,bk. karyakram_sirshak_id, ks.karyakram_name, bk.fiscal_year, bk.chaumasik_id, bk.expense_month, bk.expense_month_id, bk.expense_year, bk.expense_amount FROM budget_karmacharidetails bk INNER JOIN budget_sirshaks bs ON bk.sirshak_id = bs.sirshak_id INNER JOIN karyakram_sirshaks ks ON bk.karyakram_sirshak_id = ks.karyakram_sirshak_id where ${dist_cond} and ${office_cond} ORDER BY ? ASC LIMIT ?, ?`
+  const getAllBudgetKarmacharidetailQuery = `select bk.budget_karmacharidetail_id, bk.sirshak_id, bs.sirshak_name,bk. karyakram_sirshak_id, ks.karyakram_name, bk.fiscal_year, bk.chaumasik_id, bk.expense_month, bk.expense_month_id, bk.expense_year, bk.expense_amount, bk.created_by, bk.updated_by FROM budget_karmacharidetails bk INNER JOIN budget_sirshaks bs ON bk.sirshak_id = bs.sirshak_id INNER JOIN karyakram_sirshaks ks ON bk.karyakram_sirshak_id = ks.karyakram_sirshak_id where ${dist_cond} and ${office_cond} ORDER BY ? ASC LIMIT ?, ?`
 
   pool.query(
     getTotalQuery,

@@ -219,7 +219,7 @@ export function* addkaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
@@ -258,7 +258,7 @@ export function* updatekaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'karyakram_sirshak_id',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
@@ -295,7 +295,7 @@ export function* deletekaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })

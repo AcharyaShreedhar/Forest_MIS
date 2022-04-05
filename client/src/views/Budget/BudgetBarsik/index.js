@@ -16,12 +16,12 @@ import { Fragment } from 'react'
 export class BudgetBarsik extends Component {
   constructor(props) {
     super(props)
-    const { officeRole, districtId, officeId } = this.props
+    const { officeRole, officeId } = this.props
     this.state = {
       loc: 'budgetbarsiklist',
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
-      distId: `${officeRole < 3 ? '%' : districtId}`,
+      distId: '%',
       officeId: `${officeRole < 3 ? '%' : officeId}`,
       perPage: 10,
       page: 0,
@@ -202,8 +202,9 @@ export class BudgetBarsik extends Component {
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
-                yesOffice={officeRole < 3 ? true : false}
-                yesDistrict={officeRole < 3 ? true : false}
+                yesDate={false}
+                yesOffice={false}
+                yesDistrict={false}
               />
               <ReportGenerator id="vehicle" />
             </div>

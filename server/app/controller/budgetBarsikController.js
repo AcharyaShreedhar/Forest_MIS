@@ -5,7 +5,7 @@ const r = require('ramda')
 //Controller for Listing all budget_barsiks
 async function getAllBudgetBarsik(req, res) {
   const getTotalQuery = `SELECT count(*) as total from budget_barsiks bb where bb.dist_id like ? and bb.office_id like ?`
-  const getAllBudgetBarsikQuery = `SELECT bb.budget_barsik_id, bb.sirshak_id,bs.sirshak_name, bb.karyakram_sirshak_id, ks.karyakram_name, bb.fiscal_year, bb.pratham_chaumasik_amount, bb.doshro_chaumasik_amount, bb.teshro_chaumasik_amount, bb.barsik_lakshay_amount FROM budget_barsiks bb INNER JOIN budget_sirshaks bs ON bb.sirshak_id = bs.sirshak_id INNER JOIN karyakram_sirshaks ks ON bb.karyakram_sirshak_id = ks.karyakram_sirshak_id where bs.dist_id like ? and bs.office_id like ? ORDER BY ? ASC LIMIT ?, ?`
+  const getAllBudgetBarsikQuery = `SELECT bb.budget_barsik_id, bb.sirshak_id,bs.sirshak_name, bb.karyakram_sirshak_id, ks.karyakram_name, bb.fiscal_year, o.office_name, bb.pratham_chaumasik_amount, bb.doshro_chaumasik_amount, bb.teshro_chaumasik_amount, bb.barsik_lakshay_amount FROM budget_barsiks bb INNER JOIN budget_sirshaks bs ON bb.sirshak_id = bs.sirshak_id INNER JOIN karyakram_sirshaks ks ON bb.karyakram_sirshak_id = ks.karyakram_sirshak_id INNER JOIN offices o ON bb.budget_office_id = o.office_id where bs.dist_id like ? and bs.office_id like ? ORDER BY ? ASC LIMIT ?, ?`
 
   pool.query(
     getTotalQuery,
@@ -96,7 +96,7 @@ async function getBudgetChaumasikLakshay(req, res) {
 
 //Controller for adding a budget_barsiks
 async function addBudgetBarsik(req, res, next) {
-  const addBudgetBarsikQuery = `INSERT INTO budget_barsiks (sirshak_id, karyakram_sirshak_id, dist_id, office_id, user_id, fiscal_year, pratham_chaumasik_amount, doshro_chaumasik_amount, teshro_chaumasik_amount,	barsik_lakshay_amount, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?)`
+  const addBudgetBarsikQuery = `INSERT INTO budget_barsiks (sirshak_id, karyakram_sirshak_id, dist_id, office_id, user_id, fiscal_year, budget_office_id, pratham_chaumasik_amount, doshro_chaumasik_amount, teshro_chaumasik_amount,	barsik_lakshay_amount, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?)`
   pool.query(
     addBudgetBarsikQuery,
     [
@@ -106,6 +106,7 @@ async function addBudgetBarsik(req, res, next) {
       req.body.office_id,
       req.body.user_id,
       req.body.fiscal_year,
+      req.body.budget_office_id,
       req.body.pratham_chaumasik_amount,
       req.body.doshro_chaumasik_amount,
       req.body.teshro_chaumasik_amount,
@@ -125,7 +126,7 @@ async function addBudgetBarsik(req, res, next) {
 
 //Controller for updating a budget_barsiks
 async function updateBudgetBarsik(req, res, next) {
-  const updateBudgetBarsikQuery = `UPDATE budget_barsiks SET sirshak_id=?, karyakram_sirshak_id=?, dist_id=?, office_id=?, user_id=?, fiscal_year=?, pratham_chaumasik_amount=?, doshro_chaumasik_amount=?, teshro_chaumasik_amount=?,	barsik_lakshay_amount=?, created_by=?, updated_by=? WHERE budget_barsik_id=?`
+  const updateBudgetBarsikQuery = `UPDATE budget_barsiks SET sirshak_id=?, karyakram_sirshak_id=?, dist_id=?, office_id=?, user_id=?, fiscal_year=?, budget_office_id, pratham_chaumasik_amount=?, doshro_chaumasik_amount=?, teshro_chaumasik_amount=?,	barsik_lakshay_amount=?, created_by=?, updated_by=? WHERE budget_barsik_id=?`
   pool.query(
     updateBudgetBarsikQuery,
     [
@@ -135,6 +136,7 @@ async function updateBudgetBarsik(req, res, next) {
       req.body.office_id,
       req.body.user_id,
       req.body.fiscal_year,
+      req.body.budget_office_id,
       req.body.pratham_chaumasik_amount,
       req.body.doshro_chaumasik_amount,
       req.body.teshro_chaumasik_amount,

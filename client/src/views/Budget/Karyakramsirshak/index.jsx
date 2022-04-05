@@ -15,11 +15,10 @@ import { Fragment } from 'react'
 class KaryakramSirshak extends Component {
   constructor(props) {
     super(props)
-    const { districtId, officeId } = this.props
     this.state = {
       loc: 'karyakramsirshaklist',
-      distId: districtId,
-      officeId: officeId,
+      distId: '%',
+      officeId: '%',
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -118,28 +117,28 @@ class KaryakramSirshak extends Component {
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title='Delete'
+          title="Delete"
           body={'के तपाईँ सम्पती सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
-          confirmLabel='चाहन्छु '
-          cancelLabel='चाहंदिन '
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
         {equals(loc, 'karyakramsirshaklist') && (
           <Fragment>
-            <div className='report-filter'>
+            <div className="report-filter">
               <Filter
-                id='karyakramsirshak'
-                title='महिना'
+                id="karyakramsirshak"
+                title="महिना"
                 yesOffice={false}
                 yesDistrict={false}
                 yesDate={false}
               />
-              <ReportGenerator id='karyakramsirshak' />
+              <ReportGenerator id="karyakramsirshak" />
             </div>
             <KaryakramSirshakBibaran.List
-              buttonName='+ कार्यक्रम शिर्षक'
-              title='कार्यक्रम शिर्षक सम्बन्धी विवरण'
+              buttonName="+ कार्यक्रम शिर्षक"
+              title="कार्यक्रम शिर्षक सम्बन्धी विवरण"
               pageCount={
                 !isNil(karyakramsirshakList)
                   ? Math.ceil(karyakramsirshakList.total / perPage)
@@ -164,7 +163,7 @@ class KaryakramSirshak extends Component {
         )}
         {equals(loc, 'karyakramsirshakadd') && (
           <KaryakramSirshakBibaran.Add
-            title='+ कार्यक्रम शिर्षक विवरण'
+            title="+ कार्यक्रम शिर्षक विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addkaryakramsirshak(e)}
@@ -172,7 +171,7 @@ class KaryakramSirshak extends Component {
         )}
         {equals(loc, 'karyakramsirshakedit') && (
           <KaryakramSirshakBibaran.Edit
-            title='कार्यक्रम शिर्षक सम्बन्धी विवरण शंसोधन'
+            title="कार्यक्रम शिर्षक सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
