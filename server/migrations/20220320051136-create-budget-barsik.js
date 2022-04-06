@@ -37,7 +37,6 @@ module.exports = {
       },
       budget_office_id: {
         type: Sequelize.INTEGER,
-        unique: true,
         allowNull: false,
       },
       pratham_chaumasik_amount: {

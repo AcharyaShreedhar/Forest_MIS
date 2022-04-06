@@ -21,6 +21,7 @@ class Edit extends Component {
       office_id: props.history.location.item?.office_id,
       created_by: props.history.location.item?.created_by,
       updated_by: props.history.location.item?.updated_by,
+      update_count: 1,
       showDialog: false,
       officeDisabled: false,
     }
@@ -30,21 +31,20 @@ class Edit extends Component {
     this.handleClose = this.handleClose.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.fetchOffice(props.history.location.item?.dist_id)
-  }
-
-  componentDidMount() {
-    const { dist_id } = this.state
-    this.props.fetchOfficedropdown({
-      distId: dist_id,
-    })
+    // this.fetchOffice(props.history.location.item?.dist_id)
   }
 
   componentDidUpdate() {
-    const { dist_id } = this.state
-    this.props.fetchOfficedropdown({
-      distId: dist_id,
-    })
+    const { update_count } = this.state
+    if (update_count < 2) {
+      const { dist_id } = this.state
+      this.props.fetchOfficedropdown({
+        distId: dist_id,
+      })
+      this.setState((prevState) => ({
+        update_count: prevState.update_count + 1,
+      }))
+    }
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
