@@ -17,7 +17,8 @@ class Edit extends Component {
       karyakram_sirshak_id: props.history.location.item?.karyakram_sirshak_id,
       fiscal_year: props.history.location.item?.fiscal_year,
       fiscal_year_id: 0,
-      budget_office_id: props.history.location.item?.budget_office_id,
+      budget_office_id:
+        props.history.location.item?.budget_office_id.toString(),
       pratham_chaumasik_amount:
         props.history.location.item?.pratham_chaumasik_amount,
       doshro_chaumasik_amount:
@@ -32,6 +33,7 @@ class Edit extends Component {
       user_id: props.history.location.item?.user_id,
       created_by: props.history.location.item?.created_by,
       updated_by: props.history.location.item?.updated_by,
+      update_count: 1,
       showDialog: false,
     }
     this.handleBudgetSirshak = this.handleBudgetSirshak.bind(this)
@@ -48,24 +50,23 @@ class Edit extends Component {
       return year.value === props.history.location.item?.fiscal_year
     })
     this.state = { ...this.state, fiscal_year_id: selected_f_year.id }
-  }
 
-  componentDidMount() {
-    const { sirshak_id, dist_id } = this.state
-    this.props.fetchKaryakramsirshakdropdown({
-      dist_id,
-      sirshak_id,
-    })
-    this.props.fetchOfficedropdown({
-      distId: dist_id,
-    })
+    console.log(this.state)
   }
   componentDidUpdate() {
-    const { dist_id } = this.state
-    this.props.fetchOfficedropdown({
-      distId: dist_id,
-    })
+    const { update_count } = this.state
+    if (update_count < 2) {
+      const { sirshak_id } = this.state
+      this.props.fetchKaryakramsirshakdropdown({
+        dist_id: '%',
+        sirshak_id: sirshak_id,
+      })
+      this.setState((prevState) => ({
+        update_count: prevState.update_count + 1,
+      }))
+    }
   }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     var budgetSirshakList = []
     var karyakramSirshakList = []
@@ -128,10 +129,10 @@ class Edit extends Component {
     }))
   }
   handleBudgetSirshak(e) {
-    const { dist_id } = this.state
+    // const { dist_id } = this.state
     const id = e[0].id
     this.setState({ sirshak_id: id, karyakram_sirshak_id: 0 })
-    this.fetchKaryakramsirshak(id, dist_id)
+    this.fetchKaryakramsirshak(id, '%')
   }
 
   fetchKaryakramsirshak(sirshak_id, dist_id) {
@@ -217,28 +218,28 @@ class Edit extends Component {
 
     return (
       <React.Fragment>
-        <div className=" card p-5 border-5">
+        <div className=' card p-5 border-5'>
           <ConfirmationDialoge
             showDialog={showDialog}
-            title="शंसोधन"
-            body="के तपाईँ सवारी साधन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
-            confirmLabel="चाहन्छु "
-            cancelLabel="चाहंदिन "
+            title='शंसोधन'
+            body='के तपाईँ सवारी साधन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?'
+            confirmLabel='चाहन्छु '
+            cancelLabel='चाहंदिन '
             onYes={this.handleSubmit}
             onClose={this.handleClose}
           />
-          <div className="detail-content">
-            <div className="title">
-              <span className="dsl-b22">{title}</span>
+          <div className='detail-content'>
+            <div className='title'>
+              <span className='dsl-b22'>{title}</span>
             </div>
 
-            <div className="panel space mb-4">
-              <div className="w-30">
+            <div className='panel space mb-4'>
+              <div className='w-30'>
                 <Dropdown
-                  className="dropdownlabel"
-                  title="आर्थिक वर्ष :"
-                  direction="vertical"
-                  returnBy="data"
+                  className='dropdownlabel'
+                  title='आर्थिक वर्ष :'
+                  direction='vertical'
+                  returnBy='data'
                   defaultIds={[fiscal_year_id]}
                   data={fiscal_year_list}
                   getValue={(fiscal_year_list) => fiscal_year_list['value']}
@@ -247,12 +248,12 @@ class Edit extends Component {
                 />
               </div>
 
-              <div className="w-30">
+              <div className='w-30'>
                 <Dropdown
-                  className="dropdownlabel"
-                  title="बजेट शिर्षक: "
-                  direction="vertical"
-                  returnBy="data"
+                  className='dropdownlabel'
+                  title='बजेट शिर्षक: '
+                  direction='vertical'
+                  returnBy='data'
                   defaultIds={[sirshak_id]}
                   data={budgetSirshakList}
                   getValue={(budgetSirshakList) => budgetSirshakList['value']}
@@ -261,12 +262,12 @@ class Edit extends Component {
                   value={sirshak_id}
                 />
               </div>
-              <div className="w-30">
+              <div className='w-30'>
                 <Dropdown
-                  className="dropdownlabel"
-                  title="कार्यक्रम शिर्षक: "
-                  direction="vertical"
-                  returnBy="data"
+                  className='dropdownlabel'
+                  title='कार्यक्रम शिर्षक: '
+                  direction='vertical'
+                  returnBy='data'
                   defaultIds={[karyakram_sirshak_id]}
                   data={karyakramSirshakList}
                   getValue={(karyakramSirshakList) =>
@@ -279,13 +280,13 @@ class Edit extends Component {
               </div>
             </div>
 
-            <div className="panel space mb-4">
-              <div className="w-30">
+            <div className='panel space mb-4'>
+              <div className='w-30'>
                 <Dropdown
-                  className="dropdownlabel"
-                  title="कार्यलय : "
-                  direction="vertical"
-                  returnBy="data"
+                  className='dropdownlabel'
+                  title='कार्यलय : '
+                  direction='vertical'
+                  returnBy='data'
                   defaultIds={[budget_office_id]}
                   data={budgetOfficeList}
                   getValue={(budgetOfficeList) => budgetOfficeList['value']}
@@ -294,50 +295,50 @@ class Edit extends Component {
                 />
               </div>
               <Input
-                className="w-30"
-                title="प्रथम चौमासिक रकम :"
+                className='w-30'
+                title='प्रथम चौमासिक रकम :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={pratham_chaumasik_amount}
-                direction="vertical"
+                direction='vertical'
                 // onChange={(e) => this.setState({ pratham_chaumasik_amount: e })}
                 onChange={(e) => this.handleBarsikAmount(e, 'pratham')}
               />
               <Input
-                className="w-30"
-                title="दोस्रो चौमासिक रकम :"
+                className='w-30'
+                title='दोस्रो चौमासिक रकम :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={doshro_chaumasik_amount}
-                direction="vertical"
+                direction='vertical'
                 // onChange={(e) => this.setState({ doshro_chaumasik_amount: e })}
                 onChange={(e) => this.handleBarsikAmount(e, 'doshro')}
               />
             </div>
-            <div className="panel space">
+            <div className='panel space'>
               <Input
-                className="w-30"
-                title="तेस्रो चौमासिक रकम :"
+                className='w-30'
+                title='तेस्रो चौमासिक रकम :'
                 onKeyPressInput={(e) => this.handleInputKeyPress(e)}
                 value={teshro_chaumasik_amount}
-                direction="vertical"
+                direction='vertical'
                 // onChange={(e) => this.setState({ teshro_chaumasik_amount: e })}
                 onChange={(e) => this.handleBarsikAmount(e, 'teshro')}
               />
               <Input
-                className="w-30"
-                title="बार्सिक लक्क्ष रकम	:"
+                className='w-30'
+                title='बार्सिक लक्क्ष रकम	:'
                 readOnly
                 value={barsik_lakshay_amount}
-                direction="vertical"
+                direction='vertical'
               />
-              <div className="w-30" />
+              <div className='w-30' />
             </div>
           </div>
-          <div className="section mb-4" />
-          <div className="mt-2 border-5">
-            <div className="d-flex justify-content-end align-items-center">
+          <div className='section mb-4' />
+          <div className='mt-2 border-5'>
+            <div className='d-flex justify-content-end align-items-center'>
               <Button
-                className="mr-3"
-                name="शंशोधन गर्नुहोस ।"
+                className='mr-3'
+                name='शंशोधन गर्नुहोस ।'
                 disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />

@@ -99,14 +99,21 @@ class Edit extends Component {
             <div className='title'>
               <span className='dsl-b22'>{title}</span>
             </div>
-            <div className='panel space mb-4'>
-              <Input
-                className='w-30'
-                title='कार्यक्रम शिर्षक :'
+            <div className='w-30'>
+              <Dropdown
+                className='dropdownlabel'
+                title='बजेट शिर्षक: '
                 direction='vertical'
-                value={karyakram_name}
-                onChange={(e) => this.setState({ karyakram_name: e })}
+                returnBy='data'
+                defaultIds={[sirshak_id]}
+                data={budgetSirshakList}
+                getValue={(budgetSirshakList) => budgetSirshakList['value']}
+                getType={(budgetSirshakList) => budgetSirshakList['type']}
+                onChange={(e) => this.handleBudgetSirshak(e)}
+                value={sirshak_id}
               />
+            </div>
+            <div className='panel space mb-4'>
               <Input
                 className='w-30'
                 title='कार्यक्रम शिर्षक नं.  :'
@@ -114,20 +121,13 @@ class Edit extends Component {
                 value={karyakram_sirshak_no}
                 onChange={(e) => this.setState({ karyakram_sirshak_no: e })}
               />
-              <div className='w-30'>
-                <Dropdown
-                  className='dropdownlabel'
-                  title='बजेट शिर्षक: '
-                  direction='vertical'
-                  returnBy='data'
-                  defaultIds={[sirshak_id]}
-                  data={budgetSirshakList}
-                  getValue={(budgetSirshakList) => budgetSirshakList['value']}
-                  getType={(budgetSirshakList) => budgetSirshakList['type']}
-                  onChange={(e) => this.handleBudgetSirshak(e)}
-                  value={sirshak_id}
-                />
-              </div>
+              <Input
+                className='w-30'
+                title='कार्यक्रम शिर्षक :'
+                direction='vertical'
+                value={karyakram_name}
+                onChange={(e) => this.setState({ karyakram_name: e })}
+              />
               {/* <div className='w-30' /> */}
             </div>
           </div>

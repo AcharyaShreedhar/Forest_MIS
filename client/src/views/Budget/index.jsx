@@ -12,35 +12,35 @@ export class Budget extends Component {
   componentDidMount() {
     const { districtId, officeId, officeRole } = this.props
     this.props.fetchallKaryakramsirshak({
-      distId: districtId,
-      officeId: officeId,
+      distId: '%',
+      officeId: '%',
       name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchallBudgetsirshak({
-      distId: districtId,
-      officeId: officeId,
+      distId: '%',
+      officeId: '%',
       name: 'sirshak_name',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchallBudgetbarsik({
-      distId: districtId,
-      officeId: officeId,
+      distId: '%',
+      officeId: '%',
       name: 'fiscal_year',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchBudgetsirshakdropdown({
-      dist_id: districtId,
+      dist_id: '%',
     })
 
     this.props.fetchKaryakramsirshakdropdown({
-      dist_id: districtId,
+      dist_id: '%',
       sirshak_id: '%',
     })
 
@@ -61,7 +61,7 @@ export class Budget extends Component {
   componentDidUpdate() {
     const { districtId, officeRole, officeId } = this.props
     this.props.fetchallKaryakramsirshak({
-      distId: districtId,
+      distId: '%',
       officeId: officeId,
       name: 'karyakram_name',
       page: 0,
@@ -69,7 +69,7 @@ export class Budget extends Component {
     })
 
     this.props.fetchallBudgetsirshak({
-      distId: districtId,
+      distId: '%',
       officeId: officeId,
       name: 'sirshak_name',
       page: 0,
@@ -77,7 +77,7 @@ export class Budget extends Component {
     })
 
     this.props.fetchallBudgetbarsik({
-      distId: districtId,
+      distId: '%',
       officeId: officeId,
       name: 'fiscal_year',
       page: 0,
@@ -112,7 +112,7 @@ export class Budget extends Component {
             )
           }
           if (!prop.redirect && prop.auth && !authenticated) {
-            return <Redirect exact from={prop.path} to="/" key={key} />
+            return <Redirect exact from={prop.path} to='/' key={key} />
           }
           return (
             <Route
@@ -123,7 +123,7 @@ export class Budget extends Component {
             />
           )
         })}
-        <Route path="*" exact component={NotFound} />
+        <Route path='*' exact component={NotFound} />
       </Switch>
     )
   }

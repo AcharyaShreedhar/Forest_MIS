@@ -22,7 +22,7 @@ class Add extends Component {
     this.state = {
       user_id: '',
       dist_id: this.props.user.dist_id,
-      office_id: '',
+      office_id: this.props.user.office_id,
       fiscal_year: f_year,
       sirshak_id: '%',
       karyakram_sirshak_id: '',
@@ -93,12 +93,21 @@ class Add extends Component {
       sirshak_id: '',
       karyakram_sirshak_id: '',
       fiscal_year: '',
+      budget_office_id: '',
     })
     this.props.fetchBudgetchaumasiklakshayData({
       chaumasik_id: '',
       sirshak_id: '',
       karyakram_sirshak_id: '',
       fiscal_year: '',
+      budget_office_id: '',
+    })
+    this.props.fetchBudgetsirshakdropdown({
+      dist_id: '%',
+    })
+    this.props.fetchKaryakramsirshakdropdown({
+      dist_id: '%',
+      sirshak_id: '%',
     })
   }
 
@@ -110,20 +119,20 @@ class Add extends Component {
       karyakram_sirshak_id: 0,
       chaumasik_id: 0,
     })
-    this.fetchBudgetbarsiklakshay('', '', '')
-    this.fetchBudgetchaumasiklakshay('', '', '', '')
+    this.fetchBudgetbarsiklakshay('', '', '', '')
+    this.fetchBudgetchaumasiklakshay('', '', '', '', '')
   }
   handleBudgetSirshak(e) {
-    const { dist_id } = this.state
+    // const { dist_id } = this.state
     const id = e[0].id
     this.setState({
       sirshak_id: id,
       karyakram_sirshak_id: 0,
       chaumasik_id: 0,
     })
-    this.fetchKaryakramsirshak(id, dist_id)
-    this.fetchBudgetbarsiklakshay('', '', '')
-    this.fetchBudgetchaumasiklakshay('', '', '', '')
+    this.fetchKaryakramsirshak(id, '%')
+    this.fetchBudgetbarsiklakshay('', '', '', '')
+    this.fetchBudgetchaumasiklakshay('', '', '', '', '')
   }
 
   fetchKaryakramsirshak(sirshak_id, dist_id) {
@@ -134,23 +143,30 @@ class Add extends Component {
   }
 
   handleKaryakramSirshak(e) {
-    const { sirshak_id, fiscal_year } = this.state
+    const { office_id, sirshak_id, fiscal_year } = this.state
     const id = e[0].id
     this.setState({ karyakram_sirshak_id: id })
-    this.fetchBudgetbarsiklakshay(sirshak_id, id, fiscal_year)
-    this.fetchBudgetchaumasiklakshay('', '', '', '')
+    this.fetchBudgetbarsiklakshay(sirshak_id, id, fiscal_year, office_id)
+    this.fetchBudgetchaumasiklakshay('', '', '', '', '')
   }
 
-  fetchBudgetbarsiklakshay(sirshak_id, karyakram_sirshak_id, fiscal_year) {
+  fetchBudgetbarsiklakshay(
+    sirshak_id,
+    karyakram_sirshak_id,
+    fiscal_year,
+    office_id
+  ) {
     this.props.fetchBudgetbarsiklakshayData({
       sirshak_id,
       karyakram_sirshak_id,
       fiscal_year,
+      budget_office_id: office_id,
     })
   }
 
   handleChaumasik(e) {
-    const { sirshak_id, karyakram_sirshak_id, fiscal_year } = this.state
+    const { office_id, sirshak_id, karyakram_sirshak_id, fiscal_year } =
+      this.state
     this.setState({ chaumasik_id: e[0] })
     this.setState({ expense_month_id: 0, expense_month: '' })
     this.handleMonthFilter(e[0])
@@ -158,20 +174,23 @@ class Add extends Component {
       sirshak_id,
       karyakram_sirshak_id,
       e[0],
-      fiscal_year
+      fiscal_year,
+      office_id
     )
   }
   fetchBudgetchaumasiklakshay(
     sirshak_id,
     karyakram_sirshak_id,
     chaumasik_id,
-    fiscal_year
+    fiscal_year,
+    office_id
   ) {
     this.props.fetchBudgetchaumasiklakshayData({
       sirshak_id,
       karyakram_sirshak_id,
       chaumasik_id,
       fiscal_year,
+      budget_office_id: office_id,
     })
   }
 

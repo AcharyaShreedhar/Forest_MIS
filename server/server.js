@@ -135,6 +135,7 @@ const uddhamBibaranRoutes = require('./app/routes/report/uddhamBibaranRoutes')
 const rojgariSrijanaRoutes = require('./app/routes/report/rojgariSrijanaRoutes')
 const upavoktaSusasanRoutes = require('./app/routes/report/upavoktaSusasanRoutes')
 const banHastantaranBibaranRoutes = require('./app/routes/report/banHastantaranBibaranRoutes')
+const budgetMonthlyBibaranRoutes = require('./app/routes/report/budgetMonthlyBibaranRoutes')
 
 app.use('/api/v1', provinceRoutes)
 app.use('/api/v1', districtRoutes)
@@ -217,6 +218,7 @@ app.use('/api/v1', uddhamBibaranRoutes)
 app.use('/api/v1', rojgariSrijanaRoutes)
 app.use('/api/v1', upavoktaSusasanRoutes)
 app.use('/api/v1', banHastantaranBibaranRoutes)
+app.use('/api/v1', budgetMonthlyBibaranRoutes)
 
 const port = process.env.PORT || 3001
 app.listen(port, () => {

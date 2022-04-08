@@ -54,11 +54,16 @@ async function getBudgetBarsik(req, res) {
 
 //Controller for budget_barsik_lakshay
 async function getBudgetBarsikLakshay(req, res) {
-  const getBudgetBarsikQuery = `select if(count(barsik_lakshay_amount) = 0,0,barsik_lakshay_amount) barsiklakshay from budget_barsiks where sirshak_id like ? and karyakram_sirshak_id like ? and fiscal_year like ?`
+  const getBudgetBarsikQuery = `select if(count(barsik_lakshay_amount) = 0,0,barsik_lakshay_amount) barsiklakshay from budget_barsiks where sirshak_id like ? and karyakram_sirshak_id like ? and fiscal_year like ? and budget_office_id like ?`
 
   pool.query(
     getBudgetBarsikQuery,
-    [req.body.sirshak_id, req.body.karyakram_sirshak_id, req.body.fiscal_year],
+    [
+      req.body.sirshak_id,
+      req.body.karyakram_sirshak_id,
+      req.body.fiscal_year,
+      req.body.budget_office_id,
+    ],
     (error, results, fields) => {
       if (error) throw error
       res.send(JSON.stringify({ status: 200, error: null, data: results }))
@@ -76,7 +81,7 @@ async function getBudgetChaumasikLakshay(req, res) {
     chaumasik_amount = 'teshro_chaumasik_amount'
   }
 
-  const getBudgetBarsikChaumasik = `select (${chaumasik_amount} - (select if(isNUll(sum(expense_amount)),0,sum(expense_amount)) as e from budget_karmacharidetails where chaumasik_id = ? and karyakram_sirshak_id = bb.karyakram_sirshak_id  and sirshak_id = bb.sirshak_id and fiscal_year = bb.fiscal_year)) as expense_remain,${chaumasik_amount} as chaumasik_amount , (select if(isNUll(sum(expense_amount)),0,sum(expense_amount)) as e from budget_karmacharidetails where chaumasik_id = ? and karyakram_sirshak_id = bb.karyakram_sirshak_id  and sirshak_id = bb.sirshak_id and fiscal_year = bb.fiscal_year) expense_amount from budget_barsiks bb where bb.sirshak_id like ? and bb.karyakram_sirshak_id like ? and bb.fiscal_year like ?`
+  const getBudgetBarsikChaumasik = `select (${chaumasik_amount} - (select if(isNUll(sum(expense_amount)),0,sum(expense_amount)) as e from budget_karmacharidetails where chaumasik_id = ? and karyakram_sirshak_id = bb.karyakram_sirshak_id  and sirshak_id = bb.sirshak_id and fiscal_year = bb.fiscal_year and office_id=bb.budget_office_id)) as expense_remain,${chaumasik_amount} as chaumasik_amount , (select if(isNUll(sum(expense_amount)),0,sum(expense_amount)) as e from budget_karmacharidetails where chaumasik_id = ? and karyakram_sirshak_id = bb.karyakram_sirshak_id  and sirshak_id = bb.sirshak_id and fiscal_year = bb.fiscal_year and office_id=bb.budget_office_id) expense_amount from budget_barsiks bb where bb.sirshak_id like ? and bb.karyakram_sirshak_id like ? and bb.fiscal_year like ? and bb.budget_office_id like ?`
 
   pool.query(
     getBudgetBarsikChaumasik,
@@ -86,6 +91,7 @@ async function getBudgetChaumasikLakshay(req, res) {
       req.body.sirshak_id,
       req.body.karyakram_sirshak_id,
       req.body.fiscal_year,
+      req.body.budget_office_id,
     ],
     (error, results, fields) => {
       if (error) throw error

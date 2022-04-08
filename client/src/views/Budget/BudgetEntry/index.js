@@ -256,6 +256,14 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(
       BudgetbibaranActions.deletebudgetentryRequest(budgetkarmacharidetailId)
     ),
+
+  fetchBudgetsirshakdropdown: (payload) =>
+    dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
+
+  fetchKaryakramsirshakdropdown: (payload) =>
+    dispatch(
+      BudgetbibaranActions.fetchkaryakramsirshakdropdownRequest(payload)
+    ),
   // O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),

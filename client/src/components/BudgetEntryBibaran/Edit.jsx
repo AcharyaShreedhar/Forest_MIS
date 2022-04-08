@@ -18,9 +18,9 @@ class Edit extends Component {
     super(props)
     this.state = {
       id: props.history.location.item?.budget_karmacharidetail_id,
-      user_id: props.history.location.item?.user_id,
-      dist_id: props.history.location.item?.dist_id,
-      office_id: props.history.location.item?.office_id,
+      user_id: props.user.user_id,
+      dist_id: props.user.dist_id,
+      office_id: props.user.office_id,
       fiscal_year: props.history.location.item?.fiscal_year,
       sirshak_id: props.history.location.item?.sirshak_id,
       karyakram_sirshak_id: props.history.location.item?.karyakram_sirshak_id,
@@ -99,6 +99,7 @@ class Edit extends Component {
 
   componentDidMount() {
     const {
+      office_id,
       sirshak_id,
       chaumasik_id,
       karyakram_sirshak_id,
@@ -107,16 +108,19 @@ class Edit extends Component {
       budgetchaumasikamount,
       budgetchaumasikremain,
     } = this.state
+
     this.props.fetchBudgetbarsiklakshayData({
       sirshak_id: sirshak_id,
       karyakram_sirshak_id: karyakram_sirshak_id,
       fiscal_year: fiscal_year,
+      budget_office_id: office_id,
     })
     this.props.fetchBudgetchaumasiklakshayData({
       chaumasik_id: chaumasik_id,
       sirshak_id: sirshak_id,
       karyakram_sirshak_id: karyakram_sirshak_id,
       fiscal_year: fiscal_year,
+      budget_office_id: office_id,
     })
     console.log(
       'componenet mount: ',
@@ -138,20 +142,20 @@ class Edit extends Component {
       karyakram_sirshak_id: 0,
       chaumasik_id: 0,
     })
-    this.fetchBudgetbarsiklakshay('', '', '')
-    this.fetchBudgetchaumasiklakshay('', '', '', '')
+    this.fetchBudgetbarsiklakshay('', '', '', '')
+    this.fetchBudgetchaumasiklakshay('', '', '', '', '')
   }
   handleBudgetSirshak(e) {
-    const { dist_id } = this.state
+    // const { dist_id } = this.state
     const id = e[0].id
     this.setState({
       sirshak_id: id,
       karyakram_sirshak_id: 0,
       chaumasik_id: 0,
     })
-    this.fetchKaryakramsirshak(id, dist_id)
-    this.fetchBudgetbarsiklakshay('', '', '')
-    this.fetchBudgetchaumasiklakshay('', '', '', '')
+    this.fetchKaryakramsirshak(id, '%')
+    this.fetchBudgetbarsiklakshay('', '', '', '')
+    this.fetchBudgetchaumasiklakshay('', '', '', '', '')
   }
 
   fetchKaryakramsirshak(sirshak_id, dist_id) {
@@ -162,23 +166,30 @@ class Edit extends Component {
   }
 
   handleKaryakramSirshak(e) {
-    const { sirshak_id, fiscal_year } = this.state
+    const { office_id, sirshak_id, fiscal_year } = this.state
     const id = e[0].id
     this.setState({ karyakram_sirshak_id: id })
-    this.fetchBudgetbarsiklakshay(sirshak_id, id, fiscal_year)
-    this.fetchBudgetchaumasiklakshay('', '', '', '')
+    this.fetchBudgetbarsiklakshay(sirshak_id, id, fiscal_year, office_id)
+    this.fetchBudgetchaumasiklakshay('', '', '', '', '')
   }
 
-  fetchBudgetbarsiklakshay(sirshak_id, karyakram_sirshak_id, fiscal_year) {
+  fetchBudgetbarsiklakshay(
+    sirshak_id,
+    karyakram_sirshak_id,
+    fiscal_year,
+    office_id
+  ) {
     this.props.fetchBudgetbarsiklakshayData({
       sirshak_id,
       karyakram_sirshak_id,
       fiscal_year,
+      budget_office_id: office_id,
     })
   }
 
   handleChaumasik(e) {
-    const { sirshak_id, karyakram_sirshak_id, fiscal_year } = this.state
+    const { office_id, sirshak_id, karyakram_sirshak_id, fiscal_year } =
+      this.state
     this.setState({ chaumasik_id: e[0] })
     this.setState({ expense_month_id: 0, expense_month: '' })
     this.handleMonthFilter(e[0])
@@ -186,20 +197,23 @@ class Edit extends Component {
       sirshak_id,
       karyakram_sirshak_id,
       e[0],
-      fiscal_year
+      fiscal_year,
+      office_id
     )
   }
   fetchBudgetchaumasiklakshay(
     sirshak_id,
     karyakram_sirshak_id,
     chaumasik_id,
-    fiscal_year
+    fiscal_year,
+    office_id
   ) {
     this.props.fetchBudgetchaumasiklakshayData({
       sirshak_id,
       karyakram_sirshak_id,
       chaumasik_id,
       fiscal_year,
+      budget_office_id: office_id,
     })
   }
 
