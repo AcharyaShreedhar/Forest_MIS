@@ -29,6 +29,8 @@ async function getBudgetMonthly(req, res) {
 
   const getBudgetMonthlyQuery = `select bb.sirshak_id, bs.sirshak_name, bb.karyakram_sirshak_id, ks.karyakram_name, bb.barsik_lakshay_amount, bb.teshro_chaumasik_amount as chaumasik_lakshay_amount, (select if(isNull(sum(expense_amount)),0,sum(expense_amount)) ea from budget_karmacharidetails where chaumasik_id < ? and sirshak_id = bb.sirshak_id and karyakram_sirshak_id = bb.karyakram_sirshak_id and fiscal_year = bb.fiscal_year and expense_year = ? and office_id = bb.budget_office_id ) as gata_chaumasik_pragati, (select if(isNull(sum(expense_amount)),0,sum(expense_amount)) as ea from budget_karmacharidetails where expense_month_id < ? and sirshak_id = bb.sirshak_id and karyakram_sirshak_id = bb.karyakram_sirshak_id and fiscal_year = bb.fiscal_year and  expense_year = ? and  office_id = bb.budget_office_id) as gata_mahina_pragati,(select if(isNull(sum(expense_amount)),0,sum(expense_amount)) as ea from budget_karmacharidetails where expense_month_id = ? and sirshak_id = bb.sirshak_id and karyakram_sirshak_id = bb.karyakram_sirshak_id and fiscal_year = bb.fiscal_year and expense_year = ? and office_id = bb.budget_office_id) as yes_mahina_pragati, (select if(isNull(sum(expense_amount)),0,sum(expense_amount)) as ea from budget_karmacharidetails where expense_month_id <= ? and sirshak_id = bb.sirshak_id and karyakram_sirshak_id = bb.karyakram_sirshak_id and fiscal_year = bb.fiscal_year and expense_year = ? and office_id = bb.budget_office_id) as mahina_pragati from budget_barsiks bb inner join budget_sirshaks as bs on bb.sirshak_id = bs.sirshak_id inner join karyakram_sirshaks as ks on bb.karyakram_sirshak_id = ks.karyakram_sirshak_id where fiscal_year = ? and bb.budget_office_id like ? group by bb.sirshak_id , bb.karyakram_sirshak_id order by bb.sirshak_id, bb.karyakram_sirshak_id`
 
+  console.log('budgetmpnth;u:', req.body)
+
   pool.query(
     getBudgetMonthlyQuery,
     [
@@ -52,6 +54,7 @@ async function getBudgetMonthly(req, res) {
           budget_monthly: results,
         })
       )
+      console.log('budgetmpnth;u:', results)
     }
   )
 }

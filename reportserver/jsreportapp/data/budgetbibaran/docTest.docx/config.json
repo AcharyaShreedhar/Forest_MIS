@@ -1,13 +1,12 @@
 {
-    "_id": "624653285ee3bc9070ae7dd7",
     "name": "docTest.docx",
     "creationDate": {
-        "$$date": 1648800082004
+        "$$date": 1649835541494
     },
     "modificationDate": {
-        "$$date": 1648800082004
+        "$$date": 1649835541494
     },
-    "shortid": "k_z5M5k",
-    "workspaceId": "624585665ee3bc7c06ae7652",
+    "shortid": "dPeHJiy",
+    "_id": "wDN6NPBSw5bABFcc",
     "$entitySet": "assets"
 }

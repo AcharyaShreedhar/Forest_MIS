@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from '../../../components'
 import { connect } from 'react-redux'
+import { equals } from 'ramda'
 import { englishToNepaliNumber } from 'nepali-number' //nepaliToEnglishNumber
 import jsreport from 'jsreport-browser-client-dist'
 // import NepaliDate from 'nepali-date-converter'
@@ -21,6 +22,7 @@ import { Fragment } from 'react'
 import '../Report.scss'
 import Filter from '../../../components/Filter'
 import { isNil } from 'ramda'
+import Report from '..'
 
 export class BudgetMonthlyReport extends Component {
   constructor(props) {
@@ -50,16 +52,19 @@ export class BudgetMonthlyReport extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     var officeList = []
-
-    var report_data = {}
+    var user_name = ''
+    var user_office = ''
+    var budget_monthly = {}
     if (nextProps !== prevState) {
       officeList = nextProps.officeDataList.data
-      report_data = {
-        name: nextProps.user_office,
-      }
+      user_name = nextProps.user_name
+      user_office = nextProps.user_office
+      budget_monthly = nextProps.budgetmonthlylist.budget_monthly
     }
     return {
-      report_data,
+      budget_monthly,
+      user_name,
+      user_office,
       officeList,
     }
   }
@@ -142,6 +147,147 @@ export class BudgetMonthlyReport extends Component {
   //   jsreport.render(this.reportPreview, reportRequest)
   // }
 
+  handlePreview() {
+    // console.log(this.state.budget_monthly)
+    let allbs = []
+    const { budget_monthly, user_name, user_office, fiscal_year } = this.state
+    const budget = (budget_monthly) => {
+      let bs = ''
+      budget_monthly.map((budget) => {
+        if (!equals(bs, budget.sirshak_name)) {
+          bs = budget.sirshak_name
+          allbs.push(budget.sirshak_name)
+        }
+        return 0
+      })
+    }
+    budget(budget_monthly)
+    let report_data = {}
+    let sn = 1
+    let p_value = []
+    let b_sum = 0
+    let c_sum = 0
+    let gc_sum = 0
+    let gm_sum = 0
+    let m_sum = 0
+    let h_sum = 0
+    let h_sum_p = 0
+    let p_total = {}
+    // console.log(allbs[0])
+    budget_monthly.map((karyakram) => {
+      if (equals(allbs[0], karyakram.sirshak_name)) {
+        // console.log('------', sn, karyakram.karyakram_name)
+        b_sum += karyakram.barsik_lakshay_amount
+        c_sum += karyakram.chaumasik_lakshay_amount
+        gc_sum += karyakram.gata_chaumasik_pragati
+        gm_sum += karyakram.gata_mahina_pragati
+        m_sum += karyakram.yes_mahina_pragati
+        h_sum += karyakram.mahina_pragati
+        p_value.push({
+          sn: sn,
+          karyakram_name: karyakram.karyakram_name,
+          barsik_lakshay_amount: karyakram.barsik_lakshay_amount,
+          chaumasik_lakshay_amount: karyakram.chaumasik_lakshay_amount,
+          gata_chaumasik_pragati: karyakram.gata_chaumasik_pragati,
+          gata_mahina_pragati: karyakram.gata_mahina_pragati,
+          yes_mahina_pragati: karyakram.yes_mahina_pragati,
+          mahina_pragati: karyakram.mahina_pragati,
+          mahina_pragati_percent: (
+            (karyakram.mahina_pragati / karyakram.barsik_lakshay_amount) *
+            100
+          ).toFixed(2),
+        })
+        sn++
+      }
+      return 0
+    })
+    h_sum_p = (h_sum / b_sum) * 100
+    // console.log(h_sum, b_sum)
+    p_total = {
+      name: 'Total pungi',
+      b_sum: b_sum,
+      c_sum: c_sum,
+      gc_sum: gc_sum,
+      gm_sum: gm_sum,
+      m_sum: m_sum,
+      h_sum: h_sum,
+      h_sum_p: h_sum_p.toFixed(2),
+    }
+    report_data = { pungi: allbs[0], p_value, p_total }
+
+    sn = 1
+    let c_value = []
+    b_sum = 0
+    c_sum = 0
+    gc_sum = 0
+    gm_sum = 0
+    m_sum = 0
+    h_sum = 0
+    h_sum_p = 0
+    let c_total = {}
+    // console.log(allbs[1])
+    budget_monthly.map((karyakram) => {
+      if (equals(allbs[1], karyakram.sirshak_name)) {
+        // console.log('------', sn, karyakram.karyakram_name)
+        b_sum += karyakram.barsik_lakshay_amount
+        c_sum += karyakram.chaumasik_lakshay_amount
+        gc_sum += karyakram.gata_chaumasik_pragati
+        gm_sum += karyakram.gata_mahina_pragati
+        m_sum += karyakram.yes_mahina_pragati
+        h_sum += karyakram.mahina_pragati
+        c_value.push({
+          sn: sn,
+          karyakram_name: karyakram.karyakram_name,
+          barsik_lakshay_amount: karyakram.barsik_lakshay_amount,
+          chaumasik_lakshay_amount: karyakram.chaumasik_lakshay_amount,
+          gata_chaumasik_pragati: karyakram.gata_chaumasik_pragati,
+          gata_mahina_pragati: karyakram.gata_mahina_pragati,
+          yes_mahina_pragati: karyakram.yes_mahina_pragati,
+          mahina_pragati: karyakram.mahina_pragati,
+          mahina_pragati_percent: (
+            (karyakram.mahina_pragati / karyakram.barsik_lakshay_amount) *
+            100
+          ).toFixed(2),
+        })
+        sn++
+      }
+      return 0
+    })
+    h_sum_p = (h_sum / b_sum) * 100
+
+    c_total = {
+      name: 'Total chalu',
+      b_sum: b_sum,
+      c_sum: c_sum,
+      gc_sum: gc_sum,
+      gm_sum: gm_sum,
+      m_sum: m_sum,
+      h_sum: h_sum,
+      h_sum_p: h_sum_p.toFixed(2),
+    }
+    report_data = {
+      ...report_data,
+      chalu: allbs[1],
+      c_value,
+      c_total,
+      user_name: user_name,
+      user_office: user_office,
+      arthik_barsa: fiscal_year,
+    }
+    console.log(report_data)
+    jsreport.serverUrl = 'http://localhost:5488'
+    let reportRequest = {
+      template: { name: 'budgetbibaran' },
+      data: report_data,
+      options: {
+        office: {
+          preview: true,
+        },
+      },
+    }
+    jsreport.render(this.reportPreview, reportRequest)
+  }
+
   componentDidMount() {
     const { distId } = this.state
     this.props.fetchOfficedropdown({
@@ -163,7 +309,21 @@ export class BudgetMonthlyReport extends Component {
   }
 
   fetchReportResults(fiscal_year, year, chaumasik_id, month_id, officeId) {
-    console.log(fiscal_year, year, chaumasik_id, month_id, officeId)
+    console.log(
+      '.........parameters',
+      fiscal_year,
+      year,
+      chaumasik_id,
+      month_id,
+      officeId
+    )
+    this.props.fetchbudgetmonthlylist({
+      chaumasik_id,
+      expense_year: year,
+      expense_month_id: month_id,
+      fiscal_year,
+      office_id: officeId,
+    })
   }
 
   render() {
@@ -200,18 +360,18 @@ export class BudgetMonthlyReport extends Component {
             yesMonth={true}
             multi={false}
           />
-          {/* <div className='w-40 button_style'>
+          <div className='w-40 button_style'>
             <Button
               className='mr-3 preview'
               name='पुर्वालोकन गर्नुहोस ।'
               onClick={this.handlePreview.bind(this)}
             />
-            <Button
+            {/* <Button
               className='mr-3 save'
               name='शेभ गर्नुहोस ।'
               onClick={this.handleReport.bind(this)}
-            />
-          </div> */}
+            /> */}
+          </div>
         </div>
         <div
           style={{ height: '100vh' }}
@@ -225,12 +385,17 @@ export class BudgetMonthlyReport extends Component {
 const mapStateToProps = (state) => ({
   officeDataList: state.app.officesDropdownData,
   user_office: state.app.user.user_office,
+  user_name: state.app.user.user_name,
   officeRole: state.app.user.office_type,
   districtId: state.app.user.dist_id,
   officeId: state.app.user.office_id,
+  budgetmonthlylist: state.report.budget_monthly,
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchbudgetmonthlylist: (payload) =>
+    dispatch(ReportActions.fetchbudgetmonthlybibaranRequest(payload)),
+
   //O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),

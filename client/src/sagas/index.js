@@ -373,6 +373,7 @@ import {
   fetchsrijanabhayekorojgariRequest,
   fetchupavoktasusasanRequest,
   fetchbanhastantaranbibaranRequest,
+  fetchbudgetmonthlybibaranRequest,
 } from './report'
 
 //-------------------budgetbibaran
@@ -1988,6 +1989,12 @@ export default function* root() {
     takeLatest(
       ReportTypes.FETCHBANHASTANTARANBIBARAN_REQUEST,
       fetchbanhastantaranbibaranRequest,
+      api
+    ),
+
+    takeLatest(
+      ReportTypes.FETCHBUDGETMONTHLYBIBARAN_REQUEST,
+      fetchbudgetmonthlybibaranRequest,
       api
     ),
 

@@ -1,5 +1,72 @@
-{"list":[
-        {"name":"Jupiter", "value":[{"name":"level", "value":10}]},
-        {"name":"Venus", "value":[{"name":"level", "value":30}]}
-        ]
+{
+    "pungi": "pugigat",
+    "p_value": [
+        {
+            "sn": 1,
+            "karyakram_name": "Furnitures",
+            "barsik_lakshay_amount": 600,
+            "chaumasik_lakshay_amount": 300,
+            "gata_chaumasik_pragati": 0,
+            "gata_mahina_pragati": 0,
+            "yes_mahina_pragati": 50,
+            "mahina_pragati": 50,
+            "mahina_pragati_percent": 8.333333333333332
+        },
+        {
+            "sn": 2,
+            "karyakram_name": "Laptop",
+            "barsik_lakshay_amount": 1000,
+            "chaumasik_lakshay_amount": 200,
+            "gata_chaumasik_pragati": 500,
+            "gata_mahina_pragati": 500,
+            "yes_mahina_pragati": 0,
+            "mahina_pragati": 500,
+            "mahina_pragati_percent": 50
+        }
+    ],
+    "p_total": {
+        "name": "Total pungi",
+        "b_sum": 1600,
+        "c_sum": 500,
+        "gc_sum": 500,
+        "gm_sum": 500,
+        "m_sum": 50,
+        "h_sum": 550,
+        "h_sum_p": 34.375
+    },
+    "chalu": "chalu",
+    "c_value": [
+        {
+            "sn": 1,
+            "karyakram_name": "talim",
+            "barsik_lakshay_amount": 1800,
+            "chaumasik_lakshay_amount": 1000,
+            "gata_chaumasik_pragati": 300,
+            "gata_mahina_pragati": 300,
+            "yes_mahina_pragati": 620,
+            "mahina_pragati": 920,
+            "mahina_pragati_percent": 51.11111111111111
+        },
+        {
+            "sn": 2,
+            "karyakram_name": "kalam",
+            "barsik_lakshay_amount": 600,
+            "chaumasik_lakshay_amount": 300,
+            "gata_chaumasik_pragati": 0,
+            "gata_mahina_pragati": 0,
+            "yes_mahina_pragati": 0,
+            "mahina_pragati": 0,
+            "mahina_pragati_percent": 0
+        }
+    ],
+    "c_total": {
+        "name": "Total chalu",
+        "b_sum": 2400,
+        "c_sum": 1300,
+        "gc_sum": 300,
+        "gm_sum": 300,
+        "m_sum": 620,
+        "h_sum": 920,
+        "h_sum_p": 38.333333333333336
+    }
 }

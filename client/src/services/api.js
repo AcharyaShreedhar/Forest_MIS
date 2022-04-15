@@ -1002,6 +1002,9 @@ const create = (baseURL = Config.API_URL) => {
   const postBanHastantaranBibaran = (payload) =>
     api.post('banhastantaran_bibaran', payload)
 
+  const postBudgetMonthlyBibaran = (payload) =>
+    api.post('budget_monthly', payload)
+
   // karyakramsirshak
   const getKaryakramSirshakDropdownList = (payload) =>
     api.post('karyakramsirshakDropdownList', payload)
@@ -1457,6 +1460,7 @@ const create = (baseURL = Config.API_URL) => {
     postSrijanBhayekoRojgari,
     postUpavoktaSusasan,
     postBanHastantaranBibaran,
+    postBudgetMonthlyBibaran,
   }
 }
 
