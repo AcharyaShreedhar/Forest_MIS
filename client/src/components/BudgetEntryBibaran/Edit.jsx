@@ -82,12 +82,12 @@ class Edit extends Component {
         }
       }
     }
-    console.log(
-      'Lakshayvalues: ',
-      budgetbarsiklakshay,
-      budgetchaumasikremain,
-      budgetchaumasikamount
-    )
+    // console.log(
+    //   'Lakshayvalues: ',
+    //   budgetbarsiklakshay,
+    //   budgetchaumasikremain,
+    //   budgetchaumasikamount
+    // )
     return {
       budgetSirshakList,
       karyakramSirshakList,
@@ -122,16 +122,16 @@ class Edit extends Component {
       fiscal_year: fiscal_year,
       budget_office_id: office_id,
     })
-    console.log(
-      'componenet mount: ',
-      sirshak_id,
-      chaumasik_id,
-      karyakram_sirshak_id,
-      fiscal_year,
-      budgetbarsiklakshay,
-      budgetchaumasikamount,
-      budgetchaumasikremain
-    )
+    // console.log(
+    //   'componenet mount: ',
+    //   sirshak_id,
+    //   chaumasik_id,
+    //   karyakram_sirshak_id,
+    //   fiscal_year,
+    //   budgetbarsiklakshay,
+    //   budgetchaumasikamount,
+    //   budgetchaumasikremain
+    // )
   }
 
   handleFiscalYear(e) {

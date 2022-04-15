@@ -204,7 +204,7 @@ export class BudgetMonthlyReport extends Component {
     h_sum_p = (h_sum / b_sum) * 100
     // console.log(h_sum, b_sum)
     p_total = {
-      name: 'Total pungi',
+      name: 'पुँजीगत खर्च जम्म',
       b_sum: b_sum,
       c_sum: c_sum,
       gc_sum: gc_sum,
@@ -217,6 +217,13 @@ export class BudgetMonthlyReport extends Component {
 
     sn = 1
     let c_value = []
+    let b_sum_t = b_sum
+    let c_sum_t = c_sum
+    let gc_sum_t = gc_sum
+    let gm_sum_t = gm_sum
+    let m_sum_t = m_sum
+    let h_sum_t = h_sum
+    let h_sum_p_t = h_sum_p
     b_sum = 0
     c_sum = 0
     gc_sum = 0
@@ -225,6 +232,7 @@ export class BudgetMonthlyReport extends Component {
     h_sum = 0
     h_sum_p = 0
     let c_total = {}
+    let p_c_total = {}
     // console.log(allbs[1])
     budget_monthly.map((karyakram) => {
       if (equals(allbs[1], karyakram.sirshak_name)) {
@@ -235,6 +243,14 @@ export class BudgetMonthlyReport extends Component {
         gm_sum += karyakram.gata_mahina_pragati
         m_sum += karyakram.yes_mahina_pragati
         h_sum += karyakram.mahina_pragati
+        //total
+        b_sum_t += karyakram.barsik_lakshay_amount
+        c_sum_t += karyakram.chaumasik_lakshay_amount
+        gc_sum_t += karyakram.gata_chaumasik_pragati
+        gm_sum_t += karyakram.gata_mahina_pragati
+        m_sum_t += karyakram.yes_mahina_pragati
+        h_sum_t += karyakram.mahina_pragati
+        //
         c_value.push({
           sn: sn,
           karyakram_name: karyakram.karyakram_name,
@@ -254,9 +270,10 @@ export class BudgetMonthlyReport extends Component {
       return 0
     })
     h_sum_p = (h_sum / b_sum) * 100
+    h_sum_p_t = (h_sum_t / b_sum_t) * 100
 
     c_total = {
-      name: 'Total chalu',
+      name: 'चालु खर्च जम्मा',
       b_sum: b_sum,
       c_sum: c_sum,
       gc_sum: gc_sum,
@@ -265,16 +282,29 @@ export class BudgetMonthlyReport extends Component {
       h_sum: h_sum,
       h_sum_p: h_sum_p.toFixed(2),
     }
+    p_c_total = {
+      name: 'पुजी र चालु जम्मा',
+      b_sum: b_sum_t,
+      c_sum: c_sum_t,
+      gc_sum: gc_sum_t,
+      gm_sum: gm_sum_t,
+      m_sum: m_sum_t,
+      h_sum: h_sum_t,
+      h_sum_p: h_sum_p_t.toFixed(2),
+    }
     report_data = {
       ...report_data,
       chalu: allbs[1],
       c_value,
       c_total,
+      p_c_total,
+      budget_total: b_sum_t,
       user_name: user_name,
+      verify_user: 'राजेश पौडेल',
       user_office: user_office,
       arthik_barsa: fiscal_year,
     }
-    console.log(report_data)
+    // console.log(report_data)
     jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'budgetbibaran' },
@@ -309,14 +339,14 @@ export class BudgetMonthlyReport extends Component {
   }
 
   fetchReportResults(fiscal_year, year, chaumasik_id, month_id, officeId) {
-    console.log(
-      '.........parameters',
-      fiscal_year,
-      year,
-      chaumasik_id,
-      month_id,
-      officeId
-    )
+    // console.log(
+    //   '.........parameters',
+    //   fiscal_year,
+    //   year,
+    //   chaumasik_id,
+    //   month_id,
+    //   officeId
+    // )
     this.props.fetchbudgetmonthlylist({
       chaumasik_id,
       expense_year: year,

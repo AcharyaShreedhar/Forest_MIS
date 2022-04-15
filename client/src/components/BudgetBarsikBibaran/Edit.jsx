@@ -50,8 +50,6 @@ class Edit extends Component {
       return year.value === props.history.location.item?.fiscal_year
     })
     this.state = { ...this.state, fiscal_year_id: selected_f_year.id }
-
-    console.log(this.state)
   }
   componentDidUpdate() {
     const { update_count } = this.state

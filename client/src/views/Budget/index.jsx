@@ -53,13 +53,14 @@ export class Budget extends Component {
     })
 
     this.props.fetchOfficedropdown({
-      distId: '%',
+      distId: `${officeRole < 3 ? '%' : districtId}`,
       name: 'value',
     })
   }
 
   componentDidUpdate() {
     const { districtId, officeRole, officeId } = this.props
+
     this.props.fetchallKaryakramsirshak({
       distId: '%',
       officeId: officeId,

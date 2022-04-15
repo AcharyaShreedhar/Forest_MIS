@@ -134,7 +134,7 @@ export class Report extends Component {
     })
 
     this.props.fetchOfficedropdown({
-      distId: districtId,
+      distId: '%',
       name: 'value', //"office_name"
     })
   }
@@ -259,11 +259,6 @@ export class Report extends Component {
       expense_month_id: 9,
       fiscal_year: '2078/079',
       office_id: officeId,
-    })
-
-    this.props.fetchOfficedropdown({
-      distId: '%',
-      name: 'value', //"office_name"
     })
   }
 
