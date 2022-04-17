@@ -304,7 +304,7 @@ class Add extends Component {
             <div className='title'>
               <span className='dsl-b22'>{title}</span>
             </div>
-            <div className='panel space mb-4'>
+            <div className='panel space'>
               <div className='w-15'>
                 <Dropdown
                   className='dropdownlabel'
@@ -349,14 +349,28 @@ class Add extends Component {
                 />
               </div>
             </div>
-            <div className='panel space'>
+            <div className='section mb-4' />
+            <span className='dsl-b18'>वार्षिक लक्ष्य :</span>
+            <div className='panel space mt-2'>
               <Input
                 className='w-30'
-                title='वार्षिक लक्ष्य :'
+                title='रकम :'
                 direction='vertical'
                 readOnly
                 value={budgetbarsiklakshay}
               />
+              <Input
+                className='w-30'
+                title='परिमाण :'
+                direction='vertical'
+                readOnly
+                value={budgetbarsiklakshay}
+              />
+              <div className='w-30' />
+            </div>
+            <div className='section mb-4' />
+            <span className='dsl-b18'>चौमासिक लक्ष्य :</span>
+            <div className='panel space mt-2'>
               <div className='w-30'>
                 <Dropdown
                   className='dropdownlabel'
@@ -372,13 +386,11 @@ class Add extends Component {
               </div>
               <Input
                 className='w-30'
-                title='चौमासिक लक्ष्य :'
+                title='रकम :'
                 direction='vertical'
                 readOnly
                 value={budgetchaumasikamount}
               />
-            </div>
-            <div className='panel space mt-4'>
               <Input
                 className='w-30'
                 title='खर्च हुन बँकि रकम :'
@@ -387,11 +399,29 @@ class Add extends Component {
                 value={budgetchaumasikremain}
               />
             </div>
+            <div className='panel space mt-4'>
+              <Input
+                className='w-30'
+                title='परिमाण :'
+                direction='vertical'
+                readOnly
+                value={budgetchaumasikamount}
+              />
+              <Input
+                className='w-30'
+                title='खर्च हुन बँकि परिमाण :'
+                direction='vertical'
+                readOnly
+                value={budgetchaumasikremain}
+              />
+              <div className='w-30' />
+            </div>
             <div className='section mb-4' />
           </div>
+
           <span className='dsl-b18'>प्रगति विवरण :</span>
           <div className='panel space mt-2 mb-4'>
-            <div className='w-15'>
+            <div className='w-10'>
               <Dropdown
                 className='dropdownlabel'
                 title='खर्च भएको वर्ष :'
@@ -404,7 +434,7 @@ class Add extends Component {
                 value={2}
               />
             </div>
-            <div className='w-30'>
+            <div className='w-25'>
               <Dropdown
                 className='dropdownlabel'
                 title='खर्च भएको महिना :'
@@ -419,12 +449,31 @@ class Add extends Component {
             </div>
             <Input
               type='number'
-              className='w-30'
+              className='w-25'
               title='खर्च रकम :'
               value={expense_amount}
               direction='vertical'
               onChange={(e) => this.setState({ expense_amount: e })}
             />
+            <Input
+              type='number'
+              className='w-25'
+              title='खर्च परिमाण :'
+              value={expense_amount}
+              direction='vertical'
+              onChange={(e) => this.setState({ expense_amount: e })}
+            />
+          </div>
+          <div className='panel space'>
+            <Input
+              type='text'
+              className='w-30'
+              title='कैफियत :'
+              value={expense_amount}
+              direction='vertical'
+              onChange={(e) => this.setState({ expense_amount: e })}
+            />
+            <div className='w-30' />
           </div>
           <div className='section mb-4' />
           <div className='mt-2 border-5'>

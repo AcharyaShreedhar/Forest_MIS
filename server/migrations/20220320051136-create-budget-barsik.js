@@ -59,6 +59,26 @@ module.exports = {
         allowNull: false,
         defaultValue: 0,
       },
+      pratham_chaumasik_pariman: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      doshro_chaumasik_pariman: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      teshro_chaumasik_pariman: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      barsik_lakshay_pariman: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
       created_by: {
         type: Sequelize.STRING,
       },

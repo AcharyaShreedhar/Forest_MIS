@@ -26,6 +26,14 @@ class Edit extends Component {
       teshro_chaumasik_amount:
         props.history.location.item?.teshro_chaumasik_amount,
       barsik_lakshay_amount: props.history.location.item?.barsik_lakshay_amount,
+      pratham_chaumasik_pariman:
+        props.history.location.item?.pratham_chaumasik_pariman,
+      doshro_chaumasik_pariman:
+        props.history.location.item?.doshro_chaumasik_pariman,
+      teshro_chaumasik_pariman:
+        props.history.location.item?.teshro_chaumasik_pariman,
+      barsik_lakshay_pariman:
+        props.history.location.item?.barsik_lakshay_pariman,
       createdAt: props.history.location.item?.createdAt,
       updatedAt: props.history.location.item?.updatedAt,
       dist_id: this.props.user.dist_id,
@@ -40,6 +48,7 @@ class Edit extends Component {
     this.handleKaryakramSirshak = this.handleKaryakramSirshak.bind(this)
     this.handleFiscalYear = this.handleFiscalYear.bind(this)
     this.handleBarsikAmount = this.handleBarsikAmount.bind(this)
+    this.handleBarsikPariman = this.handleBarsikPariman.bind(this)
     this.handleClose = this.handleClose.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -126,6 +135,41 @@ class Edit extends Component {
         prevState.teshro_chaumasik_amount,
     }))
   }
+
+  handleBarsikPariman(e, pariman) {
+    switch (pariman) {
+      case 'pratham':
+        if (!isEmpty(e)) {
+          this.setState({ pratham_chaumasik_pariman: parseInt(e) })
+        } else {
+          this.setState({ pratham_chaumasik_pariman: 0 })
+        }
+        break
+      case 'doshro':
+        if (!isEmpty(e)) {
+          this.setState({ doshro_chaumasik_pariman: parseInt(e) })
+        } else {
+          this.setState({ doshro_chaumasik_pariman: 0 })
+        }
+        break
+      case 'teshro':
+        if (!isEmpty(e)) {
+          this.setState({ teshro_chaumasik_pariman: parseInt(e) })
+        } else {
+          this.setState({ teshro_chaumasik_pariman: 0 })
+        }
+        break
+      default:
+        break
+    }
+    this.setState((prevState) => ({
+      barsik_lakshay_pariman:
+        prevState.pratham_chaumasik_pariman +
+        prevState.doshro_chaumasik_pariman +
+        prevState.teshro_chaumasik_pariman,
+    }))
+  }
+
   handleBudgetSirshak(e) {
     // const { dist_id } = this.state
     const id = e[0].id
@@ -159,6 +203,10 @@ class Edit extends Component {
       doshro_chaumasik_amount,
       teshro_chaumasik_amount,
       barsik_lakshay_amount,
+      pratham_chaumasik_pariman,
+      doshro_chaumasik_pariman,
+      teshro_chaumasik_pariman,
+      barsik_lakshay_pariman,
       created_by,
     } = this.state
     const payload = {
@@ -176,6 +224,14 @@ class Edit extends Component {
           ),
           teshro_chaumasik_amount: teshro_chaumasik_amount,
           barsik_lakshay_amount: barsik_lakshay_amount,
+          pratham_chaumasik_pariman: nepaliToEnglishNumber(
+            pratham_chaumasik_pariman
+          ),
+          doshro_chaumasik_pariman: nepaliToEnglishNumber(
+            doshro_chaumasik_pariman
+          ),
+          teshro_chaumasik_pariman: teshro_chaumasik_pariman,
+          barsik_lakshay_pariman: barsik_lakshay_pariman,
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
           user_id: this.props.user.user_id,
@@ -199,6 +255,10 @@ class Edit extends Component {
       doshro_chaumasik_amount,
       teshro_chaumasik_amount,
       barsik_lakshay_amount,
+      pratham_chaumasik_pariman,
+      doshro_chaumasik_pariman,
+      teshro_chaumasik_pariman,
+      barsik_lakshay_pariman,
       budgetSirshakList,
       karyakramSirshakList,
       budgetOfficeList,
@@ -210,7 +270,8 @@ class Edit extends Component {
       isEmpty(sirshak_id) ||
       isEmpty(budget_office_id) ||
       equals(0, karyakram_sirshak_id) ||
-      equals(0, barsik_lakshay_amount)
+      equals(0, barsik_lakshay_amount) ||
+      equals(0, barsik_lakshay_pariman)
         ? true
         : false
 
@@ -292,6 +353,10 @@ class Edit extends Component {
                   value={budget_office_id}
                 />
               </div>
+            </div>
+            <div className='section mb-4' />
+            <span className='dsl-b18'>बजेट रकम :</span>
+            <div className='panel space mt-2 mb-4'>
               <Input
                 className='w-30'
                 title='प्रथम चौमासिक रकम :'
@@ -310,8 +375,6 @@ class Edit extends Component {
                 // onChange={(e) => this.setState({ doshro_chaumasik_amount: e })}
                 onChange={(e) => this.handleBarsikAmount(e, 'doshro')}
               />
-            </div>
-            <div className='panel space'>
               <Input
                 className='w-30'
                 title='तेस्रो चौमासिक रकम :'
@@ -321,11 +384,54 @@ class Edit extends Component {
                 // onChange={(e) => this.setState({ teshro_chaumasik_amount: e })}
                 onChange={(e) => this.handleBarsikAmount(e, 'teshro')}
               />
+            </div>
+            <div className='panel space'>
               <Input
                 className='w-30'
                 title='बार्सिक लक्क्ष रकम	:'
                 readOnly
                 value={barsik_lakshay_amount}
+                direction='vertical'
+              />
+              <div className='w-30' />
+            </div>
+            <div className='section mb-4' />
+            <span className='dsl-b18'>परिमाण विवरण :</span>
+            <div className='panel space mt-2 mb-4'>
+              <Input
+                className='w-30'
+                title='प्रथम चौमासिक परिमाण :'
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
+                value={pratham_chaumasik_pariman}
+                direction='vertical'
+                // onChange={(e) => this.setState({ pratham_chaumasik_pariman: e })}
+                onChange={(e) => this.handleBarsikPariman(e, 'pratham')}
+              />
+              <Input
+                className='w-30'
+                title='दोस्रो चौमासिक परिमाण :'
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
+                value={doshro_chaumasik_pariman}
+                direction='vertical'
+                // onChange={(e) => this.setState({ doshro_chaumasik_pariman: e })}
+                onChange={(e) => this.handleBarsikPariman(e, 'doshro')}
+              />
+              <Input
+                className='w-30'
+                title='तेस्रो चौमासिक परिमाण :'
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
+                value={teshro_chaumasik_pariman}
+                direction='vertical'
+                // onChange={(e) => this.setState({ teshro_chaumasik_pariman: e })}
+                onChange={(e) => this.handleBarsikPariman(e, 'teshro')}
+              />
+            </div>
+            <div className='panel space'>
+              <Input
+                className='w-30'
+                title='बार्सिक लक्क्ष परिमाण :'
+                readOnly
+                value={barsik_lakshay_pariman}
                 direction='vertical'
               />
               <div className='w-30' />
