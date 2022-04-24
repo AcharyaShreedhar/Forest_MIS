@@ -355,47 +355,6 @@ class Edit extends Component {
               </div>
             </div>
             <div className='section mb-4' />
-            <span className='dsl-b18'>बजेट रकम :</span>
-            <div className='panel space mt-2 mb-4'>
-              <Input
-                className='w-30'
-                title='प्रथम चौमासिक रकम :'
-                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
-                value={pratham_chaumasik_amount}
-                direction='vertical'
-                // onChange={(e) => this.setState({ pratham_chaumasik_amount: e })}
-                onChange={(e) => this.handleBarsikAmount(e, 'pratham')}
-              />
-              <Input
-                className='w-30'
-                title='दोस्रो चौमासिक रकम :'
-                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
-                value={doshro_chaumasik_amount}
-                direction='vertical'
-                // onChange={(e) => this.setState({ doshro_chaumasik_amount: e })}
-                onChange={(e) => this.handleBarsikAmount(e, 'doshro')}
-              />
-              <Input
-                className='w-30'
-                title='तेस्रो चौमासिक रकम :'
-                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
-                value={teshro_chaumasik_amount}
-                direction='vertical'
-                // onChange={(e) => this.setState({ teshro_chaumasik_amount: e })}
-                onChange={(e) => this.handleBarsikAmount(e, 'teshro')}
-              />
-            </div>
-            <div className='panel space'>
-              <Input
-                className='w-30'
-                title='बार्सिक लक्क्ष रकम	:'
-                readOnly
-                value={barsik_lakshay_amount}
-                direction='vertical'
-              />
-              <div className='w-30' />
-            </div>
-            <div className='section mb-4' />
             <span className='dsl-b18'>परिमाण विवरण :</span>
             <div className='panel space mt-2 mb-4'>
               <Input
@@ -432,6 +391,47 @@ class Edit extends Component {
                 title='बार्सिक लक्क्ष परिमाण :'
                 readOnly
                 value={barsik_lakshay_pariman}
+                direction='vertical'
+              />
+              <div className='w-30' />
+            </div>
+            <div className='section mb-4' />
+            <span className='dsl-b18'>बजेट रकम :</span>
+            <div className='panel space mt-2 mb-4'>
+              <Input
+                className='w-30'
+                title='प्रथम चौमासिक रकम :'
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
+                value={pratham_chaumasik_amount}
+                direction='vertical'
+                // onChange={(e) => this.setState({ pratham_chaumasik_amount: e })}
+                onChange={(e) => this.handleBarsikAmount(e, 'pratham')}
+              />
+              <Input
+                className='w-30'
+                title='दोस्रो चौमासिक रकम :'
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
+                value={doshro_chaumasik_amount}
+                direction='vertical'
+                // onChange={(e) => this.setState({ doshro_chaumasik_amount: e })}
+                onChange={(e) => this.handleBarsikAmount(e, 'doshro')}
+              />
+              <Input
+                className='w-30'
+                title='तेस्रो चौमासिक रकम :'
+                onKeyPressInput={(e) => this.handleInputKeyPress(e)}
+                value={teshro_chaumasik_amount}
+                direction='vertical'
+                // onChange={(e) => this.setState({ teshro_chaumasik_amount: e })}
+                onChange={(e) => this.handleBarsikAmount(e, 'teshro')}
+              />
+            </div>
+            <div className='panel space'>
+              <Input
+                className='w-30'
+                title='बार्सिक लक्क्ष रकम	:'
+                readOnly
+                value={barsik_lakshay_amount}
                 direction='vertical'
               />
               <div className='w-30' />

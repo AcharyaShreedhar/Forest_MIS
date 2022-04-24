@@ -33,6 +33,8 @@ class Add extends Component {
       expense_month_id: 0,
       expense_month: '',
       expense_amount: 0,
+      expense_pariman: 0,
+      remarks: '',
       created_by: '',
       updated_by: '',
       showDialog: false,
@@ -56,8 +58,11 @@ class Add extends Component {
     var budgetSirshakList = []
     var karyakramSirshakList = []
     var budgetbarsiklakshay = ''
+    var budgetbarsikpariman = ''
     var budgetchaumasikremain = ''
+    var budgetchaumasikparimanremain = ''
     var budgetchaumasikamount = ''
+    var budgetchaumasikpariman = ''
     if (nextProps !== prevState) {
       budgetSirshakList = nextProps.budgetSirshakDataList.data
       karyakramSirshakList = nextProps.karyakramSirshakDataList.data
@@ -65,6 +70,8 @@ class Add extends Component {
         if (!isNil(nextProps.budgetbarsiklakshayData.data[0])) {
           budgetbarsiklakshay =
             nextProps.budgetbarsiklakshayData.data[0].barsiklakshay
+          budgetbarsikpariman =
+            nextProps.budgetbarsiklakshayData.data[0].barsikpariman
         }
       }
       if (!isNil(nextProps.budgetchaumasiklakshayData)) {
@@ -73,9 +80,15 @@ class Add extends Component {
             nextProps.budgetchaumasiklakshayData.data[0].chaumasik_amount
           budgetchaumasikremain =
             nextProps.budgetchaumasiklakshayData.data[0].expense_remain
+          budgetchaumasikpariman =
+            nextProps.budgetchaumasiklakshayData.data[0].chaumasik_pariman
+          budgetchaumasikparimanremain =
+            nextProps.budgetchaumasiklakshayData.data[0].expense_pariman_remain
         } else {
           budgetchaumasikamount = 0
           budgetchaumasikremain = 0
+          budgetchaumasikpariman = 0
+          budgetchaumasikparimanremain = 0
         }
       }
     }
@@ -83,8 +96,11 @@ class Add extends Component {
       budgetSirshakList,
       karyakramSirshakList,
       budgetbarsiklakshay,
+      budgetbarsikpariman,
       budgetchaumasikremain,
       budgetchaumasikamount,
+      budgetchaumasikparimanremain,
+      budgetchaumasikpariman,
     }
   }
 
@@ -226,10 +242,13 @@ class Add extends Component {
       karyakram_sirshak_id,
       chaumasik_id,
       budgetchaumasikremain,
+      budgetchaumasikparimanremain,
       expense_year,
       expense_month_id,
       expense_month,
       expense_amount,
+      expense_pariman,
+      remarks,
     } = this.state
     const payload = {
       budgetentry: {
@@ -245,12 +264,20 @@ class Add extends Component {
           expense_month_id: expense_month_id,
           expense_month: expense_month,
           expense_amount: expense_amount,
+          expense_pariman: expense_pariman,
+          remarks: remarks,
           created_by: this.props.user.user_name,
         },
       },
     }
     if (budgetchaumasikremain < expense_amount) {
       toast.error('खर्च रकम चौमासिक लक्ष्य भन्दा बढी हुन भएन !!!!', {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 5000,
+      })
+      this.handleClose()
+    } else if (budgetchaumasikparimanremain < expense_pariman) {
+      toast.error('खर्च परिमाण चौमासिक परिमाण लक्ष्य भन्दा बढी हुन भएन !!!!', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 5000,
       })
@@ -266,13 +293,18 @@ class Add extends Component {
       sirshak_id,
       karyakram_sirshak_id,
       budgetbarsiklakshay,
+      budgetbarsikpariman,
       chaumasik_id,
       budgetchaumasikamount,
       budgetchaumasikremain,
+      budgetchaumasikpariman,
+      budgetchaumasikparimanremain,
       expense_year,
       month_Filter,
       expense_month_id,
       expense_amount,
+      expense_pariman,
+      remarks,
       budgetSirshakList,
       karyakramSirshakList,
       showDialog,
@@ -284,7 +316,7 @@ class Add extends Component {
       isEmpty(expense_year) ||
       equals(0, expense_month_id) ||
       equals(0, expense_amount) ||
-      isEmpty(expense_amount)
+      equals(0, expense_pariman)
         ? true
         : false
 
@@ -364,7 +396,7 @@ class Add extends Component {
                 title='परिमाण :'
                 direction='vertical'
                 readOnly
-                value={budgetbarsiklakshay}
+                value={budgetbarsikpariman}
               />
               <div className='w-30' />
             </div>
@@ -405,14 +437,14 @@ class Add extends Component {
                 title='परिमाण :'
                 direction='vertical'
                 readOnly
-                value={budgetchaumasikamount}
+                value={budgetchaumasikpariman}
               />
               <Input
                 className='w-30'
                 title='खर्च हुन बँकि परिमाण :'
                 direction='vertical'
                 readOnly
-                value={budgetchaumasikremain}
+                value={budgetchaumasikparimanremain}
               />
               <div className='w-30' />
             </div>
@@ -459,9 +491,9 @@ class Add extends Component {
               type='number'
               className='w-25'
               title='खर्च परिमाण :'
-              value={expense_amount}
+              value={expense_pariman}
               direction='vertical'
-              onChange={(e) => this.setState({ expense_amount: e })}
+              onChange={(e) => this.setState({ expense_pariman: e })}
             />
           </div>
           <div className='panel space'>
@@ -469,9 +501,9 @@ class Add extends Component {
               type='text'
               className='w-30'
               title='कैफियत :'
-              value={expense_amount}
+              value={remarks}
               direction='vertical'
-              onChange={(e) => this.setState({ expense_amount: e })}
+              onChange={(e) => this.setState({ remarks: e })}
             />
             <div className='w-30' />
           </div>

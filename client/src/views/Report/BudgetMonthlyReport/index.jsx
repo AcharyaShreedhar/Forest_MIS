@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button } from '../../../components'
 import { connect } from 'react-redux'
-import { equals } from 'ramda'
+import { equals, isNil } from 'ramda'
 import { englishToNepaliNumber } from 'nepali-number' //nepaliToEnglishNumber
 import jsreport from 'jsreport-browser-client-dist'
 // import NepaliDate from 'nepali-date-converter'
@@ -21,7 +21,6 @@ import {
 import { Fragment } from 'react'
 import '../Report.scss'
 import Filter from '../../../components/Filter'
-import { isNil } from 'ramda'
 import Report from '..'
 
 export class BudgetMonthlyReport extends Component {
@@ -59,7 +58,10 @@ export class BudgetMonthlyReport extends Component {
       officeList = nextProps.officeDataList.data
       user_name = nextProps.user_name
       user_office = nextProps.user_office
-      budget_monthly = nextProps.budgetmonthlylist.budget_monthly
+      if (!isNil(nextProps.budgetmonthlylist))
+        if (!isNil(nextProps.budgetmonthlylist.budget_monthly)) {
+          budget_monthly = nextProps.budgetmonthlylist.budget_monthly
+        }
     }
     return {
       budget_monthly,
@@ -166,34 +168,60 @@ export class BudgetMonthlyReport extends Component {
     let sn = 1
     let p_value = []
     let b_sum = 0
+    let b_p_sum = 0
     let c_sum = 0
+    let c_p_sum = 0
     let gc_sum = 0
+    let gc_p_sum = 0
     let gm_sum = 0
+    let gm_p_sum = 0
     let m_sum = 0
+    let m_p_sum = 0
     let h_sum = 0
+    let h_p_sum = 0
     let h_sum_p = 0
+    let h_p_sum_p = 0
     let p_total = {}
     // console.log(allbs[0])
     budget_monthly.map((karyakram) => {
       if (equals(allbs[0], karyakram.sirshak_name)) {
         // console.log('------', sn, karyakram.karyakram_name)
         b_sum += karyakram.barsik_lakshay_amount
+        b_p_sum += karyakram.barsik_lakshay_pariman
         c_sum += karyakram.chaumasik_lakshay_amount
+        c_p_sum += karyakram.chaumasik_lakshay_pariman
         gc_sum += karyakram.gata_chaumasik_pragati
+        gc_p_sum = karyakram.gata_chaumasik_pariman_pragati
         gm_sum += karyakram.gata_mahina_pragati
+        gm_p_sum += karyakram.gata_mahina_pariman_pragati
         m_sum += karyakram.yes_mahina_pragati
+        m_p_sum += karyakram.yes_mahina_pariman_pragati
         h_sum += karyakram.mahina_pragati
+        h_p_sum += karyakram.mahina_pariman_pragati
         p_value.push({
           sn: sn,
           karyakram_name: karyakram.karyakram_name,
           barsik_lakshay_amount: karyakram.barsik_lakshay_amount,
+          barsik_lakshay_pariman: karyakram.barsik_lakshay_pariman,
           chaumasik_lakshay_amount: karyakram.chaumasik_lakshay_amount,
+          chaumasik_lakshay_pariman: karyakram.chaumasik_lakshay_pariman,
+          remarks: karyakram.remarks,
           gata_chaumasik_pragati: karyakram.gata_chaumasik_pragati,
+          gata_chaumasik_pariman_pragati:
+            karyakram.gata_chaumasik_pariman_pragati,
           gata_mahina_pragati: karyakram.gata_mahina_pragati,
+          gata_mahina_pariman_pragati: karyakram.gata_mahina_pariman_pragati,
           yes_mahina_pragati: karyakram.yes_mahina_pragati,
+          yes_mahina_pariman_pragati: karyakram.yes_mahina_pariman_pragati,
           mahina_pragati: karyakram.mahina_pragati,
+          mahina_pariman_pragati: karyakram.mahina_pariman_pragati,
           mahina_pragati_percent: (
             (karyakram.mahina_pragati / karyakram.barsik_lakshay_amount) *
+            100
+          ).toFixed(2),
+          mahina_pariman_pragati_percent: (
+            (karyakram.mahina_pariman_pragati /
+              karyakram.barsik_lakshay_pariman) *
             100
           ).toFixed(2),
         })
@@ -202,35 +230,57 @@ export class BudgetMonthlyReport extends Component {
       return 0
     })
     h_sum_p = (h_sum / b_sum) * 100
+    h_p_sum_p = (h_p_sum / b_p_sum) * 100
     // console.log(h_sum, b_sum)
     p_total = {
       name: 'पुँजीगत खर्च जम्म',
       b_sum: b_sum,
+      b_p_sum: b_p_sum,
       c_sum: c_sum,
+      c_p_sum: c_p_sum,
       gc_sum: gc_sum,
+      gc_p_sum: gc_p_sum,
       gm_sum: gm_sum,
+      gm_p_sum: gm_p_sum,
       m_sum: m_sum,
+      m_p_sum: m_p_sum,
       h_sum: h_sum,
+      h_p_sum: h_p_sum,
       h_sum_p: h_sum_p.toFixed(2),
+      h_p_sum_p: h_p_sum_p.toFixed(2),
     }
     report_data = { pungi: allbs[0], p_value, p_total }
 
     sn = 1
     let c_value = []
     let b_sum_t = b_sum
+    let b_p_sum_t = b_p_sum
     let c_sum_t = c_sum
+    let c_p_sum_t = c_p_sum
     let gc_sum_t = gc_sum
+    let gc_p_sum_t = gc_p_sum
     let gm_sum_t = gm_sum
+    let gm_p_sum_t = gm_p_sum
     let m_sum_t = m_sum
+    let m_p_sum_t = m_p_sum
     let h_sum_t = h_sum
+    let h_p_sum_t = h_p_sum
     let h_sum_p_t = h_sum_p
+    let h_p_sum_p_t = h_p_sum_p
     b_sum = 0
+    b_p_sum = 0
     c_sum = 0
+    c_p_sum = 0
     gc_sum = 0
+    gc_p_sum = 0
     gm_sum = 0
+    gm_p_sum = 0
     m_sum = 0
+    m_p_sum = 0
     h_sum = 0
+    h_p_sum = 0
     h_sum_p = 0
+    h_p_sum_p = 0
     let c_total = {}
     let p_c_total = {}
     // console.log(allbs[1])
@@ -238,30 +288,55 @@ export class BudgetMonthlyReport extends Component {
       if (equals(allbs[1], karyakram.sirshak_name)) {
         // console.log('------', sn, karyakram.karyakram_name)
         b_sum += karyakram.barsik_lakshay_amount
+        b_p_sum += karyakram.barsik_lakshay_pariman
         c_sum += karyakram.chaumasik_lakshay_amount
+        c_p_sum += karyakram.chaumasik_lakshay_pariman
         gc_sum += karyakram.gata_chaumasik_pragati
+        gc_p_sum = karyakram.gata_chaumasik_pariman_pragati
         gm_sum += karyakram.gata_mahina_pragati
+        gm_p_sum += karyakram.gata_mahina_pariman_pragati
         m_sum += karyakram.yes_mahina_pragati
+        m_p_sum += karyakram.yes_mahina_pariman_pragati
         h_sum += karyakram.mahina_pragati
+        h_p_sum += karyakram.mahina_pariman_pragati
         //total
         b_sum_t += karyakram.barsik_lakshay_amount
+        b_p_sum_t += karyakram.barsik_lakshay_pariman
         c_sum_t += karyakram.chaumasik_lakshay_amount
+        c_p_sum_t += karyakram.chaumasik_lakshay_pariman
         gc_sum_t += karyakram.gata_chaumasik_pragati
+        gc_p_sum_t += karyakram.gata_chaumasik_pariman_pragati
         gm_sum_t += karyakram.gata_mahina_pragati
+        gm_p_sum_t += karyakram.gata_mahina_pariman_pragati
         m_sum_t += karyakram.yes_mahina_pragati
+        m_p_sum_t += karyakram.yes_mahina_pariman_pragati
         h_sum_t += karyakram.mahina_pragati
+        h_p_sum_t += karyakram.mahina_pariman_pragati
         //
         c_value.push({
           sn: sn,
           karyakram_name: karyakram.karyakram_name,
           barsik_lakshay_amount: karyakram.barsik_lakshay_amount,
+          barsik_lakshay_pariman: karyakram.barsik_lakshay_pariman,
           chaumasik_lakshay_amount: karyakram.chaumasik_lakshay_amount,
+          chaumasik_lakshay_pariman: karyakram.chaumasik_lakshay_pariman,
+          remarks: karyakram.remarks,
           gata_chaumasik_pragati: karyakram.gata_chaumasik_pragati,
+          gata_chaumasik_pariman_pragati:
+            karyakram.gata_chaumasik_pariman_pragati,
           gata_mahina_pragati: karyakram.gata_mahina_pragati,
+          gata_mahina_pariman_pragati: karyakram.gata_mahina_pariman_pragati,
           yes_mahina_pragati: karyakram.yes_mahina_pragati,
+          yes_mahina_pariman_pragati: karyakram.yes_mahina_pariman_pragati,
           mahina_pragati: karyakram.mahina_pragati,
+          mahina_pariman_pragati: karyakram.mahina_pariman_pragati,
           mahina_pragati_percent: (
             (karyakram.mahina_pragati / karyakram.barsik_lakshay_amount) *
+            100
+          ).toFixed(2),
+          mahina_pariman_pragati_percent: (
+            (karyakram.mahina_pariman_pragati /
+              karyakram.barsik_lakshay_pariman) *
             100
           ).toFixed(2),
         })
@@ -270,27 +345,43 @@ export class BudgetMonthlyReport extends Component {
       return 0
     })
     h_sum_p = (h_sum / b_sum) * 100
+    h_p_sum_p = (h_p_sum / b_p_sum) * 100
     h_sum_p_t = (h_sum_t / b_sum_t) * 100
+    h_p_sum_p_t = (h_p_sum_t / b_p_sum_t) * 100
 
     c_total = {
       name: 'चालु खर्च जम्मा',
       b_sum: b_sum,
+      b_p_sum: b_p_sum,
       c_sum: c_sum,
+      c_p_sum: c_p_sum,
       gc_sum: gc_sum,
+      gc_p_sum: gc_p_sum,
       gm_sum: gm_sum,
+      gm_p_sum: gm_p_sum,
       m_sum: m_sum,
+      m_p_sum: m_p_sum,
       h_sum: h_sum,
+      h_p_sum: h_p_sum,
       h_sum_p: h_sum_p.toFixed(2),
+      h_p_sum_p: h_p_sum_p.toFixed(2),
     }
     p_c_total = {
       name: 'पुजी र चालु जम्मा',
       b_sum: b_sum_t,
+      b_p_sum: b_p_sum_t,
       c_sum: c_sum_t,
+      c_p_sum: c_p_sum_t,
       gc_sum: gc_sum_t,
+      gc_p_sum: gc_p_sum_t,
       gm_sum: gm_sum_t,
+      gm_p_sum: gm_p_sum_t,
       m_sum: m_sum_t,
+      m_p_sum: m_p_sum_t,
       h_sum: h_sum_t,
+      h_p_sum: h_p_sum_t,
       h_sum_p: h_sum_p_t.toFixed(2),
+      h_p_sum_p: h_p_sum_p_t.toFixed(2),
     }
     report_data = {
       ...report_data,
@@ -300,7 +391,7 @@ export class BudgetMonthlyReport extends Component {
       p_c_total,
       budget_total: b_sum_t,
       user_name: user_name,
-      verify_user: 'राजेश पौडेल',
+      verify_user: '',
       user_office: user_office,
       arthik_barsa: fiscal_year,
     }
@@ -352,7 +443,7 @@ export class BudgetMonthlyReport extends Component {
       expense_year: year,
       expense_month_id: month_id,
       fiscal_year,
-      office_id: officeId,
+      budget_office_id: officeId,
     })
   }
 

@@ -31,6 +31,8 @@ class Edit extends Component {
       expense_month_id: props.history.location.item?.expense_month_id,
       expense_month: props.history.location.item?.expense_month,
       expense_amount: props.history.location.item?.expense_amount,
+      expense_pariman: props.history.location.item?.expense_pariman,
+      remarks: props.history.location.item?.remarks,
       created_by: props.history.location.item?.created_by,
       updated_by: props.history.location.item?.updated_by,
       showDialog: false,
@@ -59,8 +61,11 @@ class Edit extends Component {
     var karyakramSirshakList = []
     var budgetSirshakList = []
     var budgetbarsiklakshay = ''
+    var budgetbarsikpariman = ''
     var budgetchaumasikremain = ''
     var budgetchaumasikamount = ''
+    var budgetchaumasikparimanremain = ''
+    var budgetchaumasikpariman = ''
     if (nextProps !== prevState) {
       budgetSirshakList = nextProps.budgetSirshakDataList.data
       karyakramSirshakList = nextProps.karyakramSirshakDataList.data
@@ -68,6 +73,8 @@ class Edit extends Component {
         if (!isNil(nextProps.budgetbarsiklakshayData.data[0])) {
           budgetbarsiklakshay =
             nextProps.budgetbarsiklakshayData.data[0].barsiklakshay
+          budgetbarsikpariman =
+            nextProps.budgetbarsiklakshayData.data[0].barsikpariman
         }
       }
       if (!isNil(nextProps.budgetchaumasiklakshayData)) {
@@ -76,9 +83,15 @@ class Edit extends Component {
             nextProps.budgetchaumasiklakshayData.data[0].chaumasik_amount
           budgetchaumasikremain =
             nextProps.budgetchaumasiklakshayData.data[0].expense_remain
+          budgetchaumasikpariman =
+            nextProps.budgetchaumasiklakshayData.data[0].chaumasik_pariman
+          budgetchaumasikparimanremain =
+            nextProps.budgetchaumasiklakshayData.data[0].expense_pariman_remain
         } else {
           budgetchaumasikamount = 0
           budgetchaumasikremain = 0
+          budgetchaumasikpariman = 0
+          budgetchaumasikparimanremain = 0
         }
       }
     }
@@ -92,8 +105,11 @@ class Edit extends Component {
       budgetSirshakList,
       karyakramSirshakList,
       budgetbarsiklakshay,
+      budgetbarsikpariman,
       budgetchaumasikremain,
       budgetchaumasikamount,
+      budgetchaumasikpariman,
+      budgetchaumasikparimanremain,
     }
   }
 
@@ -104,9 +120,6 @@ class Edit extends Component {
       chaumasik_id,
       karyakram_sirshak_id,
       fiscal_year,
-      budgetbarsiklakshay,
-      budgetchaumasikamount,
-      budgetchaumasikremain,
     } = this.state
 
     this.props.fetchBudgetbarsiklakshayData({
@@ -254,6 +267,8 @@ class Edit extends Component {
       expense_month_id,
       expense_month,
       expense_amount,
+      expense_pariman,
+      remarks,
       created_by,
     } = this.state
     const payload = {
@@ -270,6 +285,8 @@ class Edit extends Component {
           expense_month_id: expense_month_id,
           expense_month: expense_month,
           expense_amount: expense_amount,
+          expense_pariman: expense_pariman,
+          remarks: remarks,
           created_by: created_by || this.props.user.user_name,
           updated_by: this.props.user.user_name,
         },
@@ -293,13 +310,18 @@ class Edit extends Component {
       sirshak_id,
       karyakram_sirshak_id,
       budgetbarsiklakshay,
+      budgetbarsikpariman,
       chaumasik_id,
       budgetchaumasikamount,
       budgetchaumasikremain,
+      budgetchaumasikpariman,
+      budgetchaumasikparimanremain,
       expense_year,
       month_Filter,
       expense_month_id,
       expense_amount,
+      expense_pariman,
+      remarks,
       budgetSirshakList,
       karyakramSirshakList,
       showDialog,
@@ -311,7 +333,7 @@ class Edit extends Component {
       isEmpty(expense_year) ||
       equals(0, expense_month_id) ||
       equals(0, expense_amount) ||
-      isEmpty(expense_amount)
+      equals(0, expense_pariman)
         ? true
         : false
 
@@ -376,14 +398,28 @@ class Edit extends Component {
                 />
               </div>
             </div>
-            <div className='panel space'>
+            <div className='section mb-4' />
+            <span className='dsl-b18'>वार्षिक लक्ष्य :</span>
+            <div className='panel space mt-2'>
               <Input
                 className='w-30'
-                title='वार्षिक लक्ष्य :'
+                title='रकम :'
                 direction='vertical'
                 readOnly
                 value={budgetbarsiklakshay}
               />
+              <Input
+                className='w-30'
+                title='परिमाण :'
+                direction='vertical'
+                readOnly
+                value={budgetbarsikpariman}
+              />
+              <div className='w-30' />
+            </div>
+            <div className='section mb-4' />
+            <span className='dsl-b18'>चौमासिक लक्ष्य :</span>
+            <div className='panel space mt-2'>
               <div className='w-30'>
                 <Dropdown
                   className='dropdownlabel'
@@ -399,13 +435,11 @@ class Edit extends Component {
               </div>
               <Input
                 className='w-30'
-                title='चौमासिक लक्ष्य :'
+                title='रकम :'
                 direction='vertical'
                 readOnly
                 value={budgetchaumasikamount}
               />
-            </div>
-            <div className='panel space mt-4'>
               <Input
                 className='w-30'
                 title='खर्च हुन बँकि रकम :'
@@ -414,11 +448,29 @@ class Edit extends Component {
                 value={budgetchaumasikremain}
               />
             </div>
+            <div className='panel space mt-4'>
+              <Input
+                className='w-30'
+                title='परिमाण :'
+                direction='vertical'
+                readOnly
+                value={budgetchaumasikpariman}
+              />
+              <Input
+                className='w-30'
+                title='खर्च हुन बँकि परिमाण :'
+                direction='vertical'
+                readOnly
+                value={budgetchaumasikparimanremain}
+              />
+              <div className='w-30' />
+            </div>
             <div className='section mb-4' />
           </div>
+
           <span className='dsl-b18'>प्रगति विवरण :</span>
           <div className='panel space mt-2 mb-4'>
-            <div className='w-15'>
+            <div className='w-10'>
               <Dropdown
                 className='dropdownlabel'
                 title='खर्च भएको वर्ष :'
@@ -431,7 +483,7 @@ class Edit extends Component {
                 value={2}
               />
             </div>
-            <div className='w-30'>
+            <div className='w-25'>
               <Dropdown
                 className='dropdownlabel'
                 title='खर्च भएको महिना :'
@@ -446,12 +498,31 @@ class Edit extends Component {
             </div>
             <Input
               type='number'
-              className='w-30'
+              className='w-25'
               title='खर्च रकम :'
               value={expense_amount}
               direction='vertical'
               onChange={(e) => this.setState({ expense_amount: e })}
             />
+            <Input
+              type='number'
+              className='w-25'
+              title='खर्च परिमाण :'
+              value={expense_pariman}
+              direction='vertical'
+              onChange={(e) => this.setState({ expense_pariman: e })}
+            />
+          </div>
+          <div className='panel space'>
+            <Input
+              type='text'
+              className='w-30'
+              title='कैफियत :'
+              value={remarks}
+              direction='vertical'
+              onChange={(e) => this.setState({ remarks: e })}
+            />
+            <div className='w-30' />
           </div>
           <div className='section mb-4' />
           <div className='mt-2 border-5'>

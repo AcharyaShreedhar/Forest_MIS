@@ -69,6 +69,7 @@ async function getBudgetKarmacharidetail(req, res) {
 //Controller for adding a budget_karmacharidetails
 async function addBudgetKarmacharidetail(req, res, next) {
   const addBudgetKarmacharidetailQuery = `INSERT INTO budget_karmacharidetails (sirshak_id, karyakram_sirshak_id, dist_id, office_id, user_id, fiscal_year, chaumasik_id, expense_month_id, expense_month, expense_year, expense_amount, expense_pariman,remarks, created_by, updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+
   pool.query(
     addBudgetKarmacharidetailQuery,
     [

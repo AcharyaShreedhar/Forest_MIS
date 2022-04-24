@@ -8258,3 +8258,176 @@ Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
 2022-04-15T10:33:29.227Z - info: Rendering request 2 finished in 62 ms
 2022-04-15T10:33:29.320Z - info: docx generation was finished
 2022-04-15T10:33:30.162Z - info: Rendering request 1 finished in 2659 ms
+2022-04-24T09:57:18.806Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-24T09:57:18.809Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-24T09:57:18.816Z - info: Extensions location cache not found, crawling directories
+2022-04-24T09:57:35.888Z - info: Found 35 extensions
+2022-04-24T09:57:37.227Z - info: Setting http-server strategy for rendering
+2022-04-24T09:57:37.449Z - info: Using extension cli@2.2.5
+2022-04-24T09:57:37.491Z - info: Using extension debug@2.1.3
+2022-04-24T09:57:37.504Z - info: Using extension express@2.8.1
+2022-04-24T09:57:38.353Z - info: Using extension freeze@2.0.0
+2022-04-24T09:57:38.366Z - info: Using extension handlebars@2.1.0
+2022-04-24T09:57:38.385Z - info: Using extension import-export@2.1.1
+2022-04-24T09:57:38.576Z - info: Using extension jsrender@2.1.1
+2022-04-24T09:57:38.579Z - info: Using extension tags@2.5.0
+2022-04-24T09:57:38.591Z - info: Using extension templates@2.4.0
+2022-04-24T09:57:38.604Z - info: Using extension authorization@2.4.0
+2022-04-24T09:57:38.623Z - info: Using extension base@2.0.2
+2022-04-24T09:57:38.632Z - info: Using extension browser-client@2.2.2
+2022-04-24T09:57:38.650Z - info: Using extension child-templates@1.4.0
+2022-04-24T09:57:38.677Z - info: Using extension chrome-pdf@1.10.0
+2022-04-24T09:57:39.010Z - info: Using extension data@2.4.0
+2022-04-24T09:57:39.015Z - info: Using extension docx@2.9.0
+2022-04-24T09:57:39.031Z - info: Using extension fs-store@2.9.1
+2022-04-24T09:57:39.757Z - info: Using extension licensing@2.2.3
+2022-04-24T09:57:39.775Z - info: Using extension pdf-utils@1.10.1
+2022-04-24T09:57:40.471Z - info: Using extension pptx@0.7.0
+2022-04-24T09:57:40.590Z - info: Using extension reports@2.5.1
+2022-04-24T09:57:40.711Z - info: Using extension static-pdf@0.4.0
+2022-04-24T09:57:40.960Z - info: Using extension studio@2.10.1
+2022-04-24T09:57:41.975Z - info: Using extension text@2.0.0
+2022-04-24T09:57:42.050Z - info: Using extension version-control@1.6.0
+2022-04-24T09:57:44.692Z - info: Using extension assets@1.7.0
+2022-04-24T09:57:44.878Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-24T09:57:56.295Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-24T09:57:56.297Z - info: Using extension scheduling@2.5.0
+2022-04-24T09:57:56.511Z - info: Using extension scripts@2.6.0
+2022-04-24T09:57:56.577Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-24T09:57:56.591Z - info: Using extension xlsx@2.5.0
+2022-04-24T09:57:57.634Z - info: Using extension public-templates@2.2.0
+2022-04-24T09:57:57.645Z - info: Using extension resources@2.1.0
+2022-04-24T09:57:57.652Z - info: Using extension sample-template@2.6.1
+2022-04-24T09:57:57.662Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-24T09:57:57.663Z - info: Using fs provider for template store.
+2022-04-24T09:57:57.669Z - info: fs store is persisting using fs
+2022-04-24T09:57:57.671Z - info: fs store is synchronizing using fs
+2022-04-24T09:57:57.678Z - info: fs store is loading data
+2022-04-24T09:57:57.922Z - info: fs store is initialized successfully
+2022-04-24T09:57:57.935Z - info: Creating default express app.
+2022-04-24T09:57:59.372Z - info: jsreport server successfully started on http port: 5488
+2022-04-24T09:57:59.374Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-24T09:57:59.649Z - info: Verifying license key free
+2022-04-24T09:57:59.655Z - info: Using free license
+2022-04-24T09:57:59.662Z - info: reporter initialized
+2022-04-24T10:06:22.180Z - info: Starting rendering request 1 (user: null)
+2022-04-24T10:06:22.187Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:06:23.191Z - info: docx generation is starting
+2022-04-24T10:06:25.474Z - info: Starting rendering request 2 (user: null)
+2022-04-24T10:06:25.476Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:06:25.638Z - info: Rendering request 2 finished in 165 ms
+2022-04-24T10:06:25.967Z - info: docx generation was finished
+2022-04-24T10:06:26.912Z - info: Rendering request 1 finished in 4733 ms
+2022-04-24T10:07:42.187Z - info: Starting rendering request 3 (user: null)
+2022-04-24T10:07:42.191Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:07:42.238Z - info: docx generation is starting
+2022-04-24T10:07:42.959Z - info: Starting rendering request 4 (user: null)
+2022-04-24T10:07:42.962Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:07:43.048Z - info: Rendering request 4 finished in 88 ms
+2022-04-24T10:07:43.357Z - info: docx generation was finished
+2022-04-24T10:07:44.075Z - info: Rendering request 3 finished in 1888 ms
+2022-04-24T10:10:11.654Z - info: Starting rendering request 5 (user: null)
+2022-04-24T10:10:11.657Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:10:11.772Z - info: docx generation is starting
+2022-04-24T10:10:12.257Z - info: Starting rendering request 6 (user: null)
+2022-04-24T10:10:12.260Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:10:12.331Z - info: Rendering request 6 finished in 75 ms
+2022-04-24T10:10:12.529Z - info: docx generation was finished
+2022-04-24T10:10:13.297Z - info: Rendering request 5 finished in 1644 ms
+2022-04-24T10:12:31.078Z - info: Starting rendering request 7 (user: null)
+2022-04-24T10:12:31.082Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:12:31.130Z - info: docx generation is starting
+2022-04-24T10:12:31.671Z - info: Starting rendering request 8 (user: null)
+2022-04-24T10:12:31.676Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:12:31.761Z - info: Rendering request 8 finished in 90 ms
+2022-04-24T10:12:32.004Z - info: docx generation was finished
+2022-04-24T10:12:32.865Z - info: Rendering request 7 finished in 1787 ms
+2022-04-24T10:17:35.525Z - info: Starting rendering request 9 (user: null)
+2022-04-24T10:17:35.529Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:17:35.564Z - info: docx generation is starting
+2022-04-24T10:17:36.035Z - info: Starting rendering request 10 (user: null)
+2022-04-24T10:17:36.037Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:17:36.108Z - info: Rendering request 10 finished in 73 ms
+2022-04-24T10:17:36.274Z - info: docx generation was finished
+2022-04-24T10:17:37.161Z - info: Rendering request 9 finished in 1636 ms
+2022-04-24T10:34:35.867Z - info: fs store is loading data
+2022-04-24T10:36:25.493Z - info: Starting rendering request 11 (user: null)
+2022-04-24T10:36:25.496Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:36:25.605Z - info: docx generation is starting
+2022-04-24T10:36:26.143Z - info: Starting rendering request 12 (user: null)
+2022-04-24T10:36:26.145Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:36:26.216Z - warn: Rendering request 12 finished with error in 73 ms
+2022-04-24T10:36:26.226Z - warn: Error when processing render request 12 Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID' Error: Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-24T10:36:26.235Z - warn: Rendering request 11 finished with error in 742 ms
+2022-04-24T10:36:26.245Z - warn: Error when processing render request 11 Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-24T10:36:26.254Z - warn: Error during processing request at http://localhost:5488/api/report
+2022-04-24T10:37:22.421Z - info: fs store is loading data
+2022-04-24T10:37:24.939Z - info: Starting rendering request 13 (user: null)
+2022-04-24T10:37:24.942Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:37:24.968Z - info: docx generation is starting
+2022-04-24T10:37:25.327Z - info: Starting rendering request 14 (user: null)
+2022-04-24T10:37:25.328Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:37:25.453Z - info: Rendering request 14 finished in 125 ms
+2022-04-24T10:37:25.576Z - info: docx generation was finished
+2022-04-24T10:37:26.400Z - info: Rendering request 13 finished in 1460 ms
+2022-04-24T10:41:23.060Z - info: Starting rendering request 15 (user: null)
+2022-04-24T10:41:23.063Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:41:23.085Z - info: docx generation is starting
+2022-04-24T10:41:23.405Z - info: Starting rendering request 16 (user: null)
+2022-04-24T10:41:23.406Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:41:23.457Z - info: Rendering request 16 finished in 52 ms
+2022-04-24T10:41:23.607Z - info: docx generation was finished
+2022-04-24T10:41:24.323Z - info: Rendering request 15 finished in 1263 ms
+2022-04-24T10:47:55.955Z - info: Starting rendering request 17 (user: null)
+2022-04-24T10:47:55.958Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:47:55.981Z - info: docx generation is starting
+2022-04-24T10:47:56.276Z - info: Starting rendering request 18 (user: null)
+2022-04-24T10:47:56.278Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:47:56.323Z - info: Rendering request 18 finished in 46 ms
+2022-04-24T10:47:56.451Z - info: docx generation was finished
+2022-04-24T10:47:57.260Z - info: Rendering request 17 finished in 1306 ms
+2022-04-24T10:50:59.825Z - info: Starting rendering request 19 (user: null)
+2022-04-24T10:50:59.829Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:50:59.850Z - info: docx generation is starting
+2022-04-24T10:51:00.182Z - info: Starting rendering request 20 (user: null)
+2022-04-24T10:51:00.183Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:51:00.227Z - info: Rendering request 20 finished in 44 ms
+2022-04-24T10:51:00.385Z - info: docx generation was finished
+2022-04-24T10:51:01.107Z - info: Rendering request 19 finished in 1282 ms

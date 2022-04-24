@@ -126,11 +126,11 @@ export class Report extends Component {
     })
 
     this.props.fetchbudgetmonthlylist({
-      chaumasik_id: 3,
-      expense_year: '2078',
-      expense_month_id: 9,
-      fiscal_year: '2078/079',
-      office_id: officeId,
+      chaumasik_id: '',
+      expense_year: '',
+      expense_month_id: '',
+      fiscal_year: '',
+      budget_office_id: '',
     })
 
     this.props.fetchOfficedropdown({
