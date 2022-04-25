@@ -63,6 +63,7 @@ import * as KaryakramSirshakBibaran from './KaryakramSirshakBibaran'
 import * as BudgetBarsikBibaran from './BudgetBarsikBibaran'
 
 import * as BudgetSirshakBibaran from './BudgetSirshakBibaran'
+import * as BudgetEntryBibaran from './BudgetEntryBibaran'
 
 export {
   HeaderComponent,
@@ -127,4 +128,5 @@ export {
   KaryakramSirshakBibaran,
   BudgetBarsikBibaran,
   BudgetSirshakBibaran,
+  BudgetEntryBibaran,
 }

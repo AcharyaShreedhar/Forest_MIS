@@ -97,20 +97,6 @@ class Add extends Component {
               <span className='dsl-b22'>{title}</span>
             </div>
             <div className='panel space mb-4'>
-              <Input
-                className='w-30'
-                title='कार्यक्रम शिर्षक :'
-                direction='vertical'
-                value={karyakram_name}
-                onChange={(e) => this.setState({ karyakram_name: e })}
-              />
-              <Input
-                className='w-30'
-                title='कार्यक्रम शिर्षक नं.  :'
-                direction='vertical'
-                value={karyakram_sirshak_no}
-                onChange={(e) => this.setState({ karyakram_sirshak_no: e })}
-              />
               <div className='w-30'>
                 <Dropdown
                   className='dropdownlabel'
@@ -120,11 +106,26 @@ class Add extends Component {
                   defaultIds={[sirshak_id]}
                   data={budgetSirshakList}
                   getValue={(budgetSirshakList) => budgetSirshakList['value']}
-                  getType={(budgetSirshakList) => budgetSirshakList['type']}
+                  // getType={(budgetSirshakList) => budgetSirshakList['type']}
                   onChange={(e) => this.handleBudgetSirshak(e)}
                   value={sirshak_id}
                 />
               </div>
+              <Input
+                className='w-30'
+                title='कार्यक्रम शिर्षक नं.  :'
+                direction='vertical'
+                value={karyakram_sirshak_no}
+                onChange={(e) => this.setState({ karyakram_sirshak_no: e })}
+              />
+              <Input
+                className='w-30'
+                title='कार्यक्रम शिर्षक :'
+                direction='vertical'
+                value={karyakram_name}
+                onChange={(e) => this.setState({ karyakram_name: e })}
+              />
+
               {/* <div className='w-30' /> */}
             </div>
           </div>

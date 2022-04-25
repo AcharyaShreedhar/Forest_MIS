@@ -20,7 +20,6 @@ const fetchallkaryakramsirshakFailure = (state, action) => {
   state.merge({ ...state, status: 'error' })
 }
 
-
 const fetchkaryakramsirshakRequest = (state, action) =>
   state.merge({ ...state, token: '', status: 'pending' })
 const fetchkaryakramsirshakSuccess = (state, action) => {
@@ -31,6 +30,20 @@ const fetchkaryakramsirshakSuccess = (state, action) => {
   })
 }
 const fetchkaryakramsirshakFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' })
+}
+
+const fetchkaryakramsirshakdropdownRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' })
+const fetchkaryakramsirshakdropdownSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    karyakramSirshakDropdownData: action.response,
+  })
+}
+
+const fetchkaryakramsirshakdropdownFailure = (state, action) => {
   state.merge({ ...state, status: 'error' })
 }
 
@@ -67,7 +80,7 @@ const deletekaryakramsirshakSuccess = (state, action) =>
 const deletekaryakramsirshakFailure = (state, action) =>
   state.merge({ ...state, status: 'error' })
 
-/// budgetsirshak dropdown
+/// budgetsirshak
 const fetchallbudgetsirshakRequest = (state, action) =>
   state.merge({ ...state, token: '', status: 'pending' })
 const fetchallbudgetsirshakSuccess = (state, action) => {
@@ -127,6 +140,7 @@ const deletebudgetsirshakSuccess = (state, action) =>
 const deletebudgetsirshakFailure = (state, action) =>
   state.merge({ ...state, status: 'error' })
 
+/// budgetsirshak dropdown
 const fetchbudgetsirshakdropdownRequest = (state, action) =>
   state.merge({ ...state, status: 'pending' })
 const fetchbudgetsirshakdropdownSuccess = (state, action) => {
@@ -177,6 +191,7 @@ const addbudgetbarsikSuccess = (state, action) =>
     ...state,
     status: 'done',
   })
+
 const addbudgetbarsikFailure = (state, action) =>
   state.merge({ ...state, status: 'error' })
 
@@ -199,9 +214,98 @@ const deletebudgetbarsikSuccess = (state, action) =>
     ...state,
     status: 'done',
   })
+const deletebudgetentryFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' })
+
 const deletebudgetbarsikFailure = (state, action) =>
   state.merge({ ...state, status: 'error' })
 
+// get barsik lakshay
+const fetchbudgetbarsiklakshaydataRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' })
+const fetchbudgetbarsiklakshaydataSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    budgetbarsiklakshayData: action.response,
+  })
+}
+const fetchbudgetbarsiklakshaydataFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' })
+}
+
+// get chaumasik lakshay
+const fetchbudgetchaumasiklakshaydataRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' })
+const fetchbudgetchaumasiklakshaydataSuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    budgetchaumasiklakshayData: action.response,
+  })
+}
+const fetchbudgetchaumasiklakshaydataFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' })
+}
+
+// budgetentry
+const fetchallbudgetentryRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' })
+const fetchallbudgetentrySuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    allbudgetentryData: action.response,
+  })
+}
+const fetchallbudgetentryFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' })
+}
+
+const fetchbudgetentryRequest = (state, action) =>
+  state.merge({ ...state, token: '', status: 'pending' })
+const fetchbudgetentrySuccess = (state, action) => {
+  return state.merge({
+    ...state,
+    status: 'done',
+    budgetentryData: action.response,
+  })
+}
+const fetchbudgetentryFailure = (state, action) => {
+  state.merge({ ...state, status: 'error' })
+}
+
+//Add budgetentry
+const addbudgetentryRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' })
+const addbudgetentrySuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  })
+
+const addbudgetentryFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' })
+
+//Update budgetentry
+const updatebudgetentryRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' })
+const updatebudgetentrySuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  })
+
+//Delete budgetentry
+const deletebudgetentryRequest = (state, action) =>
+  state.merge({ ...state, status: 'pending' })
+const deletebudgetentrySuccess = (state, action) =>
+  state.merge({
+    ...state,
+    status: 'done',
+  })
+const updatebudgetentryFailure = (state, action) =>
+  state.merge({ ...state, status: 'error' })
 
 const locationsRequest = (state, action) => {
   let locations = state.locations
@@ -229,6 +333,13 @@ export const reducer = createReducer(initialState, {
   [BudgetbibaranTypes.FETCHKARYAKRAMSIRSHAK_FAILURE]:
     fetchkaryakramsirshakFailure,
 
+  [BudgetbibaranTypes.FETCHKARYAKRAMSIRSHAKDROPDOWN_REQUEST]:
+    fetchkaryakramsirshakdropdownRequest,
+  [BudgetbibaranTypes.FETCHKARYAKRAMSIRSHAKDROPDOWN_SUCCESS]:
+    fetchkaryakramsirshakdropdownSuccess,
+  [BudgetbibaranTypes.FETCHKARYAKRAMSIRSHAKDROPDOWN_FAILURE]:
+    fetchkaryakramsirshakdropdownFailure,
+
   [BudgetbibaranTypes.ADDKARYAKRAMSIRSHAK_REQUEST]: addkaryakramsirshakRequest,
   [BudgetbibaranTypes.ADDKARYAKRAMSIRSHAK_SUCCESS]: addkaryakramsirshakSuccess,
   [BudgetbibaranTypes.ADDKARYAKRAMSIRSHAK_FAILURE]: addkaryakramsirshakFailure,
@@ -254,7 +365,6 @@ export const reducer = createReducer(initialState, {
   [BudgetbibaranTypes.FETCHBUDGETSIRSHAKDROPDOWN_FAILURE]:
     fetchbudgetsirshakdropdownFailure,
 
-
   [BudgetbibaranTypes.FETCHALLBUDGETSIRSHAK_REQUEST]:
     fetchallbudgetsirshakRequest,
   [BudgetbibaranTypes.FETCHALLBUDGETSIRSHAK_SUCCESS]:
@@ -279,6 +389,7 @@ export const reducer = createReducer(initialState, {
   [BudgetbibaranTypes.DELETEBUDGETSIRSHAK_FAILURE]: deletebudgetsirshakFailure,
 
   //budgetbarsik
+
   [BudgetbibaranTypes.FETCHALLBUDGETBARSIK_REQUEST]:
     fetchallbudgetbarsikRequest,
   [BudgetbibaranTypes.FETCHALLBUDGETBARSIK_SUCCESS]:
@@ -301,6 +412,42 @@ export const reducer = createReducer(initialState, {
   [BudgetbibaranTypes.DELETEBUDGETBARSIK_REQUEST]: deletebudgetbarsikRequest,
   [BudgetbibaranTypes.DELETEBUDGETBARSIK_SUCCESS]: deletebudgetbarsikSuccess,
   [BudgetbibaranTypes.DELETEBUDGETBARSIK_FAILURE]: deletebudgetbarsikFailure,
+
+  [BudgetbibaranTypes.FETCHBUDGETBARSIKLAKSHAYDATA_REQUEST]:
+    fetchbudgetbarsiklakshaydataRequest,
+  [BudgetbibaranTypes.FETCHBUDGETBARSIKLAKSHAYDATA_SUCCESS]:
+    fetchbudgetbarsiklakshaydataSuccess,
+  [BudgetbibaranTypes.FETCHBUDGETBARSIKLAKSHAYDATA_FAILURE]:
+    fetchbudgetbarsiklakshaydataFailure,
+
+  [BudgetbibaranTypes.FETCHBUDGETCHAUMASIKLAKSHAYDATA_REQUEST]:
+    fetchbudgetchaumasiklakshaydataRequest,
+  [BudgetbibaranTypes.FETCHBUDGETCHAUMASIKLAKSHAYDATA_SUCCESS]:
+    fetchbudgetchaumasiklakshaydataSuccess,
+  [BudgetbibaranTypes.FETCHBUDGETCHAUMASIKLAKSHAYDATA_FAILURE]:
+    fetchbudgetchaumasiklakshaydataFailure,
+
+  //budgetentry
+
+  [BudgetbibaranTypes.FETCHALLBUDGETENTRY_REQUEST]: fetchallbudgetentryRequest,
+  [BudgetbibaranTypes.FETCHALLBUDGETENTRY_SUCCESS]: fetchallbudgetentrySuccess,
+  [BudgetbibaranTypes.FETCHALLBUDGETENTRY_FAILURE]: fetchallbudgetentryFailure,
+
+  [BudgetbibaranTypes.FETCHBUDGETENTRY_REQUEST]: fetchbudgetentryRequest,
+  [BudgetbibaranTypes.FETCHBUDGETENTRY_SUCCESS]: fetchbudgetentrySuccess,
+  [BudgetbibaranTypes.FETCHBUDGETENTRY_FAILURE]: fetchbudgetentryFailure,
+
+  [BudgetbibaranTypes.ADDBUDGETENTRY_REQUEST]: addbudgetentryRequest,
+  [BudgetbibaranTypes.ADDBUDGETENTRY_SUCCESS]: addbudgetentrySuccess,
+  [BudgetbibaranTypes.ADDBUDGETENTRY_FAILURE]: addbudgetentryFailure,
+
+  [BudgetbibaranTypes.UPDATEBUDGETENTRY_REQUEST]: updatebudgetentryRequest,
+  [BudgetbibaranTypes.UPDATEBUDGETENTRY_SUCCESS]: updatebudgetentrySuccess,
+  [BudgetbibaranTypes.UPDATEBUDGETENTRY_FAILURE]: updatebudgetentryFailure,
+
+  [BudgetbibaranTypes.DELETEBUDGETENTRY_REQUEST]: deletebudgetentryRequest,
+  [BudgetbibaranTypes.DELETEBUDGETENTRY_SUCCESS]: deletebudgetentrySuccess,
+  [BudgetbibaranTypes.DELETEBUDGETENTRY_FAILURE]: deletebudgetentryFailure,
 
   [BudgetbibaranTypes.LOCATIONS_REQUEST]: locationsRequest,
   [BudgetbibaranTypes.CLEAR_REQUEST]: clearRequest,

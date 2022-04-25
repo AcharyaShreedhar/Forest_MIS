@@ -10,66 +10,87 @@ import budgetRoutes from '../../routes/budget'
 
 export class Budget extends Component {
   componentDidMount() {
-    const { districtId, officeId } = this.props
+    const { districtId, officeId, officeRole } = this.props
     this.props.fetchallKaryakramsirshak({
-      distId: districtId,
-      officeId: officeId,
-      name: 'budget_type',
+      distId: '%',
+      officeId: '%',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchallBudgetsirshak({
-      distId: districtId,
-      officeId: officeId,
-      name: 'budget_type',
+      distId: '%',
+      officeId: '%',
+      name: 'sirshak_name',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchallBudgetbarsik({
-      distId: districtId,
-      officeId: officeId,
-      name: 'budget_type',
+      distId: '%',
+      officeId: '%',
+      name: 'fiscal_year',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchBudgetsirshakdropdown({
-      dist_id: districtId,
-      office_id: officeId,
+      dist_id: '%',
+    })
+
+    this.props.fetchKaryakramsirshakdropdown({
+      dist_id: '%',
+      sirshak_id: '%',
+    })
+
+    this.props.fetchallbudgetentry({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'createdAt',
+      page: 0,
+      perPage: 10,
+    })
+
+    this.props.fetchOfficedropdown({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      name: 'value',
     })
   }
 
   componentDidUpdate() {
-    const { districtId, officeId } = this.props
+    const { districtId, officeRole, officeId } = this.props
+
     this.props.fetchallKaryakramsirshak({
-      distId: districtId,
+      distId: '%',
       officeId: officeId,
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchallBudgetsirshak({
-      distId: districtId,
+      distId: '%',
       officeId: officeId,
-      name: 'budget_type',
+      name: 'sirshak_name',
       page: 0,
       perPage: 10,
     })
 
     this.props.fetchallBudgetbarsik({
-      distId: districtId,
+      distId: '%',
       officeId: officeId,
-      name: 'budget_type',
+      name: 'fiscal_year',
       page: 0,
       perPage: 10,
     })
 
-    this.props.fetchBudgetsirshakdropdown({
-      dist_id: districtId,
-      office_id: officeId,
+    this.props.fetchallbudgetentry({
+      distId: `${officeRole < 3 ? '%' : districtId}`,
+      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      name: 'createdAt',
+      page: 0,
+      perPage: 10,
     })
   }
 
@@ -92,7 +113,7 @@ export class Budget extends Component {
             )
           }
           if (!prop.redirect && prop.auth && !authenticated) {
-            return <Redirect exact from={prop.path} to="/" key={key} />
+            return <Redirect exact from={prop.path} to='/' key={key} />
           }
           return (
             <Route
@@ -134,13 +155,21 @@ const mapDispatchToProps = (dispatch) => ({
 
   fetchallBudgetbarsik: (payload) =>
     dispatch(BudgetbibaranActions.fetchallbudgetbarsikRequest(payload)),
-  //O-DDL
-  fetchOfficedropdown: (payload) =>
-    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
 
   fetchBudgetsirshakdropdown: (payload) =>
     dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
-})
 
+  fetchKaryakramsirshakdropdown: (payload) =>
+    dispatch(
+      BudgetbibaranActions.fetchkaryakramsirshakdropdownRequest(payload)
+    ),
+
+  fetchallbudgetentry: (payload) =>
+    dispatch(BudgetbibaranActions.fetchallbudgetentryRequest(payload)),
+
+  //O-DDL
+  fetchOfficedropdown: (payload) =>
+    dispatch(AppActions.fetchofficesdropdownRequest(payload)),
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Budget)

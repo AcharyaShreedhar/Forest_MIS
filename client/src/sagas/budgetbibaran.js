@@ -158,6 +158,20 @@ export function* deletebudgetsirshakRequest(api, action) {
 
 /* ------ karyakramsirshak -------*/
 
+// Karyakramsirshak dropdown
+export function* fetchkaryakramsirshakdropdownRequest(api, action) {
+  const { payload } = action
+  const payloaddata = isNil(payload) ? action : payload
+  const response = yield api.getKaryakramSirshakDropdownList(payloaddata)
+  if (response.ok) {
+    yield put(
+      BudgetbibaranActions.fetchkaryakramsirshakdropdownSuccess(response.data)
+    )
+  } else {
+    yield put(BudgetbibaranActions.fetchkaryakramsirshakdropdownFailure())
+  }
+}
+
 export function* fetchallkaryakramsirshakRequest(api, action) {
   const { payload } = action
   const payloaddata = isNil(payload) ? action : payload
@@ -205,7 +219,7 @@ export function* addkaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
@@ -224,11 +238,10 @@ export function* addkaryakramsirshakRequest(api, action) {
 
 // Update karyakramsirshak
 export function* updatekaryakramsirshakRequest(api, action) {
-  const { payload, vehicleId } = action
-
+  const { payload, karyakramSirshakId } = action
   const response = yield api.postBudgetbibaranKaryakramsirshakUpdate(
     payload.karyakramsirshak.data,
-    vehicleId
+    karyakramSirshakId
   )
 
   if (response.data.error != null) {
@@ -245,7 +258,7 @@ export function* updatekaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
@@ -282,7 +295,7 @@ export function* deletekaryakramsirshakRequest(api, action) {
     yield fetchallkaryakramsirshakRequest(api, {
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'karyakram_name',
       page: 0,
       perPage: 10,
     })
@@ -297,7 +310,6 @@ export function* deletekaryakramsirshakRequest(api, action) {
     )
   }
 }
-
 
 /* ----- budgetbarsik ----- */
 export function* fetchallbudgetbarsikRequest(api, action) {
@@ -323,13 +335,42 @@ export function* fetchbudgetbarsikRequest(api, action) {
   }
 }
 
+// budgetbarsik lakshay
+export function* fetchbudgetbarsiklakshaydataRequest(api, action) {
+  const { payload } = action
+  const payloaddata = isNil(payload) ? action : payload
+  const response = yield api.getBudgetbarsiklakshaydata(payloaddata)
+
+  if (response.ok) {
+    yield put(
+      BudgetbibaranActions.fetchbudgetbarsiklakshaydataSuccess(response.data)
+    )
+  } else {
+    yield put(BudgetbibaranActions.fetchbudgetbarsiklakshaydataFailure())
+  }
+}
+
+// budgetchaumasik lakshay
+export function* fetchbudgetchaumasiklakshaydataRequest(api, action) {
+  const { payload } = action
+  const payloaddata = isNil(payload) ? action : payload
+  const response = yield api.getBudgetchaumasiklakshaydata(payloaddata)
+
+  if (response.ok) {
+    yield put(
+      BudgetbibaranActions.fetchbudgetchaumasiklakshaydataSuccess(response.data)
+    )
+  } else {
+    yield put(BudgetbibaranActions.fetchbudgetchaumasiklakshaydataFailure())
+  }
+}
+
 // Add budgetbarsik
 export function* addbudgetbarsikRequest(api, action) {
   const { payload } = action
 
   const response = yield api.postBudgetbibaranBudgetbarsikAddNew(
     payload.budgetbarsik.data
-
   )
 
   if (response.data.error != null) {
@@ -375,7 +416,6 @@ export function* updatebudgetbarsikRequest(api, action) {
   const response = yield api.postBudgetbibaranBudgetbarsikUpdate(
     payload.budgetbarsik.data,
     budgetbarsikId
-
   )
 
   if (response.data.error != null) {
@@ -414,13 +454,11 @@ export function* updatebudgetbarsikRequest(api, action) {
   }
 }
 
-
 // Delete budgetbarsik
 export function* deletebudgetbarsikRequest(api, action) {
   const { payload } = action
 
   const response = yield api.postBudgetbibaranBudgetbarsikDelete(payload)
-
 
   if (response.data.error != null) {
     toast.error(
@@ -471,9 +509,9 @@ export function* fetchallbudgetentryRequest(api, action) {
 }
 
 export function* fetchbudgetentryRequest(api, action) {
-  const sampatiId = action.payload
+  const budgetkarmacharidetailId = action.payload
 
-  const response = yield api.getBudgetentry(sampatiId)
+  const response = yield api.getBudgetentry(budgetkarmacharidetailId)
 
   if (response.ok) {
     yield put(BudgetbibaranActions.fetchbudgetentrySuccess(response.data))
@@ -502,15 +540,13 @@ export function* addbudgetentryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     })
     yield fetchallbudgetentryRequest(api, {
-      fromDate: '2075-01-01',
-      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'createdAt',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/budgetentrylist')
+    yield call(history.push, '/budget/budgetentrylist')
     yield put(BudgetbibaranActions.addbudgetentrySuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.addbudgetentryFailure())
@@ -525,11 +561,11 @@ export function* addbudgetentryRequest(api, action) {
 
 // Update budgetentry
 export function* updatebudgetentryRequest(api, action) {
-  const { payload, sampatiId } = action
+  const { payload, budgetkarmacharidetailId } = action
 
   const response = yield api.postBudgetbibaranBudgetentryUpdate(
     payload.budgetentry.data,
-    sampatiId
+    budgetkarmacharidetailId
   )
 
   if (response.data.error != null) {
@@ -544,15 +580,13 @@ export function* updatebudgetentryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     })
     yield fetchallbudgetentryRequest(api, {
-      fromDate: '2075-01-01',
-      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'createdAt',
       page: 0,
       perPage: 10,
     })
-    yield call(history.push, '/sampatibibaran/budgetentrylist')
+    yield call(history.push, '/budget/budgetentrylist')
     yield put(BudgetbibaranActions.updatebudgetentrySuccess(response.data))
   } else {
     yield put(BudgetbibaranActions.updatebudgetentryFailure())
@@ -583,11 +617,9 @@ export function* deletebudgetentryRequest(api, action) {
       position: toast.POSITION.TOP_CENTER,
     })
     yield fetchallbudgetentryRequest(api, {
-      fromDate: '2075-01-01',
-      toDate: '2090-12-30',
       distId: '%',
       officeId: '%',
-      name: 'budget_type',
+      name: 'createdAt',
       page: 0,
       perPage: 10,
     })

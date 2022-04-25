@@ -36,12 +36,6 @@ const { Types, Creators } = createActions({
   deletebudgetsirshakRequest: ['payload', 'budgetsirshakId'],
   deletebudgetsirshakSuccess: ['response'],
   deletebudgetsirshakFailure: null,
-  
-  
-  fetchbudgetsirshakdropdownRequest: ['payload'],
-  fetchbudgetsirshakdropdownSuccess: ['response'],
-  fetchbudgetsirshakdropdownFailure: null,
-  
 
   // karyakramsirshak
 
@@ -53,19 +47,21 @@ const { Types, Creators } = createActions({
   fetchkaryakramsirshakSuccess: ['response'],
   fetchkaryakramsirshakFailure: null,
 
+  fetchkaryakramsirshakdropdownRequest: ['payload'],
+  fetchkaryakramsirshakdropdownSuccess: ['response'],
+  fetchkaryakramsirshakdropdownFailure: null,
+
   addkaryakramsirshakRequest: ['payload'],
   addkaryakramsirshakSuccess: ['response'],
   addkaryakramsirshakFailure: null,
 
-  updatekaryakramsirshakRequest: ['payload', 'karyakramsirshakId'],
+  updatekaryakramsirshakRequest: ['payload', 'karyakramSirshakId'],
   updatekaryakramsirshakSuccess: ['response'],
   updatekaryakramsirshakFailure: null,
 
-  deletekaryakramsirshakRequest: ['payload', 'karyakramsirshakId'],
+  deletekaryakramsirshakRequest: ['payload', 'karyakramSirshakId'],
   deletekaryakramsirshakSuccess: ['response'],
   deletekaryakramsirshakFailure: null,
-  
-  
 
   // Budget barsik
   fetchallbudgetbarsikRequest: ['payload'],
@@ -75,7 +71,15 @@ const { Types, Creators } = createActions({
   fetchbudgetbarsikRequest: ['payload'],
   fetchbudgetbarsikSuccess: ['response'],
   fetchbudgetbarsikFailure: null,
-  
+
+  fetchbudgetbarsiklakshaydataRequest: ['payload'],
+  fetchbudgetbarsiklakshaydataSuccess: ['response'],
+  fetchbudgetbarsiklakshaydataFailure: null,
+
+  fetchbudgetchaumasiklakshaydataRequest: ['payload'],
+  fetchbudgetchaumasiklakshaydataSuccess: ['response'],
+  fetchbudgetchaumasiklakshaydataFailure: null,
+
   addbudgetbarsikRequest: ['payload'],
   addbudgetbarsikSuccess: ['response'],
   addbudgetbarsikFailure: null,
@@ -101,11 +105,11 @@ const { Types, Creators } = createActions({
   addbudgetentrySuccess: ['response'],
   addbudgetentryFailure: null,
 
-  updatebudgetentryRequest: ['payload', 'budgetentryId'],
+  updatebudgetentryRequest: ['payload', 'budgetkarmacharidetailId'],
   updatebudgetentrySuccess: ['response'],
   updatebudgetentryFailure: null,
 
-  deletebudgetentryRequest: ['payload', 'budgetentryId'],
+  deletebudgetentryRequest: ['payload', 'budgetkarmacharidetailId'],
   deletebudgetentrySuccess: ['response'],
   deletebudgetentryFailure: null,
 

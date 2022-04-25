@@ -7,7 +7,7 @@ router.post(
   budgetKarmacharidetailController.getAllBudgetKarmacharidetail
 )
 router.get(
-  '/budgetkarmacharidetail/:karmacharidetailId',
+  '/budgetkarmacharidetail/:budgetkarmacharidetailId',
   budgetKarmacharidetailController.getBudgetKarmacharidetail
 )
 router.post(
@@ -15,11 +15,11 @@ router.post(
   budgetKarmacharidetailController.addBudgetKarmacharidetail
 )
 router.put(
-  '/budgetkarmacharidetail/:karmacharidetailId',
+  '/budgetkarmacharidetail/:budgetkarmacharidetailId',
   budgetKarmacharidetailController.updateBudgetKarmacharidetail
 )
 router.delete(
-  '/budgetkarmacharidetail/:karmacharidetailId',
+  '/budgetkarmacharidetail/:budgetkarmacharidetailId',
   budgetKarmacharidetailController.deleteBudgetKarmacharidetail
 )
 module.exports = router

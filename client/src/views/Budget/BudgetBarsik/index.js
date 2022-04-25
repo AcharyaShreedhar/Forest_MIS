@@ -16,13 +16,13 @@ import { Fragment } from 'react'
 export class BudgetBarsik extends Component {
   constructor(props) {
     super(props)
-    const { officeRole, districtId, officeId } = this.props
+    const { officeRole, officeId } = this.props
     this.state = {
       loc: 'budgetbarsiklist',
       fromDate: '2075-01-01',
       toDate: '2090-12-30',
-      distId: `${officeRole < 3 ? '%' : districtId}`,
-      officeId: `${officeRole < 3 ? '%' : officeId}`,
+      distId: '%',
+      officeId: `%`,
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -54,6 +54,13 @@ export class BudgetBarsik extends Component {
       officeList = nextProps.officeDataList.data
     }
     return { loc, budgetbarsikList, officeList }
+  }
+
+  componentDidMount() {
+    this.props.fetchKaryakramsirshakdropdown({
+      dist_id: '%',
+      sirshak_id: '%',
+    })
   }
 
   handlePer(e) {
@@ -183,33 +190,34 @@ export class BudgetBarsik extends Component {
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title="Delete"
+          title='Delete'
           body={'के तपाईँ बजेट वार्षिक सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
-          confirmLabel="चाहन्छु "
-          cancelLabel="चाहंदिन "
+          confirmLabel='चाहन्छु '
+          cancelLabel='चाहंदिन '
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
         {equals(loc, 'budgetbarsiklist') && (
           <Fragment>
-            <div className="report-filter">
+            <div className='report-filter'>
               <Filter
-                id="vehicle"
-                title="प्राप्ति मिति"
+                id='budget'
+                title='प्राप्ति मिति'
                 districtsList={districtList}
                 officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
                 onFromDate={this.handleFromDate}
                 onSelect={this.handleDistrict}
                 onSelectOffice={this.handleOffice}
-                yesOffice={officeRole < 3 ? true : false}
-                yesDistrict={officeRole < 3 ? true : false}
+                yesDate={false}
+                yesOffice={false}
+                yesDistrict={false}
               />
-              <ReportGenerator id="vehicle" />
+              <ReportGenerator id='budget' />
             </div>
             <BudgetBarsikBibaran.List
-              buttonName="+ बजेट वार्षिक"
-              title="बजेट वार्षिक सम्बन्धी विवरण"
+              buttonName='+ बजेट वार्षिक'
+              title='बजेट वार्षिक सम्बन्धी विवरण'
               pageCount={
                 !isNil(budgetbarsikList)
                   ? Math.ceil(budgetbarsikList.total / perPage)
@@ -232,7 +240,7 @@ export class BudgetBarsik extends Component {
         )}
         {equals(loc, 'budgetbarsikadd') && (
           <BudgetBarsikBibaran.Add
-            title="+ बजेट वार्षिक विवरण"
+            title='+ बजेट वार्षिक विवरण'
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addBudgetbarsik(e)}
@@ -240,7 +248,7 @@ export class BudgetBarsik extends Component {
         )}
         {equals(loc, 'budgetbarsikedit') && (
           <BudgetBarsikBibaran.Edit
-            title="बजेट वार्षिक सम्बन्धी विवरण शंसोधन"
+            title='बजेट वार्षिक सम्बन्धी विवरण शंसोधन'
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}
@@ -285,6 +293,14 @@ const mapDispatchToProps = (dispatch) => ({
 
   deleteBudgetbarsik: (budgetbarsikId) =>
     dispatch(BudgetbibaranActions.deletebudgetbarsikRequest(budgetbarsikId)),
+
+  fetchBudgetsirshakdropdown: (payload) =>
+    dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
+
+  fetchKaryakramsirshakdropdown: (payload) =>
+    dispatch(
+      BudgetbibaranActions.fetchkaryakramsirshakdropdownRequest(payload)
+    ),
 
   // O-DDL
   fetchOfficedropdown: (payload) =>

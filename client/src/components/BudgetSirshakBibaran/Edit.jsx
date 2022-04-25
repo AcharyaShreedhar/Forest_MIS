@@ -47,17 +47,17 @@ class Edit extends Component {
     }
   }
   handleSubmit() {
-    const { id, sirshak_no, sirshak_name } = this.state
+    const { id, sirshak_no, sirshak_name, created_by } = this.state
     const payload = {
       budgetsirshak: {
         data: {
           sirshak_no: sirshak_no,
           sirshak_name: sirshak_name,
-          // created_by: this.props.user.user_name,
-          updated_by: this.props.user.user_name,
           dist_id: this.props.user.dist_id,
           office_id: this.props.user.office_id,
           user_id: this.props.user.user_id,
+          created_by: created_by || this.props.user.user_name,
+          updated_by: this.props.user.user_name,
         },
       },
     }
@@ -72,44 +72,44 @@ class Edit extends Component {
 
     return (
       <React.Fragment>
-        <div className=" card p-5 border-5">
+        <div className=' card p-5 border-5'>
           <ConfirmationDialoge
             showDialog={showDialog}
-            title="शंसोधन"
-            body="के तपाईँ सवारी साधन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?"
-            confirmLabel="चाहन्छु "
-            cancelLabel="चाहंदिन "
+            title='शंसोधन'
+            body='के तपाईँ सवारी साधन सम्बन्धी विवरण शंसोधन गर्न चाहनुहुन्छ ?'
+            confirmLabel='चाहन्छु '
+            cancelLabel='चाहंदिन '
             onYes={this.handleSubmit}
             onClose={this.handleClose}
           />
-          <div className="detail-content">
-            <div className="title">
-              <span className="dsl-b22">{title}</span>
+          <div className='detail-content'>
+            <div className='title'>
+              <span className='dsl-b22'>{title}</span>
             </div>
-            <div className="panel space mb-4">
+            <div className='panel space mb-4'>
               <Input
-                className="w-30"
-                title="शिर्षक नम्बर :"
+                className='w-30'
+                title='शिर्षक नम्बर :'
                 value={sirshak_no}
-                direction="vertical"
+                direction='vertical'
                 onChange={(e) => this.setState({ sirshak_no: e })}
               />
               <Input
-                className="w-30"
-                title="शिर्षकको नाम :"
-                direction="vertical"
+                className='w-30'
+                title='शिर्षकको नाम :'
+                direction='vertical'
                 value={sirshak_name}
                 onChange={(e) => this.setState({ sirshak_name: e })}
               />
-              <div className="w-30"></div>
+              <div className='w-30'></div>
             </div>
           </div>
-          <div className="section mb-4" />
-          <div className="mt-2 border-5">
-            <div className="d-flex justify-content-end align-items-center">
+          <div className='section mb-4' />
+          <div className='mt-2 border-5'>
+            <div className='d-flex justify-content-end align-items-center'>
               <Button
-                className="mr-3"
-                name="शंशोधन गर्नुहोस ।"
+                className='mr-3'
+                name='शंशोधन गर्नुहोस ।'
                 disabled={disabled}
                 onClick={this.handleConfirm.bind(this)}
               />

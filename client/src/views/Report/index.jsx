@@ -125,6 +125,14 @@ export class Report extends Component {
       officeId: `${officeRole < 3 ? '%' : officeId}`,
     })
 
+    this.props.fetchbudgetmonthlylist({
+      chaumasik_id: '',
+      expense_year: '',
+      expense_month_id: '',
+      fiscal_year: '',
+      budget_office_id: '',
+    })
+
     this.props.fetchOfficedropdown({
       distId: '%',
       name: 'value', //"office_name"
@@ -245,6 +253,14 @@ export class Report extends Component {
       officeId: `${officeRole < 3 ? '%' : officeId}`,
     })
 
+    this.props.fetchbudgetmonthlylist({
+      chaumasik_id: 3,
+      expense_year: '2078',
+      expense_month_id: 9,
+      fiscal_year: '2078/079',
+      office_id: officeId,
+    })
+
     this.props.fetchOfficedropdown({
       distId: '%',
       name: 'value', //"office_name"
@@ -345,7 +361,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchBanHastantaran: (payload) =>
     dispatch(ReportActions.fetchbanhastantaranbibaranRequest(payload)),
   menuRequest: (payload) => dispatch(AppActions.menuRequest(payload)),
-
+  fetchbudgetmonthlylist: (payload) =>
+    dispatch(ReportActions.fetchbudgetmonthlybibaranRequest(payload)),
   //O-DDL
   fetchOfficedropdown: (payload) =>
     dispatch(AppActions.fetchofficesdropdownRequest(payload)),

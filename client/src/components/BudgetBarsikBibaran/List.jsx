@@ -23,12 +23,12 @@ function List(props) {
   } = props
   return (
     <Fragment>
-      <div className="card">
-        <div className="button">
-          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
+      <div className='card'>
+        <div className='button'>
+          <Button type='low' size='small' name={buttonName} onClick={onAdd} />
         </div>
-        <div className="titlebar">{title} </div>
-        <Table responsive striped bordered hover id="vehicle">
+        <div className='titlebar'>{title} </div>
+        <Table responsive striped bordered hover id='budget'>
           <thead>
             <tr>
               <th>क्र.स.</th>
@@ -46,8 +46,9 @@ function List(props) {
                 <tr key={`${budgetbarsik.budget_barsik_id}-${index}`}>
                   <td>{englishToNepaliNumber(index + 1)}</td>
                   <td>{budgetbarsik.fiscal_year}</td>
-                  <td>{budgetbarsik.sirshak_id}</td>
-                  <td>{budgetbarsik.karyakram_sirshak_id}</td>
+                  <td>{budgetbarsik.sirshak_name}</td>
+                  <td>{budgetbarsik.karyakram_name}</td>
+                  <td>{budgetbarsik.office_name}</td>
                   <td>
                     {englishToNepaliNumber(
                       budgetbarsik.pratham_chaumasik_amount
@@ -67,12 +68,10 @@ function List(props) {
                     {englishToNepaliNumber(budgetbarsik.barsik_lakshay_amount)}
                   </td>
                   <td>
-                    <div className="edit">
+                    <div className='edit'>
                       <EditDropdown
                         options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
-                        onChange={(e) =>
-                          onSelect(e, budgetbarsik, 'yearlysawarisadhan')
-                        }
+                        onChange={(e) => onSelect(e, budgetbarsik, 'budget')}
                       />
                     </div>
                   </td>
@@ -88,7 +87,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type="vehicle"
+          type='budget'
         />
       </div>
     </Fragment>

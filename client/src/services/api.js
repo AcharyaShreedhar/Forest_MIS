@@ -1002,7 +1002,13 @@ const create = (baseURL = Config.API_URL) => {
   const postBanHastantaranBibaran = (payload) =>
     api.post('banhastantaran_bibaran', payload)
 
+  const postBudgetMonthlyBibaran = (payload) =>
+    api.post('budget_monthly', payload)
+
   // karyakramsirshak
+  const getKaryakramSirshakDropdownList = (payload) =>
+    api.post('karyakramsirshakDropdownList', payload)
+
   const getKaryakramsirshakList = (payload) =>
     api.post('karyakramsirshakList', payload)
 
@@ -1025,7 +1031,6 @@ const create = (baseURL = Config.API_URL) => {
   const getBudgetSirshakDropdownList = (payload) =>
     api.post('budgetsirshakDropdownList', payload)
 
-  //budgetsirshak
   const getBudgetsirshakList = (payload) =>
     api.post('budgetsirshakList', payload)
 
@@ -1042,6 +1047,24 @@ const create = (baseURL = Config.API_URL) => {
   const postBudgetbibaranBudgetsirshakDelete = (budgetsirshakId) =>
     api.delete(`budgetsirshak/${budgetsirshakId}`)
 
+  // budgetentry
+  const getBudgetentryList = (payload) =>
+    api.post('budgetkarmacharidetailList', payload)
+
+  const getBudgetentry = (budgetkarmacharidetailId) =>
+    api.get(`budgetkarmacharidetail/${budgetkarmacharidetailId}`)
+
+  //Add
+  const postBudgetbibaranBudgetentryAddNew = (payload) =>
+    api.post(`budgetkarmacharidetail`, payload)
+  //update
+  const postBudgetbibaranBudgetentryUpdate = (
+    payload,
+    budgetkarmacharidetailId
+  ) => api.put(`budgetkarmacharidetail/${budgetkarmacharidetailId}`, payload)
+  //Delete
+  const postBudgetbibaranBudgetentryDelete = (budgetkarmacharidetailId) =>
+    api.delete(`budgetkarmacharidetail/${budgetkarmacharidetailId}`)
   //budgetbarsik
   const getBudgetbarsikList = (payload) => api.post('budgetbarsikList', payload)
 
@@ -1058,6 +1081,11 @@ const create = (baseURL = Config.API_URL) => {
   const postBudgetbibaranBudgetbarsikDelete = (budgetbarsikId) =>
     api.delete(`budgetbarsik/${budgetbarsikId}`)
 
+  const getBudgetbarsiklakshaydata = (payload) =>
+    api.post('budgetBarsikLakshay', payload)
+
+  const getBudgetchaumasiklakshaydata = (payload) =>
+    api.post('budgetChaumasikLakshay', payload)
 
   return {
     loginByUsername,
@@ -1383,12 +1411,38 @@ const create = (baseURL = Config.API_URL) => {
     postPanimuhanSamrakshyanDelete,
 
     //Karyakramsirshak
+    getKaryakramSirshakDropdownList,
     getKaryakramsirshakList,
     getKaryakramsirshak,
     getBudgetSirshakDropdownList,
     postBudgetbibaranKaryakramsirshakAddNew,
     postBudgetbibaranKaryakramsirshakUpdate,
     postBudgetbibaranKaryakramsirshakDelete,
+
+    //...............budgetsirshak
+
+    getBudgetsirshakList,
+    getBudgetsirshak,
+    postBudgetbibaranBudgetsirshakAddNew,
+    postBudgetbibaranBudgetsirshakUpdate,
+    postBudgetbibaranBudgetsirshakDelete,
+    getBudgetbarsiklakshaydata,
+    getBudgetchaumasiklakshaydata,
+
+    //...............budgetbarsik
+
+    getBudgetbarsikList,
+    getBudgetbarsik,
+    postBudgetbibaranBudgetbarsikAddNew,
+    postBudgetbibaranBudgetbarsikUpdate,
+    postBudgetbibaranBudgetbarsikDelete,
+
+    //budgetentry
+    getBudgetentryList,
+    getBudgetentry,
+    postBudgetbibaranBudgetentryAddNew,
+    postBudgetbibaranBudgetentryUpdate,
+    postBudgetbibaranBudgetentryDelete,
 
     //............................report
     postNabikaranBibaran,
@@ -1406,20 +1460,7 @@ const create = (baseURL = Config.API_URL) => {
     postSrijanBhayekoRojgari,
     postUpavoktaSusasan,
     postBanHastantaranBibaran,
-
-    //...............budgetbibaran
-
-    getBudgetsirshakList,
-    getBudgetsirshak,
-    postBudgetbibaranBudgetsirshakAddNew,
-    postBudgetbibaranBudgetsirshakUpdate,
-    postBudgetbibaranBudgetsirshakDelete,
-    getBudgetbarsikList,
-    getBudgetbarsik,
-    postBudgetbibaranBudgetbarsikAddNew,
-    postBudgetbibaranBudgetbarsikUpdate,
-    postBudgetbibaranBudgetbarsikDelete,
-
+    postBudgetMonthlyBibaran,
   }
 }
 

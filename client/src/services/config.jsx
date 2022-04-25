@@ -1,4 +1,5 @@
 import { equals } from 'ramda'
+import NepaliDate from 'nepali-date-converter'
 
 const AssetsURL = equals(process.env.NODE_ENV, 'production')
   ? 'https://www.forestmis.com/assets'
@@ -582,6 +583,7 @@ const budgetbarsikHeadings = [
   'आर्थिक वर्ष',
   'वजेट शिर्षक',
   'कार्यक्रम शिर्षक',
+  'कार्यलय',
   'प्रथम चौमासिक',
   'दोस्रो चौमासिक',
   'तेस्रो चौमासिक',
@@ -592,11 +594,80 @@ const budgetsirshakHeadings = ['बजेट शिर्षक नं.', 'ब�
 
 const budgetentryHeadings = [
   'आर्थिक वर्ष',
-  'शिर्षक नम्बर',
+  'बजेट शिर्षक',
+  'कार्यक्रम शिर्षक',
   'खर्च भएको वर्ष',
   'खर्च भएको महिना',
   'खर्च भएको रकम',
+  'दर्ता कर्ता',
 ]
+
+const month_List = [
+  { id: 1, value: 'साउन', quater: 1 },
+  { id: 2, value: 'भदौ', quater: 1 },
+  { id: 3, value: 'असोज', quater: 1 },
+  { id: 4, value: 'कार्तिक', quater: 1 },
+  { id: 5, value: 'मङ्सीर', quater: 2 },
+  { id: 6, value: 'पुष', quater: 2 },
+  { id: 7, value: 'माघ', quater: 2 },
+  { id: 8, value: 'फागुन', quater: 2 },
+  { id: 9, value: 'चैत', quater: 3 },
+  { id: 10, value: 'वैशाख', quater: 3 },
+  { id: 11, value: 'जेष्ठ', quater: 3 },
+  { id: 12, value: 'असार', quater: 3 },
+]
+
+const chaumasik_List = [
+  { id: 1, value: 'प्रथम' },
+  { id: 2, value: 'दोस्रो' },
+  { id: 3, value: 'तेस्रो' },
+]
+
+//fiscal year generator
+const nepaliyear = new NepaliDate()
+const year = nepaliyear.getYear()
+const pre_year = year - 1
+const post_year = year + 1
+const f_year =
+  nepaliyear.getMonth() <= 3
+    ? pre_year + '/' + year.toString().substring(1, 4)
+    : year + '/' + post_year.toString().substring(1, 4)
+
+// console.log(f_year)
+const f_list = (year) => {
+  let fiscal_year = []
+  let predecade = year - 2
+  let predecade_1 = year - 1
+  // console.log(predecade + '/' + predecade_1.toString().substring(1,4))
+  // console.log(predecade_1.toString().substring(1,4))
+  for (let i = 0; i < 3; i++) {
+    fiscal_year[i] = {
+      id: i,
+      value: predecade + '/' + predecade_1.toString().substring(1, 4),
+    }
+    predecade = predecade + 1
+    predecade_1 = predecade_1 + 1
+  }
+  return fiscal_year
+}
+const fiscal_year_list = f_list(year)
+
+const fiscal_year_id = nepaliyear.getMonth() <= 3 ? 1 : 2
+
+// year generator
+const y_list = (year) => {
+  let year_list = []
+  let predecade = year - 2
+  for (let i = 0; i < 4; i++) {
+    year_list[i] = {
+      id: i,
+      value: predecade.toString(),
+    }
+    predecade = predecade + 1
+  }
+  return year_list
+}
+const year_list = y_list(year)
 
 export {
   AssetsURL,
@@ -652,4 +723,11 @@ export {
   budgetbarsikHeadings,
   budgetsirshakHeadings,
   budgetentryHeadings,
+  year,
+  f_year,
+  fiscal_year_list,
+  fiscal_year_id,
+  year_list,
+  month_List,
+  chaumasik_List,
 }

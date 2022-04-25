@@ -1,0 +1,20 @@
+{
+    "shortid": "wMtQat8Hon",
+    "name": "budgetbibaran",
+    "recipe": "docx",
+    "engine": "handlebars",
+    "chrome": {
+        "printBackground": true
+    },
+    "docx": {
+        "templateAssetShortid": "GtAc3mB"
+    },
+    "creationDate": {
+        "$$date": 1649856521565
+    },
+    "modificationDate": {
+        "$$date": 1649856521565
+    },
+    "_id": "uGpTrmm0ScBDdkJ8",
+    "$entitySet": "templates"
+}

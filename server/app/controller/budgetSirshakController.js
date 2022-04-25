@@ -52,10 +52,10 @@ async function getBudgetSirshak(req, res) {
 
 //Controller for budget_sirshak dropdown
 async function getBudgetSirshakDropdown(req, res) {
-  const getBudgetSirshakDropdownQuery = `select sirshak_id as id, sirshak_no, sirshak_name as value from budget_sirshaks where dist_id = ? and office_id = ?`
+  const getBudgetSirshakDropdownQuery = `select sirshak_id as id, sirshak_no, sirshak_name as value from budget_sirshaks where dist_id like ?`
   pool.query(
     getBudgetSirshakDropdownQuery,
-    [req.body.dist_id, req.body.office_id],
+    [req.body.dist_id],
     (error, results, fields) => {
       if (error) throw error
       res.send(JSON.stringify({ status: 200, error: null, data: results }))
@@ -123,7 +123,6 @@ async function deleteBudgetSirshak(req, res, next) {
         console.log(error)
         next(error)
       }
-      console.log(results)
       res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
   )

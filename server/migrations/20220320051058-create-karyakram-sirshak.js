@@ -30,7 +30,6 @@ module.exports = {
       },
       karyakram_sirshak_no: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false,
       },
       created_by: {

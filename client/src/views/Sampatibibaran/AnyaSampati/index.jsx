@@ -182,19 +182,19 @@ class AnyaSampati extends Component {
       <div>
         <ConfirmationDialoge
           showDialog={showDialog}
-          title='Delete'
+          title="Delete"
           body={'के तपाईँ सम्पती सम्बन्धी विवरण हटाउन चाहनुहुन्छ ?'}
-          confirmLabel='चाहन्छु '
-          cancelLabel='चाहंदिन '
+          confirmLabel="चाहन्छु "
+          cancelLabel="चाहंदिन "
           onYes={this.handleDelete}
           onClose={this.handleClose}
         />
         {equals(loc, 'anyasampatilist') && (
           <Fragment>
-            <div className='report-filter'>
+            <div className="report-filter">
               <Filter
-                id='sampati'
-                title='प्राप्ति मिति'
+                id="sampati"
+                title="प्राप्ति मिति"
                 districtsList={districtList}
                 officesList={!isNil(officeList) ? officeList : []}
                 onToDate={this.handleToDate}
@@ -204,11 +204,12 @@ class AnyaSampati extends Component {
                 yesOffice={officeRole < 3 ? true : false}
                 yesDistrict={officeRole < 3 ? true : false}
               />
-              <ReportGenerator id='sampati' />
+              <ReportGenerator id="anyasampati" />{' '}
+              {/* d must match with List-> Table id */}
             </div>
             <AnyaSampatiBibaran.List
-              buttonName='+ आन्य सम्पती'
-              title='आन्य सम्पती सम्बन्धी विवरण'
+              buttonName="+ आन्य सम्पती"
+              title="आन्य सम्पती सम्बन्धी विवरण"
               pageCount={
                 !isNil(anyasampatiList)
                   ? Math.ceil(anyasampatiList.total / perPage)
@@ -231,7 +232,7 @@ class AnyaSampati extends Component {
         )}
         {equals(loc, 'anyasampatiadd') && (
           <AnyaSampatiBibaran.Add
-            title='+ आन्य सम्पती विवरण'
+            title="+ आन्य सम्पती विवरण"
             user={user}
             onSelect={this.handleSelectMenu}
             onSubmit={(e) => this.props.addanyasampati(e)}
@@ -239,7 +240,7 @@ class AnyaSampati extends Component {
         )}
         {equals(loc, 'anyasampatiedit') && (
           <AnyaSampatiBibaran.Edit
-            title='आन्य सम्पती सम्बन्धी विवरण शंसोधन'
+            title="आन्य सम्पती सम्बन्धी विवरण शंसोधन"
             user={user}
             history={this.props.history}
             onSelect={this.handleSelectMenu}

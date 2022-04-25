@@ -15,11 +15,10 @@ import { Fragment } from 'react'
 class KaryakramSirshak extends Component {
   constructor(props) {
     super(props)
-    const { districtId, officeId } = this.props
     this.state = {
       loc: 'karyakramsirshaklist',
-      distId: districtId,
-      officeId: officeId,
+      distId: '%',
+      officeId: '%',
       perPage: 10,
       page: 0,
       showDialog: false,
@@ -45,6 +44,12 @@ class KaryakramSirshak extends Component {
     }
 
     return { loc, karyakramsirshakList }
+  }
+
+  componentDidMount() {
+    this.props.fetchBudgetsirshakdropdown({
+      dist_id: '%',
+    })
   }
 
   handlePer(e) {
@@ -205,13 +210,21 @@ const mapDispatchToProps = (dispatch) => ({
   addkaryakramsirshak: (payload) =>
     dispatch(BudgetbibaranActions.addkaryakramsirshakRequest(payload)),
 
-  updatekaryakramsirshak: (payload, assetId) =>
+  updatekaryakramsirshak: (payload, karyakramSirshakId) =>
     dispatch(
-      BudgetbibaranActions.updatekaryakramsirshakRequest(payload, assetId)
+      BudgetbibaranActions.updatekaryakramsirshakRequest(
+        payload,
+        karyakramSirshakId
+      )
     ),
 
-  deletekaryakramsirshak: (assetId) =>
-    dispatch(BudgetbibaranActions.deletekaryakramsirshakRequest(assetId)),
+  deletekaryakramsirshak: (karyakramSirshakId) =>
+    dispatch(
+      BudgetbibaranActions.deletekaryakramsirshakRequest(karyakramSirshakId)
+    ),
+
+  fetchBudgetsirshakdropdown: (payload) =>
+    dispatch(BudgetbibaranActions.fetchbudgetsirshakdropdownRequest(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(KaryakramSirshak)

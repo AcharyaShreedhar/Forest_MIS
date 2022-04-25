@@ -80,6 +80,22 @@ const budgetRoutes = [
   },
 
   {
+    path: '/budget/budgetentryadd/new',
+    title: 'BudgetEntry',
+    name: 'budgetentry',
+    auth: true,
+    component: BudgetEntry,
+  },
+
+  {
+    path: '/budget/budgetentryedit/:id',
+    title: 'BudgetEntry',
+    name: 'budgetentry',
+    auth: true,
+    component: BudgetEntry,
+  },
+
+  {
     redirect: true,
     path: '/budget',
     to: '/budget/budgetentrylist',

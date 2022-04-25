@@ -19,24 +19,23 @@ function List(props) {
     per,
     onPer,
     role,
-    officeRole,
     forcePage,
   } = props
   return (
     <Fragment>
-      <div className='card'>
-        <div className='button'>
-          <Button type='low' size='small' name={buttonName} onClick={onAdd} />
+      <div className="card">
+        <div className="button">
+          <Button type="low" size="small" name={buttonName} onClick={onAdd} />
         </div>
-        <div className='titlebar'>{title} </div>
-        <Table responsive striped bordered hover id='karyakramsirshak'>
+        <div className="titlebar">{title} </div>
+        <Table responsive striped bordered hover id="karyakramsirshak">
           <thead>
             <tr>
               <th>क्र.स.</th>
               {headings.map((heading, index) => (
                 <th key={index}>{heading}</th>
               ))}
-              {officeRole > 2 && <th />}
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -50,7 +49,7 @@ function List(props) {
                   <td>{karyakramsirshak.karyakram_sirshak_no}</td>
                   <td>{karyakramsirshak.created_by}</td>
                   <td>
-                    <div className='edit'>
+                    <div className="edit">
                       <EditDropdown
                         options={role < 3 ? ['Edit'] : ['Edit', 'Delete']}
                         onChange={(e) =>
@@ -71,7 +70,7 @@ function List(props) {
           onPer={onPer}
           onPageClick={onPageClick}
           pageCount={pageCount}
-          type='karyakramsirshak'
+          type="karyakramsirshak"
         />
       </div>
     </Fragment>

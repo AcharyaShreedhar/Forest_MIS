@@ -10,10 +10,12 @@ module.exports = {
       },
       sirshak_id: {
         allowNull: false,
+        unique: true,
         type: Sequelize.INTEGER,
       },
       karyakram_sirshak_id: {
         allowNull: false,
+        unique: true,
         type: Sequelize.INTEGER,
       },
       dist_id: {
@@ -30,6 +32,11 @@ module.exports = {
       },
       fiscal_year: {
         type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      budget_office_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
       },
       pratham_chaumasik_amount: {
@@ -48,6 +55,26 @@ module.exports = {
         defaultValue: 0,
       },
       barsik_lakshay_amount: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      pratham_chaumasik_pariman: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      doshro_chaumasik_pariman: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      teshro_chaumasik_pariman: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      barsik_lakshay_pariman: {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0,
