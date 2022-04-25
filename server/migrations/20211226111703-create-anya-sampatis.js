@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('anya_sampatis', {
@@ -6,44 +6,44 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       sampati_name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       dist_id: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       office_id: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       sampati_location: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       acquired_date: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      createdBy: {
-        type: Sequelize.STRING
+      created_by: {
+        type: Sequelize.STRING,
       },
-      updatedBy: {
-        type: Sequelize.STRING
+      updated_by: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      }
-    });
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+    })
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('anya_sampatis');
-  }
-};
+    await queryInterface.dropTable('anya_sampatis')
+  },
+}

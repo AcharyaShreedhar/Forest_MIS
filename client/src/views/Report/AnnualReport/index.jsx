@@ -327,7 +327,6 @@ export class AnnualReport extends Component {
   render() {
     const { officeList } = this.state
     const { officeRole } = this.props
-    console.log('officerole', officeRole)
     return (
       <Fragment>
         <div className='report-filter'>

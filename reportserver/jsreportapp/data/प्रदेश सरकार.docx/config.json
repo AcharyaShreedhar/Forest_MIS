@@ -1,6 +1,12 @@
 {
-    "_id": "JzZNgFtvi7XThWQD",
-    "shortid": "HeYDyX",
-    "$entitySet": "folders",
-    "name": "प्रदेश सरकार.docx"
+  "name": "प्रदेश सरकार.docx",
+  "creationDate": {
+    "$$date": 1649856303779
+  },
+  "modificationDate": {
+    "$$date": 1649856303779
+  },
+  "shortid": "GtAc3mB",
+  "_id": "GmUbpEDYDeO27T24",
+  "$entitySet": "assets"
 }

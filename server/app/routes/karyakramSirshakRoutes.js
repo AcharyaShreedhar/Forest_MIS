@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const karyakramSirshakController = require('../controller/karyakramSirshakController')
+
 router.post(
   '/karyakramsirshakList',
   karyakramSirshakController.getAllKaryakramSirshak
@@ -9,6 +10,10 @@ router.post(
 router.get(
   '/karyakramsirshak/:karyakramSirshakId',
   karyakramSirshakController.getKaryakramSirshak
+)
+router.post(
+  '/karyakramsirshakDropdownList',
+  karyakramSirshakController.getKaryakramSirshakDropdown
 )
 router.post('/karyakramsirshak', karyakramSirshakController.addKaryakramSirshak)
 router.put(

@@ -115,8 +115,10 @@ const totalBanyajantuuddarRoutes = require('./app/routes/totalbanyajantuuddarRou
 const totalBanyajantuxetiRoutes = require('./app/routes/totalbanyajantuxetiRoutes')
 
 //....................................................budgetBibaran
-const karyakramShirshakRoutes = require('./app/routes/karyakramSirshakRoutes')
-
+const karyakramSirshakRoutes = require('./app/routes/karyakramSirshakRoutes')
+const budgetShirshakRoutes = require('./app/routes/budgetSirshakRoutes')
+const budgetKarmachariDetailRoutes = require('./app/routes/budgetKarmachariDetailRoutes')
+const budgetBarsikRoutes = require('./app/routes/budgetBarsikRoutes')
 //.....................................................report
 const nabikaranBibaranRoutes = require('./app/routes/report/nabikaranbibaranRoutes')
 const banpaidawarBikriSamuhaRoutes = require('./app/routes/report/banpaidawarBikriSamuhaRoutes')
@@ -133,6 +135,7 @@ const uddhamBibaranRoutes = require('./app/routes/report/uddhamBibaranRoutes')
 const rojgariSrijanaRoutes = require('./app/routes/report/rojgariSrijanaRoutes')
 const upavoktaSusasanRoutes = require('./app/routes/report/upavoktaSusasanRoutes')
 const banHastantaranBibaranRoutes = require('./app/routes/report/banHastantaranBibaranRoutes')
+const budgetMonthlyBibaranRoutes = require('./app/routes/report/budgetMonthlyBibaranRoutes')
 
 app.use('/api/v1', provinceRoutes)
 app.use('/api/v1', districtRoutes)
@@ -193,7 +196,10 @@ app.use('/api/v1', totalBanyajantuuddarRoutes)
 app.use('/api/v1', totalBanyajantuxetiRoutes)
 
 //.............................................budgetBibaran
-app.use('/api/v1', karyakramShirshakRoutes)
+app.use('/api/v1', karyakramSirshakRoutes)
+app.use('/api/v1', budgetShirshakRoutes)
+app.use('/api/v1', budgetKarmachariDetailRoutes)
+app.use('/api/v1', budgetBarsikRoutes)
 
 //.............................................report
 app.use('/api/v1', nabikaranBibaranRoutes)
@@ -212,6 +218,7 @@ app.use('/api/v1', uddhamBibaranRoutes)
 app.use('/api/v1', rojgariSrijanaRoutes)
 app.use('/api/v1', upavoktaSusasanRoutes)
 app.use('/api/v1', banHastantaranBibaranRoutes)
+app.use('/api/v1', budgetMonthlyBibaranRoutes)
 
 const port = process.env.PORT || 3001
 app.listen(port, () => {

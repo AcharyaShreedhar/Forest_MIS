@@ -6241,3 +6241,2248 @@ caused by: Error: Error while executing templating engine. Missing helper: "kath
 2022-03-10T06:16:30.127Z - info: Rendering request 18 finished in 77 ms
 2022-03-10T06:16:30.329Z - info: docx generation was finished
 2022-03-10T06:16:31.977Z - info: Rendering request 17 finished in 2811 ms
+2022-03-31T09:10:03.895Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-03-31T09:10:03.899Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-03-31T09:10:03.908Z - info: Extensions location cache not found, crawling directories
+2022-03-31T09:10:23.563Z - info: Found 35 extensions
+2022-03-31T09:10:25.069Z - info: Setting http-server strategy for rendering
+2022-03-31T09:10:25.241Z - info: Using extension cli@2.2.5
+2022-03-31T09:10:25.286Z - info: Using extension debug@2.1.3
+2022-03-31T09:10:25.300Z - info: Using extension express@2.8.1
+2022-03-31T09:10:28.105Z - info: Using extension freeze@2.0.0
+2022-03-31T09:10:28.156Z - info: Using extension handlebars@2.1.0
+2022-03-31T09:10:28.225Z - info: Using extension import-export@2.1.1
+2022-03-31T09:10:29.652Z - info: Using extension jsrender@2.1.1
+2022-03-31T09:10:29.654Z - info: Using extension tags@2.5.0
+2022-03-31T09:10:29.723Z - info: Using extension templates@2.4.0
+2022-03-31T09:10:29.785Z - info: Using extension authorization@2.4.0
+2022-03-31T09:10:29.866Z - info: Using extension base@2.0.2
+2022-03-31T09:10:29.936Z - info: Using extension browser-client@2.2.2
+2022-03-31T09:10:30.018Z - info: Using extension child-templates@1.4.0
+2022-03-31T09:10:30.201Z - info: Using extension chrome-pdf@1.10.0
+2022-03-31T09:10:32.337Z - info: Using extension data@2.4.0
+2022-03-31T09:10:32.465Z - info: Using extension docx@2.9.0
+2022-03-31T09:10:32.562Z - info: Using extension fs-store@2.9.1
+2022-03-31T09:10:37.717Z - info: Using extension licensing@2.2.3
+2022-03-31T09:10:37.787Z - info: Using extension pdf-utils@1.10.1
+2022-03-31T09:10:40.368Z - info: Using extension pptx@0.7.0
+2022-03-31T09:10:40.442Z - info: Using extension reports@2.5.1
+2022-03-31T09:10:40.617Z - info: Using extension static-pdf@0.4.0
+2022-03-31T09:10:40.865Z - info: Using extension studio@2.10.1
+2022-03-31T09:10:41.995Z - info: Using extension text@2.0.0
+2022-03-31T09:10:42.045Z - info: Using extension version-control@1.6.0
+2022-03-31T09:10:44.612Z - info: Using extension assets@1.7.0
+2022-03-31T09:10:44.810Z - info: Using extension html-to-xlsx@2.8.3
+2022-03-31T09:10:48.990Z - info: html-to-xlsx detected chrome as available html engine
+2022-03-31T09:10:48.991Z - info: Using extension scheduling@2.5.0
+2022-03-31T09:10:49.173Z - info: Using extension scripts@2.6.0
+2022-03-31T09:10:49.177Z - info: Using extension studio-theme-dark@0.3.0
+2022-03-31T09:10:49.185Z - info: Using extension xlsx@2.5.0
+2022-03-31T09:10:50.042Z - info: Using extension public-templates@2.2.0
+2022-03-31T09:10:50.045Z - info: Using extension resources@2.1.0
+2022-03-31T09:10:50.052Z - info: Using extension sample-template@2.6.1
+2022-03-31T09:10:50.061Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-03-31T09:10:50.062Z - info: Using fs provider for template store.
+2022-03-31T09:10:50.067Z - info: fs store is persisting using fs
+2022-03-31T09:10:50.069Z - info: fs store is synchronizing using fs
+2022-03-31T09:10:50.078Z - info: fs store is loading data
+2022-03-31T09:10:50.161Z - info: fs store is initialized successfully
+2022-03-31T09:10:50.175Z - info: Creating default express app.
+2022-03-31T09:10:50.390Z - info: jsreport server successfully started on http port: 5488
+2022-03-31T09:10:50.393Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-03-31T09:10:50.455Z - info: Verifying license key free
+2022-03-31T09:10:50.459Z - info: Using free license
+2022-03-31T09:10:50.466Z - info: reporter initialized
+2022-03-31T09:54:46.215Z - warn: Unable to get xlsxTemplate content Error: getaddrinfo ENOTFOUND jsreport.net
+    at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:71:26)
+2022-03-31T10:00:47.383Z - error: Error when processing OData POST: /odata/assets Error: Entity name can not be empty
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\validateEntityName.js:26:11)
+    at Object.insert (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\store\collection.js:86:7)
+    at ODataServer.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\odata.js:34:69)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:201:14
+    at ODataServer.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\odata.js:29:7)
+    at ODataServer.executeInsert (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:196:12)
+    at processBody (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\insert.js:29:9)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\insert.js:59:12)
+    at Object.fn (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:90:5)
+    at Router.router.dispatch (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\router.js:63:12)
+    at ODataServer.handle (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\simple-odata-server\lib\odataServer.js:64:15)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\routes.js:24:47
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\routes.js:17:5
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-express\lib\reporter.express.js:188:5
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+    at next (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:275:10)
+    at cors (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:188:7)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:224:17
+    at originCallback (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:214:15)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\cors\lib\index.js:204:7)
+    at Layer.handle [as handle_request] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\layer.js:95:5)
+    at trim_prefix (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:317:13)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:284:7
+    at Function.process_params (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\express\lib\router\index.js:335:12)
+2022-03-31T10:04:02.649Z - error: Error when processing OData POST: /odata/assets Error: Unable to find or read file F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx. ENOENT: no such file or directory, open 'F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at readFile (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-assets\lib\assets.js:115:20)
+    at async AsyncFunction.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-assets\lib\assets.js:447:9)
+caused by: Error: ENOENT: no such file or directory, open 'F:\aakar\Forest_MIS\reportserver\jsreportapp\progress report.xlsx'
+2022-03-31T10:17:20.969Z - info: Starting rendering request 1 (user: null)
+2022-03-31T10:17:20.971Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:17:21.983Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:17:21.997Z - warn: Rendering request 1 finished with error in 1028 ms
+2022-03-31T10:17:22.001Z - warn: Error when processing render request 1 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:17:22.002Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:18:09.683Z - info: Starting rendering request 2 (user: null)
+2022-03-31T10:18:09.684Z - info: Rendering template { name: mitianusarbibaran, recipe: docx, engine: handlebars, preview: true }
+2022-03-31T10:18:09.786Z - info: docx generation is starting
+2022-03-31T10:18:11.116Z - info: Starting rendering request 3 (user: null)
+2022-03-31T10:18:11.117Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-03-31T10:18:11.277Z - info: Rendering request 3 finished in 162 ms
+2022-03-31T10:18:11.470Z - info: docx generation was finished
+2022-03-31T10:18:12.911Z - info: Rendering request 2 finished in 3228 ms
+2022-03-31T10:40:05.799Z - info: fs store is loading data
+2022-03-31T10:40:06.058Z - info: Starting rendering request 4 (user: null)
+2022-03-31T10:40:06.059Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:40:06.142Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:40:06.150Z - warn: Rendering request 4 finished with error in 93 ms
+2022-03-31T10:40:06.152Z - warn: Error when processing render request 4 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:40:06.154Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:40:33.817Z - info: Starting rendering request 5 (user: null)
+2022-03-31T10:40:33.818Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:40:33.878Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:40:33.882Z - warn: Rendering request 5 finished with error in 65 ms
+2022-03-31T10:40:33.885Z - warn: Error when processing render request 5 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:40:33.886Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:41:04.589Z - info: fs store is loading data
+2022-03-31T10:41:04.806Z - info: Starting rendering request 6 (user: null)
+2022-03-31T10:41:04.808Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:41:04.864Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:41:04.867Z - warn: Rendering request 6 finished with error in 60 ms
+2022-03-31T10:41:04.869Z - warn: Error when processing render request 6 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:41:04.869Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:41:09.449Z - info: Starting rendering request 7 (user: null)
+2022-03-31T10:41:09.451Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:41:09.499Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:41:09.501Z - warn: Rendering request 7 finished with error in 53 ms
+2022-03-31T10:41:09.504Z - warn: Error when processing render request 7 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:41:09.504Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:41:24.567Z - info: Starting rendering request 8 (user: null)
+2022-03-31T10:41:24.568Z - info: Rendering template { name: budgetbibaran, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:41:24.627Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:41:24.630Z - warn: Rendering request 8 finished with error in 64 ms
+2022-03-31T10:41:24.633Z - warn: Error when processing render request 8 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:41:24.634Z - warn: Error during processing request at http://localhost:5488/api/report/budgetbibaran
+2022-03-31T10:56:30.149Z - error: Error when processing OData DELETE: /odata/assets(ZeeV8xQbF163CeNk) Error: EBUSY: resource busy or locked, unlink 'F:\aakar\Forest_MIS\reportserver\jsreportapp\data\progress report.xlsx\content.xlsx'
+2022-03-31T10:56:41.990Z - info: fs store is loading data
+2022-03-31T10:57:32.687Z - error: Error when processing OData POST: /odata/assets Error: Entity with name "progress report" already exists in the /budgetbibaran folder.
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at validateDuplicatedName (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\folders\validateDuplicatedName.js:87:20)
+2022-03-31T10:58:49.734Z - info: Starting rendering request 9 (user: null)
+2022-03-31T10:58:49.736Z - info: Rendering template { name: progress report, recipe: xlsx, engine: handlebars, preview: true }
+2022-03-31T10:58:49.770Z - warn: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... 
+SyntaxError: Unexpected end of JSON input
+    at JSON.parse (<anonymous>)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\recipe.js:25:26)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\index.js:39:28)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-03-31T10:58:49.774Z - warn: Rendering request 9 finished with error in 40 ms
+2022-03-31T10:58:49.778Z - warn: Error when processing render request 9 Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ... Error: Unable to parse xlsx template JSON string (maybe you are missing {{{xlsxPrint}}} at the end?): 
+ ...
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\lib\fallback.js:53:20
+    at tryCatcher (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\util.js:16:23)
+    at Promise._settlePromiseFromHandler (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:547:31)
+    at Promise._settlePromise (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:604:18)
+    at Promise._settlePromise0 (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:649:10)
+    at Promise._settlePromises (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\promise.js:725:18)
+    at _drainQueueStep (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:93:12)
+    at _drainQueue (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:86:9)
+    at Async._drainQueues (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:102:5)
+    at Immediate.Async.drainQueues [as _onImmediate] (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-xlsx\node_modules\bluebird\js\release\async.js:15:14)
+    at processImmediate (internal/timers.js:464:21)
+2022-03-31T10:58:49.778Z - warn: Error during processing request at http://localhost:5488/api/report/progress%20report
+2022-04-01T07:56:15.764Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-01T07:56:15.765Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-01T07:56:15.911Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-01T07:56:15.967Z - info: Found 35 extensions
+2022-04-01T07:56:17.386Z - info: Setting http-server strategy for rendering
+2022-04-01T07:56:17.611Z - info: Using extension cli@2.2.5
+2022-04-01T07:56:17.620Z - info: Using extension debug@2.1.3
+2022-04-01T07:56:17.636Z - info: Using extension express@2.8.1
+2022-04-01T07:56:18.802Z - info: Using extension freeze@2.0.0
+2022-04-01T07:56:18.815Z - info: Using extension handlebars@2.1.0
+2022-04-01T07:56:18.827Z - info: Using extension import-export@2.1.1
+2022-04-01T07:56:19.106Z - info: Using extension jsrender@2.1.1
+2022-04-01T07:56:19.108Z - info: Using extension tags@2.5.0
+2022-04-01T07:56:19.142Z - info: Using extension templates@2.4.0
+2022-04-01T07:56:19.147Z - info: Using extension authorization@2.4.0
+2022-04-01T07:56:19.159Z - info: Using extension base@2.0.2
+2022-04-01T07:56:19.171Z - info: Using extension browser-client@2.2.2
+2022-04-01T07:56:19.186Z - info: Using extension child-templates@1.4.0
+2022-04-01T07:56:19.218Z - info: Using extension chrome-pdf@1.10.0
+2022-04-01T07:56:19.784Z - info: Using extension data@2.4.0
+2022-04-01T07:56:19.787Z - info: Using extension docx@2.9.0
+2022-04-01T07:56:19.800Z - info: Using extension fs-store@2.9.1
+2022-04-01T07:56:20.649Z - info: Using extension licensing@2.2.3
+2022-04-01T07:56:20.820Z - info: Using extension pdf-utils@1.10.1
+2022-04-01T07:56:22.369Z - info: Using extension pptx@0.7.0
+2022-04-01T07:56:22.404Z - info: Using extension reports@2.5.1
+2022-04-01T07:56:22.472Z - info: Using extension static-pdf@0.4.0
+2022-04-01T07:56:22.523Z - info: Using extension studio@2.10.1
+2022-04-01T07:56:23.001Z - info: Using extension text@2.0.0
+2022-04-01T07:56:23.015Z - info: Using extension version-control@1.6.0
+2022-04-01T07:56:23.997Z - info: Using extension assets@1.7.0
+2022-04-01T07:56:24.111Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-01T07:56:28.495Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-01T07:56:28.496Z - info: Using extension scheduling@2.5.0
+2022-04-01T07:56:28.969Z - info: Using extension scripts@2.6.0
+2022-04-01T07:56:28.982Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-01T07:56:28.994Z - info: Using extension xlsx@2.5.0
+2022-04-01T07:56:30.561Z - info: Using extension public-templates@2.2.0
+2022-04-01T07:56:30.572Z - info: Using extension resources@2.1.0
+2022-04-01T07:56:30.588Z - info: Using extension sample-template@2.6.1
+2022-04-01T07:56:30.614Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-01T07:56:30.614Z - info: Using fs provider for template store.
+2022-04-01T07:56:30.621Z - info: fs store is persisting using fs
+2022-04-01T07:56:30.625Z - info: fs store is synchronizing using fs
+2022-04-01T07:56:30.652Z - info: fs store is loading data
+2022-04-01T07:56:30.763Z - info: fs store is initialized successfully
+2022-04-01T07:56:30.778Z - info: Creating default express app.
+2022-04-01T07:56:31.170Z - info: jsreport server successfully started on http port: 5488
+2022-04-01T07:56:31.172Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-01T07:56:31.371Z - info: Verifying license key free
+2022-04-01T07:56:31.374Z - info: Using free license
+2022-04-01T07:56:31.385Z - info: reporter initialized
+2022-04-01T08:01:28.641Z - info: Starting rendering request 1 (user: null)
+2022-04-01T08:01:28.645Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-01T08:01:29.362Z - info: docx generation is starting
+2022-04-01T08:01:29.926Z - info: Starting rendering request 2 (user: null)
+2022-04-01T08:01:29.926Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-01T08:01:29.962Z - info: Rendering request 2 finished in 37 ms
+2022-04-01T08:01:30.074Z - info: docx generation was finished
+2022-04-01T08:01:30.590Z - info: Rendering request 1 finished in 1949 ms
+2022-04-12T09:30:52.147Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-12T09:30:52.150Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-12T09:30:52.160Z - info: Extensions location cache not found, crawling directories
+2022-04-12T09:31:21.650Z - info: Found 35 extensions
+2022-04-12T09:31:27.412Z - info: Setting http-server strategy for rendering
+2022-04-12T09:31:27.646Z - info: Using extension cli@2.2.5
+2022-04-12T09:31:27.668Z - info: Using extension debug@2.1.3
+2022-04-12T09:31:27.692Z - info: Using extension express@2.8.1
+2022-04-12T09:31:28.705Z - info: Using extension freeze@2.0.0
+2022-04-12T09:31:28.714Z - info: Using extension handlebars@2.1.0
+2022-04-12T09:31:28.732Z - info: Using extension import-export@2.1.1
+2022-04-12T09:31:28.969Z - info: Using extension jsrender@2.1.1
+2022-04-12T09:31:28.971Z - info: Using extension tags@2.5.0
+2022-04-12T09:31:28.989Z - info: Using extension templates@2.4.0
+2022-04-12T09:31:29.001Z - info: Using extension authorization@2.4.0
+2022-04-12T09:31:29.030Z - info: Using extension base@2.0.2
+2022-04-12T09:31:29.039Z - info: Using extension browser-client@2.2.2
+2022-04-12T09:31:29.062Z - info: Using extension child-templates@1.4.0
+2022-04-12T09:31:29.096Z - info: Using extension chrome-pdf@1.10.0
+2022-04-12T09:31:29.522Z - info: Using extension data@2.4.0
+2022-04-12T09:31:29.537Z - info: Using extension docx@2.9.0
+2022-04-12T09:31:29.569Z - info: Using extension fs-store@2.9.1
+2022-04-12T09:31:30.456Z - info: Using extension licensing@2.2.3
+2022-04-12T09:31:30.468Z - info: Using extension pdf-utils@1.10.1
+2022-04-12T09:31:30.955Z - info: Using extension pptx@0.7.0
+2022-04-12T09:31:30.981Z - info: Using extension reports@2.5.1
+2022-04-12T09:31:31.018Z - info: Using extension static-pdf@0.4.0
+2022-04-12T09:31:31.048Z - info: Using extension studio@2.10.1
+2022-04-12T09:31:31.320Z - info: Using extension text@2.0.0
+2022-04-12T09:31:31.327Z - info: Using extension version-control@1.6.0
+2022-04-12T09:31:31.874Z - info: Using extension assets@1.7.0
+2022-04-12T09:31:31.910Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-12T09:31:39.578Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-12T09:31:39.579Z - info: Using extension scheduling@2.5.0
+2022-04-12T09:31:40.865Z - info: Using extension scripts@2.6.0
+2022-04-12T09:31:40.873Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-12T09:31:41.002Z - info: Using extension xlsx@2.5.0
+2022-04-12T09:31:46.806Z - info: Using extension public-templates@2.2.0
+2022-04-12T09:31:46.866Z - info: Using extension resources@2.1.0
+2022-04-12T09:31:46.929Z - info: Using extension sample-template@2.6.1
+2022-04-12T09:31:46.997Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-12T09:31:46.997Z - info: Using fs provider for template store.
+2022-04-12T09:31:47.011Z - info: fs store is persisting using fs
+2022-04-12T09:31:47.014Z - info: fs store is synchronizing using fs
+2022-04-12T09:31:47.032Z - info: fs store is loading data
+2022-04-12T09:31:47.276Z - info: fs store is initialized successfully
+2022-04-12T09:31:47.295Z - info: Creating default express app.
+2022-04-12T09:31:48.866Z - info: jsreport server successfully started on http port: 5488
+2022-04-12T09:31:48.872Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-12T09:31:48.968Z - info: Verifying license key free
+2022-04-12T09:31:48.971Z - info: Using free license
+2022-04-12T09:31:48.980Z - info: reporter initialized
+2022-04-12T10:23:56.236Z - info: Starting rendering request 1 (user: null)
+2022-04-12T10:23:56.238Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-12T10:23:56.859Z - info: docx generation is starting
+2022-04-12T10:23:57.426Z - info: Starting rendering request 2 (user: null)
+2022-04-12T10:23:57.427Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-12T10:23:57.468Z - info: Rendering request 2 finished in 42 ms
+2022-04-12T10:23:57.575Z - info: docx generation was finished
+2022-04-12T10:23:58.094Z - info: Rendering request 1 finished in 1859 ms
+2022-04-13T04:19:16.115Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-13T04:19:16.118Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-13T04:19:16.277Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-13T04:19:16.367Z - info: Found 35 extensions
+2022-04-13T04:19:17.669Z - info: Setting http-server strategy for rendering
+2022-04-13T04:19:18.158Z - info: Using extension cli@2.2.5
+2022-04-13T04:19:18.951Z - info: Using extension debug@2.1.3
+2022-04-13T04:19:18.977Z - info: Using extension express@2.8.1
+2022-04-13T04:19:20.335Z - info: Using extension freeze@2.0.0
+2022-04-13T04:19:20.345Z - info: Using extension handlebars@2.1.0
+2022-04-13T04:19:20.373Z - info: Using extension import-export@2.1.1
+2022-04-13T04:19:20.648Z - info: Using extension jsrender@2.1.1
+2022-04-13T04:19:20.651Z - info: Using extension tags@2.5.0
+2022-04-13T04:19:20.673Z - info: Using extension templates@2.4.0
+2022-04-13T04:19:20.687Z - info: Using extension authorization@2.4.0
+2022-04-13T04:19:20.724Z - info: Using extension base@2.0.2
+2022-04-13T04:19:20.741Z - info: Using extension browser-client@2.2.2
+2022-04-13T04:19:20.770Z - info: Using extension child-templates@1.4.0
+2022-04-13T04:19:20.804Z - info: Using extension chrome-pdf@1.10.0
+2022-04-13T04:19:21.179Z - info: Using extension data@2.4.0
+2022-04-13T04:19:21.182Z - info: Using extension docx@2.9.0
+2022-04-13T04:19:21.199Z - info: Using extension fs-store@2.9.1
+2022-04-13T04:19:21.803Z - info: Using extension licensing@2.2.3
+2022-04-13T04:19:21.841Z - info: Using extension pdf-utils@1.10.1
+2022-04-13T04:19:22.299Z - info: Using extension pptx@0.7.0
+2022-04-13T04:19:22.322Z - info: Using extension reports@2.5.1
+2022-04-13T04:19:22.353Z - info: Using extension static-pdf@0.4.0
+2022-04-13T04:19:22.388Z - info: Using extension studio@2.10.1
+2022-04-13T04:19:22.636Z - info: Using extension text@2.0.0
+2022-04-13T04:19:22.650Z - info: Using extension version-control@1.6.0
+2022-04-13T04:19:23.144Z - info: Using extension assets@1.7.0
+2022-04-13T04:19:23.185Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-13T04:19:27.708Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-13T04:19:27.710Z - info: Using extension scheduling@2.5.0
+2022-04-13T04:19:28.189Z - info: Using extension scripts@2.6.0
+2022-04-13T04:19:28.246Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-13T04:19:28.276Z - info: Using extension xlsx@2.5.0
+2022-04-13T04:19:29.982Z - info: Using extension public-templates@2.2.0
+2022-04-13T04:19:30.009Z - info: Using extension resources@2.1.0
+2022-04-13T04:19:30.038Z - info: Using extension sample-template@2.6.1
+2022-04-13T04:19:30.068Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-13T04:19:30.071Z - info: Using fs provider for template store.
+2022-04-13T04:19:30.104Z - info: fs store is persisting using fs
+2022-04-13T04:19:30.109Z - info: fs store is synchronizing using fs
+2022-04-13T04:19:30.174Z - info: fs store is loading data
+2022-04-13T04:19:30.520Z - info: fs store is initialized successfully
+2022-04-13T04:19:30.577Z - info: Creating default express app.
+2022-04-13T04:19:30.948Z - info: jsreport server successfully started on http port: 5488
+2022-04-13T04:19:30.950Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-13T04:19:31.074Z - info: Verifying license key free
+2022-04-13T04:19:31.076Z - info: Using free license
+2022-04-13T04:19:31.088Z - info: reporter initialized
+2022-04-13T05:07:47.356Z - info: Starting rendering request 1 (user: null)
+2022-04-13T05:07:47.361Z - info: Rendering template { name: data_test_temp, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:07:47.506Z - warn: Rendering request 1 finished with error in 150 ms
+2022-04-13T05:07:47.509Z - warn: Error when processing render request 1 Request data can not be an array. you should pass an object in request.data input Error: Request data can not be an array. you should pass an object in request.data input
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:49:20)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:11)
+2022-04-13T05:07:47.514Z - warn: Error during processing request at http://localhost:5488/api/report/data_test_temp
+2022-04-13T05:12:40.605Z - info: Starting rendering request 2 (user: null)
+2022-04-13T05:12:40.607Z - info: Rendering template { name: docbudget, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:12:41.594Z - info: docx generation is starting
+2022-04-13T05:12:43.570Z - info: Starting rendering request 3 (user: null)
+2022-04-13T05:12:43.571Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:12:43.625Z - info: Rendering request 3 finished in 55 ms
+2022-04-13T05:12:43.783Z - info: docx generation was finished
+2022-04-13T05:12:44.284Z - info: Rendering request 2 finished in 3678 ms
+2022-04-13T05:17:18.117Z - info: Starting rendering request 4 (user: null)
+2022-04-13T05:17:18.119Z - info: Rendering template { name: docbudget, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:17:18.136Z - info: docx generation is starting
+2022-04-13T05:17:18.178Z - info: Starting rendering request 5 (user: null)
+2022-04-13T05:17:18.179Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:17:18.195Z - info: Rendering request 5 finished in 17 ms
+2022-04-13T05:17:18.309Z - info: docx generation was finished
+2022-04-13T05:17:18.816Z - info: Rendering request 4 finished in 698 ms
+2022-04-13T05:27:50.580Z - info: Starting rendering request 6 (user: null)
+2022-04-13T05:27:50.581Z - info: Rendering template { name: docbudget, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:27:50.598Z - info: docx generation is starting
+2022-04-13T05:27:50.667Z - info: Starting rendering request 7 (user: null)
+2022-04-13T05:27:50.668Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:27:50.694Z - info: Rendering request 7 finished in 26 ms
+2022-04-13T05:27:50.737Z - info: docx generation was finished
+2022-04-13T05:27:51.245Z - info: Rendering request 6 finished in 665 ms
+2022-04-13T05:28:04.234Z - info: Starting rendering request 8 (user: null)
+2022-04-13T05:28:04.236Z - info: Rendering template { name: docbudget, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:28:04.250Z - info: docx generation is starting
+2022-04-13T05:28:04.287Z - info: Starting rendering request 9 (user: null)
+2022-04-13T05:28:04.288Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:28:04.303Z - info: Rendering request 9 finished in 17 ms
+2022-04-13T05:28:04.358Z - info: docx generation was finished
+2022-04-13T05:28:04.871Z - info: Rendering request 8 finished in 637 ms
+2022-04-13T05:28:29.335Z - info: Starting rendering request 10 (user: null)
+2022-04-13T05:28:29.337Z - info: Rendering template { name: docbudget, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:28:29.352Z - info: docx generation is starting
+2022-04-13T05:28:29.418Z - info: Starting rendering request 11 (user: null)
+2022-04-13T05:28:29.419Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:28:29.443Z - info: Rendering request 11 finished in 26 ms
+2022-04-13T05:28:29.545Z - info: docx generation was finished
+2022-04-13T05:28:30.086Z - info: Rendering request 10 finished in 751 ms
+2022-04-13T05:29:00.703Z - info: Starting rendering request 12 (user: null)
+2022-04-13T05:29:00.704Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:29:00.718Z - info: docx generation is starting
+2022-04-13T05:29:00.800Z - info: Starting rendering request 13 (user: null)
+2022-04-13T05:29:00.801Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:29:00.842Z - info: Rendering request 13 finished in 42 ms
+2022-04-13T05:29:00.997Z - info: docx generation was finished
+2022-04-13T05:29:01.505Z - info: Rendering request 12 finished in 801 ms
+2022-04-13T05:29:34.151Z - info: Starting rendering request 14 (user: null)
+2022-04-13T05:29:34.153Z - info: Rendering template { name: docbudget, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:29:34.169Z - info: docx generation is starting
+2022-04-13T05:29:34.225Z - info: Starting rendering request 15 (user: null)
+2022-04-13T05:29:34.226Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:29:34.250Z - info: Rendering request 15 finished in 25 ms
+2022-04-13T05:29:34.377Z - info: docx generation was finished
+2022-04-13T05:29:34.883Z - info: Rendering request 14 finished in 731 ms
+2022-04-13T05:29:39.702Z - info: Starting rendering request 16 (user: null)
+2022-04-13T05:29:39.704Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:29:39.718Z - info: docx generation is starting
+2022-04-13T05:29:39.758Z - info: Starting rendering request 17 (user: null)
+2022-04-13T05:29:39.760Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:29:39.782Z - info: Rendering request 17 finished in 23 ms
+2022-04-13T05:29:39.837Z - info: docx generation was finished
+2022-04-13T05:29:40.343Z - info: Rendering request 16 finished in 640 ms
+2022-04-13T05:30:53.482Z - info: Starting rendering request 18 (user: null)
+2022-04-13T05:30:53.483Z - info: Rendering template { name: docbudget, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:30:53.498Z - info: docx generation is starting
+2022-04-13T05:30:53.570Z - info: Starting rendering request 19 (user: null)
+2022-04-13T05:30:53.572Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:30:53.591Z - info: Rendering request 19 finished in 20 ms
+2022-04-13T05:30:53.650Z - info: docx generation was finished
+2022-04-13T05:30:54.166Z - info: Rendering request 18 finished in 684 ms
+2022-04-13T05:33:45.331Z - info: Starting rendering request 20 (user: null)
+2022-04-13T05:33:45.332Z - info: Rendering template { name: docTestB, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:33:45.345Z - info: docx generation is starting
+2022-04-13T05:33:45.428Z - info: Starting rendering request 21 (user: null)
+2022-04-13T05:33:45.429Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:33:45.473Z - info: Rendering request 21 finished in 46 ms
+2022-04-13T05:33:45.578Z - info: docx generation was finished
+2022-04-13T05:33:46.094Z - info: Rendering request 20 finished in 762 ms
+2022-04-13T05:36:14.551Z - info: Starting rendering request 22 (user: null)
+2022-04-13T05:36:14.552Z - info: Rendering template { name: docTestB, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:36:14.567Z - info: docx generation is starting
+2022-04-13T05:36:14.665Z - info: Starting rendering request 23 (user: null)
+2022-04-13T05:36:14.666Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:36:14.709Z - info: Rendering request 23 finished in 43 ms
+2022-04-13T05:36:14.769Z - info: docx generation was finished
+2022-04-13T05:36:15.276Z - info: Rendering request 22 finished in 724 ms
+2022-04-13T05:39:34.608Z - info: Starting rendering request 24 (user: null)
+2022-04-13T05:39:34.610Z - info: Rendering template { name: docTestB, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:39:34.624Z - info: docx generation is starting
+2022-04-13T05:39:34.667Z - info: Starting rendering request 25 (user: null)
+2022-04-13T05:39:34.668Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:39:34.711Z - info: Rendering request 25 finished in 44 ms
+2022-04-13T05:39:34.777Z - info: docx generation was finished
+2022-04-13T05:39:35.282Z - info: Rendering request 24 finished in 674 ms
+2022-04-13T05:42:53.354Z - info: Starting rendering request 26 (user: null)
+2022-04-13T05:42:53.355Z - info: Rendering template { name: docTestB, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:42:53.369Z - info: docx generation is starting
+2022-04-13T05:42:53.404Z - info: Starting rendering request 27 (user: null)
+2022-04-13T05:42:53.404Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:42:53.424Z - info: Rendering request 27 finished in 21 ms
+2022-04-13T05:42:53.474Z - info: docx generation was finished
+2022-04-13T05:42:53.983Z - info: Rendering request 26 finished in 629 ms
+2022-04-13T05:42:56.806Z - info: Starting rendering request 28 (user: null)
+2022-04-13T05:42:56.808Z - info: Rendering template { name: docTestB, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:42:56.822Z - info: docx generation is starting
+2022-04-13T05:42:56.897Z - info: Starting rendering request 29 (user: null)
+2022-04-13T05:42:56.900Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:42:56.920Z - info: Rendering request 29 finished in 22 ms
+2022-04-13T05:42:56.974Z - info: docx generation was finished
+2022-04-13T05:42:57.474Z - info: Rendering request 28 finished in 668 ms
+2022-04-13T05:45:12.541Z - info: Starting rendering request 30 (user: null)
+2022-04-13T05:45:12.541Z - info: Rendering template { name: docTestD, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:45:12.557Z - info: docx generation is starting
+2022-04-13T05:45:12.584Z - info: Starting rendering request 31 (user: null)
+2022-04-13T05:45:12.585Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:45:12.613Z - info: Rendering request 31 finished in 29 ms
+2022-04-13T05:45:12.696Z - info: docx generation was finished
+2022-04-13T05:45:13.220Z - info: Rendering request 30 finished in 679 ms
+2022-04-13T05:54:29.525Z - info: Starting rendering request 32 (user: null)
+2022-04-13T05:54:29.527Z - info: Rendering template { name: docTestD, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:54:29.883Z - info: docx generation is starting
+2022-04-13T05:54:29.938Z - info: Starting rendering request 33 (user: null)
+2022-04-13T05:54:29.938Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:54:29.956Z - info: Rendering request 33 finished in 18 ms
+2022-04-13T05:54:29.993Z - info: docx generation was finished
+2022-04-13T05:54:30.497Z - info: Rendering request 32 finished in 972 ms
+2022-04-13T05:55:50.602Z - info: Starting rendering request 34 (user: null)
+2022-04-13T05:55:50.603Z - info: Rendering template { name: docTestD, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:55:50.617Z - info: docx generation is starting
+2022-04-13T05:55:50.656Z - info: Starting rendering request 35 (user: null)
+2022-04-13T05:55:50.657Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:55:50.692Z - info: Rendering request 35 finished in 37 ms
+2022-04-13T05:55:50.752Z - info: docx generation was finished
+2022-04-13T05:55:51.263Z - info: Rendering request 34 finished in 661 ms
+2022-04-13T05:56:04.956Z - info: Starting rendering request 36 (user: null)
+2022-04-13T05:56:04.957Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:56:04.973Z - info: docx generation is starting
+2022-04-13T05:56:05.041Z - info: Starting rendering request 37 (user: null)
+2022-04-13T05:56:05.042Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:56:05.057Z - info: Rendering request 37 finished in 16 ms
+2022-04-13T05:56:05.135Z - info: docx generation was finished
+2022-04-13T05:56:05.646Z - info: Rendering request 36 finished in 690 ms
+2022-04-13T05:56:12.196Z - info: Starting rendering request 38 (user: null)
+2022-04-13T05:56:12.197Z - info: Rendering template { name: docTestD, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:56:12.212Z - info: docx generation is starting
+2022-04-13T05:56:12.275Z - info: Starting rendering request 39 (user: null)
+2022-04-13T05:56:12.276Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:56:12.296Z - info: Rendering request 39 finished in 22 ms
+2022-04-13T05:56:12.352Z - info: docx generation was finished
+2022-04-13T05:56:12.844Z - info: Rendering request 38 finished in 648 ms
+2022-04-13T05:58:41.114Z - info: Starting rendering request 40 (user: null)
+2022-04-13T05:58:41.115Z - info: Rendering template { name: docTestD, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:58:41.134Z - warn: Rendering request 40 finished with error in 21 ms
+2022-04-13T05:58:41.137Z - warn: Error when processing render request 40 docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set Error: docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:7:20)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T05:58:41.138Z - warn: Error during processing request at http://localhost:5488/api/report/docTestD
+2022-04-13T05:59:07.779Z - info: Starting rendering request 41 (user: null)
+2022-04-13T05:59:07.780Z - info: Rendering template { name: docTestD, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T05:59:07.792Z - info: docx generation is starting
+2022-04-13T05:59:07.840Z - info: Starting rendering request 42 (user: null)
+2022-04-13T05:59:07.841Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T05:59:07.860Z - info: Rendering request 42 finished in 20 ms
+2022-04-13T05:59:07.925Z - info: docx generation was finished
+2022-04-13T05:59:08.526Z - info: Rendering request 41 finished in 747 ms
+2022-04-13T06:01:11.983Z - info: Starting rendering request 43 (user: null)
+2022-04-13T06:01:11.985Z - info: Rendering template { name: docTestD, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:01:12.003Z - info: docx generation is starting
+2022-04-13T06:01:12.034Z - info: Starting rendering request 44 (user: null)
+2022-04-13T06:01:12.035Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:01:12.071Z - info: Rendering request 44 finished in 38 ms
+2022-04-13T06:01:12.133Z - info: docx generation was finished
+2022-04-13T06:01:12.632Z - info: Rendering request 43 finished in 649 ms
+2022-04-13T06:08:16.252Z - info: Starting rendering request 45 (user: null)
+2022-04-13T06:08:16.255Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:08:16.269Z - info: docx generation is starting
+2022-04-13T06:08:16.312Z - info: Starting rendering request 46 (user: null)
+2022-04-13T06:08:16.318Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:08:16.356Z - info: Rendering request 46 finished in 44 ms
+2022-04-13T06:08:16.408Z - info: docx generation was finished
+2022-04-13T06:08:16.919Z - info: Rendering request 45 finished in 666 ms
+2022-04-13T06:10:01.973Z - info: Starting rendering request 47 (user: null)
+2022-04-13T06:10:01.975Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:10:01.990Z - info: docx generation is starting
+2022-04-13T06:10:02.031Z - info: Starting rendering request 48 (user: null)
+2022-04-13T06:10:02.032Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:10:02.058Z - info: Rendering request 48 finished in 26 ms
+2022-04-13T06:10:02.105Z - info: docx generation was finished
+2022-04-13T06:10:02.609Z - info: Rendering request 47 finished in 636 ms
+2022-04-13T06:22:16.016Z - info: Starting rendering request 49 (user: null)
+2022-04-13T06:22:16.018Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:22:16.034Z - info: docx generation is starting
+2022-04-13T06:22:16.092Z - info: Starting rendering request 50 (user: null)
+2022-04-13T06:22:16.094Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:22:16.114Z - info: Rendering request 50 finished in 31 ms
+2022-04-13T06:22:16.178Z - info: docx generation was finished
+2022-04-13T06:22:16.695Z - info: Rendering request 49 finished in 679 ms
+2022-04-13T06:22:56.633Z - info: Starting rendering request 51 (user: null)
+2022-04-13T06:22:56.635Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:22:56.650Z - info: docx generation is starting
+2022-04-13T06:22:56.688Z - info: Starting rendering request 52 (user: null)
+2022-04-13T06:22:56.689Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:22:56.715Z - info: Rendering request 52 finished in 26 ms
+2022-04-13T06:22:56.763Z - info: docx generation was finished
+2022-04-13T06:22:57.265Z - info: Rendering request 51 finished in 632 ms
+2022-04-13T06:27:29.170Z - info: Starting rendering request 53 (user: null)
+2022-04-13T06:27:29.171Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:27:29.188Z - info: docx generation is starting
+2022-04-13T06:27:29.269Z - info: Starting rendering request 54 (user: null)
+2022-04-13T06:27:29.270Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:27:29.299Z - info: Rendering request 54 finished in 30 ms
+2022-04-13T06:27:29.413Z - info: docx generation was finished
+2022-04-13T06:27:29.896Z - info: Rendering request 53 finished in 726 ms
+2022-04-13T06:35:26.732Z - info: Starting rendering request 55 (user: null)
+2022-04-13T06:35:26.734Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:35:26.749Z - info: docx generation is starting
+2022-04-13T06:35:26.817Z - info: Starting rendering request 56 (user: null)
+2022-04-13T06:35:26.818Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:35:26.851Z - info: Rendering request 56 finished in 35 ms
+2022-04-13T06:35:26.927Z - info: docx generation was finished
+2022-04-13T06:35:27.426Z - info: Rendering request 55 finished in 694 ms
+2022-04-13T06:42:51.782Z - info: Starting rendering request 57 (user: null)
+2022-04-13T06:42:51.783Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:42:51.799Z - info: docx generation is starting
+2022-04-13T06:42:51.852Z - info: Starting rendering request 58 (user: null)
+2022-04-13T06:42:51.853Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:42:51.887Z - info: Rendering request 58 finished in 36 ms
+2022-04-13T06:42:51.938Z - info: docx generation was finished
+2022-04-13T06:42:52.442Z - info: Rendering request 57 finished in 660 ms
+2022-04-13T06:50:59.879Z - info: Starting rendering request 59 (user: null)
+2022-04-13T06:50:59.880Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:50:59.892Z - info: docx generation is starting
+2022-04-13T06:50:59.936Z - info: Starting rendering request 60 (user: null)
+2022-04-13T06:50:59.939Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:50:59.973Z - info: Rendering request 60 finished in 36 ms
+2022-04-13T06:51:00.036Z - info: docx generation was finished
+2022-04-13T06:51:00.537Z - info: Rendering request 59 finished in 658 ms
+2022-04-13T06:51:18.479Z - info: Starting rendering request 61 (user: null)
+2022-04-13T06:51:18.480Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:51:18.491Z - info: docx generation is starting
+2022-04-13T06:51:18.524Z - info: Starting rendering request 62 (user: null)
+2022-04-13T06:51:18.525Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:51:18.542Z - info: Rendering request 62 finished in 17 ms
+2022-04-13T06:51:18.601Z - info: docx generation was finished
+2022-04-13T06:51:19.106Z - info: Rendering request 61 finished in 627 ms
+2022-04-13T06:55:38.372Z - info: Starting rendering request 63 (user: null)
+2022-04-13T06:55:38.374Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:55:38.390Z - info: docx generation is starting
+2022-04-13T06:55:38.420Z - info: Starting rendering request 64 (user: null)
+2022-04-13T06:55:38.420Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:55:38.439Z - info: Rendering request 64 finished in 20 ms
+2022-04-13T06:55:38.494Z - info: docx generation was finished
+2022-04-13T06:55:39.028Z - info: Rendering request 63 finished in 656 ms
+2022-04-13T06:57:46.760Z - info: Starting rendering request 65 (user: null)
+2022-04-13T06:57:46.761Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:57:46.771Z - info: docx generation is starting
+2022-04-13T06:57:46.808Z - info: Starting rendering request 66 (user: null)
+2022-04-13T06:57:46.809Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:57:46.845Z - info: Rendering request 66 finished in 38 ms
+2022-04-13T06:57:46.891Z - info: docx generation was finished
+2022-04-13T06:57:47.395Z - info: Rendering request 65 finished in 635 ms
+2022-04-13T06:59:06.875Z - info: Starting rendering request 67 (user: null)
+2022-04-13T06:59:06.878Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T06:59:06.891Z - info: docx generation is starting
+2022-04-13T06:59:06.938Z - info: Starting rendering request 68 (user: null)
+2022-04-13T06:59:06.941Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T06:59:06.961Z - info: Rendering request 68 finished in 24 ms
+2022-04-13T06:59:07.004Z - info: docx generation was finished
+2022-04-13T06:59:07.504Z - info: Rendering request 67 finished in 628 ms
+2022-04-13T07:03:22.234Z - info: Starting rendering request 69 (user: null)
+2022-04-13T07:03:22.236Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:03:22.252Z - info: docx generation is starting
+2022-04-13T07:03:22.283Z - info: Starting rendering request 70 (user: null)
+2022-04-13T07:03:22.284Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:03:22.300Z - warn: Rendering request 70 finished with error in 16 ms
+2022-04-13T07:03:22.304Z - warn: Error when processing render request 70 Error while executing templating engine. Parse error on line 5:
+...r><w:t>{{/docxTable value}}</w:t></w:r><
+-----------------------^
+Expecting 'CLOSE', got 'ID' Error: Parse error on line 5:
+...r><w:t>{{/docxTable value}}</w:t></w:r><
+-----------------------^
+Expecting 'CLOSE', got 'ID'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:03:22.309Z - warn: Rendering request 69 finished with error in 74 ms
+2022-04-13T07:03:22.312Z - warn: Error when processing render request 69 Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...r><w:t>{{/docxTable value}}</w:t></w:r><
+-----------------------^
+Expecting 'CLOSE', got 'ID' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...r><w:t>{{/docxTable value}}</w:t></w:r><
+-----------------------^
+Expecting 'CLOSE', got 'ID'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 5:
+...r><w:t>{{/docxTable value}}</w:t></w:r><
+-----------------------^
+Expecting 'CLOSE', got 'ID'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:03:22.315Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:24:14.528Z - info: Starting rendering request 71 (user: null)
+2022-04-13T07:24:14.529Z - info: Rendering template { name: bansambhandhibibaran, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:24:14.548Z - info: docx generation is starting
+2022-04-13T07:24:15.277Z - info: Starting rendering request 72 (user: null)
+2022-04-13T07:24:15.278Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:24:15.520Z - info: Rendering request 72 finished in 243 ms
+2022-04-13T07:24:15.716Z - info: docx generation was finished
+2022-04-13T07:24:17.224Z - info: Rendering request 71 finished in 2696 ms
+2022-04-13T07:31:04.228Z - info: Starting rendering request 73 (user: null)
+2022-04-13T07:31:04.233Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:31:04.265Z - info: docx generation is starting
+2022-04-13T07:31:04.338Z - info: Starting rendering request 74 (user: null)
+2022-04-13T07:31:04.339Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:31:04.382Z - info: Rendering request 74 finished in 45 ms
+2022-04-13T07:31:04.464Z - info: docx generation was finished
+2022-04-13T07:31:04.976Z - info: Rendering request 73 finished in 765 ms
+2022-04-13T07:31:26.109Z - info: Starting rendering request 75 (user: null)
+2022-04-13T07:31:26.111Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:31:26.126Z - info: docx generation is starting
+2022-04-13T07:31:26.195Z - info: Starting rendering request 76 (user: null)
+2022-04-13T07:31:26.196Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:31:26.220Z - info: Rendering request 76 finished in 25 ms
+2022-04-13T07:31:26.271Z - info: docx generation was finished
+2022-04-13T07:31:26.780Z - info: Rendering request 75 finished in 671 ms
+2022-04-13T07:31:32.102Z - info: Starting rendering request 77 (user: null)
+2022-04-13T07:31:32.104Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:31:32.116Z - info: docx generation is starting
+2022-04-13T07:31:32.168Z - info: Starting rendering request 78 (user: null)
+2022-04-13T07:31:32.170Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:31:32.190Z - info: Rendering request 78 finished in 23 ms
+2022-04-13T07:31:32.240Z - info: docx generation was finished
+2022-04-13T07:31:32.739Z - info: Rendering request 77 finished in 637 ms
+2022-04-13T07:32:35.902Z - info: Starting rendering request 79 (user: null)
+2022-04-13T07:32:35.903Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:32:35.921Z - info: docx generation is starting
+2022-04-13T07:32:35.976Z - info: Starting rendering request 80 (user: null)
+2022-04-13T07:32:35.976Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:32:36.011Z - info: Rendering request 80 finished in 35 ms
+2022-04-13T07:32:36.072Z - info: docx generation was finished
+2022-04-13T07:32:36.591Z - info: Rendering request 79 finished in 690 ms
+2022-04-13T07:33:43.873Z - info: Starting rendering request 81 (user: null)
+2022-04-13T07:33:43.876Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:33:43.890Z - warn: Rendering request 81 finished with error in 18 ms
+2022-04-13T07:33:43.892Z - warn: Error when processing render request 81 Asset with shortid 5VVhOiE was not found Error: Asset with shortid 5VVhOiE was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T07:33:43.893Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:33:57.469Z - info: Starting rendering request 82 (user: null)
+2022-04-13T07:33:57.472Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:33:57.492Z - info: docx generation is starting
+2022-04-13T07:33:57.530Z - info: Starting rendering request 83 (user: null)
+2022-04-13T07:33:57.530Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:33:57.553Z - warn: Rendering request 83 finished with error in 24 ms
+2022-04-13T07:33:57.557Z - warn: Error when processing render request 83 Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:33:57.559Z - warn: Rendering request 82 finished with error in 91 ms
+2022-04-13T07:33:57.562Z - warn: Error when processing render request 82 Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:33:57.563Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:33:59.251Z - info: Starting rendering request 84 (user: null)
+2022-04-13T07:33:59.253Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:33:59.271Z - info: docx generation is starting
+2022-04-13T07:33:59.315Z - info: Starting rendering request 85 (user: null)
+2022-04-13T07:33:59.316Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:33:59.329Z - warn: Rendering request 85 finished with error in 16 ms
+2022-04-13T07:33:59.332Z - warn: Error when processing render request 85 Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:33:59.334Z - warn: Rendering request 84 finished with error in 82 ms
+2022-04-13T07:33:59.339Z - warn: Error when processing render request 84 Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:33:59.340Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:35:25.371Z - info: Starting rendering request 86 (user: null)
+2022-04-13T07:35:25.373Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:35:25.392Z - info: docx generation is starting
+2022-04-13T07:35:25.431Z - info: Starting rendering request 87 (user: null)
+2022-04-13T07:35:25.431Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:35:25.454Z - warn: Rendering request 87 finished with error in 23 ms
+2022-04-13T07:35:25.457Z - warn: Error when processing render request 87 Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:35:25.460Z - warn: Rendering request 86 finished with error in 90 ms
+2022-04-13T07:35:25.465Z - warn: Error when processing render request 86 Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:35:25.466Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:35:29.634Z - info: Starting rendering request 88 (user: null)
+2022-04-13T07:35:29.636Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:35:29.657Z - info: docx generation is starting
+2022-04-13T07:35:29.707Z - info: Starting rendering request 89 (user: null)
+2022-04-13T07:35:29.708Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:35:29.718Z - warn: Rendering request 89 finished with error in 11 ms
+2022-04-13T07:35:29.721Z - warn: Error when processing render request 89 Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:35:29.724Z - warn: Rendering request 88 finished with error in 90 ms
+2022-04-13T07:35:29.728Z - warn: Error when processing render request 88 Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:35:29.729Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:35:32.396Z - info: Starting rendering request 90 (user: null)
+2022-04-13T07:35:32.397Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:35:32.419Z - info: docx generation is starting
+2022-04-13T07:35:32.456Z - info: Starting rendering request 91 (user: null)
+2022-04-13T07:35:32.457Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:35:32.471Z - warn: Rendering request 91 finished with error in 14 ms
+2022-04-13T07:35:32.475Z - warn: Error when processing render request 91 Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:35:32.480Z - warn: Rendering request 90 finished with error in 84 ms
+2022-04-13T07:35:32.485Z - warn: Error when processing render request 90 Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:35:32.485Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:35:33.512Z - info: Starting rendering request 92 (user: null)
+2022-04-13T07:35:33.513Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:35:33.527Z - info: docx generation is starting
+2022-04-13T07:35:33.565Z - info: Starting rendering request 93 (user: null)
+2022-04-13T07:35:33.566Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:35:33.581Z - warn: Rendering request 93 finished with error in 15 ms
+2022-04-13T07:35:33.585Z - warn: Error when processing render request 93 Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:35:33.589Z - warn: Rendering request 92 finished with error in 77 ms
+2022-04-13T07:35:33.594Z - warn: Error when processing render request 92 Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:35:33.594Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:36:06.378Z - info: Starting rendering request 94 (user: null)
+2022-04-13T07:36:06.380Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:36:06.394Z - warn: Rendering request 94 finished with error in 17 ms
+2022-04-13T07:36:06.395Z - warn: Error when processing render request 94 Asset with shortid FZZbTq6 was not found Error: Asset with shortid FZZbTq6 was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T07:36:06.396Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:36:17.135Z - info: Starting rendering request 95 (user: null)
+2022-04-13T07:36:17.139Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:36:17.156Z - info: docx generation is starting
+2022-04-13T07:36:17.204Z - info: Starting rendering request 96 (user: null)
+2022-04-13T07:36:17.206Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:36:17.237Z - info: Rendering request 96 finished in 32 ms
+2022-04-13T07:36:17.297Z - info: docx generation was finished
+2022-04-13T07:36:17.820Z - info: Rendering request 95 finished in 685 ms
+2022-04-13T07:38:25.036Z - info: Starting rendering request 97 (user: null)
+2022-04-13T07:38:25.037Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:38:25.052Z - info: docx generation is starting
+2022-04-13T07:38:25.086Z - info: Starting rendering request 98 (user: null)
+2022-04-13T07:38:25.087Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:38:25.112Z - info: Rendering request 98 finished in 25 ms
+2022-04-13T07:38:25.175Z - info: docx generation was finished
+2022-04-13T07:38:25.683Z - info: Rendering request 97 finished in 647 ms
+2022-04-13T07:39:18.361Z - info: Starting rendering request 99 (user: null)
+2022-04-13T07:39:18.362Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:39:18.370Z - info: docx generation is starting
+2022-04-13T07:39:18.405Z - info: Starting rendering request 100 (user: null)
+2022-04-13T07:39:18.406Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:39:18.434Z - info: Rendering request 100 finished in 29 ms
+2022-04-13T07:39:18.484Z - info: docx generation was finished
+2022-04-13T07:39:18.529Z - info: Starting rendering request 101 (user: null)
+2022-04-13T07:39:18.530Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:39:18.544Z - info: docx generation is starting
+2022-04-13T07:39:18.605Z - info: Starting rendering request 102 (user: null)
+2022-04-13T07:39:18.607Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:39:18.627Z - info: Rendering request 102 finished in 22 ms
+2022-04-13T07:39:18.678Z - info: docx generation was finished
+2022-04-13T07:39:18.990Z - info: Rendering request 99 finished in 628 ms
+2022-04-13T07:39:19.182Z - info: Rendering request 101 finished in 653 ms
+2022-04-13T07:40:37.083Z - info: Starting rendering request 103 (user: null)
+2022-04-13T07:40:37.084Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:40:37.103Z - info: docx generation is starting
+2022-04-13T07:40:37.186Z - info: Starting rendering request 104 (user: null)
+2022-04-13T07:40:37.187Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:40:37.204Z - info: Rendering request 104 finished in 18 ms
+2022-04-13T07:40:37.291Z - info: docx generation was finished
+2022-04-13T07:40:37.800Z - info: Rendering request 103 finished in 718 ms
+2022-04-13T07:46:09.341Z - info: Starting rendering request 105 (user: null)
+2022-04-13T07:46:09.344Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:46:09.360Z - info: docx generation is starting
+2022-04-13T07:46:09.428Z - info: Starting rendering request 106 (user: null)
+2022-04-13T07:46:09.430Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:46:09.448Z - info: Rendering request 106 finished in 19 ms
+2022-04-13T07:46:09.488Z - info: docx generation was finished
+2022-04-13T07:46:10.219Z - info: Rendering request 105 finished in 878 ms
+2022-04-13T07:47:21.219Z - info: fs store is loading data
+2022-04-13T07:47:21.511Z - info: Starting rendering request 107 (user: null)
+2022-04-13T07:47:21.513Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:47:21.534Z - warn: Rendering request 107 finished with error in 24 ms
+2022-04-13T07:47:21.535Z - warn: Error when processing render request 107 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T07:47:21.536Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:47:40.993Z - info: Starting rendering request 108 (user: null)
+2022-04-13T07:47:40.996Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:47:41.021Z - info: docx generation is starting
+2022-04-13T07:47:41.067Z - info: Starting rendering request 109 (user: null)
+2022-04-13T07:47:41.068Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:47:41.100Z - info: Rendering request 109 finished in 32 ms
+2022-04-13T07:47:41.201Z - info: docx generation was finished
+2022-04-13T07:47:41.800Z - info: Rendering request 108 finished in 807 ms
+2022-04-13T07:49:09.171Z - info: Starting rendering request 110 (user: null)
+2022-04-13T07:49:09.174Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:49:09.187Z - info: docx generation is starting
+2022-04-13T07:49:09.239Z - info: Starting rendering request 111 (user: null)
+2022-04-13T07:49:09.240Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:49:09.269Z - info: Rendering request 111 finished in 29 ms
+2022-04-13T07:49:09.359Z - info: docx generation was finished
+2022-04-13T07:49:09.874Z - info: Rendering request 110 finished in 704 ms
+2022-04-13T07:49:43.822Z - info: fs store is loading data
+2022-04-13T07:49:44.003Z - info: Starting rendering request 112 (user: null)
+2022-04-13T07:49:44.004Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:49:44.014Z - warn: Rendering request 112 finished with error in 12 ms
+2022-04-13T07:49:44.016Z - warn: Error when processing render request 112 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T07:49:44.017Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:49:55.354Z - info: Starting rendering request 113 (user: null)
+2022-04-13T07:49:55.356Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:49:55.372Z - info: docx generation is starting
+2022-04-13T07:49:55.404Z - info: Starting rendering request 114 (user: null)
+2022-04-13T07:49:55.406Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:49:55.419Z - warn: Rendering request 114 finished with error in 14 ms
+2022-04-13T07:49:55.423Z - warn: Error when processing render request 114 Error while executing templating engine. Parse error on line 5:
+...</w:p></w:tc></w:tr>{{/docxTable}}</w:tb
+-----------------------^
+Expecting 'EOF', got 'OPEN_ENDBLOCK' Error: Parse error on line 5:
+...</w:p></w:tc></w:tr>{{/docxTable}}</w:tb
+-----------------------^
+Expecting 'EOF', got 'OPEN_ENDBLOCK'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T07:49:55.425Z - warn: Rendering request 113 finished with error in 70 ms
+2022-04-13T07:49:55.428Z - warn: Error when processing render request 113 Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...</w:p></w:tc></w:tr>{{/docxTable}}</w:tb
+-----------------------^
+Expecting 'EOF', got 'OPEN_ENDBLOCK' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...</w:p></w:tc></w:tr>{{/docxTable}}</w:tb
+-----------------------^
+Expecting 'EOF', got 'OPEN_ENDBLOCK'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 5:
+...</w:p></w:tc></w:tr>{{/docxTable}}</w:tb
+-----------------------^
+Expecting 'EOF', got 'OPEN_ENDBLOCK'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T07:49:55.429Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:50:27.096Z - info: fs store is loading data
+2022-04-13T07:50:27.225Z - info: Starting rendering request 115 (user: null)
+2022-04-13T07:50:27.227Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:50:27.252Z - warn: Rendering request 115 finished with error in 27 ms
+2022-04-13T07:50:27.254Z - warn: Error when processing render request 115 docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set Error: docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:7:20)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T07:50:27.254Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:50:42.357Z - info: Starting rendering request 116 (user: null)
+2022-04-13T07:50:42.361Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:50:42.377Z - info: docx generation is starting
+2022-04-13T07:50:42.422Z - info: Starting rendering request 117 (user: null)
+2022-04-13T07:50:42.423Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:50:42.447Z - info: Rendering request 117 finished in 24 ms
+2022-04-13T07:50:42.488Z - info: docx generation was finished
+2022-04-13T07:50:43.192Z - info: Rendering request 116 finished in 835 ms
+2022-04-13T07:51:20.236Z - info: fs store is loading data
+2022-04-13T07:51:20.402Z - info: Starting rendering request 118 (user: null)
+2022-04-13T07:51:20.404Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:51:20.424Z - warn: Rendering request 118 finished with error in 23 ms
+2022-04-13T07:51:20.426Z - warn: Error when processing render request 118 docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set Error: docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:7:20)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T07:51:20.427Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T07:51:29.735Z - info: Starting rendering request 119 (user: null)
+2022-04-13T07:51:29.736Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:51:29.753Z - info: docx generation is starting
+2022-04-13T07:51:29.788Z - info: Starting rendering request 120 (user: null)
+2022-04-13T07:51:29.789Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:51:29.808Z - info: Rendering request 120 finished in 20 ms
+2022-04-13T07:51:29.872Z - info: docx generation was finished
+2022-04-13T07:51:30.406Z - info: Rendering request 119 finished in 672 ms
+2022-04-13T07:54:25.866Z - info: Starting rendering request 121 (user: null)
+2022-04-13T07:54:25.869Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:54:25.885Z - info: docx generation is starting
+2022-04-13T07:54:25.919Z - info: Starting rendering request 122 (user: null)
+2022-04-13T07:54:25.920Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:54:25.938Z - info: Rendering request 122 finished in 20 ms
+2022-04-13T07:54:25.977Z - info: docx generation was finished
+2022-04-13T07:54:26.547Z - info: Rendering request 121 finished in 681 ms
+2022-04-13T07:55:42.971Z - info: Starting rendering request 123 (user: null)
+2022-04-13T07:55:42.973Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:55:42.985Z - info: docx generation is starting
+2022-04-13T07:55:43.036Z - info: Starting rendering request 124 (user: null)
+2022-04-13T07:55:43.037Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:55:43.066Z - info: Rendering request 124 finished in 30 ms
+2022-04-13T07:55:43.105Z - info: docx generation was finished
+2022-04-13T07:55:43.632Z - info: Rendering request 123 finished in 661 ms
+2022-04-13T07:56:30.754Z - info: Starting rendering request 125 (user: null)
+2022-04-13T07:56:30.756Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T07:56:30.768Z - info: docx generation is starting
+2022-04-13T07:56:30.806Z - info: Starting rendering request 126 (user: null)
+2022-04-13T07:56:30.807Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T07:56:30.821Z - info: Rendering request 126 finished in 15 ms
+2022-04-13T07:56:30.870Z - info: docx generation was finished
+2022-04-13T07:56:31.464Z - info: Rendering request 125 finished in 710 ms
+2022-04-13T08:03:06.150Z - info: fs store is loading data
+2022-04-13T08:03:06.342Z - info: Starting rendering request 127 (user: null)
+2022-04-13T08:03:06.346Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:03:06.365Z - warn: Rendering request 127 finished with error in 24 ms
+2022-04-13T08:03:06.366Z - warn: Error when processing render request 127 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T08:03:06.366Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T08:03:17.383Z - info: Starting rendering request 128 (user: null)
+2022-04-13T08:03:17.385Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:03:17.402Z - info: docx generation is starting
+2022-04-13T08:03:17.458Z - info: Starting rendering request 129 (user: null)
+2022-04-13T08:03:17.459Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T08:03:17.492Z - info: Rendering request 129 finished in 34 ms
+2022-04-13T08:03:17.549Z - info: docx generation was finished
+2022-04-13T08:03:18.101Z - info: Rendering request 128 finished in 717 ms
+2022-04-13T08:07:49.369Z - info: fs store is loading data
+2022-04-13T08:07:49.509Z - info: Starting rendering request 130 (user: null)
+2022-04-13T08:07:49.511Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:07:49.517Z - warn: Rendering request 130 finished with error in 8 ms
+2022-04-13T08:07:49.518Z - warn: Error when processing render request 130 Request data can not be an array. you should pass an object in request.data input Error: Request data can not be an array. you should pass an object in request.data input
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:49:20)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:11)
+2022-04-13T08:07:49.518Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T08:07:59.529Z - info: Starting rendering request 131 (user: null)
+2022-04-13T08:07:59.531Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:07:59.534Z - warn: Rendering request 131 finished with error in 5 ms
+2022-04-13T08:07:59.534Z - warn: Error when processing render request 131 Request data can not be an array. you should pass an object in request.data input Error: Request data can not be an array. you should pass an object in request.data input
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:49:20)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:11)
+2022-04-13T08:07:59.535Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T08:08:01.649Z - info: Starting rendering request 132 (user: null)
+2022-04-13T08:08:01.650Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:08:01.657Z - warn: Rendering request 132 finished with error in 8 ms
+2022-04-13T08:08:01.658Z - warn: Error when processing render request 132 Request data can not be an array. you should pass an object in request.data input Error: Request data can not be an array. you should pass an object in request.data input
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:49:20)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:11)
+2022-04-13T08:08:01.660Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T08:08:02.831Z - info: Starting rendering request 133 (user: null)
+2022-04-13T08:08:02.832Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:08:02.838Z - warn: Rendering request 133 finished with error in 7 ms
+2022-04-13T08:08:02.839Z - warn: Error when processing render request 133 Request data can not be an array. you should pass an object in request.data input Error: Request data can not be an array. you should pass an object in request.data input
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:49:20)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:11)
+2022-04-13T08:08:02.840Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T08:08:03.668Z - info: Starting rendering request 134 (user: null)
+2022-04-13T08:08:03.669Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:08:03.675Z - warn: Rendering request 134 finished with error in 7 ms
+2022-04-13T08:08:03.676Z - warn: Error when processing render request 134 Request data can not be an array. you should pass an object in request.data input Error: Request data can not be an array. you should pass an object in request.data input
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:49:20)
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:11)
+2022-04-13T08:08:03.677Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T08:08:27.858Z - info: fs store is loading data
+2022-04-13T08:08:27.994Z - info: Starting rendering request 135 (user: null)
+2022-04-13T08:08:27.995Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:08:28.020Z - warn: Rendering request 135 finished with error in 27 ms
+2022-04-13T08:08:28.022Z - warn: Error when processing render request 135 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T08:08:28.023Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T08:08:41.517Z - info: Starting rendering request 136 (user: null)
+2022-04-13T08:08:41.518Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T08:08:41.534Z - info: docx generation is starting
+2022-04-13T08:08:41.617Z - info: Starting rendering request 137 (user: null)
+2022-04-13T08:08:41.618Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T08:08:41.647Z - info: Rendering request 137 finished in 29 ms
+2022-04-13T08:08:41.730Z - info: docx generation was finished
+2022-04-13T08:08:42.226Z - info: Rendering request 136 finished in 709 ms
+2022-04-13T09:13:58.349Z - info: Starting rendering request 138 (user: null)
+2022-04-13T09:13:58.352Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T09:13:58.365Z - info: docx generation is starting
+2022-04-13T09:13:58.414Z - info: Starting rendering request 139 (user: null)
+2022-04-13T09:13:58.414Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T09:13:58.426Z - info: Rendering request 139 finished in 13 ms
+2022-04-13T09:13:58.519Z - info: docx generation was finished
+2022-04-13T09:13:59.120Z - info: Rendering request 138 finished in 772 ms
+2022-04-13T09:23:35.948Z - info: fs store is loading data
+2022-04-13T09:23:36.115Z - info: Starting rendering request 140 (user: null)
+2022-04-13T09:23:36.117Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T09:23:36.136Z - warn: Rendering request 140 finished with error in 22 ms
+2022-04-13T09:23:36.137Z - warn: Error when processing render request 140 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T09:23:36.138Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T09:23:47.462Z - info: Starting rendering request 141 (user: null)
+2022-04-13T09:23:47.464Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T09:23:47.482Z - info: docx generation is starting
+2022-04-13T09:23:47.523Z - info: Starting rendering request 142 (user: null)
+2022-04-13T09:23:47.524Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T09:23:47.562Z - info: Rendering request 142 finished in 39 ms
+2022-04-13T09:23:47.619Z - info: docx generation was finished
+2022-04-13T09:23:48.118Z - info: Rendering request 141 finished in 655 ms
+2022-04-13T09:56:40.335Z - info: fs store is loading data
+2022-04-13T09:56:40.664Z - info: Starting rendering request 143 (user: null)
+2022-04-13T09:56:40.666Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T09:56:40.818Z - warn: Rendering request 143 finished with error in 155 ms
+2022-04-13T09:56:40.819Z - warn: Error when processing render request 143 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T09:56:40.820Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T09:56:47.603Z - info: Starting rendering request 144 (user: null)
+2022-04-13T09:56:47.604Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T09:56:47.621Z - info: docx generation is starting
+2022-04-13T09:56:47.702Z - info: Starting rendering request 145 (user: null)
+2022-04-13T09:56:47.703Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T09:56:47.735Z - info: Rendering request 145 finished in 33 ms
+2022-04-13T09:56:47.818Z - info: docx generation was finished
+2022-04-13T09:56:48.322Z - info: Rendering request 144 finished in 715 ms
+2022-04-13T09:58:34.043Z - info: fs store is loading data
+2022-04-13T09:58:34.190Z - info: Starting rendering request 146 (user: null)
+2022-04-13T09:58:34.191Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T09:58:34.209Z - warn: Rendering request 146 finished with error in 18 ms
+2022-04-13T09:58:34.211Z - warn: Error when processing render request 146 docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set Error: docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:7:20)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T09:58:34.212Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T09:58:46.783Z - info: Starting rendering request 147 (user: null)
+2022-04-13T09:58:46.784Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T09:58:46.792Z - info: docx generation is starting
+2022-04-13T09:58:46.834Z - info: Starting rendering request 148 (user: null)
+2022-04-13T09:58:46.835Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T09:58:46.874Z - info: Rendering request 148 finished in 41 ms
+2022-04-13T09:58:46.931Z - info: docx generation was finished
+2022-04-13T09:58:47.482Z - info: Rendering request 147 finished in 699 ms
+2022-04-13T10:23:57.828Z - info: fs store is loading data
+2022-04-13T10:23:58.363Z - info: Starting rendering request 149 (user: null)
+2022-04-13T10:23:58.365Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:23:58.865Z - warn: Rendering request 149 finished with error in 503 ms
+2022-04-13T10:23:58.866Z - warn: Error when processing render request 149 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T10:23:58.866Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T10:24:09.840Z - info: Starting rendering request 150 (user: null)
+2022-04-13T10:24:09.842Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:24:09.859Z - info: docx generation is starting
+2022-04-13T10:24:09.918Z - info: Starting rendering request 151 (user: null)
+2022-04-13T10:24:09.919Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T10:24:09.959Z - info: Rendering request 151 finished in 41 ms
+2022-04-13T10:24:10.004Z - info: docx generation was finished
+2022-04-13T10:24:10.550Z - info: Rendering request 150 finished in 709 ms
+2022-04-13T10:28:43.052Z - info: fs store is loading data
+2022-04-13T10:28:43.217Z - info: Starting rendering request 152 (user: null)
+2022-04-13T10:28:43.223Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:28:43.249Z - warn: Rendering request 152 finished with error in 33 ms
+2022-04-13T10:28:43.250Z - warn: Error when processing render request 152 docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set Error: docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:7:20)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T10:28:43.250Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T10:28:51.859Z - info: Starting rendering request 153 (user: null)
+2022-04-13T10:28:51.860Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:28:51.872Z - info: docx generation is starting
+2022-04-13T10:28:51.922Z - info: Starting rendering request 154 (user: null)
+2022-04-13T10:28:51.922Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T10:28:51.978Z - info: Rendering request 154 finished in 56 ms
+2022-04-13T10:28:52.037Z - info: docx generation was finished
+2022-04-13T10:28:52.529Z - info: Rendering request 153 finished in 671 ms
+2022-04-13T10:31:44.279Z - info: fs store is loading data
+2022-04-13T10:31:44.513Z - info: Starting rendering request 155 (user: null)
+2022-04-13T10:31:44.515Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:31:44.539Z - warn: Rendering request 155 finished with error in 27 ms
+2022-04-13T10:31:44.545Z - warn: Error when processing render request 155 docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set Error: docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:7:20)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T10:31:44.546Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T10:31:58.212Z - info: Starting rendering request 156 (user: null)
+2022-04-13T10:31:58.215Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:31:58.228Z - info: docx generation is starting
+2022-04-13T10:31:58.322Z - info: Starting rendering request 157 (user: null)
+2022-04-13T10:31:58.325Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T10:31:58.346Z - warn: Rendering request 157 finished with error in 25 ms
+2022-04-13T10:31:58.352Z - warn: Error when processing render request 157 Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-13T10:31:58.356Z - warn: Rendering request 156 finished with error in 143 ms
+2022-04-13T10:31:58.360Z - warn: Error when processing render request 156 Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 12:
+.../w:style></w:styles>
+-----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-13T10:31:58.360Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T10:34:19.808Z - info: fs store is loading data
+2022-04-13T10:34:19.968Z - info: Starting rendering request 158 (user: null)
+2022-04-13T10:34:19.970Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:34:20.000Z - warn: Rendering request 158 finished with error in 32 ms
+2022-04-13T10:34:20.002Z - warn: Error when processing render request 158 Asset with shortid EhgMDtj was not found Error: Asset with shortid EhgMDtj was not found
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:24:22)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T10:34:20.002Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T10:34:28.521Z - info: Starting rendering request 159 (user: null)
+2022-04-13T10:34:28.523Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T10:34:28.538Z - info: docx generation is starting
+2022-04-13T10:34:28.608Z - info: Starting rendering request 160 (user: null)
+2022-04-13T10:34:28.609Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T10:34:28.645Z - info: Rendering request 160 finished in 38 ms
+2022-04-13T10:34:28.764Z - info: docx generation was finished
+2022-04-13T10:34:29.245Z - info: Rendering request 159 finished in 724 ms
+2022-04-13T11:14:24.751Z - info: fs store is loading data
+2022-04-13T11:14:25.574Z - info: Starting rendering request 161 (user: null)
+2022-04-13T11:14:25.575Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T11:14:25.860Z - warn: Rendering request 161 finished with error in 286 ms
+2022-04-13T11:14:25.861Z - warn: Error when processing render request 161 docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set Error: docx requires template.docx.templateAsset or template.docx.templateAssetShortid to be set
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:7:20)
+    at invokeRender (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:99:17)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+2022-04-13T11:14:25.862Z - warn: Error during processing request at http://localhost:5488/api/report/docs
+2022-04-13T11:14:55.290Z - info: Starting rendering request 162 (user: null)
+2022-04-13T11:14:55.292Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T11:14:55.314Z - info: docx generation is starting
+2022-04-13T11:14:55.438Z - info: Starting rendering request 163 (user: null)
+2022-04-13T11:14:55.439Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T11:14:55.513Z - info: Rendering request 163 finished in 76 ms
+2022-04-13T11:14:55.576Z - info: docx generation was finished
+2022-04-13T11:14:56.111Z - info: Rendering request 162 finished in 821 ms
+2022-04-13T12:23:06.581Z - info: Starting rendering request 164 (user: null)
+2022-04-13T12:23:06.583Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T12:23:06.799Z - info: docx generation is starting
+2022-04-13T12:23:06.885Z - info: Starting rendering request 165 (user: null)
+2022-04-13T12:23:06.885Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T12:23:06.901Z - info: Rendering request 165 finished in 17 ms
+2022-04-13T12:23:06.951Z - info: docx generation was finished
+2022-04-13T12:23:07.598Z - info: Rendering request 164 finished in 1022 ms
+2022-04-13T13:24:33.397Z - info: Starting rendering request 166 (user: null)
+2022-04-13T13:24:33.399Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T13:24:33.601Z - info: docx generation is starting
+2022-04-13T13:24:33.681Z - info: Starting rendering request 167 (user: null)
+2022-04-13T13:24:33.682Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:24:33.699Z - info: Rendering request 167 finished in 18 ms
+2022-04-13T13:24:33.752Z - info: docx generation was finished
+2022-04-13T13:24:34.261Z - info: Rendering request 166 finished in 864 ms
+2022-04-13T13:29:31.477Z - info: Starting rendering request 168 (user: null)
+2022-04-13T13:29:31.479Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-13T13:29:31.559Z - info: docx generation is starting
+2022-04-13T13:29:31.732Z - info: Starting rendering request 169 (user: null)
+2022-04-13T13:29:31.733Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:29:31.756Z - info: Rendering request 169 finished in 25 ms
+2022-04-13T13:29:31.860Z - info: docx generation was finished
+2022-04-13T13:29:32.686Z - info: Rendering request 168 finished in 1209 ms
+2022-04-13T13:39:40.789Z - info: fs store is loading data
+2022-04-13T13:39:41.133Z - info: Starting rendering request 170 (user: null)
+2022-04-13T13:39:41.134Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T13:39:41.152Z - info: docx generation is starting
+2022-04-13T13:39:41.278Z - info: Starting rendering request 171 (user: null)
+2022-04-13T13:39:41.279Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:39:41.331Z - info: Rendering request 171 finished in 53 ms
+2022-04-13T13:39:41.396Z - info: docx generation was finished
+2022-04-13T13:39:42.270Z - info: Rendering request 170 finished in 1137 ms
+2022-04-13T13:40:10.356Z - info: fs store is loading data
+2022-04-13T13:40:10.591Z - info: Starting rendering request 172 (user: null)
+2022-04-13T13:40:10.592Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T13:40:10.608Z - info: docx generation is starting
+2022-04-13T13:40:10.723Z - info: Starting rendering request 173 (user: null)
+2022-04-13T13:40:10.724Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:40:10.770Z - info: Rendering request 173 finished in 46 ms
+2022-04-13T13:40:10.836Z - info: docx generation was finished
+2022-04-13T13:40:11.562Z - info: Rendering request 172 finished in 971 ms
+2022-04-13T13:41:15.528Z - info: Starting rendering request 174 (user: null)
+2022-04-13T13:41:15.529Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: true }
+2022-04-13T13:41:15.545Z - info: docx generation is starting
+2022-04-13T13:41:15.631Z - info: Starting rendering request 175 (user: null)
+2022-04-13T13:41:15.632Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:41:15.653Z - info: Rendering request 175 finished in 21 ms
+2022-04-13T13:41:15.707Z - info: docx generation was finished
+2022-04-13T13:41:16.456Z - info: Rendering request 174 finished in 928 ms
+2022-04-13T13:41:36.799Z - info: Starting rendering request 176 (user: null)
+2022-04-13T13:41:36.800Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-13T13:41:36.813Z - info: docx generation is starting
+2022-04-13T13:41:36.904Z - info: Starting rendering request 177 (user: null)
+2022-04-13T13:41:36.905Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:41:36.928Z - info: Rendering request 177 finished in 23 ms
+2022-04-13T13:41:36.971Z - info: docx generation was finished
+2022-04-13T13:41:37.697Z - info: Rendering request 176 finished in 898 ms
+2022-04-13T13:52:15.285Z - info: Starting rendering request 178 (user: null)
+2022-04-13T13:52:15.287Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-13T13:52:15.337Z - info: docx generation is starting
+2022-04-13T13:52:15.438Z - info: Starting rendering request 179 (user: null)
+2022-04-13T13:52:15.438Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:52:15.464Z - info: Rendering request 179 finished in 25 ms
+2022-04-13T13:52:15.516Z - info: docx generation was finished
+2022-04-13T13:52:16.335Z - info: Rendering request 178 finished in 1051 ms
+2022-04-13T13:52:52.084Z - info: Starting rendering request 180 (user: null)
+2022-04-13T13:52:52.085Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-13T13:52:52.104Z - info: docx generation is starting
+2022-04-13T13:52:52.264Z - info: Starting rendering request 181 (user: null)
+2022-04-13T13:52:52.265Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-13T13:52:52.292Z - info: Rendering request 181 finished in 28 ms
+2022-04-13T13:52:52.373Z - info: docx generation was finished
+2022-04-13T13:52:53.103Z - info: Rendering request 180 finished in 1018 ms
+2022-04-15T04:26:42.450Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-15T04:26:42.453Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-15T04:26:42.777Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-15T04:26:42.791Z - info: Found 35 extensions
+2022-04-15T04:26:47.368Z - info: Setting http-server strategy for rendering
+2022-04-15T04:26:47.640Z - info: Using extension cli@2.2.5
+2022-04-15T04:26:47.785Z - info: Using extension debug@2.1.3
+2022-04-15T04:26:47.929Z - info: Using extension express@2.8.1
+2022-04-15T04:26:53.770Z - info: Using extension freeze@2.0.0
+2022-04-15T04:26:53.802Z - info: Using extension handlebars@2.1.0
+2022-04-15T04:26:53.874Z - info: Using extension import-export@2.1.1
+2022-04-15T04:26:54.565Z - info: Using extension jsrender@2.1.1
+2022-04-15T04:26:54.567Z - info: Using extension tags@2.5.0
+2022-04-15T04:26:54.645Z - info: Using extension templates@2.4.0
+2022-04-15T04:26:54.669Z - info: Using extension authorization@2.4.0
+2022-04-15T04:26:54.748Z - info: Using extension base@2.0.2
+2022-04-15T04:26:54.779Z - info: Using extension browser-client@2.2.2
+2022-04-15T04:26:54.830Z - info: Using extension child-templates@1.4.0
+2022-04-15T04:26:54.893Z - info: Using extension chrome-pdf@1.10.0
+2022-04-15T04:26:56.173Z - info: Using extension data@2.4.0
+2022-04-15T04:26:56.212Z - info: Using extension docx@2.9.0
+2022-04-15T04:26:56.243Z - info: Using extension fs-store@2.9.1
+2022-04-15T04:26:58.408Z - info: Using extension licensing@2.2.3
+2022-04-15T04:26:58.436Z - info: Using extension pdf-utils@1.10.1
+2022-04-15T04:26:59.662Z - info: Using extension pptx@0.7.0
+2022-04-15T04:26:59.731Z - info: Using extension reports@2.5.1
+2022-04-15T04:26:59.789Z - info: Using extension static-pdf@0.4.0
+2022-04-15T04:26:59.879Z - info: Using extension studio@2.10.1
+2022-04-15T04:27:00.510Z - info: Using extension text@2.0.0
+2022-04-15T04:27:00.528Z - info: Using extension version-control@1.6.0
+2022-04-15T04:27:03.333Z - info: Using extension assets@1.7.0
+2022-04-15T04:27:03.504Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-15T04:27:09.334Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-15T04:27:09.335Z - info: Using extension scheduling@2.5.0
+2022-04-15T04:27:09.988Z - info: Using extension scripts@2.6.0
+2022-04-15T04:27:10.020Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-15T04:27:10.056Z - info: Using extension xlsx@2.5.0
+2022-04-15T04:27:14.150Z - info: Using extension public-templates@2.2.0
+2022-04-15T04:27:14.161Z - info: Using extension resources@2.1.0
+2022-04-15T04:27:14.275Z - info: Using extension sample-template@2.6.1
+2022-04-15T04:27:14.416Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-15T04:27:14.417Z - info: Using fs provider for template store.
+2022-04-15T04:27:14.426Z - info: fs store is persisting using fs
+2022-04-15T04:27:14.428Z - info: fs store is synchronizing using fs
+2022-04-15T04:27:14.436Z - info: fs store is loading data
+2022-04-15T04:27:14.532Z - info: fs store is initialized successfully
+2022-04-15T04:27:14.546Z - info: Creating default express app.
+2022-04-15T04:27:16.836Z - info: jsreport server successfully started on http port: 5488
+2022-04-15T04:27:16.838Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-15T04:27:17.432Z - info: Verifying license key free
+2022-04-15T04:27:17.434Z - info: Using free license
+2022-04-15T04:27:17.440Z - info: reporter initialized
+2022-04-15T05:43:41.223Z - info: fs store is loading data
+2022-04-15T05:44:57.398Z - info: fs store is loading data
+2022-04-15T05:45:20.367Z - info: Starting rendering request 1 (user: null)
+2022-04-15T05:45:20.373Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-15T05:45:21.436Z - info: docx generation is starting
+2022-04-15T05:45:24.026Z - info: Starting rendering request 2 (user: null)
+2022-04-15T05:45:24.027Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:45:24.069Z - info: Rendering request 2 finished in 42 ms
+2022-04-15T05:45:24.167Z - info: docx generation was finished
+2022-04-15T05:45:24.682Z - info: Rendering request 1 finished in 4315 ms
+2022-04-15T05:45:52.988Z - info: fs store is loading data
+2022-04-15T05:45:53.126Z - info: Starting rendering request 3 (user: null)
+2022-04-15T05:45:53.127Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-15T05:45:53.144Z - info: docx generation is starting
+2022-04-15T05:45:53.230Z - info: Starting rendering request 4 (user: null)
+2022-04-15T05:45:53.231Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:45:53.253Z - info: Rendering request 4 finished in 24 ms
+2022-04-15T05:45:53.356Z - info: docx generation was finished
+2022-04-15T05:45:53.868Z - info: Rendering request 3 finished in 741 ms
+2022-04-15T05:46:20.742Z - info: fs store is loading data
+2022-04-15T05:46:20.985Z - info: Starting rendering request 5 (user: null)
+2022-04-15T05:46:20.987Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-15T05:46:20.999Z - info: docx generation is starting
+2022-04-15T05:46:21.073Z - info: Starting rendering request 6 (user: null)
+2022-04-15T05:46:21.073Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:46:21.106Z - info: Rendering request 6 finished in 33 ms
+2022-04-15T05:46:21.161Z - info: docx generation was finished
+2022-04-15T05:46:21.648Z - info: Rendering request 5 finished in 663 ms
+2022-04-15T05:46:51.298Z - info: Starting rendering request 7 (user: null)
+2022-04-15T05:46:51.301Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:46:51.624Z - info: docx generation is starting
+2022-04-15T05:46:51.783Z - info: Starting rendering request 8 (user: null)
+2022-04-15T05:46:51.784Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:46:51.841Z - info: Rendering request 8 finished in 59 ms
+2022-04-15T05:46:51.907Z - info: docx generation was finished
+2022-04-15T05:46:52.630Z - info: Rendering request 7 finished in 1331 ms
+2022-04-15T05:47:02.099Z - info: Starting rendering request 9 (user: null)
+2022-04-15T05:47:02.104Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:47:02.140Z - info: docx generation is starting
+2022-04-15T05:47:02.319Z - info: Starting rendering request 10 (user: null)
+2022-04-15T05:47:02.320Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:47:02.347Z - info: Rendering request 10 finished in 27 ms
+2022-04-15T05:47:02.424Z - info: docx generation was finished
+2022-04-15T05:47:03.690Z - info: Rendering request 9 finished in 1592 ms
+2022-04-15T05:47:41.263Z - info: Starting rendering request 11 (user: null)
+2022-04-15T05:47:41.265Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:47:41.306Z - info: docx generation is starting
+2022-04-15T05:47:41.549Z - info: Starting rendering request 12 (user: null)
+2022-04-15T05:47:41.551Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:47:41.588Z - info: Rendering request 12 finished in 39 ms
+2022-04-15T05:47:41.704Z - info: docx generation was finished
+2022-04-15T05:47:42.431Z - info: Rendering request 11 finished in 1168 ms
+2022-04-15T05:48:28.861Z - info: Starting rendering request 13 (user: null)
+2022-04-15T05:48:28.863Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:48:28.879Z - info: docx generation is starting
+2022-04-15T05:48:29.046Z - info: Starting rendering request 14 (user: null)
+2022-04-15T05:48:29.047Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:48:29.082Z - info: Rendering request 14 finished in 37 ms
+2022-04-15T05:48:29.141Z - info: docx generation was finished
+2022-04-15T05:48:29.863Z - info: Rendering request 13 finished in 1001 ms
+2022-04-15T05:48:51.128Z - info: Starting rendering request 15 (user: null)
+2022-04-15T05:48:51.133Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:48:51.153Z - info: docx generation is starting
+2022-04-15T05:48:51.289Z - info: Starting rendering request 16 (user: null)
+2022-04-15T05:48:51.290Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:48:51.312Z - info: Rendering request 16 finished in 22 ms
+2022-04-15T05:48:51.391Z - info: docx generation was finished
+2022-04-15T05:48:52.120Z - info: Rendering request 15 finished in 992 ms
+2022-04-15T05:51:07.305Z - info: fs store is loading data
+2022-04-15T05:51:07.569Z - info: Starting rendering request 17 (user: null)
+2022-04-15T05:51:07.572Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-15T05:51:07.584Z - info: docx generation is starting
+2022-04-15T05:51:07.663Z - info: Starting rendering request 18 (user: null)
+2022-04-15T05:51:07.664Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:51:07.680Z - info: Rendering request 18 finished in 17 ms
+2022-04-15T05:51:07.728Z - info: docx generation was finished
+2022-04-15T05:51:08.464Z - info: Rendering request 17 finished in 896 ms
+2022-04-15T05:53:04.184Z - info: Starting rendering request 19 (user: null)
+2022-04-15T05:53:04.186Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:53:04.220Z - info: docx generation is starting
+2022-04-15T05:53:04.414Z - info: Starting rendering request 20 (user: null)
+2022-04-15T05:53:04.415Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:53:04.482Z - info: Rendering request 20 finished in 68 ms
+2022-04-15T05:53:04.557Z - info: docx generation was finished
+2022-04-15T05:53:05.318Z - info: Rendering request 19 finished in 1135 ms
+2022-04-15T05:54:41.266Z - info: Starting rendering request 21 (user: null)
+2022-04-15T05:54:41.268Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:54:41.331Z - info: docx generation is starting
+2022-04-15T05:54:41.482Z - info: Starting rendering request 22 (user: null)
+2022-04-15T05:54:41.483Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:54:41.515Z - info: Rendering request 22 finished in 32 ms
+2022-04-15T05:54:41.601Z - info: docx generation was finished
+2022-04-15T05:54:42.338Z - info: Rendering request 21 finished in 1073 ms
+2022-04-15T05:55:21.545Z - info: fs store is loading data
+2022-04-15T05:55:22.149Z - info: Starting rendering request 23 (user: null)
+2022-04-15T05:55:22.152Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-15T05:55:22.193Z - info: docx generation is starting
+2022-04-15T05:55:22.351Z - info: Starting rendering request 24 (user: null)
+2022-04-15T05:55:22.352Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:55:22.381Z - info: Rendering request 24 finished in 31 ms
+2022-04-15T05:55:22.480Z - info: docx generation was finished
+2022-04-15T05:55:22.995Z - info: Rendering request 23 finished in 847 ms
+2022-04-15T05:55:26.862Z - info: Starting rendering request 25 (user: null)
+2022-04-15T05:55:26.864Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T05:55:26.896Z - info: docx generation is starting
+2022-04-15T05:55:27.020Z - info: Starting rendering request 26 (user: null)
+2022-04-15T05:55:27.022Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T05:55:27.070Z - info: Rendering request 26 finished in 50 ms
+2022-04-15T05:55:27.154Z - info: docx generation was finished
+2022-04-15T05:55:27.876Z - info: Rendering request 25 finished in 1015 ms
+2022-04-15T06:08:18.873Z - info: fs store is loading data
+2022-04-15T06:08:19.144Z - info: Starting rendering request 27 (user: null)
+2022-04-15T06:08:19.145Z - info: Rendering template { name: docs, recipe: docx, engine: handlebars, preview: true }
+2022-04-15T06:08:19.157Z - info: docx generation is starting
+2022-04-15T06:08:19.198Z - info: Starting rendering request 28 (user: null)
+2022-04-15T06:08:19.199Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:08:19.219Z - info: Rendering request 28 finished in 21 ms
+2022-04-15T06:08:19.267Z - info: docx generation was finished
+2022-04-15T06:08:19.956Z - info: Rendering request 27 finished in 812 ms
+2022-04-15T06:08:36.777Z - info: Starting rendering request 29 (user: null)
+2022-04-15T06:08:36.780Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:08:36.804Z - info: docx generation is starting
+2022-04-15T06:08:36.959Z - info: Starting rendering request 30 (user: null)
+2022-04-15T06:08:36.961Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:08:37.020Z - info: Rendering request 30 finished in 64 ms
+2022-04-15T06:08:37.121Z - info: docx generation was finished
+2022-04-15T06:08:37.843Z - info: Rendering request 29 finished in 1067 ms
+2022-04-15T06:09:20.600Z - info: Starting rendering request 31 (user: null)
+2022-04-15T06:09:20.605Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:09:20.644Z - info: docx generation is starting
+2022-04-15T06:09:20.940Z - info: Starting rendering request 32 (user: null)
+2022-04-15T06:09:20.941Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:09:20.971Z - info: Rendering request 32 finished in 32 ms
+2022-04-15T06:09:21.045Z - info: docx generation was finished
+2022-04-15T06:09:21.772Z - info: Rendering request 31 finished in 1176 ms
+2022-04-15T06:09:35.454Z - info: Starting rendering request 33 (user: null)
+2022-04-15T06:09:35.456Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:09:35.490Z - info: docx generation is starting
+2022-04-15T06:09:35.701Z - info: Starting rendering request 34 (user: null)
+2022-04-15T06:09:35.703Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:09:35.739Z - info: Rendering request 34 finished in 38 ms
+2022-04-15T06:09:35.817Z - info: docx generation was finished
+2022-04-15T06:09:36.587Z - info: Rendering request 33 finished in 1134 ms
+2022-04-15T06:19:03.266Z - info: fs store is loading data
+2022-04-15T06:19:16.324Z - info: Starting rendering request 35 (user: null)
+2022-04-15T06:19:16.325Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:19:16.348Z - info: docx generation is starting
+2022-04-15T06:19:16.474Z - info: Starting rendering request 36 (user: null)
+2022-04-15T06:19:16.474Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:19:16.549Z - info: Rendering request 36 finished in 76 ms
+2022-04-15T06:19:16.619Z - info: docx generation was finished
+2022-04-15T06:19:17.452Z - info: Rendering request 35 finished in 1128 ms
+2022-04-15T06:33:53.877Z - info: fs store is loading data
+2022-04-15T06:34:08.538Z - info: Starting rendering request 37 (user: null)
+2022-04-15T06:34:08.541Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:34:08.574Z - info: docx generation is starting
+2022-04-15T06:34:08.757Z - info: Starting rendering request 38 (user: null)
+2022-04-15T06:34:08.757Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:34:08.803Z - info: Rendering request 38 finished in 47 ms
+2022-04-15T06:34:08.896Z - info: docx generation was finished
+2022-04-15T06:34:09.773Z - info: Rendering request 37 finished in 1236 ms
+2022-04-15T06:35:13.050Z - info: fs store is loading data
+2022-04-15T06:35:15.729Z - info: Starting rendering request 39 (user: null)
+2022-04-15T06:35:15.732Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:35:15.759Z - info: docx generation is starting
+2022-04-15T06:35:15.916Z - info: Starting rendering request 40 (user: null)
+2022-04-15T06:35:15.917Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:35:16.010Z - info: Rendering request 40 finished in 94 ms
+2022-04-15T06:35:16.115Z - info: docx generation was finished
+2022-04-15T06:35:16.845Z - info: Rendering request 39 finished in 1118 ms
+2022-04-15T06:36:03.742Z - info: fs store is loading data
+2022-04-15T06:36:08.205Z - info: Starting rendering request 41 (user: null)
+2022-04-15T06:36:08.207Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:36:08.227Z - info: docx generation is starting
+2022-04-15T06:36:08.353Z - info: Starting rendering request 42 (user: null)
+2022-04-15T06:36:08.354Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:36:08.427Z - info: Rendering request 42 finished in 74 ms
+2022-04-15T06:36:08.525Z - info: docx generation was finished
+2022-04-15T06:36:09.253Z - info: Rendering request 41 finished in 1048 ms
+2022-04-15T06:36:48.056Z - info: fs store is loading data
+2022-04-15T06:36:48.883Z - info: Starting rendering request 43 (user: null)
+2022-04-15T06:36:48.885Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:36:48.924Z - info: docx generation is starting
+2022-04-15T06:36:49.061Z - info: Starting rendering request 44 (user: null)
+2022-04-15T06:36:49.063Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:36:49.137Z - info: Rendering request 44 finished in 77 ms
+2022-04-15T06:36:49.262Z - info: docx generation was finished
+2022-04-15T06:36:49.986Z - info: Rendering request 43 finished in 1104 ms
+2022-04-15T06:37:05.833Z - info: Starting rendering request 45 (user: null)
+2022-04-15T06:37:05.836Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:37:05.861Z - info: docx generation is starting
+2022-04-15T06:37:06.066Z - info: Starting rendering request 46 (user: null)
+2022-04-15T06:37:06.069Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:37:06.108Z - info: Rendering request 46 finished in 42 ms
+2022-04-15T06:37:06.212Z - info: docx generation was finished
+2022-04-15T06:37:06.942Z - info: Rendering request 45 finished in 1109 ms
+2022-04-15T06:37:55.965Z - info: Starting rendering request 47 (user: null)
+2022-04-15T06:37:55.968Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T06:37:55.990Z - info: docx generation is starting
+2022-04-15T06:37:56.202Z - info: Starting rendering request 48 (user: null)
+2022-04-15T06:37:56.203Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T06:37:56.249Z - info: Rendering request 48 finished in 46 ms
+2022-04-15T06:37:56.311Z - info: docx generation was finished
+2022-04-15T06:37:57.077Z - info: Rendering request 47 finished in 1112 ms
+2022-04-15T10:33:04.832Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-15T10:33:04.835Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-15T10:33:05.073Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-15T10:33:05.155Z - info: Found 35 extensions
+2022-04-15T10:33:06.830Z - info: Setting http-server strategy for rendering
+2022-04-15T10:33:07.132Z - info: Using extension cli@2.2.5
+2022-04-15T10:33:07.156Z - info: Using extension debug@2.1.3
+2022-04-15T10:33:07.166Z - info: Using extension express@2.8.1
+2022-04-15T10:33:08.816Z - info: Using extension freeze@2.0.0
+2022-04-15T10:33:08.829Z - info: Using extension handlebars@2.1.0
+2022-04-15T10:33:08.915Z - info: Using extension import-export@2.1.1
+2022-04-15T10:33:09.582Z - info: Using extension jsrender@2.1.1
+2022-04-15T10:33:09.584Z - info: Using extension tags@2.5.0
+2022-04-15T10:33:09.596Z - info: Using extension templates@2.4.0
+2022-04-15T10:33:09.600Z - info: Using extension authorization@2.4.0
+2022-04-15T10:33:09.612Z - info: Using extension base@2.0.2
+2022-04-15T10:33:09.626Z - info: Using extension browser-client@2.2.2
+2022-04-15T10:33:09.699Z - info: Using extension child-templates@1.4.0
+2022-04-15T10:33:09.731Z - info: Using extension chrome-pdf@1.10.0
+2022-04-15T10:33:10.484Z - info: Using extension data@2.4.0
+2022-04-15T10:33:10.488Z - info: Using extension docx@2.9.0
+2022-04-15T10:33:10.503Z - info: Using extension fs-store@2.9.1
+2022-04-15T10:33:11.820Z - info: Using extension licensing@2.2.3
+2022-04-15T10:33:11.903Z - info: Using extension pdf-utils@1.10.1
+2022-04-15T10:33:12.543Z - info: Using extension pptx@0.7.0
+2022-04-15T10:33:12.581Z - info: Using extension reports@2.5.1
+2022-04-15T10:33:12.631Z - info: Using extension static-pdf@0.4.0
+2022-04-15T10:33:12.666Z - info: Using extension studio@2.10.1
+2022-04-15T10:33:13.063Z - info: Using extension text@2.0.0
+2022-04-15T10:33:13.077Z - info: Using extension version-control@1.6.0
+2022-04-15T10:33:14.164Z - info: Using extension assets@1.7.0
+2022-04-15T10:33:14.228Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-15T10:33:18.459Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-15T10:33:18.460Z - info: Using extension scheduling@2.5.0
+2022-04-15T10:33:18.806Z - info: Using extension scripts@2.6.0
+2022-04-15T10:33:18.826Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-15T10:33:18.845Z - info: Using extension xlsx@2.5.0
+2022-04-15T10:33:20.680Z - info: Using extension public-templates@2.2.0
+2022-04-15T10:33:20.685Z - info: Using extension resources@2.1.0
+2022-04-15T10:33:20.806Z - info: Using extension sample-template@2.6.1
+2022-04-15T10:33:20.929Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-15T10:33:20.929Z - info: Using fs provider for template store.
+2022-04-15T10:33:20.935Z - info: fs store is persisting using fs
+2022-04-15T10:33:20.937Z - info: fs store is synchronizing using fs
+2022-04-15T10:33:20.951Z - info: fs store is loading data
+2022-04-15T10:33:21.219Z - info: fs store is initialized successfully
+2022-04-15T10:33:21.234Z - info: Creating default express app.
+2022-04-15T10:33:22.239Z - info: jsreport server successfully started on http port: 5488
+2022-04-15T10:33:22.243Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-15T10:33:22.364Z - info: Verifying license key free
+2022-04-15T10:33:22.366Z - info: Using free license
+2022-04-15T10:33:22.377Z - info: reporter initialized
+2022-04-15T10:33:27.504Z - info: Starting rendering request 1 (user: null)
+2022-04-15T10:33:27.513Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-15T10:33:28.392Z - info: docx generation is starting
+2022-04-15T10:33:29.164Z - info: Starting rendering request 2 (user: null)
+2022-04-15T10:33:29.165Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-15T10:33:29.227Z - info: Rendering request 2 finished in 62 ms
+2022-04-15T10:33:29.320Z - info: docx generation was finished
+2022-04-15T10:33:30.162Z - info: Rendering request 1 finished in 2659 ms
+2022-04-24T09:57:18.806Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-24T09:57:18.809Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-24T09:57:18.816Z - info: Extensions location cache not found, crawling directories
+2022-04-24T09:57:35.888Z - info: Found 35 extensions
+2022-04-24T09:57:37.227Z - info: Setting http-server strategy for rendering
+2022-04-24T09:57:37.449Z - info: Using extension cli@2.2.5
+2022-04-24T09:57:37.491Z - info: Using extension debug@2.1.3
+2022-04-24T09:57:37.504Z - info: Using extension express@2.8.1
+2022-04-24T09:57:38.353Z - info: Using extension freeze@2.0.0
+2022-04-24T09:57:38.366Z - info: Using extension handlebars@2.1.0
+2022-04-24T09:57:38.385Z - info: Using extension import-export@2.1.1
+2022-04-24T09:57:38.576Z - info: Using extension jsrender@2.1.1
+2022-04-24T09:57:38.579Z - info: Using extension tags@2.5.0
+2022-04-24T09:57:38.591Z - info: Using extension templates@2.4.0
+2022-04-24T09:57:38.604Z - info: Using extension authorization@2.4.0
+2022-04-24T09:57:38.623Z - info: Using extension base@2.0.2
+2022-04-24T09:57:38.632Z - info: Using extension browser-client@2.2.2
+2022-04-24T09:57:38.650Z - info: Using extension child-templates@1.4.0
+2022-04-24T09:57:38.677Z - info: Using extension chrome-pdf@1.10.0
+2022-04-24T09:57:39.010Z - info: Using extension data@2.4.0
+2022-04-24T09:57:39.015Z - info: Using extension docx@2.9.0
+2022-04-24T09:57:39.031Z - info: Using extension fs-store@2.9.1
+2022-04-24T09:57:39.757Z - info: Using extension licensing@2.2.3
+2022-04-24T09:57:39.775Z - info: Using extension pdf-utils@1.10.1
+2022-04-24T09:57:40.471Z - info: Using extension pptx@0.7.0
+2022-04-24T09:57:40.590Z - info: Using extension reports@2.5.1
+2022-04-24T09:57:40.711Z - info: Using extension static-pdf@0.4.0
+2022-04-24T09:57:40.960Z - info: Using extension studio@2.10.1
+2022-04-24T09:57:41.975Z - info: Using extension text@2.0.0
+2022-04-24T09:57:42.050Z - info: Using extension version-control@1.6.0
+2022-04-24T09:57:44.692Z - info: Using extension assets@1.7.0
+2022-04-24T09:57:44.878Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-24T09:57:56.295Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-24T09:57:56.297Z - info: Using extension scheduling@2.5.0
+2022-04-24T09:57:56.511Z - info: Using extension scripts@2.6.0
+2022-04-24T09:57:56.577Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-24T09:57:56.591Z - info: Using extension xlsx@2.5.0
+2022-04-24T09:57:57.634Z - info: Using extension public-templates@2.2.0
+2022-04-24T09:57:57.645Z - info: Using extension resources@2.1.0
+2022-04-24T09:57:57.652Z - info: Using extension sample-template@2.6.1
+2022-04-24T09:57:57.662Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-24T09:57:57.663Z - info: Using fs provider for template store.
+2022-04-24T09:57:57.669Z - info: fs store is persisting using fs
+2022-04-24T09:57:57.671Z - info: fs store is synchronizing using fs
+2022-04-24T09:57:57.678Z - info: fs store is loading data
+2022-04-24T09:57:57.922Z - info: fs store is initialized successfully
+2022-04-24T09:57:57.935Z - info: Creating default express app.
+2022-04-24T09:57:59.372Z - info: jsreport server successfully started on http port: 5488
+2022-04-24T09:57:59.374Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-24T09:57:59.649Z - info: Verifying license key free
+2022-04-24T09:57:59.655Z - info: Using free license
+2022-04-24T09:57:59.662Z - info: reporter initialized
+2022-04-24T10:06:22.180Z - info: Starting rendering request 1 (user: null)
+2022-04-24T10:06:22.187Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:06:23.191Z - info: docx generation is starting
+2022-04-24T10:06:25.474Z - info: Starting rendering request 2 (user: null)
+2022-04-24T10:06:25.476Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:06:25.638Z - info: Rendering request 2 finished in 165 ms
+2022-04-24T10:06:25.967Z - info: docx generation was finished
+2022-04-24T10:06:26.912Z - info: Rendering request 1 finished in 4733 ms
+2022-04-24T10:07:42.187Z - info: Starting rendering request 3 (user: null)
+2022-04-24T10:07:42.191Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:07:42.238Z - info: docx generation is starting
+2022-04-24T10:07:42.959Z - info: Starting rendering request 4 (user: null)
+2022-04-24T10:07:42.962Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:07:43.048Z - info: Rendering request 4 finished in 88 ms
+2022-04-24T10:07:43.357Z - info: docx generation was finished
+2022-04-24T10:07:44.075Z - info: Rendering request 3 finished in 1888 ms
+2022-04-24T10:10:11.654Z - info: Starting rendering request 5 (user: null)
+2022-04-24T10:10:11.657Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:10:11.772Z - info: docx generation is starting
+2022-04-24T10:10:12.257Z - info: Starting rendering request 6 (user: null)
+2022-04-24T10:10:12.260Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:10:12.331Z - info: Rendering request 6 finished in 75 ms
+2022-04-24T10:10:12.529Z - info: docx generation was finished
+2022-04-24T10:10:13.297Z - info: Rendering request 5 finished in 1644 ms
+2022-04-24T10:12:31.078Z - info: Starting rendering request 7 (user: null)
+2022-04-24T10:12:31.082Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:12:31.130Z - info: docx generation is starting
+2022-04-24T10:12:31.671Z - info: Starting rendering request 8 (user: null)
+2022-04-24T10:12:31.676Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:12:31.761Z - info: Rendering request 8 finished in 90 ms
+2022-04-24T10:12:32.004Z - info: docx generation was finished
+2022-04-24T10:12:32.865Z - info: Rendering request 7 finished in 1787 ms
+2022-04-24T10:17:35.525Z - info: Starting rendering request 9 (user: null)
+2022-04-24T10:17:35.529Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:17:35.564Z - info: docx generation is starting
+2022-04-24T10:17:36.035Z - info: Starting rendering request 10 (user: null)
+2022-04-24T10:17:36.037Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:17:36.108Z - info: Rendering request 10 finished in 73 ms
+2022-04-24T10:17:36.274Z - info: docx generation was finished
+2022-04-24T10:17:37.161Z - info: Rendering request 9 finished in 1636 ms
+2022-04-24T10:34:35.867Z - info: fs store is loading data
+2022-04-24T10:36:25.493Z - info: Starting rendering request 11 (user: null)
+2022-04-24T10:36:25.496Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:36:25.605Z - info: docx generation is starting
+2022-04-24T10:36:26.143Z - info: Starting rendering request 12 (user: null)
+2022-04-24T10:36:26.145Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:36:26.216Z - warn: Rendering request 12 finished with error in 73 ms
+2022-04-24T10:36:26.226Z - warn: Error when processing render request 12 Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID' Error: Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID'
+    at Parser.parseError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:267:19)
+    at Parser.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:336:30)
+    at parseWithoutProcessing (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:46:33)
+    at HandlebarsEnvironment.parse (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:52:13)
+    at compileInput (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:508:19)
+    at ret (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:517:18)
+    at F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-handlebars\lib\handlebarsEngine.js:33:20
+    at Object.base.apply (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\vm2\lib/contextify.js:469:32)
+    at evaluate-template-engine.js:1:64
+    at Script.runInContext (vm.js:144:12)
+2022-04-24T10:36:26.235Z - warn: Rendering request 11 finished with error in 742 ms
+2022-04-24T10:36:26.245Z - warn: Error when processing render request 11 Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID' Error: Error while executing docx recipe. Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID'
+    at module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\util\createError.js:11:13)
+    at Reporter.createError (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\reporter.js:332:12)
+    at Object.execute (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-docx\lib\recipe.js:58:20)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
+    at async module.exports (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\jsreport-core\lib\render\render.js:150:5)
+caused by: Error: Error while executing templating engine. Parse error on line 5:
+...w:rPr><w:t>{{remarks}</w:t></w:r></w:p><
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID'
+    at Object.callbackRequests.<computed> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:250:31)
+    at process.<anonymous> (F:\aakar\Forest_MIS\reportserver\jsreportapp\node_modules\script-manager\lib\worker-servers.js:195:30)
+    at process.emit (events.js:412:35)
+    at process.emit (domain.js:475:12)
+    at emit (internal/child_process.js:912:12)
+    at processTicksAndRejections (internal/process/task_queues.js:83:21)
+2022-04-24T10:36:26.254Z - warn: Error during processing request at http://localhost:5488/api/report
+2022-04-24T10:37:22.421Z - info: fs store is loading data
+2022-04-24T10:37:24.939Z - info: Starting rendering request 13 (user: null)
+2022-04-24T10:37:24.942Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:37:24.968Z - info: docx generation is starting
+2022-04-24T10:37:25.327Z - info: Starting rendering request 14 (user: null)
+2022-04-24T10:37:25.328Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:37:25.453Z - info: Rendering request 14 finished in 125 ms
+2022-04-24T10:37:25.576Z - info: docx generation was finished
+2022-04-24T10:37:26.400Z - info: Rendering request 13 finished in 1460 ms
+2022-04-24T10:41:23.060Z - info: Starting rendering request 15 (user: null)
+2022-04-24T10:41:23.063Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:41:23.085Z - info: docx generation is starting
+2022-04-24T10:41:23.405Z - info: Starting rendering request 16 (user: null)
+2022-04-24T10:41:23.406Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:41:23.457Z - info: Rendering request 16 finished in 52 ms
+2022-04-24T10:41:23.607Z - info: docx generation was finished
+2022-04-24T10:41:24.323Z - info: Rendering request 15 finished in 1263 ms
+2022-04-24T10:47:55.955Z - info: Starting rendering request 17 (user: null)
+2022-04-24T10:47:55.958Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:47:55.981Z - info: docx generation is starting
+2022-04-24T10:47:56.276Z - info: Starting rendering request 18 (user: null)
+2022-04-24T10:47:56.278Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:47:56.323Z - info: Rendering request 18 finished in 46 ms
+2022-04-24T10:47:56.451Z - info: docx generation was finished
+2022-04-24T10:47:57.260Z - info: Rendering request 17 finished in 1306 ms
+2022-04-24T10:50:59.825Z - info: Starting rendering request 19 (user: null)
+2022-04-24T10:50:59.829Z - info: Rendering template { name: budgetbibaran, recipe: docx, engine: handlebars, preview: false }
+2022-04-24T10:50:59.850Z - info: docx generation is starting
+2022-04-24T10:51:00.182Z - info: Starting rendering request 20 (user: null)
+2022-04-24T10:51:00.183Z - info: Rendering anonymous template { recipe: html, engine: handlebars }
+2022-04-24T10:51:00.227Z - info: Rendering request 20 finished in 44 ms
+2022-04-24T10:51:00.385Z - info: docx generation was finished
+2022-04-24T10:51:01.107Z - info: Rendering request 19 finished in 1282 ms
+2022-04-25T04:17:58.774Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-25T04:17:58.777Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-25T04:17:59.466Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-25T04:17:59.639Z - info: Found 35 extensions
+2022-04-25T04:18:03.196Z - info: Setting http-server strategy for rendering
+2022-04-25T04:18:03.393Z - info: Using extension cli@2.2.5
+2022-04-25T04:18:03.457Z - info: Using extension debug@2.1.3
+2022-04-25T04:18:03.486Z - info: Using extension express@2.8.1
+2022-04-25T04:18:06.790Z - info: Using extension freeze@2.0.0
+2022-04-25T04:18:06.883Z - info: Using extension handlebars@2.1.0
+2022-04-25T04:18:07.249Z - info: Using extension import-export@2.1.1
+2022-04-25T04:18:08.912Z - info: Using extension jsrender@2.1.1
+2022-04-25T04:18:08.913Z - info: Using extension tags@2.5.0
+2022-04-25T04:18:08.977Z - info: Using extension templates@2.4.0
+2022-04-25T04:18:09.006Z - info: Using extension authorization@2.4.0
+2022-04-25T04:18:09.097Z - info: Using extension base@2.0.2
+2022-04-25T04:18:09.119Z - info: Using extension browser-client@2.2.2
+2022-04-25T04:18:09.171Z - info: Using extension child-templates@1.4.0
+2022-04-25T04:18:09.283Z - info: Using extension chrome-pdf@1.10.0
+2022-04-25T04:18:10.819Z - info: Using extension data@2.4.0
+2022-04-25T04:18:10.839Z - info: Using extension docx@2.9.0
+2022-04-25T04:18:10.894Z - info: Using extension fs-store@2.9.1
+2022-04-25T04:18:13.704Z - info: Using extension licensing@2.2.3
+2022-04-25T04:18:13.744Z - info: Using extension pdf-utils@1.10.1
+2022-04-25T04:18:15.282Z - info: Using extension pptx@0.7.0
+2022-04-25T04:18:15.327Z - info: Using extension reports@2.5.1
+2022-04-25T04:18:15.437Z - info: Using extension static-pdf@0.4.0
+2022-04-25T04:18:15.552Z - info: Using extension studio@2.10.1
+2022-04-25T04:18:16.296Z - info: Using extension text@2.0.0
+2022-04-25T04:18:16.314Z - info: Using extension version-control@1.6.0
+2022-04-25T04:18:17.876Z - info: Using extension assets@1.7.0
+2022-04-25T04:18:18.032Z - info: Using extension html-to-xlsx@2.8.3
+2022-04-25T04:18:25.914Z - info: html-to-xlsx detected chrome as available html engine
+2022-04-25T04:18:25.915Z - info: Using extension scheduling@2.5.0
+2022-04-25T04:18:26.667Z - info: Using extension scripts@2.6.0
+2022-04-25T04:18:26.718Z - info: Using extension studio-theme-dark@0.3.0
+2022-04-25T04:18:26.734Z - info: Using extension xlsx@2.5.0
+2022-04-25T04:18:28.939Z - info: Using extension public-templates@2.2.0
+2022-04-25T04:18:28.950Z - info: Using extension resources@2.1.0
+2022-04-25T04:18:28.967Z - info: Using extension sample-template@2.6.1
+2022-04-25T04:18:29.051Z - info: Using general timeout for rendering (reportTimeout: 60000)
+2022-04-25T04:18:29.052Z - info: Using fs provider for template store.
+2022-04-25T04:18:29.060Z - info: fs store is persisting using fs
+2022-04-25T04:18:29.062Z - info: fs store is synchronizing using fs
+2022-04-25T04:18:29.071Z - info: fs store is loading data
+2022-04-25T04:18:29.251Z - info: fs store is initialized successfully
+2022-04-25T04:18:29.264Z - info: Creating default express app.
+2022-04-25T04:18:32.003Z - info: jsreport server successfully started on http port: 5488
+2022-04-25T04:18:32.006Z - info: fs store emits sockets to synchronize underlying changes with studio
+2022-04-25T04:18:32.747Z - info: Verifying license key free
+2022-04-25T04:18:32.750Z - info: Using free license
+2022-04-25T04:18:32.758Z - info: reporter initialized
+2022-04-25T04:51:18.754Z - info: Initializing jsreport@2.11.0 in development mode using configuration file: jsreport.config.json
+2022-04-25T04:51:18.758Z - info: Searching for available extensions in F:\aakar\Forest_MIS\reportserver\jsreportapp\
+2022-04-25T04:51:18.927Z - info: Extensions location cache contains up to date information, skipping crawling in F:\aakar\Forest_MIS\reportserver\jsreportapp\

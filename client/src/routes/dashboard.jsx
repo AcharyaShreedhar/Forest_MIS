@@ -1,19 +1,20 @@
-import Activities from '../views/Activities';
-import Banbibaran from '../views/Banbibaran';
-import Banpaidawar from '../views/Banpaidawar';
-import Bipatbebasthapan from '../views/Bipatbebasthapan';
-import Dwandabebasthapan from '../views/Dwandabebasthapan';
-import Forests from '../views/Forests';
-import Home from '../views/Home';
-import Karmachari from '../views/Karmachari';
-import Karyabibaran from '../views/Karyabibaran';
-import Login from '../layouts/Login';
-import Miscellaneous from '../views/Miscellaneous';
-import Report from '../views/Report';
-import Sampatibibaran from '../views/Sampatibibaran';
-import Samrakshyan from '../views/Samrakshyan';
-import User from '../views/User';
-import Offices from '../views/Offices';
+import Activities from '../views/Activities'
+import Banbibaran from '../views/Banbibaran'
+import Banpaidawar from '../views/Banpaidawar'
+import Bipatbebasthapan from '../views/Bipatbebasthapan'
+import Dwandabebasthapan from '../views/Dwandabebasthapan'
+import Forests from '../views/Forests'
+import Home from '../views/Home'
+import Karmachari from '../views/Karmachari'
+import Karyabibaran from '../views/Karyabibaran'
+import Login from '../layouts/Login'
+import Miscellaneous from '../views/Miscellaneous'
+import Report from '../views/Report'
+import Sampatibibaran from '../views/Sampatibibaran'
+import Samrakshyan from '../views/Samrakshyan'
+import User from '../views/User'
+import Offices from '../views/Offices'
+import Budget from '../views/Budget'
 
 const dashboardRoutes = [
   {
@@ -140,11 +141,19 @@ const dashboardRoutes = [
   },
 
   {
+    path: '/budget',
+    title: 'Budget',
+    name: 'budget',
+    auth: true,
+    component: Budget,
+  },
+
+  {
     redirect: true,
     path: '/',
     to: '/login',
     name: 'Dashboard',
   },
-];
+]
 
-export default dashboardRoutes;
+export default dashboardRoutes

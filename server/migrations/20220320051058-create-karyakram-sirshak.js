@@ -10,7 +10,6 @@ module.exports = {
       },
       sirshak_id: {
         allowNull: false,
-        unique: true,
         type: Sequelize.INTEGER,
       },
       dist_id: {
@@ -29,17 +28,15 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      sirshak_no: {
+      karyakram_sirshak_no: {
         type: Sequelize.STRING,
         allowNull: false,
       },
       created_by: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       updated_by: {
         type: Sequelize.STRING,
-        allowNull: false,
       },
       createdAt: {
         allowNull: false,
