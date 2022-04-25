@@ -260,6 +260,11 @@ export class Report extends Component {
       fiscal_year: '2078/079',
       office_id: officeId,
     })
+
+    this.props.fetchOfficedropdown({
+      distId: '%',
+      name: 'value', //"office_name"
+    })
   }
 
   render() {

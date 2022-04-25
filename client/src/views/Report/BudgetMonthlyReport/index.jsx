@@ -55,7 +55,9 @@ export class BudgetMonthlyReport extends Component {
     var user_office = ''
     var budget_monthly = {}
     if (nextProps !== prevState) {
-      officeList = nextProps.officeDataList.data
+      officeList = !isNil(nextProps.officeDataList)
+        ? nextProps.officeDataList.data
+        : []
       user_name = nextProps.user_name
       user_office = nextProps.user_office
       if (!isNil(nextProps.budgetmonthlylist))
@@ -233,7 +235,7 @@ export class BudgetMonthlyReport extends Component {
     h_p_sum_p = (h_p_sum / b_p_sum) * 100
     // console.log(h_sum, b_sum)
     p_total = {
-      name: 'पुँजीगत खर्च जम्म',
+      name: `${allbs[0]} खर्च जम्म`,
       b_sum: b_sum,
       b_p_sum: b_p_sum,
       c_sum: c_sum,
@@ -344,13 +346,19 @@ export class BudgetMonthlyReport extends Component {
       }
       return 0
     })
-    h_sum_p = (h_sum / b_sum) * 100
-    h_p_sum_p = (h_p_sum / b_p_sum) * 100
-    h_sum_p_t = (h_sum_t / b_sum_t) * 100
-    h_p_sum_p_t = (h_p_sum_t / b_p_sum_t) * 100
+    h_sum_p = !isNaN((h_sum / b_sum) * 100) ? (h_sum / b_sum) * 100 : 0
+    h_p_sum_p = !isNaN((h_p_sum / b_p_sum) * 100)
+      ? (h_p_sum / b_p_sum) * 100
+      : 0
+    h_sum_p_t = !isNaN((h_sum_t / b_sum_t) * 100)
+      ? (h_sum_t / b_sum_t) * 100
+      : 0
+    h_p_sum_p_t = !isNaN((h_p_sum_t / b_p_sum_t) * 100)
+      ? (h_p_sum_t / b_p_sum_t) * 100
+      : 0
 
     c_total = {
-      name: 'चालु खर्च जम्मा',
+      name: `${allbs[1]} खर्च जम्मा`,
       b_sum: b_sum,
       b_p_sum: b_p_sum,
       c_sum: c_sum,
