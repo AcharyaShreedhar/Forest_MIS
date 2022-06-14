@@ -357,8 +357,9 @@ export class BudgetMonthlyReport extends Component {
       ? (h_p_sum_t / b_p_sum_t) * 100
       : 0
 
+    const allbsdata = !isNil(allbs[1]) ? allbs[1] : ''
     c_total = {
-      name: `${allbs[1]} खर्च जम्मा`,
+      name: `${allbsdata} खर्च जम्मा`,
       b_sum: b_sum,
       b_p_sum: b_p_sum,
       c_sum: c_sum,
@@ -404,7 +405,7 @@ export class BudgetMonthlyReport extends Component {
       arthik_barsa: fiscal_year,
     }
     // console.log(report_data)
-    jsreport.serverUrl = 'http://localhost:5488'
+    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com/' //'http://localhost:5488'
     let reportRequest = {
       template: { name: 'budgetbibaran' },
       data: report_data,

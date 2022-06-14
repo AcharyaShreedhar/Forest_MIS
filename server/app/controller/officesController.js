@@ -52,7 +52,7 @@ async function getOfficesDropdownList(req, res) {
   if (len > 1) {
     dist_cond = 'dist_id in (?)'
   }
-  console.log('office-dropdown', req.body)
+
   const getOfficesList = `SELECT '%' AS id, 'सबै' AS value, '' as office_location, '%' As dist_id, '%' As office_type UNION ALL select office_id as id, office_name as value, office_location, dist_id, office_type from offices where ${dist_cond}`
   pool.query(
     getOfficesList,
