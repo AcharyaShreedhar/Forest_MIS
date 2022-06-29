@@ -1,27 +1,27 @@
-const pool = require("../db");
+const pool = require('../db')
 //Controller for Listing all BanpaidawarBikribitaran
 async function getAllBanpaidawarBikribitaran(req, res) {
-
-  let office_cond = "b.office_id like ?"
-  const office_len=(Array.isArray(req.body.officeId)) ? req.body.officeId.length : 0
-  if(office_len > 1){
-    office_cond = "b.office_id in (?)"
+  let office_cond = 'b.office_id like ?'
+  const office_len = Array.isArray(req.body.officeId)
+    ? req.body.officeId.length
+    : 0
+  if (office_len > 1) {
+    office_cond = 'b.office_id in (?)'
   }
 
-  let dist_cond = "b.dist_id like ?"
-  const dist_len=(Array.isArray(req.body.distId)) ? req.body.distId.length : 0
-  if(dist_len > 1){
-    dist_cond = "b.dist_id in (?)"
+  let dist_cond = 'b.dist_id like ?'
+  const dist_len = Array.isArray(req.body.distId) ? req.body.distId.length : 0
+  if (dist_len > 1) {
+    dist_cond = 'b.dist_id in (?)'
   }
 
-  const getTotalQuery =
-    `SELECT count(*) as total from banpaidawar_bikribitarans as b where b.bikri_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond}`
-  const getAllBanpaidawarBikribitaranQuery = `select * from banpaidawar_bikribitarans as b where b.bikri_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?, ?`;
+  const getTotalQuery = `SELECT count(*) as total from banpaidawar_bikribitarans as b where b.bikri_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond}`
+  const getAllBanpaidawarBikribitaranQuery = `select * from banpaidawar_bikribitarans as b where b.bikri_miti BETWEEN ? and ? and ${dist_cond} and ${office_cond} ORDER BY ? DESC LIMIT ?, ?`
   pool.query(
     getTotalQuery,
     [req.body.fromDate, req.body.toDate, req.body.distId, req.body.officeId],
     (error, countresults, fields) => {
-      if (error) throw error;
+      if (error) throw error
       pool.query(
         getAllBanpaidawarBikribitaranQuery,
         [
@@ -34,7 +34,7 @@ async function getAllBanpaidawarBikribitaran(req, res) {
           req.body.perPage,
         ],
         (error, results, fields) => {
-          if (error) throw error;
+          if (error) throw error
           res.send(
             JSON.stringify({
               status: 200,
@@ -44,29 +44,29 @@ async function getAllBanpaidawarBikribitaran(req, res) {
                 list: results,
               },
             })
-          );
+          )
         }
-      );
+      )
     }
-  );
+  )
 }
 
 //Controller for Listing a Banpaidawar_Bikribitaran
 async function getBanpaidawarBikribitaran(req, res) {
-  const getBanpaidawarBikribitaranQuery = `select * from banpaidawar_bikribitarans where bikribitaran_id=?`;
+  const getBanpaidawarBikribitaranQuery = `select * from banpaidawar_bikribitarans where bikribitaran_id=?`
   pool.query(
     getBanpaidawarBikribitaranQuery,
     [req.params.banpaidawarbikribitaranId],
     (error, results, fields) => {
-      if (error) throw error;
-      res.send(JSON.stringify({ status: 200, error: null, data: results }));
+      if (error) throw error
+      res.send(JSON.stringify({ status: 200, error: null, data: results }))
     }
-  );
+  )
 }
 
 //Controller for adding a Banpaidawar_Bikribitaran
 async function addBanpaidawarBikribitaran(req, res, next) {
-  const addBanpaidawarBikribitaranQuery = `INSERT INTO banpaidawar_bikribitarans (dist_id, office_id, bikri_miti, bandpaidawar_kisim, ekai, aantarik_dar, aantarik_parinam ,aantarik_rakam,aaapurti_dar,aapurti_parinam,aapurti_rakam, bahiya_dar,bahiya_parinam,bahiya_rakam,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`;
+  const addBanpaidawarBikribitaranQuery = `INSERT INTO banpaidawar_bikribitarans (dist_id, office_id, bikri_miti, bandpaidawar_kisim, ekai, aantarik_dar, aantarik_parinam ,aantarik_rakam,aaapurti_dar,aapurti_parinam,aapurti_rakam, bahiya_dar,bahiya_parinam,bahiya_rakam,created_by,updated_by) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
   pool.query(
     addBanpaidawarBikribitaranQuery,
     [
@@ -91,17 +91,17 @@ async function addBanpaidawarBikribitaran(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for updating a BanpaidawarBikribitaran
 async function updateBanpaidawarBikribitaran(req, res, next) {
-  const updateBanpaidawarBikribitaranQuery = `UPDATE banpaidawar_bikribitarans SET dist_id=?, office_id=?, bikri_miti=?, bandpaidawar_kisim=?, ekai=?, aantarik_dar=?, aantarik_parinam=?, aantarik_rakam=?, aaapurti_dar=?, aapurti_parinam=?, aapurti_rakam=?, bahiya_dar=?, bahiya_parinam=?, bahiya_rakam=?, created_by=?, updated_by=? WHERE bikribitaran_id=?`;
+  const updateBanpaidawarBikribitaranQuery = `UPDATE banpaidawar_bikribitarans SET dist_id=?, office_id=?, bikri_miti=?, bandpaidawar_kisim=?, ekai=?, aantarik_dar=?, aantarik_parinam=?, aantarik_rakam=?, aaapurti_dar=?, aapurti_parinam=?, aapurti_rakam=?, bahiya_dar=?, bahiya_parinam=?, bahiya_rakam=?, created_by=?, updated_by=? WHERE bikribitaran_id=?`
   pool.query(
     updateBanpaidawarBikribitaranQuery,
     [
@@ -125,28 +125,28 @@ async function updateBanpaidawarBikribitaran(req, res, next) {
     ],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 //Controller for deleting a BanpaidawarBikribitaran
 async function deleteBanpaidawarBikribitaran(req, res, next) {
-  const deleteBanpaidawarBikribitaranQuery = `DELETE  FROM banpaidawar_bikribitarans where bikribitaran_id=?`;
+  const deleteBanpaidawarBikribitaranQuery = `DELETE  FROM banpaidawar_bikribitarans where bikribitaran_id=?`
   pool.query(
     deleteBanpaidawarBikribitaranQuery,
     [req.params.banpaidawarbikribitaranId],
     (error, results, fields) => {
       if (error) {
-        console.log(error);
-        next(error);
+        console.log(error)
+        next(error)
       }
-      res.send(JSON.stringify({ status: 200, error: error, data: results }));
+      res.send(JSON.stringify({ status: 200, error: error, data: results }))
     }
-  );
+  )
 }
 
 module.exports = {
@@ -155,4 +155,4 @@ module.exports = {
   addBanpaidawarBikribitaran,
   updateBanpaidawarBikribitaran,
   deleteBanpaidawarBikribitaran,
-};
+}

@@ -112,7 +112,7 @@ export class DateReport extends Component {
 
   handleReport() {
     // jsreport.serverUrl = "https://forest-mis-report.herokuapp.com";
-    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com/' //'http://localhost:5488'
+    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
     const { fromDate, toDate, distId, officeId } = this.state
     this.fetchReportResults(fromDate, toDate, distId, officeId)
     let reportRequest = {
@@ -123,7 +123,7 @@ export class DateReport extends Component {
   }
 
   handlePreview() {
-    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com/' //'http://localhost:5488'
+    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
     let reportRequest = {
       template: { name: 'mitianusarbibaran' },
       data: this.state.report_data,

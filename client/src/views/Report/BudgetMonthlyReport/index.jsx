@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Button } from '../../../components'
 import { connect } from 'react-redux'
 import { equals, isNil } from 'ramda'
-import { englishToNepaliNumber } from 'nepali-number' //nepaliToEnglishNumber
+// import { englishToNepaliNumber } from 'nepali-number' //nepaliToEnglishNumber
 import jsreport from 'jsreport-browser-client-dist'
 // import NepaliDate from 'nepali-date-converter'
 import AppActions from '../../../actions/app'
-import DwandabebasthapanActions from '../../../actions/dwandabebasthapan'
+// import DwandabebasthapanActions from '../../../actions/dwandabebasthapan'
 import ReportActions from '../../../actions/report'
 import {
   districtList,
@@ -21,7 +21,7 @@ import {
 import { Fragment } from 'react'
 import '../Report.scss'
 import Filter from '../../../components/Filter'
-import Report from '..'
+// import Report from '..'
 
 export class BudgetMonthlyReport extends Component {
   constructor(props) {
@@ -405,7 +405,7 @@ export class BudgetMonthlyReport extends Component {
       arthik_barsa: fiscal_year,
     }
     // console.log(report_data)
-    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com/' //'http://localhost:5488'
+    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
     let reportRequest = {
       template: { name: 'budgetbibaran' },
       data: report_data,

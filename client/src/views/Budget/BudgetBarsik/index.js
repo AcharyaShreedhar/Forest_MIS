@@ -16,7 +16,7 @@ import { Fragment } from 'react'
 export class BudgetBarsik extends Component {
   constructor(props) {
     super(props)
-    const { officeRole, officeId } = this.props
+    // const { officeRole, officeId } = this.props
     this.state = {
       loc: 'budgetbarsiklist',
       fromDate: '2075-01-01',
