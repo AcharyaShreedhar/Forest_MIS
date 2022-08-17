@@ -9,8 +9,8 @@ import { equals } from 'ramda'
 import { store } from '../reducers'
 import AppActions from '../actions/app'
 const Config = {
-  // API_URL: 'http://localhost:3001/api/v1/',
-  API_URL: 'https://forest-mis-apiserver.herokuapp.com/api/v1/',
+  API_URL: 'http://localhost:3001/api/v1/',
+  // API_URL: 'https://forest-mis-apiserver.herokuapp.com/api/v1/',
 }
 //https://forest-mis-server.herokuapp.com/api/v1/
 //http://localhost:3001/api/v1/

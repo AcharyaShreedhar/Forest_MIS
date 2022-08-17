@@ -405,7 +405,8 @@ export class BudgetMonthlyReport extends Component {
       arthik_barsa: fiscal_year,
     }
     // console.log(report_data)
-    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
+    // jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
+    jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'budgetbibaran' },
       data: report_data,

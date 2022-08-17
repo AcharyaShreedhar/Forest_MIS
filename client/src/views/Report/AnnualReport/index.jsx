@@ -186,7 +186,8 @@ export class AnnualReport extends Component {
 
   handleReport() {
     // jsreport.serverUrl = "https://forest-mis-report.herokuapp.com";
-    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
+    // jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
+    jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'bansambhandhibibaran' },
       data: this.state.report_data,
@@ -195,7 +196,8 @@ export class AnnualReport extends Component {
   }
 
   handlePreview() {
-    jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
+    // jsreport.serverUrl = 'https://forest-mis-reportserver.herokuapp.com' //'http://localhost:5488'
+    jsreport.serverUrl = 'http://localhost:5488'
     let reportRequest = {
       template: { name: 'bansambhandhibibaran' },
       data: this.state.report_data,
